@@ -1,0 +1,107 @@
+﻿GH_on_birth_child = {
+	on_actions = {
+		nickname_preparation_on_birth_child
+	}
+	effect = {
+		if = { # Some folks are doomed to be super mutants
+			limit = {
+				faith = { has_doctrine_parameter = mutation_guaranteed }
+			}
+			add_trait = gh_deep_mutation
+		}
+
+		if = { # Skrattaki should be born blind
+			limit = {
+				faith = faith:skrattaki # GH TODO: Replace with a faith param on a tenet
+			}
+			add_trait = blind
+		}
+
+		if = {
+			limit = {
+				scope:mother ?= {
+					has_variable = carrying_gedeora_child
+				}
+			}
+			gedeora_child_on_birth_effect = yes
+			GH_blacksheep_check = yes
+		}
+
+		if = { # Chance for childhood mutation
+			limit = {
+				any_parent = { child_magic_defect_chance_value > 0 }
+			}
+			random_list = { # GH TODO: Should probably account for the child's magic level somewhat too
+				100 = { }
+				0 = {
+					modifier = {
+						exists = scope:real_father
+						add = scope:real_father.child_magic_defect_chance_value
+					}
+					modifier = {
+						NOT = { exists = scope:real_father }
+						exists = scope:father
+						add = scope:father.child_magic_defect_chance_value
+					}
+					modifier = {
+						exists = scope:mother
+						add = scope:mother.child_magic_defect_chance_value
+					}
+					add_mutation_childbirth_effect = yes
+				}
+			}
+		}
+
+		hidden_effect = {
+			if = {
+				limit = { 
+					scope:mother = {
+						has_variable = carrying_powerful_magi_child
+					}
+				}
+				powerful_magi_generator_effect = yes
+				add_character_flag = potent_magi
+			}
+			else = {
+				powerful_magi_reducer_effect = yes
+			}
+			if = {
+				limit = {
+					AND = {
+						exists = scope:real_father
+						exists = scope:mother
+						scope:real_father.culture = { has_cultural_parameter = marriages_with_purity_of_blood_cultures_yield_better_magic }
+						scope:mother.culture = { has_cultural_parameter = marriages_with_purity_of_blood_cultures_yield_better_magic }
+						scope:real_father = { has_trait = magic_good }
+						scope:mother = { has_trait = magic_good }
+					}
+				}
+				random = {
+					chance = 50
+					change_trait_rank = {
+						trait = magic_good
+						rank = 1
+					}
+				}
+			}
+			if = {
+				limit = { 
+					scope:mother.culture = { has_cultural_parameter = giant_trait_more_common }
+					NOT = { has_trait = giant }
+				}
+				random = {
+					chance = 10
+					add_trait = giant
+				}
+			}
+			set_variable = {
+				name = arcana_character_random_baseline
+				value = { 0 5 } # lower value for babies
+			}
+			set_variable = {
+				name = arcana_character_counter
+				value = character_arcana_baseline_value
+			}
+		}
+	}
+}

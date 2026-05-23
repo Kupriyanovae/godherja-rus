@@ -1,0 +1,138 @@
+﻿GetCourtAdventurerDesc = {
+	type = character
+
+	text = {
+		trigger = {
+			is_landless_adventurer = yes
+		}
+		localization_key = activity_court_adventurer_desc_adventurer # GH TODO: Make this unique, rn it's a copy-paste since there's no Adventurer court equivalent
+	}
+	text = {
+		trigger = { always = no }
+		localization_key = activity_court_adventurer_desc_regular
+		fallback = yes
+	}
+}
+
+
+CooltipQuartermasterSkill = {
+	type = character
+
+	text = {
+		trigger = {
+			NOT = { exists = cp:councillor_quartermaster }
+		}
+		localization_key = councillor_quartermaster_does_not_exist_desc
+		fallback = yes
+	}
+	text = {
+		trigger = { 
+			cp:councillor_quartermaster = { stewardship <= mediocre_skill_rating } 
+		}
+		localization_key = councillor_quartermaster_skill_mediocre_desc
+	}
+	text = {
+		trigger = { 
+			cp:councillor_quartermaster = { 
+				stewardship > mediocre_skill_rating 
+				stewardship <= decent_skill_rating
+			} 
+		}
+		localization_key = councillor_quartermaster_skill_decent_desc
+	}
+	text = {
+		trigger = { 
+			cp:councillor_quartermaster = { 
+				stewardship > decent_skill_rating 
+				stewardship <= very_high_skill_rating
+			} 
+		}
+		localization_key = councillor_quartermaster_skill_high_desc
+	}
+	text = {
+		trigger = { 
+			cp:councillor_quartermaster = { 
+				stewardship > very_high_skill_rating
+			} 
+		}
+		localization_key = councillor_quartermaster_skill_excellent_desc
+	}
+}
+
+GetYurtType = {
+	type = character
+
+	text = {
+		trigger = {
+			government_has_flag = government_is_nomadic
+			NOT = { culture = { has_cultural_tradition = tradition_desert_nomads } }
+		}
+
+		localization_key = gh_yurt_type
+	}
+
+	text = {
+		trigger = {
+			government_has_flag = government_is_nomadic
+			culture = { has_cultural_tradition = tradition_desert_nomads }
+		}
+		localization_key = gh_ahan_type
+	}
+
+	text = {
+		localization_key = gh_yurt_type
+		fallback = yes
+	}
+}
+
+GetYurtTerrainType = {
+	type = character
+
+	text = {
+		trigger = {
+			government_has_flag = government_is_nomadic
+			NOT = { culture = { has_cultural_tradition = tradition_desert_nomads } }
+		}
+
+		localization_key = gh_steppe_type
+	}
+
+	text = {
+		trigger = {
+			government_has_flag = government_is_nomadic
+			culture = { has_cultural_tradition = tradition_desert_nomads }
+		}
+		localization_key = gh_desert_type
+	}
+
+	text = {
+		localization_key = gh_steppe_type
+		fallback = yes
+	}
+}
+
+GetYurtRulerTypePlural = {
+	type = character
+
+	text = {
+		trigger = {
+			government_has_flag = government_is_nomadic
+			NOT = { culture = { has_cultural_tradition = tradition_desert_nomads } }
+		}
+
+		localization_key = gh_khatans_type
+	}
+
+	text = {
+		trigger = {
+			government_has_flag = government_is_nomadic
+			culture = { has_cultural_tradition = tradition_desert_nomads }
+		}
+		localization_key = gh_azallids_type
+	}
+
+	text = {
+		localization_key = gh_khatans_type
+		fallback = yes
+	}
+}

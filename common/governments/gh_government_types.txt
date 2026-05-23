@@ -1,0 +1,1107 @@
+﻿magocratic_government = {
+	government_rules = {
+		dynasty_named_realms = yes
+		create_cadet_branches = yes
+		rulers_should_have_dynasty = yes
+		legitimacy = yes
+		allow_accolades = yes
+	}
+
+	royal_court = any 
+	primary_holding = castle_holding
+	valid_holdings = { castle_holding metro_holding ruined_district_holding colony_holding ruin_holding church_holding }
+	required_county_holdings = { castle_holding city_holding church_holding }
+
+	vassal_contract_group = feudal_vassal
+
+	ai = {
+		use_legends = yes
+	}
+
+	can_get_government = {
+		has_magi_potency_trigger = yes
+	}
+	flags = {
+		government_is_magocratic
+		government_is_settled
+		may_elevate_co_monarch
+	}
+	fallback = 5
+	
+	color = hsv{ 0.0 0.00 0.50 }
+	realm_mask_offset = { 0.0 0.01 }
+	realm_mask_scale = { 1 1 }
+}
+
+magocratic_republic = {
+	primary_holding = city_holding
+	valid_holdings = { castle_holding metro_holding ruined_district_holding colony_holding ruin_holding }
+	required_county_holdings = { city_holding castle_holding church_holding }
+	government_rules = {
+		create_cadet_branches = yes
+		legitimacy = yes
+		administrative = yes
+		landless_playable = yes
+		allow_accolades = yes
+	}
+	royal_court = any
+
+	domicile_type = estate
+	
+	can_get_government = {
+		has_magi_potency_trigger = yes
+	}
+	flags = {
+		government_has_influence
+		government_has_powerful_families
+		government_is_magocratic_republic
+		government_is_settled
+		has_tax_slots # Needed for SGUI
+	}
+	tax_slot_type = republic_playable_tax_slot
+
+	character_modifier = {
+		domain_limit = -2
+		vassal_limit = -10
+		men_at_arms_cap = -3
+		men_at_arms_limit = -3
+		knight_limit = -4
+		development_growth_factor = 0.1
+		mercenary_hire_cost_mult = -0.3
+		building_slot_add = 2
+	}
+	
+	fallback = 4
+
+	vassal_contract_group = GH_republic_vassal
+
+	main_administrative_tier = county
+	min_appointment_tier = county
+	minimum_provincial_maa_tier = duchy
+
+	currency_levels_cap = {
+		influence = 5
+	}
+
+	ai = {
+		use_legends = yes
+	}
+	color = hsv{ 0.00 0.00 0.60 }
+	realm_mask_offset = { 0.0 -0.01 }
+	realm_mask_scale = { 1 1 }
+}
+
+peasant_republic = {
+	primary_holding = city_holding
+	valid_holdings = { castle_holding metro_holding ruined_district_holding colony_holding ruin_holding }
+	required_county_holdings = { city_holding castle_holding church_holding }
+	government_rules = {
+		legitimacy = no
+		inherit_from_dynastic_government = no
+		allow_accolades = no
+	}
+	vassal_contract_group = GH_republic_vassal
+	
+	fallback = 3
+
+	supply_limit_mult_for_others = -0.5
+
+	flags = {
+		can_not_be_vassal_or_liege
+		government_is_peasant_republic
+		government_is_settled
+		has_tax_slots # Needed for SGUI
+	}
+	tax_slot_type = republic_playable_tax_slot
+
+	character_modifier = {
+		men_at_arms_cap = -2
+		men_at_arms_limit = -2
+		men_at_arms_recruitment_cost = 0.25
+		knight_limit = -5
+		domain_limit = -5
+		vassal_limit = 20
+		feudal_government_tax_contribution_mult = -0.5
+		feudal_government_levy_contribution_mult = -0.5
+		clan_government_tax_contribution_mult = -0.5
+		clan_government_levy_contribution_mult = -0.5
+		building_slot_add = 2
+		feudal_government_opinion = -50
+		clan_government_opinion = -50
+		republic_government_opinion = -50
+	}
+
+	ai = {
+		arrange_marriage = no
+		use_goals = no
+		perform_religious_reformation = no
+		use_legends = no
+	}
+
+	color = hsv{ 0.4 0.5 0.4 } #placeholder color
+	realm_mask_offset = { 0.0 -0.01 }
+	realm_mask_scale = { 1 1 }
+}
+
+landed_order_government = {
+	government_rules = {
+		create_cadet_branches = no
+		rulers_should_have_dynasty = yes
+		dynasty_named_realms = no
+		religious = yes
+		legitimacy = yes
+		allow_accolades = yes
+	}
+
+	royal_court = any
+
+	primary_holding = castle_holding
+	valid_holdings = { castle_holding metro_holding ruined_district_holding colony_holding ruin_holding }
+	required_county_holdings = { castle_holding city_holding church_holding }
+	flags = {
+		government_is_landed_order
+		government_is_settled
+		has_tax_slots # Needed for SGUI
+	}
+	tax_slot_type = landed_order_tax_slot
+
+	vassal_contract_group = GH_landed_order_vassal
+	
+	ai = {
+		use_legends = yes
+	}
+	
+	color = hsv{ 0.3 0.3 0.3 }
+	realm_mask_offset = { 0.0 0.01 }
+	realm_mask_scale = { 1 1 }
+}
+
+military_unit_government = {
+	government_rules = {
+		create_cadet_branches = no
+		rulers_should_have_dynasty = yes
+		dynasty_named_realms = no
+		legitimacy = yes
+		allow_accolades = yes
+	}
+	royal_court = any
+	flags = {
+		government_is_military_unit
+		government_is_settled
+	}
+	primary_holding = castle_holding
+	valid_holdings = { castle_holding metro_holding ruined_district_holding colony_holding ruin_holding }
+	required_county_holdings = { castle_holding city_holding church_holding }
+	court_generate_commanders = 5
+
+	vassal_contract_group = GH_military_unit_vassal
+	
+	ai = {
+		use_legends = yes
+	}
+
+	color = { 230 80 20 }
+	realm_mask_offset = { 0.0 0.01 }
+	realm_mask_scale = { 1 1 }
+}
+
+pirate_government = {
+	government_rules = {
+		create_cadet_branches = yes
+		inherit_from_dynastic_government = no
+		regiments_prestige_as_gold = yes
+		conditional_maa_refill = yes
+		affected_by_development = no
+		allow_accolades = yes
+	}
+
+	royal_court = any
+	blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government }
+	
+	supply_limit_mult_for_others = -0.5
+
+	flags = {
+		government_is_pirate
+		government_is_settled
+		court_positions_are_more_expensive
+		has_tax_slots # Needed for SGUI
+		government_can_raid_over_water_rule
+	}
+	tax_slot_type = pirate_tax_slot
+	primary_holding = castle_holding
+	valid_holdings = { castle_holding metro_holding ruined_district_holding tribal_holding colony_holding ruin_holding }
+	required_county_holdings = { castle_holding city_holding church_holding }
+
+	vassal_contract_group = GH_pirate_vassal
+
+	character_modifier = {
+		feudal_government_opinion = -25
+		clan_government_opinion = -25
+		republic_government_opinion = -25
+		embarkation_cost_mult = -0.85
+		sea_travel_danger = low_sea_danger_reduction
+		coastal_sea_travel_danger = low_sea_danger_reduction
+		ai_war_chance = 0.2
+		accolades = -1
+	}
+	
+	ai = {
+		use_legends = yes
+	}
+	
+	prestige_opinion_override = { -10 0 3 5 10 20 }
+	color = hsv{ 0.20 0.70 0.10 }
+	realm_mask_offset = { 0.0 0.0 }
+	realm_mask_scale = { 0.96 0.96 }
+}
+
+wasteland_government = {
+	primary_holding = wasteland_empty_holding
+	valid_holdings = { wasteland_empty_holding ruin_holding ruined_district_holding }
+	required_county_holdings = { wasteland_empty_holding ruin_holding }
+	
+	government_rules = {
+		court_generate_spouses = no
+		council = no
+		create_cadet_branches = no
+		rulers_should_have_dynasty = no
+		uses_county_fertility = yes
+		replenishes_county_fertility = yes
+		deny_powerful_vassal = yes
+		redirects_wars_to_overlord = yes
+		allow_accolades = no
+	}
+
+	character_modifier = {
+		knight_limit = -100
+		accolades = -100
+		county_opinion_add = 100
+		monthly_income_mult = -10
+	}
+
+	vassal_contract_group = GH_wasteland_vassal 
+
+	court_generate_commanders = no
+	flags = {
+		can_not_be_vassal_or_liege
+		government_is_wasteland
+		government_is_settled
+	}
+
+	can_get_government = {
+		is_ruin = yes
+	}
+	
+	ai = {
+		use_lifestyle = no
+		arrange_marriage = no
+		use_goals = no
+		use_decisions = no
+		use_scripted_guis = no
+		use_legends = no
+		perform_religious_reformation = no
+	}
+	
+	color = { 0 0 0 0 }
+	realm_mask_offset = { 0.0 0.01 }
+	realm_mask_scale = { 1 1 }
+}
+
+administrative_bureaucracy_government = {
+	government_rules = {
+		create_cadet_branches = no
+		allow_accolades = no
+		rulers_should_have_dynasty = no
+	}
+
+	royal_court = any
+	blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government }
+
+	primary_holding = castle_holding
+	valid_holdings = { castle_holding metro_holding ruined_district_holding colony_holding ruin_holding }
+	required_county_holdings = { city_holding castle_holding church_holding }
+	
+	ai = {
+		perform_religious_reformation = no
+		arrange_marriage = no
+		use_goals = no
+		use_scripted_guis = no
+		use_legends = no
+	}
+
+	flags = {
+		can_not_be_vassal_or_liege
+		government_is_administrative_bureaucracy
+		government_is_settled
+	}
+
+	vassal_contract_group = republic_vassal
+	color = { 37 138 32 }
+
+	realm_mask_offset = { 0.0 0.01 }
+	realm_mask_scale = { 1 1 }
+	
+	can_get_government = {
+		#The LAAMP Construct Holding decision
+		trigger_if = {
+			limit = {
+				OR = {
+					has_variable = city_construction_is_temple_citadel
+					has_variable = city_construction_is_castle
+				}
+			}
+			always = no
+		}
+	}
+}
+
+migratory_government = {
+	government_rules = {
+		rulers_should_have_dynasty = yes
+		regiments_prestige_as_gold = yes
+		affected_by_development = no
+		allow_accolades = no
+		always_use_patronym = yes
+	}
+	
+	supply_limit_mult_for_others = -0.5
+	primary_holding = tribal_holding
+	required_county_holdings = { tribal_holding }
+
+	valid_holdings = { castle_holding metro_holding ruined_district_holding colony_holding ruin_holding }
+
+	prestige_opinion_override = { -10 0 3 5 10 20 }	
+
+	ai = {
+		use_lifestyle = no
+		arrange_marriage = no
+		use_goals = no
+		use_decisions = no
+		use_scripted_guis = no
+		use_legends = no
+		perform_religious_reformation = no
+	}
+
+	vassal_contract_group = herder_vassal
+	
+	character_modifier = {
+		title_creation_cost_mult = -0.5
+		army_maintenance_mult = -0.5
+
+		feudal_government_vassal_opinion = -20
+		clan_government_vassal_opinion = -20
+		republic_government_vassal_opinion = -20
+	
+		ai_war_chance = 0.25
+		monthly_prestige = 0.2
+	}
+	flags = {
+		can_not_be_vassal_or_liege
+		government_can_raid_rule
+		government_is_migratory
+	}
+
+	color = { 212 198 42 }
+	realm_mask_offset = { 0.0 0.01 }
+	realm_mask_scale = { 1 1 }
+}
+
+lichdom_government = {
+	government_rules = {
+		create_cadet_branches = no
+		rulers_should_have_dynasty = yes
+		dynasty_named_realms = yes
+		conditional_maa_refill = yes
+		court_generate_spouses = no
+		affected_by_development = no
+		allow_accolades = no
+	}
+
+	royal_court = any
+
+	court_generate_commanders = 0
+	primary_holding = necropolis_holding
+	valid_holdings = { necropolis_holding ruin_holding }
+	required_county_holdings = { necropolis_holding }
+
+	character_modifier = {
+		additional_fort_level = 15
+		garrison_size = 10
+	}
+	ai = {
+		perform_religious_reformation = no
+		arrange_marriage = no
+		use_legends = no
+	}
+
+	vassal_contract_group = GH_lich_vassal
+
+	flags = {
+		government_is_lichdom
+		government_is_settled
+	}
+	
+	color = { 20 20 20 }
+	realm_mask_offset = { 0.0 0.01 }
+	realm_mask_scale = { 1 1 }
+}
+
+republic_playable_government = {
+	government_rules = {
+		create_cadet_branches = yes
+		rulers_should_have_dynasty = yes
+		dynasty_named_realms = no
+		legitimacy = yes
+		inherit_from_dynastic_government = no
+		administrative = yes
+		landless_playable = yes
+		state_faith = no
+		use_as_base_on_landed = yes
+		use_as_base_on_rank_up = yes
+		sticky_government = yes
+		house_aspirations = yes
+		noble_families = yes
+		deny_powerful_vassal = yes
+		allow_accolades = yes
+		# Mercantile focus
+		treasury = yes
+		replace_gold_cost_by_treasury = yes
+	}
+
+	royal_court = any
+	blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government }
+	
+	domicile_type = estate
+	main_administrative_tier = county
+	min_appointment_tier = county
+	minimum_provincial_maa_tier = county
+
+	primary_holding = city_holding
+	valid_holdings = { castle_holding metro_holding ruined_district_holding colony_holding ruin_holding }
+	required_county_holdings = { city_holding castle_holding church_holding }
+
+	vassal_contract_group = GH_republic_vassal
+	tax_slot_type = republic_playable_tax_slot
+
+	character_modifier = {
+		# ECONOMIC BONUSES
+		development_growth_factor = 0.25
+		character_capital_county_monthly_development_growth_add = 0.02
+		building_slot_add = 3
+		build_speed = 0.25
+		tax_mult = 0.25
+		city_holding_build_speed = 0.5
+		
+		# TRADE & NAVAL BONUSES
+		mercenary_hire_cost_mult = -0.4
+		embarkation_cost_mult = -0.75
+		sea_travel_danger = medium_sea_danger_reduction
+		coastal_sea_travel_danger = medium_sea_danger_reduction
+		
+		# MILITARY LIMITATIONS (focus on mercenaries and naval power)
+		levy_size = -0.4
+		men_at_arms_cap = -2
+		men_at_arms_limit = -2
+		knight_limit = -4
+		garrison_size = 0.15
+		
+		# VASSAL RELATIONS
+		feudal_government_tax_contribution_mult = -0.25
+		feudal_government_levy_contribution_mult = -0.5
+		clan_government_tax_contribution_mult = -0.25
+		clan_government_levy_contribution_mult = -0.5
+		republic_government_opinion = 20
+		
+		# ADMINISTRATIVE EFFICIENCY
+		vassal_limit = 30
+		domain_limit_max = 1  # Increased by estates
+		
+		# Vassals get Treasury income that is this percentage less than their taxes to their liege
+		monthly_treasury_from_liege_mult = -0.2
+		ai_war_chance = -0.3
+	}
+
+	top_liege_character_modifier = {
+		# 80% of vassal income goes to the treasury
+		monthly_treasury_from_vassals = 0.8
+		men_at_arms_maintenance = 1.25
+		men_at_arms_recruitment_cost = 0.75
+		# Trade network bonuses for the capital
+		character_capital_county_monthly_development_growth_add = 0.05
+		tax_mult = 0.15
+	}
+
+	ai = {
+		use_legends = yes
+		perform_religious_reformation = no
+		# Focus on economic development
+	}
+
+	# Specific mechanics for merchant republics
+	can_get_government = {
+		OR = {
+			highest_held_title_tier >= tier_duchy
+			#has_coastal_province = yes
+		}
+	}
+
+	# Use flags instead of has_government for moddability
+	flags = {
+		government_is_republic_playable
+		
+		# These flags only exist for loc and in-game descriptions
+		government_has_influence
+		government_has_treasury
+		government_has_title_men_at_arms
+		government_has_powerful_families
+		government_has_county_tier_noble_families
+		government_is_settled
+		government_uses_domicile_but_not_adventurer
+		government_uses_domain_limit
+		government_uses_admin_province_obligations
+		has_special_house_aspirations
+		has_unique_government_perks
+		has_tax_slots
+	}
+
+	mechanic_type = administrative
+
+	color = hsv{ 0.00 1.00 0.98 }
+	realm_mask_offset = { 0.0 -0.01 }
+	realm_mask_scale = { 1 1 }
+
+	currency_levels_cap = {
+		influence = 5
+	}
+}
+
+administrative_republic_playable_government = { # for kingdom and higher-level republics
+	government_rules = {
+		create_cadet_branches = yes
+		rulers_should_have_dynasty = yes
+		dynasty_named_realms = no
+		legitimacy = yes
+		inherit_from_dynastic_government = no
+		administrative = yes
+		landless_playable = yes
+		state_faith = no
+		use_as_base_on_landed = yes
+		use_as_base_on_rank_up = yes
+		sticky_government = yes
+		house_aspirations = yes
+		noble_families = yes
+		deny_powerful_vassal = yes
+		allow_accolades = yes
+		treasury = yes
+		replace_gold_cost_by_treasury = yes
+	}
+
+	royal_court = top_liege
+	blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government }
+	
+	# Republican administration system
+	domicile_type = estate
+	main_administrative_tier = county
+	min_appointment_tier = county
+	minimum_provincial_maa_tier = duchy
+
+	primary_holding = city_holding
+	valid_holdings = { castle_holding metro_holding ruined_district_holding colony_holding ruin_holding }
+	required_county_holdings = { city_holding castle_holding church_holding }
+
+	vassal_contract_group = GH_republic_vassal
+
+	character_modifier = {
+		monthly_prestige_gain_mult = -0.2  # Less focus on personal prestige		
+		# DEVELOPMENT & URBAN FOCUS
+		development_growth_factor = 0.2
+		character_capital_county_monthly_development_growth_add = 0.03
+		building_slot_add = 2
+		city_holding_build_speed = 0.3
+		church_holding_build_speed = 0.3
+		
+		# DEFENSIVE FOCUS (as per their isolationist history)
+		garrison_size = 0.4
+		supply_limit = 0.2
+		fort_level = 2		
+		# MILITARY LIMITATIONS (civilian administration focus)
+		levy_size = -0.3
+		men_at_arms_cap = -2
+		men_at_arms_limit = -2
+		knight_limit = -5
+		ai_war_chance = -0.4
+		
+		# ECONOMIC BALANCE
+		domain_tax_mult = 0.1
+		feudal_government_tax_contribution_mult = -0.5
+		feudal_government_levy_contribution_mult = -0.5
+		
+		# VASSAL MANAGEMENT
+		vassal_limit = 25  # Smaller, more manageable administration
+		domain_limit_max = 1  # Expanded by estates
+			
+		# RELIGIOUS/PHILOSOPHICAL FOCUS
+		clergy_opinion = 5
+		zealot_opinion = 5
+
+		ai_war_chance = -0.5
+		ai_war_cooldown = 1.5
+	}
+
+	top_liege_character_modifier = {
+		# 75% of vassal income goes to the treasury (less centralized than Japan)
+		monthly_treasury_from_vassals = 0.75
+		men_at_arms_maintenance = 1.1
+		men_at_arms_recruitment_cost = 0.8
+	}
+
+	ai = {
+		use_legends = yes
+		perform_religious_reformation = no
+	}
+
+	# Specific to Kanzelerij - only for Konijkmener culture and specific setup
+	#can_get_government = {
+	#	OR = {
+	#		# Only for the specific Kanzelerij setup
+	#		has_character_flag = kanzelerij_restored_flag
+	#		# Or for Konijkmener rulers in the region
+	#		culture = { has_cultural_pillar = heritage_konijkmener }
+	#	}
+	#}
+
+	# The Figurehead Monarch cannot be moved from the ceremonial capital
+	can_move_realm_capital = {
+		NOT = { 
+			has_title = title:d_kanzelerij_monarchy  # Figurehead title
+		}
+	}
+
+	# Compatible succession types (Figurehead is hereditary, Chancellor is elected)
+	compatible_government_type_succession = { 
+		feudal_government
+	}
+
+	# Use flags instead of has_government for moddability
+	flags = {
+		government_is_administrative_republic
+		
+		# Core government features
+		government_has_influence
+		government_has_treasury
+		government_has_title_men_at_arms
+		government_has_powerful_families
+		government_has_county_tier_noble_families
+		government_is_settled
+		government_uses_domicile_but_not_adventurer
+		government_uses_domain_limit
+		government_uses_admin_province_obligations
+		has_special_house_aspirations
+		has_unique_government_perks
+	}
+
+	mechanic_type = administrative
+
+	currency_levels_cap = {
+		influence = 5
+	}
+
+	color = { 70 90 140 }  # Scholarly blue-grey, representing ink/parchment
+	realm_mask_offset = { 0.0 0.05 }
+	realm_mask_scale = { 0.9 0.9 }
+}
+
+judicial_republic_government = { #Mainly for Wardenites
+	government_rules = {
+		create_cadet_branches = yes
+		rulers_should_have_dynasty = yes
+		dynasty_named_realms = no
+		legitimacy = yes
+		inherit_from_dynastic_government = no
+		administrative = yes
+		landless_playable = yes
+		state_faith = no
+		use_as_base_on_landed = yes
+		use_as_base_on_rank_up = yes
+		sticky_government = yes
+		house_aspirations = yes
+		noble_families = yes
+		treasury = yes
+		replace_gold_cost_by_treasury = yes
+		state_faith = yes
+		allow_accolades = yes
+	}
+
+	royal_court = top_liege
+	
+	domicile_type = estate
+	main_administrative_tier = county
+	min_appointment_tier = county
+	minimum_provincial_maa_tier = duchy
+
+	primary_holding = city_holding
+	valid_holdings = { castle_holding metro_holding ruined_district_holding colony_holding ruin_holding  }
+	required_county_holdings = { castle_holding city_holding church_holding }
+
+	ai = {
+		perform_religious_reformation = no
+		use_legends = yes
+	}
+	
+	currency_levels_cap = {
+		influence = 5
+	}
+
+	character_modifier = {
+		levy_size = -0.5
+		men_at_arms_maintenance = 0.5
+		men_at_arms_recruitment_cost = 0.5
+		feudal_government_tax_contribution_mult = -0.5
+		feudal_government_levy_contribution_mult = -0.5
+		clan_government_tax_contribution_mult = -0.5
+		clan_government_levy_contribution_mult = -0.5
+		domain_limit = -1
+		men_at_arms_cap = -3
+		men_at_arms_limit = -3
+		knight_limit = -5
+		accolades = -1
+		mercenary_hire_cost_mult = -0.3
+		building_slot_add = 2
+		ai_war_chance = -0.2
+
+		# Vassals get Treasury income that is this percentage less than their taxes to their liege
+		monthly_treasury_from_liege_mult = -0.15
+	}
+
+	top_liege_character_modifier = {
+		# 85% of vassal income goes to the treasury
+		monthly_treasury_from_vassals = 0.85
+		men_at_arms_maintenance = 1.5
+		men_at_arms_recruitment_cost = 1
+	}
+	vassal_contract_group = GH_republic_vassal 
+	flags = {
+		government_is_judicial_republic
+		government_is_settled
+		has_tax_slots # Needed for SGUI
+		government_has_influence
+		government_has_title_men_at_arms
+		government_has_powerful_families
+		government_is_administrative
+		government_uses_state_faith
+	}
+
+	tax_slot_type = republic_playable_tax_slot
+
+	color = { 0 100 100 }
+	realm_mask_offset = { 0.0 0.01 }
+	realm_mask_scale = { 1 1 }
+}
+
+
+continental_clan_government = { # This is done to differentiate Sarradonian from Continental Clan govts 
+	primary_holding = castle_holding
+	primary_heritages = { heritage_sjalvolki heritage_partic heritage_karzarad }
+	
+	government_rules = {
+		create_cadet_branches = yes
+		rulers_should_have_dynasty = yes
+		regiments_prestige_as_gold = yes
+		legitimacy = yes
+		dynasty_named_realms = yes
+		allow_accolades = yes
+		always_use_patronym = yes
+	}
+
+	royal_court = any
+
+	supply_limit_mult_for_others = -0.5
+	prestige_opinion_override = { -10 0 3 5 10 20 }
+
+	valid_holdings = { castle_holding tribal_holding metro_holding ruined_district_holding colony_holding ruin_holding }
+	required_county_holdings = { castle_holding city_holding church_holding }
+
+	house_unity = clan_house_unity
+
+	vassal_contract_group = GH_tribal_clan_vassal
+
+	ai = {
+		use_legends = yes
+	}
+
+	character_modifier = {
+		title_creation_cost_mult = -0.3
+		army_maintenance_mult = -0.3
+		development_growth_factor = -0.1
+		character_travel_safety = 10
+		tribal_government_vassal_opinion = 10
+		castle_holding_build_speed = 1
+		city_holding_build_speed = 1
+		ai_war_chance = 0.2
+		monthly_prestige = 0.15
+	}
+	
+	opinion_of_liege = {
+		scope:vassal = {
+			if = {
+				limit = {
+					NOT = {
+						is_allied_to = scope:liege
+					}
+				}
+				if = {
+					limit = {
+						is_powerful_vassal = yes
+					}
+					value = clan_powerful_vassal_no_alliance_opinion_penalty_value
+				}
+				else = {
+					value = clan_vassal_no_alliance_opinion_penalty_value
+				}
+			}
+		}
+	}
+	opinion_of_liege_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						NOT = {
+							is_allied_to = scope:liege
+						}
+						is_powerful_vassal = yes
+					}
+				}
+				desc = "GOVERNMENT_CLAN_NOT_ALLIED_POWERFUL"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						NOT = {
+							is_allied_to = scope:liege
+						}
+						is_powerful_vassal = no
+					}
+				}
+				desc = "GOVERNMENT_CLAN_NOT_ALLIED"
+			}
+		}
+	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flags = {
+		government_can_raid_rule
+		government_is_continental_clan
+		government_is_settled
+	}
+	#may_appoint_viziers
+	color = { 119 213 242 }
+	realm_mask_offset = { 0.0 0.03 }
+	realm_mask_scale = { 1 1 }
+}
+
+landed_cultist_government = {
+	government_rules = {
+		dynasty_named_realms = yes
+		create_cadet_branches = no
+		rulers_should_have_dynasty = yes
+		legitimacy = yes
+		court_generate_spouses = no
+		allow_accolades = no
+	}
+
+	royal_court = top_liege
+
+	primary_holding = castle_holding
+	valid_holdings = { castle_holding metro_holding ruined_district_holding colony_holding ruin_holding church_holding }
+	required_county_holdings = { castle_holding church_holding }
+
+	vassal_contract_group = GH_cultist_vassal
+
+	ai = {
+		use_legends = yes
+	}
+
+	can_get_government = {
+		is_redlander = yes
+	}
+
+	character_modifier = {
+		monthly_piety = 1
+	}
+
+	primary_heritages = { heritage_redlander }
+	preferred_religions = { redland_cults_religion }
+	flags = {
+		government_can_raid_rule
+		government_is_magocratic
+		government_is_settled
+	}
+	#may_elevate_co_monarch
+
+	fallback = 6
+	
+	color = hsv{ 127 113 154 }
+	realm_mask_offset = { 0.0 0.03 }
+	realm_mask_scale = { 1 1 }
+}
+
+otachedian_government = {
+	government_rules = {
+		create_cadet_branches = yes
+		rulers_should_have_dynasty = yes
+		dynasty_named_realms = no				# Realms are named after the territory, not the dynasty
+		administrative = yes					# Core is administrative
+		landless_playable = yes					# Allows for bureaucrats and claimants with an Ayraal
+		legitimacy = yes						
+		state_faith = no						# Faith is personal; the state concerns itself with law and administration
+		use_as_base_on_landed = yes
+		use_as_base_on_rank_up = yes
+		inherit_from_dynastic_government = no	# Cannot be inherited by a non-Otachedian government
+		sticky_government = yes					# Difficult to change from
+		house_aspirations = yes					# Great houses vie for control of the bureaucracy and mints
+		noble_families = yes					# Powerful families hold key administrative offices
+		treasury = yes							# Uses the treasury system
+		replace_gold_cost_by_treasury = yes		# Many actions cost treasury instead of gold
+		deny_powerful_vassal = yes 
+		allow_accolades = yes
+	}
+
+	royal_court = any
+	blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government }
+
+	can_get_government = {
+		OR = {
+			liege ?= { has_government = otachedian_government }
+			AND = {
+				is_independent_ruler = yes
+				culture = { has_cultural_tradition = tradition_otachedian_law }
+			}
+		}
+	}
+
+	domicile_type = estate						# Bureaucratic estates form the basis of administration
+	main_administrative_tier = duchy			# Duchies are the main administrative units (Provinces)
+	min_appointment_tier = county				# County-level governors are the lowest appointed officials
+	minimum_provincial_maa_tier = county
+	administrative_title_maa_setup = vassals_and_top_liege
+
+	fallback = 3									# Fallback priority
+
+	primary_holding = castle_holding
+	valid_holdings = { castle_holding city_holding temple_citadel_holding metro_holding }
+	required_county_holdings = { castle_holding city_holding church_holding }
+
+	vassal_contract_group = otachedian_vassal	# Custom contracts reflecting Ayraal obligations and legitimacy expectations
+
+	opinion_of_liege = {
+		scope:liege = {
+			if = {
+				limit = { influence_level = max_influence_level_plus_3 }
+				scope:vassal = { value = otachedian_vassal_opinion_bonus_influence_8_value }
+			}
+			else_if = {
+				limit = { influence_level = max_influence_level_plus_2 }
+				scope:vassal = { value = otachedian_vassal_opinion_bonus_influence_7_value }
+			}
+			else_if = {
+				limit = { influence_level = max_influence_level_plus_1 }
+				scope:vassal = { value = otachedian_vassal_opinion_bonus_influence_6_value }
+			}
+			else_if = {
+				limit = { influence_level = max_influence_level }
+				scope:vassal = { value = otachedian_vassal_opinion_bonus_influence_5_value }
+			}
+			else_if = {
+				limit = { influence_level = very_high_influence_level }
+				scope:vassal = { value = otachedian_vassal_opinion_bonus_influence_4_value }
+			}
+			else_if = {
+				limit = { influence_level = high_influence_level }
+				scope:vassal = { value = otachedian_vassal_opinion_bonus_influence_3_value }
+			}
+			else_if = {
+				limit = { influence_level = medium_influence_level }
+				scope:vassal = { value = otachedian_vassal_opinion_bonus_influence_2_value }
+			}
+			else_if = {
+				limit = { influence_level = low_influence_level }
+				scope:vassal = { value = otachedian_vassal_opinion_bonus_influence_1_value }
+			}
+			else_if = {
+				limit = { influence_level = low_negative_influence_level }
+				scope:vassal = { value = otachedian_vassal_opinion_bonus_influence_0_value }
+			}
+		}
+	}
+
+	opinion_of_liege_desc = { desc = liege_influence_level_desc }
+
+
+	character_modifier = {
+		# Base Administrative penalties (from standard admin)
+		levy_size = -0.5
+		feudal_government_tax_contribution_mult = -0.5
+		feudal_government_levy_contribution_mult = -0.5
+		clan_government_tax_contribution_mult = -0.5
+		clan_government_levy_contribution_mult = -0.5
+		men_at_arms_cap = -2
+		men_at_arms_limit = -2
+		men_at_arms_recruitment_cost = 0.1
+		knight_limit = -5
+		accolades = -1
+		title_creation_cost_mult = -0.5
+		mercenary_hire_cost_mult = 2
+		men_at_arms_maintenance = 1.5
+		tyranny_gain_mult = 0.25
+		monthly_prestige_gain_per_dread_mult = -0.01
+
+		# Vassals get less income as it goes to the treasury
+		monthly_treasury_from_liege_mult = -0.2
+
+		# Otachedian-specific modifiers
+		monthly_prestige_gain_mult = 0.05		# Base prestige gain (slightly higher than influence)
+		vassal_limit = 45						# Strong bureaucratic tradition
+		domain_limit_max = 2					# Can directly hold more due to Ayraal authority
+	}
+
+	# Top Liege gets enhanced benefits, especially from Legitimacy
+	top_liege_character_modifier = {
+		monthly_treasury_from_vassals = 0.8		# 80% of vassal income goes to the treasury
+
+		# Additional legitimacy gain for being the top liege
+		monthly_legitimacy_add = 0.1
+	}
+
+	flags = {
+		government_is_otachedian
+
+		# Core administrative features
+		government_has_influence
+		government_has_treasury
+		government_has_title_men_at_arms
+		government_has_powerful_families
+		government_has_county_tier_noble_families
+		government_is_settled
+		government_uses_domicile_but_not_adventurer
+		government_uses_domain_limit
+		government_uses_admin_province_obligations
+		has_unique_government_perks
+		no_powerful_vassals
+		# Otachedian-specific flags
+		has_ayraal_system
+	}
+
+	currency_levels_cap = {
+		prestige = 6
+		influence = 8
+	}
+
+	mechanic_type = administrative
+	is_mechanic_type_default = no
+
+
+	color = { 92 54 128 }
+	realm_mask_offset = { 0.0 0.06 }
+	realm_mask_scale = { 0.91 0.91 }
+}

@@ -1,0 +1,997 @@
+﻿#########
+# Books #
+#########
+
+#book_ink
+book_ink_blood = {
+	group = book_ink
+	trigger = {
+		exists = var:blood
+	}
+	weight = {
+		value = var:blood
+	}
+}
+
+book_ink_stardew_ink = {
+	group = book_ink
+	trigger = {
+		exists = var:celestial
+	}
+	weight = {
+		value = var:celestial
+	}
+}
+
+#book_subject
+book_subject_arcana = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:arcana
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { has_education_arcana_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = character_arcana_baseline_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { has_education_arcana_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = character_arcana_baseline_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_celestial = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:celestial
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_celestial_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = celestial_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_celestial_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = celestial_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_light = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:light
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_light_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = light_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_light_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = light_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_blood = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:blood
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_blood_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = blood_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_blood_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = blood_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_fire = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:fire
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_fire_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = fire_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_fire_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = fire_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_nature = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:nature
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_nature_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = nature_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_nature_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = nature_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_water = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:water
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_water_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = water_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_water_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = water_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_air = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:air
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_air_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = air_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_air_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = air_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_stone = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:stone
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_stone_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = stone_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_stone_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = stone_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_dream = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:dream
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_dream_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = dream_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_dream_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = dream_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_death = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:death
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_death_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = death_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_death_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = death_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_ethereal = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:ethereal
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_ethereal_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = ethereal_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_ethereal_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = ethereal_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_ice = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:ice
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_ice_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = ice_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_ice_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = ice_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+book_subject_dark = {
+	group = book_subject
+	trigger = {
+		trigger_if = { # If the subject has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_subject }
+			scope:owner.var:book_artifact_subject = flag:dark
+		}
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { knows_magic_school_with_dark_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = dark_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { knows_magic_school_with_dark_aspect_trigger = yes }
+					add = 60
+				}
+				add = { #If they're good you get +, if they're shit you get -
+					value = average_skill_rating
+					subtract = dark_aspect_spellcasting_value
+					multiply = -5
+					min = 0
+				}
+			}
+		}
+	}
+}
+
+# book_topic
+
+# General GH-specific topics
+
+book_topic_secret_histories_chronicle = {
+	group = book_topic
+	trigger = {
+		exists = scope:owner.var:book_artifact_topic
+		scope:owner.var:book_artifact_topic = flag:secret_histories_chronicle
+	}
+	weight = 1
+}
+
+book_topic_secret_histories_secret_society = {
+	group = book_topic
+	trigger = {
+		exists = scope:owner.var:book_artifact_topic
+		scope:owner.var:book_artifact_topic = flag:secret_histories_secret_society
+	}
+	weight = 1
+}
+
+# Arcana
+book_topic_arcana_general = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_arcana
+		trigger_if = { # If the topic has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_topic }
+			scope:owner.var:book_artifact_topic = flag:arcana_general
+		}
+	}
+	weight = {
+		value = 1
+	}
+}
+book_topic_arcana_magic_school = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_arcana
+		trigger_if = { # If the topic has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_topic }
+			scope:owner.var:book_artifact_topic = flag:arcana_magic_school
+		}
+	}
+	weight = {
+		value = 1
+	}
+}
+book_topic_arcana_ethics = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_arcana
+	}
+	weight = {
+		value = 1
+	}
+}
+# Celestial
+book_topic_celestial_star_lore = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_celestial
+	}
+	weight = {
+		value = 1
+	}
+}
+# Light
+book_topic_light_optics = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_light
+		trigger_if = { # If the topic has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_topic }
+			scope:owner.var:book_artifact_topic = flag:light_optics
+		}
+	}
+	weight = {
+		value = 1
+	}
+}
+# Blood
+book_topic_blood_medicine = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_blood
+	}
+	weight = {
+		value = 1
+		if = {
+			limit = {
+				exists = scope:owner.var:book_artifact_author
+			}
+			scope:owner.var:book_artifact_author = {
+				if = {
+					limit = { book_subject_medicine_trigger = yes }
+					add = 10
+				}
+			}
+		}
+		else = {
+			scope:owner = {
+				if = {
+					limit = { book_subject_medicine_trigger = yes }
+					add = 10
+				}
+			}
+		}
+	}
+}
+book_topic_blood_play = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_blood
+	}
+	weight = {
+		value = 1
+	}
+}
+book_topic_blood_poetry = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_blood
+	}
+	weight = {
+		value = 1
+	}
+}
+# Fire
+book_topic_fire_sacrifice = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_fire
+	}
+	weight = {
+		value = 1
+	}
+}
+# Nature
+book_topic_nature_folklore = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_nature
+	}
+	weight = {
+		value = 1
+	}
+}
+# Water
+book_topic_water_folklore = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_water
+	}
+	weight = {
+		value = 1
+	}
+}
+# Air
+book_topic_air_ornithology = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_air
+	}
+	weight = {
+		value = 1
+	}
+}
+book_topic_air_poetry = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_air
+		trigger_if = { # If the topic has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_topic }
+			scope:owner.var:book_artifact_topic = flag:air_poetry
+		}
+	}
+	weight = {
+		value = 1
+	}
+}
+# Dream
+book_topic_dream_journal = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_dream
+	}
+	weight = {
+		value = 1
+	}
+}
+book_topic_dream_architecture = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_dream
+	}
+	weight = {
+		value = 1
+	}
+}
+book_topic_dream_wakeless = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_dream
+	}
+	weight = {
+		value = 1
+	}
+}
+# Death
+book_topic_death_funerary_rites = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_death
+	}
+	weight = {
+		value = 1
+	}
+}
+# Ethereal
+book_topic_ethereal_soul_theory = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_ethereal
+	}
+	weight = {
+		value = 1
+	}
+}
+book_topic_ethereal_fog = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_ethereal
+		trigger_if = { # If the topic has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_topic }
+			scope:owner.var:book_artifact_topic = flag:ethereal_fog
+		}
+	}
+	weight = {
+		value = 1
+	}
+}
+# Ice
+book_topic_ice_wards = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_ice
+	}
+	weight = {
+		value = 1
+	}
+}
+# Dark
+book_topic_dark_shades = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_dark
+	}
+	weight = {
+		value = 1
+	}
+}
+book_topic_dark_entities = {
+	group = book_topic
+	trigger = {
+		has_artifact_feature = book_subject_dark
+		trigger_if = { # If the topic has been pre-saved from events etc. we make sure it's picked
+			limit = { exists = scope:owner.var:book_artifact_topic }
+			scope:owner.var:book_artifact_topic = flag:dark_entities
+		}
+	}
+	weight = {
+		value = 1
+	}
+}
+
+# book_title
+
+# General GH-specific titles
+
+book_title_secret_histories_chronicle = {
+	group = book_title
+	trigger = {
+		exists = scope:owner.var:book_artifact_topic
+		scope:owner.var:book_artifact_topic = flag:secret_histories_chronicle
+	}
+	weight = 1
+}
+book_title_secret_histories_secret_society = {
+	group = book_title
+	trigger = {
+		exists = scope:owner.var:book_artifact_topic
+		scope:owner.var:book_artifact_topic = flag:secret_histories_secret_society
+	}
+	weight = 1
+}
+
+#book_title
+book_title_arcana_general = {
+	group = book_title
+	trigger = { has_artifact_feature = book_topic_arcana_general }
+	weight = 1
+}
+
+book_title_arcana_magic_school = {
+	group = book_title
+	trigger = { has_artifact_feature = book_topic_arcana_magic_school }
+	weight = 1
+}
+
+book_title_nature_folklore = {
+	group = book_title
+	trigger = { has_artifact_feature = book_topic_nature_folklore }
+	weight = {
+		value = 1
+	}
+}
+
+book_title_water_folklore = {
+	group = book_title
+	trigger = { has_artifact_feature = book_topic_water_folklore }
+	weight = {
+		value = 1
+	}
+}
+
+book_title_dream_journal = {
+	group = book_title
+	trigger = { has_artifact_feature = book_topic_dream_journal }
+	weight = {
+		value = 1
+	}
+}
+
+book_title_poetry = {
+	group = book_title
+	trigger = {
+		OR = {
+			has_artifact_feature = book_topic_blood_play
+			has_artifact_feature = book_topic_blood_poetry
+		}
+	}
+	weight = 1
+}
+
+book_title_medical = {
+	group = book_title
+	trigger = {
+		OR = {
+			has_artifact_feature = book_topic_blood_medicine
+		}
+	}
+	weight = 1
+}

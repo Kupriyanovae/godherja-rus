@@ -1,0 +1,958 @@
+﻿
+#CommanderTraitBeingTaught - The name of the Commander Trait being taught by a given instance of the Learning Commander Trait chain.
+
+#CommanderTraitSkillDescription - Used as a generic description in-text to describe what a potential teacher wants to teach you.
+
+
+
+CommanderTraitBeingTaught = {
+	type = character
+	
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:logistician
+		}
+		localization_key = trait_logistician_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:military_engineer
+		}
+		localization_key = trait_military_engineer_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:aggressive_attacker
+		}
+		localization_key = trait_aggressive_attacker_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:unyielding_defender
+		}
+		localization_key = trait_unyielding_defender_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:forder
+		}
+		localization_key = trait_forder_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:flexible_leader
+		}
+		localization_key = trait_flexible_leader_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:desert_warrior
+		}
+		localization_key = trait_desert_warrior_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:winter_soldier
+		}
+		localization_key = trait_winter_soldier_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:jungle_stalker
+		}
+		localization_key = trait_jungle_stalker_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:reaver
+		}
+		localization_key = trait_reaver_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:reckless
+		}
+		localization_key = trait_reckless_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:holy_warrior
+		}
+		localization_key = trait_holy_warrior_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:open_terrain_expert
+		}
+		localization_key = open_terrain_expert_skill_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:rough_terrain_expert
+		}
+		localization_key = rough_terrain_expert_skill_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:forest_fighter
+		}
+		localization_key = forest_fighter_skill_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:cautious_leader
+		}
+		localization_key = cautious_leader_skill_tooltip
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:organizer
+		}
+		localization_key = organizer_skill_tooltip
+	}
+}
+
+CommanderTraitBeingTaughtNoTooltip = {
+	type = character
+	
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:logistician
+		}
+		localization_key = trait_logistician
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:military_engineer
+		}
+		localization_key = trait_military_engineer
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:aggressive_attacker
+		}
+		localization_key = trait_aggressive_attacker
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:unyielding_defender
+		}
+		localization_key = trait_unyielding_defender
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:forder
+		}
+		localization_key = trait_forder
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:flexible_leader
+		}
+		localization_key = trait_flexible_leader
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:desert_warrior
+		}
+		localization_key = trait_desert_warrior
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:winter_soldier
+		}
+		localization_key = trait_winter_soldier
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:jungle_stalker
+		}
+		localization_key = trait_jungle_stalker
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:reaver
+		}
+		localization_key = trait_reaver
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:reckless
+		}
+		localization_key = trait_reckless
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:holy_warrior
+		}
+		localization_key = trait_holy_warrior
+	}
+}
+
+CommanderTraitSkillDescription = {
+	type = character
+
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:logistician
+		}
+		localization_key = logistician_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:military_engineer
+		}
+		localization_key = military_engineer_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:aggressive_attacker
+		}
+		localization_key = aggressive_attacker_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:unyielding_defender
+		}
+		localization_key = unyielding_defender_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:forder
+		}
+		localization_key = forder_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:flexible_leader
+		}
+		localization_key = flexible_leader_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:desert_warrior
+		}
+		localization_key = desert_warrior_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:winter_soldier
+		}
+		localization_key = winter_soldier_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:jungle_stalker
+		}
+		localization_key = jungle_stalker_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:reaver
+		}
+		localization_key = reaver_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:reckless
+		}
+		localization_key = reckless_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:holy_warrior
+		}
+		localization_key = holy_warrior_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:open_terrain_expert
+		}
+		localization_key = open_terrain_expert_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:rough_terrain_expert
+		}
+		localization_key = rough_terrain_expert_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:forest_fighter
+		}
+		localization_key = forest_fighter_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:cautious_leader
+		}
+		localization_key = cautious_leader_skill_desc
+	}
+	text = {
+		trigger = {
+			var:commander_trait_being_taught = flag:organizer
+		}
+		localization_key = organizer_skill_desc
+	}
+}
+
+WarhorseStoryName = {
+	type = character
+	
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:story_cycle_horse_name = flag:sethinox
+			}
+		}
+		localization_key = warhorse_name_sethinox
+	}
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:story_cycle_horse_name = flag:tethicor
+			}
+		}
+		localization_key = warhorse_name_tethicor
+	}
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:story_cycle_horse_name = flag:yamarat
+			}
+		}
+		localization_key = warhorse_name_yamarat
+	}
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:story_cycle_horse_name = flag:irmad
+			}
+		}
+		localization_key = warhorse_name_irmad
+	}
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:story_cycle_horse_name = flag:trueheart
+			}
+		}
+		localization_key = warhorse_name_trueheart
+	}
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:story_cycle_horse_name = flag:yirradan
+			}
+		}
+		localization_key = warhorse_name_yirradan
+	}
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:story_cycle_horse_name = flag:anadarinax
+			}
+		}
+		localization_key = warhorse_name_anadarinax
+	}
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:story_cycle_horse_name = flag:aerdjigon
+			}
+		}
+		localization_key = warhorse_name_aerdjigon
+	}
+	# Lonely Note: More Horses for the Horse Events!
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:sleipnir
+	#		}
+	#	}
+	#	localization_key = warhorse_name_sleipnir
+	#}
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:uchchaihshravas
+	#		}
+	#	}
+	#	localization_key = warhorse_name_uchchaihshravas
+	#}
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:dadhi_kra
+	#		}
+	#	}
+	#	localization_key = warhorse_name_dadhi_kra
+	#}
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:devadatta
+	#		}
+	#	}
+	#	localization_key = warhorse_name_devadatta
+	#}
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:keshi
+	#		}
+	#	}
+	#	localization_key = warhorse_name_keshi
+	#}
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:kanthaka
+	#		}
+	#	}
+	#	localization_key = warhorse_name_kanthaka
+	#}
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:haizum
+	#		}
+	#	}
+	#	localization_key = warhorse_name_haizum
+	#}
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:buraq
+	#		}
+	#	}
+	#	localization_key = warhorse_name_buraq
+	#}
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:burko
+	#		}
+	#	}
+	#	localization_key = warhorse_name_burko
+	#}
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:aranjagaan
+	#		}
+	#	}
+	#	localization_key = warhorse_name_aranjagaan
+	#}
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:balius
+	#		}
+	#	}
+	#	localization_key = warhorse_name_balius
+	#}
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:xanthos
+	#		}
+	#	}
+	#	localization_key = warhorse_name_xanthos
+	#}
+	#text = {
+	#	trigger = {
+	#		any_owned_story = {
+	#			type = story_cycle_martial_lifestyle_warhorse
+	#			var:story_cycle_horse_name = flag:boreas
+	#		}
+	#	}
+	#	localization_key = warhorse_name_boreas
+	#}
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:story_cycle_horse_name = flag:prancer
+			}
+		}
+		localization_key = warhorse_name_prancer
+	}
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:story_cycle_horse_name = flag:charger
+			}
+		}
+		localization_key = warhorse_name_charger
+	}
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:story_cycle_horse_name = flag:abbot
+			}
+		}
+		localization_key = warhorse_name_abbot
+	}
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:story_cycle_horse_name = flag:glitterhoof
+			}
+		}
+		localization_key = warhorse_name_glitterhoof
+	}
+	## GH ADDITIONS ##
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:altun_mori
+		}
+		localization_key = warhorse_name_altun_mori
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:kulbarys
+		}
+		localization_key = warhorse_name_kulbarys
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:joragaltai
+		}
+		localization_key = warhorse_name_joragaltai
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:raucel
+		}
+		localization_key = warhorse_name_raucel
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:syagrin
+		}
+		localization_key = warhorse_name_syagrin
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:valcroix
+		}
+		localization_key = warhorse_name_valcroix
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:ashkavar
+		}
+		localization_key = warhorse_name_ashkavar
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:hrafnvindr
+		}
+		localization_key = warhorse_name_hrafnvindr
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:paerashva
+		}
+		localization_key = warhorse_name_paerashva
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:sarvaketu
+		}
+		localization_key = warhorse_name_sarvaketu
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:barq_samt
+		}
+		localization_key = warhorse_name_barq_samt
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:rahzat_al_qamar
+		}
+		localization_key = warhorse_name_rahzat_al_qamar
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:sirr_al_haras
+		}
+		localization_key = warhorse_name_sirr_al_haras
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:mizan_al_samt
+		}
+		localization_key = warhorse_name_mizan_al_samt
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:thyrax
+		}
+		localization_key = warhorse_name_thyrax
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:oreades
+		}
+		localization_key = warhorse_name_oreades
+	}
+	## GH END ##
+}
+
+
+HorseMareStallion = {
+	type = character
+
+	text = {
+		trigger = {
+			is_female = yes
+		}
+		localization_key = horse_gender_mare
+	}
+	text = {
+		trigger = {
+			is_male = yes
+		}
+		localization_key = horse_gender_stallion
+	}
+}
+
+
+
+#For horse story
+HorseStoryHerHis = {
+	type = character
+
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:horse_gender = flag:female
+			}
+		}
+		localization_key = horse_gender_her
+	}
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = horse_gender_his
+	}
+}
+
+HorseStoryHerHim = {
+	type = character
+
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:horse_gender = flag:female
+			}
+		}
+		localization_key = horse_gender_her
+	}
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = horse_gender_him
+	}
+}
+
+HorseStorySheHe = {
+	type = character
+
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:horse_gender = flag:female
+			}
+		}
+		localization_key = horse_gender_she
+	}
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = horse_gender_he
+	}
+}
+
+HorseStoryMareStallion = {
+	type = character
+
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:horse_gender = flag:female
+			}
+		}
+		localization_key = horse_gender_mare
+	}
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = horse_gender_stallion
+	}
+}
+
+HorseStoryOppositeMareStallion = {
+	type = character
+
+	text = {
+		trigger = {
+			any_owned_story = {
+				type = story_cycle_martial_lifestyle_warhorse
+				var:horse_gender = flag:male
+			}
+		}
+		localization_key = horse_gender_mare
+	}
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = horse_gender_stallion
+	}
+}
+
+# GH URGENT: THese names need to be updated to match GH ones, writing this to remind myself
+WarhorseStoryNameAll = {
+	type = all
+
+	## GH ADDITIONS ##
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:altun_mori
+		}
+		localization_key = warhorse_name_altun_mori
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:kulbarys
+		}
+		localization_key = warhorse_name_kulbarys
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:joragaltai
+		}
+		localization_key = warhorse_name_joragaltai
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:raucel
+		}
+		localization_key = warhorse_name_raucel
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:syagrin
+		}
+		localization_key = warhorse_name_syagrin
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:valcroix
+		}
+		localization_key = warhorse_name_valcroix
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:ashkavar
+		}
+		localization_key = warhorse_name_ashkavar
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:hrafnvindr
+		}
+		localization_key = warhorse_name_hrafnvindr
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:paerashva
+		}
+		localization_key = warhorse_name_paerashva
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:sarvaketu
+		}
+		localization_key = warhorse_name_sarvaketu
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:barq_samt
+		}
+		localization_key = warhorse_name_barq_samt
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:rahzat_al_qamar
+		}
+		localization_key = warhorse_name_rahzat_al_qamar
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:sirr_al_haras
+		}
+		localization_key = warhorse_name_sirr_al_haras
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:mizan_al_samt
+		}
+		localization_key = warhorse_name_mizan_al_samt
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:thyrax
+		}
+		localization_key = warhorse_name_thyrax
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:oreades
+		}
+		localization_key = warhorse_name_oreades
+	}
+	## GH END ##
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:prancer
+		}
+		localization_key = warhorse_name_prancer
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:charger
+		}
+		localization_key = warhorse_name_charger
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:abbot
+		}
+		localization_key = warhorse_name_abbot
+	}
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:glitterhoof
+		}
+		localization_key = warhorse_name_glitterhoof
+	}
+	# GH REMOVED
+	text = {
+		trigger = {
+			var:story_cycle_horse_name = flag:courser
+		}
+		localization_key = warhorse_name_courser
+	}
+}
+
+#For horse story
+HorseStoryHerHisAll = {
+	type = all
+
+	text = {
+		trigger = {
+			var:horse_gender = flag:female
+		}
+		localization_key = horse_gender_her
+	}
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = horse_gender_his
+	}
+}
+
+HorseStoryHerHimAll = {
+	type = all
+
+	text = {
+		trigger = {
+			var:horse_gender = flag:female
+		}
+		localization_key = horse_gender_her
+	}
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = horse_gender_him
+	}
+}
+
+HorseStorySheHeAll = {
+	type = all
+
+	text = {
+		trigger = {
+			var:horse_gender = flag:female
+		}
+		localization_key = horse_gender_she
+	}
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = horse_gender_he
+	}
+}
+
+HorseStoryMareStallionAll = {
+	type = all
+
+	text = {
+		trigger = {
+			var:horse_gender = flag:female
+		}
+		localization_key = horse_gender_mare
+	}
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = horse_gender_stallion
+	}
+}
+
+HorseStoryOppositeMareStallionAll = {
+	type = all
+
+	text = {
+		trigger = {
+			var:horse_gender = flag:male
+		}
+		localization_key = horse_gender_mare
+	}
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = horse_gender_stallion
+	}
+}

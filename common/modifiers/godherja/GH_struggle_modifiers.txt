@@ -1,0 +1,156 @@
+﻿
+gh_rws_struggle_hostility_house_faith_modifier = {
+	icon = piety_positive
+	same_faith_opinion = fp2_struggle_hostility_opinion_value
+	different_faith_opinion = fp2_struggle_hostility_opinion_negative_value
+}
+
+gh_rws_struggle_hostility_house_culture_modifier = {
+	icon = county_modifier_opinion_positive
+	same_culture_opinion = fp2_struggle_hostility_opinion_value
+	different_culture_opinion = fp2_struggle_hostility_opinion_negative_value
+}
+
+gh_rws_struggle_hostility_house_combined_modifier = {
+	icon = county_modifier_opinion_positive
+	same_heritage_county_advantage_add = 5
+	tolerance_advantage_mod = 5
+	different_faith_opinion = fp2_struggle_hostility_opinion_negative_value
+	different_culture_opinion = fp2_struggle_hostility_opinion_negative_value
+}
+
+# Compromise
+
+gh_rws_struggle_compromise_house_reward_modifier = {
+	icon = county_modifier_development_positive
+	same_heritage_county_advantage_add = 5
+	independent_ruler_opinion = 15
+}
+
+gh_rws_struggle_compromise_defensive_reward_modifier = {
+	icon = rock_positive
+	development_growth_factor = 0.1
+	additional_fort_level = 2
+	garrison_size = 0.25
+}
+
+# Conciliation
+
+gh_rws_struggle_conciliation_house_reward_modifier = {
+	icon = social_positive
+	different_culture_opinion = fp2_struggle_hostility_opinion_value
+	different_faith_opinion = fp2_struggle_hostility_opinion_value
+	learn_language_scheme_phase_duration_add = major_scheme_phase_duration_bonus_value
+}
+
+
+
+# ===================== WARDENITE =====================
+
+gh_struggle_house_faith_modifier_wardenite = {
+	icon = piety_positive
+	same_faith_opinion = fp2_struggle_hostility_opinion_value
+	different_faith_opinion = -10
+	ritualist_religion_opinion = -20
+	monthly_piety_gain_mult = 0.1
+	clergy_opinion = 10
+}
+
+gh_struggle_house_rebuilder_modifier_wardenite = {
+	icon = county_modifier_development_positive
+	same_faith_opinion = fp2_struggle_hostility_opinion_value
+	different_faith_opinion = -10
+	ritualist_religion_opinion = -20
+	development_growth_factor = 0.1
+	build_gold_cost = -0.15
+}
+
+gh_struggle_house_war_modifier_wardenite = {
+	icon = martial_positive
+	same_faith_opinion = fp2_struggle_hostility_opinion_value
+	different_faith_opinion = -10
+	ritualist_religion_opinion = -20
+	army_maintenance_mult = -0.1
+	martial = 1
+}
+
+# ===================== RITUALIST =====================
+
+gh_struggle_house_faith_modifier_ritualist = {
+	icon = piety_positive
+	same_faith_opinion = fp2_struggle_hostility_opinion_value
+	different_faith_opinion = -10
+	wardenism_religion_opinion = -20
+	monthly_piety_gain_mult = 0.1
+	clergy_opinion = 10
+}
+
+gh_struggle_house_rebuilder_modifier_ritualist = {
+	icon = county_modifier_development_positive
+	same_faith_opinion = fp2_struggle_hostility_opinion_value
+	different_faith_opinion = -10
+	wardenism_religion_opinion = -20
+	development_growth_factor = 0.1
+	build_gold_cost = -0.15
+}
+
+gh_struggle_house_war_modifier_ritualist = {
+	icon = martial_positive
+	same_faith_opinion = fp2_struggle_hostility_opinion_value
+	different_faith_opinion = -10
+	wardenism_religion_opinion = -20
+	army_maintenance_mult = -0.1
+	martial = 1
+}
+
+gh_house_ended_central_sarradon_wih_struggle_patron_affinity = {
+	icon = piety_positive
+	clergy_opinion = 10
+	levy_reinforcement_rate_same_faith = 0.3
+	holy_order_hire_cost_mult = -0.2
+	
+	ritualist_religion_opinion = -20
+	wardenism_religion_opinion = -20
+}
+
+gh_house_ended_eastern_sarradon_wih_struggle_patron_affinity = {
+	icon = piety_positive
+	clergy_opinion = 10
+	levy_reinforcement_rate_same_faith = 0.3
+	holy_order_hire_cost_mult = -0.2
+	
+	ritualist_religion_opinion = -20
+	wardenism_religion_opinion = -20
+}
+
+
+gh_house_struggle_ended_wardenite_aligned = {
+	icon = piety_positive
+	tolerance_advantage_mod = 5
+	ritualist_religion_opinion = -10
+	wardenism_religion_opinion = 20
+}
+
+gh_house_struggle_ended_ritualist_aligned = {
+	icon = piety_positive
+	tolerance_advantage_mod = 5
+	wardenism_religion_opinion = -10
+	ritualist_religion_opinion = 20
+}
+
+gh_house_struggle_ended_agionist_aligned = {
+	icon = piety_positive
+	tolerance_advantage_mod = 5
+	wardenism_religion_opinion = -10
+	ritualist_religion_opinion = -10
+	agionism_religion_opinion = 20
+}
+
+gh_struggle_house_modifier_generic = {
+	icon = martial_positive
+	different_faith_opinion = -30
+	
+	happy_powerful_vassal_levy_contribution_mult = 0.2
+	army_damage_mult = 0.02
+
+}
