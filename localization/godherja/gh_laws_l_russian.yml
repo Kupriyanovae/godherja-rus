@@ -1,0 +1,38 @@
+﻿l_russian:
+
+ pirate_authority:0 "#E Сплочённость#!"
+ pirate_authority_0:0 "Беззаконная коммуна"
+ pirate_authority_0_effects_not_in_prev:1 "$EFFECT_LIST_BULLET$Правители могут перемещаться в новые регионы\n$EFFECT_LIST_BULLET$Правители могут назначать своего [Concept('heir','наследника')|E]\n$EFFECT_LIST_BULLET$[Concept('vassals','Вассалы')|E] и [Concept('courtiers','придворные')|E] могут оспаривать лидерство\n$EFFECT_LIST_BULLET$[Concept('realm','Держава')|E] может #N распасться#! при [Concept('succession','наследовании')|E]"
+ pirate_authority_1:0 "Низкая сплочённость"
+ pirate_authority_1_effects_not_in_prev:1 "$EFFECT_LIST_BULLET$Правители могут перемещаться в новые регионы\n$EFFECT_LIST_BULLET$Правители могут назначать своего [Concept('heir','наследника')|E]\n$EFFECT_LIST_BULLET$[Concept('vassals','Вассалы')|E] и [Concept('courtiers','придворные')|E] могут оспаривать лидерство"
+ pirate_authority_2:0 "Средняя сплочённость"
+ pirate_authority_3:0 "Высокая сплочённость"
+ game_concept_pirate_authority:0 "Сплочённость"
+ game_concept_pirate_authority_desc:0 "Сплочённость описывает уровень контроля и организации, который [Concept('pirate','пиратский')|E] [Concept('liege','сюзерен')|E] осуществляет над своими [Concept('vassals','вассалами')|E]."
+
+ monasteries_must_not_be_on_cooldown_trigger:0 "Монастыри не должны быть на перезарядке"
+
+ clique_authority:0 "Власть клики"
+ clique_authority_0:0 "Доминирование клики"
+ clique_authority_0_effects_not_in_prev:0 "#weak Больше власти сосредоточено в руках членов правящей [Concept('clique','клики')|E], чем её лидера.#!"
+ clique_authority_0_effects:0 "$EFFECT_LIST_BULLET$[Concept('titles','Титулы')|E] вассалов не могут быть унаследованы персонажами вне [Concept('realm','державы')|E]"
+ clique_authority_1:0 "Усиление клики"
+ clique_authority_1_effects_not_in_rev:0 "#weak Баланс поддерживается между [Concept('clique','кликой')|E] и [Concept('liege','сюзереном')|E].#!"
+ clique_authority_2:0 "Усиление сюзерена"
+ clique_authority_2_effects:0 "$EFFECT_LIST_BULLET$[Concept('vassals','Вассалы')|E] могут быть отозваны"
+ clique_authority_3:0 "Доминирование сюзерена"
+ clique_authority_3_effects:0 "$EFFECT_LIST_BULLET$[Concept('vassals','Вассалы')|E] не могут вести [Concept('war','войну')|E], если не используют [Concept('hook','рычаг влияния')|E] на своего [Concept('liege','сюзерена')|E]\n$EFFECT_LIST_BULLET$[Concept('titles','Титулы')|E] могут быть отозваны"
+ game_concept_clique_authority:0 "Власть клики"
+ game_concept_clique_authority_desc:0 "Власть [Concept('clique','клики')|E] описывает законы и системы мест, управляемых кликами вместе с [Concept('liege','сюзереном')|E]."
+ 
+ republican_centralization:0 "Территориальное управление республики"
+ republican_centralization_0:0 "Обширное территориальное управление"
+ republican_centralization_1:0 "Умеренное территориальное управление"
+ republican_centralization_2:0 "Централизованное городское управление"
+ republican_centralization_3:0 "Сильно централизованное городское управление"
+ 
+ camp_purpose_beast_hunters: "Охотники на чудовищ"
+ camp_purpose_beast_hunters_effects: "$EFFECT_LIST_BULLET$Находит больше [Concept('slayer_task_contracts','заданий на убийства')|E]\n$EFFECT_LIST_BULLET$Находит немного больше [Concept('task_contracts','контрактов')|E], связанных с [Concept('prowess','доблестью')|E] и [Concept('martial','военным делом')|E] и [Concept('transport_task_contracts','перевозкой')|E]\n$EFFECT_LIST_BULLET$Открывает [Concept('camp_buildings','постройки лагеря')|E]:\n$BULLET_WITH_TAB$#high [GetDomicileBuilding('supply_tent_reserve_provisions').GetName]#!\n$BULLET_WITH_TAB$#high [GetDomicileBuilding('supply_tent_reserve_water').GetName]#!\n$BULLET_WITH_TAB$#high [GetDomicileBuilding('supply_tent_climbing_gear').GetName]#!\n$BULLET_WITH_TAB$#high [GetDomicileBuilding('barber_tent_morticians_tools').GetName]#!\n$BULLET_WITH_TAB$#high [GetDomicileBuilding('barber_tent_reference_corpus').GetName]#!\n$BULLET_WITH_TAB$#high [GetDomicileBuilding('camp_perimeter_extra_watch').GetName]#!\n$BULLET_WITH_TAB$#high [GetDomicileBuilding('camp_perimeter_ditch').GetName]#!\n\n#WEAK С тех пор как человечество существует на [Concept('aeras','Аэрасе')|E], всегда существовали целые виды диких, злых и [Concept('aelfir','чуждых')|E] существ, которых можно убивать ради славы и прибыли.#!"
+
+ camp_purpose_migration_band: "Мигрирующий отряд"
+ camp_purpose_migration_band_effects: "$EFFECT_LIST_BULLET$Находит больше [Concept('migration_task_contracts','контрактов переселния')|E]\n$EFFECT_LIST_BULLET$Находит немного больше [Concept('task_contracts','контрактов')|E], связанных с [Concept('diplomacy','дипломатией')|E].\n$EFFECT_LIST_BULLET$Открывает [Concept('camp_buildings','постройки лагеря')|E]:\n$BULLET_WITH_TAB$#high [GetDomicileBuilding('camp_perimeter_extra_watch').GetName]#!\n$BULLET_WITH_TAB$#high [GetDomicileBuilding('camp_perimeter_ditch').GetName]#!\n$BULLET_WITH_TAB$#high [GetDomicileBuilding('baggage_train_scribes').GetName]#!\n\n#WEAK Великие толпы выживших, воинов и оборванных беженцев объединились в [Concept('sjalvolki_migration','великий поход')|E], ища убежища дальше на юге от [Concept('the_fog','Тумана')|E].#!"

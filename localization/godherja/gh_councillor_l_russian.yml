@@ -1,0 +1,155 @@
+﻿l_russian:
+ councillor_court_magi:0 "Придворный маг"
+ councillor_court_magi_possessive:0 "Придворного мага"
+ councillor_court_magi_desc:0 "[Concept('court_magi','Придворный маг')|E]"
+ 
+ councillor_quartermaster:0 "Квартермейстер"
+ councillor_quartermaster_possessive:0 "Квартермейстера"
+ councillor_quartermaster_desc:0 "Квартермейстер отвечает за все логистические аспекты управления флотом, включая организацию набегов, поддержание дисциплины среди команды и продажу награбленных товаров."
+ game_concept_quartermaster:0 "Квартермейстер"
+ game_concept_quartermaster_desc:0 "Квартермейстер отвечает за все логистические аспекты управления флотом, включая организацию набегов, поддержание дисциплины среди команды и продажу награбленных товаров."
+
+ task_court_magi_boost_magic_power:0 "Увеличить магическую силу"
+ task_court_magi_boost_magic_power_desc:0 "Будет передавать #positive_value [SCOPE.ScriptValue('task_court_magi_boost_power_value')|1]#!@magic_icon! из их ежемесячного запаса #E магии#! в ваш собственный резерв."
+ task_court_magi_boost_magic_power_effect_desc:0 "Будет передавать #positive_value [SCOPE.ScriptValue('task_court_magi_boost_power_value')|1]#!@magic_icon! из их ежемесячного запаса #E магии#! в ваш собственный резерв."
+ task_court_magi_boost_magic_power_modifier:0 "Магическая сила от [Concept('court_magi','придворного мага')|E]"
+ 
+ task_court_magi_tutor_magic:0 "Обучать ребёнка"
+ task_court_magi_tutor_magic_desc:0 "Будет обучать детей арканным искусствам, постепенно повышая их уровень магического образования."
+ task_court_magi_tutor_magic_effect_desc:0 "Будет обучать детей арканным искусствам, постепенно повышая их уровень магического образования."
+ 
+ task_court_magi_defend_against_hostile_magic:0 "Противодействие враждебной магии"
+ task_court_magi_defend_against_hostile_magic_desc:0 "Снижает вероятность успеха враждебных заклинаний в зависимости от [Concept('spellcasting_ability','магической способности')|E] и [Concept('intrigue','интриг')|E].\n[magic_resistance|E] #positive_value +[SCOPE.ScriptValue('task_court_magi_defend_against_hostile_magic_resistance_value')|1]"
+ task_court_magi_defend_against_hostile_magic_effect_desc:0 "[magic_resistance|E]: + #positive_value [SCOPE.ScriptValue('task_court_magi_defend_against_hostile_magic_resistance_value')|1]"
+ task_court_magi_defend_against_hostile_magic_resistance_bonus_value_desc:0 "Противодействие враждебной магии"
+ 
+ task_court_magi_research_magic:0 "Исследование магии"
+ task_court_magi_research_magic_desc:0 "Изучает заклинания, известные в [Concept('magic_type','школе магии')|E] их [Concept('cultures','культуры')|E] "
+ task_court_magi_research_magic_effect_desc:0 "Осваивает новые заклинания на основе их [Concept('skill','навыку')|E] [Concept('arcana','арканы')|E] "
+
+ IS_A_MAGI:0 "Является [Concept('magi','магом')|E]"
+ IS_NOT_A_MAGI:0 "Не является [Concept('magi','магом')|E]"
+ I_MUST_BE_A_MAGI:0 "Я должен быть [Concept('magi','магом')|E]"
+ I_AM_NOT_A_MAGI:0 "Я не являюсь [Concept('magi','магом')|E]"
+ THEY_MUST_BE_A_MAGI:0 "Они должны быть [Concept('magi','магами')|E]"
+ THEY_ARE_NOT_A_MAGI:0 "Они не являются [Concept('magi','магами')|E]"
+
+ ###Flavor localization for Court Chaplains, sorted by Religion.###
+ #Lifepath
+ councillor_court_chaplain_lifepath_religion_county:0 "Лидер Пути"
+ councillor_court_chaplain_lifepath_religion_county_possessive:0 "Лидера Пути"
+ #councillor_court_chaplain_lifepath_religion_duchy:0 ""
+ #councillor_court_chaplain_lifepath_religion_duchy_possessive:0 ""
+ #councillor_court_chaplain_lifepath_religion_kingdom:0 ""
+ #councillor_court_chaplain_lifepath_religion_kingdom_possessive:0 ""
+ #councillor_court_chaplain_lifepath_religion_empire:0 ""
+ #councillor_court_chaplain_lifepath_religion_empire_possessive:0 ""
+ 
+ #Aversarian
+ 
+ #Agionist
+ 
+ #Wardenite
+ councillor_court_chaplain_wardenite_empire:0 "Верховный Шавит"  # Grand Judge
+ councillor_court_chaplain_wardenite_kingdom:0 "Шавит" # Judge
+ 
+ #Ritualist
+ 
+ #Partic
+ councillor_court_chaplain_partic_religion_county:0 "Фармх а'Фармх"
+ councillor_court_chaplain_partic_religion_county_possessive:0 "Фармха а'Фармха"
+#councillor_court_chaplain_partic_religion_duchy:0 ""
+#councillor_court_chaplain_partic_religion_duchy_possessive:0 ""
+#councillor_court_chaplain_partic_religion_kingdom:0 ""
+#councillor_court_chaplain_partic_religion_kingdom_possessive:0 ""
+#councillor_court_chaplain_partic_religion_empire:0 ""
+#councillor_court_chaplain_partic_religion_empire_possessive:0 ""
+ 
+ #Sjalvolki
+ councillor_court_chaplain_sjalvolki_religion_county:0 "Витварь" #Grove-Ward
+ councillor_court_chaplain_sjalvolki_religion_county_possessive:0 "Витваря"
+ councillor_court_chaplain_sjalvolki_religion_county_female:0 "Витварья"
+ councillor_court_chaplain_sjalvolki_religion_county_female_possessive:0 "Витварьи"
+ councillor_court_chaplain_sjalvolki_religion_duchy:0 "Альварь Витьев" #All-Ward of the Groves
+ councillor_court_chaplain_sjalvolki_religion_duchy_possessive:0 "Альваря Витьева"
+ councillor_court_chaplain_sjalvolki_religion_duchy_female:0 "Альварья Витьева"
+ councillor_court_chaplain_sjalvolki_religion_duchy_female_possessive:0 "Альварьи Витьевы"
+ #councillor_court_chaplain_sjalvolki_religion_kingdom:0 ""
+ #councillor_court_chaplain_sjalvolki_religion_kingdom_possessive:0 ""
+ #councillor_court_chaplain_sjalvolki_religion_kingdom_female:0 ""
+ #councillor_court_chaplain_sjalvolki_religion_kingdom_female_possessive:0 ""
+ councillor_court_chaplain_sjalvolki_religion_empire:0 "Вог Овкаев" #Keeper of the Temples
+ councillor_court_chaplain_sjalvolki_religion_empire_possessive:0 "Вога Овкаева"
+ councillor_court_chaplain_sjalvolki_religion_empire_female:0 "Вожа Овкаева"
+ councillor_court_chaplain_sjalvolki_religion_empire_female_possessive:0 "Во    жи Овкаевы"
+ 
+ 
+ #######################
+ # QUARTERMASTER TASKS #
+ #######################
+ 
+ task_manage_crew:0 "Управление командой"
+ task_manage_crew_effect_desc:1 "[councillor.GetModifierDescForTask('task_manage_crew')]\nДополнительная добыча при набегах"
+ task_manage_crew_recruitment_drive:0 "\n$EFFECT_LIST_BULLET$#P Вербовка#!"
+ task_manage_crew_tall_tales_spread:0 "\n$EFFECT_LIST_BULLET$#P Распространение славы#!"
+ task_manage_crew_disorganized_crew:0 "\n$EFFECT_LIST_BULLET$#N Дезорганизованная команда#!"
+ task_manage_crew_mutiny:0 "\n$EFFECT_LIST_BULLET$#N Мятеж#!"
+ task_manage_crew_tooltip:0 "От $task_manage_crew$"
+ 
+ task_commerce_raid:0 "Грабить торговые пути"
+
+ 
+ task_commerce_raid_desc:0 "Нападать на торговые пути рядом с  вашей империи. Нажмите на это задание, чтобы увидеть текущую зону набегов, затем выберите любую провинцию в этой зоне, чтобы начать грабить их всех."
+
+ task_commerce_raid_effect_desc_1:0 "\nВ настоящее время вы можете заработать @gold_icon!#P #tooltip:commerce_raiding_income_tooltip [GetPlayer.MakeScope.ScriptValue('quartermaster_commerce_raid_income')]#!#! [Concept('gold','золота')|E] в месяц от грабежа торговых путей"
+ task_commerce_raid_effect_desc_2:0 "\nВ настоящее время вы можете заработать @gold_icon!#P [Concept('gold','золота')|E] [GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('quartermaster_commerce_shadow_trade_cap')|V]#! из возможного @gold_icon!#P [Concept('gold','золота')|E] [[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('quartermaster_commerce_raid_income')|V]#! в месяц. Создайте больше [Concept('shadow_port','теневых портов')|E] для увеличения лимита."
+ #task_commerce_raid_straits_income:0 "\n[GetScriptedGui('commerce_raiding_straits_income_scripted_gui').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ #commerce_raiding_strait_income_intro_tt:0 "Дополнительный доход от важных [Concept('straits_and_channels','проливов')|E]:"
+ #commerce_raiding_strait_income_tt:0 "[THIS.Var('strait_name').GetFlagName]: @gold_icon!#P [THIS.ScriptValue('total_income_from_strait_value')]#!"
+ no_owned_straits:0 "Вы не контролируете какие-либо торговые узлы"
+ task_commerce_raid_tooltip:0 "От $task_commerce_raid$"
+ commerce_raiding_income_tooltip:0 "#T Баланс торгового грабежа#!\n[GuiScope.SetRoot(GetPlayer.MakeScope).GetScriptValueDesc('quartermaster_commerce_raid_income')]\n\n#T [Concept('raiding_balance','Вместимость теневой торговли')|E]#!\nВсего: [GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('quartermaster_commerce_shadow_trade_cap')|V]\n[GuiScope.SetRoot(GetPlayer.MakeScope).GetScriptValueDesc('quartermaster_commerce_shadow_trade_cap')]"
+ councillor_quartermaster_does_not_exist_desc: "#N У вас не выбран персонаж на должность Квартирмейстера. Вы не можете получать доход от [Concept('raiding_balance','торгового пиратства')|E].#!"
+ councillor_quartermaster_skill_mediocre_desc: "#N Навыки вашего Квартирмейстера посредственные, что снижает вашу [Concept('shadow_trade','теневую торговую мощь')|E] и может привести к потерям прибыли.#!"
+ councillor_quartermaster_skill_decent_desc: "Навыки вашего Квартирмейстера на достойном уровне.#!"
+ councillor_quartermaster_skill_high_desc: "Ваш Квартирмейстер хорошо обучен и положительно влияет на вашу [Concept('shadow_trade','теневую торговую мощь')|E].#!"
+ councillor_quartermaster_skill_excellent_desc: "Ваш Квартирмейстер исключительно искусен и значительно усиливает вашу [Concept('shadow_trade','теневую торговую мощь')|E].#!"
+
+
+
+ testing_tooltip:0 "[THIS.ScriptValue('fingers_crossed')]"
+
+ commerce_raiding_competition_exists:0 "#X Уполовинено из-за конкуренции#!"
+ commerce_raiding_competition_does_not_exist:0 ""
+ task_commerce_raid_capture_ship:0 "\n$EFFECT_LIST_BULLET$#P Захват корабля с сокровищами#!"
+ task_commerce_raid_kidnap_captives:0 "\n$EFFECT_LIST_BULLET$#P Похищение пленников#!"
+ task_commerce_raid_failed_raids:0 "\n$EFFECT_LIST_BULLET$#N Провальные набеги#!"
+ task_commerce_raid_anger_ruler:0 "\n$EFFECT_LIST_BULLET$#N Гнев правителей#!"
+  
+ task_establish_shadow_port:0 "Создать теневой порт"
+ task_establish_shadow_port_desc:0 "#S При #V 100%#!#!:\n$TAB$Возможность создать [Concept('shadow_port','теневой порт')|E]"
+ task_establish_shadow_port_control_desc:0 "\nУровень контроля [county.GetNameNoTier]: [SCOPE.ScriptValue('quartermaster_county_control_level')]\nДополнительная вместимость для торговых набегов: [SCOPE.ScriptValue('quartermaster_county_raid_cap')]"
+ possible_side_effects:0 "\n#P Жадный портовый чиновник#!\n#N Разъярённая цель#!\n#N Неподкупный инспектор#!"
+
+
+
+ #world_ga_imperial_isle_income_tt:0 "[GetGeographicalRegion('world_ga_imperial_isle').GetName]: @gold_icon!#P [SCOPE.ScriptValue('world_ga_imperial_isle_value')]#!"
+ #world_ga_marcher_kingdoms_income_tt:0 "[GetGeographicalRegion('world_ga_marcher_kingdoms').GetName]: @gold_icon!#P [SCOPE.ScriptValue('world_ga_marcher_kingdoms_value')]#!"
+ trade_confluence_imperial_strait_income_tt:0 "[GetGeographicalRegion('trade_confluence_imperial_strait').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_imperial_strait_value')]#!"
+ trade_confluence_helvian_delta_income_tt:0 "[GetGeographicalRegion('trade_confluence_helvian_delta').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_helvian_delta_value')]#!"
+ trade_confluence_evimos_strait_income_tt:0 "[GetGeographicalRegion('trade_confluence_evimos_strait').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_evimos_strait_value')]#!"
+ trade_confluence_bay_of_swords_income_tt:0 "[GetGeographicalRegion('trade_confluence_bay_of_swords').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_bay_of_swords_value')]#!"
+ trade_confluence_varhara_channel_income_tt:0 "[GetGeographicalRegion('trade_confluence_varhara_channel').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_varhara_channel_value')]#!"
+ trade_confluence_mouth_of_tarsuria_income_tt:0 "[GetGeographicalRegion('trade_confluence_mouth_of_tarsuria').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_mouth_of_tarsuria_value')]#!"
+ trade_confluence_the_watched_channel_income_tt:0 "[GetGeographicalRegion('trade_confluence_the_watched_channel').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_the_watched_channel_value')]#!"
+ trade_confluence_kratemezin_rim_income_tt:0 "[GetGeographicalRegion('trade_confluence_kratemezin_rim').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_kratemezin_rim_value')]#!"
+ trade_confluence_krehejad_income_tt:0 "[GetGeographicalRegion('trade_confluence_krehejad').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_krehejad_value')]#!"
+ trade_confluence_the_pirate_coast_income_tt:0 "[GetGeographicalRegion('trade_confluence_the_pirate_coast').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_the_pirate_coast_value')]#!"
+ trade_confluence_teltheans_strait_income_tt:0 "[GetGeographicalRegion('trade_confluence_teltheans_strait').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_teltheans_strait_value')]#!"
+ trade_confluence_ageotaros_income_tt:0 "[GetGeographicalRegion('trade_confluence_ageotaros').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_ageotaros_value')]#!"
+ trade_confluence_korvion_strait_income_tt:0 "[GetGeographicalRegion('trade_confluence_korvion_strait').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_korvion_strait_value')]#!"
+ trade_confluence_volos_pathway_income_tt:0 "[GetGeographicalRegion('trade_confluence_volos_pathway').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_volos_pathway_value')]#!"
+ trade_confluence_pathos_tower_income_tt:0 "[GetGeographicalRegion('trade_confluence_pathos_tower').GetName]: @gold_icon!#P [SCOPE.ScriptValue('trade_confluence_pathos_tower_value')]#!"
+
+
+ quartermaster_task_angered_ruler_opinion:0 "Незаконное пиратство"

@@ -1,0 +1,54 @@
+﻿l_russian:
+ # Waymakers offer a Retainer
+waymakers_events.0001.t:0 "Помощь от [founder.GetCapitalLocation.GetTitle.GetNameNoTierNoTooltip]"
+waymakers_events.0001.desc.intro:0 "Расположившись в своей крепости [founder.GetCapitalLocation.GetTitle.GetNameNoTier], орден [founder.GetPrimaryTitle.GetNameNoTier] посвятил себя защите верующих [founder.GetFaith.GetName].\n\nЗа мои благочестие и добродетель [founder.GetTitledFirstName] прислал мне выбор из двух наемников: [retainer_a.GetFirstName],"
+waymakers_events.0001.desc.zealous:0 "[Select_CString(recipient.IsFemale, 'разорившую', 'разорившего' )] сотни церквей,"
+waymakers_events.0001.desc.wrathful:0 "[Select_CString(recipient.IsFemale, 'разорвавшую', 'разорвавшего' )]  медведя голыми руками,"
+waymakers_events.0001.desc.impatient:0 "[Select_CString(recipient.IsFemale, 'быструю', 'быстрого' )]  как молния,"
+waymakers_events.0001.desc.arrogant:0 "[Select_CString(recipient.IsFemale, 'которая могла', 'который мог' )] бы стать следующим [founder.GetTitleAsNameNoTooltip],"
+waymakers_events.0001.desc.brave:0 "[Select_CString(recipient.IsFemale, 'победившую', 'победившего' )] тролля в кулачном бою,"
+waymakers_events.0001.desc.ambitious:0 "[Select_CString(recipient.IsFemale, 'желающей', 'желающего' )] самой славной смерти,"
+waymakers_events.0001.desc.diligent:0 "непрестанно [Select_CString(recipient.IsFemale, 'тренирующейся', 'тренирующегося' )],"
+waymakers_events.0001.desc.gregarious:0 "[Select_CString(recipient.IsFemale, 'подружившуюся', 'подружившегося' )] с самими богами,"
+waymakers_events.0001.desc.stubborn:0 "[Select_CString(recipient.IsFemale, 'разобравшую', 'разобравшего' )] гору камень за камнем,"
+waymakers_events.0001.desc.fickle:0 "чей изменчивый ум обманул [founder.GetFaith.DevilName] [founder.GetFaith.DevilHerselfHimself],"
+waymakers_events.0001.desc.vengeful:0 "никогда не [Select_CString(recipient.IsFemale, 'оставляющую', 'оставлявшего' )] обиду без мести,"
+waymakers_events.0001.desc.viking:0 "[Select_CString(recipient.IsFemale, 'убивающую', 'убивающего' )] по десять крестьян в день,"
+waymakers_events.0001.desc.connector:0 "или [retainer_b.GetFirstName],"
+waymakers_events.0001.desc.outro:0 "а также [founder.GetHerHis] благодарность за мою преданность.\n\nОдин останется, другой вернется к [founder.GetPrimaryTitle.GetNameNoTierNoTooltip]."
+waymakers_events.0001.a:0 "[retainer_a.GetFirstNameNoTooltip] выглядит искусным стратегом!"
+waymakers_events.0001.b:0 "[Select_CString(retainer_b.IsFemale, 'Какая грозная воительница эта', 'Какой грозный воин этот' )] [retainer_b.GetFirstNameNoTooltip]..."
+waymakers_events.0001.c:0 "У меня и так достаточно воинов, спасибо."
+
+ # Waymakers send Event Troops
+ waymakers_events.0021.t:0 "Переговоры с Отцами Путей"
+ waymakers_events.0021.desc:0 "С некоторым подозрением я принимаю делегацию буйных головорезов из [founder.GetPrimaryTitle.GetNameNoTier], вручающих мне письмо от [founder.GetTitledFirstName].\n\nЭти религиозные фанатики - свирепые воины как на суше, так и на море, одни из самых грозных на Расколотом побережье.\n\nКак [Select_CString(ROOT.Char.IsFemale, 'добрая', 'добрый' )] [ROOT.Char.GetFaith.GetAdherentName], я [Select_CString(ROOT.Char.IsFemale, 'слушала', 'слушал' )] истории об их благочестии и доблести со смесью восхищения и страха. Теперь их [founder.GetTitleAsNameNoTooltip] предлагает мне командование этой оравой добровольцев, если я использую их для набегов во славу [ROOT.Char.GetFaith.PantheonTerm]."
+ waymakers_events.0021.a:0 "Пираты, которые подчиняются приказам? Заманчиво..."
+ waymakers_events.0021.a.tt:0 "[Concept('army','Войско')|E] будет включать особых трудноубиваемых  - $sjalvolki_waymakers$ "
+ waymakers_events.0021.b:0 "Только респектабельных моряков, пожалуй."
+ waymakers_events.0021.b.tt:0 "[Concept('army','Войско')|E] будет включать нанимаемых [Concept('men_at_arms','профессионалов')|E] - $sjalvolki_berserker$"
+ waymakers_events.0021.c:0 "Я предпочитаю более... дисциплинированных солдат."
+
+ # Waymakers challenge a Dishonourable Norse Pagan Ruler to Holmgang
+ waymakers_events.0041.t:0 "Позор Велоса"
+ waymakers_events.0041.desc:0 ""#EMP [ROOT.Char.GetFirstNameNoTooltip]#!!" - ревет [founder.GetTitledFirstName], врываясь в мой тронный зал [Select_CString(founder.IsFemale, 'полуодетой', 'полуодетым' )].\n\nТвои греховные пути и вопиющее бесчестие - позор для всех [founder.GetFaith.GetAdherentNamePlural], и [founder.GetPrimaryTitle.GetNameNoTier] больше этого не потерпит! Никаких оправданий, никаких уловок - мы сразимся #EMP здесь#! и #EMP сейчас#!!"\n\nОзадаченная стража сжимает оружие, готовая в любой момент наброситься на [Select_CString(founder.IsFemale, 'нарушительницу', 'нарушителя' )].\n\nЧто бы я ни [Select_CString(ROOT.Char.IsFemale, 'выбрала', 'выбрал' )], вести о моих действиях разнесутся по всему миру."
+ waymakers_events.0041.a:0 "Я отправлю тебя к Велосу с улыбкой!"
+ waymakers_events.0041.a.tt:0 "Вы немедленно вступаете в [Concept('single_combat_fight','поединок')|E]"
+ waymakers_events.0041.a.tt_success:0 "Вы побеждаете в поединке"
+ waymakers_events.0041.a.tt_failure:0 "[founder.GetTitledFirstName] побеждает в поединке"
+ waymakers_events.0041.b:0 "Глупо было являться в одиночку. Стража!"
+ waymakers_events.0041.b.tt_success:0 "[founder.GetTitledFirstName] [Select_CString(founder.IsFemale, 'закована в кандалы и отправлена', 'закован в кандалы и отправлен' )] в темницу"
+ waymakers_events.0041.b.tt_failure:0 "[founder.GetTitledFirstName] совершает дерзкий побег"
+ waymakers_events.0041.c:0 "Ты же знаешь, что ты всего лишь [Select_CString(founder.IsFemale, 'претенциозная пиратка', 'претенциозный пират' )]? Проваливай."
+
+
+ waymakers_events.0042.trigger_failure:0 "Ваш поединок против [founder.GetTitledFirstNameNoTooltip] был прерван"
+
+ waymakers_events.0044.t:0 "$waymakers_events.0041.t$: Оправдание"
+ waymakers_events.0044.desc:0 "Когда безжизненное тело [founder.GetTitledFirstName] опускается к моим ногам, в тронном зале воцаряется гробовая тишина. Не слышно даже шёпота - только моё прерывистое дыхание.\n\nМолча я поправляю одежду.\n\nЯ медленно обвожу взглядом каждого присутствующего."
+ waymakers_events.0044.a:0 "Кто-то #EMP ещё#! хочет попробовать?"
+ waymakers_events.0044.b:0 "Справедливость моего правления вновь доказана!"
+ waymakers_events.0044.c:0 "Это лишь доказывает, насколько недостойна вера [founder.GetFaith.GetNameNoTooltip]..."
+
+
+

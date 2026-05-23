@@ -1,0 +1,20 @@
+﻿l_russian:
+ magic_focused:0 "Магическая направленные"
+ magic_focused_desc:0 "$magic_focused$ [Concept('vassals','вассалы')|E] интересуются изучением [Concept('arcana','арканы')|E] и [Concept('magic','магических')|E] свойств мира, а также демонстрацией своих знаний. Рациональные и любознательные вассалы часто выбирают эту [vassal_stance|E]. Они с большей вероятностью попытаются изучить и накопить магию.\n\n#low $magic_focused$ Вассалы любят, когда их сюзерен:#!\n$EFFECT_LIST_BULLET$Имеет низкий уровень [Concept('crown_authority','авторитета короны')|E]\n$EFFECT_LIST_BULLET$Передаёт [Concept('titles','титулы')|E] персонажам-[Concept('magi','магом')|E]\n$EFFECT_LIST_BULLET$Успешно выполняет [crown_authority|E] [scheme|E]\n$EFFECT_LIST_BULLET$Является [Concept('magi','магом')|E]\n\n#low $magic_focused$ Вассалы не любят, когда их сюзерен:#!\n$EFFECT_LIST_BULLET$Имеет высокий уровень [Concept('crown_authority','авторитет короны')|E]\n\nОни предпочитают могущественных [Concept('magi','магов')|E]-[Concept('heirs','наследников')|E] с высоким уровнем [arcana_i][Concept('arcana','арканы')|E]."
+ magic_focused_filter_option:0 "$magic_focused$"
+ magic_focused_option_desc:0 "Показывать только персонажей с [GetVassalStance( 'magic_focused').GetName] [vassal|E]"
+ magic_focused_vassals:0 "[GetVassalStance( 'magic_focused' ).GetTextIcon][GetVassalStance( 'magic_focused' ).GetName] [vassals|E]"
+ magic_focused_vassal:0 "[GetVassalStance( 'magic_focused' ).GetTextIcon][GetVassalStance( 'magic_focused' ).GetName] [vassal|E]"
+ magic_focused_opinion:0 "Мнение $magic_focused_vassal$"
+ magic_focused_same_faith_opinion:0 "Мнение $magic_focused_opinion$ #weak (Та же [Concept('faith','конфесия')|E])#!"
+ magic_focused_different_faith_opinion:0 "Мнение $magic_focused_opinion$ #weak (Другая [Concept('faith','конфесия')|E])#!"
+ magic_focused_same_culture_opinion:0 "Мнение $magic_focused_opinion$ #weak (Та же [Concept('culture','культура')|E])#!"
+ magic_focused_different_culture_opinion:0 "Мнение $magic_focused_opinion$ #weak (Другая [Concept('culture','культура')|E])#!"
+ magic_focused_tax_contribution_add:0 "[tax|E] [modifier_base_contribution|E] от $magic_focused_vassal$"
+ magic_focused_tax_contribution_mult:0 "[tax|E] [modifier_contribution|E] от $magic_focused_vassal$"
+ magic_focused_levy_contribution_add:0 "[levy|E] [modifier_base_contribution|E] от $magic_focused_vassal$"
+ magic_focused_levy_contribution_mult:0 "[levy|E] [modifier_contribution|E] от $magic_focused_vassal$"
+ 
+ no_stance:90 "Без позиции"
+ no_stance_desc:90 ""
+   
