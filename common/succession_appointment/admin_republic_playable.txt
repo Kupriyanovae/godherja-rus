@@ -1,6 +1,6 @@
 ﻿admin_republican = {
 	default_candidates = { holder_close_family landed_vassal unlanded_noble_house_head holder_councilor }
-	#invested_candidates = { holder_close_extended_family landed_vassal_close_extended_family unlanded_noble_close_extended_family }
+	invested_candidates = { holder_close_extended_family landed_vassal_close_extended_family unlanded_noble_close_extended_family }
 
 	allow_children = no
 
@@ -198,7 +198,7 @@
 				limit = {
 					has_trait = deviant
 					exists = top_liege.primary_title.state_faith
-					trait_is_criminal_in_faith_trigger = { TRAIT = trait:deviant FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+					trait_is_criminal_in_faith_trigger = { TRAIT = deviant FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
 				}
 				add = {
 					value = -20
@@ -209,7 +209,7 @@
 				limit = {
 					has_trait = incestuous
 					exists = top_liege.primary_title.state_faith
-					trait_is_criminal_in_faith_trigger = { TRAIT = trait:incestuous FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+					trait_is_criminal_in_faith_trigger = { TRAIT = incestuous FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
 				}
 				add = {
 					value = -20
@@ -220,7 +220,7 @@
 				limit = {
 					has_trait = sodomite
 					exists = top_liege.primary_title.state_faith
-					trait_is_criminal_in_faith_trigger = { TRAIT = trait:sodomite FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+					trait_is_criminal_in_faith_trigger = { TRAIT = sodomite FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
 				}
 				add = {
 					value = -20
@@ -231,7 +231,7 @@
 				limit = {
 					has_trait = cannibal
 					exists = top_liege.primary_title.state_faith
-					trait_is_criminal_in_faith_trigger = { TRAIT = trait:cannibal FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+					trait_is_criminal_in_faith_trigger = { TRAIT = cannibal FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
 				}
 				add = {
 					value = -20
@@ -242,7 +242,7 @@
 				limit = {
 					has_trait = kinslayer_1
 					exists = top_liege.primary_title.state_faith
-					trait_is_criminal_in_faith_trigger = { TRAIT = trait:kinslayer_1 FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+					trait_is_criminal_in_faith_trigger = { TRAIT = kinslayer_1 FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
 				}
 				add = {
 					value = -20
@@ -253,7 +253,7 @@
 				limit = {
 					has_trait = kinslayer_2
 					exists = top_liege.primary_title.state_faith
-					trait_is_criminal_in_faith_trigger = { TRAIT = trait:kinslayer_2 FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+					trait_is_criminal_in_faith_trigger = { TRAIT = kinslayer_2 FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
 				}
 				add = {
 					value = -20
@@ -264,7 +264,7 @@
 				limit = {
 					has_trait = kinslayer_3
 					exists = top_liege.primary_title.state_faith
-					trait_is_criminal_in_faith_trigger = { TRAIT = trait:kinslayer_3 FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+					trait_is_criminal_in_faith_trigger = { TRAIT = kinslayer_3 FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
 				}
 				add = {
 					value = -20
@@ -275,7 +275,7 @@
 				limit = {
 					has_trait = adulterer
 					exists = top_liege.primary_title.state_faith
-					trait_is_criminal_in_faith_trigger = { TRAIT = trait:adulterer FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+					trait_is_criminal_in_faith_trigger = { TRAIT = adulterer FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
 				}
 				add = {
 					value = -20
@@ -286,7 +286,7 @@
 				limit = {
 					has_trait = fornicator
 					exists = top_liege.primary_title.state_faith
-					trait_is_criminal_in_faith_trigger = { TRAIT = trait:fornicator FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+					trait_is_criminal_in_faith_trigger = { TRAIT = fornicator FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
 				}
 				add = {
 					value = -20
@@ -909,12 +909,12 @@
 				limit = {
 					OR = {
 						scope:title.holder ?= {
-							has_realm_law_flag = mercantile_elective_law
+							has_realm_law_flag = mercantile_election_law
 						}
 						scope:title.holder.liege ?= {
-							has_realm_law_flag = mercantile_elective_law 
+							has_realm_law_flag = mercantile_election_law 
 						}
-						has_realm_law_flag = mercantile_elective_law
+						has_realm_law_flag = mercantile_election_law
 					}
 				}
 				add = {
@@ -996,12 +996,12 @@
 				limit = {
 					OR = {
 						scope:title.holder ?= {
-							has_realm_law_flag = stratocratic_elective_law
+							has_realm_law_flag = stratocratic_election_law
 						}
 						scope:title.holder.liege ?= {
-							has_realm_law_flag = stratocratic_elective_law
+							has_realm_law_flag = stratocratic_election_law
 						}
-						has_realm_law_flag = stratocratic_elective_law
+						has_realm_law_flag = stratocratic_election_law
 					}
 				}
 				add = {
@@ -1099,6 +1099,7 @@
 					vassal_contract_has_flag = republican_privateers
 				}
 				add = {
+					value = slander_acclamation_score_value
 					value = slander_appointment_score_value
 					desc = privateer_desc_succession
 				}

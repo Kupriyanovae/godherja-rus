@@ -6,10 +6,15 @@
 @neg_compat_high = -30
 @neg_compat_medium = -15
 @neg_compat_low = -5
+############################
+#### GH  MAGICAL TRAITS ####
+### BY  JAKOB ZABOROWSKI ###
+####  (Lonely Knight)   ####
+############################
 
-##########################
-## KONIJKMENER FACTIONS ##
-##########################
+############################
+### KONIJKMENER FACTIONS ###
+############################
 
 konijkmener_councilists = {
 	martial = 1
@@ -137,9 +142,9 @@ gh_iyrossi_uniter = {
 	}
 }
 
-########################
-##  RELIGION  TRAITS  ##
-########################
+############################
+####  RELIGION  TRAITS  ####
+############################
 
 gh_blood_of_prophet = {
 	category = fame
@@ -183,9 +188,9 @@ gh_axiaothea_reborn = {
 	}
 }
 
-########################
-##  INVASION  TRAITS  ##
-########################
+############################
+####  INVASION  TRAITS  ####
+############################
 
 fogeater_invasion_leader = {
 	martial = 5
@@ -220,6 +225,7 @@ fogeater_invasion_leader = {
 	ai_energy = 200
 	ai_boldness = 200
 }
+
 adabyss_invasion_leader = {
 	diplomacy = 4
 	martial = 2
@@ -281,36 +287,59 @@ gh_peasant_birth = {
 	
 	ruler_designer_cost = 10
 }
-gh_kemsari_warlord = {
 
-	category = fame
+#################
+### WIDOWS	###
+#################
 
-	desert_advantage = 20
-	desert_attrition_mult = -1
-	desert_mountains_advantage = 20
-	desert_mountains_attrition_mult = -1
-	monthly_prestige = 1
-	dread_baseline_add = 30
-	same_opinion = -20
-	different_culture_opinion = -20
-	opinion_of_liege = -50
+gh_widow = {
+
+	flag = can_not_marry
+	fertility = -0.5
+	same_opinion = 10
+	seduce_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
+	courting_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
 	
 	shown_in_ruler_designer = no
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_kemsari_warlord
-			}
-			desc = trait_kemsari_warlord_character_desc
-		}
+
+	desc = trait_gh_widow_desc
+
+	ai_energy = -20
+	ai_sociability = medium_negative_ai_value
+
+	compatibility = {
+		chaste = @pos_compat_low
+		celibate = @pos_compat_low
+		temperate = @pos_compat_low
+		calm = @pos_compat_low
+		lustful = @neg_compat_low
+		deviant = @neg_compat_low
+		lovers_pox = @neg_compat_low
+		early_great_pox = @neg_compat_low
+		great_pox = @neg_compat_low
+		lifestyle_reveler = @neg_compat_low
+		seducer = @neg_compat_low
 	}
+}
+
+#################
+### WASTELAND ###
+#################
+
+gh_wasteland = {
+	immortal = yes
+	inheritance_blocker = all
+	claim_inheritance_blocker = all
+	can_have_children = no
+	incapacitating = yes
+	domain_limit = 500
+	genetic = yes
+	county_opinion_add = 200
 	
-	ai_energy = 50
-	ai_boldness = 100
+	shown_in_ruler_designer = no
+
+	desc = trait_gh_wasteland_desc
+	monthly_lifestyle_xp_gain_mult = -10
 }
 gh_legon = {
 
@@ -343,12 +372,13 @@ gh_legon = {
 				trigger = {
 					NOT = { exists = this }
 				}
-				desc = trait_gh_legon_desc
+				desc = trait_gh_legon_character_desc
 			}
-			desc = trait_gh_legon_character_desc
+			desc = trait_gh_legon_desc
 		}
 	}
 }
+
 gh_arch_legon = {
 
 	category = fame
@@ -386,147 +416,38 @@ gh_arch_legon = {
 		}
 	}
 }
-malaak = {
 
-	same_opinion_if_same_faith = 10
-	same_faith_opinion = 20
-	martial = 2
-	learning = 2
+gh_kemsari_warlord = {
+
+	category = fame
+
+	desert_advantage = 20
+	desert_attrition_mult = -1
+	desert_mountains_advantage = 20
+	desert_mountains_attrition_mult = -1
+	monthly_prestige = 1
+	dread_baseline_add = 30
+	same_opinion = -20
+	different_culture_opinion = -20
+	opinion_of_liege = -50
 	
 	shown_in_ruler_designer = no
-
-	desc = gh_malaak_desc
-}
-regent = {
-	shown_in_ruler_designer = no # GH TODO: Setup regent trait content to turn your realm into a regency if you take this
-	random_creation_weight = 0
 	
-	diplomacy = -1
-
-	courtly_opinion = -5
-	vassal_opinion = -10
-
 	desc = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
 					NOT = { exists = this }
 				}
-				desc = trait_regent_desc
+				desc = trait_gh_kemsari_warlord
 			}
-			desc = trait_regent_desc
+			desc = trait_kemsari_warlord_character_desc
 		}
 	}
-}
-former_regent = {
-	random_creation_weight = 0
 	
-	monthly_prestige = 0.1
-
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_former_regent_desc
-			}
-			desc = trait_former_regent_desc
-		}
-	}
+	ai_energy = 50
+	ai_boldness = 100
 }
-
-dragonrider = {
-	random_creation_weight = 0
-	
-	monthly_prestige = 0.5
-	prowess = 6
-
-	culture_modifier = {
-		parameter = dragonrider_trait_bonuses
-		attraction_opinion = 5
-		monthly_prestige = 0.25
-	}
-	culture_modifier = {
-		parameter = dragonrider_traits_give_dread
-		dread_gain_mult = 0.3
-		dread_baseline_add = 25
-	}
-	faith_modifier = {
-		parameter = dragon_traits_more_pious
-		monthly_piety = 0.5
-	}
-
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_dragonrider_desc
-			}
-			desc = trait_dragonrider_desc
-		}
-	}
-}
-
-############
-## WIDOWS ##
-############
-
-gh_widow = {
-
-	flag = can_not_marry
-	fertility = -0.5
-	same_opinion = 10
-	seduce_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
-	courting_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
-	
-	shown_in_ruler_designer = no
-
-	desc = trait_gh_widow_desc
-
-	ai_energy = -20
-	ai_sociability = medium_negative_ai_value
-
-	compatibility = {
-		chaste = @pos_compat_low
-		celibate = @pos_compat_low
-		temperate = @pos_compat_low
-		calm = @pos_compat_low
-		lustful = @neg_compat_low
-		deviant = @neg_compat_low
-		lovers_pox = @neg_compat_low
-		early_great_pox = @neg_compat_low
-		great_pox = @neg_compat_low
-		lifestyle_reveler = @neg_compat_low
-		seducer = @neg_compat_low
-	}
-}
-
-###############
-## WASTELAND ##
-###############
-
-gh_wasteland = {
-	immortal = yes
-	inheritance_blocker = all
-	claim_inheritance_blocker = all
-	can_have_children = no
-	incapacitating = yes
-	domain_limit = 500
-	genetic = yes
-	county_opinion_add = 200
-	
-	shown_in_ruler_designer = no
-
-	desc = trait_gh_wasteland_desc
-	monthly_lifestyle_xp_gain_mult = -10
-}
-
-###############
-## LIFESTYLE ##
-###############
 
 gh_elephant_racer = {
 	category = lifestyle
@@ -555,107 +476,82 @@ gh_elephant_racer = {
 	}
 }
 
-gh_lifestyle_glassmith = {
-	category = lifestyle
-	icon = gh_glassmith.dds
+gh_glass_smith_01 = {
 
-	learning = 1
-	same_opinion = 10
-	monthly_prestige = 0.2
-	culture_modifier = {
-		parameter = glassmith_traits_more_valued
-		monthly_prestige_gain_mult = 0.05
-	}
-	
-	track = {
-		50 = {
-			learning = 1
-			stewardship = 1
-			monthly_prestige = 0.3
-			culture_modifier = {
-				parameter = glassmith_traits_more_valued
-				same_culture_opinion = 5
-				monthly_prestige_gain_mult = 0.05
-			}
-		}
-		100 = {
-			learning = 1
-			stewardship = 1
-			monthly_prestige = 0.5
-			culture_modifier = {
-				parameter = glassmith_traits_more_valued
-				same_culture_opinion = 5
-				monthly_prestige_gain_mult = 0.1
-			}
-		}
-	}
+	group = gh_glass_smith
+	level = 1
 
-	ruler_designer_cost = 20
+	category = fame
 
-	name = {
-		first_valid = {
-			triggered_desc = { # Glassmith
-				trigger = { NOT = { exists = this } }
-				desc = trait_gh_glassmith_1
-			}
-			triggered_desc = { # Master Glassmith
-				trigger = {
-					has_trait_xp = {
-						trait = gh_lifestyle_glassmith
-						value >= 100
-					}
-				}
-				desc = trait_gh_glassmith_3_character
-			}
-			triggered_desc = { # Experienced Glassmith
-				trigger = {
-					has_trait_xp = {
-						trait = gh_lifestyle_glassmith
-						value >= 50
-					}
-				}
-				desc = trait_gh_glassmith_2_character
-			}
-			desc = trait_gh_glassmith_1_character # Amateur Glassmith
-		}
-	}
+	court_grandeur_baseline_add = 4
+	monthly_prestige = 0.5
+	attraction_opinion = 5
+	same_culture_opinion = 5
+
+	ruler_designer_cost = 15
 
 	desc = {
 		first_valid = {
-			triggered_desc = { # Glassmith
-				trigger = { NOT = { exists = this } }
-				desc = trait_gh_glassmith_1_desc
-			}
-			triggered_desc = { # Master Glassmith
+			triggered_desc = {
 				trigger = {
-					has_trait_xp = {
-						trait = gh_lifestyle_glassmith
-						value >= 100
-					}
+					NOT = { exists = this }
 				}
-				desc = trait_gh_glassmith_3_character_desc
+				desc = trait_gh_glass_smith_01_desc
 			}
-			triggered_desc = { # Experienced Glassmith
-				trigger = {
-					has_trait_xp = {
-						trait = gh_lifestyle_glassmith
-						value >= 50
-					}
-				}
-				desc = trait_gh_glassmith_2_character_desc
-			}
-			desc = trait_gh_glassmith_1_character_desc # Amateur Glassmith
+			desc = trait_gh_glass_smith_01_character_desc
 		}
 	}
+}
+gh_glass_smith_02 = {
 
-	compatibility = {
-		diligent = @pos_compat_low
-		lazy = @neg_compat_low
-		calm = @pos_compat_low
-		wrathful = @neg_compat_low
-		patient = @pos_compat_low
-		impatient = @neg_compat_low
-		stubborn = @pos_compat_low
+	group = gh_glass_smith
+	level = 2
+
+	category = fame
+
+	court_grandeur_baseline_add = 6
+	monthly_prestige = 1.0
+	attraction_opinion = 10
+	same_culture_opinion = 10
+
+	ruler_designer_cost = 20
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_glass_smith_02_desc
+			}
+			desc = trait_gh_glass_smith_02_character_desc
+		}
+	}
+}
+gh_glass_smith_03 = {
+
+	group = gh_glass_smith
+	level = 3
+
+	category = fame
+
+	court_grandeur_baseline_add = 8
+	monthly_prestige = 1.5
+	attraction_opinion = 15
+	same_culture_opinion = 15
+
+	ruler_designer_cost = 25
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_glass_smith_03_desc
+			}
+			desc = trait_gh_glass_03_smith_character_desc
+		}
 	}
 }
 
@@ -696,18 +592,18 @@ lifestyle_one_with_nature = {
 		patient = @neg_compat_low
 	}
 }
-lifestyle_gh_steppe_queen = { # Orzopaja
+
+lifestyle_gh_steppe_queen = {
 	category = lifestyle
 	icon = gh_steppe_queen.dds
 
-	valid_sex = female
-
+	# Modifiers
 	prowess = 2
 	monthly_prestige = 0.3
 	fertility = -0.1
 
 	track = {
-		25 = { # Aspiring
+		25 = {
 			martial = 1
 			prowess = 1
 			monthly_prestige = 0.3
@@ -722,15 +618,12 @@ lifestyle_gh_steppe_queen = { # Orzopaja
 				county_opinion_add = 5
 			}
 		}
-		50 = { # Proven
+		50 = {
 			martial = 1
 			prowess = 1
 			monthly_prestige = 0.3
+			same_culture_opinion = 5
 			fertility = -0.1
-			culture_modifier = {
-				parameter = steppe_queens_revered
-				same_culture_opinion = 5
-			}
 			culture_modifier = {
 				parameter = steppe_queens_mercenary_bonus
 				accolade_glory_gain_mult = 0.3
@@ -742,15 +635,12 @@ lifestyle_gh_steppe_queen = { # Orzopaja
 				county_opinion_add = 5
 			}
 		}
-		100 = { # Renowned
+		100 = {
 			martial = 1
 			prowess = 2
 			monthly_prestige = 0.6
+			same_culture_opinion = 5
 			fertility = -0.2
-			culture_modifier = {
-				parameter = steppe_queens_revered
-				same_culture_opinion = 5
-			}
 			culture_modifier = {
 				parameter = steppe_queens_mercenary_bonus
 				accolade_glory_gain_mult = 0.4
@@ -766,86 +656,57 @@ lifestyle_gh_steppe_queen = { # Orzopaja
 
 	ruler_designer_cost = 20
 
+	# Loc
 	name = {
 		first_valid = {
-			triggered_desc = { # Orzopaja
-				trigger = { NOT = { exists = this } }
-				desc = trait_gh_steppe_queen_1
-			}
-			triggered_desc = { # Renowned Orzopaja
+			# Renowned
+			triggered_desc = {
 				trigger = {
-					culture = { has_cultural_parameter = steppe_queens_revered }
+					exists = this
 					has_trait_xp = {
 						trait = lifestyle_gh_steppe_queen
 						value >= 100
 					}
 				}
-				desc = trait_gh_steppe_queen_4_character
+				desc = trait_gh_steppe_queen_4
 			}
-			triggered_desc = { # Proven Orzopaja
-				trigger = {
-					culture = { has_cultural_parameter = steppe_queens_revered }
+			# Proven
+			triggered_desc = {
+				trigger = { 
+					exists = this
 					has_trait_xp = {
 						trait = lifestyle_gh_steppe_queen
 						value >= 50
 					}
 				}
-				desc = trait_gh_steppe_queen_3_character
+				desc = trait_gh_steppe_queen_3
 			}
-			triggered_desc = { # Aspiring Orzopaja
-				trigger = {
-					culture = { has_cultural_parameter = steppe_queens_revered }
+			# Aspiring
+			triggered_desc = {
+				trigger = { 
+					exists = this
 					has_trait_xp = {
 						trait = lifestyle_gh_steppe_queen
 						value >= 25
 					}
 				}
-				desc = trait_gh_steppe_queen_2_character
+				desc = trait_gh_steppe_queen_2
 			}
-			triggered_desc = { # Novice Orzopaja
-				trigger = { culture = { has_cultural_parameter = steppe_queens_revered } }
-				desc = trait_gh_steppe_queen_1_character
-			}
-			triggered_desc = { # Renowned Zserheni
-				trigger = {
-					has_trait_xp = {
-						trait = lifestyle_gh_steppe_queen
-						value >= 100
-					}
-				}
-				desc = trait_gh_steppe_queen_4_foreign_character
-			}
-			triggered_desc = { # Proven Zserheni
-				trigger = {
-					has_trait_xp = {
-						trait = lifestyle_gh_steppe_queen
-						value >= 50
-					}
-				}
-				desc = trait_gh_steppe_queen_3_foreign_character
-			}
-			triggered_desc = { # Aspiring Zserheni
-				trigger = {
-					has_trait_xp = {
-						trait = lifestyle_gh_steppe_queen
-						value >= 25
-					}
-				}
-				desc = trait_gh_steppe_queen_2_foreign_character
-			}
-			desc = trait_gh_steppe_queen_1_foreign_character # Novice Zserheni
+			# Novice
+			desc = trait_gh_steppe_queen_1
 		}
 	}
 
+	# Loc
 	desc = {
 		first_valid = {
-			triggered_desc = { # Orzopaja
+			# The trait can never go higher than the first level if it's not assigned to a character
+			triggered_desc = {
 				trigger = { NOT = { exists = this } }
 				desc = trait_gh_steppe_queen_1_desc
 			}
-			triggered_desc = { # Renowned Orzopaja
-				trigger = {
-					culture = { has_cultural_parameter = steppe_queens_revered }
+			triggered_desc = {
+				trigger = { 
 					has_trait_xp = {
 						trait = lifestyle_gh_steppe_queen
 						value >= 100
@@ -853,9 +714,8 @@ lifestyle_gh_steppe_queen = { # Orzopaja
 				}
 				desc = trait_gh_steppe_queen_4_character_desc
 			}
-			triggered_desc = { # Proven Orzopaja
-				trigger = {
-					culture = { has_cultural_parameter = steppe_queens_revered }
+			triggered_desc = {
+				trigger = { 
 					has_trait_xp = {
 						trait = lifestyle_gh_steppe_queen
 						value >= 50
@@ -863,9 +723,8 @@ lifestyle_gh_steppe_queen = { # Orzopaja
 				}
 				desc = trait_gh_steppe_queen_3_character_desc
 			}
-			triggered_desc = { # Aspiring Orzopaja
-				trigger = {
-					culture = { has_cultural_parameter = steppe_queens_revered }
+			triggered_desc = {
+				trigger = { 
 					has_trait_xp = {
 						trait = lifestyle_gh_steppe_queen
 						value >= 25
@@ -873,53 +732,213 @@ lifestyle_gh_steppe_queen = { # Orzopaja
 				}
 				desc = trait_gh_steppe_queen_2_character_desc
 			}
-			triggered_desc = { # Novice Orzopaja
-				trigger = { culture = { has_cultural_parameter = steppe_queens_revered } }
-				desc = trait_gh_steppe_queen_1_character_desc
-			}
-			triggered_desc = { # Renowned Zserheni
-				trigger = {
-					has_trait_xp = {
-						trait = lifestyle_gh_steppe_queen
-						value >= 100
-					}
-				}
-				desc = trait_gh_steppe_queen_4_foreign_character_desc
-			}
-			triggered_desc = { # Proven Zserheni
-				trigger = {
-					has_trait_xp = {
-						trait = lifestyle_gh_steppe_queen
-						value >= 50
-					}
-				}
-				desc = trait_gh_steppe_queen_3_foreign_character_desc
-			}
-			triggered_desc = { # Aspiring Zserheni
-				trigger = {
-					has_trait_xp = {
-						trait = lifestyle_gh_steppe_queen
-						value >= 25
-					}
-				}
-				desc = trait_gh_steppe_queen_2_foreign_character_desc
-			}
-			desc = trait_gh_steppe_queen_1_foreign_character_desc # Novice Zserheni
+			desc = trait_gh_steppe_queen_1_character_desc
 		}
 	}
 
-	ai_energy = medium_positive_ai_value
-	ai_boldness = medium_positive_ai_value
+	ai_honor = low_positive_ai_value
+	ai_energy = low_positive_ai_value
+	ai_boldness = low_positive_ai_value
 
 	compatibility = {
 		lifestyle_gh_steppe_queen = @pos_compat_low
 		brave = @pos_compat_low
 		stubborn = @pos_compat_low
 		impatient = @pos_compat_low
-		craven = @neg_compat_medium
+		craven = @neg_compat_low
 		fickle = @neg_compat_low
 		patient = @neg_compat_low
 	}
+}
+
+fools_curse = {
+	diplomacy = -2
+	stewardship = -2
+	intrigue = -2
+	learning = -2
+	prowess = -8
+	fertility = -0.9
+	health = -6
+	elderly_health = -2
+	category = health
+
+	dread_baseline_add = -20
+	dread_loss_mult = 1
+
+	attraction_opinion = -15
+	monthly_income_mult = 0.05
+
+	shown_in_ruler_designer = no
+
+	flag = illness
+	flag = debilitating_illness
+	flag = blocks_getting_non_epidemic_disease
+	flag = arcana_add
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_fools_curse_desc
+			}
+			desc = trait_fools_curse_character_desc
+		}
+	}
+
+	ai_energy = -75
+}
+
+shade_stricken = {
+	diplomacy = -3
+	stewardship = -5
+	intrigue = -3
+	prowess = -10
+	health = -3.5
+	child_health = -2
+	elderly_health = -3
+	icon = gh_magicsickness_2.dds
+	category = health
+
+	dread_baseline_add = 15
+	attraction_opinion = -20
+
+	flag = illness
+	flag = debilitating_illness
+	flag = blocks_getting_non_epidemic_disease
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_shade_stricken_desc
+			}
+			desc = trait_shade_stricken_character_desc
+		}
+	}
+
+	ai_energy = -50
+}
+
+magic_court_1 = {
+	learning = 1
+	prowess = 1
+	magic_focused_opinion = 5
+
+	category = court_type
+	group = magic_court
+	level = 1
+
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_magic_court_1_desc
+			}
+			desc = trait_magic_court_1_character_desc
+		}
+	}
+
+	flag = arcana_add
+}
+magic_court_2 = {
+	learning = 2
+	prowess = 2
+	magic_focused_opinion = 5
+
+	category = court_type
+	group = magic_court
+	level = 2
+
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_magic_court_2_desc
+			}
+			desc = trait_magic_court_2_character_desc
+		}
+	}
+
+	flag = arcana_add
+}
+
+tahariat_evader = {
+	minimum_age = 16
+
+	same_opinion = 10
+	same_faith_opinion = 15
+	category = fame
+
+	ruler_designer_cost = -5
+
+	ai_greed = 50
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_tahariat_evader_desc
+			}
+			desc = trait_tahariat_evader_character_desc
+		}
+	}
+
+	triggered_opinion = {
+		parameter = tax_evasion_illegal
+		opinion_modifier = tahariat_evader
+	}
+	compatibility = {
+		tahariat_evader = @pos_compat_high
+		greedy = @pos_compat_medium
+		generous = @neg_compat_medium
+		content = @neg_compat_medium
+	}
+}
+
+gh_temporarily_disinherited = {
+
+	inheritance_blocker = all
+	
+	shown_in_ruler_designer = no
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_temporarily_disinherited_desc
+			}
+			desc = trait_temporarily_disinherited_character_desc
+		}
+	}
+}
+
+malaak = {
+
+	same_opinion_if_same_faith = 10
+	same_faith_opinion = 20
+	martial = 2
+	learning = 2
+	
+	shown_in_ruler_designer = no
+
+	desc = gh_malaak_desc
 }
 
 #################
@@ -1030,6 +1049,7 @@ gh_historical_blademaster_1 = {
 		craven = @neg_compat_low
 	}
 }
+
 gh_historical_blademaster_2 = {
 	category = lifestyle
 	icon = blademaster_2.dds
@@ -1073,6 +1093,7 @@ gh_historical_blademaster_2 = {
 		craven = @neg_compat_low
 	}
 }
+
 gh_historical_blademaster_3 = {
 	category = lifestyle
 	icon = blademaster_3.dds
@@ -1162,6 +1183,7 @@ gh_historical_reveler_1 = {
 		gluttonous = @pos_compat_low
 	}
 }
+
 gh_historical_reveler_2 = {
 	category = lifestyle
 	icon = reveler_2.dds
@@ -1208,6 +1230,7 @@ gh_historical_reveler_2 = {
 		gluttonous = @pos_compat_low
 	}
 }
+
 gh_historical_reveler_3 = {
 	category = lifestyle
 	icon = reveler_3.dds
@@ -1290,6 +1313,7 @@ gh_historical_physician_1 = {
 		theologian = @pos_compat_low
 	}
 }
+
 gh_historical_physician_2 = {
 	category = lifestyle
 	icon = physician_2.dds
@@ -1325,6 +1349,7 @@ gh_historical_physician_2 = {
 		theologian = @pos_compat_low
 	}
 }
+
 gh_historical_physician_3 = {
 	category = lifestyle
 	icon = physician_3.dds
@@ -1406,6 +1431,7 @@ gh_historical_pilgrim_1 = {
 	}
 	ai_zeal = 5
 }
+
 gh_historical_pilgrim_2 = {
 	category = fame
 	icon = pilgrim_2.dds
@@ -1454,6 +1480,7 @@ gh_historical_pilgrim_2 = {
 	}
 	ai_zeal = 15
 }
+
 gh_historical_pilgrim_3 = {
 	category = fame
 	icon = pilgrim_3.dds
@@ -1546,6 +1573,7 @@ gh_historical_mystic_1 = {
 		}
 	}
 }
+
 gh_historical_mystic_2 = {
 	category = lifestyle
 	icon = mystic_2.dds
@@ -1588,6 +1616,7 @@ gh_historical_mystic_2 = {
 		}
 	}
 }
+
 gh_historical_mystic_3 = {
 	category = lifestyle
 	icon = mystic_3.dds
@@ -1741,6 +1770,7 @@ gh_historical_track_hunter_1 = {
 
 	ai_energy = 15
 }
+
 gh_historical_track_hunter_2 = {
 	category = lifestyle
 	icon = hunter_2.dds
@@ -1798,6 +1828,7 @@ gh_historical_track_hunter_2 = {
 
 	ai_energy = 15
 }
+
 gh_historical_track_hunter_3 = {
 	category = lifestyle
 	icon = hunter_3.dds
@@ -1855,6 +1886,7 @@ gh_historical_track_hunter_3 = {
 
 	ai_energy = 15
 }
+
 gh_historical_track_hunter_4 = {
 	category = lifestyle
 	icon = hunter_4.dds
@@ -1972,6 +2004,7 @@ gh_historical_track_falconer_1 = {
 
 	ai_energy = 15
 }
+
 gh_historical_track_falconer_2 = {
 	category = lifestyle
 	icon = gh_falconer.dds
@@ -2085,6 +2118,7 @@ gh_historical_track_beasthunter_1 = {
 
 	ai_energy = 15
 }
+
 gh_historical_track_beasthunter_2 = {
 	category = lifestyle
 	icon = beasthunter_2.dds
@@ -2139,6 +2173,7 @@ gh_historical_track_beasthunter_2 = {
 
 	ai_energy = 15
 }
+
 gh_historical_track_beasthunter_3 = {
 	category = lifestyle
 	icon = beasthunter_3.dds
@@ -2193,6 +2228,7 @@ gh_historical_track_beasthunter_3 = {
 
 	ai_energy = 15
 }
+
 gh_historical_track_beasthunter_4 = {
 	category = lifestyle
 	icon = beasthunter_4.dds
@@ -2248,82 +2284,7 @@ gh_historical_track_beasthunter_4 = {
 	ai_energy = 15
 }
 
-gh_historical_glassmith_1 = {
-	category = lifestyle
-	icon = gh_glassmith_1.dds
-
-	shown_in_ruler_designer = no
-
-	learning = 1
-	same_opinion = 15
-	monthly_prestige = 0.2
-	culture_modifier = {
-		parameter = glassmith_traits_more_valued
-		monthly_prestige_gain_mult = 0.05
-	}
-
-	ruler_designer_cost = 20
-
-	group = gh_historical_glassmith
-	level = 1
-
-	name = trait_gh_glassmith_1_character
-	desc = trait_gh_glassmith_1_character_desc
-}
-
-gh_historical_glassmith_2 = {
-	category = lifestyle
-	icon = gh_glassmith_2.dds
-
-	shown_in_ruler_designer = no
-
-	learning = 2
-	stewardship = 1
-	same_opinion = 15
-	monthly_prestige = 0.5
-	culture_modifier = {
-		parameter = glassmith_traits_more_valued
-		same_culture_opinion = 5
-		monthly_prestige_gain_mult = 0.1
-	}
-
-	ruler_designer_cost = 20
-
-	group = gh_historical_glassmith
-	level = 2
-
-	name = trait_gh_glassmith_2_character
-	desc = trait_gh_glassmith_2_character_desc
-}
-
-gh_historical_glassmith_3 = {
-	category = lifestyle
-	icon = gh_glassmith_3.dds
-
-	shown_in_ruler_designer = no
-
-	learning = 3
-	stewardship = 2
-	same_opinion = 15
-	monthly_prestige = 1
-	culture_modifier = {
-		parameter = glassmith_traits_more_valued
-		same_culture_opinion = 10
-		monthly_prestige_gain_mult = 0.2
-	}
-
-	ruler_designer_cost = 20
-
-	group = gh_historical_glassmith
-	level = 3
-
-	name = trait_gh_glassmith_3_character
-	desc = trait_gh_glassmith_3_character_desc
-}
-
-##############
-## DISEASES ##
-##############
+# NATURAL DISEASES
 
 pellagra = { # Aironoian Leprosy
 	category = health
@@ -2346,7 +2307,6 @@ pellagra = { # Aironoian Leprosy
 	flag = illness
 	flag = debilitating_illness
 	flag = blocks_getting_non_epidemic_disease
-	flag = is_healthy_trigger_flag
 
 	desc = {
 		first_valid = {
@@ -2362,84 +2322,6 @@ pellagra = { # Aironoian Leprosy
 
 	ai_energy = -50
 }
-fools_curse = {
-	diplomacy = -2
-	stewardship = -2
-	intrigue = -2
-	learning = -2
-	prowess = -8
-	fertility = -0.9
-	health = -6
-	elderly_health = -2
-	category = health
-
-	dread_baseline_add = -20
-	dread_loss_mult = 1
-
-	attraction_opinion = -15
-	monthly_income_mult = 0.05
-
-	shown_in_ruler_designer = no
-
-	flag = illness
-	flag = debilitating_illness
-	flag = blocks_getting_non_epidemic_disease
-	flag = is_healthy_trigger_flag
-	flag = arcana_add
-
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_fools_curse_desc
-			}
-			desc = trait_fools_curse_character_desc
-		}
-	}
-
-	ai_energy = -75
-}
-shade_stricken = {
-	diplomacy = -3
-	stewardship = -5
-	intrigue = -3
-	prowess = -10
-	health = -3.5
-	child_health = -2
-	elderly_health = -3
-	icon = gh_magicsickness_2.dds
-	category = health
-
-	dread_baseline_add = 15
-	attraction_opinion = -20
-
-	flag = illness
-	flag = debilitating_illness
-	flag = blocks_getting_non_epidemic_disease
-	flag = is_healthy_trigger_flag
-	shown_in_ruler_designer = no
-
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_shade_stricken_desc
-			}
-			desc = trait_shade_stricken_character_desc
-		}
-	}
-
-	ai_energy = -50
-}
-
-############
-## HEALTH ##
-############
-
 gh_one_handed = {
 	category = health
 	icon = gh_dehanded.dds
@@ -2475,32 +2357,8 @@ gh_one_handed = {
 
 	ai_energy = -10
 }
-gh_dehanded = {
-	category = health
-	attraction_opinion = -10
-	prowess = -100
-	martial = -4
-	
-	flag = can_not_access_magic
-	
-	shown_in_ruler_designer = no
 
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_dehanded_desc
-			}
-			desc = trait_gh_dehanded_character_desc
-		}
-	}
-}
-
-######################
-## ARCANA EDUCATION ##
-######################
+## Arcana Education
 
 education_arcana_1 = {
 	learning = 1
@@ -2509,8 +2367,7 @@ education_arcana_1 = {
 	monthly_arcana_lifestyle_xp_gain_mult = 0.1
 	character_travel_safety = 5
 	magic_focused_opinion = 5
-	flag = level_1_education
-	flag = civilian_province
+	
 	culture_modifier = {
 		parameter = poorly_educated_leaders_distrusted
 		feudal_government_opinion = -10
@@ -2555,8 +2412,7 @@ education_arcana_2 = {
 	minimum_age = 16
 	category = education
 	monthly_arcana_lifestyle_xp_gain_mult = 0.2
-	flag = level_2_education
-	flag = civilian_province
+
 	character_travel_safety = 10
 	magic_focused_opinion = 10
 	
@@ -2599,8 +2455,7 @@ education_arcana_3 = {
 	minimum_age = 16
 	category = education
 	monthly_arcana_lifestyle_xp_gain_mult = 0.3
-	flag = level_3_education
-	flag = civilian_province
+
 	character_travel_safety = 15
 	magic_focused_opinion = 15
 	
@@ -2643,8 +2498,7 @@ education_arcana_4 = {
 	minimum_age = 16
 	category = education
 	monthly_arcana_lifestyle_xp_gain_mult = 0.4
-	flag = level_4_education
-	flag = civilian_province
+
 	character_travel_safety = 20
 	magic_focused_opinion = 20
 	
@@ -2697,8 +2551,7 @@ education_arcana_5 = {
 	category = education
 	monthly_arcana_lifestyle_xp_gain_mult = 0.5
 	monthly_learning_lifestyle_xp_gain_mult = 0.25
-	flag = level_5_education
-	flag = civilian_province
+
 	character_travel_safety = 25
 	magic_focused_opinion = 25
 	
@@ -2747,10 +2600,7 @@ education_arcana_5 = {
 	level = 5
 }
 
-######################
-## COMMANDER TRAITS ##
-######################
-
+## Commander Traits ##
 marine_commander = {
 	category = commander
 
@@ -2782,412 +2632,6 @@ marine_commander = {
 	}
 }
 
-#dragonmaster = { # GH TODO: Oh my god Paradox why do commander traits work like this - reimpliment at some point with some method of controlling who gets this
-#	category = commander
-#	
-#	# GH TODO: Replace with Dragon MAA type
-#	flying_screen_mult = 0.1
-#	flying_pursuit_mult = 0.1
-#	monthly_prestige = 0.5
-#
-#	faith_modifier = {
-#		parameter = dragon_traits_more_pious
-#		monthly_piety = 0.5
-#	}
-#
-#	ruler_designer_cost = 40
-#
-#	track = {
-#		33 = { # Wing Commander
-#			flying_screen_mult = 0.1
-#			flying_pursuit_mult = 0.1
-#			monthly_prestige = 0.5
-#			dread_baseline_add = 5
-#		}
-#		66 = { # Squadron Commander
-#			flying_damage_mult = 0.1
-#			flying_screen_mult = 0.1
-#			flying_pursuit_mult = 0.1
-#			monthly_prestige = 1
-#			dread_baseline_add = 5
-#		}
-#		100 = { # Bannermaster
-#			flying_maintenance_mult = -0.2
-#			flying_damage_mult = 0.1
-#			flying_screen_mult = 0.2
-#			flying_pursuit_mult = 0.2
-#			monthly_prestige = 1.5
-#			dread_baseline_add = 10
-#		}
-#	}
-#	
-#	name = {
-#		first_valid = {
-#			triggered_desc = {
-#				trigger = {
-#					exists = this
-#					culture = { has_cultural_pillar = heritage_sjalvolki }
-#				}
-#				desc = trait_dragonmaster_drakengard # sick reference to game ive never actually played
-#			}
-#			desc = trait_dragonmaster
-#		}
-#	}
-#
-#	desc = {
-#		first_valid = {
-#			triggered_desc = {
-#				trigger = {
-#					NOT = { exists = this }
-#				}
-#				desc = trait_dragonmaster_desc
-#			}
-#			desc = trait_dragonmaster_character_desc
-#		}
-#	}
-#}
-
-##############
-## NATTANAN ##
-##############
-
-thura_myinthein = { # Nattanan Messianic character
-	category = fame
-	opposites = {
-		thura_myinthein_descendant
-	}
-	diplomacy = 2
-	learning = 2
-	prowess = 2
-	martial = 2
-	same_faith_opinion = 50
-
-	icon = saoshyant.dds
-}
-
-thura_myinthein_descendant = { # Nattanan version of the Divine Blood-trait
-	category = fame
-	opposites = {
-		thura_myinthein
-	}
-	learning = 2
-	diplomacy = 1
-
-	same_faith_opinion = 10
-	
-	shown_in_ruler_designer = no
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_thura_myinthein_descendant_desc
-			}
-			desc = trait_thura_myinthein_descendant_character_desc
-		}
-	}
-	icon = saoshyant_descendant.dds
-}
-
-gh_yuankang_founding_father = {
-	category = fame
-	stewardship = 2
-	diplomacy = 3
-	monthly_prestige = 1.5
-	monthly_dynasty_prestige_mult = 0.05
-	county_opinion_add = 30
-	
-	shown_in_ruler_designer = no
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_yuankang_founding_father_desc
-			}
-			desc = trait_gh_yuankang_founding_father_character_desc
-		}
-	}
-
-	icon = crusader_king.dds
-}
-
-#gh_dahangon_destroyer = {
-#	category = fame
-#	dahala_opinion = -25
-#	dread_baseline_add = 10
-#	monthly_prestige = 3
-#	wetlands_min_combat_roll = 2
-#	wetlands_attrition_mult = -0.2
-#	wetlands_advantage = 6
-#	
-#	shown_in_ruler_designer = no
-#	desc = {
-#		first_valid = {
-#			triggered_desc = {
-#				trigger = {
-#					NOT = { exists = this }
-#				}
-#				desc = trait_gh_dahangon_destroyer_desc
-#			}
-#			desc = trait_gh_dahangon_destroyer_character_desc
-#		}
-#	}
-#
-#	icon = fp3_struggle_detractor.dds
-#}
-
-gh_high_emperor = {
-	category = fame
-	diplomacy = 2
-	monthly_prestige_gain_mult = 0.05
-	dahala_opinion = 15
-	monthly_dynasty_prestige = 0.5
-	wetlands_advantage = 3
-	wetlands_supply_limit_mult = 0.2
-	wetlands_attrition_mult = -0.15
-
-	
-	shown_in_ruler_designer = no
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_high_emperor_desc
-			}
-			desc = trait_gh_high_emperor_character_desc
-		}
-	}
-
-	icon = coronated_by_bishop.dds
-}
-
-gh_scion_of_nolan = {
-	category = fame
-	same_culture_opinion = 10
-	monthly_lifestyle_xp_gain_mult = 0.1
-	long_reign_bonus_mult = 0.05
-
-	inherit_chance = 1
-	child_inheritance_sex = male
-	parent_inheritance_sex =  male
-	shown_in_ruler_designer = no
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_scion_of_nolan_desc
-			}
-			desc = trait_gh_scion_of_nolan_character_desc
-		}
-	}
-
-	icon = blood_of_the_prophet_parent.dds
-}
-####################################
-## CHAR CREATOR GOVERNMENT TRAITS ##
-####################################
-
-gh_landed_order_trait = {
-	category = fame
-	shown_in_ruler_designer = no
-	shown_in_encyclopedia = no
-	random_creation_weight = 0
-	flag = HT_hidden_trait
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_landed_order_trait_desc
-			}
-			desc = trait_gh_landed_order_trait_character_desc
-		}
-	}
-}
-gh_republic_trait = {
-	category = fame
-	shown_in_ruler_designer = no
-	shown_in_encyclopedia = no
-	random_creation_weight = 0
-	flag = HT_hidden_trait
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_republic_trait_desc
-			}
-			desc = trait_gh_republic_trait_character_desc
-		}
-	}
-}
-gh_military_unit_trait = {
-	category = fame
-	shown_in_ruler_designer = no
-	shown_in_encyclopedia = no
-	random_creation_weight = 0
-	flag = HT_hidden_trait
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_military_unit_trait_desc
-			}
-			desc = trait_gh_military_unit_trait_character_desc
-		}
-	}
-}
-gh_theocracy_trait = {
-	category = fame
-	shown_in_ruler_designer = no
-	shown_in_encyclopedia = no
-	random_creation_weight = 0
-	flag = HT_hidden_trait
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_theocracy_trait_desc
-			}
-			desc = trait_gh_theocracy_trait_character_desc
-		}
-	}
-}
-gh_magocracy_trait = {
-	category = fame
-	shown_in_ruler_designer = no
-	shown_in_encyclopedia = no
-	random_creation_weight = 0
-	flag = HT_hidden_trait
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_magocracy_trait_desc
-			}
-			desc = trait_gh_magocracy_trait_character_desc
-		}
-	}
-}
-gh_magocratic_republic_trait = {
-	category = fame
-	shown_in_ruler_designer = no
-	shown_in_encyclopedia = no
-	random_creation_weight = 0
-	flag = HT_hidden_trait
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_magocratic_republic_trait_desc
-			}
-			desc = trait_gh_magocratic_republic_trait_character_desc
-		}
-	}
-}
-gh_pirate_trait = {
-	category = fame
-	shown_in_ruler_designer = no
-	shown_in_encyclopedia = no
-	random_creation_weight = 0
-	flag = HT_hidden_trait
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_pirate_trait_desc
-			}
-			desc = trait_gh_pirate_trait_character_desc
-		}
-	}
-}
-
-###########
-## COURT ##
-###########
-
-magic_court_1 = {
-	learning = 1
-	prowess = 1
-	magic_focused_opinion = 5
-
-	category = court_type
-	group = magic_court
-	level = 1
-
-	shown_in_ruler_designer = no
-
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_magic_court_1_desc
-			}
-			desc = trait_magic_court_1_character_desc
-		}
-	}
-
-	flag = arcana_add
-}
-magic_court_2 = {
-	learning = 2
-	prowess = 2
-	magic_focused_opinion = 5
-
-	category = court_type
-	group = magic_court
-	level = 2
-
-	shown_in_ruler_designer = no
-
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_magic_court_2_desc
-			}
-			desc = trait_magic_court_2_character_desc
-		}
-	}
-
-	flag = arcana_add
-}
-
-##############
-## UNSORTED ##
-##############
-
 gh_trait_amsari_pretender = {
 	category = fame
 	opposites = { gh_trait_renounced_claim }
@@ -3213,30 +2657,6 @@ gh_trait_amsari_pretender = {
 	ai_boldness = high_positive_ai_value
 }
 
-gh_trait_amsari_pretender = {
-	category = fame
-	opposites = { gh_trait_renounced_claim }
-	
-	diplomacy = 1
-	martial = 1
-
-	same_opinion = -40
-	opposite_opinion = 10
-	shown_in_ruler_designer = no
-
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = gh_trait_amsari_pretender_desc
-			}
-			desc = gh_trait_amsari_pretender_character_desc
-		}
-	}
-	ai_boldness = high_positive_ai_value
-}
 
 gh_trait_renounced_claim = {
 	category = fame
@@ -3261,44 +2681,32 @@ gh_trait_renounced_claim = {
 	ai_boldness = low_negative_ai_value
 }
 
-tahariat_evader = {
-	minimum_age = 16
 
-	same_opinion = 10
-	same_faith_opinion = 15
+#Nattanan Messianic character
+thura_myinthein = {
 	category = fame
-
-	ruler_designer_cost = -5
-
-	ai_greed = 50
-
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_tahariat_evader_desc
-			}
-			desc = trait_tahariat_evader_character_desc
-		}
+	opposites = {
+		thura_myinthein_descendant
 	}
+	diplomacy = 2
+	learning = 2
+	prowess = 2
+	martial = 2
+	same_faith_opinion = 50
 
-	triggered_opinion = {
-		parameter = tax_evasion_illegal
-		opinion_modifier = tahariat_evader
-	}
-	compatibility = {
-		tahariat_evader = @pos_compat_high
-		greedy = @pos_compat_medium
-		generous = @neg_compat_medium
-		content = @neg_compat_medium
-	}
+	icon = saoshyant.dds
 }
 
-gh_temporarily_disinherited = {
+# Nattanan version of the Divine Blood-trait.
+thura_myinthein_descendant = {
+	category = fame
+	opposites = {
+		thura_myinthein
+	}
+	learning = 2
+	diplomacy = 1
 
-	inheritance_blocker = all
+	same_faith_opinion = 10
 	
 	shown_in_ruler_designer = no
 	
@@ -3308,33 +2716,10 @@ gh_temporarily_disinherited = {
 				trigger = {
 					NOT = { exists = this }
 				}
-				desc = trait_temporarily_disinherited_desc
+				desc = trait_thura_myinthein_descendant_desc
 			}
-			desc = trait_temporarily_disinherited_character_desc
+			desc = trait_thura_myinthein_descendant_character_desc
 		}
 	}
-}
-
-gh_king_of_conquerors = {
-	category = fame
-	monthly_lifestyle_xp_gain_mult = 0.1
-	long_reign_bonus_mult = 0.15
-	martial_per_prestige_level = 2
-	monthly_prestige_gain_mult = 0.05
-	title_creation_cost_mult = -0.5
-
-	shown_in_ruler_designer = no
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_king_of_conquerors_desc
-			}
-			desc = trait_gh_king_of_conquerors_character_desc
-		}
-	}
-
-	icon = augustus.dds
+	icon = saoshyant_descendant.dds
 }

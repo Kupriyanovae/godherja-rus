@@ -124,7 +124,6 @@
 			culture:ghudiyy = { custom_tooltip = ghudiyy_desc }
 			culture:akhtarfi = { custom_tooltip = akhtarfi_desc }
 			culture:gwasillikh = { custom_tooltip = gwasillikh_desc }
-			culture:seylulid = { custom_tooltip = seylulid_desc }
 			#Hadiyan
 			culture:adabyann = { custom_tooltip = adabyann_desc }
 			#Vhanavids
@@ -260,9 +259,6 @@
 			#agnala
 			culture:sindaara = { custom_tooltip = sindaara_desc }
 			culture:saielaian = { custom_tooltip = saielaian_desc }
-			culture:mutande = { custom_tooltip = mutande_desc }
-			culture:sansarim = { custom_tooltip = sansarim_desc }
-			culture:kandysar = { custom_tooltip = kandysar_desc }
 			#shamrani
 			culture:walakon = { custom_tooltip = walakon_desc }
 			#mtuwe
@@ -310,7 +306,6 @@
 
 			#Eastern group
 			culture:lakoeng = { custom_tooltip = lakoeng_desc }
-			culture:lanonan = { custom_tooltip = lanonan_desc }
 
 			#Azargi group
 			culture:azarg_kutahnuug = { custom_tooltip = azarg_kutahnuug_desc }
@@ -366,65 +361,12 @@
 			culture:gh_dragon_culture = { custom_tooltip = gh_dragon_culture_desc }
 			culture:bestial = { custom_tooltip = bestial_desc }
 
-			#Kathuni
-			culture:lanonan = { custom_tooltip = lanonan_desc }
-			culture:yingsa = { custom_tooltip = yingsa_desc }
-			culture:saeridian = { custom_tooltip = saeridian_desc }
-			culture:emberclan = { custom_tooltip = emberclan_desc }
-			culture:langanafam = { custom_tooltip = langanafam_desc }
-			culture:chenhan = { custom_tooltip = chenhan_desc }
-
 			## Current Unwritten ##
 			#culture:agiopadis = { custom_tooltip = agiopadis_desc }
 			#culture:outerislander = { custom_tooltip = outerislander_desc }
 			#culture:shewigad = { custom_tooltip = shewigad_desc }
 			#culture:chevalies = { custom_tooltip = chevalies_desc }
 			#culture:envokander = { custom_tooltip = envokander_desc }
-		}
-	}
-}
-
-gh_custom_culture_tooltip = {
-	is_shown = {
-		has_variable = gh_character_culture_tooltip
-	}
-	effect = {
-		trigger_event = gh_culture_custom_event_desc.0001
-	}
-}
-
-gh_hybridize_custom_culture_tooltip = {
-	is_shown = {
-		has_variable = gh_character_culture_tooltip
-	}
-	effect = {
-		trigger_event = gh_culture_custom_event_desc.0002
-	}
-}
-
-
-gh_created_from_culture_window_sgui = {
-	effect = {
-		if = {
-			limit = { has_variable = has_created_custom_culture_desc }
-			set_variable = {
-				name = created_from_culture_window
-				value = yes
-			}
-		}
-	}
-}
-
-gh_culture_save_custom_description_gui = {
-	effect = {
-		if = {
-			limit = { has_variable = has_created_custom_culture_desc }
-			root.culture = { 
-				set_variable = {
-					name = gh_character_culture_tooltip
-					value = root
-				}
-			}
 		}
 	}
 }

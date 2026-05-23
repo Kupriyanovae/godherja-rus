@@ -33,7 +33,7 @@ spirit_regular = {
 	toughness = 35
 	pursuit = 15
 	screen = 0
-	special_recruit_only = yes
+	can_recruit = { always = no }
 	buy_cost = { gold = magi_recruitment_cost }
 	low_maintenance_cost = { gold = magi_low_maint_cost }
 	high_maintenance_cost = { gold = magi_high_maint_cost }
@@ -62,7 +62,7 @@ raised_undead = {
 	toughness = 20
 	pursuit = 5
 	screen = 0
-	special_recruit_only = yes
+	can_recruit = { always = no }
 	buy_cost = { gold = magi_recruitment_cost }
 	low_maintenance_cost = { gold = magi_low_maint_cost }
 	high_maintenance_cost = { gold = magi_high_maint_cost }
@@ -152,7 +152,7 @@ oltenic_horse_archers = {
 				location.county.culture ?= { has_cultural_parameter = unlock_maa_oltenic_horse_archers }
 			}
 			culture = { has_cultural_parameter = unlock_maa_oltenic_horse_archers }
-			#mpo_can_recruit_nomad_maa_trigger = yes
+			mpo_can_recruit_nomad_maa_trigger = yes
 		}
 	}
 
@@ -202,7 +202,7 @@ oltenic_spearmen = {
 				location.county.culture ?= { has_cultural_parameter = unlock_maa_oltenic_spearmen }
 			}
 			culture = { has_cultural_parameter = unlock_maa_oltenic_spearmen }
-			#mpo_can_recruit_nomad_maa_trigger = yes
+			mpo_can_recruit_nomad_maa_trigger = yes
 		}
 	}
 
@@ -256,7 +256,7 @@ oltenic_light_horsemen = {
 				location.county.culture ?= { has_cultural_parameter = unlock_maa_oltenic_light_horsemen }
 			}
 			culture = { has_cultural_parameter = unlock_maa_oltenic_light_horsemen }
-			#mpo_can_recruit_nomad_maa_trigger = yes
+			mpo_can_recruit_nomad_maa_trigger = yes
 		}
 	}
 
@@ -357,7 +357,6 @@ gh_shazun = {
 		mayik_caverns = { damage = -20 toughness = -15 pursuit = -20 screen = -20 }
 		mayik_corridors = { damage = -18 toughness = -14 pursuit = -20 screen = -20 }
 		mayik_chamber = { damage = -16 toughness = -13 pursuit = -20 screen = -20 }
-		underworld_expanse = { damage = -14 toughness = -12 pursuit = -20 screen = -20 }
 
 		marcher_floodplains = { damage = 5 }
 		marcher_hills = { damage = -10 }
@@ -389,19 +388,13 @@ gh_khezmin = {
 	type = pikemen
 
 	can_recruit = {
-		OR = {
-			culture = {
-				OR = {
+		culture = {
+			OR = {
+				this = culture:amsari
+				any_parent_culture_or_above = {
 					this = culture:amsari
-					any_parent_culture_or_above = {
-						this = culture:amsari
-					}
 				}
 			}
-			#AND = {
-			#	has_global_variable = gh_region_central_war_in_heaven_struggle
-			#	global_var:gh_region_far_western_war_in_heaven_struggle.var:struggle_ending_ender.house ?= { root.house }
-			#}
 		}
 	}
 	
@@ -434,7 +427,6 @@ gh_khezmin = {
 		mayik_caverns = { damage = -25 toughness = -15 }
 		mayik_corridors = { damage = -25 toughness = -15 }
 		mayik_chamber = { damage = -25 toughness = -15 }
-		underworld_expanse = { damage = -25 toughness = -15 }
 	}
 
 	counters = {
@@ -453,121 +445,4 @@ gh_khezmin = {
 	stack = 100
 	ai_quality = { value = @cultural_maa_extra_ai_score }
 	icon = pikemen
-}
-
-cavern_ram = {
-	type = siege_weapon
-	fights_in_main_phase = no
-
-	damage = 0
-	toughness = 12
-
-	siege_tier = 2
-	siege_value = 0.2
-
-	terrain_bonus = {
-		mayik_corridors    = { toughness = 10  siege_value = 0.20 }
-		mayik_caverns      = { toughness = 8   siege_value = 0.15 }
-		mayik_chamber      = { toughness = 5   siege_value = 0.10 }
-		underworld_expanse = { toughness = 4   siege_value = 0.08 }
-		plains             = { toughness = -11  siege_value = -0.19 }
-		farmlands          = { toughness = -11  siege_value = -0.19 }
-		hills              = { toughness = -11  siege_value = -0.19 }
-		mountains          = { toughness = -11  siege_value = -0.19 }
-		forest             = { toughness = -11  siege_value = -0.19 }
-		taiga              = { toughness = -11  siege_value = -0.19 }
-		jungle             = { toughness = -11  siege_value = -0.19 }
-		wetlands           = { toughness = -11  siege_value = -0.19 }
-		steppe             = { toughness = -11  siege_value = -0.19 }
-		desert             = { toughness = -11  siege_value = -0.19 }
-		desert_mountains   = { toughness = -11  siege_value = -0.19 }
-		floodplains        = { toughness = -11  siege_value = -0.19 }
-		drylands           = { toughness = -11  siege_value = -0.19 }
-		oasis              = { toughness = -11  siege_value = -0.19 }
-		deadlands          = { toughness = -11  siege_value = -0.19 }
-		redlands_chasms    = { toughness = -11  siege_value = -0.19 }
-		marcher_plains     = { toughness = -11  siege_value = -0.19 }
-		marcher_farmlands  = { toughness = -11  siege_value = -0.19 }
-		marcher_hills      = { toughness = -11  siege_value = -0.19 }
-		marcher_mountains  = { toughness = -11  siege_value = -0.19 }
-		marcher_forest     = { toughness = -11  siege_value = -0.19 }
-		marcher_wetlands   = { toughness = -11  siege_value = -0.19 }
-		marcher_floodplains = { toughness = -11 siege_value = -0.19 }
-	}
-
-	can_recruit = {
-		culture = { has_cultural_pillar = heritage_cavetribe }
-	}
-
-	should_show_when_unavailable = {
-		culture = { has_cultural_pillar = heritage_cavetribe }
-	}
-
-	buy_cost = { gold = onager_recruitment_cost }
-	low_maintenance_cost = { gold = onager_low_maint_cost }
-	high_maintenance_cost = { gold = onager_high_maint_cost }
-	provision_cost = @provisions_cost_special_cheap
-
-	stack = 10
-	allowed_in_hired_troops = no
-}
-
-tension_trebuchet = {
-	type = siege_weapon
-	fights_in_main_phase = no
-
-	damage = 0
-	toughness = 12
-
-	siege_tier = 3
-	siege_value = 0.3
-
-	terrain_bonus = {
-		mayik_chamber      = { toughness = 10  siege_value = 0.20 }
-		mayik_caverns      = { toughness = 8   siege_value = 0.15 }
-		underworld_expanse = { toughness = 7   siege_value = 0.15 }
-		mayik_corridors    = { toughness = 6   siege_value = 0.10 }
-		plains             = { toughness = -11  siege_value = -0.29 }
-		farmlands          = { toughness = -11  siege_value = -0.29 }
-		hills              = { toughness = -11  siege_value = -0.29 }
-		mountains          = { toughness = -11  siege_value = -0.29 }
-		forest             = { toughness = -11  siege_value = -0.29 }
-		taiga              = { toughness = -11  siege_value = -0.29 }
-		jungle             = { toughness = -11  siege_value = -0.29 }
-		wetlands           = { toughness = -11  siege_value = -0.29 }
-		steppe             = { toughness = -11  siege_value = -0.29 }
-		desert             = { toughness = -11  siege_value = -0.29 }
-		desert_mountains   = { toughness = -11  siege_value = -0.29 }
-		floodplains        = { toughness = -11  siege_value = -0.29 }
-		drylands           = { toughness = -11  siege_value = -0.29 }
-		oasis              = { toughness = -11  siege_value = -0.29 }
-		deadlands          = { toughness = -11  siege_value = -0.29 }
-		redlands_chasms    = { toughness = -11  siege_value = -0.29 }
-		marcher_plains     = { toughness = -11  siege_value = -0.29 }
-		marcher_farmlands  = { toughness = -11  siege_value = -0.29 }
-		marcher_hills      = { toughness = -11  siege_value = -0.29 }
-		marcher_mountains  = { toughness = -11  siege_value = -0.29 }
-		marcher_forest     = { toughness = -11  siege_value = -0.29 }
-		marcher_wetlands   = { toughness = -11  siege_value = -0.29 }
-		marcher_floodplains = { toughness = -11 siege_value = -0.29 }
-	}
-
-	can_recruit = {
-		culture = { has_cultural_pillar = heritage_cavetribe }
-		any_realm_province = {
-			has_building_or_higher = mayik_chasm_bridge_fort_01
-		}
-	}
-
-	should_show_when_unavailable = {
-		culture = { has_cultural_pillar = heritage_cavetribe }
-	}
-
-	buy_cost = { gold = mangonel_recruitment_cost }
-	low_maintenance_cost = { gold = mangonel_low_maint_cost }
-	high_maintenance_cost = { gold = mangonel_high_maint_cost }
-	provision_cost = @provisions_cost_special_moderate
-
-	stack = 10
-	allowed_in_hired_troops = no
 }

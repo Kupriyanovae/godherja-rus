@@ -109,10 +109,6 @@ culture_not_warlike_trigger = { # GH CHANGE: Generic trigger replacement, added 
 			culture_tradition:tradition_sammalriq = { is_in_list = traits }			
 			culture_tradition:tradition_painted_men = { is_in_list = traits }			
 			culture_tradition:tradition_redlanders = { is_in_list = traits }			
-			culture_tradition:tradition_tgp_bushido = { is_in_list = traits }
-			culture_tradition:tradition_tgp_defiant_ambushers = { is_in_list = traits }
-			culture_tradition:tradition_tgp_warrior_monks = { is_in_list = traits }
-			culture_tradition:tradition_tgp_art_of_war = { is_in_list = traits }
 		}
 	}
 	custom_description = {
@@ -213,267 +209,103 @@ culture_is_not_historical_hybrid_trigger = { # GH URGENT: Add ours
 }
 
 # Cultural MAA triggers - Used in various places for triggers, AI weights, etc.
-culture_has_skirmisher_maa = {
+culture_has_skirmisher_maa = { # GH URGENT: GH additions needed to this and all other MAA triggers
 	OR = {
-		has_cultural_parameter = unlock_maa_horn_warrior
-		has_cultural_parameter = unlock_maa_shomer
-		has_cultural_parameter = unlock_maa_abudrar
-		has_cultural_parameter = unlock_maa_guinea_warrior
-		has_cultural_parameter = unlock_maa_pesilat
-		#has_innovation = innovation_adaptive_militia #Goedendag - Later Era MAA
-		has_cultural_parameter = unlock_maa_akritai
-
-		## GH ADDITIONS
-
 		has_innovation = innovation_berserkers
 		has_innovation = innovation_moonkin
 		has_innovation = innovation_wodes
+		has_innovation = innovation_eastern_cav
 		has_innovation = innovation_bloodbound
 		has_innovation = innovation_legion_raiders
 		has_innovation = innovation_legion_marines
-		has_innovation = innovation_mountainstrikers
-		has_innovation = innovation_thrill_of_the_hunt
-		has_cultural_parameter = unlock_maa_tsanruti
-		has_cultural_parameter = unlock_maa_kanpahuri
-		has_innovation = innovation_waranuux_spearmen
-		has_innovation = innovation_advanced_waranuux
-		has_innovation = innovation_retreat_tactics
-		has_cultural_parameter = unlock_maa_leki_herdmasters
-		has_cultural_parameter = unlock_maa_thorn_maidens
-		has_cultural_parameter = unlock_maa_dhageray
-		has_cultural_parameter = unlock_maa_jaanvarkis
-
-		## END OF GH ADDITIONS
 	}
 }
 
 culture_has_archer_maa = {
 	OR = {
-		has_cultural_parameter = unlock_maa_archers_of_the_nile
-		has_cultural_parameter = unlock_maa_bush_hunter
-		has_cultural_parameter = unlock_maa_metsanvartija
-		has_cultural_parameter = unlock_maa_maturkan_warriors
-		has_cultural_parameter = unlock_maa_longbowmen
-		has_innovation = innovation_repeating_crossbow #Chu-ko-nu Archers
-		#has_innovation = innovation_bamboo_bows #Paiks ## GH URGENT: Un-delete and comment out if needed
-
-		## GH ADDITIONS
-
 		has_innovation = innovation_the_bloodied
-		has_innovation = innovation_grove_guardians
-		has_innovation = innovation_jerniems_rangers
 		has_innovation = innovation_adabyss
-		has_innovation = innovation_observant
-		has_cultural_parameter = unlock_maa_mezilachitnen
-		has_innovation = innovation_rayakuux_archers
-		has_innovation = innovation_advanced_rayakuux
-		#has_innovation = innovation_burstbolt
-
-		## END OF GH ADDITIONS
-	}
-}
-
-culture_has_improved_crossbowmen = {
-	OR = {
-		has_innovation = innovation_repeating_crossbow #Chu-ko-nu Archers
 	}
 }
 
 culture_has_heavy_infantry_maa = {
 	OR = {
-		has_cultural_parameter = unlock_maa_ayyar
-		#has_cultural_parameter = unlock_maa_mubarizun ## GH URGENT: Un-delete and comment out if needed
-		has_cultural_parameter = unlock_maa_druzhina
-		#has_cultural_parameter = unlock_maa_khandayat ## GH URGENT: Un-delete and comment out if needed
-		#has_cultural_parameter = unlock_maa_garudas ## GH URGENT: Un-delete and comment out if needed
-		#has_cultural_parameter = unlock_maa_palace_guards ## GH URGENT: Un-delete and comment out if needed
-		has_cultural_parameter = unlock_maa_huscarls
-		#has_cultural_parameter = unlock_maa_mountaineer ## GH URGENT: Un-delete and comment out if needed
-		#has_cultural_parameter = unlock_maa_zbrojnosh ## GH URGENT: Un-delete and comment out if needed
-		has_cultural_parameter = unlock_infantry_samurai_units
-		has_cultural_parameter = unlock_zhanmadao
-		has_cultural_parameter = unlock_burenjia
-
-		#has_innovation = innovation_sarawit #Sarawit - Later Era MAA ## GH URGENT: Un-delete and comment out if needed
-		#has_innovation = innovation_legionnaires #Praetorian ## GH URGENT: Un-delete and comment out if needed
-		has_cultural_parameter = unlock_maa_varangian_guards
-
-		## GH ADDITIONS
-
-		has_innovation = innovation_sjalvolki_adventurers
-		has_innovation = innovation_aversarian_legionaires
-		has_innovation = innovation_home_legions
-		has_innovation = innovation_north_shields
-		has_innovation = innovation_stoneforged
-		has_innovation = innovation_huegodoc_legion
 		has_cultural_parameter = unlock_maa_mubaaizun
-		has_cultural_parameter = unlock_maa_krialetil
-		has_cultural_parameter = unlock_maa_sahkmavali
-		has_innovation = innovation_talabhau
-		has_cultural_parameter = unlock_maa_visvasavrak
-		has_innovation = innovation_fiber_plates
-		has_innovation = innovation_sarradon_imitation_legion
+		has_innovation = innovation_aversarian_legionaires
+		has_innovation = innovation_doriosian_reforms
+		has_innovation = innovation_anti_magic_combat
+		has_innovation = innovation_adabyss
+		has_innovation = innovation_north_shields
+		has_innovation = innovation_home_legions
 		has_innovation = innovation_enlevett
-		has_innovation = innovation_sword_oaths
-		has_cultural_parameter = unlock_maa_death_seekers
-		has_cultural_parameter = unlock_maa_sidharakyan
-		has_cultural_parameter = unlock_maa_bluescars
-		has_innovation = innovation_yamen_troops
-
-		## END OF GH ADDITIONS
+		has_innovation = innovation_stoneforged
 	}
 }
 
 culture_has_pikemen_maa = { #I.e. Spearmen
 	OR = {
-		#has_cultural_parameter = unlock_maa_zupin_warrior ## GH URGENT: Un-delete and comment out if needed
-		has_cultural_parameter = unlock_warrior_monk_units
-		#has_innovation = innovation_rectilinear_schiltron #Schiltron - Later Era MAA ## GH URGENT: Un-delete and comment out if needed
-		#has_innovation = innovation_pike_columns #Picchieri - Later Era MAA ## GH URGENT: Un-delete and comment out if needed
-		#has_innovation = innovation_zweihanders #Later Era MAA ## GH URGENT: Un-delete and comment out if needed
-		has_cultural_parameter = unlock_maa_skoutatoi
-
-		## GH ADDITIONS
-
-		has_innovation = innovation_golden_spears
 		has_innovation = innovation_konijkmener_pikes
+		has_innovation = innovation_golden_spears
 		has_innovation = innovation_pure_pikes
-		has_innovation = innovation_jokhosani
-		has_innovation = innovation_kaphral
-		has_innovation = innovation_rearka_training
-		has_innovation = innovation_crimson_spears
-		has_innovation = innovation_molten_vanguard
-		has_cultural_parameter = unlock_maa_azmaram
-		has_innovation = innovation_military_structure
-		has_cultural_parameter = unlock_maa_oltenic_spearmen
-
-		## END OF GH ADDITIONS
+		has_cultural_tradition = tradition_lords_of_aironoi
 	}
 }
 
 culture_has_light_cavalry_maa = {
 	OR = {
-		has_cultural_parameter = unlock_maa_mulaththamun
-		has_cultural_parameter = unlock_maa_hussar #Konni
-		#has_cultural_parameter = unlock_maa_tawashi #Tawashi ## GH URGENT: Un-delete and comment out if needed
-		has_cultural_parameter = unlock_maa_ayrudzi
-		#has_innovation = innovation_desert_tactics #Chasseur ## GH URGENT: Un-delete and comment out if needed
-		#has_innovation = innovation_caballeros #Caballero ## GH URGENT: Un-delete and comment out if needed
-		#has_innovation = innovation_hobbies #Hobelar ## GH URGENT: Un-delete and comment out if needed
-		#has_innovation = innovation_sahel_horsemen #Sahel Horsemen ## GH URGENT: Un-delete and comment out if needed
-
-		## GH ADDITIONS
-
 		has_innovation = innovation_prophets_sons
+		has_innovation = innovation_duneriders
 		has_innovation = innovation_brother_riders
 		has_innovation = innovation_legion_outriders
-		has_innovation = innovation_duneriders
-		has_cultural_parameter = unlock_maa_tskherosan
-		has_innovation = innovation_mezzarb_domestication
-		has_innovation = innovation_beast_cavalry
-
-		## END OF GH ADDITIONS
+		has_cultural_tradition = tradition_lords_of_aironoi 
+		has_cultural_parameter = unlock_maa_cloud_riders
 	}
 }
 
 culture_has_heavy_cavalry_maa = {
 	OR = {
-		has_cultural_parameter = unlock_maa_cataphract
-		#has_cultural_parameter = unlock_maa_monaspa ## GH URGENT: Un-delete and comment out if needed
-		#has_cultural_parameter = unlock_maa_tarkhan ## GH URGENT: Un-delete and comment out if needed
-		has_cultural_parameter = unlock_maa_conrois
-		has_cultural_parameter = unlock_maa_cataphract_archers
-		#has_innovation = innovation_tiefutu ## GH URGENT: Un-delete and comment out if needed
-		has_cultural_parameter = unlock_maa_black_armor_cavalry
-		#has_innovation = innovation_valets #Gendarme - Later Era MAA ## GH URGENT: Un-delete and comment out if needed
-
-		## GH ADDITIONS
-
+		has_innovation = innovation_eastern_cav 
 		has_innovation = innovation_grave_wardens
+		has_innovation = innovation_griffon_riders
+		has_innovation = innovation_war_chariots
 		has_innovation = innovation_flying_lances
 		has_innovation = innovation_marcher_knights
-		has_innovation = innovation_eastern_cav
 		has_innovation = innovation_sunstriders
-		has_innovation = innovation_banners
-		has_cultural_parameter = unlock_maa_gh_kordhan
-
-		## END OF GH ADDITIONS
-	}
-}
-
-culture_has_camel_cavalry_maa = { ## GH ADDITION: Trigger to mirror other MAA types
-	OR = {
-		has_cultural_parameter = unlock_maa_mulaththamun
-		has_cultural_parameter = unlock_maa_gh_shazun
-	}
-}
-
-culture_has_elephant_cavalry_maa = { ## GH ADDITION: Trigger to mirror other MAA types
-	OR = {
-		has_innovation = innovation_elephantry
-		has_innovation = innovation_warisnik_mammoths
 	}
 }
 
 culture_has_archer_cavalry_maa = {
 	OR = {
-		has_cultural_parameter = unlock_maa_horse_archers
-		has_cultural_parameter = unlock_maa_mangudai
-		has_cultural_parameter = unlock_emishi_horse_archers_units
-		has_cultural_parameter = unlock_mounted_samurai_units
-
-
-		culture_head ?= {
-			mpo_can_recruit_nomad_maa_trigger = yes
-		}
-		any_player = {
-			culture = prev
-			mpo_can_recruit_nomad_maa_trigger = yes
-		}
-
-		## GH ADDITIONS
-
 		has_cultural_parameter = unlock_maa_cloud_riders
-		has_cultural_parameter = unlock_maa_oltenic_horse_archers
-
-		## END OF GH ADDITIONS
-
+		has_cultural_tradition = tradition_lords_of_aironoi
 	}
 }
 
-culture_has_gunpowder_maa = { ## GH ADDITION: Trigger to mirror other MAA types
+culture_has_magi_maa = {
 	OR = {
-		has_cultural_parameter = unlock_late_medieval_gunpowder_units
-	}
-}
-
-culture_has_magi_maa = { ## GH ADDITION: Magi MAA type
-	OR = {
-		has_innovation = innovation_sword_oaths
 		has_innovation = innovation_imperial_magic
-		has_innovation = innovation_partic_seers
 		has_innovation = innovation_wodes
-		has_cultural_parameter = unlock_maa_markwardens
-		has_cultural_parameter = unlock_maa_sandsingers
-		has_innovation = innovation_terrors_of_the_void
+		has_innovation = innovation_partic_seers
+		#has_innovation = innovation_stepwalkers
+		has_innovation = innovation_sword_oaths
 	}
 }
 
-culture_has_chariot_cavalry_maa = { ## GH ADDITION: Chariots MAA type
+culture_has_monster_maa = {
+	always = no # GH TODO: Add them (or make them)
+}
+
+culture_has_chariot_cavalry_maa = {
 	OR = {
-		has_cultural_parameter = unlocks_beetle_riders
+		has_innovation = innovation_war_chariots
 	}
 }
 
-culture_has_adventurers_maa = { ## GH ADDITION: Adventurers MAA type
+culture_has_adventurers_maa = {
 	OR = {
 		has_innovation = innovation_anti_magic_combat
 		has_innovation = innovation_berserkers
 	}
-}
-
-culture_has_monsters_maa = { ## GH ADDITION: Monsters MAA type
-	always = no # GH TODO: Add UNIQUE Monsters MAA here
 }
 
 # Blocks all non-special MAA
@@ -517,15 +349,11 @@ culture_specializes_in_skirmisher_maa = {
 		has_cultural_tradition = tradition_adaptive_skirmishing
 		has_cultural_tradition = tradition_hit_and_run
 		has_cultural_tradition = tradition_forest_wardens
-		has_cultural_tradition = tradition_hussar
+		#has_cultural_tradition = tradition_hussar ## GH CHANGE: Removed for GH
 		has_cultural_tradition = tradition_fp3_pragmatic_creed
 		culture_has_skirmisher_maa = yes
 
-		## GH ADDITIONS: Skirmisher bonuses that are not tied to a unique MAA
-
-		# Nothing here yet!
-
-		## END OF GH ADDITIONS
+		GH_culture_specializes_in_skirmisher_maa = yes ## GH ADDITION: Various GH-specific archer bonuses
 	}
 }
 
@@ -537,12 +365,7 @@ culture_specializes_in_archer_maa = {
 		has_cultural_tradition = tradition_formation_fighting
 		culture_has_archer_maa = yes
 
-		## GH ADDITIONS: Archer bonuses that are not tied to a unique MAA
-
-		has_innovation = innovation_thumb_rings
-		has_innovation = innovation_winged_shields
-
-		## END OF GH ADDITIONS
+		GH_culture_specializes_in_archer_maa = yes ## GH ADDITION: Various GH-specific archer bonuses
 	}
 }
 
@@ -552,39 +375,25 @@ culture_specializes_in_heavy_infantry_maa = {
 		has_cultural_tradition = tradition_metal_craftsmanship
 		has_cultural_tradition = tradition_mountain_homes
 		has_cultural_tradition = tradition_stand_and_fight
-		has_cultural_tradition = tradition_mobile_guards
-		has_cultural_tradition = tradition_mountaineer_ruralism
-		has_cultural_tradition = tradition_tgp_art_of_war
-		has_cultural_tradition = tradition_tgp_bushido
+		#has_cultural_tradition = tradition_mobile_guards ## GH CHANGE: Removed for GH
+		#has_cultural_tradition = tradition_mountaineer_ruralism ## GH CHANGE: Removed for GH
 		culture_has_heavy_infantry_maa = yes
 
-		## GH ADDITIONS: Heavy Infantry bonuses that are not tied to a unique MAA
-
-		has_innovation = innovation_doriosian_reforms
-		has_innovation = innovation_kafasali_steel
-		has_innovation = innovation_wuizu
-		has_innovation = innovation_sarradon_magi_plate
-
-		## END OF GH ADDITIONS
+		GH_culture_specializes_in_heavy_infantry_maa = yes ## GH ADDITION: Various GH-specific archer bonuses
 	}
 }
 
 culture_specializes_in_pikemen_maa = {
 	OR = {
-		has_cultural_tradition = tradition_mountaineer_ruralism
+		#has_cultural_tradition = tradition_mountaineer_ruralism ## GH CHANGE: Removed for GH
 		has_cultural_tradition = tradition_metal_craftsmanship
 		has_cultural_tradition = tradition_mountain_homes
 		has_cultural_tradition = tradition_formation_fighting
 		has_cultural_tradition = tradition_stand_and_fight
 		has_cultural_tradition = tradition_mobile_guards
-		has_cultural_tradition = tradition_tgp_warrior_monks
 		culture_has_pikemen_maa = yes
 
-		## GH ADDITIONS: Pikemen bonuses that are not tied to a unique MAA
-
-		# Nothing here yet!
-
-		## END OF GH ADDITIONS
+		GH_culture_specializes_in_pikemen_maa = yes ## GH ADDITION: Various GH-specific pikemen bonuses
 	}
 }
 
@@ -597,11 +406,7 @@ culture_specializes_in_light_cavalry_maa = {
 		#has_cultural_tradition = tradition_saharan_nomads ## GH CHANGE: Removed for GH
 		culture_has_light_cavalry_maa = yes
 
-		## GH ADDITIONS: Light Cavalry bonuses that are not tied to a unique MAA
-
-		# Nothing here yet!
-
-		## END OF GH ADDITIONS
+		GH_culture_specializes_in_light_cavalry_maa = yes ## GH ADDITION: Various GH-specific light cavalry bonuses
 	}
 }
 
@@ -611,86 +416,29 @@ culture_specializes_in_heavy_cavalry_maa = {
 		has_cultural_tradition = tradition_mountain_homes
 		has_cultural_tradition = tradition_horse_breeder
 		has_cultural_tradition = tradition_stand_and_fight
-		has_cultural_tradition = tradition_mobile_guards
-		has_cultural_tradition = tradition_ep3_indomitable_azatani
-		has_cultural_tradition = tradition_mountaineer_ruralism
-		has_cultural_tradition = tradition_tgp_art_of_war
+		#has_cultural_tradition = tradition_mobile_guards ## GH CHANGE: Removed for GH
+		#has_cultural_tradition = tradition_ep3_indomitable_azatani ## GH CHANGE: Removed for GH
+		#has_cultural_tradition = tradition_mountaineer_ruralism ## GH CHANGE: Removed for GH
 		culture_has_heavy_cavalry_maa = yes
 
-		## GH ADDITIONS: Heavy Cavalry bonuses that are not tied to a unique MAA
-
-		# Nothing here yet!
-
-		## END OF GH ADDITIONS
-	}
-}
-
-culture_specializes_in_camel_cavalry_maa = { ## GH ADDITION: Trigger to mirror other MAA types
-	OR = {
-		culture_has_camel_cavalry_maa = yes
-		## GH TODO: Add Camel Cavalry bonuses that are not tied to a unique MAA
-	}
-}
-
-culture_specializes_in_elephant_cavalry_maa = { ## GH ADDITION: Trigger to mirror other MAA types
-	OR = {
-		culture_has_elephant_cavalry_maa = yes
-		## GH TODO: Add Elephant Cavalry bonuses that are not tied to a unique MAA
+		GH_culture_specializes_in_heavy_cavalry_maa = yes ## GH ADDITION: Various GH-specific heavy cavalry bonuses
 	}
 }
 
 culture_specializes_in_archer_cavalry_maa = {
 	OR = {
-		has_cultural_tradition = tradition_ep3_indomitable_azatani
 		has_cultural_tradition = tradition_horse_breeder
 		has_cultural_tradition = tradition_mpo_iron_cavalry
 		has_cultural_tradition = tradition_devoted_horsemanship
-		has_cultural_tradition = tradition_tgp_bushido
-		has_cultural_tradition = tradition_tgp_defiant_ambushers
+		has_cultural_tradition = tradition_falcon_veneration
 		culture_has_archer_cavalry_maa = yes
-
-		## GH ADDITIONS: Archer Cavalry bonuses that are not tied to a unique MAA
-
-		has_innovation = innovation_thumb_rings
-		has_innovation = innovation_winged_shields
-
-		## END OF GH ADDITIONS
 	}
 }
 
-culture_specializes_in_gunpowder_maa = { ## GH ADDITION: Trigger to mirror other MAA types
+culture_specializes_in_magi_maa = {
 	OR = {
-		culture_has_gunpowder_maa = yes
-		## GH TODO: Add Gunpowder bonuses that are not tied to a unique MAA
-	}
-}
-
-culture_specializes_in_magi_maa = { ## GH ADDITION: Magi MAA
-	OR = {
+		has_cultural_tradition = tradition_kedari_marked
 		culture_has_magi_maa = yes
-		## GH TODO: Add Magi bonuses that are not tied to a unique MAA
-	}
-}
-
-culture_specializes_in_chariot_cavalry_maa = { ## GH ADDITION: Chariot Cavalry MAA
-	OR = {
-		culture_has_chariot_cavalry_maa = yes
-		## GH TODO: Add Chariot bonuses that are not tied to a unique MAA
-	}
-}
-
-culture_specializes_in_adventurers_maa = { ## GH ADDITION: Adventurers MAA
-	OR = {
-		culture_has_adventurers_maa = yes
-		has_innovation = innovation_wayfarers_resolve
-		## GH TODO: Add Adventurers bonuses that are not tied to a unique MAA
-	}
-}
-
-culture_specializes_in_monsters_maa = { ## GH ADDITION: Monsters MAA
-	OR = {
-		culture_has_monsters_maa = yes
-		## GH TODO: Add Monsters bonuses that are not tied to a unique MAA
 	}
 }
 
@@ -872,12 +620,5 @@ culture_tradition_reduction_trigger = {
 			name = culture_tradition_reduction
 			target = culture_tradition:$TRADITION$
 		}
-	}
-}
-
-culture_is_or_has_ancestor_trigger = {
-	OR = {
-		this = $CULTURE$
-		any_parent_culture_or_above = { this = $CULTURE$ }
 	}
 }

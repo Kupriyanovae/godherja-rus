@@ -369,7 +369,7 @@ is_large_conquest_war_for_struggle_trigger = {
 			using_cb = imperial_reconquest_cb
 			using_cb = invasion_war
 			using_cb = clan_invasion_war
-			#using_cb = mongol_invasion_war
+			using_cb = mongol_invasion_war
 			#using_cb = mongol_realm_invasion_war
 			using_cb = mpo_gok_onslaught_cb
 			using_cb = major_religious_war
@@ -417,8 +417,6 @@ can_use_struggle_cbs_trigger = {
 					has_house_modifier = fp2_struggle_hostility_house_combined_modifier
 					has_house_modifier = fp2_struggle_hostility_house_faith_modifier
 					has_house_modifier = fp2_struggle_hostility_house_culture_modifier
-					has_house_modifier = gh_struggle_house_faith_modifier_wardenite
-					has_house_modifier = gh_struggle_house_faith_modifier_ritualist
 				}
 			}
 		}
@@ -472,7 +470,7 @@ struggle_conquest_cb_target_is_ocm_trigger = {
 		holder = {
 			any_held_title = {
 				count = 1
-				title_tier = county
+				tier = tier_county
 			}
 			NOT = {
 				any_vassal = { highest_held_title_tier >= tier_county }

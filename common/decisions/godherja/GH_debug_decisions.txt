@@ -200,15 +200,11 @@ add_olteni_masks = {
 				count = 100
 				save_scope_value_as = {
 					name = quality
-					value = { 5 150 }
+					value = { 1 150 }
 				}
 				save_scope_value_as = {
 					name = wealth
-					value = {
-						add = scope:quality
-						multiply = { 0.3 0.8 }
-						round = yes
-					}
+					value = scope:quality
 				}
 				create_artifact_oltenic_mask_effect = {
 					OWNER = root
@@ -218,44 +214,5 @@ add_olteni_masks = {
 			}
 		}
 		custom_tooltip = add_olteni_masks_effect_tooltip
-	}
-}
-
-add_glass_artifacts = {
-	ai_check_interval = 0
-	decision_group_type = debug
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_magi.dds"
-	}
-	
-	is_shown = {
-		debug_only = yes
-	}
-
-	effect = {
-		hidden_effect = {
-			while = {
-				count = 100
-				save_scope_value_as = {
-					name = quality
-					value = { 5 150 }
-				}
-				save_scope_value_as = {
-					name = wealth
-					value = {
-						add = scope:quality
-						multiply = { 0.3 0.8 }
-						round = yes
-					}
-				}
-				random_dummy_gender_effect = yes
-				create_artifact_glassware_effect = {
-					OWNER = root
-					CREATOR = scope:dummy_gender
-					SET_GLASSWARE_TYPE = flag:artifact_glassware_type_beaker
-				}
-			}
-		}
-		custom_tooltip = add_glass_artifacts_effect_tooltip
 	}
 }

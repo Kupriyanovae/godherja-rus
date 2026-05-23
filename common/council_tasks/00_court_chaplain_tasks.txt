@@ -242,34 +242,12 @@ task_conversion = {
 	}
 
 	effect_desc = {
-		#China changes the faith to the Huangdi's faith
-		triggered_desc = {
-			trigger = {
-				scope:councillor_liege = {
-					highest_held_title_tier >= tier_hegemony
-					government_has_flag = government_has_merit
-				}
-			}
-			desc = task_conversion_china_effect_desc
-		}
-		#Otherwise it's councillor's faith
-		triggered_desc = {
-			trigger = {
-				NOT = {
-					scope:councillor_liege = {
-						highest_held_title_tier >= tier_hegemony
-						government_has_flag = government_has_merit
-					}
-				}
-			}
-			desc = task_conversion_effect_desc
-		}
-		desc = task_conversion_development_loss_desc
+		desc = task_conversion_effect_desc
 		triggered_desc = {
 			trigger = {
 				scope:councillor_liege = {
 					any_vassal = {
-						vassal_stance = minority
+						has_vassal_stance = minority
 					}
 				}
 			}
@@ -416,7 +394,7 @@ task_conversion = {
 		if = {
 			limit = {
 				scope:councillor.top_liege.primary_title.state_faith ?= {
-					this != scope:county.faith
+					NOT = { this = scope:county.faith }
 					this = scope:councillor.top_liege.faith
 				}
 			}
@@ -425,7 +403,6 @@ task_conversion = {
 				desc = ep3_convert_county_to_state_faith
 			}
 		}
-		
 		# Conversion speed game rules
 		if = {
 			limit = {
@@ -530,76 +507,6 @@ task_conversion = {
 				desc = SMALL_FAITH_CONVERSION_PENALTY
 			}
 		}
-
-		# Struggle Stuff
-		if = { 
-			limit = {
-				scope:councillor_liege = {
-					has_religion = religion:wardenism_religion
-					any_character_struggle = {
-						involvement = involved
-						has_struggle_phase_parameter = wardenite_county_conversion_speed_boost
-					}
-				}
-			}
-			multiply = {
-				value = fp2_struggle_hostility_conversion_value
-				desc = WARDENITE_DOMINANCE_PHASE_FAITH_CONVERSION_BONUS
-			}
-		}
-		else_if = { 
-			limit = {
-				scope:councillor_liege = {
-					has_religion = religion:ritualist_religion
-					any_character_struggle = {
-						involvement = involved
-						has_struggle_phase_parameter = ritualist_county_conversion_speed_boost
-					}
-				}
-			}
-			multiply = {
-				value = fp2_struggle_hostility_conversion_value
-				desc = RITUALIST_DOMINANCE_PHASE_FAITH_CONVERSION_BONUS
-			}
-		}
-		else_if = { 
-			limit = {
-				scope:councillor_liege = {
-					has_religion = religion:agionism_religion
-					any_character_struggle = {
-						has_struggle_phase_parameter = agionist_county_conversion_speed_boost
-					}
-				}
-			}
-			multiply = {
-				value = fp2_struggle_hostility_conversion_value
-				desc = AGIONIST_DOMINANCE_PHASE_FAITH_CONVERSION_BONUS
-			}
-		}
-
-		if = {
-			limit = {
-				exists = scope:councillor.liege.house
-				scope:councillor.liege.house = {
-					OR = {
-						has_house_modifier = gh_struggle_house_faith_modifier_wardenite
-						has_house_modifier = gh_struggle_house_rebuilder_modifier_wardenite
-						has_house_modifier = gh_struggle_house_war_modifier_wardenite
-
-						has_house_modifier = gh_struggle_house_faith_modifier_ritualist
-						has_house_modifier = gh_struggle_house_rebuilder_modifier_ritualist
-						has_house_modifier = gh_struggle_house_war_modifier_ritualist
-
-						has_house_modifier = gh_struggle_house_modifier_generic
-					}
-				}
-				gh_wih_is_in_region_for_house_modifier_trigger = yes			
-			}
-			multiply = {
-				value = fp2_struggle_hostility_conversion_value
-				desc = gh_wih_house_faith_conversion_task_desc
-			}
-		}
 		## END GH ADDITIONS ##
 	}
 
@@ -615,7 +522,7 @@ task_conversion = {
 				}
 				custom_tooltip = {
 					text = hold_court_8120_conversion_tt
-					faith != scope:councillor_liege.var:hold_court_8120_religion_block
+					NOT = { faith = scope:councillor_liege.var:hold_court_8120_religion_block }
 				}
 			}
 			custom_description = {
@@ -628,13 +535,14 @@ task_conversion = {
 							AND = {
 								liege = scope:councillor_liege
 								is_ruler = yes
-								top_liege != this
+								is_independent_ruler = no
 								vassal_contract_has_flag = religiously_protected
 							}
 							any_liege_or_above = {
-								liege ?= scope:councillor_liege
+								exists = liege
+								liege = scope:councillor_liege
 								is_ruler = yes
-								top_liege != this
+								is_independent_ruler = no
 								vassal_contract_has_flag = religiously_protected
 							}
 						}
@@ -700,10 +608,7 @@ task_conversion = {
 						has_character_flag = vassal_directive_convert_faith
 						vassal_is_valid_and_follows_directive_trigger = { VASSAL = this LIEGE = liege }
 					}
-					scope:councillor_liege = {
-						ai_zeal >= 100
-						ai_rationality <= -50
-					}
+					scope:councillor_liege = { ai_zeal >= 100 }
 					scope:county = { # Always convert holy sites
 						any_county_province = {
 							barony = {
@@ -737,8 +642,8 @@ task_conversion = {
 							has_character_flag = vassal_directive_convert_faith
 							vassal_is_valid_and_follows_directive_trigger = { VASSAL = this LIEGE = liege }
 						}
-						scope:councillor_liege = { ai_zeal >= 100 }
-						scope:county = { county_opinion <= -25 }
+						scope:councillor_liege = { ai_zeal >= 50 }
+						scope:county = { county_opinion <= -20 }
 						scope:county = { # Always convert holy sites
 							any_county_province = {
 								barony = {
@@ -776,7 +681,7 @@ task_conversion = {
 							has_character_flag = vassal_directive_convert_faith
 							vassal_is_valid_and_follows_directive_trigger = { VASSAL = this LIEGE = liege }
 						}
-						scope:councillor_liege = { ai_zeal >= 25 }
+						scope:councillor_liege = { ai_zeal >= 10 }
 						scope:county = { county_opinion <= -15 }
 						scope:county = { # Always convert holy sites
 							any_county_province = {
@@ -882,15 +787,15 @@ task_conversion = {
 					save_temporary_scope_as = employer
 				}
 				any_ruler = {
-					has_government = landless_adventurer_government
+					is_landless_adventurer = yes
 					is_within_diplo_range = { CHARACTER = scope:councillor }
 					any_character_task_contract = {
-						task_contract_type = laamp_fight_faith_conversion_contract
+						has_task_contract_type = laamp_fight_faith_conversion_contract
 						count <= council_task_contracts_limit_value
 					}
 					NOT = {
 						any_task_contract = {
-							task_contract_type = laamp_fight_faith_conversion_contract
+							has_task_contract_type = laamp_fight_faith_conversion_contract
 							task_contract_location = scope:employer.location
 						}
 					}
@@ -924,13 +829,15 @@ task_conversion = {
 			if = {
 				limit = {
 					any_vassal = {
-						vassal_stance = minority
+						has_vassal_stance = minority
 					}
 				}
 				custom_tooltip = minority_disapproves_conversion
 				hidden_effect = {
 					every_vassal = {
-						vassal_stance = minority
+						limit = {
+							has_vassal_stance = minority
+						}
 						add_opinion = {
 							target = scope:councillor_liege
 							modifier = minority_disapproves_of_conversion_opinion
@@ -938,97 +845,9 @@ task_conversion = {
 					}
 				}
 			}
-			add_to_variable_list = {
-				name = faiths_converted_in_counties
-				target = scope:old_faith
-			}
 		}
 		scope:county = {
-			add_to_variable_list = {
-				name = faiths_converted_in_the_county
-				target = scope:old_faith
-				years = 40
-			}
-			scope:old_faith = {
-				if = {
-					limit = {
-						OR = {
-							NOT = { has_variable = associated_county }
-							AND = {
-								has_variable = converted_development
-								var:converted_development <= 0
-							}
-						}
-					}
-					set_variable = {
-						name = associated_county
-						value = scope:county
-					}
-				}
-				if = {
-					limit = {
-						OR = {
-							NOT = { has_variable = associated_culture }
-							AND = {
-								has_variable = converted_development
-								var:converted_development <= 0
-							}
-						}
-					}
-					set_variable = {
-						name = associated_culture
-						value = scope:county.culture
-					}
-				}
-				if = {
-					limit = {
-						NOT = { has_variable = converted_development }
-					}
-					set_variable = {
-						name = converted_development
-						value = scope:county.convert_faith_development_value
-					}
-				}
-				else = {
-					change_variable = {
-						name = converted_development
-						add = scope:county.convert_faith_development_value
-					}
-				}
-			}
-			change_development_level = convert_faith_development_loss
-			if = {
-				limit = {
-					scope:councillor_liege = {
-						highest_held_title_tier >= tier_hegemony
-						government_has_flag = government_has_merit
-					}
-				}
-				set_county_faith = scope:councillor_liege.faith
-			}
-			else = { set_county_faith = scope:councillor.faith }
-			
-		}
-		if = {
-			limit = {
-				scope:councillor_liege = {
-					OR = {
-						NOT = { has_variable_list = converted_faiths }
-						NOT = {
-							is_target_in_variable_list = {
-								name = converted_faiths
-								target = scope:old_faith
-							}
-						}
-					}
-				}
-			}
-			scope:councillor_liege = {
-				add_to_variable_list = {
-					name = converted_faiths
-					target = scope:old_faith
-				}
-			}
+			set_county_faith = scope:councillor.faith
 		}
 		if = {
 			limit = {
@@ -1055,91 +874,6 @@ task_conversion = {
 		}
 		# Message for vassals
 		trigger_event = court_chaplain_task.8002
-
-		#GH ADDITION
-		# Struggle parameters
-		scope:councillor_liege = {
-			if = {
-				limit = {
-					has_religion = religion:wardenism_religion
-					any_character_struggle = {
-						involvement = involved
-						has_struggle_phase_parameter = wardenite_piety_from_converting_county
-					}
-				}
-				add_piety = medium_piety_gain
-			}
-			else_if = {
-				limit = {
-					has_religion = religion:ritualist_religion
-					any_character_struggle = {
-						involvement = involved
-						has_struggle_phase_parameter = ritualist_piety_from_converting_county
-					}
-				}
-				add_piety = medium_piety_gain
-			}
-			else_if = {
-				limit = {
-					has_religion = religion:agionism_religion
-					any_character_struggle = {
-						has_struggle_phase_parameter = agionist_piety_from_converting_county
-					}
-				}
-				add_piety = medium_piety_gain
-			}
-			if = {
-				limit = {
-					trigger_if = {
-						limit = { faith.religion = religion:wardenism_religion }
-						scope:old_faith = { religion = religion:ritualist_religion }
-						any_character_struggle = {
-							involvement = involved
-							phase_has_catalyst = catalyst_wardenite_converted_enemy_province
-						}
-					}
-					trigger_else_if = {
-						limit = { faith.religion = religion:ritualist_religion }
-						scope:old_faith = { religion = religion:wardenism_religion }
-						any_character_struggle = {
-							involvement = involved
-							phase_has_catalyst = catalyst_ritualist_converted_enemy_province
-						}
-					}
-					trigger_else = { always = no }
-				}
-				if = {
-					limit = { faith.religion = religion:wardenism_religion }
-					every_character_struggle = {
-						involvement = involved
-						limit = { phase_has_catalyst = catalyst_wardenite_converted_enemy_province }
-						activate_struggle_catalyst = {
-							catalyst = catalyst_wardenite_converted_enemy_province
-							character = scope:councillor_liege
-						}
-					}
-				}
-				else_if = {
-					limit = { faith.religion = religion:ritualist_religion }
-					every_character_struggle = {
-						involvement = involved
-						limit = { phase_has_catalyst = catalyst_ritualist_converted_enemy_province }
-						activate_struggle_catalyst = {
-							catalyst = catalyst_ritualist_converted_enemy_province
-							character = scope:councillor_liege
-						}
-					}
-				}
-			}
-			if = {
-				limit = { any_character_struggle = { involvement = involved } }
-				general_WIH_catalyst_effect = { 
-					CHAR = scope:county.liege
-					CATALYST = province_conversion
-				}
-			}			
-		}
-		#GH END		
 	}
 
 	monthly_on_action = task_convert_side_effects
@@ -1168,7 +902,7 @@ task_conversion = {
 		if = {	#Unless you're a crypto-religionist.
 			limit = {
 				scope:councillor_liege = {
-					any_secret = { type = secret_crypto_religionist }
+					any_secret = { secret_type = secret_crypto_religionist }
 				}
 			}
 			multiply = 0
@@ -1201,15 +935,6 @@ task_fabricate_claim = {
 		background = "gfx/interface/buttons/button_round_bg.dds"
 		frame = "gfx/interface/buttons/button_round_frame.dds"
 		glow = "gfx/particles/halo.dds"
-	}
-
-	is_shown = {
-		trigger_if = {
-			limit = {
-				scope:councillor_liege = { tgp_has_access_to_ministry_trigger = yes }
-			}
-			has_council_position = minister_justice
-		}
 	}
 
 	effect_desc = {
@@ -1394,7 +1119,9 @@ task_fabricate_claim = {
 		if = {
 			limit = {
 				exists = scope:county
-				scope:county.holder.faith != scope:councillor.liege.faith
+				NOT = {
+					scope:county.holder.faith = scope:councillor.liege.faith
+				}
 			}
 			multiply = {
 				value = scope:councillor.court_chaplain_heretic_bonus
@@ -1434,7 +1161,6 @@ task_fabricate_claim = {
 			in_diplomatic_range = scope:councillor_liege
 		}
 		scope:county = {
-			is_landless_type_title = no
 			NOR = {
 				holder = scope:councillor_liege
 				scope:councillor_liege = {
@@ -1455,14 +1181,14 @@ task_fabricate_claim = {
 		if = {
 			limit = {
 				any_task_contract = {
-					task_contract_type = laamp_help_fabricate_claim_contract
+					has_task_contract_type = laamp_help_fabricate_claim_contract
 					NOT = {	task_contract_location = scope:county.title_province }
 				}
 				any_player = {
-					has_government = landless_adventurer_government
+					is_landless_adventurer = yes
 					is_within_diplo_range = { CHARACTER = scope:councillor }
 					any_character_task_contract = {
-						task_contract_type = laamp_help_fabricate_claim_contract
+						has_task_contract_type = laamp_help_fabricate_claim_contract
 						count <= council_task_contracts_limit_value
 					}
 					can_create_task_contract = {
@@ -1524,10 +1250,10 @@ task_fabricate_claim = {
 		if = {
 			limit = { # Vassals in the same realm
 				scope:councillor_liege = {
-					top_liege != this
+					is_independent_ruler = no
 				}
 				scope:county.holder = {
-					top_liege != this
+					is_independent_ruler = no
 				}
 				scope:county.holder.top_liege = scope:councillor_liege.top_liege
 			}
@@ -1736,4 +1462,4 @@ task_fabricate_claim = {
 			}
 		}
 	}
-}
+} 

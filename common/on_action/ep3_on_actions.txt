@@ -20,11 +20,11 @@
 
 ep3_yearly_events_admin = {
 	trigger = {
-		government_allows = administrative
+		has_ep3_dlc_trigger = yes
 	}
 
 	random_events = {
-		chance_to_happen = 50
+		chance_to_happen = 100
 
 		# EMPEROR EVENTS
 		# GH TODO: Reenable disabled events as they're properly readded and integrated
@@ -103,15 +103,14 @@ ep3_yearly_events_admin = {
 ep3_yearly_events_laamps = { # EP3 - Laamp Events
 	trigger = {
 		has_ep3_dlc_trigger = yes
-		has_government = landless_adventurer_government
+		is_landless_adventurer = yes
 		is_imprisoned = no
 		trigger_if = {
 			limit = {
 				exists = involved_activity
 			}
-			NOR = {
+			NOT = {
 				involved_activity ?= { is_current_phase_active = yes }
-				location = involved_activity.activity_location
 			}
 		}
 	}
@@ -131,7 +130,7 @@ ep3_yearly_events_laamps = { # EP3 - Laamp Events
 		150 = ep3_laamps.8060				# Your water supplies spring a leak
 		50 = ep3_laamps.8070				# You find some strange looking fruit, eat it?
 		500 = ep3_laamps.8080				# You find Tom Baker sitting at a bar missing most of his body parts
-		#75 = ep3_laamps.8090				# You have an out-of-body experience in a strange land and question your identity
+		75 = ep3_laamps.8090				# You have an out-of-body experience in a strange land and question your identity
 		75 = ep3_laamps.5000				# Poach for food
 		75 = ep3_laamps.5005				# Meet a wandering priest
 		75 = ep3_laamps.5010				# The rough life begins to hurt
@@ -236,13 +235,14 @@ on_liege_government_change = {
 	effect = { # Using an effect instead of a trigger here in case we want to use this outside of EP3
 		if = {
 			limit = {
-				government_has_flag = government_is_administrative
+				has_ep3_dlc_trigger = yes
+				government_allows = administrative
 				liege = { NOT = { government_allows = administrative } }
 			}
 			# Save scopes for later use
 			liege = {
 				save_scope_as = gov_liege
-				primary_title ?= { save_scope_as = gov_liege_title }
+				primary_title = { save_scope_as = gov_liege_title }
 			}
 			trigger_event = {
 				id = ep3_admin_events.0003 # Event to evaluate the outcome, and trigger the correct follow-up event
@@ -272,20 +272,6 @@ on_noble_family_title_created = {
 		if = {
 			limit = { influence <= 0 }
 			change_influence = 100
-		}
-		# ENSURE FEUDAL DOMICILES ARE IN FEUDAL LANDS
-		if = {
-			limit = {
-				domicile ?= { is_domicile_type = japanese_manor }
-			}
-			save_scope_as = domicile_owner
-			if = {
-				limit = {
-					has_government = japan_feudal_government
-					domicile.domicile_location != scope:domicile_owner.capital_province
-				}
-				domicile = { move_domicile = scope:domicile_owner.capital_province }
-			}
 		}
 	}
 }

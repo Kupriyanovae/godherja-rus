@@ -1,4 +1,4 @@
-﻿######################################################
+######################################################
 ################### COUNTY VIEW ######################
 ######################################################
 
@@ -44,14 +44,13 @@ window = {
 	alwaystransparent = yes
 
 	vbox = {
-		layoutpolicy_horizontal = expanding
+
 		expand = {
 			ignoreinvisible = yes
 			layoutpolicy_vertical = expanding
 		}
 
 		vbox = {
-			layoutpolicy_horizontal = expanding
 			name = "window_content"
 			margin_right = 40
 			margin_top = 35
@@ -63,7 +62,7 @@ window = {
 			datacontext = "[Province.GetCounty]"
 
 			background = {
-				texture = "gfx/interface/skinned/tile_window_background_subwindow.dds"
+				texture = "gfx/interface/component_tiles/tile_window_background_subwindow.dds"
 				spriteType = Corneredtiled
 				spriteborder = { 18 18 }
 				margin = { -23 -17 }
@@ -106,7 +105,7 @@ window = {
 
 						text_single = {
 							#GH CHANGE: Title lore/gloss
-							text = "[SelectLocalization(Not(EqualTo_string(Concatenate(HoldingView.GetCountyTitle.GetKey, '_desc'), Localize(Concatenate(HoldingView.GetCountyTitle.GetKey, '_desc')))), Glossary(HoldingView.GetCountyTitle.GetNameNoTooltip, Concatenate(HoldingView.GetCountyTitle.GetKey, '_desc')), HoldingView.GetCountyTitle.GetNameNoTooltip)|U]"
+							text = "[SelectLocalization(Not(EqualTo_string(Concatenate(HoldingView.GetCountyTitle.GetKey, '_desc'), Localize(Concatenate(HoldingView.GetCountyTitle.GetKey, '_desc')))), Glossary(HoldingView.GetCountyTitle.GetNameNoTooltip, Concatenate(HoldingView.GetCountyTitle.GetKey, '_desc')), HoldingView.GetCountyTitle.GetNameNoTooltip)]"
 							using = Font_Size_Big
 							font = TitleFont
 							max_width = 380
@@ -150,20 +149,9 @@ window = {
 
 						text_single = {
 							name = "foreign_county"
-							visible = "[And(Not(Or(ObjectsEqual( Character.Self, GetPlayer ),Character.IsOtherLiegeOrAbove( GetPlayer ))),Not(HoldingView.GetHolder.HasTrait(GetTrait('gh_wasteland').Self)))]" ## GH CHANGE: Wasteland handling
+							visible = "[Not(Or(ObjectsEqual( Character.Self, GetPlayer ),Character.IsOtherLiegeOrAbove( GetPlayer )))]"
 							layoutpolicy_horizontal = expanding
 							text = "HOLDING_VIEW_FOREIGN_COUNTY"
-							margin_bottom = 5
-							using = Font_Size_Small
-							fontsize_min = 10
-							max_width = 420
-						}
-
-						text_single = { ## GH ADDITION: Wasteland handling
-							name = "wasteland_county"
-							visible = "[HoldingView.GetHolder.HasTrait(GetTrait('gh_wasteland').Self)]"
-							layoutpolicy_horizontal = expanding
-							text = "HOLDING_VIEW_WASTELAND_COUNTY"
 							margin_bottom = 5
 							using = Font_Size_Small
 							fontsize_min = 10
@@ -213,12 +201,6 @@ window = {
 						onclick = "[OpenFromViewHistory]"
 						tooltip = "[GetViewHistoryTooltip]"
 					}
-					
-					blockoverride "button_next" {
-						onclick = "[HoldingView.GoToNextCounty]"
-						enabled = "[HoldingView.CanGoToNextCounty]"
-						tooltip = "YOUR_NEXT_HOLDING"
-					}
 
 					blockoverride "button_close"
 					{
@@ -238,6 +220,7 @@ window = {
 
 				hbox = {
 					datamodel = "[HoldingView.GetDeJureLieges]"
+					spacing = 3
 
 					item = {
 						coa_title_tiny_crown = {
@@ -273,7 +256,7 @@ window = {
 				expand = {}
 
 				widget = {
-					layoutpolicy_horizontal = expanding
+					size = { 225 50 }
 					scissor = yes
 
 					hbox = {
@@ -335,7 +318,6 @@ window = {
 
 							coa_realm_tiny = {
 								parentanchor = center
-								position = { 0 6 }
 
 								blockoverride "coa_button" {
 									onclick = "[DefaultOnRealmFlagClick(Character.GetID)]"
@@ -635,14 +617,10 @@ window = {
 						margin_left = 5
 						margin_bottom = 10
 
-						spacing = 2
-
 						text_single = {
 							# GH CHANGE: Wasteland stuff
 							visible = "[Not(Or(Or(EqualTo_string(HoldingView.GetProvince.GetCountyCapitalProvince.GetHolding.GetType.GetKey,'wasteland_empty_holding'), EqualTo_string(HoldingView.GetProvince.GetCountyCapitalProvince.GetHolding.GetType.GetKey,'colony_holding')), EqualTo_string(HoldingView.GetProvince.GetCountyCapitalProvince.GetHolding.GetType.GetKey,'ruin_holding')))]"
 							layoutpolicy_horizontal = expanding
-							autoresize = no
-							
 							text = "HOLDING_VIEW_COUNTY_HOLDER"
 							default_format = "#low"
 						}
@@ -658,25 +636,25 @@ window = {
 						text_multi = {
 							datacontext = "[HoldingView.GetCountyTitle.GetHolder]"
 							visible = "[And(Character.HasRelationTo( GetPlayer ), Not(Character.IsPlayer))]"
-							
 							layoutpolicy_horizontal = expanding
-							autoresize = no
 
 							text = "[Character.GetRelationToString( GetPlayer )]"
-							
+							autoresize = yes
+							max_width = 170
+
 							tooltip = "EXTENDED_RELATIONS_TOOLTIP"
 
 						}
 
 						text_multi = {
 							datacontext = "[HoldingView.GetCountyTitle.GetHolder]"
-							
 							layoutpolicy_horizontal = expanding
-							autoresize = no
-							size = { 230 60 }
 
 							text = "[Character.GetShortUINameNoTooltip|U]"
+							autoresize = yes
 							default_format = "#high"
+							max_width = 170
+
 						}
 
 						expand = {}
@@ -873,7 +851,7 @@ window = {
 								}
 
 								background = {
-									visible = "[EqualTo_CFixedPoint( Culture.GetAcceptance( GetPlayer.GetCulture ), '(CFixedPoint)0')]"
+									visible = "[EqualTo_CFixedPoint( Culture.GetAcceptance( GetPlayer.GetCulture ), '(CFixedPoint)0') ) ]"
 									margin = { 5 0 }
 									using = Status_Bad
 								}
@@ -902,10 +880,31 @@ window = {
 
 						using = tooltip_ne
 
+						tooltipwidget = {
+
+							faith_tooltip = {
+
+								blockoverride "extra_info" {
+									using = faith_tooltip_click_default_extra_info
+
+									text_single = {
+										margin = { 10 0 }
+										layoutpolicy_horizontal = expanding
+										fonttintcolor = "[TooltipInfo.GetTintColor]"
+										using = DefaultTooltipText
+										visible = "[Not( ObjectsEqual( Faith.Self, GetPlayer.GetFaith ) )]"
+										text = "COUNTY_NOT_YOUR_FAITH"
+									}
+								}
+							}
+						}
+
 						text_single = {
 							layoutpolicy_horizontal = expanding
 							text = "HOLDING_VIEW_FAITH_LABEL"
 						}
+
+						expand = {}
 
 						vbox = {
 							expand = {
@@ -922,55 +921,31 @@ window = {
 						button_group = {
 							onclick = "[OpenGameViewData( 'faith', Faith.GetID )]"
 
-							tooltipwidget = {
-	
-								faith_tooltip = {
-	
-									blockoverride "extra_info" {
-										using = faith_tooltip_click_default_extra_info
-	
-										text_single = {
-											margin = { 10 0 }
-											layoutpolicy_horizontal = expanding
-											fonttintcolor = "[TooltipInfo.GetTintColor]"
-											using = DefaultTooltipText
-											visible = "[Not( ObjectsEqual( Faith.Self, GetPlayer.GetFaith ) )]"
-											text = "COUNTY_NOT_YOUR_FAITH"
-										}
-									}
-								}
-							}
-							
-							flowcontainer = {
-								ignoreinvisible = yes
-								resizeparent = yes
-								
-								text_single = {
-									visible = "[EqualTo_uint32(Faith.GetID, GetPlayer.GetFaith.GetID)]"
-									text = "WINDOW_COUNTY_FAITH_NAME"
-									default_format = "#high"
-									margin_right = 5
-									max_width = 160
-									
-								}
-								
-								text_single = {
-									visible = "[NotEqualTo_uint32(Faith.GetID, GetPlayer.GetFaith.GetID)]"
-									text = "WINDOW_COUNTY_FAITH_NAME"
-									default_format = "#high"
-									margin = { 5 0 }
-									max_width = 160
-									
-									background = {
-										margin = { 5 0 }
-										using = Status_Bad
-									}
-								}
+							text_single = {
+								visible = "[EqualTo_uint32(Faith.GetID, GetPlayer.GetFaith.GetID)]"
+								text = "WINDOW_COUNTY_FAITH_NAME"
+								default_format = "#high"
+								margin_right = 5
+								max_width = 160
+
 							}
 
+							text_single = {
+								visible = "[NotEqualTo_uint32(Faith.GetID, GetPlayer.GetFaith.GetID)]"
+								text = "WINDOW_COUNTY_FAITH_NAME"
+								default_format = "#high"
+								margin = { 5 0 }
+								max_width = 160
+
+								background = {
+									margin = { 5 0 }
+									using = Status_Bad
+								}
+							}
 						}
 					}
 				}
+
 				gh_colonial_county_stats = {}
 			}
 
@@ -987,63 +962,42 @@ window = {
 					spacing = 5
 
 					item = {
-						button_tab_icon_only = {
+						button_tab_dark = {
 							datacontext = "[GUICountyHolding.GetHolding]"
 							size = { 45 45  }
-
-							using = TabShortcut
 
 							down = "[GUICountyHolding.IsSelected]"
 							alwaystransparent = "[GUICountyHolding.IsSelected]"
 							onclick = "[GUICountyHolding.OnClick]"
 							onclick = "[PdxGuiTriggerAllAnimations('holding_view_refresh')]"
-							onclick = "[GetVariableSystem.Clear('settle_ruin_tab_open')]" ## GH ADDITION: Ruin settling
-
+							onclick = "[GetVariableSystem.Clear('settle_ruin_tab_open')]"
 							using = tooltip_ne
 							tooltipwidget = { holding_tooltip_click = {} }
 
-							widget = {
+							icon_building_tab = {
 								parentanchor = center
 								position = { 0 1 }
 								size = { 35 30 }
-								alwaystransparent = yes								
+								texture = "[GUICountyHolding.GetHolding.GetType.GetTabIcon]"
+								alwaystransparent = yes
 
-								button_icon_highlight = {
-									visible = "[Not(GUICountyHolding.GetHolding.CanConstructAnyBuilding(GetPlayer))]"
-									size = { 100% 100% }
-									
-									down = "[GUICountyHolding.IsSelected]"
-									texture = "[GUICountyHolding.GetHolding.GetType.GetTabIcon]"					
+								down = "[GUICountyHolding.IsSelected]"
 
-									alpha = "[Select_float(  GUICountyHolding.IsSelected, '(float)0.85', '(float)1' )]"				
-									blockoverride "button_frames"
-									{
-										gfxtype = togglepushbuttongfx
-										effectname = "NoHighlight"
 
-										upframe = 7
-										uphoverframe = 5
-										uppressedframe = 6
-										downframe = 5
-										downhoverframe = 5
-										downpressedframe = 5
-										disableframe = 3
-									}
-								}
-
-								button_icon_highlight = {
-									visible = "[GUICountyHolding.GetHolding.CanConstructAnyBuilding(GetPlayer)]"
-									size = { 100% 100% }
-									
-									down = "[GUICountyHolding.IsSelected]"
-									texture = "[GUICountyHolding.GetHolding.GetType.GetTabIcon]"
+								blockoverride "button_frames"
+								{
+									gfxtype = togglepushbuttongfx
+									effectname = "NoHighlight"
+									upframe = 4
+									uphoverframe = 5
+									uppressedframe = 6
+									downframe = 5
 								}
 							}
-							
 
 							icon = {
 								name = "realm_capital_icon"
-								visible = "[GUICountyHolding.GetHolding.GetProvince.GetTitle.IsCountyCapital]"
+								visible = "[And(GUICountyHolding.GetHolding.GetProvince.GetTitle.IsCountyCapital, Not(Holding.GetHolder.HasTrait(GetTrait('gh_wasteland').Self)))]"
 								parentanchor = bottom|right
 								position = { 1 -3 }
 								size = { 24 24 }
@@ -1154,9 +1108,9 @@ window = {
 							spacing = 5
 
 							coa_title_medium = {
-								datacontext = "[HoldingView.GetTitle]"
-								## GH CHANGE: Wasteland stuff
+								# GH CHANGE: Wasteland stuff
 								visible = "[And(And(HoldingView.GetTitle.HasHolder, Not(HoldingView.GetHolder.HasTrait(GetTrait('gh_wasteland').Self))), Not(Or(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'wasteland_empty_holding'), EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'ruin_holding'))))]"
+								datacontext = "[HoldingView.GetTitle]"
 							}
 
 							flowcontainer = {
@@ -1164,19 +1118,17 @@ window = {
 								ignoreinvisible = yes
 
 								flowcontainer = {
-									## GH CHANGE: Wasteland stuff
+									# GH CHANGE: Wasteland stuff
 									visible = "[And(HoldingView.GetTitle.HasHolder, Not(HoldingView.GetHolder.HasTrait(GetTrait('gh_wasteland').Self)))]"
 									ignoreinvisible = yes
 									spacing = 5
 
 									text_single = {
-										## GH CHANGE: Title Gloss
+										# GH CHANGE: Title Gloss
 										text = "[SelectLocalization(Not(EqualTo_string(Concatenate(HoldingView.GetProvince.GetTitle.GetKey, '_desc'), Localize(Concatenate(HoldingView.GetProvince.GetTitle.GetKey, '_desc')))), Glossary(HoldingView.GetProvince.GetTitle.GetNameNoTooltip, Concatenate(HoldingView.GetProvince.GetTitle.GetKey, '_desc')), HoldingView.GetProvince.GetTitle.GetNameNoTooltip)]"
 										default_format = "#high"
 										align = nobaseline
 										using = Font_Size_Big
-										max_width = 240
-										fontsize_min = 14
 										margin_left = 5
 
 										tooltip = "[HoldingView.GetProvince.GetTitle.GetNameNoTierNoTooltip]"
@@ -1191,92 +1143,12 @@ window = {
 
 										tooltip = "CUSTOMIZE_TITLE"
 									}
-									
-									widget = {
-										size = { 20 25 }
-										visible = "[HoldingView.HasHolding]"
-										datacontext = "[HoldingView.GetProvince]"
-										
-										button_pin = {
-											shortcut = "pin"
-											parentanchor = center
-											tooltip = "PROVINCE_PIN_TT"
-											position = { 0 2 }
-											onclick = "[Province.ToggleProvincePinned]"
-											visible = "[Not(Province.IsPinned)]"
-										}
-										
-										button_unpin = {
-											shortcut = "pin"
-											parentanchor = center
-											tooltip = "PROVINCE_PIN_TT"
-											position = { 0 2 }
-											onclick = "[Province.ToggleProvincePinned]"
-											visible = "[Province.IsPinned]"
-										}
-									}
-									
 
-									widget = {
-										size = { 30 30 }
-										visible = "[And(HoldingView.GetProvince.GetTitle.IsCountyCapital, Not(HoldingView.GetProvince.IsRealmCapital))]"
-
-										icon = {
-											name = "county_capital_icon"
-											parentanchor = center
-											size = { 30 30 }
-											texture = "gfx/interface/icons/icon_capital.dds"
-											framesize = { 60 60 }
-											frame = 1
-
-											tooltip = "COUNTY_CAPITAL_TOOLTIP"
-										}
-									}
-
-									widget = {
-										size = { 30 30 }
-										visible = "[HoldingView.GetProvince.IsRealmCapital]"
-
-										icon = {
-											name = "realm_capital_icon"
-											parentanchor = center
-											size = { 30 30 }
-											texture = "gfx/interface/icons/icon_capital.dds"
-											framesize = { 60 60 }
-											frame = 2
-
-											tooltip = "REALM_CAPITAL_TOOLTIP"
-										}
-									}
-
-									widget = {
-										size = { 30 30 }
-
-										button_move_capital = {
-											name = "set_realm_capital_button"
-											visible = "[HoldingView.PotentialSetRealmCapital]"
-											texture = "gfx/interface/icons/flat_icons/move_capital.dds"
-
-											enabled = "[HoldingView.CanSetRealmCapital]"
-											onclick = "[HoldingView.SetRealmCapital]"
-
-											tooltip = "[HoldingView.GetSetRealmCapitalTooltip]"
-										}
-
-										button_move_capital = {
-											name = "set_county_capital_button"
-											visible = "[HoldingView.CanSetCountyCapital]"
-											texture = "gfx/interface/icons/flat_icons/move_capital.dds"
-
-											onclick = "[HoldingView.SetCountyCapital]"
-
-											tooltip = "SET_COUNTY_CAPITAL_TOOLTIP"
-										}
-									}
+									#GH CHANGE: Moved to below the CoA
 								}
 
 								text_single = {
-									## GH CHANGE: Title Gloss
+									# GH CHANGE: Title Gloss
 									visible = "[Or(Not(HoldingView.GetTitle.HasHolder), HoldingView.GetHolder.HasTrait(GetTrait('gh_wasteland').Self))]"
 									text = "[SelectLocalization(Not(EqualTo_string(Concatenate(HoldingView.GetProvince.GetTitle.GetKey, '_desc'), Localize(Concatenate(HoldingView.GetProvince.GetTitle.GetKey, '_desc')))), Glossary(HoldingView.GetProvince.GetTitle.GetNameNoTierNoTooltip, Concatenate(HoldingView.GetProvince.GetTitle.GetKey, '_desc')), HoldingView.GetProvince.GetTitle.GetNameNoTierNoTooltip)]"
 									default_format = "#medium"
@@ -1307,6 +1179,69 @@ window = {
 							expand = {}
 						}
 
+						#GH CHANGE: Where capital buttons were moved to
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							widget = {
+								size = { 30 30 }
+								visible = "[And(HoldingView.GetProvince.GetTitle.IsCountyCapital, Not(HoldingView.GetProvince.IsRealmCapital))]"
+
+								icon = {
+									name = "county_capital_icon"
+									parentanchor = center
+									size = { 30 30 }
+									texture = "gfx/interface/icons/icon_capital.dds"
+									framesize = { 60 60 }
+									frame = 1
+
+									tooltip = "COUNTY_CAPITAL_TOOLTIP"
+								}
+							}
+
+							widget = {
+								size = { 30 30 }
+								visible = "[HoldingView.GetProvince.IsRealmCapital]"
+
+								icon = {
+									name = "realm_capital_icon"
+									parentanchor = center
+									size = { 30 30 }
+									texture = "gfx/interface/icons/icon_capital.dds"
+									framesize = { 60 60 }
+									frame = 2
+
+									tooltip = "REALM_CAPITAL_TOOLTIP"
+								}
+							}
+
+							widget = {
+								size = { 30 30 }
+
+								button_move_capital = {
+									# GH CHANGE: Colony stuff
+									visible = "[And(HoldingView.PotentialSetRealmCapital, Not(HoldingView.GetProvince.GetCounty.GetTitle.MakeScope.Var('colonization_story').IsSet))]"
+									name = "set_realm_capital_button"
+									texture = "gfx/interface/icons/flat_icons/move_capital.dds"
+
+									enabled = "[HoldingView.CanSetRealmCapital]"
+									onclick = "[HoldingView.SetRealmCapital]"
+
+									tooltip = "[HoldingView.GetSetRealmCapitalTooltip]"
+								}
+
+								button_move_capital = {
+									# GH CHANGE: Colony stuff
+									visible = "[And(HoldingView.CanSetCountyCapital, Not(HoldingView.GetProvince.GetCounty.GetTitle.MakeScope.Var('colonization_story').IsSet))]"
+									name = "set_county_capital_button"
+									texture = "gfx/interface/icons/flat_icons/move_capital.dds"
+
+									onclick = "[HoldingView.SetCountyCapital]"
+
+									tooltip = "SET_COUNTY_CAPITAL_TOOLTIP"
+								}
+							}
+							expand = {}
+						}
 						expand = {}
 					}
 
@@ -1485,7 +1420,7 @@ window = {
 					vbox_province_aspect_values = {}
 
 					### HOLDING STATS
-					## GH CHANGE: Non-Colonial stats
+					# GH CHANGE: Non-Colonial
 					vbox = {
 						visible = "[And(HoldingView.HasHolding, Not(Or(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'wasteland_empty_holding'), Or(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'colony_holding'), Or(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'ruin_holding'), EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'ruined_district_holding'))))))]"
 						layoutpolicy_vertical = expanding
@@ -1505,7 +1440,7 @@ window = {
 						### Tax Income
 						hbox = {
 							name = "tutorial_highlight_holding_view_taxes_box"
-							visible = "[And( HoldingView.HasHolding, Not( Holding.GetHolder.HasBarterGoods ) )]"
+							visible = "[HoldingView.HasHolding]"
 							layoutpolicy_horizontal = expanding
 							spacing = 3
 
@@ -1528,31 +1463,6 @@ window = {
 							}
 						}
 
-						### Barter Goods Income
-						hbox = {
-							visible = "[And( HoldingView.HasHolding, Holding.GetHolder.HasBarterGoods )]"
-							layoutpolicy_horizontal = expanding
-							spacing = 3
-
-							tooltip = "[Holding.GetBarterGoodsIncomeTooltip]"
-
-							background = {
-								visible = "[Holding.LevyAndTaxIsAffectedByFixableSituation]"
-								using = Status_Bad
-							}
-
-							text_single = {
-								layoutpolicy_horizontal = expanding
-								text = "HOLDING_BARTER_GOODS"
-								default_format = "#high"
-							}
-
-							text_single = {
-								text = "HOLDING_BARTER_GOODS_VALUE"
-								default_format = "#V"
-							}
-						}
-
 						### Raid loot
 						hbox = {
 							name = "tutorial_highlight_holding_view_loot_box"
@@ -1560,7 +1470,7 @@ window = {
 							layoutpolicy_horizontal = expanding
 							spacing = 3
 
-							tooltip = "[Holding.GetProvince.GetLootTooltip]"
+							tooltip = "[Holding.GetProvince.GetRaidLootTooltip]"
 
 							background = {
 								visible = "[Holding.GetProvince.IsRecentlyLooted]"
@@ -1670,7 +1580,7 @@ window = {
 						hbox = {
 							tooltip = "AMBIENT_MAGIC_TOOLTIP"
 							layoutpolicy_horizontal = expanding
-							#margin = { 2 0 }
+							margin = { 2 0 }
 
 							text_single = {
 								layoutpolicy_horizontal = expanding
@@ -1687,14 +1597,14 @@ window = {
 						expand = {}
 					}
 					
-					## GH ADDITION: Colonial stats
+					# GH ADDITION: Colonial stats
 					gh_colonial_holding_stats = {}
 				}
 
 				### CONSTRUCT NEW HOLDING & CONSTRUCTING PROGRESS
 				vbox = {
 					hbox = {
-						visible = "[And(And(And(Not(HoldingView.HasHolding), Not(HoldingView.IsBeingConstructed)), Not(HoldingView.GetCountyTitle.GetHolder.HasTrait(GetTrait('gh_wasteland').Self))), Not(EqualTo_string(HoldingView.GetProvince.GetCountyCapitalProvince.GetHolding.GetType.GetKey,'colony_holding')))]" ## GH CHANGE: Colonization
+						visible = "[And(Not(HoldingView.HasHolding), Not(HoldingView.IsBeingConstructed))]"
 						margin_bottom = 30
 
 						button_standard_big = {
@@ -1702,7 +1612,7 @@ window = {
 							size = { 300 50 }
 							text = "CREATE_NEW_HOLDING_BUTTON"
 
-							enabled = "[And(And(HoldingView.CanNewHoldingBeConstructed, Not(HoldingView.IsSelectingHoldingType)),Not(EqualTo_string(HoldingView.GetProvince.GetCountyCapitalProvince.GetHolding.GetType.GetKey,'colony_holding')))]" ## GH CHANGE: Colonization
+							enabled = "[And(HoldingView.CanNewHoldingBeConstructed, Not(HoldingView.IsSelectingHoldingType))]"
 							onclick = "[HoldingView.OnConstructHoldingClick]"
 
 							tooltip = "[HoldingView.GetHoldingConstructionTooltip]"
@@ -1710,7 +1620,7 @@ window = {
 						}
 					}
 
-					# GH ADDITION: Colonization buttons
+					# GH ADDITION: Colonization buttons					
 					colonize_holding_button = {}
 
 					colonize_ruin_button = {}
@@ -1765,8 +1675,7 @@ window = {
 					background = {
 						visible = "[And(NotEqualTo_uint32( HoldingView.GetCountyTitle.GetHolder.GetID, HoldingView.GetTitle.GetLesseeOrHolder.GetID ), HoldingView.GetTitle.HasHolder)]"
 
-						texture = "gfx/interface/skinned/mask_pattern.dds"
-						texture_density = 3
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
 						spriteType = Corneredtiled
 						using = Color_Blue
 						alpha = 0.6
@@ -1940,8 +1849,6 @@ window = {
 
 											tooltip = "FIND_VASSAL_BUTTON_TOOLTIP"
 
-											shortcut = "find_vassal_for_holding"
-
 											button_grant_title_to_vassal = {
 												parentanchor = center
 												alwaystransparent = yes
@@ -1972,18 +1879,19 @@ window = {
 							datacontext = "[HoldingView.GetGUISpecialBuilding]"
 							visible = "[And(HoldingView.HasSpecialBuildingSlot, HoldingView.GetHolding.GetType.HasParameter('no_buildings'))]"
 
-							highlight_icon = {
+							button_standard = {
 								size = { 100% 100% }
-
-								using = Special_Building_Texture
+								texture = "gfx/interface/buttons/button_special_building.dds"
+								alwaystransparent = yes
+								spriteborder = { 20 20 }
 							}
 						}
 					}
 
 					### BOTTOM RIGHT
-					## GH CHANGE: Non-colonial version
+					# GH CHANGE: Non-colonial version
 					vbox = {
-						visible = "[And(HoldingView.GetTitle.HasHolder, Not(Or(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'wasteland_empty_holding'), Or(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'colony_holding'), Or(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'ruin_holding'), EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'ruined_district_holding'))))))]" ## GH CHANGE: Wastelands
+						visible = "[And(HoldingView.GetTitle.HasHolder, Not(Or(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'wasteland_empty_holding'), Or(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'colony_holding'), Or(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'ruin_holding'), EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'ruined_district_holding'))))))]"
 						layoutpolicy_vertical = expanding
 
 						expand = {}
@@ -2197,7 +2105,7 @@ window = {
 								parentanchor = right
 
 								# Upgrade buildings
-								## GH CHANGE: Put buildings in scrollarea for republic cities/metros with more buildings
+								# GH CHANGE: Put buildings in scrollarea for republic cities/metros with more buildings
 								scrollarea = {
 									name = "buildings_grid_wrapper"
 									size = { 410 60 }
@@ -2224,7 +2132,7 @@ window = {
 								}
 
 								flowcontainer = {
-									visible = "[Or(HoldingView.HasDuchyCapitalBuildingSlot, Or( HoldingView.HasSpecialBuildingSlot, HoldingView.HasGreatBuildingSlot ) )]"
+									visible = "[Or(HoldingView.HasDuchyCapitalBuildingSlot, HoldingView.HasSpecialBuildingSlot )]"
 									ignoreinvisible = yes
 									margin_left = 3
 
@@ -2232,22 +2140,13 @@ window = {
 										name = "duchy_capital_building"
 										datacontext = "[HoldingView.GetGUIDuchyCapitalBuilding]"
 										visible = "[HoldingView.HasDuchyCapitalBuildingSlot]"
-										enabled = "[GUIBuildingItem.IsBuildingButtonEnabled]" ## GH ADDITION: Why doesnt vanilla have this?
 
-										blockoverride "building_frame" {
-											icon = {
-												size = { 100% 100% }
-												texture = "gfx/interface/buttons/button_duchy_capital.dds"
-												alwaystransparent = yes
-												spriteType = Corneredtiled
-												spriteborder = { 18 18 }
-												framesize = { 252 80 }
-
-												modify_texture = {
-													texture = "gfx/interface/colors/gold.dds"
-													alpha = 0.2
-												}
-											}
+										button_standard = {
+											size = { 100% 100% }
+											texture = "gfx/interface/buttons/button_duchy_capital.dds"
+											alwaystransparent = yes
+											spriteType = Corneredtiled
+											spriteborder = { 18 18 }
 										}
 									}
 
@@ -2259,61 +2158,13 @@ window = {
 										name = "special_building"
 										datacontext = "[HoldingView.GetGUISpecialBuilding]"
 										visible = "[HoldingView.HasSpecialBuildingSlot]"
-										
-										blockoverride "shortcut" {
-											shortcut = "special_building"
-										}
-		
-										enabled = "[GUIBuildingItem.IsBuildingButtonEnabled]" ## GH ADDITION: Why doesnt vanilla have this?
 
-										blockoverride "building_frame" {
-											icon = {
-												size = { 100% 100% }
-												alwaystransparent = yes
-
-												using = Special_Building_Texture												
-
-												modify_texture = {
-													texture = "gfx/interface/colors/gold.dds"
-													alpha = 0.2
-												}
-											}
-										}
-									}
-
-									spacer = {
-										size = { 3 0 }
-									}
-
-									widget_building_item = {
-										name = "great_building"
-										datacontext = "[HoldingView.GetGUIGreatBuilding]"
-										visible = "[HoldingView.HasGreatBuildingSlot]"
-										
-										blockoverride "shortcut" {
-											shortcut = "great_building"
-										}
-
-										blockoverride "building_frame" {
-											icon = {
-												size = { 100% 100% }
-												texture = "gfx/interface/buttons/button_great_building.dds"
-												alwaystransparent = yes
-												spriteType = Corneredtiled
-												spriteborder = { 18 18 }
-												framesize = { 252 80 }
-
-												modify_texture = {
-													texture = "gfx/interface/colors/gold.dds"
-													alpha = 0.2
-												}
-											}
-										}
-										warning_icon = {
-											name = "ruined_great_building"
-											visible = "[GUIBuildingItem.IsBuildingRuined]"
-											position = { 3 3 }
-											size = { 20 20 }
+										button_standard = {
+											size = { 100% 100% }
+											texture = "gfx/interface/buttons/button_special_building.dds"
+											alwaystransparent = yes
+											spriteType = Corneredtiled
+											spriteborder = { 18 18 }
 										}
 									}
 
@@ -2348,7 +2199,7 @@ window = {
 	movable = no
 	layer = top
 	datacontext = "[HoldingView.GetHolder]"
-	datacontext = "[HoldingView.GetProvince]" ## GH ADDITION: Wastelands
+	datacontext = "[HoldingView.GetProvince]"
 
 	state = {
 		name = _show
@@ -2371,7 +2222,7 @@ window = {
 
 		widget = {
 			layoutpolicy_vertical = expanding
-			## GH CHANGE: To accomodate scrollbox/large text
+			# GH CHANGE: To accomodate scrollbox/large text
 			size = { 775 0 }
 
 			vbox = {
@@ -2382,7 +2233,7 @@ window = {
 
 				vbox = {
 					layoutpolicy_horizontal = expanding
-					minimumsize = { 0 730 }
+					minimumsize = { 0 700 }
 
 					## New Building
 					vbox = {
@@ -2525,8 +2376,8 @@ window = {
 															}
 
 															text_single = {
-																datacontext = "[GUIPotentialBuildingItem.GetCost]"
-																visible = "[GUIPotentialBuildingItem.HasCost]"
+																datacontext = "[GUIPotentialBuildingItem.GetGoldCost]"
+																visible = "[GUIPotentialBuildingItem.HasGoldCost]"
 																layoutpolicy_horizontal = expanding
 																text = "[ValueBreakdown.GetValue]"
 																tooltip_visible = "[ValueBreakdown.HasTooltip]"
@@ -2536,7 +2387,7 @@ window = {
 																}
 
 																background = {
-																	visible = "[Not( GUIPotentialBuildingItem.CanAffordCost( GetPlayer.Self ) )]"
+																	visible = "[LessThan_CFixedPoint(GetPlayer.GetGold, ValueBreakdown.GetFixedPointValue)]"
 																	using = Status_Bad
 																}
 															}
@@ -2702,7 +2553,8 @@ window = {
 											text = "[GUITrackItem.GetBuildingTypeText]"
 										}
 
-
+										building_in_vassal_warning_hbox = {
+										}
 									}
 
 									buttons_window_control = {
@@ -3029,7 +2881,7 @@ window = {
 
 											text_label_left = {
 												layoutpolicy_horizontal = expanding
-												## GH CHANGE: Custom Loc stuff
+												# GH CHANGE: Custom Loc stuff
 												text = "[SelectLocalization(EqualTo_string(Province.Custom(Concatenate(GUITrackItem.GetSelectedBuilding.GetKey,'_building_loc_name')),''), GUITrackItem.GetSelectedBuilding.GetNameNoTooltip, Province.Custom(Concatenate(GUITrackItem.GetSelectedBuilding.GetKey,'_building_loc_name')))]"
 												default_format = "#high"
 												using = Font_Size_Medium
@@ -3046,7 +2898,7 @@ window = {
 												layoutpolicy_horizontal = expanding
 												layoutpolicy_vertical = expanding
 
-												## GH CHANGE: Put Desc in Scrollbox to accomodate those massive lore buildings
+												# GH CHANGE: Put Desc in Scrollbox to accomodate those massive lore buildings
 												scrollbox = {
 													size = { 375 300 }
 													layoutpolicy_horizontal = expanding
@@ -3062,7 +2914,7 @@ window = {
 															max_width = 340
 															min_width = 340
 															#GH CHANGE: Use data-link text if present
-															text = "[SelectLocalization(EqualTo_string( Province.Custom(Concatenate(GUITrackItem.GetSelectedBuilding.GetKey,'_building_loc_desc')),''), GUITrackItem.GetSelectedBuilding.GetDescription, Province.Custom(Concatenate(GUITrackItem.GetSelectedBuilding.GetKey,'_building_loc_desc')))]"
+															text = "[SelectLocalization(EqualTo_string( GetTitleByKey('c_oraispol').GetProvince.Custom(Concatenate(GUITrackItem.GetSelectedBuilding.GetKey,'_building_loc_desc')),''), GUITrackItem.GetSelectedBuilding.GetDescription, GetTitleByKey('c_oraispol').GetProvince.Custom(Concatenate(GUITrackItem.GetSelectedBuilding.GetKey,'_building_loc_desc')))]"
 														}
 
 														spacer = { size = { 0 20 } }
@@ -3079,7 +2931,7 @@ window = {
 												hbox = {
 													visible = "[And( And( Or( GUITrackItem.CanReplace, GUITrackItem.CanCancel ), GUITrackItem.IsCurrentBuildingSelected), Not( GUITrackItem.IsConstructing ) )]"
 													spacing = 10
-													margin_bottom = 10
+													margin_bottom = 5
 
 													text_single = {
 														text = "CURRENT_BUILDING"
@@ -3091,8 +2943,9 @@ window = {
 												vbox = {
 													visible = "[And(And(GreaterThan_int32(GUITrackItem.GetSelectedBuilding.GetLevel,GUITrackItem.GetCurrentBuilding.GetLevel),GreaterThan_int32(GUITrackItem.GetSelectedBuilding.GetLevel,'(int32)1')), Not(GUITrackItem.IsNextBuildingSelected))]"
 													layoutpolicy_horizontal = expanding
-
 													margin_left = 10
+													margin_bottom = 5
+													spacing = 5
 
 													text_label_left = {
 														layoutpolicy_horizontal = expanding
@@ -3108,8 +2961,8 @@ window = {
 															spacing = 10
 
 															text_single = {
-																datacontext = "[GUITrackItem.GetSelectedCost]"
-																visible = "[GUITrackItem.HasSelectedCost]"
+																datacontext = "[GUITrackItem.GetSelectedGoldCost]"
+																visible = "[GUITrackItem.HasSelectedGoldCost]"
 																text = "[ValueBreakdown.GetValue]"
 																align = nobaseline
 																tooltip_visible = "[ValueBreakdown.HasTooltip]"
@@ -3119,7 +2972,7 @@ window = {
 																}
 
 																background = {
-																	visible = "[Not( GUITrackItem.CanAffordSelectedCost( GetPlayer.Self ) )]"
+																	visible = "[LessThan_CFixedPoint(GetPlayer.GetGold, ValueBreakdown.GetFixedPointValue)]"
 																	using = Status_Bad
 																}
 															}
@@ -3127,10 +2980,8 @@ window = {
 															text_single = {
 																datacontext = "[GUITrackItem.GetSelectedPrestigeCost]"
 																visible = "[GUITrackItem.HasSelectedPrestigeCost]"
-
 																text = "[ValueBreakdown.GetValue]"
 																align = nobaseline
-
 																tooltip_visible = "[ValueBreakdown.HasTooltip]"
 
 																tooltipwidget = {
@@ -3141,10 +2992,8 @@ window = {
 															text_single = {
 																datacontext = "[GUITrackItem.GetSelectedPietyCost]"
 																visible = "[GUITrackItem.HasSelectedPietyCost]"
-
 																text = "[ValueBreakdown.GetValue]"
 																align = nobaseline
-
 																tooltip_visible = "[ValueBreakdown.HasTooltip]"
 
 																tooltipwidget = {
@@ -3181,11 +3030,11 @@ window = {
 												layoutpolicy_vertical = expanding
 											}
 
-											## GH CHANGE: Add aspect modifiers
+											# GH CHANGE: Add aspect modifiers
 											vbox = {
 												layoutpolicy_horizontal = expanding
 												
-												## GH CHANGE: Put effects in Scrollbox to accomodate those massive effect lists
+												# GH CHANGE: Put effects in Scrollbox to accomodate those massive effect lists
 												scrollbox = {
 													size = { 375 400 }
 													layoutpolicy_horizontal = expanding
@@ -3218,19 +3067,13 @@ window = {
 										visible = "[GUITrackItem.IsConstructing]"
 										layoutpolicy_horizontal = expanding
 										margin = { 0 15 }
-
-										building_in_vassal_warning_hbox = {
-										}
+										spacing = 10
 
 										text_single = {
 											text = "HOLDING_VIEW_IN_PROGRESS"
 											margin = { 0 5 }
 										}
 
-										spacer = {
-											size = { 0 10 }
-										}
-										
 										hbox = {
 											spacing = 10
 
@@ -3308,7 +3151,7 @@ window = {
 											spacing = 10
 
 											hbox = {
-												visible = "[And( GUITrackItem.HasNextBuilding, Not( GUITrackItem.IsGreatBuildingRuined ) )]"
+												visible = "[GUITrackItem.HasNextBuilding]"
 												layoutpolicy_horizontal = expanding
 
 												hbox = {
@@ -3323,8 +3166,8 @@ window = {
 													}
 
 													text_single = {
-														datacontext = "[GUITrackItem.GetNextCost]"
-														visible = "[GUITrackItem.HasNextCost]"
+														datacontext = "[GUITrackItem.GetNextGoldCost]"
+														visible = "[GUITrackItem.HasNextGoldCost]"
 														text = "[ValueBreakdown.GetValue]"
 														tooltip_visible = "[ValueBreakdown.HasTooltip]"
 
@@ -3333,7 +3176,7 @@ window = {
 														}
 
 														background = {
-															visible = "[Not( GUITrackItem.CanAffordNextCost( GetPlayer.Self ) )]"
+															visible = "[LessThan_CFixedPoint(GetPlayer.GetGold, ValueBreakdown.GetFixedPointValue)]"
 															using = Status_Bad
 														}
 													}
@@ -3380,7 +3223,6 @@ window = {
 													text_single = {
 														layoutpolicy_horizontal = expanding
 														datacontext = "[GUITrackItem.GetNextConstructionTime]"
-														visible = "[LessThan_CFixedPoint('(CFixedPoint)0', ValueBreakdown.GetFixedPointValue)]"
 														text = "[ValueBreakdown.GetValue]"
 														tooltip_visible = "[ValueBreakdown.HasTooltip]"
 
@@ -3391,60 +3233,16 @@ window = {
 												}
 											}
 
-											hbox = {
-												visible = "[GUITrackItem.IsGreatBuildingRuined]"
-												layoutpolicy_horizontal = expanding
-
-												hbox = {
-													margin = { 10 5 }
-													margin_right = 15
-													spacing = 10
-
-													background = {
-														using = Background_Area
-														margin_bottom = 4
-														margin_left = 6
-													}
-
-													text_single = {
-														layoutpolicy_horizontal = expanding
-														text = "[GUITrackItem.GetCurrentBuilding.GetRebuildCostDescription( GetPlayer)]"
-													}
-
-													text_single = {
-														layoutpolicy_horizontal = expanding
-														text = "[GUITrackItem.GetRebuildConstructionTime]"
-													}
-												}
-											}
-
-
 											button_primary = {
 												onclick = "[GUITrackItem.OnClick]"
 												onclick = "[HoldingView.CloseSubwindows]"
 
 												tooltip = "[GUITrackItem.GetNextBuildingTooltip]"
 												enabled = "[GUITrackItem.CanConstructNextBuilding]"
-												visible = "[And( And( GUITrackItem.HasNextBuilding, Not( GUITrackItem.IsUpgradingWithGreatProject ) ), Not( GUITrackItem.IsGreatBuildingRuined ) )]"
-												text = "[SelectLocalization(EqualTo_int32(GUITrackItem.GetNextBuilding.GetLevel, '(int32)1'),'CONSTRUCT', Select_CString( GUITrackItem.UpgradesViaGreatProject, 'CONSTRUCT_BUILDING_PLAN_EXPANSION', 'UPGRADE' ) )]"
+												visible = "[GUITrackItem.HasNextBuilding]"
+												text = "[SelectLocalization(EqualTo_int32(GUITrackItem.GetNextBuilding.GetLevel, '(int32)1'),'CONSTRUCT','UPGRADE')]"
 											}
 
-											button_primary = {
-												onclick = "[GUITrackItem.ShowGreatProjectUpgrade]"
-												onclick = "[HoldingView.CloseSubwindows]"
-
-												visible = "[GUITrackItem.IsUpgradingWithGreatProject]"
-												text = "CONSTRUCT_BUILDING_SEE_UPGRADE_PROJECT"
-											}
-
-											button_primary = {
-												onclick = "[CreateCommandPopup( HoldingView.GetProvince.RebuildGreatBuilding( GetPlayer ) )]"
-												enabled = "[IsValidCommand( HoldingView.GetProvince.RebuildGreatBuilding( GetPlayer ) )]"
-												tooltip = "[GetCommandDesc( HoldingView.GetProvince.RebuildGreatBuilding( GetPlayer ) )]"
-
-												visible = "[GUITrackItem.IsGreatBuildingRuined]"
-												text = "REBUILD_GREAT_BUILDING_BUTTON"
-											}
 										}
 									}
 								}
@@ -3571,9 +3369,9 @@ types CountyViewTypes
 {
 	type widget_building_item = widget {
 		size = { 55 55 }
-		## GH CHANGE: Disabling extra unoccupied slots on holdings that must not have them (ruins etc)
+		# GH CHANGE: Disabling extra unoccupied slots on holdings that must not have them (ruins etc)
 		visible = "[Not(And(Not(GUIBuildingItem.HasLevel), EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'ruined_district_holding')))]"
-		enabled = "[Or(GUIBuildingItem.IsBuildingButtonEnabled, GUIBuildingItem.HasControlOfBuilding)]"
+		enabled = "[GUIBuildingItem.IsBuildingButtonEnabled]"
 		tooltip = "[GUIBuildingItem.GetTooltip]"
 		using = tooltip_ne
 
@@ -3582,11 +3380,6 @@ types CountyViewTypes
 			size = { 100% 100% }
 			onclick = "[GUIBuildingItem.OnClick]"
 			down = "[GUIBuildingItem.IsHighlighted]"
-			tooltip = "[GUIBuildingItem.GetTooltip]"
-			using = tooltip_ne
-
-			block "shortcut" {}
-			block "building_frame" {}
 
 			button_icon = {
 				name = "build_new_icon"
@@ -3600,18 +3393,10 @@ types CountyViewTypes
 
 			icon_building = {
 				name = "building_icon"
-				visible = "[And( Not( GUIBuildingItem.CanUpgrade ), Not( GUIBuildingItem.IsBuildingRuined ) )]"
+				visible = "[Not( GUIBuildingItem.CanUpgrade )]"
 				parentanchor = center
 				size = { 45 40 }
 				texture = "[GUIBuildingItem.GetCurrentOrConstrucingBuilding.GetTypeIcon]"
-			}
-
-			icon_building = {
-				name = "ruined_building_icon"
-				visible = "[GUIBuildingItem.IsBuildingRuined]"
-				parentanchor = center
-				size = { 45 40 }
-				texture = "gfx/interface/icons/flat_icons/ruined_building.dds"
 			}
 
 			highlight_icon_building = {
@@ -3622,7 +3407,7 @@ types CountyViewTypes
 				texture = "[GUIBuildingItem.GetCurrentOrConstrucingBuilding.GetTypeIcon]"
 			}
 
-			text_single = {
+			text_single= {
 				visible = "[And( GUIBuildingItem.HasLevel, Not( GUIBuildingItem.IsConstructing ) ) ]"
 				text = "[GUIBuildingItem.GetCurrentOrConstrucingBuilding.GetLevel]"
 				parentanchor = bottom|right
@@ -3642,6 +3427,7 @@ types CountyViewTypes
 				visible = "[GUIBuildingItem.IsBuildingDisabled]"
 				position = { 3 3 }
 				size = { 20 20 }
+
 			}
 		}
 
@@ -3690,24 +3476,6 @@ types CountyViewTypes
 				direction = horizontal
 			}
 		}
-
-		flowcontainer = {
-			visible = "[And( Not( GUIBuildingItem.HasLevel ), GUIBuildingItem.IsConstructing ) ]"
-			parentanchor = bottom|hcenter
-			position = { 0 -3 }
-			direction = vertical
-			ignoreinvisible = yes
-
-			progressbar_standard = {
-				name = "construct_progressbar"
-				visible = "[GUIBuildingItem.IsConstructing]"
-				parentanchor = hcenter
-				alwaystransparent = yes
-				size = { 51 10 }
-				value = "[GUIBuildingItem.GetConstructingProgress]"
-				direction = horizontal
-			}
-		}
 	}
 
 	type building_in_vassal_warning_hbox = hbox
@@ -3717,17 +3485,9 @@ types CountyViewTypes
 
 		coa_title_tiny = {
 			datacontext = "[HoldingView.GetHolder.GetPrimaryTitle]"
-			blockoverride "position" {
-				position = { 0 0 }
-			}
-		}
-
-		spacer = {
-			size = { 5 0 }
 		}
 
 		text_multi = {
-			align = top
 			autoresize = yes
 			text = "HOLDING_VIEW_BUILDING_IN_VASSAL"
 		}
@@ -3877,7 +3637,7 @@ types CountyViewTypes
 
 						tooltip_visible = "[ValueBreakdown.HasTooltip]"
 						using = tooltip_se
-
+						
 						tooltipwidget = {
 							widget_value_breakdown_tooltip = {}
 						}
@@ -3886,17 +3646,6 @@ types CountyViewTypes
 			}
 		}
 	}
-}
-
-
-template Special_Building_Texture 
-{
-	texture = "gfx/interface/buttons/button_special_building.dds"
-
-	spriteType = Corneredtiled
-	spriteborder = { 18 18 }
-
-	framesize = { 252 80 }
 }
 
 types GHCompTypes { # Make the gui warning disappear

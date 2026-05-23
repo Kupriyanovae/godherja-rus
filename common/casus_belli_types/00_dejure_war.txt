@@ -16,18 +16,16 @@
 			}
 		}
 	}
-
-	allowed_for_character_display_regardless = {
-		tgp_japan_offensive_wars_ban_trigger = yes
-	}
 	
 	allowed_against_character = {
 		scope:attacker = {
 			has_de_jure_claim_on = scope:defender
 		}
-		NOR = {
-			scope:defender = { target_is_liege_or_above = scope:attacker }
-			scope:attacker = { target_is_liege_or_above = scope:defender }
+		NOT = {
+			OR = {
+				scope:defender = { target_is_liege_or_above = scope:attacker }
+				scope:attacker = { target_is_liege_or_above = scope:defender }
+			}
 		}
 		scope:defender = {
 			is_ruin = no
@@ -43,7 +41,8 @@
 	valid_to_start = {
 		scope:target = {
 			any_this_title_or_de_jure_above = {
-				holder ?= {
+				exists = holder
+				holder = {
 					OR = {
 						this = scope:attacker
 						target_is_liege_or_above = scope:attacker
@@ -57,34 +56,6 @@
 		piety = {
 			value = 0
 			add = common_cb_impious_piety_cost
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
 		}
 		prestige = {
 			value = 0
@@ -100,34 +71,7 @@
 				}
 				desc = CB_CLAIM_COST_TARGET_TITLES
 			}
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
+
 			multiply = common_cb_prestige_cost_multiplier
 		}
 	}
@@ -209,9 +153,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -269,36 +210,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#GH ADDITION
-		# Struggle Catalysts
-		hidden_effect = {
-			scope:attacker = {
-				if = {
-					limit = {
-						any_character_struggle = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-					}
-					every_character_struggle = {
-						limit = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-						activate_struggle_catalyst = {
-							catalyst = catalyst_war_white_peace
-							character = scope:attacker
-						}
-					}
-				}
-			}
-		}
-		#GH END
 	}
 
 	on_defeat_desc = {
@@ -323,11 +234,8 @@
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		scope:defender = {
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_med_effect = yes
-		}
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
 
 		# Attacker must pay the defender war reparations.
 		scope:attacker = {
@@ -353,6 +261,8 @@
 			WINNER_ALLY_FAME_SCALE = 100
 			LOSER_ALLY_FAME_SCALE = 100
 		}
+
+
 	
 		# Truce
 		add_truce_attacker_defeat_effect = yes
@@ -364,9 +274,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_defeat_effects = yes
 	}
 	
 	on_primary_attacker_death = inherit
@@ -411,17 +318,15 @@ individual_county_de_jure_cb = {
 		}
 	}
 
-	allowed_for_character_display_regardless = {
-		tgp_japan_offensive_wars_ban_trigger = yes
-	}
-
 	allowed_against_character = {
 		scope:attacker = {
 			has_de_jure_claim_on = scope:defender
 		}
-		NOR = {
-			scope:defender = { target_is_liege_or_above = scope:attacker }
-			scope:attacker = { target_is_liege_or_above = scope:defender }
+		NOT = {
+			OR = {
+				scope:defender = { target_is_liege_or_above = scope:attacker }
+				scope:attacker = { target_is_liege_or_above = scope:defender }
+			}
 		}
 		scope:defender = {
 			is_ruin = no
@@ -437,7 +342,8 @@ individual_county_de_jure_cb = {
 		scope:target = {
 			tier = tier_county
 			any_this_title_or_de_jure_above = {
-				holder ?= {
+				exists = holder
+				holder = {
 					OR = {
 						this = scope:attacker
 						target_is_liege_or_above = scope:attacker
@@ -492,34 +398,6 @@ individual_county_de_jure_cb = {
 		piety = {
 			value = 0
 			add = common_cb_impious_piety_cost
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
 		}
 		prestige = {
 			# scale base value based on number of counties x 100, in this case 1
@@ -527,34 +405,7 @@ individual_county_de_jure_cb = {
 				value = 100
 				desc = CB_CLAIM_COST_TARGET_TITLES
 			}
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
+
 			multiply = common_cb_prestige_cost_multiplier
 		}
 	}
@@ -634,9 +485,6 @@ individual_county_de_jure_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -686,37 +534,6 @@ individual_county_de_jure_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-
-		#GH ADDITION
-		# Struggle Catalysts
-		hidden_effect = {
-			scope:attacker = {
-				if = {
-					limit = {
-						any_character_struggle = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-					}
-					every_character_struggle = {
-						limit = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-						activate_struggle_catalyst = {
-							catalyst = catalyst_war_white_peace
-							character = scope:attacker
-						}
-					}
-				}
-			}
-		}
-		#GH END
 	}
 
 	on_defeat_desc = {
@@ -740,12 +557,9 @@ individual_county_de_jure_cb = {
 		
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
-	
-		scope:defender = {
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_low_effect = yes 
-		}
+
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
 
 		# Attacker must pay the defender war reparations.
 		scope:attacker = {
@@ -787,9 +601,6 @@ individual_county_de_jure_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_defeat_effects = yes
 	}
 	
 	on_primary_attacker_death = inherit
@@ -836,17 +647,15 @@ individual_duchy_de_jure_cb = {
 		}
 	}
 
-	allowed_for_character_display_regardless = {
-		tgp_japan_offensive_wars_ban_trigger = yes
-	}
-
 	allowed_against_character = {
 		scope:attacker = {
 			has_de_jure_claim_on = scope:defender
 		}
-		NOR = {
-			scope:defender = { target_is_liege_or_above = scope:attacker }
-			scope:attacker = { target_is_liege_or_above = scope:defender }
+		NOT = {
+			OR = {
+				scope:defender = { target_is_liege_or_above = scope:attacker }
+				scope:attacker = { target_is_liege_or_above = scope:defender }
+			}
 		}
 		scope:defender = {
 			is_ruin = no
@@ -862,7 +671,8 @@ individual_duchy_de_jure_cb = {
 		scope:target = {
 			tier = tier_duchy
 			any_this_title_or_de_jure_above = {
-				holder ?= {
+				exists = holder
+				holder = {
 					OR = {
 						this = scope:attacker
 						target_is_liege_or_above = scope:attacker
@@ -896,34 +706,6 @@ individual_duchy_de_jure_cb = {
 		piety = {
 			value = 0
 			add = common_cb_impious_piety_cost
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
 		}
 		prestige = {
 			value = 0
@@ -941,34 +723,7 @@ individual_duchy_de_jure_cb = {
 				}
 				desc = CB_CLAIM_COST_TARGET_TITLES
 			}
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
+
 			multiply = common_cb_prestige_cost_multiplier
 		}
 	}
@@ -1085,9 +840,6 @@ individual_duchy_de_jure_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -1141,37 +893,6 @@ individual_duchy_de_jure_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-
-		#GH ADDITION
-		# Struggle Catalysts
-		hidden_effect = {
-			scope:attacker = {
-				if = {
-					limit = {
-						any_character_struggle = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-					}
-					every_character_struggle = {
-						limit = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-						activate_struggle_catalyst = {
-							catalyst = catalyst_war_white_peace
-							character = scope:attacker
-						}
-					}
-				}
-			}
-		}
-		#GH END
 	}
 
 	on_defeat_desc = {
@@ -1195,12 +916,9 @@ individual_duchy_de_jure_cb = {
 		
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
-	
-		scope:defender = {
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_med_effect = yes 
-		}
+
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
 
 		# Attacker must pay the defender war reparations.
 		scope:attacker = {
@@ -1242,9 +960,6 @@ individual_duchy_de_jure_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_defeat_effects = yes
 	}
 	
 	on_primary_attacker_death = inherit
@@ -1285,7 +1000,7 @@ imperial_reconquest_cb = {
 				religion = religion:aversarinas_aagiokrata_religion
 			}
 			OR = {
-				has_title = title:h_aversarinas_aautokrata
+				has_title = title:e_aversarinas_aautokrata
 				has_title = title:e_asiupoli_aautokrata
 				has_title = title:e_oraispol_aautokrata
 				has_title = title:e_etepezea
@@ -1402,9 +1117,6 @@ imperial_reconquest_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -1441,37 +1153,6 @@ imperial_reconquest_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-
-		#GH ADDITION
-		# Struggle Catalysts
-		hidden_effect = {
-			scope:attacker = {
-				if = {
-					limit = {
-						any_character_struggle = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-					}
-					every_character_struggle = {
-						limit = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-						activate_struggle_catalyst = {
-							catalyst = catalyst_war_white_peace
-							character = scope:attacker
-						}
-					}
-				}
-			}
-		}
-		#GH END
 	}
 
 	on_defeat_desc = {
@@ -1495,11 +1176,8 @@ imperial_reconquest_cb = {
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		scope:defender = {
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_med_effect = yes
-		}
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
 	
 		scope:attacker = {
 			pay_short_term_gold_reparations_effect = {
@@ -1529,9 +1207,6 @@ imperial_reconquest_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_defeat_effects = yes
 	}
 	
 	on_primary_attacker_death = inherit

@@ -64,14 +64,7 @@ convert_to_feudalism_liege_converted_decision = {
 	decision_group_type = major
 	desc = convert_to_feudalism_liege_converted_decision_desc
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 72
-		duchy = 36
-		kingdom = 36
-		empire = 36
-		hegemony = 36
-	}
+	ai_check_interval = 36
 
 	is_shown = {
 		OR = {
@@ -81,7 +74,6 @@ convert_to_feudalism_liege_converted_decision = {
 		}
 		liege = {
 			OR = {
-				government_has_flag = government_is_japan_feudal
 				government_has_flag = government_is_feudal
 				government_has_flag = government_is_clan
 			}
@@ -101,10 +93,6 @@ convert_to_feudalism_liege_converted_decision = {
 			text = faith_is_reformed
 			subject = root
 			faith = { NOT = { has_doctrine_parameter = unreformed } }
-		}
-		trigger_if = {
-			limit = { government_has_flag = government_is_wanua }
-			faith = { has_doctrine = doctrine_monotheist }
 		}
 		custom_description = {
 			text = recent_conversion_to_tribalism
@@ -147,18 +135,11 @@ convert_clan_to_feudalism_through_liege_decision = {
 	decision_group_type = major
 	desc = convert_clan_to_feudalism_through_liege_decision_desc
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 72
-		duchy = 36
-		kingdom = 36
-		empire = 36
-		hegemony = 36
-	}
+	ai_check_interval = 36
 
 	is_shown = {
 		government_has_flag = government_is_clan
-		top_liege != this
+		is_independent_ruler = no
 		liege = {
 			government_has_flag = government_is_feudal
 		}
@@ -172,7 +153,7 @@ convert_clan_to_feudalism_through_liege_decision = {
 				faith = {
 					faith_hostility_level = {
 						target = root.liege.faith
-						value <= faith_fully_accepted_level
+						value >= faith_fully_accepted_level
 					}
 				}
 			}
@@ -195,9 +176,9 @@ convert_clan_to_feudalism_through_liege_decision = {
 	effect = {
 		trigger_event = major_decisions.0001
 		save_scope_as = actor
-
+		
 		change_government = feudal_government
-
+		
 		hidden_effect = {
 			every_vassal_or_below = {
 				limit = { government_has_flag = government_is_clan }
@@ -216,7 +197,7 @@ convert_clan_to_feudalism_through_liege_decision = {
 
 	ai_will_do = {
 		base = 0
-
+		
 		modifier = {
 			add = 100
 			opinion = {
@@ -228,7 +209,6 @@ convert_clan_to_feudalism_through_liege_decision = {
 }
 
 # Convert from Feudal if your liege is Clan
-### Adopt [ROOT.Char.GetLiege.GetGovernment.GetNameNoTooltip] Ways through Liege ###
 convert_feudalism_to_clan_through_liege_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
@@ -236,18 +216,11 @@ convert_feudalism_to_clan_through_liege_decision = {
 	decision_group_type = major
 	desc = convert_feudalism_to_clan_through_liege_decision_desc
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 72
-		duchy = 36
-		kingdom = 36
-		empire = 36
-		hegemony = 36
-	}
+	ai_check_interval = 36
 
 	is_shown = {
 		government_has_flag = government_is_feudal
-		top_liege != this
+		is_independent_ruler = no
 		liege = {
 			government_has_flag = government_is_clan
 		}
@@ -261,7 +234,7 @@ convert_feudalism_to_clan_through_liege_decision = {
 				faith = {
 					faith_hostility_level = {
 						target = root.liege.faith
-						value <= faith_fully_accepted_level
+						value >= faith_fully_accepted_level
 					}
 				}
 			}
@@ -324,28 +297,12 @@ convert_feudalism_to_clan_through_liege_decision = {
 # A decision to feudalize the entire realm (wow!)
 convert_whole_realm_to_feudalism_decision = {
 	picture = {
-		trigger = {
-			has_tgp_dlc_trigger = yes
-			liege = {
-				culture = { has_cultural_pillar = heritage_shanxi }
-			}
-		}
-		reference = "gfx/interface/illustrations/decisions/tgp_dominance.dds"
-	}
-	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
 	}
 	decision_group_type = major
 	desc = convert_whole_realm_to_feudalism_decision_desc
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 72
-		duchy = 36
-		kingdom = 36
-		empire = 36
-		hegemony = 36
-	}
+	ai_check_interval = 36
 
 	is_shown = {
 		OR = {
@@ -354,9 +311,9 @@ convert_whole_realm_to_feudalism_decision = {
 			GH_gov_is_tribal_clan_trigger = yes
 		}
 		OR = {
-			top_liege = this
+			is_independent_ruler = yes
 			AND = {
-				top_liege != this
+				is_independent_ruler = no
 				liege = {
 					NOR = {
 						government_has_flag = government_is_feudal
@@ -407,20 +364,6 @@ convert_whole_realm_to_feudalism_decision = {
 				}
 			}
 		}
-		trigger_if = {
-			limit = { 
-				government_has_flag = government_is_wanua
-				is_ai = yes
-			}
-			faith = { has_doctrine = doctrine_monotheist }
-		}
-	}
-
-	is_valid_showing_failures_only = {
-		custom_tooltip = {
-			text = permafrost_feudal_ban
-			NOT = { culture = { has_cultural_parameter = permafrost_cannot_become_feudal } }
-		}
 	}
 
 	cost = {
@@ -467,21 +410,14 @@ convert_to_tribalism_decision = {
 	decision_group_type = major
 	desc = convert_to_tribalism_decision_desc
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 72
-		duchy = 36
-		kingdom = 36
-		empire = 36
-		hegemony = 36
-	}
+	ai_check_interval = 36
 
 	is_shown = {
 		is_landed = yes
 		primary_title.tier >= tier_county
 		NOT = {
 			any_held_title = {
-				title_tier = county
+				tier = tier_county
 				title_province = {
 					NOT = { has_holding_type = tribal_holding }
 				}
@@ -491,7 +427,6 @@ convert_to_tribalism_decision = {
 			government_has_flag = government_is_feudal
 			government_has_flag = government_is_clan
 			government_has_flag = government_is_continental_clan
-			government_has_flag = government_is_mandala
 			GH_is_any_republic_government_trigger = yes
 			government_has_flag = government_is_landed_order
 		}
@@ -537,31 +472,12 @@ convert_to_tribalism_decision = {
 
 declare_bloodline_holy_decision = {
 	picture = {
-		trigger = {
-			culture = { has_graphical_east_asia_culture_group_trigger = yes }
-		}
-			reference = "gfx/interface/illustrations/event_scenes/tgp_holysite_asia.dds"
-	}
-	picture = {
-		trigger = {
-			culture = { has_graphical_india_culture_group_trigger = yes }
-		}
-		reference = "gfx/interface/illustrations/event_scenes/ep2_holysite_indian.dds"
-	}
-	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_family_tree.dds"
 	}
 	decision_group_type = major
 	desc = declare_bloodline_holy_decision_desc
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 120
-		empire = 120
-		hegemony = 120
-	}
+	ai_check_interval = 120
 
 	is_shown = {
 		is_lowborn = no
@@ -584,7 +500,7 @@ declare_bloodline_holy_decision = {
 		}
 		OR = { #Should not be available to non-Temporal religious heads.
 			root.faith = { has_doctrine = doctrine_temporal_head }
-			root != root.faith.religious_head
+			NOT = { root = root.faith.religious_head }
 		}
 		OR = {  #Either headless faith, religious head himself, or in good relations with other religious head.
 			root.faith = { has_doctrine = doctrine_no_head }
@@ -594,17 +510,16 @@ declare_bloodline_holy_decision = {
 			}
 			AND = {
 				exists = root.faith.religious_head
-				root != root.faith.religious_head
+				NOT = { root = root.faith.religious_head }
 			}
 		}
-		faith = { NOT = { has_doctrine_parameter = unreformed } }
 	}
 
 	is_valid = {
 		trigger_if = {
 			limit = {
 				exists = root.faith.religious_head
-				root != root.faith.religious_head
+				NOT = { root = root.faith.religious_head }
 			}
 			root.faith.religious_head = {
 				opinion = {
@@ -671,14 +586,7 @@ strengthen_bloodline_decision = {
 	decision_group_type = major
 	desc = strengthen_bloodline_decision_desc
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 120
-		empire = 120
-		hegemony = 120
-	}
+	ai_check_interval = 120
 
 	is_shown = {
 		is_lowborn = no
@@ -702,7 +610,8 @@ strengthen_bloodline_decision = {
 				}
 			}
 			AND = {
-				player_heir ?= {
+				exists = player_heir
+				player_heir = {
 					OR = {
 						has_trait = intellect_good
 						has_trait = beauty_good
@@ -737,7 +646,9 @@ strengthen_bloodline_decision = {
 
 		every_player = {
 			limit = {
-				this != root
+				NOT = {
+					this = root
+				}
 				dynasty = root.dynasty
 			}
 			send_interface_toast = {
@@ -757,7 +668,7 @@ strengthen_bloodline_decision = {
 	ai_will_do = {
 		base = 100
 	}
-}
+}	
 
 ##################################################
 # Dynasty of Many Crowns
@@ -766,32 +677,11 @@ strengthen_bloodline_decision = {
 
 dynasty_of_many_crowns_decision = {
 	picture = {
-		trigger = {
-			government_is_japanese_trigger = yes
-		}
-		reference = "gfx/interface/illustrations/event_story/tgp_japanese_shogunate.dds"
-	}
-	picture = {
-		trigger = { culture = { has_graphical_east_asia_culture_group_trigger = yes } }
-		reference = "gfx/interface/illustrations/event_story/tgp_dynastic_cycle_stability.dds"
-	}
-	picture = {
-		trigger = { culture = { has_graphical_india_culture_group_trigger = yes } }
-		reference = "gfx/interface/illustrations/holding_types/tgp_castle_se_asia.dds"
-	}
-	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 	}
 	desc = dynasty_of_many_crowns_decision_desc
 	decision_group_type = major
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 120
-		empire = 120
-		hegemony = 120
-	}
+	ai_check_interval = 120
 
 	is_shown = {
 		is_landless_adventurer = no
@@ -825,7 +715,9 @@ dynasty_of_many_crowns_decision = {
 
 		every_player = {
 			limit = {
-				this != root
+				NOT = {
+					this = root
+				}
 				dynasty = root.dynasty
 			}
 			send_interface_toast = {
@@ -868,50 +760,28 @@ dynasty_of_many_crowns_decision = {
 
 found_kingdom_decision = {
 	picture = {
-		trigger = {
-			culture = { has_graphical_east_asia_culture_group_trigger = yes }
-		}
-		reference = "gfx/interface/illustrations/activity_splash_screens/tour_arrival_asia_welcome.dds"
-	}
-	picture = {
-		trigger = {
-			culture = { has_graphical_india_culture_group_trigger = yes }
-		}
-		reference = "gfx/interface/illustrations/event_scenes/ep2_feast_indian.dds"
-	}
-	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
 	}
 	decision_group_type = major
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 60
-		kingdom = 0
-		empire = 0
-		hegemony = 0
-	}
+	ai_check_interval = 60
 	desc = found_kingdom_decision_desc
 
 	is_shown = {
 		highest_held_title_tier = tier_duchy
-		NOT = {
-			has_game_rule = off_custom_kingdoms
-		}
+		NOT = { has_game_rule = off_custom_kingdoms }
 		is_landed_or_landless_administrative = yes
 		is_confederation_member = no
-		is_redlander = no
 	}
 
 	is_valid = {
 		prestige_level >= 3
-		top_liege = this
+		is_independent_ruler = yes
 		OR = {
 			custom_description = {
 				text = found_kingdom_decision_three_duchies_held
 				any_held_title = {
 					count > 2
-					title_tier = duchy
+					tier = tier_duchy
 				}
 			}
 			sub_realm_size >= 30
@@ -938,19 +808,7 @@ found_kingdom_decision = {
 			value = 300
 			if = {
 				limit = {
-					OR = {
-						government_has_flag = government_is_nomadic
-						has_treasury = yes
-					}
-				}
-				multiply = 0
-			}
-		}
-		treasury = {
-			value = 300
-			if = {
-				limit = {
-					has_treasury = no
+					government_has_flag = government_is_nomadic
 				}
 				multiply = 0
 			}
@@ -1001,43 +859,22 @@ found_kingdom_decision = {
 
 found_empire_decision = {
 	picture = {
-		trigger = {
-			government_is_japanese_trigger = yes
-		}
-		reference = "gfx/interface/illustrations/event_story/tgp_japanese_shogunate.dds"
-	}
-	picture = {
-		trigger = { culture = { has_graphical_east_asia_culture_group_trigger = yes } }
-		reference = "gfx/interface/illustrations/event_story/tgp_dynastic_cycle_stability.dds"
-	}
-	picture = {
-		trigger = { culture = { has_graphical_india_culture_group_trigger = yes } }
-		reference = "gfx/interface/illustrations/decisions/tgp_decision_mandala.dds"
-	}
-	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 	}
 	decision_group_type = major
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 60
-		empire = 0
-		hegemony = 0
-	}
+	ai_check_interval = 60
 	desc = found_empire_decision_desc
 
 	is_shown = {
 		highest_held_title_tier = tier_kingdom
 		OR = {
-			top_liege = this
+			is_independent_ruler = yes
 			any_held_title = {
 				count >= 3
-				title_tier = kingdom
+				tier = tier_kingdom
 			}
 		}
-		NOT = {
+		NOT = { 
 			has_game_rule = off_custom_kingdoms
 		}
 		is_landed_or_landless_administrative = yes
@@ -1057,7 +894,7 @@ found_empire_decision = {
 						text = found_empire_decision_three_kingdoms_held
 						any_held_title = {
 							count >= 2
-							title_tier = kingdom
+							tier = tier_kingdom
 						}
 					}
 					sub_realm_size >= 40
@@ -1072,14 +909,14 @@ found_empire_decision = {
 						text = found_empire_decision_three_kingdoms_held
 						any_held_title = {
 							count >= 3
-							title_tier = kingdom
+							tier = tier_kingdom
 						}
 					}
 					sub_realm_size >= 80
 				}
 			}
 		}
-
+		
 		trigger_if = {
 			limit = {
 				government_has_flag = government_is_nomadic
@@ -1128,7 +965,7 @@ found_empire_decision = {
 	}
 
 	is_valid_showing_failures_only = {
-		top_liege = this
+		is_independent_ruler = yes
 		is_available_adult = yes
 		is_at_war = no
 	}
@@ -1138,19 +975,7 @@ found_empire_decision = {
 			value = 1200
 			if = {
 				limit = {
-					OR = {
-						government_has_flag = government_is_nomadic
-						has_treasury = yes
-					}
-				}
-				multiply = 0
-			}
-		}
-		treasury = {
-			value = 1200
-			if = {
-				limit = {
-					has_treasury = no
+					government_has_flag = government_is_nomadic
 				}
 				multiply = 0
 			}
@@ -1177,9 +1002,6 @@ found_empire_decision = {
 			hidden_effect = {
 				legend_seed_new_title_effect = yes
 			}
-		}
-		else = {
-			create_custom_empire_effect = yes
 		}
 		if = {
 			limit = {
@@ -1232,14 +1054,7 @@ adopt_special_succession_decision = {
 	}
 	desc = adopt_special_succession_decision_desc
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 36
-		empire = 36
-		hegemony = 36
-	}
+	ai_check_interval = 36
 
 	is_shown = {
 		is_human = yes
@@ -1249,14 +1064,14 @@ adopt_special_succession_decision = {
 			highest_held_title_tier >= tier_kingdom
 			has_realm_law_flag = partition_succession_law
 			any_held_title = {
-				title_tier >= kingdom
+				tier >= tier_kingdom
 				NOR = {
 					has_title_law_flag = advanced_succession_law
 					has_title_law_flag = elective_succession_law
 				}
 			}
 		}
-		current_date < 6300.1.1	#Curtail special succession types as the centuries wear on. Ever on.
+		current_date < 1300.1.1	#Curtail special succession types as the centuries wear on. Ever on.
 	}
 
 	is_valid = {
@@ -1265,7 +1080,7 @@ adopt_special_succession_decision = {
 			#Either hold a valid top-tier king title as a king...
 			AND = {
 				any_held_title = {
-					title_tier = kingdom
+					tier = tier_kingdom
 					NOR = {
 						custom_description = {
 							text = found_kingdom_decision_advanced_succesion
@@ -1284,7 +1099,7 @@ adopt_special_succession_decision = {
 			AND = {
 				highest_held_title_tier >= tier_empire
 				any_held_title = {
-					title_tier >= empire
+					tier >= tier_empire
 					NOR = {
 						custom_description = {
 							text = found_kingdom_decision_advanced_succesion
@@ -1333,14 +1148,7 @@ tribal_challenge_ruler_decision = {
 	desc = tribal_challenge_ruler_decision_desc
 	selection_tooltip = tribal_challenge_ruler_decision_tooltip
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 36
-		duchy = 36
-		kingdom = 36
-		empire = 36
-		hegemony = 36
-	}
+	ai_check_interval = 36
 
 	cooldown = { days = 3650 }
 
@@ -1543,13 +1351,13 @@ accept_cannibalism_decision = {
 		trigger_event = major_decisions.1001
 		every_player = {
 			limit = {
-				this != root
+				NOT = { this = root }
 				faith = root.faith
 			}
 			trigger_event = major_decisions.1002
 		}
 	}
-
+	
 	ai_potential = {
 		always = no
 	}
@@ -1582,6 +1390,8 @@ found_university_decision = {
 				this = title:b_dubabha
 				this = title:b_prose
 				this = title:b_marouincour
+				this = title:b_province12313
+				this = title:b_province13057
 				this = title:b_kegothon
 				# this = title:b_mehmeli # GH TODO: Province removed, replace
 			}
@@ -1644,6 +1454,33 @@ found_university_decision = {
 					custom_description = {
 						text = no_special_building_slot
 						title:b_marouincour.title_province = { has_special_building_slot = no }
+					}
+				}
+			}
+			#Mayikprolollan
+			trigger_if = {
+				limit = {
+					any_sub_realm_barony = { this = title:b_province12313 }
+					title:b_province12313.title_province = { NOT = { exists = var:university } }
+				}
+				AND = {
+					title:b_province12313.county = { development_level >= medium_development_level }
+					custom_description = {
+						text = no_special_building_slot
+						title:b_province12313.title_province = { has_special_building_slot = no }
+					}
+				}
+			}
+			trigger_if = {
+				limit = {
+					any_sub_realm_barony = { this = title:b_province13057 }
+					title:b_province13057.title_province = { NOT = { exists = var:university } }
+				}
+				AND = {
+					title:b_province13057.county = { development_level >= medium_development_level }
+					custom_description = {
+						text = no_special_building_slot
+						title:b_province13057.title_province = { has_special_building_slot = no }
 					}
 				}
 			}
@@ -1731,7 +1568,7 @@ lunatic_building_decision = {
 		trigger_event = major_decisions.3001
 		every_player = {
 			limit = {
-				this != root
+				NOT = { this = root }
 				is_within_diplo_range = { CHARACTER = root }
 			}
 			trigger_event = major_decisions.3002
@@ -1744,27 +1581,10 @@ lunatic_building_decision = {
 	}
 
 	cost = {
-		gold = {
-			value = 0
-			if = {
-				limit = {
-					has_treasury = no
-				}
-				add = massive_gold_value
-			}
-		}
-		treasury = {
-			value = 0
-			if = {
-				limit = {
-					has_treasury = yes
-				}
-				add = massive_gold_value
-			}
-		}
+		gold = massive_gold_value
 		prestige = medium_prestige_gain
 	}
-
+	
 	ai_potential = {
 		always = no
 	}
@@ -1791,13 +1611,21 @@ repay_loan_decision = {
 	ai_check_interval = 0
 
 	is_shown = {
-		var:loan_holder ?= {
-			any_in_list = {
-				variable = owes_me_money
-				this = root
+		trigger_if = {
+			limit = {
+				has_character_flag = borrow_from_holy_order
+			}
+			faith = {
+				any_faith_holy_order = { #Your faith must have a Holy Order
+					leader = {
+						exists = var:owes_me_money
+						var:owes_me_money = root
+					}
+				}
 			}
 		}
 		exists = var:loan_amount_owed
+		exists = var:loan_holder
 	}
 
 	is_valid_showing_failures_only = {
@@ -1806,20 +1634,77 @@ repay_loan_decision = {
 	}
 
 	effect = {
-		var:loan_holder ?= { save_scope_as = recipient }
 		pay_short_term_gold = {
 			gold = var:loan_amount_owed
-			target = scope:recipient
+			target = var:loan_holder
 		}
-		clear_loanee_variables_effect = yes
+		if = {
+			limit = {
+				faith = {
+					any_faith_holy_order = {
+						leader = {
+							this = root.var:loan_holder
+						}
+					}
+				}
+			}
+			faith = {
+				random_faith_holy_order = {
+					limit = {
+						leader = { this = root.var:loan_holder }
+					}
+					leader = { save_scope_as = recipient }
+					save_scope_as = order
+				}
+			}
+			hidden_effect = { remove_decision_cooldown = repay_loan_decision }
+		}
+		remove_variable = loan_amount_owed
+		remove_variable = loan_holder
+		remove_character_flag = borrow_from_holy_order
+		if = {
+			limit = {
+				has_character_flag = promised_repayment
+			}
+			remove_character_flag = promised_repayment
+		}
+		if = {
+			limit = {
+				exists = var:has_reminded_about_loan
+			}
+			remove_variable = has_reminded_about_loan
+		}
+		if = {
+			limit = {
+				exists = var:original_loan_holder
+			}
+			remove_variable = original_loan_holder
+		}
+		if = {
+			limit = {
+				any_vassal = {
+					exists = var:owes_me_money
+				}
+			}
+			random_vassal = {
+				limit = {
+					exists = var:owes_me_money
+				}
+				save_scope_as = recipient
+			}
+		}
 		scope:recipient = {
-			remove_list_variable = {
-				name = owes_me_money
-				target = root
+			remove_variable = owes_me_money
+			remove_variable = loan_amount_owed
+			if = {
+				limit = {
+					exists = var:original_lender
+				}
+				remove_variable = original_lender
 			}
 		}
 	}
-
+	
 	ai_potential = {
 		always = no
 	}
@@ -1834,7 +1719,6 @@ repay_loan_decision = {
 # by Linnéa Thimrén
 ##################################################
 
-### Escape from Prison ###
 escape_from_prison_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_prison.dds"
@@ -1843,14 +1727,7 @@ escape_from_prison_decision = {
 	desc = escape_from_prison_decision_desc
 	selection_tooltip = escape_from_prison_decision_tooltip
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 24
-		duchy = 24
-		kingdom = 24
-		empire = 24
-		hegemony = 24
-	}
+	ai_check_interval = 24
 
 	cooldown = { days = 1825 }
 
@@ -1908,8 +1785,8 @@ escape_from_prison_decision = {
 		}
 		# If this is an AI, reset the AI escape cooldown.
 		if = {
-			limit = {
-				is_ai = yes
+			limit = { 
+				is_ai = yes 
 				exists = imprisoner
 			}
 			imprisoner = {
@@ -1923,7 +1800,8 @@ escape_from_prison_decision = {
 	
 	ai_potential = {
 		# Pre-filter AI & stop them spamming their gaoler.
-		imprisoner ?= {
+		exists = imprisoner
+		imprisoner = {
 			NOT = { has_character_flag = imprisoner_in_recent_escape_attempt }
 		}
 		OR = {
@@ -2024,11 +1902,6 @@ escape_from_prison_decision = {
 				ai_boldness >= very_high_positive_ai_value
 			}
 		}
-		## GH Changes - make redlanders escape more often
-		modifier = {
-			add = 40
-			is_redlander = yes
-		}
 	}
 }
 
@@ -2038,14 +1911,7 @@ found_duchy_decision = {
 		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
 	}
 	decision_group_type = major
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 60
-		duchy = 0
-		kingdom = 0
-		empire = 0
-		hegemony = 0
-	}
+	ai_check_interval = 60
 
 	cooldown = { years = 10 }
 
@@ -2059,12 +1925,10 @@ found_duchy_decision = {
 			}
 			has_game_rule = on_custom_duchies
 		}
-		NOR = {
-			government_allows = administrative
+		NOR = { 
+			government_allows = administrative 
 			government_has_flag = government_is_nomadic
-			government_is_japanese_trigger = yes
 		}
-		is_redlander = no
 	}
 
 	is_valid = {
@@ -2072,7 +1936,7 @@ found_duchy_decision = {
 		gh_duchies_and_above_allowed_trigger = yes
 		trigger_if = {
 			limit = {
-				has_legitimacy = yes
+				has_legitimacy = yes 
 			}
 			OR = {
 				prestige_level >= 3
@@ -2090,24 +1954,7 @@ found_duchy_decision = {
 	}
 
 	cost = {
-		gold = {
-			value = 0
-			if = {
-				limit = {
-					has_treasury = no
-				}
-				add = massive_gold_value
-			}
-		}
-		treasury = {
-			value = 0
-			if = {
-				limit = {
-					has_treasury = yes
-				}
-				add = massive_gold_value
-			}
-		}
+		gold = 150
 		prestige = 250
 		piety = 200
 	}
@@ -2138,21 +1985,10 @@ expand_duchy_decision = {
 		reference = "gfx/interface/illustrations/decisions/fp3/fp3_decision_sunder.dds"
 	}
 	picture = {
-		trigger = { culture = { has_building_gfx = southeast_asian_building_gfx } }
-		reference = "gfx/interface/illustrations/decisions/tgp_projects_mandala_capital.dds"
-	}
-	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
 	}
 	decision_group_type = realm
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 240
-		kingdom = 240
-		empire = 240
-		hegemony = 240
-	}
+	ai_check_interval = 240
 
 	cooldown = { years = 10 }
 
@@ -2164,8 +2000,8 @@ expand_duchy_decision = {
 					limit = {
 						highest_held_title_tier = tier_duchy
 					}
-					primary_title = {
-						save_temporary_scope_as = duchy_title
+					primary_title = { 
+						save_temporary_scope_as = duchy_title 
 					}
 				}
 				trigger_else = {
@@ -2202,7 +2038,6 @@ expand_duchy_decision = {
 	is_shown = {
 		save_temporary_scope_as = root_scope_temporary
 		highest_held_title_tier >= tier_duchy
-		is_redlander = no
 		OR = {
 			AND = {
 				is_ai = no
@@ -2215,13 +2050,8 @@ expand_duchy_decision = {
 			limit = {
 				highest_held_title_tier = tier_duchy
 			}
-			any_held_title = {
-				tier = tier_duchy
-				NOR = {
-					is_landless_type_title = yes
-					is_noble_family_title = yes
-				}
-				save_temporary_scope_as = duchy_title
+			primary_title = { 
+				save_temporary_scope_as = duchy_title 
 			}
 		}
 		trigger_else = {
@@ -2243,8 +2073,8 @@ expand_duchy_decision = {
 			limit = {
 				highest_held_title_tier = tier_duchy
 			}
-			primary_title = {
-				save_temporary_scope_as = duchy_title
+			primary_title = { 
+				save_temporary_scope_as = duchy_title 
 			}
 		}
 		trigger_else = {
@@ -2255,19 +2085,15 @@ expand_duchy_decision = {
 		trigger_if = {
 			limit = {
 				OR = {
-					has_legitimacy = yes
+					has_legitimacy = yes 
 					exists = scope:barony
 				}
 			}
 			OR = {
-				trigger_if = {
-					limit = { government_has_flag = government_is_mandala }
-					piety_level >= 3
-				}
-				trigger_else = { prestige_level >= 3 }
+				prestige_level >= 3
 				trigger_if = {
 					limit = {
-						has_legitimacy = yes
+						has_legitimacy = yes 
 					}
 					legitimacy_level >= 4
 				}
@@ -2316,8 +2142,8 @@ expand_duchy_decision = {
 						limit = {
 							highest_held_title_tier = tier_duchy
 						}
-						primary_title = {
-							save_temporary_scope_as = duchy_title
+						primary_title = { 
+							save_temporary_scope_as = duchy_title 
 						}
 					}
 					trigger_else = {
@@ -2340,7 +2166,7 @@ expand_duchy_decision = {
 			limit = {
 				highest_held_title_tier = tier_duchy
 			}
-			primary_title = {
+			primary_title = { 
 				save_temporary_scope_as = duchy_title_scope
 			}
 		}
@@ -2392,41 +2218,10 @@ set_de_jure_capital_decision = {
 		reference = "gfx/interface/illustrations/event_scenes/mpo_city_steppe.dds"
 	}
 	picture = {
-		trigger = {
-			OR = {
-				government_has_flag = government_is_celestial
-				government_has_flag = government_is_meritocratic
-			}
-		}
-		reference = "gfx/interface/illustrations/holding_types/tgp_city_china.dds"
-	}
-	picture = {
-		trigger = {
-			government_is_japanese_trigger = yes 
-		}
-		reference = "gfx/interface/illustrations/holding_types/tgp_city_japan.dds"
-	}
-	picture = {
-		trigger = {
-			OR = {
-				government_has_flag = government_is_mandala
-				culture = { has_graphical_india_culture_group_trigger = yes }
-			}
-		}
-		reference = "gfx/interface/illustrations/holding_types/city_india.dds"
-	}
-	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_city.dds"
 	}
 	decision_group_type = realm
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 240
-		kingdom = 240
-		empire = 240
-		hegemony = 0
-	}
+	ai_check_interval = 240
 
 	cooldown = { years = 10 }
 
@@ -2439,9 +2234,9 @@ set_de_jure_capital_decision = {
 		item = { # Duchy
 			value = set_duchy_capital
 			is_valid = {
-
+				
 			}
-			current_description = set_de_jure_capital_decision
+			current_description = hire_physician_decision_desc
 			localization = set_de_jure_capital_duchy
 			icon = "gfx/interface/icons/duchy_crown.dds"
 			ai_chance = { value = 100 }
@@ -2454,7 +2249,7 @@ set_de_jure_capital_decision = {
 					highest_held_title_tier >= tier_kingdom
 				}
 			}
-			current_description = set_de_jure_capital_decision
+			current_description = hire_physician_decision_desc
 			localization = set_de_jure_capital_kingdom
 			icon = "gfx/interface/icons/kingdom_crown.dds"
 			ai_chance = { value = 100 }
@@ -2467,35 +2262,15 @@ set_de_jure_capital_decision = {
 					highest_held_title_tier >= tier_empire
 				}
 			}
-			current_description = set_de_jure_capital_decision
+			current_description = hire_physician_decision_desc
 			localization = set_de_jure_capital_empire
 			icon = "gfx/interface/icons/empire_crown.dds"
-			ai_chance = { value = 100 }
-		}
-
-		item = { # Hegemony
-			value = set_hegemony_capital
-			is_shown = {
-				root = {
-					highest_held_title_tier >= tier_hegemony
-				}
-			}
-			current_description = set_de_jure_capital_decision
-			localization = set_de_jure_capital_hegemony
-			icon = "gfx/interface/icons/hegemony_crown.dds"
 			ai_chance = { value = 100 }
 		}
 	}
 
 	is_shown = {
 		highest_held_title_tier >= tier_duchy
-		any_held_title = {
-			tier >= tier_duchy
-			NOR = {
-				is_landless_type_title = yes
-				is_noble_family_title = yes
-			}
-		}
 		OR = {
 			AND = {
 				highest_held_title_tier >= tier_duchy
@@ -2508,10 +2283,6 @@ set_de_jure_capital_decision = {
 			AND = {
 				highest_held_title_tier >= tier_empire
 				NOT = { root.capital_county = root.capital_county.empire.title_capital_county }
-			}
-			AND = {
-				highest_held_title_tier >= tier_hegemony
-				NOT = { root.capital_county = root.capital_county.hegemony.title_capital_county }
 			}
 		}
 	}
@@ -2535,10 +2306,6 @@ set_de_jure_capital_decision = {
 						highest_held_title_tier = tier_empire
 						scope:set_empire_capital = yes
 					}
-					AND = {
-						highest_held_title_tier = tier_hegemony
-						scope:set_hegemony_capital = yes
-					}
 				}
 			}
 			root.primary_title = {
@@ -2551,14 +2318,11 @@ set_de_jure_capital_decision = {
 				scope:set_duchy_capital = {
 					root.capital_county.duchy = { save_temporary_scope_as = current_de_jure }
 				}
-				scope:set_kingdom_capital = {
-					root.capital_county.kingdom = { save_temporary_scope_as = current_de_jure }
+				scope:set_kingdom_capital = { 
+					root.capital_county.kingdom = { save_temporary_scope_as = current_de_jure } 
 				}
-				scope:set_empire_capital = {
-					root.capital_county.empire = { save_temporary_scope_as = current_de_jure }
-				}
-				scope:set_hegemony_capital = {
-					root.capital_county.hegemony = { save_temporary_scope_as = current_de_jure }
+				scope:set_empire_capital = { 
+					root.capital_county.empire = { save_temporary_scope_as = current_de_jure } 
 				}
 			}
 		}
@@ -2602,7 +2366,6 @@ set_de_jure_capital_decision = {
 					scope:set_duchy_capital = { value = 500 }
 					scope:set_kingdom_capital = { value = 750 }
 					scope:set_empire_capital = { value = 1000 }
-					scope:set_hegemony_capital = { value = 1500 }
 				}
 			}
 			else = {
@@ -2630,10 +2393,6 @@ set_de_jure_capital_decision = {
 						highest_held_title_tier = tier_empire
 						scope:set_empire_capital = yes
 					}
-					AND = {
-						highest_held_title_tier = tier_hegemony
-						scope:set_hegemony_capital = yes
-					}
 				}
 			}
 			root.primary_title = {
@@ -2645,27 +2404,21 @@ set_de_jure_capital_decision = {
 			switch = {
 				trigger = yes
 				scope:set_duchy_capital = {
-					root.capital_county.duchy = {
+					root.capital_county.duchy = { 
 						title_capital_county = { save_scope_as = old_capital }
-						save_scope_as = current_de_jure_scope
+						save_scope_as = current_de_jure_scope 
 					}
 				}
-				scope:set_kingdom_capital = {
-					root.capital_county.kingdom = {
+				scope:set_kingdom_capital = { 
+					root.capital_county.kingdom = { 
 						title_capital_county = { save_scope_as = old_capital }
-						save_scope_as = current_de_jure_scope
-					}
+						save_scope_as = current_de_jure_scope 
+					} 
 				}
-				scope:set_empire_capital = {
-					root.capital_county.empire = {
+				scope:set_empire_capital = { 
+					root.capital_county.empire = { 
 						title_capital_county = { save_scope_as = old_capital }
-						save_scope_as = current_de_jure_scope
-					}
-				}
-				scope:set_hegemony_capital = {
-					root.capital_county.hegemony = {
-						title_capital_county = { save_scope_as = old_capital }
-						save_scope_as = current_de_jure_scope
+						save_scope_as = current_de_jure_scope 
 					}
 				}
 			}
@@ -2694,7 +2447,6 @@ set_de_jure_capital_decision = {
 			}
 			scope:old_capital ?= {
 				duchy = { save_scope_as = current_duchy }
-				## GH CHANGE ##
 				random_duchy = {
 					limit = {
 						NOT = { this = scope:current_duchy }
@@ -2703,7 +2455,6 @@ set_de_jure_capital_decision = {
 					}
 					save_scope_as = placeholder_duchy
 				}
-				## GH END ##
 				scope:current_duchy = {
 					every_de_jure_county = {
 						limit = {

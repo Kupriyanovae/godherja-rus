@@ -15,9 +15,11 @@ can_start_single_combat_eligibility_checks_trigger = {
 	is_adult = yes
 	custom_description = {
 		text = banned_from_combat_old_and_frail
-		NAND = {
-			age >= 70
-			prowess < 10
+		NOT = {
+			AND = {
+				age >= 70
+				prowess < 10
+			}
 		}
 	}
 	# Filter out traits.

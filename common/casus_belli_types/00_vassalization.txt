@@ -21,7 +21,7 @@
 					has_game_rule = random_conquerors_bonuses
 					has_game_rule = reduced_random_conquerors_bonuses
 				}
-				has_variable = conqueror
+				ai_has_conqueror_personality = yes
 			}
 			ai_should_get_conqueror_bonuses = yes
 			# GH Change: Better consolidation post-migration in clanlands
@@ -54,15 +54,11 @@
 				}
 			}
 		}
-		scope:attacker = {
-			is_landed = yes
-		}
-		tgp_japan_offensive_wars_ban_trigger = yes
 	}
 	
 	allowed_against_character = {
 		scope:defender = {
-			top_liege = this
+			is_independent_ruler = yes
 			trigger_if = {
 				limit = { scope:attacker = { is_ai = no } } # Already pre-filtered by the AI due to ai_only_against_neighbors = yes. any_neighboring_top_liege_realm_owner is expensive
 				scope:attacker = {
@@ -94,7 +90,6 @@
 				}
 			}
 			is_ruin = no
-			is_redlander = no
 		}
 		
 		scope:attacker.primary_title.tier > scope:defender.primary_title.tier # Must be lower tier
@@ -105,34 +100,6 @@
 		piety = {
 			value = 0
 			add = common_cb_impious_piety_cost
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
 		}
 		prestige = {
 			value = 0
@@ -157,45 +124,7 @@
 					desc = CB_VASSALIZING_KING
 				}
 			}
-			if = {
-				limit = {
-					scope:defender.primary_title = {
-						tier = tier_empire
-					}
-				}
-				multiply = {
-					value = 4
-					desc = CB_VASSALIZING_EMPEROR
-				}
-			}
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
+
 			multiply = common_cb_prestige_cost_multiplier
 		}
 	}
@@ -203,7 +132,7 @@
 	should_invalidate = {
 		OR = {
 			scope:defender = {
-				top_liege != this
+				is_independent_ruler = no
 			}
 			scope:defender.primary_title.tier >= scope:attacker.primary_title.tier
 		}
@@ -277,9 +206,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -330,37 +256,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-
-		#GH ADDITION
-		# Struggle Catalysts
-		hidden_effect = {
-			scope:attacker = {
-				if = {
-					limit = {
-						any_character_struggle = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-					}
-					every_character_struggle = {
-						limit = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-						activate_struggle_catalyst = {
-							catalyst = catalyst_war_white_peace
-							character = scope:attacker
-						}
-					}
-				}
-			}
-		}
-		#GH END
 	}
 
 	on_defeat_desc = {
@@ -385,15 +280,8 @@
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 
-		scope:defender = { 
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_high_effect = yes
-			# Prestige for Defender
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = medium_prestige_value
-			}
-		}
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
 		
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -403,6 +291,13 @@
 			add_prestige = {
 				value = major_prestige_value
 				multiply = -1.0
+			}
+		}
+
+		# Prestige for the defender
+		scope:defender = {
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = medium_prestige_value
 			}
 		}
 
@@ -426,9 +321,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_defeat_effects = yes
 	}
 	
 	on_primary_attacker_death = inherit
@@ -460,26 +352,12 @@
 						NOT = { government_has_flag = government_is_tribal }
 					}
 					scope:defender = {
-						government_has_flag = government_is_tribal
+							government_has_flag = government_is_tribal
 					}
 				}
 				add = -1000
 			}
 		}
-		#Mandala really shouldn't be interested in this
-		add = {
-			if = {
-				limit = {
-					scope:attacker = { 
-						government_has_flag = government_is_mandala
-						vassal_limit_available < 1
-					}
-				}
-				add = -1000
-			}
-		}
-		# HOUSE RELATIONS
-		add = house_relation_ai_score_value
 		## GH CHANGE
 		# AI should be directed toward its regions at large
 		multiply = godherja_conquests_ai_score_value

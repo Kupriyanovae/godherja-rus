@@ -22,7 +22,7 @@
 						artifact_owner = {
 							trigger_if = { # Lowborn or not the same House
 								limit = { exists = house }
-								house != scope:attacker.house
+								NOT = { house = scope:attacker.house }
 							}
 						}
 					}
@@ -89,7 +89,7 @@
 							artifact_owner = {
 								trigger_if = { # Lowborn or not the same House
 									limit = { exists = house }
-									house != scope:attacker.house
+									NOT = { house = scope:attacker.house }
 								}
 							}
 						}
@@ -140,9 +140,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -194,15 +191,8 @@
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 		
-		scope:defender = { 
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_high_effect = yes
-			# Prestige for Defender
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = medium_prestige_value
-			}
-		}
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
 
 		scope:attacker = {
 			show_pow_release_message_effect = yes
@@ -223,7 +213,7 @@
 							artifact_owner = {
 								trigger_if = { # Lowborn or not the same House
 									limit = { exists = house }
-									house != scope:attacker.house
+									NOT = { house = scope:attacker.house }
 								}
 							}
 						}
@@ -242,6 +232,13 @@
 			add_prestige = {
 				value = major_prestige_value
 				multiply = -1.0
+			}
+		}
+
+		# Prestige for Defender
+		scope:defender = {
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = major_prestige_value
 			}
 		}
 
@@ -266,9 +263,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_defeat_effects = yes
 	}
 
 	should_invalidate = {
@@ -290,7 +284,9 @@
 										AND = { # Not the same House
 											exists = scope:attacker.house
 											exists = house
-											house != scope:attacker.house
+											NOT = {
+												house = scope:attacker.house
+											}
 										}
 										AND = { # Defender is lowborn
 											exists = scope:attacker.house
@@ -349,12 +345,6 @@ reclaim_relic_artifact_war = {
 	allow_hostages = no
 
 	allowed_for_character = {
-		trigger_if = {
-			limit = {
-				is_ai = yes
-			}
-			ai_zeal >= 100
-		}
 		OR = {
 			highest_held_title_tier >= tier_duchy
 			is_ai = no
@@ -470,7 +460,9 @@ reclaim_relic_artifact_war = {
 			}
 			every_vassal_or_below = {
 				limit = {
-					faith != scope:attacker.faith
+					NOT = {
+						faith = scope:attacker.faith
+					}
 				}
 				every_character_artifact = {
 					limit = {
@@ -523,9 +515,6 @@ reclaim_relic_artifact_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -579,15 +568,8 @@ reclaim_relic_artifact_war = {
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		scope:defender = { 
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_high_effect = yes
-			# Prestige for Defender
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = medium_prestige_value
-			}
-		}
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -597,6 +579,13 @@ reclaim_relic_artifact_war = {
 			add_prestige = {
 				value = major_prestige_value
 				multiply = -1.0
+			}
+		}
+
+		# Prestige for Defender
+		scope:defender = {
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = major_prestige_value
 			}
 		}
 
@@ -621,9 +610,6 @@ reclaim_relic_artifact_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_defeat_effects = yes
 	}
 
 	should_invalidate = {
@@ -639,7 +625,9 @@ reclaim_relic_artifact_war = {
 					}
 				}
 				any_vassal_or_below = {
-					faith != scope:attacker.faith
+					NOT = {
+						faith = scope:attacker.faith
+					}
 					any_character_artifact = {
 						OR = {
 							# Standard relics.

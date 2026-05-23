@@ -1,36 +1,12 @@
 ﻿by_x_and_y = {
 	insert = noun_immaterial
 	insert = noun_immaterial
-	weight = {
-		value = 1000
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
-	}
 }
 
 x_y_and_z = {
 	insert = noun_immaterial
 	insert = noun_immaterial
 	insert = noun_immaterial
-	weight = {
-		value = 1000
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
-	}
 }
 
 x_under_y_king = { # Wisdom under a Strong King
@@ -39,12 +15,6 @@ x_under_y_king = { # Wisdom under a Strong King
 	
 	weight = {
 		value = 100
-		if = {
-			limit = {
-				broadly_mainland_east_asian_heritage_trigger = yes
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -53,15 +23,6 @@ x_through_y = { # Conquest through the Sword
 	insert = the_weapon
 	weight = {
 		value = 600
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -174,15 +135,6 @@ by_god_and_x = { # By God and Sword. Reads best with a single god, so restrictin
 	insert = weapon
 	weight = {
 		value = 600
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 	trigger = {
 		faith = {
@@ -200,18 +152,6 @@ x_through_god = {
 	trigger = {
 		NOT = { has_trait = cynical }
 	}
-	weight = {
-		value = 1000
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
-	}
 }
 
 god_x_me = {
@@ -221,15 +161,6 @@ god_x_me = {
 	}
 	weight = {
 		value = 400
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -241,15 +172,6 @@ in_my_x_god_y_me = { # In My Defense, God Defend Me
 	}
 	weight = {
 		value = 300
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -260,15 +182,6 @@ god_and_my_x = { # God and My Right
 	}
 	weight = {
 		value = 300
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -283,43 +196,12 @@ x_me = { # Serve Me
 	insert = noble_act
 	weight = {
 		value = 200
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
 remember_the_death_of_founder = {
 	weight = {
 		value = 300
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
-	}
-}
-
-remember_the_noun_of_founder = {
-	insert = noun_immaterial
-	weight = {
-		value = 300
-	}
-	trigger = {
-		OR = {
-			religion_is_broadly_asian_trigger = yes
-			broadly_mainland_east_asian_heritage_trigger = yes
-		}
 	}
 }
 
@@ -327,15 +209,6 @@ dare_to_be_x = {
 	insert = adjective_immaterial
 	weight = {
 		value = 400
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -343,15 +216,6 @@ be_x = {
 	insert = adjective_immaterial
 	weight = {
 		value = 400
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -359,15 +223,6 @@ no_x = {
 	insert = negative_noun
 	weight = {
 		value = 200
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -376,15 +231,6 @@ never_x_always_y = {
 	insert = adjective_immaterial
 	weight = {
 		value = 600
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -408,15 +254,6 @@ x_as_y = { # Cunning as the Fox, Strong as the Bear
 	}
 	weight = {
 		value = 300
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -425,12 +262,6 @@ x_not_y = { # Irritate not the Lion
 	insert = the_creature
 	weight = {
 		value = 300
-		if = {
-			limit = {
-				broadly_mainland_east_asian_heritage_trigger = yes
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -439,12 +270,6 @@ x_falls_before_y = { # The Bear falls before the Spear
 	insert = the_weapon
 	weight = {
 		value = 300
-		if = {
-			limit = {
-				broadly_mainland_east_asian_heritage_trigger = yes
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -453,12 +278,6 @@ x_with_y_in_hand = { # Bold with Sword in Hand
 	insert = weapon
 	weight = {
 		value = 500
-		if = {
-			limit = {
-				broadly_mainland_east_asian_heritage_trigger = yes
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -475,15 +294,6 @@ son_of_x = {
 			}
 			multiply = 2
 		}
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -492,15 +302,6 @@ x_over_y = {
 	insert = noun_immaterial
 	weight = {
 		value = 600
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -510,12 +311,6 @@ x_y_z = {
 	insert = noun_immaterial
 	weight = {
 		value = 200
-		if = {
-			limit = {
-				broadly_mainland_east_asian_heritage_trigger = yes
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -546,15 +341,6 @@ may_x_join_my_coa = {
 	insert = noun_immaterial
 	weight = {
 		value = 200
-		if = {
-			limit = {
-				OR = {
-					religion_is_broadly_asian_trigger = yes
-					broadly_mainland_east_asian_heritage_trigger = yes
-				}
-			}
-			multiply = 0
-		}
 	}
 }
 
@@ -565,7 +351,6 @@ until_our_x_engulfs_the_world = {
 	}
 }
 
-#GH_AUH_TODO: Add East Asian Mottos with GH Characteristics
 unique_pool = {
 	insert = unique_pool_list
 	weight = {

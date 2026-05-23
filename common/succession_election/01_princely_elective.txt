@@ -30,27 +30,29 @@ princely_elective = { #HRE Elective.
 					add = 2
 				}
 			}
-			this != scope:holder
+			NOT = { this = scope:holder }
 			is_powerful_vassal = yes
 			liege = scope:holder
 		}
 		modifier = { #Clerical Influence
 			desc = tooltip_feudal_vote_strength_theocrat
 			add = 2
-			this != scope:holder
+			NOT = { this = scope:holder }
 			OR = {
 				government_has_flag = government_is_theocracy
 				has_council_position = councillor_court_chaplain
 			}
 			faith = scope:holder.faith
 			faith = { has_doctrine = doctrine_theocracy_lay_clergy }
-			root != scope:holder.faith.religious_head
+			NOT = { root = scope:holder.faith.religious_head }
+			#TODO_CD:Possible trigger checking for investiture succession?
 		}
 		modifier = { #Papal Influence
 			desc = tooltip_feudal_vote_strength_pope
 			add = 4 #If the Pope is an elector, his vote is the most important of all.
-			this != scope:holder
+			NOT = { this = scope:holder }
 			root = scope:holder.faith.religious_head
+			#TODO_CD:Possible trigger checking for investiture succession?
 		}
 		modifier = { #Regent Influence
 			desc = tooltip_feudal_vote_strength_is_diarch
@@ -73,7 +75,7 @@ princely_elective = { #HRE Elective.
 				}
 				OR = { #Either de facto direct vassal, or independent ruler who is de jure vassal. (no sub-vassals)
 					is_vassal_of = scope:holder
-					top_liege = this
+					is_independent_ruler = yes
 				}
 				trigger_if = { #Must be true priests
 					limit = { government_has_flag = government_is_theocracy }
@@ -199,7 +201,7 @@ princely_elective = { #HRE Elective.
 		add = {
 			type = title_dejure_vassals
 			limit = {
-				top_liege = this #De jure vassals of the title who are not de facto vassals of the current ruler.
+				is_independent_ruler = yes #De jure vassals of the title who are not de facto vassals of the current ruler.
 				feudal_elective_potential_landed_candidate_trigger = yes
 			}
 		}

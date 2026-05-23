@@ -103,7 +103,6 @@ window = {
 					onclick = "[PlaySfxEvent( Concatenate( 'event:/SFX/UI/Character/Lifestyle/sfx_ui_character_lifestyle_', Lifestyle.GetKey ) )]"
 					#clicksound =
 					maximumsize = { -1 900 }
-					using = TabShortcut
 
 					effectname = "NoHighlight"
 					#gfxtype = propstretchedicongfx
@@ -202,27 +201,23 @@ window = {
 								default_format = "#high"
 								using = Font_Type_Flavor
 								fontsize = 25
-								layoutpolicy_horizontal = expanding
-								autoresize = no
-								align = nobaseline|hcenter
 							}
 
 							text_multi = {
 								text = "[Lifestyle.GetDescription]"
-								size = { 100 130 }
+								size = { 100 90 }
 								align = top|hcenter
 								layoutpolicy_horizontal = expanding
 								margin = { 5 0 }
-
 							}
 
 							text_multi = {
 								visible = "[Lifestyle.IsHighlightedForCharacter( Character.Self )]"
 								layoutpolicy_horizontal = expanding
-								size = { 0 100 }
+								size = { 100 80 }
 								margin = { 10 0 }
 								text = "[Lifestyle.GetHighlightDescription]"
-								align = nobaseline|hcenter
+								align = center
 
 								background = {
 									using = Background_Area_Dark
@@ -370,7 +365,7 @@ window = {
 			hbox = {
 				widget = {
 					layoutpolicy_vertical = expanding
-					size = { 450 0 }
+					size = { 1000 0 }
 
 					background = {
 						texture = "gfx/interface/window_lifestyles/lifestyles_tabs_bg.dds"
@@ -395,7 +390,6 @@ window = {
 									onclick = "[CharacterLifestyleWindow.OpenLifestyle( Lifestyle.Self )]"
 									onclick = "[PdxGuiTriggerAllAnimations('lifestyle_tabs_refresh')]"
 									texture = "[Lifestyle.GetIcon]"
-									using = TabShortcut
 
 									effectname = "NoHighlight"
 									gfxtype = framedbuttongfx
@@ -409,7 +403,7 @@ window = {
 
 									highlight_icon = {
 										visible = "[EqualTo_string( Lifestyle.GetKey, Character.GetLifestyle.GetKey )]"
-										size = { 100% 100% }
+										size = { 100% 100%}
 										texture = "gfx/interface/buttons/button_lifestyles_active_frame.dds"
 									}
 
@@ -464,7 +458,7 @@ window = {
 
 									icon = {
 										visible = "[EqualTo_string( Lifestyle.GetKey, Character.GetLifestyle.GetKey )]"
-										size = { 100% 100% }
+										size = { 100% 100%}
 										texture = "gfx/interface/buttons/button_lifestyles_active_frame.dds"
 									}
 
@@ -582,9 +576,11 @@ window = {
 					}
 
 					spacer = {
-						size = { 550 10 }
+						size = {550 10 }
 						visible = "[Not(Character.IsLocalPlayer)]"
 					}
+
+
 
 					expand = {}
 				}
@@ -634,7 +630,6 @@ window = {
 							button_standard_clean = {
 								layoutpolicy_horizontal = expanding
 								size = { 300 240 }
-								using = SubTabShortcut
 
 								enabled = "[Or(CharacterLifestyleWindow.CanSelectFocus( FocusType.Self ), EqualTo_string( FocusType.GetKey, Character.GetFocus.GetKey ))]"
 								down = "[EqualTo_string( FocusType.GetKey, Character.GetFocus.GetKey )]"
@@ -974,234 +969,346 @@ window = {
 								layoutpolicy_horizontal = expanding
 								layoutpolicy_vertical = expanding
 
-								background = {
-									visible = "[Not(PerkGuiTree.IsCompleted)]"
-									texture = "[PerkGuiTree.GetBackground]"
-									alpha = 0.15
 
-									modify_texture = {
-										texture = "gfx/interface/window_lifestyles/lifestyles_perk_tree_bg.dds"
-										spriteType = Corneredtiled
-										spriteborder = { 200 200 }
-										blend_mode = alphamultiply
-									}
-								}
+								vbox = {
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = expanding
 
-								container = {
-									text_label_center = {
-										parentanchor = top|hcenter
-										position = { 0 25 }
-										text = "[PerkGuiTree.GetName]"
-										default_format = "#low"
-										using = Font_Size_Medium
-									}
+									background = {
+										visible = "[Not(PerkGuiTree.IsCompleted)]"
+										texture = "[PerkGuiTree.GetBackground]"
+										alpha = 0.15
 
-									divider_light = {
-										position = { 0 65 }
-										size = { 100% 3 }
-										alpha = 0.25
+										modify_texture = {
+											texture = "gfx/interface/window_lifestyles/lifestyles_perk_tree_bg.dds"
+											spriteType = Corneredtiled
+											spriteborder = { 200 200 }
+											blend_mode = alphamultiply
+										}
 									}
 
 									container = {
-										name = "perk_tree_item_line_area" # Name used in code do not change
-										datamodel = "[PerkGuiTree.GetItems]"
-										parentanchor = hcenter
-										position = { 0 85 }
+										text_label_center = {
+											parentanchor = top|hcenter
+											position = { 0 25 }
+											text = "[PerkGuiTree.GetName]"
+											default_format = "#low"
+											using = Font_Size_Medium
+										}
 
-										widget = {
-											name = "connection_lines"
-											size = { 100% 100% }
-											datamodel = "[PerkGuiTree.GetConnections]"
-											visible = "[PerkGuiTree.SetupLinesContainer( PdxGuiWidget.Self )]"
+										divider_light = {
+											position = { 0 65 }
+											size = { 100% 3 }
+											alpha = 0.25
+										}
 
-											item = {
-												container = {
+										container = {
+											name = "perk_tree_item_line_area" # Name used in code do not change
+											datamodel = "[PerkGuiTree.GetItems]"
+											parentanchor = hcenter
+											position = { 0 85 }
 
-													# Perks that are unlocked
-													line = {
-														visible = "[PerkGuiTree.HasUnlockedPerk( PerkLineConnection.GetChild.GetItem )]"
-														using = Line_Lifestyles_Unlocked
-														from = "[PerkLineConnection.GetLineFrom]"
-														to = "[PerkLineConnection.GetLineTo]"
-													}
+											widget = {
+												name = "connection_lines"
+												size = { 100% 100% }
+												datamodel = "[PerkGuiTree.GetConnections]"
+												visible = "[PerkGuiTree.SetupLinesContainer( PdxGuiWidget.Self )]"
 
-													# Perks that can be chosen
-													line = {
-														visible = "[And( Not( PerkGuiTree.HasUnlockedPerk( PerkLineConnection.GetChild.GetItem ) ), CharacterLifestyleWindow.CanSelectPerkIgnoreCost( PerkLineConnection.GetChild.GetItem ) )]"
-														using = Line_Lifestyles_CanUnlock
-														from = "[PerkLineConnection.GetLineFrom]"
-														to = "[PerkLineConnection.GetLineTo]"
-													}
+												item = {
+													container = {
 
-													# Perks that are unavailable
-													line = {
-														visible = "[Not( Or( PerkGuiTree.HasUnlockedPerk( PerkLineConnection.GetChild.GetItem ), CharacterLifestyleWindow.CanSelectPerkIgnoreCost( PerkLineConnection.GetChild.GetItem ) ) )]"
-														using = Line_Lifestyles_Unavailable
-														from = "[PerkLineConnection.GetLineFrom]"
-														to = "[PerkLineConnection.GetLineTo]"
+														# Perks that are unlocked
+														line = {
+															visible = "[PerkGuiTree.HasUnlockedPerk( PerkLineConnection.GetChild.GetItem )]"
+															using = Line_Lifestyles_Unlocked
+															from = "[PerkLineConnection.GetLineFrom]"
+															to = "[PerkLineConnection.GetLineTo]"
+														}
+
+														# Perks that can be chosen
+														line = {
+															visible = "[And( Not( PerkGuiTree.HasUnlockedPerk( PerkLineConnection.GetChild.GetItem ) ), CharacterLifestyleWindow.CanSelectPerkIgnoreCost( PerkLineConnection.GetChild.GetItem ) )]"
+															using = Line_Lifestyles_CanUnlock
+															from = "[PerkLineConnection.GetLineFrom]"
+															to = "[PerkLineConnection.GetLineTo]"
+														}
+
+														# Perks that are unavailable
+														line = {
+															visible = "[Not( Or( PerkGuiTree.HasUnlockedPerk( PerkLineConnection.GetChild.GetItem ), CharacterLifestyleWindow.CanSelectPerkIgnoreCost( PerkLineConnection.GetChild.GetItem ) ) )]"
+															using = Line_Lifestyles_Unavailable
+															from = "[PerkLineConnection.GetLineFrom]"
+															to = "[PerkLineConnection.GetLineTo]"
+														}
 													}
 												}
 											}
-										}
 
-										item = {
-											widget = {
-												size = { 100 100 }
-												datacontext = "[PerkLineItem.GetItem]"
-												position = "[PerkGuiTree.GetItemPosition( Perk.Self )]"
+											item = {
+												widget = {
+													size = { 100 100 }
+													datacontext = "[PerkLineItem.GetItem]"
+													position = "[PerkGuiTree.GetItemPosition( Perk.Self )]"
 
-												container = {
-													parentanchor = center
-
-													widget = {
-														name = "top_pin"
-														visible = "[PerkLineItem.SetupTopWidget( PdxGuiWidget.Self )]"
-														position = { 0 -20 }
-													}
-
-													widget = {
-														name = "bottom_pin"
-														visible = "[PerkLineItem.SetupBottomWidget( PdxGuiWidget.Self )]"
-														position = { 0 -15 }
-													}
-												}
-
-												flowcontainer = {
-													parentanchor = top|hcenter
-													direction = vertical
-													ignoreinvisible = yes
-
-													# Normal, non-chosen perks
-													button_normal = {
-														size = { 95 75 }
-														visible = "[And(And( Character.IsLocalPlayer, Not( Character.HasPerk( Perk.Self ) ) ), Not(Perk.IsFinisher) )]"
-														onclick = "[CharacterLifestyleWindow.SelectPerk( Perk.Self )]"
-														enabled = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
-
-														tooltipwidget = {
-															using = perk_tooltip_selection
-														}
-														using = tooltip_se
-														tooltip_offset = {30 0}
+													container = {
+														parentanchor = center
 
 														widget = {
-															size = { 50 50 }
-															parentanchor = center
-															alwaystransparent = yes
-															visible = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
-
-															# animation_attention = {
-															# 	position = { 0 -22 }
-															# 	texture = "gfx/particles/glow.dds"
-															# }
+															name = "top_pin"
+															visible = "[PerkLineItem.SetupTopWidget( PdxGuiWidget.Self )]"
+															position = { 0 -20 }
 														}
 
-														highlight_icon = {
-															parentanchor = top|hcenter
-															texture = "[Perk.GetIcon]"
-															size = { 32 32 }
-															framesize = { 60 60 }
+														widget = {
+															name = "bottom_pin"
+															visible = "[PerkLineItem.SetupBottomWidget( PdxGuiWidget.Self )]"
+															position = { 0 -15 }
+														}
+													}
 
+													flowcontainer = {
+														parentanchor = top|hcenter
+														direction = vertical
+														ignoreinvisible = yes
+
+														# Normal, non-chosen perks
+														button_normal = {
+															size = { 95 75 }
+															visible = "[And(And( Character.IsLocalPlayer, Not( Character.HasPerk( Perk.Self ) ) ), Not(Perk.IsFinisher) )]"
+															onclick = "[CharacterLifestyleWindow.SelectPerk( Perk.Self )]"
+															enabled = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
+
+															tooltipwidget = {
+																using = perk_tooltip_selection
+															}
+															using = tooltip_se
+															tooltip_offset = {30 0}
+
+															widget = {
+																size = { 50 50 }
+																parentanchor = center
+																alwaystransparent = yes
+																visible = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
+
+																# animation_attention = {
+																# 	position = { 0 -22 }
+																# 	texture = "gfx/particles/glow.dds"
+																# }
+															}
+
+															highlight_icon = {
+																parentanchor = top|hcenter
+																texture = "[Perk.GetIcon]"
+																size = { 32 32 }
+																framesize = { 60 60 }
+
+																shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
+															}
+
+															text_multi = {
+																visible = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
+																parentanchor = top|hcenter
+																position = { 0 30 }
+																max_width = 115
+																autoresize = yes
+
+																text = "[Perk.GetNameNoTooltip( Character.Self )]"
+																default_format = "#high"
+																align = top|hcenter
+
+																background = {
+																	using = Background_Area
+																	margin = { 20 0 }
+																	margin_bottom = 5
+																	margin_top = 5
+																}
+															}
+
+															text_multi = {
+																visible = "[Not(And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid))]"
+																parentanchor = top|hcenter
+																position = { 0 30 }
+																max_width = 115
+																autoresize = yes
+
+																text = "[Perk.GetNameNoTooltip( Character.Self )]"
+																default_format = "#low"
+																align = top|hcenter
+
+																background = {
+																	using = Background_Area
+																	margin = { 20 0 }
+																	margin_bottom = 5
+																	margin_top = 5
+																}
+															}
+														}
+
+														# Normal chosen perks
+														widget = {
+															visible = "[And(Or( Not( Character.IsLocalPlayer ), Character.HasPerk( Perk.Self ) ), Not(Perk.IsFinisher))]"
+															size = { 95 75 }
+
+															state = {
+																name = _show
+																on_start = "[GetVariableSystem.Set( 'perk_spent', 'true' )]"
+															}
+
+															tooltipwidget = {
+																using = perk_tooltip_contents
+															}
+															using = tooltip_se
+															tooltip_offset = {30 0}
+
+															icon = {
+																parentanchor = top|hcenter
+																enabled = "[Character.HasPerk( Perk.Self )]"
+																texture = "[Perk.GetIcon]"
+
+																size = { 32 32 }
+																framesize = { 60 60 }
+																frame = "[BoolTo1And2( Character.HasPerk( Perk.Self ) )]"
+															}
+
+															text_multi = {
+																parentanchor = top|hcenter
+																position = { 0 32 }
+																max_width = 115
+																autoresize = yes
+
+																text = "[Perk.GetNameNoTooltip( Character.Self )]"
+																align = top|hcenter
+
+																background = {
+																	using = Background_Area_Dark
+																	margin = { 20 0 }
+																	margin_bottom = 5
+																	margin_top = 5
+																}
+															}
+														}
+
+														# Non-chosen Mastery perks
+														button_normal = {
+															datacontext = "[Perk.GetUnlockTrait]"
+															datacontext = "[Character.GetFaith]"
+															visible = "[And(And( Character.IsLocalPlayer, Not( Character.HasPerk( Perk.Self ) ) ), Perk.IsFinisher )]"
+															size = { 100 100 }
+															onclick = "[CharacterLifestyleWindow.SelectPerk( Perk.Self )]"
+															enabled = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
+
+															gfxtype = framedbuttongfx
 															shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
-														}
 
-														text_multi = {
-															visible = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
-															parentanchor = top|hcenter
-															position = { 0 30 }
-															max_width = 115
-															autoresize = yes
+															tooltipwidget = {
+																using = character_trait_tooltip
+															}
+															using = tooltip_se
+															tooltip_offset = {30 0}
 
-															text = "[Perk.GetNameNoTooltip( Character.Self )]"
-															default_format = "#high"
-															align = top|hcenter
+															highlight_icon = {
+																parentanchor = top|hcenter
+																position = { 0 -10 }
+																texture = "[Perk.GetIcon]"
 
-															background = {
-																using = Background_Area
-																margin = { 20 0 }
-																margin_bottom = 5
-																margin_top = 5
+																size = { 60 60 }
+																
+																glow = {
+																	visible = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
+																	using = Color_Orange
+																	using = Glow_Standard
+																	block "glow_radius"
+																	{
+																		glow_radius = 10
+																	}
+																}
+																using = Animation_Glow_Pulse
+
+																gfxtype = framedbuttongfx
+																shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
+															}
+
+															text_multi = {
+																visible = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
+																parentanchor = center
+																position = { 0 5 }
+																size = { 115 50 }
+
+																text = "[Perk.GetNameNoTooltip( Character.Self )]"
+																default_format = "#high"
+																align = center
+
+																background = {
+																	using = Background_Area
+																	margin_bottom = 3
+																	margin = { 10 0 }
+																}
+															}
+
+															text_multi = {
+																visible = "[Not(And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid))]"
+																parentanchor = center
+																position = { 0 5 }
+																size = { 115 50 }
+
+																text = "[Perk.GetNameNoTooltip( Character.Self )]"
+																default_format = "#low"
+																align = center
+
+																background = {
+																	using = Background_Area
+																	margin_bottom = 3
+																	margin = { 10 0 }
+																}
 															}
 														}
 
-														text_multi = {
-															visible = "[Not(And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid))]"
-															parentanchor = top|hcenter
-															position = { 0 30 }
-															max_width = 115
-															autoresize = yes
+														# Chosen Mastery perks
+														widget = {
+															datacontext = "[Perk.GetUnlockTrait]"
+															datacontext = "[Character.GetFaith]"
+															visible = "[And(Or( Not( Character.IsLocalPlayer ), Character.HasPerk( Perk.Self ) ), Perk.IsFinisher)]"
+															size = { 100 100 }
 
-															text = "[Perk.GetNameNoTooltip( Character.Self )]"
-															default_format = "#low"
-															align = top|hcenter
+															tooltipwidget = {
+																using = character_trait_tooltip
+															}
+															using = tooltip_se
+															tooltip_offset = {30 0}
 
-															background = {
-																using = Background_Area
-																margin = { 20 0 }
-																margin_bottom = 5
-																margin_top = 5
+
+															icon = {
+																parentanchor = top|hcenter
+																position = { 0 -10 }
+																enabled = "[Character.HasPerk( Perk.Self )]"
+																texture = "[Perk.GetIcon]"
+
+																size = { 60 60 }
+																frame = "[BoolTo1And2( Character.HasPerk( Perk.Self ) )]"
+															}
+
+															text_multi = {
+																parentanchor = center
+																position = { 0 5 }
+																size = { 115 50 }
+
+																text = "[Perk.GetNameNoTooltip( Character.Self )]"
+																align = center
+
+																background = {
+																	using = Background_Area
+																	margin_bottom = 3
+																}
 															}
 														}
 													}
-
-													# Normal chosen perks
-													widget = {
-														visible = "[And(Or( Not( Character.IsLocalPlayer ), Character.HasPerk( Perk.Self ) ), Not(Perk.IsFinisher))]"
-														size = { 95 75 }
-
-														state = {
-															name = _show
-															on_start = "[GetVariableSystem.Set( 'perk_spent', 'true' )]"
-														}
-
-														tooltipwidget = {
-															using = perk_tooltip_contents
-														}
-														using = tooltip_se
-														tooltip_offset = {30 0}
-
-														icon = {
-															parentanchor = top|hcenter
-															enabled = "[Character.HasPerk( Perk.Self )]"
-															texture = "[Perk.GetIcon]"
-
-															size = { 32 32 }
-															framesize = { 60 60 }
-															frame = "[BoolTo1And2( Character.HasPerk( Perk.Self ) )]"
-														}
-
-														text_multi = {
-															parentanchor = top|hcenter
-															position = { 0 32 }
-															max_width = 115
-															autoresize = yes
-
-															text = "[Perk.GetNameNoTooltip( Character.Self )]"
-															align = top|hcenter
-
-															background = {
-																using = Background_Area_Dark
-																margin = { 20 0 }
-																margin_bottom = 5
-																margin_top = 5
-															}
-														}
-													}
-
-													# Non-chosen Mastery perks
-													button_mastery_perk_locked_trait = {}
-													button_mastery_perk_locked_no_trait = {}
-
-													# Chosen Mastery perks
-													widget_mastery_perk_unlocked_trait = {}
-													widget_mastery_perk_unlocked_no_trait = {}
 												}
 											}
 										}
 									}
-								}
 
-								expand = {}
+									expand = {}
+								}
 							}
 						}
 					}
@@ -1223,7 +1330,7 @@ window = {
 			margin_right = 280
 			margin_left = 20
 			mirror = horizontal
-			modify_texture = {
+			 modify_texture = {
 			 	texture = "gfx/interface/component_masks/mask_fade_corner.dds"
 			 	blend_mode = alphamultiply
 			}
@@ -1444,7 +1551,7 @@ types Lifestyle
 
 		position = { 1 -6 }
 		parentanchor = right
-		size = { 40 40 }
+		size = { 40 40 }		
 		framesize = { 60 60 }
 		frame = 2
 
@@ -1466,219 +1573,6 @@ types Lifestyle
 			text = "[Character.GetPerkPoints( Lifestyle.Self )]"
 			default_format = "#low;weak_glow"
 			using = Font_Size_Big
-		}
-	}
-
-	type button_mastery_perk_locked_no_trait = button_normal {
-		datacontext = "[Perk.GetUnlockTrait]"
-		datacontext = "[Character.GetFaith]"
-		visible = "[And(And(And( Character.IsLocalPlayer, Not( Character.HasPerk( Perk.Self ) ) ), Perk.IsFinisher ), Not(Trait.IsValid))]"
-		size = { 100 100 }
-		onclick = "[CharacterLifestyleWindow.SelectPerk( Perk.Self )]"
-		enabled = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
-
-		gfxtype = framedbuttongfx
-		shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
-
-		tooltipwidget = {
-			using = perk_tooltip_selection
-		}
-		using = tooltip_se
-		tooltip_offset = {30 0}
-
-		highlight_icon = {
-			parentanchor = top|hcenter
-			position = { 0 -10 }
-			texture = "[Perk.GetIcon]"
-
-			size = { 60 60 }
-
-			gfxtype = framedbuttongfx
-			shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
-		}
-
-		text_multi = {
-			visible = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
-			parentanchor = center
-			position = { 0 5 }
-			size = { 115 50 }
-
-			text = "[Perk.GetNameNoTooltip( Character.Self )]"
-			default_format = "#high"
-			align = center
-
-			background = {
-				using = Background_Area
-				margin_bottom = 3
-				margin = { 10 0 }
-			}
-		}
-
-		text_multi = {
-			visible = "[Not(And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid))]"
-			parentanchor = center
-			position = { 0 5 }
-			size = { 115 50 }
-
-			text = "[Perk.GetNameNoTooltip( Character.Self )]"
-			default_format = "#low"
-			align = center
-
-			background = {
-				using = Background_Area
-				margin_bottom = 3
-				margin = { 10 0 }
-			}
-		}
-	}
-
-	type button_mastery_perk_locked_trait = button_normal {
-		datacontext = "[Perk.GetUnlockTrait]"
-		datacontext = "[Character.GetFaith]"
-		visible = "[And(And(And( Character.IsLocalPlayer, Not( Character.HasPerk( Perk.Self ) ) ), Perk.IsFinisher ), Trait.IsValid)]"
-		size = { 100 100 }
-		onclick = "[CharacterLifestyleWindow.SelectPerk( Perk.Self )]"
-		enabled = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
-
-		gfxtype = framedbuttongfx
-		shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
-
-		tooltipwidget = {
-			using = character_trait_tooltip
-		}
-		using = tooltip_se
-		tooltip_offset = {30 0}
-
-		highlight_icon = {
-			parentanchor = top|hcenter
-			position = { 0 -10 }
-			texture = "[Perk.GetIcon]"
-
-			size = { 60 60 }
-
-			glow = {
-				visible = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
-				using = Color_Orange
-				using = Glow_Standard
-				block "glow_radius"
-				{
-					glow_radius = 10
-				}
-			}
-			using = Animation_Glow_Pulse
-
-			gfxtype = framedbuttongfx
-			shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
-		}
-
-		text_multi = {
-			visible = "[And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid)]"
-			parentanchor = center
-			position = { 0 5 }
-			size = { 115 50 }
-
-			text = "[Perk.GetNameNoTooltip( Character.Self )]"
-			default_format = "#high"
-			align = center
-
-			background = {
-				using = Background_Area
-				margin_bottom = 3
-				margin = { 10 0 }
-			}
-		}
-
-		text_multi = {
-			visible = "[Not(And(CharacterLifestyleWindow.CanSelectPerk( Perk.Self ), Character.GetLifestyle.IsValid))]"
-			parentanchor = center
-			position = { 0 5 }
-			size = { 115 50 }
-
-			text = "[Perk.GetNameNoTooltip( Character.Self )]"
-			default_format = "#low"
-			align = center
-
-			background = {
-				using = Background_Area
-				margin_bottom = 3
-				margin = { 10 0 }
-			}
-		}
-	}
-
-	type widget_mastery_perk_unlocked_trait = widget {
-		datacontext = "[Perk.GetUnlockTrait]"
-		datacontext = "[Character.GetFaith]"
-		visible = "[And(And(Or( Not( Character.IsLocalPlayer ), Character.HasPerk( Perk.Self ) ), Perk.IsFinisher), Trait.IsValid)]"
-		size = { 100 100 }
-
-		tooltipwidget = {
-			using = character_trait_tooltip
-		}
-		using = tooltip_se
-		tooltip_offset = {30 0}
-
-
-		icon = {
-			parentanchor = top|hcenter
-			position = { 0 -10 }
-			enabled = "[Character.HasPerk( Perk.Self )]"
-			texture = "[Perk.GetIcon]"
-
-			size = { 60 60 }
-			frame = "[BoolTo1And2( Character.HasPerk( Perk.Self ) )]"
-		}
-
-		text_multi = {
-			parentanchor = center
-			position = { 0 5 }
-			size = { 115 50 }
-
-			text = "[Perk.GetNameNoTooltip( Character.Self )]"
-			align = center
-
-			background = {
-				using = Background_Area
-				margin_bottom = 3
-			}
-		}
-	}
-
-	type widget_mastery_perk_unlocked_no_trait = widget {
-		datacontext = "[Perk.GetUnlockTrait]"
-		datacontext = "[Character.GetFaith]"
-		visible = "[And(And(Or( Not( Character.IsLocalPlayer ), Character.HasPerk( Perk.Self ) ), Perk.IsFinisher), Not(Trait.IsValid))]"
-		size = { 100 100 }
-
-		tooltipwidget = {
-			using = perk_tooltip_selection
-		}
-		using = tooltip_se
-		tooltip_offset = {30 0}
-
-
-		icon = {
-			parentanchor = top|hcenter
-			position = { 0 -10 }
-			enabled = "[Character.HasPerk( Perk.Self )]"
-			texture = "[Perk.GetIcon]"
-
-			size = { 60 60 }
-			frame = "[BoolTo1And2( Character.HasPerk( Perk.Self ) )]"
-		}
-
-		text_multi = {
-			parentanchor = center
-			position = { 0 5 }
-			size = { 115 50 }
-
-			text = "[Perk.GetNameNoTooltip( Character.Self )]"
-			align = center
-
-			background = {
-				using = Background_Area
-				margin_bottom = 3
-			}
 		}
 	}
 }

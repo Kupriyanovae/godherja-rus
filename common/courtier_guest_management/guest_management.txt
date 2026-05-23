@@ -3,16 +3,6 @@
 	# root, scope:guest = the potential guest
 	# scope:host = the potential host
 	guest_can_arrive = {
-		scope:host = {
-			NOT = {
-				has_culture = culture:wasteland
-			}
-		}
-		scope:guest = {
-			NOT = {
-				has_culture = culture:wasteland
-			}
-		}
 		any_traveling_family_member = { # the whole family must be allowed to arrive
 			count = all
 			guest_allowed_to_arrive_trigger = { HOST = scope:host }
@@ -35,14 +25,6 @@
 		###GENERAL WEIGHTS###
 		#Max: 150 (450 if marriage candidate, 300 if vassal candidate)
 		#Min: -1230
-		modifier = {
-			culture = culture:wasteland
-			add = -1000
-		}
-		modifier = {
-			culture = culture:undead_culture
-			add = -1000
-		}
 		opinion_modifier = {
 			opinion_target = scope:host
 			multiplier = {
@@ -58,11 +40,13 @@
 			}
 		}
 		modifier = {
-			culture != scope:host.culture
+			NOT = {
+				culture = scope:host.culture
+			}
 			add = -20
 		}
 		modifier = {
-			faith != scope:host.faith
+			NOT = { faith = scope:host.faith }
 			add = -30
 		}
 		modifier = {
@@ -84,8 +68,10 @@
 					has_relation_friend = scope:host
 					has_relation_lover = scope:host
 					is_close_or_extended_family_of = scope:host
-					dynasty ?= scope:host.dynasty
-
+					AND = {
+						exists = dynasty
+						dynasty = scope:host.dynasty
+					}
 				}
 			}
 			add = -1000
@@ -267,7 +253,7 @@
 				if = {
 					limit = {
 						prowess >= high_skill_rating
-						culture != scope:host.culture
+						NOT = { culture = scope:host.culture }
 						scope:host.culture = { has_cultural_parameter = powerful_foreign_knights_find_you_attractive }
 					}
 					# Oh yeah, you're gonna get you a Cid.
@@ -298,7 +284,8 @@
 		###RELATIONS###
 		#Max: 3500 (if you have an obscenely strong connection to them)
 		modifier = {
-			dynasty ?= scope:host.dynasty
+			exists = dynasty
+			dynasty = scope:host.dynasty
 			NOT = { is_close_or_extended_family_of = scope:host }
 			add = 300
 		}
@@ -389,14 +376,14 @@
 				if = {
 					limit = {
 						has_trait = deviant
-						NOT = { trait_is_criminal_in_faith_trigger = { TRAIT = trait:deviant FAITH = scope:host.faith GENDER_CHARACTER = scope:guest } }
+						NOT = { trait_is_criminal_in_faith_trigger = { TRAIT = deviant FAITH = scope:host.faith GENDER_CHARACTER = scope:guest } }
 					}
 					add = 50
 				}
 				if = {
 					limit = {
 						has_trait = cannibal
-						NOT = { trait_is_criminal_in_faith_trigger = { TRAIT = trait:cannibal FAITH = scope:host.faith GENDER_CHARACTER = scope:guest } }
+						NOT = { trait_is_criminal_in_faith_trigger = { TRAIT = cannibal FAITH = scope:host.faith GENDER_CHARACTER = scope:guest } }
 					}
 					add = 50
 				}
@@ -519,17 +506,9 @@
 	# root, scope:guest = the guest
 	# scope:host = their host
 	can_leave = {
-		OR = {
-			scope:guest = {				
-				has_culture = culture:wasteland
-			}
-			scope:host = {
-				has_culture = culture:wasteland
-			}
-			any_traveling_family_member = {
-				count = all
-				guest_allowed_to_leave_trigger = yes
-			}
+		any_traveling_family_member = {
+			count = all
+			guest_allowed_to_leave_trigger = yes
 		}
 	}
 
@@ -539,13 +518,6 @@
 	# scope:host = their host
 	monthly_leave_chance_x10 = {
 		base = 50
-
-		modifier = {
-			scope:guest = {
-				has_culture = culture:wasteland
-			}
-			add = 10000
-		}
 
 		#Claimants wants to stay and have claims pressed
 		modifier = {
@@ -597,13 +569,14 @@
 
 		#Married people are less likely to move (because spouse also does calculations)
 		modifier = {
-			primary_spouse ?= { is_pool_guest_of = scope:host }
+			exists = primary_spouse
+			primary_spouse = { is_pool_guest_of = scope:host }
 			add = -15
 		}
 
 		#Lodging amenities encourage guests to stay longer
 		modifier = {
-			add = {
+			add = {		
 				if = {
 					limit = {
 						scope:host = { has_royal_court = yes has_dlc_feature = royal_court }
@@ -612,7 +585,7 @@
 						limit = {
 							scope:host = {
 								court_owner = {
-									amenity_level = { target = court_lodging_standards value = medium_amenity_level }
+									amenity_level = { type = court_lodging_standards value = medium_amenity_level }
 								}
 							}
 						}
@@ -622,7 +595,7 @@
 						limit = {
 							scope:host = {
 								court_owner = {
-									amenity_level = { target = court_lodging_standards value = high_amenity_level }
+									amenity_level = { type = court_lodging_standards value = high_amenity_level }
 								}
 							}
 						}
@@ -632,7 +605,7 @@
 						limit = {
 							scope:host = {
 								court_owner = {
-									amenity_level = { target = court_lodging_standards value = very_high_amenity_level }
+									amenity_level = { type = court_lodging_standards value = very_high_amenity_level }
 								}
 							}
 						}
@@ -642,7 +615,7 @@
 						limit = {
 							scope:host = {
 								court_owner = {
-									amenity_level = { target = court_lodging_standards value = max_amenity_level }
+									amenity_level = { type = court_lodging_standards value = max_amenity_level }
 								}
 							}
 						}
@@ -666,7 +639,7 @@
 						if = {
 							limit = {
 								court_owner = {
-									amenity_level = { target = court_lodging_standards value = medium_amenity_level }
+									amenity_level = { type = court_lodging_standards value = medium_amenity_level }
 								}
 							}
 							add = -4
@@ -674,7 +647,7 @@
 						else_if = {
 							limit = {
 								court_owner = {
-									amenity_level = { target = court_lodging_standards value = high_amenity_level }
+									amenity_level = { type = court_lodging_standards value = high_amenity_level }
 								}
 							}
 							add = -6
@@ -682,7 +655,7 @@
 						else_if = {
 							limit = {
 								court_owner = {
-									amenity_level = { target = court_lodging_standards value = very_high_amenity_level }
+									amenity_level = { type = court_lodging_standards value = very_high_amenity_level }
 								}
 							}
 							add = -8
@@ -690,7 +663,7 @@
 						else_if = {
 							limit = {
 								court_owner = {
-									amenity_level = { target = court_lodging_standards value = max_amenity_level }
+									amenity_level = { type = court_lodging_standards value = max_amenity_level }
 								}
 							}
 							add = -10
@@ -717,7 +690,7 @@
 							if = {
 								limit = {
 									court_owner = {
-										amenity_level = { target = court_lodging_standards value = medium_amenity_level }
+										amenity_level = { type = court_lodging_standards value = medium_amenity_level }
 									}
 								}
 								subtract = 4
@@ -725,7 +698,7 @@
 							else_if = {
 								limit = {
 									court_owner = {
-										amenity_level = { target = court_lodging_standards value = high_amenity_level }
+										amenity_level = { type = court_lodging_standards value = high_amenity_level }
 									}
 								}
 								subtract = 6
@@ -733,7 +706,7 @@
 							else_if = {
 								limit = {
 									court_owner = {
-										amenity_level = { target = court_lodging_standards value = very_high_amenity_level }
+										amenity_level = { type = court_lodging_standards value = very_high_amenity_level }
 									}
 								}
 								subtract = 8
@@ -741,7 +714,7 @@
 							else_if = {
 								limit = {
 									court_owner = {
-										amenity_level = { target = court_lodging_standards value = max_amenity_level }
+										amenity_level = { type = court_lodging_standards value = max_amenity_level }
 									}
 								}
 								subtract = 10

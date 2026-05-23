@@ -836,91 +836,94 @@ usukanarian = {
 
 ## Sarminians 
 
-Zunczeral = { # Wardenite Sarminians
+Orsolyot = {
 	trigger = {
+		capital_county = {
+			title_province = { geographical_region = chevalie_biozone }
+		}
 		culture = { has_cultural_pillar = heritage_sarminian }
-		faith.religion = religion:wardenism_religion
-	}
-}
-
-Kszanofi = { # Sjalvolkic Sarminians
-	trigger = {
-		culture = { has_cultural_pillar = heritage_sarminian }
-		faith.religion = religion:sjalvolki_religion
-	}
-}
-
-Venczenat = { # Oltenic Sarminians
-	trigger = {
-		culture = { has_cultural_pillar = heritage_sarminian }
-		faith.religion = religion:oltenic_religion
-	}
-}
-
-Orsolyot = { # Chevalien Sarminians
-	trigger = {
-		culture = { has_cultural_pillar = heritage_sarminian }
-		capital_county = { title_province = { geographical_region = chevalie_biozone } }
 		any_sub_realm_county = {
 			title_province = { geographical_region = chevalie_biozone }
-			culture = scope:culture
 		}
 	}
+ # Sarminian Chevalie
 }
-
-Skarope = { # Etepezean Sarminians
+Skarope = {
 	trigger = {
+		capital_county = {
+			title_province = { geographical_region = etepezea_biozone }
+		}
 		culture = { has_cultural_pillar = heritage_sarminian }
-		capital_county = { title_province = { geographical_region = etepezea_biozone } }
 		any_sub_realm_county = {
 			title_province = { geographical_region = etepezea_biozone }
-			culture = scope:culture
 		}
 	}
+ # Sarminian Etepezea
 }
-
-Czaforote = { # Mayikratic Sarminians
+Czaforote = {
 	trigger = {
+		capital_county = {
+			title_province = { geographical_region = mayikprolollan_biozone }
+		}
 		culture = { has_cultural_pillar = heritage_sarminian }
-		capital_county = { title_province = { geographical_region = mayikprolollan_biozone } }
 		any_sub_realm_county = {
 			title_province = { geographical_region = mayikprolollan_biozone }
-			culture = scope:culture
 		}
 	}
+ # Sarminians in Mayik
 }
-
-Akaszin = { # Opakhasian Sarminians
+Akaszin = {
 	trigger = {
+		capital_county = {
+			title_province = { geographical_region = opakhasia_biozone }
+		}
 		culture = { has_cultural_pillar = heritage_sarminian }
-		capital_county = { title_province = { geographical_region = opakhasia_biozone } }
 		any_sub_realm_county = {
 			title_province = { geographical_region = opakhasia_biozone }
-			culture = scope:culture
 		}
 	}
+ # Sarminians in Opakhasia
 }
-
-Sayelig = { # Aironoian Sarminians
+Sayelig = {
 	trigger = {
+		capital_county = {
+			title_province = { geographical_region = world_ga_aironoi }
+		}
 		culture = { has_cultural_pillar = heritage_sarminian }
-		capital_county = { title_province = { geographical_region = world_ga_aironoi } }
 		any_sub_realm_county = {
 			title_province = { geographical_region = world_ga_aironoi }
-			culture = scope:culture
 		}
 	}
+ # Sarminians in Aironoi
 }
-
-Makomares = { # Kashiryan Sarminians
+Makomares = {
 	trigger = {
+		capital_county = {
+			title_province = { geographical_region = world_ga_kashirya }
+		}
 		culture = { has_cultural_pillar = heritage_sarminian }
-		capital_county = { title_province = { geographical_region = world_ga_kashirya } }
 		any_sub_realm_county = {
 			title_province = { geographical_region = world_ga_kashirya }
-			culture = scope:culture
 		}
 	}
+ # Sarminians in Kashirya
+}
+
+Zunszeral = {
+	trigger = {
+		faith.religion = religion:wardenism_religion
+		culture = { has_cultural_pillar = heritage_sarminian }
+	}
+   
+  #Sarminian Wardenites
+}
+Kszanofi = {
+	trigger = {
+		faith.religion = religion:sjalvolki_religion
+		culture = { has_cultural_pillar = heritage_sarminian }
+	}
+   
+  #Sarminian following any Sjalvolki faith
 }
 
 ## Huegodocs 

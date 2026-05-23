@@ -133,9 +133,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -173,7 +170,6 @@
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 		scope:defender = {
-			mandala_peacemaker_perk_serenity_effect = yes
 			add_character_flag = peasant_revolt_do_not_kill
 			remove_variable = rebel_leader_peasants
 		}
@@ -217,9 +213,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_defeat_effects = yes
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title

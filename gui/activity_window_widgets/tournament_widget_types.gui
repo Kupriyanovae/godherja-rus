@@ -70,7 +70,7 @@ types TournamentWidgetTypes
 
 				## Debug info
 				hbox = {
-					visible = "[AIWatchWindowsEnabled]"
+					visible = "[InDebugMode]"
 
 					text_single = {
 						visible = "[GreaterThan_CFixedPoint( Character.MakeScope.Var('progress_to_victory').GetValue, Activity.MakeScope.Var('progress_to_victory_threshold').GetValue )]"
@@ -236,7 +236,7 @@ types TournamentWidgetTypes
 							## Debug info
 							hbox = {
 								margin_right = 8
-								visible = "[AIWatchWindowsEnabled]"
+								visible = "[InDebugMode]"
 
 								text_single = {
 									visible = "[GreaterThan_CFixedPoint( Character.MakeScope.Var('progress_to_victory').GetValue, Activity.MakeScope.Var('progress_to_victory_threshold').GetValue )]"
@@ -510,7 +510,7 @@ types TournamentWidgetTypes
 		}
 
 		text_single = {
-			visible = "[And( AIWatchWindowsEnabled, And( CharacterHasPtV, IsCharacterQualified ) )]"
+			visible = "[And( InDebugMode, And( CharacterHasPtV, IsCharacterQualified ) )]"
 			raw_text = "#I [GetPlayerPtV]#! -- vs -- #X [Character.MakeScope().ScriptValue( 'debug_opposing_progress_to_victory' )]#!"
 			parentanchor = right
 			default_format = "#D"

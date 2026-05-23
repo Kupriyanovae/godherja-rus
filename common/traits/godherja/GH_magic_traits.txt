@@ -1452,7 +1452,7 @@ gh_deep_mutation = {
 	negative_random_genetic_chance = 0.75
 	genetic_trait_strengthen_chance = 0.75
 	life_expectancy = -10
-	fertility = -0.3
+	fertility = -0.5
 	health = -2
 
 	physical = yes
@@ -1496,6 +1496,29 @@ gh_deep_mutation = {
 		# }
 	# }
 # }
+
+gh_dehanded = {
+	category = health
+	attraction_opinion = -10
+	prowess = -100
+	martial = -4
+	
+	flag = can_not_access_magic
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_dehanded_desc
+			}
+			desc = trait_gh_dehanded_character_desc
+		}
+	}
+}
 
 gh_shortsighted = { # GH TODO: These need to actually slowly scale instead of the vanilla behavior of just assigning blind
 	opposites = {
@@ -1710,7 +1733,7 @@ gh_riftsight_4 = {
 	opposites = {
 		gh_riftsight_1
 		gh_riftsight_2
-		gh_riftsight_3
+		gh_riftsight_4
 	}
 	
 	desc = {
@@ -1793,6 +1816,7 @@ gh_riftsight_4 = {
 	 }
  }
 
+
 magikill_1 = {
 	same_faith_opinion = 10
 	owned_hostile_scheme_success_chance_add = 5
@@ -1853,11 +1877,10 @@ magikill_7 = {
 
 necromancy_undead_thrall = {
 	minimum_age = 16
-	flag = can_not_marry
-	immortal = yes
-	epidemic_resistance = 100
+
+
 	opposite_opinion = -20
-	can_have_children = no
+	
 	ruler_designer_cost = 10
 
 	shown_in_ruler_designer = no
@@ -1890,7 +1913,7 @@ necromancy_undead_awakened = {
 	immortal = yes
 	opposite_opinion = -20
 	epidemic_resistance = 100
-	can_have_children = no
+
 	shown_in_ruler_designer = no
 	
 	ruler_designer_cost = 10
@@ -2123,6 +2146,7 @@ gh_blackspawn_1 = {
 		}
 	}
 }
+
 gh_blackspawn_2 = {
 	physical = yes
 	immortal = yes
@@ -2152,6 +2176,7 @@ gh_blackspawn_2 = {
 		}
 	}
 }
+
 gh_blackspawn_3 = {
 	physical = yes
 	can_have_children = no
@@ -2181,6 +2206,7 @@ gh_blackspawn_3 = {
 		}
 	}
 }
+
 gh_blackspawn_4 = {
 	physical = yes
 	can_have_children = no
@@ -2210,6 +2236,7 @@ gh_blackspawn_4 = {
 		}
 	}
 }
+
 gh_blackspawn_5 = {
 	physical = yes
 	can_have_children = no
@@ -2239,7 +2266,6 @@ gh_blackspawn_5 = {
 		}
 	}
 }
-
 gh_elementalist = {
 	category = lifestyle
 	dread_baseline_add = 20
@@ -2251,229 +2277,229 @@ gh_elementalist = {
 	tracks = {
 		magical_water = {
 			50 = {
-				magical_water_damage_mult = 0.075
-				magical_water_toughness_mult = 0.075
+				magical_water_damage_mult = 0.05
+				magical_water_toughness_mult = 0.05
 				magical_water_siege_value_add = 0.1
 			}
 			100 = {
-				magical_water_damage_mult = 0.3
-				magical_water_toughness_mult = 0.3
+				magical_water_damage_mult = 0.2
+				magical_water_toughness_mult = 0.2
 				magical_water_siege_value_add = 0.1
 			}
 		}
 		
 		magical_fire = {
 			50 = {
-				magical_fire_damage_mult = 0.075
-				magical_fire_toughness_mult = 0.075
+				magical_fire_damage_mult = 0.05
+				magical_fire_toughness_mult = 0.05
 				magical_fire_siege_value_add = 0.1
 			}
 			100 = {
-				magical_fire_damage_mult = 0.3
-				magical_fire_toughness_mult = 0.3
+				magical_fire_damage_mult = 0.2
+				magical_fire_toughness_mult = 0.2
 				magical_fire_siege_value_add = 0.1
 			}
 		}
 
 		magical_air = {
 			50 = {
-				magical_air_damage_mult = 0.075
-				magical_air_toughness_mult = 0.075
+				magical_air_damage_mult = 0.05
+				magical_air_toughness_mult = 0.05
 				magical_air_siege_value_add = 0.1
 			}
 			100 = {
-				magical_air_damage_mult = 0.3
-				magical_air_toughness_mult = 0.3
+				magical_air_damage_mult = 0.2
+				magical_air_toughness_mult = 0.2
 				magical_air_siege_value_add = 0.1
 			}
 		}
 
 		magical_light = {
 			50 = {
-				magical_light_damage_mult = 0.075
-				magical_light_toughness_mult = 0.075
+				magical_light_damage_mult = 0.05
+				magical_light_toughness_mult = 0.05
 				magical_light_siege_value_add = 0.1
 			}
 			100 = {
-				magical_light_damage_mult = 0.3
-				magical_light_toughness_mult = 0.3
+				magical_light_damage_mult = 0.2
+				magical_light_toughness_mult = 0.2
 				magical_light_siege_value_add = 0.1
 			}
 		}
 
 		magical_stone = {
 			50 = {
-				magical_stone_damage_mult = 0.075
-				magical_stone_toughness_mult = 0.075
+				magical_stone_damage_mult = 0.05
+				magical_stone_toughness_mult = 0.05
 				magical_stone_siege_value_add = 0.1
 			}
 			100 = {
-				magical_stone_damage_mult = 0.3
-				magical_stone_toughness_mult = 0.3
+				magical_stone_damage_mult = 0.2
+				magical_stone_toughness_mult = 0.2
 				magical_stone_siege_value_add = 0.1
 			}
 		}
 
 		magical_dream = {
 			50 = {
-				magical_dream_damage_mult = 0.075
-				magical_dream_toughness_mult = 0.075
+				magical_dream_damage_mult = 0.05
+				magical_dream_toughness_mult = 0.05
 				magical_dream_siege_value_add = 0.1
 			}
 			100 = {
-				magical_dream_damage_mult = 0.3
-				magical_dream_toughness_mult = 0.3
+				magical_dream_damage_mult = 0.2
+				magical_dream_toughness_mult = 0.2
 				magical_dream_siege_value_add = 0.1
 			}
 		}
 
 		magical_dark = {
 			50 = {
-				magical_dark_damage_mult = 0.075
-				magical_dark_toughness_mult = 0.075
+				magical_dark_damage_mult = 0.05
+				magical_dark_toughness_mult = 0.05
 				magical_dark_siege_value_add = 0.1
 			}
 			100 = {
-				magical_dark_damage_mult = 0.3
-				magical_dark_toughness_mult = 0.3
+				magical_dark_damage_mult = 0.2
+				magical_dark_toughness_mult = 0.2
 				magical_dark_siege_value_add = 0.1
 			}
 		}
 
 		magical_ice = {
 			50 = {
-				magical_ice_damage_mult = 0.075
-				magical_ice_toughness_mult = 0.075
+				magical_ice_damage_mult = 0.05
+				magical_ice_toughness_mult = 0.05
 				magical_ice_siege_value_add = 0.1
 			}
 			100 = {
-				magical_ice_damage_mult = 0.3
-				magical_ice_toughness_mult = 0.3
+				magical_ice_damage_mult = 0.2
+				magical_ice_toughness_mult = 0.2
 				magical_ice_siege_value_add = 0.1
 			}
 		}
 
 		magical_death = {
 			50 = {
-				magical_death_damage_mult = 0.075
-				magical_death_toughness_mult = 0.075
+				magical_death_damage_mult = 0.05
+				magical_death_toughness_mult = 0.05
 				magical_death_siege_value_add = 0.1
 			}
 			100 = {
-				magical_death_damage_mult = 0.3
-				magical_death_toughness_mult = 0.3
+				magical_death_damage_mult = 0.2
+				magical_death_toughness_mult = 0.2
 				magical_death_siege_value_add = 0.1
 			}
 		}
 
 		magical_blood = {
 			50 = {
-				magical_blood_damage_mult = 0.075
-				magical_blood_toughness_mult = 0.075
+				magical_blood_damage_mult = 0.05
+				magical_blood_toughness_mult = 0.05
 				magical_blood_siege_value_add = 0.1
 			}
 			100 = {
-				magical_blood_damage_mult = 0.3
-				magical_blood_toughness_mult = 0.3
+				magical_blood_damage_mult = 0.2
+				magical_blood_toughness_mult = 0.2
 				magical_blood_siege_value_add = 0.1
 			}
 		}
 
 		magical_sand = {
 			50 = {
-				magical_sand_damage_mult = 0.075
-				magical_sand_toughness_mult = 0.075
+				magical_sand_damage_mult = 0.05
+				magical_sand_toughness_mult = 0.05
 				magical_sand_siege_value_add = 0.1
 			}
 			100 = {
-				magical_sand_damage_mult = 0.3
-				magical_sand_toughness_mult = 0.3
+				magical_sand_damage_mult = 0.2
+				magical_sand_toughness_mult = 0.2
 				magical_sand_siege_value_add = 0.1
 			}
 		}
 
 		magical_metal = {
 			50 = {
-				magical_metal_damage_mult = 0.075
-				magical_metal_toughness_mult = 0.075
+				magical_metal_damage_mult = 0.05
+				magical_metal_toughness_mult = 0.05
 				magical_metal_siege_value_add = 0.1
 			}
 			100 = {
-				magical_metal_damage_mult = 0.3
-				magical_metal_toughness_mult = 0.3
+				magical_metal_damage_mult = 0.2
+				magical_metal_toughness_mult = 0.2
 				magical_metal_siege_value_add = 0.1
 			}
 		}
 
 		magical_ethereal = {
 			50 = {
-				magical_ethereal_damage_mult = 0.075
-				magical_ethereal_toughness_mult = 0.075
+				magical_ethereal_damage_mult = 0.05
+				magical_ethereal_toughness_mult = 0.05
 				magical_ethereal_siege_value_add = 0.1
 			}
 			100 = {
-				magical_ethereal_damage_mult = 0.3
-				magical_ethereal_toughness_mult = 0.3
+				magical_ethereal_damage_mult = 0.2
+				magical_ethereal_toughness_mult = 0.2
 				magical_ethereal_siege_value_add = 0.1
 			}
 		}
 		magical_celestial = {
 			50 = {
-				magical_celestial_damage_mult = 0.075
-				magical_celestial_toughness_mult = 0.075
+				magical_celestial_damage_mult = 0.05
+				magical_celestial_toughness_mult = 0.05
 				magical_celestial_siege_value_add = 0.1
 			}
 			100 = {
-				magical_celestial_damage_mult = 0.3
-				magical_celestial_toughness_mult = 0.3
+				magical_celestial_damage_mult = 0.2
+				magical_celestial_toughness_mult = 0.2
 				magical_celestial_siege_value_add = 0.1
 			}
 		}
 		magical_nature = {
 			50 = {
-				magical_nature_damage_mult = 0.075
-				magical_nature_toughness_mult = 0.075
+				magical_nature_damage_mult = 0.05
+				magical_nature_toughness_mult = 0.05
 				magical_nature_siege_value_add = 0.1
 			}
 			100 = {
-				magical_nature_damage_mult = 0.3
-				magical_nature_toughness_mult = 0.3
+				magical_nature_damage_mult = 0.2
+				magical_nature_toughness_mult = 0.2
 				magical_nature_siege_value_add = 0.1
 			}
 		}
 		magical_dawn = {
 			50 = {
-				magical_dawn_damage_mult = 0.075
-				magical_dawn_toughness_mult = 0.075
+				magical_dawn_damage_mult = 0.05
+				magical_dawn_toughness_mult = 0.05
 				magical_dawn_siege_value_add = 0.1
 			}
 			100 = {
-				magical_dawn_damage_mult = 0.3
-				magical_dawn_toughness_mult = 0.3
+				magical_dawn_damage_mult = 0.2
+				magical_dawn_toughness_mult = 0.2
 				magical_dawn_siege_value_add = 0.1
 			}
 		}
 		magical_hymns = {
 			50 = {
-				magical_hymns_damage_mult = 0.075
-				magical_hymns_toughness_mult = 0.075
+				magical_hymns_damage_mult = 0.05
+				magical_hymns_toughness_mult = 0.05
 				magical_hymns_siege_value_add = 0.1
 			}
 			100 = {
-				magical_hymns_damage_mult = 0.3
-				magical_hymns_toughness_mult = 0.3
+				magical_hymns_damage_mult = 0.2
+				magical_hymns_toughness_mult = 0.2
 				magical_hymns_siege_value_add = 0.1
 			}
 		}
 		magical_time = {
 			50 = {
-				magical_time_damage_mult = 0.075
-				magical_time_toughness_mult = 0.075
+				magical_time_damage_mult = 0.05
+				magical_time_toughness_mult = 0.05
 				magical_time_siege_value_add = 0.1
 			}
 			100 = {
-				magical_time_damage_mult = 0.3
-				magical_time_toughness_mult = 0.3
+				magical_time_damage_mult = 0.2
+				magical_time_toughness_mult = 0.2
 				magical_time_siege_value_add = 0.1
 			}
 		}
@@ -2506,34 +2532,7 @@ gh_elementalist = {
 	icon = gh_elementalist.dds
 }
 
-gh_apparition = {
-	shown_in_ruler_designer = no
 
-	immortal = yes
-	# Dummy flags — just here for loc really.
-	flag = is_immortal
-	flag = can_not_marry
-	flag = immortal_fertility
-	flag = immortal_incapability
-	no_prowess_loss_from_age = yes
-	inheritance_blocker = all
-	claim_inheritance_blocker = all
-	can_have_children = no
-
-
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_apparition_desc
-			}
-			desc = trait_gh_apparition_character_desc
-		}
-	}
-	icon = gh_placeholder.dds
-}
 
 #Debug Trait for testing Magi
 

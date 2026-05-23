@@ -9,9 +9,6 @@
 @illustration_iberian_islamic = "gfx/interface/illustrations/holding_types/fp2_temple_iberian_islamic.dds"
 @illustration_iranian_zoroastrian = "gfx/interface/illustrations/holding_types/fp3_temple_iranian_zoroastrian.dds"
 @illustration_tengri = "gfx/interface/illustrations/holding_types/mpo_temple_steppe.dds"
-@illustration_chinese = "gfx/interface/illustrations/holding_types/tgp_chinese_pagoda.dds"
-@illustration_shinto = "gfx/interface/illustrations/holding_types/tgp_shinto_temple.dds"
-@illustration_southeast_asian_pagan = "gfx/interface/illustrations/holding_types/tgp_temple_pagan_se_asia.dds"
 ## Donated to GH ##
 @illustration_anahuac = "gfx/interface/illustrations/holding_types/temple_anahuac.dds"
 ## Donated by More Holdings ##
@@ -22,297 +19,270 @@
 temple_01 = {
 	construction_time = slow_construction_time
 
-	#Meshes (Indented for readability)
-		### GENERIC ### 
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_generic_01_mesh"
-			illustration = @illustration_generic_grass
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_generic_01_mesh"
-			illustration = @illustration_generic_grass
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_generic_01_mesh"
-			illustration = @illustration_generic_arid
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_generic_01_mesh"
-			illustration = @illustration_generic_arid
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
+	### GENERIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_generic_01_mesh"
+		illustration = @illustration_generic_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_generic_01_mesh"
+		illustration = @illustration_generic_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_generic_01_mesh"
+		illustration = @illustration_generic_arid
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_generic_01_mesh"
+		illustration = @illustration_generic_arid
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_01_mesh"
+		illustration = @illustration_generic_arid
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_pagan_01_mesh"
+		illustration = @illustration_northern_pagan
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "pagan_gfx" }
+	}
 
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_pagan_01_mesh"
-			illustration = @illustration_northern_pagan
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "pagan_gfx" }
-		}
+	asset = {
+		type = pdxmesh
+		name = "slavic_temple_01_mesh"
+		illustration = @illustration_northern_pagan
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "pagan_gfx" }
+		graphical_cultures = { slavic_building_gfx }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	
+	### DHARMIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_dharmic_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "dharmic_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_dharmic_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_dharmic_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_dharmic_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	### ORTHODOX ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_orthodox_01_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "orthodox_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_orthodox_01_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_orthodox_01_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_orthodox_01_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	### CATHOLIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_christian_01_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "catholic_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_christian_01_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_christian_01_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_christian_01_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	### ISLAMIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_islamic_01_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_islamic_01_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_islamic_01_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_islamic_01_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
 
-		### SOUTHEAST ASIA ###
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_se_asia_temple_01_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/sea_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_cultures = { southeast_asian_building_gfx }
-			graphical_regions = { GH_graphical_far_east GH_graphical_kashirya }
-		}
+	# FP2 Catholic variant for Iberia
+	asset = {
+		type = pdxmesh
+		name = "fp2_building_iberian_christian_01_mesh"
+		requires_dlc_flag = the_fate_of_iberia
+		illustration = @illustration_iberian_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_cultures = { iberian_building_gfx }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
 
-		### DHARMIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_dharmic_01_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "dharmic_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_dharmic_01_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_dharmic_01_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_dharmic_01_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		### ORTHODOX ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_orthodox_01_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "orthodox_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_orthodox_01_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "orthodox_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_orthodox_01_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "orthodox_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_orthodox_01_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "orthodox_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		### CATHOLIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_christian_01_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "catholic_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_christian_01_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_christian_01_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_christian_01_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		### ISLAMIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_islamic_01_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "islamic_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_islamic_01_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_islamic_01_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_islamic_01_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		# FP2 Catholic variant for Iberia
-		asset = {
-			type = pdxmesh
-			name = "fp2_building_iberian_christian_01_mesh"
-			requires_dlc_flag = the_fate_of_iberia
-			illustration = @illustration_iberian_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_cultures = { iberian_building_gfx }
-			graphical_regions = { GH_graphical_shattered_coast }
-		}
-
-		# FP2 Islamic variant for Iberia
-		asset = {
-			type = pdxmesh
-			name = "fp2_building_iberian_mosque_01_mesh"
-			requires_dlc_flag = the_fate_of_iberia
-			illustration = @illustration_iberian_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_cultures = { iberian_building_gfx }
-			graphical_regions = { GH_graphical_shattered_coast }
-		}
-
-		# FP3 Zoroastrian
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_islamic_01_mesh"
-			requires_dlc_flag = legacy_of_persia
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_cultures = { iranian_building_gfx }
-			graphical_regions = { GH_graphical_sarradon }
-		}
-		asset = {
-			type = entity
-			name = "fp3_building_persian_temple_01_a_01_entity"
-			requires_dlc_flag = legacy_of_persia
-			illustration = @illustration_iranian_zoroastrian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "zoroastrian_gfx" }
-			graphical_cultures = { iranian_building_gfx }
-			graphical_regions = { GH_graphical_sarradon }
-		}
-
-		# MPO Tengri
-		asset = {
-			type = entity
-			name = "mpo_mongol_temple_01_entity"
-			illustration = @illustration_tengri
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "tengrism_gfx" }
-		}
-
-		### SOUTHEAST ASIA ###
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_se_asia_pagan_temple_01_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/sea_pagan_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { pagan_gfx }
-			graphical_regions = { GH_graphical_far_east GH_graphical_kashirya }
-		}
-		# TGP China
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_chinese_pagoda_01_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_chinese
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/chinese_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { dharmic_gfx }
-			graphical_cultures = { chinese_building_gfx }
-			graphical_regions = { GH_graphical_far_east GH_graphical_kashirya } #Chinese building gfx + india region = Dai Viet
-		}
-		# TGP China
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_chinese_temple_01_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_chinese
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/chinese_temple" soundparameter = { "Tier" = 0 } }
-			
-			graphical_cultures = { chinese_building_gfx }
-			graphical_regions = { GH_graphical_far_east }
-		}
-		# TGP Japan Buddhist
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_japanese_pagoda_01_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_chinese 
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/japanese_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { dharmic_gfx }
-			graphical_cultures = { japanese_building_gfx }
-			graphical_regions = { GH_graphical_far_east }
-		}
-		# TGP Japan Shinto
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_japanese_temple_01_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_shinto 
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/japanese_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { shinto_gfx }
-			graphical_cultures = { japanese_building_gfx }
-			graphical_regions = { GH_graphical_far_east }
-		}
+	# FP2 Islamic variant for Iberia
+	asset = {
+		type = pdxmesh
+		name = "fp2_building_iberian_mosque_01_mesh"
+		requires_dlc_flag = the_fate_of_iberia
+		illustration = @illustration_iberian_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_cultures = { iberian_building_gfx }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_islamic_01_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { eripomvuno_biozone central_isles_biozone tower_isles_biozone the_isles_biozone guillate_rocks_biozone imperial_isle_biozone }
+	}
+	
+	# FP3 Zoroastrian
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_islamic_01_mesh"
+		requires_dlc_flag = legacy_of_persia
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_cultures = { iranian_building_gfx }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = entity
+		name = "fp3_building_persian_temple_01_a_01_entity"
+		requires_dlc_flag = legacy_of_persia
+		illustration = @illustration_iranian_zoroastrian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } } ##todo_cd_polish fix 
+		graphical_faiths = { "zoroastrian_gfx" }
+		graphical_cultures = { iranian_building_gfx }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	
 	### Donated by Sunset Invasion ###
 	# Cemanahuac
 	asset = {
@@ -361,16 +331,6 @@ temple_01 = {
 		graphical_cultures = { celtic_building_gfx }
 	}
 	
-	asset = {
-		type = pdxmesh
-		name = "slavic_temple_01_mesh"
-		illustration = @illustration_northern_pagan
-		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 1 } }
-		graphical_faiths = { "pagan_gfx" }
-		graphical_cultures = { slavic_building_gfx }
-		graphical_regions = { GH_graphical_shattered_coast }
-	}
-	
 	### Donated by Kefir ###
 	#Sahelian
 	asset = {
@@ -407,6 +367,14 @@ temple_01 = {
 		graphical_faiths = { "judaism_gfx" }
 		graphical_cultures = { levantine_building_gfx }
 	}
+	#East Asian
+	asset = {
+		type = pdxmesh
+		name = "pagoda_00_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { kathun_building_gfx }
+	}
 	#Magyar
 	asset = {
 		type = pdxmesh
@@ -418,9 +386,7 @@ temple_01 = {
 	
 	can_construct_potential = {
 		barony_cannot_construct_holding = no
-		scope:holder = {
-			NOT = { government_has_flag = government_is_mandala }
-		}
+		#county_has_any_metropolis_or_ruined_district_trigger = no
 	}
 
 	can_construct = {
@@ -445,6 +411,7 @@ temple_01 = {
 				}
 			}
 		}
+
 	}
 
 	can_construct_showing_failures_only = {
@@ -464,7 +431,6 @@ temple_01 = {
 				has_cultural_parameter = tribals_can_into_temples
 			}
 		}
-		scope:holder = { NOT = { has_character_modifier = tgp_rebuilder_modifier } }
 		building_requirement_nomad = no
 		building_requirement_nomad_holding_in_county = yes
 		building_requirement_herder = no
@@ -501,11 +467,6 @@ temple_01 = {
 		defender_holding_advantage = 2
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.01
-	}
-
 	flag = temple
 
 	type_icon = "icon_building_monastic_schools.dds"
@@ -529,7 +490,7 @@ temple_01 = {
 			county.holder = { add_piety = omega_piety_gain }
 		}
 		else = {
-			county.holder ?= { add_piety = massive_piety_gain }
+			county.holder = { add_piety = massive_piety_gain }
 		}
 		save_scope_as = temple_location
 		if = {
@@ -644,7 +605,7 @@ temple_01 = {
 								exists = var:promised_to_build_temple
 								OR = {
 									var:promised_to_build_temple = { is_alive = no }
-									faith != scope:owner_of_province.faith
+									NOT = { faith = scope:owner_of_province.faith }
 								}
 							}
 							remove_variable = promised_to_build_temple
@@ -657,14 +618,16 @@ temple_01 = {
 			if = {
 				limit = {
 					any_vassal = {
-						vassal_stance = parochial
+						has_vassal_stance = parochial
 					}
 					save_temporary_scope_as = holder_scope
 				}
 				custom_tooltip = parochial_vassal_approves_holding_construction
 				hidden_effect = {
 					every_vassal = {
-						vassal_stance = parochial
+						limit = {
+							has_vassal_stance = parochial
+						}
 						add_opinion = {
 							target = prev
 							modifier = parochial_approves_holding_construction_opinion
@@ -675,35 +638,22 @@ temple_01 = {
 			if = {
 				limit = {
 					any_vassal = {
-						vassal_stance = zealot
+						has_vassal_stance = zealot
 					}
 					save_temporary_scope_as = holder_scope
 				}
 				custom_tooltip = zealot_vassal_approves_holding_construction
 				hidden_effect = {
 					every_vassal = {
-						vassal_stance = zealot
+						limit = {
+							has_vassal_stance = zealot
+						}
 						add_opinion = {
 							target = prev
 							modifier = zealot_approves_temple_construction_opinion
 						}
 					}
 				}
-			}
-		}
-
-		# Building Oath
-		hidden_effect = {
-			if = {
-				limit = {
-					county.holder = {
-						has_character_modifier = oath_of_buildings
-					}
-				}
-				county.holder = { save_scope_as = holder }
-				add_random_economic_building_effect = yes
-				add_random_military_building_effect = yes
-				add_random_fortification_building_effect = yes
 			}
 		}
 	}
@@ -732,393 +682,374 @@ temple_01 = {
 temple_02 = {
 	construction_time = slow_construction_time
 
-	#Meshes (Indented for readability)
-		### GENERIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_generic_01_mesh"
-			illustration = @illustration_generic_grass
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_generic_01_mesh"
-			illustration = @illustration_generic_grass
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_generic_01_mesh"
-			illustration = @illustration_generic_arid
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_generic_01_mesh"
-			illustration = @illustration_generic_arid
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_pagan_01_mesh"
-			illustration = @illustration_northern_pagan
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "pagan_gfx" }
-		}
-
-
-		### SOUTHEAST ASIA ###
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_se_asia_temple_02_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/sea_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_cultures = { southeast_asian_building_gfx }
-			graphical_regions = { GH_graphical_far_east GH_graphical_kashirya }
-		}
-
-		### DHARMIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_dharmic_01_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "dharmic_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_dharmic_01_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_dharmic_01_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_dharmic_01_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		### ORTHODOX ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_orthodox_01_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "orthodox_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_orthodox_01_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "orthodox_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_orthodox_01_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "orthodox_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_orthodox_01_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "orthodox_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		### CATHOLIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_christian_01_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "catholic_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_christian_01_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_christian_01_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_christian_01_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		### ISLAMIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_islamic_01_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "islamic_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_islamic_01_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_islamic_01_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_islamic_01_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		# FP2 Catholic variant for Iberia
-		asset = {
-			type = pdxmesh
-			name = "fp2_building_iberian_christian_01_mesh"
-			requires_dlc_flag = the_fate_of_iberia
-			illustration = @illustration_iberian_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_cultures = { iberian_building_gfx }
-			graphical_regions = { GH_graphical_shattered_coast }
-		}
-
-		# FP2 Islamic variant for Iberia
-		asset = {
-			type = pdxmesh
-			name = "fp2_building_iberian_mosque_01_mesh"
-			requires_dlc_flag = the_fate_of_iberia
-			illustration = @illustration_iberian_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_cultures = { iberian_building_gfx }
-			graphical_regions = { GH_graphical_shattered_coast }
-		}
-
-		# FP3 Zoroastrian
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_islamic_01_mesh"
-			requires_dlc_flag = legacy_of_persia
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_cultures = { iranian_building_gfx }
-			graphical_regions = { GH_graphical_sarradon }
-		}
-		asset = {
-			type = entity
-			name = "fp3_building_persian_temple_01_a_01_entity"
-			requires_dlc_flag = legacy_of_persia
-			illustration = @illustration_iranian_zoroastrian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "zoroastrian_gfx" }
-			graphical_cultures = { iranian_building_gfx }
-			graphical_regions = { GH_graphical_sarradon }
-		}
-
-		# MPO Tengri
-		asset = {
-			type = entity
-			name = "mpo_mongol_temple_01_entity"
-			illustration = @illustration_tengri
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "tengrism_gfx" }
-		}
-		# TGP Asian Pagan
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_se_asia_pagan_temple_01_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/sea_pagan_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { pagan_gfx }
-			graphical_regions = { GH_graphical_far_east GH_graphical_kashirya }
-		}
-		# TGP China
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_chinese_pagoda_01_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_chinese
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/chinese_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { dharmic_gfx }
-			graphical_cultures = { chinese_building_gfx }
-			graphical_regions = { GH_graphical_far_east GH_graphical_kashirya  }
-		}
-		# TGP China
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_chinese_temple_01_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_chinese
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/chinese_temple" soundparameter = { "Tier" = 1 } }
-			
-			graphical_cultures = { chinese_building_gfx }
-			graphical_regions = { GH_graphical_far_east }
-		}
-		# TGP Japan Buddhist
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_japanese_pagoda_01_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_chinese
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/japanese_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { dharmic_gfx }
-			graphical_cultures = { japanese_building_gfx }
-			graphical_regions = { GH_graphical_far_east }
-		}
-		# TGP Japan Shinto
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_japanese_temple_01_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_shinto 
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/japanese_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { shinto_gfx }
-			graphical_cultures = { japanese_building_gfx }
-			graphical_regions = { GH_graphical_far_east }
-		}
-		
-		### Donated by Sunset Invasion ###
-# Cemanahuac
-asset = {
-	type = pdxmesh
-	name = "building_cemanahuac_temple_01_mesh"
-	illustration = @illustration_anahuac
-	soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
-	graphical_faiths = { "pagan_gfx" }
-	graphical_cultures = { cemanahuac_building_gfx }
-}
-
-### ISLAMIC ETHIOPIA ###
-asset = {
-	type = pdxmesh
-	name = "building_mena_temple_islamic_01_mesh"
-	illustration = @illustration_islamic_ethiopian
-	soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-	graphical_faiths = { "islamic_gfx" }
-	graphical_cultures = { damotan_building_gfx }
-}
-asset = {
-	type = pdxmesh
-	name = "building_mena_temple_islamic_01_mesh"
-	illustration = @illustration_islamic_ethiopian_mena
-	soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-	graphical_faiths = { "islamic_gfx" }
-	graphical_regions = { GH_graphical_sarradon }
-	graphical_cultures = { damotan_building_gfx }
-}
-
-asset = {
-	type = pdxmesh
-	name = "building_celtic_temple_02_mesh"
-	illustration = @illustration_christian
-	soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
-	graphical_faiths = { "pagan_gfx" }
-	graphical_cultures = { celtic_building_gfx }
-}
-
-asset = {
-	type = pdxmesh
-	name = "building_celtic_druid_tower_mesh"
-	illustration = @illustration_christian
-	soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
-	graphical_faiths = { "partic_gfx" }
-	graphical_cultures = { celtic_building_gfx }
-}
-
-asset = {
+	### GENERIC ###
+	asset = {
 		type = pdxmesh
-		name = "slavic_temple_02_mesh"
+		name = "building_western_temple_generic_01_mesh"
+		illustration = @illustration_generic_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_generic_01_mesh"
+		illustration = @illustration_generic_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_generic_01_mesh"
+		illustration = @illustration_generic_arid
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_generic_01_mesh"
+		illustration = @illustration_generic_arid
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_01_mesh"
+		illustration = @illustration_generic_arid
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_pagan_01_mesh"
 		illustration = @illustration_northern_pagan
-		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 1 } }
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "pagan_gfx" }
+	}
+
+	asset = {
+		type = pdxmesh
+		name = "slavic_temple_01_mesh"
+		illustration = @illustration_northern_pagan
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
 		graphical_faiths = { "pagan_gfx" }
 		graphical_cultures = { slavic_building_gfx }
 		graphical_regions = { GH_graphical_shattered_coast }
 	}
+	
+	### DHARMIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_dharmic_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "dharmic_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_dharmic_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_dharmic_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_dharmic_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	### ORTHODOX ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_orthodox_01_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "orthodox_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_orthodox_01_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_orthodox_01_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_orthodox_01_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
 
-### Donated by Kefir ###
-#Sahelian
-asset = {
-	type = pdxmesh
-	name = "african_temple_islam_02_mesh"
-	illustration = @illustration_india
-	soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
-	graphical_faiths = { "islamic_gfx" }
-	graphical_regions = { aekershaan_biozone }
-}
+	asset = {
+		type = pdxmesh
+		name = "punic_temple_01_mesh"
+		illustration = @illustration_iranian_zoroastrian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "judaism_gfx" }
+		graphical_cultures = { levantine_building_gfx }
+	}
+	
+	### CATHOLIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_christian_01_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "catholic_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_christian_01_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_christian_01_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_christian_01_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	### ISLAMIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_islamic_01_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_islamic_01_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_islamic_01_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_islamic_01_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
 
-#Tibetan
-asset = {
-	type = pdxmesh
-	name = "stupa_01_mesh"
-	illustration = @illustration_india
-	soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/mena_castle" soundparameter = { "Tier" = 0 } }
-	graphical_cultures = { tibetan_building_gfx }
-}
-asset = {
-	type = pdxmesh
-	name = "stupa_01_mesh"
-	illustration = @illustration_india
-	soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/mena_castle" soundparameter = { "Tier" = 0 } }
-	graphical_cultures = { tibetan_building_gfx }
-	graphical_regions = { GH_graphical_shattered_coast }
-}
-#Magyar
-asset = {
-	type = pdxmesh
-	name = "magyar_temple_christian_01_mesh"
-	illustration = @illustration_orthodox
-	soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 0 } }
-	graphical_cultures = { katraddian_building_gfx }
-}
+	# FP2 Catholic variant for Iberia
+	asset = {
+		type = pdxmesh
+		name = "fp2_building_iberian_christian_01_mesh"
+		requires_dlc_flag = the_fate_of_iberia
+		illustration = @illustration_iberian_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_cultures = { iberian_building_gfx }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
 
+	# FP2 Islamic variant for Iberia
+	asset = {
+		type = pdxmesh
+		name = "fp2_building_iberian_mosque_01_mesh"
+		requires_dlc_flag = the_fate_of_iberia
+		illustration = @illustration_iberian_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_cultures = { iberian_building_gfx }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_islamic_01_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { eripomvuno_biozone central_isles_biozone tower_isles_biozone the_isles_biozone guillate_rocks_biozone imperial_isle_biozone }
+	}
+	
 
+	# FP3 Zoroastrian
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_islamic_01_mesh"
+		requires_dlc_flag = legacy_of_persia
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_cultures = { iranian_building_gfx }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = entity
+		name = "fp3_building_persian_temple_01_a_01_entity"
+		requires_dlc_flag = legacy_of_persia
+		illustration = @illustration_iranian_zoroastrian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } } ##todo_cd_polish fix 
+		graphical_faiths = { "zoroastrian_gfx" }
+		graphical_cultures = { iranian_building_gfx }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+
+	### Donated by Sunset Invasion ###
+	# Cemanahuac
+	asset = {
+		type = pdxmesh
+		name = "building_cemanahuac_temple_01_mesh"
+		illustration = @illustration_anahuac
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "pagan_gfx" }
+		graphical_cultures = { cemanahuac_building_gfx }
+	}
+	
+	### ISLAMIC ETHIOPIA ###
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_islamic_01_mesh"
+		illustration = @illustration_islamic_ethiopian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_cultures = { damotan_building_gfx }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_islamic_01_mesh"
+		illustration = @illustration_islamic_ethiopian_mena
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+		graphical_cultures = { damotan_building_gfx }
+	}
+
+	asset = {
+		type = pdxmesh
+		name = "building_celtic_temple_02_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "pagan_gfx" }
+		graphical_cultures = { celtic_building_gfx }
+	}
+
+	asset = {
+		type = pdxmesh
+		name = "building_celtic_druid_tower_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "partic_gfx" }
+		graphical_cultures = { celtic_building_gfx }
+	}
+	
+	### Donated by Kefir ###
+	#Sahelian
+	asset = {
+		type = pdxmesh
+		name = "african_temple_islam_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 0 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { aekershaan_biozone }
+	}
+
+	#Tibetan
+	asset = {
+		type = pdxmesh
+		name = "stupa_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/mena_castle" soundparameter = { "Tier" = 0 } }
+		graphical_cultures = { tibetan_building_gfx }
+	}
+	asset = {
+		type = pdxmesh
+		name = "stupa_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/mena_castle" soundparameter = { "Tier" = 0 } }
+		graphical_cultures = { tibetan_building_gfx }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+
+	#East Asian
+	asset = {
+		type = pdxmesh
+		name = "pagoda_01_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 0 } }
+		graphical_cultures = { kathun_building_gfx }
+	}
+	#Magyar
+	asset = {
+		type = pdxmesh
+		name = "magyar_temple_christian_01_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 0 } }
+		graphical_cultures = { katraddian_building_gfx }
+	}
+	
 	can_construct_potential = {
 		building_requirement_tribal = no
 	}
@@ -1142,7 +1073,6 @@ asset = {
 			}
 		}
 	}
-	can_construct_showing_failures_only = { NOT = { scope:holder = { has_character_modifier = tgp_rebuilder_modifier } } }
 	cost_gold = main_building_tier_2_cost
 	next_building = temple_03
 
@@ -1175,11 +1105,6 @@ asset = {
 		defender_holding_advantage = 3
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.02
-	}
-
 	flag = temple
 
 	on_complete = {
@@ -1209,14 +1134,16 @@ asset = {
 			if = {
 				limit = {
 					any_vassal = {
-						vassal_stance = parochial
+						has_vassal_stance = parochial
 					}
 					save_temporary_scope_as = holder_scope
 				}
 				custom_tooltip = parochial_vassal_approves_holding_upgrade
 				hidden_effect = {
 					every_vassal = {
-						vassal_stance = parochial
+						limit = {
+							has_vassal_stance = parochial
+						}
 						add_opinion = {
 							target = prev
 							modifier = parochial_approves_holding_upgrade_opinion
@@ -1227,14 +1154,16 @@ asset = {
 			if = {
 				limit = {
 					any_vassal = {
-						vassal_stance = zealot
+						has_vassal_stance = zealot
 					}
 					save_temporary_scope_as = holder_scope
 				}
 				custom_tooltip = zealot_vassal_approves_holding_upgrade
 				hidden_effect = {
 					every_vassal = {
-						vassal_stance = zealot
+						limit = {
+							has_vassal_stance = zealot
+						}
 						add_opinion = {
 							target = prev
 							modifier = zealot_approves_temple_upgrade_opinion
@@ -1243,19 +1172,13 @@ asset = {
 				}
 			}
 		}
-		scope:character ?= {
-			if = {
-				limit = { government_has_flag = government_is_mandala }
-				mandala_upgraded_temple_holding_effect = yes
-			}
-		}
 	}
 
 	ai_value = {
 		base = 6
 		modifier = {
 			factor = 2
-			scope:holder.capital_province = this
+			scope:holder.capital_province ?= this
 		}
 		modifier = {
 			factor = 0.1
@@ -1263,7 +1186,7 @@ asset = {
 		}
 		modifier = {
 			factor = 0.1
-			combined_building_level <= 8
+			combined_building_level <= 10
 			years_from_game_start >= 1
 		}
 		modifier = {
@@ -1276,297 +1199,51 @@ asset = {
 temple_03 = {
 	construction_time = slow_construction_time
 
-	#Meshes (Indented for readability)
-		### GENERIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_generic_02_mesh"
-			illustration = @illustration_generic_grass
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_generic_02_mesh"
-			illustration = @illustration_generic_grass
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_generic_02_mesh"
-			illustration = @illustration_generic_arid
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_generic_02_mesh"
-			illustration = @illustration_generic_arid
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_pagan_02_mesh"
-			illustration = @illustration_northern_pagan
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "pagan_gfx" }
-		}
-		# SOUTHEAST ASIA #
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_se_asia_temple_03_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/sea_temple" soundparameter = { "Tier" = 2 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_cultures = { southeast_asian_building_gfx }
-			graphical_regions = { GH_graphical_far_east GH_graphical_kashirya }
-		}
-
-		### DHARMIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_dharmic_02_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "dharmic_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_dharmic_02_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_dharmic_02_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_dharmic_02_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		### ORTHODOX ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_orthodox_02_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "orthodox_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_orthodox_02_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "orthodox_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_orthodox_02_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "orthodox_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_orthodox_02_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "orthodox_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		### CATHOLIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_christian_02_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "catholic_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_christian_02_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_christian_02_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_christian_02_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		### ISLAMIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_islamic_02_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "islamic_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_islamic_02_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_islamic_02_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_islamic_02_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		# FP2 Catholic variant for Iberia
-		asset = {
-			type = pdxmesh
-			name = "fp2_building_iberian_christian_02_mesh"
-			requires_dlc_flag = the_fate_of_iberia
-			illustration = @illustration_iberian_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_cultures = { iberian_building_gfx }
-			graphical_regions = { GH_graphical_shattered_coast }
-		}
-
-		# FP2 Islamic variant for Iberia
-		asset = {
-			type = pdxmesh
-			name = "fp2_building_iberian_mosque_02_mesh"
-			requires_dlc_flag = the_fate_of_iberia
-			illustration = @illustration_iberian_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_cultures = { iberian_building_gfx }
-			graphical_regions = { GH_graphical_shattered_coast }
-		}
-
-		# FP3 Zoroastrian
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_islamic_02_mesh"
-			requires_dlc_flag = legacy_of_persia
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_cultures = { iranian_building_gfx }
-			graphical_regions = { GH_graphical_sarradon }
-		}
-		asset = {
-			type = entity
-			name = "fp3_building_persian_temple_02_a_01_entity"
-			requires_dlc_flag = legacy_of_persia
-			illustration = @illustration_iranian_zoroastrian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "zoroastrian_gfx" }
-			graphical_cultures = { iranian_building_gfx }
-			graphical_regions = { GH_graphical_sarradon }
-		}
-
-		# MPO Tengri
-		asset = {
-			type = entity
-			name = "mpo_mongol_temple_01_entity"
-			illustration = @illustration_tengri
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "tengrism_gfx" }
-		}
-		# TGP Asian Pagan
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_se_asia_pagan_temple_02_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/sea_pagan_temple" soundparameter = { "Tier" = 2 } }
-			graphical_faiths = { pagan_gfx }
-			graphical_regions = { GH_graphical_far_east GH_graphical_kashirya }
-		}
-		# TGP China
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_chinese_pagoda_02_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_chinese
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/chinese_temple" soundparameter = { "Tier" = 2 } }
-			graphical_faiths = { dharmic_gfx }
-			graphical_cultures = { chinese_building_gfx }
-			graphical_regions = { GH_graphical_far_east  GH_graphical_kashirya  }
-		}
-		# TGP China
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_chinese_temple_02_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_chinese
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/chinese_temple" soundparameter = { "Tier" = 2 } }
-			
-			graphical_cultures = { chinese_building_gfx }
-			graphical_regions = { GH_graphical_far_east }
-		}
-		# TGP Japan Buddhist
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_japanese_pagoda_02_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_chinese
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/japanese_temple" soundparameter = { "Tier" = 2 } }
-			graphical_faiths = { dharmic_gfx }
-			graphical_cultures = { japanese_building_gfx }
-			graphical_regions = { GH_graphical_far_east }
-		}
-		# TGP Japan Shinto
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_japanese_temple_02_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_shinto 
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/japanese_temple" soundparameter = { "Tier" = 2 } }
-			graphical_faiths = { shinto_gfx }
-			graphical_cultures = { japanese_building_gfx }
-			graphical_regions = { GH_graphical_far_east }
-		}
-		
-			### CELTIC ###
+	### GENERIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_generic_02_mesh"
+		illustration = @illustration_generic_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_generic_02_mesh"
+		illustration = @illustration_generic_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_generic_02_mesh"
+		illustration = @illustration_generic_arid
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_generic_02_mesh"
+		illustration = @illustration_generic_arid
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_02_mesh"
+		illustration = @illustration_generic_arid
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_pagan_02_mesh"
+		illustration = @illustration_northern_pagan
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "pagan_gfx" }
+	}
+	
+	### CELTIC ###
 
 	asset = {
 		type = pdxmesh
@@ -1595,6 +1272,215 @@ temple_03 = {
 		graphical_regions = { GH_graphical_shattered_coast }
 	}
 
+	### DHARMIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_dharmic_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "dharmic_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_dharmic_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_dharmic_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_dharmic_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	### ORTHODOX ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_orthodox_02_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "orthodox_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_orthodox_02_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_orthodox_02_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_orthodox_02_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	### CATHOLIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_christian_02_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "catholic_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_christian_02_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_christian_02_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_christian_02_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { rovarska_biozone nightcoast_biozone dahangon_lowlands_biozone nattanan_highlands_biozone }
+	}
+	
+	### ISLAMIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_islamic_02_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_islamic_02_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_islamic_02_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_islamic_02_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+
+	# FP2 Catholic variant for Iberia
+	asset = {
+		type = pdxmesh
+		name = "fp2_building_iberian_christian_02_mesh"
+		requires_dlc_flag = the_fate_of_iberia
+		illustration = @illustration_iberian_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_cultures = { iberian_building_gfx }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+
+	# FP2 Islamic variant for Iberia
+	asset = {
+		type = pdxmesh
+		name = "fp2_building_iberian_mosque_02_mesh"
+		requires_dlc_flag = the_fate_of_iberia
+		illustration = @illustration_iberian_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_cultures = { iberian_building_gfx }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_islamic_02_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { eripomvuno_biozone central_isles_biozone tower_isles_biozone the_isles_biozone guillate_rocks_biozone imperial_isle_biozone }
+	}
+	# FP3 Zoroastrian
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_islamic_02_mesh"
+		requires_dlc_flag = legacy_of_persia
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_cultures = { iranian_building_gfx }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = entity
+		name = "fp3_building_persian_temple_02_a_01_entity"
+		requires_dlc_flag = legacy_of_persia
+		illustration = @illustration_iranian_zoroastrian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } } ##todo_cd_polish fix 
+		graphical_faiths = { "zoroastrian_gfx" }
+		graphical_cultures = { iranian_building_gfx }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	
 	### Donated by Sunset Invasion ###
 	# Cemanahuac
 	asset = {
@@ -1664,6 +1550,14 @@ temple_03 = {
 		graphical_cultures = { levantine_building_gfx }
 	}
 
+	#East Asian
+	asset = {
+		type = pdxmesh
+		name = "pagoda_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 1 } }
+		graphical_cultures = { kathun_building_gfx }
+	}
 	#Magyar
 	asset = {
 		type = pdxmesh
@@ -1672,12 +1566,9 @@ temple_03 = {
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 1 } }
 		graphical_cultures = { katraddian_building_gfx }
 	}
-
+	
 	can_construct_potential = {
 		building_requirement_tribal = no
-		scope:holder = {
-			NOT = { government_has_flag = government_is_mandala }
-		}
 	}
 	can_construct = {
 		trigger_if = {
@@ -1699,7 +1590,6 @@ temple_03 = {
 			}
 		}
 	}
-	can_construct_showing_failures_only = { NOT = { scope:holder = { has_character_modifier = tgp_rebuilder_modifier } } }
 	cost_gold = main_building_tier_3_cost
 	next_building = temple_04
 
@@ -1731,11 +1621,6 @@ temple_03 = {
 		defender_holding_advantage = 4
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.03
-	}
-
 	flag = temple
 
 	on_complete = {
@@ -1765,14 +1650,16 @@ temple_03 = {
 			if = {
 				limit = {
 					any_vassal = {
-						vassal_stance = parochial
+						has_vassal_stance = parochial
 					}
 					save_temporary_scope_as = holder_scope
 				}
 				custom_tooltip = parochial_vassal_approves_holding_upgrade
 				hidden_effect = {
 					every_vassal = {
-						vassal_stance = parochial
+						limit = {
+							has_vassal_stance = parochial
+						}
 						add_opinion = {
 							target = prev
 							modifier = parochial_approves_holding_upgrade_opinion
@@ -1783,26 +1670,22 @@ temple_03 = {
 			if = {
 				limit = {
 					any_vassal = {
-						vassal_stance = zealot
+						has_vassal_stance = zealot
 					}
 					save_temporary_scope_as = holder_scope
 				}
 				custom_tooltip = zealot_vassal_approves_holding_upgrade
 				hidden_effect = {
 					every_vassal = {
-						vassal_stance = zealot
+						limit = {
+							has_vassal_stance = zealot
+						}
 						add_opinion = {
 							target = prev
 							modifier = zealot_approves_temple_upgrade_opinion
 						}
 					}
 				}
-			}
-		}
-		scope:character = {
-			if = {
-				limit = { government_has_flag = government_is_mandala }
-				mandala_upgraded_temple_holding_effect = yes
 			}
 		}
 	}
@@ -1824,298 +1707,51 @@ temple_03 = {
 temple_04 = {
 	construction_time = slow_construction_time
 
-	#Meshes (Indented for readability)
-		### GENERIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_generic_02_mesh"
-			illustration = @illustration_generic_grass
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_generic_02_mesh"
-			illustration = @illustration_generic_grass
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_generic_02_mesh"
-			illustration = @illustration_generic_arid
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_generic_02_mesh"
-			illustration = @illustration_generic_arid
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
+	### GENERIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_generic_02_mesh"
+		illustration = @illustration_generic_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_generic_02_mesh"
+		illustration = @illustration_generic_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_generic_02_mesh"
+		illustration = @illustration_generic_arid
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_generic_02_mesh"
+		illustration = @illustration_generic_arid
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_pagan_02_mesh"
+		illustration = @illustration_northern_pagan
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "pagan_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_02_mesh"
+		illustration = @illustration_generic_arid
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/generic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
 
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_pagan_02_mesh"
-			illustration = @illustration_northern_pagan
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "pagan_gfx" }
-		}
-
-
-		### SOUTHEAST ASIA ###
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_se_asia_temple_04_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/sea_temple" soundparameter = { "Tier" = 3 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_cultures = { southeast_asian_building_gfx }
-			graphical_regions = { GH_graphical_far_east GH_graphical_kashirya }
-		}
-
-		### DHARMIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_dharmic_02_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "dharmic_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_dharmic_02_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_dharmic_02_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_dharmic_02_mesh"
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "dharmic_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		### ORTHODOX ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_orthodox_02_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "orthodox_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_orthodox_02_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "orthodox_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_orthodox_02_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "orthodox_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_orthodox_02_mesh"
-			illustration = @illustration_orthodox
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "orthodox_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		### CATHOLIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_christian_02_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "catholic_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_christian_02_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_christian_02_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_christian_02_mesh"
-			illustration = @illustration_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-
-		### ISLAMIC ###
-		asset = {
-			type = pdxmesh
-			name = "building_western_temple_islamic_02_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "islamic_gfx" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mediterranean_temple_islamic_02_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_regions = { "GH_graphical_shattered_coast" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_indian_temple_islamic_02_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_regions = { "GH_graphical_kashirya" }
-		}
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_islamic_02_mesh"
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_regions = { "GH_graphical_sarradon" }
-		}
-		# FP2 Catholic variant for Iberia
-		asset = {
-			type = pdxmesh
-			name = "fp2_building_iberian_christian_02_mesh"
-			requires_dlc_flag = the_fate_of_iberia
-			illustration = @illustration_iberian_christian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "catholic_gfx" }
-			graphical_cultures = { iberian_building_gfx }
-			graphical_regions = { GH_graphical_shattered_coast }
-		}
-
-		# FP2 Islamic variant for Iberia
-		asset = {
-			type = pdxmesh
-			name = "fp2_building_iberian_mosque_02_mesh"
-			requires_dlc_flag = the_fate_of_iberia
-			illustration = @illustration_iberian_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_cultures = { iberian_building_gfx }
-			graphical_regions = { GH_graphical_shattered_coast }
-		}
-
-		# FP3 Zoroastrian
-		asset = {
-			type = pdxmesh
-			name = "building_mena_temple_islamic_02_mesh"
-			requires_dlc_flag = legacy_of_persia
-			illustration = @illustration_islamic
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "islamic_gfx" }
-			graphical_cultures = { iranian_building_gfx }
-			graphical_regions = { GH_graphical_sarradon }
-		}
-		asset = {
-			type = entity
-			name = "fp3_building_persian_temple_02_a_01_entity"
-			requires_dlc_flag = legacy_of_persia
-			illustration = @illustration_iranian_zoroastrian
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
-			graphical_faiths = { "zoroastrian_gfx" }
-			graphical_cultures = { iranian_building_gfx }
-			graphical_regions = { GH_graphical_sarradon }
-		}
-
-		# MPO Tengri
-		asset = {
-			type = entity
-			name = "mpo_mongol_temple_01_entity"
-			illustration = @illustration_tengri
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
-			graphical_faiths = { "tengrism_gfx" }
-		}
-		# TGP Asian Pagan
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_se_asia_pagan_temple_02_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_india
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/sea_pagan_temple" soundparameter = { "Tier" = 3 } }
-			graphical_faiths = { pagan_gfx }
-			graphical_regions = { GH_graphical_far_east GH_graphical_kashirya }
-		}
-		# TGP China
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_chinese_pagoda_02_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_chinese
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/chinese_temple" soundparameter = { "Tier" = 3 } }
-			graphical_faiths = { dharmic_gfx }
-			graphical_cultures = { chinese_building_gfx }
-			graphical_regions = { GH_graphical_far_east  GH_graphical_kashirya  }
-		}
-		# TGP China
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_chinese_temple_02_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_chinese
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/chinese_temple" soundparameter = { "Tier" = 3 } }
-			
-			graphical_cultures = { chinese_building_gfx }
-			graphical_regions = { GH_graphical_far_east }
-		}
-		# TGP Japan Buddhist
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_japanese_pagoda_02_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_chinese
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/japanese_temple" soundparameter = { "Tier" = 3 } }
-			graphical_faiths = { dharmic_gfx }
-			graphical_cultures = { japanese_building_gfx }
-			graphical_regions = { GH_graphical_far_east }
-		}
-		# TGP Japan Shinto
-		asset = {
-			type = pdxmesh
-			name = "tgp_building_japanese_temple_02_mesh"
-			requires_dlc_flag = all_under_heaven
-			illustration = @illustration_shinto
-			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/japanese_temple" soundparameter = { "Tier" = 3 } }
-			graphical_faiths = { shinto_gfx }
-			graphical_cultures = { japanese_building_gfx }
-			graphical_regions = { GH_graphical_far_east }
-		}
-		
-			### CELTIC ##
+	### CELTIC ##
 
 	asset = {
 		type = pdxmesh
@@ -2143,8 +1779,195 @@ temple_04 = {
 		graphical_cultures = { slavic_building_gfx }
 		graphical_regions = { GH_graphical_shattered_coast }
 	}
+	
+	### DHARMIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_dharmic_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "dharmic_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_dharmic_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_dharmic_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_dharmic_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/dharmic_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "dharmic_gfx" }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	### ORTHODOX ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_orthodox_02_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "orthodox_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_orthodox_02_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_orthodox_02_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_orthodox_02_mesh"
+		illustration = @illustration_orthodox
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/orthodox_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "orthodox_gfx" }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	### CATHOLIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_christian_02_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "catholic_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_christian_02_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_christian_02_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_christian_02_mesh"
+		illustration = @illustration_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_sea_temple_02_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_regions = { rovarska_biozone nightcoast_biozone }
+	}
+	
+	### ISLAMIC ###
+	asset = {
+		type = pdxmesh
+		name = "building_western_temple_islamic_02_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mediterranean_temple_islamic_02_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_islamic_02_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { damota_biozone crater_biozone  cyrat_biozone rojihlat_biozone world_ga_kashirya GH_graphical_dahangon }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_islamic_02_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	# FP2 Catholic variant for Iberia
+	asset = {
+		type = pdxmesh
+		name = "fp2_building_iberian_christian_02_mesh"
+		requires_dlc_flag = the_fate_of_iberia
+		illustration = @illustration_iberian_christian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/church_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "catholic_gfx" }
+		graphical_cultures = { iberian_building_gfx }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
 
-		### Donated by Sunset Invasion ###
+	# FP2 Islamic variant for Iberia
+	asset = {
+		type = pdxmesh
+		name = "fp2_building_iberian_mosque_02_mesh"
+		requires_dlc_flag = the_fate_of_iberia
+		illustration = @illustration_iberian_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_cultures = { iberian_building_gfx }
+		graphical_regions = { GH_graphical_shattered_coast }
+	}
+	asset = {
+		type = pdxmesh
+		name = "building_indian_temple_islamic_02_mesh"
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_regions = { eripomvuno_biozone central_isles_biozone tower_isles_biozone the_isles_biozone guillate_rocks_biozone imperial_isle_biozone }
+	}
+	
+	### Donated by Sunset Invasion ###
 	# Cemanahuac
 	asset = {
 		type = pdxmesh
@@ -2200,7 +2023,27 @@ temple_04 = {
 		graphical_cultures = { tibetan_building_gfx }
 		graphical_regions = { GH_graphical_shattered_coast }
 	}
-
+	# FP3 Zoroastrian
+	asset = {
+		type = pdxmesh
+		name = "building_mena_temple_islamic_02_mesh"
+		requires_dlc_flag = legacy_of_persia
+		illustration = @illustration_islamic
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } }
+		graphical_faiths = { "islamic_gfx" }
+		graphical_cultures = { iranian_building_gfx }
+		graphical_regions = { GH_graphical_sarradon }
+	}
+	asset = {
+		type = entity
+		name = "fp3_building_persian_temple_02_a_01_entity"
+		requires_dlc_flag = legacy_of_persia
+		illustration = @illustration_iranian_zoroastrian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/mosque_temple" soundparameter = { "Tier" = 1 } } ##todo_cd_polish fix 
+		graphical_faiths = { "zoroastrian_gfx" }
+		graphical_cultures = { iranian_building_gfx }
+		graphical_regions = { GH_graphical_sarradon }
+	}
 	asset = {
 		type = pdxmesh
 		names = {
@@ -2212,6 +2055,14 @@ temple_04 = {
 		graphical_faiths = { "judaism_gfx" }
 		graphical_cultures = { levantine_building_gfx }
 	}
+	#East Asian
+	asset = {
+		type = pdxmesh
+		name = "pagoda_03_mesh"
+		illustration = @illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 1 } }
+		graphical_cultures = { kathun_building_gfx }
+	}
 	#Magyar
 	asset = {
 		type = pdxmesh
@@ -2220,12 +2071,9 @@ temple_04 = {
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 1 } }
 		graphical_cultures = { katraddian_building_gfx }
 	}
-
+	
 	can_construct_potential = {
 		building_requirement_tribal = no
-		scope:holder = {
-			NOT = { government_has_flag = government_is_mandala }
-		}
 	}
 	can_construct = {
 		trigger_if = {
@@ -2247,7 +2095,6 @@ temple_04 = {
 			}
 		}
 	}
-	can_construct_showing_failures_only = { NOT = { scope:holder = { has_character_modifier = tgp_rebuilder_modifier } } }
 	cost_gold = main_building_tier_4_cost
 
 	levy = poor_building_levy_tier_7
@@ -2276,11 +2123,6 @@ temple_04 = {
 		parameter = coastal_holdings_give_defensive_bonus
 		is_coastal = yes
 		defender_holding_advantage = 5
-	}
-
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.05
 	}
 
 	flag = temple
@@ -2312,14 +2154,16 @@ temple_04 = {
 			if = {
 				limit = {
 					any_vassal = {
-						vassal_stance = parochial
+						has_vassal_stance = parochial
 					}
 					save_temporary_scope_as = holder_scope
 				}
 				custom_tooltip = parochial_vassal_approves_holding_upgrade
 				hidden_effect = {
 					every_vassal = {
-						vassal_stance = parochial
+						limit = {
+							has_vassal_stance = parochial
+						}
 						add_opinion = {
 							target = prev
 							modifier = parochial_approves_holding_upgrade_opinion
@@ -2330,7 +2174,7 @@ temple_04 = {
 			if = {
 				limit = {
 					any_vassal = {
-						vassal_stance = zealot
+						has_vassal_stance = zealot
 					}
 					save_temporary_scope_as = holder_scope
 				}
@@ -2338,7 +2182,9 @@ temple_04 = {
 
 				hidden_effect = {
 					every_vassal = {
-						vassal_stance = zealot
+						limit = {
+							has_vassal_stance = zealot
+						}
 						add_opinion = {
 							target = prev
 							modifier = zealot_approves_temple_upgrade_opinion
@@ -2347,14 +2193,8 @@ temple_04 = {
 				}
 			}
 		}
-		scope:character = {
-			if = {
-				limit = { government_has_flag = government_is_mandala }
-				mandala_upgraded_temple_holding_effect = yes
-			}
-		}
 	}
-
+	
 	ai_value = {
 		base = 4
 		modifier = {
@@ -2379,8 +2219,6 @@ temple_04 = {
 
 scriptorium_01 = {
 	construction_time = standard_construction_time
-	effect_desc = increase_scriptorium_01_collection_effect_desc
-	flag = increase_scriptorium_01_collection
 
 	can_construct_potential = {
 		OR = { ## GH CHANGE: Palace Economy Cultural Tradition
@@ -2389,9 +2227,8 @@ scriptorium_01 = {
 				culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 				has_building_or_higher = castle_01
 			}
-			has_building_or_higher = temple_citadel_01
 		}
-		has_dlc_feature = legends
+		scope:holder = { has_dlc_feature = legends }
 	}
 
 	can_construct_showing_failures_only = {
@@ -2412,22 +2249,6 @@ scriptorium_01 = {
 		monthly_county_control_growth_add = 0.1
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.01
-	}
-	county_culture_modifier = {
-		parameter = block_printing_scriptorium_bonuses
-		monthly_county_control_growth_add = innovation_block_printing_control_growth_value_1
-		development_growth = innovation_block_printing_development_growth_value_1
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-		remove_recently_checked_collection_variable_effect = yes
-	}
-
 	next_building = scriptorium_02
 
 	type_icon = "icon_building_library.dds"
@@ -2435,7 +2256,6 @@ scriptorium_01 = {
 	ai_value = {
 		base = 10
 		ai_tier_1_building_modifier = yes
-		ai_tier_1_pious_building_preference_modifier = yes
 		modifier = {
 			add = 250
 			scope:holder = {
@@ -2475,13 +2295,10 @@ scriptorium_01 = {
 
 scriptorium_02 = {
 	construction_time = standard_construction_time
-	effect_desc = increase_scriptorium_02_collection_effect_desc
-	flag = increase_scriptorium_02_collection
 
 	can_construct_potential = {
 		OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 			has_building_or_higher = temple_01
-			has_building_or_higher = temple_citadel_01
 			AND = {
 				culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 				has_building_or_higher = castle_01
@@ -2490,7 +2307,7 @@ scriptorium_02 = {
 		culture = {
 			has_innovation = innovation_city_planning
 		}
-		has_dlc_feature = legends
+		scope:holder = { has_dlc_feature = legends }
 	}
 
 	can_construct_showing_failures_only = {
@@ -2503,11 +2320,6 @@ scriptorium_02 = {
 		owned_legend_spread_mult = 0.1
 		legitimacy_gain_mult = 0.02
 	}
-	county_culture_modifier = {
-		parameter = block_printing_scriptorium_bonuses
-		monthly_county_control_growth_add = innovation_block_printing_control_growth_value_1
-		development_growth = innovation_block_printing_development_growth_value_1
-	}
 
 	character_modifier = {
 		monthly_piety = 0.2
@@ -2516,23 +2328,11 @@ scriptorium_02 = {
 		monthly_county_control_growth_add = 0.2
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.01
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-		remove_recently_checked_collection_variable_effect = yes #GH ADDITION
-	}
-
 	next_building = scriptorium_03
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -2542,13 +2342,10 @@ scriptorium_02 = {
 
 scriptorium_03 = {
 	construction_time = standard_construction_time
-	effect_desc = increase_scriptorium_03_collection_effect_desc
-	flag = increase_scriptorium_03_collection
 
 	can_construct = {
 		OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 			has_building_or_higher = temple_02
-			has_building_or_higher = temple_citadel_02
 			AND = {
 				culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 				has_building_or_higher = castle_01
@@ -2557,7 +2354,7 @@ scriptorium_03 = {
 		culture = {
 			has_innovation = innovation_manorialism
 		}
-		has_dlc_feature = legends
+		scope:holder = { has_dlc_feature = legends }
 	}
 
 	can_construct_showing_failures_only = {
@@ -2570,11 +2367,6 @@ scriptorium_03 = {
 		owned_legend_spread_mult = 0.15
 		legitimacy_gain_mult = 0.03
 	}
-	county_culture_modifier = {
-		parameter = block_printing_scriptorium_bonuses
-		monthly_county_control_growth_add = innovation_block_printing_control_growth_value_2
-		development_growth = innovation_block_printing_development_growth_value_2
-	}
 
 	character_modifier = {
 		monthly_piety = 0.3
@@ -2583,23 +2375,11 @@ scriptorium_03 = {
 		monthly_county_control_growth_add = 0.3
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.02
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-		remove_recently_checked_collection_variable_effect = yes #GH ADDITION
-	}
-
 	next_building = scriptorium_04
 	ai_value = {
 		base = 8
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -2609,13 +2389,10 @@ scriptorium_03 = {
 
 scriptorium_04 = {
 	construction_time = standard_construction_time
-	effect_desc = increase_scriptorium_04_collection_effect_desc
-	flag = increase_scriptorium_04_collection
 
 	can_construct = {
 		OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 			has_building_or_higher = temple_02
-			has_building_or_higher = temple_citadel_02
 			AND = {
 				culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 				has_building_or_higher = castle_01
@@ -2624,7 +2401,7 @@ scriptorium_04 = {
 		culture = {
 			has_innovation = innovation_manorialism
 		}
-		has_dlc_feature = legends
+		scope:holder = { has_dlc_feature = legends }
 	}
 
 	can_construct_showing_failures_only = {
@@ -2637,11 +2414,6 @@ scriptorium_04 = {
 		owned_legend_spread_mult = 0.2
 		legitimacy_gain_mult = 0.04
 	}
-	county_culture_modifier = {
-		parameter = block_printing_scriptorium_bonuses
-		monthly_county_control_growth_add = innovation_block_printing_control_growth_value_2
-		development_growth = innovation_block_printing_development_growth_value_2
-	}
 
 	character_modifier = {
 		monthly_piety = 0.4
@@ -2650,23 +2422,11 @@ scriptorium_04 = {
 		monthly_county_control_growth_add = 0.4
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.02
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-		remove_recently_checked_collection_variable_effect = yes #GH ADDITION
-	}
-
 	next_building = scriptorium_05
 	ai_value = {
 		base = 7
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -2676,13 +2436,10 @@ scriptorium_04 = {
 
 scriptorium_05 = {
 	construction_time = standard_construction_time
-	effect_desc = increase_scriptorium_05_collection_effect_desc
-	flag = increase_scriptorium_05_collection
 
 	can_construct = {
 		OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 			has_building_or_higher = temple_03
-			has_building_or_higher = temple_citadel_03
 			AND = {
 				culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 				has_building_or_higher = castle_01
@@ -2691,7 +2448,7 @@ scriptorium_05 = {
 		culture = {
 			has_innovation = innovation_windmills
 		}
-		has_dlc_feature = legends
+		scope:holder = { has_dlc_feature = legends }
 	}
 
 	can_construct_showing_failures_only = {
@@ -2704,11 +2461,6 @@ scriptorium_05 = {
 		owned_legend_spread_mult = 0.25
 		legitimacy_gain_mult = 0.05
 	}
-	county_culture_modifier = {
-		parameter = block_printing_scriptorium_bonuses
-		monthly_county_control_growth_add = innovation_block_printing_control_growth_value_3
-		development_growth = innovation_block_printing_development_growth_value_3
-	}
 
 	character_modifier = {
 		monthly_piety = 0.5
@@ -2717,23 +2469,11 @@ scriptorium_05 = {
 		monthly_county_control_growth_add = 0.5
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.03
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-		remove_recently_checked_collection_variable_effect = yes #GH ADDITION
-	}
-
 	next_building = scriptorium_06
 	ai_value = {
 		base = 7
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -2743,13 +2483,10 @@ scriptorium_05 = {
 
 scriptorium_06 = {
 	construction_time = standard_construction_time
-	effect_desc = increase_scriptorium_06_collection_effect_desc
-	flag = increase_scriptorium_06_collection
 
 	can_construct = {
 		OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 			has_building_or_higher = temple_03
-			has_building_or_higher = temple_citadel_03
 			AND = {
 				culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 				has_building_or_higher = castle_01
@@ -2758,7 +2495,7 @@ scriptorium_06 = {
 		culture = {
 			has_innovation = innovation_windmills
 		}
-		has_dlc_feature = legends
+		scope:holder = { has_dlc_feature = legends }
 	}
 
 	can_construct_showing_failures_only = {
@@ -2778,28 +2515,12 @@ scriptorium_06 = {
 	county_modifier = {
 		monthly_county_control_growth_add = 0.6
 	}
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.03
-	}
-	county_culture_modifier = {
-		parameter = block_printing_scriptorium_bonuses
-		monthly_county_control_growth_add = innovation_block_printing_control_growth_value_3
-		development_growth = innovation_block_printing_development_growth_value_3
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-		remove_recently_checked_collection_variable_effect = yes #GH ADDITION
-	}
 
 	next_building = scriptorium_07
 	ai_value = {
 		base = 7
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -2809,13 +2530,10 @@ scriptorium_06 = {
 
 scriptorium_07 = {
 	construction_time = standard_construction_time
-	effect_desc = increase_scriptorium_07_collection_effect_desc
-	flag = increase_scriptorium_07_collection
 
 	can_construct = {
 		OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 			has_building_or_higher = temple_04
-			has_building_or_higher = temple_citadel_04
 			AND = {
 				culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 				has_building_or_higher = castle_01
@@ -2824,7 +2542,7 @@ scriptorium_07 = {
 		culture = {
 			has_innovation = innovation_cranes
 		}
-		has_dlc_feature = legends
+		scope:holder = { has_dlc_feature = legends }
 	}
 
 	can_construct_showing_failures_only = {
@@ -2845,28 +2563,11 @@ scriptorium_07 = {
 		monthly_county_control_growth_add = 0.7
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.04
-	}
-	county_culture_modifier = {
-		parameter = block_printing_scriptorium_bonuses
-		monthly_county_control_growth_add = innovation_block_printing_control_growth_value_4
-		development_growth = innovation_block_printing_development_growth_value_4
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-		remove_recently_checked_collection_variable_effect = yes #GH ADDITION
-	}
-
 	next_building = scriptorium_08
 	ai_value = {
 		base = 7
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -2876,13 +2577,10 @@ scriptorium_07 = {
 
 scriptorium_08 = {
 	construction_time = standard_construction_time
-	effect_desc = increase_scriptorium_08_collection_effect_desc
-	flag = increase_scriptorium_08_collection
 
 	can_construct = {
 		OR = { ## GH CHANGE: Palace Economy Cultural Tradition
-			has_building_or_higher = temple_04
-			has_building_or_higher = temple_citadel_04
+			has_building_or_higher = temple_04 # temple_03 in vanilla
 			AND = {
 				culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 				has_building_or_higher = castle_01
@@ -2891,7 +2589,7 @@ scriptorium_08 = {
 		culture = {
 			has_innovation = innovation_cranes
 		}
-		has_dlc_feature = legends
+		scope:holder = { has_dlc_feature = legends }
 	}
 
 	can_construct_showing_failures_only = {
@@ -2912,27 +2610,10 @@ scriptorium_08 = {
 		monthly_county_control_growth_add = 0.8
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.04
-	}
-	county_culture_modifier = {
-		parameter = block_printing_scriptorium_bonuses
-		monthly_county_control_growth_add = innovation_block_printing_control_growth_value_4
-		development_growth = innovation_block_printing_development_growth_value_4
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-		remove_recently_checked_collection_variable_effect = yes #GH ADDITION
-	}
-
 	ai_value = {
 		base = 7
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -2948,8 +2629,6 @@ monastic_schools_01 = {
 	can_construct_potential = {
 		OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 			has_building_or_higher = temple_01
-			has_building_or_higher = temple_citadel_01
-			scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
 			AND = {
 				culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 				has_building_or_higher = castle_01
@@ -2958,12 +2637,7 @@ monastic_schools_01 = {
 	}
 
 	can_construct_showing_failures_only = {
-		trigger_if = {
-			limit = {
-				NOT = { scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type } }
-			}
-			building_requirement_tribal = no
-		}
+		building_requirement_tribal = no
 	}
 
 	cost_gold = normal_building_tier_1_cost
@@ -2989,16 +2663,6 @@ monastic_schools_01 = {
 		prowess = 1
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.01
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-	}
-
 	next_building = monastic_schools_02
 
 	type_icon = "icon_building_monastic_schools.dds"
@@ -3006,15 +2670,13 @@ monastic_schools_01 = {
 	ai_value = {
 		base = 10
 		ai_tier_1_building_modifier = yes
-		ai_tier_1_pious_building_preference_modifier = yes
 		directive_to_build_economy_modifier = yes
 		modifier = {
 			add = 500
 			scope:holder = {
 				OR = {
 					highest_held_title_tier = tier_barony
-					government_has_flag = government_is_theocracy
-					government_has_flag = government_is_mandala
+					GH_is_any_theocracy_government_trigger = yes
 					is_theocratic_lessee = yes
 				}
 			}
@@ -3032,15 +2694,6 @@ monastic_schools_02 = {
 	can_construct_potential = {
 		OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 			has_building_or_higher = temple_01
-			has_building_or_higher = temple_citadel_01
-			trigger_if = { #Trigger IF for non-confusing tooltip
-				limit = {
-					scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-				}
-				building_requirement_castle_city_church_temple_citadel_tribe = {
-					LEVEL = 01
-				}
-			}
 			AND = {
 				culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 				has_building_or_higher = castle_01
@@ -3055,12 +2708,7 @@ monastic_schools_02 = {
 	}
 
 	can_construct_showing_failures_only = {
-		trigger_if = {
-			limit = {
-				NOT = { scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type } }
-			}
-			building_requirement_tribal = no
-		}
+		building_requirement_tribal = no
 	}
 
 	cost_gold = normal_building_tier_2_cost
@@ -3088,23 +2736,12 @@ monastic_schools_02 = {
 		martial = 1
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.01
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-	}
-
 	next_building = monastic_schools_03
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -3129,15 +2766,6 @@ monastic_schools_03 = {
 			}
 			OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 				has_building_or_higher = temple_02
-				has_building_or_higher = temple_citadel_02
-				trigger_if = { #Trigger IF for non-confusing tooltip
-					limit = {
-						scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-					}
-					building_requirement_castle_city_church_temple_citadel_tribe = {
-						LEVEL = 02
-					}
-				}
 				AND = {
 					culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 					has_building_or_higher = castle_02
@@ -3153,15 +2781,6 @@ monastic_schools_03 = {
 			}
 			OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 				has_building_or_higher = temple_01
-				has_building_or_higher = temple_citadel_01
-				trigger_if = { #Trigger IF for non-confusing tooltip
-					limit = {
-						scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-					}
-					building_requirement_castle_city_church_temple_citadel_tribe = {
-						LEVEL = 01
-					}
-				}
 				AND = {
 					culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 					has_building_or_higher = castle_01
@@ -3171,12 +2790,7 @@ monastic_schools_03 = {
 	}
 
 	can_construct_showing_failures_only = {
-		trigger_if = {
-			limit = {
-				NOT = { scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type } }
-			}
-			building_requirement_tribal = no
-		}
+		building_requirement_tribal = no
 	}
 
 	cost_gold = normal_building_tier_3_cost
@@ -3204,23 +2818,12 @@ monastic_schools_03 = {
 		martial = 1
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.02
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-	}
-
 	next_building = monastic_schools_04
 	ai_value = {
 		base = 8
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -3245,15 +2848,6 @@ monastic_schools_04 = {
 			}
 			OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 				has_building_or_higher = temple_02
-				has_building_or_higher = temple_citadel_02
-				trigger_if = { #Trigger IF for non-confusing tooltip
-					limit = {
-						scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-					}
-					building_requirement_castle_city_church_temple_citadel_tribe = {
-						LEVEL = 02
-					}
-				}
 				AND = {
 					culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 					has_building_or_higher = castle_02
@@ -3269,15 +2863,6 @@ monastic_schools_04 = {
 			}
 			OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 				has_building_or_higher = temple_01
-				has_building_or_higher = temple_citadel_01
-				trigger_if = { #Trigger IF for non-confusing tooltip
-					limit = {
-						scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-					}
-					building_requirement_castle_city_church_temple_citadel_tribe = {
-						LEVEL = 01
-					}
-				}
 				AND = {
 					culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 					has_building_or_higher = castle_01
@@ -3287,12 +2872,7 @@ monastic_schools_04 = {
 	}
 
 	can_construct_showing_failures_only = {
-		trigger_if = {
-			limit = {
-				NOT = { scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type } }
-			}
-			building_requirement_tribal = no
-		}
+		building_requirement_tribal = no
 	}
 
 	cost_gold = normal_building_tier_4_cost
@@ -3320,23 +2900,12 @@ monastic_schools_04 = {
 		martial = 2
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.02
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-	}
-
 	next_building = monastic_schools_05
 	ai_value = {
 		base = 7
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -3361,15 +2930,6 @@ monastic_schools_05 = {
 			}
 			OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 				has_building_or_higher = temple_03
-				has_building_or_higher = temple_citadel_03
-				trigger_if = { #Trigger IF for non-confusing tooltip
-					limit = {
-						scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-					}
-					building_requirement_castle_city_church_temple_citadel_tribe = {
-						LEVEL = 03
-					}
-				}
 				AND = {
 					culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 					has_building_or_higher = castle_03
@@ -3385,15 +2945,6 @@ monastic_schools_05 = {
 			}
 			OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 				has_building_or_higher = temple_02
-				has_building_or_higher = temple_citadel_02
-				trigger_if = { #Trigger IF for non-confusing tooltip
-					limit = {
-						scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-					}
-					building_requirement_castle_city_church_temple_citadel_tribe = {
-						LEVEL = 02
-					}
-				}
 				AND = {
 					culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 					has_building_or_higher = castle_02
@@ -3403,12 +2954,7 @@ monastic_schools_05 = {
 	}
 
 	can_construct_showing_failures_only = {
-		trigger_if = {
-			limit = {
-				NOT = { scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type } }
-			}
-			building_requirement_tribal = no
-		}
+		building_requirement_tribal = no
 	}
 
 	cost_gold = normal_building_tier_5_cost
@@ -3436,23 +2982,12 @@ monastic_schools_05 = {
 		martial = 2
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.03
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-	}
-
 	next_building = monastic_schools_06
 	ai_value = {
 		base = 6
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -3477,15 +3012,6 @@ monastic_schools_06 = {
 			}
 			OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 				has_building_or_higher = temple_03
-				has_building_or_higher = temple_citadel_03
-				trigger_if = { #Trigger IF for non-confusing tooltip
-					limit = {
-						scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-					}
-					building_requirement_castle_city_church_temple_citadel_tribe = {
-						LEVEL = 03
-					}
-				}
 				AND = {
 					culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 					has_building_or_higher = castle_03
@@ -3501,15 +3027,6 @@ monastic_schools_06 = {
 			}
 			OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 				has_building_or_higher = temple_02
-				has_building_or_higher = temple_citadel_02
-				trigger_if = { #Trigger IF for non-confusing tooltip
-					limit = {
-						scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-					}
-					building_requirement_castle_city_church_temple_citadel_tribe = {
-						LEVEL = 02
-					}
-				}
 				AND = {
 					culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 					has_building_or_higher = castle_02
@@ -3519,12 +3036,7 @@ monastic_schools_06 = {
 	}
 
 	can_construct_showing_failures_only = {
-		trigger_if = {
-			limit = {
-				NOT = { scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type } }
-			}
-			building_requirement_tribal = no
-		}
+		building_requirement_tribal = no
 	}
 
 	cost_gold = normal_building_tier_6_cost
@@ -3552,23 +3064,12 @@ monastic_schools_06 = {
 		martial = 3
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.03
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-	}
-
 	next_building = monastic_schools_07
 	ai_value = {
 		base = 5
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -3593,15 +3094,6 @@ monastic_schools_07 = {
 			}
 			OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 				has_building_or_higher = temple_04
-				has_building_or_higher = temple_citadel_04
-				trigger_if = { #Trigger IF for non-confusing tooltip
-					limit = {
-						scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-					}
-					building_requirement_castle_city_church_temple_citadel_tribe = {
-						LEVEL = 04
-					}
-				}
 				AND = {
 					culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 					has_building_or_higher = castle_04
@@ -3617,15 +3109,6 @@ monastic_schools_07 = {
 			}
 			OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 				has_building_or_higher = temple_03
-				has_building_or_higher = temple_citadel_03
-				trigger_if = { #Trigger IF for non-confusing tooltip
-					limit = {
-						scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-					}
-					building_requirement_castle_city_church_temple_citadel_tribe = {
-						LEVEL = 03
-					}
-				}
 				AND = {
 					culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 					has_building_or_higher = castle_03
@@ -3635,12 +3118,7 @@ monastic_schools_07 = {
 	}
 
 	can_construct_showing_failures_only = {
-		trigger_if = {
-			limit = {
-				NOT = { scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type } }
-			}
-			building_requirement_tribal = no
-		}
+		building_requirement_tribal = no
 	}
 
 	cost_gold = normal_building_tier_7_cost
@@ -3668,23 +3146,12 @@ monastic_schools_07 = {
 		martial = 3
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.04
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-	}
-
 	next_building = monastic_schools_08
 	ai_value = {
 		base = 4
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -3709,15 +3176,6 @@ monastic_schools_08 = {
 			}
 			OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 				has_building_or_higher = temple_04
-				has_building_or_higher = temple_citadel_04
-				trigger_if = { #Trigger IF for non-confusing tooltip
-					limit = {
-						scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-					}
-					building_requirement_castle_city_church_temple_citadel_tribe = {
-						LEVEL = 04
-					}
-				}
 				AND = {
 					culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 					has_building_or_higher = castle_04
@@ -3733,15 +3191,6 @@ monastic_schools_08 = {
 			}
 			OR = { ## GH CHANGE: Palace Economy Cultural Tradition
 				has_building_or_higher = temple_03
-				has_building_or_higher = temple_citadel_03
-				trigger_if = { #Trigger IF for non-confusing tooltip
-					limit = {
-						scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type }
-					}
-					building_requirement_castle_city_church_temple_citadel_tribe = {
-						LEVEL = 03
-					}
-				}
 				AND = {
 					culture = { has_cultural_parameter = unlock_city_temple_buildings_in_castles }
 					has_building_or_higher = castle_03
@@ -3751,12 +3200,7 @@ monastic_schools_08 = {
 	}
 
 	can_construct_showing_failures_only = {
-		trigger_if = {
-			limit = {
-				NOT = { scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type } }
-			}
-			building_requirement_tribal = no
-		}
+		building_requirement_tribal = no
 	}
 
 	cost_gold = normal_building_tier_8_cost
@@ -3784,22 +3228,11 @@ monastic_schools_08 = {
 		martial = 4
 	}
 
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.04
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
-	}
-
 	ai_value = {
 		base = 3
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for upgrades
 			factor = 0
 			free_building_slots > 0
@@ -3841,15 +3274,7 @@ megalith_01 = {
 		development_growth_factor = 0.02
 		county_opinion_add = 2
 	}
-
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.01
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
+	province_modifier = {
 	}
 
 	next_building = megalith_02
@@ -3859,7 +3284,6 @@ megalith_01 = {
 	ai_value = {
 		base = 10
 		ai_tier_1_building_modifier = yes
-		ai_tier_1_pious_building_preference_modifier = yes
 		directive_to_build_economy_modifier = yes
 		modifier = {
 			add = 500
@@ -3867,7 +3291,6 @@ megalith_01 = {
 				OR = {
 					highest_held_title_tier = tier_barony
 					government_has_flag = government_is_theocracy
-					government_has_flag = government_is_mandala
 					is_theocratic_lessee = yes
 				}
 			}
@@ -3909,22 +3332,13 @@ megalith_02 = {
 		development_growth_factor = 0.05
 		county_opinion_add = 2
 	}
-	
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.01
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
+	province_modifier = {
 	}
 
 	next_building = megalith_03
 	ai_value = {
 		base = 9
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 	}
 }
 
@@ -3936,12 +3350,12 @@ megalith_03 = {
 		scope:holder.faith = {
 			has_doctrine_parameter = can_build_megaliths
 		}
+		culture = {
+			has_innovation = innovation_city_planning
+		}
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_city_planning
-		}
 		building_requirement_tribal = no
 	}
 
@@ -3961,22 +3375,13 @@ megalith_03 = {
 		development_growth_factor = 0.1
 		county_opinion_add = 4
 	}
-	
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.02
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
+	province_modifier = {
 	}
 
 	next_building = megalith_04
 	ai_value = {
 		base = 8
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 	}
 }
 
@@ -3988,12 +3393,12 @@ megalith_04 = {
 		scope:holder.faith = {
 			has_doctrine_parameter = can_build_megaliths
 		}
+		culture = {
+			has_innovation = innovation_city_planning
+		}
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_city_planning
-		}
 		building_requirement_tribal = no
 	}
 
@@ -4014,22 +3419,13 @@ megalith_04 = {
 		county_opinion_add = 4
 		development_growth = 0.025
 	}
-	
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.02
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
+	province_modifier = {
 	}
 
 	next_building = megalith_05
 	ai_value = {
 		base = 7
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 	}
 }
 
@@ -4041,12 +3437,12 @@ megalith_05 = {
 		scope:holder.faith = {
 			has_doctrine_parameter = can_build_megaliths
 		}
+		culture = {
+			has_innovation = innovation_city_planning
+		}
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_city_planning
-		}
 		building_requirement_tribal = no
 	}
 
@@ -4068,22 +3464,13 @@ megalith_05 = {
 		county_opinion_add = 6
 		development_growth = 0.025
 	}
-	
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.03
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
+	province_modifier = {
 	}
 
 	next_building = megalith_06
 	ai_value = {
 		base = 6
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 	}
 }
 
@@ -4095,12 +3482,12 @@ megalith_06 = {
 		scope:holder.faith = {
 			has_doctrine_parameter = can_build_megaliths
 		}
+		culture = {
+			has_innovation = innovation_city_planning
+		}
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_city_planning
-		}
 		building_requirement_tribal = no
 	}
 
@@ -4122,22 +3509,13 @@ megalith_06 = {
 		county_opinion_add = 6
 		development_growth = 0.05
 	}
-	
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.03
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
+	province_modifier = {
 	}
 
 	next_building = megalith_07
 	ai_value = {
 		base = 5
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 	}
 }
 
@@ -4149,12 +3527,12 @@ megalith_07 = {
 		scope:holder.faith = {
 			has_doctrine_parameter = can_build_megaliths
 		}
+		culture = {
+			has_innovation = innovation_city_planning
+		}
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_city_planning
-		}
 		building_requirement_tribal = no
 	}
 
@@ -4176,22 +3554,13 @@ megalith_07 = {
 		county_opinion_add = 8
 		development_growth = 0.05
 	}
-	
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.04
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
+	province_modifier = {
 	}
 
 	next_building = megalith_08
 	ai_value = {
 		base = 4
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 	}
 }
 
@@ -4203,12 +3572,12 @@ megalith_08 = {
 		scope:holder.faith = {
 			has_doctrine_parameter = can_build_megaliths
 		}
+		culture = {
+			has_innovation = innovation_city_planning
+		}
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_city_planning
-		}
 		building_requirement_tribal = no
 	}
 
@@ -4230,21 +3599,12 @@ megalith_08 = {
 		county_opinion_add = 8
 		development_growth = 0.075
 	}
-	
-	character_government_modifier = {
-		parameter = government_is_mandala
-		monthly_piety = 0.04
-	}
-
-	on_complete = {
-		#Regular Mandala Boon
-		mandala_built_piety_building_effect = yes
+	province_modifier = {
 	}
 
 	ai_value = {
 		base = 3
 		directive_to_build_economy_modifier = yes
-		ai_pious_building_preference_modifier = yes
 	}
 }
 
@@ -4302,13 +3662,11 @@ breweries_02 = {
 	construction_time = standard_construction_time
 
 	can_construct_potential = {
+		culture = { has_innovation = innovation_city_planning }
 		building_breweries_requirement = { NUMBER = 01 }
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_city_planning
-		}
 		building_requirement_tribal = no
 	}
 
@@ -4352,13 +3710,11 @@ breweries_03 = {
 	construction_time = standard_construction_time
 
 	can_construct_potential = {
+		culture = { has_innovation = innovation_manorialism }
 		building_breweries_requirement = { NUMBER = 02 }
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_city_planning
-		}
 		building_requirement_tribal = no
 	}
 
@@ -4393,13 +3749,11 @@ breweries_04 = {
 	construction_time = standard_construction_time
 
 	can_construct_potential = {
+		culture = { has_innovation = innovation_manorialism }
 		building_breweries_requirement = { NUMBER = 02 }
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_manorialism
-		}
 		building_requirement_tribal = no
 	}
 
@@ -4434,13 +3788,11 @@ breweries_05 = {
 	construction_time = standard_construction_time
 
 	can_construct_potential = {
+		culture = { has_innovation = innovation_windmills }
 		building_breweries_requirement = { NUMBER = 03 }
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_windmills
-		}
 		building_requirement_tribal = no
 	}
 
@@ -4475,13 +3827,11 @@ breweries_06 = {
 	construction_time = standard_construction_time
 
 	can_construct_potential = {
+		culture = { has_innovation = innovation_windmills }
 		building_breweries_requirement = { NUMBER = 03 }
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_windmills
-		}
 		building_requirement_tribal = no
 	}
 
@@ -4516,13 +3866,11 @@ breweries_07 = {
 	construction_time = standard_construction_time
 
 	can_construct_potential = {
+		culture = { has_innovation = innovation_cranes }
 		building_breweries_requirement = { NUMBER = 04 }
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_cranes
-		}
 		building_requirement_tribal = no
 	}
 
@@ -4557,13 +3905,11 @@ breweries_08 = {
 	construction_time = standard_construction_time
 
 	can_construct_potential = {
+		culture = { has_innovation = innovation_cranes }
 		building_breweries_requirement = { NUMBER = 04 }
 	}
 
 	can_construct_showing_failures_only = {
-		scope:holder.culture = {
-			has_innovation = innovation_cranes
-		}
 		building_requirement_tribal = no
 	}
 

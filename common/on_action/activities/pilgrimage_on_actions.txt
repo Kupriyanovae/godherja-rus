@@ -3,6 +3,10 @@
 # On-action managing possible Pilgrimage journey events
 pilgrimage_journey_events = {
 	trigger = {
+		exists = involved_activity
+		involved_activity = {
+			has_activity_type = activity_pilgrimage
+		}
 		#We should only get pilgrimage events on our way TO the pilgrimage destination
 		is_on_a_pilgrimage_trigger = yes
 		NOR = { 
@@ -13,12 +17,15 @@ pilgrimage_journey_events = {
 		highest_held_title_tier >= tier_county
 	}
 
-	on_actions = {
-		pilgrimage_travel_events
+	random_on_action = {
+		10 = pilgrimage_generic_travel_events
+		5 = pilgrimage_temptation_travel_events
+		5 = pilgrimage_religious_travel_events
+		8 = pilgrimage_intent_travel_events
 	}
 }
 
-pilgrimage_travel_events = {
+pilgrimage_generic_travel_events = {
 	random_events = {
 		chance_of_no_event = {
 			value = 50
@@ -44,12 +51,55 @@ pilgrimage_travel_events = {
 		50 = pilgrimage.2050 # Shipwrecked pilgrims
 		# BP1 Events 
 		50 = pilgrimage.6001 #Sneaking off to a tavern with your pal
-		
+	}
+}
+
+pilgrimage_temptation_travel_events = {
+	random_events = {
+		chance_of_no_event = {
+			value = 50
+		}
+		100 = 0
+		# 'Temptation' Events
+		50 = pilgrimage.2101 # Rakish or Lustful character considers making a pit stop, or perhaps, a detour to the local brothels
+		50 = pilgrimage.2501 # Persistent Beggar
+		50 = pilgrimage.2511 # Cocky Lordling
+	}
+}
+
+pilgrimage_religious_travel_events = {
+	random_events = {
+		chance_of_no_event = {
+			value = 50
+		}
+		100 = 0
+		# Christian-specific Pilgrimage Events
+		#50 = pilgrimage.3001 # Zealous priest giving sermon in freezing rains
+		#5 = pilgrimage.3002  # Naked preacher claims to have recovered Adam & Eve's innocence
+		# 50 = pilgrimage.3004 # Doomsayer promises the end is nigh!
+
+		# Muslim-specific Pilgrimage Events
+		#50 = pilgrimage.3102 # Ziyarat - Why am I taking this pilgrimage?
+
+		# Hindu-specific Pilgrimage Events
+		#50 = pilgrimage.3201 # Ritual purification in a river
+		#50 = pilgrimage.3202 # Contemplating the universe
+
+		# Buddhist-specific Pilgrimage Events
+		#50 = pilgrimage.3301 # Critical Wanderer
+	}
+}
+
+pilgrimage_intent_travel_events = {
+	random_events = {
+		chance_of_no_event = {
+			value = 50
+		}
+		100 = 0
 		#Intent Events
 		50 = pilgrimage_intent.1110 #Sea: Sea legs
 		#Altruism
 		50 = tour_travel.1004 # You decide to wash the feet of locals
-		50 = devaraja.0001	  # Mandala equivalent of royal touch
 		50 = tour_travel.1005 # Locals beg for your royal touch
 		50 = tour_travel.1006 # Distribute alms in front of a temple
 		#Zealot
@@ -64,50 +114,6 @@ pilgrimage_travel_events = {
 		50 = pilgrimage_intent.1050 # You contemplate the brevity of life
 		50 = pilgrimage_intent.1060 # You contemplate old empires
 		100 = pilgrimage_intent.1100 # Personal reflections
-		
-		# 'Temptation' Events
-		50 = pilgrimage.2101 # Rakish or Lustful character considers making a pit stop, or perhaps, a detour to the local brothels
-		50 = pilgrimage.2501 # Persistent Beggar
-		50 = pilgrimage.2511 # Cocky Lordling
-		
-		# Christian-specific Pilgrimage Events
-		#100 = pilgrimage.3001 # Zealous priest giving sermon in freezing rains
-		#5 = pilgrimage.3002  # Naked preacher claims to have recovered Adam & Eve's innocence
-		#100 = pilgrimage.3004 # Doomsayer promises the end is nigh!
-
-		# Muslim-specific Pilgrimage Events
-		#100 = pilgrimage.3102 # Ziyarat - Why am I taking this pilgrimage?
-
-		# Hindu-specific Pilgrimage Events
-		#100 = pilgrimage.3201 # Ritual purification in a river
-		#100 = pilgrimage.3202 # Contemplating the universe
-
-		# Buddhist-specific Pilgrimage Events
-		#100 = pilgrimage.3301 # Critical Wanderer
-		#100 = pilgrimage.3302 # The Wisdom of Goats
-		#100 = pilgrimage.3303 # Kalama Sutta
-
-		#Dharmic-specific Pilgrimage Events
-		#100 = pilgrimage.3401 # Brahmacharya Challenged
-		
-		# South-East Asia
-		# Ocean Events
-		100 = pilgrimage_seasia.100 # The Pearl Diver
-		100 = pilgrimage_seasia.200 # Mangrove Spirits
-		600 = pilgrimage_seasia.300 # Good Omen - Calm Oceans
-		100 = pilgrimage_seasia.400 # Floating Shrine
-		100 = pilgrimage_seasia.500 # The Great Raja!
-		100 = pilgrimage_seasia.600 # An Offering of Rice
-		100 = pilgrimage_seasia.700 # The Naga's Victim
-		100 = pilgrimage_seasia.800 # Shadows in the Water
-		100 = pilgrimage_seasia.900 # Sampan Pirates
-		#100 = pilgrimage_seasia.1000 # Traders of Tanah Makkah
-		# Land Events
-		100 = pilgrimage_seasia.1100 # Rattan Snare
-		#100 = pilgrimage_seasia.1200 # A Wanderer from Nalanda
-		100 = pilgrimage_seasia.1300 # The Croaking Pool
-		100 = pilgrimage_seasia.1400 # Face of a God
-		100 = pilgrimage_seasia.1500 # The Pawang
 	}
 }
 
@@ -152,6 +158,32 @@ pilgrimage_arrival_events = {
 				}
 			}
 		}
+		if = {
+			limit = {
+				has_variable_list = holy_site_dreams
+				is_target_in_variable_list = {
+					name = holy_site_dreams
+					target = root.location
+				}
+			}
+			send_interface_message = {
+				type = send_interface_message_good
+				title = travel_events_bp3.95.t
+				left_icon = root
+
+				if = {
+					limit = {
+						has_lifestyle = wanderer_lifestyle
+					}
+					add_wanderer_lifestyle_xp = 500
+				}
+				stress_impact = { 
+					base = major_stress_impact_loss 
+					zealous = medium_stress_impact_loss
+				}
+				add_piety = major_piety_gain
+			}
+		}
 	}
 }
 
@@ -169,7 +201,7 @@ aversarian_destination_events = {
 			OR = {
 				county = title:c_oraispol # Oraispol
 				county = title:c_rhamnythrae # Vounill
-				county = title:c_upper_imperial_atrium # Mayikprolollan
+				county = title:c_atce # Mayikprolollan
 				county = title:c_palinia # Drakavil
 				county = title:c_thebastro # Tower Watch
 			}
@@ -194,7 +226,7 @@ damota_destination_events = {
 				county = title:c_siralab # The Ḥāseti Mekab
 				county = title:c_zahali # The Tabik Bētemisīt
 				county = title:c_kilahijan # The Irōchi Damotada
-				county = title:c_nagom_kakezihi # The Nāgóm Kakezihī	
+				county = title:c_adabyssfort # The Nāgóm Kakezihī	
 			}
 		}
 	}
@@ -213,7 +245,7 @@ quwazaw_religion = {
 		religion = religion:quwazaw_religion 
 		involved_activity.activity_location = {
 			OR = {
-				county = title:c_felakese # Fendkiyah
+				county = title:c_mirrorgaol # Fendkiyah
 				county = title:c_tanar # Ifralimane
 				county = title:c_kudahhar # Gharstir
 				county = title:c_blooming_sands # Saidal
@@ -255,7 +287,7 @@ games_for_the_gods_tenet_destination_events = {
 		root.faith = { has_doctrine = tenet_games_for_gods }		
 		involved_activity.activity_location = {
 			OR = {
-				county = title:c_aterispol # The Neck of Kasiryat
+				county = title:c_ullabahd # The Neck of Kasiryat
 				county = title:c_sestaclea # The Farthest Bank
 				county = title:c_dzuga # The Branching
 				county = title:c_choirgai # The Holy Precincts
@@ -306,7 +338,7 @@ amsari_destination_events = {
 				county = title:c_bandar_ozbak # Site of the First Vision
 				county = title:c_tchouran # The Holy Capital
 				county = title:c_kani_tarn # Wehydka'ha
-				county = title:c_kalateh_ye_kabireh # Birthplace of the Prophet
+				county = title:c_kalatehye_kabireh # Birthplace of the Prophet
 			}
 		}
 	}
@@ -427,7 +459,6 @@ pilgrimage_destination_events = {
 	trigger = {
 		location = scope:activity.activity_location
 	}
-	
 	random_events = {
 		100 = 0
 		120 = pilgrimage.6500 #Appreciation

@@ -186,15 +186,7 @@ coa_switch_to_krehejad_trigger = {
 }
 
 coa_switch_to_sarradon_trigger = {
-	OR = {
-		holder.culture = { has_cultural_pillar = heritage_dawic }
-		holder.culture = { has_cultural_pillar = heritage_marmaladid }	
-		holder.culture = { has_cultural_pillar = heritage_sarradonian }
-		holder.culture = { has_cultural_pillar = heritage_kharadamatian }
-		holder.culture = { has_cultural_pillar = heritage_dezhunic }
-		holder.culture = { has_cultural_pillar = heritage_arapa }
-		holder.culture = { has_cultural_pillar = heritage_madikirib }
-	}
+	holder.culture = { has_cultural_pillar = heritage_sarradonian }
 }
 
 coa_switch_to_redland_trigger = {
@@ -223,25 +215,4 @@ coa_switch_to_marcher_trigger = {
 
 coa_switch_to_amsari_trigger = {
 	holder.culture = { has_cultural_pillar = heritage_zarasadari}
-}
-
-coa_switch_to_wardenite_trigger = {
-	holder.religion = religion:wardenism_religion
-}
-
-coa_switch_to_ritualist_trigger = {
-	holder.religion = religion:ritualist_religion
-}
-coa_switch_to_aversarian_general_religious_trigger = {
-	OR = {
-		holder.religion = religion:agionism_religion
-		holder.religion = religion:aversarinas_aagiokrata_religion
-		holder.religion = religion:blackhand_religion
-		holder.religion = religion:old_imperial_religion
-		holder.religion = religion:thixanonic_religion
-	}
-}
-
-coa_switch_from_wardenite_trigger = {
-	NOT = { holder.religion = religion:wardenism_religion }
 }

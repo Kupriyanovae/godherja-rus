@@ -25,11 +25,11 @@ at_war_with_any_non_coreligionist_trigger = {
 			OR = {
 				primary_attacker = {
 					is_at_war_with = root
-					faith != root.faith
+					NOT = { faith = root.faith }
 				}
 				primary_defender = {
 					is_at_war_with = root
-					faith != root.faith
+					NOT = { faith = root.faith }
 				}
 			}
 		}
@@ -44,11 +44,11 @@ at_war_only_with_coreligionists_trigger = {
 				OR = {
 					primary_attacker = {
 						is_at_war_with = root
-						faith != root.faith
+						NOT = { faith = root.faith }
 					}
 					primary_defender = {
 						is_at_war_with = root
-						faith != root.faith
+						NOT = { faith = root.faith }
 					}
 				}
 			}
@@ -87,7 +87,7 @@ joiner_not_already_in_another_war_with_any_target_war_participants_trigger = {
 			subject = $JOINER$
 			NOT = {
 				any_war_enemy = {
-					this != scope:primary_enemy #Already handled above
+					NOT = { this = scope:primary_enemy } #Already handled above
 					OR = {
 						AND = {
 							scope:target = { primary_defender = scope:primary_enemy }
@@ -146,7 +146,7 @@ joiner_not_already_in_another_war_with_any_target_war_participants_trigger = {
 			subject = $JOINER$
 			NOT = {
 				any_war_ally = {
-					this != scope:primary_enemy #Already handled above
+					NOT = { this = scope:primary_enemy } #Already handled above
 					OR = {
 						AND = {
 							scope:target = { primary_defender = scope:primary_enemy }
@@ -172,7 +172,7 @@ can_potentially_call_ally_trigger = {
 				limit = {
 					NOT = { 
 						# Diarchs can join against other vassals.
-						this ?= $WARRIOR$.diarch
+						this ?= $WARRIOR$.diarch 
 						# Confederation members can join the confederation leader's defensive wars
 						AND = {
 							is_confederation_member = yes
@@ -222,25 +222,39 @@ can_potentially_call_ally_trigger = {
 
 war_declarer_needs_hook_on_liege = {
 	scope:actor = {
-		top_liege != this
-		liege != scope:recipient
-		NAND = {
-			government_allows = administrative
-			liege = { government_allows = administrative }
-		}
-		NOT = {
-			vassal_contract_has_flag = vassal_contract_war_override
-		}
-		OR = {
-			AND = {
+		trigger_if = {
+			limit = {
+				is_independent_ruler = no
 				liege = scope:recipient.liege
+				NOT = { liege = scope:recipient }
+				NAND = {
+					government_allows = administrative
+					liege = { government_allows = administrative }
+				}
 				liege = { has_realm_law_flag = vassal_internal_wars_banned }
+				NOT = {
+					vassal_contract_has_flag = vassal_contract_war_override
+				}
 			}
-			liege = { has_realm_law_flag = vassal_all_wars_banned }
-			AND = {
-				has_realm_law = japanese_bureaucracy_2
-				NOT = { government_allows = administrative }
+			always = yes
+		}
+		trigger_else_if = {
+			limit = {
+				is_independent_ruler = no
+				NOT = { liege = scope:recipient }
+				NAND = {
+					government_allows = administrative
+					liege = { government_allows = administrative }
+				}
+				liege = { has_realm_law_flag = vassal_all_wars_banned }
+				NOT = {
+					vassal_contract_has_flag = vassal_contract_war_override
+				}
 			}
+			always = yes
+		}
+		trigger_else = {
+			always = no
 		}
 	}
 }
@@ -260,74 +274,42 @@ can_use_conquest_cbs_trigger = {
 		GH_is_any_tribal_government_trigger = yes
 		government_has_flag = government_is_clan
 		government_has_flag = government_is_continental_clan
-		government_has_flag = government_is_nomadic
-		government_has_flag = government_is_steppe_admin
 		faith = { has_doctrine_parameter = conquest_cb_enabled }
 		culture = { has_cultural_parameter = can_use_conquest_cbs }
-		AND = {
-			government_has_flag = government_is_japan_feudal
-			has_realm_law = imperial_expansion_law
-		}
+		government_has_flag = government_is_nomadic
 	}
 	GH_can_use_conquest_cbs_trigger = yes
 }
 
 can_be_warrior_trigger = {
-	is_available_quick = {
-		adult = yes
-		imprisoned = no
-		incapable = no
-	}
-	tgp_is_ceremonial_liege_trigger = no
+	is_sentient = yes
+	is_adult = yes
+	is_imprisoned = no
+	NOT = { has_trait = incapable }
 	OR = {
 		can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = $ARMY_OWNER$ }
 		AND = {
-			$ARMY_OWNER$.culture = { has_cultural_parameter = high_prowess_ignores_knight_restrictions }
+			$ARMY_OWNER$.culture = {
+				has_cultural_parameter = high_prowess_ignores_knight_restrictions
+			}
 			prowess >= 10
-		}
-		# Japan Onna-musha
-		trigger_if = {
-			limit = {
-				#not for admin
-				$ARMY_OWNER$ = {
-					NOT = {
-						government_allows = administrative 
-					}
-					culture = { has_cultural_parameter = non_admin_close_family_non_martial_gender_knights_in_defensive_wars }
-				}
-				culture = { has_cultural_parameter = non_admin_close_family_non_martial_gender_knights_in_defensive_wars }
-			}
-			AND = {
-				$ARMY_OWNER$ = { is_at_war_as_defender = yes }
-				OR = {
-					is_spouse_of = $ARMY_OWNER$
-					AND = {
-						is_close_family_of = $ARMY_OWNER$
-						is_married = no
-					}
-				}
-			}
 		}
 	}
 }
 
 can_be_knight_trigger = {
-	is_available_quick = {
-		ai = yes
-		hostage = no
-	}
 	is_sentient = yes
+	is_hostage = no
 	trigger_if = {
 		limit = { $ARMY_OWNER$ = { is_human = yes } }
 		is_human = yes
 	}
-	can_be_warrior_trigger = { ARMY_OWNER = $ARMY_OWNER$ }
 	trigger_if = { # Admin governors cannot be knights
 		limit = {
-			government_allows = administrative
-			exists = primary_title
+			$ARMY_OWNER$ = { government_allows = administrative }
+			is_courtier = no
 		}
-		primary_title = {
+		primary_title ?= {
 			tier < tier_duchy
 			trigger_if = {
 				limit = { is_noble_family_title = yes }
@@ -343,6 +325,7 @@ can_be_knight_trigger = {
 		}
 		prowess >= 12
 	}
+	can_be_warrior_trigger = { ARMY_OWNER = $ARMY_OWNER$ }
 	trigger_if = {
 		limit = {
 			OR = {
@@ -378,32 +361,22 @@ can_be_knight_trigger = {
 		limit = {
 			exists = liege.diarch
 		}
-		this != liege.diarch
+		NOT = { this = liege.diarch }
 	}
-	# knight permissions for players
-	trigger_if = {
-		limit = {
-			$ARMY_OWNER$ = {
-				is_ai = no
-			}
-		}
-		is_knight_permitted = $ARMY_OWNER$
-	}
+	is_ai = yes
 }
 
-# If you update one of the available triggers, update all of them. It's a lot better for performance to not have scripted triggers within scripted triggers when they're checked as often as these ones are.
 can_be_commander_basic_trigger = {
-	is_available_quick = {
-		alive = yes
-		adult = yes
-		incapable = no
-		hostage = no
-	}
+	is_alive = yes
+	is_adult = yes
+	is_hostage = no
 	is_sentient = yes
+
 	trigger_if = {
 		limit = { $ARMY_OWNER$ = { is_human = yes } }
 		is_human = yes
 	}
+
 	NOR = {
 		has_trait = incapable
 		character_rhesus_trigger = yes # GH TODO: Should be a trigger, not hardset to character
@@ -428,41 +401,25 @@ can_be_commander_basic_trigger = {
 	trigger_if = {
 		limit = { $ARMY_OWNER$ = { is_ai = yes } }
 		is_ai = yes
-		highest_held_title_tier < tier_hegemony
 	}
 }
 
-# If you update one of the available triggers, update all of them. It's a lot better for performance to not have scripted triggers within scripted triggers when they're checked as often as these ones are.
 can_be_commander_now_trigger = {
-	is_available_quick = {
-		alive = yes
-		adult = yes
-		imprisoned = no
-		travel = no
-	}
-
-	OR = { # You can always lead your own armies
-		this = $ARMY_OWNER$
-		can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = $ARMY_OWNER$ }
-	}
-
-	trigger_if = {
-		limit = { $ARMY_OWNER$ = { is_ai = yes } }
-		is_ai = yes
-	}
-
+	can_be_commander_basic_trigger = { ARMY_OWNER = $ARMY_OWNER$ }
+	is_imprisoned = no
 	custom_description = {
 		text = ALREADY_IN_ACTIVITY
 		NOR = {
 			exists = involved_activity
 			has_variable = homage_liege_scope
 			has_character_flag = meditation_character_flag
-			has_character_flag = local_shrine_rite
 			has_character_flag = petition_liege_character_flag
 			has_character_flag = holding_court_character_flag
 			is_being_visited_on_tour_strict = yes
 		}
 	}
+	# Must not be currently coming from or going somewhere
+	is_travelling = no
 }
 
 get_valid_commander_list_trigger = {
@@ -555,7 +512,7 @@ using_conquest_cb_trigger = {
 		using_cb = county_conquest_cb
 		using_cb = duchy_conquest_cb
 		using_cb = ducal_conquest_cb
-		#using_cb = mongol_invasion_war
+		using_cb = mongol_invasion_war
 		using_cb = mpo_gok_onslaught_cb
 		using_cb = adabyss_borderwar_cb
 		using_cb = adabyss_borderwar_2_cb
@@ -612,7 +569,8 @@ special_invasion_cb_seize_land_in_region_trigger = {
 				}
 				# Title is owned by the current holder of the invasion's target kingdom
 				AND = {
-					holder ?= $TARGET_KINGDOM$.holder
+					exists = holder
+					holder = $TARGET_KINGDOM$.holder
 					kingdom = $TARGET_KINGDOM$
 				}
 			}
@@ -625,14 +583,16 @@ special_invasion_cb_seize_land_in_region_trigger = {
 					geographical_region = $TARGET_REGION$
 				}
 				AND = {
-					holder ?= $TARGET_KINGDOM$.holder
+					exists = holder
+					holder = $TARGET_KINGDOM$.holder
 					kingdom = $TARGET_KINGDOM$
 				}
 			}
 			trigger_if = {
-				# If our de jure liege is an existing duchy that would have been seized in the duchy step, do not transfer the county (it has already been transferred).
+				# If our de jure liege is an existing duchy that would have been siezed in the duchy step, do not transfer the county (it has already been transferred).
 				limit = {
-					de_jure_liege ?= {
+					exists = de_jure_liege
+					de_jure_liege = {
 						exists = holder
 						OR = {
 							capital_vassal = {
@@ -641,7 +601,8 @@ special_invasion_cb_seize_land_in_region_trigger = {
 								}
 							}
 							AND = {
-								holder ?= $TARGET_KINGDOM$.holder
+								exists = holder
+								holder = $TARGET_KINGDOM$.holder
 								kingdom = $TARGET_KINGDOM$
 							}
 						}
@@ -713,7 +674,8 @@ pressing_claim_of_character_trigger = {
 		save_temporary_scope_as = claim_presser
 		any_character_war = {
 			primary_attacker = scope:claim_presser
-			claimant ?= $CHARACTER$
+			exists = claimant
+			claimant = $CHARACTER$
 		}
 	}
 }
@@ -765,7 +727,7 @@ religious_cb_holder_under_target_can_be_vassalized = {
 	}
 }
 
-desirable_for_capture_trigger = {
+desirable_for_capture_trigger = {# GH URGENT: See below
 	OR = {
 		is_playable_character = yes
 		any_parent = { always = yes }
@@ -776,11 +738,8 @@ desirable_for_capture_trigger = {
 		stewardship >= very_high_skill_rating
 		intrigue >= very_high_skill_rating
 		learning >= very_high_skill_rating
-		character_arcana_baseline_value >= very_high_skill_rating
-		can_access_magic = yes
 		has_trait = lifestyle_physician
 		has_trait = lifestyle_mystic
-		has_trait = gh_lifestyle_glassmith
 	}
 }
 
@@ -820,14 +779,14 @@ can_use_viking_invasion_cbs_trigger = {
 }
 
 can_use_viking_invasion_cbs_dlc_trigger = {
-	culture = { has_innovation = innovation_longboats }
 	faith = { has_doctrine = tenet_warmonger }
+	culture = { has_innovation = innovation_longboats }
 	any_sub_realm_county = { is_coastal_county = yes }
 	trigger_if = {
 		limit = { is_ai = yes }
 		prestige >= 75
 		OR = {
-			top_liege = this
+			is_independent_ruler = yes
 			primary_title.tier >= tier_kingdom
 		}
 		NOT = {
@@ -940,12 +899,12 @@ character_is_potential_valuable_prisoner = {
 religious_war_vassals_constraints = {
 	trigger_if = {
 		limit = {
-			scope:attacker = { top_liege != this }
+			scope:attacker = { is_independent_ruler = no }
 		}
 		scope:attacker = {
 			NOT = { character_is_land_realm_neighbor = scope:defender }
 		}
-		scope:defender = { top_liege = this }
+		scope:defender = { is_independent_ruler = yes }
 	}
 	trigger_else = {
 		always = no
@@ -967,7 +926,6 @@ herders_and_tributary_constraints = {
 			# You cannot attack your Confederation buddies tributaries
 			trigger_if = {
 				limit = {
-					exists = suzerain
 					suzerain != this
 					scope:attacker = { is_confederation_member = yes }
 					suzerain = { is_confederation_member = yes }
@@ -980,7 +938,6 @@ herders_and_tributary_constraints = {
 				is_tributary_of_suzerain_or_above = scope:defender 	# can't attack your own suzerain
 				trigger_if = {
 					limit = {
-						exists = suzerain
 						suzerain != this
 						scope:defender = { is_confederation_member = yes }
 						suzerain = { is_confederation_member = yes }
@@ -988,18 +945,6 @@ herders_and_tributary_constraints = {
 					# if you have a suzerain who's part of a confederation, you may not attack any of its members
 					scope:defender.confederation = suzerain.confederation
 				}
-			}
-		}
-		#Mandala Vassals shouldn't attack their Liege's Tributaries
-		trigger_if = {
-			limit = {
-				scope:attacker = {
-					is_independent_ruler = no
-					liege ?= { government_has_flag = government_is_mandala }
-				}
-			}
-			NOT = {
-				scope:defender = { is_tributary_of = scope:attacker.liege }
 			}
 		}
 	}
@@ -1034,14 +979,14 @@ feudal_clan_tribal_conquest_constraints = {
 	scope:attacker = {
 		NOR = {
 			government_has_flag = government_is_tribal
-			government_has_flag = government_is_continental_clan
+			government_has_flag = government_is_continenal_clan
 			government_has_flag = government_is_nomadic
 		}
-		short_term_gold < 200
+		gold < 200
 		OR = {
 			AND = {
 				government_has_flag = government_is_administrative
-				short_term_gold < 700
+				gold < 700
 				this != top_liege
 			}
 			any_sub_realm_county = {

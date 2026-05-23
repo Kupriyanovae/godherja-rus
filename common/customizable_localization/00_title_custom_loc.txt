@@ -267,13 +267,6 @@ GetTierIcon = {
 	type = landed_title
 
 	text = {
-		localization_key = hegemony_icon
-		trigger = {
-			tier = tier_hegemony
-		}
-	}
-
-	text = {
 		localization_key = empire_icon
 		trigger = {
 			tier = tier_empire
@@ -400,7 +393,7 @@ GetInOrOutsideRealm = {
 		trigger = {
 			NOT = { government_has_flag = government_is_landless_adventurer }
 			scope:second = {
-				top_liege != this
+				is_independent_ruler = no
 				any_liege_or_above = {
 					this = root
 				}
@@ -439,7 +432,7 @@ GetInOrOutsideRealmAllianceInfo = {
 		localization_key = in_realm_alliance_current_situation
 		trigger = {
 			scope:second = {
-				top_liege != this
+				is_independent_ruler = no
 				any_liege_or_above = {
 					this = root
 				}
@@ -492,10 +485,6 @@ GetTierBaseTitleFemale = {
 	type = landed_title
 
 	text = {
-		localization_key = hegemon_female
-		trigger = { tier = tier_hegemony }
-	}
-	text = {
 		localization_key = emperor_female
 		trigger = { tier = tier_empire }
 	}
@@ -520,10 +509,6 @@ GetTierBaseTitleFemale = {
 GetTierBaseTitleMale = {
 	type = landed_title
 
-	text = {
-		localization_key = hegemon
-		trigger = { tier = tier_hegemony }
-	}
 	text = {
 		localization_key = emperor
 		trigger = { tier = tier_empire }
@@ -550,10 +535,6 @@ GetTierBase = {
 	type = landed_title
 
 	text = {
-		localization_key = hegemony
-		trigger = { tier = tier_hegemony }
-	}
-	text = {
 		localization_key = empire
 		trigger = { tier = tier_empire }
 	}
@@ -579,10 +560,6 @@ GetTierBasePlural = {
 	type = landed_title
 
 	text = {
-		localization_key = game_concept_hegemonies
-		trigger = { tier = tier_hegemony }
-	}
-	text = {
 		localization_key = game_concept_empires
 		trigger = { tier = tier_empire }
 	}
@@ -607,10 +584,6 @@ GetTierBasePlural = {
 GetTierBaseConcept = {
 	type = landed_title
 
-	text = {
-		localization_key = concept_hegemony
-		trigger = { tier = tier_hegemony }
-	}
 	text = {
 		localization_key = concept_empire
 		trigger = { tier = tier_empire }

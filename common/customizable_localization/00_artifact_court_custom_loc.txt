@@ -1197,54 +1197,6 @@ ArtifactBookSubject = { # GH TODO: Look into this
 		}
 		localization_key = feature_book_subject_family_epic_great
 	}
-
-	text = {
-		trigger = {
-			OR = {
-				AND = {
-					exists = scope:poetry
-					scope:subject = flag:poetry
-				}
-				AND = {
-					exists = var:book_subject
-					var:book_subject = flag:poetry
-				}
-			}
-		}
-		localization_key = feature_book_subject_poetry
-	}
-
-	text = {
-		trigger = {
-			OR = {
-				AND = {
-					exists = scope:cuisine
-					scope:subject = flag:cuisine
-				}
-				AND = {
-					exists = var:book_subject
-					var:book_subject = flag:cuisine
-				}
-			}
-		}
-		localization_key = feature_book_subject_cuisine
-	}
-
-	text = {
-		trigger = {
-			OR = {
-				AND = {
-					exists = scope:myth
-					scope:subject = flag:myth
-				}
-				AND = {
-					exists = var:book_subject
-					var:book_subject = flag:myth
-				}
-			}
-		}
-		localization_key = feature_book_subject_myth
-	}
 }
 
 # These custom loc keys are used in the desc for the artifact itself
@@ -2632,7 +2584,7 @@ ArtifactAnimalType = { # GH TODO: Look into this
 				has_artifact_feature = animal_hide_type_twin_serpent
 			}
 		}
-		localization_key = animal_type_twin_serpent
+		localization_key = animal_type_twin-serpent
 	}
 	text = {
 		trigger = {
@@ -2659,7 +2611,7 @@ ArtifactAnimalType = { # GH TODO: Look into this
 				has_artifact_feature = animal_hide_type_apep_ibizan
 			}
 		}
-		localization_key = animal_type_apep_ibizan
+		localization_key = animal_type_apep-ibizan
 	}
 	text = {
 		trigger = {

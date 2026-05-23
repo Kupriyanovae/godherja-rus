@@ -160,7 +160,7 @@ EruditeTopic = {
 	#text = {
 	#	trigger = {
 	#		faith.religion = religion:islam_religion
-	#		current_date > 6150.1.1
+	#		current_date > 1150.1.1
 	#	}
 	#	localization_key = quran_exegesis
 	#}
@@ -393,12 +393,6 @@ RockStoryName = {
 
 	text = {
 		trigger = {
-			NOT = { exists = var:story_cycle_rock_name }
-		}
-		localization_key = not_yet_chosen
-	}
-	text = {
-		trigger = {
 			AND = {
 				exists = var:story_cycle_rock_name
 				var:story_cycle_rock_name = flag:custom
@@ -566,7 +560,7 @@ RockStoryHerHis = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_gender = flag:female
 			}
 		}
@@ -575,7 +569,7 @@ RockStoryHerHis = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_gender = flag:male
 			}
 		}
@@ -589,7 +583,7 @@ RockStoryHerHim = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_gender = flag:female
 			}
 		}
@@ -598,7 +592,7 @@ RockStoryHerHim = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_gender = flag:male
 			}
 		}
@@ -612,7 +606,7 @@ RockStorySheHe = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_gender = flag:female
 			}
 		}
@@ -621,7 +615,7 @@ RockStorySheHe = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_gender = flag:male
 			}
 		}
@@ -635,7 +629,7 @@ RockStoryHerselfHimself = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_gender = flag:female
 			}
 		}
@@ -644,7 +638,7 @@ RockStoryHerselfHimself = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_gender = flag:male
 			}
 		}
@@ -658,7 +652,7 @@ RockStoryFemaleMale = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_gender = flag:female
 			}
 		}
@@ -667,7 +661,7 @@ RockStoryFemaleMale = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_gender = flag:male
 			}
 		}
@@ -682,7 +676,7 @@ RockColor = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_color = flag:brown
 			}
 		}
@@ -691,7 +685,7 @@ RockColor = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_color = flag:gray
 			}
 		}
@@ -700,7 +694,7 @@ RockColor = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_color = flag:black
 			}
 		}
@@ -709,7 +703,7 @@ RockColor = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_color = flag:white
 			}
 		}
@@ -718,7 +712,7 @@ RockColor = {
 	text = {
 		trigger = {
 			any_owned_story = {
-				type = story_cycle_pet_rock
+				story_type = story_cycle_pet_rock
 				var:rock_color = flag:sandy
 			}
 		}

@@ -286,8 +286,8 @@ fp2_struggle_ending_other_percent_iberia_trigger = {
 		NOT = {
 			any_involved_ruler = {
 				exists = primary_title # Max figured out that is_independent_ruler causes errors if you are unlanded
-				this != root
-				top_liege = this
+				NOT = { this = root }
+				is_independent_ruler = yes
 				primary_title = { is_mercenary_company = no }
 				any_county_in_region = {
 					region = struggle_rite_wars_north
@@ -306,16 +306,16 @@ fp2_struggle_ending_compromise_independent_duchy_trigger = {
 	exists = holder
 	OR = {
 		# Is not the heartland of an existing kingdom
-		title_capital_county != de_jure_liege.title_capital_county
+		NOT = { title_capital_county = de_jure_liege.title_capital_county }
 		# Capital duke doesn't control kingdom, edge case
 		AND = {
 			exists = de_jure_liege.holder
-			holder != de_jure_liege.holder
+			NOT = { holder = de_jure_liege.holder }
 		}
 	}
 	# Is ruled by an independent duke
 	holder = {
-		top_liege = this
+		is_independent_ruler = yes
 		save_temporary_scope_as = duchy_holder
 		primary_title = {
 			is_mercenary_company = no
@@ -344,7 +344,7 @@ fp2_struggle_ending_compromise_split_duchy_trigger = {
 	# Is not created
 	NOT = { exists = holder } 
 	# Is not heartland of an existing kingdom
-	title_capital_county != de_jure_liege.title_capital_county 
+	NOT = { title_capital_county = de_jure_liege.title_capital_county } 
 	save_temporary_scope_as = duchy
 	# Less than half is owned by de jure kingdom, if created
 	trigger_if = { 
@@ -365,7 +365,7 @@ fp2_struggle_ending_compromise_titular_trigger = {
 	exists = holder
 	# Is ruled by an independent duke
 	holder = {
-		top_liege = this
+		is_independent_ruler = yes
 		primary_title = {
 			is_mercenary_company = no
 			tier = tier_duchy
@@ -469,7 +469,7 @@ fp2_struggle_compromise_transfer_duchy_trigger = {
 	# De jure liege does not control duchy
 	trigger_if = {
 		limit = { exists = kingdom.holder }
-		kingdom != scope:transfer_duchy.title_capital_county.holder.top_liege.capital_county.kingdom
+		NOT = { kingdom = scope:transfer_duchy.title_capital_county.holder.top_liege.capital_county.kingdom }
 	}
 	# Is controlled by a kingdom tier
 	trigger_else = { title_capital_county.holder.top_liege.primary_title.tier >= tier_kingdom }
@@ -552,7 +552,7 @@ fp2_iberian_reclamation_vassalize_iberian_trigger = {
 			is_struggle_type = ritewars_struggle
 		}
 		liege = scope:defender
-		this != scope:defender
+		NOT = { this = scope:defender }
 		capital_county = {
 			any_county_struggle = { is_struggle_type = ritewars_struggle }
 		}
@@ -600,9 +600,9 @@ fp2_struggle_enforce_truce_war_leader_trigger = {
 	custom_tooltip = {
 		text = fp2_enforce_truce_liege_or_independent_tt
 		OR = {
-			scope:recipient = { top_liege = this }
+			scope:recipient = { is_independent_ruler = yes }
 			scope:recipient.top_liege = scope:actor.top_liege
-			top_liege = this
+			is_independent_ruler = yes
 			top_liege = scope:actor.top_liege
 		}
 	}

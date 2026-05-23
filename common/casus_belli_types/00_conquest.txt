@@ -13,15 +13,6 @@
 		}
 	}
 
-	allowed_for_character_display_regardless = {
-		# Struggle constraint - Note: This is the CB you get in FP2 opportunity, if you need to debug, test it here first.
-		custom_tooltip = {
-			text = struggle_involvement_cb_check_failure
-			struggle_blocks_invasion_conquest_cb_trigger = yes
-		}
-		tgp_japan_offensive_wars_ban_trigger = yes
-	}
-
 	allowed_against_character = {
 		scope:attacker = {
 			ALL_FALSE = {
@@ -67,8 +58,7 @@
 				}
 			}
 		}
-		# HOUSE RELATIONS
-		add = house_relation_ai_score_value
+
 		# AI in struggles act insularly for wars that don't have a familial or legal basis.
 		multiply = struggle_wars_prioritise_struggle_targets_value
 
@@ -79,8 +69,15 @@
 
 	valid_to_start = {
 		scope:target = {
-			is_landless_type_title = no
 			neighboring_county_or_viking_conquest_trigger = { CHARACTER = root }
+		}
+	}
+
+	allowed_for_character_display_regardless = {
+		# Struggle constraint - Note: This is the CB you get in FP2 opportunity, if you need to debug, test it here first.
+		custom_tooltip = {
+			text = struggle_involvement_cb_check_failure
+			struggle_blocks_invasion_conquest_cb_trigger = yes
 		}
 	}
 
@@ -129,41 +126,13 @@
 					max = 75
 				}
 			}
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
 			multiply = common_cb_piety_cost_multiplier
 		}
 		prestige = {
 			value = 0
 			if = {
 				limit = {
-					scope:defender.faith != scope:attacker.faith
+					NOT = { scope:defender.faith = scope:attacker.faith }
 				}
 				add = {
 					value = 50
@@ -176,34 +145,6 @@
 					max = 100
 				}
 			}
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
 			multiply = common_cb_prestige_cost_multiplier
 		}
 	}
@@ -279,9 +220,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -327,36 +265,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#GH ADDITION
-		# Struggle Catalysts
-		hidden_effect = {
-			scope:attacker = {
-				if = {
-					limit = {
-						any_character_struggle = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-					}
-					every_character_struggle = {
-						limit = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-						activate_struggle_catalyst = {
-							catalyst = catalyst_war_white_peace
-							character = scope:attacker
-						}
-					}
-				}
-			}
-		}
-		#GH END
 	}
 
 	on_defeat_desc = {
@@ -387,15 +295,8 @@
 		# Influence
 		add_influence_attacker_defeat_effect = yes
 
-		scope:defender = {
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_low_effect = yes
-			# Prestige for Defender
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = medium_prestige_value
-			}
-		}
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -403,6 +304,13 @@
 				GOLD_VALUE = 2
 			}
 			add_prestige = medium_prestige_loss
+		}
+
+		# Prestige for Defender
+		scope:defender = {
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = medium_prestige_value
+			}
 		}
 
 		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
@@ -423,9 +331,6 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_defeat_effects = yes
 	}
 
 	transfer_behavior = transfer
@@ -472,48 +377,40 @@ duchy_conquest_cb = {
 	allowed_for_character_display_regardless = {
 		trigger_if = {
 			limit = {
-				highest_held_title_tier >= tier_kingdom
+				OR = {
+					government_has_flag = government_is_clan
+					government_has_flag = government_is_continental_clan
+				}
+				house ?= {
+					has_house_unity_stage = antagonistic
+				}
+				culture = {
+					has_cultural_parameter = cb_lower_prestige_level_requirement
+				}
 			}
-			prestige_level > -1
+			prestige_level >= 1
 		}
-		trigger_else = {
-			trigger_if = {
-				limit = {
-					OR = {
-						government_has_flag = government_is_clan
-						government_has_flag = government_is_continental_clan
-					}
-					house ?= {
-						has_house_unity_stage = antagonistic
+		trigger_else_if = {
+			limit = {
+				OR = {
+					AND = {
+						OR = {
+							government_has_flag = government_is_clan
+							government_has_flag = government_is_continental_clan
+						}
+						house ?= {
+							has_house_unity_stage = antagonistic
+						}
 					}
 					culture = {
 						has_cultural_parameter = cb_lower_prestige_level_requirement
 					}
 				}
-				prestige_level >= 1
 			}
-			trigger_else_if = {
-				limit = {
-					OR = {
-						AND = {
-							OR = {
-								government_has_flag = government_is_clan
-								government_has_flag = government_is_continental_clan
-							}
-							house ?= {
-								has_house_unity_stage = antagonistic
-							}
-						}
-						culture = {
-							has_cultural_parameter = cb_lower_prestige_level_requirement
-						}
-					}
-				}
-				prestige_level >= 2
-			}
-			trigger_else = {
-				prestige_level >= 3
-			}
+			prestige_level >= 2
+		}
+		trigger_else = {
+			prestige_level >= 3
 		}
 
 		# Struggle constraint
@@ -521,7 +418,6 @@ duchy_conquest_cb = {
 			text = struggle_involvement_cb_check_failure
 			struggle_blocks_invasion_conquest_cb_trigger = yes
 		}
-		tgp_japan_offensive_wars_ban_trigger = yes
 	}
 
 	allowed_against_character = {
@@ -542,6 +438,7 @@ duchy_conquest_cb = {
 			GH_released_migration_vassal_cbs_trigger = yes
 		}
 	}
+
 	target_titles = all
 	target_title_tier = duchy
 	target_de_jure_regions_above = yes
@@ -563,8 +460,7 @@ duchy_conquest_cb = {
 				}
 			}
 		}
-		# HOUSE RELATIONS
-		add = house_relation_ai_score_value
+
 		# AI in struggles act insularly for wars that don't have a familial or legal basis.
 		multiply = struggle_wars_prioritise_struggle_targets_value
 		## GH CHANGE
@@ -574,7 +470,6 @@ duchy_conquest_cb = {
 
 	valid_to_start = {
 		scope:target = {
-			is_landless_type_title = no
 			any_in_de_jure_hierarchy = {
 				tier = tier_county
 				neighboring_county_or_viking_conquest_trigger = { CHARACTER = root }
@@ -639,41 +534,13 @@ duchy_conquest_cb = {
 					max = 800
 				}
 			}
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
 			multiply = common_cb_piety_cost_multiplier
 		}
 		prestige = {
 			value = 0
 			if = {
 				limit = {
-					scope:defender.faith != scope:attacker.faith
+					NOT = { scope:defender.faith = scope:attacker.faith }
 				}
 				add = {
 					value = 150
@@ -726,34 +593,6 @@ duchy_conquest_cb = {
 					desc = CB_COST_FP2_STRUGGLE_COMPROMISE_MULTIPLIER
 				}
 			}
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
 		}
 	}
 
@@ -866,7 +705,7 @@ duchy_conquest_cb = {
 				limit = {
 					scope:defender = {
 						any_held_title = {
-							title_tier = county
+							tier = tier_county
 							NOT = { target_is_de_jure_liege_or_above = scope:de_jure_target }
 						}
 					}
@@ -891,9 +730,6 @@ duchy_conquest_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -934,36 +770,6 @@ duchy_conquest_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#GH ADDITION
-		# Struggle Catalysts
-		hidden_effect = {
-			scope:attacker = {
-				if = {
-					limit = {
-						any_character_struggle = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-					}
-					every_character_struggle = {
-						limit = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-						activate_struggle_catalyst = {
-							catalyst = catalyst_war_white_peace
-							character = scope:attacker
-						}
-					}
-				}
-			}
-		}
-		#GH END
 	}
 
 	on_defeat_desc = {
@@ -991,15 +797,8 @@ duchy_conquest_cb = {
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		scope:defender = { 
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_med_effect = yes
-			# Prestige for Defender
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = major_prestige_value
-			}
-		}
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -1009,6 +808,13 @@ duchy_conquest_cb = {
 			add_prestige = {
 				value = major_prestige_value
 				multiply = -1.0
+			}
+		}
+
+		# Prestige for Defender
+		scope:defender = {
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = major_prestige_value
 			}
 		}
 
@@ -1030,9 +836,6 @@ duchy_conquest_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_defeat_effects = yes
 	}
 
 	transfer_behavior = transfer
@@ -1071,11 +874,9 @@ ducal_conquest_cb = {
 
 	allowed_for_character = {
 		has_perk = ducal_conquest_perk
-		is_redlander = no ## GH Change
 		can_use_conquest_cbs_trigger = no
-		NOR = {
+		NOT = {
 			government_has_flag = government_is_landless_adventurer
-			government_has_flag = government_is_nomadic
 		}
 	}
 
@@ -1097,7 +898,6 @@ ducal_conquest_cb = {
 
 	valid_to_start = {
 		scope:target = {
-			is_landless_type_title = no
 			tier = tier_county
 		}
 		scope:attacker = { # The attacker has a County in an uncreated Duchy
@@ -1119,9 +919,8 @@ ducal_conquest_cb = {
 			text = struggle_involvement_cb_check_failure
 			struggle_blocks_invasion_conquest_cb_trigger = yes
 		}
-		tgp_japan_offensive_wars_ban_trigger = yes
 	}
-	
+
 	allowed_against_character_display_regardless = {
 		custom_tooltip = {
 			text = released_migration_vassal_cb_check_failure
@@ -1155,35 +954,6 @@ ducal_conquest_cb = {
 		piety = {
 			value = 0
 			add = common_cb_impious_piety_cost
-
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
 		}
 		prestige = {
 			value = 0
@@ -1202,34 +972,7 @@ ducal_conquest_cb = {
 					desc = CB_BASE_COST
 				}
 			}
-			#GH ADDITION
-			if = {
-				limit = {
-					scope:attacker = {
-						OR = {
-							AND = {
-								has_religion = religion:wardenism_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = wardenite_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-							AND = {
-								has_religion = religion:ritualist_religion
-								any_character_struggle = {
-									involvement = involved
-									has_struggle_phase_parameter = ritualist_wars_more_expensive_in_prestige_and_piety
-								}
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 1.2
-					desc = "FACTION_REASON_WIH_IS_IN_OPPOSING_PHASE"
-				}
-			}
-			#GH END
+
 			multiply = common_cb_prestige_cost_multiplier
 		}
 	}
@@ -1300,7 +1043,8 @@ ducal_conquest_cb = {
 				}
 				limit = {
 					tier = tier_county
-					holder ?= {
+					exists = holder
+					holder = {
 						OR = {
 							this = scope:defender
 							target_is_liege_or_above = scope:defender
@@ -1373,9 +1117,6 @@ ducal_conquest_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -1411,36 +1152,6 @@ ducal_conquest_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#GH ADDITION
-		# Struggle Catalysts
-		hidden_effect = {
-			scope:attacker = {
-				if = {
-					limit = {
-						any_character_struggle = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-					}
-					every_character_struggle = {
-						limit = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-						activate_struggle_catalyst = {
-							catalyst = catalyst_war_white_peace
-							character = scope:attacker
-						}
-					}
-				}
-			}
-		}
-		#GH END
 	}
 
 	on_defeat_desc = {
@@ -1468,15 +1179,8 @@ ducal_conquest_cb = {
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		scope:defender = {
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_low_effect = yes
-			# Prestige for Defender
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = medium_prestige_value
-			} 
-		}
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -1486,6 +1190,13 @@ ducal_conquest_cb = {
 			add_prestige = {
 				value = medium_prestige_value
 				multiply = -1.0
+			}
+		}
+
+		# Prestige for Defender
+		scope:defender = {
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = medium_prestige_value
 			}
 		}
 
@@ -1507,9 +1218,6 @@ ducal_conquest_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
-
-		#Mandalas gain or lose piety/devotion depending on Decree
-		mandala_war_defeat_effects = yes
 	}
 
 	transfer_behavior = transfer
@@ -1534,8 +1242,4 @@ ducal_conquest_cb = {
 	max_attacker_score_from_occupation = 150
 
 	max_ai_diplo_distance_to_title = 1500
-
-	ai_score_mult = {
-		value = 1
-	}
 }

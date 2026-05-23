@@ -65,7 +65,8 @@ inspiration_royal_court_grandeur_attraction_modifier = {
 		culture = { has_cultural_parameter = improved_artisan_inspiration }
 		exists = scope:inspired_character
 		scope:inspired_character = {
-			inspiration ?= { has_inspiration_type = artisan_inspiration }
+			exists = inspiration
+			inspiration = { has_inspiration_type = artisan_inspiration }
 		}
 	}
 	modifier = {
@@ -73,7 +74,8 @@ inspiration_royal_court_grandeur_attraction_modifier = {
 		culture = { has_cultural_parameter = improved_weaver_inspiration }
 		exists = scope:inspired_character
 		scope:inspired_character = {
-			inspiration ?= { has_inspiration_type = weaver_inspiration }
+			exists = inspiration
+			inspiration = { has_inspiration_type = weaver_inspiration }
 		}
 	}
 }
@@ -86,9 +88,12 @@ inspiration_royal_court_oversaturation_penalty_modifier = {
 				add = 1
 				every_inspired_character = {
 					limit = {
-						location ?= {
-							barony ?= {
-								holder ?= {
+						exists = location
+						location = {
+							exists = barony
+							barony = {
+								exists = holder
+								holder = {
 									top_liege = scope:tmp_royal_court_owner
 								}
 							}
@@ -106,7 +111,8 @@ inspiration_region_court_grandeur_attraction_modifier = {
 		add = {
 			every_character_with_royal_court = {
 				limit = { 
-					capital_province ?= {
+					exists = capital_province
+					capital_province = {
 						geographical_region = $GEOGRAPHICAL_REGION$
 					}
 				}
@@ -131,7 +137,8 @@ inspiration_region_oversaturation_penalty_modifier = {
 			value = 0
 			every_character_with_royal_court = {
 				limit = { 
-					capital_province ?= {
+					exists = capital_province
+					capital_province = {
 						geographical_region = $GEOGRAPHICAL_REGION$
 					}
 				}
@@ -140,7 +147,8 @@ inspiration_region_oversaturation_penalty_modifier = {
 			divide = {
 				every_inspired_character = {
 					limit = {
-						location ?= {
+						exists = location
+						location = {
 							geographical_region = $GEOGRAPHICAL_REGION$
 						}
 					}

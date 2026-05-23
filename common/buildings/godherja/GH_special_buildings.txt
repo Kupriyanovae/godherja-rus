@@ -68,7 +68,6 @@
 	
 	type = special
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 01_holy_site_saintly_cathedral = {
@@ -135,7 +134,6 @@
 	
 	type = special
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 01_holy_site_grand_courthouse = {
@@ -196,7 +194,6 @@
 	
 	type = special
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 01_holy_site_hallowed_naon = {
@@ -257,7 +254,6 @@
 	
 	type = special
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 ##########
@@ -304,7 +300,6 @@
 
 	type = special
 	flag = travel_point_of_interest_arcana
-	flag = holy_building
 }
 
 ##########
@@ -666,7 +661,6 @@
 	type = special
 
 	flag = travel_point_of_interest_vounill
-	flag = holy_building
 }
 
 ##########
@@ -808,7 +802,6 @@
 	type = special
 
 	flag = travel_point_of_interest_arcana
-	flag = special_university
 }
 
 ##########
@@ -851,7 +844,6 @@
 	type = special
 
 	flag = travel_point_of_interest_martial
-	flag = holy_building
 }
 
 ##########
@@ -883,7 +875,6 @@
 
 	type = special
 	flag = travel_point_of_interest_wonder
-	flag = holy_building
 }
 
 01_dederak = {
@@ -1115,7 +1106,6 @@
 	type = special
 
 	flag = travel_point_of_interest_wonder
-	flag = holy_building
 }
 
 #################
@@ -1535,7 +1525,6 @@
 	type = special
 
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 #################
@@ -1668,7 +1657,7 @@
 			culture = { has_cultural_pillar = heritage_aversarian }
 			OR = {
 				has_title = title:e_opakhasia
-				has_title = title:h_aversarinas_aautokrata
+				has_title = title:e_aversarinas_aautokrata
 				has_title = title:k_governorate_opakhasia_kingdom
 				has_title = title:d_governorate_opakhasia_duchy
 				any_vassal_or_below = { 
@@ -1770,7 +1759,6 @@
 	}
 	
 	type = special
-	flag = holy_building
 }
 
 #################
@@ -1972,7 +1960,6 @@
 	type = special
 
 	flag = travel_point_of_interest_towerwatch
-	flag = holy_building
 }
 
 #################
@@ -2194,9 +2181,6 @@
 			desc = university_roco_effect_desc
 		}
 		desc = university_effect_desc
-
-		desc = building_gh_contain_vast_collection_books_effect_desc	
-		desc = building_gh_arcana_in_collection_effect_desc
 	}
 	
 	can_construct_potential = {
@@ -2219,7 +2203,7 @@
 	
 	is_enabled = {
 		county.culture = {
-			has_innovation = innovation_imperial_magic
+			has_innovation = innovation_regular_magic
 		}
 	}
 	
@@ -2266,9 +2250,6 @@
 	type = special
 
 	flag = travel_point_of_interest_learning
-	flag = special_university
-	flag = gh_contain_vast_collection_books
-	flag = has_arcana_topic_in_library
 }
 
 #################
@@ -2292,9 +2273,6 @@
 		}
 		desc = university_effect_desc
 		desc = 01_portacademy_colonization_desc
-
-		desc = building_gh_contain_vast_collection_books_effect_desc	
-		desc = building_gh_arcana_in_collection_effect_desc
 	}
 	
 	can_construct_potential = {
@@ -2317,7 +2295,7 @@
 	
 	is_enabled = {
 		county.culture = {
-			has_innovation = innovation_imperial_magic
+			has_innovation = innovation_regular_magic
 		}
 	}
 	
@@ -2363,9 +2341,6 @@
 	type = special
 
 	flag = travel_point_of_interest_learning
-	flag = gh_contain_vast_collection_books
-	flag = has_arcana_topic_in_library
-	flag = special_university
 }
 
 #################
@@ -2374,12 +2349,7 @@
 
 01_aironoiakaan = { # Mayikprolollan Aironoiakaan
 	construction_time = very_slow_construction_time
-	effect_desc = {
-		desc = building_01_aironoiakaan_effect_desc
-
-		desc = building_gh_contain_vast_collection_books_effect_desc	
-		desc = building_gh_arcana_in_collection_effect_desc
-	}
+	effect_desc = building_01_aironoiakaan_effect_desc
 
 	type_icon = "icon_building_ramparts.dds"
 	
@@ -2418,18 +2388,11 @@
 	type = special
 
 	flag = travel_point_of_interest_learning
-	flag = gh_contain_vast_collection_books
-	flag = has_arcana_topic_in_library
 }
 
 02_aironoiakaan = { # Mayikprolollan Aironoiakaan
 	construction_time = very_slow_construction_time
-	effect_desc = {
-		desc = building_02_aironoiakaan_effect_desc
-
-		desc = building_gh_contain_vast_collection_books_effect_desc	
-		desc = building_gh_arcana_in_collection_effect_desc
-	}
+	effect_desc = building_02_aironoiakaan_effect_desc
 
 	type_icon = "icon_building_ramparts.dds"
 	
@@ -2449,7 +2412,7 @@
 	is_enabled = {
 		scope:holder = {
 			culture = {
-				has_innovation = innovation_imperial_magic
+				has_innovation = innovation_regular_magic
 			}
 		}
 	}
@@ -2476,9 +2439,6 @@
 	type = special
 
 	flag = travel_point_of_interest_learning
-	flag = special_university
-	flag = gh_contain_vast_collection_books
-	flag = has_arcana_topic_in_library
 }
 
 #############
@@ -2744,15 +2704,7 @@
 		faith_conversion_piety_cost_mult = -0.1
 		monthly_piety = 0.3
 	}
-
-	province_modifier = {
-		monthly_income = excellent_building_tax_tier_1
-	}
-
-	county_modifier = {
-		development_growth = low_building_development_growth_tier_1
-	}
-
+	
 	ai_value = {
 		base = 100
 	}
@@ -2764,7 +2716,6 @@
 	type = special
 
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 02_sophocos = {
@@ -2801,13 +2752,10 @@
 	}
 
 	province_modifier = {
-		monthly_income = excellent_building_tax_tier_2
+		monthly_income = good_building_tax_tier_1
 	}
-
-	county_modifier = {
-		development_growth = normal_building_development_growth_tier_1
-	}
-
+	
+	
 	ai_value = {
 		base = 100
 	}
@@ -2819,7 +2767,6 @@
 	type = special
 
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 03_sophocos = {
@@ -2856,13 +2803,10 @@
 	}
 
 	province_modifier = {
-		monthly_income = excellent_building_tax_tier_3
+		monthly_income = good_building_tax_tier_2
 	}
-
-	county_modifier = {
-		development_growth = normal_building_development_growth_tier_2
-	}
-
+	
+	
 	ai_value = {
 		base = 100
 	}
@@ -2874,7 +2818,6 @@
 	type = special
 
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 04_sophocos = {
@@ -2911,11 +2854,7 @@
 	}
 
 	province_modifier = {
-		monthly_income = excellent_building_tax_tier_4
-	}
-
-	county_modifier = {
-		development_growth = normal_building_development_growth_tier_3
+		monthly_income = good_building_tax_tier_3
 	}
 	
 	
@@ -2928,7 +2867,6 @@
 	type = special
 
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 #################
@@ -3263,7 +3201,6 @@
 	type = special
 
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 02_umlojtemplecomplex = {
@@ -3300,7 +3237,6 @@
 
 	type = special
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 00_umlojtemplecomplex = {
@@ -3324,7 +3260,6 @@
 
 	type = special
 	flag = travel_point_of_interest_wasteland
-	flag = holy_building
 }
 
 #################
@@ -3485,7 +3420,6 @@
 
 01_libraryofzheggarah = { #foglands
 	construction_time = very_slow_construction_time
-	effect_desc = building_gh_contain_vast_collection_books_effect_desc	
 
 	type_icon = "icon_building_library.dds"
 	
@@ -3519,7 +3453,6 @@
 	type = special
 
 	flag = travel_point_of_interest_learning
-	flag = gh_contain_vast_collection_books
 }
 
 02_libraryofzheggarah = { #foglands
@@ -3693,8 +3626,7 @@
 
 01_universityofgiherehalwajaf = {
 	construction_time = very_slow_construction_time
-	effect_desc = building_gh_contain_vast_collection_books_effect_desc
-	
+
 	type_icon = "icon_structure_nalanda.dds"
 	
 	can_construct_potential = {
@@ -3721,8 +3653,6 @@
 	type = special
 
 	flag = travel_point_of_interest_learning
-	flag = gh_contain_vast_collection_books
-	flag = special_university
 }
 
 02_universityofgiherehalwajaf = {
@@ -3764,8 +3694,6 @@
 
 	type = special
 	flag = travel_point_of_interest_learning
-	flag = gh_contain_vast_collection_books
-	flag = special_university
 }
 
 03_universityofgiherehalwajaf = {
@@ -3805,8 +3733,6 @@
 	
 	type = special
 	flag = travel_point_of_interest_learning
-	flag = gh_contain_vast_collection_books
-	flag = special_university
 }
 
 #################
@@ -3946,7 +3872,6 @@
 	type = special
 
 	flag = travel_point_of_interest_diplomatic
-	flag = gh_contain_medium_collection_books
 }
 
 #################
@@ -4504,11 +4429,6 @@
 00_easterncabal = {
 	construction_time = very_slow_construction_time
 
-	effect_desc = {
-		desc = building_gh_contain_vast_collection_books_effect_desc	
-		desc = building_gh_arcana_in_collection_effect_desc
-	}
-
 	type_icon = "icon_building_university.dds"
 	
 	can_construct_potential = {
@@ -4524,13 +4444,10 @@
 	type = special
 	
 	flag = travel_point_of_interest_arcana
-	flag = gh_contain_vast_collection_books
-	flag = has_arcana_topic_in_library
 }
 
 01_easterncabal = {
 	construction_time = very_slow_construction_time
-
 	effect_desc = {
 		desc = unlocks_building_desc
 		triggered_desc = {
@@ -4542,8 +4459,6 @@
 			desc = university_roco_effect_desc
 		}
 		desc = university_effect_desc
-		desc = building_gh_contain_vast_collection_books_effect_desc	
-		desc = building_gh_arcana_in_collection_effect_desc
 	}
 	
 	can_construct_potential = {
@@ -4604,8 +4519,6 @@
 
 	flag = travel_point_of_interest_arcana
 	flag = travel_point_of_interest_learning
-	flag = gh_contain_vast_collection_books
-	flag = has_arcana_topic_in_library
 }
 
 #################
@@ -4722,7 +4635,6 @@
 	type = special
 
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 #################
@@ -4843,7 +4755,7 @@
 	}
 	
 	character_modifier = {
-		monthly_arcana_lifestyle_xp_gain_mult = 0.05
+		# monthly_magic_lifestyle_dead_xp_gain_mult = 0.05
 		#Death: 5
 		#Celestial: 5
 	}
@@ -4863,7 +4775,7 @@
 	}
 	
 	character_modifier = {
-		monthly_arcana_lifestyle_xp_gain_mult = 0.10
+		# monthly_magic_lifestyle_dead_xp_gain_mult = 0.10
 		#Death: 10
 		#Celestial: 10
 	}
@@ -4883,7 +4795,7 @@
 	}
 	
 	character_modifier = {
-		monthly_arcana_lifestyle_xp_gain_mult = 0.15
+		# monthly_magic_lifestyle_dead_xp_gain_mult = 0.15
 		#Death: 15
 		#Celestial: 15
 	}
@@ -4903,7 +4815,7 @@
 	}
 	
 	character_modifier = {
-		monthly_arcana_lifestyle_xp_gain_mult = 0.2
+		# monthly_magic_lifestyle_dead_xp_gain_mult = 0.2
 		#Death: 20
 		#Celestial: 20
 	}
@@ -5085,7 +4997,6 @@
 	type = special
 
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 02_kasmeze_cathedral = {
@@ -8233,176 +8144,6 @@
 	flag = travel_point_of_interest_economic
 }
 
-################
-# Lmeih Complex
-################
-
-01_lmeih_complex = {
-	construction_time = slow_construction_time
-
-	type_icon = "icon_structure_mines.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-		building_requirement_castle_city_church = { LEVEL = 01 }
-		culture = {
-			has_innovation = innovation_crop_rotation
-		}
-	}
-
-	cost_gold = expensive_building_tier_3_cost
-
-	province_modifier = {
-		monthly_income = special_mine_building_tax_tier_1
-	}
-
-	county_modifier = {
-		tax_mult = 0.2
-		development_growth_factor = 0.03
-	}
-
-	next_building = 02_lmeih_complex
-
-	ai_value = {
-		base = 100
-	}
-
-	type = special
-
-	flag = travel_point_of_interest_economic
-}
-
-02_lmeih_complex = {
-	
-	construction_time = slow_construction_time
-
-	type_icon = "icon_structure_mines.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 02 }
-		culture = {
-			has_innovation = innovation_manorialism
-		}
-	}
-	
-	cost_gold = expensive_building_tier_4_cost
-	
-	province_modifier = {
-		monthly_income = special_mine_building_tax_tier_2
-	}
-	county_modifier = {
-		tax_mult = 0.25
-		development_growth_factor = 0.1
-	}
-	
-	next_building = 03_lmeih_complex
-	
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-	flag = travel_point_of_interest_economic
-}
-
-03_lmeih_complex = {
-	
-	construction_time = slow_construction_time
-
-	type_icon = "icon_structure_mines.dds"
-
-	can_construct_potential = {
-		
-		building_requirement_tribal = no
-	}
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 03 }
-		culture = {
-			has_innovation = innovation_windmills
-		}
-	}
-	
-	cost_gold = expensive_building_tier_5_cost
-	
-	province_modifier = {
-		monthly_income = special_mine_building_tax_tier_3
-	}
-	county_modifier = {
-		tax_mult = 0.3
-		development_growth_factor = 0.15
-	}
-	
-	next_building = 04_lmeih_complex
-	
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-	flag = travel_point_of_interest_economic
-}
-
-04_lmeih_complex = {
-	construction_time = slow_construction_time
-
-	type_icon = "icon_structure_mines.dds"
-
-	can_construct_potential = {
-		
-		building_requirement_tribal = no
-	}
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 04 }
-		culture = {
-			has_innovation = innovation_cranes
-		}
-	}
-	
-	cost_gold = expensive_building_tier_6_cost
-	
-	province_modifier = {
-		monthly_income = special_mine_building_tax_tier_4
-	}
-	county_modifier = {
-		tax_mult = 0.35
-		development_growth_factor = 0.2
-	}
-	
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-	flag = travel_point_of_interest_economic
-}
-
-00_lmeih_complex = {
-	construction_time = slow_construction_time
-
-	type_icon = "icon_structure_mines.dds"
-
-	can_construct_potential = {
-		always = no
-	}
-	
-	cost_gold = expensive_building_tier_3_cost
-	
-	province_modifier = {
-	}
-
-	county_modifier = {
-	}
-	
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-}
-
 #################
 # Iyrossi Palace
 #################
@@ -8747,8 +8488,6 @@
 
 01_redportal = {
 	construction_time = very_slow_construction_time
-
-	type_icon = "01_redportal.dds"
 
 	county_modifier = {
 		development_growth_factor = -0.10
@@ -10005,7 +9744,6 @@
 	show_disabled = yes
 
 	type = special
-	flag = holy_building
 }
 
 ##########
@@ -10297,14 +10035,8 @@
 
 01_benoriya_atawek = {
 	construction_time = slow_construction_time
-
-	effect_desc = {
-		desc = building_01_benoriya_atawek_effect_desc
-		desc = building_gh_contain_vast_collection_books_effect_desc	
-		desc = building_gh_arcana_in_collection_effect_desc
-	}
-
-
+	effect_desc = building_01_benoriya_atawek_effect_desc
+	
 	type_icon = "icon_structure_the_university_of_sankore.dds"
 
 	cost_gold = 2000
@@ -10329,12 +10061,7 @@
 
 02_benoriya_atawek = {
 	construction_time = slow_construction_time
-
-	effect_desc = {
-		desc = building_02_benoriya_atawek_effect_desc
-		desc = building_gh_contain_medium_collection_books_effect_desc	
-		desc = building_gh_arcana_in_collection_effect_desc
-	}
+	effect_desc = building_02_benoriya_atawek_effect_desc
 	
 	type_icon = "icon_structure_the_university_of_sankore.dds"
 
@@ -10367,9 +10094,6 @@
 	type = special
 
 	flag = travel_point_of_interest_learning
-	flag = gh_contain_medium_collection_books
-	flag = has_arcana_topic_in_library
-	flag = special_university
 }
 
 ##########
@@ -10731,7 +10455,6 @@
 	type = special
 
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 02_tabik_betemisit = {
@@ -10772,7 +10495,6 @@
 	
 	type = special
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 ##########
@@ -11311,7 +11033,6 @@ blood_market_00 = { # Blood Orchards
 	type = special
 
 	flag = travel_point_of_interest_diplomatic
-	flag = holy_building
 }
 
 #########
@@ -11396,7 +11117,6 @@ blood_market_00 = { # Blood Orchards
 	type = special
 
 	flag = travel_point_of_interest_religious
-	flag = holy_building
 }
 
 #########
@@ -11800,60 +11520,60 @@ waymakers_fort = {
 
 	cost_gold = 1000
 
-	character_modifier = {
-		monthly_piety = 0.5
-		monthly_dynasty_prestige_mult = 0.05
-		monthly_county_control_growth_factor = 0.05
-		clergy_opinion = 5
-	}
-	
-	county_modifier = {
-		tax_mult = 0.2
-		development_growth_factor = 0.10
-		development_growth = 0.10
-	}
-	
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
+    character_modifier = {
+        monthly_piety = 0.5
+        monthly_dynasty_prestige_mult = 0.05
+        monthly_county_control_growth_factor = 0.05
+        clergy_opinion = 5
+    }
+    
+    county_modifier = {
+        tax_mult = 0.2
+        development_growth_factor = 0.10
+        development_growth = 0.10
+    }
+    
+    ai_value = {
+        base = 100
+    }
+    
+    type = special
 	flag = travel_point_of_interest_religious
-	next_building = 02_dalath_analoth
+    next_building = 02_dalath_analoth
 }
 
 02_dalath_analoth = {
 
-	construction_time = very_slow_construction_time
+    construction_time = very_slow_construction_time
 
-	type_icon = "icon_structure_cathedral_zoroastric.dds"
-	
+    type_icon = "icon_structure_cathedral_zoroastric.dds"
+    
 	can_construct_potential = {
 		building_requirement_tribal = no
 	}
 
 	cost_gold = 2000
 
-	character_modifier = {
-		monthly_piety = 1
-		monthly_dynasty_prestige_mult = 0.10
-		monthly_county_control_growth_factor = 0.05
-		learning_per_piety_level = 2
-		monthly_prestige = 0.5
-		clergy_opinion = 10
-	}
-	
-	county_modifier = {
-		tax_mult = 0.3
-		development_growth_factor = 0.2
-		development_growth = 0.2
-	}
-	
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
+    character_modifier = {
+        monthly_piety = 1
+        monthly_dynasty_prestige_mult = 0.10
+        monthly_county_control_growth_factor = 0.05
+        learning_per_piety_level = 2
+        monthly_prestige = 0.5
+        clergy_opinion = 10
+    }
+    
+    county_modifier = {
+        tax_mult = 0.3
+        development_growth_factor = 0.2
+        development_growth = 0.2
+    }
+    
+    ai_value = {
+        base = 100
+    }
+    
+    type = special
 	flag = travel_point_of_interest_religious
 }
 
@@ -11862,7 +11582,6 @@ waymakers_fort = {
 #################
 
 01_malah_enlevettah = {
-	effect_desc = building_gh_martial_in_collection_effect_desc
 
 	construction_time = slow_construction_time
 	
@@ -11872,53 +11591,52 @@ waymakers_fort = {
 		building_requirement_tribal = no
 	}
 
-	cost_gold = 1000
+    cost_gold = 1000
 
-	character_modifier = {
-		heavy_infantry_toughness_mult = 0.1
-		martial_per_prestige_level = 2
-		knight_effectiveness_mult = 0.15
-		monthly_dynasty_prestige = 0.05
-		monthly_martial_lifestyle_xp_gain_mult = 0.05
-	}
-	
-	ai_value = {
-		base = 100
-	}
+    character_modifier = {
+        heavy_infantry_toughness_mult = 0.1
+        martial_per_prestige_level = 2
+        knight_effectiveness_mult = 0.15
+        monthly_dynasty_prestige = 0.05
+        monthly_martial_lifestyle_xp_gain_mult = 0.05
+    }
+    
+    ai_value = {
+        base = 100
+    }
 
 
-	type = special
+    type = special
 	flag = travel_point_of_interest_martial
-	flag = has_martial_topic_in_library
-	next_building = 02_malah_enlevettah
+    next_building = 02_malah_enlevettah
 }
 
 02_malah_enlevettah = {
 
-	construction_time = slow_construction_time
-	
-	type_icon = "icon_building_military_academy.dds"
-	
+    construction_time = slow_construction_time
+    
+    type_icon = "icon_building_military_academy.dds"
+    
 	can_construct_potential = {
 		building_requirement_tribal = no
 	}
 
-	cost_gold = 1000
+    cost_gold = 1000
 
-	character_modifier = {
-		heavy_infantry_toughness_mult = 0.20
-		martial_per_prestige_level = 3
-		knight_effectiveness_mult = 0.20
-		monthly_dynasty_prestige = 0.10
-		men_at_arms_limit = 1
-		monthly_martial_lifestyle_xp_gain_mult = 0.10
-	}
-	
-	ai_value = {
-		base = 100
-	}
+    character_modifier = {
+        heavy_infantry_toughness_mult = 0.20
+        martial_per_prestige_level = 3
+        knight_effectiveness_mult = 0.20
+        monthly_dynasty_prestige = 0.10
+        men_at_arms_limit = 1
+        monthly_martial_lifestyle_xp_gain_mult = 0.10
+    }
+    
+    ai_value = {
+        base = 100
+    }
 
-	type = special
+    type = special
 	flag = travel_point_of_interest_martial
 }
 
@@ -12037,7 +11755,6 @@ waymakers_fort = {
 
 	type = special
 	flag = travel_point_of_interest_wonder
-	flag = holy_building
 }
 
 00_riduvianbarrows = {
@@ -12299,7 +12016,6 @@ waymakers_fort = {
 
 	type = special
 	flag = travel_point_of_interest_wonder
-	flag = holy_building
 }
 
 #################
@@ -12360,11 +12076,7 @@ waymakers_fort = {
 
 01_harekana_observatory = {
 	construction_time = very_slow_construction_time
-
-	effect_desc = {
-		desc = building_01_harekana_observatory_effect_desc
-		desc = building_gh_contain_vast_collection_books_effect_desc	
-	}
+	effect_desc = building_01_harekana_observatory_effect_desc
 	
 	can_construct_potential = {
 		building_university_requirement = yes
@@ -12390,8 +12102,6 @@ waymakers_fort = {
 
 	type = special
 	flag = travel_point_of_interest_learning
-	flag = gh_contain_vast_collection_books
-	flag = special_university
 }
 
 #################
@@ -12400,7 +12110,6 @@ waymakers_fort = {
 
 00_candamarun_academy = { # Ruined Candamarun Academy
 	construction_time = very_slow_construction_time
-	effect_desc = building_gh_contain_vast_collection_books_effect_desc	
 
 	type_icon = "icon_structure_nalanda.dds"
 	
@@ -12417,15 +12126,11 @@ waymakers_fort = {
 	show_disabled = yes
 
 	type = special
-	flag = gh_contain_vast_collection_books
 }
 
 01_candamarun_academy = {
 	construction_time = very_slow_construction_time
-	effect_desc = {
-		desc = building_01_candamarun_academy_effect_desc	
-		desc = building_gh_contain_vast_collection_books_effect_desc	
-	}
+	effect_desc = building_01_candamarun_academy_effect_desc
 	
 	can_construct_potential = {
 		building_university_requirement = yes
@@ -12452,7 +12157,6 @@ waymakers_fort = {
 	type = special
 
 	flag = travel_point_of_interest_learning
-	flag = special_university
 }
 
 ################
@@ -12469,11 +12173,11 @@ waymakers_fort = {
 		prestige_level_impact_mult = 0.10
 	}
 
-	next_building = 02_silverpalace
-	
-	ai_value = {
-		base = 100
-	}
+    next_building = 02_silverpalace
+    
+    ai_value = {
+        base = 100
+    }
 	type = special
 
 	flag = travel_point_of_interest_diplomatic
@@ -13165,7 +12869,6 @@ waymakers_fort = {
 	}
 	next_building = 08_ashmarite_hospital
 	type = special
-	flag = special_university
 }
 
 08_ashmarite_hospital = {
@@ -13195,7 +12898,6 @@ waymakers_fort = {
 		base = 100
 	}
 	type = special
-	flag = special_university
 }
 
 ##################
@@ -13436,7 +13138,7 @@ waymakers_fort = {
 	character_modifier = {
 		martial = 1
 		monthly_prestige = 0.5
-		monthly_dynasty_prestige_mult = 0.05
+        monthly_dynasty_prestige_mult = 0.05
 	}
 	
 	ai_value = {
@@ -13674,45 +13376,6 @@ waymakers_fort = {
 		tax_mult = 0.1
 		development_growth = 0.1
 		development_growth_factor = 0.1
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	next_building = 02_great_bronzeport
-
-	type = special
-	flag = travel_point_of_interest_economic
-}
-
-02_great_bronzeport = {
-	construction_time = very_slow_construction_time
-	
-	type_icon = "mezquita_cordoba.dds"
-
-	cost_gold = 4500
-	
-	max_garrison = normal_building_max_garrison_tier_4
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_4
-
-	province_modifier = {
-		monthly_income = normal_building_tax_tier_8
-		defender_holding_advantage = normal_building_advantage_tier_4
-		fort_level = good_building_fort_level_tier_5
-		stationed_maa_damage_mult = 0.05
-		stationed_maa_toughness_mult = 0.05
-	}
-	character_modifier = {
-		vassal_tax_contribution_mult = 0.2
-		vassal_levy_contribution_mult = 0.2
-		monthly_prestige = 0.20
-	}
-
-	county_modifier = {
-		tax_mult = 0.15
-		development_growth = 0.1
-		development_growth_factor = 0.2
 	}
 
 	ai_value = {
@@ -14017,6 +13680,153 @@ waymakers_fort = {
 	flag = travel_point_of_interest_economic
 }
 
+##################
+# Lang Ky Mines #
+##################
+
+01_lang_ky_mines = { ###gold
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		building_requirement_tribal = no
+		building_requirement_castle_city_church = { LEVEL = 01 }
+		culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+	
+	cost_gold = expensive_building_tier_3_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_1
+	}
+	county_modifier = {
+		tax_mult = 0.2
+		development_growth_factor = 0.05
+	}
+	
+	next_building = 02_lang_ky_mines
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+
+	flag = travel_point_of_interest_economic
+}
+
+02_lang_ky_mines = {
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+	can_construct = {
+		building_requirement_castle_city_church = { LEVEL = 02 }
+		culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+	
+	cost_gold = expensive_building_tier_4_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_2
+	}
+	county_modifier = {
+		tax_mult = 0.25
+		development_growth_factor = 0.1
+	}
+	
+	next_building = 03_lang_ky_mines
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+	flag = travel_point_of_interest_economic
+}
+
+03_lang_ky_mines = {
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		
+		building_requirement_tribal = no
+	}
+	can_construct = {
+		building_requirement_castle_city_church = { LEVEL = 03 }
+		culture = {
+			has_innovation = innovation_windmills
+		}
+	}
+	
+	cost_gold = expensive_building_tier_5_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_3
+	}
+	county_modifier = {
+		tax_mult = 0.3
+		development_growth_factor = 0.15
+	}
+	
+	next_building = 04_lang_ky_mines
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+	flag = travel_point_of_interest_economic
+}
+
+04_lang_ky_mines = {
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		
+		building_requirement_tribal = no
+	}
+	can_construct = {
+		building_requirement_castle_city_church = { LEVEL = 04 }
+		culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+	
+	cost_gold = expensive_building_tier_6_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_4
+	}
+	county_modifier = {
+		tax_mult = 0.35
+		development_growth_factor = 0.2
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+	flag = travel_point_of_interest_economic
+}
+
 ############
 # Kadtarak #
 ############
@@ -14194,34 +14004,14 @@ waymakers_fort = {
 	cost_gold = 3000
 
 	can_construct = {
-		scope:holder.faith = { 
-			OR = {
-				has_doctrine = sepattan_reincarnate_twin_gods_doctrine
-				has_doctrine = sepattan_twin_gods_doctrine
-				has_doctrine = sepattan_twin_gods_men_doctrine
+		scope:holder = {
+			NOR = {
+				faith = faith:korlenalmic
+				faith = faith:korlonalmic
 			}
 		}
 	}
-	is_enabled = {
-		custom_description = {
-			text = holy_site_building_trigger
-			barony = {
-				is_holy_site_of = scope:holder.faith
-			}
-		}
-		custom_tooltip = {
-			text = tarfal_veneration_tooltip
-			scope:holder.faith = { 
-				OR = {
-					has_doctrine = sepattan_reincarnate_twin_gods_doctrine
-					has_doctrine = sepattan_twin_gods_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
-			}
-		}
 
-		#NOT = { scope:holder.religion = religion:sepattan_religion }
-	}
 	county_modifier = {
 		development_growth = -0.75
 		holding_build_gold_cost = 0.5
@@ -14262,33 +14052,18 @@ waymakers_fort = {
 	cost_gold = 3000
 
 	can_construct = {
-		scope:holder.faith = { 
-			OR = {
-				has_doctrine = sepattan_reincarnate_korlacu_doctrine
-				has_doctrine = sepattan_korlacu_doctrine
-				has_doctrine = sepattan_twin_gods_men_doctrine
+		scope:holder = {
+			NOR = {
+				faith = faith:gotharnalmic
+				faith = faith:katharnalmic
+				faith = faith:nathanalmic
+			}
+			culture = {
+				has_innovation = innovation_manorialism
+				has_innovation = innovation_battlements
+				has_cultural_pillar = heritage_korlacan
 			}
 		}
-	}
-	is_enabled = {
-		custom_description = {
-			text = holy_site_building_trigger
-			barony = {
-				is_holy_site_of = scope:holder.faith
-			}
-		}
-		custom_tooltip = {
-			text = korlacu_veneration_tooltip
-			scope:holder.faith = { 
-				OR = {
-					has_doctrine = sepattan_reincarnate_korlacu_doctrine
-					has_doctrine = sepattan_korlacu_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
-			}
-		}
-
-		#NOT = { scope:holder.religion = religion:sepattan_religion }
 	}
 	show_disabled = yes
 	
@@ -14324,11 +14099,11 @@ waymakers_fort = {
 	cost_gold = 3000
 	
 	can_construct = {
-			scope:holder.faith = { 
-			OR = {
-				has_doctrine = sepattan_reincarnate_twin_gods_doctrine
-				has_doctrine = sepattan_twin_gods_doctrine
-				has_doctrine = sepattan_twin_gods_men_doctrine
+		scope:holder = {
+			NOR = {
+				faith = faith:gotharnalmic
+				faith = faith:katharnalmic
+				faith = faith:nathanalmic
 			}
 		}
 	}
@@ -14366,12 +14141,10 @@ waymakers_fort = {
 
 	can_construct = {
 		scope:holder = {
-			faith = {
-				OR = {
-					has_doctrine = sepattan_reincarnate_korlacu_doctrine
-					has_doctrine = sepattan_korlacu_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
+			NOR = {
+				faith = faith:gotharnalmic
+				faith = faith:katharnalmic
+				faith = faith:nathanalmic
 			}
 			culture = {
 				has_innovation = innovation_manorialism
@@ -14379,26 +14152,16 @@ waymakers_fort = {
 			}
 		}
 	}
-
 	is_enabled = {
 		custom_description = {
 			text = holy_site_building_trigger
-			barony = { is_holy_site_of = scope:holder.faith }
-		}
-		custom_tooltip = {
-			text = korlacu_veneration_tooltip
-			scope:holder.faith = {
-				OR = {
-					has_doctrine = sepattan_reincarnate_korlacu_doctrine
-					has_doctrine = sepattan_korlacu_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
+			barony = {
+				is_holy_site_of = scope:holder.faith
 			}
 		}
+		#NOT = { scope:holder.religion = religion:sepattan_religion }
 	}
-
 	show_disabled = yes
-
 	province_modifier = {
 		monthly_income = 3
 	}
@@ -14411,6 +14174,7 @@ waymakers_fort = {
 	}
 	
 	character_modifier = {
+		
 		development_growth_factor = 0.25
 		development_growth = 0.25
 		holding_build_gold_cost = -0.25
@@ -14420,7 +14184,9 @@ waymakers_fort = {
 		#metal:25%
 	}
 	
+	
 	type = special
+
 	flag = travel_point_of_interest_wonder
 }
 
@@ -14430,14 +14196,13 @@ waymakers_fort = {
 	effect_desc = building_01_forsaken_fortress_effect_desc
 	type_icon = "icon_structure_visby_ringmur.dds"
 
+
 	can_construct = {
 		scope:holder = {
-			faith = {
-				OR = {
-					has_doctrine = sepattan_reincarnate_korlacu_doctrine
-					has_doctrine = sepattan_korlacu_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
+			NOR = {
+				faith = faith:gotharnalmic
+				faith = faith:katharnalmic
+				faith = faith:nathanalmic
 			}
 			culture = {
 				has_innovation = innovation_battlements
@@ -14461,6 +14226,7 @@ waymakers_fort = {
 	county_modifier = {
 		development_growth = -0.2
 	}
+	
 
 	province_modifier = {
 		defender_holding_advantage = normal_building_advantage_tier_1
@@ -14472,9 +14238,10 @@ waymakers_fort = {
 	}
 
 	next_building = 01_restored_fortress
-
+	show_disabled = yes
 	flag = travel_point_of_interest_wonder
 	type = special
+
 }
 
 01_restored_fortress = {
@@ -14485,12 +14252,10 @@ waymakers_fort = {
 
 	can_construct = {
 		scope:holder = {
-			faith = {
-				OR = {
-					has_doctrine = sepattan_reincarnate_korlacu_doctrine
-					has_doctrine = sepattan_korlacu_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
+			NOR = {
+				faith = faith:gotharnalmic
+				faith = faith:katharnalmic
+				faith = faith:nathanalmic
 			}
 			culture = {
 				has_innovation = innovation_battlements
@@ -14502,8 +14267,11 @@ waymakers_fort = {
 	is_enabled = {
 		custom_description = {
 			text = holy_site_building_trigger
-			barony = { is_holy_site_of = scope:holder.faith }
+			barony = {
+				is_holy_site_of = scope:holder.faith
+			}
 		}
+		#NOT = { scope:holder.religion = religion:sepattan_religion }
 	}
 	
 	cost_gold = 3000
@@ -14533,9 +14301,9 @@ waymakers_fort = {
 
 	next_building = 01_renewed_fortress
 	show_disabled = yes
-
 	flag = travel_point_of_interest_wonder
 	type = special
+
 }
 
 01_renewed_fortress = {
@@ -14543,14 +14311,13 @@ waymakers_fort = {
 	effect_desc = building_01_renewed_fortress_effect_desc
 	type_icon = "icon_structure_visby_ringmur.dds"
 
+
 	can_construct = {
 		scope:holder = {
-			faith = {
-				OR = {
-					has_doctrine = sepattan_reincarnate_korlacu_doctrine
-					has_doctrine = sepattan_korlacu_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
+			NOR = {
+				faith = faith:gotharnalmic
+				faith = faith:katharnalmic
+				faith = faith:nathanalmic
 			}
 			culture = {
 				has_innovation = innovation_battlements
@@ -14562,8 +14329,11 @@ waymakers_fort = {
 	is_enabled = {
 		custom_description = {
 			text = holy_site_building_trigger
-			barony = { is_holy_site_of = scope:holder.faith }
+			barony = {
+				is_holy_site_of = scope:holder.faith
+			}
 		}
+		#NOT = { scope:holder.religion = religion:sepattan_religion }
 	}
 	
 	cost_gold = 3000
@@ -14574,7 +14344,7 @@ waymakers_fort = {
 		build_gold_cost = -0.2
 		build_speed = -0.2
 	}
-
+	
 	character_modifier = {
 		martial = 2
 		development_growth_factor = 0.2
@@ -14586,7 +14356,7 @@ waymakers_fort = {
 		defender_holding_advantage = 3
 		fort_level = great_building_fort_level_tier_5
 	}
-
+	
 	ai_value = {
 		base = 100
 	}
@@ -14594,6 +14364,7 @@ waymakers_fort = {
 	show_disabled = yes
 	flag = travel_point_of_interest_wonder
 	type = special
+
 }
 
 
@@ -14608,23 +14379,25 @@ waymakers_fort = {
 
 	can_construct = {
 		building_requirement_castle_city_church = { LEVEL = 03 }
-		scope:holder.faith = { 
+		culture = {
+			has_innovation = innovation_manorialism
+			has_innovation = innovation_battlements
+			has_cultural_pillar = heritage_nattanan 
+		}
+		scope:holder = {
 			OR = {
-				has_doctrine = sepattan_reincarnate_twin_gods_doctrine
-				has_doctrine = sepattan_twin_gods_doctrine
-				has_doctrine = sepattan_twin_gods_men_doctrine
+				faith = faith:gotharnalmic
+				faith = faith:katharnalmic
+				faith = faith:nathanalmic
 			}
 		}
 	}
 
 
 	is_enabled = {
-		scope:holder.faith = { 
-			OR = {
-				has_doctrine = sepattan_reincarnate_twin_gods_doctrine
-				has_doctrine = sepattan_twin_gods_doctrine
-				has_doctrine = sepattan_twin_gods_men_doctrine
-			}
+		scope:holder = {
+			religion = religion:sepattan_religion
+			culture = { has_cultural_pillar = heritage_nattanan }
 		}
 	}
 	show_disabled = yes
@@ -14664,6 +14437,7 @@ waymakers_fort = {
 	is_enabled = {
 		scope:holder = {
 			religion = religion:sepattan_religion
+			culture = { has_cultural_pillar = heritage_korlacan }
 		}
 	}
 	
@@ -14714,11 +14488,7 @@ waymakers_fort = {
 	
 	can_construct = {
 		scope:holder = {
-			faith = {
-				has_doctrine = sepattan_reincarnate_korlacu_doctrine
-				has_doctrine = sepattan_korlacu_doctrine
-				has_doctrine = sepattan_twin_gods_men_doctrine
-			}
+			religion = religion:sepattan_religion
 			culture = { 
 				has_cultural_pillar = heritage_korlacan
 				has_innovation = innovation_manorialism
@@ -14738,13 +14508,7 @@ waymakers_fort = {
 	
 	is_enabled = {
 		scope:holder = {
-			faith = {
-				OR = {
-					has_doctrine = sepattan_reincarnate_korlacu_doctrine
-					has_doctrine = sepattan_korlacu_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
-			}
+			religion = religion:sepattan_religion
 			culture = { has_cultural_pillar = heritage_korlacan }
 		}
 	}
@@ -14797,6 +14561,8 @@ waymakers_fort = {
 
 
 
+
+
 01_korlacan_mines = {
 	effect_desc = mines_effect_desc
 
@@ -14810,13 +14576,7 @@ waymakers_fort = {
 	type_icon = "icon_structure_mines.dds"
 	is_enabled = {
 		scope:holder = {
-			faith = {
-				OR = {
-					has_doctrine = sepattan_reincarnate_korlacu_doctrine
-					has_doctrine = sepattan_korlacu_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
-			}
+			religion = religion:sepattan_religion
 			culture = { has_cultural_pillar = heritage_korlacan }
 		}
 	}
@@ -14862,13 +14622,7 @@ waymakers_fort = {
 	type_icon = "icon_structure_mines.dds"
 	is_enabled = {
 		scope:holder = {
-			faith = {
-				OR = {
-					has_doctrine = sepattan_reincarnate_korlacu_doctrine
-					has_doctrine = sepattan_korlacu_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
-			}
+			religion = religion:sepattan_religion
 			culture = { has_cultural_pillar = heritage_korlacan }
 		}
 	}
@@ -14916,13 +14670,7 @@ waymakers_fort = {
 	type_icon = "icon_structure_mines.dds"
 	is_enabled = {
 		scope:holder = {
-			faith = {
-				OR = {
-					has_doctrine = sepattan_reincarnate_korlacu_doctrine
-					has_doctrine = sepattan_korlacu_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
-			}
+			religion = religion:sepattan_religion
 			culture = { has_cultural_pillar = heritage_korlacan }
 		}
 	}
@@ -15044,19 +14792,17 @@ waymakers_fort = {
 	flag = travel_point_of_interest_economic
 }
 
+
+
+
+
 01_forge_of_korlacu = {
 	construction_time = very_slow_construction_time
 	type_icon = "icon_building_blacksmiths.dds"
 	cost_gold = 5000
 	is_enabled = {
 		scope:holder = {
-			faith = {
-				OR = {
-					has_doctrine = sepattan_reincarnate_korlacu_doctrine
-					has_doctrine = sepattan_korlacu_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
-			}
+			religion = religion:sepattan_religion
 			culture = { has_cultural_pillar = heritage_korlacan }
 		}
 	}
@@ -15104,713 +14850,6 @@ waymakers_fort = {
 	flag = travel_point_of_interest_learning
 }
 
-
-01_well_of_souls = { #Well of Souls
-	construction_time = very_slow_construction_time
-	type_icon = "icon_building_fountain.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	ai_value = {
-		base = 100
-	}
-	
-	is_enabled = {
-		custom_tooltip = {
-			text = akkaradhammic_veneration_tooltip
-			scope:holder = {
-				faith = {
-					OR = {
-						has_doctrine = tenet_akkaradhammic_rituals
-						has_doctrine = sepattan_death_king_doctrine
-					}
-				}
-			}
-		}
-	}
-	
-	county_modifier = {
-		development_growth = -0.15
-		development_growth_factor = -0.15
-		monthly_county_control_growth_factor = 0.25
-	}
-	
-	character_modifier = {
-		dread_gain_mult = 0.35
-		intrigue = 5
-	}
-	province_modifier = {
-		monthly_income = 1
-	}
-	show_disabled = yes
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-01_jerniems_lodge = {
-	construction_time = very_slow_construction_time
-	type_icon = "icon_building_legendary_hunting_grounds.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	can_construct = {
-		scope:holder.faith = { 
-			OR = {
-				has_doctrine = sepattan_reincarnate_twin_gods_doctrine
-				has_doctrine = sepattan_twin_gods_doctrine
-				has_doctrine = sepattan_twin_gods_men_doctrine
-			}
-		}
-	}
-
-	is_enabled = {
-		custom_description = {
-			text = holy_site_building_trigger
-			barony = {
-				is_holy_site_of = scope:holder.faith
-			}
-		}
-		custom_tooltip = {
-			text = tarfal_veneration_tooltip
-			scope:holder.faith = { 
-				OR = {
-					has_doctrine = sepattan_reincarnate_twin_gods_doctrine
-					has_doctrine = sepattan_twin_gods_doctrine
-					has_doctrine = sepattan_twin_gods_men_doctrine
-				}
-			}
-		}
-		#NOT = { scope:holder.religion = religion:sepattan_religion }
-	}
-	cost_gold = 3000
-
-	county_modifier = {
-		development_growth = -0.15
-		holding_build_gold_cost = -0.3
-		build_gold_cost = -0.2
-		build_speed = -0.2
-	}
-	
-	character_modifier = {
-		martial = 2
-		development_growth_factor = -0.2
-		levy_reinforcement_rate = 0.75
-		levy_size = 0.75
-	}
-
-	province_modifier = {
-		defender_holding_advantage = 3
-		fort_level = great_building_fort_level_tier_3
-	}
-	
-	next_building = 01_culling_ground
-
-	ai_value = {
-		base = 100
-	}
-
-	show_disabled = yes
-	flag = travel_point_of_interest_martial
-	type = special
-}
-
-01_culling_ground = {
-	construction_time = very_slow_construction_time
-	type_icon = "icon_gh_first_altar.dds"
-	can_construct = {
-		scope:holder.faith = { 
-		 	has_doctrine = tenet_akkaradhammic_rituals
-			has_doctrine = sepattan_death_king_doctrine
-		}
-	}
-
-	is_enabled = {
-		custom_description = {
-			text = holy_site_building_trigger
-			barony = { is_holy_site_of = scope:holder.faith }
-		}
-		custom_tooltip = {
-			text = akkaradhammic_veneration_tooltip
-			scope:holder.faith = { 
-				OR = {
-					has_doctrine = tenet_akkaradhammic_rituals
-					has_doctrine = sepattan_death_king_doctrine
-				}
-			}
-		}
-	}
-	cost_gold = 3000
-
-	county_modifier = {
-		development_growth = 0.25
-		holding_build_gold_cost = -0.3
-		build_gold_cost = -0.2
-		build_speed = -0.2
-	}
-	
-	character_modifier = {
-		prowess = 2
-		development_growth_factor = 0.2
-		levy_reinforcement_rate = 0.75
-		levy_size = 0.75
-	}
-
-	province_modifier = {
-		defender_holding_advantage = 3
-		fort_level = great_building_fort_level_tier_5
-	}
-}
-
-00_darksteel_tomb = {
-	construction_time = very_slow_construction_time
-	type_icon = "icon_structure_canterbury_cathedral.dds"
-
-	ai_value = {
-		base = 100
-	}
-
-	is_enabled = {
-		custom_tooltip = {
-			text = akkaradhammic_veneration_tooltip
-			scope:holder = {
-				faith = {
-					OR = {
-						has_doctrine = tenet_akkaradhammic_rituals
-						has_doctrine = sepattan_death_king_doctrine
-					}
-				}
-			}
-		}
-	}
-
-	county_modifier = {
-		development_growth = -1
-		development_growth_factor = -1
-		monthly_county_control_growth_factor = -1
-	}
-
-	character_modifier = {
-		monthly_prestige = 0.2
-		dread_gain_mult = 0.5
-		levy_reinforcement_rate = 0.75
-		levy_size = 0.75
-	}
-
-	cost_gold = 2500
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_1
-		fort_level = good_building_fort_level_tier_1
-		monthly_income = 2
-	}
-
-	show_disabled = yes
-
-	next_building = 01_darksteel_tomb
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-01_darksteel_tomb = { #Darksteel Tomb
-	construction_time = very_slow_construction_time
-	type_icon = "icon_structure_canterbury_cathedral.dds"
-	ai_value = {
-		base = 100
-	}
-
-	is_enabled = {
-		custom_tooltip = {
-			text = akkaradhammic_veneration_tooltip
-			scope:holder.faith = { 
-				OR = {
-					has_doctrine = tenet_akkaradhammic_rituals
-					has_doctrine = sepattan_death_king_doctrine
-				}
-			}
-		}
-	}
-
-	county_modifier = {
-		development_growth = -0.5
-		development_growth_factor = -0.5
-		monthly_county_control_growth_factor = -0.5
-	}
-
-	character_modifier = {
-		monthly_prestige = 0.35
-		dread_gain_mult = 0.2
-		levy_reinforcement_rate = 0.75
-		levy_size = 0.75
-	}
-
-	cost_gold = 2500
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_1
-		fort_level = good_building_fort_level_tier_1
-		monthly_income = 2
-	}
-
-	show_disabled = yes
-
-	next_building = 02_darksteel_tomb
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-02_darksteel_tomb = { #Darksteel Mausoleum
-	construction_time = very_slow_construction_time
-	type_icon = "icon_structure_canterbury_cathedral.dds"
-
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 01 }
-		culture = {
-			has_innovation = innovation_development_01
-			has_innovation = innovation_city_planning
-		}
-	}
-
-
-	ai_value = {
-		base = 100
-	}
-	cost_gold = 3000
-
-	is_enabled = {
-		custom_tooltip = {
-			text = akkaradhammic_veneration_tooltip
-			scope:holder.faith = { 
-				OR = {
-					has_doctrine = tenet_akkaradhammic_rituals
-					has_doctrine = sepattan_death_king_doctrine
-				}
-			}
-		}
-	}
-
-	county_modifier = {
-		development_growth = -0.25
-		development_growth_factor = -0.25
-		monthly_county_control_growth_factor = -0.1
-	}
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_2
-		fort_level = good_building_fort_level_tier_2
-		monthly_income = 3.5
-	}
-
-	character_modifier = {
-		monthly_prestige = 0.35
-		dread_gain_mult = 0.2
-		levy_reinforcement_rate = 0.75
-		levy_size = 0.75
-	}
-	show_disabled = yes
-
-	next_building = 03_darksteel_tomb
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-03_darksteel_tomb = { #Sanctum of the Undying
-	construction_time = very_slow_construction_time
-	type_icon = "icon_structure_canterbury_cathedral.dds"
-
-	can_construct_potential = {
-	}
-
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 01 }
-		culture = {
-			has_innovation = innovation_crop_rotation
-			has_innovation = innovation_motte
-		}
-	}
-	
-	cost_gold = 3500
-	
-	ai_value = {
-		base = 100
-	}
-
-	is_enabled = {
-		custom_tooltip = {
-			text = akkaradhammic_veneration_tooltip
-			scope:holder.faith = { 
-				OR = {
-					has_doctrine = tenet_akkaradhammic_rituals
-					has_doctrine = sepattan_death_king_doctrine
-				}
-			}
-		}
-	}
-
-	county_modifier = {
-		tax_mult = 0.05
-		development_growth = 0.05
-		development_growth_factor = 0.05
-		monthly_county_control_growth_factor = 0.15
-	}
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_3
-		fort_level = good_building_fort_level_tier_3
-		garrison_size = 0.1
-		monthly_income = 4
-	}
-
-	character_modifier = {
-		monthly_prestige = 0.3
-		monthly_piety = 0.2
-		dread_gain_mult = 0.15
-	}
-
-	show_disabled = yes
-
-	next_building = 04_darksteel_tomb
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-04_darksteel_tomb = { #Prison of the Lich
-	construction_time = very_slow_construction_time
-	type_icon = "icon_structure_canterbury_cathedral.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	cost_gold = 4000
-
-	is_enabled = {
-		custom_tooltip = {
-			text = akkaradhammic_veneration_tooltip
-			scope:holder.faith = { 
-				OR = {
-					has_doctrine = tenet_akkaradhammic_rituals
-					has_doctrine = sepattan_death_king_doctrine
-				}
-			}
-		}
-	}
-	
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 02 }
-		culture = {
-			has_innovation = innovation_battlements
-			has_innovation = innovation_manorialism
-		}
-	}
-
-	county_modifier = {
-		tax_mult = 0.1
-		development_growth = 0.1
-		development_growth_factor = 0.1
-		monthly_county_control_growth_factor = 0.25
-		county_opinion_add = -5
-	}
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_4
-		fort_level = good_building_fort_level_tier_4
-		garrison_size = 0.15
-		monthly_income = 6
-	}
-
-	character_modifier = {
-		monthly_prestige = 0.4
-		monthly_piety = 0.3
-		dread_gain_mult = 0.2
-		vassal_opinion = 5
-	}
-
-	show_disabled = yes
-
-	next_building = 05_darksteel_tomb
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-05_darksteel_tomb = { #Citadel of Eternity
-	construction_time = very_slow_construction_time
-	type_icon = "icon_structure_canterbury_cathedral.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	cost_gold = 4500
-
-	ai_value = {
-		base = 100
-	}
-
-	is_enabled = {
-		custom_tooltip = {
-			text = akkaradhammic_veneration_tooltip
-			scope:holder.faith = { 
-				OR = {
-					has_doctrine = tenet_akkaradhammic_rituals
-					has_doctrine = sepattan_death_king_doctrine
-				}
-			}
-		}
-	}
-
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 02 }
-		culture = {
-			has_innovation = innovation_development_02
-			has_innovation = innovation_currency_02
-		}
-	}
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_5
-		fort_level = good_building_fort_level_tier_5
-		garrison_size = 0.2
-		monthly_income = 8
-		supply_limit_mult = 0.1
-
-	}
-
-	county_modifier = {
-		tax_mult = 0.2
-		development_growth = 0.2
-		development_growth_factor = 0.2
-		monthly_county_control_growth_factor = 0.15
-		levy_size = 0.1
-	}
-
-
-	character_modifier = {
-		monthly_prestige = 0.75
-		monthly_piety = 0.5
-		dread_gain_mult = 0.3
-		vassal_opinion = 15
-		monthly_dread = 0.1
-	}
-
-	show_disabled = yes
-
-	next_building = 06_darksteel_tomb
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-06_darksteel_tomb = { # Apotheosis of Akkaradhamma
-	construction_time = very_slow_construction_time
-	type_icon = "icon_structure_canterbury_cathedral.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	cost_gold = 5000
-
-	is_enabled = {
-		custom_tooltip = {
-			text = akkaradhammic_veneration_tooltip
-			scope:holder.faith = { 
-				OR = {
-					has_doctrine = tenet_akkaradhammic_rituals
-					has_doctrine = sepattan_death_king_doctrine
-				}
-			}
-		}
-	}
-
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 03 }
-		culture = {
-			has_innovation = innovation_windmills
-			has_innovation = innovation_development_03
-		}
-	}
-
-	county_modifier = {
-		tax_mult = 0.3
-		development_growth = 0.3
-		development_growth_factor = 0.3
-		monthly_county_control_growth_factor = 0.3
-		levy_size = 0.15
-	}
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_6
-		fort_level = good_building_fort_level_tier_6
-		garrison_size = 0.25
-		monthly_income = 10
-		supply_limit_mult = 0.3
-	}
-
-	character_modifier = {
-		monthly_prestige = 0.75
-		monthly_piety = 0.5
-		dread_gain_mult = 0.3
-		vassal_opinion = 15
-		monthly_dread = 0.1
-	}
-
-	show_disabled = yes
-	next_building = 07_darksteel_tomb
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-07_darksteel_tomb = { # Bastion of the Eternal Veil 
-	construction_time = very_slow_construction_time
-	type_icon = "icon_structure_canterbury_cathedral.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 03 }
-		culture = {
-			has_innovation = innovation_hoardings
-			has_innovation = innovation_castle_baileys
-		}
-	}
-	cost_gold = 6000
-
-	ai_value = {
-		base = 100
-	}
-
-	is_enabled = {
-		custom_tooltip = {
-			text = akkaradhammic_veneration_tooltip
-			scope:holder.faith = { 
-				OR = {
-					has_doctrine = tenet_akkaradhammic_rituals
-					has_doctrine = sepattan_death_king_doctrine
-				}
-			}
-		}
-	}
-
-	county_modifier = {
-		tax_mult = 0.4
-		development_growth = 0.4
-		development_growth_factor = 0.4
-		monthly_county_control_growth_factor = 0.5
-		levy_size = 0.25
-	}
-
-	province_modifier = {
-		defender_holding_advantage = good_building_advantage_tier_7
-		fort_level = great_building_fort_level_tier_7
-		garrison_size = 0.3
-		supply_limit_mult = 0.5
-		monthly_income = 15
-	}
-
-	character_modifier = {
-		monthly_prestige = 1.0
-		monthly_piety = 0.6
-		dread_gain_mult = 0.35
-		vassal_opinion = 20
-		monthly_dread = 0.15
-		vassal_opinion = 20
-		enemy_hostile_scheme_success_chance_add = 25
-	}
-
-	show_disabled = yes
-
-	next_building = 08_darksteel_tomb
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-08_darksteel_tomb = { #Sepulcher of Drowned Time
-	construction_time = very_slow_construction_time
-	type_icon = "icon_structure_canterbury_cathedral.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 04 }
-		culture = {
-			has_innovation = innovation_machicolations
-			has_innovation = innovation_cranes
-			has_innovation = innovation_royal_armory
-		}
-	}
-
-	cost_gold = 7000
-
-	ai_value = {
-		base = 100
-	}
-
-	is_enabled = {
-		custom_tooltip = {
-			text = akkaradhammic_veneration_tooltip
-			scope:holder.faith = { 
-				OR = {
-					has_doctrine = tenet_akkaradhammic_rituals
-					has_doctrine = sepattan_death_king_doctrine
-				}
-			}
-		}
-	}
-
-	county_modifier = {
-		tax_mult = 0.5
-		development_growth = 0.5
-		development_growth_factor = 0.5
-		monthly_county_control_growth_factor = 0.8
-		levy_size = 0.25
-	}
-
-	province_modifier = {
-		monthly_income = 30
-		defender_holding_advantage = good_building_advantage_tier_8
-		fort_level = great_building_fort_level_tier_8
-		garrison_size = 0.35
-		supply_limit_mult = 0.8
-	}
-
-	character_modifier = {
-		monthly_prestige = 1.5
-		monthly_piety = 0.75
-		dread_gain_mult = 0.4
-		vassal_opinion = 40
-		monthly_dread = 0.2
-		stress_loss_mult = 0.1
-		enemy_hostile_scheme_success_chance_add = 50
-	}
-
-	show_disabled = yes
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
 01_overgrown_temple = {
 	construction_time = very_slow_construction_time
 	type_icon = "icon_building_ruined_palace.dds"
@@ -15818,7 +14857,6 @@ waymakers_fort = {
 	can_construct_potential = {
 		building_requirement_tribal = no
 	}
-
 	can_construct = {
 		building_requirement_castle_city_church = { LEVEL = 02 }
 		culture = {
@@ -15826,13 +14864,13 @@ waymakers_fort = {
 			has_innovation = innovation_battlements
 		}
 	}
-
 	is_enabled = {
-		scope:holder.faith = {
+		culture = { has_cultural_pillar = heritage_nattanan }
+		scope:holder = {
 			OR = {
-				has_doctrine = sepattan_reincarnate_twin_gods_doctrine
-				has_doctrine = sepattan_twin_gods_doctrine
-				has_doctrine = sepattan_twin_gods_men_doctrine
+				faith = faith:gotharnalmic
+				faith = faith:katharnalmic
+				faith = faith:nathanalmic
 			}
 		}
 	}
@@ -15853,17 +14891,22 @@ waymakers_fort = {
 	}
 
 	next_building = 01_temple_of_wisdom
-
 	ai_value = {
 		base = 100
 	}
-
 	type = special
+
 	flag = travel_point_of_interest_learning
 }
 
+
+
+
+
 01_temple_of_wisdom = {
+
 	construction_time = very_slow_construction_time
+
 	type_icon = "icon_structure_grand_library_of_baghdad.dds"
 	
 	can_construct_potential = {
@@ -15871,12 +14914,9 @@ waymakers_fort = {
 	}
 	
 	is_enabled = {
-		scope:holder.faith = {
-			OR = {
-				has_doctrine = sepattan_reincarnate_korlacu_doctrine
-				has_doctrine = sepattan_korlacu_doctrine
-				has_doctrine = sepattan_twin_gods_men_doctrine
-			}
+		scope:holder = {
+			religion = religion:sepattan_religion
+			culture = { has_cultural_pillar = heritage_korlacan }
 		}
 	}
 
@@ -15887,6 +14927,7 @@ waymakers_fort = {
 			has_innovation = innovation_divine_right
 		}
 	}
+
 
 	cost_gold = 3000
 
@@ -15914,6 +14955,7 @@ waymakers_fort = {
 	}
 	
 	type = special
+
 	flag = travel_point_of_interest_learning
 }
 
@@ -16240,7 +15282,6 @@ waymakers_fort = {
 
 01_glassworks_of_ysanda = {
 	construction_time = very_slow_construction_time
-	effect_desc = gh_glassworks_of_ysanda_effect_desc
 
 	type_icon = "icon_structure_grand_library_of_baghdad.dds"
 	
@@ -16282,7 +15323,6 @@ waymakers_fort = {
 
 02_glassworks_of_ysanda = {
 	construction_time = very_slow_construction_time
-	effect_desc = gh_glassworks_of_ysanda_effect_desc
 
 	type_icon = "icon_structure_grand_library_of_baghdad.dds"
 	
@@ -16294,7 +15334,7 @@ waymakers_fort = {
 		scope:holder.culture = {
 			has_innovation = innovation_development_03
 			has_innovation = innovation_guilds
-			has_cultural_tradition = tradition_adept_glassworkers
+			has_cultural_tradition = tradition_glass_smiths
 		}
 	}
 	
@@ -16333,7 +15373,6 @@ waymakers_fort = {
 
 03_glassworks_of_ysanda = {
 	construction_time = very_slow_construction_time
-	effect_desc = gh_glassworks_of_ysanda_effect_desc
 
 	type_icon = "icon_structure_grand_library_of_baghdad.dds"
 	
@@ -16344,7 +15383,7 @@ waymakers_fort = {
 	can_construct = {
 		scope:holder.culture = {
 			has_innovation = innovation_cranes
-			has_cultural_tradition = tradition_adept_glassworkers
+			has_cultural_tradition = tradition_glass_smiths
 		}
 	}
 	
@@ -16421,7 +15460,7 @@ waymakers_fort = {
 	
 	type = special
 
-	flag = travel_point_of_interest_learning
+	flag = travel_point_of_interest_martial
 }
 
 02_halite_temple = {
@@ -16500,8 +15539,7 @@ waymakers_fort = {
 	
 	type = special
 
-	flag = travel_point_of_interest_learning
-	flag = special_university
+	flag = travel_point_of_interest_martial
 }
 
 ##########
@@ -17392,12 +16430,12 @@ waymakers_fort = {
 	}
 
 	is_enabled = {
-		custom_tooltip = {
-			text = province_is_of_a_megalith_or_nature_faith_tt
-			OR = {
+		OR = {
+			custom_tooltip = {
+				text = province_is_of_a_megalith_faith_tt
 				county.faith = { has_doctrine_parameter = can_build_megaliths }
-				county.faith = { has_doctrine = tenet_sanctity_of_nature }
 			}
+			county.faith = { has_doctrine = tenet_sanctity_of_nature }
 		}
 	}
 
@@ -17440,12 +16478,12 @@ waymakers_fort = {
 	}
 
 	is_enabled = {
-		custom_tooltip = {
-			text = province_is_of_a_megalith_or_nature_faith_tt
-			OR = {
+		OR = {
+			custom_tooltip = {
+				text = province_is_of_a_megalith_faith_tt
 				county.faith = { has_doctrine_parameter = can_build_megaliths }
-				county.faith = { has_doctrine = tenet_sanctity_of_nature }
 			}
+			county.faith = { has_doctrine = tenet_sanctity_of_nature }
 		}
 	}
 
@@ -17584,7 +16622,7 @@ waymakers_fort = {
 01_zokah_forest = {
 	construction_time = standard_construction_time
 	
-	type_icon = "icon_building_zokah_forest.dds"
+	type_icon = "icon_building_tree.dds"
 	
 	can_construct_potential = {
 		always = yes	# Starts out constructed
@@ -17656,12 +16694,8 @@ waymakers_fort = {
 
 01_haryaadad_academy = {
 	construction_time = very_slow_construction_time
-
-	effect_desc = {
-		desc = building_01_haryaadad_academy_effect_desc
-		desc = building_gh_contain_vast_collection_books_effect_desc	
-	}
-
+	effect_desc = building_01_haryaadad_academy_effect_desc
+	
 	can_construct_potential = {
 		building_university_requirement = yes
 		building_requirement_tribal = no
@@ -17687,7 +16721,6 @@ waymakers_fort = {
 	type = special
 
 	flag = travel_point_of_interest_learning
-	flag = gh_contain_vast_collection_books
 }
 
 #################
@@ -17987,15 +17020,6 @@ gh_zarashti_tower_01 = {
 	type_icon = "icon_gh_zarashti_tower.dds" 
 	
 	can_construct_potential = {}
-
-	can_construct = {
-		culture = {
-			OR = {
-				# Only marchers should be able to see the option to start these
-				has_cultural_pillar = heritage_thyssae
-			}
-		}
-	}
 	
 	cost_gold = 500
 	
@@ -18041,17 +17065,6 @@ gh_anjari_burz_01 = {
 	can_construct_potential = {
 		building_requirement_tribal = no
 	}
-
-	can_construct = {
-		religion = religion:amsari_religion
-		culture = {
-			OR = {
-				# Only marchers should be able to see the option to start these
-				has_cultural_pillar = heritage_zarasadari
-				has_cultural_pillar = heritage_thyssae
-			}
-		}
-	}
 	
 	cost_gold = 1200
 
@@ -18091,17 +17104,6 @@ gh_amsari_first_altar_01 = {
 	
 	can_construct_potential = {
 		building_requirement_tribal = no
-	}
-
-	can_construct = {
-		religion = religion:amsari_religion
-		culture = {
-			OR = {
-				# Only marchers should be able to see the option to start these
-				has_cultural_pillar = heritage_zarasadari
-				has_cultural_pillar = heritage_thyssae
-			}
-		}
 	}
 	
 	cost_gold = 200
@@ -18552,7 +17554,6 @@ gh_prophet_scultpure_01 = {
 }
 
 
-
 ##########
 # Tisrāni Khūnēh
 ##########
@@ -18566,14 +17567,6 @@ gh_tisrani_khuneh_01 = {
 	}
 	
 	can_construct = {
-		religion = religion:amsari_religion
-		culture = {
-			OR = {
-				# Only marchers should be able to see the option to start these
-				has_cultural_pillar = heritage_zarasadari
-				has_cultural_pillar = heritage_thyssae
-			}
-		}
 	}
 	
 	show_disabled = yes
@@ -18601,438 +17594,6 @@ gh_tisrani_khuneh_01 = {
 	
 	type = special
 	flag = travel_point_of_interest_religious
-	flag = holy_building
-}
-
-##########
-# Unij-e Uleyysah
-##########
-01_unij_e_uleyysah = {
-	construction_time = very_slow_construction_time
-	effect_desc = building_gh_contain_vast_collection_books_effect_desc	
-	
-	type_icon = "icon_structure_imam_ali_mosque.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	can_construct = {
-		religion = religion:amsari_religion
-		culture = {
-			OR = {
-				# Only marchers should be able to see the option to start these
-				has_cultural_pillar = heritage_zarasadari
-				has_cultural_pillar = heritage_thyssae
-			}
-		}
-	}
-	
-	show_disabled = yes
-	
-	cost_gold = 2000
-
-	character_modifier = {
-		learning_per_prestige_level = 1
-		monthly_piety = 0.25
-		clergy_opinion = 5
-	}
-	
-	
-	ai_value = {
-		base = 100
-		modifier = { # Fill all building slots before going for special buildings
-			factor = 0
-			free_building_slots > 0
-		}
-	}
-	
-	type = special
-	flag = travel_point_of_interest_religious
-	flag = holy_building
-	flag = gh_contain_vast_collection_books
-}
-
-
-##########
-# The Mechanical City of Dravnok Shtal
-##########
-
-01_mechanical_city = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_shwedagon_pagoda.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	ai_value = {
-		base = 100
-	}
-
-	county_modifier = {
-		tax_mult = -1.5
-		development_growth = -0.8
-		development_growth_factor = -0.8
-	}
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_1
-		fort_level = good_building_fort_level_tier_1
-	}
-
-	show_disabled = yes
-
-	next_building = 02_mechanical_city
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-02_mechanical_city = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_shwedagon_pagoda.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	can_construct = {
-		scope:holder = {
-			religion = religion:sepattan_religion
-			has_title = title:e_thura_taw
-		}
-	}
-	
-	cost_gold = 3000
-
-	character_modifier = {
-		learning = 2
-		monthly_lifestyle_xp_gain_mult = 0.20
-		cultural_head_fascination_mult = 0.20
-	}
-	county_modifier = {
-		tax_mult = 0.2
-		development_growth = 0.2
-		development_growth_factor = 0.2
-	}
-
-	province_modifier = {
-		defender_holding_advantage = good_building_advantage_tier_3
-		fort_level = great_building_fort_level_tier_2
-	}
-	
-	ai_value = {
-		base = 100
-	}
-
-	show_disabled = yes
-	next_building = 03_mechanical_city
-
-	type = special
-	flag = travel_point_of_interest_wonder
-
-}
-
-03_mechanical_city = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_shwedagon_pagoda.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	can_construct = {
-		scope:holder = {
-			religion = religion:sepattan_religion
-			has_title = title:e_thura_taw
-		}
-	}
-	
-	cost_gold = 4000
-
-	character_modifier = {
-		learning = 3
-		monthly_lifestyle_xp_gain_mult = 0.20
-		cultural_head_fascination_mult = 0.20
-	}
-	county_modifier = {
-		tax_mult = 0.5
-		development_growth = 0.5
-		development_growth_factor = 0.5
-	}
-
-	province_modifier = {
-		defender_holding_advantage = good_building_advantage_tier_5
-		fort_level = great_building_fort_level_tier_4
-	}
-	
-	ai_value = {
-		base = 100
-	}
-
-	show_disabled = yes
-	next_building = 04_mechanical_city
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-04_mechanical_city = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_shwedagon_pagoda.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	can_construct = {
-		scope:holder = {
-			religion = religion:sepattan_religion
-			has_title = title:e_thura_taw
-		}
-	}
-	
-	cost_gold = 5000
-
-	character_modifier = {
-		learning = 4
-		monthly_lifestyle_xp_gain_mult = 0.20
-		cultural_head_fascination_mult = 0.20
-	}
-	county_modifier = {
-		tax_mult = 0.75
-		development_growth = 0.75
-		development_growth_factor = 0.75
-	}
-
-	province_modifier = {
-		defender_holding_advantage = good_building_advantage_tier_7
-		fort_level = great_building_fort_level_tier_6
-	}
-	
-	
-	ai_value = {
-		base = 100
-	}
-
-	show_disabled = yes
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-
-#################
-# The Ash Gate
-#################
-
-01_ash_gate = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_aurelian_walls.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 2000
-
-	max_garrison = normal_building_max_garrison_tier_2
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_2
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_1
-		fort_level = good_building_fort_level_tier_1
-	}
-
-	character_modifier = {
-		knight_limit = 1
-	}
-	
-	ai_value = {
-		base = 100
-	}
-
-	next_building = 02_ash_gate
-
-	show_disabled = yes
-
-	type = special
-
-}
-
-02_ash_gate = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_aurelian_walls.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 2000
-
-	max_garrison = normal_building_max_garrison_tier_3
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_3
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_3
-		fort_level = good_building_fort_level_tier_3
-	}
-
-	character_modifier = {
-		knight_limit = 2
-	}
-	
-	ai_value = {
-		base = 100
-	}
-
-	show_disabled = yes
-
-	type = special
-}
-
-#################
-# The Gate of Progress
-#################
-
-01_progress_gate = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_aurelian_walls.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 2000
-
-	max_garrison = normal_building_max_garrison_tier_2
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_2
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_1
-		fort_level = good_building_fort_level_tier_1
-	}
-
-	character_modifier = {
-		knight_limit = 1
-	}
-	
-	ai_value = {
-		base = 100
-	}
-
-	next_building = 02_progress_gate
-
-	show_disabled = yes
-
-	type = special
-
-}
-
-02_progress_gate = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_aurelian_walls.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 2000
-
-	max_garrison = normal_building_max_garrison_tier_3
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_3
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_3
-		fort_level = good_building_fort_level_tier_3
-	}
-
-	character_modifier = {
-		knight_limit = 2
-	}
-	
-	ai_value = {
-		base = 100
-	}
-
-	show_disabled = yes
-
-	type = special
-}
-
-
-#################
-# The Gate of Industry
-#################
-
-01_industry_gate = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_aurelian_walls.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 2000
-
-	max_garrison = normal_building_max_garrison_tier_2
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_2
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_1
-		fort_level = good_building_fort_level_tier_1
-	}
-
-	character_modifier = {
-		knight_limit = 1
-	}
-	
-	ai_value = {
-		base = 100
-	}
-
-	next_building = 02_industry_gate
-
-	show_disabled = yes
-
-	type = special
-
-}
-
-02_industry_gate = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_aurelian_walls.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 2000
-
-	max_garrison = normal_building_max_garrison_tier_3
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_3
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_3
-		fort_level = good_building_fort_level_tier_3
-	}
-
-	character_modifier = {
-		knight_limit = 2
-	}
-	
-	ai_value = {
-		base = 100
-	}
-
-	show_disabled = yes
-
-	type = special
 }
 
 ###########
@@ -19154,9 +17715,7 @@ gh_tisrani_khuneh_01 = {
 
 	flag = travel_point_of_interest_arcana
 	type = special
-	flag = special_university
 }
-
 
 ##########
 # Tur-Senach
@@ -19774,1911 +18333,4 @@ gh_tisrani_khuneh_01 = {
 	
 	type = special
 	flag = travel_point_of_interest_natural_feature
-}
-
-##########
-# Neos Ypsikenon
-##########
-01_neos_ypsikenon = {
-	asset = {
-		type = pdxmesh
-		name = "ep3_monument_parthenon_01_b_mesh"
-	}
-	type_icon = "icon_structure_parthenon_theotokos.dds"
-	construction_time = slow_construction_time
-
-	cost_gold = 1000
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	can_construct = {
-		culture = {
-			has_innovation = innovation_battlements
-		}
-	}
-
-	character_modifier = {
-		monthly_influence = 0.1
-		monthly_influence_mult = 0.05
-	}
-	
-	county_modifier = {
-		hostile_raid_time = 0.75
-		travel_danger = -20
-		development_growth_factor = 0.1
-		development_growth = 0.1
-	}
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_3
-		fort_level = good_building_fort_level_tier_2
-		garrison_size = 0.2
-	}
-	
-	ai_value = {
-		base = 100
-		culture_likely_to_fortify_modifier = yes
-		modifier = { # Fill all building slots before going for special buildings
-			factor = 0
-			free_building_slots > 0
-		}
-	}
-	
-	type = special
-
-	flag = travel_point_of_interest_martial
-	
-	next_building = 02_neos_ypsikenon
-}
-
-02_neos_ypsikenon = {
-	construction_time = slow_construction_time
-
-	cost_gold = 1000
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	can_construct = {
-		culture = {
-			has_innovation = innovation_battlements
-		}
-	}
-
-	character_modifier = {
-		monthly_influence = 0.1
-		monthly_influence_mult = 0.05
-		embarkation_cost_mult = -0.25
-		naval_movement_speed_mult = 0.15
-	}
-	
-	county_modifier = {
-		hostile_raid_time = 0.75
-		travel_danger = -20
-		development_growth_factor = 0.15
-		development_growth = 0.15
-	}
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_3
-		fort_level = good_building_fort_level_tier_3
-		garrison_size = 0.2
-		monthly_income = 1
-	}
-	
-	ai_value = {
-		base = 100
-		culture_likely_to_fortify_modifier = yes
-		modifier = { # Fill all building slots before going for special buildings
-			factor = 0
-			free_building_slots > 0
-		}
-	}
-	
-	type = special
-
-	flag = travel_point_of_interest_martial
-}
-
-##############################
-## Sarradonian Desert Sites ##
-##############################
-
-
-01_mutsars_well = {
-	
-	asset = {
-		type = pdxmesh
-		name = "fp3_building_special_maharloo_lake_01_a_mesh"
-	}
-
-	construction_time = very_slow_construction_time
-		
-	type_icon = "icon_structure_maharloo_lake.dds" 
-
-	can_construct_potential = {}
-	
-	cost_gold = 300
-
-	character_modifier = {
-		monthly_piety = 0.25
-		monthly_dynasty_prestige_mult = 0.05
-		stress_loss_mult = 0.1
-	}
-
-	county_modifier = {
-		county_opinion_add = 5
-		oasis_fertility_growth_mult = 0.3
-		development_growth = 0.1
-		development_growth_factor = 0.6
-	}
-
-	ai_value = {
-		base = 100
-		modifier = { # Fill all building slots before going for special buildings
-			factor = 0
-			free_building_slots > 0
-		}
-	}
-	
-	type = special
-
-	flag = travel_point_of_interest_natural_feature
-}
-
-01_the_folly = {
-	asset = {
-		type = pdxmesh
-		name = "mpo_building_special_burkhan_khaldun_mesh" 
-	}
-
-
-	construction_time = very_slow_construction_time
-	
-	type_icon = "icon_building_gh_the_folly.dds" 
-
-	can_construct_potential = {}
-	
-	cost_gold = 300
-
-	province_modifier = {
-		travel_danger = 20
-		monthly_county_control_growth_factor = -0.1
-		supply_limit_mult = -0.2
-	}
-
-	character_modifier = {
-		monthly_arcana_lifestyle_xp_gain_mult = 0.25
-		health = -0.10
-	}
-
-	county_modifier = {
-		desert_mountains_fertility_growth_mult = -0.5
-	}
-
-	ai_value = {
-		base = 100
-		modifier = { # Fill all building slots before going for special buildings
-			factor = 0
-			free_building_slots > 0
-		}
-	}
-	
-	type = special
-
-	flag = travel_point_of_interest_natural_feature
-	flag = activates_province_aspects
-}
-
-01_tomb_of_the_starborn = {
-	construction_time = very_slow_construction_time
-	type_icon = "icon_structure_vatapi_caves.dds"
-
-	cost_gold = 1000
-
-	character_modifier = {
-		monthly_piety = 2
-		monthly_lifestyle_xp_gain_mult = 0.1
-		stress_gain_mult = 0.1
-	}
-
-	county_modifier = {
-		hostile_raid_time = 0.5
-		travel_danger = -20
-	}
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_3
-		fort_level = good_building_fort_level_tier_2
-	}
-
-	ai_value = {
-		base = 100
-		modifier = { # Fill all building slots before going for special buildings
-			factor = 0
-			free_building_slots > 0
-		}
-	}
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-01_imutargit = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_iron_pillar_of_delhi.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 3000
-
-	character_modifier = {
-		monthly_prestige_gain_mult = 0.1
-		monthly_dynasty_prestige_mult = 0.05
-		legitimacy_gain_mult = 0.1
-	}
-
-	county_modifier = {
-		county_opinion_add = 10
-	}
-
-	ai_value = {
-		base = 100
-		modifier = { # Fill all building slots before going for special buildings
-			factor = 0
-			free_building_slots > 0
-		}
-	}
-	type = special
-	flag = travel_point_of_interest_arcana
-}
-
-01_umrawet = {
-
-	construction_time = very_slow_construction_time
-		
-	type_icon = "icon_building_umrawet.dds" 
-
-	can_construct_potential = {}
-	
-	cost_gold = 300
-
-	character_modifier = {
-		monthly_piety = 0.25
-		stress_loss_mult = 0.1
-	}
-
-	county_modifier = {
-		county_opinion_add = 5
-	}
-
-	ai_value = {
-		base = 100
-		modifier = { # Fill all building slots before going for special buildings
-			factor = 0
-			free_building_slots > 0
-		}
-	}
-	
-	type = special
-
-	flag = travel_point_of_interest_natural_feature
-}
-
-01_fadruwatoasis = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_building_fadruwatoasis.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 3000
-
-	county_modifier = {
-		supply_limit_mult = 0.25
-		development_growth = 0.1
-		development_growth_factor = 0.15
-		oasis_fertility_growth_mult = 0.4
-	}
-	
-	ai_value = {
-		base = 100
-	}
-	
-	next_building = 02_oasisofgonan
-
-	type = special
-
-	flag = travel_point_of_interest_natural_feature
-}
-
-###################
-# Yannden prefectural city
-###################
-
-01_yannden_prefectural_city = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_wudang_mountain_temples.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	can_construct = {
-		scope:holder = {
-			culture = {
-				has_innovation = innovation_motte
-			}
-			OR = {
-				has_title = title:k_protectorate_of_the_southlands
-				culture = {
-					has_cultural_pillar = heritage_easterner
-				}
-			}
-		}
-	}
-
-	character_modifier = {
-		martial = 2
-	}
-	
-	province_modifier = {
-		fort_level = 3
-		travel_danger = -5
-		hostile_raid_time = 0.1
-	}
-
-	county_modifier = {
-		
-	}
-
-	max_garrison = good_building_max_garrison_tier_1
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_1
-
-	ai_value = {
-		base = 100
-	}
-	
-	next_building = 02_yannden_prefectural_city
-
-	show_disabled = yes
-	type = special
-	flag = travel_point_of_interest_martial_minor
-}
-
-02_yannden_prefectural_city = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_wudang_mountain_temples.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-
-	can_construct = {
-		scope:holder = {
-			culture = {
-				has_innovation = innovation_motte
-			}
-			OR = {
-				has_title = title:k_protectorate_of_the_southlands
-				culture = {
-					has_cultural_pillar = heritage_easterner
-				}
-				religion = religion:fourteen_heavenly_methods_religion
-			}
-		}
-	}
-
-	is_enabled = {
-
-	}
-	
-	cost_gold = 3000
-
-	character_modifier = {
-		martial = 2
-		knight_limit = 1
-		knight_effectiveness_mult = 0.05
-	}
-
-	province_modifier = {
-		fort_level = 4
-		travel_danger = -20
-		hostile_raid_time = 0.25
-		garrison_size = 0.1
-		supply_limit_mult = 0.1
-		defender_holding_advantage = 4
-		stationed_maa_damage_mult = 0.1
-		stationed_maa_toughness_mult = 0.1
-	}
-
-	county_modifier = {
-		development_growth = 0.05
-		development_growth_factor = 0.1
-	}
-
-	max_garrison = good_building_max_garrison_tier_2
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_3
-
-	ai_value = {
-		base = 100
-	}
-
-	
-	
-	next_building = 03_yannden_prefectural_city
-	type = special
-	flag = travel_point_of_interest_martial
-}
-
-03_yannden_prefectural_city = {
-	
-	construction_time = slow_construction_time
-
-	type_icon = "icon_structure_wudang_mountain_temples.dds"
-
-	cost_gold = 5000
-
-	character_modifier = {
-		martial = 4
-		pursue_efficiency = 0.1
-		knight_limit = 2
-		knight_effectiveness_mult = 0.1
-	}
-	
-	province_modifier = {
-		fort_level = 8
-		hostile_raid_time = 0.8
-		supply_limit_mult = 0.25
-		defender_holding_advantage = 6
-		travel_danger = -35
-		stationed_maa_damage_mult = 0.35
-		stationed_maa_toughness_mult = 0.35
-	}
-
-	county_modifier = {
-		development_growth = 0.15
-		development_growth_factor = 0.3
-	}
-
-	max_garrison = good_building_max_garrison_tier_4
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_4
-
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-	flag = travel_point_of_interest_martial
-}
-
-###################
-# Ruins of dadama city 
-###################
-
-01_ruins_of_dadama_city = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_shwedagon_pagoda.dds"
-
-	character_modifier = {
-		saielaian_opinion = 10
-	}
-	
-	province_modifier = {
-		tax_mult = -1
-		levy_size = -1
-		travel_danger = 100
-		build_gold_cost = 1
-		build_piety_cost = 1
-		build_prestige_cost = 1
-		build_speed = 1
-		supply_limit_mult = -1
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-###################
-# Golden glow temple
-###################
-
-01_golden_glow_temple = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_vatapi_caves.dds"
-
-	character_modifier = {
-		monthly_piety_gain_mult = 0.05
-		thuantyan_sraidyan_religion_opinion = 10
-	}
-	
-	county_modifier = {
-		development_growth_factor = -0.15
-		development_growth = -0.1
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	next_building = 02_golden_glow_temple
-
-	type = special
-	flag = travel_point_of_interest_religious
-}
-
-02_golden_glow_temple = {
-	
-	construction_time = slow_construction_time
-
-	type_icon = "icon_structure_vatapi_caves.dds"
-
-	cost_gold = 3500
-
-	character_modifier = {
-		learning = 4
-		monthly_piety_gain_mult = 0.15
-		monthly_piety = 0.5
-		thuantyan_sraidyan_religion_opinion = 20
-		monthly_lifestyle_xp_gain_mult = 0.2
-	}
-
-	province_modifier = {
-		monthly_income = 0.5
-		build_piety_cost = -0.15
-	}
-	
-	county_modifier = {
-		tax_mult = 0.15
-		county_opinion_add = 20
-		development_growth_factor = 0.25
-		development_growth = 0.1
-	}
-
-	ai_value = {
-		base = 100
-	}
-	type = special
-	flag = travel_point_of_interest_religious
-}
-
-###################
-# Skeleton land
-###################
-
-01_skeleton_land = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_building_graveyard.dds"
-
-	character_modifier = {
-		monthly_prestige = 0.8
-		monthly_dread = 0.1
-		dread_baseline_add = 25
-		intimidated_vassal_tax_contribution_mult = 0.1
-		dread_per_tyranny_mult = 0.15
-	}
-
-	ai_value = {
-		base = 100
-	}
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-###################
-# Yeiqusheni high wall
-###################
-
-01_yeiqushen_high_wall = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_gongsanseong_fortress.dds"
-	can_construct = {
-		OR = {
-			religion = religion:fourteen_heavenly_methods_religion
-			culture = {
-				has_cultural_pillar = heritage_easterner
-			}
-		}
-	}
-
-	show_disabled = yes
-
-	character_modifier = {
-		men_at_arms_recruitment_cost = -0.08
-		artifact_decay_reduction_mult = -0.08
-		
-	}
-	
-	county_modifier = {
-		development_growth_factor = 0.05
-	}
-
-	province_modifier = {
-		build_speed = -0.25
-		build_gold_cost = 0.15
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	next_building = 02_yeiqushen_high_wall
-
-	type = special
-	flag = travel_point_of_interest_martial
-}
-
-02_yeiqushen_high_wall = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_gongsanseong_fortress.dds"
-
-	cost_gold = 3000
-	can_construct = {
-		OR = {
-			religion = religion:fourteen_heavenly_methods_religion
-			culture = {
-				has_cultural_pillar = heritage_easterner
-			}
-		}
-	}
-
-	show_disabled = yes
-
-	character_modifier = {
-		army_maintenance_mult = -0.08
-		men_at_arms_recruitment_cost = -0.12
-		artifact_decay_reduction_mult = -0.12
-	}
-	
-	county_modifier = {
-		development_growth_factor = 0.1
-		supply_limit_mult = 0.15
-		tax_mult = 0.05
-	}
-
-	province_modifier = {
-		monthly_income = 0.5
-		stationed_maa_damage_mult = 0.05
-		stationed_maa_toughness_mult = 0.05
-		stationed_siege_weapon_siege_value_mult = 0.1
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	next_building = 03_yeiqushen_high_wall
-
-	type = special
-	flag = travel_point_of_interest_martial
-}
-
-03_yeiqushen_high_wall = {
-	
-	construction_time = slow_construction_time
-
-	effect_desc = mines_effect_desc
-
-	type_icon = "icon_structure_gongsanseong_fortress.dds"
-
-	can_construct = {
-		OR = {
-			religion = religion:fourteen_heavenly_methods_religion
-			culture = {
-				has_cultural_pillar = heritage_easterner
-			}
-		}
-	}
-
-	cost_gold = 3500
-
-	character_modifier = {
-		army_maintenance_mult = -0.1
-		men_at_arms_recruitment_cost = -0.2
-		advantage = 2
-		artifact_decay_reduction_mult = -0.15
-		siege_phase_time = -0.05
-	}
-	
-	county_modifier = {
-		development_growth_factor = 0.15
-		supply_limit_mult = 0.25
-		tax_mult = 0.1
-	}
-
-	province_modifier = {
-		monthly_income = 1.3
-		stationed_maa_damage_mult = 0.15
-		stationed_maa_toughness_mult = 0.15
-		stationed_siege_weapon_siege_value_mult = 0.2
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	next_building = 04_yeiqushen_high_wall
-
-	type = special
-	flag = travel_point_of_interest_martial
-}
-
-04_yeiqushen_high_wall = {
-	
-	construction_time = slow_construction_time
-
-	effect_desc = mines_effect_desc
-
-	can_construct = {
-		OR = {
-			religion = religion:fourteen_heavenly_methods_religion
-			culture = {
-				has_cultural_pillar = heritage_easterner
-			}
-		}
-	}
-
-	type_icon = "icon_structure_gongsanseong_fortress.dds"
-
-	cost_gold = 4500
-
-	character_modifier = {
-		monthly_prestige_gain_mult = 0.05
-		army_maintenance_mult = -0.2
-		men_at_arms_recruitment_cost = -0.25
-		counter_efficiency = 0.1
-		advantage = 5
-		artifact_decay_reduction_mult = -0.2
-		siege_phase_time = -0.1
-	}
-	
-	county_modifier = {
-		development_growth_factor = 0.2
-		supply_limit_mult = 0.4
-		tax_mult = 0.25
-	}
-
-	province_modifier = {
-		monthly_income = 2
-		stationed_maa_damage_mult = 0.3
-		stationed_maa_toughness_mult = 0.3
-		stationed_siege_weapon_siege_value_mult = 0.35
-		stationed_siege_weapon_siege_value_add = 0.1
-		building_slot_add = 1
-	}
-
-	next_building = 05_yeiqushen_high_wall
-	ai_value = {
-		base = 100
-	}
-
-	type = special
-	flag = travel_point_of_interest_martial
-}
-
-05_yeiqushen_high_wall = {
-	
-	construction_time = slow_construction_time
-
-	effect_desc = mines_effect_desc
-
-	type_icon = "icon_structure_gongsanseong_fortress.dds"
-
-	can_construct = {
-		OR = {
-			religion = religion:fourteen_heavenly_methods_religion
-			culture = {
-				has_cultural_pillar = heritage_easterner
-			}
-		}
-	}
-
-	cost_gold = 8000
-
-	character_modifier = {
-		monthly_prestige_gain_mult = 0.1
-		army_maintenance_mult = -0.25
-		men_at_arms_recruitment_cost = -0.3
-		counter_efficiency = 0.15
-		advantage = 6
-		artifact_decay_reduction_mult = -0.3
-		men_at_arms_cap = 1
-		siege_phase_time = -0.15
-	}
-	
-	county_modifier = {
-		development_growth_factor = 0.25
-		supply_limit_mult = 0.5
-		tax_mult = 0.3
-	}
-
-	province_modifier = {
-		monthly_income = 2.5
-		stationed_maa_damage_mult = 0.4
-		stationed_maa_toughness_mult = 0.4
-		stationed_siege_weapon_siege_value_mult = 0.45
-		stationed_siege_weapon_siege_value_add = 0.15
-		building_slot_add = 2
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	type = special
-	flag = travel_point_of_interest_martial
-}
-
-###################
-# Lava Land
-###################
-
-01_lava_land = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_imam_reza_shrine.dds"
-	
-	character_modifier = {
-		monthly_prestige = 1
-	}
-
-	province_modifier = {
-		tax_mult = -1
-		levy_size = -1
-		travel_danger = 100
-		build_gold_cost = 1
-		build_piety_cost = 1
-		build_prestige_cost = 1
-		build_speed = 1
-		supply_limit_mult = -1
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-###################
-# The lee canal
-###################
-
-01_the_lee_canal = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_building_qanats.dds"
-
-	county_modifier = {
-		development_growth_factor = -0.25
-		development_growth = -0.1
-		tax_mult = -0.15
-		build_gold_cost = 0.1
-		build_speed = 0.25
-		county_opinion_add = -20
-		supply_limit_mult = -0.35
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	next_building = 02_the_lee_canal
-	type = special
-	flag = travel_point_of_interest_economic
-}
-
-02_the_lee_canal = {
-	
-	construction_time = slow_construction_time
-
-	type_icon = "icon_building_qanats.dds"
-
-	cost_gold = 3000
-	cost_prestige = 1000
-	
-	character_modifier = {
-		monthly_prestige = 1
-	}
-
-	county_modifier = {
-		development_growth_factor = 0.15
-		development_growth = 0.1
-		build_gold_cost = -0.05
-		tax_mult = 0.1
-		county_opinion_add = 10
-		supply_limit = 800
-	}
-
-	ai_value = {
-		base = 100
-	}
- 
-	type = special
-	flag = travel_point_of_interest_economic
-}
-
-###################
-# Shenewuh warrior temple
-###################
-
-01_shenewuh_warrior_temple = {
-	construction_time = very_slow_construction_time
-	type_icon = "icon_structure_fogong_temple_pagoda.dds"
-	effect_desc = building_01_shenewuh_warrior_temple_effect_desc
-
-	cost_gold = 3000
-
-	character_modifier = {
-		monthly_piety = 0.1
-		dynasty_opinion = 5
-	}
-
-	province_modifier = {
-		monthly_income = 0.5
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	next_building = 02_shenewuh_warrior_temple
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-02_shenewuh_warrior_temple = {
-	construction_time = very_slow_construction_time
-	type_icon = "icon_structure_great_mosque_of_cordoba.dds"
-	effect_desc = building_02_shenewuh_warrior_temple_effect_desc
-
-	cost_gold = 5000
-
-	character_modifier = {
-		monthly_piety_gain_mult = 0.25
-		monthly_piety = 0.35
-		dynasty_opinion = 15
-		long_reign_bonus_mult = 0.15
-		monthly_dynasty_prestige_mult = 0.05
-	}
-
-	province_modifier = {
-		monthly_income = 0.8
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	next_building = 03_shenewuh_warrior_temple
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-03_shenewuh_warrior_temple = {
-	
-	construction_time = very_slow_construction_time
-	effect_desc = building_03_shenewuh_warrior_temple_effect_desc
-
-	type_icon = "icon_structure_great_mosque_of_cordoba.dds"
-
-	cost_gold = 8000
-	cost_prestige = 2000
-
-	character_modifier = {
-		monthly_piety_gain_mult = 0.35
-		life_expectancy = 10
-		monthly_piety = 0.5
-		dynasty_opinion = 20
-		long_reign_bonus_mult = 0.2
-		monthly_dynasty_prestige_mult = 0.1
-	}
-
-	province_modifier = {
-		monthly_income = 1.5
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-###################
-# The Pirate King's Throne
-###################
-
-01_the_pirate_kings_throne = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_keszkecske_cliff.dds"
-	
-	is_enabled = {
-		scope:holder = {
-			government_has_flag = government_is_pirate
-		}
-	}
-
-	character_modifier = {
-		monthly_prestige_gain_mult = 0.1
-		hostile_county_attrition_raiding = -0.1
-		max_loot_mult = 0.2
-		raid_speed = 0.25
-		movement_speed_land_raiding = 0.1
-		pirate_government_opinion = 15
-		pirate_government_tax_contribution_mult = 0.2
-	}
-
-	ai_value = {
-		base = 100
-	}
-
-	type = special
-	flag = travel_point_of_interest_diplomatic
-}
-
-###################
-# Shangn-Yi port
-###################
-
-01_shangnyi_port = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_quanzhou_seaport.dds"
-
-	character_modifier = {
-		learning = 3
-		monthly_prestige = 0.25
-	}
-
-	province_modifier = {
-		monthly_income = 1.5
-		build_prestige_cost = -0.25
-	}
-
-	county_modifier = {
-		development_growth_factor = 0.15
-		development_growth = 0.1
-		tax_mult = 0.1
-		supply_limit_mult = 0.25
-	}
-
-	max_garrison = good_building_max_garrison_tier_2
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_2
-
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-	flag = travel_point_of_interest_economic
-}
-
-###################
-# Tadagra Lake
-###################
-
-01_tadagra_lake = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_maharloo_lake.dds"
-
-	character_modifier = {
-		monthly_prestige = 0.5
-		monthly_piety = 0.5
-	}
-
-	province_modifier = {
-		travel_danger = 100
-	}
-
-
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-	flag = travel_point_of_interest_wonder
-}
-
-###################
-# Angkaontara Ruin
-###################
-
-01_angkaontara_ruin = {
-	
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_ruins_of_ctesiphon.dds"
-
-	province_modifier = {
-		supply_limit_mult = 0.1
-	}
-
-	character_modifier = {
-		learning = 2
-		same_faith_opinion = 5
-	}
-
-
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-	flag = travel_point_of_interest_learning
-}
-
-##################
-# Kishi Mines #
-##################
-
-01_kishi_mines = { 
-
-	construction_time = slow_construction_time
-
-	type_icon = "icon_structure_mines.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-		building_requirement_castle_city_church = { LEVEL = 01 }
-		culture = {
-			has_innovation = innovation_crop_rotation
-		}
-	}
-	
-	cost_gold = expensive_building_tier_3_cost
-	
-	province_modifier = {
-		monthly_income = special_mine_building_tax_tier_1
-	}
-	county_modifier = {
-		tax_mult = 0.2
-		development_growth_factor = 0.05
-	}
-	
-	next_building = 02_kishi_mines
-	
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-
-	flag = travel_point_of_interest_economic
-}
-
-02_kishi_mines = {
-
-	construction_time = slow_construction_time
-
-	type_icon = "icon_structure_mines.dds"
-
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 02 }
-		culture = {
-			has_innovation = innovation_manorialism
-		}
-	}
-	
-	cost_gold = expensive_building_tier_4_cost
-	
-	province_modifier = {
-		monthly_income = special_mine_building_tax_tier_2
-	}
-	county_modifier = {
-		tax_mult = 0.25
-		development_growth_factor = 0.1
-	}
-	
-	next_building = 03_kishi_mines
-	
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-	flag = travel_point_of_interest_economic
-}
-
-03_kishi_mines = {
-
-	construction_time = slow_construction_time
-
-	type_icon = "icon_structure_mines.dds"
-
-	can_construct_potential = {
-		
-		building_requirement_tribal = no
-	}
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 03 }
-		culture = {
-			has_innovation = innovation_windmills
-		}
-	}
-	
-	cost_gold = expensive_building_tier_5_cost
-	
-	province_modifier = {
-		monthly_income = special_mine_building_tax_tier_3
-	}
-	county_modifier = {
-		tax_mult = 0.3
-		development_growth_factor = 0.15
-	}
-	
-	next_building = 04_kishi_mines
-	
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-	flag = travel_point_of_interest_economic
-}
-
-04_kishi_mines = {
-
-	construction_time = slow_construction_time
-
-	type_icon = "icon_structure_mines.dds"
-
-	can_construct_potential = {
-		
-		building_requirement_tribal = no
-	}
-	can_construct = {
-		building_requirement_castle_city_church = { LEVEL = 04 }
-		culture = {
-			has_innovation = innovation_cranes
-		}
-	}
-	
-	cost_gold = expensive_building_tier_6_cost
-	
-	province_modifier = {
-		monthly_income = special_mine_building_tax_tier_4
-	}
-	county_modifier = {
-		tax_mult = 0.35
-		development_growth_factor = 0.2
-	}
-	
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-	flag = travel_point_of_interest_economic
-}
-
-##############################
-# Non-existent Dawang Tarmak #
-##############################
-
-01_nonexistent_dawang_tarmak = { # Ruins destroyed by kathun-kai
-
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_shwedagon_pagoda.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 3000
-	
-	province_modifier = {
-		tax_mult = -0.5
-		development_growth_factor = -0.5
-	}
-	
-	ai_value = {
-		base = 100
-	}
-	type = special
-
-	flag = travel_point_of_interest_wonder
-}
-
-#############################
-# Imperial Capital Yuxuchen #
-#############################
-
-01_yuxuchen = { 
-
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_great_mosque_of_cordoba.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 3000
-	
-	province_modifier = {
-		tax_mult = -0.3
-		build_gold_cost = 0.15
-		build_speed = 0.25
-	}
-
-	county_modifier = {
-		development_growth_factor = 0.1
-	}
-	ai_value = {
-		base = 100
-	}
-	
-	next_building = 02_yuxuchen
-
-	type = special
-
-	flag = travel_point_of_interest_wonder
-}
-
-02_yuxuchen = { 
-
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_great_mosque_of_cordoba.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 4500
-	
-	character_modifier = {
-		monthly_piety_gain_per_knight_add = 0.1
-		knight_effectiveness_mult = 0.1
-		monthly_prestige = 0.5
-		same_culture_opinion = 5
-		same_faith_opinion = 5
-	}
-	
-	max_garrison = normal_building_max_garrison_tier_2
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_2
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_1
-		fort_level = good_building_fort_level_tier_1
-		tax_mult = -0.2
-	}
-	county_modifier = {
-		development_growth_factor = 0.2
-		supply_limit_mult = 0.15
-	}
-	
-	ai_value = {
-		base = 100
-	}
-	
-	next_building = 03_yuxuchen
-
-	type = special
-
-	flag = travel_point_of_interest_wonder
-}
-
-03_yuxuchen = { 
-
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_great_mosque_of_cordoba.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 6000
-	
-	character_modifier = {
-		monthly_piety_gain_per_knight_add = 0.1
-		diplomacy = 2
-		knight_effectiveness_mult = 0.15
-		monthly_prestige = 1
-		monthly_dynasty_prestige_mult = 0.05
-		same_culture_opinion = 10
-		same_faith_opinion = 10
-		legitimacy_gain_mult = 0.02
-	}
-	
-	max_garrison = normal_building_max_garrison_tier_3
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_3
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_2
-		fort_level = good_building_fort_level_tier_2
-		building_slot_add = 1
-	}
-	county_modifier = {
-		development_growth_factor = 0.2
-		supply_limit_mult = 0.15
-	}
-	
-	ai_value = {
-		base = 100
-	}
-	
-	next_building = 04_yuxuchen
-
-	type = special
-
-	flag = travel_point_of_interest_wonder
-}
-
-04_yuxuchen = { 
-
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_great_mosque_of_cordoba.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 7500
-	
-	character_modifier = {
-		monthly_piety_gain_per_knight_add = 0.12
-		diplomacy = 3
-		knight_effectiveness_mult = 0.15
-		long_reign_bonus_mult = 0.1
-		monthly_prestige = 1.5
-		monthly_dynasty_prestige_mult = 0.08
-		same_culture_opinion = 15
-		same_faith_opinion = 15
-		legitimacy_gain_mult = 0.05
-	}
-	
-	max_garrison = normal_building_max_garrison_tier_4
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_4
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_3
-		tax_mult = 0.2
-		fort_level = good_building_fort_level_tier_3
-		building_slot_add = 1
-	}
-	county_modifier = {
-		development_growth_factor = 0.3
-		supply_limit_mult = 0.3
-	}
-	
-	ai_value = {
-		base = 100
-	}
-	
-	next_building = 05_yuxuchen
-
-	type = special
-
-	flag = travel_point_of_interest_wonder
-}
-
-05_yuxuchen = { 
-
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_structure_great_mosque_of_cordoba.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-	}
-	
-	cost_gold = 10000
-	
-	character_modifier = {
-		monthly_piety_gain_per_knight_add = 0.15
-		diplomacy = 3
-		long_reign_bonus_mult = 0.2
-		knight_effectiveness_mult = 0.2
-		monthly_prestige = 2
-		monthly_dynasty_prestige_mult = 0.1
-		same_culture_opinion = 20
-		same_faith_opinion = 20
-		legitimacy_gain_mult = 0.1
-	}
-	
-	max_garrison = normal_building_max_garrison_tier_5
-	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_5
-
-	province_modifier = {
-		defender_holding_advantage = normal_building_advantage_tier_4
-		tax_mult = 0.25
-		fort_level = good_building_fort_level_tier_4
-		building_slot_add = 2
-	}
-	county_modifier = {
-		development_growth_factor = 0.45
-		supply_limit_mult = 0.4
-		build_gold_cost = -0.1
-	}
-	
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
-
-	flag = travel_point_of_interest_wonder
-}
-
-##########################
-# Chinlin Royal Workshop #
-##########################
-
-01_chinlin_royal_workshop = {
-	construction_time = quick_construction_time
-
-	type_icon = "icon_structure_apollinare_nuovo.dds"
-	
-	can_construct_potential = {
-		always = no 	
-	}
-	
-	can_construct = {	
-		always = no
-	}
-	
-	can_construct_showing_failures_only = {
-		always = no
-	}
-
-	is_enabled = {
-		scope:holder = {
-			OR = {
-				has_title = title:e_chinlin
-				any_liege_or_above = {
-					has_title = title:e_chinlin
-					dynasty = scope:holder.dynasty
-				}
-			}
-		}
-	}
-
-	character_modifier = {
-		army_maintenance_mult = -0.12
-		build_gold_cost = -0.2
-		build_speed = -0.15
-		artifact_decay_reduction_mult = -0.25
-	}
-
-	province_modifier = {
-		stationed_siege_weapon_siege_value_add = 0.1
-		stationed_siege_weapon_siege_value_mult = 0.25
-		building_slot_add = 1
-		tax_mult = 0.15
-	}
-	
-	ai_value = {
-		base = 0
-	}
-}
-
-################
-# Nolan Shrine #
-################
-
-01_nolan_shrine = {
-	construction_time = quick_construction_time
-
-	type_icon = "icon_structure_minaret_and_remains_of_jam.dds"
-	
-	can_construct_potential = {
-		always = no 	
-	}
-	
-	can_construct = {	
-		always = no
-	}
-	
-	can_construct_showing_failures_only = {
-		always = no
-	}
-
-	is_enabled = {
-		scope:holder = {
-			OR = {
-				has_title = title:e_chinlin
-				any_liege_or_above = {
-					has_title = title:e_chinlin
-					dynasty = scope:holder.dynasty
-				}
-			}
-		}
-	}
-
-	character_modifier = {
-		diplomacy_per_piety_level = 1
-		stewardship_per_piety_level = 1
-		diplomacy_per_piety_level = 1
-		monthly_piety_gain_mult = 0.1
-		monthly_dynasty_prestige_mult = 0.05
-		short_reign_duration_mult = -0.2
-		dynasty_opinion = 10
-	}
-
-	province_modifier = {
-		building_slot_add = 1
-	}
-	
-	ai_value = {
-		base = 0
-	}
-}
-
-#############################
-# Great Ayraal Mint of Ayar #
-#############################
-
-01_ayars_mint = {
-	construction_time = very_slow_construction_time
-	effect_desc = {
-		triggered_desc = {
-			trigger = { has_mpo_dlc_trigger = yes }
-			desc = ayraal_kingdom_effect_desc
-		}
-	}
-
-	type_icon = "ep3_hosios_loukas.dds"
-	
-	can_construct_potential = {
-		building_requirement_castle_city_church = { LEVEL = 01 }
-		building_requirement_tribal = no
-		culture = { has_cultural_parameter = ayraal_system }
-	}
-
-	can_construct_showing_failures_only = {
-		county.holder = { highest_held_title_tier >= tier_kingdom }
-	}
-
-	is_enabled = {
-		culture = { has_cultural_parameter = ayraal_system }
-	}
-	show_disabled = yes
-	
-	cost_gold = 1000
-
-	character_modifier = {
-		monthly_dynasty_prestige_mult = 0.15
-		legitimacy_gain_mult = 0.2
-		monthly_influence_mult = 0.2
-		court_grandeur_baseline_add = 10
-		diplomacy_per_influence_level = 1
-	}
-
-	county_modifier = {
-		tax_mult = 0.3
-		development_growth_factor = 0.2
-	}
-
-	next_building = 02_ayars_mint
-	
-	ai_value = {
-		base = 100
-		modifier = { # Fill all building slots before going for special buildings
-			factor = 0
-			free_building_slots > 0
-		}
-	}
-	
-	type = special
-
-	flag = travel_point_of_interest_economic
-}
-
-02_ayars_mint = {
-	construction_time = very_slow_construction_time
-	effect_desc = {
-		triggered_desc = {
-			trigger = { has_mpo_dlc_trigger = yes }
-			desc = ayraal_empire_effect_desc
-		}
-	}
-
-	type_icon = "ep3_hosios_loukas.dds"
-	
-	can_construct_potential = {
-		scope:holder.culture = {
-			has_innovation = innovation_development_03
-			has_innovation = innovation_guilds
-		}
-	}
-
-	can_construct_showing_failures_only = {
-		county.holder = { highest_held_title_tier >= tier_kingdom }
-	}
-
-	is_enabled = {
-		culture = { has_cultural_parameter = ayraal_system }
-	}
-	show_disabled = yes
-	
-	cost_gold = 3000
-
-	character_modifier = {
-		monthly_dynasty_prestige_mult = 0.3
-		vassal_opinion = 5
-		legitimacy_gain_mult = 0.4
-		monthly_influence = 2
-		monthly_influence_mult = 0.4
-		court_grandeur_baseline_add = 20
-		diplomacy_per_influence_level = 2
-	}
-
-	county_modifier = {
-		county_opinion_add = 10
-		tax_mult = 0.5
-		development_growth_factor = 0.35
-	}
-	
-	ai_value = {
-		base = 100
-		modifier = { # Fill all building slots before going for special buildings
-			factor = 0
-			free_building_slots > 0
-		}
-	}
-	
-	type = special
-
-	flag = travel_point_of_interest_economic
-}
-
-############################
-# Haytratarok Mahan Ayraal #
-############################
-
-01_otacheds_mint = {
-	construction_time = very_slow_construction_time
-	effect_desc = {
-		triggered_desc = {
-			trigger = { has_mpo_dlc_trigger = yes }
-			desc = ayraal_empire_effect_desc
-		}
-	}
-
-	type_icon = "icon_structure_damascus_mosque.dds"
-	
-	can_construct_potential = {
-		building_requirement_castle_city_church = { LEVEL = 01 }
-		building_requirement_tribal = no
-		culture = { has_cultural_parameter = ayraal_system }
-	}
-
-	can_construct_showing_failures_only = {
-		county.holder = { highest_held_title_tier >= tier_kingdom }
-	}
-
-	is_enabled = {
-		culture = { has_cultural_parameter = ayraal_system }
-	}
-	show_disabled = yes
-	
-	cost_gold = 2500
-
-	character_modifier = {
-		domain_limit = 1
-		legitimacy_gain_mult = 0.3
-		vassal_tax_contribution_mult = 0.15
-		vassal_levy_contribution_mult = 0.15
-		monthly_prestige_gain_per_happy_powerful_vassal_mult = 0.05
-	}
-
-	county_modifier = {
-		monthly_county_control_growth_factor = 0.5
-		development_growth_factor = 0.25
-	}
-
-	next_building = 02_otacheds_mint
-	
-	ai_value = {
-		base = 100
-		modifier = { # Fill all building slots before going for special buildings
-			factor = 0
-			free_building_slots > 0
-		}
-	}
-	
-	type = special
-
-	flag = travel_point_of_interest_economic
-}
-
-02_otacheds_mint = {
-	construction_time = very_slow_construction_time
-	effect_desc = {
-		triggered_desc = {
-			trigger = { has_mpo_dlc_trigger = yes }
-			desc = ayraal_empire_effect_desc
-		}
-	}
-
-	type_icon = "icon_structure_damascus_mosque.dds"
-	
-	can_construct_potential = {
-		scope:holder.culture = {
-			has_innovation = innovation_development_03
-			has_innovation = innovation_guilds
-		}
-	}
-
-	can_construct_showing_failures_only = {
-		county.holder = { highest_held_title_tier >= tier_empire }
-	}
-
-	is_enabled = {
-		culture = { has_cultural_parameter = ayraal_system }
-	}
-	show_disabled = yes
-	
-	cost_gold = 5000
-
-	character_modifier = {
-		domain_limit = 2
-		legitimacy_gain_mult = 0.6
-		vassal_tax_contribution_mult = 0.3
-		vassal_levy_contribution_mult = 0.3
-		vassal_opinion = 5
-		domain_tax_mult = 0.15
-		monthly_prestige_gain_per_happy_powerful_vassal_mult = 0.1
-	}
-
-	county_modifier = {
-		monthly_county_control_growth_factor = 1
-		development_growth_factor = 0.5
-		development_growth = 0.6
-	}
-	
-	ai_value = {
-		base = 100
-		modifier = { # Fill all building slots before going for special buildings
-			factor = 0
-			free_building_slots > 0
-		}
-	}
-	
-	type = special
-
-	flag = travel_point_of_interest_economic
 }

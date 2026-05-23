@@ -34,32 +34,7 @@ fund_inspiration_effect = {
 	scope:actor = {
 		sponsor_inspiration = scope:recipient.inspiration
 	}
-	if = {
-		limit = {
-			scope:actor = {
-				is_ai = no
-			}
-			NOT = {
-				exists = global_var:ep1_07_achievement_inspiration_count_tracker
-			}
-		}
-		set_global_variable = {
-			name = ep1_07_achievement_inspiration_count_tracker
-			value = 1
-		}
-	}
-	else_if = {
-		limit = {
-			scope:actor = {
-				is_ai = no
-			}
-			exists = global_var:ep1_07_achievement_inspiration_count_tracker
-		}
-		change_global_variable = {
-			name = ep1_07_achievement_inspiration_count_tracker
-			add = 1
-		}
-	}
+	# GH CHANGE: Removed vanilla achievement stuff
 }
 
 grant_inspiration_reward_effect = {
@@ -1496,16 +1471,18 @@ inspiration_adventure_create_artifact_effect = {
 					trigger = {
 						trigger_if = {
 							limit = {
-								exists = var:adventure_type
+								AND = {
+									exists = var:adventure_type
+									scope:inspiration_owner = {
+										location = { geographical_region = world_greater_aversaria }
+									}
+								}
+								OR = {
+									var:adventure_type = flag:trinket
+									var:adventure_type = flag:epic_quest
+									var:adventure_type = flag:free_reign
+								}
 							}
-							OR = {
-								var:adventure_type = flag:trinket
-								var:adventure_type = flag:epic_quest
-								var:adventure_type = flag:free_reign
-							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
 						}
 					}
 					scope:owner = {
@@ -1533,21 +1510,23 @@ inspiration_adventure_create_artifact_effect = {
 					trigger = {
 						trigger_if = {
 							limit = {
-								exists = var:adventure_type
-							}
-							OR = {
-								var:adventure_type = flag:trinket
-								var:adventure_type = flag:epic_quest
-								var:adventure_type = flag:free_reign
-							}
-						}
-						scope:inspiration_owner = {
-							location = {
+								AND = {
+									exists = var:adventure_type
+									scope:inspiration_owner = {
+										location = {
+											OR = {
+												culture_has_porcelain_pottery_trigger = yes
+												geographical_region = world_greater_aversaria	# Even if Aversarian cultures dies out, there should still be the odd old pottery floating around
+												geographical_region = world_ga_kashirya		# Kashirya does not have a particularly noteworthy pottery tradition; however, it's a place where Kathuni porcelain often ends up via trade
+												geographical_region = GH_geographic_dahangon # Same goes for Dahangon
+											}
+										}
+									}
+								}
 								OR = {
-									culture_has_porcelain_pottery_trigger = yes
-									geographical_region = world_greater_aversaria	# Even if Aversarian cultures dies out, there should still be the odd old pottery floating around
-									geographical_region = world_ga_kashirya		# Kashirya does not have a particularly noteworthy pottery tradition; however, it's a place where Kathuni porcelain often ends up via trade
-									geographical_region = GH_geographic_dahangon # Same goes for Dahangon
+									var:adventure_type = flag:trinket
+									var:adventure_type = flag:epic_quest
+									var:adventure_type = flag:free_reign
 								}
 							}
 						}
@@ -1609,19 +1588,21 @@ inspiration_adventure_create_artifact_effect = {
 					trigger = {
 						trigger_if = {
 							limit = {
-								exists = var:adventure_type
-							}
-							OR = {
-								var:adventure_type = flag:trinket
-								var:adventure_type = flag:epic_quest
-								var:adventure_type = flag:free_reign
-							}
-						}
-						scope:inspiration_owner = {
-							location = {
+								AND = {
+									exists = var:adventure_type
+									scope:inspiration_owner = {
+										location = {
+											OR = {
+												has_sarradonian_heritage_pillar_trigger = yes	# Sarradon is famed for its glassware
+												geographical_region = world_sarradon
+											}
+										}
+									}
+								}
 								OR = {
-									has_sarradonian_heritage_pillar_trigger = yes	# Sarradon is famed for its glassware
-									geographical_region = world_sarradon
+									var:adventure_type = flag:trinket
+									var:adventure_type = flag:epic_quest
+									var:adventure_type = flag:free_reign
 								}
 							}
 						}
@@ -1664,15 +1645,17 @@ inspiration_adventure_create_artifact_effect = {
 					trigger = {
 						trigger_if = {
 							limit = {
-								exists = var:adventure_type
+								AND = {
+									exists = var:adventure_type
+									scope:inspiration_owner = {
+										location = { geographical_region = world_sarradon }
+									}
+								}
+								OR = {
+									var:adventure_type = flag:trinket
+									var:adventure_type = flag:free_reign
+								}
 							}
-							OR = {
-								var:adventure_type = flag:trinket
-								var:adventure_type = flag:free_reign
-							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_sarradon }
 						}
 					}
 					scope:owner = {
@@ -1700,16 +1683,18 @@ inspiration_adventure_create_artifact_effect = {
 					trigger = {
 						trigger_if = {
 							limit = {
-								exists = var:adventure_type
+								AND = {
+									exists = var:adventure_type
+									scope:inspiration_owner = {
+										location = { geographical_region = world_greater_aversaria }
+									}
+								}
+								OR = {
+									var:adventure_type = flag:trinket
+									var:adventure_type = flag:epic_quest
+									var:adventure_type = flag:free_reign
+								}
 							}
-							OR = {
-								var:adventure_type = flag:trinket
-								var:adventure_type = flag:epic_quest
-								var:adventure_type = flag:free_reign
-							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
 						}
 					}
 					scope:owner = {
@@ -1737,15 +1722,17 @@ inspiration_adventure_create_artifact_effect = {
 					trigger = {
 						trigger_if = {
 							limit = {
-								exists = var:adventure_type
+								AND = {
+									exists = var:adventure_type
+									scope:inspiration_owner = {
+										location = { geographical_region = world_ga_marcher_kingdoms }
+									}
+								}
+								OR = {
+									var:adventure_type = flag:trinket
+									var:adventure_type = flag:free_reign
+								}
 							}
-							OR = {
-								var:adventure_type = flag:trinket
-								var:adventure_type = flag:free_reign
-							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_ga_marcher_kingdoms }
 						}
 					}
 					scope:owner = {
@@ -1810,9 +1797,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = chevalie_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = chevalie_biozone }
+							}
 						}
 					}
 					scope:owner = { 
@@ -1850,9 +1837,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_sarradon }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_sarradon }
+							}
 						}
 					}
 					scope:owner = { 
@@ -1890,9 +1877,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = chevalie_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = chevalie_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -1929,9 +1916,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = chevalie_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = chevalie_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -1968,9 +1955,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = foglands_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = foglands_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -2010,9 +1997,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2053,9 +2040,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2096,9 +2083,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2139,9 +2126,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2182,9 +2169,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2212,7 +2199,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6251.1.1
+							current_date > 1251.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = gh_helmet_black_sun
@@ -2225,9 +2212,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2254,7 +2241,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6251.1.1
+							current_date > 1251.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = gh_armor_black_sun
@@ -2267,9 +2254,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2296,7 +2283,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = gh_helmet_skull_helmet
@@ -2309,9 +2296,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2338,7 +2325,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = skull_axiaothea
@@ -2351,9 +2338,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2380,7 +2367,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = skullofpridni
@@ -2393,9 +2380,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2422,7 +2409,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = skullofduvaken
@@ -2435,9 +2422,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2464,7 +2451,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = skull_delenel
@@ -2477,9 +2464,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2506,7 +2493,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = spear_thaxaon
@@ -2519,9 +2506,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2548,7 +2535,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = glass_sword
@@ -2561,9 +2548,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2590,7 +2577,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = bane_star_ring
@@ -2603,9 +2590,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2632,7 +2619,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = acolytes_confidant
@@ -2645,9 +2632,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2674,7 +2661,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = sun_piercer
@@ -2687,9 +2674,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -2716,7 +2703,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = adekaday
@@ -2729,9 +2716,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = GH_geographic_dahangon }
+							scope:inspiration_owner = {
+								location = { geographical_region = GH_geographic_dahangon }
+							}
 						}
 					}
 					scope:owner = {
@@ -2758,7 +2745,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = kenaranek
@@ -2771,9 +2758,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = GH_geographic_dahangon }
+							scope:inspiration_owner = {
+								location = { geographical_region = GH_geographic_dahangon }
+							}
 						}
 					}
 					scope:owner = {
@@ -2800,7 +2787,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = kedatals_talon
@@ -2813,9 +2800,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = GH_geographic_dahangon }
+							scope:inspiration_owner = {
+								location = { geographical_region = GH_geographic_dahangon }
+							}
 						}
 					}
 					scope:owner = {
@@ -2842,7 +2829,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = myrnish_map
@@ -2855,9 +2842,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_ga_aversarian_homelands }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_ga_aversarian_homelands }
+							}
 						}
 					}
 					scope:owner = {
@@ -2884,7 +2871,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = wave_breaker
@@ -2897,9 +2884,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = GH_geographic_dahangon }
+							scope:inspiration_owner = {
+								location = { geographical_region = GH_geographic_dahangon }
+							}
 						}
 					}
 					scope:owner = {
@@ -2926,7 +2913,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = thunderhoofs_roar
@@ -2939,9 +2926,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = GH_geographic_dahangon }
+							scope:inspiration_owner = {
+								location = { geographical_region = GH_geographic_dahangon }
+							}
 						}
 					}
 					scope:owner = {
@@ -2968,7 +2955,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = fireclaw
@@ -2981,9 +2968,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = GH_geographic_dahangon }
+							scope:inspiration_owner = {
+								location = { geographical_region = GH_geographic_dahangon }
+							}
 						}
 					}
 					scope:owner = {
@@ -3010,7 +2997,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = atracorde
@@ -3023,9 +3010,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -3052,7 +3039,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = jajak_mask
@@ -3065,9 +3052,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -3094,7 +3081,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = dagun_mask
@@ -3107,9 +3094,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -3136,7 +3123,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = {
 						AND = { # Elysian Pass
-							current_date > 6252.2.3
+							current_date > 1252.2.3
 							NOT = { any_artifact = { has_variable = skymothers_tear } }
 						}
 						trigger_if = {
@@ -3145,9 +3132,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -3174,7 +3161,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = { # Looted during Cenware's raid on Mayik
-							current_date > 6244.1.1
+							current_date > 1244.1.1
 							NOT = { any_artifact = { has_variable = consopite_effigy } }
 						}
 						trigger_if = {
@@ -3183,9 +3170,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -3212,7 +3199,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = { # Looted during Cenware's raid on Mayik
-							current_date > 6244.1.1
+							current_date > 1244.1.1
 							NOT = { any_artifact = { has_variable = achromatic_mirror } }
 						}
 						trigger_if = {
@@ -3221,9 +3208,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -3249,16 +3236,16 @@ inspiration_adventure_create_artifact_effect = {
 						add = -5
 					}
 					trigger = { 
-						current_date > 5600.1.1
+						current_date > 600.1.1
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							OR = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -3285,7 +3272,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6231.4.6
+							current_date > 1231.4.6
 							NOT = {
 								any_artifact = {
 									has_variable = talavara
@@ -3298,9 +3285,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_ga_kashirya }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_ga_kashirya }
+							}
 						}
 					}
 					scope:owner = {
@@ -3340,9 +3327,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = chevalie_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = chevalie_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3382,9 +3369,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = chevalie_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = chevalie_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3424,9 +3411,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = chevalie_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = chevalie_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3466,9 +3453,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = chevalie_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = chevalie_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3495,7 +3482,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6253.1.1
+							current_date > 1253.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = necklace_of_the_baarilka
@@ -3508,9 +3495,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = damota_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = damota_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3537,7 +3524,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6253.1.1
+							current_date > 1253.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = belar_seal
@@ -3550,9 +3537,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = damota_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = damota_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3584,9 +3571,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = lichdoms_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = lichdoms_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3618,9 +3605,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = malcois_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = malcois_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3647,7 +3634,7 @@ inspiration_adventure_create_artifact_effect = {
 					}
 					trigger = { 
 						AND = {
-							current_date > 6245.1.1
+							current_date > 1245.1.1
 							NOT = {
 								any_artifact = {
 									has_variable = staff_of_the_high_seer
@@ -3657,9 +3644,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:staff_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -3686,13 +3673,13 @@ inspiration_adventure_create_artifact_effect = {
 						add = -5
 					}
 					trigger = { 
-						current_date > 5642.1.31
+						current_date > 642.1.31
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					random_list = {
@@ -3728,9 +3715,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3754,9 +3741,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3780,9 +3767,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3806,9 +3793,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3827,9 +3814,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3848,9 +3835,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3884,9 +3871,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3920,9 +3907,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3946,9 +3933,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3972,9 +3959,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -3998,9 +3985,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -4024,9 +4011,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -4050,9 +4037,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -4076,9 +4063,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -4101,17 +4088,17 @@ inspiration_adventure_create_artifact_effect = {
 						}
 						trigger_if = {
 							limit = { exists = var:adventure_type }
-							OR = {
-								var:adventure_type = flag:epic_quest
-								var:adventure_type = flag:magic_lore_quest
+							var:adventure_type = flag:epic_quest
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
 						}
 					}
 					scope:owner = {
-						create_greyfen_codex_book_artifact_effect = yes
+						create_artifact_greyfen_codex_book_effect = {
+							OWNER = scope:owner 
+							#LOCATION = scope:inspiration_owner.location
+						}
 					}
 					save_scope_value_as = { #We save the type here for tooltips in fund_inspiration.1051
 						name = epic
@@ -4138,9 +4125,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = kalathipsomi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -4173,13 +4160,10 @@ inspiration_adventure_create_artifact_effect = {
 						}
 						trigger_if = {
 							limit = { exists = var:adventure_type }
-							OR = {
-								var:adventure_type = flag:epic_quest
-								var:adventure_type = flag:staff_quest
+							var:adventure_type = flag:staff_quest
+							scope:inspiration_owner = {
+								location = { geographical_region = kharadamat_biozone }
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = kharadamat_biozone }
 						}
 					}
 					scope:owner = {
@@ -4212,13 +4196,10 @@ inspiration_adventure_create_artifact_effect = {
 						}
 						trigger_if = {
 							limit = { exists = var:adventure_type }
-							OR = {
-								var:adventure_type = flag:epic_quest
-								var:adventure_type = flag:staff_quest
+							var:adventure_type = flag:staff_quest
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
 						}
 					}
 					scope:owner = {
@@ -4251,13 +4232,10 @@ inspiration_adventure_create_artifact_effect = {
 						}
 						trigger_if = {
 							limit = { exists = var:adventure_type }
-							OR = {
-								var:adventure_type = flag:epic_quest
-								var:adventure_type = flag:staff_quest
+							var:adventure_type = flag:staff_quest
+							scope:inspiration_owner = {
+								location = { geographical_region = world_sarradon }
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_sarradon }
 						}
 					}
 					scope:owner = {
@@ -4295,9 +4273,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -4334,9 +4312,9 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -4370,9 +4348,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = lichdoms_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = lichdoms_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -4409,12 +4387,12 @@ inspiration_adventure_create_artifact_effect = {
 								var:adventure_type = flag:epic_quest
 								var:adventure_type = flag:free_reign
 							}
-						}
-						scope:inspiration_owner = {
-							OR = {
-								location = { geographical_region = chevalie_biozone }
-								location = { geographical_region = lichdoms_biozone }
-								location = { geographical_region = kalathipsomi_biozone }
+							scope:inspiration_owner = {
+								OR = {
+									location = { geographical_region = chevalie_biozone }
+									location = { geographical_region = lichdoms_biozone }
+									location = { geographical_region = kalathipsomi_biozone }
+								}
 							}
 						}
 					}
@@ -4444,14 +4422,14 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							OR = {
-								location = { geographical_region = chevalie_biozone }
-								location = { geographical_region = world_eastern_sarradon }
-								location = { geographical_region = world_es_hajjan_mountains }
-								location = { geographical_region = world_cs_usfeh }
-								location = { geographical_region = world_cs_udhaliyya }
+							scope:inspiration_owner = {
+								OR = {
+									location = { geographical_region = chevalie_biozone }
+									location = { geographical_region = world_eastern_sarradon }
+									location = { geographical_region = world_es_hajjan_mountains }
+									location = { geographical_region = world_cs_usfeh }
+									location = { geographical_region = world_cs_udhaliyya }
+								}
 							}
 						}
 					}
@@ -4486,9 +4464,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -4522,9 +4500,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -4554,9 +4532,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -4585,9 +4563,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -4616,9 +4594,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_greater_aversaria }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_greater_aversaria }
+							}
 						}
 					}
 					scope:owner = {
@@ -4653,9 +4631,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = world_sarradon }
+							scope:inspiration_owner = {
+								location = { geographical_region = world_sarradon }
+							}
 						}
 					}
 					scope:owner = {
@@ -4684,9 +4662,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = foglands_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = foglands_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -4715,9 +4693,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = foglands_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = foglands_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -4746,9 +4724,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = foglands_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = foglands_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -4778,9 +4756,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = foglands_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = foglands_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -4810,9 +4788,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = foglands_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = foglands_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -4846,9 +4824,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = western_aironoi_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = western_aironoi_biozone }
+							}
 						}
 					}
 					scope:owner = {
@@ -4876,9 +4854,9 @@ inspiration_adventure_create_artifact_effect = {
 						trigger_if = {
 							limit = { exists = var:adventure_type }
 							var:adventure_type = flag:epic_quest
-						}
-						scope:inspiration_owner = {
-							location = { geographical_region = foglands_biozone }
+							scope:inspiration_owner = {
+								location = { geographical_region = foglands_biozone }
+							}
 						}
 					}
 					scope:owner = {

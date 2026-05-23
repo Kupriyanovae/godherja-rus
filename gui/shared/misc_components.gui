@@ -298,8 +298,7 @@ types Miscelaneous
 
 		hbox = {
 			margin = { 10 0 }
-			layoutpolicy_horizontal = expanding
-
+			ignoreinvisible = yes
 			spacing = 5
 
 			button_expand_fold_out = {
@@ -310,78 +309,14 @@ types Miscelaneous
 				layoutpolicy_horizontal = expanding
 				align = nobaseline
 				alwaystransparent = yes
-				autoresize = no
-
 
 				block "text" {}
 			}
 		}
 	}
 
-	type button_expandable_toggle_field_silk_road = button_tertiary {
-		layoutpolicy_horizontal = expanding
-
-
-		block "onclick"
-		{
-			onclick = "[PdxGuiFoldOut.Toggle]"
-		}
-
-		hbox = {
-			layoutpolicy_horizontal = expanding
-			ignoreinvisible = yes
-
-			margin = { 15 0 }
-			spacing = 5
-
-			button_expand_fold_out = {
-				block "foldout_button" {}
-			}
-
-			vbox = {
-				layoutpolicy_vertical = expanding
-
-				expand = {}
-
-				icon = {
-					texture = "gfx/interface/icons/travel/icon_travel_silk_road_marketplace.dds"
-					size = { 65 65 }
-					scale = 0.9
-				}
-			}
-
-			vbox = {
-				layoutpolicy_horizontal = expanding
-				text_single = {
-					layoutpolicy_horizontal = expanding
-					text = "[Building.GetName]"
-					align = nobaseline
-					autoresize = no
-				}
-
-				text_single = {
-					layoutpolicy_horizontal = expanding
-					align = nobaseline
-					alwaystransparent = yes
-					autoresize = no
-
-					block "text" {}
-				}
-			}
-
-			text_multi = {
-				datacontext = "[SituationSubRegion.GetCurrentPhase]"
-				text = "CURRENT_PHASE_IN_SUBREGION_HEADER"
-				align = right|nobaseline
-				size = { 180 42 }
-			}
-		}
-	}
-
 	type hbox_tab_buttons = hbox
 	{
-		visible = "[GreaterThan_int32( GetDataModelSize( PdxGuiTabs.GetTabItems ), '(int32)1' )]"
-
 		layoutpolicy_horizontal = expanding
 
 		datamodel = "[PdxGuiTabs.GetTabItems]"
@@ -393,19 +328,13 @@ types Miscelaneous
 				block "tab_name"
 				{
 					raw_text = "#D [PdxGuiTabItem.GetKey]#!"
-					default_format = "#clickable"
 				}
-
 				block "on_click"
 				{
 				}
 
 				onclick = "[PdxGuiTabs.SetTab( PdxGuiTabItem.Self )]"
-
-				block "down"
-				{
-					down = "[PdxGuiTabs.IsTabItemSet( PdxGuiTabItem.Self )]"
-				}
+				down = "[PdxGuiTabs.IsTabItemSet( PdxGuiTabItem.Self )]"
 			}
 		}
 	}
@@ -508,30 +437,71 @@ types Miscelaneous
 			}
 		}
 	}
+
+	type placeholder_art = debug_square {
+		margin_widget = {
+			size = { 100% 100% }
+			margin = { 4 4 }
+
+			icon = {
+				size = { 100% 100% }
+				texture = "gfx/interface/_debug/placeholder.dds"
+				spriteType = Corneredtiled
+				color = { 0.7 0.7 0.7 1 }
+			}
+		}
+	}
+
+	type placeholder_art_button = button_normal {
+		size = { 150 150 }
+		texture = "gfx/interface/_debug/placeholder.dds"
+		spriteType = Corneredtiled
+		color = { 0.7 0.7 0.7 1 }
+
+		margin_widget = {
+			size = { 100% 100% }
+			margin = { 5 5 }
+
+			debug_square = {
+				size = { 100% 100% }
+			}
+		}
+	}
+
+	type debug_square = icon {
+		size = { 150 150 }
+		texture = "gfx/interface/_debug/pink_square_chill.png"
+		spriteType = Corneredtiled
+		spriteborder = { 2 2 }
+	}
+
+	type debug_placeholder = icon {
+		size = { 50 50 }
+		texture = "gfx/interface/_debug/placeholder_02.png"
+		spriteType = Corneredstretched
+		spriteborder = { 2 2 }
+	}
+
+	type debug_button = button_icon {
+		size = { 150 150 }
+		texture = "gfx/interface/_debug/pink_square_chill.png"
+		spriteType = Corneredtiled
+		spriteborder = { 2 2 }
+	}
+}
+
+template debug_square
+{
+	background = {
+		texture = "gfx/interface/_debug/pink_square_chill.png"
+		spriteType = Corneredtiled
+		spriteborder = { 1 1 }
+		alpha = 0.5
+	}
 }
 
 template Create_Resetting_Fold_Out
 {
 	oncreate = "[BindFoldOutContext]"
 	oncreate = "[PdxGuiFoldOut.SetShownBehavior( 'unfolded' )]"
-}
-
-template VisibleArmyComposition
-{
-	icon = {
-		name = "icon_soldier"
-		texture = "gfx/interface/icons/icon_soldier.dds"
-		size = { 23 23 }
-	}
-
-	text_single = {
-		text = "[ArmyComposition.GetSoldierCountString]"
-		align = nobaseline
-	}
-
-	army_quality_icon = {
-		tooltip_visible = no
-	}
-
-	tooltip = "[ArmyComposition.GetArmyCompositionTooltip]"
 }

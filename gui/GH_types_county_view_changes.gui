@@ -140,7 +140,6 @@ types gh_county_view_changes
 		visible = "[Or(Holding.GetHolder.HasTrait(GetTrait('gh_wasteland').Self), HoldingView.GetProvince.GetCounty.GetTitle.MakeScope.Var('colonization_story').IsSet)]"
 		hbox = {
 			layoutpolicy_horizontal = expanding
-			visible = "[GetPlayer.IsValid]"
 			tooltip = "COUNTY_HABITABILITY_TOOLTIP"
 			datacontext = "[HoldingView.GetProvince.GetCountyCapitalProvince.GetHolding]"
 
@@ -158,23 +157,6 @@ types gh_county_view_changes
 					margin = { 5 0 }
 					using = Status_Bad
 				}
-			}
-		}
-
-		hbox = {
-			layoutpolicy_horizontal = expanding
-			visible = "[Not(GetPlayer.IsValid)]"
-			tooltip = "COUNTY_HABITABILITY_TOOLTIP_OBSERVER"
-			datacontext = "[HoldingView.GetProvince.GetCountyCapitalProvince.GetHolding]"
-
-			text_single = {
-				layoutpolicy_horizontal = expanding
-				raw_text = "[habitability|E]:"
-			}
-
-			text_single = {
-				raw_text = "[Concept('habitability','@habitability_icon!')] [HoldingView.GetCountyTitle.MakeScope.ScriptValue('county_habitability_value')|0]"
-				default_format = "#high"
 			}
 		}
 
@@ -238,7 +220,7 @@ types gh_county_view_changes
 					}
 
 					background = {
-						visible = "[EqualTo_CFixedPoint( Culture.GetAcceptance( GetPlayer.GetCulture ), '(CFixedPoint)0')]"
+						visible = "[EqualTo_CFixedPoint( Culture.GetAcceptance( GetPlayer.GetCulture ), '(CFixedPoint)0') ) ]"
 						margin = { 5 0 }
 						using = Status_Bad
 					}
@@ -378,7 +360,7 @@ types gh_county_view_changes
 							datacontext = "[GetScriptedGui('settle_ruin_pick_holding_scripted_gui')]"
 							datacontext = "[HoldingTypeItem.GetProvince]"
 							enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(Province.GetCounty.GetTitle.MakeScope).AddScope('holding_type_scope', MakeScopeFlag(HoldingTypeItem.GetHoldingType.GetKey)).AddScope('actor', GetPlayer.MakeScope).End)]"
-							onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Province.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('holding_type_scope', MakeScopeFlag(HoldingTypeItem.GetHoldingType.GetKey)).End)]"
+							onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Province.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('holding_type_scope', MakeScopeFlag(HoldingTypeItem.GetHoldingType.GetKey)).End)]]"
 							tooltip = "SETTLE_RUIN_HOLDING_TOOLTIP"
 	
 							widget = {
@@ -580,7 +562,7 @@ types gh_county_view_changes
 		datacontext = "[HoldingView.GetTitle]"
 		datacontext = "[HoldingView.GetHolder]"
 		datacontext = "[GetScriptedGui('county_culture_uses_caste_system')]"
-		visible = "[And(And(Character.IsLocalPlayer, ScriptedGui.IsShown(GuiScope.SetRoot(HoldingView.GetCountyTitle.MakeScope).End)), Not(HoldingView.GetProvince.GetCounty.GetTitle.MakeScope.Var('colonization_story').IsSet))]"
+		visible = "[And(And(Character.IsLocalPlayer, ScriptedGui.IsShown(GuiScope.SetRoot(HoldingView.GetCountyTitle.MakeScope).End)), Not(HoldingView.GetProvince.GetCounty.GetTitle.MakeScope.Var('colonization_story').IsSet)))]"
 		enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(HoldingView.GetCountyTitle.MakeScope).End)]"
 		#tooltip = "[Character.GetPlayerInteractionWithTargetTitleTooltip('feudalize_holding_interaction', Title.Self)]"
 		oversound = "event:/SFX/UI/Generic/sfx_ui_generic_pointer_over"
@@ -682,6 +664,8 @@ types gh_county_view_changes
 	{
 		name = "construct_holding_ruin"
 		visible = "[And(And(Or(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'ruin_holding'), EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'ruined_district_holding')), Not(HoldingView.GetHolder.HasTrait(GetTrait('gh_wasteland').Self))), Not(HoldingView.GetProvince.GetCounty.GetTitle.MakeScope.Var('colonization_story').IsSet))]"
+		parentanchor = bottom|hcenter
+		position = { 0 -10 }
 		size = { 300 50 }
 		datacontext = "[HoldingView.GetGUIHoldingBuilding]"
 		datacontext = "[HoldingView.GetProvince]"
@@ -698,6 +682,8 @@ types gh_county_view_changes
 	type colonize_holding_button = button_standard_big
 	{
 		name = "colonize_holding"
+		parentanchor = bottom|hcenter
+		position = { 0 -10 }
 		size = { 300 50 }
 		text = "COLONIZE_BUTTON_TEXT"
 		datacontext = "[HoldingView.GetCountyTitle]"
@@ -714,6 +700,7 @@ types gh_county_view_changes
 	{
 		name = "colonizing_county"
 		visible = "[HoldingView.GetProvince.GetCounty.GetTitle.MakeScope.Var('colonization_story').IsSet]"
+		parentanchor = center
 		spacing = 5
 		expand = {}
 

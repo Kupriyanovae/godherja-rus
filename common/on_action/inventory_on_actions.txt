@@ -12,22 +12,6 @@ on_artifact_changed_owner = {
 	effect = {
 		save_scope_as = artifact
 		grant_banner_house_claim_effect = yes
-		if = { ## GH ADDITION: AI destroy skulls of their house members
-			limit = {
-				has_variable = artifact_skull
-				var:skull_donor.house ?= scope:owner.house
-				scope:owner = {
-					is_ai = yes
-					culture = { has_cultural_parameter = destroying_skulls_is_pious }
-				}
-			}
-			destroy_artifact_aniconist_effect = {
-				ARTIFACT = this
-				DESTROYER = scope:owner
-				GIVE_GOLD = yes
-				PIETY_BY_DEFAULT = no
-			}
-		}
 		every_artifact_claimant = { #This on_action is not triggered on succession for the ones getting the claim, so we force it here
 			trigger_event = {
 				on_action = on_artifact_claim_gained
@@ -95,7 +79,7 @@ on_artifact_claim_lost = {
 	effect = {
 		if = {
 			limit = {
-				scope:owner != root
+				NOT = { scope:owner = root }
 			}
 			send_interface_message = {
 				type = msg_artifact_claim_lost

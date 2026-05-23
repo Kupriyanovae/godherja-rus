@@ -1,22 +1,24 @@
-﻿GetRegionalArcherMAA = {
+﻿#GH TODO: GHify this
+
+GetRegionalArcherMAA = {
 	type = character
 	
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_archers_of_the_nile } }
-		localization_key = archers_of_the_nile
-	}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_bush_hunter } }
-		localization_key = bush_hunter
-	}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_metsanvartija } }
-		localization_key = metsanvartija
-	}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_longbowmen } }
-		localization_key = longbowmen
-	}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_archers_of_the_nile } }
+	#	localization_key = archers_of_the_nile
+	#}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_bush_hunter } }
+	#	localization_key = bush_hunter
+	#}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_metsanvartija } }
+	#	localization_key = metsanvartija
+	#}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_longbowmen } }
+	#	localization_key = longbowmen
+	#}
 	#text = {
 	#	trigger = { culture = { has_innovation = innovation_repeating_crossbow } } #Chu-ko-nu Archers
 	#	localization_key = chu_ko_nu
@@ -25,48 +27,6 @@
 	#	trigger = { culture = { has_innovation = innovation_bamboo_bows } } #Paiks
 	#	localization_key = paiks
 	#}
-
-	## GH ADDITIONS
-
-	text = { # The Bloodied
-		trigger = { culture = { has_innovation = innovation_the_bloodied } }
-		localization_key = the_bloodied
-	}
-	text = { # Watchers of the Sacred Grove
-		trigger = { culture = { has_innovation = innovation_grove_guardians } }
-		localization_key = grove_guardians
-	}
-	text = { # Jerniem's Rangers
-		trigger = { culture = { has_innovation = innovation_jerniems_rangers } }
-		localization_key = jerniems_rangers
-	}
-	text = { # Automatic Crossbowmen
-		trigger = { culture = { has_innovation = innovation_adabyss } }
-		localization_key = autocrossbowmen
-	}
-	text = { # Observants
-		trigger = { culture = { has_innovation = innovation_observant } }
-		localization_key = observant
-	}
-	text = { # Mezilachitnen
-		trigger = { culture = { has_cultural_parameter = unlock_maa_mezilachitnen } }
-		localization_key = mezilachitnen
-	}
-	text = { # Rayakuux Archers
-		trigger = { culture = { has_innovation = innovation_rayakuux_archers } }
-		localization_key = rayakuux_archers
-	}
-	text = { # Rayakuux Corps
-		trigger = { culture = { has_innovation = innovation_advanced_rayakuux } }
-		localization_key = advanced_rayakuux
-	}
-	#text = { # Bolt Troopers
-	#	trigger = { culture = { has_innovation = innovation_burstbolt } }
-	#	localization_key = bolt_trooper
-	#}
-
-	## END OF GH ADDITIONS
-
 	text = {
 		trigger = { always = no }
 		fallback = yes
@@ -78,18 +38,18 @@ GetRegionalInfantryMAA = {
 	type = character
 	random_valid = yes
 	
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_ayyar } }
-		localization_key = ayyar
-	}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_ayyar } }
+	#	localization_key = ayyar
+	#}
 	#text = {
 	#	trigger = { culture = { has_cultural_parameter = unlock_maa_mubarizun } }
 	#	localization_key = mubarizun
 	#}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_druzhina } }
-		localization_key = druzhina
-	}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_druzhina } }
+	#	localization_key = druzhina
+	#}
 	#text = {
 	#	trigger = { culture = { has_cultural_parameter = unlock_maa_khandayat } }
 	#	localization_key = khandayat
@@ -102,10 +62,10 @@ GetRegionalInfantryMAA = {
 	#	trigger = { culture = { has_cultural_parameter = unlock_maa_palace_guards } }
 	#	localization_key = palace_guards
 	#}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_huscarls } }
-		localization_key = huscarl
-	}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_huscarls } }
+	#	localization_key = huscarl
+	#}
 	#text = {
 	#	trigger = { culture = { has_cultural_parameter = unlock_maa_mountaineer } }
 	#	localization_key = mountaineer
@@ -135,153 +95,28 @@ GetRegionalInfantryMAA = {
 	#	localization_key = landsknecht
 	#}
 	text = {
+		trigger = { culture = { has_cultural_parameter = legon_titles_enabled } } # GH TODO: Better trigger for this
+		localization_key = legionnaire
+	}
+	text = {
 		trigger = { always = no }
 		fallback = yes
 		localization_key = infantry
 	}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_skoutatoi } }
-		localization_key = skoutatoi
-	}
-
-	## GH ADDITIONS
-
-	text = { # Adventurers
-		trigger = { culture = { has_innovation = innovation_sjalvolki_adventurers } }
-		localization_key = adventurers_maa
-	}
-	text = { # Aversarian Legionaires
-		trigger = { culture = { has_innovation = innovation_aversarian_legionaires } }
-		localization_key = aversarian_legionaires
-	}
-	text = { # Home Legions
-		trigger = { culture = { has_innovation = innovation_home_legions } }
-		localization_key = home_legions
-	}
-	text = { # Shields of the North
-		trigger = { culture = { has_innovation = innovation_north_shields } }
-		localization_key = north_shields
-	}
-	text = { # Stoneforged
-		trigger = { culture = { has_innovation = innovation_stoneforged } }
-		localization_key = stoneforged
-	}
-	text = { # Huegodoc Legions
-		trigger = { culture = { has_innovation = innovation_huegodoc_legion } }
-		localization_key = huegodoc_legion
-	}
-	text = { # Mubaaizun
-		trigger = { culture = { has_cultural_parameter = unlock_maa_mubaaizun } }
-		localization_key = mubaaizun
-	}
-	text = { # Krialetil
-		trigger = { culture = { has_cultural_parameter = unlock_maa_krialetil } }
-		localization_key = krialetil
-	}
-	text = { # Sahkmavali
-		trigger = { culture = { has_cultural_parameter = unlock_maa_sahkmavali } }
-		localization_key = sahkmavali
-	}
-	text = { # Talabhau
-		trigger = { culture = { has_innovation = innovation_talabhau } }
-		localization_key = talabhau
-	}
-	text = { # Visvasavrak
-		trigger = { culture = { has_cultural_parameter = unlock_maa_visvasavrak } }
-		localization_key = visvasavrak
-	}
-	text = { # Shemota Warriors
-		trigger = { culture = { has_innovation = innovation_fiber_plates } }
-		localization_key = shemota_warriors
-	}
-	text = { # Sarradonian Imitation Legion
-		trigger = { culture = { has_innovation = innovation_sarradon_imitation_legion } }
-		localization_key = sarradon_imitation_legion
-	}
-	text = { # Enlevett
-		trigger = { culture = { has_innovation = innovation_enlevett } }
-		localization_key = enlevett
-	}
-	text = { # Warrior Kinband
-		trigger = { culture = { has_innovation = innovation_sword_oaths } }
-		localization_key = theugombrian_warrior_kinband
-	}
-	text = { # Death-Seekers
-		trigger = { culture = { has_cultural_parameter = unlock_maa_death_seekers } }
-		localization_key = death_seekers
-	}
-	text = { # Sidharakyan
-		trigger = { culture = { has_cultural_parameter = unlock_maa_sidharakyan } }
-		localization_key = sidharakyan
-	}
-	text = { # Bluescars
-		trigger = { culture = { has_cultural_parameter = unlock_maa_bluescars } }
-		localization_key = bluescars
-	}
-	text = { # Yamen Troops
-		trigger = { culture = { has_innovation = innovation_yamen_troops } }
-		localization_key = yamen_troops
-	}
-	text = { # Golden Spears
-		trigger = { culture = { has_innovation = innovation_golden_spears } }
-		localization_key = golden_spears
-	}
-	text = { # Konijkmener Pikes
-		trigger = { culture = { has_innovation = innovation_konijkmener_pikes } }
-		localization_key = konijkmener_pikes
-	}
-	text = { # Pikes of the Purest
-		trigger = { culture = { has_innovation = innovation_pure_pikes } }
-		localization_key = pure_pikes
-	}
-	text = { # Jokhosani
-		trigger = { culture = { has_innovation = innovation_jokhosani } }
-		localization_key = jokhosani
-	}
-	text = { # Kaphral
-		trigger = { culture = { has_innovation = innovation_kaphral } }
-		localization_key = kaphral
-	}
-	text = { # Re'arka
-		trigger = { culture = { has_innovation = innovation_rearka_training } }
-		localization_key = rearka
-	}
-	text = { # Crimson Spears of Korlacu
-		trigger = { culture = { has_innovation = innovation_crimson_spears } }
-		localization_key = crimson_spears
-	}
-	text = { # Spears of the Sacred Flame
-		trigger = { culture = { has_innovation = innovation_molten_vanguard } }
-		localization_key = molten_vanguard
-	}
-	text = { # Azmaram
-		trigger = { culture = { has_cultural_parameter = unlock_maa_azmaram } }
-		localization_key = azmaram
-	}
-	text = { # Lujian
-		trigger = { culture = { has_innovation = innovation_military_structure } }
-		localization_key = lujian
-	}
-	text = { # Oltenic Spears
-		trigger = { culture = { has_cultural_parameter = unlock_maa_oltenic_spearmen } }
-		localization_key = oltenic_spearmen
-	}
-
-	## END OF GH ADDITIONS
 }
 
 GetRegionalCavalryMAA = {
 	type = character
 	random_valid = yes
 	
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_mulaththamun } }
-		localization_key = mulaththamun
-	}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_hussar } } #Konni
-		localization_key = hussar
-	}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_mulaththamun } }
+	#	localization_key = mulaththamun
+	#}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_hussar } } #Konni
+	#	localization_key = hussar
+	#}
 	#text = {
 	#	trigger = { culture = { has_innovation = innovation_desert_tactics } } #Chasseur
 	#	localization_key = chasseur
@@ -298,10 +133,10 @@ GetRegionalCavalryMAA = {
 	#	trigger = { culture = { has_innovation = innovation_sahel_horsemen } } #Sahel Horsemen
 	#	localization_key = sahel_horsemen
 	#}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_cataphract } }
-		localization_key = cataphract
-	}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_cataphract } }
+	#	localization_key = cataphract
+	#}
 	#text = {
 	#	trigger = { culture = { has_cultural_parameter = unlock_maa_monaspa } }
 	#	localization_key = monaspa
@@ -310,83 +145,6 @@ GetRegionalCavalryMAA = {
 	#	trigger = { culture = { has_innovation = innovation_valets } } #Gendarme - Later Era MAA
 	#	localization_key = gendarme
 	#}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_ayrudzi } }
-		localization_key = ayrudzi
-	}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_conrois } }
-		localization_key = conrois
-	}
-	#text = {
-	#	trigger = { culture = { has_cultural_parameter = unlock_maa_mangudai } }
-	#	localization_key = mangudai
-	#}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_cataphract_archers } }
-		localization_key = cataphract_archers
-	}
-
-	## GH ADDITIONS
-
-	text = { # Prophet's Sons
-		trigger = { culture = { has_innovation = innovation_prophets_sons } }
-		localization_key = prophets_sons
-	}
-	text = { # Brother Riders
-		trigger = { culture = { has_innovation = innovation_brother_riders } }
-		localization_key = brother_riders
-	}
-	text = { # Legion Outriders
-		trigger = { culture = { has_innovation = innovation_legion_outriders } }
-		localization_key = legion_outriders
-	}
-	text = { # Duneriders
-		trigger = { culture = { has_innovation = innovation_duneriders } }
-		localization_key = duneriders
-	}
-	text = { # Tskherosan
-		trigger = { culture = { has_cultural_parameter = unlock_maa_tskherosan } }
-		localization_key = tskherosan
-	}
-	text = { # Mezzarb Riders
-		trigger = { culture = { has_innovation = innovation_mezzarb_domestication } }
-		localization_key = mezzarb_riders
-	}
-	text = { # Tetukor
-		trigger = { culture = { has_innovation = innovation_beast_cavalry } }
-		localization_key = tetukor
-	}
-	text = { # Grave Wardens
-		trigger = { culture = { has_innovation = innovation_grave_wardens } }
-		localization_key = grave_wardens
-	}
-	text = { # Flying Lances
-		trigger = { culture = { has_innovation = innovation_flying_lances } }
-		localization_key = flying_lances
-	}
-	text = { # Knights of the Way
-		trigger = { culture = { has_innovation = innovation_marcher_knights } }
-		localization_key = marcher_knights
-	}
-	text = { # Kikarsag Proven Riders
-		trigger = { culture = { has_innovation = innovation_eastern_cav } }
-		localization_key = kikarsag_heavy_cav
-	}
-	text = { # Sunstriders
-		trigger = { culture = { has_innovation = innovation_sunstriders } }
-		localization_key = sunstriders
-	}
-	text = { # Qibing
-		trigger = { culture = { has_innovation = innovation_banners } }
-		localization_key = banners
-	}
-	text = { # Kordhan
-		trigger = { culture = { has_cultural_parameter = unlock_maa_gh_kordhan } }
-		localization_key = gh_kordhan
-	}
-
-	## END OF GH ADDITIONS
 	text = {
 		trigger = { always = no }
 		fallback = yes
@@ -398,124 +156,30 @@ GetRegionalSkirmisherMAA = {
 	type = character
 	random_valid = yes
 	
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_horn_warrior } }
-		localization_key = horn_warrior
-	}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_shomer } }
-		localization_key = shomer
-	}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_abudrar } }
-		localization_key = abudrar
-	}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_guinea_warrior } }
-		localization_key = guinea_warrior
-	}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_horn_warrior } }
+	#	localization_key = horn_warrior
+	#}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_shomer } }
+	#	localization_key = shomer
+	#}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_abudrar } }
+	#	localization_key = abudrar
+	#}
+	#text = {
+	#	trigger = { culture = { has_cultural_parameter = unlock_maa_guinea_warrior } }
+	#	localization_key = guinea_warrior
+	#}
 	#text = {
 	#	trigger = { culture = { has_innovation = innovation_adaptive_militia } } #Goedendag - Later Era MAA
 	#	localization_key = goedendag
 	#}
 	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_akritai } }
-		localization_key = akritai
-	}
-
-	## GH ADDITIONS
-
-	text = { # Berserkers
-		trigger = { culture = { has_innovation = innovation_berserkers } }
-		localization_key = sjalvolki_berserkers
-	}
-	text = { # Moonkin
-		trigger = { culture = { has_innovation = innovation_moonkin } }
-		localization_key = moonkin
-	}
-	text = { # Wodes
-		trigger = { culture = { has_innovation = innovation_wodes } }
-		localization_key = wodes
-	}
-	text = { # Bloodbound
-		trigger = { culture = { has_innovation = innovation_bloodbound } }
-		localization_key = bloodbound
-	}
-	text = { # Legion Raiders
-		trigger = { culture = { has_innovation = innovation_legion_raiders } }
-		localization_key = legion_raiders
-	}
-	text = { # Marine Legions
-		trigger = { culture = { has_innovation = innovation_legion_marines } }
-		localization_key = legion_marines
-	}
-	text = { # Mountainstrikers
-		trigger = { culture = { has_innovation = innovation_mountainstrikers } }
-		localization_key = mountainstrikers
-	}
-	text = { # Huntsmen
-		trigger = { culture = { has_innovation = innovation_thrill_of_the_hunt } }
-		localization_key = huntsmen
-	}
-	text = { # Tsanruti
-		trigger = { culture = { has_cultural_parameter = unlock_maa_tsanruti } }
-		localization_key = tsanruti
-	}
-	text = { # Kan'pahuri
-		trigger = { culture = { has_cultural_parameter = unlock_maa_kanpahuri } }
-		localization_key = kanpahuri
-	}
-	text = { # Waranuux Spearmen
-		trigger = { culture = { has_innovation = innovation_waranuux_spearmen } }
-		localization_key = waranuux_spearmen
-	}
-	text = { # Standardized Waranuux
-		trigger = { culture = { has_innovation = innovation_advanced_waranuux } }
-		localization_key = advanced_waranuux
-	}
-	text = { # Napaq
-		trigger = { culture = { has_innovation = innovation_retreat_tactics } }
-		localization_key = napaq
-	}
-	text = { # Leki Herdmasters
-		trigger = { culture = { has_cultural_parameter = unlock_maa_leki_herdmasters } }
-		localization_key = leki_herdmasters
-	}
-	text = { # Thorn Maidens
-		trigger = { culture = { has_cultural_parameter = unlock_maa_thorn_maidens } }
-		localization_key = thorn_maidens
-	}
-	text = { # Dha'geray
-		trigger = { culture = { has_cultural_parameter = unlock_maa_dhageray } }
-		localization_key = dhageray
-	}
-	text = { # Jaanvarkis
-		trigger = { culture = { has_cultural_parameter = unlock_maa_jaanvarkis } }
-		localization_key = jaanvarkis
-	}
-
-	## END OF GH ADDITIONS
-
-	text = {
 		trigger = { always = no }
 		fallback = yes
 		localization_key = light_footmen
-	}
-}
-
-GetRegionalChariotMAA = { ## GH ADDITION: Chariot MAA
-	type = character
-	random_valid = yes
-	
-	text = { # Scarab Chariots
-		trigger = { culture = { has_cultural_parameter = unlocks_beetle_riders } }
-		localization_key = beetle_rider
-	}
-
-	text = {
-		trigger = { always = no }
-		fallback = yes
-		localization_key = war_chariots
 	}
 }
 

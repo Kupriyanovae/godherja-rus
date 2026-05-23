@@ -28,7 +28,6 @@ window = {
 		name = _hide
 		using = Animation_FadeOut_Quick
 		using = Sound_WindowHide_Standard
-		on_finish = "[GetScriptedGui('gh_hide_interactions_sgui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" #GH ADDITION
 	}
 
 	vbox = {
@@ -40,24 +39,25 @@ window = {
 			visible = "[Not( CharacterInteractionConfirmationWindow.ShouldShowScheme )]"
 			layoutpolicy_vertical = expanding
 			layoutpolicy_horizontal = expanding
+			margin_bottom = -4
 
 			header_pattern_interaction = {
 				layoutpolicy_vertical = expanding
 				layoutpolicy_horizontal = expanding
 				minimumsize = { 100% -1 }
-
+	
 				blockoverride "header_text" {
 					text = "[CharacterInteractionConfirmationWindow.GetSendName]"
 				}
-
+	
 				blockoverride "button_close"
 				{
 					onclick = "[CharacterInteractionConfirmationWindow.Close]"
 				}
-
+	
 				icon_character_interaction = {
 					size = { 50 50 }
-					position = { 5 5 }
+					position = { 0 0 }
 					tooltip = "[CharacterInteractionConfirmationWindow.GetInteractionTooltip]"
 				}
 			}
@@ -151,18 +151,19 @@ window = {
 				visible = "[GetVariableSystem.Exists( 'character_interaction_change_artifact' )]"
 				layoutpolicy_horizontal = expanding
 				size = { 400 400 }
-
+			
 				blockoverride "scrollbox_content"
 				{
 					vbox_list_interaction_artifact_selection = {
 						maximumsize = { 250 400 }
 						layoutpolicy_horizontal = expanding
-
+					
 						blockoverride "button_toggles" {}
 					}
 				}
 			}
 		}
+		
 
 		# MaA Picker
 		vbox = {
@@ -271,7 +272,7 @@ window = {
 				blockoverride "scrollbox_content" {
 					vbox = {
 						name = "spell_list"
-						datamodel = "[CharacterInteractionConfirmationWindow.GetRecipient.MakeScope.GetList('known_spell_gui_list')]"
+						datamodel = "[CharacterInteractionConfirmationWindow.GetRecipient.MakeScope.GetList('known_spell_list')]"
 						layoutpolicy_horizontal = expanding
 						spacing = 12
 		
@@ -342,7 +343,7 @@ window = {
 				blockoverride "scrollbox_content" {
 					vbox = {
 						name = "spell_list"
-						datamodel = "[CharacterInteractionConfirmationWindow.GetActor.MakeScope.GetList('known_spell_gui_list')]"
+						datamodel = "[CharacterInteractionConfirmationWindow.GetActor.MakeScope.GetList('known_spell_list')]"
 						layoutpolicy_horizontal = expanding
 						spacing = 12
 		
@@ -374,7 +375,7 @@ window = {
 				visible = "[And( And( And( Not( GetVariableSystem.Exists( 'character_interaction_change_title' ) ), Not(GetVariableSystem.Exists( 'character_interaction_change_artifact' ) ) ), Not( GetVariableSystem.Exists( 'character_interaction_change_maa' ) ) ), Not( CharacterInteractionConfirmationWindow.HasPickedCharacters ) )]"
 				datacontext = "[CharacterInteractionConfirmationWindow.GetCharacterList]"
 				layoutpolicy_horizontal = expanding
-				minimumsize = { 640 480 }
+				minimumsize = { 640 380 }
 
 				blockoverride "item_size"
 				{
@@ -522,7 +523,7 @@ window = {
 
 		vbox = {
 			spacing = 5
-			margin = { 20 10 }
+			margin = { 20 15 }
 			
 			hbox = {
 				visible = "[CharacterInteractionConfirmationWindow.HasCost]"

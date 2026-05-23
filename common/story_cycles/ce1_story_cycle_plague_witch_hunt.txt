@@ -21,8 +21,10 @@
 			NOT = {
 				story_owner = {
 					any_sub_realm_county = {
-						any_county_province_epidemic = {
-							this = root.var:plague
+						any_county_province = {
+							any_province_epidemic = {
+								this = root.var:plague
+							}
 						}
 					}
 				}
@@ -47,8 +49,10 @@
 		trigger = {
 			story_owner = {
 				any_sub_realm_county = {
-					any_county_province_epidemic = {
-						this = root.var:plague
+					any_county_province = {
+						any_province_epidemic = {
+							this = root.var:plague
+						}
 					}
 				}
 			}
@@ -68,24 +72,6 @@
 						}
 					}
 				}
-			}
-		}
-	}
-
-	#Maintenance group
-	effect_group = {
-		days = 1
-		trigger = {
-			story_owner = { is_landed = no }
-		}
-		triggered_effect = {
-			trigger = { always = yes }
-			effect = {
-				#You became a landless adventurer/administrative! Ending story prematurely.
-				story_owner = { save_scope_as = story_owner }
-				debug_log = "Plague Witches invalidated"
-				debug_log_scopes = yes
-				end_story = yes
 			}
 		}
 	}

@@ -3,17 +3,9 @@
 	# root, scope:courtier = the courtier
 	# scope:liege = their liege
 	can_leave = {
-		OR = {
-			scope:liege = {
-				has_culture = culture:wasteland
-			}				
-			scope:courtier = {
-				has_culture = culture:wasteland
-			}
-			any_traveling_family_member = {
-				count = all
-				courtier_allowed_to_leave_trigger = yes
-			}
+		any_traveling_family_member = {
+			count = all
+			courtier_allowed_to_leave_trigger = yes
 		}
 	}
 
@@ -41,11 +33,6 @@
 				value = high_positive_ai_value_inverse
 				multiply = 3
 			}
-		}
-
-		modifier = {
-			has_culture = culture:wasteland
-			add = 10000
 		}
 
 		###CLAIMANTS###
@@ -101,7 +88,7 @@
 		}
 		modifier = {
 			any_close_family_member = {
-				this != scope:liege #There is already a family bonus for liege
+				NOT = { this = scope:liege } #There is already a family bonus for liege
 				is_courtier_of = scope:liege
 				reverse_opinion = {
 					target = scope:courtier
@@ -130,7 +117,8 @@
 
 		###FAMILY HANDLING###
 		modifier = {
-			primary_spouse ?= { is_courtier_of = scope:liege }
+			exists = primary_spouse
+			primary_spouse = { is_courtier_of = scope:liege }
 			add = -5 #Reduced because spouse might also do leaving calculations
 		}
 

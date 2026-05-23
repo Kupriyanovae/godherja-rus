@@ -12,16 +12,3 @@ wardenite_legacy_track = {
 		}
 	}
 }
-
-trans_sarradonian_desert_legacy_track = { # Integrated mix of RICE Trans-Saharan (thanks to Cybrxkhan) & the Nomad Legacy from MPO
-	is_shown = {
-		has_dlc_feature = khans_of_the_steppe
-		culture = { has_cultural_tradition = tradition_desert_nomads }
-		OR = {
-			government_has_flag = government_is_nomadic
-			dynasty = {
-				has_dynasty_perk = trans_sarradonian_desert_legacy_1
-			}
-		}
-	}
-}

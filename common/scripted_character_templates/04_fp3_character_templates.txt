@@ -204,7 +204,6 @@ fp3_raging_ghazi_character = {
 
 fp3_sufi_mystic = {
 	age = { 30 80 }
-	dynasty = none
 	faith = root.faith
 	culture = root.culture
 	#Education
@@ -238,7 +237,7 @@ fp3_sufi_mystic = {
 		count = 1
 		pilgrim = {}
 		theologian = {}
-		lifestyle_poet = {}
+		poet = {}
 	}
 	random_traits = no
 	#Skills
@@ -262,7 +261,6 @@ fp3_sufi_mystic = {
 
 fp3_zoroastrian_armed_pilgrim = {
 	age = { 20 50 }
-	dynasty = none
 	#Education
 	random_traits_list = {
 		education_learning_2 = {
@@ -294,7 +292,7 @@ fp3_zoroastrian_armed_pilgrim = {
 		count = 1
 		scholar = {}
 		theologian = {}
-		lifestyle_poet = {}
+		poet = {}
 	}
 	random_traits = no
 	#Skills
@@ -381,7 +379,7 @@ fp3_turkic_traveler = {
 	age = { 24 40 }
 	faith = root.capital_county.faith
 	culture = root.capital_county.culture
-	dynasty = none
+	dynasty = generate
 	#Education
 	random_traits_list = {
 		education_martial_2 = {
@@ -536,7 +534,7 @@ fp3_tomb_raider = {
 #	trait = lifestyle_physician
 #	trait = education_learning_4
 #	trait = diligent
-#	trait = lifestyle_poet
+#	trait = poet
 #	trait = weak #he was sickly and died quite young
 #	random_traits_list = { #his personality
 #		count = 2
@@ -654,7 +652,7 @@ fp3_tomb_raider = {
 #	culture = culture:tajik
 #	gender = male
 #	dynasty_house = house:house_tusi
-#	trait = lifestyle_poet
+#	trait = poet
 #	trait = intellect_good_1
 #	trait = education_diplomacy_3
 #	trait = compassionate
@@ -676,7 +674,6 @@ fp3_tomb_raider = {
 fp3_skilled_outsider_template = {
 	# General
 	age = { 30 60 }
-	dynasty = none
 	# Education
 	## We give out random low tier education traits, and we'll upgrade them later if we're in batch B.
 	random_traits_list = {

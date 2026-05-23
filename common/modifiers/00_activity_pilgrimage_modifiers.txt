@@ -34,14 +34,14 @@ pilgrimage_sympathetic_towards_faiths_modifier = {
 }
 
 pilgrimage_disdainful_towards_faiths_modifier = {
-	icon = martial_mixed
+	icon = martial_positive
 	different_faith_opinion = -5
 	opinion_of_different_faith = -5
 	levy_reinforcement_rate_same_faith = 0.2
 }
 
 pilgrimage_divine_protection_modifier = {
-	icon = letter_mixed
+	icon = letter_positive
 	monthly_piety_gain_mult = 0.05
 	diplomacy_per_piety_level = 1
 	intrigue_per_piety_level = -1
@@ -107,7 +107,7 @@ pilgrimage_religion_spread_modifier = {
 
 pilgrimage_flogging_spread_modifier = {
 	icon = stress_positive
-	monthly_piety_gain_per_dread_add = 0.05
+	monthly_piety_gain_per_dread_add = 1
 	stress_gain_mult = -0.2
 }
 
@@ -181,7 +181,7 @@ pilgrimage_temple_architect_modifier = {
 }
 
 pilgrim_group_joined_modifier = {
-	icon = compass_mixed
+	icon = compass_positive
 	travel_safety = 10
 	travel_speed = -5
 }
@@ -199,7 +199,7 @@ pilgrimage_combat_omen_modifier = {
 
 pilgrimage_watchful_omen_modifier = {
 	icon = intrigue_positive
-	enemy_scheme_secrecy_add = -20
+	scheme_discovery_chance_mult = 0.2
 	enemy_hostile_scheme_phase_duration_add = minor_scheme_phase_duration_malus_value
 	intrigue = 1
 }
@@ -233,7 +233,7 @@ determination_modifier = {
 }
 
 determined_to_live_modifier = {
-	icon = health_mixed
+	icon = health_positive
 	health = 0.5
 	stress_gain_mult = 0.2
 }
@@ -251,7 +251,7 @@ contemplated_ancient_gods_modifier = {
 }
 
 pilgrimage_forgiving_modifier = {
-	icon = social_mixed
+	icon = social_positive
 	general_opinion = 10
 	dread_gain_mult = -0.1
 	stress_gain_mult = -0.1
@@ -276,7 +276,7 @@ pilgrimage_burial_at_capital_modifier = {
 }
 
 pilgrimage_turned_back_buried_modifier = {
-	icon = economy_mixed
+	icon = economy_positive
 	stewardship = 2
 	dread_decay_mult = -0.2
 	glory_hound_opinion = 10
@@ -284,7 +284,7 @@ pilgrimage_turned_back_buried_modifier = {
 }
 
 pilgrimage_buried_at_destination_modifier = {
-	icon = piety_mixed
+	icon = piety_positive
 	monthly_piety_gain_mult = 0.25
 	stress_loss_mult = 0.1
 	glory_hound_opinion = -10
@@ -315,30 +315,4 @@ pilgrimage_herbalist_modifier = {
 pilgrimage_chill_ship_modifier = {
 	icon = stress_positive
 	stress_loss_mult = 0.15
-}
-
-pilgrimage_seduction_modifier = {
-	icon = love_positive
-	courting_scheme_phase_duration_add = -5
-	seduce_scheme_phase_duration_add = -15
-}
-
-pilgrimage_conversion_modifier = {
-	icon = piety_positive
-	monthly_piety_gain_mult = 0.05
-	same_faith_opinion = 10
-}
-
-buddhist_teachings_conversion_modifier = {
-	icon = piety_positive
-}
-
-light_in_shadow_modifier = {
-	icon = intrigue_positive
-	enemy_hostile_scheme_success_chance_add = -25
-	intrigue = 1
-}
-
-spymaster_eyes_modifier = {
-	icon = intrigue_positive
 }

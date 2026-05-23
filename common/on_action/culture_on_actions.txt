@@ -76,11 +76,9 @@ on_character_culture_change = {
 
 		# GH Achievement checks
 		if = {
-			limit = { has_title = title:h_aversarinas_aautokrata }
+			limit = { has_title = title:e_aversarinas_aautokrata }
 			GH_achiev_basicallyopakhasian_check = yes
 		}
-
-		gh_setup_otachedian_governor_character_effect = yes ## GH ADDITION: Otachedian Law
 	}
 }
 
@@ -144,7 +142,7 @@ on_culture_created = {
 			}
 			random_parent_culture = {
 				limit = {
-					this != scope:parent_culture_1
+					NOT = { this = scope:parent_culture_1 }
 				}
 				save_scope_as = parent_culture_2
 			}
@@ -158,58 +156,48 @@ on_culture_created = {
 		}
 		# GH CHANGE: To handle magic school transfer
 		assign_magic_school_to_created_culture_effect = yes
+		assign_cultural_frame_to_created_culture_effect = yes
 		if = {
 			limit = {
-				scope:founder = {
-					NOT = { has_character_flag = suppress_culture_notifications_and_achievements }
-				}
+				is_hybrid_culture = yes
 			}
-			if = {
-				limit = {
-					is_hybrid_culture = yes
-				}
-				set_variable = {
-					name = ep1_02_achievement_unlocked
-					value = 1
-				}
-				# Save scopes for toast localization
-				save_scope_as = new_culture
-				random_parent_culture = {
-					save_scope_as = parent_1
-				}
-				random_parent_culture = {
-					limit = { this != scope:parent_1 }
-					save_scope_as = parent_2
-				}
+			# Save scopes for toast localization
+			save_scope_as = new_culture
+			random_parent_culture = {
+				save_scope_as = parent_1
+			}
+			random_parent_culture = {
+				limit = { NOT = { this = scope:parent_1 } }
+				save_scope_as = parent_2
+			}
 
-				# Send toast event to all relevant players
-				every_player = {
-					if = {				
-						limit = {
-							culture = {	save_temporary_scope_as = player_culture }
-							root = {
-								# Player culture matches new culture or the parent
-								OR = {
+			# Send toast event to all relevant players
+			every_player = {
+				if = {				
+					limit = {
+						culture = {	save_temporary_scope_as = player_culture }
+						root = {
+							# Player culture matches new culture or the parent
+							OR = {
+								this = scope:player_culture
+								any_parent_culture = {
 									this = scope:player_culture
-									any_parent_culture = {
-										this = scope:player_culture
-									}
 								}
 							}
 						}
-						trigger_event = {
-							id = culture_notification.1011
-							days = 0
-						}
 					}
-					else_if = {
-						limit = {
-							in_diplomatic_range = scope:founder
-						}
-						trigger_event = {
-							id = culture_notification.1001
-							days = 0
-						}
+					trigger_event = {
+						id = culture_notification.1011
+						days = 0
+					}
+				}
+				else_if = {
+					limit = {
+						in_diplomatic_range = scope:founder
+					}
+					trigger_event = {
+						id = culture_notification.1001
+						days = 0
 					}
 				}
 			}
@@ -464,24 +452,6 @@ on_county_auto_granted_to_liege_culture = {
 						modifier = received_title_county
 					}
 				}
-				scope:recipient = { 
-					if = {
-						limit = {
-							scope:actor = { 
-								government_allows = noble_families 
-								government_has_flag = government_has_county_tier_noble_families
-							}
-							NOT = {
-								scope:recipient = {
-									any_held_title = {
-										is_noble_family_title = yes
-									}
-								}
-							}
-						}
-						create_noble_family_effect = { GOVERNMENT_GIVER = scope:actor }
-					}
-				}
 			}
 			if = {
 				limit = {
@@ -496,32 +466,14 @@ on_county_auto_granted_to_liege_culture = {
 				}
 			}
 			scope:actor = {
-				if = {
-					limit = {
-						government_has_flag = government_is_nomadic
-						vassal_limit_available <= 0
-						is_independent_ruler = yes
-					}
-					send_interface_toast = {
-						type = event_toast_effect_neutral
-						title = grant_titles_interaction_notification
-						
-						left_icon = scope:actor
-						right_icon = scope:recipient
-						
-						custom_tooltip = grant_titles_interaction_notification_effect_7
-					}
-				}
-				else = {
-					send_interface_toast = {
-						type = event_toast_effect_neutral
-						title = grant_titles_interaction_notification
-					
-						left_icon = scope:actor					
-						right_icon = scope:recipient
-					
-						custom_tooltip = grant_titles_interaction_notification_effect_2
-					}
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = grant_titles_interaction_notification
+				
+					left_icon = scope:actor					
+					right_icon = scope:recipient
+				
+					custom_tooltip = grant_titles_interaction_notification_effect_2
 				}
 			}
 
@@ -618,24 +570,6 @@ on_county_auto_granted_to_local_culture = {
 					add_opinion = {
 						target = scope:actor
 						modifier = received_title_county
-					}
-				}
-				scope:recipient = { 
-					if = {
-						limit = {
-							scope:actor = { 
-								government_allows = noble_families 
-								government_has_flag = government_has_county_tier_noble_families
-							}
-							NOT = {
-								scope:recipient = {
-									any_held_title = {
-										is_noble_family_title = yes
-									}
-								}
-							}
-						}
-						create_noble_family_effect = { GOVERNMENT_GIVER = scope:actor }
 					}
 				}
 			}

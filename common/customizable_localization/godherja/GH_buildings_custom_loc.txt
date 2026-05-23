@@ -202,7 +202,7 @@ gh_walls_04_building_loc_desc = {
 	text = {
 		localization_key = building_06_dragoncourt_ruined
 		trigger = { 
-			game_start_date >= 6211.1.1
+			game_start_date >= 1211.1.1
 			NOT = { has_building_or_higher = 06_dragoncourt }
 		}
 	}
@@ -219,7 +219,7 @@ gh_walls_04_building_loc_desc = {
 	text = {
 		localization_key = building_06_dragoncourt_desc_ruined
 		trigger = { 
-			game_start_date >= 6211.1.1
+			game_start_date >= 1211.1.1
 			NOT = { has_building_or_higher = 06_dragoncourt }
 		}
 	}
@@ -236,7 +236,7 @@ gh_walls_04_building_loc_desc = {
 	text = {
 		localization_key = building_07_dragoncourt_ruined
 		trigger = { 
-			game_start_date >= 6211.1.1
+			game_start_date >= 1211.1.1
 			NOT = { has_building_or_higher = 07_dragoncourt }
 		}
 	}
@@ -253,7 +253,7 @@ gh_walls_04_building_loc_desc = {
 	text = {
 		localization_key = building_07_dragoncourt_desc_ruined
 		trigger = { 
-			game_start_date >= 6211.1.1
+			game_start_date >= 1211.1.1
 			NOT = { has_building_or_higher = 07_dragoncourt }
 		}
 	}
@@ -270,7 +270,7 @@ gh_walls_04_building_loc_desc = {
 	text = {
 		localization_key = building_08_dragoncourt_ruined
 		trigger = { 
-			game_start_date >= 6211.1.1
+			game_start_date >= 1211.1.1
 			NOT = { has_building_or_higher = 08_dragoncourt }
 		}
 	}
@@ -287,20 +287,34 @@ gh_walls_04_building_loc_desc = {
 	text = {
 		localization_key = building_08_dragoncourt_desc_ruined
 		trigger = { 
-			game_start_date >= 6211.1.1
+			game_start_date >= 1211.1.1
 			NOT = { has_building_or_higher = 08_dragoncourt }
 		}
 	}
 }
 
 01_fidhasil_building_loc_desc = {
-	type = province
-	
+	text = {
+		localization_key = building_01_fidhasil_desc_data_linked
+		trigger = { always = no }
+		fallback = yes
+	}
+
 	text = {
 		localization_key = building_01_fidhasil_desc_ruined
 		trigger = { 
-			game_start_date >= 5654.1.1	# GH TODO: Make this governed by a variable instead
+			game_start_date >= 654.1.1	# GH TODO: Make this governed by a variable instead
 		}
+	}
+}
+
+01_tur_senach_building_loc_desc = {
+	type = province
+
+	text = {
+		localization_key = building_01_tur_senach_desc_data_linked
+		trigger = { always = yes }
+		fallback = yes
 	}
 }
 
@@ -308,9 +322,15 @@ gh_walls_04_building_loc_desc = {
 	type = province
 
 	text = {
+		localization_key = building_02_tur_senach_desc_data_linked
+		trigger = { always = no }
+		fallback = yes
+	}
+
+	text = {
 		localization_key = building_02_tur_senach_desc_ruined
 		trigger = { 
-			game_start_date >= 6200.1.1
+			game_start_date >= 1200.1.1
 			NOT = { has_building_or_higher = 02_tur_senach }
 		}
 	}
@@ -320,9 +340,15 @@ gh_walls_04_building_loc_desc = {
 	type = province
 
 	text = {
+		localization_key = building_03_tur_senach_desc_data_linked
+		trigger = { always = no }
+		fallback = yes
+	}
+
+	text = {
 		localization_key = building_03_tur_senach_desc_ruined
 		trigger = { 
-			game_start_date >= 6200.1.1
+			game_start_date >= 1200.1.1
 			NOT = { has_building_or_higher = 03_tur_senach }
 		}
 	}
@@ -332,9 +358,15 @@ gh_walls_04_building_loc_desc = {
 	type = province
 
 	text = {
+		localization_key = building_04_tur_senach_desc
+		trigger = { always = no }
+		fallback = yes
+	}
+
+	text = {
 		localization_key = building_04_tur_senach_desc_ruined
 		trigger = { 
-			game_start_date >= 6200.1.1
+			game_start_date >= 1200.1.1
 			NOT = { has_building_or_higher = 04_tur_senach }
 		}
 	}
@@ -344,9 +376,15 @@ gh_walls_04_building_loc_desc = {
 	type = province
 
 	text = {
+		localization_key = building_05_tur_senach_desc
+		trigger = { always = no }
+		fallback = yes
+	}
+
+	text = {
 		localization_key = building_05_tur_senach_desc_ruined
 		trigger = { 
-			game_start_date >= 6200.1.1
+			game_start_date >= 1200.1.1
 			NOT = { has_building_or_higher = 05_tur_senach }
 		}
 	}
@@ -354,11 +392,17 @@ gh_walls_04_building_loc_desc = {
 
 06_tur_senach_building_loc_desc = {
 	type = province
+
+	text = {
+		localization_key = building_06_tur_senach_desc_data_linked
+		trigger = { always = no }
+		fallback = yes
+	}
 	
 	text = {
 		localization_key = building_06_tur_senach_desc_ruined
 		trigger = { 
-			game_start_date >= 6200.1.1
+			game_start_date >= 1200.1.1
 			NOT = { has_building_or_higher = 06_tur_senach }
 		}
 	}
@@ -366,11 +410,17 @@ gh_walls_04_building_loc_desc = {
 
 07_tur_senach_building_loc_desc = {
 	type = province
+
+	text = {
+		localization_key = building_07_tur_senach_desc_data_linked
+		trigger = { always = no }
+		fallback = yes
+	}
 	
 	text = {
 		localization_key = building_07_tur_senach_desc_ruined
 		trigger = { 
-			game_start_date >= 6200.1.1
+			game_start_date >= 1200.1.1
 			NOT = { has_building_or_higher = 07_tur_senach }
 		}
 	}
@@ -378,11 +428,17 @@ gh_walls_04_building_loc_desc = {
 
 08_tur_senach_building_loc_desc = {
 	type = province
+
+	text = {
+		localization_key = building_08_tur_senach_desc_data_linked
+		trigger = { always = no }
+		fallback = yes
+	}
 	
 	text = {
 		localization_key = building_08_tur_senach_desc_ruined
 		trigger = { 
-			game_start_date >= 6200.1.1
+			game_start_date >= 1200.1.1
 			NOT = { has_building_or_higher = 08_tur_senach }
 		}
 	}

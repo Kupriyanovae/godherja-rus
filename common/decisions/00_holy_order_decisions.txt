@@ -1,17 +1,5 @@
 ﻿create_holy_order_decision = {
 	picture = {
-		trigger = {
-			culture = { has_graphical_east_asia_culture_group_trigger = yes }
-		}
-		reference = "gfx/interface/illustrations/holding_types/tgp_chinese_pagoda.dds"
-	}
-	picture = {
-		trigger = {
-			culture = { has_graphical_india_culture_group_trigger = yes }
-		}
-		reference = "gfx/interface/illustrations/holding_types/tgp_castle_se_asia.dds"
-	}
-	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
 	}
 	decision_group_type = major
@@ -21,10 +9,7 @@
 	is_shown = {
 		is_human = yes
 		is_landed = yes
-		NOR = {
-			faith = {
-				has_doctrine = special_doctrine_immaterial_harmony
-			}
+		NOT = {
 			faith = {
 				any_faith_holy_order = {
 					holy_order_patron = root
@@ -90,7 +75,7 @@
 		trigger_if = {
 			limit = {
 				exists = faith.religious_head
-				root != root.faith.religious_head
+				NOT = { root = root.faith.religious_head }
 			}
 			faith.religious_head = {
 				opinion = {
@@ -118,22 +103,7 @@
 	}
 	cost = {
 		gold = {
-			value = 0
-			if = {
-				limit = {
-					has_treasury = no
-				}
-				add = holy_order_gold_cost
-			}
-		}
-		treasury = {
-			value = 0
-			if = {
-				limit = {
-					has_treasury = yes
-				}
-				add = holy_order_gold_cost
-			}
+			value = holy_order_gold_cost
 		}
 		piety = {
 			value = holy_order_piety_cost
@@ -149,7 +119,7 @@
 			}
 			hidden_effect = {
 				if = {
-					limit = { scope:barony.holder != root }
+					limit = { NOT = { scope:barony.holder = root } }
 					create_title_and_vassal_change = {
 						type = leased_out
 						save_scope_as = change
@@ -178,6 +148,54 @@
 				FOUNDER = root
 			}
 		}
+
+		hidden_effect = {
+			if = { # If you have no valid barony this will throw errors when you open the decision since the leader won't be saved - we add this check to avoid that 
+				limit = {
+					exists = scope:leader
+				}
+				scope:leader = {
+					add_gold = 100 #So that they have some money to lend out
+					add_piety_level = 2
+					add_gold = holy_order_starting_gold
+					every_courtier = {
+						add_trait = order_member
+					}
+				}
+				
+				# Messages
+				send_interface_toast = {
+					type = holy_order_founded_message
+					desc = i_created_holy_order_message
+					left_icon = scope:leader
+					right_icon = scope:new_holy_order.title
+				}
+			}
+			save_scope_as = holy_order_creator
+			every_player = {
+				limit = {
+					faith = scope:holy_order_creator.faith
+					NOT = { this = scope:holy_order_creator }
+				}
+				send_interface_message = {
+					type = holy_order_founded_message
+					desc = someone_created_holy_order_message
+					left_icon = scope:holy_order_creator
+					right_icon = scope:new_holy_order.title
+				}
+			}
+			every_neighboring_top_liege_realm_owner = {
+				limit = {
+					NOT = { faith = scope:holy_order_creator.faith }
+				}
+				send_interface_message = {
+					type = enemy_holy_order_founded_message
+					desc = other_faith_neighbor_created_holy_order_message
+					left_icon = scope:holy_order_creator
+					right_icon = scope:new_holy_order.title
+				}
+			}
+		}
 		create_holy_order_effect = yes
 	}
 	
@@ -186,7 +204,7 @@
 		is_playable_character = yes
 		OR = {
 			any_held_title = {
-				title_tier = barony
+				tier = tier_barony
 				barony_is_valid_for_holy_order_lease_trigger = { CHARACTER = root }
 			}
 			any_vassal = {
@@ -210,35 +228,19 @@
 				}
 			}
 		}
-		modifier = {
-			government_has_flag = government_is_mandala
-			add = -150
-		}
+
 	}
 }
 
-### Borrow Gold from Holy Order ###
 borrow_from_holy_order_decision = { #by Linnéa Thimrén
-	picture = {
-		trigger = { 
-			culture = { has_graphical_india_culture_group_trigger = yes }
-		}
-		reference = "gfx/interface/illustrations/decisions/hindu_religious.dds"
-	}
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_spend_money.dds"
 	}
+
 	desc = borrow_from_holy_order_decision_desc
 	selection_tooltip = borrow_from_holy_order_decision_tooltip
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 72
-		duchy = 72
-		kingdom = 72
-		empire = 72
-		hegemony = 72
-	}
+	ai_check_interval = 72
 
 	cost = {
 		piety = 50
@@ -250,9 +252,10 @@ borrow_from_holy_order_decision = { #by Linnéa Thimrén
 		is_playable_character = yes
 		highest_held_title_tier > tier_barony
 		faith = {
-			any_faith_holy_order = { count >= 1 } #Your faith must have a Holy Order
+			any_faith_holy_order = { #Your faith must have a Holy Order
+				always = yes
+			}
 		}
-		# cannot already have a loan - keep it simple
 		NOR = {
 			exists = var:loan_amount_owed
 			exists = var:loan_holder
@@ -267,9 +270,6 @@ borrow_from_holy_order_decision = { #by Linnéa Thimrén
 				any_faith_holy_order = {
 					leader = {
 						gold >= holy_order_gold_value
-						NOT = {
-							has_any_bad_relationship_with_character_trigger = { CHARACTER = root }
-						}
 					}
 				}
 			}
@@ -278,23 +278,30 @@ borrow_from_holy_order_decision = { #by Linnéa Thimrén
 
 	effect = {
 		hidden_effect = {
+			set_variable = {
+				name = amount_to_loan
+				value = holy_order_gold_value
+				days = 1
+			}
+			add_character_flag = {
+				flag = borrow_from_holy_order
+				days = 3560
+			}
 			faith = {
 				random_faith_holy_order = {
 					limit = {
-						leader = {
-							gold >= holy_order_gold_value
-							NOT = {
-								has_any_bad_relationship_with_character_trigger = { CHARACTER = root }
-							}
-						}
+						leader = { gold >= holy_order_gold_value }
 					}
-					leader = { save_scope_as = recipient }
+					leader = {
+						save_scope_as = recipient
+					}
 					save_scope_as = order
 				}
 			}
 			trigger_event = holy_order.0200
 		}
 		custom_tooltip = borrow_from_holy_order_decision_effect_tooltip
+
 	}
 	
 	ai_potential = {
@@ -312,49 +319,36 @@ borrow_from_holy_order_decision = { #by Linnéa Thimrén
 	}
 }
 
-### Revoke Holy Order Lease ###
 cancel_holy_order_lease_decision = {
-	picture = {
-		trigger = { 
-			culture = { has_graphical_india_culture_group_trigger = yes }
-		}
-		reference = "gfx/interface/illustrations/decisions/hindu_soldiers.dds"
-	}
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
 	}
+
 	desc = {
 		first_valid = {
 			triggered_desc = {
-			    trigger = {
+				trigger = {
 					faith = {
 						faith_hostility_level = {
 							target = scope:barony.lessee_title.holder.faith
 							value >= faith_hostile_level
 						}
 					}
-			    }
-			    desc = cancel_holy_order_lease_hostile_decision_desc
+				}
+				desc = cancel_holy_order_lease_hostile_decision_desc
 			}
 			desc = cancel_holy_order_lease_decision_desc
 		}
 	}
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 36
-		duchy = 36
-		kingdom = 36
-		empire = 36
-		hegemony = 36
-	}
+	ai_check_interval = 36
 
 	is_shown = {
 		is_landless_adventurer = no
 		is_playable_character = yes
 
 		any_sub_realm_barony = {
-			barony_is_valid_for_holy_order_lease_cancellation_trigger = { ACTOR = root }
+			barony_is_valid_for_holy_order_lease_cancellation_trigger = yes
 		}
 	}
 
@@ -363,7 +357,7 @@ cancel_holy_order_lease_decision = {
 		barony_valid = {
 			trigger_if = {
 				limit = { exists = this }
-				barony_is_valid_for_holy_order_lease_cancellation_trigger =  { ACTOR = root }
+				barony_is_valid_for_holy_order_lease_cancellation_trigger = yes
 			}
 			trigger_else = {
 				custom_description = {
@@ -436,7 +430,9 @@ cancel_holy_order_lease_decision = {
 		modifier = {
 			add = 100
 			exists = scope:barony.lessee
-			scope:barony.lessee.faith != root.faith
+			NOT = {
+				scope:barony.lessee.faith = root.faith
+			}
 		}
 		# Revoke if cynical
 		modifier = {

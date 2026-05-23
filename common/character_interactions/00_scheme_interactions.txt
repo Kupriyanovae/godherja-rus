@@ -14,7 +14,7 @@ start_murder_interaction = {
 
 	is_shown = {
 		can_do_diplomacy_trigger = yes
-		scope:recipient != scope:actor
+		NOT = { scope:recipient = scope:actor }
 
 		NAND = { # Game Rules!
 			has_game_rule = no_players_multiplayer_murder_schemes
@@ -37,7 +37,7 @@ start_murder_interaction = {
 					any_close_family_member = {
 						AND = {
 							is_ai = no
-							this != scope:actor
+							NOT = { this = scope:actor }
 						}
 					}
 				}
@@ -56,20 +56,13 @@ start_murder_interaction = {
 		trigger_if = {
 			limit = {
 				scope:actor = {
-					has_government = landless_adventurer_government
+					is_landless_adventurer = yes
 				}
 			}
 			#Has to be used instead of diplo range checks in laamp to landed interactions
 			ep3_laamp_diplo_range_trigger = {
 				TARGET = scope:recipient
 				LAAMP = scope:actor
-			}
-		}
-		trigger_if = {
-			limit = { scope:actor = { has_variable = no_scheming_allowed_var } }
-			custom_tooltip = {
-				text = no_scheming_allowed_var_tt
-				scope:actor.var:no_scheming_allowed_var != scope:recipient
 			}
 		}
 	}
@@ -125,7 +118,7 @@ start_murder_interaction = {
 				type = event_toast_effect_neutral
 				title = start_murder_interaction_notification
 
-				left_icon = scope:actor
+				left_icon = scope:actor					
 				right_icon = scope:recipient
 
 				# Success.
@@ -201,8 +194,8 @@ start_murder_interaction = {
 				limit = { var:feast_events_ewan_0001_bonus_value ?= scope:recipient }
 				# Hand over the modifier.
 				random_scheme = {
-					type = murder
 					limit = {
+						scheme_type = murder
 						scheme_target_character = scope:recipient
 					}
 					add_scheme_modifier = { type = feast_learnt_habits_modifier }
@@ -212,7 +205,7 @@ start_murder_interaction = {
 			}
 		}
 	}
-
+	
 	auto_accept = yes
 
 	# AI for murders is handled in event murder_scheme_maintenance.1, fired from the five_year_playable_pulse
@@ -227,7 +220,7 @@ start_abduct = {
 
 	scheme = abduct
 	ignores_pending_interaction_block = yes
-
+	
 	is_shown = {
 		# Lonely Note: Fogeaters abduct the hell out of people in lore, should probably give them content to push them along to this
 		#can_do_diplomacy_trigger = yes
@@ -253,7 +246,7 @@ start_abduct = {
 			scope:recipient = { is_imprisoned_by = scope:actor }
 		}
 		#exists = scope:recipient.court_owner
-
+		
 		NAND = { # Game Rules!
 			has_game_rule = no_players_multiplayer_murder_schemes
 			scope:actor = {
@@ -263,7 +256,7 @@ start_abduct = {
 				is_ai = no
 			}
 		}
-
+		
 		NAND = {
 			has_game_rule = no_player_families_multiplayer_murder_schemes
 			scope:actor = {
@@ -275,7 +268,7 @@ start_abduct = {
 					any_close_family_member = {
 						AND = {
 							is_ai = no
-							this != scope:actor
+							NOT = { this = scope:actor }
 						}
 					}
 				}
@@ -295,20 +288,13 @@ start_abduct = {
 		trigger_if = {
 			limit = {
 				scope:actor = {
-					has_government = landless_adventurer_government
+					is_landless_adventurer = yes
 				}
 			}
 			#Has to be used instead of diplo range checks in laamp to landed interactions
 			ep3_laamp_diplo_range_trigger = {
 				TARGET = scope:recipient
 				LAAMP = scope:actor
-			}
-		}
-		trigger_if = {
-			limit = { scope:actor = { has_variable = no_scheming_allowed_var } }
-			custom_tooltip = {
-				text = no_scheming_allowed_var_tt
-				scope:actor.var:no_scheming_allowed_var != scope:recipient
 			}
 		}
 	}
@@ -364,7 +350,7 @@ start_abduct = {
 				type = event_toast_effect_neutral
 				title = start_abduct_notification
 
-				left_icon = scope:actor
+				left_icon = scope:actor					
 				right_icon = scope:recipient
 
 				# Success.
@@ -439,14 +425,7 @@ start_abduct = {
 	}
 
 	ai_targets = { ai_recipients = liege }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 60
-		duchy = 60
-		kingdom = 60
-		empire = 0
-		hegemony = 0
-	}
+	ai_frequency = 60
 
 	ai_potential = {
 		liege ?= { has_diarchy_active_parameter = diarchy_is_co_rulership }
@@ -520,7 +499,7 @@ start_abduct = {
 			always = yes
 		}
 	}
-
+	
 	auto_accept = yes
 }
 
@@ -560,22 +539,14 @@ befriend_interaction = {
 		ai_recipients = peer_vassals
 		chance = 0.25
 	}
-
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 72
-		duchy = 24
-		kingdom = 12
-		empire = 12
-		hegemony = 12
-	}
+	ai_frequency = 20
 
 	is_shown = {
 		scope:actor = {
 			can_use_befriend_scheme_trigger = { TARGET = scope:recipient }
 			can_do_diplomacy_trigger = yes
 		}
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 	}
 
 	is_valid_showing_failures_only = {
@@ -589,7 +560,7 @@ befriend_interaction = {
 		trigger_if = {
 			limit = {
 				scope:actor = {
-					has_government = landless_adventurer_government
+					is_landless_adventurer = yes
 				}
 			}
 			#Has to be used instead of diplo range checks in laamp to landed interactions
@@ -624,7 +595,7 @@ befriend_interaction = {
 							AND = {
 								government_has_flag = government_is_clan
 								is_in_same_clan_as_trigger = { CHARACTER = scope:recipient }
-								house = { has_house_unity_stage = harmonious }
+								house = { has_house_unity_stage = harmonious }	
 							}
 						}
 					}
@@ -671,7 +642,7 @@ befriend_interaction = {
 				type = event_toast_effect_neutral
 				title = befriend_interaction_notification
 
-				left_icon = scope:actor
+				left_icon = scope:actor					
 				right_icon = scope:recipient
 
 				begin_scheme_basic_effect = {
@@ -689,8 +660,8 @@ befriend_interaction = {
 			}
 			scope:actor = {
 				random_scheme = {
-					type = befriend
 					limit = {
+						scheme_type = befriend
 						scheme_target_character = scope:recipient
 					}
 					scheme_target_character = {
@@ -731,19 +702,21 @@ befriend_interaction = {
 			}
 		}
 	}
-
+	
 	ai_potential = {
 		OR = {
 			has_perk = befriend_perk # Unlocked by the Befriend Perk
-			dynasty ?= {
-				has_dynasty_perk = fp1_adventure_legacy_5
+			AND = {
+				exists = dynasty
+				dynasty = {
+					has_dynasty_perk = fp1_adventure_legacy_5
+				}
 			}
 			culture = { has_cultural_parameter = automatic_befriend_access }
 			any_character_struggle = {
 				involvement = involved
 				has_struggle_phase_parameter = struggle_unlocks_befriend_schemes_for_everyone
 			}
-			house ?= { has_house_aspiration_parameter = aspect_of_serenity }
 		}
 		NOR = {
 			has_trait = shy
@@ -774,7 +747,7 @@ befriend_interaction = {
 		modifier = { # Try to befriend those who you might want to vassalize
 			add = 30
 			scope:actor = {
-				top_liege = this
+				is_independent_ruler = yes
 				primary_title.tier >= tier_county
 				NOT = {
 					any_targeting_faction = {
@@ -788,7 +761,7 @@ befriend_interaction = {
 				}
 			}
 			scope:recipient = {
-				top_liege = this
+				is_independent_ruler = yes
 				is_playable_character = yes
 				primary_title.tier < scope:actor.primary_title.tier
 				OR = {
@@ -912,10 +885,7 @@ befriend_interaction = {
 
 		modifier = {
 			factor = 25
-			OR = {
-				has_focus = diplomacy_family_focus
-				house ?= { has_house_aspiration_parameter = aspect_of_serenity }
-			}	
+			has_focus = diplomacy_family_focus
 		}
 
 		modifier = {
@@ -925,7 +895,7 @@ befriend_interaction = {
 
 		modifier = {
 			factor = 0.5
-			scope:recipient.faith != scope:actor.faith
+			NOT = { scope:recipient.faith = scope:actor.faith }
 		}
 
 		modifier = {
@@ -1045,18 +1015,11 @@ seduce_interaction = {
 		attracted_to_owner = yes
 		owner_attracted = yes
 	}
-
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 72
-		duchy = 36
-		kingdom = 12
-		empire = 12
-		hegemony = 12
-	}
+	ai_frequency = 24
 
 	is_shown = {
-		scope:actor != scope:recipient
+		can_do_diplomacy_trigger = yes
+		NOT = { scope:actor = scope:recipient }
 		scope:recipient = { is_adult = yes }
 		scope:actor = { is_adult = yes }
 
@@ -1152,8 +1115,10 @@ seduce_interaction = {
 								scope:recipient = {
 									is_vassal_of = scope:actor
 								}
-								liege ?= scope:recipient
-
+								AND = {
+									exists = liege
+									liege = scope:recipient
+								}
 								scope:recipient = {
 									is_theocratic_lessee = yes
 									is_courtier_of = scope:actor
@@ -1210,7 +1175,7 @@ seduce_interaction = {
 		trigger_if = {
 			limit = {
 				scope:actor = {
-					has_government = landless_adventurer_government
+					is_landless_adventurer = yes
 				}
 			}
 			#Has to be used instead of diplo range checks in laamp to landed interactions
@@ -1229,7 +1194,7 @@ seduce_interaction = {
 				type = event_toast_effect_neutral
 				title = seduce_interaction_notification
 
-				left_icon = scope:actor
+				left_icon = scope:actor					
 				right_icon = scope:recipient
 
 				begin_scheme_basic_effect = {
@@ -1276,7 +1241,8 @@ seduce_interaction = {
 		modifier = {
 			add = -50
 			scope:actor = {
-				primary_spouse ?= { has_strong_hook = scope:actor }
+				exists = primary_spouse
+				primary_spouse = { has_strong_hook = scope:actor }
 			}
 		}
 		
@@ -1389,7 +1355,8 @@ seduce_interaction = {
 		modifier = { # Seducing the spouse of your rival is good drama...
 			add = 25
 			scope:recipient = {
-				primary_spouse ?= {
+				exists = primary_spouse
+				primary_spouse = {
 					OR = {
 						has_relation_rival = scope:actor
 						has_relation_nemesis = scope:actor
@@ -1418,7 +1385,9 @@ seduce_interaction = {
 			add = -20
 			scope:recipient = {
 				is_married = yes
-				primary_spouse != scope:actor
+				NOT = {
+					primary_spouse = scope:actor
+				}
 			}
 			scope:actor = {
 				NOR = {
@@ -1642,14 +1611,26 @@ seduce_interaction = {
 			factor = 0
 			scope:recipient = {
 				is_ai = yes
-				any_relation = { type = soulmate }
+				num_of_relation_soulmate > 0
 			}
 		}
 
 		modifier = { # Family Feud
 			add = 50
+			exists = scope:actor.house
+			exists = scope:recipient.primary_spouse.house
 			scope:actor = {
-				house_has_feud_relation_with_trigger = { TARGET = scope:recipient }
+				house.house_head = {
+					any_owned_story = {
+						story_type = story_cycle_house_feud
+						has_variable = house_feud_house
+						var:house_feud_house = scope:recipient.primary_spouse.house
+					}
+				}
+				has_opinion_modifier = {
+					modifier = house_feud_opinion
+					target = scope:recipient.primary_spouse.house.house_head
+				}
 			}
 		}
 	}
@@ -1695,42 +1676,25 @@ court_interaction = {
 		attracted_to_owner = yes
 		owner_attracted = yes
 	}
-
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 72
-		duchy = 36
-		kingdom = 12
-		empire = 12
-		hegemony = 12
-	}
+	ai_frequency = 25
 
 	is_shown = {
 		can_do_diplomacy_trigger = yes
-		scope:recipient = {
-			is_adult = yes
-			is_attracted_to_gender_of = scope:actor
-		}
-
-		scope:actor = { 
-			this != scope:recipient
-			is_adult = yes
-			#Some asexuality handling
+		NOT = { scope:actor = scope:recipient }
+		scope:recipient = { is_adult = yes }
+		scope:actor = { is_adult = yes }
+		scope:actor = { is_attracted_to_gender_of = scope:recipient }
+		scope:recipient = { is_attracted_to_gender_of = scope:actor }
+		
+		scope:actor = { # Some early filtering for the AI to focus it towards fruitful romance
 			trigger_if = {
-				limit = { has_sexuality = asexual }
-				trigger_if = {
-					limit = { is_ai = yes }
-					always = no
+				limit = {
+					is_ai = yes
 				}
-				trigger_else = {
-					scope:recipient = { is_consort_of = scope:actor }
-				}
-			}
-			# Some early filtering for the AI to focus it towards fruitful romance
-			trigger_if = {
-				limit = { is_ai = yes }
 				trigger_if = { # Deviants will romance anyone
-					limit = { is_deviant_trigger = yes }
+					limit = {
+						is_deviant_trigger = yes
+					}
 				}
 				trigger_else_if = { # It's always fine to romance your spouse
 					limit = {
@@ -1769,8 +1733,10 @@ court_interaction = {
 								scope:recipient = {
 									is_vassal_of = scope:actor
 								}
-								liege ?= scope:recipient
-
+								AND = {
+									exists = liege
+									liege = scope:recipient
+								}
 								scope:recipient = {
 									is_theocratic_lessee = yes
 									is_courtier_of = scope:actor
@@ -1821,7 +1787,7 @@ court_interaction = {
 		trigger_if = {
 			limit = {
 				scope:actor = {
-					has_government = landless_adventurer_government
+					is_landless_adventurer = yes
 				}
 			}
 			#Has to be used instead of diplo range checks in laamp to landed interactions
@@ -1852,7 +1818,7 @@ court_interaction = {
 				type = event_toast_effect_neutral
 				title = court_interaction_notification
 
-				left_icon = scope:actor
+				left_icon = scope:actor					
 				right_icon = scope:recipient
 
 				begin_scheme_basic_effect = {
@@ -1887,7 +1853,7 @@ court_interaction = {
 			}
 		}
 	}
-
+	
 	ai_potential = {
 		is_adult = yes
 		trigger_if = {
@@ -2102,7 +2068,7 @@ court_interaction = {
 		modifier = {
 			factor = 0.1
 			scope:recipient = {
-				any_relation = { type = soulmate }
+				num_of_relation_soulmate > 0
 			}
 		}
 
@@ -2131,27 +2097,19 @@ sway_interaction = {
 	ai_targets = {
 		ai_recipients = liege
 		ai_recipients = neighboring_rulers
-		max = 10
 	}
 	ai_targets = {
 		ai_recipients = vassals
 		ai_recipients = peer_vassals
-		max = 10
+		chance = 0.25
 	}
 	ai_targets = {
 		ai_recipients = councillors
 	}
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 120
-		duchy = 24
-		kingdom = 6
-		empire = 6
-		hegemony = 6
-	}
+	ai_frequency = 12
 
 	is_shown = {
-		scope:recipient != scope:actor
+		NOT = { scope:actor = scope:recipient }
 		can_do_diplomacy_trigger = yes
 	}
 
@@ -2166,7 +2124,7 @@ sway_interaction = {
 		trigger_if = {
 			limit = {
 				scope:actor = {
-					has_government = landless_adventurer_government
+					is_landless_adventurer = yes
 				}
 			}
 			#Has to be used instead of diplo range checks in laamp to landed interactions
@@ -2185,7 +2143,7 @@ sway_interaction = {
 				type = event_toast_effect_neutral
 				title = sway_interaction_notification
 
-				left_icon = scope:actor
+				left_icon = scope:actor					
 				right_icon = scope:recipient
 
 				begin_scheme_basic_effect = {
@@ -2198,36 +2156,11 @@ sway_interaction = {
 	}
 	
 	ai_potential = {
+		primary_title.tier >= tier_county
 		NOR = {
 			scheme_generic_ai_blocker_trigger = yes
 			primary_title = {
 				is_mercenary_company = yes
-			}
-		}
-		#Don't override Befriend with Sway?
-		trigger_if = {
-			limit = {
-				OR = {
-					AND = {
-						has_royal_court = yes
-						has_dlc_feature = royal_court
-						has_court_type = court_diplomatic
-						court_grandeur_current_level >= 10
-					}
-					AND = {
-						dynasty ?= { has_dynasty_perk = glory_legacy_5 }
-						has_royal_court = yes
-						has_dlc_feature = royal_court
-						has_court_type = court_diplomatic
-						court_grandeur_current_level >= 10
-					}
-				}
-			}
-			always = yes
-		}
-		trigger_else = {
-			NOT = {
-				any_scheme = { scheme_type = befriend }
 			}
 		}
 	}
@@ -2254,7 +2187,7 @@ sway_interaction = {
 		modifier = { # Try to sway those who you might want to vassalize
 			add = 30
 			scope:actor = {
-				top_liege = this
+				is_independent_ruler = yes
 				primary_title.tier >= tier_county
 				NOT = {
 					any_targeting_faction = {
@@ -2268,7 +2201,7 @@ sway_interaction = {
 				}
 			}
 			scope:recipient = {
-				top_liege = this
+				is_independent_ruler = yes
 				is_playable_character = yes
 				primary_title.tier < scope:actor.primary_title.tier
 				OR = {
@@ -2288,7 +2221,8 @@ sway_interaction = {
 		modifier = {
 			add = 10
 			scope:recipient = {
-				joined_faction ?= {
+				exists = joined_faction
+				joined_faction = {
 					faction_target = scope:actor
 					faction_is_type = liberty_faction
 					faction_is_at_war = no
@@ -2299,7 +2233,8 @@ sway_interaction = {
 		modifier = {
 			add = 20
 			scope:recipient = {
-				joined_faction ?= {
+				exists = joined_faction
+				joined_faction = {
 					faction_target = scope:actor
 					faction_is_type = claimant_faction
 					faction_is_at_war = no
@@ -2310,7 +2245,8 @@ sway_interaction = {
 		modifier = {
 			add = 30
 			scope:recipient = {
-				joined_faction ?= {
+				exists = joined_faction
+				joined_faction = {
 					faction_target = scope:actor
 					faction_is_type = independence_faction
 					faction_is_at_war = no
@@ -2320,8 +2256,8 @@ sway_interaction = {
 
 		modifier = {
 			factor = 2
-			scope:recipient = {
-				is_a_faction_leader = yes
+			scope:recipient = { 
+				is_a_faction_leader = yes 
 				is_vassal_of = scope:actor
 			}
 		}
@@ -2350,7 +2286,7 @@ sway_interaction = {
 
 		modifier = {
 			factor = 0.5
-			scope:recipient.faith != scope:actor.faith
+			NOT = { scope:recipient.faith = scope:actor.faith }
 		}
 
 		modifier = {
@@ -2459,7 +2395,7 @@ sway_interaction = {
 				}
 			}
 		}
-
+		
 		modifier = { # Ignore rivals unless forgiving
 			factor = 0
 			scope:actor = {
@@ -2467,7 +2403,7 @@ sway_interaction = {
 				NOT = { has_trait = forgiving }
 			}
 		}
-
+		
 		modifier = { # Ignore non-councillor barons
 			factor = 0
 			scope:recipient = {
@@ -2475,16 +2411,16 @@ sway_interaction = {
 				is_councillor = no
 			}
 		}
-
+		
 		modifier = { # Ignore neighboring Kings+
 			factor = 0
 			scope:recipient = {
-				top_liege = this
+				is_independent_ruler = yes
 				is_playable_character = yes
 				primary_title.tier >= tier_kingdom
 			}
 		}
-
+		
 		modifier = { # Ignore neighboring Herders
 			factor = 0
 			scope:recipient = {
@@ -2520,14 +2456,7 @@ learn_language_interaction = {
 		ai_recipients = neighboring_rulers
 		max = 5
 	}
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 72
-		duchy = 48
-		kingdom = 12
-		empire = 12
-		hegemony = 12
-	}
+	ai_frequency = 48
 
 	is_shown = {
 		can_do_diplomacy_trigger = yes
@@ -2538,7 +2467,7 @@ learn_language_interaction = {
 				}
 			}
 		}
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 	}
 
 	is_valid_showing_failures_only = {
@@ -2552,7 +2481,7 @@ learn_language_interaction = {
 		trigger_if = {
 			limit = {
 				scope:actor = {
-					has_government = landless_adventurer_government
+					is_landless_adventurer = yes
 				}
 			}
 			#Has to be used instead of diplo range checks in laamp to landed interactions
@@ -2571,7 +2500,7 @@ learn_language_interaction = {
 				type = event_toast_effect_neutral
 				title = learn_language_interaction_notification
 
-				left_icon = scope:actor
+				left_icon = scope:actor					
 				right_icon = scope:recipient
 
 				begin_scheme_basic_effect = {
@@ -2582,7 +2511,7 @@ learn_language_interaction = {
 			}
 		}
 	}
-
+	
 	ai_potential = {
 		primary_title.tier >= tier_county
 		NOR = {
@@ -2634,28 +2563,28 @@ learn_language_interaction = {
 				}
 			}
 		}
-
+		
 		modifier = { # Focus on befriending if that's the path you've chosen
 			add = -50
 			scope:actor = {
 				has_perk = befriend_perk
 			}
 		}
-
+		
 		modifier = { # Prefer seducing if you've got the focus for it
 			add = -20
 			scope:actor = {
 				has_focus = intrigue_temptation_focus
 			}
 		}
-
+		
 		modifier = {
 			add = 50
 			scope:actor = {
 				has_perk = open_minded_perk
 			}
 		}
-
+		
 		modifier = {
 			add = 50
 			scope:actor = {
@@ -2665,42 +2594,42 @@ learn_language_interaction = {
 			}
 			scope:actor.religion = scope:recipient.religion
 		}
-
+		
 		modifier = {
 			add = 25
 			scope:actor = {
 				has_trait = curious
 			}
 		}
-
+		
 		modifier = {
 			add = 50
 			scope:actor = {
 				is_adult = no
 			}
 		}
-
+		
 		modifier = {
 			add = 25
 			scope:recipient = {
 				has_relation_friend = scope:actor
 			}
 		}
-
+		
 		modifier = {
 			add = 25
 			scope:recipient = {
 				has_relation_lover = scope:actor
 			}
 		}
-
+		
 		modifier = {
 			add = 10
 			scope:recipient = {
 				has_relation_potential_friend = scope:actor
 			}
 		}
-
+		
 		modifier = {
 			add = 5
 			scope:recipient = {
@@ -2785,7 +2714,7 @@ learn_language_interaction = {
 				}
 			}
 		}
-
+		
 		modifier = {
 			add = 20
 			scope:actor = {
@@ -2798,7 +2727,7 @@ learn_language_interaction = {
 				is_vassal_of = scope:actor
 			}
 		}
-
+		
 		modifier = {
 			add = 10
 			exists = scope:actor.capital_county
@@ -2806,42 +2735,42 @@ learn_language_interaction = {
 				has_same_culture_language = scope:actor.capital_county.culture
 			}
 		}
-
+		
 		modifier = {
 			add = 100
 			scope:actor.culture = {
 				has_cultural_tradition = tradition_loyal_soldiers
 			}
-			top_liege != this
+			is_independent_ruler = no
 			scope:actor = {
 				liege = scope:recipient
 			}
 		}
-
+		
 		modifier = {
 			factor = 2
 			scope:recipient = {
 				is_powerful_vassal_of = scope:actor
 			}
 		}
-
+		
 		modifier = {
 			factor = 2
 			scope:actor = {
 				learning >= 12
 			}
 		}
-
+		
 		modifier = {
 			factor = 0.5
 			scope:actor = {
 				learning <= 6
 			}
 		}
-
+		
 		modifier = {
 			factor = 0
-
+			
 			scope:actor.num_of_known_languages >= 5
 			scope:actor = {
 				NOR = {
@@ -2852,10 +2781,10 @@ learn_language_interaction = {
 				}
 			}
 		}
-
+		
 		modifier = {
 			factor = 0
-
+			
 			scope:actor.num_of_known_languages >= language_soft_cap
 		}
 	}

@@ -13,7 +13,6 @@ education_intrigue_1 = {
 	intrigue = 2
 	category = education
 	monthly_intrigue_lifestyle_xp_gain_mult = 0.1
-	domain_limit = -1
 	
 	ruler_designer_cost = 0
 	
@@ -41,8 +40,6 @@ education_intrigue_1 = {
 
 	group = education_intrigue
 	level = 1
-	flag = level_1_education
-	flag = civilian_province
 }
 education_intrigue_2 = {
 	minimum_age = 16
@@ -72,15 +69,12 @@ education_intrigue_2 = {
 
 	group = education_intrigue
 	level = 2
-	flag = level_2_education
-	flag = civilian_province
 }
 education_intrigue_3 = {
 	minimum_age = 16
 	intrigue = 6
 	category = education
 	monthly_intrigue_lifestyle_xp_gain_mult = 0.3
-	domain_limit = 1
 	
 	ruler_designer_cost = 40
 	
@@ -104,15 +98,12 @@ education_intrigue_3 = {
 
 	group = education_intrigue
 	level = 3
-	flag = level_3_education
-	flag = civilian_province
 }
 education_intrigue_4 = {
 	minimum_age = 16
 	intrigue = 8
 	category = education
 	monthly_intrigue_lifestyle_xp_gain_mult = 0.4
-	domain_limit = 2
 	
 	ruler_designer_cost = 80
 	
@@ -136,8 +127,6 @@ education_intrigue_4 = {
 
 	group = education_intrigue
 	level = 4
-	flag = level_4_education
-	flag = civilian_province
 }
 education_intrigue_5 = {
 	minimum_age = 16
@@ -148,7 +137,7 @@ education_intrigue_5 = {
 	monthly_diplomacy_lifestyle_xp_gain_mult = 0.25
 	owned_hostile_scheme_success_chance_max_add = 10
 	flag = agent_acceptance_25
-	domain_limit = 3
+	flag = scheme_start_progress
 	
 	ruler_designer_cost = 150
 	
@@ -173,8 +162,6 @@ education_intrigue_5 = {
 	random_creation_weight = 0
 	group = education_intrigue
 	level = 5
-	flag = level_5_education
-	flag = civilian_province
 }
 
 # DIPLOMACY OUTCOMES
@@ -183,7 +170,6 @@ education_diplomacy_1 = {
 	diplomacy = 2
 	category = education
 	monthly_diplomacy_lifestyle_xp_gain_mult = 0.1
-	domain_limit = -1
 	
 	ruler_designer_cost = 0
 	
@@ -206,8 +192,6 @@ education_diplomacy_1 = {
 
 	group = education_diplomacy
 	level = 1
-	flag = level_1_education
-	flag = civilian_province
 }
 education_diplomacy_2 = {
 	minimum_age = 16
@@ -231,15 +215,12 @@ education_diplomacy_2 = {
 
 	group = education_diplomacy
 	level = 2
-	flag = level_2_education
-	flag = civilian_province
 }
 education_diplomacy_3 = {
 	minimum_age = 16
 	diplomacy = 6
 	category = education
 	monthly_diplomacy_lifestyle_xp_gain_mult = 0.3
-	domain_limit = 1
 	
 	ruler_designer_cost = 40
 	
@@ -257,15 +238,12 @@ education_diplomacy_3 = {
 
 	group = education_diplomacy
 	level = 3
-	flag = level_3_education
-	flag = civilian_province
 }
 education_diplomacy_4 = {
 	minimum_age = 16
 	diplomacy = 8
 	category = education
 	monthly_diplomacy_lifestyle_xp_gain_mult = 0.4
-	domain_limit = 2
 	
 	ruler_designer_cost = 80
 
@@ -292,8 +270,6 @@ education_diplomacy_4 = {
 
 	group = education_diplomacy
 	level = 4
-	flag = level_4_education
-	flag = civilian_province
 }
 education_diplomacy_5 = {
 	minimum_age = 16
@@ -305,7 +281,6 @@ education_diplomacy_5 = {
 	owned_personal_scheme_success_chance_max_add = 10
 	flag = offer_vassalisation_25
 	flag = better_war_hostages
-	domain_limit = 3
 	
 	ruler_designer_cost = 150
 
@@ -333,8 +308,6 @@ education_diplomacy_5 = {
 	random_creation_weight = 0
 	group = education_diplomacy
 	level = 5
-	flag = level_5_education
-	flag = civilian_province
 }
 
 # STEWARDSHIP OUTCOMES
@@ -343,7 +316,6 @@ education_stewardship_1 = { #Indulgent wastrel
 	stewardship = 2
 	category = education
 	monthly_stewardship_lifestyle_xp_gain_mult = 0.1
-	domain_limit = -1
 	
 	ruler_designer_cost = 0
 	
@@ -366,8 +338,6 @@ education_stewardship_1 = { #Indulgent wastrel
 
 	group = education_stewardship
 	level = 1
-	flag = level_1_education
-	flag = civilian_province
 }
 education_stewardship_2 = { #Thrifty clerk
 	minimum_age = 16
@@ -391,15 +361,12 @@ education_stewardship_2 = { #Thrifty clerk
 
 	group = education_stewardship
 	level = 2
-	flag = level_2_education
-	flag = civilian_province
 }
 education_stewardship_3 = {	#Fortune builder
 	minimum_age = 16
 	stewardship = 6
 	category = education
 	monthly_stewardship_lifestyle_xp_gain_mult = 0.3
-	domain_limit = 1
 	
 	ruler_designer_cost = 40
 	
@@ -417,15 +384,12 @@ education_stewardship_3 = {	#Fortune builder
 
 	group = education_stewardship
 	level = 3
-	flag = level_3_education
-	flag = civilian_province
 }
 education_stewardship_4 = {
 	minimum_age = 16
 	stewardship = 8
 	category = education
 	monthly_stewardship_lifestyle_xp_gain_mult = 0.4
-	domain_limit = 2
 	
 	culture_modifier = {
 		parameter = elephant_bonuses_for_rank_4_education
@@ -451,8 +415,6 @@ education_stewardship_4 = {
 
 	group = education_stewardship
 	level = 4
-	flag = level_4_education
-	flag = civilian_province
 }
 education_stewardship_5 = {
 	minimum_age = 16
@@ -462,7 +424,6 @@ education_stewardship_5 = {
 	monthly_stewardship_lifestyle_xp_gain_mult = 0.5
 	monthly_learning_lifestyle_xp_gain_mult = 0.25
 	vassal_tax_mult = 0.25
-	domain_limit = 3
 	
 	culture_modifier = {
 		parameter = elephant_bonuses_for_rank_4_education
@@ -489,8 +450,6 @@ education_stewardship_5 = {
 	random_creation_weight = 0
 	group = education_stewardship
 	level = 5
-	flag = level_5_education
-	flag = civilian_province
 }
 
 # MARTIAL OUTCOMES
@@ -499,7 +458,6 @@ education_martial_1 = {
 	martial = 2
 	category = education
 	monthly_martial_lifestyle_xp_gain_mult = 0.1
-	domain_limit = -1
 	
 	culture_modifier = {
 		parameter = poorly_educated_leaders_distrusted
@@ -533,8 +491,6 @@ education_martial_1 = {
 
 	group = education_martial
 	level = 1
-	flag = level_1_education
-	flag = military_province
 	
 	add_commander_trait = yes
 }
@@ -571,8 +527,6 @@ education_martial_2 = { #Tough soldier
 
 	group = education_martial
 	level = 2
-	flag = level_2_education
-	flag = military_province
 	add_commander_trait = yes
 }
 education_martial_3 = { #Skilled tactician
@@ -580,7 +534,6 @@ education_martial_3 = { #Skilled tactician
 	martial = 6
 	category = education
 	monthly_martial_lifestyle_xp_gain_mult = 0.3
-	domain_limit = 1
 	
 	culture_modifier = {
 		parameter = prowess_from_martial_education
@@ -609,8 +562,6 @@ education_martial_3 = { #Skilled tactician
 
 	group = education_martial
 	level = 3
-	flag = level_3_education
-	flag = military_province
 	add_commander_trait = yes
 }
 education_martial_4 = { #Brilliant strategist
@@ -618,7 +569,6 @@ education_martial_4 = { #Brilliant strategist
 	martial = 8
 	category = education
 	monthly_martial_lifestyle_xp_gain_mult = 0.4
-	domain_limit = 2
 	
 	culture_modifier = {
 		parameter = prowess_from_martial_education
@@ -655,8 +605,6 @@ education_martial_4 = { #Brilliant strategist
 
 	group = education_martial
 	level = 4
-	flag = level_4_education
-	flag = military_province
 	add_commander_trait = yes
 }
 education_martial_5 = {
@@ -668,11 +616,10 @@ education_martial_5 = {
 	monthly_stewardship_lifestyle_xp_gain_mult = 0.25
 	army_siege_value_mult = 0.5
 	movement_speed = 0.2
-	domain_limit = 3
 	
 	culture_modifier = {
 		parameter = prowess_from_martial_education
-		prowess = 5
+		prowess = 4
 	}
 	
 	culture_modifier = {
@@ -706,8 +653,6 @@ education_martial_5 = {
 	random_creation_weight = 0
 	group = education_martial
 	level = 5
-	flag = level_5_education
-	flag = military_province
 	add_commander_trait = yes
 }
 
@@ -717,7 +662,6 @@ education_learning_1 = {
 	learning = 2
 	category = education
 	monthly_learning_lifestyle_xp_gain_mult = 0.1
-	domain_limit = -1
 	
 	culture_modifier = {
 		parameter = poorly_educated_leaders_distrusted
@@ -756,8 +700,6 @@ education_learning_1 = {
 
 	group = education_learning
 	level = 1
-	flag = level_1_education
-	flag = civilian_province
 }
 education_learning_2 = {
 	minimum_age = 16
@@ -797,15 +739,12 @@ education_learning_2 = {
 
 	group = education_learning
 	level = 2
-	flag = level_2_education
-	flag = civilian_province
 }
 education_learning_3 = {
 	minimum_age = 16
 	learning = 6
 	category = education
 	monthly_learning_lifestyle_xp_gain_mult = 0.3
-	domain_limit = 1
 	
 	culture_modifier = {
 		parameter = prowess_from_religious_traits
@@ -839,15 +778,12 @@ education_learning_3 = {
 
 	group = education_learning
 	level = 3
-	flag = level_3_education
-	flag = civilian_province
 }
 education_learning_4 = {
 	minimum_age = 16
 	learning = 8
 	category = education
 	monthly_learning_lifestyle_xp_gain_mult = 0.4
-	domain_limit = 2
 	
 	culture_modifier = {
 		parameter = prowess_from_religious_traits
@@ -891,8 +827,6 @@ education_learning_4 = {
 	
 	group = education_learning
 	level = 4
-	flag = level_4_education
-	flag = civilian_province
 }
 education_learning_5 = {
 	minimum_age = 16
@@ -903,7 +837,6 @@ education_learning_5 = {
 	monthly_intrigue_lifestyle_xp_gain_mult = 0.25
 	development_growth = 0.1
 	county_fertility_growth_mult = small_county_fertility_growth_gain
-	domain_limit = 3
 	
 	culture_modifier = {
 		parameter = prowess_from_religious_traits
@@ -948,8 +881,6 @@ education_learning_5 = {
 	random_creation_weight = 0
 	group = education_learning
 	level = 5
-	flag = level_5_education
-	flag = civilian_province
 }
 
 ################### LIFESTYLE ##################
@@ -959,7 +890,7 @@ diplomat = {
 	diplomacy = 3
 	personal_scheme_phase_duration_add = medium_scheme_phase_duration_bonus_value
 	independent_ruler_opinion = 20
-	monthly_influence = 1
+	flag = initial_legitimacy_boost
 	
 	ruler_designer_cost = 50
 
@@ -1003,7 +934,6 @@ family_first = {
 	dynasty_house_opinion = 10
 	close_relative_opinion = 15
 	stress_loss_mult = 0.2
-	domain_limit = 1
 	
 	ruler_designer_cost = 50
 
@@ -2127,7 +2057,6 @@ theologian = {
 	
 	learning = 3
 	monthly_piety_gain_mult = 0.2
-	domain_limit = 1
 	
 	ruler_designer_cost = 50
 
@@ -2767,11 +2696,6 @@ temperate = {
 		same_culture_opinion = 10
 		monthly_piety = 0.5
 	}
-	
-	culture_modifier = {
-		parameter = stress_loss_bonus_from_harmonious_traits
-		stress_loss_mult = 0.15
-	}
 
 	culture_modifier = {
 		parameter = gives_lich_traits
@@ -3081,12 +3005,6 @@ diligent = {
 		county_opinion_add = 10
 	}
 	
-	culture_modifier = {
-		parameter = honorable_trait_bonuses
-		same_culture_opinion = 10
-		monthly_prestige_gain_mult = 0.05
-	}
-
 	same_opinion = 10
 	opposite_opinion = -10
 	flag = water_spellcasting_add
@@ -3327,7 +3245,7 @@ calm = {
 	}
 	diplomacy = 1
 	intrigue = 1
-	enemy_scheme_secrecy_add = -10
+	scheme_discovery_chance_mult = 0.1
 	
 	opposite_opinion = -10
 	same_opinion = 10
@@ -3493,11 +3411,6 @@ patient = {
 		desert_mountains_tax_mult = 0.1
 	}
 	
-	culture_modifier = {
-		parameter = stress_loss_bonus_from_harmonious_traits
-		stress_loss_mult = 0.15
-	}
-
 	opposite_opinion = -15
 	
 	ai_war_cooldown = 0.5
@@ -3851,12 +3764,6 @@ humble = {
 		monthly_piety_gain_mult = 0.1
 	}
 
-	culture_modifier = {
-		parameter = honorable_trait_bonuses
-		same_culture_opinion = 10
-		monthly_prestige_gain_mult = 0.05
-	}
-
 	desc = {
 		first_valid = {
 			triggered_desc = {
@@ -4206,12 +4113,6 @@ brave = {
 		marcher_hills_advantage = 4
 		hills_attrition_mult = -0.25
 		marcher_hills_attrition_mult = -0.25
-	}
-	
-	culture_modifier = {
-		parameter = honorable_trait_bonuses
-		same_culture_opinion = 10
-		monthly_prestige_gain_mult = 0.05
 	}
 	
 	culture_modifier = {
@@ -4881,13 +4782,6 @@ just = {
 		diplomacy_per_prestige_level = 1
 	}
 	
-	culture_modifier = {
-		parameter = honorable_trait_bonuses
-		same_culture_opinion = 10
-		monthly_prestige_gain_mult = 0.05
-	}
-
-	
 	flag = light_spellcasting_add
 	
 	ruler_designer_cost = 40
@@ -5177,7 +5071,7 @@ paranoid = {
 	stress_gain_mult = 1
 	dread_gain_mult = 0.25
 	
-	enemy_scheme_secrecy_add = -10
+	scheme_discovery_chance_mult = 0.1
 	enemy_personal_scheme_success_chance_add = -25
 	
 	character_travel_speed = -10
@@ -5378,12 +5272,6 @@ compassionate = {
 		parameter = bloodhounds_of_aversaria_negative_trait_modifiers
 		same_culture_opinion = -15
 	}
-	
-	culture_modifier = {
-		parameter = stress_loss_bonus_from_harmonious_traits
-		stress_loss_mult = 0.15
-	}
-	
 	flag = stone_spellcasting_add
 	flag = fire_spellcasting_add
 	ruler_designer_cost = 10
@@ -5404,8 +5292,8 @@ compassionate = {
 	ai_greed = low_negative_ai_value
 	ai_compassion = dominant_positive_ai_value
 	ai_sociability = medium_positive_ai_value
-	ai_amenity_target_baseline = 0.1
-	ai_amenity_spending = 0.05
+	ai_amenity_target_baseline = 0.2
+	ai_amenity_spending = 0.1
 
 	compatibility = {
 		compassionate = @pos_compat_high
@@ -5645,8 +5533,8 @@ stubborn = {
 	ai_honor = medium_positive_ai_value
 	ai_rationality = very_low_negative_ai_value
 	ai_vengefulness = medium_positive_ai_value
-	ai_amenity_target_baseline = 0.1
-	ai_amenity_spending = 0.05
+	ai_amenity_target_baseline = 0.15
+	ai_amenity_spending = 0.1
 
 	compatibility = {
 		patient = @pos_compat_low
@@ -6850,7 +6738,7 @@ ill = {
 	
 	health = -1
 	elderly_health = -1
-	prowess_mult = -0.4
+	prowess = -4
 	fertility = -0.2
 
 	category = health
@@ -6863,7 +6751,6 @@ ill = {
 	flag = illness
 	flag = debilitating_illness
 	flag = blocks_getting_non_epidemic_disease
-	flag = is_healthy_trigger_flag
 	flag = arcana_add
 
 	desc = {
@@ -6893,7 +6780,7 @@ pneumonic = {
 	learning = -2
 	health = -3
 	elderly_health = -2
-	prowess_mult = -0.8
+	prowess = -8
 	fertility = -0.5
 
 	category = health
@@ -7014,7 +6901,7 @@ lovers_pox = {
 
 leper = {
 	health = -1.5
-	prowess_mult = -0.8
+	prowess = -8
 	fertility = -0.95
 	category = health
 
@@ -7099,7 +6986,6 @@ wounded_2 = {
 	shown_in_ruler_designer = no
 
 	flag = no_message
-	flag = is_healthy_trigger_flag
 
 	desc = {
 		first_valid = {
@@ -7138,7 +7024,6 @@ wounded_3 = {
 	shown_in_ruler_designer = no
 
 	flag = no_message
-	flag = is_healthy_trigger_flag
 
 	desc = {
 		first_valid = {
@@ -7314,16 +7199,17 @@ disfigured = {
 }
 
 infirm = {
-	diplomacy = -1
-	martial = -1
-	prowess_mult = -0.2
-	health = -0.25
-	fertility = -0.1
-	ai_energy = -10
-	
-	flag = infirm_random_xp_gain
-	flag = age_related_ailment
-	flag = is_healthy_trigger_flag
+	diplomacy = -3
+	martial = -3
+	stewardship = -3
+	intrigue = -3
+	learning = -3
+	prowess = -6
+	health = -1
+	fertility = -0.3
+
+	dread_baseline_add = -15
+	dread_loss_mult = 1
 
 	category = health
 
@@ -7344,323 +7230,19 @@ infirm = {
 			desc = trait_infirm_character_desc
 		}
 	}
-	
-	tracks = {
-		infirm = {
-			25 = {
-				diplomacy = -1
-				martial = -1
-				stewardship = -1
-				prowess_mult = -0.2
-				health = -0.25
-				fertility = -0.1
-				dread_baseline_add = -5
-				dread_loss_mult = 0.25
-				attraction_opinion = -5
-				ai_energy = -10
-			}
-			50 = {
-				diplomacy = -2
-				martial = -2
-				stewardship = -2
-				prowess_mult = -0.2
-				health = -0.25
-				fertility = -0.1
-				dread_baseline_add = -10
-				dread_loss_mult = 0.25
-				attraction_opinion = -5
-				ai_energy = -10
-			}
-			75 = {
-				diplomacy = -2
-				martial = -2
-				stewardship = -2
-				prowess_mult = -0.2
-				health = -0.25
-				fertility = -0.1
-				dread_baseline_add = -10
-				dread_loss_mult = 0.25
-				attraction_opinion = -5
-				ai_energy = -10
-			}
-			100 = {
-				diplomacy = -2
-				martial = -2
-				stewardship = -2
-				prowess_mult = -0.2
-				health = -0.25
-				fertility = -0.1
-				dread_baseline_add = -10
-				dread_loss_mult = 0.25
-				attraction_opinion = -5
-				ai_energy = -10
-			}
-		}
-	}
-}
 
-withering_mind = {
-	learning = -2
-	monthly_lifestyle_xp_gain_mult = -0.25
-	stress_gain_mult = 0.2
-	ai_rationality = -25
-	
-	flag = withering_mind_random_xp_gain
-	flag = incapable_on_max_level
-	flag = age_related_ailment
-	flag = is_healthy_trigger_flag
-
-	category = health
-	
-	ruler_designer_cost = -20
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_withering_mind_desc
-			}
-			desc = trait_withering_mind_character_desc
-		}
-	}
-	
-	tracks = {
-		withering_mind = {
-			25 = {
-				diplomacy_mult = -0.25
-				martial_mult = -0.25
-				stewardship_mult = -0.25
-				intrigue_mult = -0.25
-				learning_mult = -0.25
-				monthly_lifestyle_xp_gain_mult = -0.25
-				stress_gain_mult = 0.2
-				ai_rationality = -25
-			}
-			50 = {
-				diplomacy_mult = -0.25
-				martial_mult = -0.25
-				stewardship_mult = -0.25
-				intrigue_mult = -0.25
-				learning_mult = -0.25
-				monthly_lifestyle_xp_gain_mult = -0.25
-				stress_gain_mult = 0.2
-				ai_rationality = -25
-			}
-			75 = {
-				diplomacy_mult = -0.25
-				martial_mult = -0.25
-				stewardship_mult = -0.25
-				intrigue_mult = -0.25
-				learning_mult = -0.25
-				monthly_lifestyle_xp_gain_mult = -0.5
-				stress_gain_mult = 0.2
-				ai_rationality = -25
-			}
-			100 = {
-				diplomacy_mult = -0.25
-				martial_mult = -0.25
-				stewardship_mult = -0.25
-				intrigue_mult = -0.25
-				learning_mult = -0.25
-				monthly_lifestyle_xp_gain_mult = -0.5
-				stress_gain_mult = 0.2
-				ai_rationality = -25
-			}
-		}
-	}
-}
-
-clouded_eyes = {
-	martial = -1
-	prowess = -2
-	
-	flag = clouded_eyes_random_xp_gain
-	flag = age_related_ailment
-	flag = is_healthy_trigger_flag
-	flag = blind_on_max_level
-
-	category = health
-	
-	ruler_designer_cost = -20
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_clouded_eyes_desc
-			}
-			desc = trait_clouded_eyes_character_desc
-		}
-	}
-	
-	tracks = {
-		clouded_eyes = {
-			25 = {
-				martial = -1
-				prowess = -2
-			}
-			50 = {
-				martial = -1
-				prowess = -2
-			}
-			75 = {
-				martial = -1
-				stewardship = -1
-				intrigue = -1
-				prowess = -2
-				
-				dread_baseline_add = -5
-
-				attraction_opinion = -5
-			}
-			100 = {
-				martial = -2
-				stewardship = -1
-				intrigue = -1
-				prowess = -2
-				
-				health = -0.25
-				
-				dread_baseline_add = -5
-
-				attraction_opinion = -5
-			}
-		}
-	}
-}
-
-faltering_heart = {
-	health = -0.1
-	prowess = -1
-	character_travel_safety = -2
-	stress_gain_mult = 0.2
-	stress_loss_mult = -0.2
-	
-	flag = faltering_heart_random_xp_gain
-	flag = age_related_ailment
-	flag = is_healthy_trigger_flag
-	flag = death_on_max_level
-
-	category = health
-	
-	ruler_designer_cost = -20
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_faltering_heart_desc
-			}
-			desc = trait_faltering_heart_character_desc
-		}
-	}
-	
-	tracks = {
-		faltering_heart = {
-			25 = {
-				health = -0.1
-				prowess = -1
-				character_travel_safety = -2
-				stress_gain_mult = 0.2
-				stress_loss_mult = -0.2
-			}
-			50 = {
-				health = -0.1
-				prowess = -1
-				character_travel_safety = -2
-				stress_gain_mult = 0.2
-				stress_loss_mult = -0.2
-			}
-			75 = {
-				health = -0.1
-				prowess = -1
-				character_travel_safety = -2
-				stress_gain_mult = 0.2
-				stress_loss_mult = -0.2
-			}
-			100 = {
-				health = -100
-			}
-		}
-	}
-}
-
-fragile_bones = {
-	character_travel_speed_mult = -0.1
-	prowess_mult = -0.1
-	advantage = -3
-	life_expectancy = -3
-	enemy_hostile_scheme_success_chance_max_add = 5
-	
-	flag = fragile_bones_random_xp_gain
-	flag = age_related_ailment
-	flag = is_healthy_trigger_flag
-	flag = wounds_twice_as_bad
-
-	category = health
-	
-	ruler_designer_cost = -20
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_fragile_bones_desc
-			}
-			desc = trait_fragile_bones_character_desc
-		}
-	}
-	
-	tracks = {
-		fragile_bones = {
-			25 = {
-				character_travel_speed_mult = -0.1
-				prowess_mult = -0.1
-				advantage = -3
-				life_expectancy = -3
-				enemy_hostile_scheme_success_chance_max_add = 10
-			}
-			50 = {
-				character_travel_speed_mult = -0.1
-				prowess_mult = -0.1
-				advantage = -3
-				life_expectancy = -3
-				enemy_hostile_scheme_success_chance_max_add = 10
-			}
-			75 = {
-				character_travel_speed_mult = -0.1
-				prowess_mult = -0.1
-				advantage = -5
-				life_expectancy = -5
-				enemy_hostile_scheme_success_chance_max_add = 15
-			}
-			100 = {
-				character_travel_speed_mult = -0.1
-				prowess_mult = -0.1
-				advantage = -10
-				life_expectancy = -10
-				enemy_hostile_scheme_success_chance_max_add = 15
-			}
-		}
-	}
+	ai_energy = -30
 }
 
 incapable = {
-	diplomacy_mult = -1
-	martial_mult = -1
-	stewardship_mult = -1
-	intrigue_mult = -1
-	learning_mult = -1
-	prowess_mult = -1
+	diplomacy = -6
+	intrigue = -6
+	stewardship = -6
+	martial = -6
+	learning = -6
+	prowess = -12
 	health = -2
+	fertility = -0.3
 	
 	dread_baseline_add = -25
 	dread_loss_mult = 1
@@ -7689,14 +7271,12 @@ incapable = {
 	}
 
 	ai_energy = -100
-	
-	flag = is_healthy_trigger_flag
 }
 
 gout_ridden = {
-	diplomacy_mult = -0.1
-	martial_mult = -0.1
-	prowess_mult = -0.2
+	diplomacy = -2
+	martial = -1
+	prowess = -2
 	health = -1
 	
 	dread_baseline_add = -5
@@ -7728,7 +7308,7 @@ consumption = { # Tuberculosis
 	diplomacy = -2
 	stewardship = -1
 	intrigue = -2
-	prowess_mult = -0.4
+	prowess = -2
 	health = -2.5
 	child_health = -1
 	elderly_health = -2
@@ -7743,8 +7323,6 @@ consumption = { # Tuberculosis
 
 	flag = illness
 	flag = debilitating_illness
-	flag = contagious_deadly_disease
-	flag = epidemic_disease
 	flag = blocks_getting_non_epidemic_disease
 
 	desc = {
@@ -7797,7 +7375,7 @@ typhus = {
 	stewardship = -2
 	intrigue = -1
 	learning = -2
-	prowess_mult = -0.8
+	prowess = -4
 	health = -4.5
 	elderly_health = -1
 	fertility = -0.2
@@ -7813,8 +7391,6 @@ typhus = {
 
 	flag = illness
 	flag = debilitating_illness
-	flag = contagious_deadly_disease
-	flag = epidemic_disease
 	flag = blocks_getting_non_epidemic_disease
 	flag = arcana_add
 
@@ -7839,7 +7415,7 @@ bubonic_plague = {
 	stewardship = -2
 	intrigue = -3
 	learning = -2
-	prowess_mult = -0.8
+	prowess = -10
 	health = -7
 	elderly_health = -2
 	fertility = -0.50
@@ -7855,8 +7431,6 @@ bubonic_plague = {
 
 	flag = illness
 	flag = debilitating_illness
-	flag = contagious_deadly_disease
-	flag = epidemic_disease
 	flag = blocks_getting_non_epidemic_disease
 	flag = arcana_add
 
@@ -7879,7 +7453,7 @@ smallpox = {
 	diplomacy = -2
 	stewardship = -1
 	learning = -2
-	prowess_mult = -0.8
+	prowess = -10
 	health = -4.5
 	elderly_health = -1.5
 	fertility = -0.25
@@ -7895,8 +7469,6 @@ smallpox = {
 
 	flag = illness
 	flag = debilitating_illness
-	flag = contagious_deadly_disease
-	flag = epidemic_disease
 	flag = blocks_getting_non_epidemic_disease
 	flag = arcana_add
 
@@ -7920,7 +7492,7 @@ measles = {
 	stewardship = -1
 	intrigue = -1
 	learning = -2
-	prowess_mult = -0.4
+	prowess = -4
 	health = -3
 	child_health = -3
 
@@ -7934,8 +7506,6 @@ measles = {
 
 	flag = illness
 	flag = debilitating_illness
-	flag = contagious_deadly_disease
-	flag = epidemic_disease
 	flag = blocks_getting_non_epidemic_disease
 
 	desc = {
@@ -7957,7 +7527,7 @@ dysentery = { # Bloody Flux
 	diplomacy = -2
 	martial = -1
 	intrigue = -2
-	prowess_mult = -0.8
+	prowess = -8
 	health = -3.5
 	elderly_health = -2
 
@@ -7971,8 +7541,6 @@ dysentery = { # Bloody Flux
 
 	flag = illness
 	flag = debilitating_illness
-	flag = contagious_deadly_disease
-	flag = epidemic_disease
 	flag = blocks_getting_non_epidemic_disease
 
 	desc = {
@@ -8007,7 +7575,6 @@ ergotism = { # Holy Fire
 
 	flag = illness
 	flag = debilitating_illness
-	flag = epidemic_disease
 	flag = blocks_getting_non_epidemic_disease
 
 	desc = {
@@ -8155,9 +7722,7 @@ eunuch_1 = {
 	opposites = {
 		beardless_eunuch #You can't have both
 	}
-
-	valid_sex = male
-
+	
 	shown_in_ruler_designer = yes
 
 	culture_modifier = {
@@ -8176,23 +7741,6 @@ eunuch_1 = {
 		intrigue = 2
 		learning = 2
 		monthly_influence_mult = 0.5
-	}
-
-	culture_modifier = {
-		parameter = court_machinations_eunuch_trait_bonuses
-
-		# In China Eunuchs have a similar role to the one described above but they also serve as commanders, governors and be accomplished scholars. They still had a clear rivalry with the other scholar officials of the empire.
-
-		liege_opinion = 15 #Emperors loyal subjects and often agents
-		same_culture_opinion = -15 #Everyone else distrusts them
-		ai_honor = -10
-
-		martial = 1
-		intrigue = 3
-		learning = 2
-		monthly_influence_mult = 0.5
-		monthly_merit_mult = 0.5
-		monthly_merit = 0.1
 	}
 
 	ruler_designer_cost = -10
@@ -8228,8 +7776,6 @@ beardless_eunuch = {
 	inheritance_blocker = all
 	claim_inheritance_blocker = all
 	can_have_children = no
-
-	valid_sex = male
 	
 	shown_in_ruler_designer = yes
 
@@ -8247,28 +7793,11 @@ beardless_eunuch = {
 		ai_greed = -15
 
 		# Eunuchs in this society have various privileges (due to their assumed innocuousness) that make them better at both spying as well as administrative tasks and scholastic pursuits.
-		martial = 1
-		intrigue = 3
-		learning = 2
-		monthly_influence_mult = 0.5
-		monthly_influence = 0.1
-	}
-
-	culture_modifier = {
-		parameter = court_machinations_eunuch_trait_bonuses
-
-		# In China Eunuchs have a similar role to the one described above but they also serve as commanders, governors and be accomplished scholars. They still had a clear rivalry with the other scholar officials of the empire.
-
-		liege_opinion = 15 #Emperors loyal subjects and often agents
-		same_culture_opinion = -15 #Everyone else distrusts them
-		ai_honor = -10
-
 		stewardship = 2
 		intrigue = 2
 		learning = 2
 		monthly_influence_mult = 0.5
-		monthly_merit_mult = 0.5
-		monthly_merit = 0.1
+		monthly_influence = 0.1
 	}
 
 	ruler_designer_cost = -15
@@ -10453,7 +9982,7 @@ shieldmaiden = {
 	ai_energy = high_positive_ai_value
 }
 
-lifestyle_poet = {
+poet = {
 	category = fame
 	diplomacy_per_prestige_level = 1
 	stress_loss_mult = 0.1
@@ -10476,18 +10005,7 @@ lifestyle_poet = {
 		monthly_dynasty_prestige_mult = 0.01
 		courting_scheme_phase_duration_add = minor_scheme_phase_duration_bonus_value
 	}
-
-	track = {
-		50 = {
-			diplomacy = 1
-			courtly_opinion = 5
-		}
-		100 = {
-			diplomacy = 2
-			courtly_opinion = 5
-		}
-	}
-
+	
 	ruler_designer_cost = 40
 
 	desc = {
@@ -10496,9 +10014,9 @@ lifestyle_poet = {
 				trigger = {
 					NOT = { exists = this }
 				}
-				desc = trait_lifestyle_poet_desc
+				desc = trait_poet_desc
 			}
-			desc = trait_lifestyle_poet_character_desc
+			desc = trait_poet_character_desc
 		}
 	}
 
@@ -10634,8 +10152,6 @@ child_of_concubine_female = {
 		diplomacy = 1
 	}
 	shown_in_ruler_designer = no
-
-	valid_sex = female
 	
 	name = trait_child_of_concubine
 	desc = {
@@ -10669,8 +10185,6 @@ child_of_concubine_male = {
 		diplomacy = 1
 	}
 	shown_in_ruler_designer = no
-
-	valid_sex = male
 	
 	name = trait_child_of_concubine
 	desc = {
@@ -11387,61 +10901,11 @@ peasant_leader = {
 
 	culture_modifier = {
 		parameter = grants_to_lowborns_bonuses
-		domain_limit = -1
+		domain_limit = -3
 		development_growth_factor = 0.2
 		county_fertility_growth_mult = medium_county_fertility_growth_gain
 	}
 
-	track = {
-		33 = {
-			enemy_terrain_advantage = -0.25
-		}
-		66 = {
-			advantage = 1
-			levy_siege = 0.1
-		}
-		100 = {
-			advantage = 2
-			county_opinion_add = 20
-			ignore_negative_culture_opinion = yes
-			ignore_different_faith_opinion = yes
-		}
-	}
-	name = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					exists = this
-					has_trait_xp = {
-						trait = peasant_leader
-						value >= 100
-					}
-				}
-				desc = trait_peasant_leader_3
-			}
-			triggered_desc = {
-				trigger = {
-					exists = this
-					has_trait_xp = {
-						trait = peasant_leader
-						value >= 66
-					}
-				}
-				desc = trait_peasant_leader_2
-			}
-			triggered_desc = {
-				trigger = {
-					exists = this
-					has_trait_xp = {
-						trait = peasant_leader
-						value >= 33
-					}
-				}
-				desc = trait_peasant_leader_1
-			}
-			desc = trait_peasant_leader
-		}
-	}
 	desc = {
 		first_valid = {
 			triggered_desc = {
@@ -11657,7 +11121,7 @@ loyal = {
 	opposites = {
 		disloyal
 	}
-	ruler_designer_cost = 20
+	ruler_designer_cost = 100
 
 
 	liege_opinion = 15
@@ -11678,12 +11142,6 @@ loyal = {
 	culture_modifier = {
 		parameter = palace_politics_trait_bonuses
 		monthly_influence = 0.1
-	}
-
-	culture_modifier = {
-		parameter = scholar_official_trait_bonuses
-		monthly_merit_mult = 0.1
-		same_culture_opinion = 5
 	}
 
 	desc = {
@@ -14088,8 +13546,8 @@ crusader_king = {
 	ai_zeal = 25
 }
 
-
-chakravarti = { #GH TODO: Replace with a GH Name
+#GH TODO: Replace with a GH Name
+chakravarti = {
 	category = fame
 
 	diplomacy = 2
@@ -14129,9 +13587,6 @@ greatest_of_khans = {
 	stewardship = 1
 	prowess = 2
 
-	#Seems counterintuitive, but is needed to get GoK to use the mass declare
-	ai_war_chance = -100
-	ai_war_cooldown = -100
 	same_culture_opinion = 25
 	dread_baseline_add = 50
 	dread_decay_mult = -0.5
@@ -14185,7 +13640,6 @@ conqueror = {
 	ai_amenity_spending = -0.25
 	ai_amenity_target_baseline = -0.4
 	title_creation_cost_mult = -0.75
-	title_creation_piety_cost_mult = -0.75
 	monthly_legitimacy_add = 5
 	men_at_arms_maintenance = -0.75
 	monthly_income = 5
@@ -15113,7 +14567,6 @@ tourney_participant = {
 }
 
 lifestyle_traveler = {
-	category = lifestyle
 	icon = "traveler.dds"
 
 	monthly_wanderer_lifestyle_xp_gain_mult = 0.1
@@ -15298,7 +14751,7 @@ fp3_struggle_supporter = {
 
 # TRAITS TO TRACK HIPPODROME FACTION MEMBERS
 charioteer_blue = {
-	category = fame
+	category = lifestyle
 	icon = "charioteer_blue.dds"
 	opposites = {
 		charioteer_green
@@ -15362,7 +14815,7 @@ charioteer_blue = {
 }
 
 charioteer_green = {
-	category = fame
+	category = lifestyle
 	icon = "charioteer_green.dds"
 	opposites = {
 		charioteer_blue
@@ -15426,7 +14879,7 @@ charioteer_green = {
 }
 
 charioteer_white = {
-	category = fame
+	category = lifestyle
 	icon = "charioteer_white.dds"
 	opposites = {
 		charioteer_blue
@@ -15490,7 +14943,7 @@ charioteer_white = {
 }
 
 charioteer_red = {
-	category = fame
+	category = lifestyle
 	icon = "charioteer_red.dds"
 	opposites = {
 		charioteer_blue
@@ -15558,88 +15011,27 @@ governor = {
 	category = fame
 	icon = governor.dds
 
-	monthly_influence = 0.5 ## GH ADDITION: Something inconsequential so that the trait wouldnt appear without any effects
-
-	culture_modifier = {
-		parameter = ayraal_system
-		legitimacy_gain_mult = -1
-		legitimacy_loss_mult = 1
-		tyranny_gain_mult = 1
-		tyranny_loss_mult = -1
-		vassal_opinion = -30
-		county_opinion_add = -50
-		monthly_influence = -3
-		general_opinion = -5
-	}
-
 	# Modifiers
-	tracks = {
-		governor = {
-			25 = {
-				monthly_influence = 1
-				stewardship = 1
-			}
-			50 = {
-				monthly_influence = 1
-				diplomacy = 1
-			}
-			75 = {
-				monthly_influence = 1
-				martial = 1
-				intrigue = 1
-			}
-			100 = {
-				monthly_influence = 2
-				diplomacy = 1
-				martial = 1
-				stewardship = 1
-				intrigue = 1
-			}
+	track = {
+		25 = {
+			monthly_influence = 1
+			stewardship = 1
 		}
-		otachedian_governor = {
-			10 = {
-				culture_modifier = {
-					parameter = ayraal_system
-					legitimacy_gain_mult = 0.5
-					legitimacy_loss_mult = -0.5
-					tyranny_gain_mult = -0.5
-					tyranny_loss_mult = 0.5
-					vassal_opinion = 15
-					county_opinion_add = 25
-					monthly_influence = 2
-					general_opinion = 5
-				}
-			}
-			35 = {
-				culture_modifier = {
-					parameter = ayraal_system
-					legitimacy_gain_mult = 0.5
-					legitimacy_loss_mult = -0.5
-					tyranny_gain_mult = -0.5
-					tyranny_loss_mult = 0.5
-					vassal_opinion = 15
-					county_opinion_add = 25
-					monthly_influence = 1
-				}
-			}
-			65 = {
-				culture_modifier = {
-					parameter = ayraal_system
-					legitimacy_gain_mult = 0.15
-					county_opinion_add = 10
-					stewardship = 1
-				}
-			}
-			90 = {
-				culture_modifier = {
-					parameter = ayraal_system
-					vassal_opinion = 5
-					legitimacy_gain_mult = 0.15
-					county_opinion_add = 10
-					stewardship = 1
-					learning = 1
-				}
-			}
+		50 = {
+			monthly_influence = 1
+			diplomacy = 1
+		}
+		75 = {
+			monthly_influence = 1
+			martial = 1
+			intrigue = 1
+		}
+		100 = {
+			monthly_influence = 2
+			diplomacy = 1
+			martial = 1
+			stewardship = 1
+			intrigue = 1
 		}
 	}
 	
@@ -15653,311 +15045,25 @@ governor = {
 	# Loc
 	name = {
 		first_valid = {
-			#The trait can never go higher than the first level if it's not assigned to a character
 			triggered_desc = {
 				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_governor
-			}
-			triggered_desc = { # Otachedian governor 5, Governor 3
-				trigger = {
 					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 90
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
-				}
-				desc = trait_gh_otachedian_governor_5_governor_3
-			}
-			triggered_desc = { # Otachedian governor 4, Governor 3
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 65
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
-				}
-				desc = trait_gh_otachedian_governor_4_governor_3
-			}
-			triggered_desc = { # Otachedian governor 3, Governor 3
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 35
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
-				}
-				desc = trait_gh_otachedian_governor_3_governor_3
-			}
-			triggered_desc = { # Otachedian governor 2, Governor 3
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 10
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
-				}
-				desc = trait_gh_otachedian_governor_2_governor_3
-			}
-			triggered_desc = { # Otachedian governor 1, Governor 3
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
-				}
-				desc = trait_gh_otachedian_governor_1_governor_3
-			}
-			triggered_desc = { # Otachedian governor 5, Governor 2
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 90
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_gh_otachedian_governor_5_governor_2
-			}
-			triggered_desc = { # Otachedian governor 4, Governor 2
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 65
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_gh_otachedian_governor_4_governor_2
-			}
-			triggered_desc = { # Otachedian governor 3, Governor 2
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 35
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_gh_otachedian_governor_3_governor_2
-			}
-			triggered_desc = { # Otachedian governor 2, Governor 2
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 10
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_gh_otachedian_governor_2_governor_2
-			}
-			triggered_desc = { # Otachedian governor 1, Governor 2
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_gh_otachedian_governor_1_governor_2
-			}
-			triggered_desc = { # Otachedian governor 5, Governor 1
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 90
-					}
-				}
-				desc = trait_gh_otachedian_governor_5_governor_1
-			}
-			triggered_desc = { # Otachedian governor 4, Governor 1
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 65
-					}
-				}
-				desc = trait_gh_otachedian_governor_4_governor_1
-			}
-			triggered_desc = { # Otachedian governor 3, Governor 1
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 35
-					}
-				}
-				desc = trait_gh_otachedian_governor_3_governor_1
-			}
-			triggered_desc = { # Otachedian governor 2, Governor 1
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 10
-					}
-				}
-				desc = trait_gh_otachedian_governor_2_governor_1
-			}
-			triggered_desc = { # Otachedian governor 1, Governor 1
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-				}
-				desc = trait_gh_otachedian_governor_1_governor_1
-			}
-			triggered_desc = { ## GH ADDITION: Minister
-				trigger = {
-					OR = {
-						government_has_flag = government_is_administrative_republic
-						government_has_flag = government_is_judicial_republic
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
-				}
-				desc = trait_gh_minister_3
-			}
-			triggered_desc = { ## GH ADDITION: Minister
-				trigger = {
-					OR = {
-						government_has_flag = government_is_administrative_republic
-						government_has_flag = government_is_judicial_republic
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_gh_minister_2
-			}
-			triggered_desc = { ## GH ADDITION: Minister
-				trigger = {
 					OR = {
 						government_has_flag = government_is_administrative_republic
 						government_has_flag = government_is_judicial_republic
 					}
 				}
-				desc = trait_gh_minister_1
+				desc = trait_gh_minister
 			}
-			triggered_desc = { ## GH ADDITION: Governess
+			#Governor - Default
+			triggered_desc = {
 				trigger = {
+					exists = this
 					is_female = yes
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
 				}
-				desc = trait_governor_3_female
+				desc = duke_administrative_female
 			}
-			triggered_desc = { ## GH ADDITION: Governess
-				trigger = {
-					is_female = yes
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_governor_2_female
-			}
-			triggered_desc = { ## GH ADDITION: Governess
-				trigger = { is_female = yes }
-				desc = trait_governor_1_female
-			}
-			triggered_desc = {
-				trigger = {
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
-				}
-				desc = trait_governor_3
-			}
-			triggered_desc = {
-				trigger = {
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_governor_2
-			}
+			#Governor - Default
 			desc = trait_governor_1
 		}
 	}
@@ -15971,222 +15077,7 @@ governor = {
 				}
 				desc = trait_governor_desc
 			}
-			triggered_desc = { # Otachedian governor 5, Governor 3
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 90
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
-				}
-				desc = trait_gh_otachedian_governor_5_governor_3_character_desc
-			}
-			triggered_desc = { # Otachedian governor 4, Governor 3
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 65
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
-				}
-				desc = trait_gh_otachedian_governor_4_governor_3_character_desc
-			}
-			triggered_desc = { # Otachedian governor 3, Governor 3
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 35
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
-				}
-				desc = trait_gh_otachedian_governor_3_governor_3_character_desc
-			}
-			triggered_desc = { # Otachedian governor 2, Governor 3
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 10
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
-				}
-				desc = trait_gh_otachedian_governor_2_governor_3_character_desc
-			}
-			triggered_desc = { # Otachedian governor 1, Governor 3
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 75
-					}
-				}
-				desc = trait_gh_otachedian_governor_1_governor_3_character_desc
-			}
-			triggered_desc = { # Otachedian governor 5, Governor 2
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 90
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_gh_otachedian_governor_5_governor_2_character_desc
-			}
-			triggered_desc = { # Otachedian governor 4, Governor 2
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 65
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_gh_otachedian_governor_4_governor_2_character_desc
-			}
-			triggered_desc = { # Otachedian governor 3, Governor 2
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 35
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_gh_otachedian_governor_3_governor_2_character_desc
-			}
-			triggered_desc = { # Otachedian governor 2, Governor 2
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 10
-					}
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_gh_otachedian_governor_2_governor_2_character_desc
-			}
-			triggered_desc = { # Otachedian governor 1, Governor 2
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = governor
-						value >= 25
-					}
-				}
-				desc = trait_gh_otachedian_governor_1_governor_2_character_desc
-			}
-			triggered_desc = { # Otachedian governor 5, Governor 1
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 90
-					}
-				}
-				desc = trait_gh_otachedian_governor_5_governor_1_character_desc
-			}
-			triggered_desc = { # Otachedian governor 4, Governor 1
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 65
-					}
-				}
-				desc = trait_gh_otachedian_governor_4_governor_1_character_desc
-			}
-			triggered_desc = { # Otachedian governor 3, Governor 1
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 35
-					}
-				}
-				desc = trait_gh_otachedian_governor_3_governor_1_character_desc
-			}
-			triggered_desc = { # Otachedian governor 2, Governor 1
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value >= 10
-					}
-				}
-				desc = trait_gh_otachedian_governor_2_governor_1_character_desc
-			}
-			triggered_desc = { # Otachedian governor 1, Governor 1
-				trigger = {
-					exists = this
-					culture = { has_cultural_parameter = ayraal_system }
-				}
-				desc = trait_gh_otachedian_governor_1_governor_1_character_desc
-			}
-			triggered_desc = { ## GH ADDITION: Minister
+			triggered_desc = {
 				trigger = {
 					OR = {
 						government_has_flag = government_is_administrative_republic
@@ -16194,13 +15085,12 @@ governor = {
 					}
 					has_trait_xp = {
 						trait = governor
-						track = governor
 						value >= 75
 					}
 				}
 				desc = trait_gh_minister_3_character_desc
 			}
-			triggered_desc = { ## GH ADDITION: Minister
+			triggered_desc = {
 				trigger = {
 					OR = {
 						government_has_flag = government_is_administrative_republic
@@ -16208,13 +15098,12 @@ governor = {
 					}
 					has_trait_xp = {
 						trait = governor
-						track = governor
 						value >= 25
 					}
 				}
 				desc = trait_gh_minister_2_character_desc
 			}
-			triggered_desc = { ## GH ADDITION: Minister
+			triggered_desc = {
 				trigger = {
 					OR = {
 						government_has_flag = government_is_administrative_republic
@@ -16227,7 +15116,6 @@ governor = {
 				trigger = {
 					has_trait_xp = {
 						trait = governor
-						track = governor
 						value >= 75
 					}
 				}
@@ -16237,7 +15125,6 @@ governor = {
 				trigger = {
 					has_trait_xp = {
 						trait = governor
-						track = governor
 						value >= 25
 					}
 				}
@@ -16677,7 +15564,7 @@ lifestyle_surveyor = {
 			triggered_desc = {
 				trigger = {
 					exists = this
-					has_government = landless_adventurer_government
+					is_landless_adventurer = yes
 				}
 				desc = trait_lifestyle_surveyor_adventurer_desc
 			}
@@ -16768,275 +15655,4 @@ golden_lineage = {
 	inherit_chance = 100
 	parent_inheritance_sex = male
 	inherit_from_real_father = no
-}
-
-#GH_AUH_TODO: Update these for GH
-
-############### TGP TRAITS ##############
-
-#Confucian trait - are you learned in the ways?
-confucian_education = {
-	minimum_age = 16
-	category = fame
-
-	learning = 1
-
-	same_opinion = 10
-	
-	ruler_designer_cost = 15
-
-	#Also gives discount to converting to Confucianism
-
-	culture_modifier = {
-		parameter = scholar_official_trait_bonuses
-		monthly_merit_mult = 0.1
-		same_culture_opinion = 5
-	}
-	
-	track = {
-		20 = {
-			learning = 1
-			monthly_lifestyle_xp_gain_mult = 0.04
-			#confucianism_religion_opinion = 5
-			ai_sociability = 5
-			ai_compassion = 5
-		}
-		40 = {
-			stewardship = 1
-			monthly_lifestyle_xp_gain_mult = 0.04
-			ai_sociability = 5
-			ai_compassion = 5
-		}
-		60 = {
-			learning = 1
-			monthly_lifestyle_xp_gain_mult = 0.04
-			#confucianism_religion_opinion = 5
-			ai_sociability = 5
-			ai_compassion = 5
-		}
-		80 = {
-			stewardship = 1
-			monthly_lifestyle_xp_gain_mult = 0.04
-			ai_sociability = 5
-			ai_compassion = 5
-		}
-		100 = {
-			learning = 1
-			#confucianism_religion_opinion = 5
-			monthly_lifestyle_xp_gain_mult = 0.04
-			ai_sociability = 5
-			ai_compassion = 5
-		}
-	}
-
-
-	# Loc
-	name = {
-		first_valid = {
-			#Immaculate Sage
-			triggered_desc = {
-				trigger = {
-					exists = this
-					has_trait_xp = {
-						trait = confucian_education
-						value = 100
-					}
-				}
-				desc = trait_confucian_education_5
-			}
-			#Moral Paragon
-			triggered_desc = {
-				trigger = {
-					exists = this
-					has_trait_xp = {
-						trait = confucian_education
-						value >= 80
-					}
-				}
-				desc = trait_confucian_education_4
-			}
-			#Virtuous Ethicist
-			triggered_desc = {
-				trigger = {
-					exists = this
-					has_trait_xp = {
-						trait = confucian_education
-						value >= 60
-					}
-				}
-				desc = trait_confucian_education_3
-			}
-			#Studious Classicist
-			triggered_desc = {
-				trigger = { 
-					exists = this
-					has_trait_xp = {
-						trait = confucian_education
-						value >= 40
-					}
-				}
-				desc = trait_confucian_education_2
-			}
-			#Confused Confucian
-			triggered_desc = {
-				trigger = {
-					exists = this
-					has_trait_xp = {
-						trait = confucian_education
-						value = 20
-					}
-				}
-				desc = trait_confucian_education_1
-			}
-			#Confucian Education
-			desc = trait_confucian_education
-		}
-	}
-
-	# Loc
-	desc = {
-		first_valid = {
-			#The trait can never go higher than the first level if it's not assigned to a character
-			triggered_desc = {
-				trigger = { 
-					NOT = { exists = this } 
-				}
-			}
-			#Immaculate Sage
-			triggered_desc = {
-				trigger = {
-					exists = this
-					has_trait_xp = {
-						trait = confucian_education
-						value = 80
-					}
-				}
-			}
-			#Moral Paragon
-			triggered_desc = {
-				trigger = {
-					exists = this
-					has_trait_xp = {
-						trait = confucian_education
-						value >= 60
-					}
-				}
-				desc = trait_confucian_education_4_desc
-			}
-			#Virtuous Ethicist
-			triggered_desc = {
-				trigger = {
-					exists = this
-					has_trait_xp = {
-						trait = confucian_education
-						value >= 40
-					}
-				}
-				desc = trait_confucian_education_3_desc
-			}
-			#Studious Classicit
-			triggered_desc = {
-				trigger = { 
-					exists = this
-					has_trait_xp = {
-						trait = confucian_education
-						value >= 20
-					}
-				}
-				desc = trait_confucian_education_2_desc
-			}
-			#Genuine Confucian
-			triggered_desc = {
-				trigger = { 
-					exists = this
-					has_trait_xp = {
-						trait = confucian_education
-						value >= 20
-					}
-				}
-				desc = trait_confucian_education_1_desc
-			}
-			#Confused Confucian
-			desc = trait_confucian_education_desc
-		}
-	}
-
-	ai_zeal = 10
-}
-
-### TGP
-
-former_emperor = {
-	name = {
-		first_valid = {
-			triggered_desc = {
-				trigger = { NOT = { exists = this } }
-				desc = trait_former_emperor_male
-			}
-			triggered_desc = {
-				trigger = {
-					is_male = yes
-					culture = { has_cultural_pillar = heritage_shanxi } 
-				}
-				desc = trait_former_tenno_male
-			}
-			triggered_desc = {
-				trigger = { is_male = yes }
-				desc = trait_former_emperor_male
-			}
-			triggered_desc = {
-				trigger = { culture = { has_cultural_pillar = heritage_shanxi } }
-				desc = trait_former_tenno_female
-			}
-			desc = trait_former_emperor_female
-		}
-	}
-
-	category = fame
-	
-	ai_boldness = 25
-	ai_energy = -25
-	monthly_prestige = 0.25
-	monthly_influence = 0.25
-	
-	shown_in_ruler_designer = no
-	
-	desc = trait_former_emperor_desc
-}
-
-## TGP Stress Trait
-
-burdened = {
-	category = fame
-	monthly_merit_mult = -0.3
-	governor_xp_gain_mult = -0.3
-	learning = -2
-	stress_loss_mult = 0.2
-	flag = can_offer_strong_hook_to_agents
-
-	ruler_designer_cost = -10
-
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_burdened_desc
-			}
-			desc = trait_burdened_character_desc
-		}
-	}
-
-	ai_energy = low_negative_ai_value
-	ai_rationality = low_negative_ai_value
-	ai_vengefulness = low_negative_ai_value
-	ai_compassion = low_positive_ai_value
-	ai_sociability = medium_positive_ai_value
-
-	compatibility = {
-		compassionate = @neg_compat_low
-		gregarious = @neg_compat_low
-		calm = @neg_compat_low
-	}
 }

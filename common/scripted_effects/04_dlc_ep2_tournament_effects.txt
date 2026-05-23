@@ -385,14 +385,14 @@ tournament_contest_team_composition_effect = {
 			limit = {
 				is_playable_character = yes
 				has_any_bad_relationship_with_character_trigger = { CHARACTER = scope:team_alpha_creator }
-				this != scope:team_alpha_creator
+				NOT = { this = scope:team_alpha_creator }
 			}
 			alternative_limit = {
 				is_playable_character = yes
-				this != scope:team_alpha_creator
+				NOT = { this = scope:team_alpha_creator }
 			}
 			alternative_limit = {
-				this != scope:team_alpha_creator
+				NOT = { this = scope:team_alpha_creator }
 			}
 			weight = {
 				base = 1
@@ -413,7 +413,7 @@ tournament_contest_team_composition_effect = {
 				}
 				modifier = {
 					add = 1
-					top_liege = this
+					is_independent_ruler = yes
 				}
 				modifier = {
 					add = 1
@@ -1145,7 +1145,7 @@ tournament_contest_turn_winner_effect = {
 				is_alive = yes
 				exists = var:contest_aptitude
 				exists = var:progress_to_victory
-				this != scope:contest_winner
+				NOT = { this = scope:contest_winner }
 				save_temporary_scope_as = second_temp
 			}
 			weight = {
@@ -1183,7 +1183,7 @@ tournament_contest_turn_winner_effect = {
 			limit = {
 				exists = var:contest_aptitude
 				exists = var:progress_to_victory
-				this != scope:contest_winner
+				NOT = { this = scope:contest_winner }
 			}
 			add_to_list = contest_losers
 		}
@@ -1495,7 +1495,7 @@ tournament_contest_race_winner_effect = {
 			limit = {
 				is_alive = yes
 				exists = var:progress_to_victory
-				this != scope:contest_winner
+				NOT = { this = scope:contest_winner }
 				save_temporary_scope_as = second_temp
 			}
 			weight = {
@@ -1532,7 +1532,7 @@ tournament_contest_race_winner_effect = {
 			name = qualified
 			phase = tournament_phase_$CONTEST$
 			limit = {
-				this != scope:contest_winner
+				NOT = { this = scope:contest_winner }
 			}
 			add_to_list = contest_losers
 		}
@@ -2172,7 +2172,7 @@ tournament_contest_versus_battle_effect = {
 						any_guest_subset = {
 							name = contestant
 							exists = var:progress_to_victory
-							this != scope:next_versus_match
+							NOT = { this = scope:next_versus_match }
 							is_ai = no
 							has_any_bad_relationship_with_character_trigger = { CHARACTER = root }
 						}
@@ -2230,7 +2230,7 @@ tournament_contest_versus_battle_effect = {
 						any_guest_subset = {
 							name = contestant
 							exists = var:progress_to_victory
-							this != root
+							NOT = { this = root }
 							is_ai = no
 							has_any_bad_relationship_with_character_trigger = { CHARACTER = scope:next_versus_match }
 						}
@@ -2724,11 +2724,11 @@ tournament_contest_versus_disqualification_effect = {
 				is_ai = no
 				trigger_if = {
 					limit = { exists = scope:contest_winner }
-					this != scope:contest_winner
+					NOT = { this = scope:contest_winner }
 				}
 				trigger_if = {
 					limit = { exists = scope:contest_loser }
-					this != scope:contest_loser
+					NOT = { this = scope:contest_loser }
 				}
 			}
 			trigger_event = contest_events.0826
@@ -4032,7 +4032,6 @@ tournament_contest_generate_prize_effect = {
 						description = placeholder # Will be regenerated in the post-creation effects
 						type = miscellaneous
 						visuals = regalia
-						template = regalia_template
 						modifier = artifact_placeholder_modifier
 						wealth = scope:wealth
 						quality = scope:quality
@@ -4472,7 +4471,7 @@ tournament_contest_rewards_effect = {
 				}
 			}
 			ordered_memory = {
-				memory_type = tournament_won_contest_memory
+				limit = { has_memory_type = tournament_won_contest_memory }
 				order_by = memory_creation_date
 				set_variable = {
 					name = contest_type
@@ -4627,7 +4626,7 @@ tournament_contest_team_rewards_effect = {
 				}
 			}
 			ordered_memory = {
-				memory_type = tournament_won_contest_memory
+				limit = { has_memory_type = tournament_won_contest_memory }
 				order_by = memory_creation_date
 				set_variable = {
 					name = contest_type
@@ -4887,7 +4886,7 @@ tournament_horse_race_fetch_horse_effect = {
 							any_guest_subset = {
 								name = contestant
 								exists = var:contest_horse_race_name
-								this != scope:horse_owner
+								NOT = { this = scope:horse_owner }
 								var:contest_horse_race_name = scope:horse_owner.var:contest_horse_race_name
 							}
 						}
@@ -5251,13 +5250,13 @@ tournament_horse_race_fetch_horse_effect = {
 							25 = { set_variable = { name = contest_horse_race_name value = flag:faith_symbol } }
 							25 = {
 								trigger = {
-									this != root.top_liege
+									NOT = { this = root.top_liege }
 								}
 								set_variable = { name = contest_horse_race_name value = flag:liege_title }
 							}
 							25 = {
 								trigger = {
-									this != root.top_liege
+									NOT = { this = root.top_liege }
 								}
 								set_variable = { name = contest_horse_race_name value = flag:liege_title_name }
 							}
@@ -5344,128 +5343,6 @@ tournament_horse_race_fetch_horse_effect = {
 							5 = { set_variable = { name = contest_horse_race_name value = flag:torrent } }
 						}
 					}
-					## GH ADDITIONS ##
-					# STEPPE (OLTENI / STEPPE-INSPIRED)
-					100 = {
-						trigger = {
-							OR = {
-								has_oltenic_heritage_pillar_trigger = yes
-								has_sarminian_heritage_pillar_trigger = yes
-							}
-						}
-						random_list = {
-							5 = { # Altun Mori - golden steppe legend
-								set_variable = { name = contest_horse_race_name value = flag:altun_mori }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-							5 = { # Kulbarys - winged steppe beast
-								set_variable = { name = contest_horse_race_name value = flag:kulbarys }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-							5 = { # Joragaltai - mourning song horse
-								set_variable = { name = contest_horse_race_name value = flag:joragaltai }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-						}
-					}
-
-					# LIFEPATH (MARCHER)
-					100 = {
-						trigger = {
-							faith = { religion_tag = lifepath_religion }
-						}
-						random_list = {
-							5 = { # Raucel - Good King’s crossing
-								set_variable = { name = contest_horse_race_name value = flag:raucel }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-							5 = { # Syagrin - Waymother’s horse
-								set_variable = { name = contest_horse_race_name value = flag:syagrin }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-							5 = { # Valcroix - the crossing horse
-								set_variable = { name = contest_horse_race_name value = flag:valcroix }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-						}
-					}
-
-					# AMSARI
-					100 = {
-						trigger = {
-							faith = { religion_tag = amsari_religion }
-						}
-						random_list = {
-							5 = { # Ashkavar - Prophet Hinamat’s
-								set_variable = { name = contest_horse_race_name value = flag:ashkavar }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-						}
-					}
-
-					# CLANLANDER (GERMANIC-INSPIRED)
-					100 = {
-						trigger = {
-							culture = { has_cultural_pillar = heritage_clanlander }
-						}
-						random_list = {
-							5 = { # Hrafnvindr - death-wind horse
-								set_variable = { name = contest_horse_race_name value = flag:hrafnvindr }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-						}
-					}
-
-					# AVASTYA MAHAN (DRAVIDIAN)
-					100 = {
-						trigger = {
-							faith = { religion_tag = dravidian_religion }
-						}
-						random_list = {
-							5 = { # Paerashva - first-born creation horse
-								set_variable = { name = contest_horse_race_name value = flag:paerashva }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-							5 = { # Sarvaketu - thinking steed
-								set_variable = { name = contest_horse_race_name value = flag:sarvaketu }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-						}
-					}
-
-					# RITUALIST
-					100 = {
-						trigger = {
-							faith = { religion_tag = ritualist_religion }
-						}
-						random_list = {
-							5 = { # Barq Samt - Step writings
-								set_variable = { name = contest_horse_race_name value = flag:barq_samt }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-							5 = { # Rahzat al-Qamar - vanished Step-master
-								set_variable = { name = contest_horse_race_name value = flag:rahzat_al_qamar }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-						}
-					}
-					# WARDENITE
-					100 = {
-						trigger = {
-							faith = { religion_tag = wardenism_religion }
-						}
-						random_list = {
-							5 = { # Sirr al-Haras - First Warden’s
-								set_variable = { name = contest_horse_race_name value = flag:sirr_al_haras }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-							5 = { # Mizan al-Samt - Wardenite records
-								set_variable = { name = contest_horse_race_name value = flag:mizan_al_samt }
-								set_variable = { name = contest_horse_race_gender value = flag:male }
-							}
-						}
-					}
-					## GH END ##
 				}
 				# GENDER
 				if = {
@@ -5707,35 +5584,6 @@ disburse_xp_and_liege_prestige_effect = {
 							add = tournament_hastiludes_xp_gain_massive_value
 						}
 						else = { add = tournament_hastiludes_xp_gain_medium_value }
-					}
-				}
-			}
-		}
-		# Poets
-		if = {
-			limit = {
-				exists = scope:recital_winner
-			}
-			if = {
-				limit = {
-					has_trait = lifestyle_poet
-				}
-				add_trait_xp = {
-					trait = lifestyle_poet
-					value = {
-						value = 0
-						if = {
-							limit = {
-								scope:activity = {
-									any_guest_subset = { name = qualified phase = tournament_phase_recital this = root }
-								}
-							}
-							if = {
-								limit = { scope:recital_winner ?= this }
-								add = tournament_hastiludes_xp_gain_massive_value
-							}
-							else = { add = tournament_hastiludes_xp_gain_medium_value }
-						}
 					}
 				}
 			}
@@ -6115,8 +5963,9 @@ tournament_display_rewards_effect = {
 activity_intent_target_arrival_notification_effect = {
 	if = {
 		limit = {
-			NOT = {
-				capital_province ?= scope:activity.activity_location
+			NAND = {
+				exists = capital_province
+				capital_province = scope:activity.activity_location
 			}
 			NAND = {
 				is_playable_character = no
@@ -6126,7 +5975,8 @@ activity_intent_target_arrival_notification_effect = {
 			save_temporary_scope_as = intent_target_temp
 			scope:activity = {
 				any_attending_character = {
-					intent_target ?= scope:intent_target_temp
+					exists = intent_target
+					intent_target = scope:intent_target_temp
 				}
 			}
 		}
@@ -6134,7 +5984,8 @@ activity_intent_target_arrival_notification_effect = {
 		scope:activity = {
 			every_attending_character = {
 				limit = {
-					intent_target ?= scope:intent_targetee
+					exists = intent_target
+					intent_target = scope:intent_targetee
 				}
 				save_scope_as = intent_targeter
 				send_interface_message = {
@@ -6176,7 +6027,7 @@ add_tournament_contest_contestant_effect = {
 			title = tournament_qualify_title
 			left_icon = scope:new_list_member
 			custom_tooltip = tournament_qualify_race_desc
-			play_sound_effect = "event:/SFX/Events/Themes/sfx_event_theme_type_martial"
+			play_sound_effect = "event:/SFX/Events/Themes/sfx_event_theme_type_martial" # TODO_CD_EP2 change this
 		}
 	}
 	else = {
@@ -6185,7 +6036,7 @@ add_tournament_contest_contestant_effect = {
 			left_icon = scope:new_list_member
 			custom_tooltip = tournament_qualify_desc
 			add_prestige = minor_prestige_gain
-			play_sound_effect = "event:/SFX/Events/Themes/sfx_event_theme_type_martial"
+			play_sound_effect = "event:/SFX/Events/Themes/sfx_event_theme_type_martial" # TODO_CD_EP2 change this
 		}
 		if = {
 			limit = {
@@ -6686,7 +6537,8 @@ tournament_replace_qualifier_scope_effect = {
 tournament_contest_start_portrait_effect = {
 	if = {
 		limit = {
-			intent_target ?= { is_alive = yes }
+			exists = intent_target
+			intent_target = { is_alive = yes }
 		}
 		intent_target = { save_scope_as = intent_scope }
 	}
@@ -7493,7 +7345,7 @@ tournament_pivotal_contestant_scope_effect = {
 						is_in_guest_subset = { name = semi_finalist }
 					}
 					trigger_else = { always = yes }
-					this != root
+					NOT = { this = root }
 				}
 				add_to_list = potential_pivotal_contestants
 			}
@@ -8077,7 +7929,7 @@ add_random_tourney_participant_level_effect = {
 						OR = {
 							has_cultural_tradition = tradition_astute_diplomats
 							has_cultural_tradition = tradition_welcoming
-							has_cultural_parameter = poet_trait_gives_bonuses
+							has_cultural_tradition = tradition_poetry
 							has_cultural_tradition = tradition_storytellers
 							has_cultural_tradition = tradition_fp1_northern_stories
 							has_cultural_tradition = tradition_fp2_strategy_gamers
@@ -8124,7 +7976,7 @@ add_random_tourney_participant_level_effect = {
 						OR = {
 							has_cultural_tradition = tradition_astute_diplomats
 							has_cultural_tradition = tradition_welcoming
-							has_cultural_parameter = poet_trait_gives_bonuses
+							has_cultural_tradition = tradition_poetry
 							has_cultural_tradition = tradition_storytellers
 							has_cultural_tradition = tradition_fp1_northern_stories
 							has_cultural_tradition = tradition_fp2_strategy_gamers
@@ -8171,7 +8023,7 @@ add_random_tourney_participant_level_effect = {
 						OR = {
 							has_cultural_tradition = tradition_astute_diplomats
 							has_cultural_tradition = tradition_welcoming
-							has_cultural_parameter = poet_trait_gives_bonuses
+							has_cultural_tradition = tradition_poetry
 							has_cultural_tradition = tradition_storytellers
 							has_cultural_tradition = tradition_fp1_northern_stories
 							has_cultural_tradition = tradition_fp2_strategy_gamers

@@ -611,7 +611,7 @@ empire_clan = {
 	governments = { clan_government }
 }
 
- #Default Tribal / Nomadic tiers
+# Default Tribal tiers
 baron_tribal_male = {
 	type = character
 	gender = male
@@ -621,7 +621,7 @@ baron_tribal_male = {
 	flavourization_rules = { 
 		top_liege = no
 	}
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 baron_tribal_female = {
 	type = character
@@ -632,7 +632,7 @@ baron_tribal_female = {
 	flavourization_rules = { 
 		top_liege = no
 	}
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 barony_tribal = {
 	type = title
@@ -641,25 +641,7 @@ barony_tribal = {
 		top_liege = no
 	}
 	priority = 6
-	governments = { tribal_government nomad_government wanua_government }
-}
-barony_nomadic = {
-	type = title
-	tier = barony
-	flavourization_rules = { 
-		top_liege = no
-	}
-	priority = 6
-	governments = { nomad_government }
-}
-barony_herder = {
-	type = title
-	tier = barony
-	flavourization_rules = { 
-		top_liege = no
-	}
-	priority = 6
-	governments = { herder_government }
+	governments = { tribal_government migratory_government }
 }
 count_tribal_male = {
 	type = character
@@ -670,7 +652,7 @@ count_tribal_male = {
 	flavourization_rules = { 
 		top_liege = no
 	}
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 count_tribal_female = {
 	type = character
@@ -681,7 +663,7 @@ count_tribal_female = {
 	flavourization_rules = { 
 		top_liege = no
 	}
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 county_tribal = {
 	type = title
@@ -690,7 +672,7 @@ county_tribal = {
 		top_liege = no
 	}
 	priority = 16
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 duke_tribal_male = {
 	type = character
@@ -701,7 +683,7 @@ duke_tribal_male = {
 	flavourization_rules = { 
 		top_liege = no
 	}
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 duke_tribal_female = {
 	type = character
@@ -712,7 +694,7 @@ duke_tribal_female = {
 	flavourization_rules = { 
 		top_liege = no
 	}
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 duchy_tribal = {
 	type = title
@@ -721,7 +703,7 @@ duchy_tribal = {
 		top_liege = no
 	}
 	priority = 26
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 king_tribal_male = {
 	type = character
@@ -732,7 +714,7 @@ king_tribal_male = {
 	flavourization_rules = { 
 		top_liege = no
 	}
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 king_tribal_female = {
 	type = character
@@ -743,7 +725,7 @@ king_tribal_female = {
 	flavourization_rules = { 
 		top_liege = no
 	}
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 kingdom_tribal = {
 	type = title
@@ -752,7 +734,7 @@ kingdom_tribal = {
 		top_liege = no
 	}
 	priority = 46
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 emperor_tribal_male = {
 	type = character
@@ -763,7 +745,7 @@ emperor_tribal_male = {
 	flavourization_rules = { 
 		top_liege = no
 	}
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 emperor_tribal_female = {
 	type = character
@@ -774,7 +756,7 @@ emperor_tribal_female = {
 	flavourization_rules = { 
 		top_liege = no
 	}
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 empire_tribal = {
 	type = title
@@ -783,7 +765,7 @@ empire_tribal = {
 		top_liege = no
 	}
 	priority = 101
-	governments = { tribal_government nomad_government wanua_government }
+	governments = { tribal_government migratory_government }
 }
 
  #Default Mercenary tiers
@@ -1224,26 +1206,6 @@ empire = {
 	priority = 100
 }
 
-hegemon = {
-	type = character
-	gender = male
-	special = holder
-	tier = hegemony
-	priority = 45
-}
-hegemon_female = {
-	type = character
-	gender = female
-	special = holder
-	tier = hegemony
-	priority = 45
-}
-hegemony = {
-	type = title
-	tier = hegemony
-	priority = 45
-}
-
 ### ADMINISTRATIVE
 
 baron_administrative_male_byzantine_group = {
@@ -1319,11 +1281,10 @@ count_administrative_male = {
 	special = holder
 	tier = county
 	priority = 27
-	governments = { administrative_government meritocratic_government steppe_admin_government }
+	governments = { administrative_government }
 	
 	flavourization_rules = {
-		top_liege = yes
-		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
+		top_liege = no
 		spouse_takes_title = no
 	}
 }
@@ -1333,11 +1294,10 @@ count_administrative_female = {
 	special = holder
 	tier = county
 	priority = 27
-	governments = { administrative_government meritocratic_government steppe_admin_government }
+	governments = { administrative_government }
 	
 	flavourization_rules = {
-		top_liege = yes
-		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
+		top_liege = no
 		spouse_takes_title = no
 	}
 }
@@ -1345,11 +1305,10 @@ count_administrative_female = {
 county_administrative = {
 	type = title
 	tier = county
-	priority = 50
-	governments = { administrative_government meritocratic_government steppe_admin_government }
+	priority = 16
+	governments = { administrative_government }
 	flavourization_rules = {
-		top_liege = yes
-		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc.
+		top_liege = no
 	}
 }
 
@@ -1359,11 +1318,10 @@ duke_administrative_male = {
 	special = holder
 	tier = duchy
 	priority = 28
-	governments = { administrative_government meritocratic_government steppe_admin_government }
+	governments = { administrative_government }
 
 	flavourization_rules = {
-		top_liege = yes
-		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
+		top_liege = no
 		spouse_takes_title = no
 	}
 }
@@ -1373,21 +1331,7 @@ duke_administrative_female = {
 	special = holder
 	tier = duchy
 	priority = 28
-	governments = { administrative_government meritocratic_government steppe_admin_government }
-
-	flavourization_rules = {
-		top_liege = yes
-		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
-		spouse_takes_title = no
-	}
-}
-
-spouse_administrative_female = {
-	type = character
-	gender = female
-	special = holder
-	priority = 26
-	governments = { administrative_government meritocratic_government steppe_admin_government }
+	governments = { administrative_government }
 
 	flavourization_rules = {
 		top_liege = no
@@ -1400,12 +1344,11 @@ king_administrative_male = {
 	special = holder
 	tier = kingdom
 	priority = 74
-	governments = { administrative_government celestial_government  meritocratic_government japan_administrative_government }
+	governments = { administrative_government }
 
 	flavourization_rules = {
-		top_liege = yes
-		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc.
-		only_vassals = yes
+		top_liege = no
+		spouse_takes_title = no
 	}
 }
 king_administrative_female = {
@@ -1414,42 +1357,10 @@ king_administrative_female = {
 	special = holder
 	tier = kingdom
 	priority = 73
-	governments = { administrative_government celestial_government meritocratic_government japan_administrative_government }
-
-	flavourization_rules = {
-		top_liege = yes
-		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
-		spouse_takes_title = no
-		only_vassals = yes
-	}
-}
-king_administrative_male_byzantine_group = {
-	type = character
-	gender = male
-	special = holder
-	tier = kingdom
-	priority = 75
 	governments = { administrative_government }
-	heritages = { heritage_aversarian }
 
 	flavourization_rules = {
-		top_liege = yes
-		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
-		spouse_takes_title = no
-	}
-}
-king_administrative_female_byzantine_group = {
-	type = character
-	gender = female
-	special = holder
-	tier = kingdom
-	priority = 75
-	governments = { administrative_government }
-	heritages = { heritage_aversarian }
-
-	flavourization_rules = {
-		top_liege = yes
-		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
+		top_liege = no
 		spouse_takes_title = no
 	}
 }
