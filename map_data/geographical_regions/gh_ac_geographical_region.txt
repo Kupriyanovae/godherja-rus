@@ -1,0 +1,81 @@
+﻿# Geographical regions
+# Regions can be declared with one or more of the following fields:
+#	duchies = { }, takes duchy title names declared in landed_titles.txt
+#	counties = { }, takes county title names declared in landed_titles.txt
+#	provinces = { }, takes province id numbers declared in /history/provinces
+#	regions = { }, a region can also include other regions, however the subregions needs to be declared before the parent region.
+#		E.g. If the region world_europe contains the region world_europe_west then world_europe_west needs to be declared as a region before (i.e. higher up in this file) world_europe.
+
+# Regions provide the following modifiers:
+# key + _development_growth
+# key + _development_growth_factor
+# This requires "generate_modifiers = yes" in the region
+
+###########################################################################
+# World Regions
+#	These groups are mutually exclusive on the same tier & should cover every part of the map
+###########################################################################
+
+alghurb_bay_coast_region = {
+	generate_modifiers = yes
+	counties = {
+		c_bandar_ozbak c_khaglun c_garmeh_cheshmeh c_durranduf c_dkran c_pardula c_bherv c_maradihana c_beveb c_krakrenv
+		c_eloi_hedee c_eloi_iond c_mrevridad c_eloi_bharak c_eloi_myar c_eloi_elya c_eloi_avar c_eloi_conifk c_eloi_hikarr
+	}
+}
+
+GH_central_sarradon_struggle_region = {
+	regions = {
+		kharadamat_biozone
+		sinhamiyah_biozone
+	}
+	counties = {
+		c_kamish
+		c_khajbir
+		c_rafhamah 
+		c_badaihan
+		c_chou_e_hidd
+		c_musut 
+		c_munaga
+	}
+}
+
+GH_eastern_sarradon_struggle_region = {
+	regions = {
+		khenemhat_biozone
+		alghazir_biozone
+		boneyard_biozone
+	}
+	duchies = {
+		d_exiles_cities
+		d_forlorn_coast
+		d_yasi
+	}
+	counties = {
+		c_geelweshur
+	}
+}
+
+GH_far_eastern_sarradon_struggle_region = {
+	regions = {
+		crater_biozone 
+		aekershaan_biozone
+	}
+	duchies = {
+		d_tall_falludariyah
+		d_almudir
+		d_baimar
+	}
+}
+
+GH_western_sarradon_struggle_region = {
+	regions = {
+		ayyar_coast_biozone
+	}
+}
+
+GH_far_western_sarradon_struggle_region = {
+	regions = {
+		amsar_biozone
+	}
+}

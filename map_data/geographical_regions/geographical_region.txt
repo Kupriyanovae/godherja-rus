@@ -1,0 +1,2280 @@
+﻿# Geographical regions
+# Regions can be declared with one or more of the following fields:
+#	duchies = { }, takes duchy title names declared in landed_titles.txt
+#	counties = { }, takes county title names declared in landed_titles.txt
+#	provinces = { }, takes province id numbers declared in /history/provinces
+#	regions = { }, a region can also include other regions, however the subregions needs to be declared before the parent region. 
+#		E.g. If the region world_europe contains the region world_europe_west then world_europe_west needs to be declared as a region before (i.e. higher up in this file) world_europe.
+
+###########################################################################
+# World Regions
+#	These groups are mutually exclusive on the same tier & should cover every part of the map
+###########################################################################
+
+# world_greater_aversaria
+# > world_ga_lichdoms
+# > world_ga_marcher_kingdoms
+# >> world_ga_western_marcher_kingdoms
+# >> world_ga_eastern_marcher_kingdoms
+# > world_ga_clanlands
+# >> world_ga_eastern_clanlands
+# >>> world_ga_mountainheights
+# >> world_ga_western_clanlands
+# >> world_ga_mayikprolollan
+# > world_ga_aversarian_homelands
+# >>> world_ga_northeast_opakhasia
+# >> world_ga_western_aversaria
+# >>> world_ga_imperial_isle
+# >> world_ga_northern_aversaria
+# >> world_ga_central_aversaria
+# >>> world_ga_aversarian_isles
+# >>> world_ga_east_shattered_coast
+# >> world_ga_aironoi
+# >>> amaghea_mountains_biozone
+# >> world_ga_foglands
+# >> world_ga_kashirya
+
+# world_sarradon
+# > world_eastern_sarradon
+# >> world_es_desert
+# >> world_es_eastern_coast
+# >>> world_es_forgotten_isle
+# >> world_es_hajjan_mountains
+# >> world_es_damota
+# >>> world_es_adabyss
+# > world_central_sarradon
+# >> world_cs_usfeh
+# >> world_cs_udhaliyya
+# > world_western_sarradon
+# >> world_ws_amsari
+# >> world_ws_kamsaria
+# >> world_ws_ayyar
+
+# world_depths
+
+world_ga_lichdoms = {
+	duchies = {
+		d_bobek_acz d_czausz d_czeowy d_gonlin d_rumziec d_micbin d_nambutisz d_noweztek d_zaklin d_zlobno d_brzawa d_inoian
+		d_bysrne d_nysowo d_prorne d_augazy d_kudbickie d_miezcz d_lecejoraj d_choski d_krosko d_olekowsin d_konadz d_wiaoszewo
+	}
+}
+
+world_ga_whisperveil = {
+	duchies = {
+		d_karlikvik d_toiijoala d_kemitogar d_korlonala d_ridaxkki d_seejoisko d_valkkunki d_vilstaemi
+	}
+}
+
+world_ga_western_marcher_kingdoms = {
+	duchies = {
+		d_clois_en_cleusaun d_colarmas d_saulxvil d_devex d_feinde d_ferrond d_bassons d_aast d_vallguedoc d_peti_gisredde d_grande_gisredde
+	}
+}
+
+world_ga_eastern_marcher_kingdoms_konijkmener = {
+	duchies = {
+		 d_novre d_nafele d_brofec
+	}
+}
+
+world_ga_eastern_marcher_kingdoms = {
+	duchies = {
+		d_ziemojycz d_faisitelbouren d_montcornet d_banereset d_grascoi d_irenux d_cavrine d_varusiex d_baresc 
+	}
+	regions = {
+		world_ga_eastern_marcher_kingdoms_konijkmener
+	}
+}
+
+world_ga_marcher_kingdoms = {
+	regions = {
+		world_ga_western_marcher_kingdoms world_ga_eastern_marcher_kingdoms
+	}
+}
+
+world_ga_mayikprolollan_mayikprolollan_surface = {
+	duchies = {
+		d_spellwind_valley  d_ashenfield  d_southern_spines  d_ferrous_foothills  d_shimmerpeaks  d_zadens_vale  d_hallowed_caverns  d_the_black_peaks  d_twisting_paths d_the_spellbound_chasms d_southern_vistas d_the_decayed_grotto d_obsidian_alleys d_the_gothic_duskhalls d_the_unbroken_forge d_imperial_atrium d_echoing_acolytes d_cellarium d_breakways d_litanariums d_wyrmroad d_scriptoriums d_cantoments d_floodate
+
+	}
+}
+
+world_ga_mayikprolollan_mayikprolollan_depths = {
+	duchies = {
+		d_bleakwatch d_sacrificorium d_darkfall d_cormacans_cast d_sagratianns_grotto d_shadowstep d_western_expanse d_twisttunnel d_overlook d_eastern_expanse d_batwater d_undersea d_underfall_gardens d_shadesea d_undersea_watch d_doomwater d_redwater_cave d_cairnwater d_undercourse d_cavecoast d_wet_mans_den d_imperial_subterrane d_emerald_warrens d_dezzil_nest d_forgotten_road d_vaelanthroratts_folly
+	}
+}
+
+world_ga_mayikprolollan = {
+	regions = {
+		world_ga_mayikprolollan_mayikprolollan_surface world_ga_mayikprolollan_mayikprolollan_depths
+	}
+}
+
+world_ga_mountainheights = {
+	duchies = {
+		d_neufrisa d_tinec d_kezly d_zhabirhon d_sverdok d_jastrlawy
+	}
+}
+
+world_ga_black_pass = {
+	duchies = {
+		d_bwlcheit d_the_crag d_white_river d_skycrown_lowlands 
+	}
+}
+
+world_ga_eastern_clanlands = {
+	regions = {
+		kalath_old_growth_biozone migraddar_biozone pathos_delta_biozone 
+	}
+}
+
+world_ga_western_clanlands = {
+	regions = {
+		kalath_redwoods_biozone southern_kalath_biozone sulzegg_basin_biozone
+	}
+}
+
+world_ga_clanlands = {
+	regions = {
+		world_ga_western_clanlands world_ga_eastern_clanlands
+	}
+}
+
+world_ga_imperial_isle = {
+	duchies = {
+		d_imperial_isle 
+	}
+}
+
+world_ga_western_aversaria = {
+	regions = { etepezea_biozone }
+}
+
+world_ga_northern_aversaria = {
+	duchies = {
+		d_elrio d_myris d_arysarnaria
+		d_dulia d_olynthagoria d_eretrona
+		d_paos d_monaros d_eene d_cregoeis
+		d_anadres d_oios d_vroradi
+		d_antaphos d_oedi
+	}
+}
+
+world_ga_aversarian_isles = {
+	regions = {
+		imperial_isle_biozone tower_isles_biozone central_isles_biozone 
+	}
+}
+
+world_ga_isles = {
+	regions = {
+		world_ga_aversarian_isles the_isles_biozone guillate_rocks_biozone
+	}
+}
+
+the_western_isles = {
+	regions = { the_isles_biozone }
+}
+
+world_ga_northeast_opakhasia = {
+	duchies = {
+		d_pelelis d_dusk d_sunhorn d_the_avanometes d_megalarina d_inner_halo d_dymetra d_radix d_eryras
+	}
+}
+
+world_ga_central_aversaria = {
+	duchies = {
+		 d_oedi d_antaphos d_elrio d_arysarnaria d_myris d_vroradi d_kicyon d_anadres d_oios d_cregoeis d_paos d_eene d_monaros d_eretrona d_dulia d_olynthagoria
+	}
+}
+
+world_ga_east_shattered_coast = {
+	duchies = {
+		d_dawn d_cythioch d_lasanoi d_epidamnus d_phaistetus d_paeschaes d_mochlurion d_nisoni d_sthenoumnos d_oltedic d_checoryda d_povia d_pavios_isles d_tower_isles d_he_vrerai d_myrmomenus d_assila
+	}
+}
+
+world_ga_aironoi = {
+	generate_modifiers = yes
+	regions = {
+		western_aironoi_biozone hyrea_biozone great_steppe_biozone brass_sea_coasts_biozone
+		amaghea_mountains_biozone aironoian_southeast_biozone krehejad_biozone redlands_biozone
+	}
+}
+
+world_ga_riverlands_formable = {
+	duchies = {
+		d_grascoi d_cavrine
+	}
+	counties = {
+		c_derentiede c_geedern c_vaduex c_varidean
+	}
+}
+
+world_ga_stellios_formable = {
+	duchies = {
+		d_reketh d_matras d_chacos d_theslaxxos d_voraxos d_avirios d_axon d_vonatolos
+	}
+}
+
+world_ga_etepezea_formable = {
+	regions = {
+		governate_aversarian_etepezea
+	}
+}
+
+world_ga_megos_kalathipsomi_formable = {
+	regions = {
+		governate_aversarian_megos_kalathipsomi
+	}
+}
+
+world_ga_mikros_kalathipsomi_formable = {
+	regions = {
+		governate_aversarian_mikros_kalathipsomi
+	}
+}
+
+world_ga_opakhasia_formable = {
+	regions = {
+		governate_aversarian_opakhasia
+	}
+}
+
+world_ga_malcois_formable = {
+	regions = {
+		governate_aversarian_malcois
+	}
+}
+
+world_ga_aironoi_formable = {
+	regions = {
+		governate_aversarian_aironoi
+	}
+}
+
+world_ga_gurdurbok_formable = {
+	regions = {
+		governate_aversarian_black_mountains
+	}
+}
+
+world_ga_dahangon_formable = {
+	duchies = {
+		d_niri d_kaeyok d_singda d_tatau d_namhlin d_banran d_chaedaeng d_kanarim d_langanafam d_dilongon d_sikphaeng d_pakinbri d_aderatan
+	}
+	counties = {
+		c_samayake 
+	}
+}
+
+world_ga_southland_formable = {
+	duchies = {
+		d_sandahan d_nong_khanak d_irirong d_ninh_hoi d_chathay_phara d_pha_khao d_tahna d_cangheplain d_sabalang d_long_la
+	}
+}
+
+world_ga_cangriver_formable = {
+	duchies = {
+		d_cangheplain d_long_la 
+	}
+	counties = {
+		c_chalung c_chiling
+	}
+}
+
+world_ga_weizhou_formable = {
+	duchies = {
+		d_chathay_phara
+	}
+	counties = {
+		c_votoi_nuan c_vo_thac c_meino c_sungchiao c_portbroad c_mosolu c_muan c_tan_dec c_atamdan
+	}
+}
+
+world_ga_rovarska_archipelago_formable = {
+	duchies = {
+		d_morullr d_rapagodacon d_trinapaawa d_akkadalaiya d_kawelpal d_ganori d_jaokonnayach d_manasupa d_kattatoya d_javaw d_mirgurli d_kesvatavi
+	}
+	counties = {
+		c_wintong c_berotuwa c_keeranthidiya c_dehiwalaiya c_galeha
+	}
+}
+
+world_ga_southsea_formable = {
+	regions = {
+		world_ga_rovarska_archipelago_formable world_ga_southland_formable world_ga_dahangon_formable
+	}
+}
+
+world_ga_aversarian_homelands = {
+	regions = {
+		world_ga_aironoi_formable world_ga_northern_aversaria world_ga_opakhasia_formable world_ga_etepezea_formable
+	}
+}
+
+world_ga_foglands = {
+	duchies = {
+		d_bluow d_cher_sovo d_shealavacnay d_tomkov d_zamhba d_kozvce d_blauzy d_bolasavay d_kireca d_svavicny
+		d_dol_rybibyshevsk d_lephyalouana_ta d_davs_tarien d_ralsordica d_regance d_kosteturynisk d_myrmomenus d_temava
+		d_bolubn d_boreva d_yanoski d_bormovo d_malche d_atrypin d_bysoke d_posice d_tomker d_ust_belgonrog
+		d_malrozny d_praary d_songrki d_staaya d_stauri d_borika d_novodol d_serkha d_stoisni d_kas_masno d_bwlcheit d_rosaskinrad d_tyrkiy
+		d_atry_yegobirsk d_atryvce d_patvorno d_haleznonyev d_schvordno d_kuksovo d_maloiypolic d_milovy d_rodowni 
+		d_athandd d_mythixs_boundary d_devasolovo d_varkhi d_ignana d_sverad d_ulunka d_pobpin d_zaldga d_bysoky d_tugaovo
+		d_mosyak d_stogrozny d_stu_molachno d_ger_yyachavo d_lardga d_sin_vachyy d_svaorom d_afogrovo d_pravca
+		d_kozasavay d_ol_sorovsk d_roslvka d_sinazcazynevo d_kicyon
+	}
+}
+
+world_greater_aversaria = {
+	regions = {
+		world_ga_aversarian_homelands world_ga_foglands world_ga_clanlands world_ga_marcher_kingdoms world_ga_whisperveil
+	}
+}
+
+world_es_forgotten_isle = {
+	duchies = {
+		d_the_eye d_western_dreamrend_isles d_eastern_dreamrend_isles d_burjnine d_isle_of_visions 
+	}
+}
+
+world_es_eastern_coast = {
+	duchies = {
+		d_khenem_delta d_boneyard
+		d_yasi d_tall_falludariyah d_baimar d_exiles_cities d_forlorn_coast d_almudir
+		d_mehamani d_meresok d_erziwas d_sinasan d_shaqetin d_dazat d_balhhour d_haoucuna d_seratossim d_kemayere
+		d_gilhadu d_aspayak
+	}
+	regions = {
+		world_es_forgotten_isle
+	}
+}
+
+world_es_desert = {
+	duchies = {
+		d_chhenaye d_al_qauka d_delhahwara d_houmanay d_gatadad d_kurfsia d_ainjawf d_seqaiauqa d_miavaz d_aradsusah d_iaaleida
+		d_el_curutin d_derjemaa d_hadirah d_sellelima d_alma_fil d_damekhirya d_tizzufan d_marrok d_mavvuran d_tar_norish
+		d_tesmorones d_orok d_tisuffar d_zhufarrades d_jranu_isa d_deirallam d_brayieret d_castelit d_fdammil d_en_naouk d_jadoalik d_halatabiad d_ubarad
+		d_marborrok d_kortesh d_yourrez d_mortekh d_castbaham d_mezees d_jaytarkah d_wad_iston d_zurayebaa d_halyfat d_borjmat d_kuibyniyah d_dayr_ibah d_diryaherit
+		d_quhiyrakhs
+	}
+}
+
+world_es_ayule_decision = {
+	duchies = { d_taliwahin d_dedezkale d_valley_of_the_djinn_kings }
+}
+
+world_es_core_damota = {
+	counties = { c_zahali c_hadewa c_beri c_siralab c_darmalej c_barilab }
+}
+
+world_es_damota = {
+	duchies = {
+		d_dungaca d_sokoi d_ainamba d_sahate d_zenraleb d_turale d_zernakia d_gheccia d_libizi d_halakoi d_abolwa d_hayika
+	}
+}
+
+world_es_adabyss = {
+	duchies = {
+		d_nagom_kakezihi
+	}
+}
+
+world_es_hajjan_mountains = {
+	duchies = {
+		d_ksar_mora d_dedezkale d_taliwahin d_valley_of_the_djinn_kings d_khekech d_al_miwf
+	}
+}
+
+world_eastern_sarradon = {
+	regions = {
+		world_es_hajjan_mountains world_es_eastern_coast world_es_desert world_es_damota
+	}
+}
+ 
+world_cs_usfeh = {
+	duchies = {
+		d_al_hadded d_dyazmineh d_bidiyyeh
+		d_tragoneia d_aversaria_peripontica
+		d_kulaybeh d_shakgier
+		d_tibah d_radnaabah d_sagecrowns d_rifeh d_thronelands
+	}
+}
+
+world_cs_udhaliyya = {
+	duchies = {
+		d_beid_faluh d_asred d_ard_dakhhan d_ar_rami d_first_kingdom d_chalciana d_rabiqraa
+		d_banaidat d_tell_hillana d_dozzan d_al_jafemmam
+		d_tell_habja d_wurileya d_merrha d_khefayyih
+		d_ajjajar
+	}
+}
+
+world_central_sarradon = {
+	regions = {
+		world_cs_usfeh world_cs_udhaliyya
+	}
+}
+
+world_ws_amsari = {
+	duchies = {
+		d_tolombeh_ye_habibabad d_sar_dasht d_darundel d_shastakan d_khvoshinan_e_sofla d_takyeh d_gerd_mehdiabad d_laman d_kalbafaraj_mahalleh d_prathatha d_shahrizheh d_qinamar d_burjaki
+	}
+}
+ 
+world_ws_kamsaria = {
+	duchies = {
+		d_diu_hedju d_snenys d_neshwys_erem d_koremheb d_neswf d_orokhtabat d_desdjet d_nehekeresh d_urkhamur d_kdah_heresh d_impekheret d_khepesh d_aldasmar d_der_vindeon
+	}
+}
+
+world_ws_ayyar = {
+	duchies = {
+		d_bharemhev d_haradad d_zakhred d_kathaanaksa d_vabhrund d_bahazradad d_kanaam d_eloi_sashravun d_eloi_myar d_eloi_vidhan d_dafranis
+	}
+}
+
+world_western_sarradon = {
+	regions = {
+		world_ws_ayyar world_ws_kamsaria world_ws_amsari
+	}
+}
+
+world_sarradon = {
+	regions = {
+		world_western_sarradon world_central_sarradon world_eastern_sarradon
+	}
+}
+
+world_kashirya = {
+	duchies = {
+		d_darabor d_veeradura d_danafar d_jitnai d_omkhlur d_waladeru d_welapad d_hakadar d_eshkatabad d_taplemak d_thinder d_arambdeh d_abdenaj d_magodoi d_dhupawa d_kamqam d_kathkot d_mahvisatam d_sundakana d_jhenagaon d_khutdang d_jhanadahoo d_sarmataj d_moprakatt d_jalupiya d_vavkebcha d_anudsawa d_gegapalle d_rateha d_akkadalaiya d_jaokonnayach d_morullr d_trinapaawa d_kesvatavi d_rapagodacon d_behtir_duvatal d_kattatoya d_akkidakoya d_javaw d_manasupa d_mirgurli
+	}
+}
+
+
+
+
+###########################################################################
+# Trade Confluences
+#	These are areas with high trade traffic that pirates can raid
+###########################################################################
+
+trade_confluence_imperial_strait = {
+	counties = {
+		 c_ixs c_oraispol c_sinoikisms c_methoe c_plazumsta
+	}
+}
+
+trade_confluence_helvian_delta = {
+	counties = {
+		c_pashgort c_fentange c_kankaanviisa
+	}
+}
+
+trade_confluence_evimos_strait = {
+	counties = {
+		c_vorinmont c_sillebre c_ouydrs_point
+	}
+}
+
+trade_confluence_bay_of_swords = {
+	counties = {
+		c_krodavic c_sedlovice c_teredilna c_cadeni
+	}
+}
+
+trade_confluence_varhara_channel = {
+	counties = {
+		c_kuchek c_tchouran c_siuni c_baqerabad c_khaglun c_garmeh_cheshmeh c_kings_reach
+	}
+}
+
+trade_confluence_mouth_of_tarsuria = {
+	counties = {
+		c_samabarya c_taytuzlikha c_douhar_fenaz 
+	}
+}
+
+trade_confluence_the_watched_channel = {
+	counties = {
+		c_zabashli c_forlorn_approach c_faceless_mans_haunt c_wardens_landing
+	}
+}
+
+trade_confluence_kratemezin_rim = {
+	counties = {
+		c_akil c_erbok c_chamacil c_bradiks
+	}
+}
+
+trade_confluence_krehejad = {
+	duchies = {
+		d_axon d_theslaxxos d_voraxos d_chacos
+	}
+}
+
+trade_confluence_the_pirate_coast = {
+	duchies = {
+		d_kattatoya d_javaw d_mirgurli d_manasupa d_kawelpal d_jaokonnayach d_gegapalle d_akkadalaiya d_trinapaawa d_kesvatavi d_rapagodacon d_morullr 
+	}
+}
+
+trade_confluence_teltheans_strait = {
+	counties = {
+		c_kemsarata c_irhat c_baliyakter
+	}
+}
+
+trade_confluence_ageotaros = {
+	counties = {
+		c_vindamai c_pirodoho c_inkovtara c_valapuiwan c_sharycoir c_sainhad c_ovork c_erdeket c_natolis c_ulastarin
+	}
+}
+
+trade_confluence_korvion_strait = {
+	counties = {
+		c_edinion c_knidike c_craxos c_saaigive c_vasestias c_asiupoli
+	}
+}
+
+trade_confluence_volos_pathway = {
+	duchies = {
+		d_hyelegea
+	}
+}
+
+trade_confluence_pathos_tower = {
+	counties = {
+		c_krodavic c_sedlovice
+	}
+}
+
+trade_confluence_corniche_influence_sphere = {
+	duchies = {
+		d_kaeyok d_singda d_langanafam 
+	}
+	counties = {
+		c_phonan c_nogpudaw c_lao_gia c_wapilit
+	}
+}
+
+trade_confluence_bronzeport_core_area = {
+	duchies = {
+		d_rapagodacon d_morullr d_ganori d_rateha d_welapad d_waladeru d_chaedaeng d_tatau d_kaeyok d_singda d_niri d_sikphaeng d_langanafam d_aderatan d_dilongon
+	}
+	counties = {
+		c_sulurong c_bekan
+	}
+}
+
+trade_confluence_tagsan_navigable_area = {
+	duchies = {
+		d_kaeyok 
+	}
+	counties = {
+		c_wapilit c_jeranmat c_maragsan c_ilanila c_samut_sakkam c_kiching c_calakalan c_limyaban c_tuyen_ly c_dayakani
+	}
+}
+
+###########
+# FLYWAYS #
+###########
+
+# Great Arctic Flyway (an analogue ot the East Atlantic flyway)
+
+# Northernmost breeding range; currently offmap. Equivalent to the northern pole IRL
+#GH_flyway_great_arctic_voreia = {}
+
+# Commonly a breeding range, though for some arctic species it's the wintering range. Highest frequency of year-round birds.
+GH_flyway_great_arctic_chevalien_sea = {
+	regions = {
+		lonely_light_biozone lichdoms_biozone konijkmener_biozone chevalie_biozone pathos_delta_biozone kalath_old_growth_biozone sulzegg_basin_biozone kalath_redwoods_biozone guillate_rocks_biozone migraddar_biozone
+	}
+}
+
+# The main migration route on the flyway, though occasionally species will be available here year-round, especially in the wetlands around the Eramos delta
+GH_flyway_great_arctic_aversaria = {
+	regions = {
+		southern_kalath_biozone knokidbes_biozone etepezea_biozone imperial_isle_biozone opakhasia_biozone malcois_biozone western_aironoi_biozone hyrea_biozone
+	}
+}
+
+# Wintering grounds
+GH_flyway_great_arctic_northern_sarradon = {
+	regions = {
+		GH_geographic_northern_sarradon
+	}
+}
+
+GH_flyway_great_arctic_equatorial_sarradon = {
+	regions = {
+		GH_geographic_equatorial_sarradon
+	}
+}
+
+GH_flyway_great_arctic_aironoi = {
+	regions = {
+		western_aironoi_biozone amaghea_mountains_biozone brass_sea_coasts_biozone great_steppe_biozone
+	}
+}
+
+GH_flyway_great_arctic_near_kashirya = {
+	regions = {
+		aironoian_southeast_biozone kasiryat_biozone darmirat_plain_biozone kashti_flats_biozone
+	}
+}
+
+GH_flyway_great_arctic_far_kashirya = {
+	regions = {
+		nightcoast_biozone rovarska_biozone katuppilan_biozone vichacil_biozone kafasali_biozone magiyor_biozone
+	}
+}
+
+###############################
+# Misc
+###############################
+
+GH_corn_distribution_region = {
+	regions = {
+		hyratan_biozone north_kharadan_biozone darmirat_plain_biozone kashti_flats_biozone magiyor_biozone kafasali_biozone vichacil_biozone katuppilan_biozone kasiryat_biozone great_steppe_biozone aironoian_southeast_biozone
+	}
+}
+
+GH_watermelon_growing_region = {
+	regions = { sinhamiyah_biozone kharadamat_biozone northern_opakhasia_biozone western_aironoi_biozone }
+}
+
+world_innovation_elephants = {
+	generate_modifiers = yes
+	duchies = {
+		d_mahvisatam
+	}
+	regions = {
+		hyratan_biozone darmirat_plain_biozone kashti_flats_biozone magiyor_biozone kafasali_biozone vichacil_biozone katuppilan_biozone nightcoast_biozone damota_biozone crater_biozone aekershaan_biozone rojihlat_biozone khenemhat_biozone
+	}
+}
+
+world_innovation_camels = {
+	generate_modifiers = yes
+	regions = {
+		kemsar_biozone khenemhat_biozone sirwali_biozone sarradonian_desert_biozone sarradonian_mountains_biozone boneyard_biozone
+	}
+}
+
+world_innovation_reefmine = {
+	generate_modifiers = yes
+	regions = {
+		GH_geographic_the_isles GH_geographic_guillate_rocks GH_geographic_tower_isles GH_geographic_imperial_isle
+	}
+}
+
+gh_custom_greater_hammuat_core = {
+	duchies = {
+		d_al_miwf d_valley_of_the_djinn_kings d_khenem_delta d_exiles_cities d_forlorn_coast d_boneyard d_yasi 
+		d_tall_falludariyah d_almudir 
+		d_dedezkale
+	}
+}
+
+custom_almudir_and_adjacent = {
+	duchies = {
+		d_tall_falludariyah
+		d_almudir d_kemayere d_baimar
+	}
+}
+
+custom_astilik_empire_core = {
+	duchies = {
+		d_zaradar d_kallin d_oltedic d_sthenoumnos
+	}
+}
+
+custom_astilik_empire_north = {
+	duchies = {
+		d_nisoni d_lasanoi d_epidamnus d_phaistetus d_mochlurion
+	}
+}
+
+custom_astilik_empire_east = {
+	duchies = {
+		d_murdetaal d_hutstearv d_karcord d_serbar d_anomara
+	}
+}
+
+custom_astilik_empire = {
+	regions = {
+		custom_astilik_empire_core custom_astilik_empire_north custom_astilik_empire_east
+	}
+}
+
+custom_astilik_empire_direct_control = {
+	regions = {
+		custom_astilik_empire_core custom_astilik_empire_north
+	}
+}
+
+###########################################################################
+# Material Regions
+###########################################################################
+
+ # Widespread Regional - Elm (Found in the northern Shattered Coast and Continental Interior)
+material_wood_elm = {
+	regions = {
+		chevalie_biozone kalathipsomi_biozone foglands_biozone amaghea_mountains_biozone
+	}
+}
+
+# Widespread Regional - Walnut (found in the northern Shattered Coast(including inner Etepezea), Continental Interior, Malcois and northern Aironoi)
+material_wood_walnut = {
+	regions = {
+		chevalie_biozone kalathipsomi_biozone foglands_biozone amaghea_mountains_biozone malcois_biozone hyrea_biozone
+	}
+}
+
+# Widespread Regional - Maple (found all over the Shattered Coast, western Aironoi, Kharadamat and Sinhamiyah)
+material_wood_maple = {
+	regions = {
+		world_greater_aversaria world_central_sarradon
+	}
+}
+
+# Widespread Regional - Pines and Firs (found across the northern Shattered Coast, Malcois and western Aironoi)
+material_woods_pine_and_fir = {
+	regions = {
+		chevalie_biozone kalathipsomi_biozone foglands_biozone amaghea_mountains_biozone malcois_biozone hyratan_biozone north_kharadan_biozone
+	}
+}
+
+material_woods_subsaharan = {
+	regions = {
+		damota_biozone
+	}
+}
+
+material_woods_padauk = {
+	regions = {
+		material_woods_subsaharan world_ga_kashirya
+	}
+}
+
+# Widespread Regional - Kashirya
+material_woods_india = {
+	regions = {
+		world_ga_kashirya
+	}
+}
+
+material_woods_india_burma = {
+	regions = {
+		world_ga_kashirya
+	}
+}
+
+material_woods_ebony = {
+	regions = {
+		world_ga_kashirya
+	}
+}
+
+# Regional - Northern Shattered Coast
+material_woods_yew = {
+	regions = {
+		world_ga_marcher_kingdoms world_ga_clanlands
+	}
+}
+
+# Regional - Central and Southern Shattered Coast and northern Sarradon
+material_woods_mediterranean = {
+	regions = {
+		world_ga_aversarian_homelands world_central_sarradon world_ws_amsari world_ws_ayyar
+	}
+}
+
+# Regional - Rovarska
+material_woods_sri_lanka = {
+	regions = {
+		world_ga_kashirya
+	}
+}
+
+material_woods_bamboo = {
+	regions = {
+		GH_geographic_kashirya GH_geographic_pirate_coast
+	}
+}
+
+material_woods_cherry = {
+	regions = {
+		GH_geographic_kashirya GH_geographic_pirate_coast
+	}
+}
+
+material_woods_dogwood = {
+	regions = {
+		GH_geographic_shattered_coast
+	}
+}
+
+material_woods_hazel = {
+	regions = {
+		GH_geographic_shattered_coast
+	}
+}
+
+material_woods_hickory = {
+	regions = {
+		GH_geographic_kasiyrat GH_geographic_southeast_aironoi
+		GH_geographic_hyratan
+		GH_geographic_pirate_coast
+	}
+}
+
+material_woods_palm = {
+	regions = {
+		GH_geographic_crater GH_geographic_sirwali GH_geographic_khenemhat GH_geographic_aekershaan_crater
+		GH_geographic_krehejad
+	}
+}
+
+material_woods_mulberry = {
+	regions = {
+		GH_geographic_crater GH_geographic_sirwali GH_geographic_khenemhat GH_geographic_aekershaan_crater
+		GH_geographic_krehejad
+		GH_geographic_kashirya GH_geographic_southeast_aironoi
+	}
+}
+
+# Regional - East Asia
+material_woods_asia_east = {
+	regions = {
+		GH_geographic_dahangon
+	}
+}
+
+# Regional - Southeast Asia
+material_woods_asia_southeast = {
+	regions = {
+		GH_geographic_pirate_coast
+	}
+}
+
+# Regional - Northeast Asia
+material_woods_asia_northeast = {
+	regions = {
+		GH_geographic_dahangon
+		
+	}
+}
+
+GH_material_wood_beech = {
+	regions = {
+		chevalie_biozone kalathipsomi_biozone foglands_biozone amaghea_mountains_biozone malcois_biozone hyrea_biozone
+	}
+}
+
+material_cloth_no_silk = {
+	regions = {
+		world_es_desert
+	}
+}
+
+material_cloth_linen = {
+	regions = {
+		world_greater_aversaria
+	}
+}
+
+material_cloth_cotton = {
+	regions = {
+		world_eastern_sarradon		
+	}
+}
+
+material_metal_wootz = {
+	regions = {
+		world_ga_kashirya
+	}
+}
+
+material_metal_damascus = {
+	regions = {
+		world_sarradon
+	}
+}
+
+material_metal_bulat = {
+	regions = {
+		world_ga_aironoi
+	}
+}
+
+material_hsb_camel_bone = {
+	regions = {
+		world_sarradon
+	}
+}
+
+material_hsb_deer_antler = {
+	regions = {
+		world_greater_aversaria
+	}
+}
+
+material_hsb_boar_tusk = {
+	regions = {
+		world_greater_aversaria world_sarradon
+	}
+}
+
+material_hsb_ivory_imported = {
+	regions = {
+		world_greater_aversaria
+	}
+}
+
+material_hsb_ivory_native = {
+	regions = {
+		world_sarradon world_ga_kashirya
+	}
+}
+
+material_hsb_mother_of_pearl = {
+	regions = {
+		world_ga_aversarian_isles nightcoast_biozone sirwali_biozone
+	}
+}
+
+material_hsb_tortoiseshell = {
+	regions = {
+		world_ga_kashirya sirwali_biozone
+	}
+}
+
+material_hsb_seashell = {
+	regions = {
+		world_ga_kashirya sirwali_biozone
+	}
+}
+
+divergence_island_regions = {
+	regions = {
+		the_isles_biozone tower_isles_biozone guillate_rocks_biozone central_isles_biozone eripomvuno_biozone krehejad_biozone
+	}
+}
+
+##########################
+# Struggle Regions 		#
+##########################
+
+struggle_rite_wars_north = {
+	regions = {
+		southern_kalath_biozone
+		kalath_redwoods_biozone
+		imperial_isle_biozone
+		etepezea_biozone
+	}
+}
+
+struggle_rite_wars_south = {
+	regions = {
+		hyrea_biozone
+	}
+	duchies = {
+		d_dusk d_megalarina d_pelelis d_sunhorn d_the_avanometes d_kedrassos d_isles_of_aervalr d_epidyros d_radix d_high_warren d_sanctum d_inner_halo d_aervalrs_halo d_isle_of_light d_outer_halo d_heavenly_noon d_saktoosse d_dymetra d_aeric_noon d_cyrydon d_dawn d_cythioch d_dreamers_call d_herald d_kaltons_rock
+	}
+}
+
+struggle_rite_wars = {
+	regions = {
+		struggle_rite_wars_north
+		struggle_rite_wars_south
+	}
+}
+
+# Special Artifact-Related
+
+seventy_seven_cities = {
+	counties = {
+		c_oraispol c_asiupoli c_peti_gisredde c_last_light c_el_qulatha c_tchouran c_zahali c_sainhad c_valapuiwan c_kudahhar c_new_yrim c_sorba c_gradiene
+	}
+}
+
+# Invasion Regions
+
+fogeater_buildup_region_kalathipsomi = {
+	duchies = {
+		d_davs_tarien d_regance d_kas_masno d_rosaskinrad d_tyrkiy
+	}
+}
+
+fogeater_buildup_region_amaghea = {
+	duchies = {
+		d_bolubn d_boreva d_yanoski d_bormovo d_malche d_kosteturynisk d_myrmomenus d_temava
+	}
+}
+
+fogeater_buildup_region_eramasic_river_delta = {
+	duchies = {
+		d_dol_rybibyshevsk d_lephyalouana_ta d_ralsordica d_kicyon d_blauzy d_kireca
+	}
+}
+
+fogeater_buildup_region_interior = {
+	duchies = {
+		d_atry_yegobirsk d_atryvce d_patvorno d_borika d_novodol d_serkha d_stoisni
+		d_malrozny d_praary d_songrki d_staaya d_stauri
+	}
+}
+
+special_fogeater_empire_start_region_grey_gates = {
+	duchies = {
+		d_bwlcheit d_the_crag d_white_river d_skycrown_lowlands d_wolfsfeld
+	}
+}
+
+special_fogeater_empire_conquest_region_grey_gates_prio_1 = {
+	duchies = {
+		d_nightbloom d_hinterwilds d_little_cornucopia d_leafsea d_honeyreach d_faegift d_aldergreen d_popelna
+	}
+}
+
+special_fogeater_empire_conquest_region_grey_gates_prio_2 = {
+	duchies = {
+		d_oakendale d_sverdok d_jastrlawy d_zhabirhon d_kezly d_old_marches d_tinec d_neufrisa
+	}
+}
+
+special_fogeater_empire_conquest_region_grey_gates_prio_3 = {
+	duchies = {
+		d_agaricea d_stormhook d_murkwood d_mistwatch d_little_redwald d_steinenkirch d_kremkau d_paroz d_reepsholt
+	}
+}
+
+special_fogeater_empire_conquest_region_grey_gates_prio_4 = {
+	duchies = {
+		d_baresc d_irenux d_faisitelbouren d_varusiex d_cavrine d_banereset d_montcornet d_ziemojycz d_brofec d_nafele d_novre d_grascoi
+	}
+}
+
+special_fogeater_empire_conquest_region_grey_gates_prio_5 = {
+	duchies = {
+		d_vallguedoc d_aast d_bassons d_feinde d_ferrond d_devex d_saulxvil d_colarmas d_clois_en_cleusaun d_grande_gisredde d_peti_gisredde
+	}
+}
+
+special_fogeater_empire_conquest_region_grey_gates_prio_6 = {
+	duchies = {
+		d_cascadia d_ja_szfalu d_zbynice d_aspelt d_moorende d_weidingen d_gelale d_thururii
+	}
+}
+
+special_fogeater_empire_conquest_region_grey_gates_kalathipsomi_fall = {
+	regions = {
+		special_fogeater_empire_start_region_grey_gates
+		special_fogeater_empire_conquest_region_grey_gates_prio_1
+		special_fogeater_empire_conquest_region_grey_gates_prio_2
+		special_fogeater_empire_conquest_region_grey_gates_prio_3
+	}
+}
+
+special_fogeater_empire_conquest_region_grey_gates_chevalie_fall = {
+	regions = {
+		special_fogeater_empire_conquest_region_grey_gates_prio_4
+		special_fogeater_empire_conquest_region_grey_gates_prio_5
+	}
+}
+
+special_fogeater_empire_kalathipsomi_conquest_extent = {
+	regions = {
+		special_fogeater_empire_start_region_grey_gates
+		special_fogeater_empire_conquest_region_grey_gates_prio_1
+		special_fogeater_empire_conquest_region_grey_gates_prio_2
+		special_fogeater_empire_conquest_region_grey_gates_prio_3
+		special_fogeater_empire_conquest_region_grey_gates_prio_4
+		special_fogeater_empire_conquest_region_grey_gates_prio_5
+		special_fogeater_empire_conquest_region_grey_gates_prio_6
+	}
+}
+
+# Amaghean Route
+
+special_fogeater_empire_start_region_amaghea = {
+	duchies = {
+		d_athoduta d_kimkionezene
+	}
+}
+
+special_fogeater_empire_conquest_region_amaghea_prio_1 = {
+	duchies = {
+		d_irritarvo d_tshkigri d_ksageri d_tsojita d_ksakho d_tsnemo d_ksagro d_detbora
+	}
+}
+
+special_fogeater_empire_conquest_region_amaghea_prio_2 = {
+	duchies = {
+		d_assila d_he_vrerai d_paeschaes d_phaistetus d_epidamnus d_mochlurion d_tower_isles d_povia d_pavios_isles d_nisoni
+	}
+}
+
+special_fogeater_empire_conquest_region_amaghea_prio_3 = {
+	duchies = {
+		d_checoryda d_churbay d_uladahn d_majat d_sthenoumnos d_oltedic d_kallin d_zaradar d_hutstearv d_murdetaal
+	}
+}
+
+special_fogeater_empire_conquest_region_amaghea_prio_4 = {
+	duchies = {
+		d_bodgiv d_bagorae d_churgad d_bazauuk d_saigoor d_tsagadavi d_nugool d_karcord d_serbar d_taliron d_batset d_ovod d_khartsa
+	}
+}
+
+special_fogeater_empire_conquest_region_amaghea_amaghea_fall = {
+	regions = {
+		special_fogeater_empire_start_region_amaghea
+		special_fogeater_empire_conquest_region_amaghea_prio_1
+	}
+}
+
+special_fogeater_empire_conquest_region_amaghea_aironoi_fall = {
+	regions = {
+		special_fogeater_empire_conquest_region_amaghea_prio_2
+		special_fogeater_empire_conquest_region_amaghea_prio_3
+		special_fogeater_empire_conquest_region_amaghea_prio_4
+	}
+}
+
+special_fogeater_empire_aironoi_conquest_extent = {
+	regions = {
+		special_fogeater_empire_start_region_amaghea
+		special_fogeater_empire_conquest_region_amaghea_prio_1
+		special_fogeater_empire_conquest_region_amaghea_prio_2
+		special_fogeater_empire_conquest_region_amaghea_prio_3
+		special_fogeater_empire_conquest_region_amaghea_prio_4
+	}
+}
+
+# Malcois
+
+fogeater_invasion_malcois_prio_1 = {
+	duchies = {
+		d_oedi d_antaphos d_knokidbes d_oios d_anadres d_vroradi
+	}
+}
+
+fogeater_invasion_malcois_prio_2 = {
+	duchies = {
+		d_myris d_dulia d_elrio
+	}
+}
+
+fogeater_invasion_malcois_prio_3 = {
+	duchies = {
+		d_cregoeis d_paos d_eene d_monaros d_eretrona d_olynthagoria
+	}
+}
+
+fogeater_invasion_malcois_prio_4 = {
+	duchies = {
+		d_arysarnaria d_liohaka d_sunhorn
+	}
+}
+
+fogeater_invasion_malcois_extent = {
+	regions = {
+		fogeater_invasion_malcois_prio_1
+		fogeater_invasion_malcois_prio_2
+		fogeater_invasion_malcois_prio_3
+		fogeater_invasion_malcois_prio_4
+	}
+}
+
+fogeater_invasion_danger_region = {
+	regions = {
+		special_fogeater_empire_kalathipsomi_conquest_extent
+		special_fogeater_empire_aironoi_conquest_extent
+		fogeater_invasion_malcois_extent
+	}
+}
+
+forest_glass_domestic_region = {
+	regions = { chevalie_biozone konijkmener_biozone lonely_light_biozone vyshtanka_biozone black_mountains_biozone migraddar_biozone kalath_old_growth_biozone sulzegg_basin_biozone pathos_delta_biozone kalath_redwoods_biozone southern_kalath_biozone knokidbes_biozone malcois_biozone }
+}
+
+smalt_glass_domestic_region = {
+	regions = { amsar_biozone ayyar_coast_biozone sinhamiyah_biozone north_kharadan_biozone kasiryat_biozone hyratan_biozone darmirat_plain_biozone kashti_flats_biozone magiyor_biozone kafasali_biozone vichacil_biozone katuppilan_biozone rovarska_biozone nightcoast_biozone dahangon_lowlands_biozone nattanan_highlands_biozone }
+}
+
+antimony_glass_domestic_region = {
+	regions = { amaghea_mountains_biozone brass_sea_coasts_biozone western_aironoi_biozone great_steppe_biozone north_kharadan_biozone }
+}
+
+copper_glass_domestic_region = {
+	regions = { southern_kalath_biozone etepezea_biozone knokidbes_biozone imperial_isle_biozone tower_isles_biozone guillate_rocks_biozone the_isles_biozone central_isles_biozone malcois_biozone western_opakhasia_biozone northern_opakhasia_biozone red_waste_biozone hyrea_biozone western_aironoi_biozone redlands_biozone krehejad_biozone sinhamiyah_biozone kharadamat_biozone khenemhat_biozone sirwali_biozone boneyard_biozone alghazir_biozone }
+}
+
+magnesia_glass_domestic_region = {
+	regions = { damota_biozone crater_biozone aekershaan_biozone rojihlat_biozone cyrat_biozone rovarska_biozone }
+}
+
+lead_glass_domestic_region = {
+	regions = { western_aironoi_biozone redlands_biozone aironoian_southeast_biozone fools_coast_biozone krehejad_biozone kashti_flats_biozone darmirat_plain_biozone kasiryat_biozone }
+}
+
+## Pilgrimage Regions
+
+aversarian_region = {
+	counties = { c_oraispol c_rhamnythrae c_palinia c_thebastro }
+}
+
+damota_region = {
+	counties = { c_zahali c_kilahijan c_nagom_kakezihi }
+}
+
+quwazaw_region = {
+	counties = { c_felakese c_tanar c_kudahhar c_blooming_sands }
+}
+
+graveright_region = {
+	counties = { c_prefallias }
+}
+
+games_for_gods_region = {
+	counties = { c_sestaclea c_dzuga c_choirgai c_sainhad c_tseteretii }
+}
+
+anaanides_region = {
+	counties = { c_fakkugat }
+}
+
+amsari_region = {
+	counties = { c_tchouran c_kani_tarn }
+}
+
+lifepath_region = {
+	counties = { c_rozalie }
+}
+
+kardawai_region = {
+	counties = { c_giants_ford }
+}
+
+uakaklo_region = {
+	counties = { }
+}
+
+sophocos_region = {
+	counties = { c_sophocene }
+}
+
+###########################################################################
+# Graphical Regions
+###########################################################################
+
+GH_graphical_far_east = { # Meant to replace graphical_east_asia
+#	graphical = yes
+	regions = { #To be replaced/add KK
+		GH_graphical_dahangon
+	} 
+}
+
+##############
+## Kashirya ##
+##############
+GH_graphical_kashirya = { # Meant to replace graphical_india
+#	graphical = yes
+	regions = {
+		GH_graphical_katuppilan GH_graphical_vicahil GH_graphical_kafasali GH_graphical_magiyor
+		GH_graphical_kashti_flats GH_graphical_darmirat_plains GH_graphical_kasiyrat
+		GH_graphical_damota # Here until a good solution is found to Damota having Indian buildings in Sarradon
+	}
+}
+
+# Kashirya Sub Regions #
+GH_graphical_darmirat_plains = { regions = { GH_geographic_darmirat_plains } }
+GH_graphical_kashti_flats = { regions = { GH_geographic_kashti_flats } }
+GH_graphical_magiyor = { regions = { GH_geographic_magiyor } }
+GH_graphical_kafasali = { regions = { GH_geographic_kafasali } }
+GH_graphical_vicahil = { regions = { GH_geographic_vicahil } }
+GH_graphical_katuppilan = { regions = { GH_geographic_katuppilan } }
+GH_graphical_kasiyrat = { regions = { GH_geographic_kasiyrat } }
+GH_graphical_dahangon = { regions = { GH_geographic_dahangon } }
+
+##################
+## Pirate Coast ##
+##################
+GH_graphical_pirate_coast = { # Should replace graphical_sea and be included in graphical_india as a fallback
+	regions = {
+		GH_graphical_nightcoast GH_graphical_rovarska
+	}
+}
+graphical_sea = { regions = { GH_graphical_pirate_coast } } # For Javanese buildings, should be replaced with GH_graphical_pirate_coast since graphical_sea is not vanilla
+
+# Pirate Coast Sub Regions #
+GH_graphical_rovarska = { regions = { GH_geographic_rovarska } }
+GH_graphical_nightcoast = { regions = { GH_geographic_nightcoast } }
+
+#####################
+## Shattered Coast ##
+#####################
+GH_graphical_shattered_coast = { # Meant to replace graphical_mediterranean
+#	graphical = yes
+	regions = {
+		GH_graphical_isles
+		GH_graphical_aversaria
+		GH_graphical_southeast_aironoi
+	}
+}
+
+# Shattered Coast Sub Regions #
+GH_graphical_aversaria = {
+	regions = {
+		GH_graphical_etepezea GH_graphical_imperial_isle GH_graphical_malcois GH_graphical_western_opakhasia
+		GH_graphical_northern_opakhasia GH_graphical_western_aironoi
+	}
+}
+GH_graphical_etepezea = { regions = { GH_geographic_etepezea } }
+GH_graphical_imperial_isle = { regions = { GH_geographic_imperial_isle } }
+GH_graphical_malcois = { regions = { GH_geographic_malcois } }
+GH_graphical_western_opakhasia = { regions = { GH_geographic_western_opakhasia } }
+GH_graphical_northern_opakhasia = { regions = { GH_geographic_northern_opakhasia } }
+GH_graphical_western_aironoi = { regions = { GH_geographic_western_aironoi } }
+
+###########
+## Isles ##
+###########
+GH_graphical_isles = { # Meant to replace world_europe_west_iberia
+	regions = {
+		GH_graphical_the_isles GH_graphical_guillate_rocks GH_graphical_tower_isles
+		GH_graphical_central_isles GH_graphical_eripomvuno GH_graphical_krehejad
+	}
+}
+
+# Pirate Coast Sub Regions #
+GH_graphical_the_isles = { regions = { GH_geographic_the_isles } }
+GH_graphical_guillate_rocks = { regions = { GH_geographic_guillate_rocks } }
+GH_graphical_tower_isles = { regions = { GH_geographic_tower_isles } }
+GH_graphical_central_isles = { regions = { GH_geographic_central_isles } }
+GH_graphical_eripomvuno = { regions = { GH_geographic_eripomvuno } }
+GH_graphical_krehejad = { regions = { GH_geographic_krehejad } }
+
+##############
+## Sarradon ##
+##############
+GH_graphical_sarradon = { # Meant to replace GH_geographic_sarradon
+#	graphical = yes
+	regions = {
+		GH_graphical_sinhamiyah
+		GH_graphical_kharadamat
+		GH_graphical_alghazir
+		GH_graphical_ayyar_coast
+		GH_graphical_amsar
+		GH_graphical_sarradonian_mountains
+		GH_graphical_sarradonian_desert
+		# GH_graphical_damota - Commented out until a good solution to Damota having Kashiryan-like aesthetics is found
+		GH_graphical_khenemhat
+		GH_graphical_boneyard
+		GH_graphical_sirwali
+		GH_graphical_north_kharadan
+		GH_graphical_hyratan
+		GH_graphical_kemsar
+		GH_graphical_crater
+		GH_graphical_aekershaan_crater
+		GH_graphical_rojihlat
+		GH_graphical_cyrat
+	}
+}
+
+# Sarradon Sub Regions #
+GH_graphical_sinhamiyah = { regions = { GH_geographic_sinhamiyah } }
+GH_graphical_kharadamat = { regions = { GH_geographic_kharadamat } }
+GH_graphical_alghazir = { regions = { GH_geographic_alghazir } }
+GH_graphical_ayyar_coast = { regions = { GH_geographic_ayyar_coast } }
+GH_graphical_amsar = { regions = { GH_geographic_amsar } }
+GH_graphical_sarradonian_mountains = { regions = { GH_geographic_sarradonian_mountains } }
+GH_graphical_sarradonian_desert = { regions = { GH_geographic_sarradonian_desert } }
+GH_graphical_damota = { regions = { GH_geographic_damota } } # Included in graphical_india as a fallback
+GH_graphical_khenemhat = { regions = { GH_geographic_khenemhat } }
+GH_graphical_boneyard = { regions = { GH_geographic_boneyard } }
+GH_graphical_sirwali = { regions = { GH_geographic_sirwali } }
+GH_graphical_north_kharadan = { regions = { GH_geographic_north_kharadan } }
+GH_graphical_hyratan = { regions = { GH_geographic_hyratan } }
+GH_graphical_kemsar = { regions = { GH_geographic_kemsar } }
+GH_graphical_crater = { regions = { GH_geographic_crater } }
+GH_graphical_aekershaan_crater = { regions = { GH_geographic_aekershaan_crater } } # Sahelian buildings
+GH_graphical_rojihlat = { regions = { GH_geographic_rojihlat } }
+GH_graphical_cyrat = { regions = { GH_geographic_cyrat } }
+
+############
+## Steppe ##
+############
+GH_graphical_steppe = { # Meant to replace graphical_steppe
+#	graphical = yes
+	regions = { GH_graphical_great_steppe GH_graphical_brass_sea_coasts GH_graphical_fools_coast GH_graphical_southeast_aironoi }
+}
+
+# Steppe Sub Regions #
+GH_graphical_great_steppe = { regions = { GH_geographic_great_steppe } }
+GH_graphical_southeast_aironoi = { regions = { GH_geographic_southeast_aironoi } }
+GH_graphical_fools_coast = { regions = { GH_geographic_fools_coast } }
+GH_graphical_brass_sea_coasts = { regions = { GH_geographic_brass_sea_coasts } }
+GH_graphical_aironoi = { regions = { world_ga_aironoi } }
+
+#################
+## Continental ##
+#################
+GH_graphical_continent = { # Meant to replace graphical_western
+#	graphical = yes
+	regions = { GH_graphical_foglands GH_graphical_mayikprolollan GH_graphical_clanlands }
+}
+
+# Continental Sub Regions #
+GH_graphical_clanlands = {
+	regions = {
+		GH_geographic_kalathipsomi_old_growth GH_geographic_pathos_delta GH_geographic_sulzegg_basin
+		GH_geographic_kalathipsomi_redwoods GH_geographic_southern_kalathipsomi GH_geographic_knokidbes
+		GH_geographic_migraddar GH_geographic_vyshtanka GH_geographic_black_mountains
+	}
+}
+GH_graphical_kalathipsomi_old_growth = { regions = { GH_geographic_kalathipsomi_old_growth } }
+GH_graphical_pathos_delta = { regions = { GH_geographic_pathos_delta } }
+GH_graphical_sulzegg_basin = { regions = { GH_geographic_sulzegg_basin } }
+GH_graphical_kalathipsomi_redwoods = { regions = { GH_geographic_kalathipsomi_redwoods } }
+GH_graphical_southern_kalathipsomi = { regions = { GH_geographic_southern_kalathipsomi } }
+GH_graphical_knokidbes = { regions = { GH_geographic_knokidbes } }
+GH_graphical_migraddar = { regions = { GH_geographic_migraddar } }
+GH_graphical_vyshtanka = { regions = { GH_geographic_vyshtanka } }
+GH_graphical_black_mountains = { regions = { GH_geographic_black_mountains } }
+
+GH_graphical_marches = {
+	regions = {
+		GH_geographic_chevalie GH_geographic_konij
+	}
+}
+GH_graphical_chevalie = { regions = { GH_geographic_chevalie } }
+GH_graphical_konij = { regions = { GH_geographic_konij } }
+
+GH_graphical_katraddia = {
+	regions = {
+		GH_graphical_foglands GH_geographic_amaghea_mountains
+	}
+}
+GH_graphical_continental_interior = { regions = { GH_geographic_continental_interior } }
+GH_graphical_amaghea_mountains = { regions = { GH_geographic_amaghea_mountains } }
+GH_graphical_foglands = { regions = { GH_geographic_foglands } }
+
+GH_graphical_oejeynica = { regions = { GH_geographic_oejeynica } }
+GH_graphical_whisperveil = { regions = { GH_geographic_whisperveil } }
+GH_graphical_mayikprolollan = { regions = { GH_geographic_mayikprolollan } }
+GH_graphical_lonely_light = { regions = { GH_geographic_lonely_light } }
+
+###########################################################################
+# Graphical Regions Redo Workshop - needs to be integrated
+###########################################################################
+
+##############
+## Kashirya ##
+##############
+GH_geographic_kashirya = { # Meant to replace graphical_india
+#	graphical = yes
+	regions = {
+		GH_geographic_katuppilan GH_geographic_vicahil GH_geographic_kafasali GH_geographic_magiyor
+		GH_geographic_kashti_flats GH_geographic_darmirat_plains GH_geographic_kasiyrat
+		GH_geographic_hyratan GH_geographic_north_kharadan
+	}
+}
+
+# Kashirya Sub Regions #
+GH_geographic_darmirat_plains = { regions = { darmirat_plain_biozone } }
+GH_geographic_kashti_flats = { regions = { kashti_flats_biozone } }
+GH_geographic_magiyor = { regions = { magiyor_biozone } }
+GH_geographic_kafasali = { regions = { kafasali_biozone } }
+GH_geographic_vicahil = { regions = { vichacil_biozone } }
+GH_geographic_katuppilan = { regions = { katuppilan_biozone } }
+GH_geographic_kasiyrat = { regions = { kasiryat_biozone } }
+GH_geographic_dahangon = { regions = { dahangon_lowlands_biozone nattanan_highlands_biozone } }
+
+##################
+## Pirate Coast ##
+##################
+GH_geographic_pirate_coast = { # Should replace graphical_sea and be included in graphical_india as a fallback
+	regions = {
+		GH_geographic_nightcoast GH_geographic_rovarska
+	}
+}
+
+# Pirate Coast Sub Regions #
+GH_geographic_rovarska = { regions = { rovarska_biozone } }
+GH_geographic_nightcoast = { regions = { nightcoast_biozone } }
+
+#####################
+## Shattered Coast ##
+#####################
+GH_geographic_shattered_coast = { # Meant to replace graphical_mediterranean
+#	graphical = yes
+	regions = {
+		GH_geographic_isles
+		GH_geographic_aversaria
+		GH_geographic_southeast_aironoi
+	}
+}
+
+# Shattered Coast Sub Regions #
+GH_geographic_aversaria = {
+	regions = {
+		GH_geographic_etepezea GH_geographic_imperial_isle GH_geographic_malcois GH_geographic_western_opakhasia
+		GH_geographic_northern_opakhasia GH_geographic_western_aironoi
+	}
+}
+GH_geographic_etepezea = { regions = { etepezea_biozone } }
+GH_geographic_imperial_isle = { regions = { imperial_isle_biozone } }
+GH_geographic_malcois = { regions = { malcois_biozone } }
+GH_geographic_opakhasia = { regions = { GH_geographic_western_opakhasia GH_geographic_northern_opakhasia } }
+GH_geographic_western_opakhasia = { regions = { western_opakhasia_biozone } }
+GH_geographic_northern_opakhasia = { regions = { northern_opakhasia_biozone } }
+GH_geographic_western_aironoi = { regions = { western_aironoi_biozone } }
+
+GH_geographic_redlands_mainland = {
+	duchies = {
+		d_izzinarra d_reveun d_itaraedran d_khartsa d_girzarn d_revn
+	}
+}
+
+GH_geographic_redrunner_islands = {
+	duchies = {
+		d_kurdirik
+	}
+}
+
+###########
+## Isles ##
+###########
+GH_geographic_isles = { # Meant to replace world_europe_west_iberia
+	regions = {
+		GH_geographic_the_isles GH_geographic_guillate_rocks GH_geographic_tower_isles
+		GH_geographic_central_isles GH_geographic_eripomvuno GH_geographic_krehejad
+	}
+}
+
+# Pirate Coast Sub Regions #
+GH_geographic_the_isles = { regions = { the_isles_biozone } }
+GH_geographic_guillate_rocks = { regions = { guillate_rocks_biozone } }
+GH_geographic_tower_isles = { regions = { tower_isles_biozone } }
+GH_geographic_central_isles = { regions = { central_isles_biozone } }
+GH_geographic_eripomvuno = { regions = { eripomvuno_biozone } }
+GH_geographic_krehejad = { regions = { krehejad_biozone } }
+
+##############
+## Sarradon ##
+##############
+GH_geographic_sarradon = { # Meant to replace GH_geographic_sarradon
+#	graphical = yes
+	regions = {
+		GH_geographic_sinhamiyah
+		GH_geographic_kharadamat
+		GH_geographic_alghazir
+		GH_geographic_ayyar_coast
+		GH_geographic_amsar
+		GH_geographic_sarradonian_mountains
+		GH_geographic_sarradonian_desert
+		# GH_geographic_damota - Commented out until a good solution to Damota having Kashiryan-like aesthetics is found
+		GH_geographic_khenemhat
+		GH_geographic_boneyard
+		GH_geographic_sirwali
+		GH_geographic_kemsar
+		GH_geographic_crater
+		GH_geographic_aekershaan_crater
+		GH_geographic_rojihlat
+		GH_geographic_cyrat
+	}
+}
+
+# Sarradon Sub Regions #
+GH_geographic_sinhamiyah = { regions = { sinhamiyah_biozone } }
+GH_geographic_kharadamat = { regions = { kharadamat_biozone } }
+GH_geographic_alghazir = { regions = { alghazir_biozone } }
+GH_geographic_ayyar_coast = { regions = { ayyar_coast_biozone } }
+GH_geographic_amsar = { regions = { amsar_biozone } }
+GH_geographic_sarradonian_mountains = { regions = { sarradonian_mountains_biozone } }
+GH_geographic_sarradonian_desert = { regions = { sarradonian_desert_biozone } }
+GH_geographic_damota = { regions = { damota_biozone } } # Included in graphical_india as a fallback
+GH_geographic_khenemhat = { regions = { khenemhat_biozone } }
+GH_geographic_boneyard = { regions = { boneyard_biozone } }
+GH_geographic_sirwali = { regions = { sirwali_biozone } }
+GH_geographic_north_kharadan = { regions = { north_kharadan_biozone } }
+GH_geographic_hyratan = { regions = { hyratan_biozone } }
+GH_geographic_kemsar = { regions = { kemsar_biozone } }
+GH_geographic_crater = { regions = { crater_biozone } }
+GH_geographic_aekershaan_crater = { regions = { aekershaan_biozone } } # Sahelian buildings
+GH_geographic_rojihlat = { regions = { rojihlat_biozone } }
+GH_geographic_cyrat = { regions = { cyrat_biozone } }
+
+GH_geographic_northern_sarradon = { regions = { GH_geographic_sinhamiyah GH_geographic_kharadamat GH_geographic_alghazir GH_geographic_ayyar_coast GH_geographic_amsar GH_geographic_sarradonian_mountains GH_geographic_sarradonian_desert GH_geographic_khenemhat GH_geographic_boneyard GH_geographic_sirwali GH_geographic_kemsar } }
+GH_geographic_sarradon_prosperous_east_coast = {
+	regions = { GH_geographic_kharadamat GH_geographic_khenemhat GH_geographic_sirwali GH_geographic_alghazir }
+}
+GH_geographic_equatorial_sarradon = { regions = { GH_geographic_damota GH_geographic_crater GH_geographic_aekershaan_crater GH_geographic_rojihlat GH_geographic_cyrat } }
+
+############
+## Steppe ##
+############
+GH_geographic_steppe = { # Meant to replace graphical_steppe
+#	graphical = yes
+	regions = { GH_geographic_great_steppe GH_geographic_brass_sea_coasts GH_geographic_fools_coast GH_geographic_southeast_aironoi GH_geographic_hyrea }
+}
+
+# Steppe Sub Regions #
+GH_geographic_great_steppe = { regions = { great_steppe_biozone } }
+GH_geographic_southeast_aironoi = { regions = { aironoian_southeast_biozone } }
+GH_geographic_fools_coast = { regions = { fools_coast_biozone } }
+GH_geographic_brass_sea_coasts = { regions = { brass_sea_coasts_biozone } }
+GH_geographic_aironoi = { regions = { world_ga_aironoi } }
+GH_geographic_hyrea = { regions = { hyrea_biozone } }
+
+GH_geographic_hyrea_central = { duchies = { d_he_vrerai } }
+GH_geographic_hyrea_east = { duchies = { d_assila } }
+GH_geographic_hyrea_west = { duchies = { d_hieraros d_olylama } }
+GH_geographic_aironoi_northwest = { duchies = { d_bodgiv d_bagorae }}
+
+#################
+## Continental ##
+#################
+GH_geographic_continent = { # Meant to replace graphical_western
+#	graphical = yes
+	regions = { GH_geographic_foglands GH_geographic_mayikprolollan GH_geographic_clanlands }
+}
+
+# Continental Sub Regions #
+GH_geographic_clanlands = {
+	regions = {
+		GH_geographic_kalathipsomi_old_growth GH_geographic_pathos_delta GH_geographic_sulzegg_basin
+		GH_geographic_kalathipsomi_redwoods GH_geographic_southern_kalathipsomi GH_geographic_knokidbes
+		GH_geographic_migraddar GH_geographic_vyshtanka GH_geographic_black_mountains
+	}
+}
+GH_geographic_kalathipsomi_old_growth = { regions = { kalath_old_growth_biozone } }
+GH_geographic_pathos_delta = { regions = { pathos_delta_biozone } }
+GH_geographic_sulzegg_basin = { regions = { sulzegg_basin_biozone } }
+GH_geographic_kalathipsomi_redwoods = { regions = { kalath_redwoods_biozone } }
+GH_geographic_southern_kalathipsomi = { regions = { southern_kalath_biozone } }
+GH_geographic_knokidbes = { regions = { knokidbes_biozone } }
+GH_geographic_migraddar = { regions = { migraddar_biozone } }
+GH_geographic_vyshtanka = { regions = { vyshtanka_biozone } }
+GH_geographic_black_mountains = { regions = { black_mountains_biozone } }
+
+GH_geographic_marches = {
+	regions = {
+		GH_geographic_chevalie GH_geographic_konij
+	}
+}
+GH_geographic_chevalie = { regions = { chevalie_biozone } }
+GH_geographic_konij = { regions = { konijkmener_biozone } }
+
+GH_geographic_katraddia = {
+	regions = {
+		GH_geographic_continental_interior 
+		#GH_geographic_amaghea_mountains
+	}
+}
+GH_geographic_continental_interior = { regions = { continental_interior_biozone } }
+GH_geographic_amaghea_mountains = { regions = { amaghea_mountains_biozone } }
+GH_geographic_foglands = { regions = { foglands_biozone } }
+
+GH_geographic_oejeynica = { regions = { lichdoms_biozone } }
+GH_geographic_whisperveil = { regions = { whisperveil_biozone } }
+GH_geographic_mayikprolollan = { regions = { mayikprolollan_biozone } }
+GH_geographic_lonely_light = { regions = { lonely_light_biozone } } 
+
+##############
+### SEAZONES
+# Primarily for travel events at sea
+##############
+GH_sea_western_sea = {
+	provinces = { 3710 4903 4904 4906 4907 4908 4909 4927 }
+}
+GH_sea_tower_sea = {
+	provinces = { 4782 4783 4786 5070 4787 4788 4790 4791 4793 4941 }
+}
+GH_sea_kashiryan_gulf = {
+	provinces = { 2959 2960 3056 }
+}
+
+##############
+### REPLACERS
+
+################################
+## VANILLA REGIONS AND REPLACERS
+# GH NOTE: PLEASE DO NOT MESS WITH THESE UNLESS YOU KNOW WHAT YOU'RE DOING - PLEASE KEEP THINGS TIDY! I
+# HATE MODDING THIS FILE SO GOD DAMN MUCH DUDE IVE SPENT LIKE A WEEK AND A HALF WITH THREE DAYS OF SLEEP 
+# JUST TRYING TO UNFUCK THIS THING AND IVE ONLY HAD THIS DOG FOR LIKE TWO MONTHS NOW AND I REALIZED
+# ID BEEN FEEDING JANET LITERALLY DOUBLE HER ACTUAL DIET AND THEN CANADA BURNED DOWN AND WHENEVER THE
+# SKY ISNT CHOKED WITH THE ASH OF THE DYING MAPLE GAIA ITS BEEN POURING FUCKING RAIN SO SHE
+# HAS BEEN ACTING HORRIBLE FOR A MONTH BECAUSE OF THE EXCESSIVE AMOUNTS OF ENERGY AND NOW WE CANT GO
+# OUTSIDE FOR THE PAST TWO WEEKS AND SHES SO FUCKING NEEDY BUT I FEEL SO BAD SHES SAD BECAUSE SHES MY
+# DOG YOU KNOW I LOVE THE BITCH (LITERAL) AND I WANT HER TO BE HAPPY BUT HOLY SHIT THE AMOUNT OF
+# CONSTANT BARKING AND BEGGING AND WHATEVER WE'RE TRAINING HER LIKE SHE'S LEARNING QUICK AND IS EXTREMELY
+# WELL BEHAVED FOR A RESCUE (SHE'S FOUR AS OF THE TIME OF THIS WRITING 06/30/2023 MY BIRTHDAY WAS 12
+# DAYS AGO AND I ACTUALLY FORGOT MY AGE UNTIL I GOOGLED IT A FEW DAYS AGO IM 26 THANK GOD 27 WILL BREAK
+# ME) BUT OH MY GOD IVE BEEN IN THIS FUCKING GEOGRAPHIC REGIONS FILE AND MY DOG HAS NO PLAYTIME AND
+# THINKS SHE'S STARVING BECAUSE I HALVED HER FOOD (THE PERSON AT THE SHELTER I WORKED WITH SAID "SHE
+# EATS TWO CUPS A DAY, THERE IS A CUP IN THE BAG TO HELP YOU MEASURE" AND I MISINTERPRETED THAT AS "SHE
+# GETS TWO CUPS A DAY, SO THIS IS A SINGLE 'CUP'" INSTEAD OF "THIS CUP MEASURES OUT TWO CUPS" BECAUSE
+# I HATE THE ENGLISH LANGUAGE) AND THIS FUCKING FILE MAN HOLY SHIT PLEASE DONT FUCK WITH IT IM BEGGING
+# YOU JUST LITERALLY MIMIC WHATEVER IS IN HERE GOD PLEASE
+
+###########################
+## Vanilla Region Replacers
+
+# Graphical
+
+# Standard
+GH_REPLACE_world_africa = {
+	regions = { GH_geographic_sarradon }
+}
+GH_REPLACE_world_europe = {
+	regions = { world_greater_aversaria }
+}
+GH_REPLACE_world_europe_north = {
+	regions = { world_ga_eastern_clanlands world_ga_foglands }
+}
+GH_REPLACE_world_europe_west = {
+	regions = { GH_geographic_marches }
+}
+GH_REPLACE_world_europe_west_francia = {
+	regions = { GH_geographic_marches } # GH TODO: Find a better swap
+}
+GH_REPLACE_world_europe_west_germania = {
+	regions = { GH_geographic_marches } # GH TODO: Find a better swap
+}
+GH_REPLACE_world_europe_west_iberia = {
+	regions = { GH_graphical_isles }
+}
+GH_REPLACE_world_europe_west_britannia = {
+	regions = { GH_geographic_lonely_light }
+}
+GH_REPLACE_world_europe_south = {
+	regions = { GH_geographic_aversaria }
+}
+GH_REPLACE_world_europe_south_east = {
+	regions = { GH_geographic_kalathipsomi_old_growth }
+}
+GH_REPLACE_world_europe_east = {
+	regions = { GH_geographic_katraddia }
+}
+GH_REPLACE_world_india = {
+	regions = { GH_graphical_kashirya }
+}
+GH_REPLACE_world_india_rajastan = {
+	regions = { GH_geographic_kashti_flats }
+}
+GH_REPLACE_world_asia_minor = {
+	regions = { great_steppe_biozone }
+}
+GH_REPLACE_world_burma = {
+	regions = { GH_geographic_katuppilan GH_geographic_pirate_coast }
+}
+GH_REPLACE_world_asia = {
+	regions = { GH_geographic_dahangon GH_geographic_pirate_coast }
+}
+GH_REPLACE_world_asia_east = {
+	regions = { dahangon_lowlands_biozone }
+}
+GH_REPLACE_world_asia_north_east = {
+	regions = {
+		world_ga_southland_formable #Just a single county in Dahangon but need to be replaced once we have an actual region for it
+	}
+} 
+GH_REPLACE_world_asia_southeast = {
+	regions = { GH_geographic_pirate_coast }
+}
+GH_REPLACE_world_asia_japan = {
+	counties = {
+		c_mozvoziye #Again a dummy county in the middle of nowhere cuz Shanxi doesn't exist yet
+	}
+}
+GH_REPLACE_world_asia_china = {
+	regions = {
+		world_ga_southland_formable #Just a single county in Dahangon but need to be replaced once we have an actual region for it
+	}
+}
+GH_REPLACE_world_tibet = {
+	regions = { GH_geographic_north_kharadan }
+}
+GH_REPLACE_world_middle_east = {
+	regions = { GH_geographic_sarradon }
+}
+GH_REPLACE_ghw_region_egypt_et_al = {
+	regions = { GH_geographic_sarradon } # GH TODO: Refine this
+}
+GH_REPLACE_world_middle_east_jerusalem = {
+	regions = { GH_geographic_kharadamat } # GH TODO: Find a better swap
+}
+GH_REPLACE_world_middle_east_arabia = {
+	regions = { GH_geographic_sinhamiyah } # GH TODO: Find a better swap
+}
+GH_REPLACE_world_middle_east_persia = {
+	regions = { world_ws_amsari }
+}
+GH_REPLACE_world_steppe = {
+	regions = { GH_geographic_steppe }
+}
+GH_REPLACE_world_steppe_central = {
+	regions = { GH_geographic_steppe }
+}
+GH_REPLACE_world_steppe_east = {
+	regions = { GH_geographic_kasiyrat GH_geographic_southeast_aironoi GH_geographic_fools_coast }
+}
+GH_REPLACE_world_steppe_west = {
+	regions = { GH_geographic_great_steppe GH_geographic_brass_sea_coasts GH_geographic_western_aironoi }
+}
+GH_REPLACE_world_steppe_tarim = {
+	regions = {
+		GH_geographic_magiyor
+	}
+}
+GH_REPLACE_heritage_area_turkestan = { # TEMPORARY
+	duchies = {
+		d_hutstearv
+	}
+}
+GH_REPLACE_world_africa_sahara = {
+	regions = { sarradonian_desert_biozone }
+}
+GH_REPLACE_world_africa_north = {
+	regions = { GH_geographic_sarradon }
+}
+GH_REPLACE_world_africa_north_west = {
+	regions = { GH_geographic_khenemhat GH_geographic_sirwali GH_geographic_alghazir }
+}
+GH_REPLACE_world_africa_west = {
+	regions = { GH_geographic_ayyar_coast }
+}
+GH_REPLACE_world_africa_east = {
+	regions = { GH_geographic_damota GH_geographic_aekershaan_crater GH_geographic_crater GH_geographic_rojihlat GH_geographic_cyrat }
+}
+
+# Hunting Fauna Regions, separate from Biozones where vanilla accounts for what regions altogether that particular fauna will be in
+GH_REPLACE_hunt_animal_deer_region = {
+	regions = {
+		chevalie_biozone konijkmener_biozone 
+		kalathipsomi_biozone mayikprolollan_biozone whisperveil_biozone foglands_biozone
+		imperial_isle_biozone central_isles_biozone etepezea_biozone malcois_biozone
+		western_opakhasia_biozone northern_opakhasia_biozone
+		western_aironoi_biozone
+	}
+}
+GH_REPLACE_hunt_animal_reindeer_region = {
+	regions = {
+		vyshtanka_biozone migraddar_biozone
+		whisperveil_biozone
+	}
+}
+GH_REPLACE_hunt_animal_elk_region = {
+	regions = {
+		chevalie_biozone
+		kalathipsomi_biozone mayikprolollan_biozone whisperveil_biozone foglands_biozone
+		malcois_biozone
+		amaghea_mountains_biozone 
+		north_kharadan_biozone hyratan_biozone
+	}
+}
+GH_REPLACE_hunt_animal_antelope_region = {
+	regions = {
+		hyrea_biozone western_aironoi_biozone great_steppe_biozone aironoian_southeast_biozone fools_coast_biozone kasiryat_biozone
+		hyratan_biozone darmirat_plain_biozone magiyor_biozone kafasali_biozone vichacil_biozone
+		kharadamat_biozone sinhamiyah_biozone alghazir_biozone khenemhat_biozone ayyar_coast_biozone amsar_biozone
+	}
+}
+
+GH_REPLACE_hunt_animal_gazelle_region = {
+	regions = {
+		hyrea_biozone western_aironoi_biozone great_steppe_biozone aironoian_southeast_biozone fools_coast_biozone kasiryat_biozone
+		hyratan_biozone darmirat_plain_biozone magiyor_biozone kafasali_biozone vichacil_biozone
+		kharadamat_biozone sinhamiyah_biozone alghazir_biozone khenemhat_biozone ayyar_coast_biozone amsar_biozone
+	}
+}
+
+
+GH_REPLACE_hunt_animal_bison_region = {
+	regions = {
+		chevalie_biozone kalathipsomi_biozone malcois_biozone continental_interior_biozone
+	}
+}
+
+GH_REPLACE_hunt_animal_aurochs_region = {
+	regions = {
+		chevalie_biozone kalathipsomi_biozone malcois_biozone etepezea_biozone opakhasia_biozone
+		western_aironoi_biozone great_steppe_biozone brass_sea_coasts_biozone 
+		kasiryat_biozone darmirat_plain_biozone kafasali_biozone vichacil_biozone
+	}
+}
+
+GH_REPLACE_hunt_animal_boar_region = {
+	regions = {
+		kalathipsomi_biozone etepezea_biozone imperial_isle_biozone chevalie_biozone konijkmener_biozone continental_interior_biozone 
+		malcois_biozone western_opakhasia_biozone northern_opakhasia_biozone 
+		western_aironoi_biozone hyrea_biozone aironoian_southeast_biozone fools_coast_biozone
+		sinhamiyah_biozone 
+	}
+}
+
+
+GH_REPLACE_hunt_animal_bear_region = {
+	regions = {
+		kalathipsomi_biozone etepezea_biozone mayikprolollan_biozone 
+		malcois_biozone western_opakhasia_biozone northern_opakhasia_biozone
+		western_aironoi_biozone hyrea_biozone aironoian_southeast_biozone fools_coast_biozone amaghea_mountains_biozone 
+		kharadamat_biozone
+	}
+}
+
+GH_REPLACE_hunt_animal_caracal_region = {
+	regions = {
+		kharadamat_biozone sinhamiyah_biozone khenemhat_biozone ayyar_coast_biozone amsar_biozone
+	}
+}
+
+GH_REPLACE_hunt_animal_big_cat_region = {
+	regions = {
+		malcois_biozone
+		krehejad_biozone
+		crater_biozone aekershaan_biozone damota_biozone cyrat_biozone rojihlat_biozone
+		sinhamiyah_biozone khenemhat_biozone amsar_biozone 
+		north_kharadan_biozone hyratan_biozone
+		darmirat_plain_biozone kafasali_biozone vichacil_biozone katuppilan_biozone 
+		rovarska_biozone nightcoast_biozone
+	}
+}
+
+GH_REPLACE_world_atlantic = {
+	regions = {
+		guillate_rocks_biozone
+		kalath_redwoods_biozone
+		pathos_delta_biozone
+		konijkmener_biozone
+		the_isles_biozone
+		chevalie_biozone
+	}
+}
+
+GH_REPLACE_sea_north_atlantic = {
+	regions = {
+		guillate_rocks_biozone
+		chevalie_biozone
+	}
+}
+
+## Seasonal Regions, could use a better look
+GH_REPLACE_seasonal_region_deccan = {
+	regions = {
+		kafasali_biozone
+		magiyor_biozone
+	}
+}
+GH_REPLACE_seasonal_region_rajasthan = {
+	regions = {
+		darmirat_plain_biozone
+		kashti_flats_biozone
+	}
+}
+
+GH_REPLACE_seasonal_region_bengal = {
+	regions = {
+		vichacil_biozone
+		katuppilan_biozone
+		nightcoast_biozone
+		rovarska_biozone
+	}
+}
+
+GH_REPLACE_seasonal_region_burma = {
+	regions = {
+		dahangon_lowlands_biozone
+		nattanan_highlands_biozone
+		cyrat_biozone
+	}
+}
+
+GH_REPLACE_seasonal_region_west_africa = {
+	regions = {
+		khenemhat_biozone
+		boneyard_biozone
+		sirwali_biozone
+		sarradonian_mountains_biozone
+		sarradonian_desert_biozone
+		aironoian_southeast_biozone
+	}
+}
+GH_REPLACE_seasonal_region_east_africa = {
+	regions = {
+		crater_biozone
+		rojihlat_biozone
+		aekershaan_biozone
+		damota_biozone
+	}
+}
+
+#################
+## CE2 REGIONS ##
+#################
+GH_REPLACE_mpo_region_permafrost = {
+	regions = {
+		whisperveil_biozone
+	}
+}
+
+GH_REPLACE_cp4_music_area = {
+	regions = {
+		whisperveil_biozone
+		kalathipsomi_biozone
+	}
+}
+
+GH_REPLACE_arab_nomad_area = {
+	regions = {
+		sarradonian_desert_biozone
+	}
+}
+
+GH_REPLACE_egypt_nomad_area = {
+	regions = {
+		kemsar_biozone
+	}
+}
+
+GH_REPLACE_horn_of_africa_nomad_area = {
+	duchies = {
+		d_akkidakoya d_javaw 
+	}
+}
+
+GH_REPLACE_nubia_nomad_area = {
+	duchies = {
+		d_jaokonnayach d_kesvatavi
+	}
+}
+
+
+#######################################################
+# GH UNIQUE FAUNA REGIONS
+
+GH_hunt_animal_wolf_region = {
+	regions = {
+		kalathipsomi_biozone mayikprolollan_biozone
+		etepezea_biozone
+		tower_isles_biozone guillate_rocks_biozone
+		chevalie_biozone konijkmener_biozone
+		foglands_biozone whisperveil_biozone
+		malcois_biozone western_opakhasia_biozone northern_opakhasia_biozone
+		hyrea_biozone amaghea_mountains_biozone
+		kharadamat_biozone sinhamiyah_biozone 
+	}
+}
+
+########################################################
+# BUILDING REGIONS FOR TRIGGERS
+
+world_horse_buildings_in_hills_and_mountains = {
+	regions = {
+		# GH TODO Need to add primarily duchy/mountain duchies/provinces from other regions
+		GH_geographic_isles
+		GH_geographic_sarradonian_mountains GH_geographic_sarradonian_desert
+		GH_geographic_mayikprolollan
+		GH_geographic_amaghea_mountains
+		GH_geographic_north_kharadan GH_geographic_katuppilan
+	}
+}
+
+# Holy Site Migration Regions
+
+custom_holysite_migration_bay_of_swords = {
+	regions = { pathos_delta_biozone }
+}
+
+custom_holysite_migration_eastern_kalathipsomi = {
+	regions = { pathos_delta_biozone sulzegg_basin_biozone kalath_old_growth_biozone migraddar_biozone }
+}
+
+custom_holysite_migration_western_kalathipsomi = {
+	regions = { kalath_redwoods_biozone southern_kalath_biozone }
+	duchies = { d_derantinosos d_entinos }
+}
+
+custom_holysite_migration_knokidbes_valley = {
+	regions = { knokidbes_biozone }
+	duchies = { d_moorende }
+	counties = { c_cythone }
+}
+
+custom_holysite_migration_kepyran_basin = {
+	duchies = { d_faegift d_moorende d_gelale }
+}
+
+custom_holysite_migration_etepezea = {
+	regions = { etepezea_biozone }
+	duchies = { d_hyelegea d_petalounia d_karata }
+}
+
+custom_holysite_migration_imperial_isle = {
+	regions = { imperial_isle_biozone }
+}
+
+custom_holysite_migration_malcois = {
+	regions = { malcois_biozone }
+	duchies = { d_vroradi d_anadres d_oios d_liohaka d_olylama }
+}
+
+custom_holysite_migration_opakhasia = {
+	regions = { opakhasia_biozone }
+	duchies = { d_isle_of_light d_kedrassos d_isles_of_aervalr d_outer_halo d_inner_halo d_aervalrs_halo }
+}
+
+custom_holysite_migration_aironoi = {
+	regions = { world_ga_aironoi }
+}
+
+custom_holysite_migration_red_wastes = {
+	regions = { red_waste_biozone }
+	duchies = { d_sanctum d_aeric_noon d_cyrydon d_aervalrs_halo }
+}
+
+custom_holysite_migration_chevalie = {
+	regions = { chevalie_biozone konijkmener_biozone }
+}
+
+custom_holysite_migration_kashirya = {
+	regions = { world_ga_kashirya }
+}
+
+custom_holysite_migration_amaghea = {
+	duchies = { d_irritarvo d_tshkigri d_athoduta d_ksageri d_kimkionezene d_tsojita d_ksakho d_tsnemo d_ksagro d_detbora }
+}
+
+custom_holysite_migration_western_aironoi = {
+	duchies = { d_he_vrerai d_assila d_paeschaes d_phaistetus d_epidamnus d_mochlurion d_lasanoi d_nisoni d_tower_isles d_pavios_isles d_povia }
+}
+
+custom_holysite_migration_kasiryat = {
+	duchies = { d_bodgiv d_bagorae d_churgad d_hyratan d_saigoor d_nastal d_tsagadavi d_nugool d_mahvisatam d_sarmataj d_sundakana }
+}
+
+#######################
+## MIGRATION REGIONS ##
+# These are for making sure the migration can properly migrate through partially wastelanded regions such as Kalathipsomi #
+migration_heartwood_controlled_region = {
+	duchies = {
+		d_hinterwilds d_honeyreach d_little_cornucopia d_nightbloom d_leafsea d_oakendale
+	}
+}
+
+migration_faegift_controlled_region = {
+	duchies = {
+		d_faegift
+	}
+}
+
+migration_aldergreen_controlled_region = {
+	duchies = {
+		d_popelna d_old_marches d_aldergreen
+	}
+}
+
+migration_everrain_controlled_region = {
+	duchies = {
+		d_agaricea d_stormhook d_mistwatch d_murkwood
+	}
+}
+
+#####################
+# VANILLA FALLBACKS #
+#####################
+
+# These should NOT be used and should be replaced with proper GH regions asap!
+# If you want to see where GH is grabbing these from vanilla, just comment these out, launch the game and check the error log
+
+world_europe = {
+	regions = { GH_REPLACE_world_europe }
+}
+world_middle_east = {
+	regions = { GH_REPLACE_world_middle_east }
+}
+world_asia_minor = {
+	regions = { GH_REPLACE_world_asia_minor }
+}
+world_india = {
+	regions = { GH_REPLACE_world_india }
+}
+world_burma = {
+	regions = { GH_REPLACE_world_burma }
+}
+world_asia = {
+	regions = { GH_REPLACE_world_asia }
+}
+world_steppe_east = {
+	regions = { GH_REPLACE_world_steppe_east }
+}
+world_asia_east = {
+	regions = { GH_REPLACE_world_asia_east }
+}
+world_asia_north_east = {
+	regions = { GH_REPLACE_world_asia_north_east }
+} 
+world_asia_southeast = {
+	regions = { GH_REPLACE_world_asia_southeast }
+}
+world_asia_japan = {
+	regions = { GH_REPLACE_world_asia_japan }
+}
+world_asia_china = {
+	regions = { GH_REPLACE_world_asia_china }
+}
+world_africa = {
+	regions = { GH_REPLACE_world_africa }
+}
+world_steppe = {
+	regions = { GH_REPLACE_world_steppe }
+}
+world_steppe_west = {
+	regions = { GH_REPLACE_world_steppe_west }
+}
+world_steppe_central = {
+	regions = { GH_REPLACE_world_steppe_central }
+}
+world_tibet = {
+	regions = { GH_REPLACE_world_tibet }
+}
+world_europe_west_iberia = {
+	regions = { GH_graphical_isles }
+}
+world_persian_empire = {
+	regions = { amsar_biozone }
+}
+world_europe_east = {
+	regions = { GH_REPLACE_world_europe_east }
+}
+world_africa_east = {
+	regions = { GH_REPLACE_world_africa_east }
+}
+world_africa_west = {
+	regions = { GH_REPLACE_world_africa_west }
+}
+
+paddy_fields_region = {
+	regions = {
+		GH_geographic_dahangon
+	}
+}
+
+GH_prominent_mayik = {	
+	provinces = {
+		3829 3580 1899 3384 3388 3389 3614
+	}
+}
+
+# TODO: Add provinces with minor mayiks
+GH_all_mayik = {	
+	provinces = {
+		3829 3580 1899 3384 3388 3389
+	}
+}

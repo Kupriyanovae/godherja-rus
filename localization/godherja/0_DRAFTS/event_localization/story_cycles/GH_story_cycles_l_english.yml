@@ -1,0 +1,42 @@
+﻿l_english:
+ 
+ GH_AMSARI_CIVIL_WAR_TITLE: "The Amsari Civil War"
+ story_gh_amsari_civil_war: "The Amsari Civil War"
+ story_gh_amsari_civil_war_desc: "The Hiklahn trembles as rival pretenders vie for the throne, plunging the once-united Amsari realm into chaos. While the Qanamsar struggles to maintain any semblance of control, bitter conflicts rage across the empire that threaten to shatter what little stability remains."
+ AMSARI_CIVIL_WAR_INFORMATION_STRING: "[rulers|E] in Amsar can support [claimant|E]s for the throne of the [GetTitleByKey('e_amsari_hiklahn').GetNameNoTier], or under specific conditions, claim it for themselves. They also gain access to unique [decisions|E] and [interactions|E].\n\n$BULLET_WITH_TAB$#indent_newline:7 Began in #high [Subtract_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000' )] [Select_CString( GreaterThan_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000'), 'IS', 'BI' )]#!#!\n$BULLET_WITH_TAB$#indent_newline:7 Ruling [dynasty|E]: #high [GetGlobalVariable('gh_hiklahn_ruling_dynasty_var').House.GetBaseNameNoTooltip]#!#!"
+ 
+ 
+ story_redlands_crisis: "The Redlands Crisis"
+ story_redlands_crisis_desc: "Chaos has taken hold in the strange and mysterious [Concept('redlands_biozone','Redlands')|E] as powerful magics and foreboding cults seep out from the deep sands."
+ STORY_REDLANDS_CRISIS_INFORMATION_STRING: "$BULLET_WITH_TAB$#indent_newline:7 Began in #high [Subtract_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000' )] [Select_CString( GreaterThan_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000'), 'IS', 'BI' )]#!#!"
+ REDLANDS_CRISIS_ARTIFACT: "Abyssal Prism"
+
+ story_cycle_migration_coalition: "The Sjalvolki Migration"
+ story_cycle_migration_coalition_desc: "The cataclysmically rapid advance of the [Concept('the_fog','Fog')|E] has sent a tidal wave of peoples westward in search of a new home. Though preeminently lead by the Sjalvolki, the migration is in reality a chaotic affair of tribes and cultures beyond count, some not even participating in the main push into [aversaria|E] proper but instead migrating to more unusual locations along the [Concept('the_continent','Continent')|E]'s coast.\n\nCombined with the destructive anarchy that has gripped Aversaria itself, the #E Sjalvolki Migration#! is likely to prove one of the most tumultous periods in Aeras' history."
+ MIGRATION_STORY_PRACTICAL_INFORMATION_STRING: "[sjalvolki_migration|E] will act as a series of [wars|E] through [aversaria|E] that allows the [vassals|E] of [GetTitleByKey('e_migrant_coalition').GetName|U] to settle in new lands. To participate, [vassals|E] must agree to support the High King's efforts, with [kings|E] being required to directly participate. Participants will generate [migration_contribution|E], this determines your ranking in receiving the next available [title|E]."
+ high_king: "High King"
+ clanrech_leaders: "Clan Leaders"
+ conquest_contribution_tooltip: "Migration Contribution"
+ conquest_contribution_counter_label: "Migration Contribution"
+
+ story_sjalvolki_reformation: "The Sjalvolki Reformation"
+ story_sjalvolki_reformation_desc: "The winds of change are sweeping the Sjalvolki world, the old ways of the homeland finding themselves increasingly at odds with the new reality of life on the drastically different [Concept('aversaria','Shattered Coast')|E]. Though some staunch traditionalists may grumble, most leaders — both secular and clerical — are beginning to see that the old religious order is in need of great changes."
+ SJALVOLKI_REFORMATION_STORY_INFORMATION_STRING: "The Sjalvolki Reformation will spread organized [religion|E] across regions affected by [sjalvolki_migration|E], enabling rapid feudalization and eventually initiating the Rite Wars [struggle|E]"
+ reform_fervor_label: "Reform Fervor"
+ the_preacher_label: "The Reformer"
+ the_priest_name: "The Priest"
+ the_patron_name: "The Patron"
+ the_king_name: "The King"
+
+ story_sjalvolki_schism: "The Sjalvolki Reformation"
+ story_sjalvolki_schism_desc: "The winds of change are sweeping the Sjalvolki world, the old ways of the homeland finding themselves increasingly at odds with the new reality of life on the drastically different [Concept('aversaria','Shattered Coast')|E]. Though some staunch traditionalists may grumble, most leaders — both secular and clerical — are beginning to see that the old religious order is in need of great changes."
+
+ story_aversarian_anarchy: "Aversarian Anarchy"
+ story_aversarian_anarchy_desc: "The apocalyptic violence of [frodbrokna|E] has left the ashen husk of [aversaria|E] little more than a wasteland. Warlords and demented [magi|E] alike struggle for scraps amidst the ruins of civilization."
+ AVERSARIAN_ANARCHY_STORY_INFORMATION_STRING: "Due to the [magic|E] that caused [frodbrokna|E], [aversaria|E] has collapsed into chaos. Each of its former provinces experience their own issues, and will often require time or new settlers to reach a state of `normalcy.`"
+
+ story_cycle_harthah: "Ḥārthah's War"
+ story_cycle_harthah_desc: "Fate has come for the Agionists, or so the followers of Ḥārthah ibn Sarradon say. A great host marches against the Agionist Orders of Sarradon to clear them fully from the land. Are they capable of uniting against such a threat, or doomed to their fate once and for all?"
+ HARTHAH_STORY_PRACTICAL_INFORMATION_STRING: "Ḥārthah wages [war|E] against the Agionists, seeking to crush their Orders and restore [sarradon|E] to independence."
+ ibn_sarradon: "Father of Sarradon"
+ AGIONIST_KINGDOM_TITLES: "Agionist Realms"

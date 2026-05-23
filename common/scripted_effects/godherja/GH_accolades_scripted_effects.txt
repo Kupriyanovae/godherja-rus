@@ -1,0 +1,314 @@
+﻿save_marcher_successor_culture_effect = {
+	if = {
+		limit = {
+			OR = {
+				AND = { # Marcher adventurism originating in Chevalie itself
+					any_county_in_region = {
+						region = GH_geographic_chevalie
+						culture = {
+							has_cultural_pillar = heritage_marcher
+							NOT = { has_cultural_parameter = courtiers_less_likely_to_leave_same_culture_court }
+						}
+					}
+					scope:owner.capital_county.title_province ?= {
+						OR = {
+							geographical_region = GH_graphical_clanlands
+							geographical_region = GH_graphical_shattered_coast
+						}
+					}
+				}
+				any_neighboring_and_across_water_top_suzerain_realm_owner = { # The Marchers are HERE
+					culture = {
+						has_cultural_pillar = heritage_marcher
+						NOT = { has_cultural_parameter = courtiers_less_likely_to_leave_same_culture_court }
+					}
+				}
+				scope:owner.liege ?= { # The Marchers are INSIDE
+					any_vassal_or_below = {
+						primary_title.tier > tier_barony
+						culture = {
+							has_cultural_pillar = heritage_marcher
+							NOT = { has_cultural_parameter = courtiers_less_likely_to_leave_same_culture_court }
+						}
+					}
+				}
+			}
+		}
+		random_culture_global = {
+			limit = {
+				has_cultural_pillar = heritage_marcher
+				NOT = { has_cultural_parameter = courtiers_less_likely_to_leave_same_culture_court }
+				culture_number_of_counties > 0
+				any_culture_county = { holder = { in_diplomatic_range = scope:owner } }
+			}
+			weight = {
+				modifier = {
+					add = 100
+					any_culture_county = { empire = scope:owner.capital_county.empire }
+				}
+				modifier = {
+					add = 50
+					any_culture_county = { kingdom = scope:owner.capital_county.kingdom }
+				}
+			}
+			save_scope_as = marcher_culture
+		}
+	}
+}
+
+save_olteni_successor_culture_effect = {
+	if = {
+		limit = {
+			scope:owner = {
+				culture = { NOT = { culture_has_archer_cavalry_maa = yes } }
+				NOT = { has_trait = nomadic_philosophy }
+				highest_held_title_tier >= tier_kingdom
+			}
+			OR = {
+				any_neighboring_and_across_water_top_suzerain_realm_owner = { # The Olteni are HERE
+					culture = {
+						has_oltenic_heritage_pillar_trigger = yes
+						NOT = { has_cultural_parameter = courtiers_less_likely_to_leave_same_culture_court }
+					}
+				}
+				scope:owner.liege ?= { # The Olteni are INSIDE
+					any_vassal_or_below = {
+						primary_title.tier > tier_barony
+						culture = {
+							has_oltenic_heritage_pillar_trigger = yes
+							NOT = { has_cultural_parameter = courtiers_less_likely_to_leave_same_culture_court }
+						}
+					}
+				}
+			}
+		}
+		random_culture_global = {
+			limit = {
+				culture_has_archer_cavalry_maa = yes
+				has_oltenic_heritage_pillar_trigger = yes
+				culture_number_of_counties > 0
+				any_culture_county = { holder = { in_diplomatic_range = scope:owner } }
+				NOT = { has_cultural_parameter = courtiers_less_likely_to_leave_same_culture_court }
+			}
+			weight = {
+				modifier = {
+					add = 100
+					any_culture_county = { empire = scope:owner.capital_county.empire }
+				}
+				modifier = {
+					add = 50
+					any_culture_county = { kingdom = scope:owner.capital_county.kingdom }
+				}
+			}
+			save_scope_as = olteni_culture
+		}
+	}
+}
+
+assign_arcana_education_from_squires_quality_effect = {
+	remove_trait = education_martial_1
+	random_trait_in_category = {
+		category = education
+		limit = {
+			scope:owner = { has_trait = prev }
+		}
+		save_scope_as = education_trait
+	}
+	if = {
+		limit = { exists = scope:education_trait }
+		remove_trait = scope:education_trait
+	}
+	if = {
+		limit = {
+			OR = {
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_accomplished_minimum_value }
+				scope:succeeding_accolade = {
+					accolade_squires_quality_value >= accolade_squires_capable_minimum_value
+					initial_type = accolade_type:magi_attribute
+				}
+			}
+		}
+		random_list = {
+			1 = { add_trait = education_arcana_5 }
+			4 = { add_trait = education_arcana_4 }
+			2 = { add_trait = education_arcana_3 }
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_capable_minimum_value }
+				scope:succeeding_accolade = {
+					accolade_squires_quality_value >= accolade_squires_capable_minimum_value
+					initial_type = accolade_type:magi_attribute
+				}
+			}
+		}
+		random_list = {
+			1 = { add_trait = education_arcana_4 }
+			1 = { add_trait = education_arcana_3 }
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_inexperienced_minimum_value }
+				scope:succeeding_accolade = {
+					accolade_squires_quality_value >= accolade_squires_feckless_minimum_value
+					initial_type = accolade_type:magi_attribute
+				}
+			}
+		}
+		random_list = {
+			1 = { add_trait = education_arcana_3 }
+			1 = { add_trait = education_arcana_2 }
+		}
+	}
+	else_if = {
+		limit = { scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_feckless_minimum_value } }
+		random_list = {
+			1 = { add_trait = education_arcana_3 }
+			1 = { add_trait = education_arcana_2 }
+			1 = { add_trait = education_arcana_1 }
+		}
+	}
+	else = {
+		random_list = {
+			1 = { add_trait = education_arcana_2 }
+			1 = { add_trait = education_arcana_1 }
+		}
+	}
+}
+
+assign_magic_trait_level_from_squires_quality_effect = {
+	remove_trait = magic_good_1
+	if = {
+		limit = {
+			OR = {
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_accomplished_minimum_value }
+				scope:succeeding_accolade = {
+					accolade_squires_quality_value >= accolade_squires_capable_minimum_value
+					initial_type = accolade_type:magi_attribute
+				}
+			}
+		}
+		random_list = {
+			1 = { add_trait = magic_good_10 }
+			1 = { add_trait = magic_good_9 }
+			3 = { add_trait = magic_good_8 }
+			6 = { add_trait = magic_good_7 }
+			9 = { add_trait = magic_good_6 }
+			6 = { add_trait = magic_good_5 }
+			1 = { add_trait = magic_good_4 }
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_capable_minimum_value }
+				scope:succeeding_accolade = {
+					accolade_squires_quality_value >= accolade_squires_capable_minimum_value
+					initial_type = accolade_type:magi_attribute
+				}
+			}
+		}
+		random_list = {
+			1 = { add_trait = magic_good_7 }
+			2 = { add_trait = magic_good_6 }
+			4 = { add_trait = magic_good_5 }
+			6 = { add_trait = magic_good_4 }
+			1 = { add_trait = magic_good_3 }
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_inexperienced_minimum_value }
+				scope:succeeding_accolade = {
+					accolade_squires_quality_value >= accolade_squires_feckless_minimum_value
+					initial_type = accolade_type:magi_attribute
+				}
+			}
+		}
+		random_list = {
+			1 = { add_trait = magic_good_6 }
+			2 = { add_trait = magic_good_5 }
+			6 = { add_trait = magic_good_4 }
+			3 = { add_trait = magic_good_3 }
+			1 = { add_trait = magic_good_2 }
+		}
+	}
+	else_if = {
+		limit = { scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_feckless_minimum_value } }
+		random_list = {
+			1 = { add_trait = magic_good_5 }
+			2 = { add_trait = magic_good_4 }
+			3 = { add_trait = magic_good_3 }
+			1 = { add_trait = magic_good_2 }
+		}
+	}
+	else = {
+		random_list = {
+			1 = { add_trait = magic_good_3 }
+			1 = { add_trait = magic_good_2 }
+		}
+	}
+}
+
+assign_waypath_trait_from_squires_quality_effect = {
+	if = {
+		limit = {
+			OR = {
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_accomplished_minimum_value }
+				AND = {
+					scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_capable_minimum_value }
+					faith = { has_doctrine = tenet_wayfathers }
+				}
+			}
+		}
+		add_trait = way_of_nullification_follower
+	}
+	else_if = {
+		limit = {
+			OR = {
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_capable_minimum_value }
+				AND = {
+					scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_capable_minimum_value }
+					faith = { has_doctrine = tenet_wayfathers }
+				}
+			}
+		}
+		random = {
+			chance = 50
+			add_trait = way_of_nullification_follower
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_inexperienced_minimum_value }
+				AND = {
+					scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_feckless_minimum_value }
+					faith = { has_doctrine = tenet_wayfathers }
+				}
+			}
+		}
+		random = {
+			chance = 25
+			add_trait = way_of_nullification_follower
+		}
+	}
+	else_if = {
+		limit = { scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_feckless_minimum_value } }
+		random = {
+			chance = 10
+			add_trait = way_of_nullification_follower
+		}
+	}
+	else = {
+		random = {
+			chance = 5
+			add_trait = way_of_nullification_follower
+		}
+	}
+}

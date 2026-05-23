@@ -1,0 +1,99 @@
+﻿
+# James _insisted_ I make this file. So here we are.
+
+##################################################
+# VEGETABLE TRIGGERS
+
+province_has_vegetable_carrot_trigger = {
+	OR = {
+		geographical_region = GH_REPLACE_world_india
+		geographical_region = GH_REPLACE_world_middle_east
+		geographical_region = GH_REPLACE_world_europe
+		geographical_region = GH_REPLACE_world_steppe_west
+		geographical_region = GH_REPLACE_world_asia_minor
+	}
+}
+
+province_has_vegetable_parsnip_trigger = {
+	NOT = { geographical_region = GH_REPLACE_world_africa }
+}
+
+province_has_vegetable_turnip_trigger = {
+	NOT = { geographical_region = GH_REPLACE_world_africa }
+}
+
+province_has_vegetable_yams_trigger = {
+	OR = {
+		# African yams
+		geographical_region = GH_REPLACE_world_africa
+		# Chinese yams
+		geographical_region = GH_REPLACE_world_tibet
+		geographical_region = GH_REPLACE_world_burma
+		geographical_region = GH_REPLACE_world_steppe_east
+		geographical_region = GH_REPLACE_world_steppe_tarim
+	}
+}
+
+province_has_vegetable_kokoro_trigger = {
+	geographical_region = GH_REPLACE_world_africa
+}
+
+province_has_vegetable_ginger_trigger = {
+	OR = {
+		geographical_region = GH_REPLACE_world_india
+		geographical_region = GH_REPLACE_world_burma
+	}
+}
+
+province_has_vegetable_taro_trigger = {
+	OR = {
+		geographical_region = GH_REPLACE_world_india
+		geographical_region = GH_REPLACE_world_burma
+		geographical_region = GH_REPLACE_world_tibet
+		geographical_region = GH_REPLACE_world_steppe_east
+		geographical_region = GH_REPLACE_world_steppe_tarim
+	}
+}
+
+# GH_AUH_TODO: The following need Aeras regions
+province_has_vegetable_daikon_radish_trigger = {
+	always = no
+	#OR = {
+	#	geographical_region = world_asia_china
+	#	geographical_region = world_asia_korea
+	#	geographical_region = world_asia_japan
+	#}
+}
+
+province_has_vegetable_yam_bean_trigger = {
+	always = no
+	#OR = {
+	#	geographical_region = world_asia_philippines
+	#	geographical_region = world_asia_borneo
+	#}
+}
+
+province_has_vegetable_lotus_root_trigger = {
+	always = no
+	#OR = {
+	#	geographical_region = world_asia_china
+	#	geographical_region = world_asia_korea
+	#	geographical_region = world_asia_japan
+	#	geographical_region = world_asia_southeast_mainland
+	#}
+}
+
+province_has_vegetable_burdock_root_trigger = {
+	always = no
+	#OR = {
+	#	geographical_region = world_asia_china
+	#	geographical_region = world_asia_korea
+	#	geographical_region = world_asia_japan
+	#	geographical_region = world_asia_north_east
+	#}
+}
+
+province_has_vegetable_arrowroot_trigger = {
+	always = no
+	#	geographical_region = world_asia_southeast_islands
+}
