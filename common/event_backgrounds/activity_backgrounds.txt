@@ -1,5 +1,4 @@
 ﻿activity_feast = {
-	# Travel
 
 	## GH ADDITIONS
 	background = {
@@ -1532,12 +1531,12 @@
 	}
 
 	## END OF GH ADDITIONS
+	
+	# Travel
 	background = { # Bridge
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1566,13 +1565,72 @@
 		environment = "environment_travel_bridge"
 		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
 	}
-	
+
+	background = { #Rice Fields - If we have Paddy fields AND/or terraced hills
+	#This goes before other terrain since it can override in many different terrains if built
+		trigger = {
+			OR = {
+				scope:host.location != scope:activity.activity_location
+				AND = {
+					exists = scope:activity.special_guest:honorary_guest.location
+					NOT = {
+						scope:activity.special_guest:honorary_guest.location ?= scope:activity.activity_location
+					}
+				}
+				AND = {
+					exists = scope:activity.special_guest:honorary_guest_regular.location
+					NOT = {
+						scope:activity.special_guest:honorary_guest_regular.location ?= scope:activity.activity_location
+					}
+				}
+			}
+			scope:host.location = {
+				OR = {
+					terrain = terraced_hills
+					has_building_or_higher = paddy_fields_01
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_rice_fields.dds"
+		environment = "environment_tgp_rice_fields"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_rice_fields"
+	}
+
+	background = { #Farmlands - East Asia
+		#Used whether settled or not
+		trigger = {
+			OR = {
+				scope:host.location != scope:activity.activity_location
+				AND = {
+					exists = scope:activity.special_guest:honorary_guest.location
+					NOT = {
+						scope:activity.special_guest:honorary_guest.location ?= scope:activity.activity_location
+					}
+				}
+				AND = {
+					exists = scope:activity.special_guest:honorary_guest_regular.location
+					NOT = {
+						scope:activity.special_guest:honorary_guest_regular.location ?= scope:activity.activity_location
+					}
+				}
+			}
+			scope:host.location = {
+				terrain = farmlands
+				exists = province_owner
+				culture = {
+					has_graphical_east_asia_culture_group_trigger = yes
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_farm_asia.dds"
+		environment = "environment_tgp_farm_asia"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_farm_asia"
+	}
+
 	background = { # Farmland, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1598,9 +1656,7 @@
 	background = { # Farmland, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1627,9 +1683,7 @@
 	background = { #Desert, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1655,9 +1709,7 @@
 	background = { #Desert, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1684,9 +1736,7 @@
 	background = { #forest snowy
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1710,9 +1760,7 @@
 	background = { #forest_pine
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1738,9 +1786,7 @@
 	background = { #forest
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1766,9 +1812,7 @@
 	background = { #mountains, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1794,9 +1838,7 @@
 	background = { #mountains, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1823,9 +1865,7 @@
 	background = { #steppe, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1851,9 +1891,7 @@
 	background = { #steppe, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1880,9 +1918,7 @@
 	background = { #drylands (formerly desert)
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1908,9 +1944,7 @@
 	background = { #wetlands
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1936,9 +1970,7 @@
 	background = { #jungle
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1964,9 +1996,7 @@
 	background = { #plains, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1992,9 +2022,7 @@
 	background = { #plains, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -2021,9 +2049,7 @@
 	background = { #hills, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -2049,9 +2075,7 @@
 	background = { #hills, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -2078,9 +2102,7 @@
 	background = { #sea
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -2104,7 +2126,7 @@
 	}
 	# End Travel
 
-	background = {	# FP1
+	background = {	# Norse
 		trigger = {
 			activity_location.culture = { has_building_gfx = norse_building_gfx }
 		}
@@ -2112,7 +2134,7 @@
 		environment = "environment_event_fp1_viking_feast"
 		ambience = "event:/DLC/FP1/SFX/Events/event_viking_feast"
 	}
-	background = {
+	background = { #Indian
 		trigger = {
 			activity_location.culture = { has_building_gfx = indian_building_gfx }
 		}
@@ -2120,7 +2142,7 @@
 		environment = "environment_indian_feast"
 		ambience = "event:/SFX/Events/Backgrounds/feasthall"
 	}
-	background = {
+	background = { #MENA
 		trigger = {
 			OR = {
 				activity_location.culture = { has_building_gfx = arabic_group_building_gfx }
@@ -2133,7 +2155,7 @@
 		environment = "environment_mena_feast"
 		ambience = "event:/DLC/EP2/SFX/Events/Backgrounds/evn_background_feast_mena"
 	}
-	background = {
+	background = { #Steppe
 		trigger = {
 			activity_location.culture = { has_building_gfx = steppe_building_gfx }
 		}
@@ -2141,7 +2163,7 @@
 		environment = "environment_steppe_feast"
 		ambience = "event:/SFX/Events/Backgrounds/feasthall"
 	}
-	background = {
+	background = { #African
 		trigger = {
 			activity_location.culture = { has_building_gfx = african_building_gfx }
 		}
@@ -2149,7 +2171,15 @@
 		environment = "environment_sub-saharan_feast"
 		ambience = "event:/SFX/Events/Backgrounds/feasthall"
 	}
-	background = {
+	background = { #East Asia
+		trigger = {
+			activity_location.culture = { has_graphical_east_asia_culture_group_trigger = yes }
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_feast_asia.dds"
+		environment = "environment_tgp_feast_asia"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_feast_asia"	
+	}
+	background = { #Western
 		reference = "gfx/interface/illustrations/event_scenes/feast.dds"
 		environment = "environment_activity_western_feast"
 		ambience = "event:/SFX/Events/Backgrounds/feasthall"
@@ -2714,7 +2744,7 @@ activity_gruesome_festival = {
 	# END OF GH ADDITIONS
 	background = { # Bridge
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				is_riverside_province = yes
 				geographical_region = world_greater_aversaria
@@ -2730,10 +2760,43 @@ activity_gruesome_festival = {
 		environment = "environment_travel_bridge"
 		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
 	}
+
+	background = { #Rice Fields - If we have Paddy fields AND/or terraced hills
+	#This goes before other terrain since it can override in many different terrains if built
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				OR = {
+					terrain = terraced_hills
+					has_building_or_higher = paddy_fields_01
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_rice_fields.dds"
+		environment = "environment_tgp_rice_fields"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_rice_fields"
+	}
+
+	background = { #Farmlands - East Asia
+		#Used whether settled or not
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				terrain = farmlands
+				exists = province_owner
+				culture = {
+					has_graphical_east_asia_culture_group_trigger = yes
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_farm_asia.dds"
+		environment = "environment_tgp_farm_asia"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_farm_asia"
+	}
 	
 	background = { # Farmland, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				terrain = farmlands
 				exists = province_owner
@@ -2745,7 +2808,7 @@ activity_gruesome_festival = {
 	}
 	background = { # Farmland, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				terrain = farmlands
 				NOT = { exists = province_owner }
@@ -2758,7 +2821,7 @@ activity_gruesome_festival = {
 
 	background = { #Desert, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_desert_trigger = yes
 				exists = province_owner
@@ -2770,7 +2833,7 @@ activity_gruesome_festival = {
 	}
 	background = { #Desert, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_desert_trigger = yes
 				NOT = { exists = province_owner }
@@ -2783,7 +2846,7 @@ activity_gruesome_festival = {
 
 	background = { #forest snowy
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location ?= { hunt_snowy_forest_trigger = yes }
 		}
 		reference = "gfx/interface/illustrations/event_scenes/ep2_hunt_snowy_forest.dds"
@@ -2793,7 +2856,7 @@ activity_gruesome_festival = {
 
 	background = { #forest_pine
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_forest_pine_trigger = yes
 			}
@@ -2805,7 +2868,7 @@ activity_gruesome_festival = {
 
 	background = { #forest
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_forest_trigger = yes
 			}
@@ -2817,7 +2880,7 @@ activity_gruesome_festival = {
 
 	background = { #mountains, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_mountains_trigger = yes
 				exists = province_owner
@@ -2829,7 +2892,7 @@ activity_gruesome_festival = {
 	}
 	background = { #mountains, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_mountains_trigger = yes
 				NOT = { exists = province_owner }
@@ -2842,7 +2905,7 @@ activity_gruesome_festival = {
 
 	background = { #steppe, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_steppe_trigger = yes
 				exists = province_owner
@@ -2854,7 +2917,7 @@ activity_gruesome_festival = {
 	}
 	background = { #steppe, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_steppe_trigger = yes
 				NOT = { exists = province_owner }
@@ -2867,7 +2930,7 @@ activity_gruesome_festival = {
 
 	background = { #drylands (formerly desert)
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_drylands_trigger = yes
 			}
@@ -2879,7 +2942,7 @@ activity_gruesome_festival = {
 
 	background = { #wetlands
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_wetlands_trigger = yes
 			}
@@ -2891,7 +2954,7 @@ activity_gruesome_festival = {
 
 	background = { #jungle
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_jungle_trigger = yes
 			}
@@ -2903,7 +2966,7 @@ activity_gruesome_festival = {
 
 	background = { #plains, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_plains_trigger = yes
 				exists = province_owner
@@ -2915,7 +2978,7 @@ activity_gruesome_festival = {
 	}
 	background = { #plains, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_plains_trigger = yes
 				NOT = { exists = province_owner }
@@ -2928,7 +2991,7 @@ activity_gruesome_festival = {
 
 	background = { #hills, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_hills_trigger = yes
 				exists = province_owner
@@ -2940,7 +3003,7 @@ activity_gruesome_festival = {
 	}
 	background = { #hills, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_hills_trigger = yes
 				NOT = { exists = province_owner }
@@ -2953,7 +3016,7 @@ activity_gruesome_festival = {
 
 	background = { #sea
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				is_sea_province = yes
 			}
@@ -2963,6 +3026,7 @@ activity_gruesome_festival = {
 		ambience = "event:/DLC/FP1/SFX/Events/event_ocean_longship"
 	}
 	# End Travel
+
 	background = {
 		reference = "gfx/interface/illustrations/activity_backgrounds/activity_gruesome_festival.dds"
 		environment = "environment_event_forest_pine" 
@@ -3528,7 +3592,7 @@ activity_playdate = {
 	# END OF GH ADDITIONS
 	background = { # Bridge
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				is_riverside_province = yes
 				geographical_region = world_greater_aversaria
@@ -3544,10 +3608,43 @@ activity_playdate = {
 		environment = "environment_travel_bridge"
 		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
 	}
+
+	background = { #Rice Fields - If we have Paddy fields AND/or terraced hills
+	#This goes before other terrain since it can override in many different terrains if built
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				OR = {
+					terrain = terraced_hills
+					has_building_or_higher = paddy_fields_01
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_rice_fields.dds"
+		environment = "environment_tgp_rice_fields"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_rice_fields"
+	}
+
+	background = { #Farmlands - East Asia
+		#Used whether settled or not
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				terrain = farmlands
+				exists = province_owner
+				culture = {
+					has_graphical_east_asia_culture_group_trigger = yes
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_farm_asia.dds"
+		environment = "environment_tgp_farm_asia"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_farm_asia"
+	}
 	
 	background = { # Farmland, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				terrain = farmlands
 				exists = province_owner
@@ -3559,7 +3656,7 @@ activity_playdate = {
 	}
 	background = { # Farmland, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				terrain = farmlands
 				NOT = { exists = province_owner }
@@ -3572,7 +3669,7 @@ activity_playdate = {
 
 	background = { #Desert, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_desert_trigger = yes
 				exists = province_owner
@@ -3584,7 +3681,7 @@ activity_playdate = {
 	}
 	background = { #Desert, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_desert_trigger = yes
 				NOT = { exists = province_owner }
@@ -3597,7 +3694,7 @@ activity_playdate = {
 
 	background = { #forest snowy
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location ?= { hunt_snowy_forest_trigger = yes }
 		}
 		reference = "gfx/interface/illustrations/event_scenes/ep2_hunt_snowy_forest.dds"
@@ -3607,7 +3704,7 @@ activity_playdate = {
 
 	background = { #forest_pine
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_forest_pine_trigger = yes
 			}
@@ -3619,7 +3716,7 @@ activity_playdate = {
 
 	background = { #forest
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_forest_trigger = yes
 			}
@@ -3631,7 +3728,7 @@ activity_playdate = {
 
 	background = { #mountains, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_mountains_trigger = yes
 				exists = province_owner
@@ -3643,7 +3740,7 @@ activity_playdate = {
 	}
 	background = { #mountains, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_mountains_trigger = yes
 				NOT = { exists = province_owner }
@@ -3656,7 +3753,7 @@ activity_playdate = {
 
 	background = { #steppe, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_steppe_trigger = yes
 				exists = province_owner
@@ -3668,7 +3765,7 @@ activity_playdate = {
 	}
 	background = { #steppe, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_steppe_trigger = yes
 				NOT = { exists = province_owner }
@@ -3681,7 +3778,7 @@ activity_playdate = {
 
 	background = { #drylands (formerly desert)
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_drylands_trigger = yes
 			}
@@ -3693,7 +3790,7 @@ activity_playdate = {
 
 	background = { #wetlands
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_wetlands_trigger = yes
 			}
@@ -3705,7 +3802,7 @@ activity_playdate = {
 
 	background = { #jungle
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_jungle_trigger = yes
 			}
@@ -3717,7 +3814,7 @@ activity_playdate = {
 
 	background = { #plains, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_plains_trigger = yes
 				exists = province_owner
@@ -3729,7 +3826,7 @@ activity_playdate = {
 	}
 	background = { #plains, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_plains_trigger = yes
 				NOT = { exists = province_owner }
@@ -3742,7 +3839,7 @@ activity_playdate = {
 
 	background = { #hills, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_hills_trigger = yes
 				exists = province_owner
@@ -3754,7 +3851,7 @@ activity_playdate = {
 	}
 	background = { #hills, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_hills_trigger = yes
 				NOT = { exists = province_owner }
@@ -3767,7 +3864,7 @@ activity_playdate = {
 
 	background = { #sea
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				is_sea_province = yes
 			}
@@ -3808,6 +3905,299 @@ activity_playdate = {
 		reference = "gfx/interface/illustrations/activity_backgrounds/garden.dds"
 		environment = "environment_event_forest_pine" 
 		ambience = "event:/SFX/Events/Backgrounds/coniferous_forest_day" 
+	}
+}
+
+activity_witch_ritual = {
+	# Travel
+	background = { # Bridge
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				is_riverside_province = yes
+				geographical_region = world_europe
+				OR = {
+					terrain = farmlands
+					terrain = plains
+					terrain = mountains
+					terrain = hills
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/ep2_travel_bridge.dds"
+		environment = "environment_travel_bridge"
+		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
+	}
+
+	background = { #Rice Fields - If we have Paddy fields AND/or terraced hills
+	#This goes before other terrain since it can override in many different terrains if built
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				OR = {
+					terrain = terraced_hills
+					has_building_or_higher = paddy_fields_01
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_rice_fields.dds"
+		environment = "environment_tgp_rice_fields"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_rice_fields"
+	}
+
+	background = { #Farmlands - East Asia
+		#Used whether settled or not
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				terrain = farmlands
+				exists = province_owner
+				culture = {
+					has_graphical_east_asia_culture_group_trigger = yes
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_farm_asia.dds"
+		environment = "environment_tgp_farm_asia"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_farm_asia"
+	}
+	
+	background = { # Farmland, settled
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				terrain = farmlands
+				exists = province_owner
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/ep2_travel_farm.dds"
+		environment = "environment_travel_farmlands"
+		ambience = "event:/SFX/Events/Backgrounds/fields_farms_day"
+	}
+	background = { # Farmland, unsettled
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				terrain = farmlands
+				NOT = { exists = province_owner }
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/farms.dds"
+		environment = "environment_event_farms"
+		ambience = "event:/SFX/Events/Backgrounds/fields_farms_day"
+	}
+
+	background = { #Desert, settled
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_wilderness_desert_trigger = yes
+				exists = province_owner
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/ep2_travel_desert.dds"
+		environment = "environment_travel_desert"
+		ambience = "event:/SFX/Events/Backgrounds/desert_day"
+	}
+	background = { #Desert, unsettled
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_wilderness_desert_trigger = yes
+				NOT = { exists = province_owner }
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/desert.dds"
+		environment = "environment_event_bp1_desert"
+		ambience = "event:/SFX/Events/Backgrounds/desert_day"
+	}
+
+	background = { #forest snowy
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location ?= { hunt_snowy_forest_trigger = yes }
+		}
+		reference = "gfx/interface/illustrations/event_scenes/ep2_hunt_snowy_forest.dds"
+		environment = "environment_hunt_snowy_forest" 
+		ambience = "event:/SFX/Events/Backgrounds/mountains_day" 
+	}
+
+	background = { #forest_pine
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_wilderness_forest_pine_trigger = yes
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/forest_pine.dds"
+		environment = "environment_event_forest_pine"
+		ambience = "event:/SFX/Events/Backgrounds/coniferous_forest_day"
+	}
+
+	background = { #forest
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_wilderness_forest_trigger = yes
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/forest.dds"
+		environment = "environment_event_forest"
+		ambience = "event:/SFX/Events/Backgrounds/deciduous_forest_day"
+	}
+
+	background = { #mountains, settled
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_wilderness_mountains_trigger = yes
+				exists = province_owner
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/ep2_travel_mountains.dds"
+		environment = "environment_travel_mountain_settlement"
+		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
+	}
+	background = { #mountains, unsettled
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_wilderness_mountains_trigger = yes
+				NOT = { exists = province_owner }
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/mountains.dds"
+		environment = "environment_event_mountains"
+		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
+	}
+
+	background = { #steppe, settled
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_wilderness_steppe_trigger = yes
+				exists = province_owner
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/ep2_travel_steppe.dds"
+		environment = "environment_travel_steppe_settlement"
+		ambience = "event:/SFX/Events/Backgrounds/steppe_day"
+	}
+	background = { #steppe, unsettled
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_wilderness_steppe_trigger = yes
+				NOT = { exists = province_owner }
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/steppe.dds"
+		environment = "environment_event_steppe"
+		ambience = "event:/SFX/Events/Backgrounds/steppe_day"
+	}
+
+	background = { #drylands (formerly desert)
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_drylands_trigger = yes
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/drylands.dds"
+		environment = "environment_event_desert"
+		ambience = "event:/SFX/Events/Backgrounds/desert_day"
+	}
+
+	background = { #wetlands
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_wilderness_wetlands_trigger = yes
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/bp1_wetlands.dds"
+		environment = "environment_event_bp1_wetlands" 
+		ambience = "event:/SFX/Events/Backgrounds/deciduous_forest_day"
+	}
+
+	background = { #jungle
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_wilderness_jungle_trigger = yes
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/bp1_jungle.dds"
+		environment = "environment_event_bp1_jungle"
+		ambience = "event:/SFX/Events/Backgrounds/deciduous_forest_day"
+	}
+
+	background = { #plains, settled
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_plains_trigger = yes
+				exists = province_owner
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/ep2_travel_hills.dds"
+		environment = "environment_travel_hills_settlement"
+		ambience = "event:/SFX/Events/Backgrounds/fields_farms_day"
+	}
+	background = { #plains, unsettled
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_plains_trigger = yes
+				NOT = { exists = province_owner }
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/bp1_plains.dds"
+		environment = "environment_event_bp1_plains"
+		ambience = "event:/SFX/Events/Backgrounds/fields_farms_day"
+	}
+
+	background = { #hills, settled
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_hills_trigger = yes
+				exists = province_owner
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/ep2_travel_hills.dds"
+		environment = "environment_travel_hills_settlement"
+		ambience = "event:/SFX/Events/Backgrounds/fields_farms_day"
+	}
+	background = { #hills, unsettled
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				graphical_hills_trigger = yes
+				NOT = { exists = province_owner }
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/bp1_hills.dds"
+		environment = "environment_event_bp1_hills"
+		ambience = "event:/SFX/Events/Backgrounds/fields_farms_day"
+	}
+
+	background = { #sea
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				is_sea_province = yes
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/fp1_ocean.dds"
+		environment = "environment_event_fp1_ocean"
+		ambience = "event:/DLC/FP1/SFX/Events/event_ocean_longship"
+	}
+	# End Travel
+	background = {
+		reference = "gfx/interface/illustrations/event_scenes/bp1_bonfire.dds"
+		environment = "environment_event_bp1_bonfire" 
+		ambience = "event:/SFX/Events/Backgrounds/burning_building"
 	}
 }
 
@@ -4369,7 +4759,7 @@ activity_pilgrimage = {
 	# END OF GH ADDITIONS
 	background = { # Bridge
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				is_riverside_province = yes
 				geographical_region = world_greater_aversaria
@@ -4385,10 +4775,43 @@ activity_pilgrimage = {
 		environment = "environment_travel_bridge"
 		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
 	}
+
+	background = { #Rice Fields - If we have Paddy fields AND/or terraced hills
+	#This goes before other terrain since it can override in many different terrains if built
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				OR = {
+					terrain = terraced_hills
+					has_building_or_higher = paddy_fields_01
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_rice_fields.dds"
+		environment = "environment_tgp_rice_fields"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_rice_fields"
+	}
+
+	background = { #Farmlands - East Asia
+		#Used whether settled or not
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				terrain = farmlands
+				exists = province_owner
+				culture = {
+					has_graphical_east_asia_culture_group_trigger = yes
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_farm_asia.dds"
+		environment = "environment_tgp_farm_asia"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_farm_asia"
+	}
 	
 	background = { # Farmland, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				terrain = farmlands
 				exists = province_owner
@@ -4400,7 +4823,7 @@ activity_pilgrimage = {
 	}
 	background = { # Farmland, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				terrain = farmlands
 				NOT = { exists = province_owner }
@@ -4413,7 +4836,7 @@ activity_pilgrimage = {
 
 	background = { #Desert, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_desert_trigger = yes
 				exists = province_owner
@@ -4425,7 +4848,7 @@ activity_pilgrimage = {
 	}
 	background = { #Desert, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_desert_trigger = yes
 				NOT = { exists = province_owner }
@@ -4438,7 +4861,7 @@ activity_pilgrimage = {
 
 	background = { #forest snowy
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location ?= { hunt_snowy_forest_trigger = yes }
 		}
 		reference = "gfx/interface/illustrations/event_scenes/ep2_hunt_snowy_forest.dds"
@@ -4448,7 +4871,7 @@ activity_pilgrimage = {
 
 	background = { #forest_pine
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_forest_pine_trigger = yes
 			}
@@ -4460,7 +4883,7 @@ activity_pilgrimage = {
 
 	background = { #forest
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_forest_trigger = yes
 			}
@@ -4472,7 +4895,7 @@ activity_pilgrimage = {
 
 	background = { #mountains, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_mountains_trigger = yes
 				exists = province_owner
@@ -4484,7 +4907,7 @@ activity_pilgrimage = {
 	}
 	background = { #mountains, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_mountains_trigger = yes
 				NOT = { exists = province_owner }
@@ -4497,7 +4920,7 @@ activity_pilgrimage = {
 
 	background = { #steppe, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_steppe_trigger = yes
 				exists = province_owner
@@ -4509,7 +4932,7 @@ activity_pilgrimage = {
 	}
 	background = { #steppe, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_steppe_trigger = yes
 				NOT = { exists = province_owner }
@@ -4522,7 +4945,7 @@ activity_pilgrimage = {
 
 	background = { #drylands (formerly desert)
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_drylands_trigger = yes
 			}
@@ -4534,7 +4957,7 @@ activity_pilgrimage = {
 
 	background = { #wetlands
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_wetlands_trigger = yes
 			}
@@ -4546,7 +4969,7 @@ activity_pilgrimage = {
 
 	background = { #jungle
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_jungle_trigger = yes
 			}
@@ -4558,7 +4981,7 @@ activity_pilgrimage = {
 
 	background = { #plains, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_plains_trigger = yes
 				exists = province_owner
@@ -4570,7 +4993,7 @@ activity_pilgrimage = {
 	}
 	background = { #plains, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_plains_trigger = yes
 				NOT = { exists = province_owner }
@@ -4583,7 +5006,7 @@ activity_pilgrimage = {
 
 	background = { #hills, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_hills_trigger = yes
 				exists = province_owner
@@ -4595,7 +5018,7 @@ activity_pilgrimage = {
 	}
 	background = { #hills, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_hills_trigger = yes
 				NOT = { exists = province_owner }
@@ -4608,7 +5031,7 @@ activity_pilgrimage = {
 
 	background = { #sea
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				is_sea_province = yes
 			}
@@ -4638,17 +5061,50 @@ activity_pilgrimage = {
 				OR = {
 					religion = religion:oltenic_religion
 					religion = religion:northern_oltenic_religion
+					religion = religion:mahrator_religion
+					religion = religion:kikarsagi_religion
 					religion = religion:salacad_religion
 				}
 			}
 		}
 		reference = "gfx/interface/illustrations/event_scenes/mpo_temple_steppe.dds"
-		environment = "environment_travel_farmlands" #TODO_MPO
-		ambience = "event:/SFX/Events/Backgrounds/steppe_day" #TODO_MPO
+		environment = "environment_mpo_temple_steppe" 
+		ambience = "event:/DLC/CE2/Events/Event_Images/mpo_temple_steppe"
+	}
+	background = {
+		trigger = { scope:host.religion = religion:amsari_religion }
+		reference = "gfx/interface/illustrations/event_scenes/fp3_temple.dds"
+		environment = "environment_event_fp3_temple"
+		ambience = "event:/DLC/FP1/SFX/Events/event_temple"
+	}
+	background = {
+		trigger = { activity_location.faith = faith:authority_rite }
+		reference = "gfx/interface/illustrations/event_scenes/ep3_holysite_orthodox.dds"
+		environment = "environment_ep3_holysite_orthodox"
+		ambience = "event:/DLC/EP3/SFX/Events/Event_Images/ep3_evn_eventimage_orthodox_holy_site"
+	}
+	background = {
+		trigger = {
+			OR = {
+				activity_location.culture = { has_graphical_mena_culture_group_trigger = yes }
+				activity_location.culture = { has_building_gfx = iranian_building_gfx }
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/ep2_holysite_mena.dds"
+		environment = "environment_generic_holy_site_mena"
+		ambience = "event:/DLC/EP2/SFX/Events/Backgrounds/evn_background_holysite_mena"
 	}
 	background = {
 		trigger = {
 			activity_location.culture = { has_graphical_india_culture_group_trigger = yes }
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_holysite_asia.dds"
+		environment = "environment_tgp_holysite_asia"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_holysite_asia"
+	}
+	background = {
+		trigger = {
+			activity_location.culture = { has_graphical_east_asia_culture_group_trigger = yes }
 		}
 		reference = "gfx/interface/illustrations/event_scenes/ep2_holysite_indian.dds"
 		environment = "environment_indian_holy_site"
@@ -5216,7 +5672,7 @@ activity_hunt = {
 	# END OF GH ADDITIONS
 	background = { # Bridge
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				is_riverside_province = yes
 				geographical_region = world_greater_aversaria
@@ -5232,10 +5688,43 @@ activity_hunt = {
 		environment = "environment_travel_bridge"
 		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
 	}
+
+	background = { #Rice Fields - If we have Paddy fields AND/or terraced hills
+	#This goes before other terrain since it can override in many different terrains if built
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				OR = {
+					terrain = terraced_hills
+					has_building_or_higher = paddy_fields_01
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_rice_fields.dds"
+		environment = "environment_tgp_rice_fields"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_rice_fields"
+	}
+
+	background = { #Farmlands - East Asia
+		#Used whether settled or not
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				terrain = farmlands
+				exists = province_owner
+				culture = {
+					has_graphical_east_asia_culture_group_trigger = yes
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_farm_asia.dds"
+		environment = "environment_tgp_farm_asia"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_farm_asia"
+	}
 	
 	background = { # Farmland, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				terrain = farmlands
 				exists = province_owner
@@ -5247,7 +5736,7 @@ activity_hunt = {
 	}
 	background = { # Farmland, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				terrain = farmlands
 				NOT = { exists = province_owner }
@@ -5260,7 +5749,7 @@ activity_hunt = {
 
 	background = { #Desert, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_desert_trigger = yes
 				exists = province_owner
@@ -5272,7 +5761,7 @@ activity_hunt = {
 	}
 	background = { #Desert, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_desert_trigger = yes
 				NOT = { exists = province_owner }
@@ -5285,7 +5774,7 @@ activity_hunt = {
 
 	background = { #forest snowy
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location ?= { hunt_snowy_forest_trigger = yes }
 		}
 		reference = "gfx/interface/illustrations/event_scenes/ep2_hunt_snowy_forest.dds"
@@ -5295,7 +5784,7 @@ activity_hunt = {
 
 	background = { #forest_pine
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_forest_pine_trigger = yes
 			}
@@ -5307,7 +5796,7 @@ activity_hunt = {
 
 	background = { #forest
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_forest_trigger = yes
 			}
@@ -5319,7 +5808,7 @@ activity_hunt = {
 
 	background = { #mountains, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_mountains_trigger = yes
 				exists = province_owner
@@ -5331,7 +5820,7 @@ activity_hunt = {
 	}
 	background = { #mountains, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_mountains_trigger = yes
 				NOT = { exists = province_owner }
@@ -5344,7 +5833,7 @@ activity_hunt = {
 
 	background = { #steppe, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_steppe_trigger = yes
 				exists = province_owner
@@ -5356,7 +5845,7 @@ activity_hunt = {
 	}
 	background = { #steppe, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_steppe_trigger = yes
 				NOT = { exists = province_owner }
@@ -5369,7 +5858,7 @@ activity_hunt = {
 
 	background = { #drylands (formerly desert)
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_drylands_trigger = yes
 			}
@@ -5381,7 +5870,7 @@ activity_hunt = {
 
 	background = { #wetlands
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_wetlands_trigger = yes
 			}
@@ -5393,7 +5882,7 @@ activity_hunt = {
 
 	background = { #jungle
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_jungle_trigger = yes
 			}
@@ -5405,7 +5894,7 @@ activity_hunt = {
 
 	background = { #plains, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_plains_trigger = yes
 				exists = province_owner
@@ -5417,7 +5906,7 @@ activity_hunt = {
 	}
 	background = { #plains, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_plains_trigger = yes
 				NOT = { exists = province_owner }
@@ -5430,7 +5919,7 @@ activity_hunt = {
 
 	background = { #hills, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_hills_trigger = yes
 				exists = province_owner
@@ -5442,7 +5931,7 @@ activity_hunt = {
 	}
 	background = { #hills, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_hills_trigger = yes
 				NOT = { exists = province_owner }
@@ -5455,7 +5944,7 @@ activity_hunt = {
 
 	background = { #sea
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				is_sea_province = yes
 			}
@@ -5515,8 +6004,8 @@ activity_hunt = {
 			}
 		}
 		reference = "gfx/interface/illustrations/event_scenes/mpo_hunt_steppe.dds"
-		environment = "environment_travel_farmlands" #TODO_MPO
-		ambience = "event:/SFX/Events/Backgrounds/deciduous_forest_day" #TODO_MPO
+		environment = "environment_mpo_hunt_steppe"
+		ambience = "event:/DLC/CE2/Events/Event_Images/mpo_hunt_steppe"
 	}
 
 	background = {
@@ -6102,7 +6591,7 @@ activity_tour = {
 	# END OF GH ADDITIONS
 	background = { # Bridge
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				is_riverside_province = yes
 				geographical_region = world_greater_aversaria
@@ -6118,10 +6607,43 @@ activity_tour = {
 		environment = "environment_travel_bridge"
 		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
 	}
+
+	background = { #Rice Fields - If we have Paddy fields AND/or terraced hills
+	#This goes before other terrain since it can override in many different terrains if built
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				OR = {
+					terrain = terraced_hills
+					has_building_or_higher = paddy_fields_01
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_rice_fields.dds"
+		environment = "environment_tgp_rice_fields"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_rice_fields"
+	}
+
+	background = { #Farmlands - East Asia
+		#Used whether settled or not
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				terrain = farmlands
+				exists = province_owner
+				culture = {
+					has_graphical_east_asia_culture_group_trigger = yes
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_farm_asia.dds"
+		environment = "environment_tgp_farm_asia"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_farm_asia"
+	}
 	
 	background = { # Farmland, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				terrain = farmlands
 				exists = province_owner
@@ -6133,7 +6655,7 @@ activity_tour = {
 	}
 	background = { # Farmland, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				terrain = farmlands
 				NOT = { exists = province_owner }
@@ -6146,7 +6668,7 @@ activity_tour = {
 
 	background = { #Desert, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_desert_trigger = yes
 				exists = province_owner
@@ -6158,7 +6680,7 @@ activity_tour = {
 	}
 	background = { #Desert, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_desert_trigger = yes
 				NOT = { exists = province_owner }
@@ -6171,7 +6693,7 @@ activity_tour = {
 
 	background = { #forest snowy
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location ?= { hunt_snowy_forest_trigger = yes }
 		}
 		reference = "gfx/interface/illustrations/event_scenes/ep2_hunt_snowy_forest.dds"
@@ -6181,7 +6703,7 @@ activity_tour = {
 
 	background = { #forest_pine
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_forest_pine_trigger = yes
 			}
@@ -6193,7 +6715,7 @@ activity_tour = {
 
 	background = { #forest
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_forest_trigger = yes
 			}
@@ -6205,7 +6727,7 @@ activity_tour = {
 
 	background = { #mountains, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_mountains_trigger = yes
 				exists = province_owner
@@ -6217,7 +6739,7 @@ activity_tour = {
 	}
 	background = { #mountains, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_mountains_trigger = yes
 				NOT = { exists = province_owner }
@@ -6230,7 +6752,7 @@ activity_tour = {
 
 	background = { #steppe, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_steppe_trigger = yes
 				exists = province_owner
@@ -6242,7 +6764,7 @@ activity_tour = {
 	}
 	background = { #steppe, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_steppe_trigger = yes
 				NOT = { exists = province_owner }
@@ -6255,7 +6777,7 @@ activity_tour = {
 
 	background = { #drylands (formerly desert)
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_drylands_trigger = yes
 			}
@@ -6267,7 +6789,7 @@ activity_tour = {
 
 	background = { #wetlands
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_wetlands_trigger = yes
 			}
@@ -6279,7 +6801,7 @@ activity_tour = {
 
 	background = { #jungle
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_jungle_trigger = yes
 			}
@@ -6291,7 +6813,7 @@ activity_tour = {
 
 	background = { #plains, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_plains_trigger = yes
 				exists = province_owner
@@ -6303,7 +6825,7 @@ activity_tour = {
 	}
 	background = { #plains, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_plains_trigger = yes
 				NOT = { exists = province_owner }
@@ -6316,7 +6838,7 @@ activity_tour = {
 
 	background = { #hills, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_hills_trigger = yes
 				exists = province_owner
@@ -6328,7 +6850,7 @@ activity_tour = {
 	}
 	background = { #hills, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_hills_trigger = yes
 				NOT = { exists = province_owner }
@@ -6341,7 +6863,7 @@ activity_tour = {
 
 	background = { #sea
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				is_sea_province = yes
 			}
@@ -6423,6 +6945,7 @@ activity_tour = {
 				activity_location.culture = { has_building_gfx = arabic_group_building_gfx }
 				activity_location.culture = { has_building_gfx = berber_group_building_gfx }
 				activity_location.culture = { has_building_gfx = iberian_building_gfx }
+				activity_location.culture = { has_building_gfx = iranian_building_gfx }
 			}
 		}
 		reference = "gfx/interface/illustrations/event_scenes/ep2_feast_mena.dds"
@@ -7065,9 +7588,7 @@ activity_wedding = {
 	background = {
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8154,9 +8675,7 @@ activity_wedding = {
 	background = { # Farmland, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8182,9 +8701,7 @@ activity_wedding = {
 	background = { # Farmland, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8211,9 +8728,7 @@ activity_wedding = {
 	background = { #Desert, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8239,9 +8754,7 @@ activity_wedding = {
 	background = { #Desert, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8268,9 +8781,7 @@ activity_wedding = {
 	background = { #forest snowy
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8294,9 +8805,7 @@ activity_wedding = {
 	background = { #forest_pine
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8322,9 +8831,7 @@ activity_wedding = {
 	background = { #forest
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8350,9 +8857,7 @@ activity_wedding = {
 	background = { #mountains, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8378,9 +8883,7 @@ activity_wedding = {
 	background = { #mountains, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8407,9 +8910,7 @@ activity_wedding = {
 	background = { #steppe, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8435,9 +8936,7 @@ activity_wedding = {
 	background = { #steppe, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8464,9 +8963,7 @@ activity_wedding = {
 	background = { #drylands (formerly desert)
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8492,9 +8989,7 @@ activity_wedding = {
 	background = { #wetlands
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8520,9 +9015,7 @@ activity_wedding = {
 	background = { #jungle
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8548,9 +9041,7 @@ activity_wedding = {
 	background = { #plains, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8576,9 +9067,7 @@ activity_wedding = {
 	background = { #plains, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8605,9 +9094,7 @@ activity_wedding = {
 	background = { #hills, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8633,9 +9120,7 @@ activity_wedding = {
 	background = { #hills, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8662,9 +9147,7 @@ activity_wedding = {
 	background = { #sea
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:spouse_2.location
 					NOT = {
@@ -8694,6 +9177,15 @@ activity_wedding = {
 		reference = "gfx/interface/illustrations/event_scenes/ep2_wedding_ceremony_indian.dds"
 		environment = "environment_indian_wedding" 
 		ambience = "event:/DLC/EP2/MX/Cuetracks/mx_cuetrack_11_wedding_india"
+	}
+	background = {	 #East Asia
+		trigger = {
+			scope:activity ?= { has_activity_type = activity_wedding }
+			location.culture ?= { has_graphical_east_asia_culture_group_trigger = yes }
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_wedding_ceremony_asia.dds"
+		environment = "environment_tgp_wedding_ceremony_asia"
+		ambience = "event:/DLC/EP2/SFX/Events/Grand_Activities/Weddings/ep2_event_grand_wedding"
 	}
 	background = {	 #MENA (also steppes and African )
 		trigger = {

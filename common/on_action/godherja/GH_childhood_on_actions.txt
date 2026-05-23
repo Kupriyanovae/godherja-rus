@@ -133,6 +133,11 @@ gh_magic_school_education = {
 						cp:councillor_court_magi = { is_performing_council_task = task_court_magi_boost_magic_power }
 						add = 20
 					}
+					# Slower education for improperly gendered Magi
+					modifier = {
+						worse_magi_education_outcomes_trigger = yes
+						add = -10
+					}
 					random_relation = {
 						type = guardian
 						random_in_list = {
@@ -144,12 +149,37 @@ gh_magic_school_education = {
 					learn_magic_school_effect = {
 						MAGIC_SCHOOL = scope:magic_school_to_learn_from_guardian_scope
 					}
-					learn_magic_knowledge_from_character_and_magic_school_effect = { 
-						MENTOR = scope:guardian_scope 
-						MAGIC_SCHOOL = scope:magic_school_to_learn_from_guardian_scope
-						MIN_SPELLS = 3
-						MAX_SPELLS = 5
-						MAX_SPELL_LEVEL = 3
+					if = {
+						limit = { worse_magi_education_outcomes_trigger = yes }
+						random_list = {
+							40 = {
+								learn_magic_knowledge_from_character_and_magic_school_effect = { 
+									MENTOR = scope:guardian_scope 
+									MAGIC_SCHOOL = scope:magic_school_to_learn_from_guardian_scope
+									MIN_SPELLS = 1
+									MAX_SPELLS = 4
+									MAX_SPELL_LEVEL = 2
+								}
+							}
+							60 = {
+								learn_magic_knowledge_from_character_and_magic_school_effect = { 
+									MENTOR = scope:guardian_scope 
+									MAGIC_SCHOOL = scope:magic_school_to_learn_from_guardian_scope
+									MIN_SPELLS = 1
+									MAX_SPELLS = 4
+									MAX_SPELL_LEVEL = 3
+								}
+							}
+						}
+					}
+					else = {
+						learn_magic_knowledge_from_character_and_magic_school_effect = { 
+							MENTOR = scope:guardian_scope 
+							MAGIC_SCHOOL = scope:magic_school_to_learn_from_guardian_scope
+							MIN_SPELLS = 3
+							MAX_SPELLS = 5
+							MAX_SPELL_LEVEL = 3
+						}
 					}
 					remove_variable = magic_school_education_three_year_countdown
 				}
@@ -183,7 +213,13 @@ gh_magic_school_education = {
 			}
 			# 30% yearly chance of learning a guardian's spell
 			random = {
-				chance = 30
+				chance = {
+					value = 30
+					if = {
+						limit = { worse_magi_education_outcomes_trigger = yes }
+						add = -10
+					}
+				}
 				random_relation = {
 					type = guardian
 					save_scope_as = guardian_scope
@@ -193,12 +229,37 @@ gh_magic_school_education = {
 						save_scope_as = magic_school_to_learn_from_guardian_scope
 					}
 				}
-				learn_magic_knowledge_from_character_and_magic_school_effect = { 
-					MENTOR = scope:guardian_scope 
-					MAGIC_SCHOOL = scope:magic_school_to_learn_from_guardian_scope
-					MIN_SPELLS = 1
-					MAX_SPELLS = 1
-					MAX_SPELL_LEVEL = 3
+				if = {
+					limit = { worse_magi_education_outcomes_trigger = yes }
+					random_list = {
+						40 = {
+							learn_magic_knowledge_from_character_and_magic_school_effect = { 
+								MENTOR = scope:guardian_scope 
+								MAGIC_SCHOOL = scope:magic_school_to_learn_from_guardian_scope
+								MIN_SPELLS = 1
+								MAX_SPELLS = 1
+								MAX_SPELL_LEVEL = 2
+							}
+						}
+						60 = {
+							learn_magic_knowledge_from_character_and_magic_school_effect = { 
+								MENTOR = scope:guardian_scope 
+								MAGIC_SCHOOL = scope:magic_school_to_learn_from_guardian_scope
+								MIN_SPELLS = 1
+								MAX_SPELLS = 1
+								MAX_SPELL_LEVEL = 2
+							}
+						}
+					}
+				}
+				else = {
+					learn_magic_knowledge_from_character_and_magic_school_effect = { 
+						MENTOR = scope:guardian_scope 
+						MAGIC_SCHOOL = scope:magic_school_to_learn_from_guardian_scope
+						MIN_SPELLS = 3
+						MAX_SPELLS = 5
+						MAX_SPELL_LEVEL = 3
+					}
 				}
 			}
 		}

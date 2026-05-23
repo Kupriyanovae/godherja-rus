@@ -355,7 +355,7 @@ olteni_elder_mystic_template = {
 		shrewd = {}
 		theologian = {}
 		lifestyle_herbalist = {}
-		poet = {}
+		lifestyle_poet = {}
 	}
 	random_traits_list = {
 		count = 2
@@ -432,7 +432,7 @@ olteni_elder_scholar_template = {
 		shrewd = {}
 		theologian = {}
 		lifestyle_gardener = {}
-		poet = {}
+		lifestyle_poet = {}
 	}
 	random_traits_list = {
 		count = 2
@@ -695,6 +695,34 @@ perdition_enchanter_template = {
 			learn_global_spell_effect = { SPELL_IDENTIFIER = weapons_of_perdition }
 		}
 	}
+}
+
+glassmith_tutor_template = {
+	age = { 30 50 }
+	gender_female_chance = 50
+	dynasty = none
+	random_traits_list = {
+		education_stewardship_2 = { weight = { base = 1 } }
+		education_stewardship_3 = { weight = { base = 4 } }
+		education_stewardship_4 = { weight = { base = 1 } }
+	}
+	random_traits_list = {
+		count = { 0 1 }
+		ambitious = {}
+		craven = {}
+		greedy = {}
+	}
+	trait = gh_lifestyle_glassmith
+	random_traits = yes
+	stewardship = {
+		min_template_average_skill
+		max_template_average_skill
+	}
+	learning = {
+		min_template_average_skill
+		max_template_average_skill
+	}
+	after_creation = { set_random_base_arcana = yes }
 }
 
 temple_envoy_template = {

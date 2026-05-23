@@ -13,9 +13,19 @@
 		NOT = { government_allows = administrative }
 		# GH ADDITION Wastelands shouldnt tour
 		is_human = yes
+		#Every other activity must be blocked until an uncrowned AI crowns themselves
+		trigger_if = {
+			limit = {
+				is_ai = yes
+			}
+			NOT = {
+				has_realm_law = uncrowned
+			}
+		}
 	}
 
 	can_start_showing_failures_only = {
+		NOT = { is_activity_type_on_cooldown = activity_tour }
 		highest_held_title_tier >= tier_duchy
 		is_available = yes
 		age >= 12
@@ -102,7 +112,7 @@
 			every_in_list = {
 				variable = tour_vassals_to_visit
 				limit = {
-					NOT = { this = scope:host.player_heir }
+					this != scope:host.player_heir
 				}
 				trigger_event = activity_system.1011
 			}
@@ -219,7 +229,8 @@
 		if = {
 			limit = {
 				any_vassal = {
-					count <= 5
+					count >= 5
+					highest_held_title_tier >= tier_county
 				}
 			}
 			desc = "I have many vassals"
@@ -239,12 +250,7 @@
 		if = {
         	limit = {
         	    any_sub_realm_county = {
-        	        any_county_province = {
-        	            any_province_epidemic = {
-        	                count >= 1
-        	                outbreak_intensity < apocalyptic
-        	            }
-        	        }
+        	        has_province_with_epidemic = { intensity < apocalyptic }
         	    }
         	    would_follow_social_distancing_value >= -1
         	}
@@ -256,12 +262,7 @@
     	if = {
     	    limit = {
     	        any_sub_realm_county = {
-    	            any_county_province = {
-    	                any_province_epidemic = {
-    	                    count >= 1
-    	                    outbreak_intensity = apocalyptic
-    	                }
-    	            }
+    	            has_province_with_epidemic = { intensity = apocalyptic }
     	        }
     	    }
     	    add = {
@@ -269,9 +270,27 @@
     	        desc = "Apocalyptic Plague in Realm"
     	    }
     	}
+    	if = {
+    		limit = {
+    			government_has_flag = government_is_celestial
+    			highest_held_title_tier >= tier_empire
+    			is_independent_ruler = yes
+    		}
+    		add = {
+    			value = -500
+    			desc = "I have people for that"
+    		}
+    	}
 	}
 
-	ai_check_interval = 60
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 60
+		kingdom = 60
+		empire = 60
+		hegemony = 60
+	}
 
 	ai_select_num_provinces = {
 		value = 0
@@ -323,7 +342,7 @@
 		}
 		if = {
 			limit = {
-				ai_has_conqueror_personality = yes
+				has_variable = conqueror
 			}
 			add = {
 				value = 10
@@ -418,7 +437,7 @@
 		# Culture festival reasons
 		if = {
 			limit = {
-				NOT = { culture = scope:host.culture }
+				culture != scope:host.culture
 			}
 			desc = "They're a different culture from me"
 			add = 20
@@ -550,6 +569,20 @@
 				if = {
 					limit = { factor_zero_if_entitled_to_freebie_activity_trigger = yes }
 					multiply = 0
+				}
+				if = {
+					limit = {
+						is_ai = yes
+						has_game_rule = hard_difficulty
+					}
+					multiply = 0.5
+				}
+				else_if = {
+					limit = {
+						is_ai = yes
+						has_game_rule = very_hard_difficulty
+					}
+					multiply = 0.25
 				}
 			}
 		}
@@ -850,6 +883,20 @@
 								limit = { factor_zero_if_entitled_to_freebie_activity_trigger = yes }
 								multiply = 0
 							}
+							if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = hard_difficulty
+								}
+								multiply = 0.5
+							}
+							else_if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = very_hard_difficulty
+								}
+								multiply = 0.25
+							}
 						}
 					}
 				}
@@ -947,6 +994,20 @@
 								limit = { factor_zero_if_entitled_to_freebie_activity_trigger = yes }
 								multiply = 0
 							}
+							if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = hard_difficulty
+								}
+								multiply = 0.5
+							}
+							else_if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = very_hard_difficulty
+								}
+								multiply = 0.25
+							}
 						}
 					}
 				}
@@ -1029,6 +1090,20 @@
 								limit = { factor_zero_if_entitled_to_freebie_activity_trigger = yes }
 								multiply = 0
 							}
+							if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = hard_difficulty
+								}
+								multiply = 0.5
+							}
+							else_if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = very_hard_difficulty
+								}
+								multiply = 0.25
+							}
 						}
 					}
 				}
@@ -1063,6 +1138,20 @@
 							if = {
 								limit = { factor_zero_if_entitled_to_freebie_activity_trigger = yes }
 								multiply = 0
+							}
+							if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = hard_difficulty
+								}
+								multiply = 0.5
+							}
+							else_if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = very_hard_difficulty
+								}
+								multiply = 0.25
 							}
 						}
 					}
@@ -1132,6 +1221,20 @@
 							if = {
 								limit = { factor_zero_if_entitled_to_freebie_activity_trigger = yes }
 								multiply = 0
+							}
+							if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = hard_difficulty
+								}
+								multiply = 0.5
+							}
+							else_if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = very_hard_difficulty
+								}
+								multiply = 0.25
 							}
 						}
 					}
@@ -1215,11 +1318,26 @@
 								limit = { factor_zero_if_entitled_to_freebie_activity_trigger = yes }
 								multiply = 0
 							}
+							if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = hard_difficulty
+								}
+								multiply = 0.5
+							}
+							else_if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = very_hard_difficulty
+								}
+								multiply = 0.25
+							}
 						}
 					}
 				}
 			}
 			tour_furniture_normal = {
+				default = yes
 				is_valid = {
 					custom_tooltip = {
 						text = government_is_tribal_tt
@@ -1266,6 +1384,20 @@
 							if = {
 								limit = { factor_zero_if_entitled_to_freebie_activity_trigger = yes }
 								multiply = 0
+							}
+							if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = hard_difficulty
+								}
+								multiply = 0.5
+							}
+							else_if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = very_hard_difficulty
+								}
+								multiply = 0.25
 							}
 						}
 					}
@@ -1331,6 +1463,20 @@
 							if = {
 								limit = { factor_zero_if_entitled_to_freebie_activity_trigger = yes }
 								multiply = 0
+							}
+							if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = hard_difficulty
+								}
+								multiply = 0.5
+							}
+							else_if = {
+								limit = {
+									is_ai = yes
+									has_game_rule = very_hard_difficulty
+								}
+								multiply = 0.25
 							}
 						}
 					}
@@ -1462,6 +1608,20 @@
 					if = {
 						limit = { factor_zero_if_entitled_to_freebie_activity_trigger = yes }
 						multiply = 0
+					}
+					if = {
+						limit = {
+							is_ai = yes
+							has_game_rule = hard_difficulty
+						}
+						multiply = 0.5
+					}
+					else_if = {
+						limit = {
+							is_ai = yes
+							has_game_rule = very_hard_difficulty
+						}
+						multiply = 0.25
 					}
 				}
 			}
@@ -1684,6 +1844,20 @@
 						limit = { factor_zero_if_entitled_to_freebie_activity_trigger = yes }
 						multiply = 0
 					}
+					if = {
+						limit = {
+							is_ai = yes
+							has_game_rule = hard_difficulty
+						}
+						multiply = 0.5
+					}
+					else_if = {
+						limit = {
+							is_ai = yes
+							has_game_rule = very_hard_difficulty
+						}
+						multiply = 0.25
+					}
 				}
 			}
 
@@ -1884,6 +2058,20 @@
 					if = {
 						limit = { factor_zero_if_entitled_to_freebie_activity_trigger = yes }
 						multiply = 0
+					}
+					if = {
+						limit = {
+							is_ai = yes
+							has_game_rule = hard_difficulty
+						}
+						multiply = 0.5
+					}
+					else_if = {
+						limit = {
+							is_ai = yes
+							has_game_rule = very_hard_difficulty
+						}
+						multiply = 0.25
 					}
 				}
 			}
@@ -2574,6 +2762,59 @@
 			}
 		}
 		host_has_taken_freebie_activity_effect = yes
+
+		# Achievements.
+		if = {
+			limit = {
+				scope:host = this
+			}
+			scope:host = {
+				#GH REMOVED Vanilla Ach
+				random_knight = {
+					limit = {
+						can_unlock_accolade_attribute_trigger = {
+							ATTRIBUTE = reeve
+						}
+					}
+					weight = {
+						base = -10
+						modifier = {
+							add = stewardship
+							factor = 1.5
+						}
+						modifier = {
+							add = 10
+							is_acclaimed = yes
+						}
+						modifier = {
+							add = 10
+							involved_activity ?= scope:activity
+						}
+					}
+					save_scope_as = accolade_knight
+					liege = {
+						save_scope_as = accolade_liege
+						set_variable = {
+							name = accolade_progress
+							value = 0
+						}
+						send_interface_message = {
+							type = msg_accolade_eligibility
+							title = accolade_reeve_unlock.t
+							left_icon = scope:accolade_knight
+							right_icon = scope:accolade_liege
+							custom_tooltip = accolade_reeve_unlock.tt
+							scope:accolade_knight = {
+								set_variable = {
+									name = reeve_attribute_unlock
+									value = yes
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	### Graphics

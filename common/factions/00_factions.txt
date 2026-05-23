@@ -5,6 +5,13 @@
 
 	sort_order = 2
 
+	is_shown = {
+		NAND = {
+			tgp_is_ceremonial_liege_trigger = yes
+			tgp_is_ceremonial_regent_trigger = no
+		}
+	}
+
 	discontent_progress = {
 		base = 0
 
@@ -44,7 +51,7 @@
 		every_faction_member = {
 			limit = {
 				is_ai = no
-				NOT = { this = scope:faction.faction_leader }
+				this != scope:faction.faction_leader
 			}
 			trigger_event = faction_demand.0005
 		}
@@ -78,6 +85,16 @@
 			add = 100
 			faction_target = {
 				is_at_war = yes # Independence Factions are opportunistic bastards!
+			}
+		}
+
+		modifier = {
+			add = -1000
+			faction_target = {
+				involved_activity ?= {
+					has_activity_type = activity_coronation
+					activity_host = prev
+				}
 			}
 		}
 		
@@ -130,7 +147,7 @@
 			desc = "FACTION_REASON_HOUSE_HOSTILITY"
 
 			scope:target.house ?= {
-				NOT = { this = root.house }
+				this != root.house
 			}
 			culture = { has_cultural_parameter = house_hostility_more_common }
 
@@ -141,11 +158,64 @@
 	    modifier = {
 	    	desc = "EP3_GRAND_AMBITIONS_STORY"
 	    	any_owned_story = {
-	    		story_type = grand_ambitions_story_cycle
+	    		type = grand_ambitions_story_cycle
 	    		var:target_char ?= scope:target
 	    	}
 	    	factor = 1.5
 	    }
+		
+		# TGP Dynastic Cycle in Instability phase
+		modifier = {
+			desc = "FACTION_REASON_DYNASTIC_CYCLE_INSTABILITY"
+			add = 25
+			scope:target = {
+				top_participant_group:dynastic_cycle ?= {
+					has_participant_group_parameter = dynastic_cycle_external_tributaries_vassals_increased_independence_desire
+				}
+			}
+		}
+
+		modifier = {
+			scope:target = { has_character_modifier = disbelieved_mandala_modifier }
+			add = 15
+			desc = is_disbelieved_mandala
+		}
+		
+		#GH ADDITION
+		# Struggle Phases Parameters
+		modifier = {
+			desc = "FACTION_REASON_WIH_IS_IN_PHASE"
+			add = -25
+			OR = {
+				AND = {
+					scope:target = { has_religion = religion:wardenism_religion }
+					NOT = { has_religion = religion:ritualist_religion }
+					any_character_struggle = {
+						involvement = involved
+						has_struggle_phase_parameter = non_ritualist_vassals_less_likely_to_revolt_against_wardenites
+					}
+				}
+				AND = {
+					scope:target = { has_religion = religion:ritualist_religion }
+					NOT = { has_religion = religion:wardenism_religion }
+					any_character_struggle = {
+						involvement = involved
+						has_struggle_phase_parameter = non_wardenite_vassals_less_likely_to_revolt_against_ritualists
+					}
+				}
+				AND = {
+					scope:target = { has_religion = religion:agionism_religion }
+					NOR = {
+						has_religion = religion:ritualist_religion
+						has_religion = religion:wardenism_religion	
+					}
+					any_character_struggle = {
+						has_struggle_phase_parameter = non_wardenite_ritualist_vassals_less_likely_to_revolt_against_agionists
+					}
+				}
+			}
+		}
+		#GH END
 	}
 
 	ai_join_score = {
@@ -219,7 +289,7 @@
 			desc = "FACTION_REASON_HOUSE_HOSTILITY"
 
 			scope:faction.faction_target.house ?= {
-				NOT = { this = root.house }
+				this != root.house
 			}
 			culture = { has_cultural_parameter = house_hostility_more_common }
 
@@ -235,6 +305,53 @@
 				}
 			}
 		}
+		
+		# TGP Dynastic Cycle in Instability phase
+		modifier = {
+			desc = "FACTION_REASON_DYNASTIC_CYCLE_INSTABILITY"
+			add = 25
+			scope:faction.faction_target = {
+				top_participant_group:dynastic_cycle ?= {
+					has_participant_group_parameter = dynastic_cycle_external_tributaries_vassals_increased_independence_desire
+				}
+			}
+		}
+		
+		#GH ADDITION
+		# Struggle Phases Parameters
+		modifier = {
+			desc = "FACTION_REASON_WIH_IS_IN_PHASE"
+			add = -25
+			OR = {
+				AND = {
+					scope:target = { has_religion = religion:wardenism_religion }
+					NOT = { has_religion = religion:ritualist_religion }
+					any_character_struggle = {
+						involvement = involved
+						has_struggle_phase_parameter = non_ritualist_vassals_faction_join_chance_reduced
+					}
+				}
+				AND = {
+					scope:target = { has_religion = religion:ritualist_religion }
+					NOT = { has_religion = religion:wardenism_religion }
+					any_character_struggle = {
+						involvement = involved
+						has_struggle_phase_parameter = non_wardenite_vassals_faction_join_chance_reduced
+					}
+				}
+				AND = {
+					scope:target = { has_religion = religion:agionism_religion }
+					NOR = {
+						has_religion = religion:ritualist_religion
+						has_religion = religion:wardenism_religion	
+					}
+					any_character_struggle = {
+						has_struggle_phase_parameter = non_ritualist_wardenite_vassals_faction_join_chance_reduced
+					}
+				}
+			}
+		}
+		#GH END
 	}
 
 	is_character_valid = {
@@ -253,10 +370,13 @@
 		common_can_character_create_trigger = {
 			FACTION_TARGET = scope:target
 		}
+		# Bloc Cohesion requirement
+		japan_faction_cohesion_trigger = yes
 
 		liege = {
-			is_independent_ruler = yes
+			top_liege = this
 		}
+		
 
 		# GH_CHANGE: Removed sunni reference
 		
@@ -285,15 +405,25 @@
 				}
 			}
 		}
+		# The emperor does not want to leave his empire
+		tgp_is_ceremonial_liege_trigger = no
+		# Ministers cannot join this faction
+		custom_description = {
+			text = target_is_a_minister_desc
+			subject = this
+			tgp_is_any_minister = no
+		}
 	}
 
 	can_character_create = {
 		common_can_character_create_trigger = {
 			FACTION_TARGET = scope:target
 		}
+		# Bloc Cohesion requirement
+		japan_faction_cohesion_trigger = yes
 		
 		liege = {
-			is_independent_ruler = yes
+			top_liege = this
 		}
 		
 		NOT = {
@@ -304,8 +434,8 @@
 			text = character_blocked_from_joining # will never be displayed but without it, errors are triggered
 			OR = {
 		        is_ai = no
-		        NOT = { culture = scope:target.culture }
-		        NOT = { faith = scope:target.faith }
+		        culture != scope:target.culture
+		        faith != scope:target.faith
 		        NOT = {
 		            scope:target = {
 		                is_rightful_liege_of = root
@@ -323,9 +453,6 @@
 		}
 		
 		trigger_if = {
-		
-			# GH_CHANGE: Removed sunni reference
-			
 			limit = {
 				government_allows = administrative
 			}
@@ -349,6 +476,14 @@
 					government_has_flag = government_is_tribal
 				}
 			}
+		}
+		# The emperor does not want to leave his empire
+		tgp_is_ceremonial_liege_trigger = no
+		# Ministers cannot join this faction
+		custom_description = {
+			text = target_is_a_minister_desc
+			subject = this
+			tgp_is_any_minister = no
 		}
 	}
 
@@ -384,21 +519,34 @@
 				}
 			}
 		}
+		# The emperor does not want to leave his empire
+		tgp_is_ceremonial_liege_trigger = no
+		# Ministers cannot join this faction
+		custom_description = {
+			text = target_is_a_minister_desc
+			subject = this
+			tgp_is_any_minister = no
+		}
+	}
+
+	can_character_become_leader = {
+		can_become_leader_of_faction_trigger = yes
 	}
 
 	on_creation = {
 		save_scope_as = faction
+		tgp_bloc_members_join_faction_effect = yes
 		if = {
 			limit = {
 				any_player = {
-					is_landless_adventurer = yes
+					has_government = landless_adventurer_government
 					is_within_diplo_range = { CHARACTER = scope:faction.faction_target }
 					OR = {
 						has_contact = scope:faction.faction_leader
 						NOT = { has_contact = scope:faction.faction_target }
 					}
 					any_character_task_contract = {
-						has_task_contract_type = laamp_join_faction_contract
+						task_contract_type = laamp_join_faction_contract
 						count <= 3
 					}
 					can_create_task_contract = {
@@ -471,6 +619,13 @@ liberty_faction = {
 
 	sort_order = 4
 
+	is_shown = {
+		NAND = {
+			tgp_is_ceremonial_liege_trigger = yes
+			tgp_is_ceremonial_regent_trigger = no
+		}
+	}
+
 	discontent_progress = {
 		base = 0
 
@@ -519,7 +674,7 @@ liberty_faction = {
 		every_faction_member = {
 			limit = {
 				is_ai = no
-				NOT = { this = scope:faction.faction_leader }
+				this != scope:faction.faction_leader
 			}
 			trigger_event = faction_demand.0105
 		}
@@ -557,6 +712,16 @@ liberty_faction = {
 					NOT = {
 						target_is_liege_or_above = root.faction_target
 					}
+				}
+			}
+		}
+
+		modifier = {
+			add = -1000
+			faction_target = {
+				involved_activity ?= {
+					has_activity_type = activity_coronation
+					activity_host = prev
 				}
 			}
 		}
@@ -598,84 +763,18 @@ liberty_faction = {
 		common_can_character_create_trigger = {
 			FACTION_TARGET = scope:target
 		}
+		# Bloc Cohesion requirement
+		japan_faction_cohesion_trigger = yes
 
-		trigger_if = {
-			limit = { scope:target = { realm_law_use_imperial_bureaucracy = yes } }
-			custom_description = {
-				text = has_lowest_imperial_bureaucracy
-				subject = scope:target
-				scope:target = {
-					OR = {
-						has_realm_law = imperial_bureaucracy_1
-						has_realm_law = imperial_bureaucracy_2
-						has_realm_law = imperial_bureaucracy_3
-					}
-				}
-			}
-		}
-		trigger_else_if = {
-			limit = { scope:target = { government_has_flag = government_is_tribal } }
-			custom_description = {
-				text = has_lowest_tribal_authority
-				subject = scope:target
-				scope:target = {
-					OR = {
-						has_realm_law = tribal_authority_1
-						has_realm_law = tribal_authority_2
-						has_realm_law = tribal_authority_3
-					}
-				}
-			}
-		}
-		#trigger_else_if = {
-		#	limit = { scope:target = { has_clique_government_trigger = yes } }
-		#	custom_description = {
-		#		text = has_lowest_clique_authority
-		#		subject = scope:target
-		#		scope:target = {
-		#			OR = {
-		#				has_realm_law = clique_authority_1
-		#				has_realm_law = clique_authority_2
-		#				has_realm_law = clique_authority_3
-		#			}
-		#		}
-		#	}
-		#}
-		#trigger_else_if = {
-		#	limit = { scope:target = { government_has_flag = government_is_pirate } }
-		#	custom_description = {
-		#		text = has_lowest_pirate_authority
-		#		subject = scope:target
-		#		scope:target = {
-		#			OR = {
-		#				has_realm_law = pirate_authority_1
-		#				has_realm_law = pirate_authority_2
-		#				has_realm_law = pirate_authority_3
-		#			}
-		#		}
-		#	}
-		#}
-		trigger_else = {
-			custom_description = {
-				text = has_lowest_crown_authority
-				subject = scope:target
-				scope:target = {
-					OR = {
-						has_realm_law = crown_authority_1
-						has_realm_law = crown_authority_2
-						has_realm_law = crown_authority_3
-					}
-				}
-			}
+		has_valid_realm_laws_for_liberty_faction_trigger = {
+			TARGET = scope:target
 		}
 		
 		trigger_if = {
 			limit = {
-				scope:target = { government_has_flag = government_is_administrative }
+				scope:target = { government_allows = administrative }
 			}
-			scope:target = {
-				is_independent_ruler = yes
-			}
+			is_vassal_of = scope:target.top_liege
 		}
 	}
 
@@ -683,84 +782,18 @@ liberty_faction = {
 		common_can_character_create_trigger = {
 			FACTION_TARGET = scope:target
 		}
+		# Bloc Cohesion requirement
+		japan_faction_cohesion_trigger = yes
 
-		trigger_if = {
-			limit = { scope:target = { realm_law_use_imperial_bureaucracy = yes} }
-			custom_description = {
-				text = has_lowest_imperial_bureaucracy
-				subject = scope:target
-				scope:target = {
-					OR = {
-						has_realm_law = imperial_bureaucracy_1
-						has_realm_law = imperial_bureaucracy_2
-						has_realm_law = imperial_bureaucracy_3
-					}
-				}
-			}
-		}
-		trigger_else_if = {
-			limit = { scope:target = { government_has_flag = government_is_tribal } }
-			custom_description = {
-				text = has_lowest_tribal_authority
-				subject = scope:target
-				scope:target = {
-					OR = {
-						has_realm_law = tribal_authority_1
-						has_realm_law = tribal_authority_2
-						has_realm_law = tribal_authority_3
-					}
-				}
-			}
-		}
-		#trigger_else_if = {
-		#	limit = { scope:target = { has_clique_government_trigger = yes } }
-		#	custom_description = {
-		#		text = has_lowest_clique_authority
-		#		subject = scope:target
-		#		scope:target = {
-		#			OR = {
-		#				has_realm_law = clique_authority_1
-		#				has_realm_law = clique_authority_2
-		#				has_realm_law = clique_authority_3
-		#			}
-		#		}
-		#	}
-		#}
-		#trigger_else_if = {
-		#	limit = { scope:target = { government_has_flag = government_is_pirate } }
-		#	custom_description = {
-		#		text = has_lowest_pirate_authority
-		#		subject = scope:target
-		#		scope:target = {
-		#			OR = {
-		#				has_realm_law = pirate_authority_1
-		#				has_realm_law = pirate_authority_2
-		#				has_realm_law = pirate_authority_3
-		#			}
-		#		}
-		#	}
-		#}
-		trigger_else = {
-			custom_description = {
-				text = has_lowest_crown_authority
-				subject = scope:target
-				scope:target = {
-					OR = {
-						has_realm_law = crown_authority_1
-						has_realm_law = crown_authority_2
-						has_realm_law = crown_authority_3
-					}
-				}
-			}
+		has_valid_realm_laws_for_liberty_faction_trigger = {
+			TARGET = scope:target
 		}
 		
 		trigger_if = {
 			limit = {
-				scope:target = { government_has_flag = government_is_administrative }
+				scope:target = { government_allows = administrative }
 			}
-			scope:target = {
-				is_independent_ruler = yes
-			}
+			is_vassal_of = scope:target.top_liege
 		}
 	}
 
@@ -770,57 +803,21 @@ liberty_faction = {
 		}
 		OR = {
 			is_ai = no
-			scope:faction.faction_target = {
-				trigger_if = {
-					limit = { realm_law_use_imperial_bureaucracy = yes }
-					OR = {
-						has_realm_law = imperial_bureaucracy_1
-						has_realm_law = imperial_bureaucracy_2
-						has_realm_law = imperial_bureaucracy_3
-					}
-				}
-				trigger_else_if = {
-					limit = { government_has_flag = government_is_tribal }
-					OR = {
-						has_realm_law = tribal_authority_1
-						has_realm_law = tribal_authority_2
-						has_realm_law = tribal_authority_3
-					}
-				}
-				#trigger_else_if = {
-				#	limit = { has_clique_government_trigger = yes }
-				#	OR = {
-				#		has_realm_law = clique_authority_1
-				#		has_realm_law = clique_authority_2
-				#		has_realm_law = clique_authority_3
-				#	}
-				#}
-				#trigger_else_if = {
-				#	limit = { government_has_flag = government_is_pirate }
-				#	OR = {
-				#		has_realm_law = pirate_authority_1
-				#		has_realm_law = pirate_authority_2
-				#		has_realm_law = pirate_authority_3
-				#	}
-				#}
-				trigger_else = {
-					OR = {
-						has_realm_law = crown_authority_1
-						has_realm_law = crown_authority_2
-						has_realm_law = crown_authority_3
-					}
-				}
+			has_valid_realm_laws_for_liberty_faction_trigger = {
+				TARGET = scope:faction.faction_target
 			}
 		}
 		
 		trigger_if = {
 			limit = {
-				scope:faction.faction_target = { government_has_flag = government_is_administrative }
+				scope:faction.faction_target = { government_allows = administrative }
 			}
-			scope:faction.faction_target = {
-				is_independent_ruler = yes
-			}
+			is_vassal_of = scope:faction.faction_target
 		}
+	}
+
+	can_character_become_leader = {
+		can_become_leader_of_faction_trigger = yes
 	}
 
 	ai_create_score = {
@@ -856,7 +853,7 @@ liberty_faction = {
 			desc = "FACTION_REASON_HOUSE_HOSTILITY"
 
 			scope:target.house ?= {
-				NOT = { this = root.house }
+				this != root.house
 			}
 			culture = { has_cultural_parameter = house_hostility_more_common }
 
@@ -902,7 +899,7 @@ liberty_faction = {
 			desc = "FACTION_REASON_HOUSE_HOSTILITY"
 
 			scope:faction.faction_target.house ?= {
-				NOT = { this = root.house }
+				this != root.house
 			}
 			culture = { has_cultural_parameter = house_hostility_more_common }
 
@@ -918,21 +915,58 @@ liberty_faction = {
 				}
 			}
 		}
+
+		#GH ADDITION
+		# Struggle Phases Parameters
+		modifier = {
+			desc = "FACTION_REASON_WIH_IS_IN_PHASE"
+			add = -25
+			OR = {
+				AND = {
+					scope:target = { has_religion = religion:wardenism_religion }
+					NOT = { has_religion = religion:ritualist_religion }
+					any_character_struggle = {
+						involvement = involved
+						has_struggle_phase_parameter = non_ritualist_vassals_faction_join_chance_reduced
+					}
+				}
+				AND = {
+					scope:target = { has_religion = religion:ritualist_religion }
+					NOT = { has_religion = religion:wardenism_religion }
+					any_character_struggle = {
+						involvement = involved
+						has_struggle_phase_parameter = non_wardenite_vassals_faction_join_chance_reduced
+					}
+				}
+				AND = {
+					scope:target = { has_religion = religion:agionism_religion }
+					NOR = {
+						has_religion = religion:ritualist_religion
+						has_religion = religion:wardenism_religion	
+					}
+					any_character_struggle = {
+						has_struggle_phase_parameter = non_ritualist_wardenite_vassals_faction_join_chance_reduced
+					}
+				}
+			}
+		}
+		#GH END
 	}
 
 	on_creation = {
 		save_scope_as = faction
+		tgp_bloc_members_join_faction_effect = yes
 		if = {
 			limit = {
 				any_player = {
-					is_landless_adventurer = yes
+					has_government = landless_adventurer_government
 					is_within_diplo_range = { CHARACTER = scope:faction.faction_target }
 					OR = {
 						has_contact = scope:faction.faction_leader
 						NOT = { has_contact = scope:faction.faction_target }
 					}
 					any_character_task_contract = {
-						has_task_contract_type = laamp_join_faction_contract
+						task_contract_type = laamp_join_faction_contract
 						count <= 3
 					}
 					can_create_task_contract = {
@@ -967,6 +1001,17 @@ claimant_faction = {
 
 	show_special_title = yes
 	name = FACTION_CLAMAINT_DYNAMIC_NAME
+
+	character_interaction = create_claimant_faction_against_interaction
+
+	claimant = yes
+
+	is_shown = {
+		NAND = {
+			tgp_is_ceremonial_liege_trigger = yes
+			tgp_is_ceremonial_regent_trigger = no
+		}
+	}
 
 	discontent_progress = {
 		base = 0
@@ -1012,6 +1057,7 @@ claimant_faction = {
 				}
 			}
 			special_title.holder ?= faction_target
+			special_title.holder ?= { tgp_is_ceremonial_regent_trigger = no }
 			OR = {
 				special_character ?= {
 					is_alive = yes
@@ -1043,6 +1089,20 @@ claimant_faction = {
 							years < 5
 						}
 					}
+					# Ministers cannot be claimants unless we are targeting h_aversarinas_aautokrata
+					trigger_if = {
+						limit = {
+							tgp_has_minister_title = yes
+						}
+						custom_description = {
+							text = target_is_a_minister_desc
+							subject = this
+							any_held_title = {
+								tgp_is_minister_title = yes
+								de_jure_liege = root.special_title
+							}
+						}
+					}
 				}
 				exists = faction_war
 			}
@@ -1072,7 +1132,7 @@ claimant_faction = {
 		every_faction_member = {
 			limit = {
 				is_ai = no
-				NOT = { this = scope:faction.faction_leader }
+				this != scope:faction.faction_leader
 			}
 			trigger_event = faction_demand.2005
 		}
@@ -1137,6 +1197,16 @@ claimant_faction = {
 				}
 			}
 		}
+
+		modifier = {
+			add = -1000
+			faction_target = {
+				involved_activity ?= {
+					has_activity_type = activity_coronation
+					activity_host = prev
+				}
+			}
+		}
 	}
 
 	on_war_start = {
@@ -1172,7 +1242,20 @@ claimant_faction = {
 				government_allows = administrative
 			}
 			scope:faction.faction_target ?= {
-				is_independent_ruler = yes
+				OR = {
+					top_liege ?= this
+					NOT = { government_allows = administrative }
+				}
+			}
+		}
+		
+		# TGP - Use Coup against Kampaku instead
+		trigger_if = {
+			limit = {
+				scope:faction.faction_target ?= top_liege
+			}
+			scope:faction.faction_target ?= {
+				tgp_is_ceremonial_regent_trigger = no
 			}
 		}
 		has_valid_faction_members_trigger = yes
@@ -1183,6 +1266,16 @@ claimant_faction = {
 			recipient = scope:target
 			interaction = create_claimant_faction_against_interaction
 		}
+		# Bloc Cohesion requirement
+		japan_faction_cohesion_trigger = yes
+		# TGP - Use Coup against Kampaku instead
+		custom_tooltip = {
+			text = cannot_create_claimant_faction_against_kampaku_tooltip
+			scope:target = {
+				# TGP - Use Coup against Kampaku instead
+				tgp_is_ceremonial_regent_trigger = no
+			}
+		}
 	}
 
 	can_character_create = { # If a character is allowed to create the faction. The 'is_character_valid' block is also checked in conjunction with this when creating a faction.
@@ -1190,21 +1283,32 @@ claimant_faction = {
 		common_can_character_create_trigger = {
 			FACTION_TARGET = scope:target
 		}
+		# Bloc Cohesion requirement
+		japan_faction_cohesion_trigger = yes
 
+		# TGP - Use Coup against Kampaku instead
 		trigger_if = {
 			limit = {
 				exists = joined_faction
+				joined_faction.special_title.holder ?= {
+					this = scope:target
+				}
 			}
-			joined_faction = {
-				exists = special_title
-				special_title.holder = scope:target
+			joined_faction.special_title.holder ?= {
+				tgp_is_ceremonial_regent_trigger = no
 			}
 		}
+		# TGP - Use Coup against Kampaku instead
 		trigger_else_if = {
 			limit = {
 				has_variable = claiming_title
+				var:claiming_title.holder ?= {
+					this = scope:target
+				}
 			}
-			var:claiming_title.holder = scope:target
+			var:claiming_title.holder ?= {
+				tgp_is_ceremonial_regent_trigger = no
+			}
 		}
 		trigger_else = {
 			always = no
@@ -1220,7 +1324,7 @@ claimant_faction = {
 	}
 
 	can_character_become_leader = {
-		is_playable_character = yes
+		can_become_leader_of_faction_trigger = yes
 	}
 
 	ai_create_score = { # How likely is an AI to create a faction?
@@ -1345,6 +1449,41 @@ claimant_faction = {
 				has_character_modifier = ep3_life_threatened_modifier
 			}
 		}
+		#GH ADDITION
+		# Struggle Phases Parameters
+		modifier = {
+			desc = "FACTION_REASON_WIH_IS_IN_PHASE"
+			add = -25
+			OR = {
+				AND = {
+					scope:target = { has_religion = religion:wardenism_religion }
+					NOT = { has_religion = religion:ritualist_religion }
+					any_character_struggle = {
+						involvement = involved
+						has_struggle_phase_parameter = non_ritualist_vassals_faction_join_chance_reduced
+					}
+				}
+				AND = {
+					scope:target = { has_religion = religion:ritualist_religion }
+					NOT = { has_religion = religion:wardenism_religion }
+					any_character_struggle = {
+						involvement = involved
+						has_struggle_phase_parameter = non_wardenite_vassals_faction_join_chance_reduced
+					}
+				}
+				AND = {
+					scope:target = { has_religion = religion:agionism_religion }
+					NOR = {
+						has_religion = religion:ritualist_religion
+						has_religion = religion:wardenism_religion	
+					}
+					any_character_struggle = {
+						has_struggle_phase_parameter = non_ritualist_wardenite_vassals_faction_join_chance_reduced
+					}
+				}
+			}
+		}
+		#GH END
 	}
 
 	is_county_valid = {
@@ -1364,7 +1503,7 @@ claimant_faction = {
 		compare_modifier = {
 			desc = "FACTION_REASON_CLAIMANT_COUNTY_SHARED_CULTURE"
 			trigger = {
-				NOT = { scope:faction.faction_target.culture = this.title_province.culture }
+				scope:faction.faction_target.culture != this.title_province.culture
 				scope:faction.special_character.culture = this.title_province.culture 
 			}
 			value = county_opinion
@@ -1465,10 +1604,11 @@ claimant_faction = {
 
 	on_creation = {
 		save_scope_as = faction
+		tgp_bloc_members_join_faction_effect = yes
 		if = {
 			limit = {
 				any_player = {
-					is_landless_adventurer = yes
+					has_government = landless_adventurer_government
 					is_within_diplo_range = { CHARACTER = scope:faction.faction_target }
 					OR = {
 						has_contact = scope:faction.faction_leader
@@ -1476,7 +1616,7 @@ claimant_faction = {
 						NOT = { has_contact = scope:faction.faction_target }
 					}
 					any_character_task_contract = {
-						has_task_contract_type = laamp_join_faction_contract
+						task_contract_type = laamp_join_faction_contract
 						count <= 3
 					}
 					can_create_task_contract = {

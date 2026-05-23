@@ -120,16 +120,16 @@ hybridize_culture = {
 				value = 0.25
 			}
 		}
-		if = {
-			limit = {
-				culture = { has_cultural_parameter = otachedian_tolerance }
-				scope:culture = { has_cultural_parameter = otachedian_tolerance }
-			}
-			multiply = {
-				desc = "traditions_cheaper_value"
-				value = 0.75
-			}
-		}
+		#if = {
+		#	limit = {
+		#		culture = { has_cultural_parameter = otachedian_tolerance }
+		#		scope:culture = { has_cultural_parameter = otachedian_tolerance }
+		#	}
+		#	multiply = {
+		#		desc = "traditions_cheaper_value"
+		#		value = 0.75
+		#	}
+		#}
 		if = { # The AI only diverges via event, so cost is irrelevant (makes the can_diverge trigger more useful)
 			limit = {
 				root = {
@@ -698,99 +698,66 @@ travel_leader = {
 	}	
 }
 
-# root = accolade
-deactivate_accolade = {
-	prestige = {
-		if = {
-			limit = {
-				accolade_owner ?= {
-					highest_held_title_tier >= tier_empire
-				}
-				accolade_rank >= 2
-			}
-			add = massive_prestige_value
-		}
-		else_if = {
-			limit = {
-				accolade_owner ?= {
-					highest_held_title_tier = tier_kingdom
-				}
-				accolade_rank >= 2
-			}
-			add = major_prestige_value
-		}
-		else_if = {
-			limit = {
-				OR = {
-					AND = {
-						accolade_owner ?= {
-							highest_held_title_tier = tier_duchy
-						}
-						accolade_rank >= 2
-					}
-					AND = {
-						accolade_owner ?= {
-							highest_held_title_tier >= tier_empire
-						}
-						accolade_rank < 2
-					}
-				}
-			}
-			add = medium_prestige_value
-		}
-		else_if = {
-			limit = {
-				OR = {
-					AND = {
-						accolade_owner ?= {
-							highest_held_title_tier = tier_county
-						}
-						accolade_rank >= 2
-					}
-					AND = {
-						accolade_owner ?= {
-							highest_held_title_tier = tier_kingdom
-						}
-						accolade_rank < 2
-					}
-				}
-			}
-			add = minor_prestige_value
-		}
-		else = {
-			add = miniscule_prestige_value
-		}
-	}
-}
-
 # root = acclaimed knight
 # event targets = scope:owner
 create_accolade = {
-	prestige = {
-		if = {
-			limit = {
-				scope:owner ?= {
-					highest_held_title_tier >= tier_empire
-				}
-			}
-			add = 200
-		}
-		else_if = {
-			limit = {
-				scope:owner ?= {
-					highest_held_title_tier = tier_kingdom
-				}
-			}
-			add = 150
-		}
-		else = {
-			add = 100
-		}
-	}
+	prestige = accolade_creation_prestige_cost 
 }
 
 # root = the title whose troops we want to reassign
 # scope:actor = the character wanting to reassign troops (the emperor)
 reassign_title_troops = {
 	influence = admin_title_troop_command_cost_value
+}
+
+# root = ruler enacting the treasury budget (for their primary title)
+enact_treasury_budget = {
+	influence = {
+		value = {
+			value = 500
+			desc = "BASE"
+			format = "BASE_VALUE_FORMAT"
+		}
+
+		if = {
+			limit = {
+				treasury_years_since_budget_enact_date >= 5
+			}
+			subtract = { value = 500 desc = "five_years_since_budget" }
+		}
+		else_if = {
+			limit = {
+				treasury_years_since_budget_enact_date >= 4
+			}
+			subtract = { value = 400 desc = "four_years_since_budget" }
+		}
+		else_if = {
+			limit = {
+				treasury_years_since_budget_enact_date >= 3
+			}
+			subtract = { value = 300 desc = "three_years_since_budget" }
+		}
+		else_if = {
+			limit = {
+				treasury_years_since_budget_enact_date >= 2
+			}
+			subtract = { value = 200 desc = "two_years_since_budget" }
+		}
+		else_if = {
+			limit = {
+				treasury_years_since_budget_enact_date >= 1
+			}
+			subtract = { value = 100 desc = "one_year_since_budget" }
+		}
+
+		if = {
+			limit = {
+				treasury < 0
+			}
+			multiply = {
+				value = 0
+				desc = "treasury_in_debt"
+			}
+		}
+	}
 }

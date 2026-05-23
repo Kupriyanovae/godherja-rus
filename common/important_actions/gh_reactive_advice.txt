@@ -97,3 +97,39 @@ action_too_many_children = {
 		}
 	}
 }
+
+action_can_purge_county = {
+	type = alert
+	icon = generic_godherja_advice
+	check_create_action = {
+		if = {
+			limit = {
+				any_held_title = {
+					tier = tier_county
+					has_county_modifier = redlands_decay_modifier
+					title_province.county.development_level = 0
+				}
+			}
+			try_create_important_action = {
+				important_action_type = action_can_purge_county
+			}
+		}
+	}
+
+	effect = {
+		random_held_title = {
+			limit = {
+				tier = tier_county
+				has_county_modifier = redlands_decay_modifier
+				development_level = 0
+			}
+			save_scope_as = county_to_purge
+		}
+		
+		open_interaction_window = {
+			interaction = gh_redlands_decay_county_interaction
+			actor = root
+			recipient = scope:county_to_purge
+		}
+	}
+}

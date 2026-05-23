@@ -75,7 +75,7 @@ flourishing_culture_modifier = {
 }
 
 hungarian_resettlement_modifier = {
-	icon = horse_positive
+	icon = horse_mixed
 	county_opinion_add = -10
 	build_speed = -0.1
 	development_growth_factor = small_development_growth_gain
@@ -110,6 +110,14 @@ recently_looted_modifier = {
 	county_fertility_growth_mult = -0.2
 }
 
+# Referenced in code; blocks raiding & bartering when present on a province
+recently_bartered_modifier = {
+	icon = goods_positive
+	build_speed = -0.1
+	development_growth = 0.3
+	tax_mult = 0.1
+}
+
 shattered_defenses_modifier = {
 	icon = martial_negative
 	fort_level = -5
@@ -121,6 +129,14 @@ disease_spreading_modifier = {
 	development_growth_factor = -0.5
 	monthly_county_control_decline_add = -0.2
 }
+
+########################
+# Winter modifiers section
+#
+# When winter severity changes, province rebuilds its modifier
+# For performance reason affected holding does NOT update its cached data
+# So any modifier that affects fort level or any form of taxable income
+# will not be updated immediately. Most other modifiers should be fine to use here
 
 winter_none_modifier = {
 }
@@ -143,6 +159,7 @@ winter_harsh_modifier = {
 }
 
 spurned_by_traders = {
+	icon = social_negative
 	development_growth_factor = -0.25
 }
 
@@ -171,7 +188,7 @@ wayfarer_astronomical_phenomenon = {
 }
 
 innkeeper_bad_result = {
-	icon = county_modifier_development_negative
+	icon = county_modifier_development_mixed
 	monthly_income = 0.5
 	county_opinion_add = -20
 }
@@ -185,5 +202,11 @@ innkeeper_average_result = {
 innkeeper_good_result = {
 	icon = county_modifier_development_positive
 	monthly_income = 2
+	county_opinion_add = 10
+}
+
+plague_preparations_modifier = {
+	icon = rat_positive
+	epidemic_resistance = 15
 	county_opinion_add = 10
 }

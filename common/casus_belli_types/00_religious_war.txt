@@ -25,6 +25,7 @@
 				government_has_flag = government_is_landless_adventurer
 				government_has_flag = government_is_pirate
 				government_has_flag = government_is_nomadic
+				government_has_flag = government_is_celestial
 			}
 		}
 	}
@@ -32,66 +33,73 @@
 	allowed_for_character_display_regardless = {
 		trigger_if = {
 			limit = {
-				is_alive = yes
-				has_variable_list = humsacd_hofs
-				is_target_in_variable_list = {
-					name = humsacd_hofs
-					target = scope:attacker.faith
-				}
+				highest_held_title_tier >= tier_kingdom
 			}
-			trigger_if = {
-				limit = {
-					OR = {
-						culture = {
-							has_cultural_parameter = cb_lower_piety_level_requirement
-						}
-						# Iberian Struggle Hostility Reward
-						AND = {
-							exists = house
-							house = {
-								OR = {
-									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
-									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
-									has_house_modifier = gh_rws_struggle_hostility_house_faith_modifier
-									has_house_modifier = gh_rws_struggle_hostility_house_combined_modifier
-								}
-							}
-						}
-					}
-				}
-				piety_level >= -1
-			}
-			trigger_else = {
-				piety_level >= 0
-			}
+			NOT = { piety_level = -1 }
 		}
 		trigger_else = {
 			trigger_if = {
 				limit = {
-					OR = {
-						culture = {
-							has_cultural_parameter = cb_lower_piety_level_requirement
-						}
-						# Iberian Struggle Hostility Reward
-						AND = {
-							exists = house
-							house = {
+					is_alive = yes
+					has_variable_list = humsacd_hofs
+					is_target_in_variable_list = {
+						name = humsacd_hofs
+						target = scope:attacker.faith
+					}
+				}
+				trigger_if = {
+					limit = {
+						OR = {
+							culture = {
+								has_cultural_parameter = cb_lower_piety_level_requirement
+							}
+							# Iberian Struggle Hostility Reward
+							house ?= {
 								OR = {
 									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
 									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
 									has_house_modifier = gh_rws_struggle_hostility_house_faith_modifier
 									has_house_modifier = gh_rws_struggle_hostility_house_combined_modifier
+									has_house_modifier = gh_struggle_house_faith_modifier_wardenite
+									has_house_modifier = gh_struggle_house_faith_modifier_ritualist
 								}
 							}
 						}
 					}
+					piety_level >= 0
 				}
-				piety_level >= 0
+				trigger_else = {
+					piety_level >= 0
+				}
 			}
 			trigger_else = {
-				piety_level >= 1
+				trigger_if = {
+					limit = {
+						OR = {
+							culture = {
+								has_cultural_parameter = cb_lower_piety_level_requirement
+							}
+							# Iberian Struggle Hostility Reward
+							house ?= {
+								OR = {
+									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
+									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
+									has_house_modifier = gh_rws_struggle_hostility_house_faith_modifier
+									has_house_modifier = gh_rws_struggle_hostility_house_combined_modifier
+									has_house_modifier = gh_struggle_house_faith_modifier_wardenite
+									has_house_modifier = gh_struggle_house_faith_modifier_ritualist
+								}
+							}
+						}
+					}
+					piety_level >= 0
+				}
+				trigger_else = {
+					piety_level >= 1
+				}
 			}
 		}
+		tgp_japan_offensive_wars_ban_trigger = yes
 	}
 
 	allowed_against_character = {
@@ -119,6 +127,7 @@
 	valid_to_start = {
 		scope:target = {
 			tier = tier_county
+			is_landless_type_title = no
 		}
 		# Filter for struggles
 		trigger_if = {
@@ -203,7 +212,7 @@
 			if = {
 				limit = {
 					scope:attacker = {
-						is_independent_ruler = no
+						top_liege != this
 						vassal_contract_has_flag = vassal_contract_cheaper_religious_war
 					}
 				}
@@ -229,7 +238,8 @@
 				add = -1000
 			}
 		}
-
+		# HOUSE RELATIONS
+		add = house_relation_ai_score_value
 		# AI in struggles act insularly for wars that don't have a familial or legal basis.
 		multiply = struggle_wars_prioritise_struggle_targets_value
 		## GH CHANGE
@@ -249,7 +259,7 @@
 				limit = {
 					scope:attacker = {
 						any_active_accolade = {
-							has_accolade_parameter = acclaimed_knight_piety_from_battle
+							accolade_parameter = acclaimed_knight_piety_from_battle
 						}
 					}
 				}
@@ -260,7 +270,7 @@
 				limit = {
 					scope:attacker = {
 						any_active_accolade = {
-							has_accolade_parameter = acclaimed_knight_piety_from_battle_high
+							accolade_parameter = acclaimed_knight_piety_from_battle_high
 						}
 					}
 				}
@@ -272,6 +282,18 @@
 
 	on_declaration = {
 		on_declared_war = yes
+
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				general_WIH_catalyst_effect = {
+					CHAR = scope:defender
+					CATALYST = offensive_holy_war_declaration
+				}
+			}
+		}
+		#GH END
 	}
 
 	on_victory_desc = {
@@ -290,7 +312,17 @@
 
 	on_victory = {
 		scope:attacker = { show_pow_release_message_effect = yes }
-		
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				general_WIH_catalyst_effect = {
+					CHAR = scope:defender
+					CATALYST = offensive_holy_war_victory
+				}
+			}
+		}
+		#GH END	
 		# Legitimacy
 		add_legitimacy_attacker_victory_effect = yes
 		
@@ -392,6 +424,9 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -429,6 +464,36 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				if = {
+					limit = {
+						any_character_struggle = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+					}
+					every_character_struggle = {
+						limit = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+						activate_struggle_catalyst = {
+							catalyst = catalyst_war_white_peace
+							character = scope:attacker
+						}
+					}
+				}
+			}
+		}
+		#GH END
 	}
 
 	on_defeat_desc = {
@@ -437,12 +502,18 @@
 
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
-		
+		#GH ADDITION
+		# Struggle Catalysts
+		holy_war_WIH_catalyst_struggle_effect = yes
+		#GH END		
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		#EP2 accolade glory gain for winning against higher ranked enemy
-		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
+		scope:defender = { 
+			mandala_peacemaker_perk_serenity_effect = yes
+			#EP2 accolade glory gain for winning against higher ranked enemy
+			accolade_defender_war_end_glory_gain_high_effect = yes
+		}
 
 		scope:attacker = {
 			every_vassal = {
@@ -511,6 +582,9 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_defeat_effects = yes
 	}
 
 	on_primary_attacker_death = inherit
@@ -555,15 +629,20 @@ religious_war = {
 	# Additional requirements to the defines in 00_casus_belli_groups.txt
 	allowed_for_character = {
 		scope:attacker.faith = {
-			NOT = { has_doctrine_parameter = unreformed }
-			NOT = { has_doctrine_parameter = holy_wars_forbidden }
+			NOR = { 
+				has_doctrine_parameter = unreformed
+				has_doctrine_parameter = holy_wars_forbidden
+			}
 		}
-		NOT = { government_has_flag = government_is_nomadic }
+		NOR = { 
+			government_has_flag = government_is_nomadic
+			government_has_flag = government_is_celestial
+			government_has_flag = government_is_pirate
+		}
 		scope:attacker = {
 			NOR = {
 				has_title = title:k_adabyss_borderfort
 				is_redlander = yes
-				government_has_flag = government_is_pirate
 			}
 		}
 	}
@@ -571,69 +650,103 @@ religious_war = {
 	allowed_for_character_display_regardless = {
 		trigger_if = {
 			limit = {
-				is_alive = yes
-				has_variable_list = humsacd_hofs
-				is_target_in_variable_list = {
-					name = humsacd_hofs
-					target = scope:attacker.faith
-				}
+				highest_held_title_tier >= tier_kingdom
 			}
-			trigger_if = {
-				limit = {
-					OR = {
-						culture = {
-							has_cultural_parameter = cb_lower_piety_level_requirement
-						}
-						# Iberian Struggle Hostility Reward
-						AND = {
-							exists = house
-							house = {
-								OR = {
-									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
-									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
-									has_house_modifier = gh_rws_struggle_hostility_house_faith_modifier
-									has_house_modifier = gh_rws_struggle_hostility_house_combined_modifier
-								}
-							}
-						}
-					}
-				}
-				piety_level >= 0
-			}
-			trigger_else = {
-				piety_level >= 1
-			}
+			NOT = { piety_level = -1 }
 		}
 		trigger_else = {
 			trigger_if = {
 				limit = {
-					OR = {
-						culture = {
-							has_cultural_parameter = cb_lower_piety_level_requirement
-						}
-						# Iberian Struggle Hostility Reward
-						AND = {
-							exists = house
-							house = {
+					is_alive = yes
+					has_variable_list = humsacd_hofs
+					is_target_in_variable_list = {
+						name = humsacd_hofs
+						target = scope:attacker.faith
+					}
+				}
+				trigger_if = {
+					limit = {
+						OR = {
+							culture = {
+								has_cultural_parameter = cb_lower_piety_level_requirement
+							}
+							# Iberian Struggle Hostility Reward
+							house ?= {
 								OR = {
 									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
 									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
 									has_house_modifier = gh_rws_struggle_hostility_house_faith_modifier
 									has_house_modifier = gh_rws_struggle_hostility_house_combined_modifier
+									has_house_modifier = gh_struggle_house_faith_modifier_wardenite
+									has_house_modifier = gh_struggle_house_faith_modifier_ritualist
 								}
 							}
 						}
 					}
+					piety_level >= 0
 				}
-				piety_level >= 1
+				trigger_else = {
+					piety_level >= 1
+				}
 			}
 			trigger_else = {
-				piety_level >= 2
+				trigger_if = {
+					limit = {
+						OR = {
+							culture = {
+								has_cultural_parameter = cb_lower_piety_level_requirement
+							}
+							# Iberian Struggle Hostility Reward
+							house ?= {
+								OR = {
+									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
+									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
+									has_house_modifier = gh_rws_struggle_hostility_house_faith_modifier
+									has_house_modifier = gh_rws_struggle_hostility_house_combined_modifier
+									has_house_modifier = gh_struggle_house_faith_modifier_wardenite
+									has_house_modifier = gh_struggle_house_faith_modifier_ritualist
+								}
+							}
+						}
+					}
+					piety_level >= 1
+				}
+				trigger_else = {
+					piety_level >= 2
+				}
 			}
 		}
+		tgp_japan_offensive_wars_ban_trigger = yes
 	}
 
 	allowed_against_character = {
+		custom_description = {
+			text = not_religion_was_previous_dominance_phase_in_struggle_tt
+			trigger_if = {
+				limit = { 	
+					scope:attacker ?= {
+						any_character_struggle = {
+							OR = { 
+								is_struggle_type = gh_war_in_heaven_struggle
+								is_struggle_type = gh_eastern_war_in_heaven_struggle
+								is_struggle_type = gh_far_eastern_war_in_heaven_struggle
+								is_struggle_type = gh_western_war_in_heaven_struggle
+								#is_struggle_type = gh_far_western_war_in_heaven_struggle	
+							}
+							save_temporary_scope_as = struggle_temp
+						}
+					}
+					scope:defender ?= {
+						any_character_struggle = {
+							involvement = involved
+							this = scope:struggle_temp
+						}
+					}
+				}
+				gh_wih_not_benefited_from_previous_phase_trigger = yes
+			}
+			trigger_else = {}
+		}
 		scope:attacker = {
 			faith = {
 				faith_hostility_level = {
@@ -658,6 +771,7 @@ religious_war = {
 	valid_to_start = {
 		scope:target = {
 			tier = tier_duchy
+			is_landless_type_title = no
 		}
 		scope:target = {
 			trigger_if = {
@@ -772,6 +886,8 @@ religious_war = {
 							has_house_modifier = fp2_struggle_hostility_house_combined_modifier
 							has_house_modifier = gh_rws_struggle_hostility_house_faith_modifier
 							has_house_modifier = gh_rws_struggle_hostility_house_combined_modifier
+							has_house_modifier = gh_struggle_house_faith_modifier_wardenite
+							has_house_modifier = gh_struggle_house_faith_modifier_ritualist
 						}
 					}
 					any_in_global_list = {
@@ -813,7 +929,7 @@ religious_war = {
 				limit = {
 					scope:attacker = {
 						any_active_accolade = {
-							has_accolade_parameter = acclaimed_knight_piety_from_battle
+							accolade_parameter = acclaimed_knight_piety_from_battle
 						}
 					}
 				}
@@ -824,7 +940,7 @@ religious_war = {
 				limit = {
 					scope:attacker = {
 						any_active_accolade = {
-							has_accolade_parameter = acclaimed_knight_piety_from_battle_high
+							accolade_parameter = acclaimed_knight_piety_from_battle_high
 						}
 					}
 				}
@@ -836,6 +952,18 @@ religious_war = {
 
 	on_declaration = {
 		on_declared_war = yes
+
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				general_WIH_catalyst_effect = {
+					CHAR = scope:defender
+					CATALYST = offensive_holy_war_declaration
+				}
+			}
+		}
+		#GH END
 	}
 
 	on_victory_desc = {
@@ -854,7 +982,19 @@ religious_war = {
 
 	on_victory = {
 		scope:attacker = { show_pow_release_message_effect = yes }
-		
+
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				general_WIH_catalyst_effect = {
+					CHAR = scope:defender
+					CATALYST = offensive_holy_war_victory
+				}
+			}
+		}
+		#GH END	
+
 		# Legitimacy
 		add_legitimacy_attacker_victory_effect = yes
 
@@ -957,6 +1097,9 @@ religious_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -997,6 +1140,37 @@ religious_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				if = {
+					limit = {
+						any_character_struggle = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+					}
+					every_character_struggle = {
+						limit = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+						activate_struggle_catalyst = {
+							catalyst = catalyst_war_white_peace
+							character = scope:attacker
+						}
+					}
+				}
+			}
+		}
+		#GH END
 	}
 
 	on_defeat_desc = {
@@ -1005,12 +1179,18 @@ religious_war = {
 
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
-		
+		#GH ADDITION
+		# Struggle Catalysts
+		holy_war_WIH_catalyst_struggle_effect = yes
+		#GH END		
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		#EP2 accolade glory gain for winning against higher ranked enemy
-		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
+		scope:defender = { 
+			mandala_peacemaker_perk_serenity_effect = yes
+			#EP2 accolade glory gain for winning against higher ranked enemy
+			accolade_defender_war_end_glory_gain_high_effect = yes
+		}
 
 		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
 		modify_allies_of_participants_fame_values = {
@@ -1079,6 +1259,9 @@ religious_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_defeat_effects = yes
 	}
 
 	on_primary_attacker_death = inherit
@@ -1112,7 +1295,7 @@ religious_war = {
 			if = {
 				limit = {
 					scope:attacker = {
-						is_independent_ruler = no
+						top_liege != this
 						vassal_contract_has_flag = vassal_contract_cheaper_religious_war
 					}
 				}
@@ -1138,7 +1321,8 @@ religious_war = {
 				add = -1000
 			}
 		}
-
+		# HOUSE RELATIONS
+		add = house_relation_ai_score_value
 		# AI in struggles act insularly for wars that don't have a familial or legal basis.
 		multiply = struggle_wars_prioritise_struggle_targets_value
 		## GH CHANGE
@@ -1162,12 +1346,12 @@ major_religious_war = {
 		scope:attacker.faith = {
 			NOT = { has_doctrine_parameter = unreformed }
 		}
-		scope:attacker = {
-			NOR = {
-				has_title = title:k_adabyss_borderfort
-				is_redlander = yes
-				government_has_flag = government_is_pirate
-			}
+		NOR = { 
+			has_title = title:k_adabyss_borderfort
+			is_redlander = yes
+			government_has_flag = government_is_pirate
+			government_has_flag = government_is_nomadic
+			government_has_flag = government_is_celestial
 		}
 	}
 
@@ -1189,13 +1373,14 @@ major_religious_war = {
 						}
 						# Iberian Struggle Hostility Reward
 						AND = {
-							exists = house
-							house = {
+							house ?= {
 								OR = {
 									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
 									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
 									has_house_modifier = gh_rws_struggle_hostility_house_faith_modifier
 									has_house_modifier = gh_rws_struggle_hostility_house_combined_modifier
+									has_house_modifier = gh_struggle_house_faith_modifier_wardenite
+									has_house_modifier = gh_struggle_house_faith_modifier_ritualist
 								}
 							}
 						}
@@ -1216,13 +1401,14 @@ major_religious_war = {
 						}
 						# Iberian Struggle Hostility Reward
 						AND = {
-							exists = house
-							house = {
+							house ?= {
 								OR = {
 									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
 									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
 									has_house_modifier = gh_rws_struggle_hostility_house_faith_modifier
 									has_house_modifier = gh_rws_struggle_hostility_house_combined_modifier
+									has_house_modifier = gh_struggle_house_faith_modifier_wardenite
+									has_house_modifier = gh_struggle_house_faith_modifier_ritualist
 								}
 							}
 						} 
@@ -1250,9 +1436,37 @@ major_religious_war = {
 				}
 			}
 		}
+		tgp_japan_offensive_wars_ban_trigger = yes
 	}
 
 	allowed_against_character = {
+		custom_description = {
+			text = not_religion_was_previous_dominance_phase_in_struggle_tt
+			trigger_if = {
+				limit = { 	
+					scope:attacker ?= {
+						any_character_struggle = {
+							OR = { 
+								is_struggle_type = gh_war_in_heaven_struggle
+								is_struggle_type = gh_eastern_war_in_heaven_struggle
+								is_struggle_type = gh_far_eastern_war_in_heaven_struggle
+								is_struggle_type = gh_western_war_in_heaven_struggle
+								#is_struggle_type = gh_far_western_war_in_heaven_struggle	
+							}
+							save_temporary_scope_as = struggle_temp
+						}
+					}
+					scope:defender ?= {
+						any_character_struggle = {
+							involvement = involved
+							this = scope:struggle_temp
+						}
+					}
+				}
+				gh_wih_not_benefited_from_previous_phase_trigger = yes
+			}
+			trigger_else = {}
+		}
 		scope:attacker = {
 			faith = {
 				faith_hostility_level = {
@@ -1277,6 +1491,7 @@ major_religious_war = {
 	valid_to_start = {
 		scope:target = {
 			tier = tier_kingdom
+			is_landless_type_title = no
 		}
 		# Filter for struggles
 		trigger_if = {
@@ -1371,7 +1586,7 @@ major_religious_war = {
 	}
 	
 	on_invalidated = {
-		
+		scope:attacker = { remove_character_flag = declared_major_religious_war_flag }
 	}
 
 	cost = {
@@ -1386,7 +1601,7 @@ major_religious_war = {
 				limit = {
 					scope:attacker = {
 						any_active_accolade = {
-							has_accolade_parameter = acclaimed_knight_piety_from_battle
+							accolade_parameter = acclaimed_knight_piety_from_battle
 						}
 					}
 				}
@@ -1397,7 +1612,7 @@ major_religious_war = {
 				limit = {
 					scope:attacker = {
 						any_active_accolade = {
-							has_accolade_parameter = acclaimed_knight_piety_from_battle_high
+							accolade_parameter = acclaimed_knight_piety_from_battle_high
 						}
 					}
 				}
@@ -1420,6 +1635,18 @@ major_religious_war = {
 				add_character_flag = declared_major_religious_war_flag
 			}
 		}
+
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				general_WIH_catalyst_effect = {
+					CHAR = scope:defender
+					CATALYST = offensive_holy_war_declaration
+				}
+			}
+		}
+		#GH END
 	}
 
 	on_victory_desc = {
@@ -1455,6 +1682,28 @@ major_religious_war = {
 	}
 
 	on_victory = {
+	
+		scope:attacker = {
+			if = {
+				limit = {
+					has_variable = k_holy_war_crusader
+				}
+				add_trait = faith_warrior
+			}
+		}
+		
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				general_WIH_catalyst_effect = {
+					CHAR = scope:defender
+					CATALYST = offensive_holy_war_victory
+				}
+			}
+		}
+		#GH END	
+		
 		scope:attacker = { show_pow_release_message_effect = yes }
 		
 		# Legitimacy
@@ -1558,6 +1807,9 @@ major_religious_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -1599,6 +1851,37 @@ major_religious_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				if = {
+					limit = {
+						any_character_struggle = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+					}
+					every_character_struggle = {
+						limit = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+						activate_struggle_catalyst = {
+							catalyst = catalyst_war_white_peace
+							character = scope:attacker
+						}
+					}
+				}
+			}
+		}
+		#GH END
 	}
 
 	on_defeat_desc = {
@@ -1607,12 +1890,19 @@ major_religious_war = {
 
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
-		
+		#GH ADDITION
+		# Struggle Catalysts
+		holy_war_WIH_catalyst_struggle_effect = yes
+		#GH END		
+
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		#EP2 accolade glory gain for winning against higher ranked enemy
-		scope:defender = { accolade_defender_war_end_glory_gain_high_effect = yes }
+		scope:defender = { 
+			mandala_peacemaker_perk_serenity_effect = yes
+			#EP2 accolade glory gain for winning against higher ranked enemy
+			accolade_defender_war_end_glory_gain_high_effect = yes
+		}
 
 		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
 		modify_allies_of_participants_fame_values = {
@@ -1681,6 +1971,9 @@ major_religious_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_defeat_effects = yes
 	}
 
 	on_primary_attacker_death = inherit
@@ -1714,7 +2007,7 @@ major_religious_war = {
 			if = {
 				limit = {
 					scope:attacker = {
-						is_independent_ruler = no
+						top_liege != this
 						vassal_contract_has_flag = vassal_contract_cheaper_religious_war
 					}
 				}
@@ -1740,7 +2033,8 @@ major_religious_war = {
 				add = -1000
 			}
 		}
-
+		# HOUSE RELATIONS
+		add = house_relation_ai_score_value
 		# AI in struggles act insularly for wars that don't have a familial or legal basis.
 		multiply = struggle_wars_prioritise_struggle_targets_value
 		## GH CHANGE
@@ -1765,7 +2059,7 @@ excommunication_war = {
 		scope:defender = {
 			#Defender must be an excommunicated member of our faith.
 			has_trait = excommunicated
-			is_independent_ruler = yes
+			top_liege = this
 			faith = {
 				has_doctrine_parameter = excommunication_active
 				this = scope:attacker.faith
@@ -1849,6 +2143,9 @@ excommunication_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -1888,6 +2185,37 @@ excommunication_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				if = {
+					limit = {
+						any_character_struggle = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+					}
+					every_character_struggle = {
+						limit = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+						activate_struggle_catalyst = {
+							catalyst = catalyst_war_white_peace
+							character = scope:attacker
+						}
+					}
+				}
+			}
+		}
+		#GH END
 	}
 
 	on_defeat_desc = {
@@ -1914,8 +2242,11 @@ excommunication_war = {
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		#EP2 Accolade glory gain for winning against higher ranked enemy
-		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
+		scope:defender = { 
+			mandala_peacemaker_perk_serenity_effect = yes
+			#EP2 accolade glory gain for winning against higher ranked enemy
+			accolade_defender_war_end_glory_gain_high_effect = yes
+		}
 
 		#Handle all piety gains/losses in scripted effects.
 		excommunication_cb_piety_change = {
@@ -1944,6 +2275,9 @@ excommunication_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_defeat_effects = yes
 	}
 	
 	should_invalidate = {
@@ -2019,7 +2353,7 @@ excommunication_war = {
 			if = {
 				limit = {
 					scope:attacker = {
-						is_independent_ruler = no
+						top_liege != this
 						vassal_contract_has_flag = vassal_contract_cheaper_religious_war
 					}
 				}
@@ -2045,9 +2379,12 @@ flowery_war_cb = {
 	ai_only_against_neighbors = yes
 	allow_hostages = no
 	
-	attacker_score_from_occupation_scale = 150
-	attacker_score_from_battles_scale = 150
-	defender_score_from_battles_scale = 150
+	allowed_for_character = {
+		faith = { has_doctrine_parameter = flower_war_cb_active }
+		NOT = {	#Must not have any leftover sacrificial prisoners/easy ability to get any.
+			any_prisoner = { has_character_modifier = designated_human_sacrifice_modifier }
+		}
+	}
 
 	# Root is the title
 	# scope:attacker is the attacker
@@ -2061,7 +2398,7 @@ flowery_war_cb = {
 		}
 
 		scope:defender = {
-			is_independent_ruler = yes
+			top_liege = this
 			trigger_if = {
 				limit = { scope:attacker = { is_ai = no } } # Already pre-filtered by the AI due to ai_only_against_neighbors = yes. any_neighboring_top_liege_realm_owner is expensive
 				scope:attacker = {
@@ -2639,6 +2976,9 @@ flowery_war_cb = {
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
 
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_victory_effects = yes
+
 	}
 
 	on_white_peace_desc = {
@@ -2689,6 +3029,37 @@ flowery_war_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				if = {
+					limit = {
+						any_character_struggle = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+					}
+					every_character_struggle = {
+						limit = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+						activate_struggle_catalyst = {
+							catalyst = catalyst_war_white_peace
+							character = scope:attacker
+						}
+					}
+				}
+			}
+		}
+		#GH END
 	}
 
 	on_defeat_desc = {
@@ -2701,8 +3072,11 @@ flowery_war_cb = {
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		#EP2 Accolade glory gain from winning against higher ranked enemy
-		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
+		scope:defender = { 
+			mandala_peacemaker_perk_serenity_effect = yes
+			#EP2 accolade glory gain for winning against higher ranked enemy
+			accolade_defender_war_end_glory_gain_high_effect = yes
+		}
 
 		scope:attacker = {
 			if = {	#If the attacker shares the faith of the defender, and both still enjoy human sacrifice, then this war was at least sacred for them.
@@ -3219,6 +3593,9 @@ flowery_war_cb = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_defeat_effects = yes
 	}
 
 	on_primary_attacker_death = inherit
@@ -3259,7 +3636,7 @@ flowery_war_cb = {
 			if = {
 				limit = {
 					scope:attacker = {
-						is_independent_ruler = no
+						top_liege != this
 						vassal_contract_has_flag = vassal_contract_cheaper_religious_war
 					}
 				}
@@ -3449,6 +3826,19 @@ undirected_great_holy_war = {
 
 		#EP2 Accolade glory gain to the holy knights of the faith head
 		scope:attacker = { accolade_attacker_war_end_glory_gain_low_effect = yes }
+		
+		scope:attacker.faith.great_holy_war = { # Make sure steppe crusades do not make silly cultures
+			every_pledged_attacker = {
+				limit = { exists = ghw_beneficiary }
+				ghw_beneficiary = {
+					add_character_flag = {
+						flag = domicile_culture_and_faith_check
+						days = 1
+					}
+					add_to_list = beneficiary_fixing_list
+				}
+			}
+		}
 
 		create_title_and_vassal_change = {
 			type = conquest_holy_war
@@ -3693,6 +4083,27 @@ undirected_great_holy_war = {
 						refill_levy = yes
 						refill_garrison = yes
 					}
+					if = {
+						limit = {
+							has_government = herder_government
+						}
+						every_held_title = {
+							limit = {
+								tier = tier_county
+								title_province = {
+									has_holding_type = herder_holding
+								}
+							}
+							title_province = {
+								set_holding_type = nomad_holding
+							}
+						}
+						change_government = nomad_government
+						domicile = {
+							set_domicile_culture = prev.capital_county.culture
+							set_domicile_faith = prev.capital_county.faith
+						}
+					}
 				}
 			}
 			if = { #If Recipient was landless give him the Crusader King buff.
@@ -3889,6 +4300,9 @@ undirected_great_holy_war = {
 		scope:title_recipient = {
 			custom_tooltip = legend_seed_ghw.tt
 		}
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -3905,8 +4319,11 @@ undirected_great_holy_war = {
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		#EP2 Accolade glory gain to the noble native defenders
-		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
+		scope:defender = { 
+			mandala_peacemaker_perk_serenity_effect = yes
+			#EP2 accolade glory gain for winning against higher ranked enemy
+			accolade_defender_war_end_glory_gain_high_effect = yes
+		}
 
 		scope:attacker.faith.great_holy_war = {
 			divide_war_chest = {
@@ -3936,10 +4353,6 @@ undirected_great_holy_war = {
 				change_fervor = {
 					value = -15
 					desc = fervor_loss_lost_great_holy_war
-				}
-				set_variable = {			#needed for hold_court.6150
-					name = 6150_lost_ghw_recently
-					years = 5
 				}
 			}
 		}
@@ -4024,6 +4437,8 @@ undirected_great_holy_war = {
 			}
 		}
 		debug_log = undirected_ghw_defeat_debug_message
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_defeat_effects = yes
 	}
 }
 
@@ -4092,6 +4507,7 @@ directed_great_holy_war = {
 			text = great_holy_war_cooldown
 			NOT = {	scope:attacker.faith = { exists = var:variable_ghw_cooldown }}
 		}
+		tgp_japan_offensive_wars_ban_trigger = yes
 	}
 
 	allowed_against_character = {
@@ -4202,7 +4618,7 @@ directed_great_holy_war = {
 					is_ai = yes
 					is_playable_character = yes
 					highest_held_title_tier >= tier_county
-					NOT = { this = scope:ghw_sponsor }
+					this != scope:ghw_sponsor
 					exists = scope:attacker.faith.great_holy_war
 					NOT = { scope:attacker.faith.great_holy_war = { has_pledged_attacker = prev } }
 				}
@@ -4216,7 +4632,7 @@ directed_great_holy_war = {
 					highest_held_title_tier >= tier_county
 					exists = scope:attacker.faith.great_holy_war
 					NOT = { scope:attacker.faith.great_holy_war = { has_pledged_defender = prev } }
-					NOT = { scope:defender = top_liege }
+					scope:defender != top_liege
 				}
 				trigger_event = great_holy_war.0093 #AI counterpledging.
 			}
@@ -4266,6 +4682,19 @@ directed_great_holy_war = {
 
 		#EP2 Accolade glory gain to the holy warriors of the faith head
 		scope:attacker = { accolade_attacker_war_end_glory_gain_low_effect = yes }
+		
+		scope:attacker.faith.great_holy_war = { # Make sure steppe crusades do not make silly cultures
+			every_pledged_attacker = {
+				limit = { exists = ghw_beneficiary }
+				ghw_beneficiary = {
+					add_character_flag = {
+						flag = domicile_culture_and_faith_check
+						days = 1
+					}
+					add_to_list = beneficiary_fixing_list
+				}
+			}
+		}
 
 		scope:attacker.faith.great_holy_war.ghw_target_title = { #Loc keys for localization fluff.
 			save_scope_as = target_kingdom
@@ -4458,7 +4887,11 @@ directed_great_holy_war = {
 				}
 			}
 		}
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_victory_effects = yes
 	}
+
 	on_white_peace_desc = {
 		desc = WHITE_PEACE_DISABLED
 	}
@@ -4473,8 +4906,11 @@ directed_great_holy_war = {
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		#EP2 Accolade glory gain to the noble native defenders
-		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
+		scope:defender = { 
+			mandala_peacemaker_perk_serenity_effect = yes
+			#EP2 accolade glory gain for winning against higher ranked enemy
+			accolade_defender_war_end_glory_gain_high_effect = yes
+		}
 
 		scope:attacker.faith.great_holy_war.ghw_target_title = { #Loc keys for localization fluff.
 			save_scope_as = target_kingdom
@@ -4529,6 +4965,9 @@ directed_great_holy_war = {
 				}
 			}
 		}
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_defeat_effects = yes
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title

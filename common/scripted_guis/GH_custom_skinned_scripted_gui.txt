@@ -26,7 +26,12 @@ byzantine_skin_scripted_gui = {
 	scope = character
 	is_shown = {
 		has_dlc_feature = roads_to_power
-		culture = { has_cultural_pillar = heritage_aversarian } #GH_EP3_TODO: make more common for ave-adjacent groups?
+		culture = {
+			OR = {
+				has_cultural_pillar = heritage_aversarian
+				has_cultural_pillar = heritage_opakhasian
+			}
+		}
 	}
 }
 

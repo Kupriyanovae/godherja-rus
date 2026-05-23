@@ -17,12 +17,7 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = aggressive
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						NOT = {
-							geographical_region = world_greater_aversaria
-						}
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_panther_trigger = yes } } } ## GH CHANGE: Reworked
 					NOR = {
 						has_trait = giant
 						has_trait = dull
@@ -41,13 +36,7 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = leader
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						OR = {
-							geographical_region = world_ga_kashirya
-							geographical_region = world_sarradon
-						}
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_tiger_trigger = yes } } } ## GH CHANGE: Reworked
 					NOT = {
 						has_trait = clubfooted
 					}
@@ -64,10 +53,14 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = amoral
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						NOT = {
-							geographical_region = world_sarradon
+					liege ?= { ## GH CHANGE: Reworked
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_wolf_trigger = yes
+									GH_hunt_animal_steppe_wolf_trigger = yes
+								}
+							}
 						}
 					}
 				}
@@ -82,12 +75,7 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = amoral
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						OR = {
-							geographical_region = world_sarradon
-						}
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_jackal_trigger = yes } } } ## GH CHANGE: Reworked
 					NOR = {
 						has_trait = giant
 						has_trait = strong
@@ -105,12 +93,7 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = champion
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						OR = {
-							geographical_region = world_greater_aversaria
-						}
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_lynx_trigger = yes } } } ## GH TODO: Add wolverines
 					NOR = {
 						has_trait = compassionate
 						has_trait = calm
@@ -127,12 +110,7 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = amoral
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						OR = {
-							geographical_region = world_sarradon
-						}
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_hyena_trigger = yes } } } ## GH CHANGE: Reworked
 					NOT = {
 						has_trait = beauty_good
 					}
@@ -150,10 +128,16 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = defensive
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						OR = {
-							geographical_region = GH_REPLACE_hunt_animal_bear_region
+					liege ?= { ## GH CHANGE: Reworked
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_brown_bear_trigger = yes
+									GH_hunt_animal_aervalrbear_trigger = yes
+									GH_hunt_animal_sun_bear_trigger = yes
+									GH_hunt_animal_sloth_bear_trigger = yes
+								}
+							}
 						}
 					}
 					OR = {
@@ -177,11 +161,14 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = leader
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						OR = {
-							geographical_region = world_sarradon
-							geographical_region = world_greater_aversaria
+					liege ?= { ## GH CHANGE: Reworked
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_lion_trigger = yes
+									GH_hunt_animal_tinessian_lion_trigger = yes
+								}
+							}
 						}
 					}
 					NOT = {
@@ -226,6 +213,7 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = courtly
 						}
 					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_fox_trigger = yes } } } ## GH CHANGE: Reworked
 					NOR = {
 						has_trait = giant
 						has_trait = dull
@@ -252,12 +240,7 @@ accolade_the_knight_of_the_animal = {
 			}
 			triggered_desc = {
 				trigger = {
-					liege.capital_county.title_province ?= {
-						NOR = {
-							geographical_region = world_ga_clanlands
-							geographical_region = world_ga_foglands
-						}
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_peafowl_trigger = yes } } } ## GH CHANGE: Reworked
 					has_trait = beauty_good
 				}
 				desc = accolade_peacock
@@ -274,10 +257,7 @@ accolade_the_knight_of_the_animal = {
 						}
 					}
 					is_female = no
-					exists = liege
-					liege.capital_county.title_province ?= {
-						geographical_region = GH_REPLACE_hunt_animal_deer_region
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_deer_trigger = yes } } } ## GH CHANGE: Reworked
 				}
 				desc = accolade_stag
 			}
@@ -293,10 +273,7 @@ accolade_the_knight_of_the_animal = {
 						}
 					}
 					is_female = yes
-					exists = liege
-					liege.capital_county.title_province ?= {
-						geographical_region = GH_REPLACE_hunt_animal_deer_region
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_deer_trigger = yes } } } ## GH CHANGE: Reworked
 					NOR = {
 						has_trait = giant
 						has_trait = gluttonous
@@ -315,9 +292,15 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = equestrian
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						geographical_region = GH_REPLACE_hunt_animal_antelope_region
+					liege ?= { ## GH CHANGE: Reworked
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_blackbuck_trigger = yes
+									GH_hunt_animal_screwhorn_antelope_trigger = yes
+								}
+							}
+						}
 					}
 					NOR = {
 						has_trait = giant
@@ -336,10 +319,7 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = champion
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						geographical_region = world_sarradon
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_armazli_rhinoceros_trigger = yes } } } ## GH CHANGE: Reworked
 					OR = {
 						has_trait = giant
 						has_trait = gluttonous
@@ -421,13 +401,7 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = subtle
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						OR = {
-							geographical_region = world_ga_kashirya
-							geographical_region = world_sarradon
-						}
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_crocodile_trigger = yes } } } ## GH CHANGE: Reworked
 				}
 				desc = accolade_crocodile
 			}
@@ -439,12 +413,13 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = aggressive
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						OR = {
-							geographical_region = world_ga_kashirya
-							geographical_region = world_sarradon
-							geographical_region = world_ga_aironoi
+					liege ?= {
+						capital_county.title_province ?= {
+							OR = { ## GH CHANGE: GH Regions
+								geographical_region = world_ga_kashirya
+								geographical_region = world_sarradon
+								geographical_region = world_ga_aironoi
+							}
 						}
 					}
 				}
@@ -472,16 +447,14 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = defensive
 						}
 					}
-					liege.capital_county.title_province ?= {
-						geographical_region = world_ga_marcher_kingdoms
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_griffon_trigger = yes } } } ## GH CHANGE: Reworked
 				}
 				desc = accolade_griffon # GH CHANGE: Changed Gryphon to Griffon
 			}
 
-			## GH ADDITIONS ##
+			## GH ADDITIONS
 
-			triggered_desc = {
+			triggered_desc = { # Hippogriff
 				trigger = {
 					scope:accolade_type = {
 						OR = {
@@ -490,12 +463,1216 @@ accolade_the_knight_of_the_animal = {
 							type_has_accolade_category = defensive
 						}
 					}
-					liege.capital_county.title_province ?= {
-						geographical_region = world_ga_marcher_kingdoms
+					liege.capital_county.title_province ?= { geographical_region = world_ga_marcher_kingdoms }
+				}
+				desc = accolade_hippogriff # RIP
+			}
+			triggered_desc = { # Owlbear
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = militant
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = forceful
+							type_has_accolade_category = champion
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_owlbear_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = arrogant
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = wrathful
 					}
 				}
-				desc = accolade_hippogriff
+				desc = accolade_owlbear
 			}
+			triggered_desc = { # Saiga
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = defensive
+							type_has_accolade_category = courtly
+							type_has_accolade_category = ethical
+							type_has_accolade_category = subtle
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_saiga_trigger = yes } } }
+					NOR = {
+						has_trait = giant
+						has_trait = gluttonous
+					}
+				}
+				desc = accolade_saiga
+			}
+			triggered_desc = { # Karkadann
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = militant
+							type_has_accolade_category = champion
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_karkadann_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = gluttonous
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = wrathful
+					}
+				}
+				desc = accolade_karkadann
+			}
+			triggered_desc = { # Chital
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+							type_has_accolade_category = defensive
+							type_has_accolade_category = ethical
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_chital_trigger = yes } } }
+					OR = {
+						has_trait = compassionate
+						has_trait = arrogant
+						has_trait = beauty_good
+					}
+				}
+				desc = accolade_chital
+			}
+			triggered_desc = { # Gazelle
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = defensive
+							type_has_accolade_category = courtly
+							type_has_accolade_category = ethical
+							type_has_accolade_category = subtle
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_gazelle_trigger = yes } } }
+					NOR = {
+						has_trait = giant
+						has_trait = gluttonous
+					}
+				}
+				desc = accolade_gazelle
+			}
+			triggered_desc = { # Oryx
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = defensive
+							type_has_accolade_category = courtly
+							type_has_accolade_category = ethical
+							type_has_accolade_category = subtle
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_oryx_trigger = yes } } }
+					NOR = {
+						has_trait = giant
+						has_trait = gluttonous
+					}
+				}
+				desc = accolade_oryx
+			}
+			triggered_desc = { # Elk
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = militant
+							type_has_accolade_category = courtly
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+							type_has_accolade_category = ethical
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_elk_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = stubborn
+					}
+				}
+				desc = accolade_elk
+			}
+			triggered_desc = { # Bubalus
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_bubalus_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = content
+						has_trait = humble
+						has_trait = patient
+					}
+				}
+				desc = accolade_bubalus
+			}
+			triggered_desc = { # Buffalo
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_peninsular_buffalo_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = wrathful
+						has_trait = stubborn
+					}
+				}
+				desc = accolade_buffalo
+			}
+			triggered_desc = { # Anoa
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+							type_has_accolade_category = defensive
+							type_has_accolade_category = ethical
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_anoa_trigger = yes } } }
+					OR = {
+						has_trait = lustful
+						has_trait = shy
+						has_trait = humble
+						has_trait = patient
+					}
+				}
+				desc = accolade_anoa
+			}
+			triggered_desc = { # Bison
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = defensive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= {
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_wood_bison_trigger = yes
+									GH_hunt_animal_steppe_bison_trigger = yes
+								}
+							}
+						}
+					}
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = wrathful
+						has_trait = stubborn
+					}
+				}
+				desc = accolade_bison
+			}
+			triggered_desc = { # Gaur
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_gaur_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = stubborn
+						has_trait = calm
+						has_trait = patient
+					}
+				}
+				desc = accolade_gaur
+			}
+			triggered_desc = { # Elephant
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+							this = accolade_type:elephantry_attribute
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_elephant_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = stubborn
+						has_trait = calm
+						has_trait = patient
+						has_trait = gluttonous
+					}
+				}
+				desc = accolade_elephant
+			}
+			triggered_desc = { # Mammoth
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+							this = accolade_type:mammothry_attribute
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_mammoth_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = stubborn
+						has_trait = calm
+						has_trait = patient
+						has_trait = gluttonous
+					}
+				}
+				desc = accolade_mammoth
+			}
+			triggered_desc = { # Aurochs
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_aurochs_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = lustful
+						has_trait = stubborn
+						has_trait = arrogant
+					}
+				}
+				desc = accolade_aurochs
+			}
+			triggered_desc = { # Lymrill
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_lymrill_trigger = yes } } }
+					NOT = { has_trait = intellect_bad }
+				}
+				desc = accolade_lymrill
+			}
+			triggered_desc = { # Crocotta
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = leader
+							type_has_accolade_category = militant
+							type_has_accolade_category = forceful
+							type_has_accolade_category = subtle
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_crocotta_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = callous
+						has_trait = sadistic
+						has_trait = deceitful
+						has_trait = intellect_good
+						has_trait = wrathful
+						has_trait = vengeful
+					}
+				}
+				desc = accolade_crocotta
+			}
+			triggered_desc = { # Apep-Ibizan
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = militant
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_apep_ibizan_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = ambitious
+						has_trait = callous
+						has_trait = sadistic
+						has_trait = deceitful
+						has_trait = wrathful
+						has_trait = vengeful
+					}
+					NOR = {
+						has_trait = humble
+						has_trait = compassionate
+						has_trait = just
+					}
+				}
+				desc = accolade_apep_ibizan
+			}
+			triggered_desc = { # Kursha
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = leader
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+							type_has_accolade_category = defensive
+							type_has_accolade_category = ethical
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_kursha_trigger = yes } } }
+					OR = {
+						has_trait = loyal
+						has_trait = just
+						has_trait = brave
+						has_trait = gregarious
+						has_trait = honest
+						has_trait = trusting
+					}
+				}
+				desc = accolade_kursha
+			}
+			triggered_desc = { # Leopard
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = courtly
+							type_has_accolade_category = forceful
+							type_has_accolade_category = subtle
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= {
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_leopard_trigger = yes
+									GH_hunt_animal_snow_leopard_trigger = yes
+									GH_hunt_animal_clouded_leopard_trigger = yes
+								}
+							}
+						}
+					}
+					NOR = {
+						has_trait = giant
+						has_trait = intellect_bad
+						has_trait = beauty_bad
+					}
+				}
+				desc = accolade_leopard
+			}
+			triggered_desc = { # Caracal
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_caracal_trigger = yes } } }
+					NOR = {
+						has_trait = giant
+						has_trait = intellect_bad
+					}
+				}
+				desc = accolade_caracal
+			}
+			triggered_desc = { # Cheetah
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = subtle
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_cheetah_trigger = yes } } }
+					NOT = { has_trait = giant }
+				}
+				desc = accolade_cheetah
+			}
+			triggered_desc = { # Lynx
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_lynx_trigger = yes } } }
+					NOR = {
+						has_trait = giant
+						has_trait = intellect_bad
+					}
+				}
+				desc = accolade_lynx
+			}
+			triggered_desc = { # Fossa
+				trigger = {
+					scope:accolade_type = {
+						OR = { # Madagascar the Movie slander stereotypes
+							type_has_accolade_category = leader
+							type_has_accolade_category = militant
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_fossa_trigger = yes } } }
+					NOT = { has_trait = giant }
+				}
+				desc = accolade_fossa
+			}
+			triggered_desc = { # Ibex
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_ibex_trigger = yes } } }
+					OR = {
+						has_trait = calm
+						has_trait = content
+						has_trait = honest
+						has_trait = just
+						has_trait = patient
+						has_trait = stubborn
+					}
+				}
+				desc = accolade_ibex
+			}
+			triggered_desc = { # Tahr
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_tahr_trigger = yes } } }
+					OR = {
+						has_trait = calm
+						has_trait = content
+						has_trait = honest
+						has_trait = just
+						has_trait = patient
+						has_trait = stubborn
+					}
+				}
+				desc = accolade_tahr
+			}
+			triggered_desc = { # Markhor
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_markhor_trigger = yes } } }
+					OR = {
+						has_trait = calm
+						has_trait = content
+						has_trait = honest
+						has_trait = just
+						has_trait = patient
+						has_trait = stubborn
+						has_trait = beauty_bad
+					}
+				}
+				desc = accolade_markhor
+			}
+			triggered_desc = { # Hippopotamus
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_hippopotamus_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = giant
+						has_trait = wrathful
+						has_trait = arrogant
+						has_trait = gluttonous
+						has_trait = stubborn
+					}
+				}
+				desc = accolade_hippopotamus
+			}
+			triggered_desc = { # Gorilla
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = militant
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_gorilla_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = giant
+						has_trait = strong
+					}
+				}
+				desc = accolade_gorilla
+			}
+			triggered_desc = { # Lemur
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = leader
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_lemur_trigger = yes } } }
+					OR = {
+						has_trait = craven
+						has_trait = lustful
+						has_trait = gregarious
+						has_trait = fickle
+					}
+				}
+				desc = accolade_lemur
+			}
+			triggered_desc = { # Bat
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = subtle
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_bat_trigger = yes } } }
+					OR = {
+						has_trait = craven
+						has_trait = vengeful
+						has_trait = deceitful
+					}
+					NOT = { has_trait = giant }
+				}
+				desc = accolade_bat
+			}
+			triggered_desc = { # Cobra
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = subtle
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= {
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_king_cobra_trigger = yes
+									GH_hunt_animal_emperor_cobra_trigger = yes
+								}
+							}
+						}
+					}
+					OR = {
+						has_trait = vengeful
+						has_trait = deceitful
+					}
+					NOT = { has_trait = giant }
+				}
+				desc = accolade_cobra
+			}
+			triggered_desc = { # Rahksasa
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = militant
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_great_rahksasa_trigger = yes } } }
+					OR = {
+						has_trait = brave
+						has_trait = arrogant
+						has_trait = ambitious
+						has_trait = physique_good
+						has_trait = giant
+						has_trait = strong
+						has_trait = deceitful
+						has_trait = callous
+						has_trait = sadistic
+						has_trait = vengeful
+					}
+				}
+				desc = accolade_rahksasa
+			}
+			triggered_desc = { # Naga
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = forceful
+							type_has_accolade_category = subtle
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_naga_trigger = yes } } }
+					OR = {
+						has_trait = arrogant
+						has_trait = deceitful
+						has_trait = callous
+						has_trait = sadistic
+						has_trait = vengeful
+						has_trait = greedy
+					}
+				}
+				desc = accolade_naga
+			}
+			triggered_desc = { # Coatl
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_coatl_trigger = yes } } }
+					OR = {
+						has_trait = shy
+						has_trait = craven
+						has_trait = arrogant
+					}
+				}
+				desc = accolade_coatl
+			}
+			triggered_desc = { # Akapura
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = defensive
+							type_has_accolade_category = ethical
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_akapura_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = shy
+						has_trait = compassionate
+						has_trait = strong
+						has_trait = gluttonous
+						has_trait = lazy
+					}
+				}
+				desc = accolade_akapura
+			}
+			triggered_desc = { # Tarasque
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_tarasque_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = beauty_bad
+						has_trait = physique_good
+						has_trait = strong
+					}
+				}
+				desc = accolade_tarasque
+			}
+			triggered_desc = { # Mallard
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_mallard_trigger = yes } } }
+				}
+				desc = accolade_mallard
+			}
+			triggered_desc = { # Goose
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_goose_trigger = yes } } }
+				}
+				desc = accolade_goose
+			}
+			triggered_desc = { # Swan
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_swan_trigger = yes } } }
+					NOT = { has_trait = beauty_bad }
+				}
+				desc = accolade_swan
+			}
+			triggered_desc = { # Flamingo
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_flamingo_trigger = yes } } }
+					NOT = { has_trait = beauty_bad }
+				}
+				desc = accolade_flamingo
+			}
+			triggered_desc = { # Ostrich
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = militant
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_ostrich_trigger = yes } } }
+				}
+				desc = accolade_ostrich
+			}
+			triggered_desc = { # Roc
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_roc_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = wrathful
+						has_trait = arrogant
+						has_trait = ambitious
+					}
+				}
+				desc = accolade_roc
+			}
+			triggered_desc = { # Cockatrice
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_cockatrice_trigger = yes } } }
+					OR = {
+						has_trait = deceitful
+						has_trait = vengeful
+					}
+				}
+				desc = accolade_cockatrice
+			}
+			triggered_desc = { # Zilant
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_zilant_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = wrathful
+						has_trait = arrogant
+						has_trait = ambitious
+					}
+				}
+				desc = accolade_zilant
+			}
+			triggered_desc = { # Doyarchu
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = leader
+							type_has_accolade_category = militant
+							type_has_accolade_category = forceful
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_doyarchu_trigger = yes } } }
+					OR = {
+						has_trait = deceitful
+						has_trait = gregarious
+					}
+				}
+				desc = accolade_doyarchu
+			}
+			triggered_desc = { # Hippocampus
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = courtly
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { capital_county.title_province = { geographical_region = world_ga_isles } }
+					OR = {
+						has_trait = gregarious
+						has_trait = wrathful
+						has_trait = vengeful
+						has_trait = ambitious
+					}
+				}
+				desc = accolade_hippocampus
+			}
+			triggered_desc = { # Adze
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = subtle
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_adze_trigger = yes } } }
+					OR = {
+						has_trait = deceitful
+						has_trait = shy
+						has_trait = vengeful
+					}
+				}
+				desc = accolade_adze
+			}
+			triggered_desc = { # Ukhinbooum
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = subtle
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_ukhinbooum_trigger = yes } } }
+					OR = {
+						has_trait = deceitful
+						has_trait = shy
+						has_trait = vengeful
+					}
+				}
+				desc = accolade_ukhinbooum
+			}
+			triggered_desc = { # Ubir
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = subtle
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_ubir_trigger = yes } } }
+					OR = {
+						has_trait = deceitful
+						has_trait = shy
+						has_trait = vengeful
+					}
+				}
+				desc = accolade_ubir
+			}
+			triggered_desc = { # Manticore
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_malcoisic_manticore_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = brave
+						has_trait = ambitious
+						has_trait = wrathful
+						has_trait = deceitful
+					}
+				}
+				desc = accolade_manticore
+			}
+			triggered_desc = { # Shahmaran
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_shahmaran_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = brave
+						has_trait = ambitious
+						has_trait = wrathful
+						has_trait = deceitful
+					}
+				}
+				desc = accolade_shahmaran
+			}
+			triggered_desc = { # Chimera
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_chimera_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = brave
+						has_trait = ambitious
+						has_trait = wrathful
+						has_trait = deceitful
+						has_trait = lunatic
+						has_trait = possessed
+					}
+				}
+				desc = accolade_chimera
+			}
+			triggered_desc = { # Gajara
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_gajara_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = ambitious
+						has_trait = wrathful
+					}
+				}
+				desc = accolade_gajara
+			}
+			triggered_desc = { # Hieracosphinx
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_hieracosphinx_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = ambitious
+						has_trait = wrathful
+					}
+				}
+				desc = accolade_hieracosphinx
+			}
+			triggered_desc = { # Pegasus
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = courtly
+							type_has_accolade_category = ethical
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_pegasus_trigger = yes } } }
+				}
+				desc = accolade_pegasus
+			}
+			triggered_desc = { # Peluda
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_peluda_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = gluttonous
+						has_trait = wrathful
+						has_trait = lazy
+						has_trait = callous
+						has_trait = sadistic
+					}
+				}
+				desc = accolade_peluda
+			}
+			triggered_desc = { # Urmahlullu
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_urmahlullu_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = brave
+						has_trait = wrathful
+						has_trait = callous
+						has_trait = sadistic
+					}
+				}
+				desc = accolade_urmahlullu
+			}
+			triggered_desc = { # Gargoyle
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = leader
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_gargoyle_trigger = yes } } }
+					OR = {
+						has_trait = wrathful
+						has_trait = callous
+						has_trait = sadistic
+					}
+				}
+				desc = accolade_gargoyle
+			}
+			triggered_desc = { # Nagual
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_nagual_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = strong
+					}
+				}
+				desc = accolade_nagual
+			}
+			triggered_desc = { # Banshee
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = subtle
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_banshee_trigger = yes } } }
+					OR = {
+						has_trait = beauty_good
+						has_trait = deceitful
+					}
+				}
+				desc = accolade_banshee
+			}
+
+			## END OF GH ADDITIONS
+
 		}
 	}
 
@@ -521,6 +1698,8 @@ accolade_the_knight_of_the_animal = {
 	}
 }
 
+## GH NOTE: The block below is largely identical to the block above as of 1.19, save for accolade_beast and accolade_hero plus an extra line break
+
 # The Lion of Cairo
 accolade_the_animal_of_capital = {
 	key = "accolade_the_animal_of_capital"
@@ -540,10 +1719,7 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = aggressive
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_panther_trigger = yes } } } ## GH CHANGE: Reworked
 					NOR = {
 						has_trait = giant
 						has_trait = dull
@@ -562,10 +1738,7 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = leader
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_tiger_trigger = yes } } } ## GH CHANGE: Reworked
 					NOT = {
 						has_trait = clubfooted
 					}
@@ -582,9 +1755,15 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = amoral
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
+					liege ?= { ## GH CHANGE: Reworked
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_wolf_trigger = yes
+									GH_hunt_animal_steppe_wolf_trigger = yes
+								}
+							}
+						}
 					}
 				}
 				desc = accolade_wolf
@@ -598,10 +1777,7 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = amoral
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_jackal_trigger = yes } } } ## GH CHANGE: Reworked
 					NOR = {
 						has_trait = giant
 						has_trait = strong
@@ -619,10 +1795,7 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = champion
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_lynx_trigger = yes } } } ## GH TODO: Add wolverines
 					NOR = {
 						has_trait = compassionate
 						has_trait = calm
@@ -639,10 +1812,7 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = amoral
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_hyena_trigger = yes } } } ## GH CHANGE: Reworked
 					NOT = {
 						has_trait = beauty_good
 					}
@@ -660,9 +1830,17 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = defensive
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
+					liege ?= { ## GH CHANGE: Reworked
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_brown_bear_trigger = yes
+									GH_hunt_animal_aervalrbear_trigger = yes
+									GH_hunt_animal_sun_bear_trigger = yes
+									GH_hunt_animal_sloth_bear_trigger = yes
+								}
+							}
+						}
 					}
 					OR = {
 						has_trait = giant
@@ -685,9 +1863,15 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = leader
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
+					liege ?= { ## GH CHANGE: Reworked
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_lion_trigger = yes
+									GH_hunt_animal_tinessian_lion_trigger = yes
+								}
+							}
+						}
 					}
 					NOT = {
 						has_trait = craven
@@ -731,10 +1915,7 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = courtly
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_fox_trigger = yes } } } ## GH CHANGE: Reworked
 					NOR = {
 						has_trait = giant
 						has_trait = dull
@@ -762,9 +1943,7 @@ accolade_the_animal_of_capital = {
 
 			triggered_desc = {
 				trigger = {
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_peafowl_trigger = yes } } } ## GH CHANGE: Reworked
 					has_trait = beauty_good
 				}
 				desc = accolade_peacock
@@ -781,10 +1960,7 @@ accolade_the_animal_of_capital = {
 						}
 					}
 					is_female = no
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_deer_trigger = yes } } } ## GH CHANGE: Reworked
 				}
 				desc = accolade_stag
 			}
@@ -800,10 +1976,7 @@ accolade_the_animal_of_capital = {
 						}
 					}
 					is_female = yes
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_deer_trigger = yes } } } ## GH CHANGE: Reworked
 					NOR = {
 						has_trait = giant
 						has_trait = gluttonous
@@ -822,9 +1995,15 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = equestrian
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
+					liege ?= { ## GH CHANGE: Reworked
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_blackbuck_trigger = yes
+									GH_hunt_animal_screwhorn_antelope_trigger = yes
+								}
+							}
+						}
 					}
 					NOR = {
 						has_trait = giant
@@ -843,10 +2022,7 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = champion
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_armazli_rhinoceros_trigger = yes } } } ## GH CHANGE: Reworked
 					OR = {
 						has_trait = giant
 						has_trait = gluttonous
@@ -951,10 +2127,7 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = subtle
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_crocodile_trigger = yes } } } ## GH CHANGE: Reworked
 				}
 				desc = accolade_crocodile
 			}
@@ -966,9 +2139,14 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = aggressive
 						}
 					}
-					exists = liege
-					liege.capital_county.title_province ?= {
-						always = yes # GH URGENT: Generic geo region triggers
+					liege ?= {
+						capital_county.title_province ?= {
+							OR = { ## GH CHANGE: GH Regions
+								geographical_region = world_ga_kashirya
+								geographical_region = world_sarradon
+								geographical_region = world_ga_aironoi
+							}
+						}
 					}
 				}
 				desc = accolade_scorpion
@@ -995,16 +2173,14 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = defensive
 						}
 					}
-					liege.capital_county.title_province ?= {
-						geographical_region = world_ga_marcher_kingdoms
-					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_griffon_trigger = yes } } } ## GH CHANGE: Reworked
 				}
 				desc = accolade_griffon # GH CHANGE: Changed Gryphon to Griffon
 			}
 
-			## GH ADDITIONS ##
+			## GH ADDITIONS
 
-			triggered_desc = {
+			triggered_desc = { # Hippogriff
 				trigger = {
 					scope:accolade_type = {
 						OR = {
@@ -1013,12 +2189,1216 @@ accolade_the_animal_of_capital = {
 							type_has_accolade_category = defensive
 						}
 					}
-					liege.capital_county.title_province ?= {
-						geographical_region = world_ga_marcher_kingdoms
+					liege.capital_county.title_province ?= { geographical_region = world_ga_marcher_kingdoms }
+				}
+				desc = accolade_hippogriff # RIP
+			}
+			triggered_desc = { # Owlbear
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = militant
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = forceful
+							type_has_accolade_category = champion
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_owlbear_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = arrogant
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = wrathful
 					}
 				}
-				desc = accolade_hippogriff
+				desc = accolade_owlbear
 			}
+			triggered_desc = { # Saiga
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = defensive
+							type_has_accolade_category = courtly
+							type_has_accolade_category = ethical
+							type_has_accolade_category = subtle
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_saiga_trigger = yes } } }
+					NOR = {
+						has_trait = giant
+						has_trait = gluttonous
+					}
+				}
+				desc = accolade_saiga
+			}
+			triggered_desc = { # Karkadann
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = militant
+							type_has_accolade_category = champion
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_karkadann_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = gluttonous
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = wrathful
+					}
+				}
+				desc = accolade_karkadann
+			}
+			triggered_desc = { # Chital
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+							type_has_accolade_category = defensive
+							type_has_accolade_category = ethical
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_chital_trigger = yes } } }
+					OR = {
+						has_trait = compassionate
+						has_trait = arrogant
+						has_trait = beauty_good
+					}
+				}
+				desc = accolade_chital
+			}
+			triggered_desc = { # Gazelle
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = defensive
+							type_has_accolade_category = courtly
+							type_has_accolade_category = ethical
+							type_has_accolade_category = subtle
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_gazelle_trigger = yes } } }
+					NOR = {
+						has_trait = giant
+						has_trait = gluttonous
+					}
+				}
+				desc = accolade_gazelle
+			}
+			triggered_desc = { # Oryx
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = defensive
+							type_has_accolade_category = courtly
+							type_has_accolade_category = ethical
+							type_has_accolade_category = subtle
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_oryx_trigger = yes } } }
+					NOR = {
+						has_trait = giant
+						has_trait = gluttonous
+					}
+				}
+				desc = accolade_oryx
+			}
+			triggered_desc = { # Elk
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = militant
+							type_has_accolade_category = courtly
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+							type_has_accolade_category = ethical
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_elk_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = stubborn
+					}
+				}
+				desc = accolade_elk
+			}
+			triggered_desc = { # Bubalus
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_bubalus_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = content
+						has_trait = humble
+						has_trait = patient
+					}
+				}
+				desc = accolade_bubalus
+			}
+			triggered_desc = { # Buffalo
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_peninsular_buffalo_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = wrathful
+						has_trait = stubborn
+					}
+				}
+				desc = accolade_buffalo
+			}
+			triggered_desc = { # Anoa
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+							type_has_accolade_category = defensive
+							type_has_accolade_category = ethical
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_anoa_trigger = yes } } }
+					OR = {
+						has_trait = lustful
+						has_trait = shy
+						has_trait = humble
+						has_trait = patient
+					}
+				}
+				desc = accolade_anoa
+			}
+			triggered_desc = { # Bison
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = defensive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= {
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_wood_bison_trigger = yes
+									GH_hunt_animal_steppe_bison_trigger = yes
+								}
+							}
+						}
+					}
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = wrathful
+						has_trait = stubborn
+					}
+				}
+				desc = accolade_bison
+			}
+			triggered_desc = { # Gaur
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_gaur_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = stubborn
+						has_trait = calm
+						has_trait = patient
+					}
+				}
+				desc = accolade_gaur
+			}
+			triggered_desc = { # Elephant
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+							this = accolade_type:elephantry_attribute
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_elephant_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = stubborn
+						has_trait = calm
+						has_trait = patient
+						has_trait = gluttonous
+					}
+				}
+				desc = accolade_elephant
+			}
+			triggered_desc = { # Mammoth
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+							this = accolade_type:mammothry_attribute
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_mammoth_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = stubborn
+						has_trait = calm
+						has_trait = patient
+						has_trait = gluttonous
+					}
+				}
+				desc = accolade_mammoth
+			}
+			triggered_desc = { # Aurochs
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_aurochs_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = lustful
+						has_trait = stubborn
+						has_trait = arrogant
+					}
+				}
+				desc = accolade_aurochs
+			}
+			triggered_desc = { # Lymrill
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_lymrill_trigger = yes } } }
+					NOT = { has_trait = intellect_bad }
+				}
+				desc = accolade_lymrill
+			}
+			triggered_desc = { # Crocotta
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = leader
+							type_has_accolade_category = militant
+							type_has_accolade_category = forceful
+							type_has_accolade_category = subtle
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_crocotta_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = callous
+						has_trait = sadistic
+						has_trait = deceitful
+						has_trait = intellect_good
+						has_trait = wrathful
+						has_trait = vengeful
+					}
+				}
+				desc = accolade_crocotta
+			}
+			triggered_desc = { # Apep-Ibizan
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = militant
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_apep_ibizan_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = ambitious
+						has_trait = callous
+						has_trait = sadistic
+						has_trait = deceitful
+						has_trait = wrathful
+						has_trait = vengeful
+					}
+					NOR = {
+						has_trait = humble
+						has_trait = compassionate
+						has_trait = just
+					}
+				}
+				desc = accolade_apep_ibizan
+			}
+			triggered_desc = { # Kursha
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = leader
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+							type_has_accolade_category = defensive
+							type_has_accolade_category = ethical
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_kursha_trigger = yes } } }
+					OR = {
+						has_trait = loyal
+						has_trait = just
+						has_trait = brave
+						has_trait = gregarious
+						has_trait = honest
+						has_trait = trusting
+					}
+				}
+				desc = accolade_kursha
+			}
+			triggered_desc = { # Leopard
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = courtly
+							type_has_accolade_category = forceful
+							type_has_accolade_category = subtle
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= {
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_leopard_trigger = yes
+									GH_hunt_animal_snow_leopard_trigger = yes
+									GH_hunt_animal_clouded_leopard_trigger = yes
+								}
+							}
+						}
+					}
+					NOR = {
+						has_trait = giant
+						has_trait = intellect_bad
+						has_trait = beauty_bad
+					}
+				}
+				desc = accolade_leopard
+			}
+			triggered_desc = { # Caracal
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_caracal_trigger = yes } } }
+					NOR = {
+						has_trait = giant
+						has_trait = intellect_bad
+					}
+				}
+				desc = accolade_caracal
+			}
+			triggered_desc = { # Cheetah
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = subtle
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_cheetah_trigger = yes } } }
+					NOT = { has_trait = giant }
+				}
+				desc = accolade_cheetah
+			}
+			triggered_desc = { # Lynx
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_lynx_trigger = yes } } }
+					NOR = {
+						has_trait = giant
+						has_trait = intellect_bad
+					}
+				}
+				desc = accolade_lynx
+			}
+			triggered_desc = { # Fossa
+				trigger = {
+					scope:accolade_type = {
+						OR = { # Madagascar the Movie slander stereotypes
+							type_has_accolade_category = leader
+							type_has_accolade_category = militant
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_fossa_trigger = yes } } }
+					NOT = { has_trait = giant }
+				}
+				desc = accolade_fossa
+			}
+			triggered_desc = { # Ibex
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_ibex_trigger = yes } } }
+					OR = {
+						has_trait = calm
+						has_trait = content
+						has_trait = honest
+						has_trait = just
+						has_trait = patient
+						has_trait = stubborn
+					}
+				}
+				desc = accolade_ibex
+			}
+			triggered_desc = { # Tahr
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_tahr_trigger = yes } } }
+					OR = {
+						has_trait = calm
+						has_trait = content
+						has_trait = honest
+						has_trait = just
+						has_trait = patient
+						has_trait = stubborn
+					}
+				}
+				desc = accolade_tahr
+			}
+			triggered_desc = { # Markhor
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = defensive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_markhor_trigger = yes } } }
+					OR = {
+						has_trait = calm
+						has_trait = content
+						has_trait = honest
+						has_trait = just
+						has_trait = patient
+						has_trait = stubborn
+						has_trait = beauty_bad
+					}
+				}
+				desc = accolade_markhor
+			}
+			triggered_desc = { # Hippopotamus
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_hippopotamus_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = giant
+						has_trait = wrathful
+						has_trait = arrogant
+						has_trait = gluttonous
+						has_trait = stubborn
+					}
+				}
+				desc = accolade_hippopotamus
+			}
+			triggered_desc = { # Gorilla
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = militant
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_gorilla_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = giant
+						has_trait = strong
+					}
+				}
+				desc = accolade_gorilla
+			}
+			triggered_desc = { # Lemur
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = leader
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_lemur_trigger = yes } } }
+					OR = {
+						has_trait = craven
+						has_trait = lustful
+						has_trait = gregarious
+						has_trait = fickle
+					}
+				}
+				desc = accolade_lemur
+			}
+			triggered_desc = { # Bat
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = subtle
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_bat_trigger = yes } } }
+					OR = {
+						has_trait = craven
+						has_trait = vengeful
+						has_trait = deceitful
+					}
+					NOT = { has_trait = giant }
+				}
+				desc = accolade_bat
+			}
+			triggered_desc = { # Cobra
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = subtle
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= {
+						any_sub_realm_barony = {
+							title_province = {
+								OR = {
+									GH_hunt_animal_king_cobra_trigger = yes
+									GH_hunt_animal_emperor_cobra_trigger = yes
+								}
+							}
+						}
+					}
+					OR = {
+						has_trait = vengeful
+						has_trait = deceitful
+					}
+					NOT = { has_trait = giant }
+				}
+				desc = accolade_cobra
+			}
+			triggered_desc = { # Rahksasa
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = militant
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_great_rahksasa_trigger = yes } } }
+					OR = {
+						has_trait = brave
+						has_trait = arrogant
+						has_trait = ambitious
+						has_trait = physique_good
+						has_trait = giant
+						has_trait = strong
+						has_trait = deceitful
+						has_trait = callous
+						has_trait = sadistic
+						has_trait = vengeful
+					}
+				}
+				desc = accolade_rahksasa
+			}
+			triggered_desc = { # Naga
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = forceful
+							type_has_accolade_category = subtle
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_naga_trigger = yes } } }
+					OR = {
+						has_trait = arrogant
+						has_trait = deceitful
+						has_trait = callous
+						has_trait = sadistic
+						has_trait = vengeful
+						has_trait = greedy
+					}
+				}
+				desc = accolade_naga
+			}
+			triggered_desc = { # Coatl
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_coatl_trigger = yes } } }
+					OR = {
+						has_trait = shy
+						has_trait = craven
+						has_trait = arrogant
+					}
+				}
+				desc = accolade_coatl
+			}
+			triggered_desc = { # Akapura
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = defensive
+							type_has_accolade_category = ethical
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_akapura_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = shy
+						has_trait = compassionate
+						has_trait = strong
+						has_trait = gluttonous
+						has_trait = lazy
+					}
+				}
+				desc = accolade_akapura
+			}
+			triggered_desc = { # Tarasque
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_tarasque_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = beauty_bad
+						has_trait = physique_good
+						has_trait = strong
+					}
+				}
+				desc = accolade_tarasque
+			}
+			triggered_desc = { # Mallard
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_mallard_trigger = yes } } }
+				}
+				desc = accolade_mallard
+			}
+			triggered_desc = { # Goose
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_goose_trigger = yes } } }
+				}
+				desc = accolade_goose
+			}
+			triggered_desc = { # Swan
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_swan_trigger = yes } } }
+					NOT = { has_trait = beauty_bad }
+				}
+				desc = accolade_swan
+			}
+			triggered_desc = { # Flamingo
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = courtly
+							type_has_accolade_category = subtle
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_flamingo_trigger = yes } } }
+					NOT = { has_trait = beauty_bad }
+				}
+				desc = accolade_flamingo
+			}
+			triggered_desc = { # Ostrich
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = militant
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_ostrich_trigger = yes } } }
+				}
+				desc = accolade_ostrich
+			}
+			triggered_desc = { # Roc
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_roc_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = wrathful
+						has_trait = arrogant
+						has_trait = ambitious
+					}
+				}
+				desc = accolade_roc
+			}
+			triggered_desc = { # Cockatrice
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_cockatrice_trigger = yes } } }
+					OR = {
+						has_trait = deceitful
+						has_trait = vengeful
+					}
+				}
+				desc = accolade_cockatrice
+			}
+			triggered_desc = { # Zilant
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_zilant_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = wrathful
+						has_trait = arrogant
+						has_trait = ambitious
+					}
+				}
+				desc = accolade_zilant
+			}
+			triggered_desc = { # Doyarchu
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = leader
+							type_has_accolade_category = militant
+							type_has_accolade_category = forceful
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_doyarchu_trigger = yes } } }
+					OR = {
+						has_trait = deceitful
+						has_trait = gregarious
+					}
+				}
+				desc = accolade_doyarchu
+			}
+			triggered_desc = { # Hippocampus
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = courtly
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { capital_county.title_province = { geographical_region = world_ga_isles } }
+					OR = {
+						has_trait = gregarious
+						has_trait = wrathful
+						has_trait = vengeful
+						has_trait = ambitious
+					}
+				}
+				desc = accolade_hippocampus
+			}
+			triggered_desc = { # Adze
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = subtle
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_adze_trigger = yes } } }
+					OR = {
+						has_trait = deceitful
+						has_trait = shy
+						has_trait = vengeful
+					}
+				}
+				desc = accolade_adze
+			}
+			triggered_desc = { # Ukhinbooum
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = subtle
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_ukhinbooum_trigger = yes } } }
+					OR = {
+						has_trait = deceitful
+						has_trait = shy
+						has_trait = vengeful
+					}
+				}
+				desc = accolade_ukhinbooum
+			}
+			triggered_desc = { # Ubir
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = subtle
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_ubir_trigger = yes } } }
+					OR = {
+						has_trait = deceitful
+						has_trait = shy
+						has_trait = vengeful
+					}
+				}
+				desc = accolade_ubir
+			}
+			triggered_desc = { # Manticore
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_malcoisic_manticore_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = brave
+						has_trait = ambitious
+						has_trait = wrathful
+						has_trait = deceitful
+					}
+				}
+				desc = accolade_manticore
+			}
+			triggered_desc = { # Shahmaran
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_shahmaran_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = brave
+						has_trait = ambitious
+						has_trait = wrathful
+						has_trait = deceitful
+					}
+				}
+				desc = accolade_shahmaran
+			}
+			triggered_desc = { # Chimera
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_chimera_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = brave
+						has_trait = ambitious
+						has_trait = wrathful
+						has_trait = deceitful
+						has_trait = lunatic
+						has_trait = possessed
+					}
+				}
+				desc = accolade_chimera
+			}
+			triggered_desc = { # Gajara
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_gajara_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = ambitious
+						has_trait = wrathful
+					}
+				}
+				desc = accolade_gajara
+			}
+			triggered_desc = { # Hieracosphinx
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_hieracosphinx_trigger = yes } } }
+					OR = {
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = ambitious
+						has_trait = wrathful
+					}
+				}
+				desc = accolade_hieracosphinx
+			}
+			triggered_desc = { # Pegasus
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = leader
+							type_has_accolade_category = courtly
+							type_has_accolade_category = ethical
+							type_has_accolade_category = equestrian
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_pegasus_trigger = yes } } }
+				}
+				desc = accolade_pegasus
+			}
+			triggered_desc = { # Peluda
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_peluda_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = gluttonous
+						has_trait = wrathful
+						has_trait = lazy
+						has_trait = callous
+						has_trait = sadistic
+					}
+				}
+				desc = accolade_peluda
+			}
+			triggered_desc = { # Urmahlullu
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_urmahlullu_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = strong
+						has_trait = brave
+						has_trait = wrathful
+						has_trait = callous
+						has_trait = sadistic
+					}
+				}
+				desc = accolade_urmahlullu
+			}
+			triggered_desc = { # Gargoyle
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = leader
+							type_has_accolade_category = forceful
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_gargoyle_trigger = yes } } }
+					OR = {
+						has_trait = wrathful
+						has_trait = callous
+						has_trait = sadistic
+					}
+				}
+				desc = accolade_gargoyle
+			}
+			triggered_desc = { # Nagual
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = champion
+							type_has_accolade_category = aggressive
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_nagual_trigger = yes } } }
+					OR = {
+						has_trait = giant
+						has_trait = physique_good
+						has_trait = strong
+					}
+				}
+				desc = accolade_nagual
+			}
+			triggered_desc = { # Banshee
+				trigger = {
+					scope:accolade_type = {
+						OR = {
+							type_has_accolade_category = subtle
+							type_has_accolade_category = amoral
+						}
+					}
+					liege ?= { any_sub_realm_barony = { title_province = { GH_hunt_animal_banshee_trigger = yes } } }
+					OR = {
+						has_trait = beauty_good
+						has_trait = deceitful
+					}
+				}
+				desc = accolade_banshee
+			}
+
+			## END OF GH ADDITIONS
+
 		}
 	}
 
@@ -1105,6 +3485,21 @@ accolade_leader_of_the_culture_maa = {
 				}
 				desc = accolade_horn_blower
 			}
+			triggered_desc = { ## GH BUGFIX: Missing option present in other equivalent blocks
+				trigger = {
+					is_female = yes
+					exists = liege
+					liege.culture = {
+						has_cultural_era_or_later = culture_era_high_medieval
+					}
+					NOT = {
+						culture = {
+							has_cultural_parameter = has_access_to_shieldmaidens
+						}
+					}
+				}
+				desc = accolade_dame
+			}
 			triggered_desc = {
 				trigger = {
 					culture = {
@@ -1154,51 +3549,47 @@ accolade_leader_of_the_culture_maa = {
 				}
 				desc = accolade_first_rider
 			}
+
+			## GH ADDITIONS
+
 			triggered_desc = {
 				trigger = {
-					NOT = {
-						culture = {
-							has_cultural_era_or_later = culture_era_early_medieval
-						}
-					}
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
+					culture = { NOT = { has_cultural_era_or_later = culture_era_early_medieval } }
+					scope:accolade_type = { this = accolade_type:magi_attribute }
 				}
 				desc = accolade_shaman
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_cabal_leader
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_ritualmaster
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_first_enchanter
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_archmagi
 			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_beast_whisperer
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_whip
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_kenneler
+			}
+
+			## END OF GH ADDITIONS
+
 			desc = accolade_leader
 			desc = accolade_master
 		}
@@ -1515,89 +3906,6 @@ accolade_leader_of_the_culture_maa = {
 				}
 				desc = accolade_elephants
 			}
-			#triggered_desc = {
-			#	trigger = {
-			#		scope:accolade_type = {
-			#			this = accolade_type:adeventurers_attribute
-			#		}
-			#	}
-			#	desc = accolade_adventurers
-			#}
-			triggered_desc = {
-				trigger = { scope:accolade_type = { this = accolade_type:mammothry_attribute } }
-				desc = accolade_mammoths
-			}
-			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
-				desc = accolade_magi
-			}
-			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
-				desc = accolade_sorcerers
-			}
-			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
-				desc = accolade_warlocks
-			}
-			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
-				desc = accolade_spellcasters
-			}
-			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-					culture = {
-						has_innovation = innovation_imperial_magic
-					}
-				}
-				desc = accolade_magisters
-			}
-			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-					culture = {
-						has_cultural_era_or_later = culture_era_high_medieval
-						has_cultural_pillar = heritage_aversarian
-					}
-				}
-				desc = accolade_practitioners
-			}
-			#triggered_desc = {
-			#	trigger = {
-			#		scope:accolade_type = {
-			#			this = accolade_type:beastmaster_attribute
-			#		}
-			#	}
-			#	desc = accolade_monsters
-			#}
-			#triggered_desc = {
-			#	trigger = {
-			#		scope:accolade_type = {
-			#			this = accolade_type:charioteer_attribute
-			#		}
-			#	}
-			#	desc = accolade_charioteer
-			#}
 			triggered_desc = {
 				trigger = {
 					scope:accolade_type = {
@@ -1612,6 +3920,82 @@ accolade_leader_of_the_culture_maa = {
 				}
 				desc = accolade_milites
 			}
+
+			## GH ADDITIONS
+
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:mammothry_attribute } }
+				desc = accolade_mammoths
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
+				desc = accolade_magi
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
+				desc = accolade_sorcerers
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
+				desc = accolade_warlocks
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
+				desc = accolade_spellcasters
+			}
+			triggered_desc = {
+				trigger = {
+					scope:accolade_type = { this = accolade_type:magi_attribute }
+					culture = { has_innovation = innovation_imperial_magic }
+				}
+				desc = accolade_magisters
+			}
+			triggered_desc = {
+				trigger = {
+					scope:accolade_type = { this = accolade_type:magi_attribute }
+					culture = {
+						has_cultural_era_or_later = culture_era_high_medieval
+						has_cultural_pillar = heritage_aversarian
+					}
+				}
+				desc = accolade_practitioners
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:charioteer_attribute } }
+				desc = accolade_charioteers
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:anti_magi_attribute } }
+				desc = accolade_anti_magi
+			}
+			triggered_desc = {
+				trigger = {
+					scope:accolade_type = { this = accolade_type:anti_magi_attribute }
+					is_male = yes
+					culture = {
+						OR = {
+							has_cultural_pillar = martial_custom_equal
+							has_cultural_pillar = martial_custom_male_only
+						}
+					}
+				}
+				desc = accolade_fraternal_brothers
+			}
+			triggered_desc = {
+				trigger = {
+					scope:accolade_type = { this = accolade_type:anti_magi_attribute }
+					is_female = yes
+					culture = {
+						OR = {
+							has_cultural_pillar = martial_custom_equal
+							has_cultural_pillar = martial_custom_female_only
+						}
+					}
+				}
+				desc = accolade_sororal_sisters
+			}
+
+			## END OF GH ADDITIONS
 			
 			#fallback
 			desc = accolade_elite
@@ -1622,9 +4006,7 @@ accolade_leader_of_the_culture_maa = {
 		liege ?= {
 			is_playable_character = yes
 		}
-		NOT = {
-			culture = liege.culture
-		}
+		culture != liege.culture
 		scope:accolade_type = {
 			type_has_accolade_category = men_at_arms
 		}
@@ -1714,54 +4096,63 @@ accolade_leader_of_the_lieges_maa = {
 							has_cultural_era_or_later = culture_era_early_medieval
 						}
 					}
+					NOT = { ## GH BUGFIX: Missing trigger present in other equivalent blocks
+						liege ?= {
+							highest_held_title_tier <= tier_duchy
+						}
+					}
 				}
 				desc = accolade_chief
 			}
+			triggered_desc = { ## GH BUGFIX: Missing option present in other equivalent blocks
+				trigger = {
+					scope:accolade_type = {
+						type_has_accolade_category = cavalry
+					}
+				}
+				desc = accolade_first_rider
+			}
+
+			## GH ADDITIONS
+
 			triggered_desc = {
 				trigger = {
-					NOT = {
-						culture = {
-							has_cultural_era_or_later = culture_era_early_medieval
-						}
-					}
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
+					culture = { NOT = { has_cultural_era_or_later = culture_era_early_medieval } }
+					scope:accolade_type = { this = accolade_type:magi_attribute }
 				}
 				desc = accolade_shaman
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_cabal_leader
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_ritualmaster
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_first_enchanter
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_archmagi
 			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_beast_whisperer
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_whip
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_kenneler
+			}
+
+			## END OF GH ADDITIONS
+
 			desc = accolade_leader
 			desc = accolade_master
 		}
@@ -1815,7 +4206,7 @@ accolade_leader_of_the_lieges_maa = {
 						}
 					}
 					scope:accolade_type = {
-						type_has_accolade_category = light_fighter
+							type_has_accolade_category = light_fighter
 					}
 					age <= 35
 				}
@@ -2004,7 +4395,7 @@ accolade_leader_of_the_lieges_maa = {
 							type_has_accolade_category = cavalry
 							type_has_accolade_category = heavy_fighter
 						}
-						NOR = { # GH CHANGE: Mammothry Accolade
+						NOR = { ## GH CHANGE: Mammothry Accolade
 							this = accolade_type:elephantry_attribute
 							this = accolade_type:mammothry_attribute
 						}
@@ -2041,8 +4432,13 @@ accolade_leader_of_the_lieges_maa = {
 			}
 			triggered_desc = {
 				trigger = {
-					culture = {
-						has_cultural_era_or_later = culture_era_early_medieval
+					OR = {
+						culture = {
+							has_cultural_era_or_later = culture_era_early_medieval
+						}
+						culture = {
+							has_cultural_parameter = unlock_maa_ballistrai
+						}
 					}
 					scope:accolade_type = {
 						type_has_accolade_category = siege
@@ -2077,65 +4473,6 @@ accolade_leader_of_the_lieges_maa = {
 				}
 				desc = accolade_elephants
 			}
-			triggered_desc = { # GH ADDITION: Mammothry Accolade
-				trigger = { scope:accolade_type = { this = accolade_type:mammothry_attribute } }
-				desc = accolade_mammoths
-			}
-			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
-				desc = accolade_magi
-			}
-			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
-				desc = accolade_sorcerers
-			}
-			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
-				desc = accolade_warlocks
-			}
-			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
-				desc = accolade_spellcasters
-			}
-			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-					culture = {
-						has_innovation = innovation_imperial_magic
-					}
-				}
-				desc = accolade_magisters
-			}
-			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-					culture = {
-						has_cultural_era_or_later = culture_era_high_medieval
-						has_cultural_pillar = heritage_aversarian
-					}
-				}
-				desc = accolade_practitioners
-			}
 			triggered_desc = {
 				trigger = {
 					scope:accolade_type = {
@@ -2167,16 +4504,16 @@ accolade_leader_of_the_lieges_maa = {
 							scope:accolade_type = {
 								this = accolade_type:archer_attribute
 							}
-							culture = { has_cultural_parameter = unlock_maa_longbowmen }
+							culture = { culture_has_archer_maa = yes } ## GH CHANGE: GH MAA
 						}
-						#AND = { #GH_TODO: implement somewhere
-						#	scope:accolade_type = {
-						#		this = accolade_type:crossbowmen_attribute
-						#	}
-						#	culture = {
-						#		has_innovation = innovation_repeating_crossbow
-						#	}
-						#}
+						AND = {
+							scope:accolade_type = {
+								this = accolade_type:crossbowmen_attribute
+							}
+							culture = {
+								has_innovation = innovation_repeating_crossbow
+							}
+						}
 					}
 				}
 				desc = accolade_cultural_archers
@@ -2188,14 +4525,38 @@ accolade_leader_of_the_lieges_maa = {
 							scope:accolade_type = {
 								this = accolade_type:vanguard_attribute
 							}
-							culture = { has_cultural_parameter = unlock_maa_huscarls }
+							OR = { ## GH CHANGE: GH MAA
+								culture = { culture_has_heavy_infantry_maa = yes }
+								scope:owner.dynasty ?= { has_dynasty_perk = warfare_legacy_5 }
+							}
+						}
+						AND = {
+							scope:accolade_type = {
+								this = accolade_type:pike_attribute
+							}
+							culture = { culture_has_pikemen_maa = yes } ## GH CHANGE: GH MAA
 						}
 					}
 				}
 				desc = accolade_cultural_infantry
 			}
 			triggered_desc = {
-				trigger = { always = no }
+				trigger = {
+					OR = {
+						AND = {
+							scope:accolade_type = {
+								this = accolade_type:lancer_attribute
+							}
+							culture = { culture_has_heavy_cavalry_maa = yes } ## GH CHANGE: GH MAA
+						}
+						AND = {
+							scope:accolade_type = {
+								this = accolade_type:outrider_attribute
+							}
+							culture = { culture_has_light_cavalry_maa = yes } ## GH CHANGE: GH MAA
+						}
+					}
+				}
 				desc = accolade_cultural_cavalry
 			}
 			triggered_desc = {
@@ -2203,10 +4564,78 @@ accolade_leader_of_the_lieges_maa = {
 					scope:accolade_type = {
 						this = accolade_type:skirmisher_attribute
 					}
-					always = no
+					culture = { culture_has_skirmisher_maa = yes } ## GH CHANGE: GH MAA
 				}
 				desc = accolade_cultural_skirmishers
 			}
+
+			## GH ADDITIONS
+
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:mammothry_attribute } }
+				desc = accolade_mammoths
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
+				desc = accolade_magi
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
+				desc = accolade_sorcerers
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
+				desc = accolade_warlocks
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
+				desc = accolade_spellcasters
+			}
+			triggered_desc = {
+				trigger = {
+					scope:accolade_type = { this = accolade_type:magi_attribute }
+					culture = { has_innovation = innovation_imperial_magic }
+				}
+				desc = accolade_magisters
+			}
+			triggered_desc = {
+				trigger = {
+					scope:accolade_type = { this = accolade_type:magi_attribute }
+					culture = {
+						has_cultural_era_or_later = culture_era_high_medieval
+						has_cultural_pillar = heritage_aversarian
+					}
+				}
+				desc = accolade_practitioners
+			}
+			triggered_desc = {
+				trigger = {
+					scope:accolade_type = { this = accolade_type:charioteer_attribute }
+					culture = { culture_has_chariot_cavalry_maa = no }
+				}
+				desc = accolade_charioteers
+			}
+			triggered_desc = {
+				trigger = {
+					scope:accolade_type = { this = accolade_type:charioteer_attribute }
+					culture = { culture_has_chariot_cavalry_maa = yes }
+				}
+				desc = accolade_cultural_chariots
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:anti_magi_attribute } }
+				desc = accolade_anti_magi
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_monsters
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_creatures
+			}
+
+			## END OF GH ADDITIONS
 			
 			#fallback
 			desc = accolade_elite
@@ -2491,6 +4920,7 @@ accolade_leader_of_the_culture_unit = {
 							OR = {
 								has_cultural_era_or_later = culture_era_high_medieval
 								has_cultural_tradition = tradition_byzantine_succession
+								has_cultural_tradition = tradition_ep3_roman_ceremonies
 								has_cultural_tradition = tradition_republican_legacy
 							}
 						}
@@ -2510,54 +4940,35 @@ accolade_leader_of_the_culture_unit = {
 				}
 				desc = accolade_raiders
 			}
+
+			## GH ADDITIONS
+
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = {this = accolade_type:magi_attribute } }
 				desc = accolade_magi
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_sorcerers
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_warlocks
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_spellcasters
 			}
 			triggered_desc = {
 				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-					culture = {
-						has_innovation = innovation_imperial_magic
-					}
+					scope:accolade_type = { this = accolade_type:magi_attribute }
+					culture = { has_innovation = innovation_imperial_magic }
 				}
 				desc = accolade_magisters
 			}
 			triggered_desc = {
 				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
+					scope:accolade_type = { this = accolade_type:magi_attribute }
 					culture = {
 						has_cultural_era_or_later = culture_era_high_medieval
 						has_cultural_pillar = heritage_aversarian
@@ -2565,6 +4976,17 @@ accolade_leader_of_the_culture_unit = {
 				}
 				desc = accolade_practitioners
 			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:charioteer_attribute } }
+				desc = accolade_charioteers
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:anti_magi_attribute } }
+				desc = accolade_anti_magi
+			}
+
+			## END OF GH ADDITIONS
+
 			desc = accolade_nobles
 			desc = accolade_knights
 			desc = accolade_retainers
@@ -2573,9 +4995,7 @@ accolade_leader_of_the_culture_unit = {
 
 	potential = {
 		exists = liege
-		NOT = {
-			culture = liege.culture
-		}
+		culture != liege.culture
 		# No men-at-arms, unless they're noble heavy troops
 		scope:accolade_type = {
 			OR = {
@@ -2711,51 +5131,36 @@ accolade_leader_of_the_lieges_unit = {
 				}
 				desc = accolade_office_bearer
 			}
+
+			## GH ADDITIONS
+
 			triggered_desc = {
 				trigger = {
-					NOT = {
-						culture = {
-							has_cultural_era_or_later = culture_era_early_medieval
-						}
-					}
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
+					culture = { NOT = { has_cultural_era_or_later = culture_era_early_medieval } }
+					scope:accolade_type = { this = accolade_type:magi_attribute }
 				}
 				desc = accolade_shaman
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_cabal_leader
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_ritualmaster
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_first_enchanter
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_archmagi
 			}
+			
+
+			## END OF GH ADDITIONS
+
 			desc = accolade_finest
 			desc = accolade_first
 			desc = accolade_leader
@@ -3037,51 +5442,47 @@ accolade_knight_of_god = {
 				}
 				desc = accolade_banner
 			}
+
+			## GH ADDITIONS
+
 			triggered_desc = {
 				trigger = {
-					NOT = {
-						culture = {
-							has_cultural_era_or_later = culture_era_early_medieval
-						}
-					}
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
+					culture = { NOT = { has_cultural_era_or_later = culture_era_early_medieval } }
+					scope:accolade_type = { this = accolade_type:magi_attribute }
 				}
 				desc = accolade_shaman
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_cabal_leader
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_ritualmaster
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_first_enchanter
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_archmagi
 			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_beast_whisperer
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_whip
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_kenneler
+			}
+
+			## END OF GH ADDITIONS
+
 			desc = accolade_defender
 		}
 	}
@@ -3128,6 +5529,9 @@ accolade_knight_of_god = {
 					scope:accolade_type = {
 						type_has_accolade_category = defensive
 					}
+					#NOT = { ## GH CHANGE: Removed IRL reference
+					#	faith.religion = religion:west_african_roog_religion
+					#}
 				}
 				desc = accolade_health_god
 			}
@@ -3164,6 +5568,15 @@ accolade_knight_of_god = {
 				desc = accolade_fertility_god
 			}
 			triggered_desc = {
+				#trigger = { ## GH CHANGE: Removed IRL references
+				#	NOR = {
+				#		faith.religion = religion:finno_ugric_religion
+				#		faith.religion = religion:north_african_religion
+				#		faith.religion = religion:paganism_religion
+				#		faith.religion = religion:west_african_religion
+				#		faith.religion = religion:west_african_roog_religion
+				#	}
+				#}
 				desc = accolade_good_god
 			}
 			desc = accolade_high_god
@@ -3173,6 +5586,7 @@ accolade_knight_of_god = {
 	potential = {
 		exists = liege
 		religion = liege.religion
+		#NOT = { faith.religion = religion:west_african_bori_religion } ## GH CHANGE: Removed IRL reference
 	}
 }
 
@@ -3272,62 +5686,51 @@ accolade_bearer_of_the_lieges_item = {
 				}
 				desc = accolade_spurs
 			}
+
+			## GH ADDITIONS
+
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_scrolls
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_esoterica
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_arcana
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_orbs
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_staves
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_wands
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_rituals
 			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_collars
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_whips
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_kennel_keys
+			}
+
+			## END OF GH ADDITIONS
 		}
 	}
 
@@ -3541,54 +5944,44 @@ accolade_first_of_the_field = {
 				}
 				desc = accolade_of_the_pursuit
 			}
+
+			## GH ADDITIONS
+
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
-				desc = accolade_of_the_cabal
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
+				desc = accolade_among_the_cabal
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_of_the_spellmasters
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_of_the_magi
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
-				desc = accolade_enchanter
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
+				desc = accolade_among_the_enchanters
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
-				desc = accolade_archmagi
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
+				desc = accolade_among_the_archmagi
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
-				desc = accolade_magi
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_of_the_beast_whisperers
 			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_of_the_whips
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_among_the_kennelers
+			}
+
+			## END OF GH ADDITIONS
+
 		}
 	}
 
@@ -3720,7 +6113,16 @@ accolade_the_warrior_in_the_terrain = {
 				trigger = {
 					liege ?= {
 						NOR = {
-							government_has_flag = government_is_tribal government_has_flag = government_is_clan government_has_flag = government_is_continental_clan
+							government_has_flag = government_is_tribal
+							government_has_flag = government_is_clan
+
+							## GH ADDITIONS
+
+							government_has_flag = government_is_continental_clan
+							government_has_flag = government_is_pirate
+							government_has_flag = government_is_peasant_republic
+
+							## END OF GH ADDITIONS
 						}
 					}
 					scope:accolade_type = {
@@ -4147,51 +6549,47 @@ accolade_the_defender_of_lieges_title = {
 				}
 				desc = accolade_beloved
 			}
+
+			## GH ADDITIONS
+
 			triggered_desc = {
 				trigger = {
-					NOT = {
-						culture = {
-							has_cultural_era_or_later = culture_era_early_medieval
-						}
-					}
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
+					culture = { NOT = { has_cultural_era_or_later = culture_era_early_medieval } }
+					scope:accolade_type = { this = accolade_type:magi_attribute }
 				}
 				desc = accolade_shaman
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_cabal_leader
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_ritualmaster
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_first_enchanter
 			}
 			triggered_desc = {
-				trigger = {
-					scope:accolade_type = {
-						this = accolade_type:magi_attribute
-					}
-				}
+				trigger = { scope:accolade_type = { this = accolade_type:magi_attribute } }
 				desc = accolade_archmagi
 			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_beast_whisperer
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_whip
+			}
+			triggered_desc = {
+				trigger = { scope:accolade_type = { this = accolade_type:beastmaster_attribute } }
+				desc = accolade_kenneler
+			}
+
+			## END OF GH ADDITIONS
+
 			desc = accolade_head_knight
 		}
 	}
@@ -4225,9 +6623,7 @@ accolade_the_foe_of_enemy_faith = {
 		random_valid = {
 			triggered_desc = {
 				trigger = {
-					faith.religion = {
-						is_in_family = gh_marcher
-					}
+					faith.religion = { is_in_family = gh_marcher } ## GH CHANGE: GHified
 					faith = {
 						NOR = {
 							has_doctrine_parameter = unreformed_syncretic_actor_opinion_active
@@ -4244,7 +6640,13 @@ accolade_the_foe_of_enemy_faith = {
 			}
 			triggered_desc = {
 				trigger = {
-					faith.religion = { is_in_family = gh_marcher }
+					faith.religion = {
+						OR = { ## GH CHANGE: GHified
+							is_in_family = gh_marcher
+							this = religion:ritualist_religion
+							this = religion:wardenism_religion
+						}
+					}
 					faith = {
 						fervor < 50
 					}
@@ -4253,88 +6655,243 @@ accolade_the_foe_of_enemy_faith = {
 			}
 			triggered_desc = {
 				trigger = {
+					OR = { ## GH CHANGE: GHified
+						faith.religion = religion:ritualist_religion
+						faith.religion = religion:wardenism_religion
+					}
+				}
+				desc = accolade_infidels
+			}
+			triggered_desc = {
+				trigger = {
 					OR = {
 						faith.religion = religion:lifepath_religion
 						faith.religion = religion:aversarinas_aagiokrata_religion
 						faith.religion = religion:agionism_religion
+						faith.religion = religion:ritualist_religion
+						faith.religion = religion:wardenism_religion
 					}
 				}
 				desc = accolade_heathens
 			}
-			desc = accolade_demons
-			desc = accolade_non_believers
+			#triggered_desc = {
+			#	trigger = {
+			#		NOR = {
+			#			faith.religion = religion:christianity_religion
+			#			faith = {
+			#				has_doctrine_parameter = christian_syncretic_actor_opinion_active
+			#			}
+			#		}
+			#		liege.capital_county.title_province ?= {
+			#			OR = {
+			#				geographical_region = world_europe
+			#				geographical_region = world_asia_minor
+			#				geographical_region = world_middle_east_jerusalem
+			#				geographical_region = world_africa_north_west
+			#				geographical_region = world_africa_north_east
+			#				geographical_region = world_africa_east
+			#				geographical_region = world_steppe_west
+			#			}
+			#		}
+			##	desc = accolade_christians
+			#}
+			#triggered_desc = {
+			#	trigger = {
+			#		NOR = {
+			#			faith.religion = religion:christianity_religion
+			#			faith = {
+			#				has_doctrine_parameter = christian_syncretic_actor_opinion_active
+			#			}
+			#		}
+			#		liege.capital_county.title_province ?= {
+			#			OR = {
+			#				geographical_region = world_europe
+			#				geographical_region = world_asia_minor
+			#				geographical_region = world_middle_east_jerusalem
+			#				geographical_region = world_africa_north_west
+			#				geographical_region = world_africa_north_east
+			#				geographical_region = world_africa_east
+			#				geographical_region = world_steppe_west
+			#			}
+			#		}
+			#	}
+			#	desc = accolade_christendom
+			#}
+			#triggered_desc = {
+			#	trigger = {
+			#		NOR = {
+			#			faith.religion = religion:islam_religion
+			#			faith = {
+			#				has_doctrine_parameter = islamic_syncretic_actor_opinion_active
+			#			}
+			#		}
+			#		liege.capital_county.title_province ?= {
+			#			OR = {
+			#				geographical_region = world_europe_west_iberia
+			#				geographical_region = world_europe_south_italy
+			#				geographical_region = world_asia_minor
+			#				geographical_region = world_middle_east
+			#				geographical_region = world_africa_north
+			#				geographical_region = world_africa_east
+			#				geographical_region = world_india_rajastan
+			#				geographical_region = world_steppe_west
+			#			}
+			#		}
+			#	}
+			#	desc = accolade_muslims
+			#}
+			#triggered_desc = {
+			#	trigger = {
+			#		faith.religion = {
+			#			is_in_family = rf_abrahamic
+			#		}
+			#		NOR = {
+			#			faith.religion = religion:buddhism_religion
+			#			faith = {
+			#				has_doctrine_parameter = eastern_syncretic_actor_opinion_active
+			#			}
+			#		}
+			#		liege.capital_county.title_province ?= {
+			#			OR = {
+			#				geographical_region = world_tibet
+			#				geographical_region = world_steppe_tarim
+			#				geographical_region = world_burma
+			#				geographical_region = world_india_rajastan
+			#				geographical_region = world_india_bengal
+			#				geographical_region = world_asia_china
+			#				geographical_region = world_asia_japan
+			#				geographical_region = world_asia_korea
+			#				geographical_region = world_asia_southeast
+			#			}
+			#		}
+			#	}
+			#	desc = accolade_buddhists
+			#}
+			#triggered_desc = {
+			#	trigger = {
+			#		faith.religion = {
+			#			is_in_family = rf_abrahamic
+			#		}
+			#		NOR = {
+			#			faith.religion = religion:buddhism_religion
+			#			faith = {
+			#				has_doctrine_parameter = eastern_syncretic_actor_opinion_active
+			#			}
+			#		}
+			#		liege.capital_county.title_province ?= {
+			#			OR = {
+			#				geographical_region = world_tibet
+			#				geographical_region = world_steppe_tarim
+			#				geographical_region = world_burma
+			#				geographical_region = world_india_rajastan
+			#				geographical_region = world_india_bengal
+			#				geographical_region = world_asia_china
+			#				geographical_region = world_asia_japan
+			#				geographical_region = world_asia_korea
+			#				geographical_region = world_asia_southeast
+			#			}
+			#		}
+			#	}
+			#	desc = accolade_buddhism
+			#}
+			#triggered_desc = {
+			#	trigger = {
+			#		faith.religion = {
+			#			is_in_family = rf_abrahamic
+			#		}
+			#		NOR = {
+			#			faith.religion = religion:hinduism_religion
+			#			faith = {
+			#				has_doctrine_parameter = eastern_syncretic_actor_opinion_active
+			#			}
+			#		}
+			#		liege.capital_county.title_province ?= {
+			#			geographical_region = world_india
+			#		}
+			#	}
+			#	desc = accolade_hindus
+			#}
 
 			## GH ADDITIONS ##
 
 			triggered_desc = {
-				trigger = {
-					OR = {
-						faith.religion = religion:aversarinas_aagiokrata_religion
-						faith.religion = religion:agionism_religion
-					}
-				}
+				trigger = { faith.religion = { is_in_family = gh_rf_aversarian } }
 				desc = accolade_the_impure
 			}
 			triggered_desc = {
-				trigger = {
-					OR = {
-						faith.religion = religion:aversarinas_aagiokrata_religion
-						faith.religion = religion:agionism_religion
-					}
-				}
-				desc = accolade_nonhumans
+				trigger = { faith.religion = { is_in_family = gh_rf_aversarian } }
+				desc = accolade_the_inhuman
+			}
+			triggered_desc = {
+				trigger = { faith.religion = { is_in_family = gh_rf_aversarian } }
+				desc = accolade_the_voidspawn
 			}
 			triggered_desc = {
 				trigger = {
-					OR = {
-						faith.religion = religion:aversarinas_aagiokrata_religion
-						faith.religion = religion:agionism_religion
-					}
-				}
-				desc = accolade_voidspawn
-			}
-			triggered_desc = {
-				trigger = {
-					NOR = {
-						faith.religion = religion:aversarinas_aagiokrata_religion
-						faith = {
+					faith = {
+						NOR = {
+							religion = { is_in_family = gh_rf_aversarian }
 							has_doctrine_parameter = aversarinas_aagiokrata_religion_syncretic_actor_opinion_active
+							has_doctrine_parameter = agionism_religion_syncretic_actor_opinion_active
+							has_doctrine_parameter = old_imperial_religion_syncretic_actor_opinion_active
+							has_doctrine_parameter = blackhand_religion_syncretic_actor_opinion_active
+							has_doctrine_parameter = thixanonic_religion_syncretic_actor_opinion_active
 						}
 					}
 					liege.capital_county.title_province ?= { geographical_region = GH_geographic_shattered_coast }
 				}
-				desc = accolade_imperials
+				desc = accolade_the_imperials
 			}
 			triggered_desc = {
 				trigger = {
-					NOR = {
-						faith.religion = religion:aversarinas_aagiokrata_religion
-						faith = {
-							has_doctrine_parameter = aversarinas_aagiokrata_religion_syncretic_actor_opinion_active
+					faith = {
+						NOR = {
+							religion = { is_in_family = gh_marcher }
+							has_doctrine_parameter = lifepath_religion_syncretic_actor_opinion_active
+							has_doctrine_parameter = graveright_religion_syncretic_actor_opinion_active
 						}
 					}
-					liege.capital_county.title_province ?= { geographical_region = GH_geographic_shattered_coast }
+					liege.capital_county.title_province ?= {
+						OR = {
+							geographical_region = GH_graphical_chevalie
+							geographical_region = GH_graphical_konij
+						}
+					}
 				}
-				desc = accolade_the_empire
+				desc = accolade_the_wayspawn
 			}
 			triggered_desc = {
 				trigger = {
-					trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = magic_good GENDER_CHARACTER = root }
+					OR = {
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_1 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_2 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_3 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_4 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_5 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_6 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_7 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_8 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_9 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_10 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_11 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_12 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_13 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_14 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_15 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_16 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_17 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_18 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_19 GENDER_CHARACTER = root }
+						trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = trait:magic_good_20 GENDER_CHARACTER = root }
+					}
 				}
 				desc = accolade_the_magi
 			}
-			triggered_desc = {
-				trigger = {
-					trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = magic_good GENDER_CHARACTER = root }
-				}
-				desc = accolade_magi
-			}
-			triggered_desc = {
-				trigger = {
-					trait_is_criminal_in_faith_trigger = { FAITH = faith TRAIT = magic_good GENDER_CHARACTER = root }
-				}
-				desc = accolade_witches
-			}
+
+			## END OF GH ADDITIONS
+
+			desc = accolade_demons
+			desc = accolade_non_believers
 		}
 	}
 
@@ -4582,9 +7139,11 @@ accolade_the_knight_of_aspect = {
 				trigger = {
 					liege ?= {
 						faith.religion = {
-							OR = {
+							OR = { ## GH CHANGE: GHified
 								this = religion:oltenic_religion
 								this = religion:northern_oltenic_religion
+								this = religion:kikarsagi_religion
+								this = religion:mahrator_religion
 								this = religion:salacad_religion
 							}
 						}
@@ -5229,7 +7788,12 @@ accolade_the_material_knight = {
 			}
 			triggered_desc = {
 				trigger = {
-					liege.capital_county.title_province ?= { geographical_region = GH_graphical_kashirya }
+					liege.capital_county.title_province ?= {
+						OR = {
+							geographical_region = GH_graphical_kashirya
+							geographical_region = GH_graphical_dahangon
+						}
+					}
 				}
 				desc = accolade_jade
 			}
@@ -5239,20 +7803,28 @@ accolade_the_material_knight = {
 			## GH ADDITIONS ##
 
 			triggered_desc = {
-				trigger = {
-					has_trait = magic_good
-				}
+				trigger = { has_trait = magic_good }
 				desc = accolade_bloodcrystal
 			}
 			triggered_desc = {
 				trigger = {
 					culture = {
-						has_innovation = innovation_magi_steel
+						OR = {
+							has_cultural_parameter = unlock_glassmith_trait
+							culture_knows_magic_school = { MAGIC_SCHOOL = global_var:temple_of_the_vitreous_precept }
+						}
 					}
-					has_trait = magic_good
 				}
-				desc = accolade_magi_steel
+				desc = accolade_starglass
 			}
+			triggered_desc = {
+				trigger = {
+					culture = { culture_knows_magic_school = { MAGIC_SCHOOL = global_var:wane_tender_harmoniarchy } }
+				}
+				desc = accolade_salt
+			}
+
+			## END OF GH ADDITIONS
 		}
 	}
 
@@ -5359,6 +7931,14 @@ accolade_the_material_knight = {
 				}
 				desc = accolade_rider
 			}
+			#triggered_desc = {
+			#	trigger = {
+			#		faith.religion = religion:buddhism_religion
+			#		exists = liege
+			#		liege.faith.religion = religion:buddhism_religion
+			#	}
+			#	desc = accolade_buddha
+			#}
 			triggered_desc = {
 				trigger = {
 					is_female = yes

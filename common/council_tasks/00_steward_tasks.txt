@@ -43,6 +43,10 @@
 			}
 			desc = task_collect_taxes_consulted_house_bonus_desc
 		}
+		triggered_desc = {
+			trigger = { liege.culture = { has_cultural_parameter = bookkeeping_collect_taxes_bonus } }
+			desc = task_collect_taxes_innovation_double_entry_bookkeeping_bonus_desc
+		}
 		desc = {
 			desc = council_task_possible_side_effects
 			triggered_desc = {
@@ -63,6 +67,10 @@
 				desc = task_collect_taxes_county_corruption
 			}
 		}
+	}
+
+	is_valid_showing_failures_only = {
+		tgp_natural_disaster_councillor_available_for_task_trigger = yes
 	}
 
 	council_owner_modifier = {
@@ -125,7 +133,7 @@
 		if = { # Conquerors want more money
 			limit = {
 				scope:councillor_liege = {
-					ai_has_conqueror_personality = yes
+					has_variable = conqueror
 				}
 			}
 			add = 500
@@ -149,6 +157,15 @@ task_develop_county = {
 		background = "gfx/interface/buttons/button_round_bg.dds"
 		frame = "gfx/interface/buttons/button_round_frame.dds"
 		glow = "gfx/particles/halo.dds"
+	}
+	
+	is_shown = {
+		trigger_if = {
+			limit = {
+				scope:councillor_liege = { tgp_has_access_to_ministry_trigger = yes }
+			}
+			has_council_position = minister_works
+		}
 	}
 
 	effect_desc = {
@@ -231,6 +248,10 @@ task_develop_county = {
 				desc = task_develop_county_loss_of_control
 			}
 		}
+	}
+
+	is_valid_showing_failures_only = {
+		tgp_natural_disaster_councillor_available_for_task_trigger = yes
 	}
 
 	# TOTAL PROGRESS MUST MATCH THE TOTAL OF THE COUNTY MODIFIERS BELOW
@@ -405,6 +426,7 @@ task_develop_county = {
 
 	potential_county = {
 		scope:county = {
+			is_landless_type_title = no
 			development_level < max_development_level
 			trigger_if = {
 				limit = {
@@ -442,9 +464,7 @@ task_develop_county = {
 						scope:councillor_liege = {
 							has_character_flag = agenda_towards_deescalation
 						}
-						NOT = {
-							culture = scope:councillor_liege.culture
-						}
+						culture != scope:councillor_liege.culture
 					}
 				}
 			}
@@ -592,7 +612,7 @@ task_develop_county = {
 					# Struggle Parameter
 					if = {
 						limit = {
-							NOT = { scope:county.culture  = scope:councillor_liege.culture }
+							scope:county.culture != scope:councillor_liege.culture
 							any_character_struggle = {
 								involvement = involved
 								has_struggle_phase_parameter = gain_acceptance_when_developing_other_culture_county
@@ -623,6 +643,54 @@ task_develop_county = {
 			}
 		}
 		wardenite_legacy_3_jurist_progress_effect = yes
+		#GH ADDITION
+		# Struggle Catalyst
+		if = {
+			limit = {
+				faith.religion = scope:councillor_liege.religion
+				NOT = { scope:councillor_liege ?= { has_variable = gh_recently_gained_catalyst_progress } }
+			}
+			scope:councillor_liege = {
+				set_variable = {
+					name = gh_recently_gained_catalyst_progress
+					value = yes
+					years = 2
+				}
+			}
+			basic_WIH_catalyst_one_way_effect = { CATALYST = province_development_gain }
+		}
+		if = {
+			limit = {
+				NOT = { faith.religion = scope:county.holder.faith.religion }
+				NOT = { scope:councillor_liege = { has_variable = gh_recently_catalyst_improve_development_vassal_diff_faith } }
+				any_character_struggle = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+						CATALYST = catalyst_improve_development_vassal_diff_faith
+						CHAR = scope:county.holder
+					}
+				}
+			}
+			scope:councillor_liege = {
+				set_variable = {
+					name = gh_recently_catalyst_improve_development_vassal_diff_faith
+					value = yes
+					years = 1
+				}
+			}
+			every_character_struggle = {
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+						CATALYST = catalyst_improve_development_vassal_diff_faith
+						CHAR = scope:county.holder
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_improve_development_vassal_diff_faith
+					character = scope:councillor_liege
+				}
+			}
+		}
+		#GH END
 	}
 
 	ai_will_do = {
@@ -692,7 +760,7 @@ task_promote_culture = {
 				trigger = {
 					scope:councillor_liege = {
 						any_vassal = {
-							has_vassal_stance = minority
+							vassal_stance = minority
 						}
 					}
 				}
@@ -703,7 +771,7 @@ task_promote_culture = {
 					trigger_if = {
 						limit = { exists = scope:county }
 						scope:county = {
-							NOT = { culture = scope:councillor_liege.culture }
+							culture != scope:councillor_liege.culture
 						}
 						NOT = {
 							scope:councillor_liege.culture = {
@@ -782,6 +850,10 @@ task_promote_culture = {
 				desc = task_promote_culture_resistance_to_administration
 			}
 		}
+	}
+
+	is_valid_showing_failures_only = {
+		tgp_natural_disaster_councillor_available_for_task_trigger = yes
 	}
 
 	progress = {
@@ -938,7 +1010,7 @@ task_promote_culture = {
 				}
 				custom_tooltip = {
 					text = hold_court_8130_conversion_tt
-					NOT = { culture = scope:councillor_liege.var:hold_court_8130_culture_block }
+					culture != scope:councillor_liege.var:hold_court_8130_culture_block
 				}
 			}
 		}
@@ -1172,7 +1244,7 @@ task_promote_culture = {
 				}
 				if = {
 					limit = {
-						is_independent_ruler = no
+						top_liege != this
 					}
 					add_character_flag = {
 						flag = no_ai_culture_convert
@@ -1402,7 +1474,7 @@ task_accept_culture = {
 		triggered_desc = {
 			trigger = {
 				scope:councillor_liege = {
-					is_independent_ruler = yes
+					top_liege = this
 				}
 			}
 			desc = task_accept_culture_independent_desc
@@ -1526,6 +1598,7 @@ task_accept_culture = {
 		scope:councillor_liege = {
 			highest_held_title_tier >= tier_duchy
 		}
+		tgp_natural_disaster_councillor_available_for_task_trigger = yes
 	}
 
 	progress = {
@@ -1629,7 +1702,7 @@ task_accept_culture = {
 		if = { # Independent Ruler
 			limit = {
 				scope:councillor_liege = {
-					is_independent_ruler = yes
+					top_liege = this
 				}
 			}
 			add = {
@@ -1663,7 +1736,8 @@ task_accept_culture = {
 	
 	potential_county = {
 		scope:county = {
-			NOT = { culture = scope:councillor_liege.culture }
+			is_landless_type_title = no
+			culture != scope:councillor_liege.culture
 			NOT = {
 				culture = {
 					cultural_acceptance = { target = scope:councillor_liege.culture value >= 100 }
@@ -1741,8 +1815,7 @@ task_accept_culture = {
 			# Rulers with a capital culture that isn't particularly accepted like this if they have some more counties in their realm of the culture
 			limit = {
 				scope:councillor_liege = {
-					exists = capital_county
-					capital_county = {
+					capital_county ?= {
 						save_temporary_scope_as = county_check
 						NOR = {
 							culture = scope:councillor_liege.culture
@@ -1773,7 +1846,7 @@ task_accept_culture = {
 			# More likely for independent rulers
 			limit = {
 				scope:councillor_liege = {
-					is_independent_ruler = yes
+					top_liege = this
 				}
 			}
 			multiply = 2
@@ -2034,14 +2107,16 @@ task_convince_dejure = {
 		}
 	}
 
-	#Unlocked at Court Grandeur level 6
 	is_valid_showing_failures_only = {
 		scope:councillor_liege = {
+			#Unlocked at Court Grandeur level 6
 			court_grandeur_current_level >= 6
 		}
+		tgp_natural_disaster_councillor_available_for_task_trigger = yes
 	}
 
 	potential_county = {
+		scope:county = { is_landless_type_title = no }
 		custom_tooltip = {
 			text = steward_convince_dejure_potential_county_tt
 			scope:councillor_liege = {
@@ -2067,7 +2142,7 @@ task_convince_dejure = {
 				scope:councillor_liege = { is_ai = yes }
 			}
 			OR = {
-				is_independent_ruler = yes
+				top_liege = this
 				scope:councillor_liege.primary_title.tier > tier_county
 			}
 			scope:county = {
@@ -2085,7 +2160,7 @@ task_convince_dejure = {
 		scope:councillor_liege = {
 			if = {
 				limit = {
-					is_independent_ruler = no
+					top_liege != this
 				}
 				add_character_flag = {
 					flag = no_de_jure_convince

@@ -1841,7 +1841,7 @@ GetCrime = {
 	text = {
 		trigger = {
 			religion = ROOT.religion
-			NOT = { faith = ROOT.faith }
+			faith != ROOT.faith
 		}
 		localization_key = crime_heretic
 	}
@@ -1851,7 +1851,7 @@ GetCrime = {
 			NOT = {
         		ROOT.religion = { is_in_family = rf_pagan }
         	}
-        	NOT = { religion = ROOT.religion }
+        	religion != ROOT.religion
         	religion = { is_in_family = rf_pagan }
 		}
 		localization_key = crime_heathen
@@ -1859,7 +1859,7 @@ GetCrime = {
 
 	text = {
 		trigger = {
-			NOT = { religion = ROOT.religion }
+			religion != ROOT.religion
 		}
 		localization_key = crime_infidel
 	}
@@ -1932,7 +1932,7 @@ GetCrimeDesc = {
 	text = {
 		trigger = {
 			religion = ROOT.religion
-			NOT = { faith = ROOT.faith }
+			faith != ROOT.faith
 		}
 		localization_key = crime_heretic_desc
 	}
@@ -1942,7 +1942,7 @@ GetCrimeDesc = {
 			NOT = {
         		ROOT.religion = { is_in_family = rf_pagan }
         	}
-        	NOT = { religion = ROOT.religion }
+        	religion != ROOT.religion
         	religion = { is_in_family = rf_pagan }
 		}
 		localization_key = crime_heathen_desc
@@ -1950,7 +1950,7 @@ GetCrimeDesc = {
 
 	text = {
 		trigger = {
-			NOT = { religion = ROOT.religion }
+			religion != ROOT.religion
 		}
 		localization_key = crime_infidel_desc
 	}
@@ -1966,49 +1966,49 @@ GetSecretCrimeDescIndef = {
 
 	text = {
 		trigger = {
-			any_secret = { secret_type = secret_murder }
+			any_secret = { type = secret_murder }
 		}
 		localization_key = crime_indef_murderer_desc
 	}
 
 	text = {
 		trigger = {
-			any_secret = { secret_type = secret_deviant }
+			any_secret = { type = secret_deviant }
 		}
 		localization_key = crime_indef_deviant_desc
 	}
 
 	text = {
 		trigger = {
-			any_secret = { secret_type = secret_cannibal }
+			any_secret = { type = secret_cannibal }
 		}
 		localization_key = crime_indef_cannibal_desc
 	}
 
 	text = {
 		trigger = {
-			any_secret = { secret_type = secret_homosexual }
+			any_secret = { type = secret_homosexual }
 		}
 		localization_key = crime_indef_sodomite_desc
 	}
 
 	text = {
 		trigger = {
-			any_secret = { secret_type = secret_incest }
+			any_secret = { type = secret_incest }
 		}
 		localization_key = crime_indef_incestuous_desc
 	}
 
 	text = {
 		trigger = {
-			any_secret = { secret_type = secret_lover }
+			any_secret = { type = secret_lover }
 		}
 		localization_key = crime_indef_adulterer_desc
 	}
 
 	text = {
 		trigger = {
-			any_secret = { secret_type = secret_non_believer }
+			any_secret = { type = secret_non_believer }
 		}
 		localization_key = crime_indef_infidel_desc
 	}

@@ -360,18 +360,6 @@ runic_scroll_is_shown_scripted_gui = {
 	}
 }
 
-spell_can_be_manually_casted_scripted_gui = {
-	scope = story
-	
-	is_shown = {
-		NOT = { spell_has_tag_trigger = { NAME = flag:cantrip } }
-	}
-	
-	effect = {
-	
-	}
-}
-
 execute_spell_scripted_gui = {
 	scope = character
 	
@@ -434,7 +422,7 @@ execute_spell_scripted_gui = {
 		}
 		if = {
 			limit = { exists = var:spell_preparation_story_cycle }
-			var:spell_preparation_story_cycle = { save_scope_as = spell_preparation_story_cycle_scope }
+			var:spell_preparation_story_cycle = { save_scope_as = spell_preparation_story_cycle }
 		}
 		if = {
 			limit = { exists = var:selected_spell }
@@ -474,6 +462,114 @@ execute_spell_scripted_gui = {
 			}
 		}
 	}
+}
+
+activate_cantrip_scripted_gui = {
+	is_shown = {
+		scope:spell_being_casted = { has_variable_list = affects_cantrip_wielder_effect_list }
+	}
+	
+	is_valid = {
+		OR = {
+			AND = {	# Deactivation use case
+				has_variable_list = cantrip_list
+				any_in_list = {
+					variable = cantrip_list
+					var:spell_being_prepared = scope:spell_being_casted
+				}
+			}
+			# Activation use case
+			AND = {
+				#can_cast_spell_trigger = { CASTER = scope:caster SPELL = scope:spell_being_casted }
+				custom_description = {
+					text = not_over_cantrip_limit_tooltip
+					scope:spell_being_casted.cantrip_capacity_usage_value <= remaining_cantrip_capacity_value
+				}
+			}
+		}
+	}
+	
+	effect = {
+		if = {	# Deactivation use case
+			limit = {
+				has_variable_list = cantrip_list
+				any_in_list = {
+					variable = cantrip_list
+					OR = {
+						var:spell_being_prepared = scope:spell_being_casted
+						var:spell_being_prepared = scope:spell_being_casted.var:parent_spell
+					}
+				}
+			}
+			save_scope_value_as = {
+				name = cantrip_removal_mode
+				value = yes
+			}
+			every_in_list = {
+				variable = cantrip_list
+				limit = {
+					OR = {
+						var:spell_being_prepared = scope:spell_being_casted
+						var:spell_being_prepared = scope:spell_being_casted.var:parent_spell
+					}
+				}
+				prev = {
+					remove_list_variable = {
+						name = cantrip_list
+						target = prev
+					}
+				}
+				end_preparing_spell_effect = yes
+			}
+			scope:spell_being_casted = { apply_cantrip_spell_effects = yes }
+		}
+		else = {	# Activation use case
+			if = {
+				limit = {
+					NOT = { exists = var:spell_preparation_story_cycle }
+					exists = scope:spell_being_casted
+				}
+				start_preparing_spell_effect = { SPELL = scope:spell_being_casted }
+			}
+			var:spell_preparation_story_cycle ?= {
+				save_scope_as = spell_preparation_story_cycle
+				save_scope_as = cantrip_scope
+				save_aspect_overcharge_values_effect = { SPELL = scope:spell_being_casted }
+				prev = {
+					add_to_variable_list = {
+						name = cantrip_list
+						target = prev
+					}
+				}
+			}
+			save_scope_value_as = {
+				name = always_succeed_spellcasting
+				value = yes
+			}
+			scope:spell_being_casted = { apply_cantrip_spell_effects = yes }
+			remove_variable = spell_preparation_story_cycle
+		}
+	}
+}
+
+cantrip_is_active_scripted_gui = {
+	scope = character
+	
+	is_shown = {
+		has_variable_list = cantrip_list
+		exists = scope:spell_being_prepared
+		any_in_list = {
+			variable = cantrip_list
+			OR = {
+				var:spell_being_prepared = scope:spell_being_prepared
+				var:spell_being_prepared = scope:spell_being_prepared.var:parent_spell
+			}
+		}
+	}
+	
+	is_valid = { }
+	
+	effect = { }
 }
 
 cast_through_court_magi_scripted_gui = {
@@ -640,9 +736,9 @@ magic_gui_artifact_is_selected_scripted_gui = {
 	scope = character
 	
 	is_shown = {
-		has_variable_list = spell_targets_artifacts
+		has_variable_list = spell_target_artifacts
 		is_target_in_variable_list = { 
-			name = spell_targets_artifacts 
+			name = spell_target_artifacts 
 			target = scope:target 
 		}
 	}
@@ -667,15 +763,15 @@ magic_gui_select_artifact_scripted_gui = {
 			if = {
 				limit = {
 					is_target_in_variable_list = { 
-						name = spell_targets_artifacts 
+						name = spell_target_artifacts 
 						target = scope:target 
 					}
 				}
-				remove_list_variable = { name = spell_targets_artifacts target = scope:target }
+				remove_list_variable = { name = spell_target_artifacts target = scope:target }
 			}
 			else = {
 				add_to_variable_list = {
-					name = spell_targets_artifacts
+					name = spell_target_artifacts
 					target = scope:target
 				}
 			}
@@ -753,6 +849,218 @@ spell_is_relevant_for_activity_scripted_gui = {
 	
 	effect = {
 	
+	}
+}
+
+########
+# LOCI #
+########
+
+add_province_as_locus_scripted_gui = {
+	scope = character
+	
+	is_shown = {
+	
+	}
+	
+	is_valid = {
+		OR = {
+			NOT = { exists = var:spell_preparation_story_cycle }
+			var:spell_preparation_story_cycle = {
+				OR = {
+					# For the use case where this button is used for removing a locus
+					AND = {
+						has_variable_list = locus_list
+						is_target_in_variable_list = { 
+							name = locus_list 
+							target = scope:locus_scope 
+						}
+					}
+					# Standard use case
+					AND = {
+						scope:locus_scope ?= { has_building_with_flag = activates_province_aspects }
+						trigger_if = {
+							limit = { has_variable_list = locus_list }
+							variable_list_size = {
+								name = locus_list
+								value < root.loci_limit_value
+							}
+						}
+					}
+				}
+				trigger_if = {
+					limit = { exists = var:primary_locus }
+					NOT = {
+						var:primary_locus = scope:locus_scope
+					}
+				}
+			}
+		}
+	}
+	
+	effect = {
+		if = {
+			limit = { NOT = { exists = var:spell_preparation_story_cycle } }
+			start_preparing_spell_effect = { SPELL = var:selected_spell }
+		}
+		var:spell_preparation_story_cycle ?= {
+			if = {
+				limit = {
+					has_variable_list = locus_list
+					is_target_in_variable_list = { 
+						name = locus_list 
+						target = scope:locus_scope 
+					}
+				}
+				remove_list_variable = { name = locus_list target = scope:locus_scope }
+				if = {
+					limit = { var:primary_locus ?= scope:locus_scope }
+					remove_variable = primary_locus
+				}
+			}
+			else = {
+				add_to_variable_list = { name = locus_list target = scope:locus_scope }
+				if = {
+					limit = { NOT = { exists = var:primary_locus } }
+					set_variable = { name = primary_locus value = scope:locus_scope }
+				}
+			}
+		}
+	}
+}
+
+province_is_locus_scripted_gui = {
+	scope = character
+	
+	is_shown = {
+		trigger_if = {
+			limit = {
+				exists = var:spell_preparation_story_cycle
+				var:spell_preparation_story_cycle = { has_variable_list = locus_list }
+			}
+			var:spell_preparation_story_cycle = {
+				is_target_in_variable_list = { 
+					name = locus_list 
+					target = scope:locus_scope 
+				}
+			}
+		}
+		trigger_else = {
+			exists = capital_province
+			capital_province = scope:locus_scope
+		}
+	}
+	
+	effect = { }
+}
+
+set_province_as_primary_locus_scripted_gui = {
+	scope = character
+	
+	is_shown = { }
+	
+	is_valid = {
+		scope:locus_scope ?= { has_building_with_flag = activates_province_aspects }
+		var:spell_preparation_story_cycle ?= {
+			has_variable_list = locus_list
+			is_target_in_variable_list = {
+				name = locus_list
+				target = scope:locus_scope
+			}
+		}
+	}
+	
+	effect = {
+		var:spell_preparation_story_cycle ?= {
+			set_variable = {
+				name = primary_locus
+				value = scope:locus_scope
+			}
+		}
+	}
+}
+
+province_is_primary_locus_scripted_gui = {
+	scope = character
+	
+	is_shown = {
+		trigger_if = {
+			limit = {
+				exists = var:spell_preparation_story_cycle
+				exists = var:spell_preparation_story_cycle.var:primary_locus
+			}
+			scope:locus_scope = var:spell_preparation_story_cycle.var:primary_locus
+		}
+		trigger_else = {
+			exists = capital_province
+			capital_province = scope:locus_scope
+		}
+	}
+	
+	effect = { }
+}
+
+decrease_province_mana_contribution_scripted_gui = {
+	scope = province
+	
+	is_shown = { }
+	
+	is_valid = {
+		exists = var:province_mana_contribution
+		var:province_mana_contribution > 0
+	}
+	
+	effect = {
+		change_variable = {
+			name = province_mana_contribution
+			subtract = 25
+		}
+		if = {
+			limit = { var:province_mana_contribution <= 0 }
+			remove_variable = province_mana_contribution
+		}
+	}
+}
+
+increase_province_mana_contribution_scripted_gui = {
+	scope = province
+	
+	is_shown = { }
+	
+	is_valid = {
+		trigger_if = {
+			limit = { exists = var:province_mana_contribution }
+			var:province_mana_contribution < province_mana_pool_value
+		}
+		trigger_else = {
+			province_mana_pool_value > 0
+		}
+	}
+	
+	effect = {
+		if = {
+			limit = { NOT = { exists = var:province_mana_contribution } }
+			set_variable = {
+				name = province_mana_contribution
+				value = 25
+			}
+		}
+		else = {
+			change_variable = {
+				name = province_mana_contribution
+				add = 25
+			}
+		}
+		if = {
+			limit = {
+				exists = var:province_mana_contribution
+				var:province_mana_contribution > province_mana_pool_value
+			}
+			set_variable = {
+				name = province_mana_contribution
+				value = province_mana_pool_value
+			}
+		}
 	}
 }
 

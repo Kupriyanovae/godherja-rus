@@ -1,117 +1,93 @@
 ﻿steal_artifact_in_siege_effect = {
-	# Save scopes for localization
-	$LOCATION$ = { save_scope_as = SAISE_location }
-	$ATTACKER$ = { save_scope_as = SAISE_attacker }
-	$DEFENDER$ = { save_scope_as = SAISE_defender }
-	$ARTIFACT$ = { save_scope_as = SAISE_artifact }
+	if = {
+		limit = { NOT = { has_variable = artifact_prevent_transfer } }
+		# Save scopes for localization
+		$LOCATION$ = { save_scope_as = SAISE_location }
+		$ATTACKER$ = { save_scope_as = SAISE_attacker }
+		$DEFENDER$ = { save_scope_as = SAISE_defender }
+		$ARTIFACT$ = { save_scope_as = this_artifact }
 
-	scope:SAISE_artifact = {
-		# Suppress generic notifications, as we will send custom ones
-		set_variable = {
-			name = suppress_artifact_notifications
-			value = yes
-			days = 1
-		}
-		if = {
-			limit = {
-				NOT = { has_variable = stolen_artifact }
-			}
+		scope:this_artifact = {
+			# Suppress generic notifications, as we will send custom ones
 			set_variable = {
-				name = stolen_artifact
-				value = 1
+				name = suppress_artifact_notifications
+				value = yes
+				days = 1
 			}
-		}
-		else = {
-			change_variable = {
-				name = stolen_artifact
-				add = 1
+			if = {
+				limit = {
+					NOT = { has_variable = stolen_artifact }
+				}
+				set_variable = {
+					name = stolen_artifact
+					value = 1
+				}
 			}
-		}
+			else = {
+				change_variable = {
+					name = stolen_artifact
+					add = 1
+				}
+			}
 
-		# Transfer the artifact to its new owner
-		if = {
-			limit = {
-				has_variable = ai_to_ai_destroy_in_sieges
-				scope:SAISE_attacker = {
-					is_ai = yes
+			# Transfer the artifact to its new owner
+			if = {
+				limit = {
+					has_variable = ai_to_ai_destroy_in_sieges
+					scope:SAISE_attacker = {
+						is_ai = yes
+					}
+					scope:SAISE_defender = {
+						is_ai = yes
+					}
 				}
+				destroy_artifact = this
+			}
+			else = {
+				set_owner = {
+					target = scope:SAISE_attacker
+					history = {
+						location = scope:SAISE_location
+						actor = scope:SAISE_defender
+						recipient = scope:SAISE_attacker
+						type = taken_in_siege
+					}
+				}
+				scope:SAISE_defender = { add_personal_artifact_claim = scope:this_artifact }
+				# GH REMOVED: Byz Roman Emperor Effect
+				
+				# Send notifications to the relevant parties
 				scope:SAISE_defender = {
-					is_ai = yes
-				}
-			}
-			destroy_artifact = this
-		}
-		else = {
-			set_owner = {
-				target = scope:SAISE_attacker
-				history = {
-					location = scope:SAISE_location
-					actor = scope:SAISE_defender
-					recipient = scope:SAISE_attacker
-					type = taken_in_siege
-				}
-			}
-			scope:SAISE_defender = { add_personal_artifact_claim = scope:SAISE_artifact }
-			#if = {
-			#	limit = {
-			#		scope:SAISE_attacker = {
-			#			has_ep3_dlc_trigger = yes
-			#			OR = {
-			#				has_title = title:e_byzantium
-			#				has_title = title:e_roman_empire
-			#			}
-			#			culture = { has_cultural_parameter = holds_triumphs }
-			#		}
-			#	}
-			#	scope:SAISE_attacker = {
-			#		set_variable = {
-			#			name = byz_valid_for_trophy
-			#			value = scope:SAISE_artifact
-			#			years = 9
-			#		}
-			#	}
-			#}
-			
-			# Send notifications to the relevant parties
-			scope:SAISE_defender = {
-				send_interface_toast = {
-					type = msg_artifact_lost
-					title = artifact_lost_toast
-					left_icon = scope:SAISE_artifact
-					right_icon = scope:SAISE_attacker
-					if = {
-						limit = { $IS_RAID$ = yes }
-						custom_tooltip = artifact_lost_in_raid
-					}
-					else = {
-						custom_tooltip = artifact_lost_in_siege
-					}
-				}
-			}
-			scope:SAISE_attacker = {
-				send_interface_toast = {
-					type = msg_artifact_gained
-					title = artifact_seized_toast
-					left_icon = scope:SAISE_artifact
-					right_icon = scope:SAISE_defender
-					if = {
-						limit = { $IS_RAID$ = yes }
-						custom_tooltip = artifact_seized_in_raid
-					}
-					else = {
-						custom_tooltip = artifact_seized_in_siege
-					}
-				}
-				if = {
-					limit = {
-						NOT = { any_claimed_artifact = { this = scope:SAISE_artifact } }
-					}
-					scope:SAISE_artifact = {
-						set_variable = {
-							name = last_person_to_steal
-							value = scope:SAISE_attacker
+					send_interface_toast = {
+						type = msg_artifact_lost
+						title = artifact_lost_toast
+						left_icon = scope:this_artifact
+						right_icon = scope:SAISE_attacker
+						if = {
+							limit = { $IS_RAID$ = yes }
+							custom_tooltip = artifact_lost_in_raid
 						}
-					} 
+						else = {
+							custom_tooltip = artifact_lost_in_siege
+						}
+					}
+				}
+				scope:SAISE_attacker = {
+					send_interface_toast = {
+						type = msg_artifact_gained
+						right_icon = scope:this_artifact
+					}
+					if = {
+						limit = {
+							NOT = { any_claimed_artifact = { this = scope:this_artifact } }
+						}
+						scope:this_artifact = {
+							set_variable = {
+								name = last_person_to_steal
+								value = scope:SAISE_attacker
+							}
+						} 
+					}
 				}
 			}
 		}
@@ -533,6 +509,12 @@ destroy_artifact_aniconist_effect = {
 				OR = {
 					$DESTROYER$.faith = { has_doctrine_parameter = destroying_artifacts_is_pious }
 					$PIETY_BY_DEFAULT$ = yes
+					## GH ADDITION ##
+					AND = { ## GH ADDITION: Skull destruction parameter
+						scope:artifact = { has_variable = artifact_skull }
+						$DESTROYER$.culture = { has_cultural_parameter = destroying_skulls_is_pious }
+					}
+					## GH END ##
 				}
 			}
 			give_destroyed_artifact_piety = yes
@@ -540,6 +522,7 @@ destroy_artifact_aniconist_effect = {
 		if = {
 			limit = {
 				$GIVE_GOLD$ = yes
+				scope:artifact = { NOT = { has_variable = artifact_skull } } ## GH ADDITION: No gold from skulls
 			}
 			add_gold = {
 				if = {
@@ -584,8 +567,7 @@ destroy_artifact_aniconist_effect = {
 					divide = 2
 					add = 0.5
 				}
-
-				#Nerf it to bits for LAAMPs
+				## GH ADDITION ##
 				if = {
 					limit = {
 						$DESTROYER$ = { has_perk = arcana_cognition_perk1_tree2 }
@@ -595,6 +577,9 @@ destroy_artifact_aniconist_effect = {
 						value = 15
 					}
 				}
+				## GH END ##
+
+				#Nerf it to bits for LAAMPs
 				if = {
 					limit = { 
 						$DESTROYER$ = { has_government = landless_adventurer_government }
@@ -604,9 +589,58 @@ destroy_artifact_aniconist_effect = {
 						round = yes
 					}
 				}
+				if = {
+					limit = {
+						exists = scope:artifact.var:ai_to_ai_destroy_in_sieges # Trash artifact
+					}
+					max = {
+						value = $DESTROYER$.tiny_gold_value
+						multiply = 0.5
+					}
+				}
+				
 				min = 1
 			}
 		}
+		## GH ADDITION ##
+		scope:artifact = { ## GH ADDITION: Skull destruction
+			if = {
+				limit = { has_variable = artifact_skull }
+				var:skull_donor ?= {
+					house ?= {
+						if = {
+							limit = {
+								any_house_member = {
+									is_alive = yes
+									culture = { has_cultural_parameter = destroying_skulls_is_pious }
+									NOT = { this = $DESTROYER$ }
+								}
+							}
+							save_scope_as = skull_house
+							$DESTROYER$ = {
+								custom_tooltip = {
+									text = destroy_skull_artifact_house_opinion_tooltip
+									scope:skull_house = {
+										every_house_member = {
+											limit = {
+												culture = { has_cultural_parameter = destroying_skulls_is_pious }
+												NOT = { this = $DESTROYER$ }
+											}
+											add_opinion = {
+												target = $DESTROYER$
+												modifier = pleased_opinion
+												opinion = 10
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		## GH END ##
 		destroy_owned_artifact = scope:artifact
 	}
 }
@@ -666,6 +700,11 @@ give_destroyed_artifact_piety = {
 				value = 2
 				desc = aniconist_destroying_relic
 			}
+		}
+
+		if = { ## GH ADDITION: Skulls are plentiful
+			limit = { scope:artifact = { has_variable = artifact_skull } }
+			multiply = 0.5
 		}
 	}
 }

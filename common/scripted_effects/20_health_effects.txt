@@ -174,6 +174,21 @@ contract_disease_effect = {
 			else_if = {
 				limit = { scope:treatment_event = flag:no } #This is just here to stop errors
 			}
+			
+			if = { # Disease gives xp to Infirm
+				limit = {
+					has_trait = infirm
+					NOT = {
+						scope:disease_type = flag:lovers_pox
+					}
+				}
+				send_interface_message = {
+					type = msg_health_change
+					title = your_body_weakens_disease_feed_message_title
+					left_icon = root
+					add_trait_xp = { trait = infirm track = infirm value = 25 }
+				}
+			}
 		}
 
 
@@ -772,8 +787,7 @@ recover_from_disease_effect = {
 					holder = {
 						if = {
 							limit = {
-								exists = player_heir
-								player_heir = scope:sick_character
+								player_heir ?= scope:sick_character
 								NOT = { is_in_list = disase_notification_list }
 							}
 							add_to_temporary_list = disase_notification_list
@@ -1106,11 +1120,33 @@ increase_wounds_no_death_effect = {
 		name = treatment_type
 		value = flag:$REASON$
 	}
-
-	change_trait_rank = {
-		trait = wounded
-		rank = 1
-		max = 3
+	
+	if = {
+		limit = {
+			has_trait_xp = { trait = fragile_bones track = fragile_bones value >= 50 }
+		}
+		change_trait_rank = {
+			trait = wounded
+			rank = 3
+			max = 3
+		}
+	}
+	else_if = {
+		limit = {
+			has_trait = fragile_bones
+		}
+		change_trait_rank = {
+			trait = wounded
+			rank = 2
+			max = 3
+		}
+	}
+	else = {
+		change_trait_rank = {
+			trait = wounded
+			rank = 1
+			max = 3
+		}
 	}
 
 	if = { #Wounds from treatments give no infection and no additional treatment
@@ -1187,7 +1223,7 @@ increase_wounds_no_death_effect = {
 		name = incurred_wound
 		value = yes
 	}
-	execute_every_valid_hex_effect = yes
+	execute_every_valid_loitering_magic_effect = yes
 }
 
 
@@ -1329,11 +1365,13 @@ target_weight_modifier_effect = {
 
 set_court_physician_effect = {
 	$PHYSICIAN$ = {
-		if = {
-			limit = { 
-				NOT = { liege = $EMPLOYER$ }
+		hidden_effect = {
+			if = {
+				limit = { 
+					NOT = { liege = $EMPLOYER$ }
+				}
+				$EMPLOYER$ = { add_courtier = $PHYSICIAN$ }
 			}
-			$EMPLOYER$ = { add_courtier = $PHYSICIAN$ }
 		}
 	}
 	$EMPLOYER$ = {
@@ -1515,8 +1553,7 @@ physician_level_up_chance_effect = {
 			#...or in notification
 			if = {
 				limit = {
-					exists = liege
-					liege = { NOT = { this = scope:sick_character } }
+					liege ?= { this != scope:sick_character }
 				}
 				liege = {
 					send_interface_message = { #Should be feed message, because it's not hugely important
@@ -1554,8 +1591,7 @@ mystic_level_up_chance_effect = {
 			#...or in notification
 			if = {
 				limit = {
-					exists = liege
-					liege = { NOT = { this = scope:sick_character } }
+					liege ?= { this != scope:sick_character }
 				}
 				liege = {
 					send_interface_message = {
@@ -2022,6 +2058,10 @@ mystic_disease_treatment_effect = {
 									}
 								}
 								factor = 3
+							}
+							modifier = {
+								is_adult = no
+								factor = 0
 							}
 							modifier = {
 								scope:disease_type = flag:leper
@@ -3009,7 +3049,7 @@ disease_treatment_results_effect = {
 						trigger = {
 							NOR = {
 								has_trait = cannibal
-								any_secret = { secret_type = secret_cannibal }
+								any_secret = { type = secret_cannibal }
 							}
 						}
 						hidden_effect = {
@@ -3023,9 +3063,10 @@ disease_treatment_results_effect = {
 					}
 					2 = { #Deviant occult
 						trigger = {
+							is_adult = yes
 							NOR = {
 								has_trait = deviant
-								any_secret = { secret_type = secret_deviant }
+								any_secret = { type = secret_deviant }
 							}
 							NOT = { scope:treatment_result_outcome = flag:failure }
 						}
@@ -3764,9 +3805,7 @@ add_failed_treatment_of_me_opinions_effect = {
 				is_alive = yes
 			}
 			court_physician_available_trigger = yes
-			NOT = {
-				this = scope:physician
-			}
+			this != scope:physician
 		}
 		if = {
 			limit = {
@@ -3824,7 +3863,7 @@ add_failed_treatment_of_kin_opinions_effect = {
 					is_alive = yes
 				}
 				court_physician_available_trigger = yes
-				NOT = { this = scope:physician }
+				this != scope:physician
 			}
 			every_close_family_member = {
 				add_to_temporary_list = failed_treatment_opinion
@@ -3846,7 +3885,7 @@ add_failed_treatment_of_kin_opinions_effect = {
 			every_in_list = {
 				list = failed_treatment_opinion
 				limit = {
-					NOT = { this = scope:physician }
+					this != scope:physician
 				}
 				if = {
 					limit = {
@@ -4074,7 +4113,7 @@ inform_liege_about_disease_treatment_effect = {
 		#To save scope for portrait
 		if = {
 			limit = {
-				NOT = { scope:physician = scope:sick_character }
+				scope:physician != scope:sick_character
 			}
 			scope:physician = { save_scope_as = portrait }
 		}
@@ -4212,9 +4251,7 @@ inform_liege_about_wound_treatment_effect = {
 committed_suicide_effect = {
 	if = {
 		limit = {
-			any_vassal = {
-				count >= 1
-			}
+			any_vassal = { }
 		}
 		every_vassal = {
 			custom = all_vassals

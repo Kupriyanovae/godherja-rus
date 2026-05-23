@@ -59,6 +59,14 @@ on_faith_created = {
 				root = {
 					if = {
 						limit = {
+							government_allows = state_faith
+							liege = this
+							primary_title.state_faith = scope:old_faith
+						}
+						primary_title = { set_state_faith = faith }
+					}
+					if = {
+						limit = {
 							NOT = { has_character_flag = reformer_legend }
 							has_dlc_feature = legends
 							NOT = { has_game_rule = historical_legends_only }
@@ -365,6 +373,43 @@ on_character_faith_change = {
 				}
 			}
 		}
+		# Hostage story cycle
+		if = {
+			limit = {
+				is_hostage = yes
+				is_adult = no
+				# Did they just change to their captor's culture
+				faith = warden.faith
+			}
+			save_scope_as = hostage
+			warden = {
+				trigger_event = bp2_yearly.8050
+			}
+		}
+
+		if = {
+			limit = {
+				has_variable = japan_1010_discount
+				var:japan_1010_discount = faith 
+			}
+			remove_variable = japan_1010_discount
+		}
+
+		if = {
+			limit = {
+				has_character_flag = tgp_japan_1040_discount
+				#faith.religion = religion:shintoism_religion
+			}
+			remove_character_flag = tgp_japan_1040_discount
+		}
+
+		#Lose Mandala if you change to a monotheist faith
+		mandala_no_longer_polytheist_effect = yes
+		
+		#GH ADDITION
+		# Struggle Catalysts
+		basic_WIH_catalyst_one_way_effect = { CATALYST = character_converted }
+		#GH END
 	}
 	events = {
 		faith_conversion.0002 # Remove obsolete modifiers
@@ -394,6 +439,242 @@ on_faith_monthly = {
 		great_holy_war.0001
 		great_holy_war.0022 #Pope harasses players for not pledging support to Crusade yet.
 		great_holy_war.0030 #Monthly cleanup for Beneficiaries becoming unfit for various reasons.
+	}
+	effect = {
+		# Religious migrants created by the County Conversion council task move somewhere safe
+		random = {
+			chance = 4 # Roughly once every 2 years
+			save_scope_as = target_faith
+			if = {
+				limit = {
+					exists = var:converted_development
+					var:converted_development >= 1
+					NOT = {
+						has_doctrine_parameter = unreformed
+					}
+				}
+				# Save all suitable rulers
+				random = {
+					chance = var:converted_development
+					save_scope_as = faith_target
+					every_independent_ruler = {
+						limit = {
+							is_landed = yes
+							NOT = { government_has_flag = government_is_herder }
+							# A very large area - enough for a province in north-western india to reach all of Borneo
+							"this.capital_province.squared_distance(root.var:associated_county.title_province)" <= squared_distance_mega
+							any_sub_realm_county = {
+								faith = prev.faith
+							}
+							trigger_if = {
+								limit = {
+									has_variable_list = faiths_converted_in_counties
+								}
+								NOT = {
+									is_target_in_variable_list = {
+										name = faiths_converted_in_counties
+										target = scope:target_faith
+									}
+								}
+							}
+						}
+						add_to_list = migration_targets
+						every_vassal = {
+							limit = {
+								is_landed = yes
+								highest_held_title_tier >= tier_duchy
+								any_sub_realm_county = {
+									faith = prev.faith
+								}
+								trigger_if = {
+									limit = {
+										has_variable_list = faiths_converted_in_counties
+									}
+									NOT = {
+										is_target_in_variable_list = {
+											name = faiths_converted_in_counties
+											target = scope:target_faith
+										}
+									}
+								}
+							}
+							add_to_list = migration_targets
+						}
+					}
+					every_player = {
+						limit = {
+							is_landed = yes
+							NOT = { government_has_flag = government_is_herder }
+							NOT = { is_in_list = migration_targets }
+							# A vary large area - enough for a province in north-western india to reach all of Borneo
+							"this.capital_province.squared_distance(root.var:associated_county.title_province)" <= squared_distance_mega
+							any_sub_realm_county = {
+								faith = prev.faith
+							}
+							trigger_if = {
+								limit = {
+									has_variable_list = faiths_converted_in_counties
+								}
+								NOT = {
+									is_target_in_variable_list = {
+										name = faiths_converted_in_counties
+										target = scope:target_faith
+									}
+								}
+							}
+						}
+						add_to_list = migration_targets
+					}
+					# If the faith is still large, they only want to move to same-faith rulers
+					if = {
+						limit = {
+							num_county_followers >= 40
+						}
+						random_in_list = {
+							list = migration_targets
+							limit = {
+								faith = root
+								any_sub_realm_county = {
+									faith = root
+								}
+								# Do NOT go within the same realm as you were converted from
+								top_liege != scope:target_faith.var:associated_county.holder.top_liege
+							}
+							weight = {
+								base = 1
+								modifier = {
+									add = 3
+									is_ai = no
+								}
+								modifier = {
+									add = 3
+									government_has_flag = government_is_mandala
+								}
+								modifier = {
+									add = 10
+									highest_held_title_tier >= tier_kingdom
+								}
+								modifier = {
+									add = root.var:converted_development
+									NOT = { government_has_flag = government_is_nomadic }
+									any_sub_realm_county = {
+										count >= {
+											value = root.var:converted_development
+											divide = 2
+										}
+										faith = root
+									}
+								}
+								modifier = {
+									add = 0.1
+									government_has_flag = government_is_nomadic
+								}
+								modifier = {
+									add = 0.1
+									highest_held_title_tier <= tier_county
+								}
+							}
+							save_scope_as = ruler_target
+							save_scope_as = seeking_same_faith_counties
+							trigger_event = global_religion.1000
+						}
+					}
+					# Smaller faiths can go wherever
+					else = {
+						random_in_list = {
+							list = migration_targets
+							limit = {
+								NOR = {
+									top_liege = scope:target_faith.var:associated_county.holder.top_liege # Do NOT go within the same realm as you were converted from
+									faith = { has_doctrine = doctrine_pluralism_fundamentalist }
+									culture = { has_cultural_tradition = tradition_zealous_people }
+								}
+								OR = {
+									faith = {
+										faith_hostility_level = {
+											target = root
+											value <= faith_astray_level
+										}
+									}
+									faith = { has_doctrine = tenet_adaptive }
+									faith = { has_doctrine_parameter = unreformed }
+									faith = { has_doctrine = doctrine_pluralism_pluralistic }
+									culture = { has_cultural_tradition = tradition_religion_blending }
+									culture = { has_cultural_parameter = less_likely_to_force_conversion }
+									has_trait = nomadic_philosophy
+									AND = {
+										is_ai = no
+										has_perk = open_minded_perk
+									}
+								}
+								any_held_title = {
+									tier = tier_county
+									faith = prev.faith
+									trigger_if = {
+										limit = {
+											has_variable_list = faiths_converted_in_the_county
+										}
+										NOT = {
+											is_target_in_variable_list = {
+												name = faiths_converted_in_the_county
+												target = scope:target_faith
+											}
+										}
+									}
+									trigger_if = {
+										limit = {
+											holder = {
+												is_ai = yes
+											}
+										}
+										holder = {
+											is_ai = yes
+										}
+									}
+								}
+							}
+							weight = {
+								base = 1
+								modifier = {
+									add = 3
+									is_ai = no
+								}
+								modifier = {
+									add = 3
+									government_has_flag = government_is_mandala
+								}
+								modifier = {
+									add = 10
+									highest_held_title_tier >= tier_kingdom
+								}
+								modifier = {
+									add = root.var:converted_development
+									NOT = { government_has_flag = government_is_nomadic }
+									any_sub_realm_county = {
+										count >= {
+											value = root.var:converted_development
+											divide = 2
+										}
+										faith = prev.faith
+									}
+								}
+								modifier = {
+									add = 0.1
+									government_has_flag = government_is_nomadic
+								}
+								modifier = {
+									add = 0.1
+									highest_held_title_tier <= tier_county
+								}
+							}
+							save_scope_as = ruler_target
+							save_scope_as = seeking_any_counties
+							trigger_event = global_religion.1000
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -480,7 +761,48 @@ faith_fervor_events_pulse = {
 }
 
 pagan_conversion_pulse = {
-	# GH TODO: Removed due to not fitting in with the GH world, we should consider thinking of some other method for this to fire
+	trigger = { #Is the character ready to convert?
+		is_ai = yes
+		OR = {
+			top_liege = this
+			AND = { # Steppe people convert a bit more often & freely
+				capital_province ?= { geographical_region = world_steppe }
+				primary_title.tier >= tier_duchy
+			}
+		}
+		government_has_flag = government_is_tribal
+		OR = {
+			has_realm_law = tribal_authority_2
+			has_realm_law = tribal_authority_3
+		}
+		faith = { has_doctrine_parameter = unreformed }
+		prestige_level >= 1 #lower than the regular requirement to make sure some rulers can convert
+		development_level >= 10 #lower than the regular requirement to make sure some rulers can convert
+
+		culture = {
+			calc_true_if = {
+				amount >= 7
+				has_innovation = innovation_motte
+				has_innovation = innovation_catapult
+				has_innovation = innovation_barracks
+				has_innovation = innovation_mustering_grounds
+				has_innovation = innovation_bannus
+				has_innovation = innovation_quilted_armor
+				has_innovation = innovation_gavelkind
+				has_innovation = innovation_crop_rotation
+				has_innovation = innovation_city_planning
+				has_innovation = innovation_casus_belli
+				has_innovation = innovation_plenary_assemblies
+				has_innovation = innovation_ledger
+				has_innovation = innovation_development_01
+				has_innovation = innovation_currency_01
+			}
+		}
+	}
+
+	events = {
+		global_religion.0001 #Pagan reformed by neighbor, spouse, soulmate, friend, or geographic location
+	}
 }
 
 # Code on-action: when a great holy war no longer has a valid target, and there was no one left in the target kingdom to replace them. The target scopes will still point to the last target at this point

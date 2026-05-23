@@ -1,0 +1,37 @@
+﻿convert_wasteland_to_fogeater_effect = {
+	hidden_effect = {
+		if = {
+			limit = { 
+				is_alive = yes			
+				is_ruin = yes
+			}
+			# One-day delay on_action because for some ungodly reason character templates throws an error without it. 
+			# Using on_action to trigger death = { death_reason = death_disappearance } instead of an event since it's better for performance.
+			trigger_event = { 
+				on_action = on_wastelander_death_action
+				days = 1
+			}
+		}
+	}
+}
+
+increase_congenital_and_living_magic_effect = {
+	increase_congenital_magic_from_culture_parameter_effect = yes
+	increase_education_living_magic_from_culture_parameter_effect = yes
+}
+
+give_jurist_trait_if_clergy = {
+	if = {
+		limit = { 
+			faith = { 
+				has_doctrine_parameter = judges_act_as_clergy 
+			} 
+		}
+		random_list = {
+			$CHANCE_OF_NONE$ = { }
+			$CHANCE_OF_TRAIT$ = {
+				give_random_jurist_trait_random_effect = yes
+			}
+		}
+	}
+}

@@ -26,49 +26,71 @@
 
 	## END GH ADDITIONS ##
 
-	text = {
+	text = { # Barbershop
 		trigger = {
 			is_game_view_open = barbershop
 		}
 		localization_key = rich_presence_barbershop
 	}
-	
-	text = {
+
+	text = { # Epidemic
+		trigger = {
+			any_sub_realm_county = {
+				has_province_with_epidemic = { intensity >= major }
+			}
+		}
+		localization_key = rich_presence_epidemic
+	}
+
+	text = { # Legend
+		trigger = {
+			any_sub_realm_county = {
+				title_province = {
+					any_province_legend = {
+						legend_protagonist = root
+					}
+				}
+			}
+		}
+		localization_key = rich_presence_legend
+	}
+
+	text = { # Great Holy War
 		trigger = {
 			is_in_ongoing_great_holy_war = yes
 		}
 		localization_key = rich_presence_ghw
 	}
 
-	text = {
+	text = { # War Against Liege
 		trigger = {
 			is_at_war_with_liege = yes
 		}
 		localization_key = rich_presence_liege_war
 	}
 
-	text = {
+	text = { # Civil War
 		trigger = {
 			is_in_civil_war = yes
 		}
 		localization_key = rich_presence_civil_war
 	}
 
-	text = {
+	text = { # Attacker in War
 		trigger = {
 			is_at_war_as_attacker = yes
 		}
 		localization_key = rich_presence_war_attacker
 	}
 
-	text = {
+	text = { # Defender in War
 		trigger = {
 			is_at_war_as_defender = yes
 		}
 		localization_key = rich_presence_war_defender
 	}
 
-	text = {
+	text = { # Raiding
 		trigger = {
 			commanding_army ?= {
 				is_army_in_raid = yes
@@ -77,7 +99,7 @@
 		localization_key = rich_presence_raiding
 	}
 	
-	text = {
+	text = { # Imprisoned
 		trigger = {
 			is_imprisoned = yes
 		}
@@ -102,7 +124,7 @@
 		localization_key = rich_presence_pilgrimage
 	}
 	
-	text = {
+	text = { # Activity - Tour
 		trigger = {
 			involved_activity ?= {
 				root = activity_host
@@ -112,14 +134,14 @@
 		localization_key = rich_presence_tour
 	}
 
-	text = {
+	text = { # Holding Court
 		trigger = {
 			has_character_flag = holding_court_character_flag
 		}
 		localization_key = rich_presence_holding_court
 	}
 	
-	text = {
+	text = { # Hosting Activity
 		trigger = {
 			involved_activity ?= {
 				root = activity_host
@@ -132,7 +154,7 @@
 		localization_key = rich_presence_hosting_activity
 	}
 	
-	text = {
+	text = { # Murder Activity
 		trigger = {
 			has_multiple_players = no
 			involved_activity ?= {
@@ -143,30 +165,30 @@
 		localization_key = rich_presence_hosting_murder_activity
 	}
 	
-	text = {
+	text = { # Attending Activity
 		trigger = {
 			involved_activity ?= {
-				not = { root = activity_host }
+				root != activity_host
 			}
 		}
 		localization_key = rich_presence_attending_activity
 	}
 	
-	text = {
+	text = { # Stress Level 3
 		trigger = {
 			stress_level >= 3
 		}
 		localization_key = rich_presence_stress_3
 	}
 	
-	text = {
+	text = { # Stress Level 2
 		trigger = {
 			stress_level >= 2
 		}
 		localization_key = rich_presence_stress_2
 	}
 	
-	text = {
+	text = { # Intrigue Scheme
 		setup_scope = {
 			random_scheme = {
 				limit = { intrigue_scheme_trigger = yes }
@@ -180,7 +202,7 @@
 		localization_key = rich_presence_intrigue_scheme
 	}
 	
-	text = {
+	text = { # Diplomacy Scheme
 		setup_scope = {
 			random_scheme = {
 				limit = { diplomacy_scheme_trigger = yes }
@@ -193,7 +215,7 @@
 		localization_key = rich_presence_diplomacy_scheme
 	}
 	
-	text = {
+	text = { # Dying of Illness
 		setup_scope = {
 			random_character_trait = {
 				limit = { 
@@ -209,53 +231,35 @@
 		localization_key = rich_presence_dying_illness_trait
 	}
 
-	text = {
+	text = { # Dying
 		trigger = {
 			health <= death_chance_dying_health
 		}
 		localization_key = rich_presence_dying
 	}
 
-	text = {
-		setup_scope = {
-			random_owned_story = {
-				limit = {
-					story_type = story_cycle_house_feud
-					has_variable = house_feud_house
-				}
-				var:house_feud_house = {
-					save_scope_as = house
-				}
-			}
-		}
+	text = { # Age 90+
 		trigger = {
-			exists = scope:house
+			age >= 90
 		}
-		localization_key = rich_presence_house_feud
-	}
-
-	text = {
-		trigger = {
-			is_diarch = yes
-		}
-		localization_key = rich_presence_diarch
+		localization_key = rich_presence_very_old
 	}
 	
-	text = {
+	text = { # Kinslayer
 		trigger = {
 			has_trait = kinslayer
 		}
 		localization_key = rich_presence_kinslayer
 	}
 	
-	text = {
+	text = { # Cannibal
 		trigger = {
 			has_trait = cannibal
 		}
 		localization_key = rich_presence_cannibal
 	}
 	
-	text = {
+	text = { # Religious Head
 		trigger = {
 			faith.religious_head ?= {
 				this = root
@@ -264,7 +268,7 @@
 		localization_key = rich_presence_religion_head
 	}
 	
-	text = {
+	text = { # Incest
 		trigger = {
 			any_spouse = {
 				is_close_family_of = root
@@ -289,26 +293,26 @@
 
 	text = { # Nemeses
 		trigger = {
-			num_of_relation_nemesis > 0
+			any_relation = { type = nemesis }
 		}
 		localization_key = rich_presence_enemies
 	}
 
-	text = {
+	text = { # Councillor
 		trigger = {
 			is_councillor = yes
 		}
 		localization_key = rich_presence_councillor
 	}
 
-	text = {
+	text = { # Dog
 		trigger = {
 			has_named_dog_trigger = yes
 		}
 		localization_key = rich_presence_dog
 	}
 
-	text = {
+	text = { # Cat
 		trigger = {
 			has_named_cat_trigger = yes
 		}
@@ -317,13 +321,16 @@
 
 	text = { # House Feud
 		setup_scope = {
-			random_owned_story = {
-				limit = {
-					story_type = story_cycle_house_feud
-					has_variable = house_feud_house
-				}
-				var:house_feud_house = {
-					save_scope_as = house
+			house = {
+				save_scope_as = my_house
+				random_house_relation = {
+					limit = { has_house_relation_level = feud }
+					random_relation_house = {
+						limit = {
+							NOT = { this = scope:my_house}
+						}
+						save_scope_as = house
+					}
 				}
 			}
 		}
@@ -338,20 +345,6 @@
 			is_diarch = yes
 		}
 		localization_key = rich_presence_diarch
-	}
-	
-	text = {
-		trigger = {
-			has_trait = poet
-		}
-		localization_key = rich_presence_poet
-	}
-
-	text = {
-		trigger = {
-			has_trait = drunkard
-		}
-		localization_key = rich_presence_drinking
 	}
 	
 	text = {
@@ -472,6 +465,20 @@
 		localization_key = rich_presence_epidemic_ergotism
 	}
 	
+	text = { # Poet
+		trigger = {
+			has_trait = lifestyle_poet
+		}
+		localization_key = rich_presence_poet
+	}
+
+	text = { # Drunkard
+		trigger = {
+			has_trait = drunkard
+		}
+		localization_key = rich_presence_drinking
+	}
+	
 	text = { # Tax Collector - Minimum
 		trigger = {
 			government_has_flag = government_is_clan
@@ -524,7 +531,7 @@
 
 	text = { # Admin Government - Scheming
 		trigger = {
-			is_independent_ruler = no
+			top_liege != this
 			government_allows = administrative
 			highest_held_title_tier >= tier_duchy
 			liege = { government_allows = administrative }
@@ -537,12 +544,20 @@
 
 	text = { # Admin Government
 		trigger = {
-			is_independent_ruler = no
+			top_liege != this
 			government_allows = administrative
 			highest_held_title_tier >= tier_duchy
 			liege = { government_allows = administrative }
 		}
 		localization_key = rich_presence_admin
+	}
+
+	text = { # Nomad Government
+		trigger = {
+			government_has_flag = government_is_nomadic
+			exists = domicile
+		}
+		localization_key = rich_presence_nomad
 	}
 
 	text = { # Landless Ruler - Camping
@@ -610,7 +625,7 @@
 		localization_key = rich_presence_hoarding_gold
 	}
 
-	text = {
+	text = { # Fallback
 		localization_key = rich_presence_default
 		fallback = yes
 	}

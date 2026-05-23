@@ -31,7 +31,7 @@ GetLiegeYou = {
 	text = {
 		trigger = { always = no }
 		fallback = yes
-		localization_key = LIEGE_POSSESSIVE
+		localization_key = LIEGE
 	}
 }
 
@@ -123,8 +123,8 @@ GetWarning_DiarchAppointmentCourtlies = {
 			save_temporary_scope_as = char_temp
 			liege = {
 				any_vassal = {
-					has_vassal_stance = courtly
-					NOT = { this = scope:char_temp }
+					vassal_stance = courtly
+					this != scope:char_temp
 				}
 			}
 			is_lowborn = yes
@@ -145,8 +145,8 @@ GetWarning_DiarchAppointmentCourtlies = {
 			save_temporary_scope_as = char_temp
 			liege = {
 				any_vassal = {
-					has_vassal_stance = courtly
-					NOT = { this = scope:char_temp }
+					vassal_stance = courtly
+					this != scope:char_temp
 				}
 			}
 			is_lowborn = yes
@@ -165,8 +165,8 @@ GetWarning_DiarchAppointmentCourtlies = {
 			save_temporary_scope_as = char_temp
 			liege = {
 				any_vassal = {
-					has_vassal_stance = courtly
-					NOT = { this = scope:char_temp }
+					vassal_stance = courtly
+					this != scope:char_temp
 				}
 			}
 			diarchy_regent_succession_score_value <= courtly_offence_at_succession_threshold_low
@@ -184,8 +184,8 @@ GetWarning_DiarchAppointmentCourtlies = {
 			save_temporary_scope_as = char_temp
 			liege = {
 				any_vassal = {
-					has_vassal_stance = courtly
-					NOT = { this = scope:char_temp }
+					vassal_stance = courtly
+					this != scope:char_temp
 				}
 			}
 			diarchy_regent_succession_score_value <= courtly_offence_at_succession_threshold_medium
@@ -203,8 +203,8 @@ GetWarning_DiarchAppointmentCourtlies = {
 			save_temporary_scope_as = char_temp
 			liege = {
 				any_vassal = {
-					has_vassal_stance = courtly
-					NOT = { this = scope:char_temp }
+					vassal_stance = courtly
+					this != scope:char_temp
 				}
 			}
 			diarchy_regent_succession_score_value <= courtly_offence_at_succession_threshold_high
@@ -242,8 +242,8 @@ GetCustomTooltip_DiarchAppointmentCourtlies = {
 			save_temporary_scope_as = char_temp
 			liege = {
 				any_vassal = {
-					has_vassal_stance = courtly
-					NOT = { this = scope:char_temp }
+					vassal_stance = courtly
+					this != scope:char_temp
 				}
 			}
 			is_lowborn = yes
@@ -264,8 +264,8 @@ GetCustomTooltip_DiarchAppointmentCourtlies = {
 			save_temporary_scope_as = char_temp
 			liege = {
 				any_vassal = {
-					has_vassal_stance = courtly
-					NOT = { this = scope:char_temp }
+					vassal_stance = courtly
+					this != scope:char_temp
 				}
 			}
 			is_lowborn = yes
@@ -284,8 +284,8 @@ GetCustomTooltip_DiarchAppointmentCourtlies = {
 			save_temporary_scope_as = char_temp
 			liege = {
 				any_vassal = {
-					has_vassal_stance = courtly
-					NOT = { this = scope:char_temp }
+					vassal_stance = courtly
+					this != scope:char_temp
 				}
 			}
 			diarchy_regent_succession_score_value <= courtly_offence_at_succession_threshold_low
@@ -303,8 +303,8 @@ GetCustomTooltip_DiarchAppointmentCourtlies = {
 			save_temporary_scope_as = char_temp
 			liege = {
 				any_vassal = {
-					has_vassal_stance = courtly
-					NOT = { this = scope:char_temp }
+					vassal_stance = courtly
+					this != scope:char_temp
 				}
 			}
 			diarchy_regent_succession_score_value <= courtly_offence_at_succession_threshold_medium
@@ -322,8 +322,8 @@ GetCustomTooltip_DiarchAppointmentCourtlies = {
 			save_temporary_scope_as = char_temp
 			liege = {
 				any_vassal = {
-					has_vassal_stance = courtly
-					NOT = { this = scope:char_temp }
+					vassal_stance = courtly
+					this != scope:char_temp
 				}
 			}
 			diarchy_regent_succession_score_value <= courtly_offence_at_succession_threshold_high
@@ -1150,13 +1150,13 @@ VizierExtravagance_T2_Activities = {
 	### Fictional.
 	text = {
 		trigger = {
-			diarch = { has_trait = poet }
+			diarch = { has_trait = lifestyle_poet }
 		}
 		localization_key = viz_extravagance.t2.activities.poetry
 		weight_multiplier = {
 			modifier = {
 				add = 10
-				diarch = { has_trait = poet }
+				diarch = { has_trait = lifestyle_poet }
 			}
 		}
 	}
@@ -2157,9 +2157,7 @@ VizierExtravagance_T4_Treasure = {
 				}
 			}
 		}
-		weight_multiplier = {
-			modifier = { factor = 0.1 }
-		}
+		weight_multiplier = 0.1
 		localization_key = viz_extravagance.t4.treasure.sensible_investments_for_smart_adults
 	}
 }
@@ -2292,7 +2290,7 @@ VizierExtravagance_T4_Activities = {
 				has_trait = eccentric
 				OR = {
 					has_trait = cannibal
-					any_secret = { secret_type = secret_cannibal }
+					any_secret = { type = secret_cannibal }
 				}
 			}
 		}

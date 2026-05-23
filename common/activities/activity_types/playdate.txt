@@ -1,5 +1,4 @@
 ﻿activity_playdate = {
-
 	is_shown = {
 		highest_held_title_tier > tier_barony
 		trigger_if = {
@@ -21,9 +20,20 @@
 		is_undead = no
 		is_ruin = no
 		is_redlander = no
+		#Every other activity must be blocked until an uncrowned AI crowns themselves
+		trigger_if = {
+			limit = {
+				is_ai = yes
+				age >= 12
+			}
+			NOT = {
+				has_realm_law = uncrowned
+			}
+		}
 	}
 
 	can_start_showing_failures_only = {
+		NOT = { is_activity_type_on_cooldown = activity_playdate }
 		is_available = yes
 		age >= 4
 	}
@@ -406,6 +416,7 @@
 			2 = activity_invite_rule_liege
 			2 = activity_invite_rule_siblings
 			2 = activity_invite_rule_vassals
+			1 = activity_invite_rule_confederates
 			1 = activity_invite_rule_friends
 			1 = activity_invite_rule_crushes
 			1 = activity_invite_rule_personal_scheme_targets

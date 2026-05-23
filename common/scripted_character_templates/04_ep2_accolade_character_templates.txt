@@ -1,9 +1,36 @@
-﻿# COMMON ATTRIBUTES
+﻿## GH NOTE: Any qualitative changes to this file must be mirrored to GH_accolade_character_templates
+
+# COMMON ATTRIBUTES
 
 accolade_marauder_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
-	
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 	random_traits_list = {
 		count = 1
 		sadistic = {}
@@ -33,34 +60,714 @@ accolade_marauder_character = {
 		vengeful = {}
 		callous = {}
 		greedy = {}
-	}
-	random_traits_list = {
-		education_intrigue_1 = { weight = { base = 35 } }
-		education_intrigue_2 = { weight = { base = 35 } }
-		education_intrigue_3 = { weight = { base = 20 } }
-		education_intrigue_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_blademaster = {}
-		lifestyle_hunter = {}
-		giant = {}
-		torturer = {}
-		murderer = {}
-		strong = {}
 		disloyal = {}
 	}
+	# Bad traits for bad squires
 	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = { }
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		flagellant = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		torturer = {}
+		lifestyle_blademaster = {}
+		lifestyle_hunter = {}
+	}
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
-		#berserker
+		assign_intrigue_education_from_squires_quality_effect = yes
+		if = { ## GH CHANGE: Berserkers
+			limit = {
+				culture = { has_cultural_pillar = heritage_sjalvolki }
+				faith = { has_doctrine_parameter = unreformed }
+			}
+			random = {
+				chance = 20
+				add_trait = berserker
+			}
+		}
+		#if = {
+		#	limit = {
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
+		#	}
+		#	add_trait = varangian
+		#}
+		
+		# Cultural Traditions
 		if = {
-			limit = { # GH TODO: Berserker trigger
-				always = no
+			limit = {
+				culture = {
+					has_cultural_parameter = winter_soldier_trait_more_common
+				}
+				NOT = {
+					has_trait = winter_soldier
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = winter_soldier
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = forest_fighter_trait_more_common
+				}
+				NOT = {
+					has_trait = forest_fighter
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = forest_fighter
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = rough_terrain_expert_trait_more_common
+				}
+				NOT = {
+					has_trait = rough_terrain_expert
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = rough_terrain_expert
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = desert_warrior_trait_more_common
+				}
+				NOT = {
+					has_trait = desert_warrior
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = desert_warrior
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = jungle_stalker_trait_more_common
+				}
+				NOT = {
+					has_trait = jungle_stalker
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = jungle_stalker
+			}
+		}
+		set_interesting_traits_and_modifiers_effect = yes
+		add_random_tiered_trait_xp_effect = {
+			TRAIT = lifestyle_blademaster
+			LEVEL_1 = yes
+			LEVEL_3 = yes
+		}
+		add_random_tiered_trait_track_xp_effect = {
+			TRAIT = lifestyle_hunter
+			TRACK = hunter
+			LEVEL_1 = yes
+			LEVEL_3 = no
+		}
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
+		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
+	}
+}
+
+accolade_idealist_character = {
+	age = { 16 22 }
+	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
+	
+	random_traits_list = {
+		count = 1
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+	}
+	random_traits_list = {
+		count = 1
+		lustful = {}
+		arbitrary = {}
+		impatient = {}
+		arrogant = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		zealous = {}
+		brave = {}
+		honest = {}
+		just = {}
+		patient = {}
+		ambitious = {}
+		gregarious = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+	}
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		disfigured = {}
+		drunkard = {}
+		rakish = {}
+		reclusive = {}
+		improvident = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		gallant = {}
+		loyal = {}
+		diplomat = {}
+		lifestyle_hunter = {}
+	}
+
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
+	after_creation = {
+		assign_diplomacy_education_from_squires_quality_effect = yes
+		random = {
+			chance = 5
+			
+			add_trait = lifestyle_poet
+			
+			modifier = {
+				add = 20
+				culture = { has_cultural_parameter = poet_trait_more_common }
+			}
+			#modifier = {
+			#	add = 10
+			#	OR = {
+			#		culture = { has_cultural_pillar = heritage_north_germanic }
+			#		religion = religion:germanic_religion
+			#	}
+			#}
+			modifier = { ## GH ADDITION: Poet-venerating faith
+				add = 20
+				faith = faith:stranuni
+			}
+		}
+		
+		# Cultural Traditions
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = winter_soldier_trait_more_common
+				}
+				NOT = {
+					has_trait = winter_soldier
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = winter_soldier
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = forest_fighter_trait_more_common
+				}
+				NOT = {
+					has_trait = forest_fighter
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = forest_fighter
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = rough_terrain_expert_trait_more_common
+				}
+				NOT = {
+					has_trait = rough_terrain_expert
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = rough_terrain_expert
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = desert_warrior_trait_more_common
+				}
+				NOT = {
+					has_trait = desert_warrior
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = desert_warrior
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = jungle_stalker_trait_more_common
+				}
+				NOT = {
+					has_trait = jungle_stalker
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = jungle_stalker
+			}
+		}
+		set_interesting_traits_and_modifiers_effect = yes
+		add_random_tiered_trait_track_xp_effect = {
+			TRAIT = lifestyle_hunter
+			TRACK = hunter
+			LEVEL_1 = yes
+			LEVEL_3 = no
+		}
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
+		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
+	}
+}
+
+accolade_charmer_character = {
+	age = { 16 22 }
+	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
+	
+	random_traits_list = {
+		count = 1
+		lustful = {}
+	}
+	random_traits_list = {
+		count = 1
+		lustful = {}
+		wrathful = {}
+		arbitrary = {}
+		impatient = {}
+		arrogant = {}
+		stubborn = {}
+		diligent = {}
+		zealous = {}
+		brave = {}
+		honest = {}
+		patient = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+		sadistic = {}
+		vengeful = {}
+		callous = {}
+		greedy = {}
+	}
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		deviant = {}
+		lovers_pox = {}
+		rakish = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		seducer = {}
+		gallant = {}
+		lifestyle_reveler = {}
+	}
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
+	after_creation = {
+		assign_intrigue_education_from_squires_quality_effect = yes
+		random = {
+			chance = 5
+			
+			add_trait = lifestyle_poet
+			
+			modifier = {
+				add = 20
+				culture = { has_cultural_parameter = poet_trait_more_common }
+			}
+			#modifier = {
+			#	add = 10
+			#	OR = {
+			#		culture = { has_cultural_pillar = heritage_north_germanic }
+			#		religion = religion:germanic_religion
+			#	}
+			#}
+			modifier = { ## GH ADDITION: Poet-venerating faith
+				add = 20
+				faith = faith:stranuni
+			}
+		}
+		
+		# Cultural Traditions
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = winter_soldier_trait_more_common
+				}
+				NOT = {
+					has_trait = winter_soldier
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = winter_soldier
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = forest_fighter_trait_more_common
+				}
+				NOT = {
+					has_trait = forest_fighter
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = forest_fighter
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = rough_terrain_expert_trait_more_common
+				}
+				NOT = {
+					has_trait = rough_terrain_expert
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = rough_terrain_expert
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = desert_warrior_trait_more_common
+				}
+				NOT = {
+					has_trait = desert_warrior
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = desert_warrior
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = jungle_stalker_trait_more_common
+				}
+				NOT = {
+					has_trait = jungle_stalker
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = jungle_stalker
+			}
+		}
+		set_interesting_traits_and_modifiers_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
+		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
+	}
+}
+
+accolade_thug_character = {
+	age = { 16 22 }
+	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
+
+	random_traits_list = {
+		count = 1
+		wrathful = {}
+		arbitrary = {}
+		impatient = {}
+		arrogant = {}
+	}
+	random_traits_list = {
+		count = 1
+		lustful = {}
+		wrathful = {}
+		arbitrary = {}
+		impatient = {}
+		arrogant = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		zealous = {}
+		brave = {}
+		honest = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		trusting = {}
+		generous = {}
+		sadistic = {}
+		vengeful = {}
+		callous = {}
+		greedy = {}
+	}
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		disloyal = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		reaver = {}
+		lifestyle_blademaster = {}
+		giant = {}
+	}
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
+	after_creation = {
+		random_list = {
+			1 = {
+				assign_intrigue_education_from_squires_quality_effect = yes
+			}
+			1 = {
+				assign_martial_education_from_squires_quality_effect = yes
+			}
+		}
+		#if = {
+		#	limit = {
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
+		#	}
+		#	add_trait = varangian
+		#}
+		if = { ## GH CHANGE: Berserkers
+			limit = {
+				culture = { has_cultural_pillar = heritage_sjalvolki }
+				faith = { has_doctrine_parameter = unreformed }
 			}
 			random = {
 				chance = 20
@@ -143,479 +850,71 @@ accolade_marauder_character = {
 		add_random_tiered_trait_xp_effect = {
 			TRAIT = lifestyle_blademaster
 			LEVEL_1 = yes
-			LEVEL_3 = yes
-		}
-		add_random_tiered_trait_track_xp_effect = {
-			TRAIT = lifestyle_hunter
-			TRACK = hunter
-			LEVEL_1 = yes
 			LEVEL_3 = no
 		}
-		add_random_tourney_participant_level_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
-	}
-}
 
-accolade_idealist_character = {
-	age = { 16 35 }
-	random_traits = yes
-	
-	random_traits_list = {
-		count = 1
-		compassionate = {}
-		forgiving = {}
-		trusting = {}
-		generous = {}
-	}
-	random_traits_list = {
-		count = 1
-		lustful = {}
-		arbitrary = {}
-		impatient = {}
-		arrogant = {}
-		stubborn = {}
-		diligent = {}
-		temperate = {}
-		zealous = {}
-		brave = {}
-		honest = {}
-		just = {}
-		patient = {}
-		ambitious = {}
-		gregarious = {}
-		compassionate = {}
-		forgiving = {}
-		trusting = {}
-		generous = {}
-	}
-	random_traits_list = {
-		education_diplomacy_1 = { weight = { base = 35 } }
-		education_diplomacy_2 = { weight = { base = 35 } }
-		education_diplomacy_3 = { weight = { base = 20 } }
-		education_diplomacy_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_hunter = {}
-		gallant = {}
-		diplomat = {}
-		loyal = {}
-		improvident = {}
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = { }
-	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
-	after_creation = {
-		#random = { # GH TODO: Generic trigger
-		#	chance = 5
-		#	
-		#	add_trait = poet
-		#	
-		#	modifier = {
-		#		add = 20
-		#		culture = { has_cultural_parameter = poet_trait_more_common }
-		#	}
-		#	modifier = {
-		#		add = 10
-		#		OR = {
-		#			culture = { has_cultural_pillar = heritage_north_germanic }
-		#			religion = religion:germanic_religion
-		#		}
-		#	}
-		#}
-		
-		# Cultural Traditions
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = winter_soldier_trait_more_common
-				}
-				NOT = {
-					has_trait = winter_soldier
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = winter_soldier
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = forest_fighter_trait_more_common
-				}
-				NOT = {
-					has_trait = forest_fighter
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = forest_fighter
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = rough_terrain_expert_trait_more_common
-				}
-				NOT = {
-					has_trait = rough_terrain_expert
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = rough_terrain_expert
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = desert_warrior_trait_more_common
-				}
-				NOT = {
-					has_trait = desert_warrior
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = desert_warrior
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = jungle_stalker_trait_more_common
-				}
-				NOT = {
-					has_trait = jungle_stalker
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = jungle_stalker
-			}
-		}
-		set_interesting_traits_and_modifiers_effect = yes
-		add_random_tiered_trait_track_xp_effect = {
-			TRAIT = lifestyle_hunter
-			TRACK = hunter
-			LEVEL_1 = yes
-			LEVEL_3 = no
-		}
-		add_random_tourney_participant_level_effect = yes
-		set_random_base_arcana = yes
-	}
-}
-
-accolade_charmer_character = {
-	age = { 16 35 }
-	random_traits = yes
-	
-	random_traits_list = {
-		count = 1
-		lustful = {}
-	}
-	random_traits_list = {
-		count = 1
-		lustful = {}
-		wrathful = {}
-		arbitrary = {}
-		impatient = {}
-		arrogant = {}
-		stubborn = {}
-		diligent = {}
-		zealous = {}
-		brave = {}
-		honest = {}
-		patient = {}
-		ambitious = {}
-		gregarious = {}
-		deceitful = {}
-		compassionate = {}
-		forgiving = {}
-		trusting = {}
-		generous = {}
-		sadistic = {}
-		vengeful = {}
-		callous = {}
-		greedy = {}
-	}
-	random_traits_list = {
-		education_intrigue_1 = { weight = { base = 35 } }
-		education_intrigue_2 = { weight = { base = 35 } }
-		education_intrigue_3 = { weight = { base = 20 } }
-		education_intrigue_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		gallant = {}
-		seducer = {}
-		fecund = {}
-		rakish = {}
-		lovers_pox = {}
-		deviant = {}
-		lifestyle_reveler = { }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = { }
-	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
-	after_creation = {
-		#random = { # GH TODO: Generic trigger
-		#	chance = 5
-		#	
-		#	add_trait = poet
-		#	
-		#	modifier = {
-		#		add = 20
-		#		culture = { has_cultural_parameter = poet_trait_more_common }
-		#	}
-		#	modifier = {
-		#		add = 10
-		#		OR = {
-		#			culture = { has_cultural_pillar = heritage_north_germanic }
-		#			religion = religion:germanic_religion
-		#		}
-		#	}
-		#}
-		
-		# Cultural Traditions
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = winter_soldier_trait_more_common
-				}
-				NOT = {
-					has_trait = winter_soldier
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = winter_soldier
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = forest_fighter_trait_more_common
-				}
-				NOT = {
-					has_trait = forest_fighter
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = forest_fighter
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = rough_terrain_expert_trait_more_common
-				}
-				NOT = {
-					has_trait = rough_terrain_expert
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = rough_terrain_expert
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = desert_warrior_trait_more_common
-				}
-				NOT = {
-					has_trait = desert_warrior
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = desert_warrior
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = jungle_stalker_trait_more_common
-				}
-				NOT = {
-					has_trait = jungle_stalker
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = jungle_stalker
-			}
-		}
-		set_interesting_traits_and_modifiers_effect = yes
-		add_random_tourney_participant_level_effect = yes
-		set_random_base_arcana = yes
-	}
-}
-
-
-
-accolade_thug_character = {
-	age = { 16 35 }
-	random_traits = yes
-
-	random_traits_list = {
-		count = 1
-		wrathful = {}
-		arbitrary = {}
-		impatient = {}
-		arrogant = {}
-	}
-	random_traits_list = {
-		count = 1
-		lustful = {}
-		wrathful = {}
-		arbitrary = {}
-		impatient = {}
-		arrogant = {}
-		stubborn = {}
-		diligent = {}
-		temperate = {}
-		zealous = {}
-		brave = {}
-		honest = {}
-		ambitious = {}
-		gregarious = {}
-		deceitful = {}
-		trusting = {}
-		generous = {}
-		sadistic = {}
-		vengeful = {}
-		callous = {}
-		greedy = {}
-	}
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_intrigue_1 = { weight = { base = 35 } }
-		education_intrigue_2 = { weight = { base = 35 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_blademaster = {}
-		strong = {}
-		reaver = {}
-		giant = {}
-		dull = {}
-		irritable = {}
-		disloyal = {}
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = { }
-	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
-	after_creation = {
-		#berserker
-		#if = { # GH TODO: Generic Berserker trigger
-		#	limit = {
-		#		faith.religion = faith:norse_pagan.religion
-		#	}
-		#	random = {
-		#		chance = 20
-		#		add_trait = berserker
-		#	}
-		#}
-		
-		# Cultural Traditions
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = winter_soldier_trait_more_common
-				}
-				NOT = {
-					has_trait = winter_soldier
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = winter_soldier
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = forest_fighter_trait_more_common
-				}
-				NOT = {
-					has_trait = forest_fighter
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = forest_fighter
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = rough_terrain_expert_trait_more_common
-				}
-				NOT = {
-					has_trait = rough_terrain_expert
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = rough_terrain_expert
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = desert_warrior_trait_more_common
-				}
-				NOT = {
-					has_trait = desert_warrior
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = desert_warrior
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = jungle_stalker_trait_more_common
-				}
-				NOT = {
-					has_trait = jungle_stalker
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = jungle_stalker
-			}
-		}
-		set_interesting_traits_and_modifiers_effect = yes
-		add_random_tiered_trait_xp_effect = {
-			TRAIT = lifestyle_blademaster
-			LEVEL_1 = yes
-			LEVEL_3 = no
-		}
-		add_random_tourney_participant_level_effect = yes
-		set_random_base_arcana = yes
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_disciplinarian_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 	
 	random_traits_list = {
 		count = 1
@@ -647,28 +946,45 @@ accolade_disciplinarian_character = {
 		callous = {}
 		greedy = {}
 	}
+	# Bad traits for bad squires
 	random_traits_list = {
-		education_stewardship_1 = { weight = { base = 35 } }
-		education_stewardship_2 = { weight = { base = 35 } }
-		education_stewardship_3 = { weight = { base = 20 } }
-		education_stewardship_4 = { weight = { base = 10 } }
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		flagellant = {}
 	}
+	# Good traits for good squires
 	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_blademaster = {}
+		count = squire_quality_good_traits
+		strong = {}
 		athletic = {}
+		shrewd = {}
 		organizer = {}
 		overseer = {}
-		flagellant = {}
 		administrator = {}
+		lifestyle_blademaster = {}
 	}
-	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = { }
-	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_stewardship_education_from_squires_quality_effect = yes
+		#if = {
+		#	limit = {
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
+		#	}
+		#	add_trait = varangian
+		#}
 		# Cultural Traditions
 		if = {
 			limit = {
@@ -746,14 +1062,69 @@ accolade_disciplinarian_character = {
 			LEVEL_1 = yes
 			LEVEL_3 = no
 		}
-		add_random_tourney_participant_level_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_fanatic_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 	
 	random_traits_list = {
 		count = 1
@@ -783,33 +1154,34 @@ accolade_fanatic_character = {
 		callous = {}
 		greedy = {}
 	}
+	# Bad traits for bad squires
 	random_traits_list = {
-		education_learning_1 = { weight = { base = 35 } }
-		education_learning_2 = { weight = { base = 35 } }
-		education_learning_3 = { weight = { base = 20 } }
-		education_learning_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_blademaster = {}
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
 		lunatic_1 = {}
 		lunatic_genetic = {}
-		albino = {}
-		disfigured = {}
+		flagellant = {}
+		contrite = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
 		theologian = {}
 		lifestyle_mystic = {}
 		holy_warrior = {}
-		flagellant = {}
-		contrite = {}
 		whole_of_body = {}
+		lifestyle_blademaster = {}
 	}
-	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = { }
-	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_learning_education_from_squires_quality_effect = yes
 		# Cultural Traditions
 		if = {
 			limit = {
@@ -892,14 +1264,69 @@ accolade_fanatic_character = {
 			LEVEL_1 = yes
 			LEVEL_3 = yes
 		}
-		add_random_tourney_participant_level_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_valiant_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 	
 	random_traits_list = {
 		count = 1
@@ -930,56 +1357,78 @@ accolade_valiant_character = {
 		forgiving = {}
 		trusting = {}
 	}
+	# Bad traits for bad squires
 	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		weak = {}
+		hunchbacked = {}
 	}
+	# Good traits for good squires
 	random_traits_list = {
-		count = { 0 1 }
+		count = squire_quality_good_traits
 		lifestyle_blademaster = {}
 		lifestyle_traveler = {}
 		strong = {}
 		lifestyle_hunter = {}
-		reckless = {}
+		athletic = {}
+		shrewd = {}
 		gallant = {}
 		loyal = {}
 	}
-	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = { }
-	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
-		#berserker
-		#if = { # GH TODO: Generic Berserker trigger
+		assign_martial_education_from_squires_quality_effect = yes
+		#if = {
 		#	limit = {
-		#		faith.religion = faith:norse_pagan.religion
-		#	}
-		#	random = {
-		#		chance = 20
-		#		add_trait = berserker
-		#	}
-		#}
-		#random = { # GH TODO: Generic Poet trigger
-		#	chance = 1
-		#	
-		#	add_trait = poet
-		#	
-		#	modifier = {
-		#		add = 10
-		#		culture = { has_cultural_parameter = poet_trait_more_common }
-		#	}
-		#	modifier = {
-		#		add = 5
-		#		OR = {
-		#			culture = { has_cultural_pillar = heritage_north_germanic }
-		#			religion = religion:germanic_religion
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
 		#		}
 		#	}
+		#	add_trait = varangian
 		#}
+		if = { ## GH CHANGE: Berserkers
+			limit = {
+				culture = { has_cultural_pillar = heritage_sjalvolki }
+				faith = { has_doctrine_parameter = unreformed }
+			}
+			random = {
+				chance = 20
+				add_trait = berserker
+			}
+		}
+		random = {
+			chance = 1
+			
+			add_trait = lifestyle_poet
+			
+			modifier = {
+				add = 10
+				culture = { has_cultural_parameter = poet_trait_more_common }
+			}
+			#modifier = {
+			#	add = 5
+			#	OR = {
+			#		culture = { has_cultural_pillar = heritage_north_germanic }
+			#		religion = religion:germanic_religion
+			#	}
+			#}
+			modifier = { ## GH ADDITION: Poet-venerating faith
+				add = 20
+				faith = faith:stranuni
+			}
+		}
 		
 		# Cultural Traditions
 		if = {
@@ -1064,14 +1513,69 @@ accolade_valiant_character = {
 			LEVEL_1 = yes
 			LEVEL_3 = no
 		}
-		add_random_tourney_participant_level_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_stalwart_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 	
 	random_traits_list = {
 		count = 1
@@ -1102,14 +1606,23 @@ accolade_stalwart_character = {
 		forgiving = {}
 		greedy = {}
 	}
+	# Bad traits for bad squires
 	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		weak = {}
+		hunchbacked = {}
+		clubfooted = {}
 	}
+	# Good traits for good squires
 	random_traits_list = {
-		count = { 0 1 }
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
 		lifestyle_blademaster = {}
 		lifestyle_hunter = {}
 		athletic = {}
@@ -1117,17 +1630,25 @@ accolade_stalwart_character = {
 		confider = {}
 		unyielding_defender = {}
 	}
-	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = { }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		loyal = {}
-	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_martial_education_from_squires_quality_effect = yes
+		#if = {
+		#	limit = {
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
+		#	}
+		#	add_trait = varangian
+		#}
 		# Cultural Traditions
 		if = {
 			limit = {
@@ -1211,14 +1732,69 @@ accolade_stalwart_character = {
 			LEVEL_1 = yes
 			LEVEL_3 = no
 		}
-		add_random_tourney_participant_level_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_scoundrel_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 	
 	random_traits_list = {
 		count = 1
@@ -1230,67 +1806,92 @@ accolade_scoundrel_character = {
 	random_traits_list = {
 		count = 1
 		lustful = {}
-        wrathful = {}
-        arbitrary = {}
-        impatient = {}
-        arrogant = {}
-        stubborn = {}
-        brave = {}
-        patient = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        trusting = {}
-        sadistic = {}
-        vengeful = {}
-        callous = {}
-        compassionate = {}
-        forgiving = {}
-        greedy = {}
+		wrathful = {}
+		arbitrary = {}
+		impatient = {}
+		arrogant = {}
+		stubborn = {}
+		brave = {}
+		patient = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		trusting = {}
+		sadistic = {}
+		vengeful = {}
+		callous = {}
+		compassionate = {}
+		forgiving = {}
+		greedy = {}
 	}
+	# Bad traits for bad squires
 	random_traits_list = {
-		education_diplomacy_1 = { weight = { base = 35 } }
-		education_diplomacy_2 = { weight = { base = 35 } }
-		education_diplomacy_3 = { weight = { base = 20 } }
-		education_diplomacy_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_traveler = {}
-		disloyal = {}
-		shrewd = {}
-		schemer = {}
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
 		drunkard = {}
-		hashishiyah = {}
+		dull = {}
 		rakish = {}
 		profligate = {}
+		disloyal = {}
 		wild_oat = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		lifestyle_traveler = {}
 		lifestyle_reveler = { }
 	}
-	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = { }
-	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
-		#random = { # GH TODO: Generic Poet trigger
-		#	chance = 1
-		#	
-		#	add_trait = poet
-		#	
-		#	modifier = {
-		#		add = 10
-		#		culture = { has_cultural_parameter = poet_trait_more_common }
-		#	}
-		#	modifier = {
-		#		add = 5
-		#		OR = {
-		#			culture = { has_cultural_pillar = heritage_north_germanic }
-		#			religion = religion:germanic_religion
+		random_list = {
+			1 = {
+				assign_diplomacy_education_from_squires_quality_effect = yes
+			}
+			1 = {
+				assign_intrigue_education_from_squires_quality_effect = yes
+			}
+		}
+		#if = {
+		#	limit = {
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
 		#		}
 		#	}
+		#	add_trait = varangian
 		#}
+		random = {
+			chance = 1
+			
+			add_trait = lifestyle_poet
+			
+			modifier = {
+				add = 10
+				culture = { has_cultural_parameter = poet_trait_more_common }
+			}
+			#modifier = {
+			#	add = 5
+			#	OR = {
+			#		culture = { has_cultural_pillar = heritage_north_germanic }
+			#		religion = religion:germanic_religion
+			#	}
+			#}
+			modifier = { ## GH ADDITION: Poet-venerating faith
+				add = 20
+				faith = faith:stranuni
+			}
+		}
 		# Cultural Traditions
 		if = {
 			limit = {
@@ -1363,16 +1964,71 @@ accolade_scoundrel_character = {
 			}
 		}
 		set_interesting_traits_and_modifiers_effect = yes
-		add_random_tourney_participant_level_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 # SKILLED ATTRIBUTES
 
 accolade_politicker_character = {
-	age = { 18 36 }
+	age = { 16 24 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
@@ -1416,41 +2072,53 @@ accolade_politicker_character = {
 		forgiving = {}
 	}
 
+	# Bad traits for bad squires
 	random_traits_list = {
-		education_diplomacy_3 = { weight = { base = 50 } }
-		education_diplomacy_4 = { weight = { base = 25 } }
+		count = squire_quality_bad_traits
+		inappetetic = {}
+		murderer = {}
+		drunkard = {}
+		dull = {}
+		stuttering = {}
+		lisping = {}
 	}
+	# Good traits for good squires
 	random_traits_list = {
-		count = { 0 1 }
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
 		lifestyle_traveler = {}
 		diplomat = {}
-		poet = {}
 		august = {}
 		loyal = {}
 		lifestyle_reveler = { }
-		tourney_participant = { }
 	}
-	prowess = { min_guest_template_skill 16 }
-	diplomacy = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
-		#random = { # GH TODO: Generic trigger
-		#	chance = 1
-		#	
-		#	add_trait = poet
-		#	
-		#	modifier = {
-		#		add = 15
-		#		culture = { has_cultural_parameter = poet_trait_more_common }
-		#	}
-		#	modifier = {
-		#		add = 10
-		#		OR = {
-		#			culture = { has_cultural_pillar = heritage_north_germanic }
-		#			religion = religion:germanic_religion
-		#		}
-		#	}
-		#}
+		assign_diplomacy_education_from_squires_quality_effect = yes
+		random = {
+			chance = 1
+			
+			add_trait = lifestyle_poet
+			
+			modifier = {
+				add = 15
+				culture = { has_cultural_parameter = poet_trait_more_common }
+			}
+			#modifier = {
+			#	add = 10
+			#	OR = {
+			#		culture = { has_cultural_pillar = heritage_north_germanic }
+			#		religion = religion:germanic_religion
+			#	}
+			#}
+			modifier = { ## GH ADDITION: Poet-venerating faith
+				add = 20
+				faith = faith:stranuni
+			}
+		}
 		# Cultural Traditions
 		if = {
 			limit = {
@@ -1523,14 +2191,69 @@ accolade_politicker_character = {
 			}
 		}
 		set_interesting_traits_and_modifiers_effect = yes
-		add_random_tourney_participant_level_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_tactician_character = {
-	age = { 18 36 }
+	age = { 16 24 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
@@ -1576,27 +2299,49 @@ accolade_tactician_character = {
 		vengeful = {}
 		forgiving = {}
 	}
-
+	# Bad traits for bad squires
 	random_traits_list = {
-		education_martial_3 = { weight = { base = 50 } }
-		education_martial_4 = { weight = { base = 25 } }
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		weak = {}
+		clubfooted = {}
+		hunchbacked = {}
 	}
+	# Good traits for good squires
 	random_traits_list = {
-		count = { 0 1 }
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
 		lifestyle_hunter = {}
+		lifestyle_blademaster = {}
 		strategist = {}
 		gallant = {}
 		overseer = {}
-		tourney_participant = {}
-		lifestyle_blademaster = {}
-		strong = {}
-		lifestyle_hunter = {}
 	}
-	prowess = { 8 14 }
-	martial = { 9 12 }
-	gender_female_chance = root_soldier_female_chance
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_martial_education_from_squires_quality_effect = yes
 		# Cultural Traditions
+		#if = {
+		#	limit = {
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
+		#	}
+		#	add_trait = varangian
+		#}
 		if = {
 			limit = {
 				culture = {
@@ -1673,15 +2418,70 @@ accolade_tactician_character = {
 			LEVEL_1 = yes
 			LEVEL_3 = no
 		}
-		add_random_tourney_participant_level_effect = yes
 		set_interesting_traits_and_modifiers_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_reeve_character = {
-	age = { 18 36 }
+	age = { 16 24 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
@@ -1695,54 +2495,59 @@ accolade_reeve_character = {
 	random_traits_list = {
 		count = 2
 		lustful = {}
-        chaste = {}
-        temperate = {}
-        greedy = {}
-        generous = {}
-        diligent = {}
-        wrathful = {}
-        calm = {}
-        patient = {}
-        impatient = {}
-        arrogant = {}
-        humble = {}
-        deceitful = {}
-        honest = {}
-        brave = {}
-        shy = {}
-        gregarious = {}
-        ambitious = {}
-        content = {}
-        just = {}
-        cynical = {}
-        zealous = {}
-        paranoid = {}
-        trusting = {}
-        compassionate = {}
-        callous = {}
-        sadistic = {}
-        stubborn = {}
-        vengeful = {}
-        forgiving = {}
+		chaste = {}
+		temperate = {}
+		greedy = {}
+		generous = {}
+		diligent = {}
+		wrathful = {}
+		calm = {}
+		patient = {}
+		impatient = {}
+		arrogant = {}
+		humble = {}
+		deceitful = {}
+		honest = {}
+		brave = {}
+		shy = {}
+		gregarious = {}
+		ambitious = {}
+		content = {}
+		just = {}
+		cynical = {}
+		zealous = {}
+		paranoid = {}
+		trusting = {}
+		compassionate = {}
+		callous = {}
+		sadistic = {}
+		stubborn = {}
+		vengeful = {}
+		forgiving = {}
 	}
-
+	# Bad traits for bad squires
 	random_traits_list = {
-		education_stewardship_3 = { weight = { base = 50 } }
-		education_stewardship_4 = { weight = { base = 25 } }
+		count = squire_quality_bad_traits
+		murderer = {}
+		profligate = {}
+		drunkard = {}
+		dull = {}
+		comfort_eater = {}
 	}
+	# Good traits for good squires
 	random_traits_list = {
-		count = { 0 1 }
-		administrator = {}
-		avaricious = {}
-		architect = {}
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
 		shrewd = {}
-		tourney_participant = { }
-		journaller = {}
+		avaricious = {}
+		administrator = {}
+		architect = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	stewardship = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_stewardship_education_from_squires_quality_effect = yes
 		# Cultural Traditions
 		if = {
 			limit = {
@@ -1815,14 +2620,69 @@ accolade_reeve_character = {
 			}
 		}
 		set_interesting_traits_and_modifiers_effect = yes
-		add_random_tourney_participant_level_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_manipulator_character = {
-	age = { 18 36 }
+	age = { 16 24 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
@@ -1843,52 +2703,74 @@ accolade_manipulator_character = {
 	random_traits_list = {
 		count = 2
 		lustful = {}
-        chaste = {}
-        gluttonous = {}
-        temperate = {}
-        greedy = {}
-        generous = {}
-        diligent = {}
-        calm = {}
-        patient = {}
-        impatient = {}
-        arrogant = {}
-        humble = {}
-        deceitful = {}
-        brave = {}
-        shy = {}
-        gregarious = {}
-        ambitious = {}
-        arbitrary = {}
-        cynical = {}
-        zealous = {}
-        paranoid = {}
-        callous = {}
-        sadistic = {}
-        stubborn = {}
-        fickle = {}
-        vengeful = {}
+		chaste = {}
+		gluttonous = {}
+		temperate = {}
+		greedy = {}
+		generous = {}
+		diligent = {}
+		calm = {}
+		patient = {}
+		impatient = {}
+		arrogant = {}
+		humble = {}
+		deceitful = {}
+		brave = {}
+		shy = {}
+		gregarious = {}
+		ambitious = {}
+		arbitrary = {}
+		cynical = {}
+		zealous = {}
+		paranoid = {}
+		callous = {}
+		sadistic = {}
+		stubborn = {}
+		fickle = {}
+		vengeful = {}
 	}
-
+	# Bad traits for bad squires
 	random_traits_list = {
-		education_intrigue_3 = { weight = { base = 50 } }
-		education_intrigue_4 = { weight = { base = 25 } }
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		loyal = {}
+		blind = {}
 	}
+	# Good traits for good squires
 	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = { }
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
 		schemer = {}
 		seducer = {}
 		torturer = {}
 		lifestyle_herbalist = {}
 		lifestyle_reveler = {}
-		disloyal = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	intrigue = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_intrigue_education_from_squires_quality_effect = yes
 		# Cultural Traditions
+		#if = {
+		#	limit = {
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
+		#	}
+		#	add_trait = varangian
+		#}
 		if = {
 			limit = {
 				culture = {
@@ -1960,66 +2842,122 @@ accolade_manipulator_character = {
 			}
 		}
 		set_interesting_traits_and_modifiers_effect = yes
-		add_random_tourney_participant_level_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_mentor_character = {
-	age = { 20 40 }
+	age = { 22 30 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arrogant = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        brave = {}
-        honest = {}
-        just = {}
-        patient = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_learning_3 = { weight = { base = 50 } }
-		education_learning_4 = { weight = { base = 25 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		chaste = {}
-		diligent = {}
-		shy = {}
+		arrogant = {}
+		lustful = {}
+		compassionate = {}
 		forgiving = {}
+		trusting = {}
+		generous = {}
+		zealous = {}
+		sadistic = {}
+		callous = {}
+		vengeful = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		brave = {}
+		honest = {}
+		just = {}
 		patient = {}
-		cynical = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
+	}
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		drunkard = {}
+		dull = {}
+		inappetetic = {}
+		flagellant = {}
+		rakish = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
 		shrewd = {}
-		one_eyed = {}
+		journaller = {}
 		scholar = {}
 		theologian = {}
 		lifestyle_traveler = {}
 		whole_of_body = {}
 		lifestyle_physician = {}
-		journaller = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	learning = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_learning_education_from_squires_quality_effect = yes
 		# Cultural Traditions
 		if = {
 			limit = {
@@ -2092,73 +3030,152 @@ accolade_mentor_character = {
 			}
 		}
 		set_interesting_traits_and_modifiers_effect = yes
-		add_random_tourney_participant_level_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_contender_character = {
-	age = { 16 36 }
+	age = { 16 24 }
 	random_traits = yes
-
-	trait = tourney_participant
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arbitrary = {}
-        impatient = {}
-        arrogant = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        brave = {}
-        honest = {}
-        just = {}
-        patient = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 45 } }
-		education_martial_2 = { weight = { base = 40 } }
-		education_martial_3 = { weight = { base = 10 } }
-		education_martial_4 = { weight = { base = 5 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		brave = {}
-		vengeful = {}
+		arbitrary = {}
+		impatient = {}
+		arrogant = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+		zealous = {}
 		sadistic = {}
-		giant = {}
+		callous = {}
+		vengeful = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		brave = {}
+		honest = {}
+		just = {}
+		patient = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
+	}
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
 		strong = {}
+		athletic = {}
+		shrewd = {}
+		giant = {}
 		gallant = {}
 		lifestyle_blademaster = {}
-		irritable = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
-		#berserker
-		#if = { # GH TODO: Generic trigger
+		random_list = {
+			1 = {
+				assign_martial_education_from_squires_quality_effect = yes
+			}
+			1 = {
+				assign_diplomacy_education_from_squires_quality_effect = yes
+			}
+		}
+		if = { ## GH CHANGE: Berserkers
+			limit = {
+				culture = { has_cultural_pillar = heritage_sjalvolki }
+				faith = { has_doctrine_parameter = unreformed }
+			}
+			random = {
+				chance = 20
+				add_trait = berserker
+			}
+		}
+		# Cultural Traditions
+		#if = {
 		#	limit = {
-		#		faith.religion = faith:norse_pagan.religion
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
 		#	}
-		#	random = {
-		#		chance = 20
-		#		add_trait = berserker
-		#	}
+		#	add_trait = varangian
 		#}
 		if = {
 			limit = {
@@ -2236,82 +3253,118 @@ accolade_contender_character = {
 			LEVEL_1 = yes
 			LEVEL_3 = yes
 		}
-		add_random_tourney_participant_level_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 # MEN-AT-ARMS ACCOLADES
 
 accolade_archer_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
-	trait = tourney_participant
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 	random_traits_list = {
 		count = 1
 		arbitrary = {}
-        impatient = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        honest = {}
-        just = {}
-        patient = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_hunter = {}
-		calm = {}
-		patient = {}
-		cynical = {}
+		impatient = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+		sadistic = {}
 		callous = {}
-		craven = {}
-		forest_fighter = {}
+		vengeful = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		honest = {}
+		just = {}
+		patient = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		giant = {}
+		gallant = {}
+		lifestyle_hunter = {}
+	}	
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
-		add_trait_xp = {
-			trait = tourney_participant
-			track = bow
-			value = 25
-		}
-		random = {
-			chance = 35
-			add_trait_xp = {
-				trait = tourney_participant
-				track = bow
-				value = 25
-			}
-		}
-		random = {
-			chance = 5
-			add_trait_xp = {
-				trait = tourney_participant
-				track = bow
-				value = 30
-			}
-		}
-
+		assign_martial_education_from_squires_quality_effect = yes
 		# Cultural Traditions
 		if = {
 			limit = {
@@ -2387,91 +3440,129 @@ accolade_archer_character = {
 			LEVEL_1 = yes
 			LEVEL_3 = yes
 		}
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_skirmisher_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
-	trait = tourney_participant
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arbitrary = {}
-        impatient = {}
-        arrogant = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        brave = {}
-        just = {}
-        patient = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_hunter = {}
-		lifestyle_blademaster = {}
-		jungle_stalker = {}
-		winter_soldier = {}
-		diligent = {}
-		brave = {}
-		fickle = {}
 		arbitrary = {}
-		humble = {}
-		scarred = {}
+		impatient = {}
+		arrogant = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+		zealous = {}
+		sadistic = {}
+		callous = {}
+		vengeful = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		brave = {}
+		just = {}
+		patient = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		physique_good_1 = {}
+		gallant = {}
+		lifestyle_hunter = {}
+	}
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_martial_education_from_squires_quality_effect = yes
+		add_trait = tourney_participant
 		add_trait_xp = {
 			trait = tourney_participant
 			track = bow
-			value = 20
+			value = 10
 		}
-		random = {
-			chance = 35
-			add_trait_xp = {
-				trait = tourney_participant
-				track = foot
-				value = 20
-			}
-		}
-		random = {
-			chance = 20
-			add_trait_xp = {
-				trait = tourney_participant
-				track = bow
-				value = 30
-			}
-		}
-		random = {
-			chance = 20
-			add_trait_xp = {
-				trait = tourney_participant
-				track = foot
-				value = 30
-			}
+		add_trait_xp = {
+			trait = tourney_participant
+			track = foot
+			value = 10
 		}
 
 		# Cultural Traditions
@@ -2551,83 +3642,142 @@ accolade_skirmisher_character = {
 			LEVEL_1 = yes
 			LEVEL_3 = yes
 		}
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_pike_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
 		arbitrary = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        honest = {}
-        just = {}
-        patient = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		rough_terrain_expert = {}
-		unyielding_defender = {}
-		just = {}
-		cynical = {}
+		lustful = {}
+		compassionate = {}
 		forgiving = {}
-		diligent = {}
 		trusting = {}
+		generous = {}
+		zealous = {}
+		sadistic = {}
+		callous = {}
+		vengeful = {}
 		stubborn = {}
-		giant = {}
+		diligent = {}
+		temperate = {}
+		honest = {}
+		just = {}
+		patient = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+		weak = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		giant = {}
+		gallant = {}
+		lifestyle_blademaster = {}
+		rough_terrain_expert = {}
+	}
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_martial_education_from_squires_quality_effect = yes
 		add_trait = tourney_participant
 		add_trait_xp = {
 			trait = tourney_participant
 			track = foot
-			value = 25
-		}
-		random = {
-			chance = 35
-			add_trait_xp = {
-				trait = tourney_participant
-				track = foot
-				value = 25
-			}
-		}
-		random = {
-			chance = 5
-			add_trait_xp = {
-				trait = tourney_participant
-				track = foot
-				value = 30
-			}
+			value = 10
 		}
 
 		# Cultural Traditions
+		#if = {
+		#	limit = {
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
+		#	}
+		#	add_trait = varangian
+		#}
 		if = {
 			limit = {
 				culture = {
@@ -2696,83 +3846,128 @@ accolade_pike_character = {
 			}
 		}
 		set_interesting_traits_and_modifiers_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_outrider_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arbitrary = {}
-        impatient = {}
-        arrogant = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        brave = {}
-        honest = {}
-        just = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
+		arbitrary = {}
+		impatient = {}
+		arrogant = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+		zealous = {}
+		sadistic = {}
+		callous = {}
+		vengeful = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		brave = {}
+		honest = {}
+		just = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
 	}
-
+	# Bad traits for bad squires
 	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+		weak = {}
 	}
+	# Good traits for good squires
 	random_traits_list = {
-		count = { 0 1 }
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		physique_good_1 = {}
+		gallant = {}
+		lifestyle_blademaster = {}
 		lifestyle_hunter = {}
 		open_terrain_expert = {}
-		reckless = {}
-		brave = {}
-		wrathful = {}
-		impatient = {}
-		ambitious = {}
-		arbitrary = {}
-		fickle = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_martial_education_from_squires_quality_effect = yes
 		add_trait = tourney_participant
 		add_trait_xp = {
 			trait = tourney_participant
 			track = horse
-			value = 25
-		}
-		random = {
-			chance = 35
-			add_trait_xp = {
-				trait = tourney_participant
-				track = horse
-				value = 25
-			}
-		}
-		random = {
-			chance = 5
-			add_trait_xp = {
-				trait = tourney_participant
-				track = horse
-				value = 30
-			}
+			value = 10
 		}
 
 		# Cultural Traditions
@@ -2853,96 +4048,182 @@ accolade_outrider_character = {
 			LEVEL_3 = yes
 		}
 		set_interesting_traits_and_modifiers_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_vanguard_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = {
+				exists = location.culture
+				location.culture = {
+					OR = {
+						has_innovation = innovation_quilted_armor
+						culture_has_heavy_infantry_maa = yes ## GH CHANGE: Unified trigger
+					}
+				}
+			}
+		}
+		scope:knight_culture = {
+			trigger = {
+				exists = scope:knight_culture
+				scope:knight_culture = {
+					OR = {
+						has_innovation = innovation_quilted_armor
+						culture_has_heavy_infantry_maa = yes ## GH CHANGE: Unified trigger
+					}
+				}
+			}
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = {
+				exists = scope:marcher_culture
+				scope:marcher_culture = {
+					OR = {
+						has_innovation = innovation_quilted_armor
+						culture_has_heavy_infantry_maa = yes ## GH CHANGE: Unified trigger
+					}
+				}
+			}
+		}
+		scope:type_specific_culture = {
+			trigger = {
+				exists = scope:type_specific_culture
+				scope:type_specific_culture = {
+					OR = {
+						has_innovation = innovation_quilted_armor
+						culture_has_heavy_infantry_maa = yes ## GH CHANGE: Unified trigger
+					}
+				}
+			}
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arbitrary = {}
-        impatient = {}
-        arrogant = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        brave = {}
-        honest = {}
-        just = {}
-        patient = {}
-        ambitious = {}
-        gregarious = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_blademaster = {}
-		strong = {}
-		athletic = {}
-		gallant = {}
-		wrathful = {}
+		arbitrary = {}
 		impatient = {}
 		arrogant = {}
-		brave = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+		zealous = {}
+		sadistic = {}
+		callous = {}
+		vengeful = {}
 		stubborn = {}
-		giant = {}
+		diligent = {}
+		temperate = {}
+		brave = {}
+		honest = {}
+		just = {}
+		patient = {}
+		ambitious = {}
+		gregarious = {}
+		greedy = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		flagellant = {}
+		rakish = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		giant = {}
+		gallant = {}
+		lifestyle_blademaster = {}
+	}
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_martial_education_from_squires_quality_effect = yes
 		add_trait = tourney_participant
 		add_trait_xp = {
 			trait = tourney_participant
 			track = foot
-			value = 25
-		}
-		random = {
-			chance = 35
-			add_trait_xp = {
-				trait = tourney_participant
-				track = foot
-				value = 25
-			}
-		}
-		random = {
-			chance = 5
-			add_trait_xp = {
-				trait = tourney_participant
-				track = foot
-				value = 30
-			}
+			value = 10
 		}
 
 		# Cultural Traditions
-		#berserker
-		#if = { # GH TODO: Generic trigger
+		if = { ## GH CHANGE: Berserkers
+			limit = {
+				culture = { has_cultural_pillar = heritage_sjalvolki }
+				faith = { has_doctrine_parameter = unreformed }
+			}
+			random = {
+				chance = 20
+				add_trait = berserker
+			}
+		}
+		#if = {
 		#	limit = {
-		#		faith.religion = faith:norse_pagan.religion
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
 		#	}
-		#	random = {
-		#		chance = 20
-		#		add_trait = berserker
-		#	}
+		#	add_trait = varangian
 		#}
 		if = {
 			limit = {
@@ -3020,89 +4301,174 @@ accolade_vanguard_character = {
 			LEVEL_3 = yes
 		}
 		set_interesting_traits_and_modifiers_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_lancer_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = {
+				exists = location.culture
+				location.culture = {
+					OR = {
+						has_innovation = innovation_arched_saddle
+						culture_has_heavy_cavalry_maa = yes ## GH CHANGE: Unified trigger
+					}
+				}
+			}
+		}
+		scope:knight_culture = {
+			trigger = {
+				exists = scope:knight_culture
+				scope:knight_culture = {
+					OR = {
+						has_innovation = innovation_arched_saddle
+						culture_has_heavy_cavalry_maa = yes ## GH CHANGE: Unified trigger
+					}
+				}
+			}
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = {
+				exists = scope:olteni_culture
+				scope:olteni_culture = {
+					OR = {
+						has_innovation = innovation_arched_saddle
+						culture_has_heavy_cavalry_maa = yes ## GH CHANGE: Unified trigger
+					}
+				}
+			}
+		}
+		scope:type_specific_culture = {
+			trigger = {
+				exists = scope:type_specific_culture
+				scope:type_specific_culture = {
+					OR = {
+						has_innovation = innovation_arched_saddle
+						culture_has_heavy_cavalry_maa = yes ## GH CHANGE: Unified trigger
+					}
+				}
+			}
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arbitrary = {}
-        impatient = {}
-        arrogant = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        brave = {}
-        honest = {}
-        just = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_blademaster = {}
-		strong = {}
-		gallant = {}
-		aggressive_attacker = {}
-		brave = {}
-		wrathful = {}
+		arbitrary = {}
 		impatient = {}
 		arrogant = {}
-		honest = {}
-		ambitious = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
 		zealous = {}
+		sadistic = {}
+		callous = {}
 		vengeful = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		brave = {}
+		honest = {}
+		just = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+		weak = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		giant = {}
+		gallant = {}
+		lifestyle_blademaster = {}
+		aggressive_attacker = {}
+	}
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_martial_education_from_squires_quality_effect = yes
 		add_trait = tourney_participant
 		add_trait_xp = {
 			trait = tourney_participant
 			track = horse
-			value = 25
-		}
-		random = {
-			chance = 35
-			add_trait_xp = {
-				trait = tourney_participant
-				track = horse
-				value = 25
-			}
-		}
-		random = {
-			chance = 5
-			add_trait_xp = {
-				trait = tourney_participant
-				track = horse
-				value = 30
-			}
+			value = 10
 		}
 
 		# Cultural Traditions
+		#if = {
+		#	limit = {
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
+		#	}
+		#	add_trait = varangian
+		#}
 		if = {
 			limit = {
 				culture = {
@@ -3179,217 +4545,378 @@ accolade_lancer_character = {
 			LEVEL_3 = no
 		}
 		set_interesting_traits_and_modifiers_effect = yes
-		set_random_base_arcana = yes
-	}
-}
 
-accolade_crossbowmen_character = {
-	age = { 16 35 }
-	random_traits = yes
+		## GH ADDITIONS
 
-	random_traits_list = {
-		count = 1
-		arbitrary = {}
-        impatient = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        honest = {}
-        just = {}
-        patient = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_hunter = {}
-		calm = {}
-		patient = {}
-		cynical = {}
-		callous = {}
-		craven = {}
-		humble = {}
-		cautious_leader = {}
-		military_engineer = {}
-	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
-	after_creation = {
-		add_trait = tourney_participant
-		add_trait_xp = {
-			trait = tourney_participant
-			track = bow
-			value = 25
-		}
-		random = {
-			chance = 35
-			add_trait_xp = {
-				trait = tourney_participant
-				track = bow
-				value = 25
-			}
-		}
-		random = {
-			chance = 5
-			add_trait_xp = {
-				trait = tourney_participant
-				track = bow
-				value = 30
-			}
-		}
-
-		# Cultural Traditions
 		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = winter_soldier_trait_more_common
-				}
-				NOT = {
-					has_trait = winter_soldier
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = winter_soldier
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
 			}
 		}
 		if = {
 			limit = {
-				culture = {
-					has_cultural_parameter = forest_fighter_trait_more_common
-				}
-				NOT = {
-					has_trait = forest_fighter
-				}
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
 			}
 			random = {
 				chance = 10
-				add_trait = forest_fighter
+				add_trait = giant
 			}
 		}
 		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = rough_terrain_expert_trait_more_common
-				}
-				NOT = {
-					has_trait = rough_terrain_expert
-				}
-			}
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
 			random = {
 				chance = 10
-				add_trait = rough_terrain_expert
+				add_trait = gh_lifestyle_glassmith
 			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = desert_warrior_trait_more_common
-				}
-				NOT = {
-					has_trait = desert_warrior
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = desert_warrior
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = jungle_stalker_trait_more_common
-				}
-				NOT = {
-					has_trait = jungle_stalker
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = jungle_stalker
-			}
-		}
-		set_interesting_traits_and_modifiers_effect = yes
-		add_random_tiered_trait_track_xp_effect = {
-			TRAIT = lifestyle_hunter
-			TRACK = hunter
-			LEVEL_1 = yes
-			LEVEL_3 = yes
 		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_besieger_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = {
+				exists = location.culture
+				location.culture = { has_innovation = innovation_mangonel }
+			}
+		}
+		scope:knight_culture = {
+			trigger = {
+				exists = scope:knight_culture
+				scope:knight_culture = { has_innovation = innovation_mangonel }
+			}
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = {
+				exists = scope:marcher_culture
+				scope:marcher_culture = { has_innovation = innovation_mangonel }
+			}
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = {
+				exists = scope:olteni_culture
+				scope:olteni_culture = { has_innovation = innovation_mangonel }
+			}
+		}
+		scope:type_specific_culture = {
+			trigger = {
+				exists = scope:type_specific_culture
+				scope:type_specific_culture = { has_innovation = innovation_mangonel }
+			}
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arbitrary = {}
-        arrogant = {}
-        lustful = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        brave = {}
-        honest = {}
-        just = {}
-        patient = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = {}
-		logistician = {}
-		calm = {}
-		patient = {}
-		deceitful = {}
-		cynical = {}
-		paranoid = {}
+		arbitrary = {}
+		arrogant = {}
+		lustful = {}
+		generous = {}
+		zealous = {}
 		sadistic = {}
 		callous = {}
 		vengeful = {}
-		diligent = {}
 		stubborn = {}
+		diligent = {}
+		temperate = {}
+		brave = {}
+		honest = {}
+		just = {}
+		patient = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+		weak = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		giant = {}
+		gallant = {}
+		logistician = {}
+	}	
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_martial_education_from_squires_quality_effect = yes		
 		add_trait = military_engineer
+		# Cultural Traditions
+		#if = {
+		#	limit = {
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
+		#	}
+		#	add_trait = varangian
+		#}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = winter_soldier_trait_more_common
+				}
+				NOT = {
+					has_trait = winter_soldier
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = winter_soldier
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = forest_fighter_trait_more_common
+				}
+				NOT = {
+					has_trait = forest_fighter
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = forest_fighter
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = rough_terrain_expert_trait_more_common
+				}
+				NOT = {
+					has_trait = rough_terrain_expert
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = rough_terrain_expert
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = desert_warrior_trait_more_common
+				}
+				NOT = {
+					has_trait = desert_warrior
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = desert_warrior
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = jungle_stalker_trait_more_common
+				}
+				NOT = {
+					has_trait = jungle_stalker
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = jungle_stalker
+			}
+		}
+		set_interesting_traits_and_modifiers_effect = yes
+		add_random_tiered_trait_track_xp_effect = {
+			TRAIT = lifestyle_hunter
+			TRACK = hunter
+			LEVEL_1 = yes
+			LEVEL_3 = yes
+		}
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
+		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
+	}
+}
+
+accolade_crossbowmen_character = {
+	age = { 16 22 }
+	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = {
+				exists = location.culture
+				location.culture = {
+					has_innovation = innovation_advanced_bowmaking
+					has_innovation = innovation_repeating_crossbow
+					## GH TODO: Dedicated crossbow triggers
+				}
+			}
+		}
+		scope:knight_culture = {
+			trigger = {
+				exists = scope:knight_culture
+				scope:knight_culture = {
+					OR = {
+						has_innovation = innovation_advanced_bowmaking
+						has_innovation = innovation_repeating_crossbow
+						## GH TODO: Dedicated crossbow triggers
+					}
+				}
+			}
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = {
+				exists = scope:olteni_culture
+				scope:olteni_culture = {
+					OR = {
+						has_innovation = innovation_advanced_bowmaking
+						has_innovation = innovation_repeating_crossbow
+						## GH TODO: Dedicated crossbow triggers
+					}
+				}
+			}
+		}
+		scope:type_specific_culture = {
+			trigger = {
+				exists = scope:type_specific_culture
+				scope:type_specific_culture = {
+					OR = {
+						has_innovation = innovation_advanced_bowmaking
+						has_innovation = innovation_repeating_crossbow
+						## GH TODO: Dedicated crossbow triggers
+					}
+				}
+			}
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
+
+	random_traits_list = {
+		count = 1
+		arbitrary = {}
+		impatient = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+		sadistic = {}
+		callous = {}
+		vengeful = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		honest = {}
+		just = {}
+		patient = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
+	}
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+		weak = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		giant = {}
+		gallant = {}
+		lifestyle_hunter = {}
+		military_engineer = {}
+	}	
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
+	after_creation = {
+		assign_martial_education_from_squires_quality_effect = yes
+		add_trait = tourney_participant
+		add_trait_xp = {
+			trait = tourney_participant
+			track = bow
+			value = 10
+		}
+
 		# Cultural Traditions
 		if = {
 			limit = {
@@ -3468,90 +4995,155 @@ accolade_besieger_character = {
 			LEVEL_1 = yes
 			LEVEL_3 = yes
 		}
-		add_random_tourney_participant_level_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_camelry_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = {
+				exists = location.culture
+				location.culture = {
+					OR = { ## GH CHANGE: Unified trigger
+						has_innovation = innovation_war_camels
+						culture_has_camel_cavalry_maa = yes
+					}
+				}
+			}
+		}
+		scope:knight_culture = {
+			trigger = {
+				exists = scope:knight_culture
+				scope:knight_culture = {
+					OR = { ## GH CHANGE: Unified trigger
+						has_innovation = innovation_war_camels
+						culture_has_camel_cavalry_maa = yes
+					}
+				}
+			}
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = {
+				exists = scope:olteni_culture
+				scope:olteni_culture = {
+					OR = { ## GH CHANGE: Unified trigger
+						has_innovation = innovation_war_camels
+						culture_has_camel_cavalry_maa = yes
+					}
+				}
+			}
+		}
+		scope:type_specific_culture = {
+			trigger = {
+				exists = scope:type_specific_culture
+				scope:type_specific_culture = {
+					OR = { ## GH CHANGE: Unified trigger
+						has_innovation = innovation_war_camels
+						culture_has_camel_cavalry_maa = yes
+					}
+				}
+			}
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arbitrary = {}
-        impatient = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        brave = {}
-        honest = {}
-        just = {}
-        patient = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_hunter = {}
-		temperate = {}
-		wrathful = {}
+		arbitrary = {}
 		impatient = {}
-		brave = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
 		zealous = {}
-		humble = {}
-		content = {}
+		sadistic = {}
+		callous = {}
+		vengeful = {}
 		stubborn = {}
+		diligent = {}
+		temperate = {}
+		brave = {}
+		honest = {}
+		just = {}
+		patient = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+		weak = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		physique_good_1 = {}
+		gallant = {}
+		lifestyle_hunter = {}
+	}
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_martial_education_from_squires_quality_effect = yes
 		add_trait = desert_warrior
-		random = {
-			chance = 60
-			if = {
-				limit = {
-					NOT = { has_trait = tourney_participant }
-				}
-				add_trait = tourney_participant
-			}
-			add_trait_xp = {
-				trait = tourney_participant
-				track = horse
-				value = 20
-			}
-		}
-		random = {
-			chance = 20
-			if = {
-				limit = {
-					NOT = { has_trait = tourney_participant }
-				}
-				add_trait = tourney_participant
-			}
-			add_trait_xp = {
-				trait = tourney_participant
-				track = horse
-				value = 30
-			}
+		add_trait = tourney_participant
+		add_trait_xp = {
+			trait = tourney_participant
+			track = horse
+			value = 10
 		}
 
 		# Cultural Traditions
@@ -3618,118 +5210,128 @@ accolade_camelry_character = {
 			LEVEL_3 = no
 		}
 		set_interesting_traits_and_modifiers_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_elephantry_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = {
+				exists = location.culture
+				location.culture = { culture_has_elephant_cavalry_maa = yes } ## GH CHANGE: Unified trigger
+			}
+		}
+		scope:knight_culture = {
+			trigger = {
+				exists = scope:knight_culture
+				scope:knight_culture = { culture_has_elephant_cavalry_maa = yes } ## GH CHANGE: Unified trigger
+			}
+		}
+		scope:type_specific_culture = {
+			trigger = {
+				exists = scope:type_specific_culture
+				scope:type_specific_culture = { culture_has_elephant_cavalry_maa = yes } ## GH CHANGE: Unified trigger
+			}
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arbitrary = {}
-        impatient = {}
-        arrogant = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        brave = {}
-        honest = {}
-        just = {}
-        patient = {}
-        ambitious = {}
-        gregarious = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		gallant = {}
-		wrathful = {}
+		arbitrary = {}
 		impatient = {}
 		arrogant = {}
-		ambitious = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+		zealous = {}
+		sadistic = {}
+		callous = {}
+		vengeful = {}
 		stubborn = {}
+		diligent = {}
+		temperate = {}
+		brave = {}
+		honest = {}
+		just = {}
+		patient = {}
+		ambitious = {}
 		gregarious = {}
-		lazy = {}
-		giant = {}
+		greedy = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		clubfooted = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+		weak = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		giant = {}
+		gallant = {}
+	}	
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
-		add_trait = jungle_stalker
-		random = {
-			chance = 30
-			if = {
-				limit = {
-					NOT = { has_trait = tourney_participant }
-				}
-				add_trait = tourney_participant
-			}
-			add_trait_xp = {
-				trait = tourney_participant
-				track = horse
-				value = 20
-			}
-		}
-		random = {
-			chance = 10
-			if = {
-				limit = {
-					NOT = { has_trait = tourney_participant }
-				}
-				add_trait = tourney_participant
-			}
-			add_trait_xp = {
-				trait = tourney_participant
-				track = horse
-				value = 30
-			}
-		}
-		random = {
-			chance = 30
-			if = {
-				limit = {
-					NOT = { has_trait = tourney_participant }
-				}
-				add_trait = tourney_participant
-			}
-			add_trait_xp = {
-				trait = tourney_participant
-				track = bow
-				value = 20
-			}
-		}
-		random = {
-			chance = 10
-			if = {
-				limit = {
-					NOT = { has_trait = tourney_participant }
-				}
-				add_trait = tourney_participant
-			}
-			add_trait_xp = {
-				trait = tourney_participant
-				track = bow
-				value = 30
-			}
+		assign_martial_education_from_squires_quality_effect = yes
+		add_trait = tourney_participant
+		add_trait_xp = {
+			trait = tourney_participant
+			track = horse
+			value = 10
 		}
 
 		# Cultural Traditions
@@ -3790,91 +5392,133 @@ accolade_elephantry_character = {
 			}
 		}
 		set_interesting_traits_and_modifiers_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_horse_archer_character = {
-	age = { 16 35 }
+	age = { 16 22 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arbitrary = {}
-        impatient = {}
-        arrogant = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        brave = {}
-        honest = {}
-        just = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
+		arbitrary = {}
+		impatient = {}
+		arrogant = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+		zealous = {}
+		sadistic = {}
+		callous = {}
+		vengeful = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		brave = {}
+		honest = {}
+		just = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
 	}
-
+	# Bad traits for bad squires
 	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+		weak = {}
 	}
+	# Good traits for good squires
 	random_traits_list = {
-		count = { 0 1 }
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		physique_good_1 = {}
+		gallant = {}
 		lifestyle_hunter = {}
 		open_terrain_expert = {}
 		flexible_leader = {}
-		patient = {}
-		arbitrary = {}
-		fickle = {}
-		trusting = {}
-		deceitful = {}
-		cynical = {}
-	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	}	
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_martial_education_from_squires_quality_effect = yes
 		add_trait = tourney_participant
 		add_trait_xp = {
 			trait = tourney_participant
 			track = bow
-			value = 20
+			value = 10
 		}
-		random = {
-			chance = 35
-			add_trait_xp = {
-				trait = tourney_participant
-				track = horse
-				value = 20
-			}
-		}
-		random = {
-			chance = 20
-			add_trait_xp = {
-				trait = tourney_participant
-				track = bow
-				value = 30
-			}
-		}
-		random = {
-			chance = 20
-			add_trait_xp = {
-				trait = tourney_participant
-				track = horse
-				value = 30
-			}
+		add_trait_xp = {
+			trait = tourney_participant
+			track = horse
+			value = 10
 		}
 
 		# Cultural Traditions
@@ -3955,84 +5599,140 @@ accolade_horse_archer_character = {
 			LEVEL_3 = yes
 		}
 		set_interesting_traits_and_modifiers_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 # EMINENT ATTRIBUTES
 accolade_huntsmaster_character = {
-	age = { 18 36 }
+	age = { 16 24 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = {
+				exists = location.culture
+				location.culture = { NOT = { has_cultural_tradition = tradition_vegetarianism } }
+			}
+		}
+		scope:knight_culture = {
+			trigger = {
+				exists = scope:knight_culture
+				scope:knight_culture = { NOT = { has_cultural_tradition = tradition_vegetarianism } }
+			}
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = {
+				exists = scope:olteni_culture
+				scope:olteni_culture = { NOT = { has_cultural_tradition = tradition_vegetarianism } }
+			}
+		}
+		scope:type_specific_culture = {
+			trigger = {
+				exists = scope:type_specific_culture
+				scope:type_specific_culture = { NOT = { has_cultural_tradition = tradition_vegetarianism } }
+			}
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arbitrary = {}
-        arrogant = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        brave = {}
-        honest = {}
-        just = {}
-        patient = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_stewardship_3 = { weight = { base = 40 } }
-		education_stewardship_4 = { weight = { base = 10 } }
-		education_martial_3 = { weight = { base = 40 } }
-		education_martial_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = {}
-		patient = {}
-		diligent = {}
-		calm = {}
+		arbitrary = {}
+		arrogant = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+		zealous = {}
+		sadistic = {}
 		callous = {}
-		shy = {}
+		vengeful = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		brave = {}
+		honest = {}
+		just = {}
+		patient = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
+	}
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		profligate = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+		weak = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		physique_good_1 = {}
+		gallant = {}
 		lifestyle_traveler = {}
 		lifestyle_herbalist = {}
-	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	}	
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
-		add_trait = lifestyle_hunter
-		if = {
-			limit = {
-				has_trait = tourney_participant
+		random_list = {
+			1 = {
+				assign_martial_education_from_squires_quality_effect = yes
 			}
-			random = {
-				chance = 60
-				add_trait_xp = {
-					trait = tourney_participant
-					track = horse
-					value = 20
-				}
-			}
-			random = {
-				chance = 60
-				add_trait_xp = {
-					trait = tourney_participant
-					track = bow
-					value = 30
-				}
+			1 = {
+				assign_stewardship_education_from_squires_quality_effect = yes
 			}
 		}
+		add_trait = lifestyle_hunter
 
 		# Cultural Traditions
 		if = {
@@ -4097,81 +5797,178 @@ accolade_huntsmaster_character = {
 			LEVEL_3 = yes
 		}
 		set_interesting_traits_and_modifiers_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_blademaster_character = {
-	age = { 18 36 }
+	age = { 16 24 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arbitrary = {}
-        impatient = {}
-        arrogant = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        zealous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        temperate = {}
-        brave = {}
-        honest = {}
-        just = {}
-        patient = {}
-        ambitious = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = {}
-		giant = {}
-		one_eyed = {}
-		scarred = {}
-		gallant = {}
-		temperate = {}
-		ambitious = {}
-		calm = {}
-		vengeful = {}
-		callous = {}
+		arbitrary = {}
+		impatient = {}
+		arrogant = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
+		trusting = {}
+		generous = {}
+		zealous = {}
 		sadistic = {}
+		callous = {}
+		vengeful = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		brave = {}
+		honest = {}
+		just = {}
+		patient = {}
+		ambitious = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+		weak = {}
+		one_eyed = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		giant = {}
+		gallant = {}
+	}	
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		assign_martial_education_from_squires_quality_effect = yes
 		add_trait = lifestyle_blademaster
 		add_trait_xp = {
 			trait = lifestyle_blademaster
-			value = 100
+			value = 25
 		}
 		if = {
 			limit = {
-				has_trait = tourney_participant
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_accomplished_minimum_value }
 			}
 			add_trait_xp = {
-				trait = tourney_participant
-				track = foot
-				value = 20
+				trait = lifestyle_blademaster
+				value = 25
+			}
+		}
+		if = {
+			limit = {
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_capable_minimum_value }
+			}
+			add_trait_xp = {
+				trait = lifestyle_blademaster
+				value = 15
+			}
+		}
+		if = {
+			limit = {
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_inexperienced_minimum_value }
+			}
+			add_trait_xp = {
+				trait = lifestyle_blademaster
+				value = 10
+			}
+		}
+		if = {
+			limit = {
+				scope:succeeding_accolade = { accolade_squires_quality_value >= accolade_squires_feckless_minimum_value }
+			}
+			add_trait_xp = {
+				trait = lifestyle_blademaster
+				value = 5
 			}
 		}
 		# Cultural Traditions
+		#if = {
+		#	limit = {
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
+		#	}
+		#	add_trait = varangian
+		#}
 		if = {
 			limit = {
 				culture = {
@@ -4228,62 +6025,128 @@ accolade_blademaster_character = {
 			add_trait = jungle_stalker
 		}
 		set_interesting_traits_and_modifiers_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }
 
 accolade_master_of_revels_character = {
-	age = { 18 36 }
+	age = { 16 24 }
 	random_traits = yes
+	faith = faith
+	random_culture = {
+		culture = {
+			trigger = { always = yes }
+		}
+		location.culture = {
+			trigger = { exists = location.culture }
+		}
+		scope:knight_culture = {
+			trigger = { exists = scope:knight_culture }
+		}
+		scope:marcher_culture = { ## GH CHANGE: Marcher adventurism
+			trigger = { exists = scope:marcher_culture }
+		}
+		scope:olteni_culture = { ## GH CHANGE: Olteni adventurism
+			trigger = { exists = scope:olteni_culture }
+		}
+		scope:type_specific_culture = {
+			trigger = { exists = scope:type_specific_culture }
+		}
+	}
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
 
 	random_traits_list = {
 		count = 1
 		wrathful = {}
-        arbitrary = {}
-        impatient = {}
-        arrogant = {}
-        lustful = {}
-        compassionate = {}
-        forgiving = {}
-        trusting = {}
-        generous = {}
-        sadistic = {}
-        callous = {}
-        vengeful = {}
-        stubborn = {}
-        diligent = {}
-        brave = {}
-        honest = {}
-        just = {}
-        patient = {}
-        gregarious = {}
-        deceitful = {}
-        greedy = {}
-	}
-
-	random_traits_list = {
-		education_diplomacy_1 = { weight = { base = 35 } }
-		education_diplomacy_2 = { weight = { base = 35 } }
-		education_diplomacy_3 = { weight = { base = 20 } }
-		education_diplomacy_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		tourney_participant = {}
-		lifestyle_traveler = {}
-		gluttonous = {}
-		gregarious = {}
-		hashishiyah = {}
-		drunkard = {}
-		generous = {}
+		arbitrary = {}
+		impatient = {}
+		arrogant = {}
+		lustful = {}
+		compassionate = {}
+		forgiving = {}
 		trusting = {}
-		content = {}
-		lazy = {}
-		august = {}
+		generous = {}
+		sadistic = {}
+		callous = {}
+		vengeful = {}
+		stubborn = {}
+		diligent = {}
+		brave = {}
+		honest = {}
+		just = {}
+		patient = {}
+		gregarious = {}
+		deceitful = {}
+		greedy = {}
 	}
-	prowess = { min_guest_template_skill 16 }
-	gender_female_chance = root_soldier_female_chance
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		stuttering = {}
+		drunkard = {}
+		dull = {}
+		irritable = {}
+		inappetetic = {}
+		lisping = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		giant = {}
+		gallant = {}
+		august = {}
+		lifestyle_traveler = {}
+		diplomat = {}
+	}	
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
 	after_creation = {
+		random_list = {
+			1 = {
+				assign_diplomacy_education_from_squires_quality_effect = yes
+			}
+			1 = {
+				assign_intrigue_education_from_squires_quality_effect = yes
+			}
+		}
 		add_trait = lifestyle_reveler
 		random = {
 			chance = 75
@@ -4296,42 +6159,268 @@ accolade_master_of_revels_character = {
 			trait = lifestyle_reveler
 			value = 25
 		}
-		#random = { # GH TODO: Generic trigger
-		#	chance = 10
-		#	
-		#	add_trait = poet
-		#	
-		#	modifier = {
-		#		add = 30
-		#		culture = { has_cultural_parameter = poet_trait_more_common }
-		#	}
-		#	modifier = {
-		#		add = 15
-		#		OR = {
-		#			culture = { has_cultural_pillar = heritage_north_germanic }
-		#			religion = religion:germanic_religion
-		#		}
-		#	}
-		#}
-		if = {
-			limit = {
-				has_trait = tourney_participant
+		random = {
+			chance = 10
+			
+			add_trait = lifestyle_poet
+			
+			modifier = {
+				add = 30
+				culture = { has_cultural_parameter = poet_trait_more_common }
 			}
-			add_trait_xp = {
-				trait = tourney_participant
-				track = wit
-				value = 20
-			}
-			random = {
-				chance = 50
-				add_trait_xp = {
-					trait = tourney_participant
-					track = wit
-					value = 30
-				}
+			#modifier = {
+			#	add = 15
+			#	OR = {
+			#		culture = { has_cultural_pillar = heritage_north_germanic }
+			#		religion = religion:germanic_religion
+			#	}
+			#}
+			modifier = { ## GH ADDITION: Poet-venerating faith
+				add = 20
+				faith = faith:stranuni
 			}
 		}
 		set_interesting_traits_and_modifiers_effect = yes
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
 		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
+	}
+}
+
+accolade_house_knight_character = {
+	age = { 16 22 }
+	random_traits = yes
+	faith = faith
+	culture = culture
+	trait = loyal
+	
+	#This is just temporary, will be replaced by squire quality-determined education trait
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+	}
+	random_traits_list = {
+		count = 1
+		honest = {}
+		just = {}
+		patient = {}
+	}
+	random_traits_list = {
+		count = 1
+		lustful = {}
+		wrathful = {}
+		arrogant = {}
+		stubborn = {}
+		diligent = {}
+		temperate = {}
+		zealous = {}
+		brave = {}
+		honest = {}
+		just = {}
+		patient = {}
+		gregarious = {}
+		trusting = {}
+		sadistic = {}
+		vengeful = {}
+		callous = {}
+		generous = {}
+		compassionate = {}
+		forgiving = {}
+		greedy = {}
+	}
+	# Bad traits for bad squires
+	random_traits_list = {
+		count = squire_quality_bad_traits
+		murderer = {}
+		contrite = {}
+		drunkard = {}
+		dull = {}
+		weak = {}
+		hunchbacked = {}
+		clubfooted = {}
+	}
+	# Good traits for good squires
+	random_traits_list = {
+		count = squire_quality_good_traits
+		strong = {}
+		athletic = {}
+		shrewd = {}
+		lifestyle_blademaster = {}
+		lifestyle_hunter = {}
+		athletic = {}
+		strategist = {}
+		confider = {}
+		unyielding_defender = {}
+	}
+	prowess = min_guest_template_skill
+	gender_female_chance = scope_value_target_soldier_female_chance
+	after_creation = {
+		random_list = {
+			1 = {
+				assign_martial_education_from_squires_quality_effect = yes
+			}
+			1 = {
+				assign_diplomacy_education_from_squires_quality_effect = yes
+			}
+		}
+		add_trait = bastard
+		add_trait = disputed_heritage
+		#if = {
+		#	limit = {
+		#		current_date < 1400
+		#		scope:new_owner = {
+		#			has_title = title:e_byzantium
+		#		}
+		#		culture = {
+		#			OR = {
+		#				has_cultural_parameter = unlock_maa_huscarls
+		#				has_cultural_parameter = unlock_maa_varangian_veterans
+		#			}
+		#		}
+		#	}
+		#	add_trait = varangian
+		#}
+		# Cultural Traditions
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = winter_soldier_trait_more_common
+				}
+				NOT = {
+					has_trait = winter_soldier
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = winter_soldier
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = forest_fighter_trait_more_common
+				}
+				NOT = {
+					has_trait = forest_fighter
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = forest_fighter
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = rough_terrain_expert_trait_more_common
+				}
+				NOT = {
+					has_trait = rough_terrain_expert
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = rough_terrain_expert
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = desert_warrior_trait_more_common
+				}
+				NOT = {
+					has_trait = desert_warrior
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = desert_warrior
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = jungle_stalker_trait_more_common
+				}
+				NOT = {
+					has_trait = jungle_stalker
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = jungle_stalker
+			}
+		}
+		set_interesting_traits_and_modifiers_effect = yes
+		add_random_tiered_trait_xp_effect = {
+			TRAIT = lifestyle_blademaster
+			LEVEL_1 = yes
+			LEVEL_3 = yes
+		}
+		add_random_tiered_trait_track_xp_effect = {
+			TRAIT = lifestyle_hunter
+			TRACK = hunter
+			LEVEL_1 = yes
+			LEVEL_3 = no
+		}
+
+		## GH ADDITIONS
+
+		if = {
+			limit = { eligible_for_gh_steppe_queenhood = yes }
+			add_random_tiered_trait_xp_effect = {
+				TRAIT = lifestyle_gh_steppe_queen
+				LEVEL_1 = yes
+				LEVEL_3 = no
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = giant_trait_more_common }
+				NOT = { has_trait = giant }
+			}
+			random = {
+				chance = 10
+				add_trait = giant
+			}
+		}
+		if = {
+			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
+			random = {
+				chance = 10
+				add_trait = gh_lifestyle_glassmith
+			}
+		}
+		set_random_base_arcana = yes
+
+		## END OF GH ADDITIONS
 	}
 }

@@ -19,16 +19,87 @@
 @provisions_cost_special_moderate = 12
 @provisions_cost_special_expensive = 18
 @provisions_cost_special_bankrupting = 24
-accolade_maa_mammothiers = {
-	type = elephant_cavalry
-	icon = war_mammoths
+
+accolade_maa_charioteers = {
+	type = chariot_cavalry
 
 	can_recruit = {
-		any_active_accolade = {
-			primary_type = { this = accolade_type:mammothry_attribute }
-			accolade_rank >= 3
+		any_accolade = {
+			accolade_attribute_level = {
+				type = charioteer_attribute
+				level >= 2
+			}
 		}
+		NOT = { exists = scope:title }
 	}
+
+	max_regiments = 1
+	
+	damage = 30
+	toughness = 40
+	pursuit = 40
+	screen = 0
+	
+	terrain_bonus = {
+		drylands = { damage = 60 }
+		steppe = { damage = 40 }
+		taiga = { damage = -20 pursuit = -5 }
+		jungle = { damage = -20 pursuit = -5 }
+		desert_mountains = { damage = -60 pursuit = -5 }
+
+		plains = { damage = 40 }
+		forest = { damage = -20 pursuit = -5 }
+		hills = { damage = -20 pursuit = -5 }
+		mountains = { damage = -60 pursuit = -5 }
+		wetlands = { damage = -60 toughness = -5 pursuit = -5 }
+
+		marcher_plains = { damage = 40 }
+		marcher_forest = { damage = -20 pursuit = -5 }
+		marcher_hills = { damage = -20 pursuit = -5 }
+		marcher_mountains = { damage = -60 pursuit = -5 }
+		marcher_wetlands = { damage = -60 toughness = -5 pursuit = -5 }
+
+		mayik_caverns = { damage = -20 pursuit = -10 }
+		mayik_corridors = { pursuit = -10 }
+		mayik_chamber = { pursuit = -10 }
+		underworld_expanse = { pursuit = -5 }
+
+		deadlands = { damage = 40 }
+	}
+	
+	counters = {
+		skirmishers = 2
+	}
+
+	buy_cost = { gold = accolade_chariot_cavalry_cost }
+	low_maintenance_cost = { gold = war_chariots_low_maint_cost }
+	high_maintenance_cost = { gold = war_chariots_high_maint_cost }
+	provision_cost = @provisions_cost_cavalry_expensive
+	
+	stack = 50
+	allowed_in_hired_troops = no
+	ai_quality = {
+		value = culture_ai_weight_chariot_cavalry
+		add = 100
+	}
+
+	illustration = { reference = oltenic_heavy_cavalry }
+}
+
+accolade_maa_mammotheers = {
+	type = elephant_cavalry
+
+	can_recruit = {
+		any_accolade = {
+			accolade_attribute_level = {
+				type = mammothry_attribute
+				level >= 2
+			}
+		}
+		NOT = { exists = scope:title }
+	}
+
+	max_regiments = 1
 
 	damage = 400
 	toughness = 100
@@ -40,9 +111,9 @@ accolade_maa_mammothiers = {
 	terrain_bonus = {
 		taiga = { damage = 100 }
 		mountains = { damage = -100 }
-		wetlands = { damage = -150 toughness = -20 }
-		desert = { damage = -150 toughness = -20 }
 		desert_mountains = { damage = -150 toughness = -20 }
+		desert = { damage = -150 toughness = -20 }
+		wetlands = { damage = -150 toughness = -20 }
 
 		## GH ADDITIONS ##
 		# Marcher Terrain
@@ -50,6 +121,7 @@ accolade_maa_mammothiers = {
 		marcher_wetlands = { damage = -150 toughness = -20 }
 
 		# Underground Terrain
+		underworld_expanse = { damage = -100 toughness = -15 }
 		mayik_caverns = { damage = -150 toughness = -20 }
 		mayik_corridors = { damage = -150 toughness = -20 }
 		mayik_chamber = { damage = -150 toughness = -20 }
@@ -70,25 +142,30 @@ accolade_maa_mammothiers = {
 	high_maintenance_cost = { gold = war_mammoth_high_maint_cost }
 	provision_cost = @provisions_cost_infantry_expensive
 
-	max_sub_regiments = 4
-
 	stack = 25
 	hired_stack_size = 10
+	allowed_in_hired_troops = no
 	ai_quality = {
-		value = @cultural_maa_extra_ai_score
+		value = culture_ai_weight_elephants
 		add = 100
 	}
+	illustration = { reference = war_mammoths }
 }
 
 accolade_maa_magi = {
 	type = magi
 
 	can_recruit = {
-		any_active_accolade = {
-			primary_type = { this = accolade_type:magi_attribute }
-			accolade_rank >= 3
+		any_accolade = {
+			accolade_attribute_level = {
+				type = magi_attribute
+				level >= 2
+			}
 		}
+		NOT = { exists = scope:title }
 	}
+
+	max_regiments = 1
 
 	damage = 400
 	toughness = 200
@@ -138,6 +215,397 @@ accolade_maa_magi = {
 	provision_cost = @provisions_cost_infantry_expensive
 
 	stack = 20
-	ai_quality = { value = culture_ai_weight_magi }
-	icon = magi_regular
+	hired_stack_size = 10
+	allowed_in_hired_troops = no
+	ai_quality = {
+		value = culture_ai_weight_magi
+		add = 100
+	}
+	illustration = { reference = magi_regular }
+}
+
+accolade_maa_anti_magi = {
+	type = adventurers
+
+	can_recruit = {
+		any_accolade = {
+			accolade_attribute_level = {
+				type = anti_magi_attribute
+				level >= 2
+			}
+		}
+		NOT = { exists = scope:title }
+	}
+
+	max_regiments = 1
+
+	damage = 45
+	toughness = 40
+	pursuit = 5
+	screen = 30
+
+	terrain_bonus = {
+		plains = { toughness = 10 }
+		forest = { damage = 5 toughness = 10 }
+		wetlands = { damage = -15 pursuit = -15 screen = -15 }
+
+		mayik_caverns = { damage = 20 toughness = 10 pursuit = 20 screen = 20 }
+		mayik_corridors = { damage = 20 toughness = 10 pursuit = 20 screen = 20 }
+		mayik_chamber = { damage = 20 toughness = 10 pursuit = 20 screen = 20 }
+		underworld_expanse = { damage = 15 toughness = 5 pursuit = 10 screen = 10 }
+
+		deadlands = { damage = 30 toughness = 20 screen = 10 }
+
+		marcher_plains = { damage = 30 toughness = 35 }
+		antimagic_terrain = { damage = 30 toughness = 30 }
+		marcher_wetlands = { pursuit = -10 screen = -10 }
+		marcher_hills = { damage = 30 toughness = 30 }
+		marcher_farmlands = { damage = 30 toughness = 30 }
+		marcher_mountains = { damage = 30 toughness = 30 }
+		marcher_forest = { damage = 30 toughness = 30 }
+		marcher_floodplains = { damage = 30 toughness = 30 }
+	}
+
+	counters = {
+		magi = 2
+		monsters = 2
+		undead = 2
+		magical = 2
+		magical_fire = 2
+		magical_ice = 2
+		magical_water = 2
+		magical_air = 2
+		magical_stone = 2
+		magical_dark = 2
+		magical_dream = 2
+		magical_light = 2
+		magical_nature = 2
+		magical_celestial = 2
+		magical_metal = 2
+		magical_sand = 2
+		magical_ethereal = 2
+		magical_death = 2
+		magical_blood = 2
+		#magical_hymns = 2
+		#magical_time = 2
+		#magical_dawn = 2
+		constructs = 1
+		flying = 0.5
+	}
+
+	buy_cost = { gold = accolade_anti_magi_recruitment_cost }
+	low_maintenance_cost = { gold = marcher_anti_mage_low_maint_cost }
+	high_maintenance_cost = { gold = marcher_anti_mage_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_expensive
+
+	stack = 100
+	hired_stack_size = 50
+	allowed_in_hired_troops = no
+	ai_quality = {
+		value = culture_ai_weight_anti_magi
+		add = 100
+	}
+	illustration = { reference = anti_magi }
+}
+
+accolade_maa_silencers = {
+	type = flying
+
+	can_recruit = {
+		any_accolade = {
+			accolade_attribute_level = {
+				type = anti_magi_attribute
+				level >= 3
+			}
+		}
+		NOT = { exists = scope:title }
+	}
+
+	max_regiments = 1
+
+	damage = 280
+	toughness = 100
+	pursuit = 85
+	screen = 30
+
+	terrain_bonus = {
+		hills = { damage = 40 pursuit = 20 }
+		mountains = { damage = 75 toughness = 30 pursuit = 30 }
+		desert_mountains = { damage = 75 toughness = 30 pursuit = 30 }
+		forest = { damage = -40 pursuit = -20 }
+		taiga = { damage = -40 pursuit = -20 }
+		jungle = { damage = -40 pursuit = -20 }
+
+		marcher_hills = { damage = 20 pursuit = 10 }
+		marcher_mountains = { damage = 75 toughness = 30 pursuit = 30 }
+		marcher_forest = { damage = -40 pursuit = -20 }
+	}
+
+	counters = {
+		magi = 4
+		undead = 4
+		constructs = 2
+	}
+
+	buy_cost = { gold = accolade_silencers_recruitment_cost }
+	low_maintenance_cost = { gold = griffon_silencers_low_maint_cost }
+	high_maintenance_cost = { gold = griffon_silencers_high_maint_cost }
+	provision_cost = @provisions_cost_cavalry_bankrupting
+
+	stack = 25
+	hired_stack_size = 10
+	allowed_in_hired_troops = no
+	ai_quality = {
+		value = culture_ai_weight_anti_magi
+		add = 100
+	}
+	illustration = { reference = griffon_riders }
+}
+
+accolade_maa_war_mastiffs = {
+	type = monsters
+
+	can_recruit = {
+		any_accolade = {
+			accolade_attribute_level = {
+				type = beastmaster_attribute
+				level >= 1
+			}
+		}
+		NOT = { exists = scope:title }
+	}
+
+	max_regiments = 2
+
+	damage = 20
+	toughness = 12
+	pursuit = 24
+	screen = 10
+
+	counters = {
+		archers = 1
+		skirmishers = 1
+	}
+
+	buy_cost = { gold = accolade_war_mastiffs_recruitment_cost }
+	low_maintenance_cost = { gold = monsters_low_maint_cost }
+	high_maintenance_cost = { gold = monsters_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_cheap
+
+	stack = 100
+	hired_stack_size = 50
+	ai_quality = {
+		value = culture_ai_weight_monsters
+		add = 100
+	}
+	illustration = { reference = war_hound }
+}
+
+accolade_maa_war_lions = {
+	type = monsters
+
+	can_recruit = {
+		any_accolade = {
+			accolade_attribute_level = {
+				type = beastmaster_attribute
+				level >= 2
+			}
+		}
+		NOT = { exists = scope:title }
+	}
+
+	max_regiments = 1
+
+	damage = 48
+	toughness = 36
+	pursuit = 24
+	screen = 12
+
+	counters = {
+		archers = 1
+		skirmishers = 1
+		light_cavalry = 1
+	}
+
+	buy_cost = { gold = accolade_war_lions_recruitment_cost }
+	low_maintenance_cost = { gold = monsters_low_maint_cost }
+	high_maintenance_cost = { gold = monsters_high_maint_cost }
+	provision_cost = @provisions_cost_cavalry_moderate
+
+	stack = 50
+	hired_stack_size = 25
+	ai_quality = {
+		value = culture_ai_weight_monsters
+		add = 100
+	}
+	illustration = { reference = war_hound }
+}
+
+accolade_maa_owlbears = {
+	type = monsters
+
+	can_recruit = {
+		any_accolade = {
+			accolade_attribute_level = {
+				type = beastmaster_attribute
+				level >= 2
+			}
+		}
+		NOT = { exists = scope:title }
+	}
+
+	max_regiments = 1
+
+	damage = 250
+	toughness = 75
+	pursuit = 20
+	screen = 20
+
+	siege_value = 0.2
+
+	counters = {
+		heavy_infantry = 1
+		heavy_cavalry = 1
+	}
+
+	terrain_bonus = {
+		forest = { damage = 50 toughness = 25 }
+		taiga = { damage = 50 toughness = 25 }
+		wetlands = { damage = -75 toughness = -20 pursuit = -10 screen = -10 }
+
+		marcher_forest = { damage = 50 toughness = 25 }
+		marcher_wetlands = { damage = -75 toughness = -20 pursuit = -10 screen = -10 }
+	}
+
+	buy_cost = { gold = accolade_owlbears_recruitment_cost }
+	low_maintenance_cost = { gold = monsters_low_maint_cost }
+	high_maintenance_cost = { gold = monsters_high_maint_cost }
+	provision_cost = @provisions_cost_cavalry_expensive
+
+	stack = 25
+	hired_stack_size = 10
+	allowed_in_hired_troops = no
+	ai_quality = {
+		value = culture_ai_weight_monsters
+		add = 100
+	}
+	illustration = { reference = fogbeasts }
+}
+
+accolade_maa_bottled_oozes = {
+	type = monsters
+
+	can_recruit = {
+		any_accolade = {
+			accolade_attribute_level = {
+				type = beastmaster_attribute
+				level >= 3
+			}
+		}
+		NOT = { exists = scope:title }
+	}
+
+	max_regiments = 1
+
+	damage = 150
+	toughness = 500
+	pursuit = 0
+	screen = 50
+
+	counters = {
+		archers = 1
+		skirmishers = 1
+		light_cavalry = 1
+		pikemen = 1
+		heavy_infantry = 1
+		heavy_cavalry = 1
+	}
+
+	terrain_bonus = {
+		drylands = { toughness = -100 }
+		desert = { toughness = -200 }
+		desert_mountains = { toughness = -200 }
+		taiga = { toughness = -100 }
+		mountains = { toughness = -100 }
+		wetlands = { damage = 100 toughness = 200 pursuit = 50 }
+
+		marcher_mountains = { toughness = -100 }
+		marcher_wetlands = { damage = 100 toughness = 200 pursuit = 50 }
+	}
+
+	winter_bonus = {
+		normal_winter = { toughness = -150 }
+		harsh_winter = { toughness = -300 }
+	}
+
+	buy_cost = { gold = accolade_bottled_oozes_recruitment_cost }
+	low_maintenance_cost = { gold = monsters_low_maint_cost }
+	high_maintenance_cost = { gold = monsters_high_maint_cost }
+	provision_cost = @provisions_cost_cavalry_bankrupting
+
+	stack = 25
+	hired_stack_size = 10
+	allowed_in_hired_troops = no
+	ai_quality = {
+		value = culture_ai_weight_monsters
+		add = 100
+	}
+	illustration = { reference = fogbeasts }
+}
+
+accolade_maa_pseudodragons = {
+	type = monsters
+
+	can_recruit = {
+		any_accolade = {
+			accolade_attribute_level = {
+				type = beastmaster_attribute
+				level >= 3
+			}
+		}
+		NOT = { exists = scope:title }
+	}
+
+	max_regiments = 1
+
+	damage = 950
+	toughness = 400
+	pursuit = 50
+	screen = 0
+
+	siege_value = 0.2
+
+	counters = {
+		archers = 1
+		skirmishers = 1
+		light_cavalry = 1
+		pikemen = 1
+		heavy_infantry = 1
+		heavy_cavalry = 1
+		elephant_cavalry = 1
+		magi = 1
+	}
+
+	terrain_bonus = {
+		forest = { toughness = 100 pursuit = 25 screen = 25 }
+		jungle = { toughness = 100 pursuit = 25 screen = 25 }
+		wetlands = { toughness = 100 pursuit = 25 screen = 25 }
+
+		marcher_forest = { toughness = 100 pursuit = 25 screen = 25 }
+		marcher_wetlands = { toughness = 100 pursuit = 25 screen = 25 }
+	}
+
+	buy_cost = { gold = accolade_pseudodragons_recruitment_cost }
+	low_maintenance_cost = { gold = monsters_low_maint_cost }
+	high_maintenance_cost = { gold = monsters_high_maint_cost }
+	provision_cost = @provisions_cost_cavalry_bankrupting
+
+	stack = 10
+	hired_stack_size = 5
+	allowed_in_hired_troops = no
+	ai_quality = {
+		value = culture_ai_weight_monsters
+		add = 100
+	}
+	illustration = { reference = fogbeasts }
 }

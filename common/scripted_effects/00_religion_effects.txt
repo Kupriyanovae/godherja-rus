@@ -66,13 +66,10 @@ create_head_of_faith_title_effect = {
 		text = create_temporal_head_of_faith
 		subject = root
 		object = scope:faith
+		
 		# Temporal HoF
 		if = {
-			limit = {
-				faith = {
-					has_doctrine_parameter = temporal_head_of_faith
-				}
-			}
+			limit = { faith = { has_doctrine_parameter = temporal_head_of_faith } }
 			if = {
 				limit = {
 					faith = {
@@ -81,17 +78,12 @@ create_head_of_faith_title_effect = {
 				}
 				trigger_event = faith_creation.0001 # Creates new dynamic title
 			}
-			else = {
-				trigger_event = faith_creation.0011	# Re-uses existing title.
-			}
+			else = { trigger_event = faith_creation.0011 } # Re-uses existing title.
 		}
+
 		# Spiritual HoF
 		else_if = {
-			limit = {
-				faith = {
-					has_doctrine_parameter = spiritual_head_of_faith
-				}
-			}
+			limit = { faith = { has_doctrine_parameter = spiritual_head_of_faith } }
 			if = {
 				limit = {
 					faith = {
@@ -100,9 +92,7 @@ create_head_of_faith_title_effect = {
 				}
 				trigger_event = faith_creation.0002 # Creates new dynamic title
 			}
-			else = {
-				trigger_event = faith_creation.0012 # Re-uses existing title.
-			}
+			else = { trigger_event = faith_creation.0012 } # Re-uses existing title.
 		}
 	}
 
@@ -132,6 +122,25 @@ create_head_of_faith_title_effect = {
 			}
 		}
 	}
+	#GH ADDITION
+	# Struggle Catalysts
+	if = {
+		limit = { faith.religion = religion:ritualist_religion }
+		struggle:gh_war_in_heaven_struggle ?= {
+			activate_struggle_catalyst = {
+				catalyst = catalyst_ritualist_head_of_faith_creation
+				character = scope:reformer
+			}
+		}
+		struggle:gh_eastern_war_in_heaven_struggle ?= {
+			activate_struggle_catalyst = {
+				catalyst = catalyst_ritualist_head_of_faith_creation
+				character = scope:reformer
+			}
+		}
+	}
+	#GH END
+
 }
 
 force_create_head_of_faith_title_Effect = { # Has no cost, should be done manually on a per-case basis
@@ -340,9 +349,9 @@ get_random_faith_effect = {
 	if = {
 		limit = { $FORBIDROOTFAITH$ = yes }
 		random_religion_global = {
-			limit = { any_faith = { NOT = { this = root.faith } } }
+			limit = { any_faith = { this != root.faith } }
 			random_faith = {
-				limit = { NOT = { this = root.faith } }
+				limit = { this != root.faith }
 				save_scope_as = random_faith
 			}
 		}
@@ -468,7 +477,7 @@ secret_faith_openly_convert_all_in_realm = {
 			root = { # There is an edgecase where root has a link to realm, but is not a character themselves!
 				send_interface_message = {
 					type = event_religious_good_text
-					title = event_false_converts.t # todo_cd_polish, this loc might not fit the scenario
+					title = event_false_converts.t
 					desc = event_false_converts_plus_counties.desc
 				}
 			}
@@ -483,7 +492,7 @@ secret_faith_openly_convert_all_in_realm_specific = {
 			any_sub_realm_county = {
 				has_variable = false_convert
 				var:false_convert = root.faith
-				NOT = { faith = root.faith } # Discount them if they've already been switched by the conversion action.
+				faith != root.faith # Discount them if they've already been switched by the conversion action.
 			}
 		}
 
@@ -496,7 +505,7 @@ secret_faith_openly_convert_all_in_realm_specific = {
 			limit = {
 				has_variable = false_convert
 				var:false_convert = root.faith
-				NOT = { faith = root.faith } # Discount them if they've already been switched by the conversion action.
+				faith != root.faith # Discount them if they've already been switched by the conversion action.
 			}
 			set_county_faith = var:false_convert # Change faith
 			remove_county_modifier = false_convert_modifier
@@ -574,4 +583,58 @@ self_mutilation_major_piety_gain_effect = {
 			add_piety = major_piety_gain
 		}
 	}
+}
+
+remove_sinful_trait_effect = {
+	save_scope_as = trait_changer
+    random_character_trait = {
+        limit = {
+            scope:trait_changer.faith = {
+                trait_is_sin = prev
+            }
+        }
+        save_scope_as = sinful_trait
+    }
+    remove_trait = scope:sinful_trait
+}
+
+add_virtuous_trait_effect = {
+	save_scope_as = trait_changer
+	random_trait = {
+        limit = {
+        	save_temporary_scope_as = temp_trait
+			scope:trait_changer.faith = {
+                trait_is_virtue = prev
+            }
+			NOR = {
+				scope:trait_changer = {
+					has_trait = scope:temp_trait
+				}
+				any_opposite_trait = {
+					scope:trait_changer = {
+						has_trait = scope:temp_trait
+					}
+				}
+			}
+			trigger_if = {
+				limit = {
+					this = trait:lustful
+				}
+				scope:trait_changer = {
+					character_is_teen_or_older_trigger = yes
+					NOR = {
+						has_sexuality = none
+						has_sexuality = asexual
+					}
+				}
+			}
+        }
+        save_scope_as = virtuous_trait
+    }
+    add_trait_force_tooltip = scope:virtuous_trait
+}
+
+replace_sinful_trait_effect = {
+	remove_sinful_trait_effect = yes
+	add_virtuous_trait_effect = yes
 }

@@ -1,4 +1,25 @@
-﻿###########
+﻿#Special Buildings:
+#When adding Special Buildings also always add an entry in the following custom loc:
+#GetSpecialBuildingNameFromProvince
+#GetSpecialBuildingTouristDescriptor
+
+
+#Special Building Flags:
+
+#Effects, adding the flag is enough to have it working but you also need to add a tooltip using effect_desc
+#special_university = unlocks effects for tournaments and book inspiration, as well other mechanical effects of universities
+#holy_building = unlocks funeral bonuses
+
+#Point of Interest flags (no further implementation needed after adding the flag)
+#travel_point_of_interest_religious = this location will be a religious point of interest
+#travel_point_of_interest_economic = this location will be an economic point of interest
+#travel_point_of_interest_martial = this location will be a martial point of interest
+#travel_point_of_interest_wonder = this location will be a wonder point of interest
+#travel_point_of_interest_natural_feature = this location will be a natural feature point of interest
+#travel_point_of_interest_diplomatic = this location will be a diplomatic point of interest
+#travel_point_of_interest_learning = this location will be a learning point of interest
+
+###########
 ## Generic Holy Site Buildings
 ###########
 
@@ -10,6 +31,11 @@ holy_site_cathedral_01 = {
 		}
 	}
 
+	asset = {
+		type = pdxmesh
+		name = "cp6_building_special_grand_cathedral_mesh"
+		requires_dlc_flag = holy_buildings
+	}
 	asset = {
 		type = pdxmesh
 		name = "building_special_cathedral_generic_mesh"
@@ -65,9 +91,15 @@ holy_site_cathedral_01 = {
 	province_modifier = {
 		monthly_income = 2
 	}
+
+	on_complete = {
+		#Regular Mandala Boon
+		mandala_built_piety_duchy_building_t3_effect = yes
+	}
 	
 	ai_value = {
 		base = 100
+		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for special buildings
 			factor = 0
 			free_building_slots > 0
@@ -77,6 +109,8 @@ holy_site_cathedral_01 = {
 	type = special
 
 	flag = travel_point_of_interest_religious
+	flag = holy_building
+	flag = religious_studies_location
 }
 
 holy_site_mosque_01 = {
@@ -137,9 +171,15 @@ holy_site_mosque_01 = {
 	province_modifier = {
 		monthly_income = 2
 	}
+
+	on_complete = {
+		#Regular Mandala Boon
+		mandala_built_piety_duchy_building_t3_effect = yes
+	}
 	
 	ai_value = {
 		base = 100
+		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for special buildings
 			factor = 0
 			free_building_slots > 0
@@ -149,6 +189,8 @@ holy_site_mosque_01 = {
 	type = special
 
 	flag = travel_point_of_interest_religious
+	flag = holy_building
+	flag = religious_studies_location
 }
 
 holy_site_fire_temple_01 = {
@@ -215,9 +257,15 @@ holy_site_fire_temple_01 = {
 	province_modifier = {
 		monthly_income = 2
 	}
+
+	on_complete = {
+		#Regular Mandala Boon
+		mandala_built_piety_duchy_building_t3_effect = yes
+	}
 	
 	ai_value = {
 		base = 100
+		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for special buildings
 			factor = 0
 			free_building_slots > 0
@@ -227,6 +275,7 @@ holy_site_fire_temple_01 = {
 	type = special
 
 	flag = travel_point_of_interest_religious
+	flag = holy_building
 }
 
 holy_site_pagan_grand_temple_01 = {
@@ -295,9 +344,15 @@ holy_site_pagan_grand_temple_01 = {
 	province_modifier = {
 		monthly_income = 1
 	}
+
+	on_complete = {
+		#Regular Mandala Boon
+		mandala_built_piety_duchy_building_t3_effect = yes
+	}
 	
 	ai_value = {
 		base = 100
+		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for special buildings
 			factor = 0
 			free_building_slots > 0
@@ -307,6 +362,8 @@ holy_site_pagan_grand_temple_01 = {
 	type = special
 
 	flag = travel_point_of_interest_religious
+	flag = holy_building
+	flag = religious_studies_location
 }
 
 holy_site_indian_grand_temple_01 = {
@@ -373,9 +430,15 @@ holy_site_indian_grand_temple_01 = {
 	province_modifier = {
 		monthly_income = 2
 	}
+
+	on_complete = {
+		#Regular Mandala Boon
+		mandala_built_piety_duchy_building_t3_effect = yes
+	}
 	
 	ai_value = {
 		base = 100
+		ai_pious_building_preference_modifier = yes
 		modifier = { # Fill all building slots before going for special buildings
 			factor = 0
 			free_building_slots > 0
@@ -385,6 +448,8 @@ holy_site_indian_grand_temple_01 = {
 	type = special
 
 	flag = travel_point_of_interest_religious
+	flag = holy_building
+	flag = religious_studies_location
 }
 
 holy_site_other_grand_temple_01 = {
@@ -462,6 +527,7 @@ holy_site_other_grand_temple_01 = {
 	type = special
 
 	flag = travel_point_of_interest_religious
+	flag = holy_building
 }
 
 ##########
@@ -692,7 +758,7 @@ generic_university = {
 
 			every_player = {
 				limit = {
-					NOT = { this = scope:founder }
+					this != scope:founder
 					is_within_diplo_range = { CHARACTER = scope:founder }
 				}
 				trigger_event = major_decisions.2002
@@ -725,6 +791,7 @@ generic_university = {
 	type = special
 
 	flag = travel_point_of_interest_learning
+	flag = special_university
 }
 
 

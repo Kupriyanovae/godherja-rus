@@ -296,6 +296,22 @@ get_region_root_vegetable = {
 		trigger = { location.var:root_vegetable = flag:taro }
 		localization_key = root_vegetable_taro
 	}
+	text = {
+		trigger = { location.var:root_vegetable = flag:daikon_radish }
+		localization_key = root_vegetable_daikon_radish
+	}
+	text = {
+		trigger = { location.var:root_vegetable = flag:lotus_root }
+		localization_key = root_vegetable_lotus_root
+	}
+	text = {
+		trigger = { location.var:root_vegetable = flag:burdock_root }
+		localization_key = root_vegetable_burdock_root
+	}
+	text = {
+		trigger = { location.var:root_vegetable = flag:arrowroot }
+		localization_key = root_vegetable_arrowroot
+	}
 }
 
 get_region_root_vegetable_plural = {
@@ -333,6 +349,22 @@ get_region_root_vegetable_plural = {
 	text = {
 		trigger = { location.var:root_vegetable = flag:taro }
 		localization_key = root_vegetable_taro_plural
+	}
+	text = {
+		trigger = { location.var:root_vegetable = flag:daikon_radish }
+		localization_key = root_vegetable_daikon_radish_plural
+	}
+	text = {
+		trigger = { location.var:root_vegetable = flag:lotus_root }
+		localization_key = root_vegetable_lotus_root_plural
+	}
+	text = {
+		trigger = { location.var:root_vegetable = flag:burdock_root }
+		localization_key = root_vegetable_burdock_root_plural
+	}
+	text = {
+		trigger = { location.var:root_vegetable = flag:arrowroot }
+		localization_key = root_vegetable_arrowroot_plural
 	}
 }
 
@@ -397,6 +429,34 @@ RegionalRootVegetable = {
 		}
 		localization_key = root_vegetable_taro
 	}
+	# Daikon Radish
+	text = {
+		trigger = {
+			location = { province_has_vegetable_daikon_radish_trigger = yes }
+		}
+		localization_key = root_vegetable_daikon_radish
+	}
+	# Lotus Root
+	text = {
+		trigger = {
+			location = { province_has_vegetable_lotus_root_trigger = yes }
+		}
+		localization_key = root_vegetable_lotus_root
+	}
+	# Burdock Root
+	text = {
+		trigger = {
+			location = { province_has_vegetable_burdock_root_trigger = yes }
+		}
+		localization_key = root_vegetable_burdock_root
+	}
+	# Arrowroot
+	text = {
+		trigger = {
+			location = { province_has_vegetable_arrowroot_trigger = yes }
+		}
+		localization_key = root_vegetable_arrowroot
+	}
 }
 RegionalRootVegetablePlural = {
 	type = character
@@ -456,6 +516,34 @@ RegionalRootVegetablePlural = {
 			location = { province_has_vegetable_taro_trigger = yes }
 		}
 		localization_key = root_vegetable_taro_plural
+	}
+	# Daikon Radish
+	text = {
+		trigger = {
+			location = { province_has_vegetable_daikon_radish_trigger = yes }
+		}
+		localization_key = root_vegetable_daikon_radish_plural
+	}
+	# Lotus Root
+	text = {
+		trigger = {
+			location = { province_has_vegetable_lotus_root_trigger = yes }
+		}
+		localization_key = root_vegetable_lotus_root_plural
+	}
+	# Burdock Root
+	text = {
+		trigger = {
+			location = { province_has_vegetable_burdock_root_trigger = yes }
+		}
+		localization_key = root_vegetable_burdock_root_plural
+	}
+	# Arrowroot
+	text = {
+		trigger = {
+			location = { province_has_vegetable_arrowroot_trigger = yes }
+		}
+		localization_key = root_vegetable_arrowroot_plural
 	}
 }
 
@@ -1184,7 +1272,7 @@ GetLocalStreetFood = {
 
 	#text = {
 	#	trigger = {
-	#		root.location.culture = { has_cultural_pillar = heritage_chinese }
+	#		root.location.culture = { has_cultural_pillar = heritage_easterner }
 	#	}
 	#	localization_key = botuo
 	#}
@@ -1251,7 +1339,7 @@ GetLocalStreetFoodPlural = {
 
 	#text = {
 	#	trigger = {
-	#		root.location.culture = { has_cultural_pillar = heritage_chinese }
+	#		root.location.culture = { has_cultural_pillar = heritage_easterner }
 	#	}
 	#	localization_key = botuo_plural
 	#}
@@ -1584,13 +1672,13 @@ GetExpensiveDrink_Singular = {
 	}
 	text = {
 		trigger = {
-			current_date > 1240.1.1 #random later date in GH history, happens in the late middle ages irl, magic or something enables aversarians get drunk as fuck to relieve the pain or w/e
+			current_date > 6240.1.1 #random later date in GH history, happens in the late middle ages irl, magic or something enables aversarians get drunk as fuck to relieve the pain or w/e
 		}
 		localization_key = expensive_drink_singular_brandy
 	}
 	text = {
 		trigger = {
-			current_date > 1200.1.1 #first mention of brandy is in 1437 irl, but GH's alcoholics get it earlier
+			current_date > 6200.1.1 #first mention of brandy is in 1437 irl, but GH's alcoholics get it earlier
 		}
 		localization_key = expensive_drink_singular_brandy
 	}

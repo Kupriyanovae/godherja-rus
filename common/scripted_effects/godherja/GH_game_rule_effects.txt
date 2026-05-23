@@ -1,0 +1,186 @@
+﻿game_rule_special_hammarts_wild_ride_effect = {
+	every_living_character = {
+		if = {
+			limit = {
+				OR = {
+					NOT = { any_held_county = { any_county_province = { geographical_region = world_ga_marcher_kingdoms } } }
+					has_title = title:d_callesc
+				}
+			}
+			remove_magical_trait_effect = yes
+			#remove_magical_education_effect = yes GH_TODO: update for aspects
+			add_trait = magic_good_20
+			if = {
+			    limit = {
+					NOT = { can_access_magic = yes }
+			    }
+				learn_random_culture_magic_school_effect = {
+					MIN_SPELLS = generated_character_min_spells_default_value
+					MAX_SPELLS = generated_character_max_spells_default_value
+					MAX_SPELL_LEVEL = generated_character_max_spell_level_default_value
+				}
+			}
+		}
+	}
+}
+
+game_rule_destroy_migrant_coalition_effect = {
+	if = { limit = { exists = title:e_migrant_coalition.holder } }
+	title:e_migrant_coalition.holder = { destroy_title = title:e_migrant_coalition }
+}
+
+game_rule_opening_event_effect = {
+	every_player = { # GH TODO: Should probably just be custom loc'ing a single event so that we don't fire off a hundred at once
+		#if = {
+		#	limit = { has_opening_event = yes } # GH TODO: Make sure this is implemented properly and remove the char triggers from the events themselves
+			if = {
+				limit = { current_year = 6254 }
+				trigger_opening_events_1254_effect = yes
+			}
+			else = {
+				trigger_opening_events_1298_effect = yes
+			}
+		#}
+	}
+}
+
+trigger_opening_events_1254_effect = { # GH TODO: Sort these out, and move everythinhg out from the aversarian namespace if it doesn't belong
+	# Chevalie
+	trigger_event = { id = opening_event_1254_aversaria.13 } 			# Mathilde
+	trigger_event = { id = opening_event_1254_aversaria.14 } 			# Rene den va Seignon
+	trigger_event = { id = opening_event_1254_aversaria.15 } 			# Cliement den va Seignon
+	trigger_event = { id = opening_event_1254_aversaria.16 } 			# Ansfrei den va Seignon
+	trigger_event = { id = opening_event_1254_aversaria.17 } 			# Benouet den va Seignon
+	trigger_event = { id = opening_event_1254_aversaria.24 } 			# Hammart den va Seignon
+	trigger_event = { id = opening_event_1254_aversaria.27 } 			# Ogiers
+	trigger_event = { id = opening_event_1254_aversaria.103 } 			# Rosier den va Sissaux
+	# Migrants
+	trigger_event = { id = opening_event_1254_aversaria.11 } 			# Adalgar
+	trigger_event = { id = opening_event_1254_aversaria.12 } 			# Epghar-Argeadh
+	trigger_event = { id = opening_event_1254_aversaria.19 } 			# Fenrus
+	trigger_event = { id = opening_event_1254_aversaria.22 } 			# Ulfirx
+	trigger_event = { id = opening_event_1254_aversaria.29 } 			# Cenware
+	trigger_event = { id = opening_event_1254_aversaria.30 } 			# Sigrun
+	trigger_event = { id = opening_event_1254_aversaria.31 } 			# Dragos
+	trigger_event = { id = opening_event_1254_aversaria.59 } 			# Vlanthus of the Heugs
+	trigger_event = { id = opening_event_1254_aversaria.79 } 			# Wishiwashi kardwen chief
+	# Aversaria
+	trigger_event = { id = opening_event_1254_aversaria.1 } 			# Black Sun
+	trigger_event = { id = opening_event_1254_aversaria.2 } 			# Dexios
+	#trigger_event = { id = opening_event_1254_aversaria.3 }			#Aironoi Generic # GH TODO: Legacy event, consider custom regional openers in future
+	trigger_event = { id = opening_event_1254_aversaria.4 } 			# Hecuba
+	trigger_event = { id = opening_event_1254_aversaria.5 } 			# Arch Letalagos Pylartes of Legio IV 'Elenos'
+	trigger_event = { id = opening_event_1254_aversaria.6 } 			# Gorassos
+	trigger_event = { id = opening_event_1254_aversaria.7 } 			# Megistos
+	trigger_event = { id = opening_event_1254_aversaria.8 } 			# Adriane
+	trigger_event = { id = opening_event_1254_aversaria.9 } 			# Heraklios
+	trigger_event = { id = opening_event_1254_aversaria.10 } 			# Legan Olymphoros of Legio LII 'the Redrock Guard'
+	trigger_event = { id = opening_event_1254_aversaria.18 } 			# Cois
+	trigger_event = { id = opening_event_1254_aversaria.20 } 			# Kekropi
+	trigger_event = { id = opening_event_1254_aversaria.21 } 			# Melane
+	trigger_event = { id = opening_event_1254_aversaria.28 } 			# Aeschraes
+	trigger_event = { id = opening_event_1254_aversaria.33 } 			# Sirras
+	trigger_event = { id = opening_event_1254_aversaria.34 } 			# Iordanes
+	trigger_event = { id = opening_event_1254_aversaria.42 } 			# Krehejad Archex
+	trigger_event = { id = opening_event_1254_aversaria.43 } 			# FRIDGE
+	trigger_event = { id = opening_event_1254_aversaria.44 }			# ACHAKE
+	trigger_event = { id = opening_event_1254_aversaria.45 } 			# Metal Mask
+	trigger_event = { id = opening_event_1254_aversaria.46 } 			# Puppet Draneti
+	trigger_event = { id = opening_event_1254_aversaria.47 } 			# Akakih the White Lion
+	trigger_event = { id = opening_event_1254_aversaria.48 } 			# Last Ertomaxist
+	trigger_event = { id = opening_event_1254_aversaria.49 } 			# Vakhtan Vampire Uncle
+	trigger_event = { id = opening_event_1254_aversaria.50 } 			# Tarnaz Hedonist Brother
+	trigger_event = { id = opening_event_1254_aversaria.51 } 			# Khvicha Barbarian Brother
+	trigger_event = { id = opening_event_1254_aversaria.52 } 			# Parnaz paranoid Magi brother
+	trigger_event = { id = opening_event_1254_aversaria.53 } 			# esterax the glorious
+	trigger_event = { id = opening_event_1254_aversaria.54 } 			# Bane of Azzy'krazz
+	trigger_event = { id = opening_event_1254_aversaria.55 } 			# Garniex
+	trigger_event = { id = opening_event_1254_aversaria.56 } 			# Arch-Legan Dethas 'the Last Legionnaire'
+	trigger_event = { id = opening_event_1254_aversaria.57 } 			# Hierotheos IV Morgeuthernis
+	trigger_event = { id = opening_event_1254_aversaria.58 } 			# The Free One
+	trigger_event = { id = opening_event_1254_aversaria.60 } 			# Legio Pirateslayers
+	trigger_event = { id = opening_event_1254_aversaria.61 } 			# Legio Shipbreakers
+	trigger_event = { id = opening_event_1254_aversaria.62 } 			# Returning Ehatm
+	trigger_event = { id = opening_event_1254_aversaria.72 } 			# Frostblood
+	trigger_event = { id = opening_event_1254_aversaria.73 } 			# Narses
+	trigger_event = { id = opening_event_1254_aversaria.74 } 			# Tangatha, occupation force in Assocaea
+	trigger_event = { id = opening_event_1254_aversaria.76 } 			# Arderico, Seaborne Exalted
+	trigger_event = { id = opening_event_1254_aversaria.77 } 			# Athanasia, Cleansed Cultist islander
+	trigger_event = { id = opening_event_1254_aversaria.78 } 			# Antipatra, Black Fraternal islander
+	trigger_event = { id = opening_event_1254_aversaria.100 } 			# Myliros, Aeschraes' strongest soldier
+	trigger_event = { id = opening_event_1254_aversaria.101 } 			# Melissa, last scion of house Varsaxoan
+	trigger_event = { id = opening_event_1254_aversaria.102 } 			# Akakios "Ash-Killer"
+	trigger_event = { id = opening_event_1254_aversaria.104 } 			# Legon Zenobios of Legio XXI 'Axiaothea'
+	trigger_event = { id = opening_event_1254_aversaria.105 } 			# Legon Pavron of Legio XVII 'Stereon'
+	trigger_event = { id = opening_event_1254_aversaria.106 } 			# Arch Letalagos Matthaios of Legio XXVI 'Exodian'
+	trigger_event = { id = opening_event_1254_aversaria.107 } 			# Arch Letalagos Kallistos of Magi Auxiliaros Corpus XII
+	trigger_event = { id = opening_event_1254_aversaria.108 } 			# Arch Letalagos Iros of Legio VII 'Parataros'
+	trigger_event = { id = opening_event_1254_aversaria.109 } 			# Arch Letalagos Narthos of Legio LXXI 'Brass-Arms'
+	trigger_event = { id = opening_event_1254_aversaria.110 } 			# Arch Letalagos Tolios of the River Authority
+	trigger_event = { id = opening_event_1254_aversaria.111 } 			# Arch Letalagos Hykopas of Legio LXXX 'Shield of the North'
+	# Damota
+	trigger_event = { id = opening_event_1254_damota.1 }				# Aderi
+	trigger_event = { id = opening_event_1254_damota.2 }				# Farwah
+	trigger_event = { id = opening_event_1254_damota.3 }				# Rashali
+	trigger_event = { id = opening_event_1254_damota.4 }				# Herizab
+	trigger_event = { id = opening_event_1254_damota.5 }				# Runalem
+	trigger_event = { id = opening_event_1254_damota.6 }				# Azhela
+	# Sarradon
+	trigger_event = { id = opening_event_1254_sarradon.1 } 				# Aarif
+	trigger_event = { id = opening_event_1254_sarradon.2 } 				# opening event for amsari vassals
+	trigger_event = { id = opening_event_1254_sarradon.3 } 				# Mamur
+	trigger_event = { id = opening_event_1254_sarradon.4 } 				# Harthah
+	trigger_event = { id = opening_event_1254_sarradon.5 } 				# Pejman
+	trigger_event = { id = opening_event_1254_sarradon.6 } 				# opening event for marcher trading company
+	trigger_event = { id = opening_event_1254_sarradon.7 } 				# Manat
+	trigger_event = { id = opening_event_1254_sarradon.8 }				# Pad'eyil the Hubarist
+	trigger_event = { id = opening_event_1254_sarradon.9 }				# Aghlab the Engineer
+	trigger_event = { id = opening_event_1254_sarradon.10 }				# Abdul-Jaleel the Greenwender
+	trigger_event = { id = opening_event_1254_sarradon.11 }				# Angobo kin Mamakhim
+	trigger_event = { id = opening_event_1254_aversaria.26 } 			# Msamaki
+	trigger_event = { id = opening_event_1254_aversaria.32 } 			# Isa
+	# Kashirya
+	trigger_event = { id = opening_event_1254_kashirya.1 } 				# The Hand that Bites
+	trigger_event = { id = opening_event_1254_kashirya.2 } 				# Hollow King Digbhanja of the Rahikaya
+	trigger_event = { id = opening_event_1254_kashirya.3 } 				# Gandadeva the Madlad of the Paidem
+	trigger_event = { id = opening_event_1254_kashirya.4 } 				# Duke Bhagwant Scar bound
+	trigger_event = { id = opening_event_1254_kashirya.5 } 				# 1254 Tahanati Duchess, Ahilyabai
+	trigger_event = { id = opening_event_1254_kashirya.6 } 				# 1254 Karana Duke, Nahusa
+	trigger_event = { id = opening_event_1254_kashirya.7 } 				# 1254 Sheytaran Queen Nahana
+	trigger_event = { id = opening_event_1254_kashirya.8 } 				# 1254 Omkhur Duke, Naivarman
+	trigger_event = { id = opening_event_1254_kashirya.9 } 				# 1254 Sakankra Duke, Damodara
+	trigger_event = { id = opening_event_1254_kashirya.10 } 			# Kresjsla Kraken-Eater
+	trigger_event = { id = opening_event_1254_kashirya.11 } 			# Viesuados Heirs' Makis & Yiorgos
+	trigger_event = { id = opening_event_1254_kashirya.12 } 			# Bhramkarod Vengeful Crusader against death
+	trigger_event = { id = opening_event_1254_kashirya.13 } 			# Shau, our bumblingly brilliant marshal
+	trigger_event = { id = opening_event_1254_kashirya.14 } 			# Bhramkarod's scheaming wife
+	trigger_event = { id = opening_event_1254_kashirya.15 }				# Triggers Truce for Dhodoli/Hyratan
+	# Unsorted
+	trigger_event = { id = opening_event_bn.1 } 						# Min Thu
+	trigger_event = { id = opening_event_bn.2 } 						# Su Myat, the White Rose
+	trigger_event = { id = opening_event_bn.3 } 						# Nurbek Nursultan, the Black Whirlwind
+	trigger_event = { id = opening_event_bn.4 } 						# Yaza Zin, High Priest/Sepattan
+	trigger_event = { id = opening_event_bn.5 } 						# Htet Myat Aung
+	trigger_event = { id = opening_event_redlands.1 } 					# Labynt the Patchwork Man
+}
+
+trigger_opening_events_1298_effect = {
+	# The Continent
+	trigger_event = { id = opening_event_aironoi_1298.1 } 			# Eohar, 1298 Kizengana of Szamazonas
+	trigger_event = { id = opening_event_aironoi_1298.2 } 			# Utena, sister of the above
+	trigger_event = { id = opening_event_aironoi_1298.3 } 			# Arszak, brother of the above
+	trigger_event = { id = opening_event_aironoi_1298.4 } 			# Ioa, sister of the above
+	trigger_event = { id = opening_event_aironoi_1298.5 } 			# Atamaita, the Sarmuyr heresiarch
+	trigger_event = { id = opening_event_aironoi_1298.7 } 			# Vahbarz, the Marshal of the above
+
+	trigger_event = { id = opening_event_kashirya_1298.1 }			# Beksultan 'The Pale Rider' 
+
+	trigger_event = { id = opening_event_opakhasia_1298.1 } 		# Unwan
+	# Sarradon
+	trigger_event = { id = opening_event_sarradon_1298.1 } 			# Arshab Pejman's Descendant
+	trigger_event = { id = opening_event_sarradon_1298.2 } 			# Zehur Crazy Fanatical First Hands of the Faith
+	trigger_event = { id = opening_event_sarradon_1298.3 } 			# Arderith Fanatical First Hands of the Faith
+	trigger_event = { id = opening_event_sarradon_1298.4 } 			# Ielih
+	trigger_event = { id = opening_event_sarradon_1298.5 } 			# Tebouin WRTC Marcher in Amsar
+	trigger_event = { id = opening_event_sarradon_1298.6 }			# Damiane of the Bleeding Martyr
+}

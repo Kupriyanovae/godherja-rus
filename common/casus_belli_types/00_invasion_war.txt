@@ -17,18 +17,16 @@
 			has_character_flag = bp2_inspired_culture_for_conquest
 			has_variable = mpo_desperate_stance_invasion_cb_enable_var
 			ai_should_get_extreme_conqueror_bonuses = yes
+			AND = {
+				house ?= { has_house_head_parameter = has_unlimited_invasion_cb }
+				is_house_head = yes
+			}
 		}
 		trigger_if = {
-			limit = {
-				NOT = { ai_should_get_extreme_conqueror_bonuses = yes }
-			}
-			NOT = {
-				has_character_flag = used_lifetime_invasion
-			}
+			limit = { ai_should_get_extreme_conqueror_bonuses = no }
+			NOT = { has_character_flag = used_lifetime_invasion }
 		}
-		NOT = {
-			government_has_flag = government_is_landless_adventurer
-		}
+		NOT = { government_has_flag = government_is_landless_adventurer }
 		## GH CHANGE
 		# Let's block Cenware from using this for now
 		NOT = { has_title = title:e_migrant_coalition }
@@ -38,7 +36,7 @@
 		trigger_if = {
 			limit = {
 				has_character_flag =  bp2_inspired_culture_for_conquest
-				NOT = { ai_should_get_extreme_conqueror_bonuses = yes }
+				ai_should_get_extreme_conqueror_bonuses = no
 			}
 			prestige_level >= 0
 		}
@@ -54,7 +52,7 @@
 				culture = {
 					has_cultural_parameter = cb_lower_prestige_level_requirement
 				}
-				NOT = { ai_should_get_extreme_conqueror_bonuses = yes }
+				ai_should_get_extreme_conqueror_bonuses = no
 			}
 			prestige_level >= 2
 		}
@@ -74,14 +72,12 @@
 						has_cultural_parameter = cb_lower_prestige_level_requirement
 					}
 				}
-				NOT = { ai_should_get_extreme_conqueror_bonuses = yes }
+				ai_should_get_extreme_conqueror_bonuses = no
 			}
 			prestige_level >= 3
 		}
 		trigger_else_if = {
-			limit = {
-				ai_should_get_extreme_conqueror_bonuses = yes
-			}
+			limit = { ai_should_get_extreme_conqueror_bonuses = yes }
 		}
 		trigger_else = {
 			prestige_level >= 4
@@ -91,7 +87,8 @@
 			text = struggle_involvement_cb_check_failure
 			struggle_blocks_invasion_conquest_cb_trigger = yes
 		}
-
+		tgp_japan_offensive_wars_ban_trigger = yes
+		
 		# GH CHANGE
 		# Lets block Cenware here too
 		NOT = { has_title = title:e_migrant_coalition }
@@ -121,7 +118,8 @@
 	}
 	ai_score_mult = {
 		value = viking_conquest_ai_score_value
-
+		# HOUSE RELATIONS
+		add = house_relation_ai_score_value
 		# AI in struggles act insularly for wars that don't have a familial or legal basis.
 		multiply = struggle_wars_prioritise_struggle_targets_value
 		## GH CHANGE
@@ -187,16 +185,44 @@
 
 	cost = {
 		piety = {
-			value = 0
-			add = common_cb_impious_piety_cost
+			if = {
+				limit = {
+					scope:attacker = {
+						NOT = {
+							government_has_flag = government_is_mandala
+							house ?= { has_house_head_parameter = has_unlimited_invasion_cb }
+							is_house_head = yes
+						}
+					}
+				}
+				value = common_cb_impious_piety_cost
+			}
+			else = {
+				value = {
+					value = 2000
+					desc = CB_BASE_COST
+				}
+				multiply = common_cb_prestige_cost_multiplier
+			}
 		}
 		prestige = {
-			add = {
-				value = 2000
-				desc = CB_BASE_COST
+			if = {
+				limit = {
+					scope:attacker = {
+						government_has_flag = government_is_mandala
+						house ?= { has_house_head_parameter = has_unlimited_invasion_cb }
+						is_house_head = yes
+					}
+				}
+				value = 0
 			}
-
-			multiply = common_cb_prestige_cost_multiplier
+			else = {
+				value = {
+					value = 2000
+					desc = CB_BASE_COST
+				}
+				multiply = common_cb_prestige_cost_multiplier
+			}
 		}
 	}
 	
@@ -296,6 +322,9 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -343,6 +372,37 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				if = {
+					limit = {
+						any_character_struggle = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+					}
+					every_character_struggle = {
+						limit = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+						activate_struggle_catalyst = {
+							catalyst = catalyst_war_white_peace
+							character = scope:attacker
+						}
+					}
+				}
+			}
+		}
+		#GH END
 	}
 
 	on_defeat_desc = {
@@ -363,9 +423,12 @@
 
 		# Influence
 		add_influence_attacker_defeat_effect = yes
-
-		#EP2 accolade glory gain for winning against higher ranked enemy
-		scope:defender = { accolade_defender_war_end_glory_gain_high_effect = yes }
+		
+		scope:defender = { 
+			mandala_peacemaker_perk_serenity_effect = yes
+			#EP2 accolade glory gain for winning against higher ranked enemy
+			accolade_defender_war_end_glory_gain_high_effect = yes
+		}
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -407,6 +470,9 @@
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_defeat_effects = yes
 	}
 	
 	transfer_behavior = transfer
@@ -445,19 +511,14 @@ clan_invasion_war = {
 			government_has_flag = government_is_clan
 			government_has_flag = government_is_continental_clan
 		}
-		NOR = {
-			faith = { has_doctrine_parameter = invasion_cb_enabled }
-			AND = {
-				exists = house
-				house = {
-					has_house_unity_parameter = unity_disable_invasions
-				}
+		NAND = {
+			house ?= {
+				has_house_unity_parameter = unity_disable_invasions
 			}
 		}
 		trigger_if = {
 			limit = {
-				exists = house
-				house = {
+				house ?= {
 					has_house_unity_parameter = unity_multiple_invasions
 				}
 			}
@@ -465,8 +526,7 @@ clan_invasion_war = {
 		}
 		trigger_else_if = {
 			limit = {
-				exists = house
-				house = {
+				house ?= {
 					has_house_unity_parameter = unity_unlimited_invasions
 				}
 			}
@@ -526,7 +586,8 @@ clan_invasion_war = {
 			text = struggle_involvement_cb_check_failure
 			struggle_blocks_invasion_conquest_cb_trigger = yes
 		}
-
+		tgp_japan_offensive_wars_ban_trigger = yes
+		
 		# GH CHANGE
 		# Lets block Cenware here too
 		NOT = { has_title = title:e_migrant_coalition }
@@ -554,7 +615,8 @@ clan_invasion_war = {
 
 	ai_score_mult = {
 		value = 1
-
+		# HOUSE RELATIONS
+		add = house_relation_ai_score_value
 		# AI in struggles act insularly for wars that don't have a familial or legal basis.
 		multiply = struggle_wars_prioritise_struggle_targets_value
 		## GH CHANGE
@@ -811,6 +873,9 @@ clan_invasion_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -860,6 +925,36 @@ clan_invasion_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				if = {
+					limit = {
+						any_character_struggle = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+					}
+					every_character_struggle = {
+						limit = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+						activate_struggle_catalyst = {
+							catalyst = catalyst_war_white_peace
+							character = scope:attacker
+						}
+					}
+				}
+			}
+		}
+		#GH END
 	}
 
 	on_defeat_desc = {
@@ -878,8 +973,11 @@ clan_invasion_war = {
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		#EP2 accolade glory gain for winning against higher ranked enemy
-		scope:defender = { accolade_defender_war_end_glory_gain_high_effect = yes }
+		scope:defender = { 
+			mandala_peacemaker_perk_serenity_effect = yes
+			#EP2 accolade glory gain for winning against higher ranked enemy
+			accolade_defender_war_end_glory_gain_high_effect = yes
+		}
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -923,6 +1021,9 @@ clan_invasion_war = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_defeat_effects = yes
 	}
 	
 	transfer_behavior = transfer

@@ -272,16 +272,13 @@ culture_creation_generate_available_magic_schools_list_scripted_gui = {
 				}
 			}
 		}
-		if = {
-			limit = { exists = scope:other_culture }
-			scope:other_culture = {
-				every_in_list = {
-					variable = magic_school_list
-					root = {
-						add_to_variable_list = {
-							name = culture_creation_selectable_magic_school_list
-							target = prev.var:magic_school
-						}
+		scope:other_culture ?= {
+			every_in_list = {
+				variable = magic_school_list
+				root = {
+					add_to_variable_list = {
+						name = culture_creation_selectable_magic_school_list
+						target = prev.var:magic_school
 					}
 				}
 			}

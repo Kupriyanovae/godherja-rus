@@ -1,27 +1,4 @@
-﻿game_rule_easteregg_character_promotion_effect = {
-	every_barony = {
-		limit = {
-			holder ?= { has_character_flag = easteregg_baron }
-		}
-		holder = {
-			save_scope_as = easteregg_baron
-			create_title_and_vassal_change = {
-				type = usurped
-				save_scope_as = title_change
-				add_claim_on_loss = no
-			}
-			primary_title.county = {
-				change_title_holder = {
-					holder = scope:easteregg_baron
-					change = scope:title_change
-				}
-			}
-			resolve_title_and_vassal_change = scope:title_change
-		}
-	}
-}
-
-######################
+﻿######################
 # GENERATED FAMILIES #
 ######################
 
@@ -33,7 +10,8 @@ game_rule_create_spouse_and_children = {
 				is_married = no
 			}
 			create_character = {
-				location = $CHARACTER$.location
+				dynasty = none
+				location = $LOCATION$.location
 				culture = $CHARACTER$.culture
 				faith = $CHARACTER$.faith
 				gender_female_chance = $CHARACTER$.marriage_gender_adjusted_female_chance
@@ -55,6 +33,13 @@ game_rule_create_spouse_and_children = {
 				scope:spouse = {
 					add_trait = nomadic_philosophy
 				}
+			}
+			if = {
+				limit = {
+					NOT = { exists = scope:spouse.employer }
+					$LOCATION$ = { is_ruler = yes }
+				}
+				$LOCATION$ = { add_courtier = scope:spouse }
 			}
 		}
 		else = {
@@ -96,7 +81,7 @@ game_rule_create_spouse_and_children = {
 					exists = scope:father
 				}
 				create_character = {
-					location = $CHARACTER$.location
+					location = $LOCATION$.location
 					culture = $CHARACTER$.culture
 					faith = $CHARACTER$.faith
 					gender_female_chance = {
@@ -130,7 +115,7 @@ game_rule_create_spouse_and_children = {
 			}
 			else = { #If we don't have a father we generate a child without
 				create_character = {
-					location = $CHARACTER$.location
+					location = $LOCATION$.location
 					culture = $CHARACTER$.culture
 					faith = $CHARACTER$.faith
 					gender_female_chance = {
@@ -168,7 +153,7 @@ game_rule_create_spouse_and_children = {
 				NOT = { exists = scope:mother }
 			}
 			create_character = {
-				location = $CHARACTER$.location
+				location = $LOCATION$.location
 				culture = $CHARACTER$.culture
 				faith = $CHARACTER$.faith
 				gender_female_chance = {
@@ -212,7 +197,7 @@ game_rule_create_spouse_and_children = {
 					exists = scope:father
 				}
 				create_character = {
-					location = $CHARACTER$.location
+					location = $LOCATION$.location
 					culture = $CHARACTER$.culture
 					faith = $CHARACTER$.faith
 					gender_female_chance = {
@@ -230,7 +215,7 @@ game_rule_create_spouse_and_children = {
 			}
 			else = { #If we don't have a father we generate a child without
 				create_character = {
-					location = $CHARACTER$.location
+					location = $LOCATION$.location
 					culture = $CHARACTER$.culture
 					faith = $CHARACTER$.faith
 					gender_female_chance = {
@@ -259,7 +244,7 @@ game_rule_create_spouse_and_children = {
 					exists = scope:father
 				}
 				create_character = {
-					location = $CHARACTER$.location
+					location = $LOCATION$.location
 					culture = $CHARACTER$.culture
 					faith = $CHARACTER$.faith
 					gender_female_chance = {
@@ -277,7 +262,7 @@ game_rule_create_spouse_and_children = {
 			}
 			else = { #If we don't have a father we generate a child without
 				create_character = {
-					location = $CHARACTER$.location
+					location = $LOCATION$.location
 					culture = $CHARACTER$.culture
 					faith = $CHARACTER$.faith
 					gender_female_chance = {
@@ -292,6 +277,31 @@ game_rule_create_spouse_and_children = {
 					save_scope_as = child_3
 				}
 			}
+		}
+		
+		if = {
+			limit = {
+				exists = scope:child_1
+				NOT = { exists = scope:child_1.employer }
+				$LOCATION$ = { is_ruler = yes }
+			}
+			$LOCATION$ = { add_courtier = scope:child_1 }
+		}
+		if = {
+			limit = {
+				exists = scope:child_2
+				NOT = { exists = scope:child_2.employer }
+				$LOCATION$ = { is_ruler = yes }
+			}
+			$LOCATION$ = { add_courtier = scope:child_2 }
+		}
+		if = {
+			limit = {
+				exists = scope:child_3
+				NOT = { exists = scope:child_3.employer }
+				$LOCATION$ = { is_ruler = yes }
+			}
+			$LOCATION$ = { add_courtier = scope:child_3 }
 		}
 		if = {
 			limit = {
@@ -465,12 +475,11 @@ game_rule_full_gender_equality_effect = {
 	#Specific titles' law
 }
 
-
-
 game_rule_inversed_gender_equality_effect = {
+	enable_and_run_succession_calculation = yes
+
 	every_religion_global = {
 		every_faith = {
-
 			## DOCTRINE_GENDER
 			if = {
 				limit = { has_doctrine = doctrine_gender_male_dominated }
@@ -620,76 +629,101 @@ game_rule_inversed_gender_equality_effect = {
 
 	## REALM LAW
 	every_ruler = {
-		# Take care of any titles with their own title laws.
-		every_held_title = {
-			limit = { can_title_have_law_general_trigger = yes }
-			# Invert male-only.
-			if = {
-				limit = { has_title_law = male_only_law }
-				remove_title_law = male_only_law
-				add_title_law = female_only_law
-			}
-			# Invert female-only.
-			else_if = {
-				limit = { has_title_law = female_only_law }
-				remove_title_law = female_only_law
-				add_title_law = male_only_law
-			}
+		limit = {
+			highest_held_title_tier >= tier_county
 		}
-		# Now realm law.
+		# trigger changed during processing so can not add this in limit
 		if = {
-			limit = { has_realm_law = male_only_law }
-			add_realm_law = female_only_law
-			if = {
-				limit = {
-					highest_held_title_tier >= tier_county
-					is_male = yes
-					is_ai = yes
-					any_heir = { is_female = yes }
-				}
-				depose = yes
+			limit = {
+				NOT = { has_character_flag = gender_reversed }
 			}
-		}
-		else_if = {
-			limit = { has_realm_law = male_preference_law }
-			add_realm_law = female_preference_law
-			if = {
-				limit = {
-					highest_held_title_tier >= tier_county
-					is_male = yes
-					is_ai = yes
-					any_heir = { is_female = yes }
+			# Take care of any titles with their own title laws.
+			every_held_title = {
+				limit = { can_title_have_law_general_trigger = yes }
+				# Invert male-only.
+				if = {
+					limit = { has_title_law = male_only_law }
+					remove_title_law = male_only_law
+					add_title_law = female_only_law
 				}
-				depose = yes
-			}
-		}
-		else_if = {
-			limit = { has_realm_law = female_preference_law }
-			add_realm_law = male_preference_law
-			if = {
-				limit = {
-					highest_held_title_tier >= tier_county
-					is_female = yes
-					is_ai = yes
-					any_heir = { is_male = yes }
+				# Invert female-only.
+				else_if = {
+					limit = { has_title_law = female_only_law }
+					remove_title_law = female_only_law
+					add_title_law = male_only_law
 				}
-				depose = yes
 			}
-		}
-		else_if = {
-			limit = { has_realm_law = female_only_law }
-			add_realm_law = male_only_law
+			# Now realm law.
 			if = {
-				limit = {
-					highest_held_title_tier >= tier_county
-					is_female = yes
-					is_ai = yes
-					any_heir = { is_male = yes }
+				limit = { has_realm_law = male_only_law }
+				add_realm_law = female_only_law
+				if = {
+					limit = {
+						highest_held_title_tier >= tier_county
+						is_male = yes
+						is_ai = yes
+						any_heir = { is_female = yes }
+					}
+					every_heir = {
+						limit = { is_female = yes }
+						add_character_flag = { flag = gender_reversed days = 1 }
+					}
+					depose = yes
 				}
-				depose = yes
 			}
+			else_if = {
+				limit = { has_realm_law = male_preference_law }
+				add_realm_law = female_preference_law
+				if = {
+					limit = {
+						highest_held_title_tier >= tier_county
+						is_male = yes
+						is_ai = yes
+						any_heir = { is_female = yes }
+					}
+					every_heir = {
+						limit = { is_female = yes }
+						add_character_flag = { flag = gender_reversed days = 1 }
+					}
+					depose = yes
+				}
+			}
+			else_if = {
+				limit = { has_realm_law = female_preference_law }
+				add_realm_law = male_preference_law
+				if = {
+					limit = {
+						highest_held_title_tier >= tier_county
+						is_female = yes
+						is_ai = yes
+						any_heir = { is_male = yes }
+					}
+					every_heir = {
+						limit = { is_male = yes }
+						add_character_flag = { flag = gender_reversed days = 1 }
+					}
+					depose = yes
+				}
+			}
+			else_if = {
+				limit = { has_realm_law = female_only_law }
+				add_realm_law = male_only_law
+				if = {
+					limit = {
+						highest_held_title_tier >= tier_county
+						is_female = yes
+						is_ai = yes
+						any_heir = { is_male = yes }
+					}
+					every_heir = {
+						limit = { is_male = yes }
+						add_character_flag = { flag = gender_reversed days = 1 }
+					}
+					depose = yes
+				}
+			}
+			#Else: equal, nothing changes
 		}
-		#Else: equal, nothing changes
 	}
 
 	# We handle religious titles here because title law overlaps with faith law in weird ways otherwise.
@@ -724,6 +758,8 @@ game_rule_inversed_gender_equality_effect = {
 			set_culture_pillar = martial_custom_male_only
 		}
 	}
+
+	disable_succession_calculation = yes
 }
 
 game_rule_accepted_same_sex_relations_effect = {
@@ -747,6 +783,26 @@ game_rule_accepted_same_sex_relations_effect = {
 	}
 }
 
+game_rule_lenient_gender_equality_effect = {
+	## REALM LAW
+	every_ruler = {
+		# Take care of any titles with their own title laws.
+		every_held_title = {
+			limit = { can_title_have_law_general_trigger = yes }
+			# Make male only -> male preference.
+			if = {
+				limit = { has_title_law = male_only_law }
+				remove_title_law = male_only_law
+				add_title_law = male_preference_law
+			}
+		}
+		# Now realm law.
+		if = {
+			limit = { has_realm_law = male_only_law }
+			add_realm_law = male_preference_law
+		}
+	}
+}
 
 ##########################
 # RANDOM RULER PLACEMENT #
@@ -777,7 +833,7 @@ game_rule_random_ruler_placement_shuffle_list_effect = {
 				add_claim_on_loss = no
 			}
 			every_held_title = {
-				limit = { tier >= tier_county }
+				title_tier >= county
 				change_title_holder_include_vassals = {
 					holder = scope:previous_ruler
 					change = scope:change
@@ -807,7 +863,7 @@ game_rule_random_ruler_placement_effect = {
 			save_temporary_scope_as = ruler_for_list
 			NOR = {
 				is_ai = no
-				government_has_flag = government_is_wasteland
+				government_has_flag = government_is_wasteland #GH ADDITION
 				any_liege_or_above = {
 					is_ai = no
 					dynasty = scope:ruler_for_list.dynasty
@@ -848,11 +904,11 @@ game_rule_random_ruler_placement_effect = {
 	### MAKE EXCLAVES INDEPENDENT ###
 	every_ruler = {
 		limit = {
-			is_independent_ruler = no
+			top_liege != this
 			save_temporary_scope_as = exclave_check
 			NOT = {
 				any_held_title = {
-					tier = tier_county
+					title_tier = county
 					any_neighboring_county = {
 						holder = {
 							NOR = {
@@ -887,8 +943,8 @@ game_rule_randomize_faith_randomization_effect = {
 	if = {
 		limit = {
 			trigger_if = {
-				limit = { is_independent_ruler = no }
-				NOT = { faith = liege.faith } #We don't want to override faiths which "trickled down" via conversion effect
+				limit = { top_liege != this }
+				faith != liege.faith #We don't want to override faiths which "trickled down" via conversion effect
 			}
 			trigger_else = {
 				always = yes
@@ -925,7 +981,7 @@ game_rule_randomize_faith_randomization_effect = {
 
 		#Convert every held county
 		every_held_title = {
-			limit = { tier = tier_county }
+			title_tier = county
 			set_county_faith = scope:randomized_faith
 		}
 	}
@@ -1018,7 +1074,10 @@ game_rule_faith_acceptance_effect = {
 
 game_rule_sexuality_distribution_reroll_effect = {
 	if = {
-		limit = { age >= 10 }
+		limit = { 
+			age >= 10
+			NOT = { is_from_ruler_designer = yes }
+		}
 		random_list = {
 			0 = {
 				modifier = { add = heterosexuality_chance }
@@ -1049,9 +1108,7 @@ game_rule_sexuality_distribution_effect = {
 		}
 
 		every_held_title = {
-			limit = {
-				tier = tier_county
-			}
+			title_tier = county
 			title_province = { save_scope_as = pool_province }
 			every_pool_character = {
 				limit = { NOT = { is_in_list = pool_characters } }
@@ -1093,9 +1150,7 @@ child_sexuality_distribution_effect = {
 		}
 
 		every_held_title = {
-			limit = {
-				tier = tier_county
-			}
+			title_tier = county
 			title_province = { save_scope_as = pool_province }
 			every_pool_character = {
 				limit = { NOT = { is_in_list = pool_characters } }
@@ -1123,20 +1178,20 @@ child_sexuality_distribution_effect = {
 ########################
 
 game_rule_exclave_independence_effect = {
+	save_temporary_scope_as = exclaver
+
 	if = { # Limited, AI only
 		limit = {
 			has_game_rule = ai_limited_exclave_independence
 			is_ai = yes
 			NOT = {
-				any_vassal_or_below = {
-					is_ai = no
-				}
+				any_player = { is_vassal_or_below_of = scope:exclaver }
 			}
 		}
 		
 		remove_character_flag = delayed_cleanse
 	
-		root.capital_province.county = {
+		capital_province.county = {
 			every_connected_county = { # Start off by making a list of all disconnected Counties
 				invert = yes
 				max_naval_distance = 2000
@@ -1181,7 +1236,7 @@ game_rule_exclave_independence_effect = {
 			list = disconnected_counties
 			
 			limit = {
-				target_is_de_jure_liege_or_above = root.primary_title
+				target_is_de_jure_liege_or_above = scope:exclaver.primary_title
 			}
 			add_to_list = cull_de_jure_connection_counties
 		}
@@ -1212,7 +1267,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_kingdom
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -1240,7 +1295,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_duchy
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -1268,7 +1323,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_county
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -1295,8 +1350,8 @@ game_rule_exclave_independence_effect = {
 			
 			limit = {
 				OR = {
-					holder.top_liege = root
-					holder = root
+					holder.top_liege = scope:exclaver
+					holder = scope:exclaver
 				}
 			}
 			
@@ -1414,15 +1469,15 @@ game_rule_exclave_independence_effect = {
 					list = disconnected_counties
 					limit = {
 						OR = {
-							holder.top_liege = root
-							holder = root
+							holder.top_liege = scope:exclaver
+							holder = scope:exclaver
 						}
 						is_connected_to = {
 							target = scope:county_of_origin
 						}
 						NOT ={
 							is_connected_to = {
-								target = root.capital_province.county
+								target = scope:exclaver.capital_province.county
 							}
 						}
 					}
@@ -1470,15 +1525,13 @@ game_rule_exclave_independence_effect = {
 			has_game_rule = ai_significant_exclave_independence
 			is_ai = yes
 			NOT = {
-				any_vassal_or_below = {
-					is_ai = no
-				}
+				any_player = { is_vassal_or_below_of = scope:exclaver }
 			}
 		}
 		
 		remove_character_flag = delayed_cleanse
 		
-		root.capital_province.county = {
+		capital_province.county = {
 			every_connected_county = { # Start off by making a list of all disconnected Counties
 				invert = yes
 				max_naval_distance = 2000
@@ -1490,7 +1543,7 @@ game_rule_exclave_independence_effect = {
 			list = disconnected_counties
 			
 			limit = {
-				target_is_de_jure_liege_or_above = root.primary_title
+				target_is_de_jure_liege_or_above = scope:exclaver.primary_title
 			}
 			add_to_list = cull_de_jure_connection_counties
 		}
@@ -1553,7 +1606,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_kingdom
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -1581,7 +1634,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_duchy
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -1609,7 +1662,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_county
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -1636,8 +1689,8 @@ game_rule_exclave_independence_effect = {
 			
 			limit = {
 				OR = {
-					holder.top_liege = root
-					holder = root
+					holder.top_liege = scope:exclaver
+					holder = scope:exclaver
 				}
 			}
 			
@@ -1755,15 +1808,15 @@ game_rule_exclave_independence_effect = {
 					list = disconnected_counties
 					limit = {
 						OR = {
-							holder.top_liege = root
-							holder = root
+							holder.top_liege = scope:exclaver
+							holder = scope:exclaver
 						}
 						is_connected_to = {
 							target = scope:county_of_origin
 						}
 						NOT ={
 							is_connected_to = {
-								target = root.capital_province.county
+								target = scope:exclaver.capital_province.county
 							}
 						}
 					}
@@ -1810,15 +1863,13 @@ game_rule_exclave_independence_effect = {
 			has_game_rule = ai_total_exclave_independence
 			is_ai = yes
 			NOT = {
-				any_vassal_or_below = {
-					is_ai = no
-				}
+				any_player = { is_vassal_or_below_of = scope:exclaver }
 			}
 		}
 		
 		remove_character_flag = delayed_cleanse
 	
-		root.capital_province.county = {
+		capital_province.county = {
 			every_connected_county = { # Start off by making a list of all disconnected Counties
 				invert = yes
 				max_naval_distance = 2000
@@ -1864,7 +1915,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_kingdom
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -1892,7 +1943,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_duchy
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -1920,7 +1971,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_county
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -1947,8 +1998,8 @@ game_rule_exclave_independence_effect = {
 			
 			limit = {
 				OR = {
-					holder.top_liege = root
-					holder = root
+					holder.top_liege = scope:exclaver
+					holder = scope:exclaver
 				}
 			}
 			
@@ -2066,15 +2117,15 @@ game_rule_exclave_independence_effect = {
 					list = disconnected_counties
 					limit = {
 						OR = {
-							holder.top_liege = root
-							holder = root
+							holder.top_liege = scope:exclaver
+							holder = scope:exclaver
 						}
 						is_connected_to = {
 							target = scope:county_of_origin
 						}
 						NOT ={
 							is_connected_to = {
-								target = root.capital_province.county
+								target = scope:exclaver.capital_province.county
 							}
 						}
 					}
@@ -2123,7 +2174,7 @@ game_rule_exclave_independence_effect = {
 		
 		remove_character_flag = delayed_cleanse
 	
-		root.capital_province.county = {
+		capital_province.county = {
 			every_connected_county = { # Start off by making a list of all disconnected Counties
 				invert = yes
 				max_naval_distance = 2000
@@ -2168,7 +2219,7 @@ game_rule_exclave_independence_effect = {
 			list = disconnected_counties
 			
 			limit = {
-				target_is_de_jure_liege_or_above = root.primary_title
+				target_is_de_jure_liege_or_above = scope:exclaver.primary_title
 			}
 			add_to_list = cull_de_jure_connection_counties
 		}
@@ -2199,7 +2250,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_kingdom
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -2227,7 +2278,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_duchy
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -2255,7 +2306,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_county
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -2282,8 +2333,8 @@ game_rule_exclave_independence_effect = {
 			
 			limit = {
 				OR = {
-					holder.top_liege = root
-					holder = root
+					holder.top_liege = scope:exclaver
+					holder = scope:exclaver
 				}
 			}
 			
@@ -2401,15 +2452,15 @@ game_rule_exclave_independence_effect = {
 					list = disconnected_counties
 					limit = {
 						OR = {
-							holder.top_liege = root
-							holder = root
+							holder.top_liege = scope:exclaver
+							holder = scope:exclaver
 						}
 						is_connected_to = {
 							target = scope:county_of_origin
 						}
 						NOT ={
 							is_connected_to = {
-								target = root.capital_province.county
+								target = scope:exclaver.capital_province.county
 							}
 						}
 					}
@@ -2458,7 +2509,7 @@ game_rule_exclave_independence_effect = {
 		
 		remove_character_flag = delayed_cleanse
 	
-		root.capital_province.county = {
+		capital_province.county = {
 			every_connected_county = { # Start off by making a list of all disconnected Counties
 				invert = yes
 				max_naval_distance = 2000
@@ -2470,7 +2521,7 @@ game_rule_exclave_independence_effect = {
 			list = disconnected_counties
 			
 			limit = {
-				target_is_de_jure_liege_or_above = root.primary_title
+				target_is_de_jure_liege_or_above = scope:exclaver.primary_title
 			}
 			add_to_list = cull_de_jure_connection_counties
 		}
@@ -2526,7 +2577,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_kingdom
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -2554,7 +2605,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_duchy
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -2582,7 +2633,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_county
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -2609,8 +2660,8 @@ game_rule_exclave_independence_effect = {
 			
 			limit = {
 				OR = {
-					holder.top_liege = root
-					holder = root
+					holder.top_liege = scope:exclaver
+					holder = scope:exclaver
 				}
 			}
 			
@@ -2728,15 +2779,15 @@ game_rule_exclave_independence_effect = {
 					list = disconnected_counties
 					limit = {
 						OR = {
-							holder.top_liege = root
-							holder = root
+							holder.top_liege = scope:exclaver
+							holder = scope:exclaver
 						}
 						is_connected_to = {
 							target = scope:county_of_origin
 						}
 						NOT ={
 							is_connected_to = {
-								target = root.capital_province.county
+								target = scope:exclaver.capital_province.county
 							}
 						}
 					}
@@ -2785,7 +2836,7 @@ game_rule_exclave_independence_effect = {
 		
 		remove_character_flag = delayed_cleanse
 	
-		root.capital_province.county = {
+		capital_province.county = {
 			every_connected_county = { # Start off by making a list of all disconnected Counties
 				invert = yes
 				max_naval_distance = 2000
@@ -2831,7 +2882,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_kingdom
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -2859,7 +2910,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_duchy
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -2887,7 +2938,7 @@ game_rule_exclave_independence_effect = {
 			limit = {
 				holder.primary_title.tier = tier_county
 				NOR = {
-					holder = root
+					holder = scope:exclaver
 					holder = {
 						any_sub_realm_title = {
 							tier = tier_county
@@ -2914,8 +2965,8 @@ game_rule_exclave_independence_effect = {
 			
 			limit = {
 				OR = {
-					holder.top_liege = root
-					holder = root
+					holder.top_liege = scope:exclaver
+					holder = scope:exclaver
 				}
 			}
 			
@@ -3033,15 +3084,15 @@ game_rule_exclave_independence_effect = {
 					list = disconnected_counties
 					limit = {
 						OR = {
-							holder.top_liege = root
-							holder = root
+							holder.top_liege = scope:exclaver
+							holder = scope:exclaver
 						}
 						is_connected_to = {
 							target = scope:county_of_origin
 						}
 						NOT ={
 							is_connected_to = {
-								target = root.capital_province.county
+								target = scope:exclaver.capital_province.county
 							}
 						}
 					}

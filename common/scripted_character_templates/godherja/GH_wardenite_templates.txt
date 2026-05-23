@@ -907,3 +907,33 @@ legal_tradition_specific_high_court_judge = {
 		set_random_base_arcana = yes
 	}
 }
+
+distrustful_murderer_character_template = {
+	age = { 18 50 }
+	dynasty = none
+	random_traits_list = {
+		count = 1
+		education_martial_2 = { weight = 30 }
+		education_martial_3 = { weight = 30 }
+		education_intrigue_2 = { weight = 30 }
+		education_intrigue_3 = { weight = 30 }
+	}
+	random_traits_list = {
+		count = { 1 3 }
+		vengeful = {}
+		wrathful = {}
+		deceitful = {}
+		compassionate = {}
+		honest = {}
+		sadistic = {}
+		callous = {}
+	}
+	random_traits = yes
+	gender_female_chance = root_soldier_female_chance
+	#Skills
+	intrigue = { min_template_decent_skill max_template_high_skill }
+	prowess = { min_template_high_skill max_template_high_skill }
+	after_creation = {
+		set_random_base_arcana = yes
+	}
+}

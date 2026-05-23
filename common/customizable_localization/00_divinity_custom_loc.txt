@@ -506,21 +506,21 @@ GetUnbelieverAndForeignerTerm = {
 	text = {
 		trigger = {
 			is_infidel_trigger = { WHO = scope:second TARGET = root}
-			NOT = { scope:second.culture = root.culture }
+			scope:second.culture != root.culture
 		}
 		localization_key = unbeliever_foreign_infidel
 	}
 	text = {
 		trigger = {
 			is_heathen_trigger = { WHO = scope:second TARGET = root}
-			NOT = { scope:second.culture = root.culture }
+			scope:second.culture != root.culture
 		}
 		localization_key = unbeliever_foreign_heathen
 	}
 	text = {
 		trigger = {
 			is_heretic_trigger = { WHO = scope:second TARGET = root}
-			NOT = { scope:second.culture = root.culture }
+			scope:second.culture != root.culture
 		}
 		localization_key = unbeliever_foreign_heretic
 	}
@@ -689,64 +689,81 @@ GetActualBishopTitle = {
 		}
 		localization_key = religious_head_name
 	}
-	text = {
-		trigger = {
-			is_playable_character = yes
-		}
-		localization_key = ruler_title_name
-	}
+
 
 	#Paganism
 	text = {
 		trigger = {
 			faith = { has_doctrine = pagan_hostility_doctrine }
-			liege.highest_held_title_tier >= tier_kingdom
-			is_female = no
+			highest_held_title_tier >= tier_kingdom
+			NOT = { # Required formatting to include male/female check as well as vacancy
+				cp:councillor_court_chaplain ?= {
+					is_female = yes
+				}
+			}
 		}
 		localization_key = councillor_court_chaplain_paganism_religion_kingdom
 	}
 	text = {
 		trigger = {
 			faith = { has_doctrine = pagan_hostility_doctrine }
-			liege.highest_held_title_tier >= tier_kingdom
-			is_female = yes
+			highest_held_title_tier >= tier_kingdom
+			NOT = { # Required formatting to include male/female check as well as vacancy
+				cp:councillor_court_chaplain ?= {
+					is_female = no
+				}
+			}
 		}
 		localization_key = councillor_court_chaplain_paganism_religion_kingdom_female
 	}
 	text = {
 		trigger = {
 			faith = { has_doctrine = pagan_hostility_doctrine }
-			liege.highest_held_title_tier >= tier_duchy
+			highest_held_title_tier >= tier_duchy
 		}
 		localization_key = councillor_court_chaplain_paganism_religion_duchy
 	}
 	text = {
 		trigger = {
 			faith = { has_doctrine = pagan_hostility_doctrine }
-			liege.highest_held_title_tier < tier_duchy
+			highest_held_title_tier < tier_duchy
 		}
 		localization_key = councillor_court_chaplain_paganism_religion_county
 	}
 
 	#Fallback
 	text = {
-		trigger = { liege.highest_held_title_tier >= tier_empire is_female = no }
+		trigger = { 
+			highest_held_title_tier >= tier_empire 
+			NOT = { # Required formatting to include male/female check as well as vacancy
+				cp:councillor_court_chaplain ?= {
+					is_female = yes
+				}
+			}
+		}
 		localization_key = councillor_court_chaplain_theocrat_empire
 	}
 	text = {
-		trigger = { liege.highest_held_title_tier >= tier_empire is_female = yes }
+		trigger = { 
+			highest_held_title_tier >= tier_empire 
+			NOT = { # Required formatting to include male/female check as well as vacancy
+				cp:councillor_court_chaplain ?= {
+					is_female = no
+				}
+			}
+		}
 		localization_key = councillor_court_chaplain_theocrat_empire_female
 	}
 	text = {
-		trigger = { liege.highest_held_title_tier >= tier_kingdom }
+		trigger = { highest_held_title_tier >= tier_kingdom }
 		localization_key = councillor_court_chaplain_theocrat_kingdom
 	}
 	text = {
-		trigger = { liege.highest_held_title_tier >= tier_duchy }
+		trigger = { highest_held_title_tier >= tier_duchy }
 		localization_key = councillor_court_chaplain_theocrat_duchy
 	}
 	text = {
-		trigger = { liege.highest_held_title_tier < tier_duchy }
+		trigger = { highest_held_title_tier < tier_duchy }
 		localization_key = councillor_court_chaplain_theocrat_county
 	}
 }
@@ -759,53 +776,75 @@ GetActualBishopTitlePossessive = {
 	text = {
 		trigger = {
 			faith = { has_doctrine = pagan_hostility_doctrine }
-			liege.highest_held_title_tier >= tier_kingdom
-			is_female = no
+			highest_held_title_tier >= tier_kingdom
+			NOT = { # Required formatting to include male/female check as well as vacancy
+				cp:councillor_court_chaplain ?= {
+					is_female = yes
+				}
+			}
 		}
 		localization_key = councillor_court_chaplain_paganism_religion_kingdom_possessive
 	}
 	text = {
 		trigger = {
 			faith = { has_doctrine = pagan_hostility_doctrine }
-			liege.highest_held_title_tier >= tier_kingdom
-			is_female = yes
+			highest_held_title_tier >= tier_kingdom
+			NOT = { # Required formatting to include male/female check as well as vacancy
+				cp:councillor_court_chaplain ?= {
+					is_female = no
+				}
+			}
 		}
 		localization_key = councillor_court_chaplain_paganism_religion_kingdom_female_possessive
 	}
 	text = {
 		trigger = {
 			faith = { has_doctrine = pagan_hostility_doctrine }
-			liege.highest_held_title_tier >= tier_duchy
+			highest_held_title_tier >= tier_duchy
 		}
 		localization_key = councillor_court_chaplain_paganism_religion_duchy_possessive
 	}
 	text = {
 		trigger = {
 			faith = { has_doctrine = pagan_hostility_doctrine }
-			liege.highest_held_title_tier < tier_duchy
+			highest_held_title_tier < tier_duchy
 		}
 		localization_key = councillor_court_chaplain_paganism_religion_county_possessive
 	}
 
 	#Fallback
 	text = {
-		trigger = { liege.highest_held_title_tier >= tier_empire is_female = no }
+		trigger = { 
+			highest_held_title_tier >= tier_empire 
+			NOT = { # Required formatting to include male/female check as well as vacancy
+				cp:councillor_court_chaplain ?= {
+					is_female = yes
+				}
+			}
+		}
 		localization_key = councillor_court_chaplain_theocrat_empire_possessive
 	}
 	text = {
-		trigger = { liege.highest_held_title_tier >= tier_empire is_female = yes }
+		trigger = { 
+			highest_held_title_tier >= tier_empire 
+			NOT = { # Required formatting to include male/female check as well as vacancy
+				cp:councillor_court_chaplain ?= {
+					is_female = no
+				}
+			}
+		}
 		localization_key = councillor_court_chaplain_theocrat_empire_female_possessive
 	}
 	text = {
-		trigger = { liege.highest_held_title_tier >= tier_kingdom }
+		trigger = { highest_held_title_tier >= tier_kingdom }
 		localization_key = councillor_court_chaplain_theocrat_kingdom_possessive
 	}
 	text = {
-		trigger = { liege.highest_held_title_tier >= tier_duchy }
+		trigger = { highest_held_title_tier >= tier_duchy }
 		localization_key = councillor_court_chaplain_theocrat_duchy_possessive
 	}
 	text = {
-		trigger = { liege.highest_held_title_tier < tier_duchy }
+		trigger = { highest_held_title_tier < tier_duchy }
 		localization_key = councillor_court_chaplain_theocrat_county_possessive
 	}
 }

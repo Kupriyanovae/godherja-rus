@@ -151,3 +151,70 @@ cancel_study_scripted_gui = {
 		scope:study_scope = { end_story = yes }
 	}
 }
+
+LIBRARY_learn_knowledge_entry_scripted_gui = {
+	scope = character
+	
+	is_shown = {
+		NOR = {
+			is_target_in_variable_list = {
+				name = known_knowledge_entry_list
+				target = scope:knowledge_entry_scope
+			}
+			any_scheme = {
+				scheme_type = GH_study_knowledge_entry_scheme
+				var:knowledge_entry = scope:knowledge_entry_scope
+			}
+		}
+	}
+	
+	is_valid = {
+		scope:knowledge_entry_scope = { save_temporary_scope_as = knowledge_entry }
+		save_temporary_scope_as = researcher
+		trigger_if = {
+			limit = { exists = scope:required_artifact_scope.var:writing_culture }
+			knows_language_of_culture = scope:required_artifact_scope.var:writing_culture
+		}
+		custom_tooltip = {
+			text = already_studying_knowledge_tt
+			NOT = { has_variable_list = research_story_list }
+		}
+		custom_tooltip = {
+			text = relevant_skill_too_low_tt
+			knowledge_entry_success_chance_value > 0
+		}
+	}
+	
+	effect = {
+		send_interface_toast = {
+			title = "Study"
+			left_icon = root
+			if = { # Generic knowledge entries in library should be repeatable after 10 years
+				limit = { scope:required_artifact_scope ?= { has_variable = gh_temporary_knowledge_entry } }
+				set_variable = {
+					name = gh_temporary_knowledge_entry_character
+					value = yes
+				}
+			}
+
+			start_scheme = {
+				type = GH_study_knowledge_entry_scheme
+				targets_nothing = yes
+			}
+			every_scheme = {
+				limit = {
+					scheme_type = GH_study_knowledge_entry_scheme
+					NOT = { exists = var:knowledge_entry }
+				}
+				set_variable = {
+					name = knowledge_entry
+					value = scope:knowledge_entry_scope
+				}
+				set_variable = {
+					name = required_artifact
+					value = scope:required_artifact_scope
+				}
+			}
+		}
+	}
+}

@@ -16,7 +16,7 @@ unmarried_mother_pregnancy_effect = {
 			limit = {
 				NOT = {
 					any_owned_story = {
-						story_type = story_peasant_affair
+						type = story_peasant_affair
 						var:peasant_character = scope:mother.pregnancy_real_father
 					}
 				}
@@ -52,7 +52,7 @@ married_mother_pregnancy_effect = {
 			limit = {
 				NOT = {
 					any_owned_story = {
-						story_type = story_peasant_affair
+						type = story_peasant_affair
 						var:peasant_character = {
 							this = scope:real_father
 						}
@@ -136,8 +136,8 @@ pregnancy_maintainance_effect = {
 					target = scope:child
 				}
 				random_secret = { #Find the secret
+					type = secret_disputed_heritage
 					limit = {
-						secret_type = secret_disputed_heritage
 						secret_target = scope:child
 					}
 					save_scope_as = new_secret
@@ -184,8 +184,8 @@ pregnancy_maintainance_effect = {
 					target = scope:child
 				}
 				random_secret = { #Find the secret
+					type = secret_unmarried_illegitimate_child
 					limit = {
-						secret_type = secret_unmarried_illegitimate_child
 						secret_target = scope:child
 					}
 					save_scope_as = new_secret

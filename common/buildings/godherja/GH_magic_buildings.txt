@@ -44,9 +44,9 @@ magi_tower_01 = {
 	county_modifier = {
 		development_growth_factor = 0.05
 	}
-	character_modifier = {
-		magi_damage_mult = low_maa_damage_tier_1
-		magi_toughness_mult = low_maa_toughness_tier_1
+	province_modifier = {
+		stationed_magi_damage_mult = low_maa_damage_tier_1
+		stationed_magi_toughness_mult = low_maa_toughness_tier_1
 	}
 	
 	flag = activates_province_aspects
@@ -123,9 +123,9 @@ magi_tower_02 = {
 	county_modifier = {
 		development_growth_factor = 0.10
 	}
-	character_modifier = {
-		magi_damage_mult = low_maa_damage_tier_2
-		magi_toughness_mult = low_maa_toughness_tier_2
+	province_modifier = {
+		stationed_magi_damage_mult = low_maa_damage_tier_2
+		stationed_magi_toughness_mult = low_maa_toughness_tier_2
 	}
 	
 	flag = activates_province_aspects
@@ -168,15 +168,20 @@ magi_tower_03 = {
 	county_modifier = {
 		development_growth_factor = 0.15
 	}
-	character_modifier = {
-		magi_damage_mult = low_maa_damage_tier_3
-		magi_toughness_mult = low_maa_toughness_tier_3
+	province_modifier = {
+		stationed_magi_damage_mult = low_maa_damage_tier_3
+		stationed_magi_toughness_mult = low_maa_toughness_tier_3
 	}
 	
 	flag = activates_province_aspects
 	
 	on_complete = {
-		if = { limit = { county.holder = { is_ai = yes } }  ai_select_province_aspect_specialization_effect = yes }
+		if = { 
+			limit = { county.holder = { is_ai = yes } }  
+			scope:county = {
+				ai_select_province_aspect_specialization_effect = yes 
+			}
+		}
 	}
 	
 	next_building = magi_tower_04
@@ -217,15 +222,20 @@ magi_tower_04 = {
 	county_modifier = {
 		development_growth_factor = 0.20
 	}
-	character_modifier = {
-		magi_damage_mult = low_maa_damage_tier_4
-		magi_toughness_mult = low_maa_toughness_tier_4
+	province_modifier = {
+		stationed_magi_damage_mult = low_maa_damage_tier_4
+		stationed_magi_toughness_mult = low_maa_toughness_tier_4
 	}
 	
 	flag = activates_province_aspects
 	
 	on_complete = {
-		if = { limit = { county.holder = { is_ai = yes } }  ai_select_province_aspect_specialization_effect = yes }
+		if = { 
+			limit = { county.holder = { is_ai = yes } }  
+			scope:county = {
+				ai_select_province_aspect_specialization_effect = yes 
+			}
+		}	
 	}
 	
 	next_building = magi_tower_05
@@ -266,15 +276,20 @@ magi_tower_05 = {
 	county_modifier = {
 		development_growth_factor = 0.25
 	}
-	character_modifier = {
-		magi_damage_mult = low_maa_damage_tier_5
-		magi_toughness_mult = low_maa_toughness_tier_5
+	province_modifier = {
+		stationed_magi_damage_mult = low_maa_damage_tier_5
+		stationed_magi_toughness_mult = low_maa_toughness_tier_5
 	}
 	
 	flag = activates_province_aspects
 	
 	on_complete = {
-		if = { limit = { county.holder = { is_ai = yes } }  ai_select_province_aspect_specialization_effect = yes }
+		if = { 
+			limit = { county.holder = { is_ai = yes } }  
+			scope:county = {
+				ai_select_province_aspect_specialization_effect = yes 
+			}
+		}
 	}
 	
 	next_building = magi_tower_06
@@ -315,15 +330,20 @@ magi_tower_06 = {
 	county_modifier = {
 		development_growth_factor = 0.30
 	}
-	character_modifier = {
-		magi_damage_mult = low_maa_damage_tier_6
-		magi_toughness_mult = low_maa_toughness_tier_6
+	province_modifier = {
+		stationed_magi_damage_mult = low_maa_damage_tier_6
+		stationed_magi_toughness_mult = low_maa_toughness_tier_6
 	}
 	
 	flag = activates_province_aspects
 	
 	on_complete = {
-		if = { limit = { county.holder = { is_ai = yes } }  ai_select_province_aspect_specialization_effect = yes }
+		if = { 
+			limit = { county.holder = { is_ai = yes } }  
+			scope:county = {
+				ai_select_province_aspect_specialization_effect = yes 
+			}
+		}
 	}
 	
 	next_building = magi_tower_07
@@ -364,15 +384,20 @@ magi_tower_07 = {
 	county_modifier = {
 		development_growth_factor = 0.35
 	}
-	character_modifier = {
-		magi_damage_mult = low_maa_damage_tier_7
-		magi_toughness_mult = low_maa_toughness_tier_7
+	province_modifier = {
+		stationed_magi_damage_mult = low_maa_damage_tier_7
+		stationed_magi_toughness_mult = low_maa_toughness_tier_7
 	}
 	
 	flag = activates_province_aspects
 	
 	on_complete = {
-		if = { limit = { county.holder = { is_ai = yes } }  ai_select_province_aspect_specialization_effect = yes }
+		if = { 
+			limit = { county.holder = { is_ai = yes } }  
+			scope:county = {
+				ai_select_province_aspect_specialization_effect = yes 
+			}
+		}
 	}
 	
 	next_building = magi_tower_08
@@ -413,15 +438,20 @@ magi_tower_08 = {
 	county_modifier = {
 		development_growth_factor = 0.40
 	}
-	character_modifier = {
-		magi_damage_mult = low_maa_damage_tier_8
-		magi_toughness_mult = low_maa_toughness_tier_8
+	province_modifier = {
+		stationed_magi_damage_mult = low_maa_damage_tier_8
+		stationed_magi_toughness_mult = low_maa_toughness_tier_8
 	}
 	
 	flag = activates_province_aspects
 	
 	on_complete = {
-		if = { limit = { county.holder = { is_ai = yes } }  ai_select_province_aspect_specialization_effect = yes }
+		if = { 
+			limit = { county.holder = { is_ai = yes } }  
+			scope:county = {
+				ai_select_province_aspect_specialization_effect = yes 
+			}
+		}
 	}
 	
 	ai_value = {
@@ -468,6 +498,8 @@ magic_silver_mine_01 = {
 necropolis_01 = {
 	construction_time = slow_construction_time
 
+	type_icon = "icon_building_legendary_palace.dds"
+
 	asset = {
 		type = pdxmesh
 		name = "building_western_city_02_mesh"
@@ -483,5 +515,467 @@ necropolis_01 = {
 	}
 	can_construct_potential = {
 		culture = { has_cultural_parameter = gives_lich_necropolis }
+	}
+}
+
+####################################
+# METROPOLIS ARCANE FOUNDATIONS    #
+####################################
+
+arcane_foundations_01 = {
+	construction_time = quick_construction_time
+	effect_desc = building_arcane_foundations_01_effect_desc
+	
+	can_construct_potential = {
+		building_requirement_metropolis_holding_level = { LEVEL = 01 }
+		scope:holder = {
+			has_any_positive_magic_doctrine = yes
+			faith = { NOT = { has_doctrine_parameter = can_build_dark_obelisks } }
+		}
+	}
+
+	can_construct_showing_failures_only = {
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = expensive_building_tier_1_cost
+
+	province_modifier = {
+		monthly_income = normal_building_tax_tier_1
+		fort_level = good_building_fort_level_tier_1
+	}
+	county_modifier = {
+		development_growth_factor = 0.06
+	}
+	province_modifier = {
+		stationed_magi_damage_mult = normal_maa_damage_tier_1
+		stationed_magi_toughness_mult = normal_maa_toughness_tier_1
+	}
+	
+	flag = activates_province_aspects
+	
+	next_building = arcane_foundations_02
+	
+	type_icon = "icon_building_hill_forts.dds"
+	
+	ai_value = {
+		base = 5
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
+		ai_general_building_modifier = yes
+		directive_to_build_economy_modifier = yes
+	}
+}
+
+arcane_foundations_02 = {
+	construction_time = quick_construction_time
+	effect_desc = building_arcane_foundations_02_effect_desc
+	
+	can_construct_potential = {
+		building_requirement_metropolis_holding_level = { LEVEL = 01 }
+		culture = {
+			has_innovation = innovation_tribal_magic
+		}
+		scope:holder = {
+			has_any_positive_magic_doctrine = yes
+			faith = { NOT = { has_doctrine_parameter = can_build_dark_obelisks } }
+		}
+	}
+
+	can_construct_showing_failures_only = {
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = expensive_building_tier_2_cost
+
+	province_modifier = {
+		monthly_income = normal_building_tax_tier_2
+		fort_level = good_building_fort_level_tier_2
+	}
+	county_modifier = {
+		development_growth_factor = 0.125
+	}
+	province_modifier = {
+		stationed_magi_damage_mult = normal_maa_damage_tier_2
+		stationed_magi_toughness_mult = normal_maa_toughness_tier_2
+	}
+	
+	flag = activates_province_aspects
+	
+	next_building = arcane_foundations_03
+	
+	ai_value = {
+		base = 9
+		ai_general_building_modifier = yes
+		directive_to_build_economy_modifier = yes
+		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+}
+
+arcane_foundations_03 = {
+	construction_time = quick_construction_time
+	effect_desc = building_arcane_foundations_03_effect_desc
+	
+	can_construct_potential = {
+		building_requirement_metropolis_holding_level = { LEVEL = 02 }
+		scope:holder = {
+			has_any_positive_magic_doctrine = yes
+			faith = { NOT = { has_doctrine_parameter = can_build_dark_obelisks } }
+		}
+	}
+	
+	can_construct = {
+		culture = {
+			has_innovation = innovation_early_medieval_magic
+		}
+	}
+
+	can_construct_showing_failures_only = {
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = expensive_building_tier_3_cost
+
+	province_modifier = {
+		monthly_income = normal_building_tax_tier_3
+		fort_level = good_building_fort_level_tier_3
+	}
+	county_modifier = {
+		development_growth_factor = 0.19
+	}
+	province_modifier = {
+		stationed_magi_damage_mult = normal_maa_damage_tier_3
+		stationed_magi_toughness_mult = normal_maa_toughness_tier_3
+	}
+	
+	flag = activates_province_aspects
+	
+	on_complete = {
+		if = { 
+			limit = { county.holder = { is_ai = yes } }  
+			scope:county = {
+				ai_select_province_aspect_specialization_effect = yes 
+			}
+		}
+	}
+	
+	next_building = arcane_foundations_04
+	
+	ai_value = {
+		base = 9
+		ai_general_building_modifier = yes
+		directive_to_build_economy_modifier = yes
+		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+}
+
+arcane_foundations_04 = {
+	construction_time = quick_construction_time
+	effect_desc = building_arcane_foundations_04_effect_desc
+	
+	can_construct_potential = {
+		building_requirement_metropolis_holding_level = { LEVEL = 02 }
+		scope:holder = {
+			has_any_positive_magic_doctrine = yes
+			faith = { NOT = { has_doctrine_parameter = can_build_dark_obelisks } }
+		}
+	}
+	
+	can_construct = {
+		culture = {
+			has_innovation = innovation_early_medieval_magic
+		}
+	}
+
+	can_construct_showing_failures_only = {
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = expensive_building_tier_4_cost
+
+	province_modifier = {
+		monthly_income = normal_building_tax_tier_4
+		fort_level = good_building_fort_level_tier_4
+	}
+	county_modifier = {
+		development_growth_factor = 0.25
+	}
+	province_modifier = {
+		stationed_magi_damage_mult = normal_maa_damage_tier_4
+		stationed_magi_toughness_mult = normal_maa_toughness_tier_4
+	}
+	
+	flag = activates_province_aspects
+	
+	on_complete = {
+		if = { 
+			limit = { county.holder = { is_ai = yes } }  
+			scope:county = {
+				ai_select_province_aspect_specialization_effect = yes 
+			}
+		}
+	}
+	
+	next_building = arcane_foundations_05
+	
+	ai_value = {
+		base = 9
+		ai_general_building_modifier = yes
+		directive_to_build_economy_modifier = yes
+		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+}
+
+arcane_foundations_05 = {
+	construction_time = quick_construction_time
+	effect_desc = building_arcane_foundations_05_effect_desc
+	
+	can_construct_potential = {
+		building_requirement_metropolis_holding_level = { LEVEL = 03 }
+		scope:holder = {
+			has_any_positive_magic_doctrine = yes
+			faith = { NOT = { has_doctrine_parameter = can_build_dark_obelisks } }
+		}
+	}
+	
+	can_construct = {
+		culture = {
+			has_innovation = innovation_high_medieval_magic
+		}
+	}
+
+	can_construct_showing_failures_only = {
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = expensive_building_tier_5_cost
+
+	province_modifier = {
+		monthly_income = normal_building_tax_tier_5
+		fort_level = good_building_fort_level_tier_5
+	}
+	county_modifier = {
+		development_growth_factor = 0.31
+	}
+	province_modifier = {
+		stationed_magi_damage_mult = normal_maa_damage_tier_5
+		stationed_magi_toughness_mult = normal_maa_toughness_tier_5
+	}
+	
+	flag = activates_province_aspects
+	
+	on_complete = {
+		if = { 
+			limit = { county.holder = { is_ai = yes } }  
+			scope:county = {
+				ai_select_province_aspect_specialization_effect = yes 
+			}
+		}
+	}
+	
+	next_building = arcane_foundations_06
+	
+	ai_value = {
+		base = 6
+		ai_general_building_modifier = yes
+		directive_to_build_economy_modifier = yes
+		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+}
+
+arcane_foundations_06 = {
+	construction_time = quick_construction_time
+	effect_desc = building_arcane_foundations_06_effect_desc
+	
+	can_construct_potential = {
+		building_requirement_metropolis_holding_level = { LEVEL = 03 }
+		scope:holder = {
+			has_any_positive_magic_doctrine = yes
+			faith = { NOT = { has_doctrine_parameter = can_build_dark_obelisks } }
+		}
+	}
+	
+	can_construct = {
+		culture = {
+			has_innovation = innovation_high_medieval_magic
+		}
+	}
+
+	can_construct_showing_failures_only = {
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = expensive_building_tier_6_cost
+
+	province_modifier = {
+		monthly_income = normal_building_tax_tier_6
+		fort_level = good_building_fort_level_tier_6
+	}
+	county_modifier = {
+		development_growth_factor = 0.375
+	}
+	province_modifier = {
+		stationed_magi_damage_mult = normal_maa_damage_tier_6
+		stationed_magi_toughness_mult = normal_maa_toughness_tier_6
+	}
+	
+	flag = activates_province_aspects
+	
+	on_complete = {
+		if = { 
+			limit = { county.holder = { is_ai = yes } }  
+			scope:county = {
+				ai_select_province_aspect_specialization_effect = yes 
+			}
+		}
+	}
+	
+	next_building = arcane_foundations_07
+	
+	ai_value = {
+		base = 5
+		ai_general_building_modifier = yes
+		directive_to_build_economy_modifier = yes
+		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+}
+
+arcane_foundations_07 = {
+	construction_time = quick_construction_time
+	effect_desc = building_arcane_foundations_07_effect_desc
+	
+	can_construct_potential = {
+		building_requirement_metropolis_holding_level = { LEVEL = 04 }
+		scope:holder = {
+			has_any_positive_magic_doctrine = yes
+			faith = { NOT = { has_doctrine_parameter = can_build_dark_obelisks } }
+		}
+	}
+	
+	can_construct = {
+		culture = {
+			has_innovation = innovation_late_medieval_magic
+		}
+	}
+
+	can_construct_showing_failures_only = {
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = expensive_building_tier_7_cost
+
+	province_modifier = {
+		monthly_income = normal_building_tax_tier_7
+		fort_level = good_building_fort_level_tier_7
+	}
+	county_modifier = {
+		development_growth_factor = 0.44
+	}
+	province_modifier = {
+		stationed_magi_damage_mult = normal_maa_damage_tier_7
+		stationed_magi_toughness_mult = normal_maa_toughness_tier_7
+	}
+	
+	flag = activates_province_aspects
+	
+	on_complete = {
+		if = { 
+			limit = { county.holder = { is_ai = yes } }  
+			scope:county = {
+				ai_select_province_aspect_specialization_effect = yes 
+			}
+		}
+	}
+	
+	next_building = arcane_foundations_08
+	
+	ai_value = {
+		base = 4
+		ai_general_building_modifier = yes
+		directive_to_build_economy_modifier = yes
+		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+}
+
+arcane_foundations_08 = {
+	construction_time = quick_construction_time
+	effect_desc = building_arcane_foundations_08_effect_desc
+	
+	can_construct_potential = {
+		building_requirement_metropolis_holding_level = { LEVEL = 04 }
+		scope:holder = {
+			has_any_positive_magic_doctrine = yes
+			faith = { NOT = { has_doctrine_parameter = can_build_dark_obelisks } }
+		}
+	}
+	
+	can_construct = {
+		culture = {
+			has_innovation = innovation_late_medieval_magic
+		}
+	}
+
+	can_construct_showing_failures_only = {
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = expensive_building_tier_8_cost
+
+	province_modifier = {
+		monthly_income = normal_building_tax_tier_8
+		fort_level = good_building_fort_level_tier_8
+	}
+	county_modifier = {
+		development_growth_factor = 0.50
+	}
+	province_modifier = {
+		stationed_magi_damage_mult = normal_maa_damage_tier_8
+		stationed_magi_toughness_mult = normal_maa_toughness_tier_8
+	}
+	
+	flag = activates_province_aspects
+	
+	on_complete = {
+		if = { 
+			limit = { county.holder = { is_ai = yes } }  
+			scope:county = {
+				ai_select_province_aspect_specialization_effect = yes 
+			}
+		}
+	}
+	
+	ai_value = {
+		base = 3
+		ai_general_building_modifier = yes
+		directive_to_build_economy_modifier = yes
+		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }

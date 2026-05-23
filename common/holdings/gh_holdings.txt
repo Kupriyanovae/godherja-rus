@@ -1,7 +1,13 @@
 ﻿wasteland_empty_holding = {
 	primary_building = empty_building
+	counts_toward_domain_limit_if_disabled = no
+	required_heir_government_types = {
+		wasteland_government
+	}
 
-	buildings = {
+	parameters = {
+		no_buildings
+		no_levies
 	}
 }
 
@@ -33,6 +39,20 @@ metro_holding = {
 		parks_and_gardens_01
 		waterworks_01
 		gh_house_of_dreams_01
+		arcane_foundations_01
+
+		scriptorium_01 #GH CHANGE
+
+		# mayik based
+		mayik_fungal_caverns_01
+		mayik_lichen_pastures_01
+		mayik_flooded_grottos_01
+		mayik_crystal_geode_vein_01
+		mayik_cavern_gate_01
+		mayik_chasm_bridge_fort_01
+		mayik_expedition_barracks_01
+		mayik_glowmoss_tunnels_01
+		mayik_rope_bridge_caravanserai_01
 	}
 }
 
@@ -40,10 +60,13 @@ metro_holding = {
 
 ruined_district_holding = {
 	primary_building = ruined_district_01
-	buildings = {
-	}
-	
+	counts_toward_domain_limit_if_disabled = no
 	can_be_inherited = yes
+
+	parameters = {
+		no_buildings
+		no_levies
+	}
 }
 
 necropolis_holding = {
@@ -66,8 +89,12 @@ colony_holding = {
 
 ruin_holding = {
 	primary_building = ruin_01
-	buildings = {
-	}
-	
+	counts_toward_domain_limit_if_disabled = no
 	can_be_inherited = yes
+	required_heir_government_types = { wasteland_government }
+
+	parameters = {
+		no_buildings
+		no_levies
+	}
 }

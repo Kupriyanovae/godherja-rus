@@ -206,7 +206,7 @@ holder_voting_pattern_feudal_elective_modifier = {
 		add = 50
 		desc = tooltip_feudal_holder_elector_vote_player_heir
 		player_heir = scope:candidate
-		NOT = { player_heir = root }
+		player_heir != root
 		scope:holder = {
 			this = root
 			NOT = {
@@ -222,9 +222,7 @@ holder_voting_pattern_feudal_elective_modifier = {
 				limit = {
 					exists = root.house
 					exists = scope:candidate.house
-					NOT = {
-						root.house = scope:candidate.house
-					}
+					root.house != scope:candidate.house
 				}
 				subtract = 50
 			}
@@ -232,9 +230,7 @@ holder_voting_pattern_feudal_elective_modifier = {
 				limit = {
 					exists = root.dynasty
 					exists = scope:candidate.dynasty
-					NOT = {
-						root.dynasty = scope:candidate.dynasty
-					}
+					root.dynasty != scope:candidate.dynasty
 				}
 				subtract = 150
 			}
@@ -375,14 +371,14 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	modifier = {
 		add = -30
 		desc = tooltip_feudal_elector_vote_baby
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			age < 5
 		}
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_child
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			age > 5
 			age < 16
@@ -400,7 +396,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	modifier = { #Still too young for older rulers
 		add = -10
 		desc = tooltip_feudal_elector_vote_youngster
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		age > 40
 		scope:candidate = {
 			age > 16
@@ -410,7 +406,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	modifier = { #Or too old for younger rulers.
 		add = -10
 		desc = tooltip_feudal_elector_vote_oldtimer
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		age < 30
 		scope:candidate = {
 			age > 40
@@ -420,13 +416,13 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	modifier = { #Or simply too old overall.
 		add = -15
 		desc = tooltip_feudal_elector_vote_decrepit
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { age > 50 }
 	}
 	#Culturism
 	modifier = {
 		desc = tooltip_feudal_elector_vote_fellow_culture
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		root.culture = scope:candidate.culture
 		add = {
 			add = 10
@@ -441,7 +437,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	modifier = {
 		desc = tooltip_feudal_elector_vote_stranger
 		scope:holder.culture = root.culture #Only a concern if Elector and current ruler share culture.
-		NOT = { root.culture = scope:candidate.culture }
+		root.culture != scope:candidate.culture
 		culture = { has_same_culture_heritage = scope:candidate.culture }
 		NOT = { is_close_family_of = scope:candidate }
 		add = {
@@ -473,7 +469,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		desc = tooltip_feudal_elector_vote_strangers_pet
 		scope:candidate = {
 			this = scope:holder_candidate
-			NOT = { this.culture = root.culture }
+			this.culture != root.culture
 			culture = { has_same_culture_heritage = root.culture }
 			this.culture = scope:holder.culture
 		}
@@ -509,8 +505,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	modifier = { #If candidate is elected, he will rule from a capital outside this de jure.
 		desc = tooltip_feudal_elector_vote_political_concerns
 		is_playable_character = yes
-		exists = capital_county
-		capital_county = { scope:title = { is_de_jure_liege_or_above_target = prev } }
+		capital_county ?= { scope:title = { is_de_jure_liege_or_above_target = prev } }
 
 		OR = { # If the current holder is reigning from within the title, there is no reason to believe a lower tier candidate would not.
 			scope:holder = { 
@@ -568,7 +563,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	#Faithism
 	modifier = { #Accepted but different faith. (Buddhism vs Hinduism)
 		desc = tooltip_feudal_elector_vote_different_faith
-		NOT = { root.faith = scope:candidate.faith }
+		root.faith != scope:candidate.faith
 		ai_zeal >= 0 #Does not care otherwise.
 		faith = {
 			faith_hostility_level = {
@@ -588,7 +583,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	}
 	modifier = { #Astray (Catholic vs Orthodox)
 		desc = tooltip_feudal_elector_vote_astray
-		NOT = { root.faith = scope:candidate.faith }
+		root.faith != scope:candidate.faith
 		faith = {
 			faith_hostility_level = {
 				target = scope:candidate.faith
@@ -634,7 +629,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 				subtract = 100
 			}
 		}
-		NOT = { root.faith = scope:candidate.faith }
+		root.faith != scope:candidate.faith
 		faith = {
 			faith_hostility_level = {
 				target = scope:candidate.faith
@@ -671,7 +666,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 				subtract = 150
 			}
 		}
-		NOT = { root.faith = scope:candidate.faith }
+		root.faith != scope:candidate.faith
 		faith = {
 			faith_hostility_level = {
 				target = scope:candidate.faith
@@ -705,11 +700,23 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 			NOT = { government_has_flag = government_is_clan }
 		}
 	}
+	# GH CHANGE: Feudal lords, and especially the Konijk throne, are not liked as candidates
+	modifier = {
+		desc = feudal_lords_disliked
+		factor = 0
+		GH_is_any_republic_government_trigger = yes
+		scope:candidate = {
+			OR = {
+				government_has_flag = government_is_feudal
+				has_title = title:d_kanzelerij_monarchy 
+			}
+		}
+	}
 	#Nepotism
 	modifier = {
 		add = 10
 		desc = tooltip_feudal_elector_vote_dynasty
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		exists = root.dynasty
 		exists = scope:candidate.dynasty
 		root.dynasty = scope:candidate.dynasty
@@ -720,7 +727,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	modifier = {
 		add = 20
 		desc = tooltip_feudal_elector_vote_relative
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			is_close_family_of = root
 			NOT = { is_child_of = root }
@@ -728,7 +735,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_parent
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { is_child_of = root }
 		add = {
 			value = 30
@@ -750,15 +757,13 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		exists = scope:holder.dynasty
 		scope:candidate = { #Candidate in question must not be of the same house as the Elector.
 			dynasty = scope:holder.dynasty
-			NOT = {
-				house = root.house
-			}
+			house != root.house
 		}
 	}
 	#Educational preferences
 	modifier = { # Warrior society prefers warriors
 		desc = tooltip_feudal_elector_vote_martial_education
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		this_is_martial_society_trigger = yes
 		scope:candidate = {
 			martial >= 10
@@ -792,7 +797,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	modifier = { # Diplomatic society prefers stewards and diplomats
 		add = 15
 		desc = tooltip_feudal_elector_vote_diplomatic_education
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		this_is_diplomatic_society_trigger = yes
 		scope:candidate = {
 			OR = {
@@ -820,7 +825,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	modifier = { # Spiritual society prefers scholars
 		add = 15
 		desc = tooltip_feudal_elector_vote_spiritual_education
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		this_is_spiritual_society_trigger = yes
 		scope:candidate = {
 			learning >= 10
@@ -837,7 +842,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	modifier = {
 		add = 30
 		desc = tooltip_feudal_elector_vote_strong_claimant
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			OR = {
 				has_strong_claim_on = scope:title
@@ -859,7 +864,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 	modifier = {
 		add = 15
 		desc = tooltip_feudal_elector_vote_weak_claimant
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { has_weak_claim_on = scope:title }
 	}
 	# Political Circumstances
@@ -874,7 +879,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 			else = { add = 40 }
 		}
 		desc = tooltip_feudal_elector_vote_regent_already_governs
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { is_diarch_of_target = scope:holder }
 	}
 }
@@ -885,7 +890,7 @@ elector_voting_pattern_prestige_piety_feudal_elective_modifier = {
 	modifier = {
 		desc = tooltip_feudal_elector_vote_prestige_negative
 		add = -10
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { prestige_level < 1 }
 	}
 	modifier = {
@@ -895,7 +900,7 @@ elector_voting_pattern_prestige_piety_feudal_elective_modifier = {
 			subtract = 1
 			multiply = 5
 		}
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { prestige_level >= 2 }
 	}
 	#Dynasty Prestige
@@ -916,7 +921,7 @@ elector_voting_pattern_prestige_piety_feudal_elective_modifier = {
 				add = 20
 			}
 		}
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		exists = scope:candidate.dynasty
 		scope:candidate.dynasty = {
 			dynasty_prestige_level >= 4
@@ -927,14 +932,14 @@ elector_voting_pattern_prestige_piety_feudal_elective_modifier = {
 		desc = tooltip_feudal_elector_vote_piety_negative
 		NOT = { scope:title = { has_title_law = princely_elective_succession_law } }
 		add = -10
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		ai_zeal > 0
 		scope:candidate = { piety_level < 1 }
 	}
 	modifier = { #More extreme for Princely Elective
 		desc = tooltip_feudal_elector_vote_piety_negative
 		scope:title = { has_title_law = princely_elective_succession_law }
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		ai_zeal > -30
 		scope:candidate = { piety_level < 1 }
 	}
@@ -946,7 +951,7 @@ elector_voting_pattern_prestige_piety_feudal_elective_modifier = {
 			subtract = 1
 			multiply = 5
 		}
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		faith = scope:candidate.faith
 		ai_zeal > 0
 		scope:candidate = { piety_level >= 2 }
@@ -959,7 +964,7 @@ elector_voting_pattern_prestige_piety_feudal_elective_modifier = {
 			subtract = 1
 			multiply = 10
 		}
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		faith = scope:candidate.faith
 		ai_zeal > -30
 		scope:candidate = { piety_level >= 2 }
@@ -981,12 +986,12 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		min = -50
 		max = 50
 		trigger = {
-			NOT = { root = scope:candidate }
+			root != scope:candidate
 		}
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_sinful
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		NOT = { has_trait = cynical }
 		ai_zeal > 0
 		scope:candidate = { num_sinful_traits >= 1 }
@@ -1073,7 +1078,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	#Excommunication
 	modifier = {
 		desc = tooltip_feudal_elector_vote_excommunication
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		faith = { has_doctrine_parameter = excommunication_active }
 		faith = scope:candidate.faith
 		root.faith.religious_head = scope:candidate.faith.religious_head #Must have been excommunicated by the same Pope.
@@ -1287,7 +1292,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 			if = {
 				limit = {
 					exists = scope:candidate.dynasty
-					NOT = { dynasty = scope:candidate.dynasty }
+					dynasty != scope:candidate.dynasty
 				}
 				subtract = 10
 			}
@@ -1476,7 +1481,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	#Fornication - males
 	modifier = {
 		desc = tooltip_feudal_elector_vote_fornicating_man
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		faith = { has_doctrine = doctrine_adultery_men_accepted }
 		OR = {
 			NOT = { has_trait = fornicator }
@@ -1514,7 +1519,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	#Fornication - females
 	modifier = {
 		desc = tooltip_feudal_elector_vote_fornicating_woman
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		faith = { has_doctrine = doctrine_adultery_women_accepted }
 		OR = {
 			NOT = { has_trait = fornicator }
@@ -1552,7 +1557,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	#Attraction
 	modifier = {
 		desc = tooltip_feudal_elector_vote_attractive
-		NOT = { this = scope:candidate } #Do not judge yourself, you dirty AI.
+		this != scope:candidate #Do not judge yourself, you dirty AI.
 		is_adult = yes
 		scope:candidate = {
 			is_adult = yes
@@ -1566,7 +1571,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_ugly
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		is_adult = yes
 		scope:candidate = {
 			is_adult = yes
@@ -1583,13 +1588,13 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	modifier = {
 		add = -35
 		desc = tooltip_feudal_elector_vote_incapable
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = no
 		scope:candidate = { has_trait = incapable }
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_incapable_warrior
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = yes
 		scope:candidate = { has_trait = incapable }
 		add = {
@@ -1605,14 +1610,14 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	modifier = {
 		add = -15
 		desc = tooltip_feudal_elector_vote_infirm
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_diplomatic_society_trigger = no
 		scope:candidate = { has_trait = infirm }
 	}
 	modifier = {
 		add = -30
 		desc = tooltip_feudal_elector_vote_infirm_diplomat
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_diplomatic_society_trigger = yes
 		scope:candidate = { has_trait = infirm }
 	}
@@ -1669,14 +1674,14 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_born_in_the_purple
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		culture = { has_cultural_parameter = children_can_be_born_in_the_purple }
 		#scope:candidate = { has_trait = born_in_the_purple }
 		add = 50
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_genius_diplomat
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		OR = {
 			this_is_diplomatic_society_trigger = yes
 			this_is_spiritual_society_trigger = yes
@@ -1716,7 +1721,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_genius
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		NOR = {
 			this_is_diplomatic_society_trigger = yes
 			this_is_spiritual_society_trigger = yes
@@ -1756,7 +1761,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_strong
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = no
 		scope:candidate = {
 			OR = {
@@ -1793,7 +1798,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_strong_warrior
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = yes
 		scope:candidate = {
 			OR = {
@@ -1836,7 +1841,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_imbecile
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_diplomatic_society_trigger = no
 		scope:candidate = {
 			OR = {
@@ -1873,7 +1878,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_imbecile_diplomat
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_diplomatic_society_trigger = yes
 		scope:candidate = {
 			OR = {
@@ -1910,7 +1915,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_clubfooted
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		scope:candidate = { has_trait = clubfooted }
 		add = {
 			subtract = 5
@@ -1922,7 +1927,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_dwarf
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = no
 		scope:candidate = { has_trait = dwarf }
 		add = {
@@ -1935,7 +1940,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_dwarf_warrior
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = yes
 		scope:candidate = { has_trait = dwarf }
 		add = {
@@ -1954,7 +1959,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_hunchback
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = no
 		scope:candidate = {has_trait = hunchbacked }
 		add = {
@@ -1967,7 +1972,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_hunchback_warrior
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = yes
 		scope:candidate = { has_trait = hunchbacked }
 		add = {
@@ -1986,7 +1991,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_inbred
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		scope:candidate = {
 			OR = {
 				has_trait = inbred
@@ -2007,7 +2012,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_lisping
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		scope:candidate = { has_trait = lisping }
 		add = {
 			subtract = 5
@@ -2020,13 +2025,13 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	modifier = {
 		add = -5
 		desc = tooltip_feudal_elector_vote_stuttering
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		scope:candidate = { has_trait = stuttering }
 	}
 	modifier = { #Shunned for being Evil
 		add = -25
 		desc = tooltip_feudal_elector_vote_evil_negative
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		OR = {
 			has_trait = arbitrary #No need for consistency
 			NOT = { has_personality_malicious_trigger = yes }
@@ -2036,7 +2041,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	modifier = { #Shunned for being a lunatic
 		add = -15
 		desc = tooltip_feudal_elector_vote_lunatic_negative
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		OR = {
 			has_trait = arbitrary #No need for consistency
 			NOR = {
@@ -2065,7 +2070,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	modifier = { #Praised for being possessed
 		add = 35
 		desc = tooltip_feudal_elector_vote_possessed_positive
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		faith = { has_doctrine_parameter = spirit_possession_active }
 		ai_zeal > 10
 		scope:candidate = { has_trait = possessed }
@@ -2073,7 +2078,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	modifier = { #Praised for being Pilgrim
 		add = 10
 		desc = tooltip_feudal_elector_vote_pilgrim_positive
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		faith = scope:candidate.faith
 		ai_zeal > 10
 		scope:candidate = { has_trait = pilgrim }
@@ -2081,7 +2086,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	modifier = { #Praised for being Crusader
 		add = 10
 		desc = tooltip_feudal_elector_vote_crusader_positive
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		faith = scope:candidate.faith
 		ai_zeal > 10
 		scope:candidate = { has_trait = faith_warrior }
@@ -2105,41 +2110,41 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	modifier = { #Praised for being a saoshyant_descendant
 		add = 10
 		desc = tooltip_feudal_elector_vote_saoshyant_descendant_positive
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		faith = { religion_tag = amsari_religion }
 		scope:candidate = { has_trait = gh_blood_of_prophet  }
 	}
 	modifier = { #Praised for being Adventurer
 		add = 10
 		desc = tooltip_feudal_elector_vote_adventurer_positive
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = yes
 		scope:candidate = { has_trait = adventurer }
 	}
 	modifier = { #Shunned for being Adventurer
 		add = -10
 		desc = tooltip_feudal_elector_vote_adventurer_negative
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = no
 		scope:candidate = { has_trait = adventurer }
 	}
 	modifier = { #Praised for being Berserker
 		add = 5
 		desc = tooltip_feudal_elector_vote_berserker_positive
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = yes
 		scope:candidate = { has_trait = berserker }
 	}
 	modifier = { #Shunned for being Berserker
 		add = -20
 		desc = tooltip_feudal_elector_vote_berserker_negative
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = no
 		scope:candidate = { has_trait = berserker }
 	}
 	modifier = { #Shunned for being blind
 		desc = tooltip_feudal_elector_vote_blinded_negative
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = no
 		scope:candidate = { has_trait = blind }
 		add = {
@@ -2152,7 +2157,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = { #Shunned for being blind
 		desc = tooltip_feudal_elector_vote_blinded_negative_warrior
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = yes
 		scope:candidate = { has_trait = blind }
 		add = {
@@ -2171,7 +2176,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = { #Shunned for being eunuch
 		desc = tooltip_feudal_elector_vote_eunuch_negative
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = no
 		NOT = {
 			culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance }
@@ -2182,7 +2187,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = { #Shunned for being eunuch
 		desc = tooltip_feudal_elector_vote_eunuch_negative_warrior
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = yes
 		NOT = {
 			culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance }
@@ -2193,7 +2198,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	}
 	modifier = { #Shunned for being eunuch
 		desc = tooltip_feudal_elector_vote_eunuch_negative_byzantine
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		OR = {
 			culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance }
 			#faith = { religion_tag = islam_religion }
@@ -2204,14 +2209,14 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	modifier = { #Praised for being Giant
 		add = 10
 		desc = tooltip_feudal_elector_vote_giant_positive
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = yes
 		scope:candidate = { has_trait = giant }
 	}
 	modifier = { #Shunned for being Giant
 		add = -10
 		desc = tooltip_feudal_elector_vote_giant_negative
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		this_is_martial_society_trigger = no
 		scope:candidate = { has_trait = giant }
 	}
@@ -2219,7 +2224,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		add = -10
 		desc = tooltip_feudal_elector_vote_spoiled_courtier
 		scope:candidate = { this = scope:holder_candidate }
-		NOT = { this = scope:candidate } #Do not judge yourself.
+		this != scope:candidate #Do not judge yourself.
 		scope:candidate = {
 			NOR = {
 				is_ruler = yes
@@ -2404,7 +2409,7 @@ elector_voting_pattern_opinion_feudal_elective_modifier = {
 	##########################	Raw Opinion bonus towards Candidate	##########################
 	modifier = { #Raw Opinion bonus (negative)
 		desc = tooltip_feudal_elector_vote_opinion_negative
-		NOT = { this = scope:candidate } #Not on yourself.
+		this != scope:candidate #Not on yourself.
 		save_temporary_opinion_value_as = {
 			name = opinion_of_candidate
 			target = scope:candidate
@@ -2449,7 +2454,7 @@ elector_voting_pattern_opinion_feudal_elective_modifier = {
 		NOT = {
 			has_relation_rival = scope:candidate #Completely removed for rivals.
 		}
-		NOT = { this = scope:candidate } #Not on yourself.
+		this != scope:candidate #Not on yourself.
 		save_temporary_opinion_value_as = {
 			name = opinion_of_candidate
 			target = scope:candidate
@@ -2694,14 +2699,14 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = {
 		add = -50
 		desc = tooltip_feudal_elector_vote_baby
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			age < 5
 		}
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_child
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			age > 5
 			age < 16
@@ -2719,7 +2724,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = { #Still too young for older rulers
 		add = -15
 		desc = tooltip_feudal_elector_vote_youngster
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		age > 40
 		scope:candidate = {
 			age > 16
@@ -2729,7 +2734,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = { #Or too old for younger rulers.
 		add = -5
 		desc = tooltip_feudal_elector_vote_oldtimer
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		age < 30
 		scope:candidate = {
 			age > 40
@@ -2740,14 +2745,14 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = {
 		add = 30
 		desc = tooltip_feudal_elector_vote_fellow_culture
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		root.culture = scope:candidate.culture
 	}
 	modifier = {
 		add = -30
 		desc = tooltip_feudal_elector_vote_stranger
 		scope:holder.culture = root.culture #Only a concern if Elector and current ruler share culture.
-		NOT = { root.culture = scope:candidate.culture }
+		root.culture != scope:candidate.culture
 		culture = { has_same_culture_heritage = scope:candidate.culture }
 		NOT = { is_close_family_of = scope:candidate }
 	}
@@ -2763,7 +2768,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 		desc = tooltip_feudal_elector_vote_strangers_pet
 		scope:candidate = {
 			this = scope:holder_candidate
-			NOT = { this.culture = root.culture }
+			this.culture != root.culture
 			culture = { has_same_culture_heritage = root.culture }
 			this.culture = scope:holder.culture
 		}
@@ -2783,8 +2788,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 		add = -30
 		desc = tooltip_feudal_elector_vote_political_concerns
 		is_playable_character = yes
-		exists = capital_county
-		capital_county = {
+		capital_county ?= {
 			scope:title = {
 				is_de_jure_liege_or_above_target = prev
 			}
@@ -2832,7 +2836,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = { #Accepted but different faith. (Buddhism vs Hinduism)
 		add = -10
 		desc = tooltip_feudal_elector_vote_different_faith
-		NOT = { root.faith = scope:candidate.faith }
+		root.faith != scope:candidate.faith
 		ai_zeal >= 0 #Does not care otherwise.
 		faith = {
 			faith_hostility_level = {
@@ -2844,7 +2848,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = { #Astray (Catholic vs Orthodox)
 		add = -25
 		desc = tooltip_feudal_elector_vote_astray
-		NOT = { root.faith = scope:candidate.faith }
+		root.faith != scope:candidate.faith
 		faith = {
 			faith_hostility_level = {
 				target = scope:candidate.faith
@@ -2875,7 +2879,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 				subtract = 25
 			}
 		}
-		NOT = { root.faith = scope:candidate.faith }
+		root.faith != scope:candidate.faith
 		faith = {
 			faith_hostility_level = {
 				target = scope:candidate.faith
@@ -2906,7 +2910,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 				subtract = 50
 			}
 		}
-		NOT = { root.faith = scope:candidate.faith }
+		root.faith != scope:candidate.faith
 		faith = {
 			faith_hostility_level = {
 				target = scope:candidate.faith
@@ -2918,7 +2922,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = {
 		add = 5
 		desc = tooltip_feudal_elector_vote_dynasty
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		exists = root.dynasty
 		exists = scope:candidate.dynasty
 		root.dynasty = scope:candidate.dynasty
@@ -2929,7 +2933,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = {
 		add = 10
 		desc = tooltip_feudal_elector_vote_relative
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			is_close_family_of = root
 			NOT = { is_child_of = root }
@@ -2937,7 +2941,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_parent
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { is_child_of = root }
 		add = {
 			value = 10
@@ -2951,7 +2955,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = { # Warrior society prefers warriors
 		add = 15
 		desc = tooltip_feudal_elector_vote_martial_education
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		this_is_martial_society_trigger = yes
 		scope:candidate = {
 			martial >= 10
@@ -2966,7 +2970,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = { # Diplomatic society prefers stewards and diplomats
 		add = 15
 		desc = tooltip_feudal_elector_vote_diplomatic_education
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		this_is_diplomatic_society_trigger = yes
 		scope:candidate = {
 			OR = {
@@ -2994,7 +2998,7 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = { # Spiritual society prefers scholars
 		add = 15
 		desc = tooltip_feudal_elector_vote_spiritual_education
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		this_is_spiritual_society_trigger = yes
 		scope:candidate = {
 			learning >= 10
@@ -3011,13 +3015,13 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = {
 		add = 15
 		desc = tooltip_feudal_elector_vote_strong_claimant
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { has_strong_claim_on = scope:title }
 	}
 	modifier = {
 		add = 5
 		desc = tooltip_feudal_elector_vote_weak_claimant
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { has_weak_claim_on = scope:title }
 	}
 	# Political Circumstances
@@ -3030,9 +3034,9 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = {
 		add = -50
 		desc = tooltip_feudal_elector_vote_anti_tanist
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:holder = {
-			NOT = { this = root }
+			this != root
 			is_parent_of = scope:candidate
 		}
 	}
@@ -3040,10 +3044,10 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 	modifier = {
 		add = -30
 		desc = tooltip_feudal_elector_vote_anti_tanist
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:holder = {
 			is_close_family_of = scope:candidate
-			NOT = { this = root }
+			this != root
 			NOT = { is_parent_of = scope:candidate }
 		}
 	}
@@ -3056,7 +3060,7 @@ elector_voting_pattern_circumstances_saxon_elective_modifier = {
 
 	modifier = {	# Candidate's Stewardship
 		desc = tooltip_saxon_elector_vote_stewardship
-		NOT = { this = scope:candidate } #Not on yourself.
+		this != scope:candidate #Not on yourself.
 		scope:candidate = { stewardship >= 10 }
 		add = {
 			value = 5
@@ -3103,7 +3107,7 @@ elector_voting_pattern_circumstances_saxon_elective_modifier = {
 		add = -30
 		desc = tooltip_saxon_elector_vote_military_strength
 		scope:candidate = { this = scope:holder_candidate }
-		NOT = { this = scope:holder }	#But not if it's me.
+		this != scope:holder	#But not if it's me.
 		this.max_military_strength > scope:holder.max_military_strength
 	}
 
@@ -3111,7 +3115,7 @@ elector_voting_pattern_circumstances_saxon_elective_modifier = {
 		add = -60
 		desc = tooltip_saxon_elector_vote_candidate_unlanded
 		#But not if it's me.
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { is_landed_or_landless_administrative = no }
 	}
 
@@ -3119,7 +3123,7 @@ elector_voting_pattern_circumstances_saxon_elective_modifier = {
 		add = -30
 		desc = tooltip_saxon_elector_vote_candidate_count_magnate
 		#But not if it's me.
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			is_landed_or_landless_administrative = yes
 			highest_held_title_tier = tier_county
@@ -3129,7 +3133,7 @@ elector_voting_pattern_circumstances_saxon_elective_modifier = {
 	modifier = {	#Witengamot likes powerful lords of the realm.
 		desc = tooltip_saxon_elector_vote_candidate_king_magnate
 		#But not if it's me.
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			is_landed_or_landless_administrative = yes
 			highest_held_title_tier = tier_kingdom
@@ -3137,7 +3141,7 @@ elector_voting_pattern_circumstances_saxon_elective_modifier = {
 		add = {
 			if = {
 				limit = {
-					NOT = { this.top_liege = scope:candidate.top_liege }
+					this.top_liege != scope:candidate.top_liege
 				}
 				subtract = -30
 			}
@@ -3303,14 +3307,14 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	modifier = {
 		add = -50
 		desc = tooltip_feudal_elector_vote_baby
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			age < 5
 		}
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_child
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			age > 5
 			age < 16
@@ -3328,7 +3332,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	modifier = { #Still too young for older rulers
 		add = -15
 		desc = tooltip_feudal_elector_vote_youngster
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		age > 40
 		scope:candidate = {
 			age > 16
@@ -3338,7 +3342,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	modifier = { #but you cannot be too old! 
 		add = 5
 		desc = tooltip_tribal_elector_vote_elder
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			age > 50
 		}
@@ -3347,14 +3351,14 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	modifier = {
 		add = 30
 		desc = tooltip_feudal_elector_vote_fellow_culture
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		root.culture = scope:candidate.culture
 	}
 	modifier = {
 		add = -30
 		desc = tooltip_tribal_elector_vote_stranger #belongs to a different tribe! 
 		scope:holder.culture = root.culture #Only a concern if Elector and current ruler share culture.
-		NOT = { root.culture = scope:candidate.culture }
+		root.culture != scope:candidate.culture
 		culture = { has_same_culture_heritage = scope:candidate.culture }
 		NOT = { is_close_family_of = scope:candidate }
 	}
@@ -3370,7 +3374,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 		desc = tooltip_feudal_elector_vote_strangers_pet
 		scope:candidate = {
 			this = scope:holder_candidate
-			NOT = { this.culture = root.culture }
+			this.culture != root.culture
 			culture = { has_same_culture_heritage = root.culture }
 			this.culture = scope:holder.culture
 		}
@@ -3390,8 +3394,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 		add = -30
 		desc = tooltip_feudal_elector_vote_political_concerns
 		is_playable_character = yes
-		exists = capital_county
-		capital_county = {
+		capital_county ?= {
 			scope:title = {
 				is_de_jure_liege_or_above_target = prev
 			}
@@ -3439,7 +3442,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	modifier = { #Accepted but different faith. (Buddhism vs Hinduism)
 		add = -10
 		desc = tooltip_feudal_elector_vote_different_faith
-		NOT = { root.faith = scope:candidate.faith }
+		root.faith != scope:candidate.faith
 		ai_zeal >= 0 #Does not care otherwise.
 		faith = {
 			faith_hostility_level = {
@@ -3451,7 +3454,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	modifier = { #Astray (Catholic vs Orthodox)
 		add = -25
 		desc = tooltip_feudal_elector_vote_astray
-		NOT = { root.faith = scope:candidate.faith }
+		root.faith != scope:candidate.faith
 		faith = {
 			faith_hostility_level = {
 				target = scope:candidate.faith
@@ -3482,7 +3485,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 				subtract = 25
 			}
 		}
-		NOT = { root.faith = scope:candidate.faith }
+		root.faith != scope:candidate.faith
 		faith = {
 			faith_hostility_level = {
 				target = scope:candidate.faith
@@ -3513,7 +3516,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 				subtract = 50
 			}
 		}
-		NOT = { root.faith = scope:candidate.faith }
+		root.faith != scope:candidate.faith
 		faith = {
 			faith_hostility_level = {
 				target = scope:candidate.faith
@@ -3525,7 +3528,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	modifier = {
 		add = 5
 		desc = tooltip_feudal_elector_vote_dynasty
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		exists = root.dynasty
 		exists = scope:candidate.dynasty
 		root.dynasty = scope:candidate.dynasty
@@ -3536,7 +3539,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	modifier = {
 		add = 10
 		desc = tooltip_tribal_elector_vote_relative
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = {
 			is_close_family_of = root
 			NOT = { is_child_of = root }
@@ -3544,7 +3547,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_parent
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { is_child_of = root }
 		add = {
 			value = 10
@@ -3558,7 +3561,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	modifier = { # Warrior society prefers warriors
 		add = 15
 		desc = tooltip_feudal_elector_vote_martial_education
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		this_is_martial_society_trigger = yes
 		scope:candidate = {
 			martial >= 10
@@ -3574,7 +3577,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	modifier = { # Diplomatic society prefers stewards and diplomats
 		add = 15
 		desc = tooltip_feudal_elector_vote_diplomatic_education
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		this_is_diplomatic_society_trigger = yes
 		scope:candidate = {
 			OR = {
@@ -3602,7 +3605,7 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	modifier = { # Spiritual society prefers scholars
 		add = 15
 		desc = tooltip_feudal_elector_vote_spiritual_education
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		this_is_spiritual_society_trigger = yes
 		scope:candidate = {
 			learning >= 10
@@ -3619,13 +3622,13 @@ elector_voting_pattern_circumstances_tribal_elective_modifier = {
 	modifier = {
 		add = 15
 		desc = tooltip_feudal_elector_vote_strong_claimant
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { has_strong_claim_on = scope:title }
 	}
 	modifier = {
 		add = 5
 		desc = tooltip_feudal_elector_vote_weak_claimant
-		NOT = { this = scope:candidate }
+		this != scope:candidate
 		scope:candidate = { has_weak_claim_on = scope:title }
 	}	
 }
@@ -3891,6 +3894,22 @@ elector_voting_pattern_confederation_modifier = {
 		desc = tooltip_confederation_amazing_prowess_tt
 		prowess > extremely_high_skill_rating
 		prowess <= extremely_high_skill_rating
+		add = 20
+	}
+	modifier = {
+		desc = confederation_harm_candidacy_tt
+		scope:candidate = {
+			has_character_flag = harm_confederation_candidacy
+		}
+		add = -20
+	}
+	modifier = {
+		desc = confederation_house_promoted_tt
+		scope:candidate = {
+			house ?= {
+				has_variable = confederation_house_promoted
+			}
+		}
 		add = 20
 	}
 }

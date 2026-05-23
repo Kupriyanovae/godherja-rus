@@ -25,6 +25,10 @@ fp2_border_raid = {
 		}
 	}
 
+	allowed_for_character_display_regardless = {
+		tgp_japan_offensive_wars_ban_trigger = yes
+	}
+
 	allowed_against_character = {
 		# Defender must be Involved in Struggle during correct phase
 		any_character_struggle = {
@@ -90,7 +94,7 @@ fp2_border_raid = {
 			value = minor_prestige_value
 			if = {
 				limit = {
-					NOT = { scope:defender.faith = scope:attacker.faith }
+					scope:defender.faith != scope:attacker.faith
 				}
 				add = {
 					value = minor_prestige_value
@@ -245,6 +249,9 @@ fp2_border_raid = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -301,6 +308,36 @@ fp2_border_raid = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#GH ADDITION
+		# Struggle Catalysts
+		hidden_effect = {
+			scope:attacker = {
+				if = {
+					limit = {
+						any_character_struggle = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+					}
+					every_character_struggle = {
+						limit = {
+							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+								CATALYST = catalyst_war_white_peace
+								CHAR = scope:defender
+							}
+						}
+						activate_struggle_catalyst = {
+							catalyst = catalyst_war_white_peace
+							character = scope:attacker
+						}
+					}
+				}
+			}
+		}
+		#GH END
 	}
 
 	on_defeat_desc = {
@@ -322,8 +359,15 @@ fp2_border_raid = {
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 		
-		#EP2 accolade glory gain for winning against higher ranked enemy
-		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
+		scope:defender = { 
+			mandala_peacemaker_perk_serenity_effect = yes
+			#EP2 accolade glory gain for winning against higher ranked enemy
+			accolade_defender_war_end_glory_gain_high_effect = yes
+			# Prestige for Defender
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = medium_prestige_value
+			}
+		}
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -333,13 +377,6 @@ fp2_border_raid = {
 			add_prestige = {
 				value = medium_prestige_value
 				multiply = -1.0
-			}
-		}
-
-		# Prestige for Defender
-		scope:defender = {
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = medium_prestige_value
 			}
 		}
 
@@ -369,6 +406,9 @@ fp2_border_raid = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_defeat_effects = yes
 	}
 
 	transfer_behavior = transfer
@@ -489,7 +529,7 @@ ritewars_expel_interloper = {
 			value = minor_prestige_value
 			if = {
 				limit = {
-					NOT = { scope:defender.faith = scope:attacker.faith }
+					scope:defender.faith != scope:attacker.faith
 				}
 				add = {
 					value = minor_prestige_value
@@ -663,6 +703,9 @@ ritewars_expel_interloper = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_victory_effects = yes
 	}
 
 	on_white_peace_desc = {
@@ -736,8 +779,15 @@ ritewars_expel_interloper = {
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 			
-		#EP2 accolade glory gain for winning against higher ranked enemy
-		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
+		scope:defender = { 
+			mandala_peacemaker_perk_serenity_effect = yes
+			#EP2 accolade glory gain for winning against higher ranked enemy
+			accolade_defender_war_end_glory_gain_high_effect = yes
+			# Prestige for Defender
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = medium_prestige_value
+			}
+		}
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -747,13 +797,6 @@ ritewars_expel_interloper = {
 			add_prestige = {
 				value = major_prestige_value
 				multiply = -1.0
-			}
-		}
-
-		# Prestige for Defender
-		scope:defender = {
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = major_prestige_value
 			}
 		}
 
@@ -776,6 +819,9 @@ ritewars_expel_interloper = {
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
+
+		#Mandalas gain or lose piety/devotion depending on Decree
+		mandala_war_defeat_effects = yes
 	}
 
 	transfer_behavior = transfer
@@ -789,6 +835,8 @@ ritewars_expel_interloper = {
 	war_name = "FP2_EXPEL_INTERLOPER_WAR_NAME"
 	war_name_base = "FP2_EXPEL_INTERLOPER_WAR_NAME_BASE"
 	cb_name = "FP2_EXPEL_INTERLOPER_CB_NAME"
+
+	interface_priority = 79
 
 	use_de_jure_wargoal_only = yes
 

@@ -41,12 +41,12 @@
 }
 
 settle_ruin_pick_holding_scripted_gui = {
-    scope = province
+	scope = province
 
-    is_shown = {
-    }
+	is_shown = {
+	}
 
-    is_valid = {
+	is_valid = {
 		scope:actor = { short_term_gold >= 250 }
 		trigger_if = {
 			limit = { scope:holding_type_scope = flag:castle_holding }
@@ -85,9 +85,9 @@ settle_ruin_pick_holding_scripted_gui = {
 			}
 		}
 		trigger_else = { }
-    }
+	}
 
-    effect = {
+	effect = {
 		scope:actor = { remove_short_term_gold = 250 }
 		if = {
 			limit = { scope:holding_type_scope = flag:castle_holding }

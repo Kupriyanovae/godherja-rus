@@ -107,15 +107,15 @@ marco_polo_book = { # GH NOTE: Despite having Marco Polo in its name, the loc an
 }
 paiza_artifact_template = {
 	can_equip = {
-		always = yes
+		custom_tooltip = {
+			text = gh_ayraal_conflict
+			NOT = { any_equipped_character_artifact = { has_variable = ayraal_authority } } ## GH CHANGE: Otachedian Law
+		}
 	}
 
 	can_benefit = {
-		scope:artifact = { exists = var:paiza_patron }
-			scope:artifact.var:paiza_patron = {
-				is_gurkhan = yes
-			}
-		}
+		government_has_flag = has_ayraal_system
+	}
 
 	fallback = {
 		monthly_prestige = 0.05
@@ -152,4 +152,59 @@ mpo_severed_head_template = {
 	fallback = {
 		monthly_prestige = 0.05
 	}
+}
+
+tgp_severed_head_template = {
+	can_equip = {
+		always = yes
+	}
+
+	can_benefit = {
+		faith = {
+			has_doctrine = tenet_cranial_trophies
+		}
+	}
+	can_repair = {
+		always = no
+	}
+	can_reforge = {
+		always = no
+	}
+
+	fallback = {
+		monthly_prestige = 0.05
+	}
+}
+
+ryukyu_shaku_template = {
+	can_equip = {
+		always = yes
+	}
+
+	can_benefit = {
+		culture = culture:ryukyuan
+	}
+
+	fallback = {
+		monthly_prestige = 0.05
+	}
+
+	unique = yes
+}
+
+
+ryukyu_crown_template = {
+	can_equip = {
+		always = yes
+	}
+
+	can_benefit = {
+		culture = culture:ryukyuan
+	}
+
+	fallback = {
+		monthly_prestige = 0.05
+	}
+
+	unique = yes
 }

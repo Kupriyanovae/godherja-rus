@@ -1,22 +1,19 @@
 ﻿@holding_illustration_western = "gfx/interface/illustrations/holding_types/city_western.dds"
 @holding_illustration_india = "gfx/interface/illustrations/holding_types/city_india.dds"
+@holding_illustration_seasia = "gfx/interface/illustrations/holding_types/tgp_city_japan.dds"
+@holding_illustration_china = "gfx/interface/illustrations/holding_types/tgp_city_china.dds"
+@holding_illustration_japan = "gfx/interface/illustrations/holding_types/tgp_city_japan.dds"
 @holding_illustration_mediterranean = "gfx/interface/illustrations/holding_types/city_mediterranean.dds"
 @holding_illustration_mena = "gfx/interface/illustrations/holding_types/city_mena.dds"
 @holding_illustration_norse = "gfx/interface/illustrations/holding_types/fp1_city_norse.dds"
 @holding_illustration_iberian = "gfx/interface/illustrations/holding_types/fp2_city_iberian.dds"
+@holding_illustration_iranian = "gfx/interface/illustrations/holding_types/fp3_city_iranian.dds"
+@holding_illustration_byzantine = "gfx/interface/illustrations/holding_types/ep3_city_byzantine.dds"
 ## Donated to GH ##
 @holding_illustration_cemanahuac = "gfx/interface/illustrations/holding_types/city_cemanahuac.dds"
 ## Donated by More Holdings ##
 @holding_illustration_ethiopian = "gfx/interface/illustrations/holding_types/city_ethiopian.dds"
 @holding_illustration_ethiopian_mena = "gfx/interface/illustrations/holding_types/city_ethiopian_mena.dds"
-@holding_illustration_iranian = "gfx/interface/illustrations/holding_types/fp3_city_iranian.dds"
-## Donated by More Holdings ##
-@holding_illustration_crusader = "gfx/interface/illustrations/holding_types/castle_crusader.dds"
-@holding_illustration_crusader_ethiopian = "gfx/interface/illustrations/holding_types/castle_crusader_ethiopian.dds"
-@holding_illustration_french = "gfx/interface/illustrations/holding_types/castle_french.dds"
-@holding_illustration_french_mediterranean = "gfx/interface/illustrations/holding_types/castle_french_mediterranean.dds"
-@holding_illustration_mena_ethiopian = "gfx/interface/illustrations/holding_types/castle_mena_ethiopian.dds"
-@holding_illustration_mena_mediterranean = "gfx/interface/illustrations/holding_types/castle_mena_medi.dds"
 
 
 ##########################
@@ -280,13 +277,15 @@ metro_01 = {
 		graphical_cultures = { cemanahuac_building_gfx }
 	}
 
-	#SEA
+	# SOUTHEAST ASIA #
 	asset = {
 		type = pdxmesh
-		name = "building_sea_city_02_mesh"
-		illustration = @holding_illustration_india
-		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
-		graphical_cultures = { sea_building_gfx }
+		name = "tgp_building_se_asia_castle_02_mesh"
+		requires_dlc_flag = all_under_heaven
+		illustration = @holding_illustration_seasia
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/sea_castle" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { southeast_asian_building_gfx }
+		graphical_regions = { GH_graphical_far_east GH_graphical_kashirya }
 	}
 	
 	### ETHIOPIAN ###
@@ -360,10 +359,10 @@ metro_01 = {
 	#East Asian
 	asset = {
 		type = pdxmesh
-		name = "building_chinese_city_02_mesh"
+		name = "tgp_building_chinese_city_02_mesh"
 		illustration = @holding_illustration_india
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
-		graphical_cultures = { kathun_building_gfx }
+		graphical_cultures = { chinese_building_gfx }
 	}
 	#Magyar
 	asset = {
@@ -398,7 +397,7 @@ metro_01 = {
 
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_2
-		fort_level = normal_building_fort_level_tier_1
+		fort_level = good_building_fort_level_tier_1
 		stationed_maa_damage_mult = high_maa_damage_tier_1
 		stationed_maa_toughness_mult = high_maa_toughness_tier_1
 	}
@@ -427,7 +426,7 @@ metro_01 = {
 
 	county_culture_modifier = {
 		parameter = city_buildings_less_control
-		monthly_county_control_growth_factor = -0.2
+		monthly_county_control_growth_factor = -0.1
 	}
 	
 	province_terrain_modifier = {
@@ -739,13 +738,15 @@ metro_02 = {
 		graphical_cultures = { cemanahuac_building_gfx }
 	}
 
-	#SEA
+	# SOUTHEAST ASIA #
 	asset = {
 		type = pdxmesh
-		name = "building_sea_city_02_mesh"
-		illustration = @holding_illustration_india
-		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
-		graphical_cultures = { sea_building_gfx }
+		name = "tgp_building_se_asia_castle_02_mesh"
+		requires_dlc_flag = all_under_heaven
+		illustration = @holding_illustration_seasia
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/sea_castle" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { southeast_asian_building_gfx }
+		graphical_regions = { GH_graphical_far_east GH_graphical_kashirya }
 	}
 	
 	### ETHIOPIAN ###
@@ -819,10 +820,10 @@ metro_02 = {
 	#East Asian
 	asset = {
 		type = pdxmesh
-		name = "building_chinese_city_02_mesh"
+		name = "tgp_building_chinese_city_02_mesh"
 		illustration = @holding_illustration_india
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
-		graphical_cultures = { kathun_building_gfx }
+		graphical_cultures = { chinese_building_gfx }
 	}
 	#Magyar
 	asset = {
@@ -852,7 +853,7 @@ metro_02 = {
 
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_4
-		fort_level = normal_building_fort_level_tier_2
+		fort_level = good_building_fort_level_tier_2
 		stationed_maa_damage_mult = high_maa_damage_tier_2
 		stationed_maa_toughness_mult = high_maa_toughness_tier_2
 	}
@@ -881,7 +882,7 @@ metro_02 = {
 
 	county_culture_modifier = {
 		parameter = city_buildings_less_control
-		monthly_county_control_growth_factor = -0.2
+		monthly_county_control_growth_factor = -0.15
 	}
 	
 	province_terrain_modifier = {
@@ -1161,13 +1162,15 @@ metro_03 = {
 		graphical_cultures = { cemanahuac_building_gfx }
 	}
 
-	#SEA
+	# SOUTHEAST ASIA #
 	asset = {
 		type = pdxmesh
-		name = "building_sea_city_02_mesh"
-		illustration = @holding_illustration_india
-		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
-		graphical_cultures = { sea_building_gfx }
+		name = "tgp_building_se_asia_castle_02_mesh"
+		requires_dlc_flag = all_under_heaven
+		illustration = @holding_illustration_seasia
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/sea_castle" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { southeast_asian_building_gfx }
+		graphical_regions = { GH_graphical_far_east GH_graphical_kashirya }
 	}
 	
 	### ETHIOPIAN ###
@@ -1241,10 +1244,10 @@ metro_03 = {
 	#East Asian
 	asset = {
 		type = pdxmesh
-		name = "building_chinese_city_02_mesh"
+		name = "tgp_building_chinese_city_02_mesh"
 		illustration = @holding_illustration_india
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
-		graphical_cultures = { kathun_building_gfx }
+		graphical_cultures = { chinese_building_gfx }
 	}
 	#Magyar
 	asset = {
@@ -1274,7 +1277,7 @@ metro_03 = {
 
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_6
-		fort_level = normal_building_fort_level_tier_3
+		fort_level = good_building_fort_level_tier_3
 		stationed_maa_damage_mult = high_maa_damage_tier_3
 		stationed_maa_toughness_mult = high_maa_toughness_tier_3
 	}
@@ -1583,13 +1586,15 @@ metro_04 = {
 		graphical_cultures = { cemanahuac_building_gfx }
 	}
 
-	#SEA
+	# SOUTHEAST ASIA #
 	asset = {
 		type = pdxmesh
-		name = "building_sea_city_02_mesh"
-		illustration = @holding_illustration_india
-		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
-		graphical_cultures = { sea_building_gfx }
+		name = "tgp_building_se_asia_castle_02_mesh"
+		requires_dlc_flag = all_under_heaven
+		illustration = @holding_illustration_seasia
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/sea_castle" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { southeast_asian_building_gfx }
+		graphical_regions = { GH_graphical_far_east GH_graphical_kashirya }
 	}
 	
 	### ETHIOPIAN ###
@@ -1663,10 +1668,10 @@ metro_04 = {
 	#East Asian
 	asset = {
 		type = pdxmesh
-		name = "building_chinese_city_02_mesh"
+		name = "tgp_building_chinese_city_02_mesh"
 		illustration = @holding_illustration_india
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
-		graphical_cultures = { kathun_building_gfx }
+		graphical_cultures = { chinese_building_gfx }
 	}
 	#Magyar
 	asset = {
@@ -1695,7 +1700,7 @@ metro_04 = {
 
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_8
-		fort_level = normal_building_fort_level_tier_4
+		fort_level = good_building_fort_level_tier_4
 		stationed_maa_damage_mult = high_maa_damage_tier_4
 		stationed_maa_toughness_mult = high_maa_toughness_tier_4
 	}
@@ -1724,7 +1729,7 @@ metro_04 = {
 
 	county_culture_modifier = {
 		parameter = city_buildings_less_control
-		monthly_county_control_growth_factor = -0.2
+		monthly_county_control_growth_factor = -0.25
 	}
 	
 	province_terrain_modifier = {
@@ -1771,7 +1776,7 @@ gh_walls_01 = {
 	max_garrison = good_building_max_garrison_tier_1
 	province_modifier = {
 		defender_holding_advantage = normal_building_advantage_tier_1
-		fort_level = normal_building_fort_level_tier_1
+		fort_level = good_building_fort_level_tier_1
 		hostile_raid_time = 0.05
 	}
 
@@ -1826,7 +1831,7 @@ gh_walls_02 = {
 	max_garrison =good_building_max_garrison_tier_2
 	province_modifier = {
 		defender_holding_advantage = normal_building_advantage_tier_2
-		fort_level = normal_building_fort_level_tier_2
+		fort_level = good_building_fort_level_tier_2
 		hostile_raid_time = 0.1
 	}
 
@@ -1869,7 +1874,7 @@ gh_walls_03 = {
 	max_garrison =good_building_max_garrison_tier_3
 	province_modifier = {
 		defender_holding_advantage = normal_building_advantage_tier_3
-		fort_level = normal_building_fort_level_tier_3
+		fort_level = good_building_fort_level_tier_3
 		hostile_raid_time = 0.15
 		supply_limit = 300
 	}
@@ -1908,12 +1913,12 @@ gh_walls_04 = {
 
 	max_garrison =good_building_max_garrison_tier_4
 	county_modifier = {
-		fort_level = normal_building_fort_level_tier_1
+		fort_level = good_building_fort_level_tier_1
 	}
 
 	province_modifier = {
 		defender_holding_advantage = normal_building_advantage_tier_4
-		fort_level = normal_building_fort_level_tier_4
+		fort_level = good_building_fort_level_tier_4
 		hostile_raid_time = 0.2
 		supply_limit = 300
 	}
@@ -1952,12 +1957,12 @@ gh_walls_05 = {
 
 	max_garrison =good_building_max_garrison_tier_5
 	county_modifier = {
-		fort_level = normal_building_fort_level_tier_1
+		fort_level = good_building_fort_level_tier_1
 	}
 
 	province_modifier = {
 		defender_holding_advantage = normal_building_advantage_tier_5
-		fort_level = normal_building_fort_level_tier_5
+		fort_level = good_building_fort_level_tier_5
 		hostile_raid_time = 0.25
 		supply_limit = 600
 	}
@@ -1996,12 +2001,12 @@ gh_walls_06 = {
 
 	max_garrison =good_building_max_garrison_tier_6
 	county_modifier = {
-		fort_level = normal_building_fort_level_tier_1
+		fort_level = good_building_fort_level_tier_1
 	}
 
 	province_modifier = {
 		defender_holding_advantage = normal_building_advantage_tier_6
-		fort_level = normal_building_fort_level_tier_6
+		fort_level = good_building_fort_level_tier_6
 		hostile_raid_time = 0.3
 		supply_limit = 600
 	}
@@ -2041,12 +2046,12 @@ gh_walls_07 = {
 
 	max_garrison =good_building_max_garrison_tier_7
 	county_modifier = {
-		fort_level = normal_building_fort_level_tier_1
+		fort_level = good_building_fort_level_tier_1
 	}
 
 	province_modifier = {
 		defender_holding_advantage = normal_building_advantage_tier_7
-		fort_level = normal_building_fort_level_tier_7
+		fort_level = good_building_fort_level_tier_7
 		hostile_raid_time = 0.35
 		supply_limit = 900
 	}
@@ -2086,12 +2091,12 @@ gh_walls_08 = {
 
 	max_garrison =good_building_max_garrison_tier_8
 	county_modifier = {
-		fort_level = normal_building_fort_level_tier_2
+		fort_level = good_building_fort_level_tier_2
 	}
 
 	province_modifier = {
 		defender_holding_advantage = normal_building_advantage_tier_8
-		fort_level = normal_building_fort_level_tier_8
+		fort_level = good_building_fort_level_tier_8
 		hostile_raid_time = 0.4
 		supply_limit = 900
 	}

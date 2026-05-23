@@ -99,7 +99,7 @@
 					target = flag:nick_sjal_throne_breaker
 				} }
 				scope:barony = { 
-					this = title:b_phasio #Capital barony of c_oraispol 
+					this = title:b_oraispol #Capital barony of c_oraispol 
 				} 
 			}
 			scope:raider = {
@@ -155,5 +155,34 @@
 				}
 			}
 		}
+
+		#GH ADDITION
+		# Struggle Catalysts
+		scope:raider = {
+			if = {
+				limit = {
+					NOT = { faith.religion = scope:county.holder.faith.religion }
+					any_character_struggle = {
+						activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+							CATALYST = catalyst_raid
+							CHAR = scope:county.holder
+						}
+					}
+				}
+				every_character_struggle = {
+					limit = {
+						activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
+							CATALYST = catalyst_raid
+							CHAR = scope:county.holder
+						}
+					}
+					activate_struggle_catalyst = {
+						catalyst = catalyst_raid
+						character = scope:raider
+					}
+				}
+			}
+		}
+		#GH END
 	}
 }

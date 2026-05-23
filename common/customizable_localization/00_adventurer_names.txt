@@ -7935,6 +7935,23 @@ GetAdventureNameSuffix = {
 		}
 		localization_key = yurt
 	}
+	# GH ADDITION #
+	text = {
+		setup_scope = {
+			save_scope_as = new_landless_adventurer
+			house ?= { save_scope_as = new_landless_adventurer_house }
+			location ?= { save_scope_as = new_landless_adventurer_location }
+		}
+		trigger = {
+			NOT = { exists = scope:new_landless_adventurer }
+			scope:new_landless_adventurer ?= {
+				culture = {
+					has_cultural_tradition = tradition_desert_nomads
+				}
+			}
+		}
+		localization_key = ahan
+	}
 	text = {
 		setup_scope = {
 			save_scope_as = new_landless_adventurer

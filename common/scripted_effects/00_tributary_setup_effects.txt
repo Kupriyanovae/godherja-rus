@@ -6,9 +6,13 @@
 
 setup_tributaries_effect = {
 	if = {
-    	limit = { current_date = 1254.1.1 }
+    	limit = { current_date = 6254.1.1 }
        	gh_1254_tributary_setup_effect = yes
-    }	
+    }
+    else_if = {
+    	limit = { current_date >= 6298.1.1 }
+    	gh_1298_tributary_setup_effect = yes
+    }
 }
 
 # $TRIBUTARY$ = the new tributary
@@ -33,6 +37,157 @@ break_subject_contract_and_establish_tributary_effect = {
 	}
 }
 
+gh_1298_tributary_setup_effect = {
+	### k_haven
+	character:daukeni_sjalvolki_108 = {# Vezlomir Drevynic
+		save_scope_as = suzerain
+		character:auteonic_partic_8 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	character:mithaista_vidvaookeyatra_6 = {
+		save_scope_as = suzerain
+		character:aezentiam_vidvaookeyatra_3 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	character:kuridorig_cumani_44 = {
+		save_scope_as = suzerain
+		character:muhadamd_arayymorog_4 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:muhadamd_arayymorog_2 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:khorinot_cumani_32 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:murarut_cumani_10 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:easternimperial_aversarian_axiaotheaism_8 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+
+	character:zelkavani_sarmuyr_1 = {
+		save_scope_as = suzerain
+		
+		character:zelkavani_sarmuyr_10 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:zelkavani_sarmuyr_11 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:zelkavani_sarmuyr_12 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:zelkavani_sarmuyr_13 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:zelkavani_sarmuyr_15 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:lattani_sunarwei_2 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+
+	character:hokanta_vidvaookeyatra_34 = {
+		save_scope_as = suzerain
+		character:hokanta_vidvaookeyatra_63 = { #Commented out because both characters are dead by 1298 
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:kadwana_vidvaookeyatra_7 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+
+	character:garami_varodaism_13 = {
+		save_scope_as = suzerain
+		character:garami_varodaism_8 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:saruta_varodaism_1 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+
+	character:kedari_saldakas_1 = {
+		save_scope_as = suzerain
+		character:banwagul_dahala_21 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+
+	character:banwagul_dahala_22 = {
+		save_scope_as = suzerain
+		character:dayarka_dahala_4 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:banwagul_dahala_23 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:banwagul_dahala_24 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:banwagul_narina_2 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+
+	}
+
+	character:lanonan_bynjar_institute_19 = {
+		save_scope_as = suzerain
+		character:mutande_bayn_huac_1 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:chenhan_fourteen_heavenly_method_4 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:chenhan_fourteen_heavenly_method_2 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:lanonan_bynjar_institute_8 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:lanonan_bynjar_institute_11 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:lanonan_bynjar_institute_14 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:lanonan_bynjar_institute_16 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:lanonan_bynjar_institute_10 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+
+	character:lakoeng_fourteen_heavenly_methods_34 = {
+		save_scope_as = suzerain
+		character:chenhan_fourteen_heavenly_method_3 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+
+	character:muhadamd_cumani_55 = {
+		save_scope_as = suzerain
+		character:muhadamd_cumani_50 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:kuridorig_cumani_27 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:kuridorig_cumani_46 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:astilik_astiliak_5 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+}
 
 gh_1254_tributary_setup_effect = {
 	### k_ayyar
@@ -67,6 +222,24 @@ gh_1254_tributary_setup_effect = {
 	character:khorinot_cumani_1 = {
 		save_scope_as = suzerain
 		character:yevamarai_aversarinas_aagiokrata_1 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	character:hokanta_vidvaookeyatra_33 = {
+		save_scope_as = suzerain
+		character:vaxanaka_vidvaookeyatra_4 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this } 
+		}
+		character:ekaachi_vidvaookeyatra_2 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this } 
+		}
+		character:zabari_vidvaookeyatra_2 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this } 
+		}
+		character:hokanta_vidvaookeyatra_3 = {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:kadwana_vidvaookeyatra_2 = {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}

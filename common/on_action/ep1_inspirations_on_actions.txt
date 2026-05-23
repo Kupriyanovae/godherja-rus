@@ -20,6 +20,14 @@ inspiration_start_events = {
 		fund_inspiration.0072 #Smith - They know what they want to make
 		fund_inspiration.0081 #Alchemist - Choose what they make
 		fund_inspiration.0082 #Alchemist - They know what they want to make
+		fund_inspiration.0091 #Bow - Choose type of bow
+		fund_inspiration.0092 #Bow - They know what they want to make
+
+		## GH ADDITIONS
+		gh_fund_inspiration.0011 # Glassmith - Choose what they make
+		gh_fund_inspiration.0012 # Glassmith - They know what they want to make
+		## END OF GH ADDITIONS
+
 		fund_inspiration.0001 #Fallback
 	}
 }
@@ -36,6 +44,12 @@ inspiration_completed_events = {
 		fund_inspiration.1061 #Artisan
 		fund_inspiration.1071 #Smith
 		fund_inspiration.1081 #Alchemist
+		fund_inspiration.1091 #Bow
+
+		## GH ADDITIONS
+		gh_fund_inspiration.1011 # Glassmith
+		## END OF GH ADDITIONS
+
 		fund_inspiration.1001 #Fallback
 	}
 }
@@ -149,6 +163,18 @@ inspiration_ongoing_events = {
 		200 = fund_inspiration.9000 #Adventurer fights a bandit
 		200 = fund_inspiration.9100 #Adventurer travels through beast-infested terrain
 
+		##################
+		## GH ADDITIONS ##
+		##################
+
+		100 = gh_fund_inspiration.2001 # Smith offers to make a mask in the image of a great hero
+		100 = gh_fund_inspiration.2002 # Lunatic smith offers to make a mask out of bloodcrystal
+		50 = gh_fund_inspiration.2003 # Weaponsmith offers to add a Perdition Enchantment to the weapon
+
+	}
+
+	random_events = {
+		10 = 0
 		100 = fund_inspiration.7001 # Artifact dedication
 		100 = fund_inspiration.7002 # Artifact dedication
 		100 = fund_inspiration.7003 # Artifact dedication
@@ -157,14 +183,5 @@ inspiration_ongoing_events = {
 		100 = fund_inspiration.7100 # Choose modifiers - weapons and armors
 		100 = fund_inspiration.7110 # Choose modifiers - regalia and crowns
 		100 = fund_inspiration.7120 # Choose modifiers - sculptures and thrones
-
-		##################
-		## GH ADDITIONS ##
-		##################
-
-		100 = gh_fund_inspiration.1001 # Smith offers to make a mask in the image of a great hero
-		100 = gh_fund_inspiration.1002 # Lunatic smith offers to make a mask out of bloodcrystal
-		50 = gh_fund_inspiration.1003 # Weaponsmith offers to add a Perdition Enchantment to the weapon
 	}
-
 }

@@ -1182,20 +1182,20 @@ hunt_poetic_inspiration = {
 
 	is_valid = {
 		is_current_phase_active = yes
-		any_attending_character = { has_trait = poet }
+		any_attending_character = { has_trait = lifestyle_poet }
 	}
 
 	weight = {
 		value = 1
 		every_attending_character = {
-			limit = { has_trait = poet }
+			limit = { has_trait = lifestyle_poet }
 			add = 0.5
 		}
 	}
 
 	effect = {
 		random_attending_character = {
-			limit = { has_trait = poet }
+			limit = { has_trait = lifestyle_poet }
 			weight = {
 				base = 1
 				modifier = {

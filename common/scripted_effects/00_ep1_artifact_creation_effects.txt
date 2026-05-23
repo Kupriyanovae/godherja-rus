@@ -98,33 +98,46 @@ get_artifact_quality_effect = {
 			name = quality
 			value = {
 				value = scope:random_quality_bonus
+				
+				# Cultural tradition for piety level boosting artifacts
+				if = {
+					limit = {
+						court_owner.culture ?= {
+							has_cultural_parameter = piety_level_affect_artifact_quality
+						}
+					}
+					add = {
+						value = court_owner.piety_level
+						multiply = 5
+					}
+				}
 
 				# Bonus Quality from the Court Owner's Amenities
 				if = {
 					limit = {
-						exists = court_owner
-						court_owner = {
+						court_owner ?= {
 							has_royal_court = yes
 							has_dlc_feature = royal_court
-							amenity_level = { type = court_lodging_standards value > low_amenity_level }
+							amenity_level = { target = court_lodging_standards value > low_amenity_level }
 						}
 					}
 					if = {
-						limit = { court_owner = { amenity_level = { type = court_lodging_standards value >= max_amenity_level } } }
+						limit = { court_owner = { amenity_level = { target = court_lodging_standards value >= max_amenity_level } } }
 						add = 10
 					}
 					else_if = {
-						limit = { court_owner = { amenity_level = { type = court_lodging_standards value >= very_high_amenity_level } } }
+						limit = { court_owner = { amenity_level = { target = court_lodging_standards value >= very_high_amenity_level } } }
 						add = 8
 					}
 					else_if = {
-						limit = { court_owner = { amenity_level = { type = court_lodging_standards value >= high_amenity_level } } }
+						limit = { court_owner = { amenity_level = { target = court_lodging_standards value >= high_amenity_level } } }
 						add = 6
 					}
 					else_if = {
-						limit = { court_owner = { amenity_level = { type = court_lodging_standards value >= medium_amenity_level } } }
+						limit = { court_owner = { amenity_level = { target = court_lodging_standards value >= medium_amenity_level } } }
 						add = 4
 					}
+					## GH ADDITION ##
 					if = {
 						limit = { has_variable = arcana_character_counter }
 						add = {
@@ -132,6 +145,7 @@ get_artifact_quality_effect = {
 							multiply = 0.5
 						}
 					}
+					## GH END ##
 					else = {
 						add = 2
 					}
@@ -171,6 +185,37 @@ get_artifact_quality_effect = {
 								limit = { ep1_character_had_or_has_inspiration_type_trigger = { TYPE = artisan } }
 								value = artisan_inspiration_average_skill_value
 							}
+							else_if = {
+								limit = { ep1_character_had_or_has_inspiration_type_trigger = { TYPE = alchemy } }
+								value = alchemy_inspiration_average_skill_value
+							}
+							
+							else_if = { ## GH ADDITION: Glassmaking
+								limit = { ep1_character_had_or_has_inspiration_type_trigger = { TYPE = glassware } }
+								value = glassware_inspiration_average_skill_value
+								if = {
+									limit = { has_trait = gh_lifestyle_glassmith }
+									add = {
+										value = "has_trait_xp(gh_lifestyle_glassmith)"
+										if = {
+											limit = { glassware_inspiration_difficulty_easy = yes }
+											subtract = glassware_inspiration_difficulty_easy_value
+											multiply = 0.5
+											min = -10
+										}
+										else_if = {
+											limit = { glassware_inspiration_difficulty_medium = yes }
+											subtract = glassware_inspiration_difficulty_medium_value
+										}
+										else_if = {
+											limit = { glassware_inspiration_difficulty_hard = yes }
+											subtract = glassware_inspiration_difficulty_hard_value
+											multiply = 2
+											max = 0
+										}
+									}
+								}
+							}
 							multiply = {
 								value = quality_bonus_per_skill_level_value
 								add = scope:random_inspired_skill_quality_bonus # Replaces the random_quality_bonus when an artifact is created by a character so that skill matters more
@@ -185,7 +230,7 @@ get_artifact_quality_effect = {
 									ep1_character_had_or_has_inspiration_type_trigger = { TYPE = armor }
 								}
 								court_owner ?= {
-									is_landless_adventurer = yes
+									has_government = landless_adventurer_government
 									has_perk = divided_attention_perk
 								}
 							}
@@ -195,7 +240,7 @@ get_artifact_quality_effect = {
 							limit = {
 								ep1_character_had_or_has_inspiration_type_trigger = { TYPE = book }
 								court_owner ?= {
-									is_landless_adventurer = yes
+									has_government = landless_adventurer_government
 									has_perk = divided_attention_perk
 								}
 							}
@@ -223,6 +268,13 @@ get_artifact_quality_effect = {
 							}
 							add = 20
 						}
+						if = { ## GH ADDITION: Glassmaking
+							limit = {
+								ep1_character_had_or_has_inspiration_type_trigger = { TYPE = glassware }
+								culture = { has_cultural_parameter = improved_glassware_inspiration }
+							}
+							add = 10
+						}
 
 						# Bonus quality from event outcomes involving the Inspiration Owner
 						if = {
@@ -231,6 +283,14 @@ get_artifact_quality_effect = {
 								value = var:artifact_quality
 								multiply = 3
 							}
+						}
+						
+						# Bonus quality from the Mind Without Mind tenet
+						if = {
+							limit = {
+								faith = { has_doctrine_parameter = better_artifacts }
+							}
+							add = 10
 						}
 
 						# Reduction on quality for 'local artisans', who should produce lower quality artifacts
@@ -249,8 +309,7 @@ get_artifact_quality_effect = {
 					# Bonuses from Buildings
 					if = { #Smiths line
 						limit = {
-							exists = court_owner
-							court_owner = {
+							court_owner ?= {
 								any_directly_owned_province = {
 									has_building_or_higher = smiths_05
 								}
@@ -285,8 +344,7 @@ get_artifact_quality_effect = {
 					}
 					if = { #blacksmiths duchy building
 						limit = {
-							exists = court_owner
-							court_owner = {
+							court_owner ?= {
 								any_directly_owned_province = {
 									has_building_or_higher = blacksmiths_01
 								}
@@ -313,10 +371,29 @@ get_artifact_quality_effect = {
 							}
 						}
 					}
+					if = { ## GH ADDITION: Glassmaking
+						limit = {
+							court_owner ?= { any_directly_owned_province = { has_building_or_higher = gh_glassworks_01 } }
+							ep1_character_had_or_has_inspiration_type_trigger = { TYPE = glassware }
+						}
+						court_owner = {
+							every_directly_owned_province = {
+								limit = { has_building_or_higher = gh_glassworks_01 }
+								add = 4
+							}
+							every_directly_owned_province = {
+								limit = { has_building_or_higher = gh_glassworks_02 }
+								add = 8
+							}
+							every_directly_owned_province = {
+								limit = { has_building_or_higher = gh_glassworks_03 }
+								add = 12
+							}
+						}
+					}
 					if = { #caravanserai line
 						limit = {
-							exists = court_owner
-							court_owner = {
+							court_owner ?= {
 								any_directly_owned_province = {
 									has_building_or_higher = caravanserai_04
 								}
@@ -355,10 +432,41 @@ get_artifact_quality_effect = {
 							}
 						}
 					}
-					if = { #Wind Furnaces line
+					## GH ADDITION ##
+					if = { #yeiqushen high wall line
 						limit = {
 							exists = court_owner
 							court_owner = {
+								any_directly_owned_province = {
+									has_building_or_higher = 03_yeiqushen_high_wall
+								}
+							}
+						}
+						court_owner = {
+							every_directly_owned_province = {
+								limit = {
+									has_building_or_higher = 03_yeiqushen_high_wall
+								}
+								add = 20
+							}
+							every_directly_owned_province = {
+								limit = {
+									has_building_or_higher = 04_yeiqushen_high_wall
+								}
+								add = 25
+							}
+							every_directly_owned_province = {
+								limit = {
+									has_building_or_higher = 05_yeiqushen_high_wall
+								}
+								add = 30
+							}
+						}
+					}
+					## GH END ##
+					if = { #Wind Furnaces line
+						limit = {
+							court_owner ?= {
 								any_directly_owned_province = {
 									has_building_or_higher = wind_furnace_04
 								}
@@ -403,8 +511,7 @@ get_artifact_quality_effect = {
 					}
 					if = { # Universities boost Book Inspirations
 						limit = {
-							exists = court_owner
-							court_owner = {
+							court_owner ?= {
 								any_directly_owned_province = {
 									has_university_building_trigger = yes
 								}
@@ -415,8 +522,7 @@ get_artifact_quality_effect = {
 					}
 					if = { # Special Mines boost things significantly
 						limit = {
-							exists = court_owner
-							court_owner = {
+							court_owner ?= {
 								any_directly_owned_province = {
 									has_any_special_mine_trigger = yes
 								}
@@ -430,12 +536,31 @@ get_artifact_quality_effect = {
 						}
 						add = 20
 					}
-					
+					if = { ## GH ADDITION: Glassmaking
+						limit = {
+							court_owner ?= { any_directly_owned_province = { has_building_or_higher = 01_glassworks_of_ysanda } }
+							ep1_character_had_or_has_inspiration_type_trigger = { TYPE = glassware }
+						}
+						court_owner = {
+							every_directly_owned_province = {
+								limit = { has_building_or_higher = 01_glassworks_of_ysanda }
+								add = 10
+							}
+							every_directly_owned_province = {
+								limit = { has_building_or_higher = 02_glassworks_of_ysanda }
+								add = 10
+							}
+							every_directly_owned_province = {
+								limit = { has_building_or_higher = 03_glassworks_of_ysanda }
+								add = 10
+							}
+						}
+					}
+
 					# Bonus from Estates
 					if = {
 						limit = {
-							exists = court_owner
-							court_owner = {
+							court_owner ?= {
 								domicile ?= {
 									has_domicile_parameter = estate_improved_inspirations_2
 								}
@@ -445,8 +570,7 @@ get_artifact_quality_effect = {
 					}
 					else_if = {
 						limit = {
-							exists = court_owner
-							court_owner = {
+							court_owner ?= {
 								domicile ?= {
 									has_domicile_parameter = estate_improved_inspirations_1
 								}
@@ -494,17 +618,37 @@ get_artifact_quality_effect = {
 				if = {
 					limit = {
 						exists = scope:owner
-						scope:owner ?= { has_character_modifier = mpo_artifact_material_modifier }
+						scope:owner = { has_character_modifier = mpo_artifact_material_modifier }
 					}
 					add = 20
 				}
-				# Cognition Bonus
+				
+				# Encouraging Words BP4 event
 				if = {
-					limit = { 
-						scope:owner ?= { has_perk = arcana_cognition_perk4_tree2 }
-					}
+					limit = { exists = scope:encouraging_words_quality_boost }
+					add = 100
+				}
+				## GH ADDITION ##
+				if = { ## GH ADDITION: Cognition bonus
+					limit = { scope:owner ?= { has_perk = arcana_cognition_perk4_tree2 } }
 					multiply = 1.33
 				}
+				if = {
+					limit = { ep1_character_had_or_has_inspiration_type_trigger = { TYPE = glassware } }
+					if = {
+						limit = { scope:inspiration_owner = { glassware_inspiration_difficulty_far_above_check = yes } }
+						multiply = 0.4
+					}
+					else_if = {
+						limit = { scope:inspiration_owner = { glassware_inspiration_difficulty_above_check = yes } }
+						multiply = 0.7
+					}
+					else_if = {
+						limit = { scope:inspiration_owner = { glassware_inspiration_difficulty_below_check = yes } }
+						multiply = 1.2
+					}
+				}
+				## GH END ##
 
 				# Can't have negative quality
 				min = 1
@@ -572,8 +716,7 @@ get_artifact_wealth_effect = {
 						# Bonuses from Buildings
 						if = {
 							limit = {
-								exists = court_owner
-								court_owner = {
+								court_owner ?= {
 									any_directly_owned_province = {
 										has_building_or_higher = smiths_05
 									}
@@ -624,10 +767,29 @@ get_artifact_wealth_effect = {
 								}
 							}
 						}
+						if = { ## GH ADDITION: Glassmaking
+							limit = {
+								court_owner ?= { any_directly_owned_province = { has_building_or_higher = gh_glassworks_01 } }
+								ep1_character_had_or_has_inspiration_type_trigger = { TYPE = glassware }
+							}
+							court_owner = {
+								every_directly_owned_province = {
+									limit = { has_building_or_higher = gh_glassworks_01 }
+									add = 4
+								}
+								every_directly_owned_province = {
+									limit = { has_building_or_higher = gh_glassworks_02 }
+									add = 8
+								}
+								every_directly_owned_province = {
+									limit = { has_building_or_higher = gh_glassworks_03 }
+									add = 12
+								}
+							}
+						}
 						if = { # Special Mines boost things significantly
 							limit = {
-								exists = court_owner
-								court_owner = {
+								court_owner ?= {
 									any_directly_owned_province = {
 										has_any_special_mine_trigger = yes
 									}
@@ -643,8 +805,7 @@ get_artifact_wealth_effect = {
 						}
 						if = { # Universities boost Book Inspirations
 							limit = {
-								exists = court_owner
-								court_owner = {
+								court_owner ?= {
 									any_directly_owned_province = {
 										has_university_building_trigger = yes
 									}
@@ -652,6 +813,26 @@ get_artifact_wealth_effect = {
 								ep1_character_had_or_has_inspiration_type_trigger = { TYPE = book }
 							}
 							add = 20
+						}
+						if = { ## GH ADDITION: Glassmaking
+							limit = {
+								court_owner ?= { any_directly_owned_province = { has_building_or_higher = 01_glassworks_of_ysanda } }
+								ep1_character_had_or_has_inspiration_type_trigger = { TYPE = glassware }
+							}
+							court_owner = {
+								every_directly_owned_province = {
+									limit = { has_building_or_higher = 01_glassworks_of_ysanda }
+									add = 10
+								}
+								every_directly_owned_province = {
+									limit = { has_building_or_higher = 02_glassworks_of_ysanda }
+									add = 10
+								}
+								every_directly_owned_province = {
+									limit = { has_building_or_higher = 03_glassworks_of_ysanda }
+									add = 10
+								}
+							}
 						}
 					}
 				}
@@ -673,6 +854,28 @@ get_artifact_wealth_effect = {
 						}
 					}
 					add = -20
+				}
+				# Cultural tradition for piety level boosting artifacts
+				if = {
+					limit = {
+						court_owner.culture ?= {
+							has_cultural_parameter = piety_level_affect_artifact_quality
+						}
+					}
+					add = {
+						value = court_owner.piety_level
+						multiply = 5
+					}
+				}
+				# Lacquered Armor
+				if = {
+					limit = {
+						scope:inspiration_owner.inspiration ?= {
+							has_inspiration_type = armor_inspiration
+							inspiration_sponsor.culture ?= { has_cultural_parameter = higher_quality_armor_artifacts_parameter }
+						}
+					}
+					add = 20
 				}
 				# Old Ledger should not be too fancy (stewardship_wealth.1061)
 				if = {
@@ -977,7 +1180,7 @@ get_cloth_type_decorative_thread_effect = {
 			50 = { # Plain weave cotton
 				trigger = {
 					artifact_value_trigger = { VALUE = scope:wealth MIN = 0 MAX = 60 }
-					artifact_region_trigger = { CHARACTER = scope:owner REGION = material_cloth_cotton }
+					artifact_region_trigger = { CHARACTER = scope:owner REGION = material_cloth_cotton } ## GH CHANGE ##
 				}
 				save_scope_value_as = { name = $SCOPE_NAME$	value = flag:cotton }
 			}
@@ -2409,9 +2612,7 @@ add_scaled_artifact_modifier_combat_effect = {
 						add_artifact_modifier = artifact_drylands_advantage_4_modifier
 					}
 				}
-
-				#GH  ADDITIONS
-
+				## GH ADDITION ##
 				10 = { # marcher_advantage
 					trigger = {
 						scope:owner = {
@@ -2452,6 +2653,7 @@ add_scaled_artifact_modifier_combat_effect = {
 						add_artifact_modifier = artifact_antimagic_advantage_4_modifier
 					}
 				}
+				## GH END ##
 			}
 		}
 
@@ -3695,9 +3897,7 @@ add_2_scaled_artifact_modifier_combat_effect = {
 						add_artifact_modifier = artifact_drylands_advantage_4_modifier
 					}
 				}
-
-				#GH  ADDITIONS
-
+				## GH ADDITION ##
 				10 = { # marcher_advantage
 					trigger = {
 						scope:owner = {
@@ -3738,6 +3938,7 @@ add_2_scaled_artifact_modifier_combat_effect = {
 						add_artifact_modifier = artifact_antimagic_advantage_4_modifier
 					}
 				}
+				## GH END ##
 			}
 		}
 
@@ -4103,6 +4304,80 @@ add_scaled_artifact_modifier_dynasty_prestige_effect = {
 				add_artifact_modifier = artifact_monthly_prestige_add_8_modifier
 			}
 		}
+	}
+}
+
+add_scaled_artifact_modifier_merit_gain_effect = {
+	if = {
+		limit = {
+			rarity = common
+		}
+		random_list = {
+			20 = {
+				add_artifact_modifier = artifact_monthly_merit_mult_1_modifier
+			}
+			15 = {
+				add_artifact_modifier = artifact_monthly_merit_mult_2_modifier
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			rarity = masterwork
+		}
+		random_list = {
+			20 = {
+				add_artifact_modifier = artifact_monthly_merit_mult_3_modifier
+			}
+			15 = {
+				add_artifact_modifier = artifact_monthly_merit_mult_4_modifier
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			rarity = famed
+		}
+		random_list = {
+			20 = {
+				add_artifact_modifier = artifact_monthly_merit_mult_5_modifier
+			}
+			15 = {
+				add_artifact_modifier = artifact_monthly_merit_mult_6_modifier
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			rarity = illustrious
+		}
+		random_list = {
+			20 = {
+				add_artifact_modifier = artifact_monthly_merit_mult_7_modifier
+			}
+			15 = {
+				add_artifact_modifier = artifact_monthly_merit_mult_8_modifier
+			}
+		}
+	}
+}
+
+add_scaled_artifact_modifier_study_confucian_classics_scheme_phase_duration_add_effect = {
+	if = {
+		limit = { rarity = common }
+		add_artifact_modifier = artifact_study_confucian_classics_scheme_phase_duration_add_1_modifier
+	}
+	else_if = {
+		limit = { rarity = masterwork }
+		add_artifact_modifier = artifact_study_confucian_classics_scheme_phase_duration_add_2_modifier
+	}
+	else_if = {
+		limit = { rarity = famed }
+		add_artifact_modifier = artifact_study_confucian_classics_scheme_phase_duration_add_3_modifier
+	}
+	else_if = {
+		limit = { rarity = illustrious }
+		add_artifact_modifier = artifact_study_confucian_classics_scheme_phase_duration_add_4_modifier
 	}
 }
 
@@ -4525,7 +4800,7 @@ add_scaled_artifact_modifier_majesty_effect = {
 				add_artifact_modifier = artifact_glory_hound_tax_contribution_mult_4_modifier
 			}
 		}
-
+		## GH ADDITION ##
 		# magic_focused_tax_contribution_mult
 		20 = {
 			if = {
@@ -4545,7 +4820,8 @@ add_scaled_artifact_modifier_majesty_effect = {
 				add_artifact_modifier = artifact_magic_focused_tax_contribution_mult_4_modifier
 			}
 		}
-		
+		## GH END ##
+
 		# mercenary_hire_cost_mult
 		20 = {
 			trigger = {
@@ -4617,7 +4893,7 @@ add_scaled_artifact_modifier_majesty_effect = {
 				add_artifact_modifier = artifact_glory_hound_vassal_opinion_4_modifier
 			}
 		}
-		
+		## GH ADDITION ##
 		# magic_focused_opinion
 		20 = {
 			if = {
@@ -4637,6 +4913,7 @@ add_scaled_artifact_modifier_majesty_effect = {
 				add_artifact_modifier = artifact_magic_focused_vassal_opinion_4_modifier
 			}
 		}
+		## GH END ##
 
 		# vassal_tax_contribution_mult
 		20 = {
@@ -5084,7 +5361,7 @@ add_2_scaled_artifact_modifier_majesty_effect = {
 				add_artifact_modifier = artifact_glory_hound_tax_contribution_mult_4_modifier
 			}
 		}
-		
+		## GH ADDITION ##
 		# magic_focused_tax_contribution_mult
 		20 = {
 			if = {
@@ -5104,7 +5381,8 @@ add_2_scaled_artifact_modifier_majesty_effect = {
 				add_artifact_modifier = artifact_magic_focused_tax_contribution_mult_4_modifier
 			}
 		}
-		
+		## GH END ##
+
 		# mercenary_hire_cost_mult
 		20 = {
 			trigger = {
@@ -5176,7 +5454,7 @@ add_2_scaled_artifact_modifier_majesty_effect = {
 				add_artifact_modifier = artifact_glory_hound_vassal_opinion_4_modifier
 			}
 		}
-		
+		## GH ADDITION ##
 		# magic_focused_opinion
 		20 = {
 			if = {
@@ -5196,6 +5474,7 @@ add_2_scaled_artifact_modifier_majesty_effect = {
 				add_artifact_modifier = artifact_magic_focused_vassal_opinion_4_modifier
 			}
 		}
+		## GH END ##
 
 		# vassal_tax_contribution_mult
 		20 = {
@@ -5290,6 +5569,11 @@ add_scaled_artifact_modifier_rulership_effect = {
 
 		# Powerful Vassal Opinion
 		20 = {
+			trigger = {
+				scope:inspiration_owner ?= { 
+					NOT = { government_has_flag = no_powerful_vassals }
+				}
+			}
 			modifier = {
 				exists = scope:inspiration_owner
 				scope:inspiration_owner = { has_variable = chosen_vassals_mod }
@@ -8567,6 +8851,33 @@ add_scaled_artifact_modifier_scholarship_effect = {
 	}
 }
 
+add_scaled_artifact_kris_benefit_effect = {
+	if = {
+		limit = {
+			rarity = common
+		}
+		add_artifact_modifier = artifact_kris_1_modifier
+	}
+	else_if = {
+		limit = {
+			rarity = masterwork
+		}
+		add_artifact_modifier = artifact_kris_2_modifier
+	}
+	else_if = {
+		limit = {
+			rarity = famed
+		}
+		add_artifact_modifier = artifact_kris_3_modifier
+	}
+	else_if = {
+		limit = {
+			rarity = illustrious
+		}
+		add_artifact_modifier = artifact_kris_4_modifier
+	}
+}
+
 add_scaled_artifact_modifier_learning_lifestyle_xp_effect = {
 	if = {
 		limit = { rarity = common }
@@ -8724,8 +9035,8 @@ add_scaled_artifact_modifier_stress_gain_effect = {
 add_scaled_artifact_modifier_terrain_advantage_effect = {
 	#Plains
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = plains } 
+		limit = {
+			artifact_owner.location ?= { terrain = plains }
 		}
 		if = {
 			limit = { rarity = common }
@@ -8755,8 +9066,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Farmlands
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = farmlands } 
+		limit = {
+			artifact_owner.location ?= { terrain = farmlands }
 		}
 		if = {
 			limit = { rarity = common }
@@ -8786,8 +9097,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Hills
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = hills } 
+		limit = {
+			artifact_owner.location ?= { terrain = hills }
 		}
 		if = {
 			limit = { rarity = common }
@@ -8817,8 +9128,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Mountains
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = mountains } 
+		limit = {
+			artifact_owner.location ?= { terrain = mountains }
 		}
 		if = {
 			limit = { rarity = common }
@@ -8848,8 +9159,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Desert
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = desert } 
+		limit = {
+			artifact_owner.location ?= { terrain = desert }
 		}
 		if = {
 			limit = { rarity = common }
@@ -8879,8 +9190,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Desert Mountains
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = desert_mountains } 
+		limit = {
+			artifact_owner.location ?= { terrain = desert_mountains }
 		}
 		if = {
 			limit = { rarity = common }
@@ -8910,8 +9221,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Oasis
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = oasis } 
+		limit = {
+			artifact_owner.location ?= { terrain = oasis }
 		}
 		if = {
 			limit = { rarity = common }
@@ -8941,8 +9252,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Jungle
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = jungle } 
+		limit = {
+			artifact_owner.location ?= { terrain = jungle }
 		}
 		if = {
 			limit = { rarity = common }
@@ -8972,8 +9283,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Forest
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = forest } 
+		limit = {
+			artifact_owner.location ?= { terrain = forest }
 		}
 		if = {
 			limit = { rarity = common }
@@ -9003,8 +9314,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Taiga
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = taiga } 
+		limit = {
+			artifact_owner.location ?= { terrain = taiga }
 		}
 		if = {
 			limit = { rarity = common }
@@ -9034,8 +9345,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Wetlands
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = wetlands } 
+		limit = {
+			artifact_owner.location ?= { terrain = wetlands }
 		}
 		if = {
 			limit = { rarity = common }
@@ -9065,8 +9376,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Steppe
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = steppe } 
+		limit = {
+			artifact_owner.location ?= { terrain = steppe }
 		}
 		if = {
 			limit = { rarity = common }
@@ -9096,8 +9407,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Floodplains
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = floodplains } 
+		limit = {
+			artifact_owner.location ?= { terrain = floodplains }
 		}
 		if = {
 			limit = { rarity = common }
@@ -9127,8 +9438,8 @@ add_scaled_artifact_modifier_terrain_advantage_effect = {
 	}
 	#Drylands
 	if = {
-		limit = { 
-			artifact_owner.location ?= { terrain = drylands } 
+		limit = {
+			artifact_owner.location ?= { terrain = drylands }
 		}
 		if = {
 			limit = { rarity = common }
@@ -9224,8 +9535,8 @@ add_scaled_artifact_modifier_scheme_resistance_effect = {
 	if = {
 		limit = { rarity = common }
 		random_list = {
-			0 = { 
-				#No modifier 
+			0 = {
+				#No modifier
 			}
 			5 = { add_artifact_modifier = artifact_scheme_resistance_add_1_modifier }
 		}
@@ -9783,6 +10094,35 @@ create_artifact_weapon_effect = {
 			}
 		}
 		else_if = {
+			limit = {
+				scope:weapon_type = flag:artifact_weapon_type_dagger
+				scope:smith ?= { has_variable = inspiration_for_kris_dagger }
+			}
+			create_artifact = {
+				name = artifact_dagger_name
+				creator = scope:smith
+				description = placeholder # Will be re-generated once decorations are added in the post-creation effects.
+				visuals = dagger_kris
+				type = dagger
+				modifier = artifact_prowess_1_modifier
+				wealth = scope:wealth
+				quality = scope:quality
+				save_scope_as = newly_created_artifact
+			}
+			scope:newly_created_artifact = {
+				get_dagger_decoration_effect = yes
+				get_artifact_feature_references_effect = yes
+				set_artifact_name = artifact_kris_name
+				set_artifact_description = artifact_kris_description
+				add_scaled_artifact_kris_benefit_effect = yes
+				set_variable = {
+					name = is_kris
+					value = yes
+				}
+			}
+			scope:smith = { remove_variable = inspiration_for_kris_dagger }
+		}
+		else_if = {
 			limit = { scope:weapon_type = flag:artifact_weapon_type_dagger }
 			if = {
 				limit = { exists = scope:adventurer }
@@ -9896,6 +10236,7 @@ create_artifact_weapon_effect = {
 			}
 			else = {
 				random_list = {
+					#GH REMOVED: Vanilla historical sword
 					1 = {
 						trigger = { sword_could_be_longsword_trigger = yes }
 						create_artifact = {
@@ -10026,7 +10367,7 @@ create_artifact_weapon_effect = {
 				value = scope:wealth
 			}
 		}
-
+		
 		gh_apply_enchantment_effect = yes ## GH ADDITION: Enchantments
 	}
 }
@@ -10603,6 +10944,7 @@ create_artifact_regalia_effect = {
 			description = artifact_regalia_description
 			visuals = regalia
 			type = regalia
+			template = regalia_template
 			modifier = artifact_placeholder_modifier
 			wealth = scope:wealth
 			quality = scope:quality
@@ -10622,6 +10964,7 @@ create_artifact_regalia_effect = {
 			creator = scope:goldsmith
 			visuals = regalia
 			type = regalia
+			template = regalia_template
 			modifier = artifact_placeholder_modifier
 			wealth = scope:wealth
 			quality = scope:quality
@@ -10669,6 +11012,231 @@ create_artifact_regalia_effect = {
 			}
 
 			add_scaled_artifact_modifier_attractiveness_effect = yes
+
+			set_variable = {
+				name = quality
+				value = scope:quality
+			}
+			set_variable = {
+				name = wealth
+				value = scope:wealth
+			}
+		}
+	}
+}
+
+create_artifact_imperial_seal_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	$SMITH$ = { save_scope_as = scribe }
+	# Get artifact quality and wealth
+	get_artifact_quality_effect = yes
+	get_artifact_wealth_effect = yes
+
+	# Create the artifact
+	if = {
+		limit = { scope:owner = { has_royal_court = yes } }
+		if = {
+			limit = {
+				exists = scope:adventurer
+			}
+			create_artifact = {
+				name = artifact_seal_of_investiture
+				description = seal_of_investiture.desc
+				creator = scope:scribe
+				visuals = imperial_seal
+				type = seal_of_investiture_court
+				wealth = scope:wealth
+				quality = scope:quality
+				modifier = artifact_placeholder_modifier
+				save_scope_as = newly_created_artifact
+				history = {
+					location = scope:location
+					actor = scope:adventurer
+					recipient = root
+					type = given
+				}
+			}
+		}
+		else = {
+			create_artifact = {
+				name = artifact_seal_of_investiture
+				description = seal_of_investiture.desc
+				creator = scope:scribe
+				visuals = imperial_seal
+				type = seal_of_investiture_court
+				wealth = scope:wealth
+				quality = scope:quality
+				modifier = artifact_placeholder_modifier
+				save_scope_as = newly_created_artifact
+			}
+		}
+	}
+	else = {
+		if = {
+			limit = {
+				exists = scope:adventurer
+			}
+			create_artifact = {
+				name = artifact_seal_of_investiture
+				description = seal_of_investiture.desc
+				creator = scope:scribe
+				visuals = imperial_seal
+				type = seal_of_investiture
+				wealth = scope:wealth
+				quality = scope:quality
+				modifier = artifact_placeholder_modifier
+				save_scope_as = newly_created_artifact
+				history = {
+					location = scope:location
+					actor = scope:adventurer
+					recipient = root
+					type = given
+				}
+			}
+		}
+		else = {
+			create_artifact = {
+				name = artifact_seal_of_investiture
+				description = seal_of_investiture.desc
+				creator = scope:scribe
+				visuals = imperial_seal
+				type = seal_of_investiture
+				wealth = scope:wealth
+				quality = scope:quality
+				modifier = artifact_placeholder_modifier
+				save_scope_as = newly_created_artifact
+			}
+		}
+	}
+
+	hidden_effect_new_object = {
+		scope:newly_created_artifact = {
+			# Prestige modifier is scaled based on the Wealth of the artifact (opulence).
+			add_scaled_artifact_modifier_prestige_effect = yes
+
+			# Add a rulership-related modifier based on the Quality of the artifact.
+			if = {
+				limit = { # Chance to add a second rulership-related modifier for high rarity artifacts.
+					OR = {
+						rarity = famed
+						rarity = illustrious
+					}
+				}
+				random_list = {
+					50 = {
+						add_2_scaled_artifact_modifier_rulership_effect = yes
+					}
+					50 = {
+						add_scaled_artifact_modifier_rulership_effect = yes
+					}
+				}
+			}
+			else = {
+				add_scaled_artifact_modifier_rulership_effect = yes
+			}
+
+			# Add a majesty-related modifier based on the Quality of the artifact.
+			if = {
+				limit = { # Chance to add a second majesty-related modifier for high rarity artifacts.
+					OR = {
+						rarity = famed
+						rarity = illustrious
+					}
+				}
+				random_list = {
+					50 = {
+						add_2_scaled_artifact_modifier_majesty_effect = yes
+					}
+					50 = {
+						add_scaled_artifact_modifier_majesty_effect = yes
+					}
+				}
+			}
+			else = {
+				add_scaled_artifact_modifier_majesty_effect = yes
+			}
+
+			set_variable = {
+				name = quality
+				value = scope:quality
+			}
+			set_variable = {
+				name = wealth
+				value = scope:wealth
+			}
+			save_scope_as = seal_of_investiture_scope
+		}
+	}
+}
+
+create_artifact_dynastic_imperial_seal_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	$SMITH$ = { save_scope_as = seal_maker }
+	# Get artifact quality and wealth
+	get_artifact_wealth_effect = yes
+	get_artifact_quality_effect = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = dynastic_imperial_seal.name
+		description = dynastic_imperial_seal.desc
+		creator = scope:seal_maker
+		visuals = special_seal
+		type = seal_of_investiture_court
+		wealth = scope:wealth
+		quality = scope:quality
+		modifier = artifact_placeholder_modifier
+		save_scope_as = newly_created_artifact
+	}
+
+	hidden_effect_new_object = {
+		scope:newly_created_artifact = {
+			# Prestige modifier is scaled based on the Wealth of the artifact (opulence).
+			add_scaled_artifact_modifier_prestige_effect = yes
+
+			# Add a rulership-related modifier based on the Quality of the artifact.
+			if = {
+				limit = { # Chance to add a second rulership-related modifier for high rarity artifacts.
+					OR = {
+						rarity = famed
+						rarity = illustrious
+					}
+				}
+				random_list = {
+					50 = {
+						add_2_scaled_artifact_modifier_rulership_effect = yes
+					}
+					50 = {
+						add_scaled_artifact_modifier_rulership_effect = yes
+					}
+				}
+			}
+			else = {
+				add_scaled_artifact_modifier_rulership_effect = yes
+			}
+
+			# Add a majesty-related modifier based on the Quality of the artifact.
+			if = {
+				limit = { # Chance to add a second majesty-related modifier for high rarity artifacts.
+					OR = {
+						rarity = famed
+						rarity = illustrious
+					}
+				}
+				random_list = {
+					50 = {
+						add_2_scaled_artifact_modifier_majesty_effect = yes
+					}
+					50 = {
+						add_scaled_artifact_modifier_majesty_effect = yes
+					}
+				}
+			}
+			else = {
+				add_scaled_artifact_modifier_majesty_effect = yes
+			}
 
 			set_variable = {
 				name = quality
@@ -10802,6 +11370,7 @@ create_artifact_crown_effect = {
 			create_artifact = {
 				name = artifact_crown_name
 				description = placeholder # Will be updated in the post-creation effects
+				template = crown_wearable_template
 				visuals = crown
 				type = helmet
 				modifier = artifact_placeholder_modifier
@@ -10821,6 +11390,7 @@ create_artifact_crown_effect = {
 				name = artifact_crown_name
 				creator = scope:goldsmith
 				description = placeholder # Will be updated in the post-creation effects
+				template = crown_wearable_template
 				visuals = crown
 				type = helmet
 				modifier = artifact_placeholder_modifier
@@ -10938,10 +11508,10 @@ create_artifact_brooch_effect = {
 			}
 		}
 		else_if = {
-			limit = { 
+			limit = {
 				exists = scope:goldsmith
-				exists = scope:owner 
-				scope:goldsmith = scope:owner 
+				exists = scope:owner
+				scope:goldsmith = scope:owner
 			}
 			create_artifact = {
 				name = artifact_brooch_name
@@ -11215,10 +11785,10 @@ create_artifact_necklace_effect = {
 			}
 		}
 		else_if = {
-			limit = { 
+			limit = {
 				exists = scope:goldsmith
-				exists = scope:owner 
-				scope:goldsmith = scope:owner 
+				exists = scope:owner
+				scope:goldsmith = scope:owner
 			}
 			create_artifact = {
 				name = artifact_necklace_name
@@ -11450,7 +12020,7 @@ get_pressed_flower_species_effect = {
 				}
 			}
 			10 = {
-				# Aironoi 
+				# Aironoi
 				modifier = {
 					factor = 0
 					$LOCATION$ = {
@@ -11465,7 +12035,7 @@ get_pressed_flower_species_effect = {
 				}
 			}
 			10 = {
-				# Imperial Sea 
+				# Imperial Sea
 				modifier = {
 					factor = 0
 					$LOCATION$ = {
@@ -11498,7 +12068,7 @@ get_pressed_flower_species_effect = {
 				}
 			}
 			10 = {
-				# Damota, the Crater, Cyrat and South Kashirya 
+				# Damota, the Crater, Cyrat and South Kashirya
 				modifier = {
 					factor = 0
 					$LOCATION$ = {
@@ -11517,7 +12087,7 @@ get_pressed_flower_species_effect = {
 				}
 			}
 			10 = {
-				# Damota, the Crater, Cyrat and South Kashirya 
+				# Damota, the Crater, Cyrat and South Kashirya
 				modifier = {
 					factor = 0
 					$LOCATION$ = {
@@ -11665,11 +12235,11 @@ get_pressed_flower_species_effect = {
 				# Shattered Coast and Aironoi
 				modifier = {
 					factor = 0
-					$LOCATION$ = { 
-						NOR = { 
+					$LOCATION$ = {
+						NOR = {
 							geographical_region = world_greater_aversaria
 							geographical_region = world_ga_aironoi
-						} 
+						}
 					}
 				}
 				save_scope_value_as = {
@@ -11681,11 +12251,11 @@ get_pressed_flower_species_effect = {
 				# Shattered Coast and Aironoi
 				modifier = {
 					factor = 0
-					$LOCATION$ = { 
-						NOR = { 
+					$LOCATION$ = {
+						NOR = {
 							geographical_region = world_greater_aversaria
 							geographical_region = world_ga_aironoi
-						} 
+						}
 					}
 				}
 				save_scope_value_as = {
@@ -11697,11 +12267,11 @@ get_pressed_flower_species_effect = {
 				# Shattered Coast and Aironoi
 				modifier = {
 					factor = 0
-					$LOCATION$ = { 
-						NOR = { 
+					$LOCATION$ = {
+						NOR = {
 							geographical_region = world_greater_aversaria
 							geographical_region = world_ga_aironoi
-						} 
+						}
 					}
 				}
 				save_scope_value_as = {
@@ -11713,11 +12283,11 @@ get_pressed_flower_species_effect = {
 				# Imperial Sea
 				modifier = {
 					factor = 0
-					$LOCATION$ = { 
-						NOR = { 
+					$LOCATION$ = {
+						NOR = {
 							geographical_region = world_ga_aversarian_homelands
 							geographical_region = world_eastern_sarradon
-						} 
+						}
 					}
 				}
 				save_scope_value_as = {
@@ -11729,11 +12299,11 @@ get_pressed_flower_species_effect = {
 				# Imperial Sea
 				modifier = {
 					factor = 0
-					$LOCATION$ = { 
-						NOR = { 
+					$LOCATION$ = {
+						NOR = {
 							geographical_region = world_ga_aversarian_homelands
 							geographical_region = world_eastern_sarradon
-						} 
+						}
 					}
 				}
 				save_scope_value_as = {
@@ -11902,7 +12472,7 @@ generate_trinket_effect = {
 		### Commemorative Coin
 		45 = {
 			#TRIGGERS
-			trigger = { 
+			trigger = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
@@ -12095,7 +12665,7 @@ generate_trinket_effect = {
 		### Sacrificial Dagger
 		10 = {
 			#TRIGGERS
-			trigger = { 
+			trigger = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
@@ -12186,7 +12756,7 @@ generate_trinket_effect = {
 				max_durability = 30
 				history = {
 					type = created
-					date = 1230.1.1
+					date = 6230.1.1
 					actor = character:practitioner_aversarinas_aagiokrata_5
 					recipient = character:practitioner_aversarinas_aagiokrata_5
 					location = province:7892 # Mayik
@@ -12388,6 +12958,7 @@ generate_trinket_effect = {
 				description = jira_stick.desc
 				type = miscellaneous
 				visuals = regalia
+				template = regalia_template
 				modifier = artifact_monthly_learning_lifestyle_xp_1_modifier
 				modifier = artifact_learning_1_modifier
 				modifier = artifact_prowess_2_modifier
@@ -12777,8 +13348,6 @@ generate_trinket_effect = {
 					location = scope:trinket_giver.location
 				}
 			}
-			##TODO_CD_FGK Taken in battle
-			##TODO_CD_FGK Won in duel
 		}
 	}
 	#Clean up the grab all flag, in case it was used
@@ -12846,15 +13415,7 @@ set_bow_artifact_type_effect = {
 					}
 					25 = {
 						trigger = {
-							culture = {
-								OR = {
-									has_cultural_tradition = tradition_horse_lords
-									#has_cultural_pillar = heritage_byzantine
-									#has_cultural_pillar = heritage_caucasian
-									has_cultural_pillar = heritage_kikarsag
-									has_cultural_pillar = heritage_sarminian
-								}
-							}
+							culture = { is_composite_bow_culture_trigger = yes }
 						}
 						set_variable = {
 							name = artifact_bow_type
@@ -13176,6 +13737,7 @@ create_artifact_bow_effect = {
 		scope:newly_created_artifact = {
 			# Prowess from weapon rarity
 			add_scaled_artifact_modifier_prowess_effect = yes
+			add_scaled_artifact_modifier_trait_track_hunter_xp_gain_mult_effect = yes
 			if = {
 				limit = {
 					OR = {
@@ -13316,10 +13878,10 @@ create_artifact_ring_effect = {
 			}
 		}
 		else_if = {
-			limit = { 
+			limit = {
 				exists = scope:goldsmith
-				exists = scope:owner 
-				scope:goldsmith = scope:owner 
+				exists = scope:owner
+				scope:goldsmith = scope:owner
 			}
 			create_artifact = {
 				name = artifact_ring_name
@@ -13952,10 +14514,10 @@ generate_health_trinket_effect = {
 		#Tweak the trinket modifiers, depending on rarity
 		scope:newly_created_health_artifact = {
 			if = { #Famed
-				limit = { 
+				limit = {
 					OR = {
 						rarity = illustrious #Bit of a cop-out, but I only need up to Famed atm
-						rarity = famed 
+						rarity = famed
 					}
 				}
 				clear_artifact_modifiers = yes
@@ -13966,7 +14528,7 @@ generate_health_trinket_effect = {
 						add_artifact_modifier = artifact_epidemic_resistance_7_modifier
 						add_artifact_modifier = artifact_negate_health_penalty_add_2_modifier
 					}
-					health_jewel = { 
+					health_jewel = {
 						random_list = {
 							75 = {
 								set_artifact_name = lapidary_sapphire
@@ -13984,13 +14546,13 @@ generate_health_trinket_effect = {
 						add_artifact_modifier = artifact_negate_health_penalty_add_3_modifier
 						add_artifact_modifier = artifact_fertility_gain_2_modifier
 					}
-					health_pouch = { 
+					health_pouch = {
 						set_artifact_name = pomander
 						set_artifact_description = pomander.desc
 						add_artifact_modifier = artifact_health_gain_4_modifier
 						add_artifact_modifier = artifact_epidemic_resistance_5_modifier
 					}
-					health_horn = { 
+					health_horn = {
 						add_artifact_modifier = artifact_fertility_gain_4_modifier
 						add_artifact_modifier = artifact_health_gain_2_modifier
 					}
@@ -14006,7 +14568,7 @@ generate_health_trinket_effect = {
 						add_artifact_modifier = artifact_epidemic_resistance_5_modifier
 						add_artifact_modifier = artifact_negate_health_penalty_add_1_modifier
 					}
-					health_jewel = { 
+					health_jewel = {
 						random_list = {
 							50 = {
 								set_artifact_name = lapidary_jasper
@@ -14020,18 +14582,18 @@ generate_health_trinket_effect = {
 						add_artifact_modifier = artifact_negate_health_penalty_add_2_modifier
 						add_artifact_modifier = artifact_fertility_gain_1_modifier
 					}
-					health_pouch = { 
+					health_pouch = {
 						add_artifact_modifier = artifact_health_gain_3_modifier
 						add_artifact_modifier = artifact_epidemic_resistance_3_modifier
 					}
-					health_horn = { 
+					health_horn = {
 						add_artifact_modifier = artifact_fertility_gain_3_modifier
 						add_artifact_modifier = artifact_health_gain_1_modifier
 					}
 				}
 			}
 			#Mix up the gems a bit
-			else_if = { 
+			else_if = {
 				limit = {
 					rarity = common
 					has_variable = health_jewel
@@ -14043,7 +14605,7 @@ generate_health_trinket_effect = {
 					}
 					50 = {
 						set_artifact_name = lapidary_tigerseye
-						set_artifact_description = lapidary_tigerseye.desc	
+						set_artifact_description = lapidary_tigerseye.desc
 					}
 					50 = {
 						#Keep Tourmaline
@@ -14057,7 +14619,7 @@ generate_health_trinket_effect = {
 generate_historical_artifact_based_on_location_effect = {
 	random_list = { # GH URGENT: Fill this with historical artifacts, make sure to lement the number of active so theyre unique
 		2 = { #Narwhal Horn
-			trigger = { 
+			trigger = {
 				$LOCATION$ ?= { geographical_region = kalathipsomi_biozone } #GH_URGENT: Update this effect immediately!
 			}
 			create_artifact_wall_narwhal_horn_effect = {
@@ -14088,7 +14650,7 @@ select_random_saint_effect = {
 				name = saint
 				value = flag:maurice
 				days = 5
-			} 
+			}
 		}
 	}
 	#fallback
@@ -14099,5 +14661,33 @@ select_random_saint_effect = {
 			value = flag:fallback
 			days = 5
 		}
+	}
+}
+
+add_scaled_artifact_modifier_trait_track_hunter_xp_gain_mult_effect = {
+	if = {
+		limit = { rarity = common }
+		random_list = {
+			20 = { add_artifact_modifier = artifact_trait_track_hunter_xp_gain_mult_1_modifier }
+			5 = { add_artifact_modifier = artifact_trait_track_hunter_xp_gain_mult_2_modifier }
+		}
+	}
+	else_if = {
+		limit = { rarity = masterwork }
+		random_list = {
+			20 = { add_artifact_modifier = artifact_trait_track_hunter_xp_gain_mult_2_modifier }
+			5 = { add_artifact_modifier = artifact_trait_track_hunter_xp_gain_mult_3_modifier }
+		}
+	}
+	else_if = {
+		limit = { rarity = famed }
+		random_list = {
+			20 = { add_artifact_modifier = artifact_trait_track_hunter_xp_gain_mult_3_modifier }
+			5 = { add_artifact_modifier = artifact_trait_track_hunter_xp_gain_mult_4_modifier }
+		}
+	}
+	else_if = {
+		limit = { rarity = illustrious }
+		add_artifact_modifier = artifact_trait_track_hunter_xp_gain_mult_4_modifier
 	}
 }

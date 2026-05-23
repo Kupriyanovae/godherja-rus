@@ -16,18 +16,42 @@
 					gold >= hunt_activity_base_cost
 					ai_has_warlike_personality = yes
 				}
+				AND = {
+					house ?= { has_house_aspiration_parameter = hunts_costs_treasury }
+					short_term_treasury >= hunt_activity_base_cost
+				}
 				government_has_flag = government_is_nomadic
+			}
+			trigger_if = { # Throttle Counts
+				limit = {
+					highest_held_title_tier = tier_county
+					NOR = {
+						has_government = japan_administrative_government
+						has_government = japan_feudal_government
+					}
+				}
+				ai_boldness >= 100
 			}
 		}
 		is_ruin = no # GH ADDITION: Wastelands shouldnt hunt
+		#Every other activity must be blocked until an uncrowned AI crowns themselves
+		trigger_if = {
+			limit = {
+				is_ai = yes
+			}
+			NOT = {
+				has_realm_law = uncrowned
+			}
+		}
 	}
 
 	can_start_showing_failures_only = {
+		NOT = { is_activity_type_on_cooldown = activity_hunt }
 		is_available_adult = yes
 		can_hunt_trigger = yes
 		trigger_if = {
 			limit = {
-				is_landless_adventurer = yes
+				has_government = landless_adventurer_government
 			}
 			custom_tooltip = {
 				text = adventurer_3_courtiers
@@ -52,6 +76,9 @@
 			is_imprisoned = no
 			is_playable_character = yes
 			NOT = { is_incapable = yes }
+			top_liege = {
+				NOT = { has_variable = banned_falconry_hunts }
+			}
 		}
 		NOT = { has_variable = hunt_invalidated }
 		trigger_if = {
@@ -77,8 +104,8 @@
 					is_ai = no
 					is_alive = yes
 					NOR = {
-						this ?= scope:invalidated_culprit
-						this = scope:activity.activity_host
+						scope:invalidated_culprit ?= this
+						scope:activity.activity_host = this
 					}
 				}
 				add_to_list = attendees
@@ -144,7 +171,7 @@
 				}
 				every_in_list = {
 					list = attendees
-					limit = { NOT = { this = scope:host } }
+					limit = { this != scope:host }
 					trigger_event = activity_system.0320
 				}
 			}
@@ -160,7 +187,7 @@
 				}
 				every_in_list = {
 					list = attendees
-					limit = { NOT = { this = scope:host } }
+					limit = { this != scope:host }
 					trigger_event = activity_system.0331
 				}
 			}
@@ -185,6 +212,26 @@
 					trigger_event = hunt.0080
 				}
 			}
+			else_if = {
+				limit = {
+					has_activity_option = { category = special_type option = hunt_type_falconry }
+					scope:host.top_liege = {
+						NOT = { has_variable = banned_falconry_hunts }
+					}
+				}
+				every_in_list = {
+					list = attendees
+					limit = { this != scope:host }
+					trigger_event = tgp_hunt.0003
+				}
+			}
+			else_if = {
+				limit = { scope:host = { is_alive = no } }
+				every_in_list = {
+					list = attendees
+					trigger_event = hunt.0087
+				}
+			}
 
 			hunt_remove_variables_effect = yes
 		}
@@ -194,49 +241,83 @@
 
 	cost = {
 		herd = {
-			value = 0
 			if = {
 				limit = {
-					government_has_flag = government_is_nomadic
+					OR = {
+						NOT = { government_has_flag = government_is_nomadic }
+						has_character_flag = free_hunt
+						AND = {
+							has_character_flag = free_falconry
+							involved_activity = { has_activity_option = { category = special_type option = hunt_type_falconry } }
+						}
+					}
 				}
+				value = 0
+			}
+			else = {
 				add = {
 					value = domicile.minor_herd_value
 					min = 50
 					desc = hunt_base_cost
 				}
-			}
-			if = {
-				limit = {
-					any_character_situation = {
-						any_situation_sub_region = {
-							has_sub_region_phase_parameter = the_great_steppe_cheaper_hunts
-							any_situation_sub_region_participant_group = {
-								participant_group_type = nomad_rulers_capital
-								participant_group_has_character = root
+				if = {
+					limit = {
+						any_character_situation = {
+							any_situation_sub_region = {
+								has_sub_region_phase_parameter = the_great_steppe_cheaper_hunts
+								any_situation_sub_region_participant_group = {
+									participant_group_type = nomad_rulers_capital
+									participant_group_has_character = root
+								}
 							}
 						}
+
 					}
-					
+					multiply = {
+						value = 0.5
+						desc = steppe_season_hunt_discount_desc
+					}
 				}
-				multiply = {
-					value = 0.5
-					desc = steppe_season_hunt_discount_desc
+				if = {
+					limit = {
+						confederation ?= { has_cohesion_level_parameter = any_member_activity_cost_reduced }
+					}
+					multiply = {
+						value = 0.9
+						desc = CB_COHESION_PARAMETER_DISCOUNT
+					}
 				}
 			}
 			if = {
 				limit = {
-					has_character_flag = free_hunt
+					var:tgp_ceremonial_liege_events_0020_discount ?= flag:hunt
 				}
-				multiply = 0
+				multiply = {
+					value = 0.85
+					desc = tgp_ceremonial_liege_events_0020_discount_desc
+				}
 			}
 		}
 		gold = {
 			if = {
 				limit = {
-					NOT = {
+					OR = {
 						government_has_flag = government_is_nomadic
+						has_character_flag = free_hunt
+						government_has_flag = government_is_mandala
+						AND = {
+							house ?= { has_house_aspiration_parameter = hunts_costs_treasury }
+							has_treasury = yes
+						}
+						AND = {
+							has_character_flag = free_falconry
+							involved_activity = { has_activity_option = { category = special_type option = hunt_type_falconry } }
+						}
 					}
 				}
+				value = 0
+			}
+			else = {
 				add = {
 					add = {
 						value = hunt_activity_base_cost #Base level
@@ -295,11 +376,232 @@
 							desc = mpo_bountiful_hunting_modifier
 						}
 					}
+					#court.8140
 					if = {
 						limit = {
-							has_character_flag = free_hunt
+							has_character_flag = court_event_discount_hunt
 						}
-						multiply = 0
+						multiply = {
+							value = 0.5
+							desc = court_event_discount_desc
+						}
+					}
+					if = {
+						limit = {
+							government_has_flag = government_is_japan_feudal
+						}
+						multiply = {
+							value = 0.75
+							desc = japan_feudal_government
+						}
+					}
+					if = {
+						limit = {
+							confederation ?= { has_cohesion_level_parameter = any_member_activity_cost_reduced }
+						}
+						multiply = {
+							value = 0.9
+							desc = CB_COHESION_PARAMETER_DISCOUNT
+						}
+					}
+					if = {
+						limit = {
+							var:tgp_ceremonial_liege_events_0020_discount ?= flag:hunt
+						}
+						multiply = {
+							value = 0.85
+							desc = tgp_ceremonial_liege_events_0020_discount_desc
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_title = title:e_minister_of_revenue
+				}
+				multiply = 0.85
+			}
+		}
+		treasury = { # Make sure this matches the gold cost above
+			if = {
+				limit = {
+					house ?= { has_house_aspiration_parameter = hunts_costs_treasury }
+					has_treasury = yes
+				}
+				add = {
+					add = {
+						value = hunt_activity_base_cost #Base level
+						desc = hunt_base_cost
+					}
+					add = {
+						value = hunt_activity_base_cost
+						multiply = activity_cost_scale_by_era
+						subtract = hunt_activity_base_cost
+						desc = activity_cost_scale_by_era_desc
+					}
+					if = {
+						limit = {
+							domicile ?= { has_domicile_parameter = estate_cheaper_hunt_cost }
+						}
+						subtract = {
+							value = 0
+							add = {
+								value = hunt_activity_base_cost
+								add = {
+									value = hunt_activity_base_cost
+									multiply = activity_cost_scale_by_era
+									subtract = hunt_activity_base_cost
+								}
+							}
+							multiply = estate_cheaper_hunt_cost_value
+							desc = estate_cheaper_hunt_cost_desc
+						}
+					}
+					if = {
+						limit = {
+							dynasty ?= {
+								has_dynasty_perk = law_legacy_1
+							}
+						}
+						subtract = {
+							value = 0
+							add = {
+								value = hunt_activity_base_cost
+								add = {
+									value = hunt_activity_base_cost
+									multiply = activity_cost_scale_by_era
+									subtract = hunt_activity_base_cost
+								}
+							}
+							multiply = law_legacy_cost_reduction_mult
+							desc = law_legacy_1_name
+						}
+					}
+					if = {
+						limit = {
+							has_character_modifier = mpo_bountiful_hunting_modifier
+						}
+						multiply = {
+							value = 0.8
+							desc = mpo_bountiful_hunting_modifier
+							
+							desc = mpo_bountiful_hunting_modifier
+						}
+					}
+					#court.8140
+					if = {
+						limit = {
+							has_character_flag = court_event_discount_hunt
+						}
+						multiply = {
+							value = 0.5
+							desc = court_event_discount_desc
+						}
+					}
+					if = {
+						limit = {
+							government_has_flag = government_is_japan_feudal
+						}
+						multiply = {
+							value = 0.75
+							desc = japan_feudal_government
+						}
+					}
+					if = {
+						limit = {
+							confederation ?= { has_cohesion_level_parameter = any_member_activity_cost_reduced }
+						}
+						multiply = {
+							value = 0.9
+							desc = CB_COHESION_PARAMETER_DISCOUNT
+						}
+					}
+					if = {
+						limit = {
+							var:tgp_ceremonial_liege_events_0020_discount ?= flag:hunt
+						}
+						multiply = {
+							value = 0.85
+							desc = tgp_ceremonial_liege_events_0020_discount_desc
+						}
+					}
+				}
+			}
+			else = {
+				value = 0
+			}
+			if = {
+				limit = {
+					has_title = title:e_minister_of_revenue
+				}
+				multiply = 0.85
+			}
+		}
+		piety = {
+			if = {
+				limit = {
+					NOT = { government_has_flag = government_is_mandala }
+				}
+				value = 0
+			}
+			else = {
+				add = {
+					add = {
+						value = hunt_activity_base_cost #Base level
+						desc = hunt_base_cost
+					}
+					add = {
+						value = hunt_activity_base_cost
+						multiply = activity_cost_scale_by_era
+						subtract = hunt_activity_base_cost
+						desc = activity_cost_scale_by_era_desc
+					}
+					if = {
+						limit = {
+							domicile ?= { has_domicile_parameter = estate_cheaper_hunt_cost }
+						}
+						subtract = {
+							value = 0
+							add = {
+								value = hunt_activity_base_cost
+								add = {
+									value = hunt_activity_base_cost
+									multiply = activity_cost_scale_by_era
+									subtract = hunt_activity_base_cost
+								}
+							}
+							multiply = estate_cheaper_hunt_cost_value
+							desc = estate_cheaper_hunt_cost_desc
+						}
+					}
+					if = {
+						limit = {
+							dynasty ?= {
+								has_dynasty_perk = law_legacy_1
+							}
+						}
+						subtract = {
+							value = 0
+							add = {
+								value = hunt_activity_base_cost
+								add = {
+									value = hunt_activity_base_cost
+									multiply = activity_cost_scale_by_era
+									subtract = hunt_activity_base_cost
+								}
+							}
+							multiply = law_legacy_cost_reduction_mult
+							desc = law_legacy_1_name
+						}
+					}
+					if = {
+						limit = {
+							has_character_modifier = mpo_bountiful_hunting_modifier
+						}
+						multiply = {
+							value = 0.8
+							desc = mpo_bountiful_hunting_modifier
+						}
 					}
 					#court.8140
 					if = {
@@ -328,17 +630,27 @@
 		herd = {
 			if = {
 				limit = {
-					government_has_flag = government_is_nomadic
+					OR = {
+						NOT = { government_has_flag = government_is_nomadic }
+						has_character_flag = free_hunt
+						AND = {
+							has_character_flag = free_falconry
+							involved_activity = { has_activity_option = { category = special_type option = hunt_type_falconry } }
+						}
+					}
 				}
+				value = 0
+			}
+			else = {
 				add = { # Base cost, scaled by era
 					value = domicile.minor_herd_value
 					min = 50
 				}
-				
-				# Options 
-				add = { # Attendants 
-					value = 0 # Local Game Keepers Cost 
-					add = domicile.miniscule_herd_value # Search Parties Cost 
+
+				# Options
+				add = { # Attendants
+					value = 0 # Local Game Keepers Cost
+					add = domicile.miniscule_herd_value # Search Parties Cost
 					add = domicile.minor_herd_value # Flushing Gangs Cost
 					# Divide by the number of option levels +2 to get an average option cost
 					divide = 5
@@ -350,7 +662,7 @@
 					# Divide by the number of option levels +2 to get an average option cost
 					divide = 5
 				}
-				
+
 				if = {
 					limit = {
 						any_character_situation = {
@@ -362,13 +674,13 @@
 								}
 							}
 						}
-						
+
 					}
 					multiply = {
 						value = 0.5
 					}
 				}
-				
+
 				# Make it a multiple of 5 (rounded up)
 				divide = 5
 				ceiling = yes
@@ -376,27 +688,57 @@
 				
 				if = {
 					limit = {
-						has_character_flag = free_hunt
+						OR = {
+							has_character_flag = free_hunt
+							AND = {
+								has_character_flag = free_falconry
+								involved_activity = { has_activity_option = { category = special_type option = hunt_type_falconry } }
+							}
+						}
 					}
 					multiply = 0
+				}
+				if = {
+					limit = {
+						var:tgp_ceremonial_liege_events_0020_discount ?= flag:hunt
+					}
+					multiply = {
+						value = 0.85
+						desc = tgp_ceremonial_liege_events_0020_discount_desc
+					}
 				}
 			}
 		}
 		gold = {
 			if = {
 				limit = {
-					NOT = { government_has_flag = government_is_nomadic }
+					OR = {
+						government_has_flag = government_is_nomadic
+						has_character_flag = free_hunt
+						AND = {
+							has_character_flag = free_falconry
+							involved_activity = { has_activity_option = { category = special_type option = hunt_type_falconry } }
+						}
+						government_has_flag = government_is_mandala
+						AND = {
+							house ?= { has_house_aspiration_parameter = hunts_costs_treasury }
+							has_treasury = yes
+						}
+					}
 				}
+				value = 0
+			}
+			else = {
 				add = { # Base cost, scaled by era
 					value = hunt_activity_base_cost
 					multiply = activity_cost_scale_by_era
 				}
-				
-				# Options 
-				add = { # Attendants 
-					value = 0 # Local Game Keepers Cost 
-					add = 10 # Search Parties Cost 
-					add = 35 # Flushing Gangs Cost 
+
+				# Options
+				add = { # Attendants
+					value = 0 # Local Game Keepers Cost
+					add = 10 # Search Parties Cost
+					add = 35 # Flushing Gangs Cost
 					# Scale option costs by tier and era
 					multiply = activity_cost_scale_by_tier
 					multiply = activity_cost_scale_by_era
@@ -434,25 +776,181 @@
 						value = 0.5
 					}
 				}
-				
-				
+
 				# Adventurer
 				if = {
-					limit = { is_landless_adventurer = yes }
+				limit = { has_government = landless_adventurer_government }
 					multiply = 0.25
 				}
-				
+
+				if = {
+					limit = {
+						var:tgp_ceremonial_liege_events_0020_discount ?= flag:hunt
+					}
+					multiply = {
+						value = 0.85
+						desc = tgp_ceremonial_liege_events_0020_discount_desc
+					}
+				}
+
 				# Make it a multiple of 5 (rounded up)
 				divide = 5
 				ceiling = yes
 				multiply = 5
-				
+			}
+			if = {
+				limit = {
+					has_title = title:e_minister_of_revenue
+				}
+				multiply = 0.85
+			}
+		}
+		treasury = { # Make sure this matches the gold cost above
+			if = {
+				limit = {
+					house ?= { has_house_aspiration_parameter = hunts_costs_treasury }
+					has_treasury = yes
+				}
+				add = { # Base cost, scaled by era
+					value = hunt_activity_base_cost
+					multiply = activity_cost_scale_by_era
+				}
+
+				# Options
+				add = { # Attendants
+					value = 0 # Local Game Keepers Cost
+					add = 10 # Search Parties Cost
+					add = 35 # Flushing Gangs Cost
+					# Scale option costs by tier and era
+					multiply = activity_cost_scale_by_tier
+					multiply = activity_cost_scale_by_era
+					# Divide by the number of option levels to get an average option cost
+					divide = 3
+				}
+				add = { # Party Size
+					value = 0 # Intimate Party Cost
+					add = 10 # Reasonable Party Cost
+					add = 35 # Substantial Party Cost
+					# Scale option costs by tier and era
+					multiply = activity_cost_scale_by_tier
+					multiply = activity_cost_scale_by_era
+					# Divide by the number of option levels to get an average option cost
+					divide = 3
+				}
 				if = {
 					limit = {
-						has_character_flag = free_hunt
+						dynasty ?= {
+							has_dynasty_perk = law_legacy_1
+						}
 					}
-					multiply = 0
+					subtract = {
+						value = hunt_activity_base_cost
+						multiply = law_legacy_cost_reduction_mult
+					}
 				}
+
+				#court.8140
+				if = {
+					limit = {
+						has_character_flag = court_event_discount_feast
+					}
+					multiply = {
+						value = 0.5
+					}
+				}
+
+				# Adventurer
+				if = {
+				limit = { has_government = landless_adventurer_government }
+					multiply = 0.25
+				}
+
+				if = {
+					limit = {
+						var:tgp_ceremonial_liege_events_0020_discount ?= flag:hunt
+					}
+					multiply = {
+						value = 0.85
+						desc = tgp_ceremonial_liege_events_0020_discount_desc
+					}
+				}
+
+				# Make it a multiple of 5 (rounded up)
+				divide = 5
+				ceiling = yes
+				multiply = 5
+			}
+			else = {
+				value = 0
+			}
+			if = {
+				limit = {
+					has_title = title:e_minister_of_revenue
+				}
+				multiply = 0.85
+			}
+		}
+		piety = {
+			if = {
+				limit = {
+					NOT = { government_has_flag = government_is_mandala }
+				}
+				value = 0
+			}
+			else = {
+				add = { # Base cost, scaled by era
+					value = hunt_activity_base_cost
+					multiply = activity_cost_scale_by_era
+				}
+
+				# Options
+				add = { # Attendants
+					value = 0 # Local Game Keepers Cost
+					add = 10 # Search Parties Cost
+					add = 35 # Flushing Gangs Cost
+					# Scale option costs by tier and era
+					multiply = activity_cost_scale_by_tier
+					multiply = activity_cost_scale_by_era
+					# Divide by the number of option levels to get an average option cost
+					divide = 3
+				}
+				add = { # Party Size
+					value = 0 # Intimate Party Cost
+					add = 10 # Reasonable Party Cost
+					add = 35 # Substantial Party Cost
+					# Scale option costs by tier and era
+					multiply = activity_cost_scale_by_tier
+					multiply = activity_cost_scale_by_era
+					# Divide by the number of option levels to get an average option cost
+					divide = 3
+				}
+				if = {
+					limit = {
+						dynasty ?= {
+							has_dynasty_perk = law_legacy_1
+						}
+					}
+					subtract = {
+						value = hunt_activity_base_cost
+						multiply = law_legacy_cost_reduction_mult
+					}
+				}
+
+				#court.8140
+				if = {
+					limit = {
+						has_character_flag = court_event_discount_feast
+					}
+					multiply = {
+						value = 0.5
+					}
+				}
+
+				# Make it a multiple of 5 (rounded up)
+				divide = 5
+				ceiling = yes
+				multiply = 5
+
 				if = { ## GH ADDITION: Grizzled Perk
 					limit = { has_perk = grizzled_perk }
 					multiply = {
@@ -533,7 +1031,7 @@
 			limit = {
 				county.holder ?= {
 					in_diplomatic_range = scope:host
-					NOR = { 
+					NOR = {
 						is_vassal_or_below_of = scope:host
 						is_ruin = yes
 						scope:host = this
@@ -546,8 +1044,8 @@
 						text = activity_hunt_outside_realm_valid_tt
 						OR = {
 							faith = { has_doctrine = tenet_sjalvolki_hunt }
-							has_perk = adept_tracker_perk 
-							is_landless_adventurer = yes
+							has_perk = adept_tracker_perk
+							has_government = landless_adventurer_government
 						}
 					}
 				}
@@ -573,8 +1071,8 @@
 					text = activity_hunt_outside_realm_valid_tt
 					OR = {
 						faith = { has_doctrine = tenet_sjalvolki_hunt }
-						has_perk = adept_tracker_perk 
-						is_landless_adventurer = yes
+						has_perk = adept_tracker_perk
+						has_government = landless_adventurer_government
 					}
 				}
 			}
@@ -583,7 +1081,7 @@
 
 	ai_will_do = {
 		value = 0
-		
+
 		# Base
 		add = {
 			value = -10
@@ -595,21 +1093,20 @@
 			}
 			add = -20
 		}
-		# ai_value
 		add = {
-            value = ai_greed
-            multiply = -0.5
-            desc = "ai_greed"
-        }
-        add = {
-            value = ai_boldness
-            desc = "ai_boldness"
-        }
-        add = {
-        	value = ai_sociability
-        	multiply = 0.5
-        	desc = "ai_sociability"
-        }
+			value = ai_greed
+			multiply = -0.5
+			desc = "ai_greed"
+		}
+		add = {  
+			value = ai_boldness
+			desc = "ai_boldness"
+		}
+		add = {
+			value = ai_sociability
+			multiply = 0.5
+			desc = "ai_sociability"
+		}
 		if = {
 			limit = {
 				ai_energy < 0
@@ -619,18 +1116,18 @@
 				desc = "ai_energy"
 			}
 		}
-        # Dharmic Pacificism
-        if = {
-        	limit = {
+		# Dharmic Pacificism
+		if = {
+			limit = {
 				hunt_dharmic_pacificist_trigger = yes
 				NOT = { has_trait = sadistic }
 			}
-        	add = {
-        		value = -40
-        		desc = tenet_dharmic_pacifism_name
-        	}
-        }
-        # Personality
+			add = {
+				value = -40
+				desc = tenet_dharmic_pacifism_name
+			}
+		}
+		# Personality
 		if = { # Avoids responsibilities
 			limit = { has_trait = lazy }
 			add = {
@@ -688,46 +1185,46 @@
 			}
 		}
 		# Prestige
-        if = {
-        	limit = { prestige < 0 }
-        	add = {
-        		value = 30
-        		desc = "Very low prestige"
-        	}
-        }
-        if = {
-        	limit = { prestige_level <= 1 }
-        	add = {
-        		value = 5
-        		desc = "Low prestige level"
-        	}
-        }
-        if = {
-        	limit = {
+		if = {
+			limit = { prestige < 0 }
+			add = {
+				value = 30
+				desc = "Very low prestige"
+			}
+		}
+		if = {
+			limit = { prestige_level <= 1 }
+			add = {
+				value = 5
+				desc = "Low prestige level"
+			}
+		}
+		if = {
+			limit = {
 				prestige_level <= 2
 				can_use_conquest_cbs_trigger = yes
 				ai_has_warlike_personality = yes
 			}
-        	add = {
-        		value = 15
-        		desc = "Can use conquest but has low prestige_level"
-        	}
-        }
-        if = {
-        	limit = {
+			add = {
+				value = 15
+				desc = "Can use conquest but has low prestige_level"
+			}
+		}
+		if = {
+			limit = {
 				prestige <= 500
 				can_use_conquest_cbs_trigger = yes
 				ai_has_warlike_personality = yes
 			}
-        	add = {
-        		value = 25
-        		desc = "Can use conquest but has low prestige"
-        	}
-        }
+			add = {
+				value = 25
+				desc = "Can use conquest but has low prestige"
+			}
+		}
 		# Court
 		if = {
 			limit = {
-				has_royal_court = yes 
+				has_royal_court = yes
 				has_court_type = court_warlike
 			}
 			add = {
@@ -1083,6 +1580,16 @@
     	        desc = "Apocalyptic Plague in Top Realm"
     	    }
     	}
+		#ACH Greatest Hunter Oath
+		if = {
+			limit = {
+				has_character_modifier = oath_greatest_hunter
+			}
+			add = {
+				value = 200
+				desc = "Greatest Hunter Oath"
+			}
+		}
 	}
 
 	host_description = {
@@ -1125,7 +1632,7 @@
 		}
 		triggered_desc = {
 			trigger = {
-				is_landless_adventurer = yes
+				has_government = landless_adventurer_government
 				NOT = { employs_court_position = huntperson_camp_officer }
 			}
 			desc = activity_hunt_host_desc_huntsperson
@@ -1240,9 +1747,9 @@
 				desc = activity_hunt_conclusion_desc_falconry
 			}
 			triggered_desc = {
-				trigger = { 
+				trigger = {
 					activity_is_nerge_type = no
-					scope:activity.var:hunt_success ?= flag:yes 
+					scope:activity.var:hunt_success ?= flag:yes
 				}
 				desc = activity_hunt_conclusion_desc_standard_success
 			}
@@ -1357,29 +1864,29 @@
 			desc = activity_hunt_province_desc_falconry_sighting
 		}
 		triggered_desc = {
-			trigger = { 
-				has_building = royal_forest_03 
+			trigger = {
+				has_building = royal_forest_03
 				NOT = { scope:special_option ?= flag:hunt_type_nerge }
 			}
 			desc = activity_hunt_province_desc_royal_forest_major
 		}
 		triggered_desc = {
-			trigger = { 
-				has_building_or_higher = hunting_grounds_06 
+			trigger = {
+				has_building_or_higher = hunting_grounds_06
 				NOT = { scope:special_option ?= flag:hunt_type_nerge }
 			}
 			desc = activity_hunt_province_desc_hunting_grounds_major
 		}
 		#triggered_desc = { # GH CE2 TODO: We should put these somewhere
-		#	trigger = { 
-		#		has_building_or_higher = rainbow_mountains_01 
+		#	trigger = {
+		#		has_building_or_higher = rainbow_mountains_01
 		#		NOT = { scope:special_option ?= flag:hunt_type_nerge }
 		#	}
 		#	desc = activity_hunt_province_desc_rainbow_mountains_major
 		#}
 		#triggered_desc = {
-		#	trigger = { 
-		#		has_building_or_higher = visegrad_castle_01 
+		#	trigger = {
+		#		has_building_or_higher = visegrad_castle_01
 		#		NOT = { scope:special_option ?= flag:hunt_type_nerge }
 		#	}
 		#	desc = activity_hunt_province_desc_visegrad_castle_01_major
@@ -1403,21 +1910,21 @@
 		}
 		#
 		triggered_desc = {
-			trigger = { 
+			trigger = {
 				has_building = royal_forest_03
 				NOT = { scope:special_option ?= flag:hunt_type_nerge }
 			}
 			desc = activity_hunt_province_desc_royal_forest_major
 		}
 		triggered_desc = {
-			trigger = { 
-				has_building_or_higher = hunting_grounds_06 
+			trigger = {
+				has_building_or_higher = hunting_grounds_06
 				NOT = { scope:special_option ?= flag:hunt_type_nerge }
 			}
 			desc = activity_hunt_province_desc_hunting_grounds_major
 		}
 		triggered_desc = {
-			trigger = { 
+			trigger = {
 				has_building_or_higher = falcon_roost_06
 				NOT = { scope:special_option ?= flag:hunt_type_nerge }
 			}
@@ -1473,8 +1980,8 @@
 			desc = activity_hunt_province_desc_development_terrible
 		}
 		triggered_desc = {
-			trigger = { 
-				has_building_or_higher = logging_camps_06 
+			trigger = {
+				has_building_or_higher = logging_camps_06
 				NOT = { scope:special_option ?= flag:hunt_type_nerge }
 			}
 			desc = activity_hunt_province_desc_logging_camps_major
@@ -1489,7 +1996,7 @@
 		}
 		# ++ / double plus good
 		triggered_desc = {
-			trigger = { 
+			trigger = {
 				OR = {
 					has_holding = no
 					province_owner ?= { is_ruin = yes }
@@ -1499,8 +2006,8 @@
 			desc = activity_hunt_province_desc_no_holding
 		}
 		triggered_desc = {
-			trigger = { 
-				has_building = royal_forest_02 
+			trigger = {
+				has_building = royal_forest_02
 				NOT = { scope:special_option ?= flag:hunt_type_nerge }
 			}
 			desc = activity_hunt_province_desc_royal_forest_medium
@@ -1562,8 +2069,8 @@
 		}
 		# + / plus good
 		triggered_desc = {
-			trigger = { 
-				has_building = royal_forest_01 
+			trigger = {
+				has_building = royal_forest_01
 				NOT = { scope:special_option ?= flag:hunt_type_nerge }
 			}
 			desc = activity_hunt_province_desc_royal_forest_minor
@@ -1753,7 +2260,7 @@
 						AND = {
 							county = { has_county_modifier = hunt_sighting_monster_modifier }
 							scope:special_option ?= flag:hunt_type_monster_hunt
-						}						 
+						}
 					}
 				}
 				add = 20
@@ -2389,7 +2896,7 @@
 		environment = "environment_travel_bridge"
 		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
 	}
-	
+
 	background = { # Farmland, settled
 		trigger = {
 			NOT = { scope:host.location = scope:activity.activity_location }
@@ -2544,7 +3051,7 @@
 			}
 		}
 		texture = "gfx/interface/illustrations/event_scenes/bp1_wetlands.dds"
-		environment = "environment_event_bp1_wetlands" 
+		environment = "environment_event_bp1_wetlands"
 		ambience = "event:/SFX/Events/Backgrounds/deciduous_forest_day"
 	}
 
@@ -2623,7 +3130,7 @@
 	}
 
 	# End Travel
-	
+
 	background = {
 		trigger = {
 			activity_location = { geographical_region = chevalie_biozone }
@@ -3125,7 +3632,7 @@
 		environment = "environment_hunt_snowy_forest"
 		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
 	}
-	
+
 	background = { # Mountains
 		trigger = {
 			activity_location = { graphical_wilderness_mountains_trigger = yes }
@@ -3134,7 +3641,7 @@
 		environment = "environment_event_mountains"
 		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
 	}
-	
+
 	background = {
 		trigger = {
 			scope:host = {
@@ -3194,7 +3701,7 @@
 
 	background = { # Camp
 		texture = "gfx/interface/illustrations/event_scenes/ep2_hunt_poachers_camp.dds"
-		environment = "environment_event_forest_pine" 
+		environment = "environment_event_forest_pine"
 		ambience = "event:/SFX/Events/Backgrounds/coniferous_forest_day"
 	}
 
@@ -3209,7 +3716,7 @@
 	window_characters = {
 		hunter = {
 			camera = camera_event_center
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3507,7 +4014,7 @@
 
 		host = {
 			camera = camera_event_center
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3617,10 +4124,10 @@
 				animation = idle
 			}
 		}
-		
+
 		travel_host = {
 			camera = camera_event_horse_left
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3646,7 +4153,7 @@
 
 		host = { # Nerge
 			camera = camera_activity_horse
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3677,7 +4184,7 @@
 
 		master_of_hunt = {
 			camera = camera_event_center
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3711,7 +4218,7 @@
 
 		master_of_chase = { # Nerge
 			camera = camera_activity_horse
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3751,7 +4258,7 @@
 
 		animal_slayer = {
 			camera = camera_event_center
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3771,7 +4278,7 @@
 
 		hunter = {
 			camera = camera_event_center
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3962,7 +4469,7 @@
 
 		hunter = {
 			camera = camera_event_center
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -4324,7 +4831,7 @@
 												}
 											}
 										}
-										
+
 									}
 									multiply = {
 										value = 0.5
@@ -4334,6 +4841,12 @@
 								if = {
 									limit = {
 										has_character_flag = free_hunt
+									}
+									multiply = 0
+								}
+								if = {
+									limit = {
+										has_character_flag = free_falconry
 									}
 									multiply = 0
 								}
@@ -4385,6 +4898,12 @@
 										desc = grizzled_perk_discount_desc
 									}
 								}
+								if = {
+									limit = {
+										has_character_flag = free_falconry
+									}
+									multiply = 0
+								}
 							}
 						}
 					}
@@ -4402,7 +4921,7 @@
 			            desc = "ai_sociability"
 			        }
 			        add = {
-			            value = ai_boldness 
+			            value = ai_boldness
 			            multiply = -0.25
 			            desc = "ai_boldness"
 			        }
@@ -4498,6 +5017,16 @@
 							desc = ethos_courtly
 						}
 					}
+					# It's Free
+					if = {
+						limit = {
+							has_character_flag = free_falconry
+						}
+						add = {
+							value = 100
+							desc = "free"
+						}
+					}
 					# Falcon Veneration cultural tradition
 					if = {
 						limit = {
@@ -4517,8 +5046,8 @@
 
 				blocked_intents = {
 					reduce_stress_intent
-					slay_beast_intent 
-					woo_attendee_intent 
+					slay_beast_intent
+					woo_attendee_intent
 					befriend_attendee_intent
 				}
 				ai_will_do = {
@@ -4622,7 +5151,7 @@
 			            desc = "ai_sociability"
 			        }
 			        add = {
-			            value = ai_boldness 
+			            value = ai_boldness
 			            multiply = -0.25
 			            desc = "ai_boldness"
 			        }
@@ -4779,6 +5308,16 @@
 							desc = hunter
 						}
 					}
+					# ACH Greatest Hunter Oath
+					if = {
+						limit = {
+							has_variable = greatest_hunter_oath
+						}
+						add = {
+							value = 200
+							desc = "greatest hunter oath"
+						}
+					}
 				}
 			}
 		}
@@ -4789,8 +5328,8 @@
 		hunt_option_attendants = {
 			hunt_attendants_few = {
 
-				is_shown = { 
-					has_dlc_feature = advanced_activities 
+				is_shown = {
+					has_dlc_feature = advanced_activities
 					NOT = { government_has_flag = government_is_nomadic }
 				}
 
@@ -4864,7 +5403,7 @@
 												}
 											}
 										}
-										
+
 									}
 									multiply = {
 										value = 0.5
@@ -4874,6 +5413,13 @@
 								if = {
 									limit = {
 										has_character_flag = free_hunt
+									}
+									multiply = 0
+								}
+								if = {
+									limit = {
+										has_character_flag = free_falconry
+										has_activity_option = { category = special_type option = hunt_type_falconry }
 									}
 									multiply = 0
 								}
@@ -4915,6 +5461,13 @@
 								if = {
 									limit = {
 										has_character_flag = free_hunt
+									}
+									multiply = 0
+								}
+								if = {
+									limit = {
+										has_character_flag = free_falconry
+										has_activity_option = { category = special_type option = hunt_type_falconry }
 									}
 									multiply = 0
 								}
@@ -4970,8 +5523,8 @@
 			}
 			hunt_attendants_many = {
 
-				is_shown = { 
-					has_dlc_feature = advanced_activities 
+				is_shown = {
+					has_dlc_feature = advanced_activities
 					NOT = { government_has_flag = government_is_nomadic }
 				}
 
@@ -5002,7 +5555,7 @@
 												}
 											}
 										}
-										
+
 									}
 									multiply = {
 										value = 0.5
@@ -5012,6 +5565,13 @@
 								if = {
 									limit = {
 										has_character_flag = free_hunt
+									}
+									multiply = 0
+								}
+								if = {
+									limit = {
+										has_character_flag = free_falconry
+										has_activity_option = { category = special_type option = hunt_type_falconry }
 									}
 									multiply = 0
 								}
@@ -5064,6 +5624,13 @@
 										value = 0.5
 										desc = grizzled_perk_discount_desc
 									}
+								}
+								if = {
+									limit = {
+										has_character_flag = free_falconry
+										has_activity_option = { category = special_type option = hunt_type_falconry }
+									}
+									multiply = 0
 								}
 							}
 						}
@@ -5124,7 +5691,7 @@
 				is_shown = { has_dlc_feature = advanced_activities }
 
 				# Entourage option grabbing suitable bodyguards & maybe someone from court who really likes you, + randos.
-				travel_entourage_selection = { 
+				travel_entourage_selection = {
 					weight = hunt_entourage_base_set_weighting_value
 					max = 5
    					invite_rule_order = 2
@@ -5170,7 +5737,7 @@
 				is_valid = {
 					trigger_if = {
 						limit = {
-							is_landless_adventurer = yes
+							has_government = landless_adventurer_government
 						}
 						custom_tooltip = {
 							text = I_AM_LANDLESS_ADVENTURER_TRIGGER
@@ -5201,7 +5768,7 @@
 												}
 											}
 										}
-										
+
 									}
 									multiply = {
 										value = 0.5
@@ -5211,6 +5778,13 @@
 								if = {
 									limit = {
 										has_character_flag = free_hunt
+									}
+									multiply = 0
+								}
+								if = {
+									limit = {
+										has_character_flag = free_falconry
+										has_activity_option = { category = special_type option = hunt_type_falconry }
 									}
 									multiply = 0
 								}
@@ -5255,14 +5829,21 @@
 									}
 									multiply = 0
 								}
-							}
-							if = {
-								limit = {
-									has_perk = grizzled_perk
+								if = {
+									limit = {
+										has_perk = grizzled_perk
+									}
+									multiply = {
+										value = 0.5
+										desc = grizzled_perk_discount_desc
+									}
 								}
-								multiply = {
-									value = 0.5
-									desc = grizzled_perk_discount_desc
+								if = {
+									limit = {
+										has_character_flag = free_falconry
+										has_activity_option = { category = special_type option = hunt_type_falconry }
+									}
+									multiply = 0
 								}
 							}
 						}
@@ -5289,11 +5870,11 @@
 			}
 			hunt_party_size_many = {
 				is_shown = { has_dlc_feature = advanced_activities }
-				
+
 				is_valid = {
 					trigger_if = {
 						limit = {
-							is_landless_adventurer = yes
+							has_government = landless_adventurer_government
 						}
 						custom_tooltip = {
 							text = I_AM_LANDLESS_ADVENTURER_TRIGGER
@@ -5324,7 +5905,7 @@
 												}
 											}
 										}
-										
+
 									}
 									multiply = {
 										value = 0.5
@@ -5334,6 +5915,13 @@
 								if = {
 									limit = {
 										has_character_flag = free_hunt
+									}
+									multiply = 0
+								}
+								if = {
+									limit = {
+										has_character_flag = free_falconry
+										involved_activity = { has_activity_option = { category = special_type option = hunt_type_falconry } }
 									}
 									multiply = 0
 								}
@@ -5375,6 +5963,13 @@
 								if = {
 									limit = {
 										has_character_flag = free_hunt
+									}
+									multiply = 0
+								}
+								if = {
+									limit = {
+										has_character_flag = free_falconry
+										involved_activity = { has_activity_option = { category = special_type option = hunt_type_falconry } }
 									}
 									multiply = 0
 								}
@@ -5660,8 +6255,8 @@
 
 			on_phase_active = { # Fires for every attendee
 				if = {
-					limit = { 
-						this = scope:host 
+					limit = {
+						this = scope:host
 						activity_is_nerge_type = no
 					}
 					scope:activity = { progress_activity_phase_after = { weeks = 6 } }
@@ -5694,8 +6289,8 @@
 					}
 				}
 				else_if = {
-					limit = { 
-						this = scope:host 
+					limit = {
+						this = scope:host
 						activity_is_nerge_type = yes
 					}
 					scope:activity = { progress_activity_phase_after = { weeks = 8 } }
@@ -5770,11 +6365,28 @@
 						}
 					}
 					target_weight_modifier_effect = { VALUE = hunt_weight_modifier_value }
+					
+					# House aspiration - gain merit
+					if = {
+						limit = {
+							house ?= { has_house_aspiration_parameter = hunts_provides_merit }
+						}
+						scope:activity = {
+							add_activity_log_entry = {
+								key = hunt_completed_merit_gain_log
+								tags = { good }
+								character = prev
+								show_in_conclusion = yes
+								# EFFECT
+								prev = { change_merit = major_merit_gain }
+							}
+						}
+					}
 				}
 				scope:activity.activity_location = { save_scope_as = activity_location }
 				if = {
-					limit = { 
-						this = scope:host 
+					limit = {
+						this = scope:host
 						activity_is_nerge_type = no
 					}
 					scope:activity = {
@@ -5835,7 +6447,18 @@
 										scope:host = { disburse_hunt_activity_rewards = yes }
 									}
 								}
-								scope:host = { trigger_event = hunt.9001 }
+								scope:host = {
+									trigger_event = hunt.9001
+									if = {
+										limit = {
+											has_variable = greatest_hunter_oath_r_counter
+										}
+										change_variable = {
+											name = greatest_hunter_oath_r_counter
+											add = 1
+										}
+									}
+								}
 								modifier = {
 									factor = 1.3
 									scope:host = { has_perk = trophy_collector_perk }
@@ -5874,7 +6497,18 @@
 										disburse_hunt_activity_rewards = yes
 									}
 								}
-								scope:host = { trigger_event = hunt.4004 }
+								scope:host = {
+									trigger_event = hunt.4004
+									if = {
+										limit = {
+											has_variable = greatest_hunter_oath_l_counter
+										}
+										change_variable = {
+											name = greatest_hunter_oath_l_counter
+											add = 1
+										}
+									}
+								}
 							}
 							10 = { # Failure
 								trigger = {
@@ -5900,13 +6534,40 @@
 								scope:host = { trigger_event = hunt.9002 }
 							}
 						}
+						# tgp_ceremonial_liege_events.0020
+						if = {
+							limit = {
+								var:hunt_success ?= flag:yes
+							}
+							scope:host = {
+								if = {
+									limit = {
+										var:tgp_ceremonial_liege_events_0020_discount ?= flag:hunt
+									}
+									tgp_one_up_activity_effect = yes
+								}
+							}
+						}
+						if = {
+							limit = {
+								scope:host = { var:tgp_ceremonial_liege_events_0020_discount ?= flag:hunt }
+							}
+							remove_variable = tgp_ceremonial_liege_events_0020_discount
+						}
 					}
 				}
 			}
 		}
 	}
 
-	ai_check_interval = 60
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 60
+		duchy = 60
+		kingdom = 60
+		empire = 60
+		hegemony = 60
+	}
 
 	ai_will_select_province = {
 		value = 50
@@ -5925,8 +6586,8 @@
 			2 = activity_invite_rule_rivals
 			3 = activity_invite_rule_extended_family
 			4 = activity_invite_rule_guests
-			
-			# MP 
+
+			# MP
 			6 = activity_invite_mp
 		}
 		defaults = {
@@ -5934,6 +6595,7 @@
 			3 = activity_invite_rule_suzerain
 			3 = activity_invite_rule_tributaries
 			3 = activity_invite_rule_vassals
+			1 = activity_invite_rule_confederates
 			3 = activity_invite_rule_close_family
 			1 = activity_invite_rule_friends
 			1 = activity_invite_rule_potential_friends
@@ -5979,9 +6641,9 @@
 	guest_join_chance = {
 		base = 10
 		base_activity_modifier = yes
-		
+
 		# Scripted Modifiers
-		activity_guest_shared_ai_accept_modifier = yes 
+		activity_guest_shared_ai_accept_modifier = yes
 		activity_guest_hunt_ai_accept_modifier = yes
 	}
 
@@ -5990,9 +6652,9 @@
 	###################
 
 	pulse_actions = {
-		entries = { 
+		entries = {
 			# Regular
-			guest_friendship guest_insulted hunt_tracks_character hunt_tracks_option hunt_tracks_dog hunt_tracks_building hunt_hunters_bond hunt_dog_bond hunt_knowledge_sharing hunt_small_game hunt_moh_positive hunt_moh_negative hunt_poetic_inspiration hunt_fervor_gain hunt_distinguished_ability hunt_annoyed_owner hunt_impressive_grounds hunt_eggs_found 
+			guest_friendship guest_insulted hunt_tracks_character hunt_tracks_option hunt_tracks_dog hunt_tracks_building hunt_hunters_bond hunt_dog_bond hunt_knowledge_sharing hunt_small_game hunt_moh_positive hunt_moh_negative hunt_poetic_inspiration hunt_fervor_gain hunt_distinguished_ability hunt_annoyed_owner hunt_impressive_grounds hunt_eggs_found
 
 			# Nerge
 			hunt_successful_kill hunt_very_successful_kill hunt_worked_together hunt_failed_kill hunt_failed_several_kills hunt_successful_maneuver hunt_learned_maneuver hunt_prowess_mastery hunt_martial_mastery
@@ -6106,6 +6768,12 @@
 				}
 				remove_character_flag = free_hunt
 			}
+			if = {
+				limit = {
+					has_character_flag = free_falconry
+				}
+				remove_character_flag = free_falconry
+			}
 		}
 	}
 	allow_zero_guest_invites = yes
@@ -6139,7 +6807,7 @@
 					any_attending_character = {
 						location = root.location
 						save_temporary_scope_as = potential_moh
-						
+
 					}
 				}
 				can_appoint_char_to_court_position = { CHAR = scope:potential_moh COURT_POS = master_of_hunt_court_position }
@@ -6152,7 +6820,7 @@
 		if = {
 			limit = {
 				this = scope:host
-				is_landless_adventurer = yes
+				has_government = landless_adventurer_government
 				can_employ_court_position_type = huntperson_camp_officer
 				NOT = { employs_court_position = huntperson_camp_officer }
 			}
@@ -6164,7 +6832,7 @@
 		if = {
 			limit = {
 				this = scope:host
-				is_landless_adventurer = yes
+				has_government = landless_adventurer_government
 			}
 			trigger_event = {
 				id = hunt.1337
@@ -6247,6 +6915,50 @@
 							name = recent_nerges
 							target = prev
 							years = 30
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				this = scope:host
+			}
+			random_knight = {
+				limit = {
+					can_unlock_accolade_attribute_trigger = {
+						ATTRIBUTE = huntsmaster
+					}
+				}
+				weight = {
+					base = 1
+					modifier = {
+						add = 50
+						is_acclaimed = yes
+					}
+					modifier = {
+						add = 50
+						involved_activity ?= scope:activity
+					}
+				}
+				save_scope_as = accolade_knight
+				liege = {
+					save_scope_as = accolade_liege
+					set_variable = {
+						name = accolade_progress
+						value = 0
+					}
+					send_interface_message = {
+						type = msg_accolade_eligibility
+						title = accolade_huntsmaster_unlock.t
+						left_icon = scope:accolade_knight
+						right_icon = scope:accolade_liege
+						custom_tooltip = accolade_huntsmaster_unlock.tt
+						scope:accolade_knight = {
+							set_variable = {
+								name = huntsmaster_attribute_unlock
+								value = yes
+							}
 						}
 					}
 				}

@@ -61,7 +61,7 @@ anesimasios = {	# Claims descent from Anesimasios, last Aautokratir of a unified
 	chronicle = ancestral_glory
 	chronicle_properties = {
 		ancestor = character:centralimperial_aversarinas_aagiokrata_45
-		title = title:e_aversarinas_aautokrata
+		title = title:h_aversarinas_aautokrata
 	}
 }
 
@@ -104,7 +104,7 @@ theyssia = { # Claims descent from Aautokrata Theyssia, who reigned 150 years an
 	chronicle = ancestral_glory
 	chronicle_properties = {
 		ancestor = character:southernimperial_aversarinas_aagiokrata_1
-		title = title:e_aversarinas_aautokrata
+		title = title:h_aversarinas_aautokrata
 	}
 }
 
@@ -327,7 +327,7 @@ wayfather_peyton = {
 		}
 		exists = character:carsavisians_lifepath_36
 		character:carsavisians_lifepath_36 = { is_alive = no }
-		current_date >= 1254.1.1	# Meant to be 100 years after his death; coincidentally this would put it literally just a few months after the 1254 bookmark start so we've nudged it forward a bit
+		current_date >= 6254.1.1	# Meant to be 100 years after his death; coincidentally this would put it literally just a few months after the 1254 bookmark start so we've nudged it forward a bit
 		religion = religion:lifepath_religion
 	}
 	is_valid = {
@@ -433,14 +433,14 @@ aeschraes = {	# Aeschraes clearly did nothing wrong, infact, he made the ONLY mo
 		is_independent_ruler = yes
 		prestige_level >= max_prestige_level
 		piety_level >= max_piety_level
-		has_title = title:e_aversarinas_aautokrata
+		has_title = title:h_aversarinas_aautokrata
 		legitimacy_level = 5
 	}
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
 		ancestor = character:westernimperial_aeschraes_aagiokrata_1
-		title = title:e_aversarinas_aautokrata
+		title = title:h_aversarinas_aautokrata
 	}
 }
 
@@ -614,7 +614,7 @@ esterax = {
 	chronicle = godly_descent_founder
 	chronicle_properties = {
 		god = flag:aeschraes
-		title = title:e_aversarinas_aautokrata
+		title = title:h_aversarinas_aautokrata
 		founder = character:easternimperial_aironoian_aagiokrata_4
 	}
 }
@@ -631,7 +631,7 @@ esterax = {
 #			culture = { has_cultural_pillar = heritage_marcher }
 #			culture = { has_cultural_pillar = heritage_konijkmener }
 #		}
-#		exists = title:k_riverlands.holder
+#		exists = title:k_the_riverlands.holder
 #	}
 #	is_valid = {
 #		prestige_level >= high_prestige_level
@@ -639,6 +639,229 @@ esterax = {
 #
 #	chronicle = ancestral_glory
 #}
+
+dawas  = {
+	type = legitimizing
+	quality = mythical
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = dawas_legend
+		}
+		exists = character:marmaladid_marmaladid_3
+		character:marmaladid_marmaladid_3 = { is_alive = no }
+		culture = {
+			OR = {
+				this = culture:dawasid
+				any_parent_culture_or_above = { this = culture:dawasid }
+			}
+		}
+	}
+	is_valid = {
+		is_playable_character = yes
+		is_independent_ruler = yes
+		highest_held_title_tier >= tier_kingdom
+		prestige_level >= very_high_prestige_level
+		culture.culture_head = this
+	}
+
+	chronicle = godly_descent_founder
+	chronicle_properties = {
+		god = flag:dawas
+		founder = character:marmaladid_marmaladid_3
+		title = title:h_great_tarrafent
+	}
+}
+
+mutsar = {
+	type = legitimizing
+	quality = mythical
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = mutsar_legend
+		}
+		exists = character:marmaladid_marmaladid_4
+		character:marmaladid_marmaladid_4 = { is_alive = no }
+		culture = {
+			OR = {
+				this = culture:mutsartan
+				any_parent_culture_or_above = { this = culture:mutsartan }
+			}
+		}
+	}
+	is_valid = {
+		is_playable_character = yes
+		is_independent_ruler = yes
+		highest_held_title_tier >= tier_kingdom
+		prestige_level >= very_high_prestige_level
+		culture.culture_head = this
+	}
+
+	chronicle = godly_descent_founder
+	chronicle_properties = {
+		god = flag:mutsar
+		founder = character:marmaladid_marmaladid_4
+		title = title:h_great_tarrafent
+	}
+}
+
+utyal = {
+	type = legitimizing
+	quality = mythical
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = utyal_legend
+		}
+		exists = character:marmaladid_marmaladid_1
+		character:marmaladid_marmaladid_1 = { is_alive = no }
+		culture = {
+			OR = {
+				this = culture:utyalid
+				any_parent_culture_or_above = { this = culture:utyalid }
+			}
+		}
+	}
+	is_valid = {
+		is_playable_character = yes
+		is_independent_ruler = yes
+		highest_held_title_tier >= tier_kingdom
+		prestige_level >= very_high_prestige_level
+		culture.culture_head = this
+	}
+
+	chronicle = godly_descent_founder
+	chronicle_properties = {
+		god = flag:utyal
+		founder = character:marmaladid_marmaladid_1
+		title = title:h_great_tarrafent
+	}
+}
+
+gwasil = {
+	type = legitimizing
+	quality = mythical
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = gwasil_legend
+		}
+		exists = character:marmaladid_marmaladid_2
+		character:marmaladid_marmaladid_2 = { is_alive = no }
+		culture = {
+			OR = {
+				this = culture:gwasillikh
+				any_parent_culture_or_above = { this = culture:gwasillikh }
+			}
+		}
+	}
+	is_valid = {
+		is_playable_character = yes
+		is_independent_ruler = yes
+		highest_held_title_tier >= tier_kingdom
+		prestige_level >= very_high_prestige_level
+		culture.culture_head = this
+	}
+
+	chronicle = godly_descent_founder
+	chronicle_properties = {
+		god = flag:gwasil
+		founder = character:marmaladid_marmaladid_2
+		title = title:h_great_tarrafent
+	}
+}
+
+nonn = {
+	type = heroic
+	quality = mythical
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = nonn_legend
+		}
+		exists = character:marmaladid_marmaladid_6
+		character:marmaladid_marmaladid_6 = { is_alive = no }
+		culture = {
+			has_cultural_pillar = heritage_marmaladid
+		}
+	}
+	is_valid = {
+		is_playable_character = yes
+		is_independent_ruler = yes
+		highest_held_title_tier >= tier_kingdom
+		prestige_level >= very_high_prestige_level
+		culture.culture_head = this
+	}
+
+	chronicle = godly_descent_founder
+	chronicle_properties = {
+		god = flag:nonn
+		founder = character:marmaladid_marmaladid_6
+		title = title:h_great_tarrafent
+	}
+}
+
+morimal = {
+	type = heroic
+	quality = mythical
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = morimal_legend
+		}
+		exists = character:marmaladid_marmaladid_5
+		character:marmaladid_marmaladid_5 = { is_alive = no }
+		culture = {
+			has_cultural_pillar = heritage_marmaladid
+		}
+	}
+	is_valid = {
+		is_playable_character = yes
+		is_independent_ruler = yes
+		highest_held_title_tier >= tier_kingdom
+		prestige_level >= very_high_prestige_level
+		culture.culture_head = this
+	}
+
+	chronicle = godly_descent_founder
+	chronicle_properties = {
+		god = flag:morimal
+		founder = character:marmaladid_marmaladid_5
+		title = title:h_great_tarrafent
+	}
+}
+
+akhtar = {
+	type = legitimizing
+	quality = mythical
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = akhtar_legend
+		}
+		exists = character:marmaladid_marmaladid_15
+		character:marmaladid_marmaladid_15 = { is_alive = no }
+		culture = {
+			has_cultural_pillar = heritage_marmaladid
+		}
+	}
+	is_valid = {
+		is_playable_character = yes
+		is_independent_ruler = yes
+		highest_held_title_tier >= tier_kingdom
+		prestige_level >= very_high_prestige_level
+		culture.culture_head = this
+	}
+
+	chronicle = godly_descent_founder
+	chronicle_properties = {
+		god = flag:akhtar
+		founder = character:marmaladid_marmaladid_15
+		title = title:h_great_tarrafent
+	}
+}
+
 
 ### Generic
 

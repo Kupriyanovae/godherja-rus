@@ -155,6 +155,7 @@ fp1_tbc_humiliation_effect = {
 			limit = {
 				has_vassal_stance = belligerent
 			}
+			custom = every_belligerent_vassal
 			add_opinion = {
 				modifier = liege_won_duel
 				target = $TBC_VICTOR$
@@ -184,6 +185,7 @@ fp1_tbc_actor_defeated_effect = {
 			limit = {
 				has_vassal_stance = belligerent
 			}
+			custom = every_belligerent_vassal
 			add_opinion = {
 				modifier = liege_won_duel
 				target = $TBC_VICTOR$
@@ -402,8 +404,7 @@ initial_decentralized_rule_friends_modifier_effect = {
 decentralized_rule_friends_modifier_effect = {
 	if = {
 		limit = {
-			exists = dynasty
-			dynasty = {
+			dynasty ?= {
 				has_dynasty_perk = fp1_adventure_legacy_5
 			}
 			is_ruler = yes
@@ -451,8 +452,7 @@ decentralized_rule_friends_modifier_effect = {
 decentralized_rule_removal_effect = {
 	if = {
 		limit = {
-			exists = dynasty
-			dynasty = {
+			dynasty ?= {
 				has_dynasty_perk = fp1_adventure_legacy_5
 			}
 		}
@@ -532,6 +532,152 @@ calculate_authority_cooldown_break_effect = {
 		limit = {
 			has_variable = tribal_authority_cooldown
 			realm_law_use_tribal_authority = yes
+		}
+		# Set it up if it doesn't exist.
+		if = {
+			limit = {
+				NOT = { has_variable = authority_cooldown_break_tally }
+			}
+			set_variable = {
+				name = authority_cooldown_break_tally
+				value = authority_cooldown_breaker_value
+			}
+			# And increment it once, since they've just taken the first use and we give no freebies.
+			change_variable = {
+				name = authority_cooldown_break_tally
+				add = authority_cooldown_breaker_value
+			}
+		}
+		# Otherwise, increment it.
+		else_if = {
+			limit = { has_variable = authority_cooldown_break_tally }
+			change_variable = {
+				name = authority_cooldown_break_tally
+				add = authority_cooldown_breaker_value
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = imperial_bureaucracy_cooldown
+			realm_law_use_imperial_bureaucracy = yes
+		}
+		# Set it up if it doesn't exist.
+		if = {
+			limit = {
+				NOT = { has_variable = authority_cooldown_break_tally }
+			}
+			set_variable = {
+				name = authority_cooldown_break_tally
+				value = authority_cooldown_breaker_value
+			}
+			# And increment it once, since they've just taken the first use and we give no freebies.
+			change_variable = {
+				name = authority_cooldown_break_tally
+				add = authority_cooldown_breaker_value
+			}
+		}
+		# Otherwise, increment it.
+		else_if = {
+			limit = { has_variable = authority_cooldown_break_tally }
+			change_variable = {
+				name = authority_cooldown_break_tally
+				add = authority_cooldown_breaker_value
+			}
+		}
+	}
+	# GH ADDITION #
+	else_if = {
+		limit = {
+			has_variable = clique_authority_cooldown
+			realm_law_use_clique_authority = yes
+		}
+		# Set it up if it doesn't exist.
+		if = {
+			limit = {
+				NOT = { has_variable = authority_cooldown_break_tally }
+			}
+			set_variable = {
+				name = authority_cooldown_break_tally
+				value = authority_cooldown_breaker_value
+			}
+			# And increment it once, since they've just taken the first use and we give no freebies.
+			change_variable = {
+				name = authority_cooldown_break_tally
+				add = authority_cooldown_breaker_value
+			}
+		}
+		# Otherwise, increment it.
+		else_if = {
+			limit = { has_variable = authority_cooldown_break_tally }
+			change_variable = {
+				name = authority_cooldown_break_tally
+				add = authority_cooldown_breaker_value
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pirate_authority_cooldown
+			realm_law_use_pirate_authority = yes
+		}
+		# Set it up if it doesn't exist.
+		if = {
+			limit = {
+				NOT = { has_variable = authority_cooldown_break_tally }
+			}
+			set_variable = {
+				name = authority_cooldown_break_tally
+				value = authority_cooldown_breaker_value
+			}
+			# And increment it once, since they've just taken the first use and we give no freebies.
+			change_variable = {
+				name = authority_cooldown_break_tally
+				add = authority_cooldown_breaker_value
+			}
+		}
+		# Otherwise, increment it.
+		else_if = {
+			limit = { has_variable = authority_cooldown_break_tally }
+			change_variable = {
+				name = authority_cooldown_break_tally
+				add = authority_cooldown_breaker_value
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = imperial_bureaucracy_cooldown
+			realm_law_use_otachedian_bureaucracy = yes
+		}
+		# Set it up if it doesn't exist.
+		if = {
+			limit = {
+				NOT = { has_variable = authority_cooldown_break_tally }
+			}
+			set_variable = {
+				name = authority_cooldown_break_tally
+				value = authority_cooldown_breaker_value
+			}
+			# And increment it once, since they've just taken the first use and we give no freebies.
+			change_variable = {
+				name = authority_cooldown_break_tally
+				add = authority_cooldown_breaker_value
+			}
+		}
+		# Otherwise, increment it.
+		else_if = {
+			limit = { has_variable = authority_cooldown_break_tally }
+			change_variable = {
+				name = authority_cooldown_break_tally
+				add = authority_cooldown_breaker_value
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = imperial_bureaucracy_cooldown
+			realm_law_use_republican_centralization = yes
 		}
 		# Set it up if it doesn't exist.
 		if = {

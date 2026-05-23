@@ -12,6 +12,10 @@ empty_building = {
 	can_construct_potential = {
 		always = no 	# Absolutely never, ever outside events
 	}
+
+	is_enabled = {
+		always = no
+	}
 	
 	can_construct = {	
 		always = no
@@ -215,13 +219,15 @@ colony_building = {
 		graphical_regions = { GH_graphical_kashirya GH_graphical_damota GH_graphical_pirate_coast }
 	}	
 
-	#SEA
+	# SOUTHEAST ASIA #
 	asset = {
 		type = pdxmesh
-		name = "building_sea_castle_01_mesh"
-		illustration = @holding_illustration_wasteland
-		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/indian_castle" soundparameter = { "Tier" = 0 } }
-		graphical_cultures = { sea_building_gfx }
+		name = "tgp_building_se_asia_castle_01_mesh"
+		requires_dlc_flag = all_under_heaven
+		illustration = @holding_illustration_seasia
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/sea_castle" soundparameter = { "Tier" = 0 } }
+		graphical_cultures = { southeast_asian_building_gfx }
+		graphical_regions = { GH_graphical_dahangon GH_graphical_kashirya }
 	}
 
 	### Donated by Sunset Invasion ###
@@ -438,6 +444,10 @@ ruin_01 = {
 	
 	can_construct_potential = {
 		always = no 	# Absolutely never, ever outside events
+	}
+
+	is_enabled = {
+		always = no
 	}
 	
 	can_construct = {	

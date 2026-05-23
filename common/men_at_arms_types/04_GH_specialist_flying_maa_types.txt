@@ -159,6 +159,7 @@ airships = { # Adabyssian cultural unit
 		mayik_caverns = { damage = -5000 toughness = -1000 pursuit = -1000 screen = -1000 }
 		mayik_corridors = { damage = -5000 toughness = -1000 pursuit = -1000 screen = -1000 }
 		mayik_chamber = { damage = -5000 toughness = -1000 pursuit = -1000 screen = -1000 }
+		underworld_expanse = { damage = -5000 toughness = -1000 pursuit = -1000 screen = -1000 }
 	}
 
 	counters = {
@@ -184,7 +185,7 @@ airships = { # Adabyssian cultural unit
 
 seraph_melacham = { # Light/Celestial special summon troops
 	type = flying
-	can_recruit = { always = no }
+	special_recruit_only = yes
 	allowed_in_hired_troops = no
 
 	damage = 250
@@ -221,3 +222,53 @@ seraph_melacham = { # Light/Celestial special summon troops
 	icon = griffon_riders 
 } 
 
+dragonriders = {
+	type = flying
+
+	can_recruit = {
+		culture ?= { has_cultural_parameter = unlock_maa_dragonriders }
+	}
+
+	damage = 1500
+	toughness = 500
+	pursuit = 800
+	screen = 800
+
+	siege_tier = 6
+	siege_value = 0.8
+
+	terrain_bonus = {
+		wetlands = { damage = 50 pursuit = -300 screen = -300 }
+		forest = { damage = 100 pursuit = -300 screen = -300 }
+		hills = { damage = -100 }
+		desert_mountains = { damage = -300 toughness = -100 pursuit = -100 screen = -100 }
+		mountains = { damage = -300 toughness = -100 pursuit = -100 screen = -100 }
+
+		mayik_caverns = { damage = -1000 toughness = -400 pursuit = -750 screen = -750 }
+		mayik_corridors = { damage = -1000 toughness = -400 pursuit = -750 screen = -750 }
+		mayik_chamber = { damage = -900 toughness = -300 pursuit = -700 screen = -700 }
+		underworld_expanse = { damage = -700 toughness = -200 pursuit = -600 screen = -600 }
+	}
+
+	counters = {
+		archers = 1
+		skirmishers = 1
+		pikemen = 1
+		heavy_infantry = 1
+		heavy_cavalry = 1
+		elephant_cavalry = 1
+		light_cavalry = 1
+		archer_cavalry = 1
+		camel_cavalry = 1
+		flying = 2
+		siege_weapon = 2
+	}
+
+	buy_cost = { gold = dragonriders_recruitment_cost prestige = dragonriders_prestige_recruitment_cost piety = dragonriders_piety_recruitment_cost }
+	low_maintenance_cost = { gold = dragonriders_low_maint_cost prestige = dragonriders_low_prestige_maint_cost }
+	high_maintenance_cost = { gold = dragonriders_high_maint_cost prestige = dragonriders_high_prestige_maint_cost }
+	provision_cost = @provisions_cost_infantry_expensive
+
+	stack = 20
+	icon = griffon_riders
+}

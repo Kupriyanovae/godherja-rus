@@ -1,10 +1,66 @@
 ﻿
+# This effect requires you to input which convert to convert to with GOVERNMENT_TO_ADOPT
+# If you want it to be dynamic, simply use "flag:dynamic"
+# Otherwise, set the government you want to adopt
 convert_to_administrative_from_feudalism_effect = {
 	save_scope_as = administrative_liege
+	
+	switch = {
+		trigger = $GOVERNMENT_TO_ADOPT$
+		flag:dynamic = { # If we want the selection to be dynamic, save and clear the scope to prevent errors
+			save_scope_value_as = {
+				name = has_selected_a_government
+				value = flag:dynamic
+			}
+			clear_saved_scope = has_selected_a_government
+		}
+		flag:administrative = { # administrative_government / Administrative
+			save_scope_value_as = {
+				name = has_selected_a_government
+				value = flag:administrative
+			}
+		}
+		flag:celestial = { # celestial_government / Celestial
+			save_scope_value_as = {
+				name = has_selected_a_government
+				value = flag:celestial
+			}
+		}
+		flag:meritocratic = { # meritocratic_government / Meritocratic
+			save_scope_value_as = {
+				name = has_selected_a_government
+				value = flag:meritocratic
+			}
+		}
+		flag:japan_administrative = { # japan_administrative_government / Ritsuryo
+			save_scope_value_as = {
+				name = has_selected_a_government
+				value = flag:japan_administrative
+			}
+		}
+		## GH ADDITION ##
+		flag:administrative_republic_playable = { # Administrative Republic
+			save_scope_value_as = {
+				name = has_selected_a_government
+				value = flag:administrative_republic_playable
+			}
+		}
+		flag:judicial_republic = { #Judicial Republic
+			save_scope_value_as = {
+				name = has_selected_a_government
+				value = flag:judicial_republic
+			}
+		}
+		flag:otachedian = {
+			save_scope_value_as = {
+				name = has_selected_a_government
+				value = flag:otachedian
+			}
+		}
+		## GH END##
+	}
 
 	change_to_administrative_effect = yes
-
-	save_scope_as = administrative_liege
 
 	#Direct Vassals who fulfill the ep3_vassal_will_become_admin criteria are converted. Vassals above 25 opinion always accept
 	#Vassals are converted as a hierarchy. If a king is converted we convert all who are valid below that king (so his dukes, their counts, and their barons) are all converted.
@@ -142,7 +198,7 @@ convert_to_administrative_from_feudalism_effect = {
 					any_held_title = { is_noble_family_title = yes }
 				}
 			}
-			create_noble_family_effect = yes
+			create_noble_family_effect = { GOVERNMENT_GIVER = this }
 		}
 	}
 
@@ -151,7 +207,7 @@ convert_to_administrative_from_feudalism_effect = {
 			NOT = {
 				has_character_flag = latin_emp_force_admin_flag
 			}
-			is_independent_ruler = yes
+			top_liege = this
 		}
 		add_character_modifier = {
 			modifier = first_admin_emperor
@@ -159,12 +215,6 @@ convert_to_administrative_from_feudalism_effect = {
 	}
 	
 	change_influence = admin_convert_influence_value
-	if = {
-		limit = {
-			is_independent_ruler = yes
-		}
-		add_legitimacy_effect = { LEGITIMACY = admin_convert_legitimacy_value } #One Time Legitimacy Boost
-	}
 
 	custom_description_no_bullet = {
 		text = vassals_can_become_administrative
@@ -183,7 +233,7 @@ convert_to_administrative_from_feudalism_game_start_effect = {
 				NOT = { government_has_flag = government_is_administrative }
 			}
 			change_government = administrative_government
-			create_noble_family_effect = yes
+			create_noble_family_effect = { GOVERNMENT_GIVER = this }
 			add_to_list = estatified_list
 		}
 
@@ -199,7 +249,7 @@ convert_to_administrative_from_feudalism_game_start_effect = {
 					faith.religious_head ?= this
 					liege = {
 						faith.religious_head ?= this
-						is_independent_ruler = no
+						top_liege != this
 					}
 					AND = {
 						exists = scope:ignore_culture
@@ -212,12 +262,7 @@ convert_to_administrative_from_feudalism_game_start_effect = {
 	}
 }
 
-#apply_historic_administrative_game_rule_effect = {
-	# We'll be doing some excessive triggers below in a bid to lightly future-proof + error-spam mods less, don't worry about it.
-	## We also do player-specific realms separately — we need to know what their realm is so we do it after the lobby exclusively.
-	# Egypt.
-	# REMOVED FOR GODHERJA
-#}
+# GH REMOVED : apply_historic_administrative_game_rule_effect
 
 convert_to_feudalism_from_administrative_effect = {
 	#Gain some gold for selling off your estates
@@ -263,19 +308,26 @@ convert_to_feudalism_from_administrative_effect = {
 			limit = {
 				any_vassal = {
 					primary_title.tier >= tier_kingdom
-					NOT = { government_has_flag = government_is_clan }
+					NOR = {
+						government_has_flag = government_is_clan
+						government_has_flag = government_is_theocracy
+					}
 				}
 			}
 			custom_tooltip = kings_become_clan
 			every_vassal = {
-				limit = { 
+				limit = {
 					primary_title.tier >= tier_kingdom
-					NOT = { government_has_flag = government_is_clan }
+					NOR = {
+						government_has_flag = government_is_clan
+						government_has_flag = government_is_theocracy
+					}
 				}
 				hidden_effect = { change_government = clan_government }
 			}
 		}
 	}
+	## GH ADDITION ##
 	else_if = {
 		limit = { ep3_is_continental_clan_inclined_trigger = yes }
 		change_government = continental_clan_government
@@ -297,6 +349,7 @@ convert_to_feudalism_from_administrative_effect = {
 			}
 		}
 	}
+	## GH END ##
 	else = {
 		change_government = feudal_government
 

@@ -200,9 +200,41 @@
 		trigger = { scope:wealth < 40 }
 		weight = 20
 	}
+	decoration_material_inlay_jade = {
+		group = decoration_material_inlay
+		trigger = { scope:wealth > 80 }
+		weight = 20
+	}
+	decoration_material_inlay_amber = {
+		group = decoration_material_inlay
+		trigger = { scope:wealth > 80 }
+		weight = 20
+	}
+	decoration_material_inlay_shakudo = {
+		group = decoration_material_inlay
+		trigger = {
+			artifact_value_trigger = { VALUE = scope:wealth MIN = 60 MAX = 100 }
+			artifact_region_trigger = { CHARACTER = scope:owner REGION = world_asia_east }
+		}
+		weight = 10
+	}
+	decoration_material_inlay_shibuichi = {
+		group = decoration_material_inlay
+		trigger = {
+			artifact_value_trigger = { VALUE = scope:wealth MIN = 40 MAX = 60 }
+			artifact_region_trigger = { CHARACTER = scope:owner REGION = world_asia_east }
+		}
+		weight = 10
+	}
+
 
 # decoration_material_inlay_HSB
 	# Common. All regions should have access to *at least* one of these.
+	decoration_material_inlay_HSB_bone = {
+		group = decoration_material_inlay_HSB
+		trigger = { scope:wealth < 20 }
+		weight = 20
+	}
 	decoration_material_inlay_HSB_camel_bone = {
 		group = decoration_material_inlay_HSB
 		trigger = {
@@ -497,6 +529,114 @@
 		weight = 40
 	}
 
+# decoration_material_slate
+	decoration_material_slate_bamboo = {
+	    group = decoration_material_slate
+	    trigger = { artifact_value_trigger = { VALUE = scope:wealth MIN = 0  MAX = 10  } }
+	    weight = 20
+	}
+
+	decoration_material_slate_soapstone = {
+	    group = decoration_material_slate
+	    trigger = { artifact_value_trigger = { VALUE = scope:wealth MIN = 0  MAX = 20  } }
+	    weight = 20
+	}
+
+	decoration_material_slate_bronze = {
+	    group = decoration_material_slate
+	    trigger = { artifact_value_trigger = { VALUE = scope:wealth MIN = 10 MAX = 30  } }
+	    weight = 20
+	}
+
+	decoration_material_slate_quartz = {
+	    group = decoration_material_slate
+	    trigger = { artifact_value_trigger = { VALUE = scope:wealth MIN = 20 MAX = 40  } }
+	    weight = 20
+	}
+
+	decoration_material_slate_jade = {
+	    group = decoration_material_slate
+	    trigger = { artifact_value_trigger = { VALUE = scope:wealth MIN = 30 MAX = 60  } }
+	    weight = 20
+	}
+
+	decoration_material_slate_ivory = {
+	    group = decoration_material_slate
+	    trigger = { artifact_value_trigger = { VALUE = scope:wealth MIN = 60 MAX = 999  } }
+	    weight = 20
+	}
+
+	decoration_material_slate_rhinocerous_horn = {
+	    group = decoration_material_slate
+	    trigger = { artifact_value_trigger = { VALUE = scope:wealth MIN = 60 MAX = 999 } }
+	    weight = 20
+	}
+
+
+# decoration_material_ink
+	decoration_material_ink_pine_soot = {
+		group = decoration_material_ink
+		trigger = { artifact_value_trigger = { VALUE = scope:wealth MIN = 0 MAX = 20 } }
+		weight = 20
+	}
+	
+	decoration_material_ink_oil_soot = {
+		group = decoration_material_ink
+		trigger = {
+			artifact_value_trigger = { VALUE = scope:wealth MIN = 0 MAX = 30 }
+		}	
+		weight = 20
+	}
+	decoration_material_ink_charcoal = {
+		group = decoration_material_ink
+		trigger = {
+			artifact_value_trigger = { VALUE = scope:wealth MIN = 0 MAX = 30 }
+		}
+		weight = 20
+	}
+	decoration_material_ink_lacquer_soot = {
+		group = decoration_material_ink
+		trigger = {
+			artifact_value_trigger = { VALUE = scope:wealth MIN = 20 MAX = 60 }
+		}	
+		weight = 20
+	}
+	decoration_material_ink_cinnabar = {
+		group = decoration_material_ink
+		trigger = {
+			artifact_value_trigger = { VALUE = scope:wealth MIN = 40 MAX = 70 }
+		}
+		weight = 30
+	}
+	decoration_material_ink_orpiment = {
+		group = decoration_material_ink
+		trigger = {
+			artifact_value_trigger = { VALUE = scope:wealth MIN = 40 MAX = 70 }
+		}
+		weight = 50
+	}
+	decoration_material_ink_lac_dye = {
+		group = decoration_material_ink
+		trigger = {
+			artifact_value_trigger = { VALUE = scope:wealth MIN = 40 MAX = 70 }
+		}
+		weight = 50
+	}
+	decoration_material_ink_silver = {
+		group = decoration_material_ink
+		trigger = {
+			artifact_value_trigger = { VALUE = scope:wealth MIN = 60 MAX = 999 }
+		}
+		weight = 50
+	}
+	decoration_material_ink_shell_gold = {
+		group = decoration_material_ink
+		trigger = {
+			artifact_value_trigger = { VALUE = scope:wealth MIN = 60 MAX = 999 }
+		}
+		weight = 50
+	}
+
 # decoration_material_embroidery
 	decoration_material_embroidery_wool = {
 		group = decoration_material_embroidery
@@ -630,7 +770,7 @@
 	#	trigger = {
 	#		artifact_value_trigger = { VALUE = scope:wealth MIN = 60 MAX = 999 }
 	#		artifact_region_trigger = { CHARACTER = scope:owner REGION = world_europe_west_britannia }
-	#		current_date >= 1200.1.1
+	#		current_date >= 6200.1.1
 	#	}	
 	#	weight = 40
 	#}
@@ -777,6 +917,66 @@
 	generic_material_wood_ebony = {
 		group = generic_material_wood
 		trigger = { artifact_feature_wood_ebony_trigger = yes }
+		weight = 1
+	}
+
+	generic_material_wood_nanmu = {
+		group = generic_material_wood
+		trigger = { artifact_feature_wood_nanmu_trigger = yes }
+		weight = 1
+	}	
+
+	generic_material_wood_boxwood = {
+		group = generic_material_wood
+		trigger = { artifact_feature_wood_boxwood_trigger = yes }
+		weight = 1
+	}	
+
+	generic_material_wood_paulownia = {
+		group = generic_material_wood
+		trigger = { artifact_feature_wood_paulownia_trigger = yes }
+		weight = 1
+	}	
+
+	generic_material_wood_camphorwood = {
+		group = generic_material_wood
+		trigger = { artifact_feature_wood_camphorwood_trigger = yes }
+		weight = 1
+	}	
+
+	generic_material_wood_narra = {
+		group = generic_material_wood
+		trigger = { artifact_feature_wood_narra_trigger = yes }
+		weight = 1
+	}	
+
+	generic_material_wood_toona_sureni = {
+		group = generic_material_wood
+		trigger = { artifact_feature_wood_toona_sureni_trigger = yes }
+		weight = 1
+	}	
+
+	generic_material_wood_agarwood = {
+		group = generic_material_wood
+		trigger = { artifact_feature_wood_agarwood_trigger = yes }
+		weight = 1
+	}	
+
+	generic_material_wood_sandalwood = {
+		group = generic_material_wood
+		trigger = { artifact_feature_wood_sandalwood_trigger = yes }
+		weight = 1
+	}	
+
+	generic_material_wood_birch = {
+		group = generic_material_wood
+		trigger = { artifact_feature_wood_birch_trigger = yes }
+		weight = 1
+	}	
+
+	generic_material_wood_linden = {
+		group = generic_material_wood
+		trigger = { artifact_feature_wood_linden_trigger = yes }
 		weight = 1
 	}	
 
@@ -973,6 +1173,66 @@
 		trigger = { artifact_feature_wood_oak_trigger = yes }
 		weight = 1
 	}
+
+	shaft_wood_nanmu = {
+		group = shaft_wood
+		trigger = { artifact_feature_wood_nanmu_trigger = yes }
+		weight = 1
+	}	
+
+	shaft_wood_boxwood = {
+		group = shaft_wood
+		trigger = { artifact_feature_wood_boxwood_trigger = yes }
+		weight = 1
+	}	
+
+	shaft_wood_paulownia = {
+		group = shaft_wood
+		trigger = { artifact_feature_wood_paulownia_trigger = yes }
+		weight = 1
+	}	
+
+	shaft_wood_camphorwood = {
+		group = shaft_wood
+		trigger = { artifact_feature_wood_camphorwood_trigger = yes }
+		weight = 1
+	}	
+
+	shaft_wood_narra = {
+		group = shaft_wood
+		trigger = { artifact_feature_wood_narra_trigger = yes }
+		weight = 1
+	}	
+
+	shaft_wood_toona_sureni = {
+		group = shaft_wood
+		trigger = { artifact_feature_wood_toona_sureni_trigger = yes }
+		weight = 1
+	}	
+
+	shaft_wood_agarwood = {
+		group = shaft_wood
+		trigger = { artifact_feature_wood_agarwood_trigger = yes }
+		weight = 1
+	}	
+
+	shaft_wood_sandalwood = {
+		group = shaft_wood
+		trigger = { artifact_feature_wood_sandalwood_trigger = yes }
+		weight = 1
+	}	
+
+	shaft_wood_birch = {
+		group = shaft_wood
+		trigger = { artifact_feature_wood_birch_trigger = yes }
+		weight = 1
+	}	
+
+	shaft_wood_linden = {
+		group = shaft_wood
+		trigger = { artifact_feature_wood_linden_trigger = yes }
+		weight = 1
+	}	
 
 #################################################################
 # Weapon Decorative Features - Blades, Hilts, Heads, (S)hafts) 	#
@@ -1247,7 +1507,7 @@
 			if = {
 				limit = {
 					# Began to show up late 10th century
-					current_date < 991.1.1
+					current_date < 5991.1.1
 				}
 				multiply = 0
 			}
@@ -1262,7 +1522,7 @@
 				scope:wealth >= 60
 			}
 			# Began to show up mid 14th century
-			current_date > 1343.1.1
+			current_date > 6343.1.1
 		}
 		weight = {
 			value = 10
@@ -1283,7 +1543,7 @@
 			if = {
 				limit = {
 					# Mostly beginning in the late 14th century
-					current_date > 1389.1.1
+					current_date > 6389.1.1
 				}
 				add = 10
 			}
@@ -1630,6 +1890,23 @@
 		}
 		weight = 20
 	}
+	artifact_armor_descriptor_armor_shakudo_decorated = {
+		group = armor_property
+		trigger = {
+			has_artifact_feature_group = decoration_material_inlay
+			has_artifact_feature = decoration_material_inlay_shakudo
+		}
+		weight = 20
+	}
+	artifact_armor_descriptor_armor_shibuichi_decorated = {
+		group = armor_property
+		trigger = {
+			has_artifact_feature_group = decoration_material_inlay
+			has_artifact_feature = decoration_material_inlay_shibuichi
+		}
+		weight = 20
+	}
+
 
 #################################################################
 # Regalia Features - Scepter, Clothes, Accessory				#
@@ -3922,6 +4199,32 @@
 		weight = 1
 	}
 
+	book_subject_poetry = {
+		group = book_subject
+		trigger = {
+			exists = scope:owner.var:book_artifact_subject
+			scope:owner.var:book_artifact_subject = flag:poetry
+		}
+		weight = 1
+	}
+
+	book_subject_cuisine = {
+		group = book_subject
+		trigger = {
+			exists = scope:owner.var:book_artifact_subject
+			scope:owner.var:book_artifact_subject = flag:cuisine
+		}
+		weight = 1
+	}
+
+	book_subject_myth = {
+		group = book_subject
+		trigger = {
+			exists = scope:owner.var:book_artifact_subject
+			scope:owner.var:book_artifact_subject = flag:myth
+		}
+		weight = 1
+	}
 
 # book_topic
 
@@ -4508,7 +4811,7 @@
 				limit = { exists = scope:owner.var:book_artifact_author }
 				scope:owner.var:book_artifact_author = {
 					faith = { graphical_germanic_religion_trigger = yes }
-					has_trait = poet
+					has_trait = lifestyle_poet
 				}
 			}
 		}
@@ -4555,7 +4858,7 @@
 				scope:owner.var:book_artifact_topic = flag:poetry
 			}
 			exists = scope:owner.var:book_artifact_author
-			scope:owner.var:book_artifact_author = { has_trait = poet }
+			scope:owner.var:book_artifact_author = { has_trait = lifestyle_poet }
 		}
 		weight = 1
 	}
@@ -5455,7 +5758,38 @@
 		}
 	}
 
-	# GH CHANGE: Removed Galen's book
+	book_topic_medicine_galen = {
+		group = book_topic
+		trigger = {
+			has_artifact_feature = book_subject_medicine
+			trigger_if = { # If the topic has been pre-saved from events etc. we make sure it's picked
+				limit = { exists = scope:owner.var:book_artifact_topic }
+				scope:owner.var:book_artifact_topic = flag:galen
+			}
+		}
+		weight = {
+			value = 1
+			if = {
+				limit = {
+					exists = scope:owner.var:book_artifact_author
+				}
+				scope:owner.var:book_artifact_author = {
+					if = {
+						limit = { book_subject_medicine_trigger = yes }
+						add = 10
+					}
+				}
+			}
+			else = {
+				scope:owner = {
+					if = {
+						limit = { book_subject_medicine_trigger = yes }
+						add = 10
+					}
+				}
+			}
+		}
+	}
 
 	# cannibal topic
 	book_topic_cannibal_recipes = {
@@ -6157,7 +6491,11 @@
 		weight = 1
 	}
 
-	# GH CHANGE: Removed Galen's book
+	book_title_medicine_galen = {
+		group = book_title
+		trigger = { has_artifact_feature = book_topic_medicine_galen }
+		weight = 1
+	}
 
 	book_title_medicine_herbs_one = {
 		group = book_title

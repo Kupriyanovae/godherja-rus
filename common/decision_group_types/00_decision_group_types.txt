@@ -1,19 +1,36 @@
 ﻿############################################
 # Decisions roughly at the top
-# (201-300 )
+# (201-400 )
+
+oaths = { # Try to keep this one at the top, as they are unique and rare
+	sort_order = 400
+	gui_tags = { extra_big_button oath_decision }
+	important_decision_group = yes
+}
+
+dynastic_cycle = {
+	sort_order = 300
+	gui_tags = { big_button }	
+}
 
 story = {
-	sort_order = 175
+	sort_order = 300
 	gui_tags = { big_button }
 }
 
 adventurer = {
-	sort_order = 150
+	sort_order = 250
 	gui_tags = { big_button }
 }
 
 nomad_major = {
 	sort_order = 225
+	gui_tags = { big_button }
+	important_decision_group = yes
+}
+
+major = {
+	sort_order = 200
 	gui_tags = { big_button }
 	important_decision_group = yes
 }
@@ -132,6 +149,17 @@ korlacan = {
 	sort_order = 125
 	gui_tags = { big_button }
 }
+
+agadari = {
+	sort_order = 125
+	gui_tags = { big_button }
+}
+
+redland_cults = {
+	sort_order = 120
+	gui_tags = { big_button }
+}
+
 ############################################
 # Decisions roughly in the middle
 # (101-200 )
@@ -149,11 +177,6 @@ struggle = {
 ############################################
 # Decisions roughly at the bottom
 # (001-100 )
-
-major = {
-	sort_order = 100
-	gui_tags = { big_button }
-}
 
 admin = {
 	sort_order = 50
@@ -185,4 +208,8 @@ decisions = {
 
 debug = {
 	sort_order = -1
+}
+
+redland_cults {
+	sort_order = 9
 }

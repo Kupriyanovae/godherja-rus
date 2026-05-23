@@ -135,6 +135,23 @@ InspirationStudyPresentFuture = {
 	}
 }
 
+InspirationStringPresentFuture = {
+	type = character
+
+	text = {
+		trigger = {
+			inspiration = {
+				exists = inspiration_sponsor
+			}
+		}
+		localization_key = inspiration_desc_string_present
+	}
+
+	text = {
+		localization_key = inspiration_desc_string_future
+	}
+}
+
 InspirationTypeDescription = {
 	type = character
 
@@ -342,6 +359,25 @@ InspirationTypeDescription = {
 		}
 		localization_key = alchemy_inspiration_description
 	}
+	text = {
+		trigger = {
+			inspiration = { has_inspiration_type = bow_inspiration }
+		}
+		localization_key = bow_inspiration_description
+	}
+
+	text = { ## GH ADDITION: Glassmaking
+		trigger = {
+			inspiration = { has_inspiration_type = glassware_inspiration }
+			exists = var:artifact_glassware_type
+		}
+		localization_key = glassware_set_type_inspiration_description
+	}
+
+	text = { ## GH ADDITION: Glassmaking
+		trigger = { inspiration = { has_inspiration_type = glassware_inspiration } }
+		localization_key = glassware_inspiration_description
+	}
 }
 
 InspirationTypeDescriptionPast = {
@@ -406,6 +442,17 @@ InspirationTypeDescriptionPast = {
 			var:created_artifact_type = flag:major_religious_inspiration
 		}
 		localization_key = religious_inspiration_description_past
+	}
+	text = {
+		trigger = {
+			var:created_artifact_type = flag:bow
+		}
+		localization_key = bow_inspiration_description_past
+	}
+
+	text = { ## GH ADDITION: Glassmaking
+		trigger = { var:created_artifact_type = flag:glassware }
+		localization_key = glassware_inspiration_description_past
 	}
 }
 
@@ -478,16 +525,12 @@ InspirationArtisanType = {
 	# GH ADDITION: GH-specific artifact types
 
 	text = {
-		trigger = {
-			var:artifact_artisan_type = flag:artisan_type_earthware
-		}
+		trigger = { var:artifact_artisan_type = flag:artisan_type_earthware }
 		localization_key = inspiration_artisan_type_earthware
 	}
 	
 	text = {
-		trigger = {
-			var:artifact_artisan_type = flag:artisan_type_glassware
-		}
+		trigger = { var:artifact_artisan_type = flag:artisan_type_glassware }
 		localization_key = inspiration_artisan_type_glassware
 	}
 }
@@ -529,6 +572,13 @@ InspirationSmithType = {
 			var:artifact_smith_type = flag:smith_type_aquamanile
 		}
 		localization_key = inspiration_smith_type_aquamanile
+	}
+	
+	text = { #
+	trigger = {
+		var:artifact_smith_type = flag:smith_type_incense_burner_sculpture
+	}
+	localization_key = inspiration_smith_type_incense_burner_sculpture
 	}
 
 	## GH ADDITIONS ##
@@ -977,6 +1027,10 @@ GetRoyalCourtRank = {
 	type = character
 
 	text = {
+		trigger = { highest_held_title_tier = tier_hegemony }
+		localization_key = hegemonic_court
+	}
+	text = {
 		trigger = { highest_held_title_tier = tier_empire }
 		localization_key = imperial_court
 	}
@@ -1085,13 +1139,13 @@ GetLocalRole = {
 	}
 	text = {
 		trigger = {
-			NOT = { culture = root.culture }
+			culture != root.culture
 		}
 		localization_key = local_role_culture
 	}
 	text = {
 		trigger = {
-			NOT = { faith = root.faith }
+			faith != root.faith
 		}
 		localization_key = local_role_faith
 	}
@@ -1205,6 +1259,10 @@ GetInspirationOwnerType = {
 		}
 		localization_key = inspiration_owner_type_theologian
 	}
+	text = { ## GH ADDITION: Glassmaking
+		trigger = { inspiration = { has_inspiration_type = glassware_inspiration } }
+		localization_key = inspiration_owner_type_glassmith
+	}
 	text = { 
 		trigger = { always = no }
 		fallback = yes
@@ -1229,6 +1287,7 @@ GetInspirationTypeTool = {
 					has_inspiration_type = weapon_inspiration
 					has_inspiration_type = armor_inspiration
 					has_inspiration_type = smith_inspiration
+					has_inspiration_type = glassware_inspiration ## GH ADDITION: Glassmaking
 				}
 			}
 		}
@@ -1271,8 +1330,13 @@ GetInspirationTypeTool = {
 		localization_key = inspiration_type_tool_artisan
 	}
 	text = {
-		trigger = {
-			inspiration = { has_inspiration_type = smith_inspiration }
+		trigger = { ## GH CHANGE: Glassmaking
+			inspiration = {
+				OR = {
+					has_inspiration_type = smith_inspiration
+					has_inspiration_type = glassware_inspiration
+				}
+			}
 		}
 		localization_key = inspiration_type_tool_mold
 	}
@@ -1299,6 +1363,18 @@ GetInspirationTypeTool = {
 		}
 		localization_key = inspiration_type_tool_books
 	}
+	text = { ## GH ADDITION: Glassmaking
+		trigger = { inspiration = { has_inspiration_type = glassware_inspiration } }
+		localization_key = inspiration_type_tool_blowpipe
+	}
+	text = { ## GH ADDITION: Glassmaking
+		trigger = { inspiration = { has_inspiration_type = glassware_inspiration } }
+		localization_key = inspiration_type_tool_pontil
+	}
+	text = { ## GH ADDITION: Glassmaking
+		trigger = { inspiration = { has_inspiration_type = glassware_inspiration } }
+		localization_key = inspiration_type_tool_jacks
+	}
 	text = { 
 		trigger = { always = no }
 		fallback = yes
@@ -1322,6 +1398,7 @@ GetInspirationTypeStation = {
 					has_inspiration_type = weapon_inspiration 
 					has_inspiration_type = armor_inspiration
 					has_inspiration_type = smith_inspiration
+					has_inspiration_type = glassware_inspiration ## GH ADDITION: Glassmaking
 				}
 			}
 		}
@@ -1346,6 +1423,7 @@ GetInspirationTypeStation = {
 					has_inspiration_type = weapon_inspiration 
 					has_inspiration_type = armor_inspiration
 					has_inspiration_type = smith_inspiration
+					has_inspiration_type = glassware_inspiration ## GH ADDITION: Glassmaking
 				}
 			}
 		}
@@ -1380,6 +1458,18 @@ GetInspirationTypeStation = {
 			inspiration = { has_inspiration_type = alchemy_inspiration }
 		}
 		localization_key = inspiration_type_station_alembic
+	}
+	text = { ## GH ADDITION: Glassmaking
+		trigger = {
+			inspiration = { has_inspiration_type = glassware_inspiration }
+		}
+		localization_key = inspiration_type_station_marver
+	}
+	text = { ## GH ADDITION: Glassmaking
+		trigger = {
+			inspiration = { has_inspiration_type = glassware_inspiration }
+		}
+		localization_key = inspiration_type_station_lathe
 	}
 	text = { 
 		trigger = {
@@ -1450,6 +1540,10 @@ GetInspirationTypeRoom = {
 		}
 		localization_key = inspiration_type_room_laboratory
 	}
+	text = { ## GH ADDITION: Glassmaking
+		trigger = { inspiration = { has_inspiration_type = glassware_inspiration } }
+		localization_key = inspiration_type_room_glassworks
+	}
 	text = { 
 		trigger = { always = no }
 		fallback = yes
@@ -1519,6 +1613,16 @@ GetInspirationTypeVerb = {
 		localization_key = inspiration_type_verb_research
 	}
 	text = { 
+		trigger = {
+			inspiration = { has_inspiration_type = bow_inspiration }
+		}
+		localization_key = inspiration_type_verb_string
+	}
+	text = { ## GH ADDITION: Glassmaking
+		trigger = { inspiration = { has_inspiration_type = glassware_inspiration } }
+		localization_key = inspiration_type_verb_blow
+	}
+	text = { 
 		trigger = { always = no }
 		fallback = yes
 		localization_key = inspiration_type_verb_make
@@ -1583,6 +1687,10 @@ GetInspirationTypeObject = {
 			inspiration = { has_inspiration_type = alchemy_inspiration }
 		}
 		localization_key = inspiration_type_object_alchemy
+	}
+	text = { ## GH ADDITION: Glassmaking
+		trigger = { inspiration = { has_inspiration_type = glassware_inspiration } }
+		localization_key = inspiration_type_object_glassware
 	}
 	text = { 
 		trigger = { always = no }
@@ -1658,7 +1766,7 @@ GetInspirationMaterialType = {
 		}
 		localization_key = inspiration_type_material_clay
 	}
-	# GH ADDITION: Glassware is GH-specific
+	# GH ADDITION: Glassware is GH-specific (to be compatched with de-facto glassmaking)
 	text = { 
 		trigger = {
 			inspiration = { has_inspiration_type = artisan_inspiration }
@@ -1671,6 +1779,10 @@ GetInspirationMaterialType = {
 			inspiration = { has_inspiration_type = alchemy_inspiration }
 		}
 		localization_key = inspiration_type_material_ingredients
+	}
+	text = { ## GH ADDITION: Glassmaking
+		trigger = { inspiration = { has_inspiration_type = glassware_inspiration } }
+		localization_key = inspiration_type_material_glass
 	}
 	text = { 
 		trigger = { always = no }
@@ -2051,6 +2163,10 @@ GetTargetCourtPosition = {
 		trigger = { var:target_court_position ?= flag:keeper_of_the_horses }
 		localization_key = court_position_keeper_of_the_horses
 	}
+	text = { ## GH ADDITION: Glassmaking
+		trigger = { var:target_court_position ?= flag:court_gaffer }
+		localization_key = court_position_court_gaffer
+	}
 }
 
 GetTargetCourtPositionDesc = {
@@ -2216,6 +2332,10 @@ GetTargetCourtPositionDesc = {
 		trigger = { var:target_court_position ?= flag:keeper_of_the_horses }
 		localization_key = court_position_desc_keeper_of_the_horses
 	}
+	text = { ## GH ADDITION: Glassmaking
+		trigger = { var:target_court_position = flag:court_gaffer }
+		localization_key = court_position_desc_court_gaffer
+	}
 }
 
 GetCourtPositionSubject = {
@@ -2291,7 +2411,12 @@ GetCourtPositionSubject = {
 		localization_key = court_position_subject_cribs
 	}
 	text = {
-		trigger = { has_court_position = court_tutor_court_position }
+		trigger = { 
+			OR = {
+				has_court_position = court_tutor_court_position 
+				has_court_position = court_guru_court_position 
+			}
+		}
 		localization_key = court_position_subject_teaching
 	}
 	text = {
@@ -2354,10 +2479,13 @@ GetCourtPositionSubject = {
 		trigger = { has_court_position = bookmaker_court_position }
 		localization_key = court_position_subject_betting_odds
 	}
+	text = {
+		trigger = { has_court_position = court_gaffer_court_position }
+		localization_key = court_position_subject_glasswork
+	}
 	text = { 
 		trigger = { always = no }
 		fallback = yes
 		localization_key = court_position_subject_work
 	}
 }
- 

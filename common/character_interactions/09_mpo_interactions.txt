@@ -7,72 +7,44 @@
 	ai_targets = {
 		ai_recipients = neighboring_rulers_including_tributary_borders
 	}
-	ai_frequency = 8
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 8
+		duchy = 8
+		kingdom = 0
+		empire = 0
+		hegemony = 0
+	}
 	popup_on_receive = yes
 	pause_on_receive = yes
 
 	common_interaction = yes
-	
+
 	cooldown_against_recipient = { years = 3 }
 
 	is_shown = {
-		OR = {
-			AND = {
-				scope:actor = {
-					OR = {
-						government_has_flag = government_is_tribal
-						government_has_flag = government_is_continental_clan
-						government_has_flag = government_is_nomadic
-					}
-					is_playable_character = yes
-					OR = {
-						is_independent_ruler = yes
-						is_confederation_member = yes
-					}
-				}
-				scope:recipient = {
-					is_playable_character = yes
-					is_independent_ruler = yes
-					NOR = {
-						government_has_flag = government_is_herder
-						this = scope:actor
-					}
-				}
+		scope:actor = {
+			OR = {
+				government_has_flag = government_is_tribal
+				government_has_flag = government_is_nomadic
+				government_has_flag = government_is_continental_clan
+
 			}
-			AND = {
-				scope:actor = {
-					government_has_flag = government_is_pirate
-					OR = {
-						is_independent_ruler = yes
-						is_confederation_member = yes
-					}
-				}
-				scope:recipient = {
-					government_has_flag = government_is_pirate
-					is_playable_character = yes
-					is_independent_ruler = yes
-					NOT = {
-						this = scope:actor
-					}
-				}
+			is_playable_character = yes
+			OR = {
+				is_independent_ruler = yes
+				confederation ?= { is_house_based = no }
 			}
-			#AND = {
-			#	scope:actor = {
-			#		government_has_flag = government_is_landed_order
-			#		OR = {
-			#			is_independent_ruler = yes
-			#			is_confederation_member = yes
-			#		}
-			#	}
-			#	scope:recipient = {
-			#		government_has_flag = government_is_landed_order
-			#		is_playable_character = yes
-			#		is_independent_ruler = yes
-			#		NOT = {
-			#			this = scope:actor
-			#		}
-			#	}
-			#}
+		}
+		scope:recipient = {
+			is_playable_character = yes
+			is_independent_ruler = yes
+			OR = {
+				government_has_flag = government_is_tribal
+				government_has_flag = government_is_nomadic
+				government_has_flag = government_is_continental_clan
+			}
+			NOT = { this = scope:actor }
 		}
 	}
 
@@ -176,16 +148,7 @@
 			add = 20
 		}
 
-		modifier = {
-			desc = fp3_rekindler_of_iran_modifier_reason
-			trigger = {
-				AND = {
-					scope:actor = { dynasty ?={ has_dynasty_modifier = fp3_rekindler_of_iran_modifier } }
-					scope:recipient = { culture = { has_cultural_pillar = heritage_iranian } }
-				}
-			}
-			add = 20
-		}
+		#GH REMOVED	
 
 
 		modifier = { # Cultural Acceptance
@@ -501,6 +464,7 @@
 			}
 			add = -175
 		}
+		#Relative power
 		modifier = {
 			desc = offer_vassalization_interaction_aibehavior_power_tt
 	  	  	add = {
@@ -514,6 +478,7 @@
 				min = -100
 	  		}
 		}
+		#Powerful vassal opinion of you
 		modifier = {
 			desc = offer_confederation_offerer_vassal_opinion_tt
 			trigger = {
@@ -547,12 +512,11 @@
 						divide = 5
 					}
 				}
-
 				divide = 10
 	  		}
 		}
-		
-		# Legitimacy 
+
+		# Legitimacy
 		modifier = {
 			desc = "LOW_LEGITIMACY_REASON"
 			scope:actor = {
@@ -644,12 +608,9 @@
 		modifier = { #Rivalry modifier.
 			desc = offer_vassalization_interaction_aibehavior_rival_confederation_tt
 			trigger = {
-				exists = scope:actor.confederation
-				scope:actor.confederation = {
+				scope:actor.confederation ?= {
 					any_confederation_member = {
-						NOT = {
-							this = scope:actor
-						}
+						NOT = { this = scope:actor }
 						has_relation_rival = scope:recipient
 						NOT = { has_relation_nemesis = scope:recipient }
 					}
@@ -660,12 +621,9 @@
 		modifier = { #Nemesis modifier.
 			desc = offer_vassalization_interaction_aibehavior_nemesis_confederation_tt
 			trigger = {
-				exists = scope:actor.confederation
-				scope:actor.confederation = {
+				scope:actor.confederation ?= {
 					any_confederation_member = {
-						NOT = {
-							this = scope:actor
-						}
+						NOT = { this = scope:actor }
 						has_relation_nemesis = scope:recipient
 					}
 				}
@@ -892,45 +850,9 @@
 			}
 			desc = COWED_REASON
 		}
-		modifier = {
-			add = intimidated_external_reason_value
-			scope:actor = {
-				is_independent_ruler = no
-			}
-			scope:recipient = {
-				has_dread_level_towards = {
-					target = scope:actor.top_liege
-					level = 1
-				}
-			}
-			desc = LIEGE_INTIMIDATED_REASON
-		}
-		modifier = {
-			add = cowed_external_reason_value
-			scope:actor = {
-				is_independent_ruler = no
-			}
-			scope:recipient = {
-				has_dread_level_towards = {
-					target = scope:actor.top_liege
-					level = 2
-				}
-			}
-			desc = LIEGE_COWED_REASON
-		}
 		opinion_modifier = { #Compare Opinion modifier.
 			who = scope:recipient
 			opinion_target = scope:actor
-			multiplier = 0.35
-		}
-		opinion_modifier = { #Compare Opinion modifier.
-			trigger = {
-				scope:actor = {
-					is_independent_ruler = no
-				}
-			}
-			who = scope:recipient
-			opinion_target = scope:actor.top_liege
 			multiplier = 0.35
 		}
 
@@ -1069,6 +991,16 @@
 		modifier = {
 			add = -30
 			desc = NO_FRIGHTENING_NEIGHBOR_REASON
+			scope:actor.culture = {
+				NOT = {
+					has_cultural_parameter = forming_confederations_is_easier
+				}
+			}
+			scope:recipient.culture = {
+				NOT = {
+					has_cultural_parameter = forming_confederations_is_easier
+				}
+			}
 			NOT = {
 				scope:recipient = {
 					confederation_neighboring_foe_trigger = { CHARACTER = scope:recipient }
@@ -1118,10 +1050,7 @@
 		modifier = {
 			add = duchy_confederation_vassals_value
 			desc = TOO_MANY_CONFEDERATION_VASSALS_REASON
-			scope:actor = {
-				is_confederation_member = yes
-			}
-			scope:actor.confederation = {
+			scope:actor.confederation ?= {
 				any_confederation_member = {
 					count >= 6
 					highest_held_title_tier >= tier_county
@@ -1138,8 +1067,7 @@
 					this = scope:recipient.culture
 				}
 			}
-			any_in_global_list = {
-				variable = confederations
+			any_confederation = {
 				NOT = {
 					this = scope:actor.confederation
 				}
@@ -1320,6 +1248,15 @@
 				}
 			}
 		}
+		modifier = {
+			desc = "BARANGAY_TRADITION_REASON"
+			trigger = {
+				scope:recipient.culture = {
+					has_cultural_parameter = invite_to_confederation_extra_reasons
+				}
+			}
+			add = 20
+		}
 		modifier = { #left your confederation
 			add = -50
 			desc = LEFT_YOUR_CONFEDERATION_REASON
@@ -1382,13 +1319,19 @@
 					is_playable_character = yes
 				}
 			}
-			if = {
-				limit = {
-					scope:actor = {
-						has_character_flag = forming_confederation
-					}
+			scope:actor = {
+				if = {
+					limit = { has_character_flag = forming_confederation }
+					remove_character_flag = forming_confederation
+					# MPO ACHIEVEMENT Con-Fed-Up
+					#if = {
+					#	limit = { is_ai = no }
+					#	add_achievement_global_variable_effect = {
+					#		VARIABLE = mpo_confedup_achievement_unlocked
+					#		VALUE = yes
+					#	}
+					#}
 				}
-				scope:actor = { remove_character_flag = forming_confederation }
 			}
 			if = {
 				limit = {
@@ -1429,9 +1372,7 @@
 										is_at_war_with = scope:recipient
 									}
 								}
-								scope:recipient_war = {
-									add_defender = prev
-								}
+								scope:recipient_war = { add_defender = prev }
 							}
 						}
 					}
@@ -1740,11 +1681,9 @@
 				scope:recipient = {
 					is_at_war = yes
 					NOR = {
-						any_character_war = {
-							primary_defender = scope:recipient
-						}
+						any_character_war = { primary_defender = scope:recipient }
 						culture = scope:actor.culture
-						scope:actor.confederation = {
+						scope:actor.confederation ?= {
 							any_confederation_member = {
 								count >= 4
 								highest_held_title_tier >= tier_county
@@ -1789,7 +1728,14 @@ promote_divergent_or_hybrid_culture_interaction = {
 		ai_recipients = vassals
 		max = 10
 	}
-	ai_frequency = 12
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 12
+		kingdom = 12
+		empire = 12
+		hegemony = 12
+	}
 	popup_on_receive = yes
 	pause_on_receive = yes
 
@@ -2139,7 +2085,14 @@ inspire_conversion_interaction = {
 		ai_recipients = vassals
 		max = 10
 	}
-	ai_frequency = 12
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 12
+		kingdom = 6
+		empire = 6
+		hegemony = 6
+	}
 	cooldown_against_recipient = { years = 5 }
 	popup_on_receive = yes
 	pause_on_receive = yes
@@ -2245,7 +2198,7 @@ inspire_conversion_interaction = {
 			add = -50
 			scope:actor.faith = { has_doctrine_parameter = unreformed }
 		}
-		
+
 		modifier = {
 			add = 50
 			desc = ZEALOUS_PROSELYTIZER_REASON
@@ -2511,7 +2464,7 @@ inspire_conversion_interaction = {
 				OR = {
 					story_type = story_mongol_invasion
 					story_type = story_greatest_of_khans
-					
+
 				}
 			}
 			mpo_has_gok_mongol_empire_trigger = yes
@@ -2600,14 +2553,14 @@ migration_interaction = {
 					}
 				}
 			}
-			NOT = { exists = involved_activity }
+			NOR = {
+				exists = involved_activity
+				has_truce = scope:recipient
+			}
 		}
 		scope:recipient = {
 			is_ruler = yes
-			NOR = {
-				is_allied_to = scope:actor
-				has_truce = scope:actor
-			}
+			NOT = { is_allied_to = scope:actor }
 		}
 	}
 
@@ -2682,7 +2635,43 @@ migration_interaction = {
 					value = scope:target_title
 				}
 			}
-
+			if = {
+				limit = {
+					OR = {
+						has_variable = crowned_king_var
+						has_variable = crowned_emperor_var
+					}
+				}
+				set_variable = {
+					name = nomad_migration_preserve_coronation
+					value = yes
+				}
+			}
+			if = {
+				limit = {
+					highest_held_title_tier = tier_duchy
+				}
+				add_character_modifier = {
+					modifier = mpo_migrating_accolade_duke_modifier
+				}
+			}
+			else_if = {
+				limit = {
+					highest_held_title_tier = tier_kingdom
+				}
+				add_character_modifier = {
+					modifier = mpo_migrating_accolade_king_modifier
+				}
+			}
+			else_if = {
+				limit = {
+					highest_held_title_tier >= tier_empire
+				}
+				add_character_modifier = {
+					modifier = mpo_migrating_accolade_emperor_modifier
+				}
+			}
+			
 			# Save your old lands
 			save_scope_as = old_holder
 			capital_county = { save_scope_as = old_capital_county }
@@ -2741,8 +2730,8 @@ migration_interaction = {
 						}
 					}
 					hidden_effect = {
-						break_subject_contract_and_establish_tributary_effect = { 
-							SUZERAIN = scope:actor 
+						break_subject_contract_and_establish_tributary_effect = {
+							SUZERAIN = scope:actor
 							TRIBUTARY = this
 						}
 					}
@@ -2799,6 +2788,44 @@ migration_interaction = {
 				set_variable = {
 					name = migrating_into_tributary_war_var
 					value = scope:recipient.overlord
+				}
+			}
+		}
+		scope:actor = {
+			if = {
+				limit = {
+					OR = {
+						has_variable = crowned_king_var
+						has_variable = crowned_emperor_var
+					}
+				}
+				set_variable = {
+					name = nomad_migration_preserve_coronation
+					value = yes
+				}
+			}
+			if = {
+				limit = {
+					highest_held_title_tier = tier_duchy
+				}
+				add_character_modifier = {
+					modifier = mpo_migrating_accolade_duke_modifier
+				}
+			}
+			else_if = {
+				limit = {
+					highest_held_title_tier = tier_kingdom
+				}
+				add_character_modifier = {
+					modifier = mpo_migrating_accolade_king_modifier
+				}
+			}
+			else_if = {
+				limit = {
+					highest_held_title_tier >= tier_empire
+				}
+				add_character_modifier = {
+					modifier = mpo_migrating_accolade_emperor_modifier
 				}
 			}
 		}
@@ -3166,7 +3193,7 @@ migration_interaction = {
 			scope:recipient.primary_title.tier >= tier_kingdom
 			desc = MIGRATION_INTERACTION_KING_ACCEPTANCE
 		}
-		
+
 		# Recently settled nomads don't want to accept
 		modifier = {
 			add = -1000
@@ -3250,11 +3277,11 @@ migration_interaction = {
 		# Can you win this war?
 		modifier = {
 			scope:actor.current_military_strength >= scope:defender_power
-			add = 10
+			add = 25
 		}
 		modifier = {
 			scope:actor.current_military_strength <= scope:defender_power
-			add = -30
+			add = -75
 		}
 
 		# You're moving from a bad season to a good one
@@ -3263,7 +3290,7 @@ migration_interaction = {
 			has_good_season_nomadic_capital_character_trigger = { CHARACTER = scope:recipient }
 			add = 10
 		}
-		
+
 		# There's a very bad season in your area
 		modifier = {
 			scope:actor = {
@@ -3276,19 +3303,25 @@ migration_interaction = {
 			}
 			add = 100
 		}
-		
+
 		# You are landless and your herd is starving
 		modifier = {
 			scope:actor = {
 				is_landed = no
 			}
-			add = 100
+			add = 50
 		}
 
 		# The recipient is a Herder
 		modifier = {
 			scope:recipient = { government_has_flag = government_is_herder }
 			add = 10
+		}
+		
+		# The recipient is a Steppe Admin
+		modifier = {
+			scope:recipient = { government_has_flag = government_is_steppe_admin }
+			add = -25
 		}
 
 		# You have a hook on the recipient
@@ -3399,9 +3432,7 @@ migration_interaction = {
 					}
 					AND = {
 						tier = tier_county
-						any_county_province = {
-							any_province_epidemic = {
-							}
+						any_county_province_epidemic = {
 						}
 					}
 				}
@@ -3419,10 +3450,19 @@ migration_interaction = {
 			}
 			factor = 0
 		}
+		# Avoid bad wars
+		modifier = {
+			factor = 0.01
+			scope:defender_power >= scope:actor.current_military_strength
+		}
 		# Don't be suicidal
 		modifier = {
 			factor = 0
 			scope:defender_power >= scope:actor.twice_current_military_strength
+		}
+		modifier = {
+			factor = 0
+			scope:recipient.current_military_strength > scope:actor.current_military_strength
 		}
 		modifier = {
 			factor = 0
@@ -3547,6 +3587,7 @@ migration_interaction = {
 											this = scope:county_culture_check.culture
 										}
 									}
+									culture = { has_cultural_pillar = heritage_wasteland }
 								}
 							}
 						}
@@ -3811,6 +3852,21 @@ migration_interaction = {
 				}
 			}
 		}
+
+		# Kemsari dont really want anywhere but Kemsar/Amsar
+		modifier = {
+			scope:actor = {
+				culture = { has_cultural_pillar = heritage_kemsari }
+				NOT = { highest_held_title_tier >= tier_empire }
+			}
+			scope:recipient.capital_county.title_province ?= {
+				NOR = {
+					geographical_region = GH_geographic_amsar
+					geographical_region = GH_geographic_kemsar
+				}
+			}
+			factor = 0
+		}
 	}
 }
 
@@ -3822,21 +3878,33 @@ mpo_interaction_grant_paiza = {
 
 	desc = mpo_interaction_grant_paiza_desc
 
-	ai_frequency = 8
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 24
+		duchy = 24
+		kingdom = 8
+		empire = 8
+		hegemony = 8
+	}
 	popup_on_receive = yes
 	pause_on_receive = yes
 
 	is_shown = {
 		scope:actor = {
-			has_character_flag = established_paiza_system
-			exists = situation:the_great_steppe
-			any_character_situation = {
-				this = situation:the_great_steppe
+			government_has_flag = government_is_otachedian
+			any_sub_realm_barony = {
+				title_province = {
+					OR = {
+						has_building_or_higher = ayraal_office_01
+						has_building_or_higher = 01_ayars_mint
+						has_building_or_higher = 01_otacheds_mint
+						
+					}
+				}
 			}
-			government_has_flag = government_is_nomadic
 		}
 		scope:recipient = {
-			government_has_flag = government_is_nomadic
+			government_has_flag = government_is_otachedian
 			OR = {
 				is_vassal_of = scope:actor
 				is_tributary_of = scope:actor
@@ -3853,10 +3921,7 @@ mpo_interaction_grant_paiza = {
 				is_at_war_with = scope:recipient
 			}
 			is_independent_ruler = yes
-			custom_tooltip = {
-				text = mpo_character_interaction_gurkhan
-				is_gurkhan = yes
-			}
+			highest_held_title_tier >= tier_kingdom
 			custom_tooltip = {
 				text = mpo_character_interaction_established_paiza_system
 				has_character_flag = established_paiza_system
@@ -3885,7 +3950,7 @@ mpo_interaction_grant_paiza = {
 	on_accept = {
 		make_obedient_recipient_to_actor_effect = yes
 		scope:recipient = {
-			mpo_create_paiza_artifact_effect = {
+			create_ayraal_artifact_effect = {
 				PATRON = scope:actor
 				GRANTEE = scope:recipient
 			}
@@ -3990,18 +4055,35 @@ mpo_interaction_ask_for_paiza = {
 
 	desc = mpo_interaction_ask_for_paiza_desc
 
-	ai_frequency = 12
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 12
+		kingdom = 12
+		empire = 0
+		hegemony = 0
+	}
 	popup_on_receive = yes
 	pause_on_receive = yes
 
 	is_shown = {
+		NOT = { scope:recipient = scope:actor }
 		scope:recipient = {
-			government_has_flag = government_is_nomadic
-			has_character_flag = established_paiza_system
+			government_has_flag = government_is_otachedian
+			any_sub_realm_barony = {
+				title_province = {
+					OR = {
+						has_building_or_higher = ayraal_office_01
+						has_building_or_higher = 01_ayars_mint
+						has_building_or_higher = 01_otacheds_mint
+						
+					}
+				}
+			}
 		}
 		scope:actor = {
 			OR = {
-				government_has_flag = government_is_nomadic
+				government_has_flag = government_is_otachedian
 				top_liege = scope:recipient
 			}
 			NOT = {
@@ -4015,7 +4097,7 @@ mpo_interaction_ask_for_paiza = {
 	is_valid_showing_failures_only = {
 		scope:recipient = {
 			is_independent_ruler = yes
-			is_gurkhan = yes
+			#is_gurkhan = yes
 		}
 		scope:actor = {
 			custom_tooltip = {
@@ -4026,7 +4108,7 @@ mpo_interaction_ask_for_paiza = {
 						var:paiza_patron ?= scope:recipient
 					}
 				}
-			}		
+			}
 		}
 	}
 
@@ -4065,7 +4147,7 @@ mpo_interaction_ask_for_paiza = {
 			send_interface_toast = {
 				type = event_toast_effect_good
 				title = mpo_decisions_events.paiza_granted
-				mpo_create_paiza_artifact_effect = {
+				create_ayraal_artifact_effect = {
 					PATRON = scope:recipient
 					GRANTEE = scope:actor
 				}
@@ -4073,7 +4155,7 @@ mpo_interaction_ask_for_paiza = {
 				right_icon = scope:created_paiza
 			}
 			custom_tooltip = mpo_establish_paiza_system_decision.paiza_abuse_authority_unlocked
-			custom_tooltip = mpo_establish_paiza_system_decision.leverage_khan_authority_unlocked	
+			custom_tooltip = mpo_establish_paiza_system_decision.leverage_khan_authority_unlocked
 			if = {
 				limit = {
 					scope:herd_send_option = yes
@@ -4123,7 +4205,7 @@ mpo_interaction_ask_for_paiza = {
 	}
 
 	ai_accept = {
-		base = -60	
+		base = -60
 		modifier = {
 			add = intimidated_external_reason_value
 			scope:recipient = {
@@ -4171,7 +4253,7 @@ mpo_interaction_ask_for_paiza = {
 			add = 100
 			desc = MIGRATION_INTERACTION_BLOOD_BROTHERS_ACCEPTANCE
 		}
-		
+
 		modifier = {
 			trigger = {
 				scope:hook ?= yes
@@ -4192,12 +4274,11 @@ mpo_interaction_ask_for_paiza = {
 			opinion_target = scope:actor
 			who = scope:recipient
 			multiplier = 0.4
-		}	
+		}
 	}
 
 	ai_potential = {
 		is_adult = yes
-		highest_held_title_tier >= tier_duchy
 	}
 
 	ai_will_do = {
@@ -4267,7 +4348,14 @@ mpo_interaction_leverage_khan_authority = {
 
 	desc = mpo_interaction_leverage_khan_authority_desc
 
-	ai_frequency = 8
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 24
+		duchy = 8
+		kingdom = 8
+		empire = 8
+		hegemony = 8
+	}
 	popup_on_receive = yes
 	pause_on_receive = yes
 
@@ -4276,46 +4364,47 @@ mpo_interaction_leverage_khan_authority = {
 	cooldown_against_recipient = { years = 10 }
 
 	is_shown = {
-		scope:actor = {
-			any_character_artifact = {
-				scope:actor = { can_benefit_from_artifact = prev }
-				has_variable = paiza_patron
-				OR = {
-					scope:recipient.top_liege = var:paiza_patron
-					scope:recipient = {
-						is_independent_ruler = yes
-						primary_title.tier < scope:actor.primary_title.tier
-						government_has_flag = government_is_nomadic
-					}
-					scope:recipient = {
-						liege = {
-							OR = {
-								government_has_flag = government_is_nomadic
-								scope:recipient.top_liege = prev.var:paiza_patron
-							}
-						}
-					}
-				}
-			}
-			NOT = {
-				has_character_flag = established_paiza_system
-			}
-		}
-		scope:recipient = {
-			is_ai = yes
-			is_gurkhan = no
-			age >= 12
-			NOT = {
-				has_character_flag = established_paiza_system		
-			}
-		}
+		always = no
+		#scope:actor = {
+			#any_character_artifact = {
+				#scope:actor = { can_benefit_from_artifact = prev }
+				#has_variable = paiza_patron
+				#OR = {
+					#scope:recipient.top_liege = var:paiza_patron
+					#scope:recipient = {
+						#is_independent_ruler = yes
+						#primary_title.tier < scope:actor.primary_title.tier
+						#government_has_flag = government_is_nomadic
+					#}
+					#scope:recipient = {
+						#liege = {
+							#OR = {
+								#government_has_flag = government_is_nomadic
+								#scope:recipient.top_liege = prev.var:paiza_patron
+							#}
+						#}
+					#}
+				#}
+			#}
+			#NOT = {
+				#has_character_flag = established_paiza_system
+			#}
+		#}
+		#scope:recipient = {
+			#is_ai = yes
+			#is_gurkhan = no
+			#age >= 12
+			#NOT = {
+				#has_character_flag = established_paiza_system
+			#}
+		#}
 	}
 
 	is_valid_showing_failures_only = {
 		scope:actor = {
 			custom_tooltip = {
 				text = mpo_abuse_authority_paiza_decision.no_more_paiza_abuse
-				NOT = { has_character_flag = no_more_paiza_abuse }			
+				NOT = { has_character_flag = no_more_paiza_abuse }
 			}
 			custom_tooltip = {
         	    text = mpo_abuse_authority_paiza_decision.paiza_patron_not_topdog
@@ -4324,7 +4413,7 @@ mpo_interaction_leverage_khan_authority = {
         	        exists = var:paiza_patron
         	        var:paiza_patron ?= {
         	            is_gurkhan = yes
-        	        }    
+        	        }
         	    }
         	}
         	NOT = {
@@ -4391,13 +4480,17 @@ mpo_interaction_leverage_khan_authority = {
 	ai_will_do = {
 		base = -40
 		modifier = {
-            add = 30
+            add = 40
 			domicile ?= { herd <= twenty_percent_herd_value }
         }
 		modifier = {
             add = 10
 			domicile ?= { herd <= sixty_percent_herd_value }
         }
+		modifier = {
+			add = 10
+			domicile ?= { herd <= eighty_percent_herd_value }
+		}
         modifier = {
             add = 10
             has_trait = greedy
@@ -4410,6 +4503,24 @@ mpo_interaction_leverage_khan_authority = {
             add = 10
             has_trait = ambitious
         }
+		modifier = {
+			add = -10
+			var:paiza_patron ?= {
+				domicile ?= { has_domicile_parameter = nomad_yurt_paiza_abuse_less_likely_lvl_1 }
+			}
+		}
+		modifier = {
+			add = -20
+			var:paiza_patron ?= {
+				domicile ?= { has_domicile_parameter = nomad_yurt_paiza_abuse_less_likely_lvl_2 }
+			}
+		}
+		modifier = {
+			add = -35
+			var:paiza_patron ?= {
+				domicile ?= { has_domicile_parameter = nomad_yurt_paiza_abuse_less_likely_lvl_3 }
+			}
+		}
 	}
 
 	ai_targets = {
@@ -4459,6 +4570,22 @@ mpo_interaction_leverage_khan_authority = {
 				}
 				else = {
 					add_prestige = minor_prestige_value
+				}
+			}
+
+			if = {
+				limit = {
+					government_has_flag = government_is_nomadic
+					scope:recipient = {
+						government_has_flag = government_is_nomadic
+					}
+				}
+				pay_herd = {
+					target = scope:actor
+					value = {
+						value = domicile.herd
+						multiply = 0.5
+					}
 				}
 			}
 		}
@@ -4579,6 +4706,13 @@ steal_herd_interaction = {
 			}
 		}
 		scope:recipient = { NOT = { has_strong_hook = scope:actor } }
+		trigger_if = {
+			limit = { scope:actor = { has_variable = no_scheming_allowed_var } }
+			custom_tooltip = {
+				text = no_scheming_allowed_var_tt
+				scope:actor.var:no_scheming_allowed_var != scope:recipient
+			}
+		}
 	}
 
 	desc = {
@@ -4647,6 +4781,7 @@ steal_herd_interaction = {
 	}
 
 	ai_potential = {
+		prestige >= medium_prestige_value # In case they fail
 		trigger_if = {
 			limit = {
 				NOT = {
@@ -4657,14 +4792,12 @@ steal_herd_interaction = {
 			}
 			ai_honor <= 50
 		}
-		primary_title.tier >= tier_county
 		NOR = {
 			scheme_generic_ai_blocker_trigger = yes
 			primary_title = {
 				is_mercenary_company = yes
 			}
 		}
-		prestige >= medium_prestige_value # In case they fail
 	}
 
 	auto_accept = yes
@@ -4767,7 +4900,14 @@ steal_herd_interaction = {
 		current_description = steal_herd_interaction.tt.high
 	}
 
-	ai_frequency = 36
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 72
+		duchy = 36
+		kingdom = 36
+		empire = 36
+		hegemony = 36
+	}
 }
 
 mpo_ask_for_herd_interaction = {
@@ -4777,7 +4917,14 @@ mpo_ask_for_herd_interaction = {
 	interface_priority = 80
 	common_interaction = yes
 
-	ai_frequency = 8
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 92
+		duchy = 12
+		kingdom = 8
+		empire = 8
+		hegemony = 8
+	}
 	popup_on_receive = yes
 	pause_on_receive = yes
 
@@ -5018,7 +5165,7 @@ mpo_ask_for_herd_interaction = {
 								}
 							}
 							scope:actor = {
-								change_herd = major_herd_gain
+								domicile ?= { change_herd = major_herd_gain }
 								add_legitimacy = minor_legitimacy_loss
 							}
 							scope:recipient.primary_title = {
@@ -5079,13 +5226,20 @@ mpo_demand_obedience_interaction = {
 	interface_priority = 80
 	common_interaction = yes
 
-	ai_frequency = 4
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 24
+		duchy = 4
+		kingdom = 4
+		empire = 4
+		hegemony = 4
+	}
 	popup_on_receive = yes
 	pause_on_receive = yes
 
 	is_shown = {
 		scope:actor = {
-			government_has_flag = government_is_nomadic
+			government_allows = obedience
 		}
 		scope:recipient = {
 			OR = {
@@ -5112,7 +5266,7 @@ mpo_demand_obedience_interaction = {
 	cost = { prestige = minor_prestige_value }
 
 	ai_potential = {
-		government_has_flag = government_is_nomadic
+		government_allows = obedience
 		primary_title.tier >= tier_duchy
 	}
 
@@ -5139,17 +5293,32 @@ mpo_demand_obedience_interaction = {
 		}
 		modifier = {
 			add = 10
-			scope:actor = { has_realm_law = nomadic_authority_2 }
+			scope:actor = {
+				OR = {
+					has_realm_law = nomadic_authority_2
+					has_realm_law = meritocratic_bureaucracy_1
+				}
+			}
 			desc = DEMAND_OBEDIENCE_INTERACTION_DOMINANCE_ACCEPTANCE
 		}
 		modifier = {
 			add = 20
-			scope:actor = { has_realm_law = nomadic_authority_3 }
+			scope:actor = {
+				OR = {
+					has_realm_law = nomadic_authority_3
+					has_realm_law = meritocratic_bureaucracy_2
+				}
+			}
 			desc = DEMAND_OBEDIENCE_INTERACTION_DOMINANCE_ACCEPTANCE
 		}
 		modifier = {
 			add = 50
-			scope:actor = { has_realm_law = nomadic_authority_4 }
+			scope:actor = {
+				OR = {
+					has_realm_law = nomadic_authority_4
+					has_realm_law = meritocratic_bureaucracy_3
+				}
+			}
 			desc = DEMAND_OBEDIENCE_INTERACTION_DOMINANCE_ACCEPTANCE
 		}
 		modifier = {
@@ -5408,7 +5577,14 @@ refill_maa_nomad_interaction = {
 		}
 	}
 
-	ai_frequency = 1
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 3
+		duchy = 1
+		kingdom = 1
+		empire = 1
+		hegemony = 1
+	}
 	ai_targets = {
 		ai_recipients = self
 	}
@@ -6422,7 +6598,14 @@ influence_child_commander_interaction = {
 			count >= 1
 		}
 	}
-	ai_frequency = 12
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 72
+		duchy = 12
+		kingdom = 12
+		empire = 12
+		hegemony = 12
+	}
 	ai_targets = {
 		ai_recipients = courtiers
 	}
@@ -6822,18 +7005,27 @@ mpo_make_blood_brother = {
 		has_blood_brother = no
 	}
 	ai_target_quick_trigger = { adult = yes }
-	ai_targets = { ai_recipients = liege }
-	ai_targets = { ai_recipients = scripted_relations }
+	ai_targets = {
+		ai_recipients = liege
+		ai_recipients = scripted_relations
+	}
 	ai_targets = {
 		ai_recipients = peer_vassals
-		max = 25
+		max = 10
 	}
 	ai_targets = {
 		ai_recipients = neighboring_rulers_including_tributary_borders
-		max = 25
+		max = 15
 	}
 	## Frequency
-	ai_frequency = 48
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 96
+		duchy = 48
+		kingdom = 12
+		empire = 12
+		hegemony = 12
+	}
 	ai_will_do = {
 		base = -50
 
@@ -6943,6 +7135,519 @@ mpo_make_blood_brother = {
 	}
 }
 
+
+################################
+# Feudalize Nomadic Holding
+################################
+feudalize_nomadic_holding_interaction = {
+	category = interaction_category_uncategorized
+	hidden = yes
+	special_interaction = feudalize_holding
+
+	desc = feudalize_holding_interaction_desc
+
+	target_type = title
+	target_filter = actor_domain_titles
+
+	auto_accept = yes
+
+	is_shown = {
+		scope:actor = {
+			this = scope:recipient
+			NOR = {
+				government_has_flag = government_is_nomadic
+				government_has_flag = government_is_herder
+			}
+		}
+	}
+
+	can_be_picked_title = {
+		scope:target = {
+			holder = scope:actor
+			is_capital_barony = no # we'll use the county in that case
+			trigger_if = {
+				limit = { tier <= tier_county }
+				title_province = {
+					has_holding_type = nomad_holding
+				}
+			}
+			trigger_else = {
+				custom_description = {
+					text = "feudalize_nomadic_holding_interaction_title_not_county_or_below"
+					always = no
+				}
+			}
+		}
+	}
+
+	has_valid_target_showing_failures_only = {
+		scope:target = {
+			trigger_if = {
+				limit = { tier <= tier_county }
+				title_province = {
+					barony_controller = scope:actor
+					has_ongoing_construction = no
+				}
+			}
+		}
+	}
+
+	cost = {
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					has_treasury = no
+				}
+				scope:actor = {
+					if = {
+						limit = { # Less expensive for tribals
+							government_has_flag = government_is_tribal
+						}
+						add = {
+							value = 50
+							desc = BASE
+						}
+					}
+					else = {
+						add = {
+							value = feudalize_holding_interaction_cost
+							desc = BASE
+						}
+						if = {
+							limit = { # More expensive for admin to make barbarians civilized...
+								government_has_flag = government_is_administrative
+							}
+							add = {
+								value = feudalize_holding_interaction_cost
+								multiply = 0.25
+								desc = has_admin_government
+							}
+							if = {
+								limit = { # Admin get a bonus for high bureaucracy levels
+									OR = {
+										has_realm_law = imperial_bureaucracy_2
+										has_realm_law = imperial_bureaucracy_3
+									}
+								}
+								subtract = {
+									value = feudalize_holding_interaction_cost
+									multiply = {
+										value = 0.1
+										if = {
+											limit = {
+												has_realm_law = imperial_bureaucracy_3
+											}
+											add = 0.15
+										}
+									}
+									desc = imperial_bureaucracy
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					has_treasury = yes
+				}
+				scope:actor = {
+					add = {
+						value = feudalize_holding_interaction_cost
+						desc = BASE
+					}
+					if = {
+						limit = { # More expensive for admin to make barbarians civilized...
+							government_has_flag = government_is_administrative
+						}
+						add = {
+							value = feudalize_holding_interaction_cost
+							multiply = 0.25
+							desc = has_admin_government
+						}
+						if = {
+							limit = { # Admin get a bonus for high bureaucracy levels
+								OR = {
+									has_realm_law = imperial_bureaucracy_2
+									has_realm_law = imperial_bureaucracy_3
+								}
+							}
+							subtract = {
+								value = feudalize_holding_interaction_cost
+								multiply = {
+									value = 0.1
+									if = {
+										limit = {
+											has_realm_law = imperial_bureaucracy_3
+										}
+										add = 0.15
+									}
+								}
+								desc = imperial_bureaucracy
+							}
+						}
+					}
+				}
+			}
+		}
+		prestige = {
+			scope:actor = {
+				if = {
+					limit = { # Less expensive for tribals
+						government_has_flag = government_is_tribal
+						scope:target.county.culture = scope:actor.culture
+					}
+					add = {
+						value = 50
+						desc = BASE
+					}
+				}
+				else_if = {
+					limit = { # Less expensive for tribals
+						government_has_flag = government_is_tribal
+						scope:target.county.culture = { has_same_culture_heritage = scope:actor.culture }
+					}
+					add = {
+						value = 100
+						desc = BASE
+					}
+				}
+				else_if = {
+					limit = { # Less expensive for tribals
+						government_has_flag = government_is_tribal
+					}
+					add = {
+						value = 300
+						desc = BASE
+					}
+				}
+			}
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = feudalize_holding_interaction_notification
+
+				right_icon = scope:actor
+
+				if = {
+					limit = {
+						exists = scope:target.title_province
+						NOT = { government_has_flag = government_is_tribal }
+					}
+					scope:target.title_province = {
+						set_holding_type = castle_holding
+					}
+				}
+
+				if = {
+					limit = {
+						exists = scope:target.title_province
+						government_has_flag = government_is_tribal
+					}
+					scope:target.title_province = {
+						set_holding_type = tribal_holding
+					}
+				}
+				if = {
+					limit = {
+						scope:target.county.culture = scope:actor.culture
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							government_has_flag = government_is_tribal
+							scope:target.county.culture = { has_same_culture_heritage = scope:actor.culture }
+						}
+					}
+					scope:target.county = {
+						add_county_modifier = {
+							modifier = mpo_feudalize_nomadic_land_modifier
+							years = 5
+						}
+					}
+				}
+				else = {
+					scope:target.county = {
+						add_county_modifier = {
+							modifier = mpo_feudalize_nomadic_land_modifier
+							years = 30
+						}
+					}
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		base = 1500
+	}
+}
+
+################################
+# Feudalize Herder Holding
+################################
+feudalize_herder_holding_interaction = {
+	category = interaction_category_uncategorized
+	hidden = yes
+	special_interaction = feudalize_holding
+
+	desc = feudalize_holding_interaction_desc
+
+	target_type = title
+	target_filter = actor_domain_titles
+
+	auto_accept = yes
+
+	is_shown = {
+		scope:actor = {
+			this = scope:recipient
+			NOR = {
+				government_has_flag = government_is_nomadic
+				government_has_flag = government_is_herder
+			}
+		}
+	}
+
+	can_be_picked_title = {
+		scope:target = {
+			holder = scope:actor
+			is_capital_barony = no # we'll use the county in that case
+			trigger_if = {
+				limit = { tier <= tier_county }
+				title_province = {
+					has_holding_type = herder_holding
+				}
+			}
+			trigger_else = {
+				custom_description = {
+					text = "feudalize_herder_holding_interaction_title_not_county_or_below"
+					always = no
+				}
+			}
+		}
+	}
+
+	has_valid_target_showing_failures_only = {
+		scope:target = {
+			trigger_if = {
+				limit = { tier <= tier_county }
+				title_province = {
+					barony_controller = scope:actor
+					has_ongoing_construction = no
+				}
+			}
+		}
+	}
+
+	cost = {
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					has_treasury = no
+				}
+				scope:actor = {
+					if = {
+						limit = { # Less expensive for tribals
+							government_has_flag = government_is_tribal
+						}
+						add = {
+							value = 50
+							desc = BASE
+						}
+					}
+					else = {
+						add = {
+							value = feudalize_holding_interaction_cost
+							desc = BASE
+						}
+						if = {
+							limit = { # More expensive for admin to make barbarians civilized...
+								government_has_flag = government_is_administrative
+							}
+							add = {
+								value = feudalize_holding_interaction_cost
+								multiply = 0.25
+								desc = has_admin_government
+							}
+							if = {
+								limit = { # Admin get a bonus for high bureaucracy levels
+									OR = {
+										has_realm_law = imperial_bureaucracy_2
+										has_realm_law = imperial_bureaucracy_3
+									}
+								}
+								subtract = {
+									value = feudalize_holding_interaction_cost
+									multiply = {
+										value = 0.1
+										if = {
+											limit = {
+												has_realm_law = imperial_bureaucracy_3
+											}
+											add = 0.15
+										}
+									}
+									desc = imperial_bureaucracy
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					has_treasury = yes
+				}
+				scope:actor = {
+					add = {
+						value = feudalize_holding_interaction_cost
+						desc = BASE
+					}
+					if = {
+						limit = { # More expensive for admin to make barbarians civilized...
+							government_has_flag = government_is_administrative
+						}
+						add = {
+							value = feudalize_holding_interaction_cost
+							multiply = 0.25
+							desc = has_admin_government
+						}
+						if = {
+							limit = { # Admin get a bonus for high bureaucracy levels
+								OR = {
+									has_realm_law = imperial_bureaucracy_2
+									has_realm_law = imperial_bureaucracy_3
+								}
+							}
+							subtract = {
+								value = feudalize_holding_interaction_cost
+								multiply = {
+									value = 0.1
+									if = {
+										limit = {
+											has_realm_law = imperial_bureaucracy_3
+										}
+										add = 0.15
+									}
+								}
+								desc = imperial_bureaucracy
+							}
+						}
+					}
+				}
+			}
+		}
+		prestige = {
+			scope:actor = {
+				if = {
+					limit = { # Less expensive for tribals
+						government_has_flag = government_is_tribal
+						scope:target.county.culture = scope:actor.culture
+					}
+					add = {
+						value = 50
+						desc = BASE
+					}
+				}
+				else_if = {
+					limit = { # Less expensive for tribals
+						government_has_flag = government_is_tribal
+						scope:target.county.culture = { has_same_culture_heritage = scope:actor.culture }
+					}
+					add = {
+						value = 100
+						desc = BASE
+					}
+				}
+				else_if = {
+					limit = { # Less expensive for tribals
+						government_has_flag = government_is_tribal
+					}
+					add = {
+						value = 300
+						desc = BASE
+					}
+				}
+			}
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = feudalize_holding_interaction_notification
+
+				right_icon = scope:actor
+
+				if = {
+					limit = {
+						exists = scope:target.title_province
+						NOT = { government_has_flag = government_is_tribal }
+					}
+					scope:target.title_province = {
+						set_holding_type = castle_holding
+					}
+				}
+
+				if = {
+					limit = {
+						exists = scope:target.title_province
+						government_has_flag = government_is_tribal
+					}
+					scope:target.title_province = {
+						set_holding_type = tribal_holding
+					}
+				}
+				if = {
+					limit = {
+						scope:target.county.culture = scope:actor.culture
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							government_has_flag = government_is_tribal
+							scope:target.county.culture = { has_same_culture_heritage = scope:actor.culture }
+						}
+					}
+					scope:target.county = {
+						add_county_modifier = {
+							modifier = mpo_feudalize_nomadic_land_modifier
+							years = 5
+						}
+					}
+				}
+				else = {
+					scope:target.county = {
+						add_county_modifier = {
+							modifier = mpo_feudalize_nomadic_land_modifier
+							years = 30
+						}
+					}
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		base = 1500
+	}
+}
+
 mpo_retrieve_land_from_herder_interaction = {
 	category = interaction_category_diplomacy
 	common_interaction = yes
@@ -6977,15 +7682,22 @@ mpo_retrieve_land_from_herder_interaction = {
 			is_adult = yes
 			is_imprisoned = no
 			prestige >= minor_prestige_value
-			custom_tooltip = {
-				text = mpo_retrieve_land_from_herder_interaction_neighbour_tt
-				any_sub_realm_county = {
-					any_neighboring_county = {
-						holder = {
-							this = scope:recipient
+			trigger_if = {
+				limit = { is_landed = yes }
+				custom_tooltip = {
+					text = mpo_retrieve_land_from_herder_interaction_neighbour_tt
+					any_sub_realm_county = {
+						any_neighboring_county = {
+							holder = {
+								this = scope:recipient
+							}
 						}
 					}
 				}
+			}
+			trigger_else = {
+				government_has_flag = government_is_landless_adventurer
+				domicile.domicile_location.county.holder ?= scope:recipient
 			}
 		}
 		scope:recipient = {
@@ -6997,7 +7709,7 @@ mpo_retrieve_land_from_herder_interaction = {
 						is_tributary = no
 					}
 					is_tributary_of_suzerain_or_above = scope:actor
-					is_vassal_of = scope:actor 
+					is_vassal_of = scope:actor
 				}
 			}
 			custom_tooltip = {
@@ -7075,31 +7787,72 @@ mpo_retrieve_land_from_herder_interaction = {
 			add_prestige = minor_prestige_loss
 			trigger_event = char_interaction.0199
 		}
-		revoke_title_interaction_effect = yes
+		
 
-		if = {
-			limit = {
-				scope:actor = { has_character_flag = flag_hostile_actions_disabled_delay }
+		scope:actor = {
+			if = {
+				limit = { has_character_flag = flag_hostile_actions_disabled_delay }
+				remove_character_flag = flag_hostile_actions_disabled_delay
 			}
-			scope:actor = { remove_character_flag = flag_hostile_actions_disabled_delay }
+			if = {
+				limit = { government_has_flag = government_is_landless_adventurer }
+				demand_pastureland_adventurer_interaction_effect = yes
+			}
+			else = {
+				revoke_title_interaction_effect = yes
+			}
 		}
 	}
 
-	auto_accept = yes
+	auto_accept = {
+		scope:actor = { is_landed = yes }
+	}
 
 	# AI
 	ai_targets = {
-		ai_recipients = tributaries 
+		ai_recipients = tributaries
+		ai_recipients = top_realm_domicile_owners
 	}
 	ai_targets = {
 		ai_recipients = neighboring_rulers
 		max = 5
 	}
-	ai_frequency = 4
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 12
+		duchy = 4
+		kingdom = 4
+		empire = 4
+		hegemony = 4
+	}
 
 	ai_potential = {
 		domain_size < domain_limit
 		primary_title.tier >= tier_county
+	}
+
+	ai_accept = {
+		base = 0
+		modifier = {
+			scope:actor = { government_has_flag = government_is_landless_adventurer }
+			add = -50
+			desc = YOU_ARE_AN_ADVENTURER_REASON
+		}
+		modifier = {
+			scope:recipient = {
+				is_tributary = yes
+			}
+			add = -25
+			desc = ADVENTURER_SUZERAIN_REASON
+		}
+		modifier = {
+			scope:actor = { government_has_flag = government_is_landless_adventurer }
+			add = {
+				value = scope:actor.military_power
+				divide = 100
+			}
+			desc = ADVENTURER_MILITARY_POWER_REASON
+		}
 	}
 
 	ai_will_do = {
@@ -7132,7 +7885,7 @@ mpo_vassal_to_tributary_interaction = {
 
 	desc = mpo_vassal_to_tributary_interaction_desc
 
-	ai_frequency = 8
+	#ai_frequency = 0
 	popup_on_receive = yes
 	pause_on_receive = yes
 
@@ -7147,6 +7900,7 @@ mpo_vassal_to_tributary_interaction = {
 	is_valid_showing_failures_only = {
 		scope:recipient = {
 			is_imprisoned = no
+			is_independent_ruler = yes
 		}
 		scope:actor = {
 			is_imprisoned = no
@@ -7157,17 +7911,17 @@ mpo_vassal_to_tributary_interaction = {
 			}
 		}
 	}
-	
+
 	is_highlighted = {
 		always = yes
 	}
-	
+
 	# Start with higher taxes
 	send_option = {
 		flag = high_obligations
 		localization = VASSAL_TO_TRIBUTARY_HIGHER_OBLIGATIONS
 	}
-	
+
 	#Use hook
 	send_option = {
 		is_valid = {
@@ -7175,14 +7929,14 @@ mpo_vassal_to_tributary_interaction = {
 				has_usable_hook = scope:recipient
 			}
 		}
-		flag = hook	
+		flag = hook
 		localization = GENERIC_SPEND_A_HOOK
 	}
 	should_use_extra_icon = {
 		scope:actor = { has_usable_hook = scope:recipient }
 	}
 	extra_icon = "gfx/interface/icons/character_interactions/hook_icon.dds"
-	
+
 	send_options_exclusive = no
 
 	on_accept = {
@@ -7195,7 +7949,7 @@ mpo_vassal_to_tributary_interaction = {
 			trigger_event = mpo_interactions_events.0010
 		}
 	}
-	
+
 	on_decline = {
 		scope:actor = {
 			#Letter response, they get a bit pissed
@@ -7205,12 +7959,12 @@ mpo_vassal_to_tributary_interaction = {
 
 	ai_accept = {
 		base = 0
-		
+
 		modifier = {
 			add = -50
 			desc = BASE_RELUCTANCE
 		}
-		
+
 		# Do they like you?
 		opinion_modifier = {
 			who = scope:recipient
@@ -7218,7 +7972,7 @@ mpo_vassal_to_tributary_interaction = {
 			multiplier = 1
 			desc = AI_OPINION_REASON
 		}
-		
+
 		# If you're friends
 		modifier = {
 			add = 50
@@ -7227,7 +7981,7 @@ mpo_vassal_to_tributary_interaction = {
 			}
 			desc = AI_FRIEND_REASON
 		}
-		
+
 		# If you're lovers
 		modifier = {
 			add = 50
@@ -7236,21 +7990,21 @@ mpo_vassal_to_tributary_interaction = {
 			}
 			desc = AI_YOUR_LOVER
 		}
-		
+
 		# You're using a hook
 		modifier = {
 			add = 100
 			desc = SCHEME_WEAK_HOOK_USED
 			scope:hook = yes
 		}
-		
+
 		# You promised higher taxes
 		modifier = {
 			add = 25
 			desc = AI_HIGHER_OBLIGATIONS_REASON
 			scope:high_obligations = yes
 		}
-		
+
 		# Are they Nomadic
 		modifier = {
 			add = 25
@@ -7259,13 +8013,13 @@ mpo_vassal_to_tributary_interaction = {
 		}
 	}
 
-	ai_will_do = {
-		base = 0
-	}
-
-	ai_targets = {
-		ai_recipients = suzerain
-	}
+	#ai_will_do = {
+	#	base = 0
+	#}
+	#
+	#ai_targets = {
+	#	ai_recipients = suzerain
+	#}
 }
 
 mpo_gift_herd_interaction = {
@@ -7303,7 +8057,14 @@ mpo_gift_herd_interaction = {
 	ai_target_quick_trigger = {
 		adult = yes
 	}
-	ai_frequency = 60
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 60
+		duchy = 60
+		kingdom = 60
+		empire = 60
+		hegemony = 0
+	}
 
 	is_shown = {
 		NOT = {
@@ -7317,8 +8078,7 @@ mpo_gift_herd_interaction = {
 	}
 
 	is_valid_showing_failures_only = {
-		NOT = { scope:actor.domicile.herd < herd_gift_value }
-		scope:recipient = { is_busy_in_events_localised = yes }
+		scope:actor.domicile.herd >= herd_gift_value
 	}
 
 	on_auto_accept = {
@@ -7347,6 +8107,7 @@ mpo_gift_herd_interaction = {
 			# Warning for multiple gifts
 			if = {
 				limit = {
+					is_ai = no
 					scope:recipient = {
 						has_opinion_modifier = {
 							target = scope:actor
@@ -7356,7 +8117,7 @@ mpo_gift_herd_interaction = {
 				}
 				custom_tooltip = ALREADY_SENT_GIFT_HERD_WARNING
 			}
-			
+
 			send_interface_message = {
 				type = event_gold_neutral
 				title = gift_interaction_notification
@@ -7414,7 +8175,7 @@ mpo_gift_herd_interaction = {
 			desc = HERD_REASON
 		}
 	}
-	
+
 	ai_potential = {
 		is_available_at_peace_ai_adult = yes
 		ai_greed < medium_positive_ai_value
@@ -7422,26 +8183,26 @@ mpo_gift_herd_interaction = {
 			value = major_herd_value_static
 			multiply = 3
 		}
-		ai_has_conqueror_personality = no
+		NOT = { has_variable = conqueror }
 		ai_should_focus_on_building_in_their_capital = no
 	}
-	
+
 	auto_accept = {
 		custom_description = {
-			text = auto_accept_interaction_ai	
+			text = auto_accept_interaction_ai
 			object = scope:recipient
 			scope:recipient = {
 				is_ai = yes
 			}
 		}
 	}
-	
+
 	ai_min_reply_days = 1
 	ai_max_reply_days = 1
-	
+
 	ai_will_do = {
 		base = 100
-		
+
 		modifier = { # Do not send double-gifts
 			factor = 0
 			scope:recipient = {
@@ -7451,7 +8212,7 @@ mpo_gift_herd_interaction = {
 				}
 			}
 		}
-		
+
 		modifier = { # Special Blood Brother weight
 			add = 100
 			scope:actor = {
@@ -7462,7 +8223,7 @@ mpo_gift_herd_interaction = {
 				}
 			}
 		}
-		
+
 		modifier = {
 			add = 100
 			scope:recipient = {
@@ -7477,7 +8238,7 @@ mpo_gift_herd_interaction = {
 				}
 			}
 		}
-		
+
 		modifier = { # Basic Filtering
 			factor = 0
 			scope:recipient = {
@@ -7586,7 +8347,7 @@ mpo_gift_herd_interaction = {
 				}
 			}
 		}
-		
+
 		modifier = {
 			factor = 0.1
 			scope:recipient = {
@@ -7602,7 +8363,7 @@ mpo_gift_herd_interaction = {
 				}
 			}
 		}
-		
+
 		modifier = {
 			factor = 0.1
 			scope:recipient = {
@@ -7624,7 +8385,14 @@ mpo_offer_submission_or_ruin = {
 	ai_targets = {
 		ai_recipients = neighboring_rulers
 	}
-	ai_frequency = 3
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 0
+		empire = 3
+		hegemony = 3
+	}
 	interface_priority = 300
 	common_interaction = yes
 	force_notification = yes
@@ -7636,7 +8404,7 @@ mpo_offer_submission_or_ruin = {
 		scope:recipient = {
 			mpo_offer_submission_or_ruin_shown_recipient_trigger = yes
 		}
-		
+
 	}
 
 	is_valid_showing_failures_only = {
@@ -7745,7 +8513,7 @@ mpo_offer_submission_or_ruin = {
  			}
  			add = 30
 		}
-		
+
 		# PERKS
 		modifier = { # Perk boost
 			desc = offer_vassalization_true_ruler_perk_tt
@@ -7957,7 +8725,7 @@ mpo_offer_submission_or_ruin = {
 			}
 		}
 		modifier = { #I am a King!
-			desc = offer_vassalization_interaction_aibehavior_amkingtier_tt
+			desc = offer_vassalization_interaction_aibehavior_hightier_tt
 			trigger = {
 				scope:recipient = { highest_held_title_tier = tier_kingdom }
 			}
@@ -8003,7 +8771,7 @@ mpo_offer_submission_or_ruin = {
 			}
 		}
 		modifier = { #I am an Emperor!!!
-			desc = offer_vassalization_interaction_aibehavior_amkingtier_tt
+			desc = offer_vassalization_interaction_aibehavior_hightier_tt
 			trigger = {
 				scope:recipient = { highest_held_title_tier >= tier_empire }
 			}
@@ -8123,9 +8891,7 @@ mpo_offer_submission_or_ruin = {
 				scope:recipient = {
 					NOT = {
 						any_neighboring_top_liege_realm_owner = {
-							NOT = {
-								this = scope:actor
-							}
+							this != scope:actor
 						}
 					}
 					NOT = {
@@ -8175,7 +8941,7 @@ mpo_offer_submission_or_ruin = {
 			add = -200
 		}
 		modifier = {
-			desc = offer_vassalization_interaction_aibehavior_power_tt
+			desc = offer_vassalization_interaction_aibehavior_power_tt_submission_or_ruin
 	  	  	add = {
 				value = 1
 				subtract = {
@@ -8735,17 +9501,8 @@ mpo_offer_submission_or_ruin = {
 					}
 				}
 			}
-			
-			desc = "HISTORICAL_ADMIN_REASON"
-		}
 
-		modifier = { # AI-only weights, keep the pope from vassalizing too fast
-			trigger = {
-				exists = faith:catholic.religious_head
-				faith:catholic.religious_head = scope:actor
-				scope:actor = { is_ai = yes }
-			}
-			add = -50
+			desc = "HISTORICAL_ADMIN_REASON"
 		}
 
 		modifier = {
@@ -8963,6 +9720,12 @@ mpo_offer_submission_or_ruin = {
 	on_decline = {
 		scope:recipient = {
 			save_scope_as = gok_victim
+			if = {
+				limit = {
+					is_tributary_of = scope:actor
+				}
+				end_tributary = yes
+			}
 		}
 		scope:actor = {
 			show_as_tooltip = {
@@ -9094,14 +9857,20 @@ mpo_negotiate_obedience_interaction = {
 	interface_priority = 80
 	common_interaction = yes
 
-	ai_frequency = 6
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 24
+		duchy = 6
+		kingdom = 6
+		empire = 6
+		hegemony = 6
+	}
 	popup_on_receive = yes
 	pause_on_receive = yes
 
 	is_shown = {
 		scope:actor = {
-			government_has_flag = government_is_nomadic
-			exists = domicile
+			government_allows = obedience
 		}
 		scope:recipient = {
 			OR = {
@@ -9119,19 +9888,34 @@ mpo_negotiate_obedience_interaction = {
 			value = medium_prestige_value
 			if = {
 				limit = {
-					scope:actor = { has_realm_law = nomadic_authority_2 }
+					scope:actor = {
+						OR = {
+							has_realm_law = nomadic_authority_2
+							has_realm_law = meritocratic_bureaucracy_1
+						}
+					}
 				}
 				multiply = 1.25
 			}
 			else_if = {
 				limit = {
-					scope:actor = { has_realm_law = nomadic_authority_3 }
+					scope:actor = {
+						OR = {
+							has_realm_law = nomadic_authority_3
+							has_realm_law = meritocratic_bureaucracy_2
+						}
+					}
 				}
 				multiply = 1.5
 			}
 			else_if = {
 				limit = {
-					scope:actor = { has_realm_law = nomadic_authority_4 }
+					scope:actor = {
+						OR = {
+							has_realm_law = nomadic_authority_4
+							has_realm_law = meritocratic_bureaucracy_3
+						}
+					}
 				}
 				multiply = 1.75
 			}
@@ -9155,7 +9939,7 @@ mpo_negotiate_obedience_interaction = {
 			limit = {
 				scope:recipient = { is_landed = yes is_independent_ruler = no }
 			}
-			scope:recipient = { is_vassal_or_below_of = scope:actor }		
+			scope:recipient = { is_vassal_or_below_of = scope:actor }
 		}
 		trigger_else_if = {
 			limit = {
@@ -9164,7 +9948,7 @@ mpo_negotiate_obedience_interaction = {
 			scope:actor = {
 				custom_tooltip = {
 					text = mpo_interaction_not_neighbouring_tt
-					any_land_neighboring_realm_with_tributaries_owner = { 
+					any_land_neighboring_realm_with_tributaries_owner = {
 						this = scope:recipient
 					}
 				}
@@ -9174,7 +9958,7 @@ mpo_negotiate_obedience_interaction = {
 	}
 
 	ai_potential = {
-		government_has_flag = government_is_nomadic
+		government_allows = obedience
 		primary_title.tier >= tier_duchy
 		prestige >= major_prestige_value
 	}
@@ -9201,8 +9985,16 @@ mpo_negotiate_obedience_interaction = {
 	
 	send_option = {
 		is_valid = {
-			scope:actor.domicile = {
-				herd >= medium_herd_value
+			scope:actor = {
+				trigger_if = {
+					limit = { government_has_flag = government_is_nomadic }
+					domicile ?= {
+						herd >= medium_herd_value
+					}
+				}
+				trigger_else = {
+					government_has_flag = government_is_nomadic
+				}
 			}
 		}
 		flag = herd
@@ -9236,17 +10028,32 @@ mpo_negotiate_obedience_interaction = {
 		}
 		modifier = {
 			add = 5
-			scope:actor = { has_realm_law = nomadic_authority_2 }
+			scope:actor = {
+				OR = {
+					has_realm_law = nomadic_authority_2
+					has_realm_law = meritocratic_bureaucracy_1
+				}
+			}
 			desc = DEMAND_OBEDIENCE_INTERACTION_DOMINANCE_ACCEPTANCE
 		}
 		modifier = {
 			add = 10
-			scope:actor = { has_realm_law = nomadic_authority_3 }
+			scope:actor = {
+				OR = {
+					has_realm_law = nomadic_authority_3
+					has_realm_law = meritocratic_bureaucracy_2
+				}
+			}
 			desc = DEMAND_OBEDIENCE_INTERACTION_DOMINANCE_ACCEPTANCE
 		}
 		modifier = {
 			add = 20
-			scope:actor = { has_realm_law = nomadic_authority_4 }
+			scope:actor = {
+				OR = {
+					has_realm_law = nomadic_authority_4
+					has_realm_law = meritocratic_bureaucracy_3
+				}
+			}
 			desc = DEMAND_OBEDIENCE_INTERACTION_DOMINANCE_ACCEPTANCE
 		}
 		modifier = {
@@ -9335,6 +10142,7 @@ mpo_negotiate_obedience_interaction = {
 		}
 		modifier = {
 			add = -500
+			scope:actor = { government_has_flag = government_is_nomadic }
 			scope:recipient = {
 				exists = domicile
 				domicile.herd >= 100
@@ -9487,9 +10295,7 @@ join_confederation_interaction = {
 			is_landed = yes
 			is_confederation_member = no
 		}
-		scope:recipient = {
-			is_confederation_member = yes
-		}
+		scope:recipient.confederation ?= { is_house_based = no }
 	}
 
 	is_valid_showing_failures_only = {
@@ -9932,11 +10738,9 @@ join_confederation_interaction = {
 		modifier = { #Rivalry modifier.
 			desc = offer_vassalization_interaction_aibehavior_rival_confederation_tt
 			trigger = {
-				scope:recipient.confederation = {
+				scope:recipient.confederation ?= {
 					any_confederation_member = {
-						NOT = {
-							this = scope:recipient
-						}
+						NOT = { this = scope:recipient }
 						has_relation_rival = scope:actor
 						NOT = { has_relation_nemesis = scope:actor }
 					}
@@ -9947,11 +10751,9 @@ join_confederation_interaction = {
 		modifier = { #Nemesis modifier.
 			desc = offer_vassalization_interaction_aibehavior_nemesis_confederation_tt
 			trigger = {
-				scope:recipient.confederation = {
+				scope:recipient.confederation ?= {
 					any_confederation_member = {
-						NOT = {
-							this = scope:recipient
-						}
+						NOT = { this = scope:recipient }
 						has_relation_nemesis = scope:actor
 					}
 				}
@@ -10291,26 +11093,24 @@ join_confederation_interaction = {
 		modifier = {
 			add = 100
 			desc = JOINING_CONFEDERATION_WAR_REASON
-			scope:recipient = {
-				confederation = {
-					any_confederation_member = {
-						is_at_war_as_defender = yes
-						any_character_war = {
-							is_war_leader = prev
-							is_defender = prev
-							NOR = {
-								any_war_attacker = {
-									is_allied_to = scope:actor
-								}
-								any_war_attacker = {
-									this = scope:actor
-								}
-								any_war_defender = {
-									this = scope:actor
-								}
+			scope:recipient.confederation ?= {
+				any_confederation_member = {
+					is_at_war_as_defender = yes
+					any_character_war = {
+						is_war_leader = prev
+						is_defender = prev
+						NOR = {
+							any_war_attacker = {
+								is_allied_to = scope:actor
 							}
-							defender_war_score < 80
+							any_war_attacker = {
+								this = scope:actor
+							}
+							any_war_defender = {
+								this = scope:actor
+							}
 						}
+						defender_war_score < 80
 					}
 				}
 			}
@@ -10339,7 +11139,7 @@ join_confederation_interaction = {
 		modifier = {
 			add = duchy_confederation_vassals_value_recipient
 			desc = TOO_MANY_CONFEDERATION_VASSALS_REASON
-			scope:recipient.confederation = {
+			scope:recipient.confederation ?= {
 				any_confederation_member = {
 					count >= 6
 					highest_held_title_tier >= tier_county
@@ -10420,64 +11220,37 @@ join_confederation_interaction = {
 				}
 				scope:actor = { remove_character_flag = forming_confederation }
 			}
-			if = {
-				limit = {
-					scope:recipient.confederation = {
-						any_confederation_member = {
-							is_at_war_as_defender = yes
-							any_character_war = {
-								is_war_leader = prev
-								is_defender = prev
-								NOR = {
-									any_war_attacker = {
-										is_allied_to = scope:actor
-									}
-									any_war_attacker = {
-										this = scope:actor
-									}
-									any_war_defender = {
-										this = scope:actor
-									}
-								}
-								defender_war_score < 80
-							}
-						}
-					}
-				}
-				scope:recipient.confederation = {
-					every_confederation_member = {
+			scope:recipient.confederation ?= {
+				every_confederation_member = {
+					limit = { is_at_war_as_defender = yes }
+					every_character_war = {
 						limit = {
-							is_at_war_as_defender = yes
-						}
-						every_character_war = {
-							limit = {
-								is_war_leader = prev
-								is_defender = prev
-								NOR = {
-									any_war_attacker = {
-										is_allied_to = scope:actor
-									}
-									any_war_attacker = {
-										this = scope:actor
-									}
-									any_war_defender = {
-										this = scope:actor
-									}
+							is_war_leader = prev
+							is_defender = prev
+							NOR = {
+								any_war_attacker = {
+									is_allied_to = scope:actor
 								}
-								defender_war_score < 80
+								any_war_attacker = {
+									this = scope:actor
+								}
+								any_war_defender = {
+									this = scope:actor
+								}
 							}
-							add_to_list = recipient_wars
+							defender_war_score < 80
 						}
+						add_to_list = recipient_wars
 					}
 				}
-				every_in_list = {
-					list = recipient_wars
-					save_scope_as = recipient_war
-					primary_attacker = {
-						save_scope_as = attacker
-					}
-					add_defender = scope:actor
+			}
+			every_in_list = {
+				list = recipient_wars
+				save_scope_as = recipient_war
+				primary_attacker = {
+					save_scope_as = attacker
 				}
+				add_defender = scope:actor
 			}
 			scope:recipient = {
 				save_scope_as = confederation_offerer
@@ -10574,12 +11347,12 @@ join_confederation_interaction = {
 		}
 	}
 
-	ai_potential = {
-		#AI rely on the offer interaction, not this one
-		always = no
-	}
-
-	ai_will_do = {
-		base = 0
-	}
+	#ai_potential = {
+	#	#AI rely on the offer interaction, not this one
+	#	always = no
+	#}
+	#
+	#ai_will_do = {
+	#	base = 0
+	#}
 }

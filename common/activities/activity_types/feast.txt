@@ -22,12 +22,36 @@ activity_feast = {
 			OR = {
 				has_character_flag = feasts_a_lot
 				short_term_gold >= feast_activity_cost
+				AND = {
+					house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+					short_term_treasury >= feast_activity_cost
+				}
+			}
+			trigger_if = { # Throttle Counts
+				limit = {
+					highest_held_title_tier = tier_county
+					NOR = {
+						has_government = japan_administrative_government
+						has_government = japan_feudal_government
+					}
+				}
+				ai_sociability >= 100
 			}
 		}
 		is_human = yes ## GH ADDITION: Human check
+		#Every other activity must be blocked until an uncrowned AI crowns themselves
+		trigger_if = {
+			limit = {
+				is_ai = yes
+			}
+			NOT = {
+				has_realm_law = uncrowned
+			}
+		}
 	}
 
 	can_start_showing_failures_only = {
+		NOT = { is_activity_type_on_cooldown = activity_feast }
 		trigger_if = {
 			limit = {
 				OR = {
@@ -86,7 +110,7 @@ activity_feast = {
 			#Host has been imprisoned
 			every_attending_character = {
 				limit = {
-					NOT = { this  = scope:host }
+					this != scope:host
 				}
 				trigger_event = feast.5005
 			}
@@ -102,12 +126,8 @@ activity_feast = {
 					exists = special_guest:honorary_guest
 				}
 				scope:activity = { #theyre not attending
-				
 					any_attending_character = {
-						NOT = {
-							
-							this = scope:activity.special_guest:honorary_guest
-						}
+						this != scope:activity.special_guest:honorary_guest
 					}
 				}
 				scope:activity.special_guest:honorary_guest = { is_alive = yes } #but they're alive
@@ -121,7 +141,7 @@ activity_feast = {
 			activity_host = { trigger_event = feast.2020 }
 			every_attending_character = {
 				limit = {
-					NOT = { this  = scope:host }
+					this != scope:host
 				}
 				trigger_event = feast.2021
 			}
@@ -142,7 +162,7 @@ activity_feast = {
 			activity_host = { trigger_event = feast.2010 }
 			every_attending_character = {
 				limit = {
-					NOT = { this = scope:host }
+					this != scope:host
 				}
 				trigger_event = feast.2011
 			}
@@ -158,7 +178,7 @@ activity_feast = {
 				trigger_event = activity_system.0330
 			}
 			every_attending_character = {
-				limit = { NOT = { this = scope:host } }
+				limit = { this != scope:host }
 				trigger_event = activity_system.0331
 			}
 		}
@@ -266,6 +286,11 @@ activity_feast = {
 			trigger = { has_building_or_higher = farm_estates_01 }
 			desc = activity_feast_province_desc_farm_estates
 		}
+		# ++ / double plus good
+		triggered_desc = {
+			trigger = { has_building_or_higher = paddy_fields_01 }
+			desc = activity_feast_province_desc_paddy_fields
+		}
 		triggered_desc = { ## GH ADDITION: Aaimperon Plantations
 			trigger = { has_building_or_higher = aaimperon_plantations_01 }
 			desc = activity_feast_province_desc_aaimperon_plantations
@@ -336,6 +361,10 @@ activity_feast = {
 			limit = { has_building_or_higher = farm_estates_01 }
 			add = 50
 		}
+		if = {
+			limit = { has_building_or_higher = paddy_fields_01 }
+			add = 50
+		}
 		if = { ## GH ADDITION: Aaimperon Plantations
 			limit = { has_building_or_higher = aaimperon_plantations_01 }
 			add = 50
@@ -368,15 +397,15 @@ activity_feast = {
 			desc = "Base"
 		}
 		add = {
-            value = ai_greed
-            multiply = -0.25
-            desc = "ai_greed"
-        }
-        add = {
-        	value = ai_sociability
-        	multiply = 0.5
-        	desc = "ai_sociability"
-        }
+			value = ai_greed
+			multiply = -0.25
+			desc = "ai_greed"
+		}
+		add = {
+			value = ai_sociability
+			multiply = 0.5
+			desc = "ai_sociability"
+		}
 		if = {
 			limit = {
 				ai_energy < 0
@@ -425,6 +454,17 @@ activity_feast = {
 			}
 		}
 		if = {
+			limit = {
+				house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+				short_term_treasury >= feast_activity_cost
+				short_term_treasury >= major_gold_value
+			}
+			add = {
+				value = 30
+				desc = "Got treasury to burn"
+			}
+		}
+		if = {
 			limit = { has_trait = lifestyle_reveler }
 			add = {
 				value = 20
@@ -433,7 +473,7 @@ activity_feast = {
 		}
 		if = {
 			limit = {
-				has_royal_court = yes 
+				has_royal_court = yes
 				has_court_type = court_intrigue
 			}
 			add = {
@@ -471,35 +511,35 @@ activity_feast = {
 		}
 		# Stress
 		if = { # Low Stress
-            limit = {
+			limit = {
 				stress >= lower_than_baseline_stress
 				NOT = { has_trait = shy }
 			}
-            add = {
-            	value = 20
-            	desc = "lower_than_baseline_stress"
-            }
-        }
-        if = { # High Stress
-        	limit = {
+			add = {
+				value = 20
+				desc = "lower_than_baseline_stress"
+			}
+		}
+		if = { # High Stress
+			limit = {
 				stress >= higher_than_baseline_stress
 				NOT = { has_trait = shy }
 			}
-        	add = {
-        		value = 20
-        		desc = "higher_than_baseline_stress"
-        	}
-        }
-        if = { # Very High Stress
-        	limit = {
+			add = {
+				value = 20
+				desc = "higher_than_baseline_stress"
+			}
+		}
+		if = { # Very High Stress
+			limit = {
 				stress >= high_stress
 				NOT = { has_trait = shy }
 			}
-        	add = {
-        		value = 20
-        		desc = "high_stress"
-        	}
-        }
+			add = {
+				value = 20
+				desc = "high_stress"
+			}
+		}
 		if = {
 			limit = {
 				culture = {
@@ -540,16 +580,16 @@ activity_feast = {
 				desc = "Host faith has Asceticism tenet"
 			}
 		}
-        if = {
-        	limit = { has_character_flag = feasts_a_lot }
-        	add = {
-            	value = 500
-            	desc = "feasts a lot"
-            }
-        }
+		if = {
+			limit = { has_character_flag = feasts_a_lot }
+			add = {
+				value = 500
+				desc = "feasts a lot"
+			}
+		}
 		if = {
 			limit = {
-				is_independent_ruler = no
+				top_liege != this
 				has_vassal_stance = courtly
 			}
 			add = {
@@ -557,25 +597,25 @@ activity_feast = {
 				desc = courtly
 			}
 		}
-        if = {
-        	limit = { ai_has_warlike_personality = yes }
-        	add = {
-            	value = -30
-            	desc = "Warlike"
-            }
-        }
-        if = {
-        	limit = {
+		if = {
+			limit = { ai_has_warlike_personality = yes }
+			add = {
+				value = -30
+				desc = "Warlike"
+			}
+		}
+		if = {
+			limit = {
 				government_has_flag = government_is_nomadic
 				gold > prestige
 				gold > 200
 				prestige < 600
 			}
-        	add = {
-            	value = 70
-            	desc = "Nomad searching for prestige"
-            }
-        }
+			add = {
+				value = 70
+				desc = "Nomad searching for prestige"
+			}
+		}
 		# Struggles.
 		if = {
 			limit = {
@@ -601,32 +641,52 @@ activity_feast = {
 				}
 			}
 		}
-        if = {
-        	limit = {
+		if = {
+			limit = {
 				ai_has_warlike_personality = yes
 				war_chest_gold < war_chest_gold_maximum
 			}
-        	multiply = {
-            	value = 0.25
-            	desc = "Warlike"
-            }
-        }
-        # Economic Archetype
+			multiply = {
+				value = 0.25
+				desc = "Warlike"
+			}
+		}
+		# Economic Archetype
 		if = { # Too busy booming the economy
-            limit = {
-                OR = {
-                    ai_has_economical_boom_personality = yes
-                    has_character_flag = ai_boom
-                }
-            }
-            add = {
-            	value = -200
-            	desc = "Builder"
-            }
-        }
-        if = {
-        	limit = {
-				ai_has_conqueror_personality = yes
+			limit = {
+				OR = {
+					ai_has_economical_boom_personality = yes
+					has_character_flag = ai_boom
+				}
+			}
+			add = {
+				value = -200
+				desc = "Builder"
+			}
+		}
+		if = { # Should probably spend their gold elsewhere
+			limit = {
+				ai_has_pious_builder_personality = yes
+			}
+			if = { # Unless...
+				limit = {
+					faith = { has_doctrine = tenet_ritual_celebrations }
+				}
+				add = {
+					value = 100
+					desc = "Pious Builder with Ritual Celebrations"
+				}
+			}
+			else = {
+				add = {
+					value = -100
+					desc = "Pious Builder"
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_variable = conqueror
 				OR = {
 					AND = {
 						prestige_level < 4
@@ -635,14 +695,14 @@ activity_feast = {
 					prestige < 1000
 				}
 			}
-        	add = {
-            	value = 1000
-            	desc = "conqueror looking for prestige"
-            }
-        }
+			add = {
+				value = 1000
+				desc = "conqueror looking for prestige"
+			}
+		}
 		if = {
 			limit = {
-				ai_has_conqueror_personality = yes
+				has_variable = conqueror
 				trigger_if = {
 					limit = {
 						prestige_level >= 4
@@ -652,10 +712,10 @@ activity_feast = {
 				}
 				prestige >= 1000
 			}
-        	add = {
-            	value = -5000
-            	desc = "conqueror sated for prestige"
-            }
+			add = {
+				value = -5000
+				desc = "conqueror sated for prestige"
+			}
 		}
 		# Legitimacy
 		if = {
@@ -688,13 +748,8 @@ activity_feast = {
 		if = {
         	limit = {
         	    any_held_title = {
-					tier = tier_county
-        	        any_county_province = {
-        	            any_province_epidemic = {
-        	                count >= 1
-        	                outbreak_intensity < apocalyptic
-        	            }
-        	        }
+					title_tier = county
+        	        has_province_with_epidemic = { intensity < apocalyptic }
         	    }
         	    would_follow_social_distancing_value >= -1
         	}
@@ -706,12 +761,7 @@ activity_feast = {
     	else_if = {
     	    limit = {
     	        any_realm_county = {
-    	            any_county_province = {
-    	                any_province_epidemic = {
-    	                    count >= 1
-    	                    outbreak_intensity < apocalyptic
-    	                }
-    	            }
+    	            has_province_with_epidemic = { intensity < apocalyptic }
     	        }
     	        would_follow_social_distancing_value >= -1
     	    }
@@ -723,13 +773,8 @@ activity_feast = {
     	if = {
     	    limit = {
     	        any_held_title = {
-					tier = tier_county
-    	            any_county_province = {
-    	                any_province_epidemic = {
-    	                    count >= 1
-    	                    outbreak_intensity = apocalyptic
-    	                }
-    	            }
+					title_tier = county
+    	            has_province_with_epidemic = { intensity = apocalyptic }
     	        }
     	    }
     	    add = {
@@ -740,13 +785,8 @@ activity_feast = {
     	else_if = {
     	    limit = {
     	        any_held_title = {
-					tier = tier_county
-    	            any_county_province = {
-    	                any_province_epidemic = {
-    	                    count >= 1
-    	                    outbreak_intensity = apocalyptic
-    	                }
-    	            }
+					title_tier = county
+    	            has_province_with_epidemic = { intensity = apocalyptic }
     	        }
     	    }
     	    add = {
@@ -783,7 +823,7 @@ activity_feast = {
 			# Misc landless.
 			5 = activity_invite_rule_knights
 
-			# MP 
+			# MP
 			6 = activity_invite_mp
 		}
 		defaults = {
@@ -795,6 +835,7 @@ activity_feast = {
 			1 = activity_invite_rule_liege
 			1 = activity_invite_rule_suzerain
 			1 = activity_invite_rule_tributaries
+			1 = activity_invite_rule_confederates
 			1 = activity_invite_rule_vassals
 			2 = activity_invite_rule_fellow_vassals
 			3 = activity_invite_rule_courtiers
@@ -826,9 +867,9 @@ activity_feast = {
 		base_activity_modifier = yes
 
 		# Scripted Modifiers
-		activity_guest_shared_ai_accept_modifier = yes 
+		activity_guest_shared_ai_accept_modifier = yes
 		activity_guest_feast_ai_accept_modifier = yes
-		
+
 		# If the Host has hosted a Murder Feast recently people are sus
 		modifier = {
 			scope:host = { has_variable = recent_murder_feast_var }
@@ -837,12 +878,12 @@ activity_feast = {
 				desc = "Recent $feast_type_murder$"
 			}
 		}
-		
+
 		# Master of Revels Accolade increasing invite acceptance
 		modifier = {
    		   scope:host = {
    		   		any_active_accolade = {
-					has_accolade_parameter = acclaimed_knight_feast_wedding_invite_acceptance_bonus
+					accolade_parameter = acclaimed_knight_feast_wedding_invite_acceptance_bonus
 				}
    		   }
    		   add = accolade_feast_wedding_invite_acceptance_value
@@ -852,13 +893,13 @@ activity_feast = {
 	special_guests = {
 		honorary_guest_regular = {
 			is_required = no
-			
-			is_shown = { 
+
+			is_shown = {
 				scope:special_option = flag:feast_type_generic
 			}
 
 			can_pick = {
-				NOT = { this = scope:host }
+				this != scope:host
 				is_healthy = yes
 				is_adult = yes
 				trigger_if = { # Pick adventurers first!
@@ -888,12 +929,12 @@ activity_feast = {
 					}
 				}
 			}
-			
+
 			ai_will_do = {
 				value = 10
 			}
 		}
-		
+
 		honorary_guest = { #Murder guest, localization changes for host
 			is_required = yes
 
@@ -902,7 +943,7 @@ activity_feast = {
 			}
 
 			can_pick = {
-				NOT = { this = scope:host }
+				this != scope:host
 				is_healthy = yes
 				is_adult = yes
 				NOT = { is_spouse_of = scope:host }
@@ -911,11 +952,11 @@ activity_feast = {
 						scope:host = { is_ai = yes }
 					}
 					has_relation_rival = scope:host #AI only picks rivals
-					NOT = { this = scope:host.liege } #AI doesnt pick their liege
-					NOT = { this = scope:host.faith.religious_head } #AI doesnt pick their HoF
+					this != scope:host.liege #AI doesnt pick their liege
+					this != scope:host.faith.religious_head #AI doesnt pick their HoF
 				}
 			}
-			
+
 			ai_will_do = {
 				value = 10
 			}
@@ -944,459 +985,85 @@ activity_feast = {
 
 	cost = {
 		gold = {
-			add = {
-				add = {
-					value = feast_activity_cost
-					desc = feast_activity_cost_desc
-				}
-				add = {
-					value = feast_activity_cost
-					multiply = activity_cost_scale_by_era
-					subtract = feast_activity_cost
-					desc = activity_cost_scale_by_era_desc
-				}
-				#if = { ## GH CHANGE: Removed for GH
-				#	limit = {
-				#		scope:province ?= { has_building_or_higher = citadel_of_aleppo_01 }
-				#	}
-				#	add = {
-				#		value = 0
-				#		add = {
-				#			value = feast_activity_cost
-				#			add = {
-				#				value = feast_activity_cost
-				#				multiply = activity_cost_scale_by_era
-				#				subtract = feast_activity_cost
-				#			}
-				#		}
-				#		multiply = feast_activity_cost_discount_max_value
-				#		desc = feast_cost_discount_citadel_of_aleppo
-				#	}
-				#}
-				#if = { ## GH CHANGE: Removed for GH
-				#	limit = {
-				#		scope:province ?= { has_building_or_higher = palace_of_aachen_01 }
-				#	}
-				#	add = {
-				#		value = 0
-				#		add = {
-				#			value = feast_activity_cost
-				#			add = {
-				#				value = feast_activity_cost
-				#				multiply = activity_cost_scale_by_era
-				#				subtract = feast_activity_cost
-				#			}
-				#		}
-				#		multiply = feast_activity_cost_discount_max_value
-				#		desc = feast_cost_discount_palace_of_aachen
-				#	}
-				#}
-				#if = { ## GH CHANGE: Removed for GH
-				#	limit = {
-				#		scope:province ?= { has_building_or_higher = doges_palace_01 }
-				#	}
-				#	add = {
-				#		value = 0
-				#		add = {
-				#			value = feast_activity_cost
-				#			add = {
-				#				value = feast_activity_cost
-				#				multiply = activity_cost_scale_by_era
-				#				subtract = feast_activity_cost
-				#			}
-				#		}
-				#		multiply = feast_activity_cost_discount_max_value
-				#		desc = feast_cost_discount_doges_palace
-				#	}
-				#}
-				if = {
-					limit = {
-						scope:host.domicile ?= {
-							has_domicile_parameter = nomad_yurt_feast_discount
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							is_ai = yes
+							has_character_flag = feast_ai_override
 						}
-					}
-					add = {
-						value = feast_activity_cost_discount_medium_value
-						desc = feast_yurt_01_domicile_building
-					}
-				}
-				#if = { ## GH CHANGE: Removed for GH
-				#	limit = {
-				#		scope:province ?= { has_building_or_higher = ghana_palace_01 }
-				#	}
-				#	add = {
-				#		value = 0
-				#		add = {
-				#			value = feast_activity_cost
-				#			add = {
-				#				value = feast_activity_cost
-				#				multiply = activity_cost_scale_by_era
-				#				subtract = feast_activity_cost
-				#			}
-				#		}
-				#		multiply = feast_activity_cost_discount_max_value
-				#		desc = feast_cost_discount_ghana_palace
-				#	}
-				#}
-				#if = { ## GH CHANGE: Removed for GH
-				#	limit = {
-				#		scope:province ?= { has_building_or_higher = kyz_kala_01 }
-				#	}
-				#	add = {
-				#		value = 0
-				#		add = {
-				#			value = feast_activity_cost
-				#			add = {
-				#				value = feast_activity_cost
-				#				multiply = activity_cost_scale_by_era
-				#				subtract = feast_activity_cost
-				#			}
-				#		}
-				#		multiply = feast_activity_cost_discount_max_value
-				#		desc = feast_cost_discount_kyz_kala
-				#	}
-				#}
-				if = {
-					limit = {
-						scope:province ?= { has_building_or_higher = leisure_palace_01 }
-					}
-					add = {
-						value = 0
-						add = {
-							value = feast_activity_cost
-							add = {
-								value = feast_activity_cost
-								multiply = activity_cost_scale_by_era
-								subtract = feast_activity_cost
-							}
+						government_has_flag = government_is_mandala
+						AND = {
+							house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+							has_treasury = yes
 						}
-						multiply = feast_activity_cost_discount_max_value
-						desc = feast_cost_discount_leisure_palaces
+						government_allows = barter
 					}
 				}
-				#if = { ## GH CHANGE: Removed for GH
-				#	limit = {
-				#		scope:province ?= { has_building_or_higher = alhambra_01 }
-				#	}
-				#	add = {
-				#		value = 0
-				#		add = {
-				#			value = feast_activity_cost
-				#			add = {
-				#				value = feast_activity_cost
-				#				multiply = activity_cost_scale_by_era
-				#				subtract = feast_activity_cost
-				#			}
-				#		}
-				#		multiply = feast_activity_cost_discount_max_value
-				#		desc = feast_cost_discount_alhambra
-				#	}
-				#}
-				if = {
-					limit = { 
-						scope:province ?= {
-							has_building_or_higher = farm_estates_01
-						}
-					}
-					add = {
-						value = 0
-						add = {
-							value = feast_activity_cost
-							add = {
-								value = feast_activity_cost
-								multiply = activity_cost_scale_by_era
-								subtract = feast_activity_cost
-							}
-						}
-						multiply = feast_activity_cost_discount_medium_value
-						desc = feast_cost_discount_farm_estates
-					}
-				}
-				if = { ## GH ADDITION: Aaimperon Plantations
-					limit = { scope:province ?= { has_building_or_higher = aaimperon_plantations_01 } }
-					add = {
-						value = 0
-						add = {
-							value = feast_activity_cost
-							multiply = activity_cost_scale_by_era
-							subtract = feast_activity_cost
-						}
-						multiply = feast_activity_cost_discount_medium_value
-						desc = feast_cost_discount_aaimperon_plantations
-					}
-				}
-				if = {
-					limit = {
-						scope:province ?= {	has_building_or_higher = longhouses_01 }
-					}
-					add = {
-						value = 0
-						add = {
-							value = feast_activity_cost
-							add = {
-								value = feast_activity_cost
-								multiply = activity_cost_scale_by_era
-								subtract = feast_activity_cost
-							}
-						}
-						multiply = feast_activity_cost_discount_medium_value
-						desc = feast_cost_discount_longhouses
-					}
-				}
-				if = {
-					limit = {
-						scope:province ?= {	has_building_or_higher = orchards_01 }
-					}
-					add = {
-						value = 0
-						add = {
-							value = feast_activity_cost
-							add = {
-								value = feast_activity_cost
-								multiply = activity_cost_scale_by_era
-								subtract = feast_activity_cost
-							}
-						}
-						multiply = feast_activity_cost_discount_min_value
-						desc = feast_cost_discount_orchards
-					}
-				}
-				if = {
-					limit = {
-						scope:province ?= {	has_building_or_higher = cereal_fields_01 }
-					}
-					add = {
-						value = 0
-						add = {
-							value = feast_activity_cost
-							add = {
-								value = feast_activity_cost
-								multiply = activity_cost_scale_by_era
-								subtract = feast_activity_cost
-							}
-						}
-						multiply = feast_activity_cost_discount_min_value
-						desc = feast_cost_discount_cereal_fields
-					}
-				}
-				if = {
-					limit = {
-						scope:province ?= {	has_building_or_higher = plantations_01	}
-					}
-					add = {
-						value = 0
-						add = {
-							value = feast_activity_cost
-							add = {
-								value = feast_activity_cost
-								multiply = activity_cost_scale_by_era
-								subtract = feast_activity_cost
-							}
-						}
-						multiply = feast_activity_cost_discount_min_value
-						desc = feast_cost_discount_desert_agriculture
-					}
-				}
-				if = {
-					limit = {
-						domicile ?= { has_domicile_parameter = estate_cheaper_feast_cost }
-					}
-					subtract = {
-						value = 0
-						add = {
-							value = feast_activity_cost
-							add = {
-								value = feast_activity_cost
-								multiply = activity_cost_scale_by_era
-								subtract = feast_activity_cost
-							}
-						}
-						multiply = estate_cheaper_feast_cost_value
-						desc = estate_cheaper_feast_cost_desc
-					}
-				}
-				if = {
-					limit = {
-						dynasty ?= {
-							has_dynasty_perk = law_legacy_1
-						}
-					}
-					subtract = {
-						value = 0
-						add = {
-							value = feast_activity_cost
-							add = {
-								value = feast_activity_cost
-								multiply = activity_cost_scale_by_era
-								subtract = feast_activity_cost
-							}
-						}
-						multiply = law_legacy_cost_reduction_mult
-						desc = law_legacy_1_name
-					}
-				}
-				#court.8140
-				if = {
-					limit = {
-						has_character_flag = court_event_discount_feast
-					}
-					multiply = {
-						value = 0.5
-						desc = court_event_discount_desc
-					}
-				}
-				#court.9100
-				if = {
-					limit = {
-						has_character_modifier = promise_of_feasts_modifier
-					}
-					multiply = {
-						value = 0.75
-						desc = court_event_discount_desc
-					}
-				}
-				#mpo_nerge.1060
-				if = {
-					limit = { has_variable = mpo_nerge_1060_free_feast }
-					multiply = {
-						value =  0 # Free
-						desc = mpo_nerge_1060_free_feast_desc
-					}
-				}
-				if = {
-					limit = {
-						has_character_modifier = more_work_less_fun_modifier
-					}
-					multiply = {
-						value = 1.25
-						desc = court_event_discount_desc
-					}
-				}
-				if = {
-					limit = {
-						has_character_flag = food_improves_feasts
-					}
-					subtract = {
-						value = 0
-						add = {
-							value = feast_activity_cost
-							add = {
-								value = feast_activity_cost
-								multiply = activity_cost_scale_by_era
-								subtract = feast_activity_cost
-							}
-						}
-						multiply = 0.15
-						desc = food_improves_feasts
-					}
-				}
-				if = {
-					limit = {
-						has_character_modifier = journey_communal_modifier
-					}
-					multiply = {
-						value = 0.8
-						desc = journey_communal_modifier
-					}
-				}
-				# Court Position
-				if = {
-					limit = {
-						any_court_position_holder = {
-							type = court_brewmaster_court_position
-							aptitude = {
-								court_position = court_brewmaster_court_position
-								value >= 4
-							}
-						}
-					}
-					multiply = { 
-						value = 0.75 
-						desc = court_brewmaster_explanation
-					}
-				}
-				else_if = {
-					limit = {
-						any_court_position_holder = {
-							type = court_brewmaster_court_position
-							aptitude = {
-								court_position = court_brewmaster_court_position
-								value >= 3
-							}
-						}
-					}
-					multiply = {
-						value = 0.8
-						desc = court_brewmaster_explanation
-					}
-				}
-				else_if = {
-					limit = {
-						any_court_position_holder = {
-							type = court_brewmaster_court_position
-							aptitude = {
-								court_position = court_brewmaster_court_position
-								value >= 2
-							}
-						}
-					}
-					multiply = {
-						value = 0.85
-						desc = court_brewmaster_explanation
-					}
-				}
-				else_if = {
-					limit = {
-						any_court_position_holder = {
-							type = court_brewmaster_court_position
-							aptitude = {
-								court_position = court_brewmaster_court_position
-								value >= 1
-							}
-						}
-					}
-					multiply = {
-						value = 0.9
-						desc = court_brewmaster_explanation
-					}
-				}
-				else_if = {
-					limit = {
-						any_court_position_holder = {
-							type = court_brewmaster_court_position
-						}
-					}
-					multiply = {
-						value = 0.95
-						desc = court_brewmaster_explanation
-					}
-				}
-				if = {
-					limit = {
-						has_character_modifier = mpo_si_slaughtered_animals
-					}
-					multiply = {
-						value = 0.5
-						desc = mpo_si_slaughtered_animals
-					}
-				}
-				if = {
-					limit = {
-						has_character_modifier = mpo_nerge_feast_discount
-					}
-					multiply = {
-						value = 0.5
-						desc = mpo_nerge_feast_discount
-					}
-				}
-				min = 0
+				value = 0
+			}
+			else = {
+				add = base_feast_cost_value
 			}
 			if = {
 				limit = {
-					is_ai = yes
-					has_character_flag = feast_ai_override
+					has_title = title:e_minister_of_revenue
 				}
-				multiply = 0
+				multiply = 0.85
+			}
+		}
+		treasury = {
+			if = {
+				limit = {
+					OR = {
+						NAND = {
+							house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+							has_treasury = yes
+						}
+						AND = {
+							is_ai = yes
+							has_character_flag = feast_ai_override
+						}
+					}
+				}
+				value = 0
+			}
+			else = {
+				value = base_feast_cost_value
+				if = {
+					limit = {
+						has_title = title:e_minister_of_revenue
+					}
+					multiply = 0.85
+				}
+			}
+		}
+		piety = {
+			if = {
+				limit = {
+					OR = {
+						NOT = { government_has_flag = government_is_mandala }
+						AND = {
+							is_ai = yes
+							has_character_flag = feast_ai_override
+						}
+					}
+				}
+				value = 0
+			}
+			else = {
+				add = base_feast_cost_value
+			}
+		}
+		barter_goods = {
+			if = {
+				limit = {
+					NOT = { government_allows = barter }
+				}
+				value = 0
+			}
+			else = {
+				add = base_feast_cost_value
 			}
 		}
 	}
@@ -1404,70 +1071,92 @@ activity_feast = {
 	ui_predicted_cost = {
 		# All costs are balanced on County/Early Era starting point
 		gold = {
-			add = { # Base Cost, scaled by era
-				value = feast_activity_cost
-				multiply = activity_cost_scale_by_era
-			}
-			
-			# Options 
-			add = { # Food 
-				value = 0 # Bad Option Cost
-				add = 10 # Normal Option Cost
-				add = 35 # Good Option Cost
-				# Scale the sum of the options by era and tier
-				add = {
-					value = 45
-					multiply = activity_cost_scale_by_tier
-				}
-				add = {
-					value = 45
-					multiply = activity_cost_scale_by_era
-				}
-				# Divide by 3 (num of levels for this option) so we get the average option cost
-				divide = 3
-			}
-			add = { # Courses 
-				value = 0 # Bad Option Cost
-				add = 10 # Normal Option Cost
-				add = 35 # Good Option Cost
-				# Scale the sum of the options by era and tier
-				add = {
-					value = 45
-					multiply = activity_cost_scale_by_tier
-				}
-				add = {
-					value = 45
-					multiply = activity_cost_scale_by_era
-				}
-				# Divide by 3 (num of levels for this option) so we get the average option cost
-				divide = 3
-			}
-			save_temporary_value_as = pre_discount_feast_cost_ui
 			if = {
 				limit = {
-					dynasty ?= {
-						has_dynasty_perk = law_legacy_1
+					OR = {
+						government_has_flag = government_is_mandala
+						AND = {
+							house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+							has_treasury = yes
+						}
+						government_allows = barter
 					}
 				}
-				subtract = {
-					value = scope:pre_discount_feast_cost_ui
-					multiply = law_legacy_cost_reduction_mult
+				value = 0
+			}
+			else = {
+				value = base_feast_ui_cost_value
+			}
+
+			if = {
+				limit = { has_variable = mpo_nerge_1060_free_feast }
+				multiply = {
+					value =  0 # Free
+					desc = mpo_nerge_1060_free_feast_desc
 				}
 			}
-			#court.8140
+		}
+		treasury = { # Make sure this matches the gold cost above
 			if = {
 				limit = {
-					has_character_flag = court_event_discount_feast
+					NAND = {
+						house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+						has_treasury = yes
+					}
 				}
+				value = 0
+			}
+			else = {
+				value = base_feast_cost_value
+			}
+
+			if = {
+				limit = { has_variable = mpo_nerge_1060_free_feast }
 				multiply = {
-					value = 0.5
+					value =  0 # Free
+					desc = mpo_nerge_1060_free_feast_desc
 				}
 			}
-			
-			# Make it a multiple of 5 (rounded up)
-			divide = 5
-			ceiling = yes 
-			multiply = 5
+		}
+
+		piety = {
+			if = {
+				limit = {
+					NOT = { government_has_flag = government_is_mandala }
+				}
+				value = 0
+			}
+			else = {
+				value = base_feast_ui_cost_value
+			}
+
+			if = {
+				limit = { has_variable = mpo_nerge_1060_free_feast }
+				multiply = {
+					value =  0 # Free
+					desc = mpo_nerge_1060_free_feast_desc
+				}
+			}
+		}
+
+		barter_goods = {
+			if = {
+				limit = {
+					NOT = { government_allows = barter }
+				}
+				value = 0
+			}
+			else = {
+				value = base_feast_ui_cost_value
+			}
+
+			if = {
+				limit = { has_variable = mpo_nerge_1060_free_feast }
+				multiply = {
+					value =  0 # Free
+					desc = mpo_nerge_1060_free_feast_desc
+				}
+			}
 		}
 	}
 
@@ -1500,16 +1189,14 @@ activity_feast = {
 		}
 		reference = "building_indian_feast_01_entity"
 	}
-	
+
 	map_entity = "building_western_feast_01_entity"
 
 	# Travel
 	background = { # Bridge
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1538,13 +1225,69 @@ activity_feast = {
 		environment = "environment_travel_bridge"
 		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
 	}
-	
+
+	background = { #Rice Fields - If we have Paddy fields AND/or terraced hills
+	#This goes before other terrain since it can override in many different terrains if built
+		trigger = {
+			OR = {
+				scope:host.location != scope:activity.activity_location
+				AND = {
+					exists = scope:activity.special_guest:honorary_guest.location
+					NOT = {
+						scope:activity.special_guest:honorary_guest.location ?= scope:activity.activity_location
+					}
+				}
+				AND = {
+					exists = scope:activity.special_guest:honorary_guest_regular.location
+					NOT = {
+						scope:activity.special_guest:honorary_guest_regular.location ?= scope:activity.activity_location
+					}
+				}
+			}
+			scope:host.location = {
+				terrain = farmlands
+				OR = {
+					terrain = terraced_hills
+					has_building_or_higher = paddy_fields_01
+				}
+			}
+		}
+		texture = "gfx/interface/illustrations/event_scenes/tgp_rice_fields.dds"
+		environment = "environment_tgp_rice_fields"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_rice_fields"
+	}
+
+	background = { #Farmlands - East Asia
+		trigger = {
+			OR = {
+				scope:host.location != scope:activity.activity_location
+				AND = {
+					exists = scope:activity.special_guest:honorary_guest.location
+					NOT = {
+						scope:activity.special_guest:honorary_guest.location ?= scope:activity.activity_location
+					}
+				}
+				AND = {
+					exists = scope:activity.special_guest:honorary_guest_regular.location
+					NOT = {
+						scope:activity.special_guest:honorary_guest_regular.location ?= scope:activity.activity_location
+					}
+				}
+			}
+			scope:host.location = {
+				terrain = farmlands
+				culture = { has_graphical_east_asia_culture_group_trigger = yes }
+			}
+		}
+		texture = "gfx/interface/illustrations/event_scenes/tgp_farm_asia.dds"
+		environment = "environment_tgp_farm_asia"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_farm_asia"
+	}
+
 	background = { # Farmland, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1570,9 +1313,7 @@ activity_feast = {
 	background = { # Farmland, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1599,9 +1340,7 @@ activity_feast = {
 	background = { #Desert, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1627,9 +1366,7 @@ activity_feast = {
 	background = { #Desert, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1656,9 +1393,7 @@ activity_feast = {
 	background = { #forest snowy
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1682,9 +1417,7 @@ activity_feast = {
 	background = { #forest_pine
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1710,9 +1443,7 @@ activity_feast = {
 	background = { #forest
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1738,9 +1469,7 @@ activity_feast = {
 	background = { #mountains, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1766,9 +1495,7 @@ activity_feast = {
 	background = { #mountains, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1795,9 +1522,7 @@ activity_feast = {
 	background = { #steppe, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1823,9 +1548,7 @@ activity_feast = {
 	background = { #steppe, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1852,9 +1575,7 @@ activity_feast = {
 	background = { #drylands (formerly desert)
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1880,9 +1601,7 @@ activity_feast = {
 	background = { #wetlands
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1901,16 +1620,14 @@ activity_feast = {
 			}
 		}
 		texture = "gfx/interface/illustrations/event_scenes/bp1_wetlands.dds"
-		environment = "environment_event_bp1_wetlands" 
+		environment = "environment_event_bp1_wetlands"
 		ambience = "event:/SFX/Events/Backgrounds/deciduous_forest_day"
 	}
 
 	background = { #jungle
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1936,9 +1653,7 @@ activity_feast = {
 	background = { #plains, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1964,9 +1679,7 @@ activity_feast = {
 	background = { #plains, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -1993,9 +1706,7 @@ activity_feast = {
 	background = { #hills, settled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -2021,9 +1732,7 @@ activity_feast = {
 	background = { #hills, unsettled
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -2050,9 +1759,7 @@ activity_feast = {
 	background = { #sea
 		trigger = {
 			OR = {
-				NOT = {
-					scope:host.location = scope:activity.activity_location
-				}
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = {
@@ -2074,12 +1781,13 @@ activity_feast = {
 		environment = "environment_event_fp1_ocean"
 		ambience = "event:/DLC/FP1/SFX/Events/event_ocean_longship"
 	}
+	# End Travel
 
 	## GH ADDITIONS ##
 	background = { # Chevalie
 		trigger = {
 			OR = {
-				NOT = { scope:host.location = scope:activity.activity_location }
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = { scope:activity.special_guest:honorary_guest.location ?= scope:activity.activity_location }
@@ -2099,7 +1807,7 @@ activity_feast = {
 	background = { # Aelershaan
 		trigger = {
 			OR = {
-				NOT = { scope:host.location = scope:activity.activity_location }
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = { scope:activity.special_guest:honorary_guest.location ?= scope:activity.activity_location }
@@ -2119,7 +1827,7 @@ activity_feast = {
 	background = { # Amaghean Mountains
 		trigger = {
 			OR = {
-				NOT = { scope:host.location = scope:activity.activity_location }
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = { scope:activity.special_guest:honorary_guest.location ?= scope:activity.activity_location }
@@ -2139,7 +1847,7 @@ activity_feast = {
 	background = { # Amsar
 		trigger = {
 			OR = {
-				NOT = { scope:host.location = scope:activity.activity_location }
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = { scope:activity.special_guest:honorary_guest.location ?= scope:activity.activity_location }
@@ -2179,7 +1887,7 @@ activity_feast = {
 	background = { # Aironoian Southeast
 		trigger = {
 			OR = {
-				NOT = { scope:host.location = scope:activity.activity_location }
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = { scope:activity.special_guest:honorary_guest.location ?= scope:activity.activity_location }
@@ -2199,7 +1907,7 @@ activity_feast = {
 	background = { # Black Mountains
 		trigger = {
 			OR = {
-				NOT = { scope:host.location = scope:activity.activity_location }
+				scope:host.location != scope:activity.activity_location
 				AND = {
 					exists = scope:activity.special_guest:honorary_guest.location
 					NOT = { scope:activity.special_guest:honorary_guest.location ?= scope:activity.activity_location }
@@ -3334,7 +3042,7 @@ activity_feast = {
 			scope:activity = {
 				has_activity_option = {
 					category = special_type
-					option = feast_type_tsagaan_sar 
+					option = feast_type_tsagaan_sar
 				}
 			}
 			scope:activity.special_guest:honorary_guest ?= { is_alive = no }
@@ -3342,11 +3050,11 @@ activity_feast = {
 		texture = "gfx/interface/illustrations/event_scenes/feast.dds"
 		environment = "environment_event_feast"
 		ambience = "event:/SFX/Events/Backgrounds/feasthall"
-		music = "grandfeast_cue" 
+		music = "grandfeast_cue"
 	}
 
 	window_characters = {
-		
+
 		guest = {
 			camera = camera_body_right
 
@@ -3656,7 +3364,7 @@ activity_feast = {
 					trigger = {
 						scope:activity = { is_murder_feast = yes }
 					}
-					animation = { worry stress boredom fear disbelief lunatic paranoia eyeroll drink drink_goblet }
+					animation = { worry stress boredom fear disbelief paranoia eyeroll drink drink_goblet }
 				}
 				triggered_animation = {
 					trigger = {
@@ -3695,10 +3403,10 @@ activity_feast = {
 				animation = toast
 			}
 		}
-		
+
 		host = {
 			camera = camera_body
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3797,10 +3505,10 @@ activity_feast = {
 				}
 			}
 		}
-		
+
 		travel_host = {
 			camera = camera_event_horse_left
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3826,7 +3534,7 @@ activity_feast = {
 
 		honorary_guest_traveling_murder = {
 			camera = camera_event_horse_left
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3853,7 +3561,7 @@ activity_feast = {
 
 		honorary_guest_murder = { # Both regular and murder
 			camera = camera_body
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3887,7 +3595,7 @@ activity_feast = {
 
 		honorary_guest_regular_traveling = {
 			camera = camera_event_horse_left
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3914,7 +3622,7 @@ activity_feast = {
 
 		honorary_guest_regular = {
 			camera = camera_body
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -3945,10 +3653,10 @@ activity_feast = {
 				}
 			}
 		}
-		
+
 		guest = {
 			camera = camera_body
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -4127,7 +3835,7 @@ activity_feast = {
 					trigger = {
 						scope:activity = { is_murder_feast = yes }
 					}
-					animation = { worry stress boredom fear disbelief lunatic paranoia eyeroll drink drink_goblet }
+					animation = { worry stress boredom fear disbelief paranoia eyeroll drink drink_goblet }
 				}
 				triggered_animation = {
 					trigger = {
@@ -4146,10 +3854,10 @@ activity_feast = {
 				animation = toast
 			}
 		}
-		
+
 		guest = {
 			camera = camera_body_left
-			
+
 			effect = {
 				if = {
 					limit = {
@@ -4328,7 +4036,7 @@ activity_feast = {
 					trigger = {
 						scope:activity = { is_murder_feast = yes }
 					}
-					animation = { worry stress boredom fear disbelief lunatic paranoia eyeroll drink drink_goblet dancing }
+					animation = { worry stress boredom fear disbelief paranoia eyeroll drink drink_goblet dancing }
 				}
 				triggered_animation = {
 					trigger = {
@@ -4398,7 +4106,7 @@ activity_feast = {
 			# Legendary feast.
 			## Spread your legend.
 			feast_type_legendary = {
-			
+
 				is_shown = {
 					has_dlc_feature = legends_of_the_dead
 				}
@@ -4409,7 +4117,7 @@ activity_feast = {
 						exists = promoted_legend #you need to have a legend to promote
 					}
 				}
-				
+
 				ai_will_do = {
 					value = 50
 					if = {
@@ -4417,7 +4125,7 @@ activity_feast = {
 							OR = {
 								has_trait = arrogant
 								has_trait = ambitious
-								has_trait = poet
+								has_trait = lifestyle_poet
 								has_trait = journaller
 							}
 						}
@@ -4444,64 +4152,59 @@ activity_feast = {
 			# Murder feast.
 			## You're trying to kill. _Everyone_. Kind of.
 			feast_type_murder = {
-			
 				cost = {
 					gold = {
-						add = {
-							add = {
-								value = feast_activity_cost
-								multiply = 2.5
-								desc = murder_feast_activity_cost_desc
-							}
-							add = {
-								value = feast_activity_cost
-								multiply = 2.5
-								multiply = activity_cost_scale_by_era
-								subtract = {
-									value = feast_activity_cost
-									multiply = 2.5
-								}
-								desc = activity_cost_scale_by_era_desc
-							}
-						}
 						if = {
 							limit = {
-								dynasty ?= {
-									has_dynasty_perk = law_legacy_1
+								OR = {
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+									AND = {
+										house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+										has_treasury = yes
+									}
 								}
 							}
-							subtract = {
-								value = feast_activity_cost
-								multiply = 2.5
-								multiply = activity_cost_scale_by_era
-								multiply = law_legacy_cost_reduction_mult
-								desc = law_legacy_1_name
+							value = 0
+						}
+						else = {
+							value = feast_type_murder_value
+							if = {
+								limit = { has_variable = mpo_nerge_1060_free_feast }
+								multiply = {
+									value =  0 # Free
+									desc = mpo_nerge_1060_free_feast_desc
+								}
 							}
 						}
+					}
+					treasury = { # Make sure this matches the gold cost above
 						if = {
 							limit = {
-								has_character_modifier = mpo_si_slaughtered_animals
+								OR = {
+									NAND = {
+										house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+										has_treasury = yes
+									}
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
 							}
-							multiply = {
-								value = 0.5
-								desc = mpo_si_slaughtered_animals
-							}
+							value = 0
 						}
-						if = {
-							limit = {
-								has_character_modifier = mpo_nerge_feast_discount
+						else = {
+							value = feast_type_murder_value
+							if = {
+								limit = { has_variable = mpo_nerge_1060_free_feast }
+								multiply = {
+									value =  0 # Free
+									desc = mpo_nerge_1060_free_feast_desc
+								}
 							}
-							multiply = {
-								value = 0.5
-								desc = mpo_nerge_feast_discount
-							}
-						}
-						if = {
-							limit = {
-								is_ai = yes
-								has_character_flag = feast_ai_override
-							}
-							multiply = 0
 						}
 					}
 				}
@@ -4637,6 +4340,15 @@ activity_feast = {
 								desc = mpo_nerge_feast_discount
 							}
 						}
+
+						if = {
+							limit = { has_variable = mpo_nerge_1060_free_feast }
+							multiply = {
+								value =  0 # Free
+								desc = mpo_nerge_1060_free_feast_desc
+							}
+						}
+
 						if = {
 							limit = {
 								is_ai = yes
@@ -4713,7 +4425,7 @@ activity_feast = {
 		feast_option_food = {
 			feast_food_bad = {
 				is_shown = { has_dlc_feature = advanced_activities }
-				
+
 				ai_will_do = {
 					value = 0
 					# Financial preference.
@@ -4726,81 +4438,79 @@ activity_feast = {
 				default = yes
 				cost = {
 					gold = {
-						add = {
-							desc = feast_food_normal
-							add = {
-								value = 10
-								desc = feast_food_normal
-							}
-							add = {
-								value = 10
-								multiply = activity_cost_scale_by_tier
-								subtract = 10
-								desc = activity_cost_scale_by_tier_desc
-							}
-							add = {
-								value = 10
-								multiply = activity_cost_scale_by_era
-								subtract = 10
-								desc = activity_cost_scale_by_era_desc
-							}
-							if = {
-								limit = {
-									dynasty ?= {
-										has_dynasty_perk = law_legacy_1
-									}
-								}
-								subtract = {
-									value = 10
-									add = {
-										value = 10
-										multiply = activity_cost_scale_by_tier
-										subtract = 10
-									}
-									add = {
-										value = 10
-										multiply = activity_cost_scale_by_era
-										subtract = 10
-									}
-									multiply = law_legacy_cost_reduction_mult
-									desc = law_legacy_1_name
-								}
-							}
-							if = {
-								limit = {
-									has_perk = journey_planner_perk
-								}
-								multiply = {
-									value = voyager_journey_planner_value
-									desc = journey_planner_perk_name
-								}
-							}
-							if = {
-								limit = {
-									has_character_modifier = mpo_si_slaughtered_animals
-								}
-								multiply = {
-									value = 0.5
-									desc = mpo_si_slaughtered_animals
-								}
-							}
-							if = {
-								limit = {
-									has_character_modifier = mpo_nerge_feast_discount
-								}
-								multiply = {
-									value = 0.5
-									desc = mpo_nerge_feast_discount
-								}
-							}
-							min = 0
-						}
 						if = {
 							limit = {
-								is_ai = yes
-								has_character_flag = feast_ai_override
+								OR = {
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+									government_has_flag = government_is_mandala
+									AND = {
+										house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+										has_treasury = yes
+									}
+									government_allows = barter
+								}
 							}
-							multiply = 0
+							value = 0
+						}
+						else = {
+							value = feast_food_normal_value
+						}
+					}
+					treasury = { # Make sure this matches the gold cost above
+						if = {
+							limit = {
+								OR = {
+									NAND = {
+										house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+										has_treasury = yes
+									}
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
+							}
+							value = 0
+						}
+						else = {
+							value = feast_food_normal_value
+						}
+					}
+					piety = {
+						if = {
+							limit = {
+								OR = {
+									NOT = { government_has_flag = government_is_mandala }
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
+							}
+							value = 0
+						}
+						else = {
+							value = feast_food_normal_value
+						}
+					}
+					barter_goods = {
+						if = {
+							limit = {
+								OR = {
+									NOT = { government_allows = barter }
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
+							}
+							value = 0
+						}
+						else = {
+							value = feast_food_normal_value
 						}
 					}
 				}
@@ -4822,81 +4532,79 @@ activity_feast = {
 
 				cost = {
 					gold = {
-						add = {
-							desc = feast_food_good
-							add = {
-								value = 35
-								desc = feast_food_good
-							}
-							add = {
-								value = 35
-								multiply = activity_cost_scale_by_tier
-								subtract = 35
-								desc = activity_cost_scale_by_tier_desc
-							}
-							add = {
-								value = 35
-								multiply = activity_cost_scale_by_era
-								subtract = 35
-								desc = activity_cost_scale_by_era_desc
-							}
-							if = {
-								limit = {
-									dynasty ?= {
-										has_dynasty_perk = law_legacy_1
-									}
-								}
-								subtract = {
-									value = 35
-									add = {
-										value = 35
-										multiply = activity_cost_scale_by_tier
-										subtract = 35
-									}
-									add = {
-										value = 35
-										multiply = activity_cost_scale_by_era
-										subtract = 35
-									}
-									multiply = law_legacy_cost_reduction_mult
-									desc = law_legacy_1_name
-								}
-							}
-							if = {
-								limit = {
-									has_perk = journey_planner_perk
-								}
-								multiply = {
-									value = voyager_journey_planner_value
-									desc = journey_planner_perk_name
-								}
-							}
-							if = {
-								limit = {
-									has_character_modifier = mpo_si_slaughtered_animals
-								}
-								multiply = {
-									value = 0.5
-									desc = mpo_si_slaughtered_animals
-								}
-							}
-							if = {
-								limit = {
-									has_character_modifier = mpo_nerge_feast_discount
-								}
-								multiply = {
-									value = 0.5
-									desc = mpo_nerge_feast_discount
-								}
-							}
-							min = 0
-						}
 						if = {
 							limit = {
-								is_ai = yes
-								has_character_flag = feast_ai_override
+								OR = {
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+									government_has_flag = government_is_mandala
+									AND = {
+										house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+										has_treasury = yes
+									}
+									government_allows = barter
+								}
 							}
-							multiply = 0
+							value = 0
+						}
+						else = {
+							value = feast_food_good_value
+						}
+					}
+					treasury = {
+						if = {
+							limit = {
+								OR = {
+									NAND = {
+										house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+										has_treasury = yes
+									}
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
+							}
+							value = 0
+						}
+						else = {
+							value = feast_food_good_value
+						}
+					}
+					piety = {
+						if = {
+							limit = {
+								OR = {
+									NOT = { government_has_flag = government_is_mandala }
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
+							}
+							value = 0
+						}
+						else = {
+							value = feast_food_good_value
+						}
+					}
+					barter_goods = {
+						if = {
+							limit = {
+								OR = {
+									NOT = { government_allows = barter }
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
+							}
+							value = 0
+						}
+						else = {
+							value = feast_food_good_value
 						}
 					}
 				}
@@ -4926,84 +4634,100 @@ activity_feast = {
 			}
 			feast_courses_normal = {
 				default = yes
-	
+
 				cost = {
 					gold = {
-						add = {
-							desc = feast_courses_normal
-							add = {
-								value = 10
-								desc = feast_courses_normal
-							}
-							add = {
-								value = 10
-								multiply = activity_cost_scale_by_tier
-								subtract = 10
-								desc = activity_cost_scale_by_tier_desc
-							}
-							add = {
-								value = 10
-								multiply = activity_cost_scale_by_era
-								subtract = 10
-								desc = activity_cost_scale_by_era_desc
-							}
-							if = {
-								limit = {
-									dynasty ?= {
-										has_dynasty_perk = law_legacy_1
-									}
-								}
-								subtract = {
-									value = 10
-									add = {
-										value = 10
-										multiply = activity_cost_scale_by_tier
-										subtract = 10
-									}
-									add = {
-										value = 10
-										multiply = activity_cost_scale_by_era
-										subtract = 10
-									}
-									multiply = law_legacy_cost_reduction_mult
-									desc = law_legacy_1_name
-								}
-							}
-							if = {
-								limit = {
-									has_perk = journey_planner_perk
-								}
-								multiply = {
-									value = voyager_journey_planner_value
-									desc = journey_planner_perk_name
-								}
-							}
-							if = {
-								limit = {
-									has_character_modifier = mpo_si_slaughtered_animals
-								}
-								multiply = {
-									value = 0.5
-									desc = mpo_si_slaughtered_animals
-								}
-							}
-							if = {
-								limit = {
-									has_character_modifier = mpo_nerge_feast_discount
-								}
-								multiply = {
-									value = 0.5
-									desc = mpo_nerge_feast_discount
-								}
-							}
-							min = 0
-						}
 						if = {
 							limit = {
-								is_ai = yes
-								has_character_flag = feast_ai_override
+								OR = {
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+									government_has_flag = government_is_mandala
+									AND = {
+										house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+										has_treasury = yes
+									}
+									government_allows = barter
+								}
 							}
-							multiply = 0
+							value = 0
+						}
+						else = {
+							value = feast_courses_normal_value
+						}
+					}
+					treasury = { # Make sure this matches the gold cost above
+						if = {
+							limit = {
+								OR = {
+									NAND = {
+										house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+										has_treasury = yes
+									}
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
+							}
+							value = 0
+						}
+						else = {
+							value = feast_courses_normal_value
+						}
+					}
+
+					piety = {
+						if = {
+							limit = {
+								OR = {
+									NOT = { government_has_flag = government_is_mandala }
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
+							}
+							value = 0
+						}
+						else = {
+							value = feast_courses_normal_value
+
+							if = {
+								limit = { has_variable = mpo_nerge_1060_free_feast }
+								multiply = {
+									value =  0 # Free
+									desc = mpo_nerge_1060_free_feast_desc
+								}
+							}
+						}
+					}
+
+					barter_goods = {
+						if = {
+							limit = {
+								OR = {
+									NOT = { government_allows = barter }
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
+							}
+							value = 0
+						}
+						else = {
+							value = feast_courses_normal_value
+
+							if = {
+								limit = { has_variable = mpo_nerge_1060_free_feast }
+								multiply = {
+									value =  0 # Free
+									desc = mpo_nerge_1060_free_feast_desc
+								}
+							}
 						}
 					}
 				}
@@ -5025,81 +4749,80 @@ activity_feast = {
 
 				cost = {
 					gold = {
-						add = {
-							desc = feast_courses_good
-							add = {
-								value = 35
-								desc = feast_courses_good
-							}
-							add = {
-								value = 35
-								multiply = activity_cost_scale_by_tier
-								subtract = 35
-								desc = activity_cost_scale_by_tier_desc
-							}
-							add = {
-								value = 35
-								multiply = activity_cost_scale_by_era
-								subtract = 35
-								desc = activity_cost_scale_by_era_desc
-							}
-							if = {
-								limit = {
-									dynasty ?= {
-										has_dynasty_perk = law_legacy_1
-									}
-								}
-								subtract = {
-									value = 35
-									add = {
-										value = 35
-										multiply = activity_cost_scale_by_tier
-										subtract = 35
-									}
-									add = {
-										value = 35
-										multiply = activity_cost_scale_by_era
-										subtract = 35
-									}
-									multiply = law_legacy_cost_reduction_mult
-									desc = law_legacy_1_name
-								}
-							}
-							if = {
-								limit = {
-									has_perk = journey_planner_perk
-								}
-								multiply = {
-									value = voyager_journey_planner_value
-									desc = journey_planner_perk_name
-								}
-							}
-							if = {
-								limit = {
-									has_character_modifier = mpo_si_slaughtered_animals
-								}
-								multiply = {
-									value = 0.5
-									desc = mpo_si_slaughtered_animals
-								}
-							}
-							if = {
-								limit = {
-									has_character_modifier = mpo_nerge_feast_discount
-								}
-								multiply = {
-									value = 0.5
-									desc = mpo_nerge_feast_discount
-								}
-							}
-							min = 0
-						}
 						if = {
 							limit = {
-								is_ai = yes
-								has_character_flag = feast_ai_override
+								OR = {
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+									government_has_flag = government_is_mandala
+									AND = {
+										house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+										has_treasury = yes
+									}
+									government_allows = barter
+								}
 							}
-							multiply = 0
+							value = 0
+						}
+						else = {
+							value = feast_courses_good_value
+						}
+					}
+					treasury = {
+						if = {
+							limit = {
+								OR = {
+									NAND = {
+										house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+										has_treasury = yes
+									}
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
+							}
+							value = 0
+						}
+						else = {
+							value = feast_courses_good_value
+						}
+					}
+					piety = {
+						if = {
+							limit = {
+								OR = {
+									NOT = { government_has_flag = government_is_mandala }
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
+							}
+							value = 0
+						}
+						else = {
+							value = feast_courses_good_value
+						}
+					}
+
+					barter_goods = {
+						if = {
+							limit = {
+								OR = {
+									NOT = { government_allows = barter }
+									AND = {
+										is_ai = yes
+										has_character_flag = feast_ai_override
+									}
+								}
+							}
+							value = 0
+						}
+						else = {
+							value = feast_courses_good_value
 						}
 					}
 				}
@@ -5127,7 +4850,7 @@ activity_feast = {
 						}
 					}
 				}
-				
+
 				default = yes
 
 				ai_will_do = {
@@ -5149,52 +4872,119 @@ activity_feast = {
 						}
 					}
 				}
-				
-				#default = yes
-	
+
 				cost = {
 					gold = {
-						add = {
-							desc = feast_wine_limited
+						if = {
+							limit = {
+								house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+								has_treasury = yes
+							}
+							value = 0
+						}
+						else = {
 							add = {
-								value = 10
 								desc = feast_wine_limited
-							}
-							add = {
-								value = 10
-								multiply = activity_cost_scale_by_tier
-								subtract = 10
-								desc = activity_cost_scale_by_tier_desc
-							}
-							add = {
-								value = 10
-								multiply = activity_cost_scale_by_era
-								subtract = 10
-								desc = activity_cost_scale_by_era_desc
-							}
-							if = {
-								limit = {
-									dynasty ?= {
-										has_dynasty_perk = law_legacy_1
-									}
-								}
-								subtract = {
+								add = {
 									value = 10
-									add = {
-										value = 10
-										multiply = activity_cost_scale_by_tier
-										subtract = 10
-									}
-									add = {
-										value = 10
-										multiply = activity_cost_scale_by_era
-										subtract = 10
-									}
-									multiply = law_legacy_cost_reduction_mult
-									desc = law_legacy_1_name
+									desc = feast_wine_limited
 								}
+								add = {
+									value = 10
+									multiply = activity_cost_scale_by_tier
+									subtract = 10
+									desc = activity_cost_scale_by_tier_desc
+								}
+								add = {
+									value = 10
+									multiply = activity_cost_scale_by_era
+									subtract = 10
+									desc = activity_cost_scale_by_era_desc
+								}
+								if = {
+									limit = {
+										dynasty ?= {
+											has_dynasty_perk = law_legacy_1
+										}
+									}
+									subtract = {
+										value = 10
+										add = {
+											value = 10
+											multiply = activity_cost_scale_by_tier
+											subtract = 10
+										}
+										add = {
+											value = 10
+											multiply = activity_cost_scale_by_era
+											subtract = 10
+										}
+										multiply = law_legacy_cost_reduction_mult
+										desc = law_legacy_1_name
+									}
+								}
+								min = 0
 							}
-							min = 0
+						}
+						if = {
+							limit = {
+								is_ai = yes
+								has_character_flag = feast_ai_override
+							}
+							multiply = 0
+						}
+					}
+					treasury = { # Make sure this matches the gold cost above
+						if = {
+							limit = {
+								house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+								has_treasury = yes
+							}
+							add = {
+								desc = feast_wine_limited
+								add = {
+									value = 10
+									desc = feast_wine_limited
+								}
+								add = {
+									value = 10
+									multiply = activity_cost_scale_by_tier
+									subtract = 10
+									desc = activity_cost_scale_by_tier_desc
+								}
+								add = {
+									value = 10
+									multiply = activity_cost_scale_by_era
+									subtract = 10
+									desc = activity_cost_scale_by_era_desc
+								}
+								if = {
+									limit = {
+										dynasty ?= {
+											has_dynasty_perk = law_legacy_1
+										}
+									}
+									subtract = {
+										value = 10
+										add = {
+											value = 10
+											multiply = activity_cost_scale_by_tier
+											subtract = 10
+										}
+										add = {
+											value = 10
+											multiply = activity_cost_scale_by_era
+											subtract = 10
+										}
+										multiply = law_legacy_cost_reduction_mult
+										desc = law_legacy_1_name
+									}
+								}
+								min = 0
+							}
+						}
+						else = {
+							value = 0
 						}
 						if = {
 							limit = {
@@ -5231,47 +5021,116 @@ activity_feast = {
 
 				cost = {
 					gold = {
-						add = {
-							desc = feast_wine_normal
+						if = {
+							limit = {
+								house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+								has_treasury = yes
+							}
+							value = 0
+						}
+						else = {
 							add = {
-								value = 35
 								desc = feast_wine_normal
-							}
-							add = {
-								value = 35
-								multiply = activity_cost_scale_by_tier
-								subtract = 35
-								desc = activity_cost_scale_by_tier_desc
-							}
-							add = {
-								value = 35
-								multiply = activity_cost_scale_by_era
-								subtract = 35
-								desc = activity_cost_scale_by_era_desc
-							}
-							if = {
-								limit = {
-									dynasty ?= {
-										has_dynasty_perk = law_legacy_1
-									}
-								}
-								subtract = {
+								add = {
 									value = 35
-									add = {
-										value = 35
-										multiply = activity_cost_scale_by_tier
-										subtract = 35
-									}
-									add = {
-										value = 35
-										multiply = activity_cost_scale_by_era
-										subtract = 35
-									}
-									multiply = law_legacy_cost_reduction_mult
-									desc = law_legacy_1_name
+									desc = feast_wine_normal
 								}
+								add = {
+									value = 35
+									multiply = activity_cost_scale_by_tier
+									subtract = 35
+									desc = activity_cost_scale_by_tier_desc
+								}
+								add = {
+									value = 35
+									multiply = activity_cost_scale_by_era
+									subtract = 35
+									desc = activity_cost_scale_by_era_desc
+								}
+								if = {
+									limit = {
+										dynasty ?= {
+											has_dynasty_perk = law_legacy_1
+										}
+									}
+									subtract = {
+										value = 35
+										add = {
+											value = 35
+											multiply = activity_cost_scale_by_tier
+											subtract = 35
+										}
+										add = {
+											value = 35
+											multiply = activity_cost_scale_by_era
+											subtract = 35
+										}
+										multiply = law_legacy_cost_reduction_mult
+										desc = law_legacy_1_name
+									}
+								}
+								min = 0
 							}
-							min = 0
+						}
+						if = {
+							limit = {
+								is_ai = yes
+								has_character_flag = feast_ai_override
+							}
+							multiply = 0
+						}
+					}
+					treasury = { # Make sure this matches the gold cost above
+						if = {
+							limit = {
+								house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+								has_treasury = yes
+							}
+							add = {
+								desc = feast_wine_normal
+								add = {
+									value = 35
+									desc = feast_wine_normal
+								}
+								add = {
+									value = 35
+									multiply = activity_cost_scale_by_tier
+									subtract = 35
+									desc = activity_cost_scale_by_tier_desc
+								}
+								add = {
+									value = 35
+									multiply = activity_cost_scale_by_era
+									subtract = 35
+									desc = activity_cost_scale_by_era_desc
+								}
+								if = {
+									limit = {
+										dynasty ?= {
+											has_dynasty_perk = law_legacy_1
+										}
+									}
+									subtract = {
+										value = 35
+										add = {
+											value = 35
+											multiply = activity_cost_scale_by_tier
+											subtract = 35
+										}
+										add = {
+											value = 35
+											multiply = activity_cost_scale_by_era
+											subtract = 35
+										}
+										multiply = law_legacy_cost_reduction_mult
+										desc = law_legacy_1_name
+									}
+								}
+								min = 0
+							}
+						}
+						else = {
+							value = 0
 						}
 						if = {
 							limit = {
@@ -5303,47 +5162,116 @@ activity_feast = {
 
 				cost = {
 					gold = {
-						add = {
-							desc = feast_wine_extensive
+						if = {
+							limit = {
+								house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+								has_treasury = yes
+							}
+							value = 0
+						}
+						else = {
 							add = {
-								value = 90
 								desc = feast_wine_extensive
-							}
-							add = {
-								value = 90
-								multiply = activity_cost_scale_by_tier
-								subtract = 90
-								desc = activity_cost_scale_by_tier_desc
-							}
-							add = {
-								value = 90
-								multiply = activity_cost_scale_by_era
-								subtract = 90
-								desc = activity_cost_scale_by_era_desc
-							}
-							if = {
-								limit = {
-									dynasty ?= {
-										has_dynasty_perk = law_legacy_1
-									}
-								}
-								subtract = {
+								add = {
 									value = 90
-									add = {
-										value = 90
-										multiply = activity_cost_scale_by_tier
-										subtract = 90
-									}
-									add = {
-										value = 90
-										multiply = activity_cost_scale_by_era
-										subtract = 90
-									}
-									multiply = law_legacy_cost_reduction_mult
-									desc = law_legacy_1_name
+									desc = feast_wine_extensive
 								}
+								add = {
+									value = 90
+									multiply = activity_cost_scale_by_tier
+									subtract = 90
+									desc = activity_cost_scale_by_tier_desc
+								}
+								add = {
+									value = 90
+									multiply = activity_cost_scale_by_era
+									subtract = 90
+									desc = activity_cost_scale_by_era_desc
+								}
+								if = {
+									limit = {
+										dynasty ?= {
+											has_dynasty_perk = law_legacy_1
+										}
+									}
+									subtract = {
+										value = 90
+										add = {
+											value = 90
+											multiply = activity_cost_scale_by_tier
+											subtract = 90
+										}
+										add = {
+											value = 90
+											multiply = activity_cost_scale_by_era
+											subtract = 90
+										}
+										multiply = law_legacy_cost_reduction_mult
+										desc = law_legacy_1_name
+									}
+								}
+								min = 0
 							}
-							min = 0
+						}
+						if = {
+							limit = {
+								is_ai = yes
+								has_character_flag = feast_ai_override
+							}
+							multiply = 0
+						}
+					}
+					treasury = { # Make sure this matches the gold cost above
+						if = {
+							limit = {
+								house ?= { has_house_aspiration_parameter = feasts_costs_treasury }
+								has_treasury = yes
+							}
+							add = {
+								desc = feast_wine_extensive
+								add = {
+									value = 90
+									desc = feast_wine_extensive
+								}
+								add = {
+									value = 90
+									multiply = activity_cost_scale_by_tier
+									subtract = 90
+									desc = activity_cost_scale_by_tier_desc
+								}
+								add = {
+									value = 90
+									multiply = activity_cost_scale_by_era
+									subtract = 90
+									desc = activity_cost_scale_by_era_desc
+								}
+								if = {
+									limit = {
+										dynasty ?= {
+											has_dynasty_perk = law_legacy_1
+										}
+									}
+									subtract = {
+										value = 90
+										add = {
+											value = 90
+											multiply = activity_cost_scale_by_tier
+											subtract = 90
+										}
+										add = {
+											value = 90
+											multiply = activity_cost_scale_by_era
+											subtract = 90
+										}
+										multiply = law_legacy_cost_reduction_mult
+										desc = law_legacy_1_name
+									}
+								}
+								min = 0
+							}
+						}
+						else = {
+							value = 0
 						}
 						if = {
 							limit = {
@@ -5372,11 +5300,11 @@ activity_feast = {
 	# PHASES
 	###################
 
-	max_guest_arrival_delay_time = { months = 8 }
+	max_guest_arrival_delay_time = { months = 5 }
 
 	phases = {
 		# Meal.
-		feast_phase_meal = {		
+		feast_phase_meal = {
 			order = 1
 			is_predefined = yes
 
@@ -5408,7 +5336,7 @@ activity_feast = {
 							}
 						}
 					}
-				}	
+				}
 			}
 
 			on_phase_active = {
@@ -5419,7 +5347,7 @@ activity_feast = {
 					scope:activity = { progress_activity_phase_after = { months = 1 } }
 
 					# Misc. old content variable.
-					## Reduce alcohol stores if appropriate.					
+					## Reduce alcohol stores if appropriate.
 					if = {
 						limit = { exists = var:protected_alcohol_stores }
 						set_variable = {
@@ -5431,19 +5359,17 @@ activity_feast = {
 					if = {
 						limit = {
 							any_scheme = {
-								scheme_type = befriend
+								type = befriend
 								scheme_target_character = {
-									exists = involved_activity
-									involved_activity = scope:activity
+									involved_activity ?= scope:activity
 								}
 							}
 						}
 						random_scheme = {
+							type = befriend
 							limit = {
-								scheme_type = befriend
 								scheme_target_character = {
-									exists = involved_activity
-									involved_activity = scope:activity
+									involved_activity ?= scope:activity
 								}
 							}
 							scheme_target_character = {
@@ -5455,7 +5381,10 @@ activity_feast = {
 									}
 								}
 							}
-							scheme_freeze = { days = 10 }
+							scheme_freeze = {
+								reason = "BEFRIENDING_AT_FEAST"
+								days = 10
+							}
 						}
 					}
 					# And now, the main event!
@@ -5465,7 +5394,7 @@ activity_feast = {
 							scope:activity = {
 								any_attending_character = {
 									count = 0
-									NOT = {	this = scope:host }
+									this != scope:host
 								}
 							}
 						}
@@ -5486,6 +5415,13 @@ activity_feast = {
 									any_attending_character = {
 										any_character_struggle = {
 											involvement = involved
+											NOR = { 
+												this = struggle:gh_war_in_heaven_struggle 
+												this = struggle:gh_eastern_war_in_heaven_struggle
+												this = struggle:gh_far_eastern_war_in_heaven_struggle
+												this = struggle:gh_western_war_in_heaven_struggle
+												#this = struggle:gh_far_western_war_in_heaven_struggle
+											}
 											phase_has_catalyst = catalyst_invite_diff_faith_culture_to_feast
 										}
 										is_diff_faith_or_culture_trigger = {
@@ -5503,12 +5439,43 @@ activity_feast = {
 								}
 							}
 						}
+						#GH ADDITION
+						if = {
+							limit = {
+								# At least one participant is involved and  of a different faith or culture
+								scope:activity = {
+									any_attending_character = {
+										any_character_struggle = {
+											OR = { 
+												this = struggle:gh_war_in_heaven_struggle 
+												this = struggle:gh_eastern_war_in_heaven_struggle
+												this = struggle:gh_far_eastern_war_in_heaven_struggle
+												this = struggle:gh_western_war_in_heaven_struggle
+												#this = struggle:gh_far_western_war_in_heaven_struggle
+											}
+											phase_has_catalyst = catalyst_invite_diff_faith_culture_to_feast_either
+										}
+										NAND = {
+											culture = scope:host.culture
+											faith = scope:host.faith
+										}
+									}
+								}
+							}
+							every_character_struggle = {
+								involvement = involved
+								activate_struggle_catalyst = {
+									catalyst = catalyst_invite_diff_faith_culture_to_feast_either
+									character = scope:activity.activity_host
+								}
+							}
+						}
 					}
 					# Accolade stuff
 					if = {
 						limit = {
 							any_active_accolade = {
-								has_accolade_parameter = accolade_party_fertility
+								accolade_parameter = accolade_party_fertility
 							}
 						}
 						add_character_modifier = {
@@ -5518,7 +5485,7 @@ activity_feast = {
 					if = {
 						limit = {
 							any_active_accolade = {
-								has_accolade_parameter = accolade_party_fertility_high
+								accolade_parameter = accolade_party_fertility_high
 							}
 						}
 						add_character_modifier = {
@@ -5541,7 +5508,7 @@ activity_feast = {
 						limit = {
 							exists = var:booked_for_a_party
 							var:booked_for_a_party = {
-								NOT = { this = scope:activity.activity_host }
+								this != scope:activity.activity_host
 							}
 						}
 						trigger_event = feast.0010
@@ -5560,7 +5527,7 @@ activity_feast = {
 						}
 						# Take care of reveller stuff for everyone else.
 						if = {
-							limit = { 
+							limit = {
 								NOT = { has_trait = temperate }
 							}
 							# Reveler lifestyle tracking:
@@ -5574,7 +5541,7 @@ activity_feast = {
 					}
 				}
 			}
-			
+
 			on_weekly_pulse = {
 				if = { #host
 					limit = {
@@ -5584,7 +5551,7 @@ activity_feast = {
 				}
 				else_if = { #guest
 					limit = {
-						NOT = { this = scope:host }
+						this != scope:host
 					}
 					trigger_event = { on_action = feast_default_event_selection }
 				}
@@ -5624,7 +5591,7 @@ activity_feast = {
 
 						# EP3 Dynasty Legacy Domicile Building Buff
 						ep3_dynasty_legacy_add_legitimacy_effect = yes
-						
+
 						# Trigger summary event, also handles guest events
 						trigger_event = feast.7201
 					}
@@ -5653,7 +5620,7 @@ activity_feast = {
 
 						trigger_event = { on_action = feast_murder_feast_event_selection } #KILL event, also handles the guest events
 					}
-					
+
 					scope:activity = { progress_activity_phase_after = { weeks = 1 } }
 				}
 
@@ -5696,7 +5663,14 @@ activity_feast = {
 		}
 	}
 
-	ai_check_interval = 60
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 60
+		duchy = 60
+		kingdom = 60
+		empire = 60
+		hegemony = 60
+	}
 
 	ai_will_select_province = {
 		# Base
@@ -5726,6 +5700,14 @@ activity_feast = {
 			add = {
 				value = @weight_up_ai_select_province_medium
 				desc = activity_feast_province_desc_aaimperon_plantations
+			}
+		}
+		### Paddy Fields
+		if = {
+			limit = { has_building_or_higher = paddy_fields_01 }
+			add = {
+				value = @weight_up_ai_select_province_medium
+				desc = activity_feast_province_desc_paddy_fields
 			}
 		}
 		### Orchards
@@ -5840,7 +5822,7 @@ activity_feast = {
 	###################
 	# ACTIVITY-SPECIFIC PULSES
 	###################
-	
+
 	pulse_actions = {
 		entries = {
 			spouse_skill_diplomacy_improves spouse_gives_host_prestige spouse_manages_feast_splendidly spouse_impresses_clergy spouse_gives_hook
@@ -5853,7 +5835,7 @@ activity_feast = {
 		}
 		chance_of_no_event = 5
 	}
-	
+
 	on_start = {
 		#if = {
 		#	limit = {
@@ -5888,6 +5870,26 @@ activity_feast = {
 			if = {
 				limit = { has_variable = mpo_nerge_1060_free_feast }
 				remove_variable = mpo_nerge_1060_free_feast
+			}
+			#Mandala Serenity tracker
+			if = {
+				limit = {
+					government_has_flag = government_is_mandala
+					scope:activity = {
+						has_activity_option = {
+							category = feast_option_food
+							option = feast_food_good
+						}
+						has_activity_option = {
+							category = feast_option_courses
+							option = feast_courses_good
+						}
+					}
+				}
+				increment_variable_effect = {
+					VAR = num_exorbitant_feasts_hosted
+					VAL = 1
+				}
 			}
 		}
 		set_variable = {
@@ -5970,7 +5972,7 @@ activity_feast = {
 			limit = {
 				is_hostage_warden = yes
 				has_bp2_dlc_trigger = yes
-				NOT = { this = scope:host }
+				this != scope:host
 			}
 			trigger_event = {
 				id = bp2_yearly.6120
@@ -5978,7 +5980,7 @@ activity_feast = {
 			}
 		}
 	}
-	
+
 	on_enter_passive_state = {
 		trigger_event = feast.7002
 	}
@@ -5997,7 +5999,7 @@ activity_feast = {
 			limit = { this = scope:host }
 			location = { save_scope_as = activity_location }
 			if = {
-				limit = { 
+				limit = {
 					is_murder_feast = yes
 					scope:host = { NOT = { has_variable = murder_feast_murder_back_down } }
 				}
@@ -6035,7 +6037,7 @@ activity_feast = {
 				}
 			}
 			## Hold Court: A vassal sponsored a feast (vassal.2101)
-			if = { 
+			if = {
 				limit = {
 					exists = var:hold_court_sponsored_a_feast
 					has_royal_court = yes
@@ -6069,13 +6071,52 @@ activity_feast = {
 				limit = { has_character_modifier = mpo_si_slaughtered_animals }
 				remove_character_modifier = mpo_si_slaughtered_animals
 			}
+			random_knight = {
+				limit = {
+					can_unlock_accolade_attribute_trigger = {
+						ATTRIBUTE = master_of_revels
+					}
+				}
+				weight = {
+					base = 1
+					modifier = {
+						add = 50
+						is_acclaimed = yes
+					}
+					modifier = {
+						add = 50
+						involved_activity ?= scope:activity
+					}
+				}
+				save_scope_as = accolade_knight
+				liege = {
+					save_scope_as = accolade_liege
+					set_variable = {
+						name = accolade_progress
+						value = 0
+					}
+					send_interface_message = {
+						type = msg_accolade_eligibility
+						title = accolade_master_of_revels_unlock.t_feast
+						left_icon = scope:accolade_knight
+						right_icon = scope:accolade_liege
+						custom_tooltip = accolade_master_of_revels_unlock.tt
+						scope:accolade_knight = {
+							set_variable = {
+								name = master_of_revels_attribute_unlock
+								value = yes
+							}
+						}
+					}
+				}
+			}
 		}
 		# Conclusion event for guests
 		else = {
 			if = {
 				limit = {
 					is_alive = yes
-					NOT = { this = scope:host }
+					this != scope:host
 					is_imprisoned = no
 				}
 				if = {
@@ -6113,6 +6154,12 @@ activity_feast = {
 					name = finished_black_dinner_achievement
 					value = yes
 				}
+			}
+			if = {
+				limit = {
+					var:tgp_ceremonial_liege_events_0020_discount ?= flag:feast
+				}
+				remove_variable = tgp_ceremonial_liege_events_0020_discount
 			}
 		}
 

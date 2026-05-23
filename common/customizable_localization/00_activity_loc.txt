@@ -356,9 +356,23 @@ GetActivityName = {
 
 	text = {
 		trigger = {
+			has_variable = pledge_loyalty_to_liege_scope
+		}
+		localization_key = unavailable_pledge_loyalty_to_liege
+	}
+
+	text = {
+		trigger = {
 			has_character_flag = meditation_character_flag
 		}
 		localization_key = unavailable_meditation
+	}
+
+	text = {
+		trigger = {
+			has_character_flag = local_shrine_rite
+		}
+		localization_key = unavailable_local_shrine
 	}
 	
 	text = {
@@ -466,22 +480,14 @@ WakeDesc = {
 CeremonyName = {
 	type = character
 
-	text = {
-		localization_key = ceremonyname_public_bewailment
-		trigger = {
-			faith = {
-				has_doctrine_parameter = bewailment_funeral
-			}
-		}
-	}
+	#text = {
+	#	localization_key = ceremonyname_public_bewailment
+	#	trigger = { faith_qualifies_for_west_african_pagan_feudalisation_trigger = yes }
+	#}
 
 	text = {
 		localization_key = ceremonyname_sky_burial
-		trigger = {
-			faith = {
-				has_doctrine_parameter = sky_burials_active
-			}
-		}
+		trigger = { faith = { has_doctrine_parameter = sky_burials_active } }
 	}
 
 	text = {
@@ -531,11 +537,7 @@ CeremonyDesc = {
 
 	text = {
 		localization_key = ceremonydesc_sky_burial
-		trigger = {
-			faith = {
-				has_doctrine_parameter = sky_burials_active
-			}
-		}
+		trigger = { faith = { has_doctrine_parameter = sky_burials_active } }
 	}
 
 	text = {
@@ -567,6 +569,27 @@ CeremonyDesc = {
 
 	text = {
 		localization_key = ceremonydesc_ceremony
+		fallback = yes
+	}
+}
+
+CoronationRequiresArtifact = {
+	type = faith
+
+	text = {
+		localization_key = coronation_custom_crown_artifact
+		trigger = {
+			coronation_proper_artifact_crown_trigger = yes
+		}
+	}
+	text = {
+		localization_key = coronation_custom_regalia_artifact
+		trigger = {
+			coronation_proper_artifact_regalia_trigger = yes
+		}
+	}
+	text = {
+		localization_key = coronation_custom_crown_or_regalia_artifact
 		fallback = yes
 	}
 }
