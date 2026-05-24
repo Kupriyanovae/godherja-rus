@@ -1,0 +1,342 @@
+﻿# THIS IS A GENERATED FILE.
+#
+# Source template:
+# added_folders/templates/common/script_values/GH_magic_ai_values.txt.jinja
+#
+# Please avoid manually editing this file: your changes WILL be overwritten when it gets regenerated.
+# Instead, edit the source template and/or variables, then run render_templates.bat .
+
+##########################
+# AI SPELLCASTING VALUES #
+##########################
+
+ai_spell_weight_spell_effect_value = {
+	value = 0
+	if = {
+		limit = {
+			save_temporary_scope_as = spell_being_casted
+			# Compile target lists
+			trigger_if = {
+				limit = { has_variable_list = affects_spell_target_effect_list }
+				scope:spell_organizer = {
+					
+				}
+			}
+			trigger_if = {
+				limit = { has_variable_list = affects_cantrip_wielder_effect_list }
+				scope:spell_organizer = {
+					
+				}
+			}
+			trigger_if = {
+				limit = { has_variable_list = affects_target_effect_list }
+				scope:spell_organizer = {
+					trigger_if = {
+					    limit = { has_variable_list = spell_targets }
+					    any_in_list = {
+					        variable = spell_targets
+					        count = all
+					        add_to_temporary_list = target_list
+					    }
+					}
+
+					trigger_if = {
+						limit = { list_size = { name = target_list value <= 0 } }
+						trigger_if = {
+						    limit = {
+						        NOR = {
+						            has_variable_list = spell_target_province_list
+						            has_variable_list = spell_target_artifacts
+						            exists = scope:cantrip_scope
+						        }
+						    }
+						    scope:spell_organizer = { add_to_temporary_list = target_list }
+						}
+
+					}
+				}
+			}
+			trigger_if = {
+				limit = { has_variable_list = affects_spell_organizer_effect_list }
+				scope:spell_organizer = {
+					scope:spell_organizer ?= { add_to_temporary_list = spell_organizer_list }
+				}
+			}
+			trigger_if = {
+				limit = { has_variable_list = affects_caster_effect_list }
+				scope:spell_organizer = {
+					scope:caster ?= { add_to_temporary_list = caster_list }
+				}
+			}
+			trigger_if = {
+				limit = { has_variable_list = affects_target_province_effect_list }
+				scope:spell_organizer = {
+					trigger_if = {
+					    limit = { has_variable_list = spell_target_province_list }
+					    any_in_list = {
+					        variable = spell_target_province_list
+					        count = all
+					        county = { add_to_temporary_list = target_province_list }
+					    }
+					}
+
+				}
+			}
+			trigger_if = {
+				limit = { has_variable_list = affects_target_title_effect_list }
+				scope:spell_organizer = {
+					trigger_if = {
+					    limit = { list_size = { name = target_province_list value > 0 } }
+					    any_in_list = {
+					        list = target_province_list
+					        count = all
+					        county = { add_to_temporary_list = target_title_list }
+					    }
+					}
+
+				}
+			}
+			trigger_if = {
+				limit = { has_variable_list = affects_target_artifact_effect_list }
+				scope:spell_organizer = {
+					trigger_if = {
+					    limit = { has_variable_list = spell_target_artifacts }
+					    any_in_list = {
+					        variable = spell_target_artifacts
+					        count = all
+					        add_to_temporary_list = target_artifact_list
+					    }
+					}
+
+				}
+			}
+			trigger_if = {
+				limit = { has_variable_list = affects_target_province_character_effect_list }
+				scope:spell_organizer = {
+					trigger_if = {
+					    limit = { list_size = { name = target_province_list value > 0 } }
+					    any_in_list = {
+					        list = target_province_list
+					        count = all
+					        any_character_in_location = {
+					            count = all
+					            add_to_temporary_list = target_province_character_list
+					        }
+					    }
+					}
+
+				}
+			}
+			trigger_if = {
+				limit = { has_variable_list = affects_target_newborn_child_effect_list }
+				scope:spell_organizer = {
+					trigger_if = {
+					    limit = { exists = scope:child }
+					    scope:child = { add_to_temporary_list = target_newborn_child_list }
+					}
+
+				}
+			}
+			trigger_if = {
+				limit = { has_variable_list = affects_artifact_owner_effect_list }
+				scope:spell_organizer = {
+					trigger_if = {
+					    limit = { list_size = { name = target_artifact_list value > 0 } }
+					    any_in_list = {
+					        list = target_artifact_list
+					        count = all
+					        artifact_owner = {
+					            add_to_temporary_list = artifact_owner_list
+					        }
+					    }
+					}
+
+				}
+			}
+			trigger_if = {
+				limit = { has_variable_list = affects_newly_created_artifact_effect_list }
+				scope:spell_organizer = {
+					scope:newly_created_artifact ?= { add_to_temporary_list = newly_created_artifact_list }
+				}
+			}
+		}
+	}
+	every_in_list = {
+		variable = spell_effect_list
+		limit = {
+			trigger_if = {
+				limit = { var:target_type = flag:spell_target }
+				scope:spell_being_checked_ai_target = { is_in_list = spell_target_list }
+			}
+			trigger_else_if = {
+				limit = { var:target_type = flag:cantrip_wielder }
+				scope:spell_being_checked_ai_target = { is_in_list = cantrip_wielder_list }
+			}
+			trigger_else_if = {
+				limit = { var:target_type = flag:target }
+				scope:spell_being_checked_ai_target = { is_in_list = target_list }
+			}
+			trigger_else_if = {
+				limit = { var:target_type = flag:spell_organizer }
+				scope:spell_being_checked_ai_target = { is_in_list = spell_organizer_list }
+			}
+			trigger_else_if = {
+				limit = { var:target_type = flag:caster }
+				scope:spell_being_checked_ai_target = { is_in_list = caster_list }
+			}
+			trigger_else_if = {
+				limit = { var:target_type = flag:target_province }
+				scope:spell_being_checked_ai_target = { is_in_list = target_province_list }
+			}
+			trigger_else_if = {
+				limit = { var:target_type = flag:target_title }
+				scope:spell_being_checked_ai_target = { is_in_list = target_title_list }
+			}
+			trigger_else_if = {
+				limit = { var:target_type = flag:target_artifact }
+				scope:spell_being_checked_ai_target = { is_in_list = target_artifact_list }
+			}
+			trigger_else_if = {
+				limit = { var:target_type = flag:target_province_character }
+				scope:spell_being_checked_ai_target = { is_in_list = target_province_character_list }
+			}
+			trigger_else_if = {
+				limit = { var:target_type = flag:target_newborn_child }
+				scope:spell_being_checked_ai_target = { is_in_list = target_newborn_child_list }
+			}
+			trigger_else_if = {
+				limit = { var:target_type = flag:artifact_owner }
+				scope:spell_being_checked_ai_target = { is_in_list = artifact_owner_list }
+			}
+			trigger_else_if = {
+				limit = { var:target_type = flag:newly_created_artifact }
+				scope:spell_being_checked_ai_target = { is_in_list = newly_created_artifact_list }
+			}
+			trigger_else = {}
+		}
+		add = indexed_spell_effect_ai_weight_value
+	}
+}
+
+ai_spell_weight_value = {
+	value = ai_spell_weight_spell_effect_value
+	multiply = {
+		value = spell_success_chance
+		multiply = 0.01
+	}
+	if = {
+		limit = { 
+			exists = scope:spell_organizer
+		}
+		subtract = {
+			value = total_spell_gold_cost
+			if = {
+				limit = { scope:spell_organizer.gold > 300 }
+				divide = {
+					value = 1
+					subtract = {
+						value = scope:spell_organizer.gold
+						subtract = 300
+						multiply = 0.001
+					}
+					min = 0.3
+				}
+			}
+			else_if = {
+				limit = { scope:spell_organizer.debt_level > 1 }
+				multiply = scope:spell_organizer.debt_level
+			}
+			if = {
+				limit = { scope:spell_organizer = { is_at_war = yes } }
+				multiply = 1.5
+			}
+			if = {
+				limit = { scope:spell_organizer = { has_trait = greedy } }
+				multiply = 1.5
+			}
+			if = {
+				limit = { scope:spell_organizer = { has_trait = avaricious } }
+				multiply = 1.5
+			}
+			if = {
+				limit = { scope:spell_organizer = { has_trait = education_stewardship } }
+				multiply = 1.2
+			}
+			if = {
+				limit = { scope:spell_organizer = { has_trait = ambitious } }
+				multiply = 1.2
+			}
+			if = {
+				limit = { scope:spell_organizer = { has_trait = architect } }
+				multiply = 1.2
+			}
+		}
+	}
+}
+
+ai_spell_weight_inverse_value = {
+	value = ai_spell_weight_value
+	multiply = -1
+}
+
+# Value used for adjusting acceptance amount for beneficial effects that have a chance associated
+# Bolder characters put more weight on potentially beneficial effects with a chance
+ai_spell_effect_chance_positive_factor = {
+	value = spell_effect_chance_value
+	multiply = 0.01
+	if = {
+		limit = { spell_effect_chance_value < 100 }
+		multiply = {
+			value = spell_tag_scalar_threshold_diff_value
+			multiply = {
+				value = 1
+				if = {
+					limit = { scope:spell_being_checked_ai_target.ai_boldness < 0 }
+					add = {
+						value = scope:spell_being_checked_ai_target.ai_boldness
+						multiply = 0.005
+					}
+				}
+				else = {
+					add = {
+						value = scope:spell_being_checked_ai_target.ai_boldness
+						multiply = 0.01
+					}
+				}
+			}
+		}
+	}
+	max = 1
+	min = 0
+}
+
+# Value used for adjusting acceptance amount for harmful effects that have a chance associated
+# Bolder characters put less weight on risky effects with a chance
+ai_spell_effect_chance_negative_factor = {
+	value = spell_effect_chance_value
+	multiply = 0.01
+	if = {
+		limit = { spell_effect_chance_value < 100 }
+		multiply = {
+			value = spell_tag_scalar_threshold_diff_value
+			multiply = {
+				value = 1
+				if = {
+					limit = { scope:spell_being_checked_ai_target.ai_boldness < 0 }
+					add = {
+						value = scope:spell_being_checked_ai_target.ai_boldness
+						multiply = -0.01
+					}
+				}
+				else = {
+					add = {
+						value = scope:spell_being_checked_ai_target.ai_boldness
+						multiply = -0.005
+					}
+				}
+			}
+		}
+	}
+	max = 1
+	min = 0
+}
