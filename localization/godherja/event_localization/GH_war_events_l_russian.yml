@@ -1,20 +1,20 @@
 ﻿l_russian:
  
- gh_war_event.4000.t:0 "Массовое вторжение"
- gh_war_event.4000.desc:0 "Иностранный правитель [attacker.GetUIName] собрал огромную армию и объявил о намерении вторгнуться в наши земли. Предстоящая война неизбежно принесёт разрушения, и потому [defender.GetUIName] [Select_CString(defender.IsFemale, 'запросила', 'запросил')] у вас дополнительные войска для отражения угрозы."
+ gh_war_event.4000.t:0 "Масштабное вторжение"
+ gh_war_event.4000.desc:0 "Чужеземный правитель, [attacker.GetUIName], [Select_CString(attacker.IsFemale, 'собрала', 'собрал' )] огромное войско и [Select_CString(attacker.IsFemale, 'объявила', 'объявил' )] о своём намерении вторгнуться в наши земли. Грядущая [Concept('war', 'война')|E], несомненно, будет разрушительной, и потому [defender.GetUIName] [Select_CString(defender.IsFemale, 'попросила', 'попросил' )] у вас дополнительные войска, чтобы противостоять этой угрозе."
  gh_war_event.4000.a:0 "К оружию!"
- gh_war_event.4000.b:0 "Это прописано в моём контракте?"
+ gh_war_event.4000.b:0 "Требует ли этого мой контракт?"
  
- gh_war_event.4002.t:0 "Войны за воссоединение марчеров"
- gh_war_event.4002.desc:0 "После исчезновения Верховного Короля его наследники начали ожесточённую борьбу за престол Шевалье. Сегодня начинается новая глава этой саги - [attacker.GetUIName] [Select_CString(attacker.IsFemale, 'объявила', 'объявил')] войну [defender.GetUIName] за часть империи."
- gh_war_event.4002.a:0 "Надеюсь, этот семейный спор скоро разрешится."
+ gh_war_event.4002.t:0 "Объединительные войны Марки"
+ gh_war_event.4002.desc:0 "После исчезновения верховного короля его дети сражаются за свои права на [Concept('chevalie', 'Шевалье')|E]. Сегодня знаменуется начало очередной [Concept('war', 'войны')|E] в этой саге, поскольку [attacker.GetUIName] [Select_CString(attacker.IsFemale, 'объявила', 'объявил' )] войну [defender.GetUIName] за свою долю империи."
+ gh_war_event.4002.a:0 "Надеюсь, эта семейная усобица скоро разрешится."
 
- h_war_event.4003.t:0 "Триумф воссоединения марчеров"
- gh_war_event.4003.desc:0 "Несмотря на скепсис, [attacker.GetUIName] [Select_CString(attacker.IsFemale, 'одержала', 'одержал')] победу над [defender.GetUIName] в попытке воссоединить Шевалье. [attacker.GetShortUIName] [Select_CString(attacker.IsFemale, 'лишила', 'лишил')] [defender.GetFirstName] королевства и заставила [Select_CString(defender.IsFemale, 'её', 'его')] принести вассальную присягу."
- gh_war_event.4003.a:0 "Будем с интересом наблюдать за его дальнейшей карьерой."
+ gh_war_event.4003.t:0 "Успешное объединение Марки"
+ gh_war_event.4003.desc:0 "Несмотря на сомнения некоторых, [attacker.GetUIName] [Select_CString(attacker.IsFemale, 'победила', 'победил' )] [defender.GetUIName] в своем стремлении воссоединить [Concept('chevalie', 'Шевалье')|E]. [attacker.GetShortUIName] [Select_CString(attacker.IsFemale, 'отозвала', 'отозвал' )] королевство у [defender.GetFirstName] и [Select_CString(attacker.IsFemale, 'заставила', 'заставил' )] его поклясться в верности."
+ gh_war_event.4003.a:0 "Мы будем следить за [Select_CString(attacker.IsFemale, 'её', 'его' )] успехами с большим интересом."
 
- gh_war_event.5001.t:0 "Крушение Алого Ордена"
- gh_war_event.5001.desc:0 "Алые Избранники повержены. Тысячелетия истории и знаний превратились в прах под нашими сапогами. Мои воины вынесли всё ценное из этих величественных залов, а уцелевшие монахи [Select_CString(ROOT.Char.IsFemale, 'проданы', 'проданы')] в рабство или бежали в горы. Даже массивные строения, некогда возвышавшиеся над утёсами, уже начали разрушаться - осталось лишь ждать, когда не останется ничего."
+ gh_war_event.5001.t:0 "Падение Алого ордена"
+ gh_war_event.5001.desc:0 "С Алыми избранниками покончено. Тысячелетия истории и знаний превратились в обломки и пепел под нашими сапогами. Мои воины вынесли всё ценное из этих сводчатых залов, а те из монахов, кто уцелел, были либо проданы в рабство, либо бежали в горы. Некогда величественные сооружения, возвышавшиеся над утёсами, уже начали рушиться, и это лишь вопрос времени, когда от них ничего не останется."
  gh_war_event.5001.a:0 "Самое время попрощаться с этими руинами."
- sacked_vounill_war.notif_title:0 "Беспорядки в Вунилле"
- sacked_vounill_war.notif_desc:0 "[attacker.GetName] [Select_CString(attacker.IsFemale, 'разграбила', 'разграбил')] Вунилл, превратив его в руины."
+ sacked_vounill_war.notif_title:0 "Беда в Вунилле"
+ sacked_vounill_war.notif_desc:0 "[attacker.GetName] [Select_CString(attacker.IsFemale, 'разграбила', 'разграбил' )] Вунилл и [Select_CString(attacker.IsFemale, 'превратила', 'превратил' )] его в руины."
