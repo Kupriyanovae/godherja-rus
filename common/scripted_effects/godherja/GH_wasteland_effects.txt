@@ -150,34 +150,24 @@ spawn_ruin = {
 			}
 		}
 		hidden_effect = {
-			scope:ruin ?= { # Clean up the fake empire we created
+			scope:ruin = { # Clean up the fake empire we created
 				get_title = $COUNTY$
 				destroy_title = scope:ruin_empire
-			}			
-			if = {
-				limit = { 
-					OR = {
-						title_province = { has_holding_type = wasteland_empty_holding }
-						title_province = { has_holding_type = ruin_holding }
-					}
-				}
-				scope:ruin ?= {
-					change_government = wasteland_government
-				}
+				change_government = wasteland_government
 			}
 			if = { # Unify wastelands under duchies
-				limit = { $COUNTY$.kingdom = { has_variable = kingdom_wasteland_title } }
-				$COUNTY$.kingdom.var:kingdom_wasteland_title = { save_temporary_scope_as = kingdom_wasteland_title }
+				limit = { $COUNTY$.duchy = { has_variable = duchy_wasteland_title } }
+				$COUNTY$.duchy.var:duchy_wasteland_title = { save_temporary_scope_as = duchy_wasteland_title }
 				if = {
-					limit = { NOT = { exists = scope:kingdom_wasteland_title.holder } }
-					scope:ruin = { get_title = scope:kingdom_wasteland_title }
+					limit = { NOT = { exists = scope:duchy_wasteland_title.holder } }
+					scope:ruin = { get_title = scope:duchy_wasteland_title }
 				}
-				else = { scope:kingdom_wasteland_title.holder = { get_title = $COUNTY$ } }
+				else = { scope:duchy_wasteland_title.holder = { get_title = $COUNTY$ } }
 			}
 			else = {
-				$COUNTY$.kingdom = { save_scope_as = temporary_kingdom_scope }
+				$COUNTY$.duchy = { save_scope_as = temporary_duchy_scope }
 				create_dynamic_title = {
-					tier = kingdom
+					tier = duchy
 					name = BLANK_KINGDOM_NAME
 				}
 				scope:new_title = {
@@ -186,12 +176,12 @@ spawn_ruin = {
 					set_color_from_title = title:k_wasteland_black
 				}
 				scope:ruin = { get_title = scope:new_title }
-				$COUNTY$.kingdom = { 
+				$COUNTY$.duchy = { 
 					set_variable = {
-						name = kingdom_wasteland_title
+						name = duchy_wasteland_title
 						value = scope:new_title
 					}
-					save_scope_as = last_created_wasteland_kingdom
+					save_scope_as = last_created_wasteland_duchy
 				}
 			}
 			if = {
@@ -333,35 +323,4 @@ remove_all_colonization_modifiers = { # When wastelanding colonies
 		remove_county_modifier = legacy_of_eons_modifier
 	}
 	remove_colonization_progress_modifiers = yes
-}
-
-remove_humans_from_wastelands_effect = {
-	if = {
-		limit = {
-			exists = scope:host
-			scope:host = { has_culture = culture:wasteland }
-		}
-		random_neighboring_and_across_water_top_liege_realm_owner = { #Select realm
-			limit = {
-				exists = capital_province
-				capital_province = { local_pool_is_full_trigger = no }
-				NOT = {
-					has_culture = culture:wasteland
-				}
-			}
-			capital_province = { save_scope_as = destination }
-		}
-		every_traveling_family_member = {
-			if = {
-				limit = {
-					exists = scope:destination
-					NOT = { is_in_pool_at = scope:destination }
-				}
-				move_to_pool_at = scope:destination
-			}
-			else = {
-				fallback_move_to_pool_effect = yes
-			}
-		}
-	}
 }

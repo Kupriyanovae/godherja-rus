@@ -165,469 +165,62 @@ waymakers_of_velos_formed_decision_effect = {
 }
 
 
-form_the_solar_rite_decision_effects_scripted_effect = {
-	scope:religious_leader = {
-		add_character_flag = {
-			flag = delay_player_faith_conversion_notification_event
-			days = 1
-		}
-		faith:zaumiere_rite = {
-			remove_variable = block_conversion_till_decision_taken
-		}
-		faith:kakarataki = {
-			set_variable = { name = has_been_reformed }
-		}
-		set_character_faith_with_conversion = faith:zaumiere_rite
-	}
-	custom_tooltip = form_the_solar_rite_decision.county_conversions.tt
-	hidden_effect = {
-		primary_title = {
-			every_in_de_facto_hierarchy = {
-				limit = {
-					tier = tier_county
-					exists = scope:old_faith
-					OR = {
-						religion = scope:old_faith.religion
-						religion = religion:sjalvolki_religion
-					}
-				}
-				if = {
-					limit = { culture = { has_cultural_pillar = heritage_karzarad } }
-					random = {
-						chance = 70
-						set_county_faith = faith:zaumiere_rite
-					}
-				}
-				else_if = {
-					limit = { culture = { has_cultural_pillar = heritage_sjalvolki } }
-					random = {
-						chance = 50
-						set_county_faith = faith:zaumiere_rite
-					}
-				}
-				else = {
-					random = {
-						chance = 25
-						set_county_faith = faith:zaumiere_rite
-					}
-				}
-			}
-		}
-	}
-	primary_title = {
-		every_in_de_facto_hierarchy = {
-			limit = {
-				tier = tier_county
-				faith = faith:zaumiere_rite
-			}
-			add_county_modifier = {
-				modifier = zaumiere_jubilance_modifier
-				years = 20
-			}
-		}
-	}
-
-	faith:zaumiere_rite = {
-		change_fervor = {
-			value = 100
-			desc = fervor_gain_solar_rite_foundation
-		}
-	}
-}
-
-
-reform_gethian_faith_decision_generic_effects_scripted_effect = {
-	scope:religious_leader = {
-		# Assign a nickname if has none
-		if = {
-			limit = {
-				OR = {
-					has_any_nickname = no
-					has_bad_nickname = yes
-				}
-			}
-			give_nickname = nick_atrakh_admakh_defender
-		}
-		add_character_flag = {
-			flag = delay_player_faith_conversion_notification_event
-			days = 1
-		}
-		faith:gethian_reformed = {
-			remove_variable = block_conversion_till_decision_taken
-		}
-		faith:gethian = {
-			set_variable = { name = has_been_reformed }
-		}
-		set_character_faith_with_conversion = faith:gethian_reformed
-	}
-	custom_tooltip = reform_gethian_faith_decision.county_conversions.tt
-	hidden_effect = {
-		primary_title = {
-			every_in_de_facto_hierarchy = {
-				limit = {
-					tier = tier_county
-					culture = { has_cultural_pillar = heritage_goan	 }
-					exists = scope:old_faith
-					religion = scope:old_faith.religion
-				}
-				#Goans have a high chance to flip.
-				if = {
-					limit = { 
-						culture = {
-							OR = {
-								this = culture:goans
-								any_parent_culture_or_above = { has_cultural_pillar = heritage_goan }
-							}
-						}
-					}
-					random = {
-						chance = 70
-						set_county_faith = faith:gethian_reformed
-					}
-				}
-				#Slightly up the chances for the apostate.
-				else_if = {
-					limit = { holder = root }
-					random = {
-						chance = 50
-						set_county_faith = faith:gethian_reformed
-					}
-				}
-				#Other cultures still have a moderate chance to flip.
-				else = {
-					random = {
-						chance = 30
-						set_county_faith = faith:gethian_reformed
-					}
-				}
-			}
-		}
-	}
-	faith:gethian_reformed = {
-		change_fervor = {
-			value = 100
-			desc = fervor_gain_gethian_rite_foundation
-		}
-	}
-	# Plus a massive chunk of piety experience...
-	add_piety_experience = 2000
-}
-
-form_the_sky_rite_decision_generic_effects_scripted_effect = {
-	scope:religious_leader = {
-		add_character_flag = {
-			flag = delay_player_faith_conversion_notification_event
-			days = 1
-		}
-		faith:sky_rite = {
-			remove_variable = block_conversion_till_decision_taken
-		}
-		faith:salacad = {
-			set_variable = { name = has_been_reformed }
-		}
-		set_character_faith_with_conversion = faith:sky_rite
-	}
-	custom_tooltip = reform_sky_rite_decision.county_conversions.tt
-	hidden_effect = {
-		primary_title = {
-			every_in_de_facto_hierarchy = {
-				limit = {
-					tier = tier_county
-					culture = { has_cultural_pillar = heritage_sarminian }
-					exists = scope:old_faith
-					religion = scope:old_faith.religion
-				}
-				#Sarminians have a high chance to flip.
-				if = {
-					limit = {
-						culture = {
-							OR = {
-								this = culture:sarminians
-								any_parent_culture_or_above = { has_cultural_pillar = heritage_sarminian }
-							}
-						}
-					}
-					random = {
-						chance = 70
-						set_county_faith = faith:sky_rite
-					}
-				}
-				#Slightly up the chances for the apostate.
-				else_if = {
-					limit = { holder = root }
-					random = {
-						chance = 50
-						set_county_faith = faith:sky_rite
-					}
-				}
-				#Other cultures still have a moderate chance to flip.
-				else = {
-					random = {
-						chance = 30
-						set_county_faith = faith:sky_rite
-					}
-				}
-			}
-		}
-	}
-}
-
-form_the_sky_rite_decision_default_path_scripted_effect = {
-	faith:sky_rite = {
-		change_fervor = {
-			value = 100
-			desc = fervor_gain_sky_rite_foundation
-		}
-	}
-	# Plus a massive chunk of piety experience...
-	add_piety_experience = 2000
-}
-
-form_the_sky_rite_decision_fundamentalist_path_scripted_effect = {
-	faith:sky_rite = {
-		remove_doctrine = tenet_adorcism
-		add_doctrine = tenet_struggle_submission
-		hidden_effect = { remove_doctrine = doctrine_pluralism_righteous }
-		add_doctrine = doctrine_pluralism_fundamentalist
-		change_fervor = {
-			value = -50
-			desc = fervour_loss_temporal_meddling
-		}
-	}
-}
-
-form_the_sky_rite_decision_hof_path_scripted_effect = {
-	faith:sky_rite = {
-		hidden_effect = { remove_doctrine = doctrine_no_head }
-		add_doctrine = doctrine_spiritual_head
-		change_fervor = {
-			value = -50
-			desc = fervour_loss_temporal_meddling
-		}
-	}
-	hidden_effect = {
-		scope:religious_leader = {
-			set_up_dynamic_spiritual_hof_title_effect = { CREATOR = scope:religious_leader }
-		}
-	}
-	custom_tooltip = form_the_sky_rite_decision.tt.spiritual_hof_acquired
-}
-
-form_the_sky_rite_decision_pluralist_path_scripted_effect = {
-	faith:sky_rite = {
-		hidden_effect = { remove_doctrine = doctrine_pluralism_righteous}
-		add_doctrine = doctrine_pluralism_pluralistic
-		change_fervor = {
-			value = -50
-			desc = fervour_loss_temporal_meddling
-		}
-	}
-	every_neighboring_and_across_water_top_liege_realm_owner = {
-		if = {
-			limit = { religion = religion:sjalvolki_religion }
-			add_to_list = pleased_rulers
-		}
-		every_vassal_or_below = {
-			limit = { religion = religion:sjalvolki_religion }
-			add_to_list = pleased_rulers
-		}
-	}
-	every_in_list = {
-		list = pleased_rulers
-		custom = form_the_sky_rite_decision.tt.all_neighbouring_sjalvolki_rulers
-		add_opinion = {
-			target = scope:religious_leader
-			modifier = pleased_opinion
-			opinion = 30
-		}
-	}
-}
-
-form_the_earth_rite_decision_scripted_effect = {
-	scope:religious_leader = {
-		add_character_flag = {
-			flag = delay_player_faith_conversion_notification_event
-			days = 1
-		}
-		faith:earth_rite = {
-			remove_variable = block_conversion_till_decision_taken
-		}
-		set_character_faith_with_conversion = faith:earth_rite
-	}
-	custom_tooltip = form_the_earth_rite_decision.county_conversions.tt
-	hidden_effect = {
-		primary_title = {
-			every_in_de_facto_hierarchy = {
-				limit = {
-					tier = tier_county
-					culture = { has_cultural_pillar = heritage_sjalvolki }
-					exists = scope:old_faith
-					religion = scope:old_faith.religion
-				}
-				#Sarminians have a high chance to flip.
-				if = {
-					limit = { culture = culture:greulokin }
-					random = {
-						chance = 70
-						set_county_faith = faith:earth_rite
-					}
-				}
-				#Slightly up the chances for the apostate.
-				else_if = {
-					limit = { holder = root }
-					random = {
-						chance = 50
-						set_county_faith = faith:earth_rite
-					}
-				}
-				#Other cultures still have a moderate chance to flip.
-				else = {
-					random = {
-						chance = 30
-						set_county_faith = faith:earth_rite
-					}
-				}
-			}
-		}
-	}
-
-	faith:earth_rite = {
-		change_fervor = {
-			value = 100
-			desc = fervor_gain_earth_rite_foundation
-		}
-	}
-	add_piety_experience = 2000
-}
-
-form_the_river_rite_decision_scripted_effect = {
-	scope:religious_leader = {
-		add_character_flag = {
-			flag = delay_player_faith_conversion_notification_event
-			days = 1
-		}
-		faith:river_rite = {
-			remove_variable = block_conversion_till_decision_taken
-		}
-		set_character_faith_with_conversion = faith:river_rite
-	}
-	custom_tooltip = form_the_river_rite_decision.county_conversions.tt
-	hidden_effect = {
-		primary_title = {
-			every_in_de_facto_hierarchy = {
-				limit = {
-					tier = tier_county
-					exists = scope:old_faith
-					OR = {
-						religion = scope:old_faith.religion
-						religion = religion:sjalvolki_religion
-					}
-				}
-				if = {
-					limit = { culture = { has_cultural_pillar = heritage_sjalvolki } }
-					random = {
-						chance = 70
-						set_county_faith = faith:river_rite
-					}
-				}
-				else = {
-					random = {
-						chance = 45
-						set_county_faith = faith:river_rite
-					}
-				}
-			}
-		}
-	}
-
-	faith:river_rite = {
-		change_fervor = {
-			value = 100
-			desc = fervor_gain_river_rite_foundation
-		}
-	}
-	add_piety_experience = 2000
-}
-
-form_the_whispering_rite_decision_generic_effects_scripted_effect = {
-	scope:religious_leader = {
-		add_character_flag = {
-			flag = delay_player_faith_conversion_notification_event
-			days = 1
-		}
-		faith:whispering_rite = {
-			remove_variable = block_conversion_till_decision_taken
-		}
-		faith:kardawai = {
-			set_variable = { name = has_been_reformed }
-		}
-		set_character_faith_with_conversion = faith:whispering_rite
-	}
-	custom_tooltip = reform_whispering_rite_decision.county_conversions.tt
-	hidden_effect = {
-		primary_title = {
-			every_in_de_facto_hierarchy = {
-				limit = {
-					tier = tier_county
-					culture = { has_cultural_pillar = heritage_kardwen }
-					exists = scope:old_faith
-					religion = scope:old_faith.religion
-				}
-				#Kardwens have a high chance to flip.
-				if = {
-					limit = {
-						culture = {
-							OR = {
-								this = culture:kardwens
-								any_parent_culture_or_above = { has_cultural_pillar = heritage_kardwen }
-							}
-						}
-					}
-					random = {
-						chance = 70
-						set_county_faith = faith:whispering_rite
-					}
-				}
-				#Slightly up the chances for the apostate.
-				else_if = {
-					limit = { holder = root }
-					random = {
-						chance = 50
-						set_county_faith = faith:whispering_rite
-					}
-				}
-				#Other cultures still have a moderate chance to flip.
-				else = {
-					random = {
-						chance = 30
-						set_county_faith = faith:whispering_rite
-					}
-				}
-			}
-		}
-	}
-}
-
-form_the_whispering_rite_decision_default_path_scripted_effect = {
-	faith:whispering_rite = {
-		change_fervor = {
-			value = 100
-			desc = fervor_gain_whispering_rite_foundation
-		}
-	}
-	# Plus a massive chunk of piety experience...
-	add_piety_experience = 2000
-}
-
-form_the_whispering_rite_decision_cannibalism_curtailed_path_scripted_effect = {
-	faith:whispering_rite = {
-		remove_doctrine = tenet_ritual_cannibalism
-		add_doctrine = tenet_ritual_celebrations
-		hidden_effect = { remove_doctrine = doctrine_pluralism_righteous }
-		add_doctrine = doctrine_pluralism_pluralistic
-		change_fervor = {
-			value = -90
-			desc = fervour_loss_temporal_meddling
-		}
-	}
-}
+#form_the_solar_rite_decision_effects_scripted_effect = {
+#	set_character_faith_with_conversion = faith:solar_rite
+#	hidden_effect = {
+#		primary_title = {
+#			every_in_de_facto_hierarchy = {
+#				limit = {
+#					tier = tier_county
+#					exists = scope:old_faith
+#					OR = {
+#						religion = scope:old_faith.religion
+#						religion = religion:sjalvolki_religion
+#					}
+#				}
+#				if = {
+#					limit = { culture = { has_cultural_pillar = heritage_karzarad } }
+#					random = {
+#						chance = 70
+#						set_county_faith = faith:solar_rite
+#					}
+#				}
+#				else_if = {
+#					limit = { culture = { has_cultural_pillar = heritage_sjalvolki } }
+#					random = {
+#						chance = 50
+#						set_county_faith = faith:solar_rite
+#					}
+#				}
+#				else = {
+#					random = {
+#						chance = 25
+#						set_county_faith = faith:solar_rite
+#					}
+#				}
+#			}
+#		}
+#	}
+#	primary_title = {
+#		every_in_de_facto_hierarchy = {
+#			limit = {
+#				tier = tier_county
+#				faith = faith:solar_rite
+#			}
+#			add_county_modifier = {
+#				modifier = zaumiere_jubilance_modifier
+#				years = 20
+#			}
+#		}
+#	}
+#
+#	hidden_effect = {
+#		faith:solar_rite = {
+#			save_temporary_scope_as = solar_rite_faith
+#			change_fervor = {
+#				value = 100
+#				desc = fervor_gain_solar_rite_foundation
+#			}
+#		}
+#	}
+#}

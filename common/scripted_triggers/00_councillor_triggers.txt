@@ -11,11 +11,8 @@
 #TRIGGERS
 
 can_be_councillor_basics_trigger = {
-	is_available_quick = {
-		adult = yes
-		incapable = no
-		imprisoned = no
-	}
+	is_capable_adult = yes
+	is_imprisoned = no
 	is_at_war_with_liege = no
 	is_familiar = no
 	# A Caravan Master will travel around, which is not compatible with council tasks
@@ -23,25 +20,6 @@ can_be_councillor_basics_trigger = {
 	trigger_if = {
 		limit = { has_variable = block_hire_councillor }
 		NOT = { var:block_hire_councillor = liege }
-	}
-	custom_tooltip = {
-		text = not_travel_option_character
-		NOT = { has_character_flag = travel_option_added_character }
-	}
-}
-
-can_be_councillor_gender_trigger = {
-	OR = {
-		is_ruler = yes
-		has_variable = can_be_councillor_override
-		AND = {
-			is_female = yes
-			$COURT_OWNER$.faith = { NOT = { has_doctrine_parameter = male_dominated_council } }
-		}
-		AND = {
-			is_male = yes
-			$COURT_OWNER$.faith = { NOT = { has_doctrine_parameter = female_dominated_council } }
-		}
 	}
 }
 
@@ -54,14 +32,26 @@ can_be_chancellor_trigger = {
 		has_council_position = councillor_court_chaplain
 		faith = { has_doctrine_parameter = clerical_appointment_fixed }
 	}
-	NOR = {
-		has_council_position = councillor_spouse
-		AND = {
-			this = liege.diarch
-			liege = { has_diarchy_active_parameter = diarchy_is_vizierate }
+	NOT = {
+		OR = { 
+			has_council_position = councillor_spouse
+			AND = {
+				this = liege.diarch
+				liege = { has_diarchy_active_parameter = diarchy_is_vizierate }
+			}
 		}
 	}
-	can_be_councillor_gender_trigger = { COURT_OWNER = $COURT_OWNER$ }
+	OR = {
+		is_ruler = yes
+		AND = {
+			is_female = yes
+			$COURT_OWNER$.faith = { NOT = { has_doctrine_parameter = male_dominated_council } }
+		}
+		AND = {
+			is_male = yes
+			$COURT_OWNER$.faith = { NOT = { has_doctrine_parameter = female_dominated_council } }
+		}
+	}
 }
 
 can_be_steward_trigger = {
@@ -73,14 +63,26 @@ can_be_steward_trigger = {
 		has_council_position = councillor_court_chaplain
 		faith = { has_doctrine_parameter = clerical_appointment_fixed }
 	}
-	NOR = {
-		has_council_position = councillor_spouse
-		AND = {
-			this = liege.diarch
-			liege = { has_diarchy_active_parameter = diarchy_is_vizierate }
+	NOT = {
+		OR = { 
+			has_council_position = councillor_spouse
+			AND = {
+				this = liege.diarch
+				liege = { has_diarchy_active_parameter = diarchy_is_vizierate }
+			}
 		}
 	}
-	can_be_councillor_gender_trigger = { COURT_OWNER = $COURT_OWNER$ }
+	OR = {
+		is_ruler = yes
+		AND = {
+			is_female = yes
+			$COURT_OWNER$.faith = { NOT = { has_doctrine_parameter = male_dominated_council } }
+		}
+		AND = {
+			is_male = yes
+			$COURT_OWNER$.faith = { NOT = { has_doctrine_parameter = female_dominated_council } }
+		}
+	}
 }
 
 can_be_marshal_trigger = {
@@ -88,20 +90,30 @@ can_be_marshal_trigger = {
 	$COURT_OWNER$ ?= {
 		NOT = { government_has_flag = government_is_nomadic }
 	}
-	is_hostage = no
+	is_hostage = no	
 	NAND = {
 		has_council_position = councillor_court_chaplain
 		faith = { has_doctrine_parameter = clerical_appointment_fixed }
 	}
-	NOR = {
-		has_council_position = councillor_spouse
-		AND = {
-			this = liege.diarch
-			liege = { has_diarchy_active_parameter = diarchy_is_vizierate }
+	NOT = {
+		OR = { 
+			has_council_position = councillor_spouse
+			AND = {
+				this = liege.diarch
+				liege = { has_diarchy_active_parameter = diarchy_is_vizierate }
+			}
 		}
 	}
 	OR = {
-		can_be_councillor_gender_trigger = { COURT_OWNER = $COURT_OWNER$ }
+		is_ruler = yes
+		AND = {
+			is_female = yes
+			$COURT_OWNER$.faith = { NOT = { has_doctrine_parameter = male_dominated_council } }
+		}
+		AND = {
+			is_male = yes
+			$COURT_OWNER$.faith = { NOT = { has_doctrine_parameter = female_dominated_council } }
+		}
 		AND = {
 			has_trait = shieldmaiden
 			$COURT_OWNER$.culture = { has_cultural_parameter = has_access_to_shieldmaidens }
@@ -119,11 +131,13 @@ can_be_spymaster_trigger = {
 		has_council_position = councillor_court_chaplain
 		faith = { has_doctrine_parameter = clerical_appointment_fixed }
 	}
-	NOR = {
-		has_council_position = councillor_spouse
-		AND = {
-			this = liege.diarch
-			liege = { has_diarchy_active_parameter = diarchy_is_vizierate }
+	NOT = {
+		OR = { 
+			has_council_position = councillor_spouse
+			AND = {
+				this = liege.diarch
+				liege = { has_diarchy_active_parameter = diarchy_is_vizierate }
+			}
 		}
 	}
 	exists = $COURT_OWNER$ #so we can have the argument but get no errors
@@ -135,11 +149,13 @@ can_be_court_chaplain_trigger = {
 	$COURT_OWNER$ ?= {
 		NOT = { government_has_flag = government_is_nomadic }
 	}
-	NOR = {
-		has_council_position = councillor_spouse
-		AND = {
-			this = liege.diarch
-			liege = { has_diarchy_active_parameter = diarchy_is_vizierate }
+	NOT = {
+		OR = { 
+			has_council_position = councillor_spouse
+			AND = {
+				this = liege.diarch
+				liege = { has_diarchy_active_parameter = diarchy_is_vizierate }
+			}
 		}
 	}
 	$COURT_OWNER$.faith = { has_allowed_gender_for_clergy = scope:court_chaplain_check }
@@ -184,25 +200,13 @@ can_be_spouse_councillor_trigger = {
 	#}
 	trigger_if = {
 		limit = { is_ruler = yes }
-		liege ?= $COUNCIL_OWNER$
+		exists = liege
+		liege = $COUNCIL_OWNER$
 		$COUNCIL_OWNER$ = { primary_spouse = scope:spouse_councillor_check }
 	}
 	trigger_else = {
-		$COUNCIL_OWNER$ ?= { primary_spouse = scope:spouse_councillor_check }
-	}
-}
-
-can_be_vizier_councillor_trigger = {
-	can_be_councillor_basics_trigger = yes
-	save_temporary_scope_as = confidant
-
-	$COUNCIL_OWNER$ = {
-		OR = {
-			scope:confidant = diarch
-			any_consort = {
-				scope:confidant = this
-			}
-		}
+		exists = $COUNCIL_OWNER$
+		$COUNCIL_OWNER$ = { primary_spouse = scope:spouse_councillor_check }
 	}
 }
 
@@ -345,38 +349,23 @@ councillor_loyalty_trigger = {
 	}
 }
 
-councillor_spouse_can_fire = { always = no }
-councillor_spouse_can_reassign = { always = no }
-councillor_spouse_valid_position = {
-	AND = {
-		NOT = {
-			has_diarchy_type = vizierate
-		}
-		any_spouse = {
-			OR = {
-				court_owner = root
-				AND = {
-					is_ruler = yes
-					liege ?= root
-				}
-			}
-		}
-	}
-	NOT = { government_has_flag = government_is_landless_adventurer }
-	# Celestial hegemons have access to the ministry instead, so no spouse
-	tgp_has_access_to_ministry_trigger = no
-}
 
-councillor_vizier_can_fire = { always = yes }
-councillor_vizier_can_reassign = { always = yes }
+councillor_positive_event_opinion_trigger = {
+	always = yes
+	#	opinion = {
+	#		target = liege
+	#		value >= -20
+	#	}
+}
 
 ############################
 #SPOUSE COUNCILLOR TRIGGERS#
 ############################
 
 valid_spouse_councillor_trigger = {
+	exists = cp:councillor_spouse
 	scope:councillor = { is_available = yes }
-	cp:councillor_spouse ?= scope:councillor
+	cp:councillor_spouse = scope:councillor
 }
 
 is_blocked_from_being_fired_from_council_trigger = {
@@ -388,9 +377,15 @@ is_blocked_from_being_fired_from_council_trigger = {
 		OR = {
 			# Check in code if the court owner is prevented from firing the councilor
 			# can_fire_position must take a council task as input, but checks the councilor behind the task.
-			council_task ?= { can_fire_position = no }
+			AND = {
+				exists = this.council_task
+				this.council_task = { can_fire_position = no }
+			}
 			# Check for variable preventing the firing of a councilor set by script
-			var:block_fire_councillor ?= $COURT_OWNER$
+			AND = {
+				has_variable = block_fire_councillor
+				var:block_fire_councillor = $COURT_OWNER$
+			}
 			AND = {
 				this = { character_croweye_trigger = yes }
 				liege = {
@@ -402,6 +397,7 @@ is_blocked_from_being_fired_from_council_trigger = {
 	}
 }
 
+
 can_be_fired_from_council_trigger = {
 	NOT = {
 		is_blocked_from_being_fired_from_council_trigger = { COURT_OWNER = $COURT_OWNER$ }
@@ -409,7 +405,6 @@ can_be_fired_from_council_trigger = {
 	trigger_if = {
 		limit = {
 			has_council_position = councillor_court_chaplain
-			liege = { tgp_has_access_to_ministry_trigger = no }
 		}
 		faith = {
 			OR = {
@@ -431,19 +426,19 @@ same_faith_or_culture_as_councillor_trigger = {
 
 different_faith_and_or_culture_from_councillor_trigger = {
 	OR = {
-		culture != scope:councillor.culture
-		faith != scope:councillor.faith
+		NOT = { culture = scope:councillor.culture }
+		NOT = { faith = scope:councillor.faith }
 	}
 }
 
 character_same_faith_as_councillor_but_different_from_root_trigger = {
 	faith = scope:councillor.faith
-	faith != root.faith
+	NOT = { faith = root.faith }
 }
 
 character_same_culture_as_councillor_but_different_from_root_trigger = {
 	culture = scope:councillor.culture
-	culture != root.culture
+	NOT = { culture = root.culture }
 }
 
 
@@ -479,11 +474,11 @@ province_same_faith_or_culture_as_councillor_but_different_from_root_trigger = {
 	OR = {
 		AND = {
 			culture = scope:councillor.culture
-			culture != root.culture
+			NOT = { culture = root.culture }
 		}
 		AND = {
 			faith = scope:councillor.faith
-			faith != root.faith
+			NOT = { faith = root.faith }
 		}
 	}
 }
@@ -858,7 +853,7 @@ spymaster_task_find_secrets_block_spymaster_self_reveal_trigger = {
 			exists = secret_target
 			NOT = { secret_type = secret_murder_attempt }
 		}
-		secret_target != scope:councillor
+		NOT = { secret_target = scope:councillor }
 	}
 	# If the spymaster is the father of a secret bastard, don't reveal that
 	trigger_if = {
@@ -869,7 +864,7 @@ spymaster_task_find_secrets_block_spymaster_self_reveal_trigger = {
 			}
 			exists = secret_target.real_father
 		}
-		secret_target.real_father != scope:councillor
+		NOT = { secret_target.real_father = scope:councillor }
 	}
 }
 
@@ -924,16 +919,16 @@ spymaster_task_find_secrets_court_has_minor_secrets_trigger = {
 		}
 		any_vassal = {
 			has_any_secrets = yes
-			this != scope:councillor_liege
-			this != scope:councillor
+			NOT = { this = scope:councillor_liege }
+			NOT = { this = scope:councillor }
 			any_secret = {
 				spymaster_task_find_secrets_suitable_minor_secret_trigger = yes
-			}
+			}	
 		}
 		any_courtier_or_guest = {
 			has_any_secrets = yes
-			this != scope:councillor_liege
-			this != scope:councillor
+			NOT = { this = scope:councillor_liege }
+			NOT = { this = scope:councillor }
 			any_secret = {
 				spymaster_task_find_secrets_suitable_minor_secret_trigger = yes
 			}
@@ -951,16 +946,16 @@ spymaster_task_find_secrets_court_has_major_secrets_trigger = {
 		}
 		any_vassal = {
 			has_any_secrets = yes
-			this != scope:councillor_liege
-			this != scope:councillor
+			NOT = { this = scope:councillor_liege }
+			NOT = { this = scope:councillor }
 			any_secret = {
 				spymaster_task_find_secrets_suitable_major_secret_trigger = yes
 			}
 		}
 		any_courtier_or_guest = {
 			has_any_secrets = yes
-			this != scope:councillor_liege
-			this != scope:councillor
+			NOT = { this = scope:councillor_liege }
+			NOT = { this = scope:councillor }
 			any_secret = {
 				spymaster_task_find_secrets_suitable_major_secret_trigger = yes
 			}
@@ -972,7 +967,8 @@ spymaster_find_secrets_secret_holder_is_interesting_to_me_trigger = {
 	scope:councillor_liege = {
 		save_temporary_scope_as = me
 	}
-	scope:secret_holder ?= {
+	exists = scope:secret_holder
+	scope:secret_holder = {
 		OR = {
 			is_ruler = yes
 			is_close_or_extended_family_of = scope:me
@@ -1044,29 +1040,35 @@ steward_task_county_corruption_county_trigger = {
 
 councillor_spouse_learning_2603_valid_councillor_trigger = {
 	is_available_ai_adult = yes
-	this != scope:councillor
+	NOT = { this = scope:councillor }
 }
 
 
 councillor_liege_has_erudition_legacy_5_perk = {
-	scope:councillor_liege.dynasty ?= { has_dynasty_perk = erudition_legacy_5 }
+	exists = scope:councillor_liege.dynasty
+	scope:councillor_liege.dynasty = { has_dynasty_perk = erudition_legacy_5 }
 }
 
 
 councillor_liege_has_customs_legacy_perk = {
-	scope:councillor_liege.dynasty ?= { has_dynasty_perk = ep1_culture_legacy_2 }
+	exists = scope:councillor_liege.dynasty
+	scope:councillor_liege.dynasty = { has_dynasty_perk = ep1_culture_legacy_2 }
 }
 
 councillor_liege_has_family_business_bonus = {
-	scope:councillor_liege.culture ?= { has_cultural_parameter = close_family_better_councillors }
-	scope:councillor ?= {
+	exists = scope:councillor_liege.culture
+	exists = scope:councillor
+	scope:councillor_liege.culture = { has_cultural_parameter = close_family_better_councillors }
+	scope:councillor = {
 		is_close_family_of = scope:councillor_liege
 	}
 }
 
 councillor_liege_has_consulted_house_bonus = {
 	scope:councillor_liege ?= { has_character_flag = fp3_consulted_house }
-	scope:councillor.house ?= scope:councillor_liege.house
+	exists = scope:councillor_liege.house
+	exists = scope:councillor.house
+	scope:councillor ?= { house = scope:councillor_liege.house }
 }
 
 councillor_is_unskilled_trigger = {
@@ -1085,6 +1087,10 @@ councillor_is_unskilled_trigger = {
 	trigger_else_if = {
 		limit = { $EMPLOYER$.cp:councillor_spymaster ?= this }
 		intrigue < mediocre_skill_rating
+	}
+	trigger_else_if = {
+		limit = { this = $EMPLOYER$.cp:councillor_court_magi }
+		arcana < mediocre_skill_rating
 	}
 	trigger_else = { learning < mediocre_skill_rating }
 }
@@ -1148,12 +1154,10 @@ councillor_liege_has_khvarenah_legacy_perk = {
 }
 
 can_be_knight_now_light_trigger = {
-	is_available_quick = {
-		ai = yes # Players can't be knights
-		imprisoned = no
-		adult = yes
-		alive = yes
-	}
+	is_alive = yes
+	is_ai = yes # Players can't be knights
+	is_adult = yes
+	is_imprisoned = no
 	is_familiar = no
 }
 
@@ -1168,7 +1172,6 @@ can_be_trained_as_knight_now_light_trigger = {
 			exists = involved_activity
 			has_variable = homage_liege_scope
 			has_character_flag = meditation_character_flag
-			has_character_flag = local_shrine_rite
 			has_character_flag = petition_liege_character_flag
 			has_character_flag = holding_court_character_flag
 			is_being_visited_on_tour_strict = yes

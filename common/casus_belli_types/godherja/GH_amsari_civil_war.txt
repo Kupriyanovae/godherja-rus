@@ -29,7 +29,7 @@ gh_acw_enforce_pretender_cb = {
 				any_held_title = { is_holy_order = yes }
 				scope:defender = {
 					OR = {
-						has_title = title:e_amsari_hiklahn
+						has_title = title:e_amsari
 						has_title = title:c_tchouran
 					}
 				}
@@ -358,7 +358,7 @@ gh_acw_claim_cb = {
 	allowed_against_character = {
 		scope:defender = {
 			OR = {
-				has_title = title:e_amsari_hiklahn
+				has_title = title:e_amsari
 				has_title = title:c_tchouran
 			}
 		}
@@ -370,7 +370,7 @@ gh_acw_claim_cb = {
 	# scope:defender is the defender
 	is_allowed_claim_title = {
 		OR = {
-			root = title:e_amsari_hiklahn
+			root = title:e_amsari
 			root = title:c_tchouran
 		}
 		custom_description = {

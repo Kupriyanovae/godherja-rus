@@ -21,7 +21,7 @@ gh_amsari_settles_county_is_valid_trigger = {
 			this = title:c_dkran 
 			this = title:c_pardula 
 			this = title:c_bherak 
-			this = title:c_eloi_hikarr 
+			this = title:c_kirathu 
 		}		
 	}
 }
@@ -139,9 +139,9 @@ can_support_amsari_historical_pretender_ai_trigger = {
 	#}
 	trigger_if = {
 		limit = { 
-			this = title:d_khvoshinan_e_sofla.holder
+			this = title:d_khvoshinane_sofla.holder
 		}
-		primary_title = { this = title:d_khvoshinan_e_sofla }
+		primary_title = { this = title:d_khvoshinane_sofla }
 		character:amsari_mahndayana_2_daughter_2 = { amsari_historical_pretender_is_ai_trigger = yes }
 	}
 	#trigger_if = {
@@ -153,9 +153,9 @@ can_support_amsari_historical_pretender_ai_trigger = {
 	#}
 	#trigger_if = {
 	#	limit = { 
-	#		this = title:k_dizaj_e_dul.holder
+	#		this = title:k_dizaje_dul.holder
 	#	}
-	#	primary_title = { this = title:k_dizaj_e_dul }
+	#	primary_title = { this = title:k_dizaje_dul }
 	#	character:amsari_mahndayana_6 = { amsari_historical_pretender_is_ai_trigger = yes }
 	#}
 	trigger_if = {
@@ -188,9 +188,9 @@ can_support_amsari_historical_pretender_ai_trigger = {
 	}
 	trigger_if = {
 		limit = { 
-			this = title:c_biyaban_e_shomali.holder
+			this = title:c_shahrake_shahid_bahonar.holder
 		}
-		primary_title = { this = title:c_biyaban_e_shomali }	
+		primary_title = { this = title:c_shahrake_shahid_bahonar }	
 		character:amsari_mahndayana_15 = { amsari_historical_pretender_is_ai_trigger = yes }
 	}
 	trigger_if = {
@@ -229,8 +229,8 @@ can_have_extra_gh_amsari_0003_e_optional_trigger = {
 		AND = { 
 			root = title:c_damdama.holder 
 			NOR = { 
-				is_liege_or_above_of = title:c_biyaban_e_shomali.holder
-				is_allied_to = title:c_biyaban_e_shomali.holder
+				is_liege_or_above_of = title:c_shahrake_shahid_bahonar.holder
+				is_allied_to = title:c_shahrake_shahid_bahonar.holder
 			}
 		}
 		AND = { 

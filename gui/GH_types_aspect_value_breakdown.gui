@@ -14,7 +14,7 @@ types AspectBreakdowns {
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
-			raw_text = TERRAIN_SPELLCASTING_MODIFIER
+			text = TERRAIN_SPELLCASTING_MODIFIER
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -24,15 +24,6 @@ types AspectBreakdowns {
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[fire_i][aspect_fire] Spellcasting Success Chance: [EmptyScope.ScriptValue('drylands_fire_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('redlands_drylands'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('redlands_drylands_fire_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[fire_i][aspect_fire] Spellcasting Success Chance: [EmptyScope.ScriptValue('redlands_drylands_fire_value_add')|+0]"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -51,24 +42,6 @@ types AspectBreakdowns {
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[fire_i][aspect_fire] Spellcasting Success Chance: [EmptyScope.ScriptValue('desert_mountains_fire_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('redlands_desert'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('redlands_desert_fire_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[fire_i][aspect_fire] Spellcasting Success Chance: [EmptyScope.ScriptValue('redlands_desert_fire_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('redlands_mountains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('redlands_mountains_fire_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[fire_i][aspect_fire] Spellcasting Success Chance: [EmptyScope.ScriptValue('redlands_mountains_fire_value_add')|+0]"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -100,29 +73,11 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
-			visible = "[And(EqualTo_string(Localize('marcher_floodplains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('marcher_floodplains_water_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[water_i][aspect_water] Spellcasting Success Chance: [EmptyScope.ScriptValue('marcher_floodplains_water_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
 			visible = "[And(EqualTo_string(Localize('wetlands'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('wetlands_water_value_add'), '(CFixedPoint)0'))]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[water_i][aspect_water] Spellcasting Success Chance: [EmptyScope.ScriptValue('wetlands_water_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('marcher_wetlands'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('marcher_wetlands_water_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[water_i][aspect_water] Spellcasting Success Chance: [EmptyScope.ScriptValue('marcher_wetlands_water_value_add')|+0]"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -190,15 +145,6 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
-			visible = "[And(EqualTo_string(Localize('marcher_mountains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('marcher_mountains_air_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[air_i][aspect_air] Spellcasting Success Chance: [EmptyScope.ScriptValue('marcher_mountains_air_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
 			visible = "[And(EqualTo_string(Localize('desert_mountains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('desert_mountains_air_value_add'), '(CFixedPoint)0'))]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -208,29 +154,11 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
-			visible = "[And(EqualTo_string(Localize('redlands_mountains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('redlands_mountains_air_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[air_i][aspect_air] Spellcasting Success Chance: [EmptyScope.ScriptValue('redlands_mountains_air_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
 			visible = "[And(EqualTo_string(Localize('plains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('plains_air_value_add'), '(CFixedPoint)0'))]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[air_i][aspect_air] Spellcasting Success Chance: [EmptyScope.ScriptValue('plains_air_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('marcher_plains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('marcher_plains_air_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[air_i][aspect_air] Spellcasting Success Chance: [EmptyScope.ScriptValue('marcher_plains_air_value_add')|+0]"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -253,29 +181,11 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
-			visible = "[And(EqualTo_string(Localize('marcher_mountains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('marcher_mountains_stone_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[stone_i][aspect_stone] Spellcasting Success Chance: [EmptyScope.ScriptValue('marcher_mountains_stone_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
 			visible = "[And(EqualTo_string(Localize('desert_mountains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('desert_mountains_stone_value_add'), '(CFixedPoint)0'))]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[stone_i][aspect_stone] Spellcasting Success Chance: [EmptyScope.ScriptValue('desert_mountains_stone_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('redlands_mountains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('redlands_mountains_stone_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[stone_i][aspect_stone] Spellcasting Success Chance: [EmptyScope.ScriptValue('redlands_mountains_stone_value_add')|+0]"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -289,65 +199,11 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
-			visible = "[And(EqualTo_string(Localize('marcher_hills'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('marcher_hills_stone_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[stone_i][aspect_stone] Spellcasting Success Chance: [EmptyScope.ScriptValue('marcher_hills_stone_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
 			visible = "[And(EqualTo_string(Localize('drylands'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('drylands_stone_value_add'), '(CFixedPoint)0'))]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[stone_i][aspect_stone] Spellcasting Success Chance: [EmptyScope.ScriptValue('drylands_stone_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('redlands_drylands'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('redlands_drylands_stone_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[stone_i][aspect_stone] Spellcasting Success Chance: [EmptyScope.ScriptValue('redlands_drylands_stone_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('underworld_expanse'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('underworld_expanse_stone_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[stone_i][aspect_stone] Spellcasting Success Chance: [EmptyScope.ScriptValue('underworld_expanse_stone_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('mayik_caverns'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('mayik_caverns_stone_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[stone_i][aspect_stone] Spellcasting Success Chance: [EmptyScope.ScriptValue('mayik_caverns_stone_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('mayik_corridors'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('mayik_corridors_stone_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[stone_i][aspect_stone] Spellcasting Success Chance: [EmptyScope.ScriptValue('mayik_corridors_stone_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('mayik_chamber'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('mayik_chamber_stone_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[stone_i][aspect_stone] Spellcasting Success Chance: [EmptyScope.ScriptValue('mayik_chamber_stone_value_add')|+0]"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -379,78 +235,6 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
-			visible = "[And(EqualTo_string(Localize('underworld_expanse'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('underworld_expanse_dark_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[dark_i][aspect_dark] Spellcasting Success Chance: [EmptyScope.ScriptValue('underworld_expanse_dark_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('mayik_caverns'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('mayik_caverns_dark_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[dark_i][aspect_dark] Spellcasting Success Chance: [EmptyScope.ScriptValue('mayik_caverns_dark_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('mayik_corridors'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('mayik_corridors_dark_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[dark_i][aspect_dark] Spellcasting Success Chance: [EmptyScope.ScriptValue('mayik_corridors_dark_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('mayik_chamber'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('mayik_chamber_dark_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[dark_i][aspect_dark] Spellcasting Success Chance: [EmptyScope.ScriptValue('mayik_chamber_dark_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('redlands_chasms'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('redlands_chasms_dark_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[dark_i][aspect_dark] Spellcasting Success Chance: [EmptyScope.ScriptValue('redlands_chasms_dark_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('redlands_desert'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('redlands_desert_dark_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[dark_i][aspect_dark] Spellcasting Success Chance: [EmptyScope.ScriptValue('redlands_desert_dark_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('redlands_mountains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('redlands_mountains_dark_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[dark_i][aspect_dark] Spellcasting Success Chance: [EmptyScope.ScriptValue('redlands_mountains_dark_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('redlands_drylands'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('redlands_drylands_dark_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[dark_i][aspect_dark] Spellcasting Success Chance: [EmptyScope.ScriptValue('redlands_drylands_dark_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
 			visible = "[And(EqualTo_string(Localize('oasis'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('oasis_nature_value_add'), '(CFixedPoint)0'))]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -465,15 +249,6 @@ types AspectBreakdowns {
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[nature_i][aspect_nature] Spellcasting Success Chance: [EmptyScope.ScriptValue('forest_nature_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('marcher_forest'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('marcher_forest_nature_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[nature_i][aspect_nature] Spellcasting Success Chance: [EmptyScope.ScriptValue('marcher_forest_nature_value_add')|+0]"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -496,15 +271,6 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
-			visible = "[And(EqualTo_string(Localize('marcher_farmlands'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('marcher_farmlands_nature_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[nature_i][aspect_nature] Spellcasting Success Chance: [EmptyScope.ScriptValue('marcher_farmlands_nature_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
 			visible = "[And(EqualTo_string(Localize('floodplains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('floodplains_nature_value_add'), '(CFixedPoint)0'))]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -514,29 +280,11 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
-			visible = "[And(EqualTo_string(Localize('marcher_floodplains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('marcher_floodplains_nature_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[nature_i][aspect_nature] Spellcasting Success Chance: [EmptyScope.ScriptValue('marcher_floodplains_nature_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
 			visible = "[And(EqualTo_string(Localize('plains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('plains_nature_value_add'), '(CFixedPoint)0'))]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[nature_i][aspect_nature] Spellcasting Success Chance: [EmptyScope.ScriptValue('plains_nature_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('marcher_plains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('marcher_plains_nature_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[nature_i][aspect_nature] Spellcasting Success Chance: [EmptyScope.ScriptValue('marcher_plains_nature_value_add')|+0]"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -576,24 +324,6 @@ types AspectBreakdowns {
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('redlands_desert'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('redlands_desert_sand_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[sand_i][aspect_sand] Spellcasting Success Chance: [EmptyScope.ScriptValue('redlands_desert_sand_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[And(EqualTo_string(Localize('redlands_mountains'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('redlands_mountains_sand_value_add'), '(CFixedPoint)0'))]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[sand_i][aspect_sand] Spellcasting Success Chance: [EmptyScope.ScriptValue('redlands_mountains_sand_value_add')|+0]"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
 	}
 	
 	type vbox_province_aspect_values = vbox {
@@ -604,7 +334,7 @@ types AspectBreakdowns {
 		spacing = 5
 
 		background = {
-			visible = "[And(And(HoldingView.HasHolding, Not(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'wasteland_empty_holding'))), Not(EqualTo_string(HoldingView.GetHolding.GetType.GetKey,'ruin_holding')))]"
+			visible = "[HoldingView.HasHolding]"
 			using = Background_Area_Dark
 			alpha = 0.7
 			margin_top = 9
@@ -615,15 +345,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('fire_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('fire')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[fire_i]"
+				text = "[fire_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('fire')).End), '#V', '#color:{0.88,0.34,0.13}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('fire_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('fire')).End), '#V', '#color:{0.88,0.34,0.13}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('fire_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('fire')).End)]"
@@ -653,15 +384,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('water_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('water')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[water_i]"
+				text = "[water_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('water')).End), '#V', '#color:{0.11,0.24,0.42}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('water_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('water')).End), '#V', '#color:{0.11,0.24,0.42}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('water_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('water')).End)]"
@@ -691,15 +423,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('ice_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('ice')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[ice_i]"
+				text = "[ice_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('ice')).End), '#V', '#color:{0.72,0.9,0.92}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('ice_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('ice')).End), '#V', '#color:{0.72,0.9,0.92}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('ice_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('ice')).End)]"
@@ -729,15 +462,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('air_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('air')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[air_i]"
+				text = "[air_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('air')).End), '#V', '#color:{0.62,0.83,0.86}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('air_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('air')).End), '#V', '#color:{0.62,0.83,0.86}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('air_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('air')).End)]"
@@ -767,15 +501,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('stone_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('stone')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[stone_i]"
+				text = "[stone_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('stone')).End), '#V', '#color:{0.47,0.30,0.18}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('stone_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('stone')).End), '#V', '#color:{0.47,0.30,0.18}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('stone_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('stone')).End)]"
@@ -805,15 +540,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('dream_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('dream')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[dream_i]"
+				text = "[dream_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('dream')).End), '#V', '#color:{0.65,0.65,1.0}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('dream_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('dream')).End), '#V', '#color:{0.65,0.65,1.0}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('dream_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('dream')).End)]"
@@ -843,15 +579,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('celestial_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('celestial')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[celestial_i]"
+				text = "[celestial_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('celestial')).End), '#V', '#color:{0.65,0.15,0.86}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('celestial_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('celestial')).End), '#V', '#color:{0.65,0.15,0.86}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('celestial_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('celestial')).End)]"
@@ -881,15 +618,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('dark_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('dark')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[dark_i]"
+				text = "[dark_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('dark')).End), '#V', '#color:{0.25,0.3,0.2}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('dark_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('dark')).End), '#V', '#color:{0.25,0.3,0.2}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('dark_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('dark')).End)]"
@@ -919,15 +657,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('light_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('light')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[light_i]"
+				text = "[light_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('light')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('light_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('light')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('light_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('light')).End)]"
@@ -957,15 +696,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('blood_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('blood')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[blood_i]"
+				text = "[blood_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('blood')).End), '#V', '#color:{0.64,0.01,0.01}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('blood_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('blood')).End), '#V', '#color:{0.64,0.01,0.01}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('blood_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('blood')).End)]"
@@ -995,15 +735,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('nature_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('nature')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[nature_i]"
+				text = "[nature_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('nature')).End), '#V', '#color:{0.36,0.66,0.01}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('nature_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('nature')).End), '#V', '#color:{0.36,0.66,0.01}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('nature_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('nature')).End)]"
@@ -1033,15 +774,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('ethereal_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('ethereal')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[ethereal_i]"
+				text = "[ethereal_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('ethereal')).End), '#V', '#color:{0.55,0.55,0.65}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('ethereal_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('ethereal')).End), '#V', '#color:{0.55,0.55,0.65}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('ethereal_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('ethereal')).End)]"
@@ -1071,15 +813,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('hymns_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('hymns')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[hymns_i]"
+				text = "[hymns_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('hymns')).End), '#V', '#color:{0.56,0.00,1.00}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('hymns_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('hymns')).End), '#V', '#color:{0.56,0.00,1.00}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('hymns_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('hymns')).End)]"
@@ -1109,15 +852,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('death_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('death')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[death_i]"
+				text = "[death_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('death')).End), '#V', '#color:{0.05,0.71,0.47}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('death_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('death')).End), '#V', '#color:{0.05,0.71,0.47}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('death_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('death')).End)]"
@@ -1147,15 +891,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('sand_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('sand')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[sand_i]"
+				text = "[sand_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('sand')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('sand_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('sand')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('sand_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('sand')).End)]"
@@ -1185,15 +930,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('metal_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('metal')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[metal_i]"
+				text = "[metal_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('metal')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('metal_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('metal')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('metal_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('metal')).End)]"
@@ -1223,15 +969,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('time_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('time')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[time_i]"
+				text = "[time_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('time')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('time_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('time')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('time_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('time')).End)]"
@@ -1261,15 +1008,16 @@ types AspectBreakdowns {
 			spacing = 3
 
 			tooltip = "[HoldingView.GetProvince.MakeScope.GetScriptValueDesc('dawn_aspect_province_value')][SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), '', 'MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING')]"
+			onclick = "[GetScriptedGui('activate_province_aspect_specialization_scripted_gui').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('dawn')).End)]"
 
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				raw_text = "[dawn_i]"
+				text = "[dawn_i]"
 				default_format = "#high"
 			}
 
 			text_single = {
-				raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('dawn')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('dawn_aspect_province_value')|0]#!"
+				text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('dawn')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [HoldingView.GetProvince.MakeScope.ScriptValue('dawn_aspect_province_value')|0]#!"
 				
 				background = {
 					visible = "[GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('aspect', MakeScopeFlag('dawn')).End)]"
@@ -1295,638 +1043,6 @@ types AspectBreakdowns {
 		}
 
 		expand = {}
-	}
-	
-	type scrollarea_province_aspect_values = scrollarea {
-		min_width = 232
-
-		scrollbarpolicy_vertical = always_off
-		scrollbarpolicy_horizontal = as_needed
-		
-		scrollbar_horizontal = {
-			scrollbar = {
-				wheelstep = 60
-				direction = horizontal
-
-				track = {
-					button = {}
-				}
-
-				slider = {
-					button = {}
-				}
-
-				dec_button = {
-
-					button = {}
-				}
-
-				inc_button = {
-					button = {}
-				}
-			}
-		}
-		scrollwidget = {
-			hbox = {
-				layoutpolicy_horizontal = expanding
-				expand = {}
-				using = Animation_Character_Window_Refresh	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('fire_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('fire')).End))]"
-					tooltip = FIRE_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "fire_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_fire.dds"
-					}
-					
-					text_single = {
-						name = "fire_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('fire')).End), '#V', '#color:{0.88,0.34,0.13}'), '#weak')] [Province.MakeScope.ScriptValue('fire_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('water_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('water')).End))]"
-					tooltip = WATER_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "water_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_water.dds"
-					}
-					
-					text_single = {
-						name = "water_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('water')).End), '#V', '#color:{0.11,0.24,0.42}'), '#weak')] [Province.MakeScope.ScriptValue('water_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('ice_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('ice')).End))]"
-					tooltip = ICE_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "ice_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_ice.dds"
-					}
-					
-					text_single = {
-						name = "ice_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('ice')).End), '#V', '#color:{0.72,0.9,0.92}'), '#weak')] [Province.MakeScope.ScriptValue('ice_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('air_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('air')).End))]"
-					tooltip = AIR_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "air_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_air.dds"
-					}
-					
-					text_single = {
-						name = "air_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('air')).End), '#V', '#color:{0.62,0.83,0.86}'), '#weak')] [Province.MakeScope.ScriptValue('air_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('stone_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('stone')).End))]"
-					tooltip = STONE_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "stone_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_stone.dds"
-					}
-					
-					text_single = {
-						name = "stone_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('stone')).End), '#V', '#color:{0.47,0.30,0.18}'), '#weak')] [Province.MakeScope.ScriptValue('stone_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('dream_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('dream')).End))]"
-					tooltip = DREAM_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "dream_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_dream.dds"
-					}
-					
-					text_single = {
-						name = "dream_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('dream')).End), '#V', '#color:{0.65,0.65,1.0}'), '#weak')] [Province.MakeScope.ScriptValue('dream_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('celestial_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('celestial')).End))]"
-					tooltip = CELESTIAL_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "celestial_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_celestial.dds"
-					}
-					
-					text_single = {
-						name = "celestial_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('celestial')).End), '#V', '#color:{0.65,0.15,0.86}'), '#weak')] [Province.MakeScope.ScriptValue('celestial_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('dark_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('dark')).End))]"
-					tooltip = DARK_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "dark_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_dark.dds"
-					}
-					
-					text_single = {
-						name = "dark_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('dark')).End), '#V', '#color:{0.25,0.3,0.2}'), '#weak')] [Province.MakeScope.ScriptValue('dark_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('light_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('light')).End))]"
-					tooltip = LIGHT_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "light_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_light.dds"
-					}
-					
-					text_single = {
-						name = "light_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('light')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [Province.MakeScope.ScriptValue('light_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('blood_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('blood')).End))]"
-					tooltip = BLOOD_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "blood_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_blood.dds"
-					}
-					
-					text_single = {
-						name = "blood_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('blood')).End), '#V', '#color:{0.64,0.01,0.01}'), '#weak')] [Province.MakeScope.ScriptValue('blood_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('nature_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('nature')).End))]"
-					tooltip = NATURE_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "nature_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_nature.dds"
-					}
-					
-					text_single = {
-						name = "nature_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('nature')).End), '#V', '#color:{0.36,0.66,0.01}'), '#weak')] [Province.MakeScope.ScriptValue('nature_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('ethereal_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('ethereal')).End))]"
-					tooltip = ETHEREAL_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "ethereal_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_ethereal.dds"
-					}
-					
-					text_single = {
-						name = "ethereal_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('ethereal')).End), '#V', '#color:{0.55,0.55,0.65}'), '#weak')] [Province.MakeScope.ScriptValue('ethereal_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('hymns_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('hymns')).End))]"
-					tooltip = HYMNS_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "hymns_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_hymns.dds"
-					}
-					
-					text_single = {
-						name = "hymns_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('hymns')).End), '#V', '#color:{0.56,0.00,1.00}'), '#weak')] [Province.MakeScope.ScriptValue('hymns_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('death_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('death')).End))]"
-					tooltip = DEATH_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "death_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_death.dds"
-					}
-					
-					text_single = {
-						name = "death_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('death')).End), '#V', '#color:{0.05,0.71,0.47}'), '#weak')] [Province.MakeScope.ScriptValue('death_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('sand_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('sand')).End))]"
-					tooltip = SAND_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "sand_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_sand.dds"
-					}
-					
-					text_single = {
-						name = "sand_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('sand')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [Province.MakeScope.ScriptValue('sand_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('metal_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('metal')).End))]"
-					tooltip = METAL_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "metal_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_metal.dds"
-					}
-					
-					text_single = {
-						name = "metal_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('metal')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [Province.MakeScope.ScriptValue('metal_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('time_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('time')).End))]"
-					tooltip = TIME_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "time_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_time.dds"
-					}
-					
-					text_single = {
-						name = "time_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('time')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [Province.MakeScope.ScriptValue('time_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}	
-				hbox = {
-					visible = "[Or(GreaterThan_CFixedPoint( Province.MakeScope.ScriptValue('dawn_aspect_province_value'), '(CFixedPoint)0'), GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('dawn')).End))]"
-					tooltip = DAWN_SPELLCASTING_TOOLTIP
-					using = tooltip_ne
-					spacing = -3
-
-
-					icon = {
-						name = "dawn_icon"
-						size = { 24 24 }
-						texture = "gfx/interface/icons/rituals/icon_aspect_dawn.dds"
-					}
-					
-					text_single = {
-						name = "dawn_skill_value"
-						raw_text = "[SelectLocalization(GetScriptedGui('province_has_activated_aspects_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).End), SelectLocalization(GetScriptedGui('province_aspect_specialization_is_activated_scripted_gui').IsShown(GuiScope.SetRoot(Province.MakeScope).AddScope('aspect', MakeScopeFlag('dawn')).End), '#V', '#color:{0.90,0.75,0.30}'), '#weak')] [Province.MakeScope.ScriptValue('dawn_aspect_province_value')|0]#!"
-						default_format = "#high"
-						align = nobaseline
-					}
-					
-					#background = {
-					#	name = "water_icon_bg"
-					#	texture = "gfx/interface/window_character/character_view_skills_bg_generic.dds"
-					#	frame = 1
-					#	framesize = { 70 26 }
-					#	margin = { 10 -25 }
-					#	
-					#	modify_texture = {
-					#		color = { 0.11 0.24 0.42 1 }
-					#		blend_mode = overlay
-					#	}
-					#}
-				}
-			}
-		}
 	}
 	
 	type vbox_modifier_aspect_spellcasting_bonus_values = vbox {
@@ -2507,142 +1623,7 @@ types AspectBreakdowns {
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
-			raw_text = "[aspect_fire] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('05_korlacan_mines_fire_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('05_korlacan_mines', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
 			raw_text = "[aspect_fire]: [fire_i]#positive_value +3#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_ash_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_ash_gate_fire_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_ash_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire]: [fire_i]#positive_value +2#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_ash_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('02_ash_gate_fire_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_ash_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire]: [fire_i]#positive_value +4#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_progress_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_progress_gate_fire_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_progress_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire]: [fire_i]#positive_value +2#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_progress_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('02_progress_gate_fire_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_progress_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire]: [fire_i]#positive_value +4#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_industry_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_industry_gate_fire_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_industry_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire]: [fire_i]#positive_value +2#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_industry_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('02_industry_gate_fire_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_industry_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire]: [fire_i]#positive_value +4#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_the_folly', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_the_folly_fire_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_the_folly', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_fire]: [fire_i]#positive_value +4#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -3034,15 +2015,6 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
-			visible = "[EqualTo_string('01_imutargit', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_dream]: [dream_i]#positive_value +1#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
 			visible = "[EqualTo_string('01_eternal_grove', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -3165,24 +2137,6 @@ types AspectBreakdowns {
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[aspect_celestial]: [celestial_i]#positive_value +3#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_tomb_of_the_starborn', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_celestial]: [celestial_i]#positive_value +3#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_whitegoldpalace', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_celestial]: [celestial_i]#positive_value +1#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -3358,33 +2312,6 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
-			visible = "[EqualTo_string('01_umrawet', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_blood]: [blood_i]#positive_value +3#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_thebloodyard', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_blood]: [blood_i]#positive_value +2#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_thebloodyard', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_blood]: [blood_i]#positive_value +4#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
 			visible = "[EqualTo_string('royal_garden_01', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -3458,33 +2385,6 @@ types AspectBreakdowns {
 		}
 		text_single = {
 			visible = "[EqualTo_string('01_hanging_gardens', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_nature] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_hanging_gardens_nature_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_hanging_gardens', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_nature]: [nature_i]#positive_value +3#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_jerniems_lodge', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_nature] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_jerniems_lodge_nature_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_jerniems_lodge', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
@@ -3673,218 +2573,11 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
-			visible = "[EqualTo_string('01_imutargit', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_nature]: [nature_i]#positive_value +2#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_zokah_forest', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_nature]: [nature_i]#positive_value +2#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('00_fog_eternal_grove', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('00_fog_eternal_grove_ethereal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
 			visible = "[EqualTo_string('00_fog_eternal_grove', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[aspect_ethereal]: [ethereal_i]#positive_value +3#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_well_of_souls', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_well_of_souls_ethereal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_well_of_souls', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal]: [ethereal_i]#positive_value +5#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('00_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('00_darksteel_tomb_ethereal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('00_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal]: [ethereal_i]#positive_value +2#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_darksteel_tomb_ethereal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal]: [ethereal_i]#positive_value +3#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('02_darksteel_tomb_ethereal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal]: [ethereal_i]#positive_value +4#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('03_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('03_darksteel_tomb_ethereal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('03_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal]: [ethereal_i]#positive_value +5#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('04_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('04_darksteel_tomb_ethereal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('04_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal]: [ethereal_i]#positive_value +6#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('05_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('05_darksteel_tomb_ethereal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('05_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal]: [ethereal_i]#positive_value +7#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('06_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('06_darksteel_tomb_ethereal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('06_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal]: [ethereal_i]#positive_value +8#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('07_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('07_darksteel_tomb_ethereal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('07_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal]: [ethereal_i]#positive_value +9#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('08_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('08_darksteel_tomb_ethereal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('08_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_ethereal]: [ethereal_i]#positive_value +10#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -3943,186 +2636,6 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
-			visible = "[EqualTo_string('00_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('00_darksteel_tomb_death_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('00_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death]: [death_i]#positive_value +2#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_darksteel_tomb_death_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death]: [death_i]#positive_value +3#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('02_darksteel_tomb_death_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death]: [death_i]#positive_value +4#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('03_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('03_darksteel_tomb_death_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('03_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death]: [death_i]#positive_value +5#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('04_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('04_darksteel_tomb_death_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('04_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death]: [death_i]#positive_value +6#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('05_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('05_darksteel_tomb_death_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('05_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death]: [death_i]#positive_value +7#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('06_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('06_darksteel_tomb_death_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('06_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death]: [death_i]#positive_value +8#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('07_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('07_darksteel_tomb_death_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('07_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death]: [death_i]#positive_value +9#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('08_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('08_darksteel_tomb_death_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('08_darksteel_tomb', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death]: [death_i]#positive_value +10#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_culling_ground', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_culling_ground_death_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_culling_ground', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_death]: [death_i]#positive_value +5#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
 			visible = "[EqualTo_string('01_halite_temple', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -4133,15 +2646,6 @@ types AspectBreakdowns {
 		}
 		text_single = {
 			visible = "[EqualTo_string('02_halite_temple', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_sand]: [sand_i]#positive_value +2#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_tomb_of_the_starborn', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
@@ -4182,186 +2686,6 @@ types AspectBreakdowns {
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[aspect_metal]: [metal_i]#positive_value +3#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_mechanical_city', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_mechanical_city_metal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_mechanical_city', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal]: [metal_i]#positive_value +3#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_mechanical_city', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('02_mechanical_city_metal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_mechanical_city', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal]: [metal_i]#positive_value +6#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('03_mechanical_city', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('03_mechanical_city_metal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('03_mechanical_city', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal]: [metal_i]#positive_value +9#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('04_mechanical_city', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('04_mechanical_city_metal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('04_mechanical_city', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal]: [metal_i]#positive_value +12#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_ash_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_ash_gate_metal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_ash_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal]: [metal_i]#positive_value +2#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_ash_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('02_ash_gate_metal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_ash_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal]: [metal_i]#positive_value +4#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_progress_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_progress_gate_metal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_progress_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal]: [metal_i]#positive_value +2#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_progress_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('02_progress_gate_metal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_progress_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal]: [metal_i]#positive_value +4#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_industry_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_industry_gate_metal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_industry_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal]: [metal_i]#positive_value +2#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_industry_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('02_industry_gate_metal_value_add')|+0]#P %#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('02_industry_gate', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[aspect_metal]: [metal_i]#positive_value +4#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -4510,15 +2834,6 @@ types AspectBreakdowns {
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[arcana|E] per [prestige_level|E]: [arcana_i]#positive_value +1#!"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
-			alwaystransparent = no
-		}
-		text_single = {
-			visible = "[EqualTo_string('01_the_folly', Building.GetKey)]"
-			layoutpolicy_horizontal = expanding
-			max_width = 400
-			using = DefaultTooltipText
-			raw_text = "[arcana|E]: [arcana_i]#positive_value +2#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}

@@ -2,8 +2,8 @@
 	if = {	# Initialize whoever the current Aautokratir is
 		limit = { any_aautokratir_exists = yes }
 		if = {
-			limit = { title:h_aversarinas_aautokrata = { is_title_created = yes } }
-			title:h_aversarinas_aautokrata = { 
+			limit = { title:e_aversarinas_aautokrata = { is_title_created = yes } }
+			title:e_aversarinas_aautokrata = { 
 				holder = { 
 					set_global_variable = {
 						name = reigning_aautokratir
@@ -12,7 +12,6 @@
 				} 
 			}
 		}
-		# GH TODO: Should be more versatile for various possible Aversarian Empire pretender things
 		else_if = {
 			limit = { title:e_oraispol_aautokrata = { is_title_created = yes } }
 			title:e_oraispol_aautokrata = { 
@@ -37,7 +36,7 @@
 		}
 	}
 	if = {	# Check whether the Fog has spawn
-		limit = { game_start_date >= 6200.3.1 }
+		limit = { game_start_date >= 1200.3.1 }
 		set_global_variable = fog_has_appeared
 	}
 }

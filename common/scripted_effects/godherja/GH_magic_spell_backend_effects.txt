@@ -1,4 +1,4 @@
-﻿#Useful Notes:
+#Useful Notes:
 
 #SPELLS
 #A spell is an empty story cycle. We only use the story cycle for its ability
@@ -23,17 +23,6 @@ create_blank_spell_scripted_effect = {
 	add_to_global_variable_list = { #List of all spells
 		name = global_spell_list
 		target = scope:new_spell_scope
-	}
-	scope:new_spell_scope ?= {
-		set_variable = {
-			name = spell_being_prepared
-			value = this	# For esoteric GUI reasons; see the spell component preparation effects (which have a smiliar thing) for an explanation
-		}
-		set_variable = {
-			name = parent_spell
-			value = this	# Likewise as above
-		}
-		save_scope_as = new_parent_spell_scope
 	}
 }
 
@@ -101,52 +90,6 @@ create_two_aspect_spell_with_global_identifier_effect = {
 	}
 }
 
-# Sub-spells
-create_sub_spell_effect = {
-	create_blank_spell_with_global_identifier_scripted_effect = { SPELL_IDENTIFIER = $SPELL_IDENTIFIER$ }
-	scope:new_spell_scope = {
-		set_variable = {
-			name = parent_spell
-			value = prev
-		}
-		generate_subspell_aspects_effect = { OFFSET = 0 }
-		set_variable = { name = spell_cost value = prev.var:spell_cost }
-		set_variable = { name = spell_gold_cost value = prev.var:spell_gold_cost }
-		spell_post_creation_effect = yes
-		generate_spell_name_effect = yes
-	}
-	add_to_variable_list = {
-		name = sub_spell_list
-		target = scope:new_spell_scope
-	}
-	if = {
-		limit = { NOT = { exists = var:first_sub_spell } }
-		set_variable = {
-			name = first_sub_spell
-			value = scope:new_spell_scope
-		}
-	}
-	# We don't want this for sub-spells
-	if = {
-		limit = { exists = global_var:$SPELL_IDENTIFIER$ }
-		remove_global_variable = $SPELL_IDENTIFIER$
-	}
-	save_scope_as = new_parent_spell_scope
-}
-
-create_sub_spell_with_offset_effect = {
-	create_sub_spell_effect = { SPELL_IDENTIFIER = $SPELL_IDENTIFIER$ }
-	scope:new_spell_scope ?= {
-		generate_subspell_aspects_effect = { OFFSET = $OFFSET$ }
-	}
-}
-
-add_sub_spell_with_offset_to_last_created_spell_effect = {
-	scope:new_parent_spell_scope ?= {
-		create_sub_spell_with_offset_effect = { SPELL_IDENTIFIER = $SPELL_IDENTIFIER$ OFFSET = $OFFSET$ }
-	}
-}
-
 #########################
 # POST-CREATION EFFECTS #
 #########################
@@ -163,32 +106,29 @@ spell_post_creation_effect = {
 		}
 	}
 	if = {
-		limit = { exists = var:primary_aspect }
-		if = {
-			limit = { NOT = { exists = var:secondary_aspect } }
-			random_in_list = {
-				variable = spell_aspect_list
-				limit = {
-					NOT = { prev.var:primary_aspect ?= this }
-				}
-				prev = {
-					set_variable = {
-						name = secondary_aspect
-						value = prev
-					}
-				}
+		limit = { NOT = { exists = var:secondary_aspect } }
+		random_in_list = {
+			variable = spell_aspect_list
+			limit = {
+				NOT = { prev.var:primary_aspect ?= this }
 			}
-			if = {
-				limit = { NOT = { exists = var:secondary_aspect } }
+			prev = {
 				set_variable = {
 					name = secondary_aspect
-					value = var:primary_aspect
+					value = prev
 				}
 			}
 		}
-		generate_spell_name_effect = yes
-		generate_spell_icon_effect = yes
+		if = {
+			limit = { NOT = { exists = var:secondary_aspect } }
+			set_variable = {
+				name = secondary_aspect
+				value = var:primary_aspect
+			}
+		}
 	}
+	generate_spell_name_effect = yes
+	generate_spell_icon_effect = yes
 }
 
 ########################
@@ -307,17 +247,14 @@ add_aspect_to_last_created_magic_school_effect = {
 }
 
 assign_spell_to_magic_school_effect = {
-  if = {
-		limit = { exists = $SPELL$ }
-		add_to_variable_list = {
-			name = spell_list
-			target = $SPELL$
-		}
-		$SPELL$ = {
-			set_variable = {
-				name = magic_school
-				value = prev
-			}
+	add_to_variable_list = {
+		name = spell_list
+		target = $SPELL$
+	}
+	$SPELL$ = {
+		set_variable = {
+			name = magic_school
+			value = prev
 		}
 	}
 }
@@ -525,7 +462,10 @@ create_simple_spell_effect_tag_scripted_effect = {
 			name = spell_tag_id
 			value = $NAME$_id
 		}
-		set_spell_tag_target_type = { TARGET = $TARGET$ }
+		set_variable = {
+			name = target_type
+			value = flag:$TARGET$
+		}
 	}
 	add_to_variable_list = {
 		name = spell_effect_list
@@ -551,8 +491,15 @@ add_simple_spell_effect_tag_to_last_created_spell_scripted_effect = {
 #Creates a new spell tag, and then adds additional details to that tag
 create_spell_effect_tag_scripted_effect = {
 	create_simple_spell_effect_tag_scripted_effect = { NAME = $NAME$ TARGET = $TARGET$ }
-	add_scalar_value_to_last_created_spell_effect_tag = { SCALAR_TYPE = scalar SCALED_BY = $SCALED_BY$ }
 	scope:new_tag = {
+		add_to_variable_list = {
+			name = scaled_by_list
+			target = $SCALED_BY$
+		}
+		set_variable = {
+			name = scalar_1
+			value = $SCALED_BY$
+		}
 		set_variable = {
 			name = scalar_threshold
 			value = $THRESHOLD$
@@ -561,7 +508,6 @@ create_spell_effect_tag_scripted_effect = {
 		if = {
 			limit = {
 				prev = { save_temporary_scope_as = spell_being_casted }
-				save_temporary_scope_value_as = { name = ignore_temporary_scalar_factors value = yes }
 				spell_tag_scalar_value > $THRESHOLD$ 
 			}
 			prev = {
@@ -625,7 +571,10 @@ create_spell_trigger_tag_scripted_effect = {
 				name = spell_tag_id
 				value = $NAME$_id
 			}
-			set_spell_tag_target_type = { TARGET = $TARGET$ }
+			set_variable = {
+				name = target_type
+				value = flag:$TARGET$
+			}
 		}
 		add_to_variable_list = {
 			name = spell_$GROUP$_trigger_list
@@ -635,66 +584,7 @@ create_spell_trigger_tag_scripted_effect = {
 			name = affects_$TARGET$_trigger_list
 			target =  scope:new_tag
 		}
-		# GH TODO: Expand this to up to 5 possible conditions (this is mainly used in the loc for spell-effect level conditions, not ritual-level conditions)
-		if = {
-			limit = { NOT = { exists = var:spell_activation_condition_trigger_1 } }
-			set_variable = {
-				name = spell_activation_condition_trigger_1
-				value = scope:new_tag
-			}
-		}
 	}
-}
-
-create_spell_scalar_trigger_tag_scripted_effect = {
-	create_spell_tag_scripted_effect = { NAME = $NAME$ }
-	if = {
-		limit = { exists = scope:new_tag }
-		scope:new_tag = {
-			set_variable = {
-				name = spell_tag_id
-				value = $NAME$_id
-			}
-			set_spell_tag_target_type = { TARGET = $TARGET$ }
-		}
-		add_to_variable_list = {
-			name = spell_$GROUP$_trigger_list
-			target =  scope:new_tag
-		}
-		add_to_variable_list = {
-			name = affects_$TARGET$_trigger_list
-			target =  scope:new_tag
-		}
-		# GH TODO: Expand this to up to 5 possible conditions (this is mainly used in the loc for spell-effect level conditions, not ritual-level conditions)
-		if = {
-			limit = { NOT = { exists = var:spell_scalar_activation_condition_trigger_1 } }
-			set_variable = {
-				name = spell_scalar_activation_condition_trigger_1
-				value = scope:new_tag
-			}
-		}
-	}
-}
-
-add_alternative_spell_trigger_tag_effect = {
-	save_temporary_scope_as = spell_trigger_to_add_alternative_to_scope
-	if = {
-		limit = { NOT = { exists = var:alternative_spell_trigger_tag_list_root } }
-		set_variable = {
-			name = alternative_spell_trigger_tag_list_root
-			target = this
-		}
-	}
-	add_to_variable_list = {
-		name = alternative_spell_trigger_tag_list
-		target = $SPELL_TAG$
-	}
-	$SPELL_TAG$ = {
-		set_variable = {
-			name = alternative_spell_trigger_tag_list_root
-			target = prev
-		}
-	}	
 }
 
 #Simple wrapper that moves to the new spell's scope
@@ -707,18 +597,6 @@ add_spell_casting_trigger_tag_to_last_created_spell_scripted_effect = {
 add_spell_activation_trigger_tag_to_last_created_spell_scripted_effect = {
 	scope:new_spell_scope ?= {
 		create_spell_trigger_tag_scripted_effect = { NAME = $NAME$ TARGET = $TARGET$ GROUP = activation }
-	}
-}
-
-add_spell_activation_trigger_tag_to_last_created_spell_effect_scripted_effect = {
-	scope:new_tag ?= {
-		create_spell_trigger_tag_scripted_effect = { NAME = $NAME$ TARGET = $TARGET$ GROUP = activation }
-	}
-}
-
-add_spell_scalar_trigger_tag_to_last_created_spell_effect_scripted_effect = {
-	scope:new_tag ?= {
-		create_spell_scalar_trigger_tag_scripted_effect = { NAME = $NAME$ TARGET = $TARGET$ GROUP = scalar }
 	}
 }
 
@@ -740,136 +618,6 @@ add_variable_to_last_created_spell_effect_tag = {
 	}
 }
 
-add_variable_to_last_created_spell_every_tag = {
-	scope:new_spell_scope ?= {
-		every_in_list = {
-			variable = spell_tag_list
-			set_variable = {
-				name = $VARIABLE_TYPE$
-				value = $VALUE$
-			}
-		}
-	}
-}
-
-add_scalar_value_to_last_created_spell_effect_tag = {
-	scope:new_tag ?= {
-		if = {	# Remove default threshold value
-			limit = { exists = var:$SCALAR_TYPE$ }
-			remove_variable = $SCALAR_TYPE$
-		}
-		add_to_variable_list = {
-			name = $SCALAR_TYPE$_list
-			target = $SCALED_BY$
-		}
-		if = {
-			limit = { NOT = { exists = var:$SCALAR_TYPE$_1 } }
-			set_variable = {
-				name = $SCALAR_TYPE$_1
-				value = $SCALED_BY$
-			}
-		}
-		else_if = {
-			limit = { NOT = { exists = var:$SCALAR_TYPE$_2 } }
-			set_variable = {
-				name = $SCALAR_TYPE$_2
-				value = $SCALED_BY$
-			}
-		}
-		else_if = {
-			limit = { NOT = { exists = var:$SCALAR_TYPE$_3 } }
-			set_variable = {
-				name = $SCALAR_TYPE$_3
-				value = $SCALED_BY$
-			}
-		}
-		else_if = {
-			limit = { NOT = { exists = var:$SCALAR_TYPE$_4 } }
-			set_variable = {
-				name = $SCALAR_TYPE$_4
-				value = $SCALED_BY$
-			}
-		}
-		else_if = {
-			limit = { NOT = { exists = var:$SCALAR_TYPE$_5 } }
-			set_variable = {
-				name = $SCALAR_TYPE$_5
-				value = $SCALED_BY$
-			}
-		}
-	}
-}
-
-copy_scalar_list_from_spell_tag_effect = {
-	$SPELL_TAG$ = {
-		if = {
-			limit = { exists = var:$SCALAR_TYPE$_1 }
-			prev = {
-				add_to_variable_list = {
-					name = $SCALAR_TYPE$_list
-					target = prev.var:$SCALAR_TYPE$_1
-				}
-				set_variable = {
-					name = $SCALAR_TYPE$_1
-					value = prev.var:$SCALAR_TYPE$_1
-				}
-			}
-		}
-		if = {
-			limit = { exists = var:$SCALAR_TYPE$_2 }
-			prev = {
-				add_to_variable_list = {
-					name = $SCALAR_TYPE$_list
-					target = prev.var:$SCALAR_TYPE$_2
-				}
-				set_variable = {
-					name = $SCALAR_TYPE$_2
-					value = prev.var:$SCALAR_TYPE$_2
-				}
-			}
-		}
-		if = {
-			limit = { exists = var:$SCALAR_TYPE$_3 }
-			prev = {
-				add_to_variable_list = {
-					name = $SCALAR_TYPE$_list
-					target = prev.var:$SCALAR_TYPE$_3
-				}
-				set_variable = {
-					name = $SCALAR_TYPE$_3
-					value = prev.var:$SCALAR_TYPE$_3
-				}
-			}
-		}
-		if = {
-			limit = { exists = var:$SCALAR_TYPE$_4 }
-			prev = {
-				add_to_variable_list = {
-					name = $SCALAR_TYPE$_list
-					target = prev.var:$SCALAR_TYPE$_4
-				}
-				set_variable = {
-					name = $SCALAR_TYPE$_4
-					value = prev.var:$SCALAR_TYPE$_4
-				}
-			}
-		}
-		if = {
-			limit = { exists = var:$SCALAR_TYPE$_5 }
-			prev = {
-				add_to_variable_list = {
-					name = $SCALAR_TYPE$_list
-					target = prev.var:$SCALAR_TYPE$_5
-				}
-				set_variable = {
-					name = $SCALAR_TYPE$_5
-					value = prev.var:$SCALAR_TYPE$_5
-				}
-			}
-		}
-	}
-}
-
 #########################
 # SPELL BACKEND EFFECTS #
 #########################
@@ -879,28 +627,40 @@ add_spell_aspect_effect = {
 		name = spell_aspect_list
 		target = flag:$ASPECT$
 	}
-	# GH TODO: Make a separate effect for actually increasing (rather than setting) an aspect
-	#if = {
-	#	limit = { NOT = { exists = var:$ASPECT$ } }
-	#	set_variable = {
-	#		name = $ASPECT$
-	#		value = $TIER$
-	#	}
-	#}
-	#else = {
-	#	change_variable = {
-	#		name = $ASPECT$
-	#		add = $TIER$
-	#	}
-	#}
-	set_variable = {
-		name = $ASPECT$
-		value = $TIER$
+	if = {
+		limit = { NOT = { exists = var:$ASPECT$ } }
+		set_variable = {
+			name = $ASPECT$
+			value = $TIER$
+		}
+	}
+	else = {
+		change_variable = {
+			name = $ASPECT$
+			add = $TIER$
+		}
+	}
+	if = {
+		limit = { NOT = { exists = var:spell_level } }
+		set_variable = {
+			name = spell_level
+			value = $TIER$
+		}
+	}
+	else = {
+		change_variable = {
+			name = spell_level
+			add = $TIER$
+		}
 	}
 	magic_aspect_effect = { MODE = calculate_primary }
 }
 
 determine_spellcasting_outcome_effect = {
+	save_scope_value_as = {
+		name = precalculate_spellcasting_outcome
+		value = yes
+	}
 	random_list = {
 		0 = {
 			trigger = {
@@ -933,6 +693,7 @@ determine_spellcasting_outcome_effect = {
 			}
 		}
 	}
+	apply_regular_spell_effects = yes	# For outcome precalculation
 	save_scope_value_as = {
 		name = spellcasting_outcome_predetermined
 		value = yes
@@ -1018,27 +779,6 @@ execute_spell_effect = {
 	}
 }
 
-execute_every_valid_loitering_magic_effect = {
-	every_equipped_character_artifact = {
-		limit = { has_variable_list = loitering_magic_list }
-		every_in_list = {
-			variable = loitering_magic_list
-			save_scope_as = spell_preparation_story_cycle
-			var:spell_organizer ?= { save_scope_as = spell_organizer }
-			var:caster ?= { save_scope_as = caster }
-			if = {
-				limit = {
-					var:spell_being_prepared = { conditional_spell_tags_fulfilled_trigger = { TARGET_LIST_SOURCE = scope:spell_preparation_story_cycle GROUP = activation } }
-				}
-				var:spell_being_prepared ?= { generate_spell_effect_target_lists_effect = { SOURCE = scope:spell_preparation_story_cycle } }
-				save_scope_value_as = { name = target_lists_already_generated value = yes }
-				var:spell_being_prepared ?= { apply_regular_spell_effects_no_resistance = yes }
-			}
-		}
-	}
-	execute_every_valid_hex_effect = yes	# GH TODO: Try and unify all of this crap
-}
-
 execute_every_valid_hex_effect = {
 	if = {
 		limit = {
@@ -1047,27 +787,27 @@ execute_every_valid_hex_effect = {
 		}
 		every_in_list = {
 			variable = hex_list
-			save_scope_as = spell_preparation_story_cycle
+			save_scope_as = spell_preparation_story_cycle_scope
 			var:spell_organizer ?= { save_scope_as = spell_organizer }
 			var:caster ?= { save_scope_as = caster }
 			if = {
 				limit = {
-					var:spell_being_prepared = { conditional_spell_tags_fulfilled_trigger = { TARGET_LIST_SOURCE = scope:spell_preparation_story_cycle GROUP = activation } }
+					var:spell_being_prepared = { conditional_spell_tags_fulfilled_trigger = { TARGET_LIST_SOURCE = scope:spell_preparation_story_cycle_scope GROUP = activation } }
 				} 
-				var:spell_being_prepared ?= { generate_spell_effect_target_lists_effect = { SOURCE = scope:spell_preparation_story_cycle } }
+				var:spell_being_prepared ?= { generate_spell_effect_target_lists_effect = { SOURCE = scope:spell_preparation_story_cycle_scope } }
 				save_scope_value_as = { name = target_lists_already_generated value = yes }
 				scope:spell_organizer ?= {
 					send_interface_toast = {
-						title = "GH_HEX_FIRED"
+						title = "Hex Fired"
 						prev.var:spell_being_prepared ?= { apply_regular_spell_effects = yes }
 					}
 				}
 				if = {
-					limit = { exists = scope:spell_preparation_story_cycle }
+					limit = { exists = scope:spell_preparation_story_cycle_scope }
 					prev = {
 						remove_list_variable = {
 							name = hex_list
-							target = scope:spell_preparation_story_cycle
+							target = scope:spell_preparation_story_cycle_scope
 						}
 					}
 					remove_list_variable = {
@@ -1103,12 +843,39 @@ apply_spell_effects_to_targets = {
 				spell_tag_scalar_threshold_diff_value > 0
 				spell_tag_has_fulfilled_conditions_trigger = yes
 				NOT = { exists = var:spell_effect_modifier }
-				trigger_if = {
-					limit = { exists = scope:effect_gui_display_mode }
-					NOT = { exists = var:spell_effect_hidden }
+			}
+			if = {
+				limit = { exists = scope:spellcasting_outcome_predetermined }
+				save_temporary_scope_as = spell_effect
+				if = {
+					limit = {
+						exists = var:spell_tag_id
+						var:spell_tag_id > -1
+					}
+					index_and_apply_spell_effect = { MODE = apply_precalculated }
 				}
 			}
-			apply_spell_effect = yes
+			else_if = {
+				limit = { exists = scope:precalculate_spellcasting_outcome }
+				save_temporary_scope_as = spell_effect
+				if = {
+					limit = {
+						exists = var:spell_tag_id
+						var:spell_tag_id > -1
+					}
+					index_and_apply_spell_effect = { MODE = precalculate }
+				}
+			}
+			else_if = {
+				limit = { spell_effect_chance_value >= 100 }
+				apply_spell_effect = yes
+			}
+			else = {
+				random = {
+					chance = spell_effect_chance_value
+					apply_spell_effect = yes
+				}
+			}
 		}
 	}
 }
@@ -1141,23 +908,23 @@ apply_spell_component_effects = {
 				}
 				if = { #GH_TODO: Temporary until I can figure out a better way of handling this
 				    limit = { scope:bone_for_crafting_scope = { has_artifact_feature = bone_type_small_animal } }
-				    scope:spell_organizer ?= { trigger_event = bonecrafting.0202 }
+				    scope:spell_organizer = { trigger_event = bonecrafting.0202 }
 				}
 				else_if = {
 				    limit = { scope:bone_for_crafting_scope = { has_artifact_feature = bone_type_medium_animal } }
-				    scope:spell_organizer ?= { trigger_event = bonecrafting.0203 }
+				    scope:spell_organizer = { trigger_event = bonecrafting.0203 }
 				}
 				else_if = {
 				    limit = { scope:bone_for_crafting_scope = { has_artifact_feature = bone_type_large_animal } }
-				    scope:spell_organizer ?= { trigger_event = bonecrafting.0206 }
+				    scope:spell_organizer = { trigger_event = bonecrafting.0206 }
 				}
 				else_if = {
 				    limit = { scope:bone_for_crafting_scope = { has_artifact_feature = bone_type_human_bone } }
-				    scope:spell_organizer ?= { trigger_event = bonecrafting.0209 }
+				    scope:spell_organizer = { trigger_event = bonecrafting.0209 }
 				}
 				else_if = {
 				    limit = { scope:bone_for_crafting_scope = { has_artifact_feature = bone_type_monster_bone } }
-				    scope:spell_organizer ?= { trigger_event = bonecrafting.0213 }
+				    scope:spell_organizer = { trigger_event = bonecrafting.0213 }
 				}
 			}
 			if = {
@@ -1203,6 +970,14 @@ apply_spell_component_effects = {
 			}		
 		}
 		var:spell_component_ingredient_selection ?= {
+			scope:spell_organizer ?= { remove_short_term_gold = prev.var:ingredient_price }
+			if = {
+				limit = { var:spell_component_target_type = flag:caster }
+				save_temporary_scope_value_as = {
+					name = force_apply_spell_effects_on_caster
+					value = yes
+				}
+			}
 			apply_regular_spell_effects = yes
 		}
 	}
@@ -1310,6 +1085,32 @@ mutate_spell_targets_effect = {
 			subtract = 1
 		}
 	}
+}
+
+apply_spell_on_random_county_realm = {
+	save_scope_value_as = { name = spell_l_target_number value = spell_l_target_number_value   }
+	scope:caster = { clear_variable_list = spell_l_targets }
+	scope:caster = { clear_variable_list = spell_targets }
+	if = {
+		limit = { is_playable_character = yes }
+		if = {
+			limit = {
+				highest_held_title_tier >= 2
+			}
+		apply_spell_on_random_county_realm_ruler_effect = yes }
+		else_if = {
+			limit = { exists = liege }
+			liege = {
+				apply_spell_on_random_county_realm_ruler_effect = yes
+			}
+		}
+	}
+	else = {
+		court_owner = {
+			apply_spell_on_random_county_realm_ruler_effect = yes
+		}
+	}
+	scope:spell_being_casted = { apply_regular_spell_effects = yes }
 }
 
 apply_spell_on_random_county_realm_ruler_effect = {
@@ -1557,7 +1358,6 @@ add_aspect_skill_from_learned_spell_aspect_effect = {
 #############################
 
 start_preparing_spell_effect = {
-	save_temporary_scope_as = spell_preparation_spell_organizer_scope
 	if = {
 		limit = { 
 			exists = var:spell_preparation_story_cycle
@@ -1572,37 +1372,21 @@ start_preparing_spell_effect = {
 		limit = {
 			NOT = { exists = var:spell_preparation_story_cycle }
 		}
-		start_spell_preparation_story_cycle_effect = { SPELL = $SPELL$ }
+		create_story = {
+			type = story_spell_preparation
+			save_scope_as = story_spell_preparation_scope
+		}
 		if = {
 			limit = { exists = scope:story_spell_preparation_scope }
 			set_variable = {
 				name = spell_preparation_story_cycle
 				value = scope:story_spell_preparation_scope
 			}
-		}
-	}
-}
-
-start_spell_preparation_story_cycle_effect = {
-	$SPELL$ = { save_temporary_scope_as = start_spell_preparation_story_cycle_effect_spell_being_prepared_scope }
-	create_story = {
-		type = story_spell_preparation
-		save_scope_as = story_spell_preparation_scope
-	}
-	scope:story_spell_preparation_scope ?= {
-		set_variable = {
-			name = spell_being_prepared
-			value = scope:start_spell_preparation_story_cycle_effect_spell_being_prepared_scope
-		}
-		if = {
-			limit = { exists = scope:spell_preparation_spell_organizer_scope.capital_province }
-			add_to_variable_list = {
-				name = locus_list
-				target = scope:spell_preparation_spell_organizer_scope.capital_province
-			}
-			set_variable = {
-				name = primary_locus
-				value = scope:spell_preparation_spell_organizer_scope.capital_province
+			scope:story_spell_preparation_scope = {
+				set_variable = {
+					name = spell_being_prepared
+					value = $SPELL$
+				}
 			}
 		}
 	}
@@ -1753,46 +1537,44 @@ magic_secret_exposed_owner_effects_effect = {
 }
 
 casted_unwanted_magic_effect = {
-	hidden_effect = {
-		$TARGET$ = {
-			if = {
-				limit = { is_alive = yes }
+	$TARGET$ = {
+		if = {
+			limit = { is_alive = yes }
+			add_opinion = {
+				target = $CASTER$
+				modifier = casted_unwanted_magic_me_crime
+			}
+			add_character_flag = { # This will give the AI a small boost toward unfriendly spellcasting after being attacked
+				flag = recently_affected_by_negative_magic
+				days = 365
+			}
+			trigger_event = magic_ai.0001 # AI get's a chance to strike back immediately if they know who the caster was
+		}
+
+		every_spouse = {
+			limit = { NOT = { this = $CASTER$ } }
+			add_to_temporary_list = close_family_unwanted_magic_opinion_list
+		}
+		every_close_family_member = {
+			limit = { NOT = { this = $CASTER$ } }
+			add_to_temporary_list = close_family_unwanted_magic_opinion_list
+		}
+
+		if = {
+			limit = {
+				any_in_list = {
+					list = close_family_unwanted_magic_opinion_list
+					always = yes
+				}
+			}
+			every_in_list = {
+				list = close_family_unwanted_magic_opinion_list
+				custom = all_close_family_and_spouses
+
 				add_opinion = {
 					target = $CASTER$
-					modifier = casted_unwanted_magic_me_crime
-				}
-				add_character_flag = { # This will give the AI a small boost toward unfriendly spellcasting after being attacked
-					flag = recently_affected_by_negative_magic
-					days = 365
-				}
-				trigger_event = magic_ai.0001 # AI get's a chance to strike back immediately if they know who the caster was
-			}
-	
-			every_spouse = {
-				limit = { NOT = { this = $CASTER$ } }
-				add_to_temporary_list = close_family_unwanted_magic_opinion_list
-			}
-			every_close_family_member = {
-				limit = { NOT = { this = $CASTER$ } }
-				add_to_temporary_list = close_family_unwanted_magic_opinion_list
-			}
-	
-			if = {
-				limit = {
-					any_in_list = {
-						list = close_family_unwanted_magic_opinion_list
-						always = yes
-					}
-				}
-				every_in_list = {
-					list = close_family_unwanted_magic_opinion_list
-					custom = all_close_family_and_spouses
-	
-					add_opinion = {
-						target = $CASTER$
-						modifier = casted_unwanted_magic_close_family_crime
-						years = 20
-					}
+					modifier = casted_unwanted_magic_close_family_crime
+					years = 20
 				}
 			}
 		}
@@ -1838,31 +1620,12 @@ learn_spell_effect = {
 		name = known_spell_list
 		target = $SPELL$
 	}
-	add_to_variable_list = {
-		name = known_spell_gui_list
-		target = $SPELL$
-	}
 	add_learned_spell_to_quick_selection_list = { SPELL = $SPELL$ }
 	$SPELL$ = { save_temporary_scope_as = spell_to_learn_scope }
 	save_scope_as = spell_learner # For the interface message
 	magic_aspect_effect = { MODE = add_aspect_skill_from_learned_spell }
 	magic_aspect_effect = { MODE = add_aspect_skill_from_runologic_geometry_perk }
 	add_to_magi_list = yes
-	if = {
-		limit = { $SPELL$ = { has_variable_list = sub_spell_list } }
-		$SPELL$ = {
-			every_in_list = {
-				variable = sub_spell_list
-				scope:spell_learner ?= {
-					add_to_variable_list = {
-						name = known_spell_list
-						target = this
-					}
-					add_learned_spell_to_quick_selection_list = { SPELL = this }
-				}
-			}
-		}
-	}
 	custom_tooltip = learn_spell_effect_tooltip
 	send_interface_message = {
 		type = event_generic_good_text
@@ -1896,38 +1659,6 @@ learn_global_spell_effect = {
 
 learn_magic_school_effect = {
 	learn_magic_school_level_effect = { MAGIC_SCHOOL = $MAGIC_SCHOOL$ LEVEL = 1 }
-}
-
-assign_magi_modifiers_effect = { # Gives modifiers to practicing Magi (currently based on having any Magi School) when relevant
-	# GH TODO: Should move most of these over to trait effects if we ever end up adding the Magi School traits properly
-	if = {
-		limit = {
-			is_female = no
-			disliked_magi_gender_trigger = yes
-		}
-		add_character_modifier = male_magi_disliked_modifier
-	}
-	else_if = {
-		limit = {
-			is_female = yes
-			disliked_magi_gender_trigger = yes
-		}
-		add_character_modifier = female_magi_disliked_modifier
-	}
-	else_if = {
-		limit = {
-			is_female = yes
-			preferred_magi_gender_trigger = yes
-		}
-		add_character_modifier = female_magi_liked_modifier
-	}
-	else_if = {
-		limit = {
-			is_female = no
-			preferred_magi_gender_trigger = yes
-		}
-		add_character_modifier = male_magi_liked_modifier
-	}
 }
 
 learn_magic_school_level_effect = {
@@ -2282,40 +2013,7 @@ set_spell_gold_cost_effect = {
 		name = spell_gold_cost
 		value = $VALUE$
 	}
-	set_spell_target_type_gold_cost_effect = { TARGET = target_character VALUE = $VALUE$ }
-	if = {
-		limit = { exists = var:target_character_gold_cost }
-		change_variable = {
-			name = target_character_gold_cost
-			multiply = 0.25
-		}
-	}
-	set_spell_target_type_gold_cost_effect = { TARGET = target_province VALUE = $VALUE$ }
-	if = {
-		limit = { exists = var:target_province_gold_cost }
-		change_variable = {
-			name = target_province_gold_cost
-			multiply = 4
-		}
-	}
-	set_spell_target_type_gold_cost_effect = { TARGET = target_artifact VALUE = $VALUE$ }
-	if = {
-		limit = { exists = var:target_artifact_gold_cost }
-		change_variable = {
-			name = target_artifact_gold_cost
-			multiply = 8	# Enchantments are normally REALLY EXPENSIVE (unless the spell is explicitly specialized to do them)
-		}
-	}
 }
-
-set_spell_target_type_gold_cost_effect = {
-	set_variable = {
-		name = $TARGET$_gold_cost
-		value = $VALUE$
-	}
-}
-
-set_spell_target_type_gold_cost_of_last_created_spell_effect = { scope:new_spell_scope = { set_spell_target_type_gold_cost_effect = { TARGET = $TARGET$ VALUE = $VALUE$ } } }
 
 set_spell_base_success_chance_effect = {
 	set_variable = {
@@ -2328,7 +2026,10 @@ add_spell_cost_tag_of_last_created_spell = {
 	scope:new_spell_scope ?= {
 		create_spell_tag_scripted_effect = { NAME = spell_cost_tag }
 		scope:new_tag ?= {
-			set_spell_tag_target_type = { TARGET = $TARGET$ }
+			set_variable = {
+				name = target_type
+				value = flag:$TARGET$
+			}
 			set_variable = {
 				name = scalar_1
 				value = flag:$SCALED_BY$
@@ -2343,21 +2044,6 @@ add_spell_cost_tag_of_last_created_spell = {
 			target = scope:new_tag
 		}
 	} 
-}
-
-add_linked_spell_to_last_created_spell_tag = {
-	scope:new_tag ?= {
-		set_variable = {
-			name = linked_spell
-			value = $SPELL$
-		}
-		var:parent_spell ?= {
-			add_to_variable_list = {
-				name = linked_spell_list
-				target = $SPELL$
-			}
-		}
-	}
 }
 
 set_spell_faith_last_created_spell_effect = { scope:new_spell_scope = { set_spell_faith_effect = { FAITH = $FAITH$ } } }
@@ -2401,15 +2087,15 @@ set_stacking_modifier_to_level_with_overflow_effect = {
 			value = $LEVEL$
 		}
 		save_scope_value_as = {
-			name = months
-			value = $MONTHS$
+			name = years
+			value = $YEARS$
 		}
 		hidden_effect = {
 			remove_$TYPE$_modifier = $MODIFIER$
 			remove_variable = $MODIFIER$_scale
 			if = {
-				limit = { $MONTHS$ > 0 }
-				add_$TYPE$_modifier = { modifier = $MODIFIER$ months = $MONTHS$ }
+				limit = { $YEARS$ > 0 }
+				add_$TYPE$_modifier = { modifier = $MODIFIER$ years = $YEARS$ }
 			}
 			else = {
 				add_$TYPE$_modifier = $MODIFIER$
@@ -2417,39 +2103,16 @@ set_stacking_modifier_to_level_with_overflow_effect = {
 			set_variable = {
 				name = $MODIFIER$_scale
 				value = $LEVEL$
-				days = GH_magic_modifier_months_to_days_value
+				days = GH_magic_modifier_years_to_days_value
 			}
 		}
 		if = {
-			limit = { $MONTHS$ > 0 }
+			limit = { $YEARS$ > 0 }
 			custom_tooltip = set_stacking_modifier_to_level_$TYPE$_effect_tooltip
 		}
 		else = {
 			custom_tooltip = set_stacking_modifier_to_level_permanently_$TYPE$_effect_tooltip
 		}
-	}
-}
-
-refresh_stacking_modifier_effect = {
-	remove_$TYPE$_modifier = $MODIFIER$
-	if = {
-		limit = {
-			OR = {
-				AND = {
-					exists = var:$MODIFIER$_scale
-					var:$MODIFIER$_scale > 0
-				}
-				AND = {
-					has_variable_list = cantrip_list
-					any_in_list = {
-						variable = cantrip_list
-						exists = var:$MODIFIER$_scale
-						var:$MODIFIER$_scale > 0
-					}
-				}
-			}
-		}
-		add_$TYPE$_modifier = $MODIFIER$
 	}
 }
 
@@ -2467,14 +2130,14 @@ upgrade_stacking_modifier_by_level_effect = {
 			value = $LEVEL$
 		}
 		save_scope_value_as = {
-			name = months
-			value = $MONTHS$
+			name = years
+			value = $YEARS$
 		}
 		hidden_effect = {
 			remove_$TYPE$_modifier = $MODIFIER$
 			if = {
-				limit = { $MONTHS$ > 0 }
-				add_$TYPE$_modifier = { modifier = $MODIFIER$ months = $MONTHS$ }
+				limit = { $YEARS$ > 0 }
+				add_$TYPE$_modifier = { modifier = $MODIFIER$ years = $YEARS$ }
 			}
 			else = {
 				add_$TYPE$_modifier = $MODIFIER$
@@ -2490,12 +2153,12 @@ upgrade_stacking_modifier_by_level_effect = {
 				set_variable = {
 					name = $MODIFIER$_scale
 					value = $LEVEL$
-					days = GH_magic_modifier_months_to_days_value
+					days = GH_magic_modifier_years_to_days_value
 				}
 			}
 		}
 		if = {
-			limit = { $MONTHS$ > 0 }
+			limit = { $YEARS$ > 0 }
 			custom_tooltip = set_stacking_modifier_to_level_$TYPE$_effect_tooltip
 		}
 		else = {
@@ -2756,22 +2419,6 @@ pick_spell_location_effect = {
 	if = {
 		limit = { NOT = { exists = scope:spell_location_province } }
 		scope:spell_organizer.location ?= { save_scope_as = spell_location_province }
-	}
-}
-
-# Enchantment Effects
-
-apply_enchantment_to_artifact_effect = {
-	save_temporary_scope_as = enchantment_artifact_scope
-	$SPELL$ = {
-		random_in_list = {
-			variable = sub_spell_list
-			limit = { var:unique_spell_identifier ?= flag:enchantment_subspell }
-			save_temporary_scope_as = spell_being_casted
-			scope:enchantment_artifact_scope = {
-				apply_spell_effects_to_targets = { TARGET = target_artifact }
-			}
-		}
 	}
 }
 

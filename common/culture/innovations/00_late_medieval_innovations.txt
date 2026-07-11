@@ -24,14 +24,7 @@
 @nobility_02 = "gfx/interface/icons/culture_innovations/innovation_nobility_02.dds"
 @nobility_03 = "gfx/interface/icons/culture_innovations/innovation_nobility_03.dds"
 @nobility_04 = "gfx/interface/icons/culture_innovations/innovation_nobility_04.dds"
-@gunpowder = "gfx/interface/icons/culture_innovations/innovation_gunpowder.dds"
-@innovation_farm = "gfx/interface/icons/culture_innovations/innovation_farm.dds"
-@coins = "gfx/interface/icons/culture_innovations/innovation_welfare_01.dds"
 @misc_inventions = "gfx/interface/icons/culture_innovations/innovation_misc_inventions.dds"
-@gunpowder_02 = "gfx/interface/icons/culture_innovations/innovation_gunpowder.dds"
-@sappers = "gfx/interface/icons/culture_innovations/innovation_sappers.dds"
-@plate_armor = "gfx/interface/icons/culture_innovations/innovation_plate_armor.dds"
-@fire_dragon = "gfx/interface/icons/culture_innovations/innovation_auh_cannon.dds"
 
 @camel = "gfx/interface/icons/culture_innovations/innovation_camel.dds"
 @elephant = "gfx/interface/icons/culture_innovations/innovation_elephant.dds"
@@ -40,7 +33,6 @@
 
 #culture_group_military
 innovation_machicolations = {
-	skill = stewardship
 	group = culture_group_military
 	culture_era = culture_era_late_medieval
 	icon = @fortifications
@@ -55,36 +47,19 @@ innovation_machicolations = {
 	flag = late_medieval_era_regular
 }
 
-innovation_gunpowder = {
-	skill = learning
+innovation_bombard = {
 	group = culture_group_military
 	culture_era = culture_era_late_medieval
-	icon = @gunpowder_02
-
-	parameters = {
-		unlock_late_medieval_gunpowder_units = yes
-		unlock_powder_magazines = yes
+	icon = @siege_weapons
+	potential = {
+		culture_does_not_have_standard_innovations = no
+		culture_does_not_have_standard_maa = no
 	}
 
-	asset = {
-		trigger = {
-			OR = {
-				has_cultural_pillar = heritage_easterner
-				has_cultural_pillar = heritage_shanxi
-				has_cultural_pillar = heritage_jureon
-			}
-		}
-		icon = @fire_dragon
-	}
-
-	custom = unlock_siege_maa_fourth_level
-
-	flag = global_regular
-	flag = late_medieval_era_regular
+	custom = unlock_maa_bombard
 }
 
 innovation_royal_armory = {
-	skill = martial
 	group = culture_group_military
 	culture_era = culture_era_late_medieval
 	icon = @levy_building
@@ -104,7 +79,6 @@ innovation_royal_armory = {
 }
 
 innovation_standing_armies = {
-	skill = martial
 	group = culture_group_military
 	culture_era = culture_era_late_medieval
 	icon = @leadership_2
@@ -122,10 +96,9 @@ innovation_standing_armies = {
 }
 
 innovation_sappers = {
-	skill = martial
 	group = culture_group_military
 	culture_era = culture_era_late_medieval
-	icon = @sappers
+	icon = @weapons_and_armor_01
 	potential = { culture_does_not_have_standard_innovations = no }
 
 	character_modifier = {
@@ -137,10 +110,9 @@ innovation_sappers = {
 }
 
 innovation_plate_armor = {
-	skill = martial
 	group = culture_group_military
 	culture_era = culture_era_late_medieval
-	icon =  @plate_armor
+	icon =  @weapons_and_armor_02
 	potential = { culture_does_not_have_standard_innovations = no }
 
 	maa_upgrade = {
@@ -158,7 +130,6 @@ innovation_plate_armor = {
 
 #culture_group_civic
 innovation_primogeniture = {
-	skill = diplomacy
 	group = culture_group_civic
 	culture_era = culture_era_late_medieval
 	icon = @majesty_01
@@ -174,7 +145,6 @@ innovation_primogeniture = {
 }
 
 innovation_cranes = {
-	skill = stewardship
 	group = culture_group_civic
 	culture_era = culture_era_late_medieval
 	icon = @civil_construction_1
@@ -194,7 +164,6 @@ innovation_cranes = {
 }
 
 innovation_noblesse_oblige = {
-	skill = diplomacy
 	group = culture_group_civic
 	culture_era = culture_era_late_medieval
 	icon = @nobility_03
@@ -212,7 +181,6 @@ innovation_noblesse_oblige = {
 }
 
 innovation_rightful_ownership = {
-	skill = diplomacy
 	group = culture_group_civic
 	culture_era = culture_era_late_medieval
 	icon = @leadership_1
@@ -221,35 +189,16 @@ innovation_rightful_ownership = {
 	character_modifier = {
 		title_creation_cost_mult = -0.2
 	}
+
 	custom = cb_discount_prestige_10
 	custom = more_glory_hounds
 }
 
-innovation_ermine_cloaks = { # now 'Exotic Regalia' in-game
-	skill = stewardship
+innovation_ermine_cloaks = {
 	group = culture_group_civic
 	culture_era = culture_era_late_medieval
 	icon = @majesty_03
-
-	asset = {
-		trigger = {
-			OR = {
-				has_cultural_pillar = heritage_marcher
-				#has_cultural_pillar = heritage_islander GH NOTE: Doesn't exist right now, to be added
-				has_cultural_pillar = heritage_sjalvolki
-				has_cultural_pillar = heritage_huegodoc
-				has_cultural_pillar = heritage_mondecny
-				has_cultural_pillar = heritage_clanlander
-				has_cultural_pillar = heritage_partic
-				has_cultural_pillar = heritage_sarminian
-				has_cultural_pillar = heritage_kardwen
-				has_cultural_pillar = heritage_karzarad
-				has_cultural_pillar = heritage_lonely_lighter
-			}
-		}
-		icon = @majesty_03
-		name = innovation_ermine_cloaks_ermine
-	}
+	potential = { culture_does_not_have_standard_innovations = no }
 
 	character_modifier = {
 		vassal_limit = 20
@@ -260,7 +209,6 @@ innovation_ermine_cloaks = { # now 'Exotic Regalia' in-game
 }
 
 innovation_court_officials = {
-	skill = stewardship
 	group = culture_group_civic
 	culture_era = culture_era_late_medieval
 	icon = @nobility_02
@@ -278,7 +226,6 @@ innovation_court_officials = {
 }
 
 innovation_development_04 = {
-	skill = stewardship
 	group = culture_group_civic
 	culture_era = culture_era_late_medieval
 	icon = @misc_inventions
@@ -292,7 +239,6 @@ innovation_development_04 = {
 }
 
 innovation_currency_04 = {
-	skill = stewardship
 	group = culture_group_civic
 	culture_era = culture_era_late_medieval
 	icon = @administration_1
@@ -305,67 +251,3 @@ innovation_currency_04 = {
 	flag = global_regular
 	flag = late_medieval_era_regular
 }
-
-### culture_group_regional ###
-#GH TODO: Adapt this to GH
-#innovation_wierdijks = {
-#	skill = stewardship
-#	group = culture_group_civic
-#	culture_era = culture_era_late_medieval
-#	region = custom_netherlands
-#	icon = @civil_construction_2
-#
-#	character_modifier = {
-#		levy_size = 0.01 #Not that kind of levee!
-#		city_holding_build_speed = -0.1
-#		city_holding_holding_build_speed = -0.1
-#		development_growth_factor = 0.1
-#
-#	}
-#
-#	flag = global_regional
-#	flag = late_medieval_era_regional
-#	
-#	ai_weight_for_fascination = {
-#		value = 100
-#		if = {
-#			limit = {
-#				NOT = {
-#					has_cultural_era_or_later = culture_era_late_medieval
-#				}
-#			}
-#			multiply = 0
-#		}
-#	}
-#}
-
-#innovation_condottieri = {
-#	skill = intrigue
-#	group = culture_group_military
-#	culture_era = culture_era_late_medieval
-#	region = world_europe_south_italy
-#	icon = @maa_01
-#
-#	character_modifier = {
-#		same_culture_mercenary_hire_cost_mult = -0.25
-#	}
-#
-#	culture_modifier = {
-#		mercenary_count_mult = 1
-#	}
-#
-#	flag = global_regional
-#	flag = late_medieval_era_regional
-#	
-#	ai_weight_for_fascination = {
-#		value = 100
-#		if = {
-#			limit = {
-#				NOT = {
-#					has_cultural_era_or_later = culture_era_late_medieval
-#				}
-#			}
-#			multiply = 0
-#		}
-#	}
-#}

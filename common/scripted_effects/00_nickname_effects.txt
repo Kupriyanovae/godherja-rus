@@ -27,9 +27,16 @@ chance_for_random_nickname_effect = {
 }
 
 flag_random_nickname_as_taken_in_batch_effect = {
-	save_scope_value_as = {
-		name = had_$NICK$
-		value = yes
+	if = {
+		limit = {
+			NOT = {
+				exists = scope:nickname_override
+			}
+		}
+		save_scope_value_as = {
+			name = had_$NICK$
+			value = yes
+		}
 	}
 }
 
@@ -131,7 +138,7 @@ assign_random_nickname_effect = {
 							faith = scope:nickname_root_scope.faith
 						}
 						AND = {
-							top_liege != this
+							is_independent_ruler = no
 							faith = liege.faith
 						}
 						government_has_flag = government_is_theocracy
@@ -207,7 +214,7 @@ assign_random_nickname_effect = {
 					ai_has_economical_boom_personality = yes
 					any_held_title = {
 						count >= 4
-						title_tier = county
+						tier = tier_county
 						title_province = {
 							has_ongoing_construction = yes
 						}
@@ -217,7 +224,7 @@ assign_random_nickname_effect = {
 				modifier = {
 					any_held_title = {
 						count = all
-						title_tier = county
+						tier = tier_county
 						title_province = {
 							has_ongoing_construction = yes
 						}
@@ -417,7 +424,7 @@ assign_random_nickname_effect = {
 					prestige_level >= 5
 					piety_level >= 3
 					realm_size >= 30
-					top_liege = this
+					is_independent_ruler = yes
 					NOT = { exists = scope:had_nick_the_great }
 				}
 				modifier = {
@@ -552,7 +559,7 @@ assign_random_nickname_effect = {
 			}
 			100 = {
 				trigger = {
-					has_trait = lifestyle_poet
+					has_trait = poet
 					has_trait = gregarious
 					NOT = { exists = scope:had_nick_the_troubadour }
 				}
@@ -670,7 +677,7 @@ assign_random_nickname_effect = {
 			100 = {
 				trigger = {
 				NOT = { exists = scope:had_nick_the_unfaithful }
-					any_relation = { type = lover }
+					num_of_relation_lover >= 1
 					any_child = {
 						OR = {
 							has_trait = bastard
@@ -690,7 +697,8 @@ assign_random_nickname_effect = {
 					is_male = yes
 					any_child = {
 						count >= 5
-						mother ?= {
+						exists = mother
+						mother = {
 							is_married = yes
 							NOT = {
 								is_consort_of = scope:nickname_root_scope
@@ -699,7 +707,8 @@ assign_random_nickname_effect = {
 					}
 					any_child = {
 						count = all
-						mother ?= {
+						exists = mother
+						mother = {
 							is_married = yes
 							NOT = {
 								is_consort_of = scope:nickname_root_scope
@@ -735,7 +744,7 @@ assign_random_nickname_effect = {
 			100 = {
 				trigger = {
 				NOT = { exists = scope:had_nick_the_unchaste }
-					any_relation = { type = lover }
+					num_of_relation_lover >= 1
 					any_child = {
 						OR = {
 							has_trait = bastard
@@ -771,7 +780,7 @@ assign_random_nickname_effect = {
 			100 = {
 				trigger = {
 					is_female = yes
-					any_relation = { type = lover }
+					num_of_relation_lover >= 1
 					OR = {
 						has_trait = lustful
 						has_trait = beauty_good
@@ -791,7 +800,7 @@ assign_random_nickname_effect = {
 			100 = {
 				trigger = {
 					is_female = yes
-					any_relation = { type = lover }
+					num_of_relation_lover >= 1
 					attraction >= 50
 					OR = {
 						has_trait = seducer
@@ -820,7 +829,7 @@ assign_random_nickname_effect = {
 					NOT = { exists = scope:had_nick_the_lewd }
 				}
 				modifier = {
-					any_relation = { type = lover }
+					num_of_relation_lover >= 1
 					factor = 2
 				}
 				give_nickname = nick_the_lewd
@@ -831,7 +840,7 @@ assign_random_nickname_effect = {
 			100 = {
 				trigger = {
 					is_male = yes
-					any_relation = { type = lover }
+					num_of_relation_lover >= 1
 					OR = {
 						has_trait = lustful
 						has_trait = beauty_good
@@ -851,7 +860,7 @@ assign_random_nickname_effect = {
 			100 = {
 				trigger = {
 					is_male = yes
-					any_relation = { type = lover }
+					num_of_relation_lover >= 1
 					attraction >= 50
 					OR = {
 						has_trait = seducer
@@ -973,7 +982,7 @@ assign_random_nickname_effect = {
 			}
 			100 = {
 				trigger = {
-					has_trait = lifestyle_poet
+					has_trait = poet
 					has_trait = gregarious
 					NOT = { exists = scope:had_nick_the_bard }
 				}
@@ -1040,7 +1049,7 @@ assign_random_nickname_effect = {
 			}
 			100 = {
 				trigger = {
-					has_trait = lifestyle_poet
+					has_trait = poet
 					diplomacy >= 10
 					NOT = { exists = scope:had_nick_the_poet }
 				}
@@ -1501,7 +1510,7 @@ assign_random_nickname_effect = {
 			100 = {
 				trigger = {
 					ai_zeal >= 25
-					top_liege != this
+					is_independent_ruler = no
 					NOR = {
 						religion = liege.religion
 						faith = { has_doctrine = doctrine_pluralism_pluralistic }
@@ -1876,7 +1885,7 @@ assign_random_nickname_effect = {
 				trigger = {
 					age >= 60
 					NOT = { exists = scope:had_nick_the_old }
-					is_undead = no ## GH ADDITION ##
+					is_undead = no
 				}
 				modifier = {
 					age >= 80
@@ -2027,6 +2036,7 @@ assign_random_nickname_effect = {
 				flag_random_nickname_as_taken_in_batch_effect = { NICK = nick_the_fair }
 				trigger_event = lifestyle_nicknames.1000
 			}
+
 			100 = {
 				trigger = {
 					OR = {
@@ -2242,7 +2252,6 @@ assign_random_nickname_effect = {
 			100 = {
 				trigger = {
 					OR = {
-						has_trait = fragile_bones
 						has_trait = infirm
 						has_trait = weak
 						has_trait = spindly
@@ -2271,7 +2280,6 @@ assign_random_nickname_effect = {
 				trigger = {
 					prowess < 8
 					OR = {
-						has_trait = faltering_heart
 						has_trait = infirm
 						has_trait = spindly
 						has_trait = weak
@@ -2357,6 +2365,7 @@ assign_random_nickname_effect = {
 				flag_random_nickname_as_taken_in_batch_effect = { NICK = nick_the_fat }
 				trigger_event = lifestyle_nicknames.1000
 			}
+
 			50 = {
 				trigger = {
 					current_weight >= 50
@@ -2477,7 +2486,9 @@ assign_random_nickname_effect = {
 			100 = {
 				trigger = {
 				NOT = { exists = scope:had_nick_bad_hand }
-					has_trait = maimed
+					OR = {
+						has_trait = maimed
+					}
 					AND = {
 						has_trait = scarred
 						prowess < 8
@@ -2756,10 +2767,7 @@ assign_random_nickname_effect = {
 						has_trait = scholar
 						has_trait = theologian
 					}
-					NOR = { 
-						exists = scope:had_nick_the_bearded 
-						has_trait = beardless_eunuch
-					}
+					NOT = { exists = scope:had_nick_the_bearded }
 				}
 				give_nickname = nick_the_bearded
 				# Flag this as having been spat out already, in case we're applying several nicknames in quick succession.
@@ -2885,17 +2893,11 @@ assign_random_nickname_effect = {
 			}
 			50 = {
 				trigger = {
-					OR = {
-						debt_level >= 1
-						treasury_debt_level >= 1
-					}
+					debt_level = 1
 					NOT = { exists = scope:had_nick_of_the_empty_pockets }
 				}
 				modifier = {
 					factor = debt_level
-				}
-				modifier = {
-					factor = treasury_debt_level
 				}
 				give_nickname = nick_of_the_empty_pockets
 				# Flag this as having been spat out already, in case we're applying several nicknames in quick succession.
@@ -3168,7 +3170,7 @@ assign_random_nickname_effect = {
 					ai_has_economical_boom_personality = yes
 					any_held_title = {
 						count >= 4
-						title_tier = county
+						tier = tier_county
 						title_province = {
 							has_ongoing_construction = yes
 						}
@@ -3178,7 +3180,7 @@ assign_random_nickname_effect = {
 				modifier = {
 					any_held_title = {
 						count = all
-						title_tier = county
+						tier = tier_county
 						title_province = {
 							has_ongoing_construction = yes
 						}
@@ -3210,7 +3212,9 @@ assign_random_nickname_effect = {
 			100 = {
 				trigger = {
 					ai_greed <= -50
-					any_sponsored_inspiration = { }
+					any_sponsored_inspiration = {
+						count >= 1
+					}
 					prestige_level >= 2
 					highest_held_title_tier >= tier_kingdom
 					NOT = { exists = scope:had_nick_the_patron_of_arts }
@@ -3648,7 +3652,8 @@ assign_random_nickname_effect = {
 			}
 			100 = {
 				trigger = {
-					capital_province ?= { geographical_region = world_india }
+					exists = capital_province
+					capital_province = { geographical_region = world_india }
 					prestige_level >= 3
 					prowess >= 12
 					martial >= 12
@@ -3725,12 +3730,8 @@ assign_random_nickname_effect = {
 						type = heavy_cavalry
 						value >= 500
 					}
-					any_held_title = {
-						title_tier = county
-						any_county_province = {
-							has_building_with_flag = special_mine
-						}
-					}
+					# GH URGENT: Implement all GH iron and gold mine buildings here 
+					always = no
 					NOT = { exists = scope:had_nick_the_iron_and_golden_king }
 				}
 				give_nickname = nick_the_iron_and_golden_king
@@ -3778,7 +3779,7 @@ assign_random_nickname_effect = {
 			}
 			100 = {
 				trigger = {
-					top_liege != this
+					is_independent_ruler = no
 					OR = {
 						is_a_faction_member = yes
 						has_trait = disloyal
@@ -4014,7 +4015,7 @@ set_random_negative_nickname_effect = {
 							faith = scope:nick_recipient.faith
 						}
 						AND = {
-							top_liege != this
+							is_independent_ruler = no
 							faith = liege.faith
 						}
 						government_has_flag = government_is_theocracy
@@ -4305,7 +4306,8 @@ set_random_negative_nickname_effect = {
 					is_male = yes
 					any_child = {
 						count >= 4
-						mother ?= {
+						exists = mother
+						mother = {
 							is_married = yes
 							NOT = {
 								is_consort_of = scope:nick_recipient
@@ -4314,7 +4316,8 @@ set_random_negative_nickname_effect = {
 					}
 					any_child = {
 						count = all
-						mother ?= {
+						exists = mother
+						mother = {
 							is_married = yes
 							NOT = {
 								is_consort_of = scope:nick_recipient
@@ -4349,7 +4352,7 @@ set_random_negative_nickname_effect = {
 			100 = {
 				trigger = {
 					is_female = yes
-					any_relation = { type = lover }
+					num_of_relation_lover >= 1
 					OR = {
 						has_trait = lustful
 						has_trait = beauty_good
@@ -4369,7 +4372,7 @@ set_random_negative_nickname_effect = {
 			100 = {
 				trigger = {
 					is_female = yes
-					any_relation = { type = lover }
+					num_of_relation_lover >= 1
 					OR = {
 						has_trait = lustful
 						has_trait = beauty_good
@@ -4397,7 +4400,7 @@ set_random_negative_nickname_effect = {
 					}
 				}
 				modifier = {
-					any_relation = { type = lover }
+					num_of_relation_lover >= 1
 					factor = 2
 				}
 				set_nickname_effect = {
@@ -4407,7 +4410,7 @@ set_random_negative_nickname_effect = {
 			100 = {
 				trigger = {
 					is_male = yes
-					any_relation = { type = lover }
+					num_of_relation_lover >= 1
 					OR = {
 						has_trait = lustful
 						has_trait = beauty_good
@@ -4427,7 +4430,7 @@ set_random_negative_nickname_effect = {
 			100 = {
 				trigger = {
 					is_male = yes
-					any_relation = { type = lover }
+					num_of_relation_lover >= 1
 					OR = {
 						has_trait = lustful
 						has_trait = beauty_good
@@ -4697,7 +4700,7 @@ set_random_negative_nickname_effect = {
 			}
 			100 = {
 				trigger = {
-					top_liege != this
+					is_independent_ruler = no
 					NOR = {
 						religion = liege.religion
 						faith = { has_doctrine = doctrine_pluralism_pluralistic }
@@ -5721,7 +5724,7 @@ set_random_negative_nickname_effect = {
 				trigger = {
 					has_trait = wrathful
 					ai_rationality <= -25
-					any_relation = { type = rival }
+					num_of_relation_rival >= 1
 				}
 				set_nickname_effect = {
 					NICKNAME = nick_the_wrathful
@@ -5787,7 +5790,7 @@ set_random_negative_nickname_effect = {
 			}
 			100 = {
 				trigger = {
-					top_liege != this
+					is_independent_ruler = no
 					OR = {
 						is_a_faction_member = yes
 						has_trait = disloyal

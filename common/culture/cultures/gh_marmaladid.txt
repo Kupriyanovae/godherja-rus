@@ -1,59 +1,15 @@
-﻿marmaladid = { # Old Culture, pre Great Tribe formation under the 7 Siblings
-	color = { 066 0.80 0.21 }
-	ethos = ethos_stoic
-	heritage = heritage_marmaladid
-	language = language_marmaladid
-	martial_custom = martial_custom_male_only
-	head_determination = head_determination_herd
-
-	traditions = {
-		tradition_desert_nomads
-		tradition_desert_ribat
-	}
-	name_list = name_list_marmaladid
-	
-	coa_gfx = { berber_group_coa_gfx }
-	building_gfx = { berber_group_building_gfx mena_building_gfx }
-	clothing_gfx = { afr_berber_clothing_gfx mena_clothing_gfx }
-	unit_gfx = { sarradonian_nomad_unit_gfx }
-	house_coa_frame = house_frame_06
-	house_coa_mask_offset = { 0.0 0.0 }
-	house_coa_mask_scale = { 0.85 0.85 }
-	
-	ethnicities = {
-		5 = east_africa_beja_1
-		5 = east_africa_beja_2
-		5 = east_africa_beja_3
-		5 = mid_east_yemeni_10
-		5 = mid_east_yemeni_11
-		5 = mid_east_yemeni_12
-		5 = mid_east_yemeni_13
-		5 = mid_east_yemeni_14
-		5 = mid_east_yemeni_15
-		5 = mid_east_yemeni_16
-		5 = mid_east_yemeni_17
-		5 = mid_east_yemeni_18
-		5 = mid_east_yemeni_19
-		5 = mid_east_yemeni_20
-	}
-}
-
-utyalid = {
+﻿utyalid = {
 	color = { 0.80 0.67 0.24  }
-
-	created = 6000.1.1
-	parents = { marmaladid }
-
+	
 	ethos = ethos_stoic
 	heritage = heritage_marmaladid
 	language = language_marmaladid
 	martial_custom = martial_custom_male_only
 	head_determination = head_determination_herd
 	traditions = {
+		tradition_dryland_dwellers
 		tradition_desert_nomads
 		tradition_mystical_ancestors
-		tradition_RICE_agdud_iqadib
-		tradition_desert_ribat
 	}
 	
 	name_list = name_list_marmaladid
@@ -62,33 +18,41 @@ utyalid = {
 	building_gfx = { berber_group_building_gfx mena_building_gfx }
 	clothing_gfx = { afr_berber_clothing_gfx mena_clothing_gfx }
 	unit_gfx = { sarradonian_nomad_unit_gfx }
-	house_coa_frame = house_frame_06
-	house_coa_mask_offset = { 0.0 0.0 }
-	house_coa_mask_scale = { 0.85 0.85 }
 	
 	ethnicities = {
-		5 = east_africa_beja_1
-		5 = east_africa_beja_2
-		5 = east_africa_beja_3
-		5 = mid_east_yemeni_10
-		5 = mid_east_yemeni_11
-		5 = mid_east_yemeni_12
-		5 = mid_east_yemeni_13
-		5 = mid_east_yemeni_14
-		5 = mid_east_yemeni_15
-		5 = mid_east_yemeni_16
-		5 = mid_east_yemeni_17
-		5 = mid_east_yemeni_18
-		5 = mid_east_yemeni_19
-		5 = mid_east_yemeni_20
+		5 = mid_east_bedouin_1
+		5 = mid_east_bedouin_2
+		5 = mid_east_bedouin_3
+		5 = mid_east_bedouin_4
+		5 = mid_east_bedouin_5
+		5 = mid_east_bedouin_6
+		5 = mid_east_bedouin_7
+		5 = mid_east_bedouin_8
+		5 = mid_east_bedouin_9
+		5 = mid_east_bedouin_10
+		5 = mid_east_bedouin_11
+		5 = mid_east_bedouin_12
+		5 = mid_east_bedouin_13
+		5 = mid_east_bedouin_14
+		5 = mid_east_bedouin_15
+		5 = mid_east_bedouin_16
+		5 = mid_east_bedouin_17
+		5 = mid_east_bedouin_18
+		5 = mid_east_bedouin_19
+		5 = mid_east_bedouin_20
+		5 = mid_east_bedouin_21
+		5 = mid_east_bedouin_22
+		5 = mid_east_bedouin_23
+		5 = mid_east_bedouin_24
+		5 = mid_east_bedouin_25
 	}
 }
 
 dawasid = {
 	color = hsv360{ 25 75 63 }
 	
-	created = 6000.1.1
-	parents = { marmaladid }
+	created = 1000.1.1
+	parents = { utyalid }
 	
 	ethos = ethos_bellicose
 	heritage = heritage_marmaladid
@@ -97,7 +61,7 @@ dawasid = {
 	head_determination = head_determination_herd
 	traditions = {
 		tradition_dryland_dwellers
-		tradition_RICE_settled_nomads
+		tradition_practiced_pirates
 		tradition_fishermen
 		tradition_mystical_ancestors
 	}
@@ -108,9 +72,6 @@ dawasid = {
 	building_gfx = { berber_group_building_gfx mena_building_gfx }
 	clothing_gfx = { afr_berber_clothing_gfx mena_clothing_gfx }
 	unit_gfx = { sarradonian_nomad_unit_gfx }
-	house_coa_frame = house_frame_06
-	house_coa_mask_offset = { 0.0 0.0 }
-	house_coa_mask_scale = { 0.85 0.85 }
 	
 	ethnicities = {
 		5 = north_african_berber_1
@@ -144,17 +105,16 @@ dawasid = {
 		5 = north_african_berber_31
 		5 = north_african_berber_32
 		5 = north_african_berber_33
-		5 = east_africa_beja_1
-		5 = east_africa_beja_2
-		5 = east_africa_beja_3
+		5 = west_african_1
+		5 = west_african_2
 	}
 }
 
 mutsartan = {
 	color = hsv360{ 25 75 63 }
 	
-	created = 6000.1.1
-	parents = { marmaladid }
+	created = 600.1.1
+	parents = { utyalid }
 	
 	ethos = ethos_bellicose
 	heritage = heritage_marmaladid
@@ -162,10 +122,10 @@ mutsartan = {
 	martial_custom = martial_custom_male_only
 	head_determination = head_determination_herd
 	traditions = {
-		tradition_desert_nomads
-		tradition_hill_dwellers
-		tradition_RICE_agdud_iqadib
-		tradition_blood_of_giants
+		tradition_dryland_dwellers
+		tradition_runestones
+		tradition_mountaineers
+		tradition_mystical_ancestors
 	}
 	
 	name_list = name_list_marmaladid
@@ -174,47 +134,69 @@ mutsartan = {
 	building_gfx = { berber_group_building_gfx mena_building_gfx }
 	clothing_gfx = { afr_berber_clothing_gfx mena_clothing_gfx }
 	unit_gfx = { sarradonian_nomad_unit_gfx }
-	house_coa_frame = house_frame_06
-	house_coa_mask_offset = { 0.0 0.0 }
-	house_coa_mask_scale = { 0.85 0.85 }
 	
 	ethnicities = {
-		4 = mid_east_south_arabian_01
-		4 = mid_east_south_arabian_02
-		4 = mid_east_south_arabian_03
-		4 = mid_east_south_arabian_04
-		4 = mid_east_south_arabian_05
-		4 = mid_east_south_arabian_06
-		4 = mid_east_south_arabian_07
-		4 = mid_east_south_arabian_08
-		4 = mid_east_south_arabian_09
-		4 = mid_east_south_arabian_10
-		4 = mid_east_south_arabian_11
-		4 = mid_east_south_arabian_12
-		4 = mid_east_south_arabian_13
-		4 = mid_east_south_arabian_14
-		4 = mid_east_south_arabian_15
-		4 = mid_east_south_arabian_16
-		4 = mid_east_south_arabian_17
-		4 = mid_east_south_arabian_18
-		4 = mid_east_south_arabian_19
-		4 = mid_east_south_arabian_20
-		4 = mid_east_south_arabian_21
-		4 = mid_east_south_arabian_22
-		4 = mid_east_south_arabian_23
-		4 = mid_east_south_arabian_24
-		4 = mid_east_south_arabian_25
-		4 = mid_east_south_arabian_26
-		4 = mid_east_south_arabian_27
-		4 = mid_east_south_arabian_28
-		4 = mid_east_south_arabian_29
-		4 = mid_east_south_arabian_30
-		4 = mid_east_south_arabian_31
-		4 = mid_east_south_arabian_32
-		4 = mid_east_south_arabian_33
-		4 = mid_east_south_arabian_34
-		4 = mid_east_south_arabian_35
-		4 = mid_east_south_arabian_36
+		4 = mid_east_arabic_1
+		4 = mid_east_arabic_2
+		4 = mid_east_arabic_3
+		4 = mid_east_arabic_4
+		4 = mid_east_arabic_5
+		4 = mid_east_arabic_6
+		4 = mid_east_arabic_7
+		4 = mid_east_arabic_8
+		4 = mid_east_arabic_9
+		4 = mid_east_arabic_10
+		4 = mid_east_arabic_11
+		4 = mid_east_arabic_12
+		4 = mid_east_arabic_13
+		4 = mid_east_arabic_14
+		4 = mid_east_arabic_15
+		4 = mid_east_arabic_16
+		4 = mid_east_arabic_17
+		4 = mid_east_arabic_18
+		4 = mid_east_arabic_19
+		4 = mid_east_arabic_20
+		4 = mid_east_arabic_21
+		4 = mid_east_arabic_22
+		4 = mid_east_arabic_23
+		4 = mid_east_arabic_24
+		4 = mid_east_arabic_25
+		4 = mid_east_arabic_26
+		4 = mid_east_arabic_27
+		4 = mid_east_arabic_28
+		4 = mid_east_arabic_29
+		4 = mid_east_arabic_30
+		4 = mid_east_arabic_31
+		4 = mid_east_arabic_32
+		4 = mid_east_arabic_33
+		4 = mid_east_arabic_34
+		4 = mid_east_arabic_35
+		4 = mid_east_arabic_36
+		5 = european_med_greek_1
+		5 = european_med_greek_2
+		5 = european_med_greek_3
+		5 = european_med_greek_4
+		5 = european_med_greek_5
+		5 = european_med_greek_6
+		5 = european_med_greek_7
+		5 = european_med_greek_8
+		5 = european_med_greek_9
+		5 = european_med_greek_10
+		5 = european_med_greek_11
+		5 = european_med_greek_12
+		5 = european_med_greek_13
+		5 = european_med_greek_14
+		5 = european_med_greek_15
+		5 = european_med_greek_16
+		5 = european_med_greek_17
+		5 = european_med_greek_18
+		5 = european_med_greek_19
+		5 = european_med_greek_20
+		5 = european_med_greek_21
+		5 = european_med_greek_22
+		5 = european_med_greek_23
+		5 = european_med_greek_24
+		5 = european_med_greek_25
 		5 = north_african_berber_1
 		5 = north_african_berber_2
 		5 = north_african_berber_3
@@ -232,9 +214,8 @@ akhtarfi = {
 	martial_custom = martial_custom_male_only
 	head_determination = head_determination_herd
 	traditions = {
-		tradition_pastoralists
+		tradition_dryland_dwellers
 		tradition_desert_nomads
-		tradition_desert_ribat
 		tradition_mystical_ancestors
 	}
 	
@@ -244,9 +225,6 @@ akhtarfi = {
 	building_gfx = { berber_group_building_gfx mena_building_gfx }
 	clothing_gfx = { afr_berber_clothing_gfx mena_clothing_gfx }
 	unit_gfx = { sarradonian_nomad_unit_gfx }
-	house_coa_frame = house_frame_06
-	house_coa_mask_offset = { 0.0 0.0 }
-	house_coa_mask_scale = { 0.85 0.85 }
 	
 	ethnicities = {
 		5 = mid_east_bedouin_1
@@ -273,18 +251,7 @@ akhtarfi = {
 		5 = mid_east_bedouin_22
 		5 = mid_east_bedouin_23
 		5 = mid_east_bedouin_24
-		4 = mid_east_south_arabian_30
-		4 = mid_east_south_arabian_31
-		4 = mid_east_south_arabian_32
-		4 = mid_east_south_arabian_33
-		4 = mid_east_south_arabian_34
-		4 = mid_east_south_arabian_35
-		4 = mid_east_south_arabian_36
-		5 = north_african_berber_1
-		5 = north_african_berber_2
-		5 = north_african_berber_3
-		5 = north_african_berber_4
-		5 = north_african_berber_5
+		5 = mid_east_bedouin_25
 	}
 }
 
@@ -297,10 +264,9 @@ ghudiyy = {
 	martial_custom = martial_custom_male_only
 	head_determination = head_determination_herd
 	traditions = {
-		tradition_sammalriq
+		tradition_dryland_dwellers
 		tradition_desert_nomads
-		tradition_horse_breeder
-		tradition_RICE_oral_poetry
+		tradition_mystical_ancestors
 	}
 	
 	name_list = name_list_marmaladid
@@ -309,26 +275,24 @@ ghudiyy = {
 	building_gfx = { berber_group_building_gfx mena_building_gfx }
 	clothing_gfx = { afr_berber_clothing_gfx mena_clothing_gfx }
 	unit_gfx = { sarradonian_nomad_unit_gfx }
-	house_coa_frame = house_frame_06
-	house_coa_mask_offset = { 0.0 0.0 }
-	house_coa_mask_scale = { 0.85 0.85 }
 	
 	ethnicities = {
-		5 = north_african_berber_41
-		5 = north_african_berber_42
-		5 = north_african_berber_43
-		5 = north_african_berber_44
-		5 = north_african_berber_45
-		5 = north_african_berber_46
-		5 = north_african_berber_47
-		5 = north_african_berber_48
-		5 = north_african_berber_49
-		5 = north_african_berber_30
-		5 = north_african_berber_31
-		5 = north_african_berber_32
-		5 = north_african_berber_33
-		5 = north_african_berber_64
-		5 = north_african_berber_35
+		5 = mid_east_bedouin_1
+		5 = mid_east_bedouin_2
+		5 = mid_east_bedouin_3
+		5 = mid_east_bedouin_4
+		5 = mid_east_bedouin_5
+		5 = mid_east_bedouin_6
+		5 = mid_east_bedouin_7
+		5 = mid_east_bedouin_8
+		5 = mid_east_bedouin_9
+		5 = mid_east_bedouin_10
+		5 = mid_east_bedouin_11
+		5 = mid_east_bedouin_12
+		5 = mid_east_bedouin_13
+		5 = mid_east_bedouin_14
+		5 = mid_east_bedouin_15
+		5 = mid_east_bedouin_16
 		5 = mid_east_bedouin_17
 		5 = mid_east_bedouin_18
 		5 = mid_east_bedouin_19
@@ -343,20 +307,16 @@ ghudiyy = {
 
 gwasillikh = {
 	color = { 0.26 0.21 0.74  }
-
-	created = 6000.1.1
-	parents = { marmaladid }
-
+	
 	ethos = ethos_stoic
 	heritage = heritage_marmaladid
 	language = language_marmaladid
 	martial_custom = martial_custom_male_only
 	head_determination = head_determination_herd
 	traditions = {
-		tradition_desert_ribat
+		tradition_dryland_dwellers
 		tradition_desert_nomads
-		tradition_RICE_agdud_iqadib
-		tradition_warrior_culture
+		tradition_mystical_ancestors
 	}
 	
 	name_list = name_list_marmaladid
@@ -365,194 +325,49 @@ gwasillikh = {
 	building_gfx = { berber_group_building_gfx mena_building_gfx }
 	clothing_gfx = { afr_berber_clothing_gfx mena_clothing_gfx }
 	unit_gfx = { sarradonian_nomad_unit_gfx }
-	house_coa_frame = house_frame_06
-	house_coa_mask_offset = { 0.0 0.0 }
-	house_coa_mask_scale = { 0.85 0.85 }
 	
 	ethnicities = {
-		5 = north_african_berber_51
-		5 = north_african_berber_52
-		5 = north_african_berber_53
-		5 = north_african_berber_54
-		5 = north_african_berber_55
-		5 = north_african_berber_56
-		5 = north_african_berber_57
-		5 = north_african_berber_58
-		5 = north_african_berber_59
-		5 = north_african_berber_60
-		5 = north_african_berber_61
-		5 = north_african_berber_62
-		5 = north_african_berber_63
-		5 = north_african_berber_64
-		5 = north_african_berber_65
-		5 = north_african_berber_66
-		5 = north_african_berber_67
-		5 = north_african_berber_68
-		5 = north_african_berber_69
-		5 = north_african_berber_70
-		5 = north_african_berber_71
-		5 = north_african_berber_72
-		5 = north_african_berber_73
-		5 = north_african_berber_74
-		5 = north_african_berber_75
+		5 = mid_east_bedouin_1
+		5 = mid_east_bedouin_2
+		5 = mid_east_bedouin_3
+		5 = mid_east_bedouin_4
+		5 = mid_east_bedouin_5
+		5 = mid_east_bedouin_6
+		5 = mid_east_bedouin_7
+		5 = mid_east_bedouin_8
+		5 = mid_east_bedouin_9
+		5 = mid_east_bedouin_10
+		5 = mid_east_bedouin_11
+		5 = mid_east_bedouin_12
+		5 = mid_east_bedouin_13
+		5 = mid_east_bedouin_14
+		5 = mid_east_bedouin_15
+		5 = mid_east_bedouin_16
+		5 = mid_east_bedouin_17
+		5 = mid_east_bedouin_18
+		5 = mid_east_bedouin_19
+		5 = mid_east_bedouin_20
+		5 = mid_east_bedouin_21
+		5 = mid_east_bedouin_22
+		5 = mid_east_bedouin_23
+		5 = mid_east_bedouin_24
+		5 = mid_east_bedouin_25
 	}
 }
 
 asarey = {
 	color = { 0.02 0.99 0.15  }
-
-	created = 6000.1.1
-	parents = { marmaladid }
 	
 	ethos = ethos_stoic
 	heritage = heritage_marmaladid
 	language = language_marmaladid
 	martial_custom = martial_custom_male_only
 	head_determination = head_determination_herd
-	traditions = {
-		tradition_desert_ribat
-		tradition_desert_nomads
-		tradition_collective_lands
-		tradition_sammalriq
-	}
-	
-	name_list = name_list_marmaladid
-	
-	coa_gfx = { berber_group_coa_gfx }
-	building_gfx = { berber_group_building_gfx mena_building_gfx }
-	clothing_gfx = { afr_berber_clothing_gfx mena_clothing_gfx }
-	unit_gfx = { sarradonian_nomad_unit_gfx }
-	house_coa_frame = house_frame_06
-	house_coa_mask_offset = { 0.0 0.0 }
-	house_coa_mask_scale = { 0.85 0.85 }
-	
-	ethnicities = {
-		4 = mid_east_south_arabian_01
-		4 = mid_east_south_arabian_02
-		4 = mid_east_south_arabian_03
-		4 = mid_east_south_arabian_04
-		4 = mid_east_south_arabian_05
-		4 = mid_east_south_arabian_06
-		4 = mid_east_south_arabian_07
-		4 = mid_east_south_arabian_08
-		4 = mid_east_south_arabian_09
-		4 = mid_east_south_arabian_10
-		4 = mid_east_south_arabian_11
-		4 = mid_east_south_arabian_12
-		4 = mid_east_south_arabian_13
-		4 = mid_east_south_arabian_14
-		4 = mid_east_south_arabian_15
-		4 = mid_east_south_arabian_16
-		4 = mid_east_south_arabian_17
-		4 = mid_east_south_arabian_18
-		4 = mid_east_south_arabian_19
-		4 = mid_east_south_arabian_20
-		4 = east_africa_beja_1
-		4 = east_africa_beja_2
-		4 = east_africa_beja_3
-	}
-}
-
-
-seylulid = {
-	color = { 0.12 0.39 0.65  }
-	
-	ethos = ethos_stoic
-	heritage = heritage_marmaladid
-	language = language_marmaladid
-	martial_custom = martial_custom_male_only
-	head_determination = head_determination_herd
-	traditions = {
-		tradition_desert_ribat
-		tradition_desert_nomads
-		tradition_collective_lands
-		tradition_sammalriq
-	}
-	
-	name_list = name_list_marmaladid
-	
-	coa_gfx = { berber_group_coa_gfx }
-	building_gfx = { berber_group_building_gfx mena_building_gfx }
-	clothing_gfx = { afr_berber_clothing_gfx mena_clothing_gfx }
-	unit_gfx = { sarradonian_nomad_unit_gfx }
-	house_coa_frame = house_frame_06
-	house_coa_mask_offset = { 0.0 0.0 }
-	house_coa_mask_scale = { 0.85 0.85 }
-	
-	ethnicities = {
-		2 = iranian_afghan_1
-		2 = iranian_afghan_2
-		2 = iranian_afghan_3
-		2 = iranian_afghan_4
-		2 = iranian_afghan_5
-		2 = iranian_afghan_6
-		2 = iranian_afghan_7
-		2 = iranian_afghan_8
-		2 = iranian_afghan_9
-		2 = iranian_afghan_10
-		2 = iranian_afghan_11
-		2 = iranian_afghan_12
-		2 = iranian_afghan_13
-		2 = iranian_afghan_14
-		2 = iranian_afghan_15
-		2 = iranian_afghan_16
-		2 = iranian_afghan_17
-		2 = iranian_afghan_18
-		2 = iranian_afghan_19
-		2 = iranian_afghan_20
-		2 = iranian_afghan_21
-		2 = iranian_afghan_22
-		2 = iranian_afghan_23
-		2 = iranian_afghan_24
-		2 = iranian_afghan_25
-		2 = iranian_afghan_26
-		2 = iranian_afghan_27
-		2 = iranian_afghan_28
-		2 = iranian_afghan_29
-		2 = iranian_afghan_30
-		2 = iranian_afghan_31
-		2 = iranian_afghan_32
-		2 = iranian_afghan_33
-		2 = iranian_afghan_34
-		2 = iranian_afghan_35
-		2 = iranian_afghan_36
-		2 = iranian_afghan_37
-		2 = iranian_afghan_38
-		2 = iranian_afghan_39
-		2 = iranian_afghan_40
-		2 = iranian_afghan_41
-		2 = iranian_afghan_42
-		2 = iranian_afghan_43
-		2 = iranian_afghan_44
-		2 = iranian_afghan_45
-		2 = iranian_afghan_46
-		2 = iranian_afghan_47
-		2 = iranian_afghan_48
-		2 = iranian_afghan_49
-		2 = iranian_afghan_50
-	}
-}
-
-
-almusid = {
-	color = { 0.43 0.87 0.41  }
-
-	created = 6300.1.1
-	parents = { utyalid madikirib }
-	history_loc_override = almusid_history_loc
-	
-	ethos = ethos_stoic
-	heritage = heritage_marmaladid
-	language = language_marmaladid
-	martial_custom = martial_custom_male_only
-	head_determination = head_determination_herd
-
 	traditions = {
 		tradition_dryland_dwellers
-		tradition_RICE_settled_nomads
+		tradition_desert_nomads
 		tradition_mystical_ancestors
-		tradition_RICE_agdud_iqadib
-		tradition_desert_ribat
+		tradition_sammalriq
 	}
 	
 	name_list = name_list_marmaladid
@@ -561,24 +376,32 @@ almusid = {
 	building_gfx = { berber_group_building_gfx mena_building_gfx }
 	clothing_gfx = { afr_berber_clothing_gfx mena_clothing_gfx }
 	unit_gfx = { sarradonian_nomad_unit_gfx }
-	house_coa_frame = house_frame_06
-	house_coa_mask_offset = { 0.0 0.0 }
-	house_coa_mask_scale = { 0.85 0.85 }
 	
 	ethnicities = {
-		5 = east_africa_beja_1
-		5 = east_africa_beja_2
-		5 = east_africa_beja_3
-		5 = mid_east_yemeni_10
-		5 = mid_east_yemeni_11
-		5 = mid_east_yemeni_12
-		5 = mid_east_yemeni_13
-		5 = mid_east_yemeni_14
-		5 = mid_east_yemeni_15
-		5 = mid_east_yemeni_16
-		5 = mid_east_yemeni_17
-		5 = mid_east_yemeni_18
-		5 = mid_east_yemeni_19
-		5 = mid_east_yemeni_20
+		5 = mid_east_bedouin_1
+		5 = mid_east_bedouin_2
+		5 = mid_east_bedouin_3
+		5 = mid_east_bedouin_4
+		5 = mid_east_bedouin_5
+		5 = mid_east_bedouin_6
+		5 = mid_east_bedouin_7
+		5 = mid_east_bedouin_8
+		5 = mid_east_bedouin_9
+		5 = mid_east_bedouin_10
+		5 = mid_east_bedouin_11
+		5 = mid_east_bedouin_12
+		5 = mid_east_bedouin_13
+		5 = mid_east_bedouin_14
+		5 = mid_east_bedouin_15
+		5 = mid_east_bedouin_16
+		5 = mid_east_bedouin_17
+		5 = mid_east_bedouin_18
+		5 = mid_east_bedouin_19
+		5 = mid_east_bedouin_20
+		5 = mid_east_bedouin_21
+		5 = mid_east_bedouin_22
+		5 = mid_east_bedouin_23
+		5 = mid_east_bedouin_24
+		5 = mid_east_bedouin_25
 	}
 }

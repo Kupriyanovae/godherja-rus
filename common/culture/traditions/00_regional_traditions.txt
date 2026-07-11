@@ -114,7 +114,6 @@ tradition_lords_of_the_elephant = {
 	parameters = {
 		can_recruit_jungle_specialist = yes
 		elephant_pens_building_bonuses = yes
-		unlock_elephant_pens_building_in_forest = yes ## GH ADDITION: Forest elephants
 		elephant_bonuses_for_rank_4_education = yes
 	}
 	character_modifier = {
@@ -388,17 +387,7 @@ tradition_caravaneers = {
 					desc = not_egalitarian_desc
 				}
 			}
-
-			if = {
-				limit = {
-					culture_tradition_reduction_trigger = { TRADITION = tradition_caravaneers }
-				}
-				multiply = {
-					value = 0.5
-					desc = inspired_by_culture_desc
-				}
-			}
-
+			
 			multiply = tradition_replacement_cost_if_relevant
 		}
 	}
@@ -645,139 +634,6 @@ tradition_desert_nomads = {
 	}
 }
 
-tradition_mountaineer_ruralism = {
-	category = regional
-
-	layers = {
-		0 = martial
-		1 = western
-		4 = mountain.dds
-	}
-
-	is_shown = {
-		#GH_TODO_AUH: Restrict this to a certain heritage?
-		#has_cultural_pillar = heritage_west_slavic
-		always = no
-	}
-
-	can_pick = {
-		#GH_TODO_AUH: Restrict this to a certain heritage?
-		#has_cultural_pillar = heritage_west_slavic
-		NOT = {
-			has_cultural_tradition = tradition_mountain_homes
-		}
-		custom_description = {
-			text = culture_in_mountains_desc
-			any_culture_county = {
-				county_has_province_with_terrain = {
-					terrain = mountains
-					terrain = desert_mountains
-				}
-			}
-		}
-	}
-
-	parameters = {
-		#unlock_maa_zbrojnosh = yes
-		quarries_building_bonuses = yes
-		hill_farms_building_bonuses = yes
-		rough_terrain_expert_trait_more_common = yes
-		mountain_trait_bonuses = yes
-		can_recruit_mountain_specialist = yes
-	}
-
-	character_modifier = {
-		mountains_travel_danger = mountains_high_danger_reduction
-		hills_travel_danger = hills_high_danger_reduction
-	}
-
-	county_modifier = {
-		hills_development_growth_factor = 0.1
-		mountains_development_growth_factor = 0.1
-	}
-
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			if = {
-				limit = {
-					NOT = {
-						culture_pillar:ethos_stoic = { is_in_list = traits }
-					}
-				}
-				add = {
-					value = tradition_incompatible_ethos_penalty
-					desc = not_stoic_desc
-				}
-			}
-			if = {
-				limit = {
-					NOT = {
-						any_culture_county = {
-							percent >= 0.3
-							county_has_province_with_terrain = {
-								terrain = mountains
-							}
-						}
-					}
-				}
-				add = {
-					value = tradition_unfulfilled_criteria_penalty
-					desc = mountain_true_percentage_desc
-				}
-			}
-
-			if = {
-				limit = {
-					culture_tradition_reduction_trigger = { TRADITION = tradition_mountaineer_ruralism }
-				}
-				multiply = {
-					value = 0.5
-					desc = inspired_by_culture_desc
-				}
-			}
-
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-
-	ai_will_do = {
-		value = 400
-		if = {
-			limit = {
-				NOT = {
-					scope:character = {
-						any_sub_realm_county = {
-							culture = scope:character.culture
-							county_has_province_with_terrain = {
-								terrain = mountains
-								terrain = hills
-							}
-						}
-					}
-				}
-			}
-			multiply = 0
-		}
-		else_if = {
-			limit = {
-				any_culture_county = {
-					percent >= 0.6
-					county_has_province_with_terrain = {
-						terrain = mountains
-						terrain = hills
-					}
-				}
-			}
-			multiply = 8
-		}
-	}
-}
-
 tradition_great_calling = {
 	category = regional
 	layers = {
@@ -860,13 +716,148 @@ tradition_great_calling = {
 			limit = {
 				any_culture_county = {
 					percent >= 0.6
-					county_has_province_with_terrain = {
-						terrain = forest
-						terrain = jungle
+					any_county_province = {
+						OR = {
+							terrain = forest
+							terrain = jungle
+						}
 					}
 				}
 			}
 			multiply = 2
 		}
+	}
+}
+
+tradition_palace_economy = {
+	category = regional
+
+	layers = {
+		0 = steward
+		1 = mena
+		4 = garden_architects.dds
+	}
+
+	is_shown = {
+		has_cultural_pillar = heritage_kherkeloi
+	}
+	
+	parameters = {
+		unlock_coterie_legacy = yes
+		unlock_city_temple_buildings_in_castles = yes
+		ai_more_likely_to_castle = yes
+	}
+	character_modifier = {
+		domain_limit = -2
+		domain_tax_mult = 0.2
+		monthly_county_control_growth_factor = 1
+		epidemic_resistance = 30
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_courtly = { is_in_list = traits }
+						culture_pillar:ethos_communal = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_courtly_or_communal_desc
+				}
+			}
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 100
+	}
+}
+
+tradition_kherkeloi_war_codes = {
+	category = realm
+
+	layers = {
+		0 = martial
+		1 = indian
+		4 = quill.dds
+	}
+	
+	is_shown = {
+		has_cultural_pillar = heritage_kherkeloi
+	}
+
+	can_pick = {
+		custom_tooltip = {
+			text = cannot_have_tradition_chevalien_identity
+			NOT = { culture_tradition:tradition_chevalien_identity = { is_in_list = traits } }
+		}
+		custom_tooltip = {
+			text = cannot_have_tradition_fp2_malleable_subjects
+			NOT = { culture_tradition:tradition_fp2_malleable_subjects = { is_in_list = traits } }
+		}
+		custom_tooltip = {
+			text = cannot_have_tradition_swords_for_hire
+			NOT = { culture_tradition:tradition_swords_for_hire = { is_in_list = traits } }
+		}
+		custom_tooltip = {
+			text = cannot_have_tradition_mercenary_contractors
+			NOT = { culture_tradition:tradition_mercenary_contractors = { is_in_list = traits } }
+		}
+	}
+	
+	parameters = {
+		knights_die_less_but_are_captured_more = yes
+		next_level_barracks = yes
+		building_barracks_spearmen_bonuses = yes
+		unlock_maa_azmaram = yes
+	}
+
+	character_modifier = {
+		pursue_efficiency = -0.1
+		hard_casualty_modifier = -0.6
+	}
+
+	county_modifier = {
+		travel_danger = -15
+	}
+
+	culture_modifier = {
+		mercenary_count_mult = -1
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_courtly = { is_in_list = traits }
+						culture_pillar:ethos_communal = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_courtly_or_communal_desc
+				}
+			}
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 100
 	}
 }

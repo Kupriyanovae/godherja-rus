@@ -428,34 +428,6 @@ learn_magic_spell_scheme_interaction = {
 			multiplier = 1.0
 			desc = AI_OPINION_REASON
 		}
-
-		modifier = { # You're my boss
-			add = 10
-			desc = I_AM_YOUR_COUNCILLOR
-			scope:recipient = { is_councillor_of = scope:actor }
-		}
-
-		modifier = { # You're my friend :)
-			add = 15
-			desc = WE_ARE_FRIENDS
-			scope:recipient = { has_relation_friend = scope:actor }
-		}
-
-		modifier = { # You're my lover <3
-			add = 15
-			desc = WE_ARE_LOVERS
-			scope:recipient = { has_relation_lover = scope:actor }
-		}
-
-		modifier = { # Same language
-			add = 5
-			desc = speaks_same_language_interaction_reason
-			trigger = {
-				scope:actor = {
-					knows_language_of_culture = scope:recipient.culture
-				}
-			}
-		}
 		
 		modifier = { # Spell level
 			add = {
@@ -478,6 +450,16 @@ learn_magic_spell_scheme_interaction = {
 			add = 20
 			scope:actor = { has_trait_with_flag = learn_spell_acceptance_20 }
 			desc = SAGE_PERK_ACCEPTANCE
+		}
+		
+		modifier = { # Same language
+			add = 5
+			desc = speaks_same_language_interaction_reason
+			trigger = {
+				scope:actor = {
+					knows_language_of_culture = scope:recipient.culture
+				}
+			}
 		}
 		
 		modifier = { # Shared Court Language (non-spoken)

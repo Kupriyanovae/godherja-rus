@@ -655,7 +655,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = water
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -670,7 +669,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = ice
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -685,7 +683,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = air
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -700,7 +697,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = stone
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -715,7 +711,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = dream
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -730,7 +725,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = celestial
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -745,7 +739,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = dark
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -760,7 +753,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = light
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -775,7 +767,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = blood
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -790,7 +781,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = nature
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -805,7 +795,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = ethereal
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -820,7 +809,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = hymns
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -835,7 +823,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = death
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -850,7 +837,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = sand
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -865,7 +851,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = metal
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -880,7 +865,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = time
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -895,7 +879,6 @@ save_strongest_aspect_flag_effect = {
 
 	if = {
 		limit = {
-			exists = var:$VARIABLE$
 			aspect_spellcasting_value_greater_than_flag_trigger = {
 				ASPECT_LHS = dawn
 				ASPECT_RHS_FLAG = var:$VARIABLE$
@@ -905,173 +888,6 @@ save_strongest_aspect_flag_effect = {
 		set_variable = {
 			name = $VARIABLE$
 			value = flag:dawn
-		}
-	}
-}
-
-save_aspect_overcharge_values_effect = {
-	$SPELL$ = {
-		if = {
-			limit = { fire_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = fire_overcharge
-					value = fire_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { water_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = water_overcharge
-					value = water_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { ice_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = ice_overcharge
-					value = ice_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { air_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = air_overcharge
-					value = air_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { stone_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = stone_overcharge
-					value = stone_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { dream_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = dream_overcharge
-					value = dream_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { celestial_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = celestial_overcharge
-					value = celestial_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { dark_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = dark_overcharge
-					value = dark_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { light_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = light_overcharge
-					value = light_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { blood_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = blood_overcharge
-					value = blood_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { nature_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = nature_overcharge
-					value = nature_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { ethereal_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = ethereal_overcharge
-					value = ethereal_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { hymns_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = hymns_overcharge
-					value = hymns_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { death_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = death_overcharge
-					value = death_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { sand_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = sand_overcharge
-					value = sand_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { metal_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = metal_overcharge
-					value = metal_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { time_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = time_overcharge
-					value = time_aspect_total_spell_level_value
-				}
-			}
-		}
-		if = {
-			limit = { dawn_aspect_total_spell_level_value > 0 }
-			prev = {
-				set_variable = {
-					name = dawn_overcharge
-					value = dawn_aspect_total_spell_level_value
-				}
-			}
 		}
 	}
 }

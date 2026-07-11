@@ -1,24 +1,10 @@
 ﻿story_gh_amsari_civil_war = {
 	on_setup = {}
-	visible = yes
-	icon = {
-		trigger = {
-			always = yes
-		}
-		reference = "gfx/interface/icons/character_interactions/icon_amsari_civil_war.dds"
-	}
 
-	background = {
-		reference = "gfx/interface/illustrations/decisions/decision_ck2_assassination.dds"
-	}
-
-	visualization = {
-		custom_string_key = "AMSARI_CIVIL_WAR_INFORMATION_STRING"
-	}
 	on_owner_death = {
 		# We tell everyone that pejman is dead if you're a vassal
 		every_player = {
-			limit = { top_liege = title:e_amsari_hiklahn.holder }
+			limit = { top_liege = title:e_amsari.holder }
 			trigger_event = {
 				id = gh_amsari.0001
 				days = 2
@@ -56,7 +42,7 @@
 		global_var:gh_hiklahn_ruling_dynasty_var ?= {
 			add_unity_value = {
 				value = { -35 -42 }
-				character = title:e_amsari_hiklahn.holder
+				character = title:e_amsari.holder
 				desc = gh_acw_started.desc
 			}
 		}
@@ -95,10 +81,10 @@
 		# Every supporter is happy and gets their rewards
 		if = {
 			limit = {
-				any_independent_ruler =	{ has_title = title:e_amsari_hiklahn }
+				any_independent_ruler =	{ has_title = title:e_amsari }
 			}
 			# Boost to house unity because they ended the civil war
-			title:e_amsari_hiklahn.holder = {
+			title:e_amsari.holder = {
 				house = {
 					add_unity_value = {
 						value = 30
@@ -113,7 +99,7 @@
 							variable = amsari_civil_war_supporter_list
 							add_prestige = major_prestige_value	
 							add_piety = medium_piety_value	
-							title:e_amsari_hiklahn.holder = {
+							title:e_amsari.holder = {
 								add_opinion = {
 									target = prev
 									modifier = gh_contributed_to_acw_victory_opinion
@@ -121,7 +107,7 @@
 								}
 							}
 							add_opinion = {
-								target = title:e_amsari_hiklahn.holder
+								target = title:e_amsari.holder
 								modifier = gh_won_amsari_civil_war_opinion
 								opinion = 20
 							}
@@ -131,7 +117,7 @@
 							variable = gh_acw_will_get_strong_hook
 							add_hook = {
 								type = strong_support_acw_hook
-								target = title:e_amsari_hiklahn.holder
+								target = title:e_amsari.holder
 							}
 						}
 					}
@@ -193,7 +179,7 @@
 										any_in_global_list = {
 											variable = involved_character_amsari_civil_war
 											this.max_military_strength <= prev.max_military_strength
-											NOT = { this = title:e_amsari_hiklahn.holder }
+											NOT = { this = title:e_amsari.holder }
 											gh_acw_basic_declare_war_trigger = yes
 										}
 									}
@@ -201,7 +187,7 @@
 										variable = involved_character_amsari_civil_war
 										limit = { 
 											this.max_military_strength <= prev.max_military_strength
-											NOT = { this = title:e_amsari_hiklahn.holder }
+											NOT = { this = title:e_amsari.holder }
 											gh_acw_basic_declare_war_trigger = yes
 										}
 										weight = {
@@ -453,7 +439,7 @@
 		
 		trigger = {
 			OR = { 
-				title:e_amsari_hiklahn.holder ?= { gh_acw_trigger_war_against_hiklahn = yes }
+				title:e_amsari.holder ?= { gh_acw_trigger_war_against_hiklahn = yes }
 				title:c_tchouran.holder ?= { gh_acw_trigger_war_against_hiklahn = yes }
 			}
 			has_global_variable = story_gh_amsari_civil_war
@@ -462,9 +448,9 @@
 			effect = {
 				random_list = {
 					50 = {
-						trigger = { title:e_amsari_hiklahn.holder ?= { gh_acw_trigger_war_against_hiklahn = yes } }
-						title:e_amsari_hiklahn.holder ?= { save_scope_as = defender }
-						title:e_amsari_hiklahn ?= { save_scope_as = defender_title }
+						trigger = { title:e_amsari.holder ?= { gh_acw_trigger_war_against_hiklahn = yes } }
+						title:e_amsari.holder ?= { save_scope_as = defender }
+						title:e_amsari ?= { save_scope_as = defender_title }
 					}
 					50 = {
 						trigger = { title:c_tchouran.holder ?= { gh_acw_trigger_war_against_hiklahn = yes } }

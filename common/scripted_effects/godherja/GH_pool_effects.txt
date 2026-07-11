@@ -1,17 +1,7 @@
 ﻿convert_wasteland_to_fogeater_effect = {
-	hidden_effect = {
-		if = {
-			limit = { 
-				is_alive = yes			
-				is_ruin = yes
-			}
-			# One-day delay on_action because for some ungodly reason character templates throws an error without it. 
-			# Using on_action to trigger death = { death_reason = death_disappearance } instead of an event since it's better for performance.
-			trigger_event = { 
-				on_action = on_wastelander_death_action
-				days = 1
-			}
-		}
+	if = {
+		limit = { is_ruin = yes }
+		silent_disappearance_effect = yes
 	}
 }
 

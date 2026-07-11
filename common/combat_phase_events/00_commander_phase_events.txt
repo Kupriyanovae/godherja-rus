@@ -14,12 +14,9 @@
 			is_ai = yes
 		}
 		modifier = {
-			add = 500
-			is_acclaimed = yes
-		}
-		modifier = {
 			add = 300
-			dynasty ?= {
+			exists = dynasty
+			dynasty = {
 				has_dynasty_perk = warfare_legacy_3
 			}
 		}
@@ -84,23 +81,28 @@ commander_wounded = {
 			factor = 0.5
 			has_trait = craven
 		}
+		modifier = {
+			factor = {
+				value = battle_death_chance_modifier_value
+				multiply = 0.01
+			}
+		}
 	}
 
 	effect = {
-		save_scope_as = commander
 		# Trigger the battle event indicating we have been Wounded.
 		if = {
 			limit = {
 				scope:combat_side.enemy_side = {
 					any_side_knight = {
-						this.prowess >= scope:commander.prowess_for_combat_event_opponent
+						this.prowess >= root.prowess_for_combat_event_opponent
 					}
 				}
 			}
 			scope:combat_side.enemy_side = {
 				random_side_knight = {
 					limit = {
-						this.prowess >= scope:commander.prowess_for_combat_event_opponent
+						this.prowess >= root.prowess_for_combat_event_opponent
 					}
 					save_scope_as = enemy_knight
 					add_prestige = knight_prestige_gain_on_wound_inverse
@@ -111,7 +113,7 @@ commander_wounded = {
 			scope:combat_side = {
 				battle_event = {
 					key = "commander_wounded_by_enemy"
-					left_portrait = scope:commander
+					left_portrait = root
 					right_portrait = scope:enemy_knight
 					type = wound
 				}
@@ -120,7 +122,7 @@ commander_wounded = {
 			send_interface_toast = {
 				type = event_toast_effect_bad
 				title = commander_wounded_by_enemy_interface_friendly_player
-				left_icon = scope:commander
+				left_icon = root
 				right_icon = scope:enemy_knight
 
 				# Inflict a wound on the commander.
@@ -132,7 +134,7 @@ commander_wounded = {
 			scope:combat_side = {
 				battle_event = {
 					key = "commander_wounded_no_enemy"
-					left_portrait = scope:commander
+					left_portrait = root
 					type = wound
 				}
 			}
@@ -140,7 +142,7 @@ commander_wounded = {
 			send_interface_toast = {
 				type = event_toast_effect_bad
 				title = commander_wounded_no_enemy_interface_friendly_player
-				left_icon = scope:commander
+				left_icon = root
 
 				# Inflict a wound on the commander.
 				increase_wounds_effect = { REASON = fight }
@@ -200,23 +202,28 @@ commander_maimed = {
 			factor = 0.5
 			has_trait = craven
 		}
+		modifier = {
+			factor = {
+				value = battle_death_chance_modifier_value
+				multiply = 0.01
+			}
+		}
 	}
 
 	effect = {
-		save_scope_as = commander
 		# Trigger the battle event indicating we have been Maimed.
 		if = {
 			limit = {
 				scope:combat_side.enemy_side = {
 					any_side_knight = {
-						this.prowess >= scope:commander.prowess_for_combat_event_opponent
+						this.prowess >= root.prowess_for_combat_event_opponent
 					}
 				}
 			}
 			scope:combat_side.enemy_side = {
 				random_side_knight = {
 					limit = {
-						this.prowess >= scope:commander.prowess_for_combat_event_opponent
+						this.prowess >= root.prowess_for_combat_event_opponent
 					}
 					save_scope_as = enemy_knight
 					add_prestige = knight_prestige_gain_on_wound_inverse
@@ -228,7 +235,7 @@ commander_maimed = {
 			scope:combat_side = {
 				battle_event = {
 					key = "commander_maimed_by_enemy"
-					left_portrait = scope:commander
+					left_portrait = root
 					right_portrait = scope:enemy_knight
 					type = wound
 				}
@@ -237,7 +244,7 @@ commander_maimed = {
 			send_interface_toast = {
 				type = event_toast_effect_bad
 				title = commander_maimed_by_enemy_interface_friendly_player
-				left_icon = scope:commander
+				left_icon = root
 				right_icon = scope:enemy_knight
 
 				# Main the commander.
@@ -249,7 +256,7 @@ commander_maimed = {
 			scope:combat_side = {
 				battle_event = {
 					key = "commander_maimed_no_enemy"
-					left_portrait = scope:commander
+					left_portrait = root
 					type = wound
 				}
 			}
@@ -257,7 +264,7 @@ commander_maimed = {
 			send_interface_toast = {
 				type = event_toast_effect_bad
 				title = commander_maimed_no_enemy_interface_friendly_player
-				left_icon = scope:commander
+				left_icon = root
 
 				# Main the commander.
 				maimed_in_battle_effect = yes
@@ -337,10 +344,18 @@ commander_killed = {
 				rank = 3
 			}
 		}
+		modifier = {
+			factor = {
+				value = 1
+				add = {
+					value = battle_death_chance_modifier_value
+					multiply = 0.01
+				}
+			}
+		}
 	}
 
 	effect = {
-		save_scope_as = commander
 		save_died_in_battle_variables_effect = {
 			ENEMY = scope:combat_side.enemy_side.side_primary_participant
 			LEADER = scope:combat_side.side_primary_participant
@@ -350,14 +365,14 @@ commander_killed = {
 			limit = {
 				scope:combat_side.enemy_side = {
 					any_side_knight = {
-						this.prowess >= scope:commander.prowess_for_combat_event_opponent
+						this.prowess >= root.prowess_for_combat_event_opponent
 					}
 				}
 			}
 			scope:combat_side.enemy_side = {
 				random_side_knight = {
 					limit = {
-						this.prowess >= scope:commander.prowess_for_combat_event_opponent
+						this.prowess >= root.prowess_for_combat_event_opponent
 					}
 					save_scope_as = enemy_knight
 					add_prestige = knight_prestige_gain_on_kill_inverse
@@ -367,25 +382,15 @@ commander_killed = {
 			scope:combat_side = {
 				battle_event = {
 					key = "commander_killed_by_enemy"
-					left_portrait = scope:commander
+					left_portrait = root
 					right_portrait = scope:enemy_knight
 					type = death
-				}
-			}
-			house ?= {
-				change_house_relation_effect = {
-					HOUSE = scope:enemy_knight.house
-					VALUE = house_relation_damage_medium_value
-					REASON = killed
-					CHAR = scope:enemy_knight
-					TARGET_CHAR = scope:commander
-					TITLE = scope:dummy_gender
 				}
 			}
 			send_interface_toast = {
 				type = event_slain_combatants_bad
 				title = commander_killed_by_enemy_interface_friendly
-				left_icon = scope:commander
+				left_icon = root
 				right_icon = scope:enemy_knight
 
 				# Kill the commander.
@@ -400,25 +405,18 @@ commander_killed = {
 			scope:combat_side = {
 				battle_event = {
 					key = "commander_killed_no_enemy"
-					left_portrait = scope:commander
+					left_portrait = root
 					type = death
 				}
 			}
 			send_interface_toast = {
 				type = event_slain_combatants_bad
 				title = commander_killed_no_enemy_interface_friendly
-				left_icon = scope:commander
+				left_icon = root
 				# Kill the commander.
 				death = {
 					death_reason = death_battle
 				}
-			}
-		}
-
-		scope:combat_side = { ## GH ADDITION: More comprehensive tracking of casualties for skull-taking
-			add_to_variable_list = {
-				name = slain_side_commanders
-				target = scope:commander
 			}
 		}
 	}
@@ -430,20 +428,20 @@ commander_mask_taken = { ## GH Addition: Olteni mask-taking
 	type = commander
 
 	is_valid = {
-		exists = scope:commander
+		exists = root
 		any_equipped_character_artifact = { artifact_type = oltenic_mask }
 		scope:combat_side.enemy_side = {
 			OR = {
 				any_side_commander = {
 					AND = {
 						oltenic_mask_user_strict_trigger = yes
-						this.prowess >= scope:commander.prowess_for_combat_event_opponent
+						this.prowess >= root.prowess_for_combat_event_opponent
 					}
 				}
 				any_side_knight = {
 					AND = {
 						oltenic_mask_user_strict_trigger = yes
-						this.prowess >= scope:commander.prowess_for_combat_event_opponent
+						this.prowess >= root.prowess_for_combat_event_opponent
 					}
 				}
 			}
@@ -532,7 +530,7 @@ commander_mask_taken = { ## GH Addition: Olteni mask-taking
 						any_side_commander = {
 							exists = yes
 							oltenic_mask_user_strict_trigger = yes
-							this.prowess >= scope:commander.prowess_for_combat_event_opponent
+							this.prowess >= root.prowess_for_combat_event_opponent
 						}
 					}
 					modifier = {
@@ -557,7 +555,7 @@ commander_mask_taken = { ## GH Addition: Olteni mask-taking
 						any_side_knight = {
 							exists = yes
 							oltenic_mask_user_strict_trigger = yes
-							this.prowess >= scope:commander.prowess_for_combat_event_opponent
+							this.prowess >= root.prowess_for_combat_event_opponent
 						}
 					}
 					random_side_knight = {
@@ -575,27 +573,27 @@ commander_mask_taken = { ## GH Addition: Olteni mask-taking
 		}
 		if = {
 			limit = {
-				scope:commander = { is_alive = yes }
+				root = { is_alive = yes }
 				scope:enemy_combatant = { is_alive = yes }
 			}
 			scope:combat_side = {
 				battle_event = {
 					key = "commander_killed_by_enemy_mask_looted"
-					left_portrait = scope:commander
+					left_portrait = root
 					right_portrait = scope:enemy_combatant
 					type = death
 				}
 			}
 			scope:enemy_combatant = {
 				if = {
-					limit = { is_acclaimed = yes }
+					limit = { accolade ?= { is_accolade_active = yes } }
 					accolade = { add_glory = medium_glory_gain }
 				}
 				trigger_event = gh_olteni_events.0001
 			}
 			send_interface_toast = {
 				title = commander_killed_by_enemy_mask_looted_interface_friendly
-				left_icon = scope:commander
+				left_icon = root
 				right_icon = scope:enemy_combatant
 				show_as_tooltip = { # Kill the commander.
 					death = {

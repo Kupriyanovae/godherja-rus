@@ -27,7 +27,7 @@ reunite_the_empire_decision = {
 	decision_group_type = aversarian
 
 	is_shown = {
-		title:h_aversarinas_aautokrata = { is_title_created = no }
+		title:e_aversarinas_aautokrata = { is_title_created = no }
 		OR = {
 			has_religion = religion:aversarinas_aagiokrata_religion
 			culture = { has_cultural_pillar = heritage_aversarian }
@@ -41,7 +41,7 @@ reunite_the_empire_decision = {
 				title:e_opakhasia = { any_in_de_jure_hierarchy = { tier = tier_county } }
 				title:e_cornucopia = { any_in_de_jure_hierarchy = { tier = tier_county } }
 				title:e_the_reach = { any_in_de_jure_hierarchy = { tier = tier_county } }
-				title:e_black_mountains = { any_in_de_jure_hierarchy = { tier = tier_county } }
+				title:e_gurdurbok = { any_in_de_jure_hierarchy = { tier = tier_county } }
 			}
 			has_title = title:e_asiupoli_aautokrata
 			has_title = title:e_oraispol_aautokrata
@@ -56,7 +56,6 @@ reunite_the_empire_decision = {
 				has_title = title:e_aversaria_anastereias
 				has_global_variable = anastereias_radical
 			}
-			game_start_date >= 6298.1.1
 		}
 	}
 
@@ -152,13 +151,13 @@ reunite_the_empire_decision = {
 						}
 					}
 					OR = {
-						has_title = title:e_black_mountains
+						has_title = title:e_gurdurbok
 						AND = {
-							exists = title:e_black_mountains.var:kingdom_demotion_title
-							exists = title:e_black_mountains.var:kingdom_demotion_title.holder
+							exists = title:e_gurdurbok.var:kingdom_demotion_title
+							exists = title:e_gurdurbok.var:kingdom_demotion_title.holder
 							OR = {
-								has_title = title:e_black_mountains.var:kingdom_demotion_title
-								title:e_black_mountains.var:kingdom_demotion_title.holder = {
+								has_title = title:e_gurdurbok.var:kingdom_demotion_title
+								title:e_gurdurbok.var:kingdom_demotion_title.holder = {
 									is_vassal_or_below_of = root
 								}
 							}
@@ -168,35 +167,117 @@ reunite_the_empire_decision = {
 			}
 		}
 		trigger_else = {
-			calc_true_if = {
-				#amount >= reunite_the_empire_required_empire_count
-				amount >= 4
-				
-				custom_tooltip = {
-					text = must_control_majority_of_etepezea_decision_tt
-					controls_majority_of_etepezea_formable_trigger = yes
-				}
-				custom_tooltip = {
-					text = must_control_majority_of_megos_kalathipsomi_decision_tt
-					controls_majority_of_megos_kalathipsomi_formable_trigger = yes
-				}
-				custom_tooltip = {
-					text = must_control_majority_of_mikros_kalathipsomi_decision_tt
-					controls_majority_of_mikros_kalathipsomi_formable_trigger = yes
-				}
-				custom_tooltip = {
-					text = must_control_majority_of_malcois_decision_tt
-					controls_majority_of_malcois_formable_trigger = yes
-				}
-				custom_tooltip = {
-					text = must_control_majority_of_opakhasia_decision_tt
-					controls_majority_of_opakhasia_formable_trigger = yes
-				}
-				custom_tooltip = {
-					text = must_control_majority_of_aironoi_decision_tt
-					controls_majority_of_aironoi_formable_trigger = yes
+			custom_description = {
+				text = reunite_the_empire_valid_desc
+				calc_true_if = {
+					#amount >= reunite_the_empire_required_empire_count
+					amount >= 4
+					
+					OR = {
+						has_title = title:e_etepezea
+						AND = {
+							exists = title:e_etepezea.var:kingdom_demotion_title
+							exists = title:e_etepezea.var:kingdom_demotion_title.holder
+							OR = {
+								has_title = title:e_etepezea.var:kingdom_demotion_title
+								title:e_etepezea.var:kingdom_demotion_title.holder = {
+									is_vassal_or_below_of = root
+								}
+							}
+						}
+					}
+					OR = {
+						has_title = title:e_malcois
+						AND = {
+							exists = title:e_malcois.var:kingdom_demotion_title
+							exists = title:e_malcois.var:kingdom_demotion_title.holder
+							OR = {
+								has_title = title:e_malcois.var:kingdom_demotion_title
+								title:e_malcois.var:kingdom_demotion_title.holder = {
+									is_vassal_or_below_of = root
+								}
+							}
+						}
+					}
+					OR = {
+						has_title = title:e_aironoi
+						AND = {
+							exists = title:e_aironoi.var:kingdom_demotion_title
+							exists = title:e_aironoi.var:kingdom_demotion_title.holder
+							OR = {
+								has_title = title:e_aironoi.var:kingdom_demotion_title
+								title:e_aironoi.var:kingdom_demotion_title.holder = {
+									is_vassal_or_below_of = root
+								}
+							}
+						}
+					}
+					OR = {
+						has_title = title:e_opakhasia
+						AND = {
+							exists = title:e_opakhasia.var:kingdom_demotion_title
+							exists = title:e_opakhasia.var:kingdom_demotion_title.holder
+							OR = {
+								has_title = title:e_opakhasia.var:kingdom_demotion_title
+								title:e_opakhasia.var:kingdom_demotion_title.holder = {
+									is_vassal_or_below_of = root
+								}
+							}
+						}
+					}
+					OR = {
+						has_title = title:e_cornucopia
+						AND = {
+							exists = title:e_cornucopia.var:kingdom_demotion_title
+							exists = title:e_cornucopia.var:kingdom_demotion_title.holder
+							OR = {
+								has_title = title:e_cornucopia.var:kingdom_demotion_title
+								title:e_cornucopia.var:kingdom_demotion_title.holder = {
+									is_vassal_or_below_of = root
+								}
+							}
+						}
+					}
+					OR = {
+						has_title = title:e_the_reach
+						AND = {
+							exists = title:e_the_reach.var:kingdom_demotion_title
+							exists = title:e_the_reach.var:kingdom_demotion_title.holder
+							OR = {
+								has_title = title:e_the_reach.var:kingdom_demotion_title
+								title:e_the_reach.var:kingdom_demotion_title.holder = {
+									is_vassal_or_below_of = root
+								}
+							}
+						}
+					}
+					OR = {
+						has_title = title:e_gurdurbok
+						AND = {
+							exists = title:e_gurdurbok.var:kingdom_demotion_title
+							exists = title:e_gurdurbok.var:kingdom_demotion_title.holder
+							OR = {
+								has_title = title:e_gurdurbok.var:kingdom_demotion_title
+								title:e_gurdurbok.var:kingdom_demotion_title.holder = {
+									is_vassal_or_below_of = root
+								}
+							}
+						}
+					}
 				}
 			}
+		}
+
+		OR = {
+			has_primary_title = title:e_etepezea
+			has_primary_title = title:e_malcois
+			has_primary_title = title:e_aironoi
+			has_primary_title = title:e_opakhasia
+			has_primary_title = title:e_cornucopia
+			has_primary_title = title:e_the_reach
+			has_primary_title = title:e_gurdurbok
+			has_primary_title = title:e_oraispol_aautokrata
+			has_primary_title = title:e_asiupoli_aautokrata
 		}
 	}
 
@@ -211,7 +292,7 @@ reunite_the_empire_decision = {
 				quality = illustrious
 				chronicle = new_title
 				properties = {
-					title = title:h_aversarinas_aautokrata
+					title = title:e_aversarinas_aautokrata
 					founder = root
 				}
 			}
@@ -266,7 +347,7 @@ reunite_the_north_decision = {
 	is_shown = {
 		culture = { has_cultural_pillar = heritage_aversarian }
 		NOR = { 
-			title:h_aversarinas_aautokrata = { is_title_created = yes }
+			title:e_aversarinas_aautokrata = { is_title_created = yes }
 			title:e_oraispol_aautokrata = { is_title_created = yes }
 			has_title = title:e_oraispol_aautokrata
 			has_title = title:e_aversaria_anastereias
@@ -303,13 +384,13 @@ reunite_the_north_decision = {
 		resolve_title_and_vassal_change = scope:change
 		hidden_effect = {
 			set_primary_title_to = title:e_oraispol_aautokrata
-			#every_held_title = {
-				#limit = { 
-					#tier = tier_empire
-					#NOT = { this = title:e_oraispol_aautokrata }
-				#}
-				#demote_empire_to_kingdom_effect = { NEW_EMPIRE_LIEGE_TITLE #= title:e_oraispol_aautokrata }
-			#}
+			every_held_title = {
+				limit = { 
+					tier = tier_empire
+					NOT = { this = title:e_oraispol_aautokrata }
+				}
+				demote_empire_to_kingdom_effect = { NEW_EMPIRE_LIEGE_TITLE = title:e_oraispol_aautokrata }
+			}
 		}
 	}
 
@@ -337,7 +418,7 @@ reunite_the_south_decision = {
 	is_shown = {
 		culture = { has_cultural_pillar = heritage_aversarian }
 		NOR = { 
-			title:h_aversarinas_aautokrata = { is_title_created = yes }
+			title:e_aversarinas_aautokrata = { is_title_created = yes }
 			title:e_asiupoli_aautokrata = { is_title_created = yes } 
 			has_title = title:e_asiupoli_aautokrata
 			has_title = title:e_aversaria_anastereias
@@ -372,13 +453,13 @@ reunite_the_south_decision = {
 		resolve_title_and_vassal_change = scope:change
 		hidden_effect = {
 			set_primary_title_to = title:e_asiupoli_aautokrata
-			#every_held_title = {
-				#limit = { 
-					#tier = tier_empire
-					#NOT = { this = title:e_asiupoli_aautokrata }
-				#}
-				#demote_empire_to_kingdom_effect = { NEW_EMPIRE_LIEGE_TITLE #= title:e_asiupoli_aautokrata }
-			#}
+			every_held_title = {
+				limit = { 
+					tier = tier_empire
+					NOT = { this = title:e_asiupoli_aautokrata }
+				}
+				demote_empire_to_kingdom_effect = { NEW_EMPIRE_LIEGE_TITLE = title:e_asiupoli_aautokrata }
+			}
 		}
 	}
 	
@@ -408,7 +489,7 @@ announce_aversaria_voreias_decision = {
 		culture = { has_cultural_pillar = heritage_aversarian }
 		has_game_rule = story_content_enabled
 		character_black_sun_trigger = yes
-		current_date >= 6254.1.1	
+		current_date >= 1254.1.1	
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -419,10 +500,10 @@ announce_aversaria_voreias_decision = {
 
 	is_valid = {
 		culture = { has_cultural_pillar = heritage_aversarian }
-		has_title = title:k_niodni
+		has_title = title:k_niidinia
 		OR = {
 			AND = {
-				has_title = title:k_nysinia
+				has_title = title:k_vyshtanka
 				has_title = title:k_heartwood
 			}
 			AND = {
@@ -443,13 +524,13 @@ announce_aversaria_voreias_decision = {
 			}
 			set_primary_title_to = title:e_aversaria_voreias
 			destroy_title = title:k_epavarion
-			title:e_black_mountains = {
+			title:e_gurdurbok = {
 				every_in_de_jure_hierarchy = {
 					limit = { tier = tier_kingdom }
 					set_de_jure_liege_title = title:e_aversaria_voreias
 				}
 			}
-			destroy_title = title:e_black_mountains
+			destroy_title = title:e_gurdurbok
 			trigger_event = black_sun.0001
 		}
 	
@@ -613,11 +694,9 @@ eastern_reforms_side_mongols_decision = {
 	}
 }
 
-###################################
-# ER - Reform Aversarian Religion #
-# by ThePinkPanzer				  #
-###################################
-
+##################
+# ER - Reform Aversarian Religion
+# by ThePinkPanzer
 reform_aversarian_religion = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
@@ -627,7 +706,6 @@ reform_aversarian_religion = {
 
 	is_shown = {
 		has_game_rule = story_content_enabled
-		character_hecaeda_trigger = yes
 		is_target_in_global_variable_list = {
 			name = unavailable_unique_decisions
 			target = flag:eastern_reforms_picked_side
@@ -638,37 +716,47 @@ reform_aversarian_religion = {
 				target = flag:eastern_aversarian_reform
 			}
 		}
+		character_hecaeda_trigger = yes
 	}
 
 	is_valid = {
-		custom_tooltip = { # Must own Kasmeze
-			text = reform_aversarian_religion_kasmeze_tt
-			any_sub_realm_county = { this = title:c_kasmeze }
+		custom_description = {
+			text = reform_aversarian_religion_own_kasmeze
+			title:c_salikon = {
+				OR = {
+					holder = prev
+					holder.top_liege = prev
+				}
+			}
 		}
 		OR = {
-			custom_tooltip = { # Gorassos must be dead
-				text = reform_aversarian_religion_gorassos_tt
-				character:southernimperial_aversarian_gorassos_1 = { is_alive = no }
+			custom_description = {
+				text = reform_aversarian_religion_gorassos_is_dead
+				character:southernimperial_aversarian_gorassos_1 = {
+					is_alive = no
+				}
 			}
-			custom_tooltip = { # The Bloodied Throne must be destroyed
-				text = reform_aversarian_religion_bloodied_throne_tt
-				title:k_the_bloodied_throne = { is_title_created = no }
+			custom_description = {
+				text = reform_aversarian_religion_bloodied_throne_destroyed
+				title:k_the_bloodied_throne = {
+					is_title_created = no
+				}
 			}
 		}
 	}
 
 	effect = {
-		custom_tooltip = reform_aversarian_religion_reform_effect
+		show_as_tooltip = {
+			custom_tooltip = reform_aversarian_religion_reform_effect
+		}
 		trigger_event = eastern_reforms.0013
 		add_to_global_variable_list = {
 			name = unavailable_unique_decisions
 			target = flag:eastern_aversarian_reform
 		}
-		faith:aversarinas_aagiokrata_reformed = { remove_variable = block_conversion_till_decision_taken }
-	}
-
-	cost = {
-		piety = 1000
+		faith:aversarinas_aagiokrata_reformed = {
+			remove_variable = block_conversion_till_decision_taken 
+		}
 	}
 
 	ai_potential = {
@@ -757,7 +845,7 @@ renounce_gorassos_decision = {
 	
 	is_valid = {
 		faith = faith:aversarian_gorassos
-		current_date <= 6310.1.1
+		current_date <= 1310.1.1
 	}	
 
 	effect = {
@@ -804,7 +892,7 @@ renounce_megistos_decision = {
 	
 	is_valid = {
 		faith = faith:manikos_aagiokrata
-		current_date <= 6310.1.1
+		current_date <= 1310.1.1
 	}	
 
 	effect = {
@@ -850,7 +938,7 @@ restore_etepezea_decision = {
 		any_realm_de_jure_duchy = {
 			OR = {
 				# is_not_in_traditional_kingdom = { KINGDOM_NAME = k_dragonmarch }
-				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_wyrmrest }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_assocaea }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_pergicos }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_palitake }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kollos }
@@ -962,7 +1050,7 @@ restore_the_reach_decision = {
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_everrain }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_heartwood }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_skycrown }
-				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_abrasos }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_easternkatraddia8 }
 			}
 		}
 	}
@@ -1273,16 +1361,16 @@ restore_gurdurbok_decision = { #restoring status quo
 			has_religion = religion:aversarinas_aagiokrata_religion
 			culture = { has_cultural_pillar = heritage_aversarian }
 		}
-		title:e_black_mountains = { is_titular = no }
+		title:e_gurdurbok = { is_titular = no }
 		is_independent_ruler = yes
 		trigger_if = {
-			limit = { exists = title:e_black_mountains.var:kingdom_demotion_title }
-			title:e_black_mountains.var:kingdom_demotion_title = { is_title_created = no }
+			limit = { exists = title:e_gurdurbok.var:kingdom_demotion_title }
+			title:e_gurdurbok.var:kingdom_demotion_title = { is_title_created = no }
 		}
 		any_realm_de_jure_duchy = {
 			OR = {
-				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_nysinia }
-				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_niodni }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_vyshtanka }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_niidinia }
 			}
 		}
 	}
@@ -1738,7 +1826,7 @@ solidify_aversaria_anastereias_decision = {
 		#Missed out on kingdoms in original decision#
 		NAND = { 
 			title:k_hyratan = { de_jure_liege = title:e_aversaria_anastereias } 
-			title:k_kashti = { de_jure_liege = title:e_aversaria_anastereias }
+			title:k_kasharya = { de_jure_liege = title:e_aversaria_anastereias }
 			title:k_dartar = { de_jure_liege = title:e_aversaria_anastereias }
 			title:k_taleshtadendar = { de_jure_liege = title:e_aversaria_anastereias }
 			title:d_taliron = { de_jure_liege = title:k_arbaz }
@@ -1781,7 +1869,7 @@ solidify_aversaria_anastereias_decision = {
 		custom_tooltip = solidify_aversaria_anastereias_effect_tooltip
 		hidden_effect = {
 			title:k_hyratan = { set_de_jure_liege_title = title:e_aversaria_anastereias }
-			title:k_kashti = { set_de_jure_liege_title = title:e_aversaria_anastereias }
+			title:k_kasharya = { set_de_jure_liege_title = title:e_aversaria_anastereias }
 			title:k_dartar = { set_de_jure_liege_title = title:e_aversaria_anastereias }
 			title:k_taleshtadendar = { set_de_jure_liege_title = title:e_aversaria_anastereias }
 			title:d_taliron = { set_de_jure_liege_title = title:k_arbaz}
@@ -1817,99 +1905,6 @@ solidify_aversaria_anastereias_decision = {
 
 	ai_potential = {
 		always = yes
-	}
-
-	ai_will_do = {
-		base = 100
-	}
-}
-
-#######################################
-# Stand on the Land beyond North Wind #
-# by Aerthawen                        #
-#######################################
-
-stand_on_the_land_beyond_north_wind_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_byz_reception.dds"
-	}
-	decision_group_type = aversarian
-
-	title = stand_on_the_land_beyond_north_wind_decision.t
-	desc = stand_on_the_land_beyond_north_wind_decision_desc
-	ai_check_interval = 20
-	is_shown = {
-		any_held_title = {
-			count <= 3
-			tier = tier_empire
-		}
-		NOT = {
-			has_title = title:e_aversaria_anastereias
-		}
-		highest_held_title_tier < tier_hegemony
-		culture = { has_cultural_pillar = heritage_aversarian }
-		any_realm_province = {
-			geographical_region = world_ga_kashirya
-		}
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:stand_on_the_land_beyond_north_wind_decision
-			}
-		}
-	}
-
-	cost = {
-		prestige = 1000
-		gold = 800
-	}
-
-	is_valid_showing_failures_only = {
-		is_independent_ruler = yes
-		is_at_war = no
-	}
-
-	is_valid = {
-		prestige_level >= 4
-		highest_held_title_tier >= tier_kingdom
-		capital_province = {
-			geographical_region = world_ga_kashirya
-		}
-		custom_tooltip = {
-			text = stand_on_the_land_beyond_north_wind_decision_tt
-			any_realm_county = {
-				count >= 50
-				any_county_province = {
-					geographical_region = world_ga_kashirya
-				}
-			}
-			
-		}
-		custom_tooltip = {
-			text = stand_on_the_land_beyond_north_wind_decision_1_tt
-			capital_province = {
-				has_holding_type = metro_holding
-			}
-		}
-		OR = {
-			martial >= 30
-			has_trait = education_martial_5
-			AND = {
-				has_trait = ambitious
-				martial >= 20
-			}
-		}
-	}
-
-	effect = {
-		show_as_tooltip = {
-			stand_on_the_land_beyond_north_wind_decision_effect = yes
-		}
-		trigger_event = aversaria.2001
-		add_to_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:stand_on_the_land_beyond_north_wind_decision
-		}
 	}
 
 	ai_will_do = {

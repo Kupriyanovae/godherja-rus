@@ -1,4 +1,4 @@
-﻿types DynastyTreeView
+types DynastyTreeView
 {
 	type dynasty_tree_item = container {
 		name = "dynasty_tree_item"
@@ -88,7 +88,7 @@
 					name = "character_container"
 					direction = vertical
 					ignoreinvisible = yes
-
+					margin_left = 13
 					container = {
 						datacontext = "[DynastyTreeItem.GetCharacter]"
 						ignoreinvisible = yes
@@ -181,11 +181,12 @@
 							name = "background_dynasty_head"
 							visible = "[And( Character.IsDynastyHead, Not( Character.IsFounderOfDynasty ))]"
 							size = { 120 150 }
-
+							
 							background = {
-								margin = { 10 5 }
-								margin_bottom = 42
-
+								margin_left = 10
+								margin_right = 27
+								margin_bottom = 50
+								
 								texture = "gfx/interface/component_overlay/overlay_noise.dds"
 								using = Mask_Rough_Edges
 								using = Color_Blue
@@ -201,9 +202,12 @@
 							}
 
 							background = {
-								margin = { 7 2 }
-								margin_bottom = 40
+							
+								margin_bottom = 50
 								using = Background_Frame
+								margin_left = 10
+								margin_right = 27
+								
 							}
 						}
 
@@ -213,7 +217,8 @@
 							size = { 120 150 }
 
 							background = {
-								margin = { 10 5 }
+								margin_left = 10
+								margin_right = 27
 								margin_bottom = 42
 
 								texture = "gfx/interface/component_overlay/overlay_noise.dds"
@@ -231,14 +236,16 @@
 							}
 
 							background = {
-								margin = { 10 5 }
+								margin_left = 10
+								margin_right = 27
 								margin_bottom = 42
 								using = Background_Area_Dark_Border
 								alpha = 0.2
 							}
 
 							background = {
-								margin = { 7 2 }
+								margin_left = 10
+								margin_right = 27
 								margin_bottom = 40
 								using = Background_Frame
 							}
@@ -246,7 +253,7 @@
 
 						portrait_shoulders = {
 							visible = "[Not(And( Character.IsFounderOfDynasty, ObjectsEqual( Character.GetDynasty.Self, DynastyTreeView.GetDynasty.Self )))]"
-							position = { 0 25 }
+							position = { 7 30 }
 
 							flowcontainer = {
 								direction = vertical
@@ -295,7 +302,7 @@
 						button = {
 							name = "show_hide_parent"
 							parentanchor = hcenter
-							position = { 7 12 }
+							position = { 2 12 }
 							visible = "[And(Not( DynastyTreeItem.IsTopParent ), Not(Character.IsDynastyHead))]"
 							size = { 25 25 }
 							framesize = { 60 60 }
@@ -308,7 +315,7 @@
 						button = {
 							name = "show_hide_parent_player"
 							parentanchor = hcenter
-							position = { 0 12 }
+							position = { 2 12 }
 							visible = "[And(Not( DynastyTreeItem.IsTopParent ), Character.IsDynastyHead)]"
 							
 							size = { 25 25 }
@@ -319,28 +326,83 @@
 							onclick = "[DynastyTreeItem.ToggleParentVisibility]"
 						}
 					}
+					
+					flowcontainer = {
+						
+						direction = vertical
+						ignoreinvisible = yes	
+						spacing = -10
+						text_single = {
+							visible = "[Not(DynastyTreeItem.GetCharacter.IsFounderOfDynasty)]"
+							name = "title"
+							size = { 150 30 }
+							parentanchor =  hcenter
+							margin_left = -11
 
-					text_single = {
-						name = "title"
-						size = { 140 30 }
-						parentanchor =  hcenter
+							# Must be autoresize no, since the text scales to nearest whole size increment, and therefore would push around other elements in the flowcontainer parent
+							autoresize = no
+							elide = right
 
-						# Must be autoresize no, since the text scales to nearest whole size increment, and therefore would push around other elements in the flowcontainer parent
-						autoresize = no
-						elide = right
+							align = center
+							raw_text = "[DynastyTreeItem.GetCharacter.GetTitledFirstNameNicknamedNoTooltipRegnal]"
+							default_format = "#high;bold"
+							fontsize = 20
+							fontsize_min = 13
+						}
+						text_single = {
+							visible = "[DynastyTreeItem.GetCharacter.IsFounderOfDynasty]"
+							name = "title_founder"
+							size = { 450 30 } #Could use select vector but I don't know its performance impact
+							parentanchor =  hcenter
+		
+							# Must be autoresize no, since the text scales to nearest whole size increment, and therefore would push around other elements in the flowcontainer parent
+							autoresize = no
+							elide = right
 
-						align = center
-						text = "[DynastyTreeItem.GetCharacter.GetTitledFirstNameOnlyNotMeNoTooltip|U]"
-						default_format = "#high"
-						fontsize = 20
-						fontsize_min = 10
+							align = center
+							raw_text = "[DynastyTreeItem.GetCharacter.GetTitledFirstNameNicknamedNoTooltipRegnal]"
+							default_format = "#high;bold"
+							fontsize = 20
+							fontsize_min = 12
+						}
+						text_single = {
+							visible = "[DynastyTreeItem.GetCharacter.IsAlive]"
+							size = { 130 30 }
+							parentanchor = hcenter
+							margin_top = 10
+							# Must be autoresize no, since the text scales to nearest whole size increment, and therefore would push around other elements in the flowcontainer parent
+							autoresize = no
+							elide = right
+
+							align = center
+							raw_text = "[DynastyTreeItem.GetCharacter.GetBirthDate.GetYear] - Unknown ([DynastyTreeItem.GetCharacter.GetAge])"
+							default_format = "#italic;bold"
+							fontsize = 17
+							fontsize_min = 12
+						}
+						text_single = {
+							visible = "[Not(DynastyTreeItem.GetCharacter.IsAlive)]"
+							size = { 130 30 }
+							parentanchor = hcenter
+							margin_top = 10
+							# Must be autoresize no, since the text scales to nearest whole size increment, and therefore would push around other elements in the flowcontainer parent
+							autoresize = no
+							elide = right
+
+							align = center
+							raw_text = "[DynastyTreeItem.GetCharacter.GetBirthDate.GetYear] - [DynastyTreeItem.GetCharacter.GetDeathDate.GetYear] ([DynastyTreeItem.GetCharacter.GetAge])"
+							default_format = "#italic;bold"
+							margin_left = -10
+							fontsize = 17
+							fontsize_min = 12
+						}
 					}
 
 					coa_dynasty_small = {
 						parentanchor = hcenter
 						datacontext = "[DynastyTreeItem.GetCharacter.GetDynasty]"
 						visible = "[DynastyTreeItem.IsFromOtherDynasty]"
-
+						
 						blockoverride "OnClickDefault" {
 							onclick = "[OpenGameViewData( 'dynasty_tree_view', DynastyTreeItem.GetCharacter.GetID )]"
 						}
@@ -348,7 +410,7 @@
 
 					coa_house_small = {
 						parentanchor = hcenter
-						visible = "[DynastyTreeItem.IsCadetBranchFounder]"
+						visible = "[And( Not( Or( DynastyTreeItem.IsFromOtherDynasty, DynastyTreeItem.GetCharacter.GetHouse.IsFoundingHouse )), ObjectsEqual( DynastyTreeItem.GetCharacter.Self, DynastyTreeItem.GetCharacter.GetHouse.GetFounder.Self ))]"
 						datacontext = "[DynastyTreeItem.GetCharacter.GetHouse]"
 					}
 
@@ -423,7 +485,7 @@ window = {
 
 	background = {
 		name = "paper_texture_flat"
-		texture = "gfx/interface/skinned/window_letter/tile_letter_flat.dds"
+		texture = "gfx/interface/window_event/tile_letter_flat.dds"
 		spriteType = Corneredtiled
 		spriteborder = { 200 200 }
 		size = { 100% 100% }
@@ -820,7 +882,6 @@ window = {
 														frame = 1
 														texture = "gfx/interface/icons/portraits/relation.dds"
 														tooltip = "[DynastyHouse.GetHeadOfHouse.GetDynastyHeadTooltip]"
-														visible = "[DynastyHouse.HasHeadOfHouse]"
 													}
 													button_standard = {
 														visible = "[DynastyHouse.HasHeadOfHouse]"
@@ -834,21 +895,12 @@ window = {
 												spacing = 10
 												ignoreinvisible = no
 												visible = "[ObjectsEqual( DynastyHouse.GetFounder.Self, DynastyHouse.GetHeadOfHouse.Self )]"
-												
-												hbox = {
-													icon = {
-														size = { 25 25 }
-														framesize = { 40 40 }
-														frame = 7
-														texture = "gfx/interface/icons/portraits/relation.dds"
-														tooltip = "HOUSE_FOUNDER_TOOLTIP"
-													}
-													button_standard = {
-														visible = "[ObjectsEqual( DynastyHouse.GetFounder.Self, DynastyHouse.GetHeadOfHouse.Self )]"
-														onclick = "[OpenGameViewData( 'dynasty_tree_view', DynastyHouse.GetFounder.GetID )]"
-														text = "[DynastyHouse.GetFounder.GetTitledFirstNameNoTooltipRegnal]"
-														size = { 190 33 }
-													}
+
+												button_standard = {
+													visible = "[ObjectsEqual( DynastyHouse.GetFounder.Self, DynastyHouse.GetHeadOfHouse.Self )]"
+													onclick = "[OpenGameViewData( 'dynasty_tree_view', DynastyHouse.GetFounder.GetID )]"
+													text = "[DynastyHouse.GetFounder.GetTitledFirstNameNoTooltipRegnal]"
+													size = { 190 33 }
 												}
 
 												button_standard = {

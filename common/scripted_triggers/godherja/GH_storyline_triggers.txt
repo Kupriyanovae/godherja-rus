@@ -24,13 +24,13 @@ is_sjalvolki_kingdom_capital = {
 
 is_sole_aautokratir = {
 	OR = {
-		has_title = title:h_aversarinas_aautokrata
+		has_title = title:e_aversarinas_aautokrata
 		has_title = title:e_oraispol_aautokrata
 		has_title = title:e_asiupoli_aautokrata
 	}
 	trigger_if = {
-		limit = { title:h_aversarinas_aautokrata = { is_title_created = yes } }
-		title:h_aversarinas_aautokrata = { holder = root }
+		limit = { title:e_aversarinas_aautokrata = { is_title_created = yes } }
+		title:e_aversarinas_aautokrata = { holder = root }
 	}
 	trigger_if = {
 		limit = { title:e_oraispol_aautokrata = { is_title_created = yes } }
@@ -44,7 +44,7 @@ is_sole_aautokratir = {
 
 any_aautokratir_exists = {
 	OR = {
-		title:h_aversarinas_aautokrata = { is_title_created = yes }
+		title:e_aversarinas_aautokrata = { is_title_created = yes }
 		title:e_oraispol_aautokrata = { is_title_created = yes }
 		title:e_asiupoli_aautokrata = { is_title_created = yes }
 	}

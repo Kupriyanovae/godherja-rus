@@ -73,29 +73,29 @@ bp1_yearly_events = {
 	trigger = {
 		has_dlc_feature = friends_and_foes
 		OR = {
-			any_relation = { type = friend }
-			any_relation = { type = rival }
-			any_relation = { type = best_friend }
-			any_relation = { type = nemesis }
+			num_of_relation_friend >= 1
+			num_of_relation_rival >= 1
+			num_of_relation_best_friend >= 1
+			num_of_relation_nemesis >= 1
 		}
 	}
 	weight_multiplier = {
 		base = 1
 		modifier = { # Increase frequency the more you fit the conditions
 			add = 0.25
-			any_relation = { type = friend }
+			num_of_relation_friend >= 1
 		}
 		modifier = { # Increase frequency the more you fit the conditions
 			add = 0.25
-			any_relation = { type = rival }
+			num_of_relation_rival >= 1
 		}
 		modifier = { # Increase frequency the more you fit the conditions
 			add = 0.25
-			any_relation = { type = best_friend }
+			num_of_relation_best_friend >= 1
 		}
 		modifier = { # Increase frequency the more you fit the conditions
 			add = 0.25
-			any_relation = { type = nemesis }
+			num_of_relation_nemesis >= 1
 		}
 	}
 

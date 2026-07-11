@@ -27,39 +27,6 @@
 	color = westernimperial
 }
 
-language_opakhasiatic_imperial = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_opakhasiatic_imperial
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_opakhasiatic_imperial }
-			multiply = 10
-		}
-		if = {
-			limit = { has_cultural_pillar = language_aversarian }
-			multiply = 5
-		}
-		if = {
-			limit = {
-				scope:character = {
-					OR = {
-						religion = religion:aversarinas_aagiokrata_religion
-						religion = religion:agionism_religion
-					}
-				}
-			}
-			multiply = 2.5
-		}
-	}
-	
-	color = neo_opakhasian
-}
-
 language_kholmvolki = {
 	type = language
 	is_shown = {
@@ -878,136 +845,11 @@ language_easterner = {
 		value = 10
 		if = {
 			limit = { has_cultural_pillar = language_easterner }
-			multiply = 8
-		}
-		if = {
-			limit = { 
-				has_cultural_tradition = tradition_conquered
-				OR = {
-					this = culture:saeridian
-					any_parent_culture = {
-						this = culture:saeridian
-					}
-				}
-			}
-			multiply = 5
-		}
-	}
-	color = easterner
-}
-language_shanxi = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_shanxi
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_shanxi }
 			multiply = 10
 		}
 	}
 	color = easterner
 }
-language_jureon = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_jureon
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_jureon }
-			multiply = 10
-		}
-	}
-	color = easterner
-}
-language_ayuthan = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_ayuthan
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_jureon }
-			multiply = 10
-		}
-	}
-	color = easterner
-}
-language_itomka = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_itomka
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_jureon }
-			multiply = 10
-		}
-	}
-	color = easterner
-}
-language_linhvuong = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_linhvuong
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_jureon }
-			multiply = 10
-		}
-	}
-	color = easterner
-}
-language_talome = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_talome
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_jureon }
-			multiply = 10
-		}
-	}
-	color = easterner
-}
-language_kikarsag = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_kikarsag
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_kikarsag }
-			multiply = 10
-		}
-	}
-	color = easterner
-}
-
 language_fog_eaters = {
 	type = language
 	is_shown = {
@@ -1873,23 +1715,6 @@ language_saielaian = {
 	color = dubadin
 }
 
-language_mutande = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_mutande
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_mutande }
-			multiply = 10
-		}
-	}
-	color = dubadin
-}
-
 language_dergi = {
 	type = language
 	is_shown = {
@@ -2300,78 +2125,8 @@ language_talareg = {
 		}
 	}
 	
-	color = talareg
+	color = azargi
 }
-
-language_mond = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_mond
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_mond }
-			multiply = 10
-		}
-	}
-	color = pactlander
-}
-
-language_old_aironoian = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_old_aironoian
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_old_aironoian }
-			multiply = 10
-		}
-	}
-	color = old_aironoian
-}
-
-
-language_eryriatic_islander = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_eryriatic_islander
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_eryriatic_islander }
-			multiply = 10
-		}
-	}
-	color = eryriatic_islander
-}
-
-language_east_imperial = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_east_imperial
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_east_imperial }
-			multiply = 10
-		}
-	}
-	color = old_aironoian
-}
-
 
 ###################
 # RUNIC LANGUAGES #

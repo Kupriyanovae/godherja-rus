@@ -47,20 +47,19 @@ fp3_challenge_house_head_interaction = {
 		can_do_diplomacy_trigger = yes
 		has_fp3_dlc_trigger = yes
 		scope:actor = {
-			this != scope:recipient
+			NOT = { this = scope:recipient }
 			OR = {
 				government_has_flag = government_is_clan
 				government_has_flag = government_is_continental_clan
 			}
-			house ?= {
-				house_head = scope:recipient
-				OR = {
-					has_house_unity_parameter = unity_can_challenge_house_head
-					#scope:actor = {
-					#	any_character_struggle = { has_struggle_phase_parameter = unlocks_challenge_house_head_for_clans }
-					#}
-					house_head ?= { government_is_japanese_trigger = yes }
-				}
+		}
+		scope:actor.house ?= {
+			house_head = scope:recipient
+			OR = {
+				has_house_unity_parameter = unity_can_challenge_house_head
+				#scope:actor = {
+				#	any_character_struggle = { has_struggle_phase_parameter = unlocks_challenge_house_head_for_clans }
+				#}
 			}
 		}
 	}
@@ -86,7 +85,6 @@ fp3_challenge_house_head_interaction = {
 				text = fp3_challenge_house_head_interaction_recent_tt
 				NOT = { has_character_flag = fp3_challenge_house_head_recent_flag }
 			}
-			tgp_is_ceremonial_liege_trigger = no
 		}
 	}
 	
@@ -152,9 +150,8 @@ fp3_challenge_house_head_interaction = {
 		scope:recipient = { save_scope_as = house_head }
 		if = {
 			limit = {
-				OR = {
-					scope:recipient = { is_vassal_or_below_of = scope:actor }
-					scope:recipient = { is_ruler = no }
+				scope:recipient = {
+					is_ruler = no
 				}
 			}
 			scope:actor.house = { set_house_head = scope:actor }
@@ -209,26 +206,6 @@ fp3_challenge_house_head_interaction = {
 							}
 						}
 					}
-					# Admin Japanese can duel, but it is frowned upon
-					scope:actor = {
-						custom_description_no_bullet = {
-							text = challenge_house_head_japanese_admin
-						}
-						if = {
-							limit = {
-								government_is_japanese_trigger = yes
-								tgp_soryo_or_bushido_trigger = no
-							}
-							if = {
-								limit = { scope:lethal = no }
-								add_prestige = medium_prestige_loss
-							}
-							else = {
-								add_prestige = major_prestige_loss
-								add_prestige_level = -1
-							}
-						}
-					}
 					trigger_event = fp3_misc_decisions.0022
 				}
 			}
@@ -254,9 +231,6 @@ fp3_challenge_house_head_interaction = {
 	send_option = {
 		flag = diplomacy
 		localization = CHALLENGE_HOUSE_HEAD_DIPLOMACY_DUEL
-		starts_enabled = {
-			scope:actor = { tgp_soryo_or_bushido_trigger = no }
-		}
 		is_valid = {
 			custom_tooltip = {
 				text = CHALLENGE_HOUSE_HEAD_LETHAL_DUEL_INVALID_TT
@@ -268,14 +242,7 @@ fp3_challenge_house_head_interaction = {
 		flag = lethal
 		localization = CHALLENGE_HOUSE_HEAD_LETHAL_DUEL
 		is_valid = {
-			scope:actor = {
-				has_relation_rival = scope:recipient
-				trigger_if = {
-					limit = { government_is_japanese_trigger = yes }
-					tgp_soryo_or_bushido_trigger = yes
-					scope:recipient = { tgp_soryo_or_bushido_trigger = yes }
-				}
-			}
+			scope:actor = { has_relation_rival = scope:recipient }
 			custom_tooltip = {
 				text = CHALLENGE_HOUSE_HEAD_LETHAL_DUEL_INVALID_TT
 				NOT = { scope:diplomacy = yes }
@@ -294,10 +261,6 @@ fp3_challenge_house_head_interaction = {
 	send_options_exclusive = no
 
 	# AI
-
-	auto_accept = {
-		scope:recipient = { is_vassal_or_below_of = scope:actor }
-	}
 	
 	ai_accept = {
 		base = 25
@@ -373,17 +336,7 @@ fp3_challenge_house_head_interaction = {
 				}
 				NOT = { has_relation_rival = scope:actor }
 			}
-			factor = 0.5
 			desc = AI_AVOID_LETHAL_DUEL_WITH_FAMILY
-		}
-		modifier = {
-			NOT = { scope:diplomacy = yes }
-			scope:recipient = {
-				government_is_japanese_trigger = yes
-				tgp_soryo_or_bushido_trigger = no
-			}
-			factor = 0.5
-			desc = AI_NOT_SORYO_OR_BUSHIDO
 		}
 		opinion_modifier = {
 			opinion_target = scope:actor
@@ -391,28 +344,22 @@ fp3_challenge_house_head_interaction = {
 		}
 	}
 	
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 36
-		duchy = 24
-		kingdom = 6
-		empire = 1
-		hegemony = 1
-	}
+	ai_frequency = 24
 	
 	ai_target_quick_trigger = {
 		adult = yes
 	}
 	
 	ai_potential = {
-		is_ruler = yes
-		is_house_head = no
+		NOR = {
+			has_trait = craven
+			has_trait = content
+		}
 		OR = {
 			government_has_flag = government_is_clan
 			government_has_flag = government_is_continental_clan
-			government_is_japanese_trigger = yes
 		}
-		is_physically_able = yes
+		is_physically_able = yes 
 	}
 
 	ai_targets = {
@@ -440,23 +387,23 @@ fp3_challenge_house_head_interaction = {
 		# Base requirements for AI
 		modifier = { 
 			add = -1000
-			AND = {
-				NOT = {
-					scope:recipient = { is_vassal_or_below_of = scope:actor }
+			NOR = {
+				AND = {
+					is_independent_ruler = yes
+					highest_held_title_tier >= scope:recipient.highest_held_title_tier
 				}
-				OR = {
-					AND = {
-						top_liege = this
-						highest_held_title_tier >= scope:recipient.highest_held_title_tier
-					}
-					is_powerful_vassal = yes
-					is_close_or_extended_family_of = scope:recipient
-					opinion = {
-						target = scope:recipient
-						value >= 25
-					}
+				is_powerful_vassal = yes
+				is_close_or_extended_family_of = scope:recipient
+				opinion = {
+					target = scope:recipient
+					value >= 25
 				}
 			}
+		}
+		# Stop AI constantly challenging players
+		modifier = { 
+			scope:recipient = { has_character_flag = ai_cooldown_house_head_challenge_flag }
+			add = -1000
 		}
 		# Tiers
 		modifier = {
@@ -518,47 +465,6 @@ fp3_challenge_house_head_interaction = {
 		modifier = {
 			ai_sociability = 100
 			add = 10
-		}
-		# Higher in stature
-		modifier = {
-			is_independent_ruler = yes
-			scope:recipient = { is_independent_ruler = no }
-			add = 1000
-		}
-		modifier = {
-			highest_held_title_tier > scope:recipient.highest_held_title_tier
-			scope:recipient = { is_independent_ruler = no }
-			add = {
-				value = highest_held_title_tier
-				add = scope:recipient.highest_held_title_tier
-				multiply = 10
-			}
-		}
-		modifier = {
-			scope:recipient = { is_vassal_or_below_of = scope:actor }
-			add = 500
-		}
-		# Remove non dominant gender
-		modifier = {
-			scope:actor = { is_faith_dominant_gender = yes }
-			scope:recipient = { is_faith_dominant_gender = no }
-			factor = 2
-		}
-		# Stop AI constantly challenging players
-		modifier = { 
-			scope:recipient = { has_character_flag = ai_cooldown_house_head_challenge_flag }
-			factor = 0
-		}
-		# Stop AI game-overing players
-		modifier = { 
-			scope:recipient = {
-				trigger_if = {
-					limit = { is_ai = no }
-					is_landed = no
-					any_held_title = { is_noble_family_title = yes }
-				}
-			}
-			factor = 0
 		}
 	}
 }
@@ -793,14 +699,7 @@ fp3_request_honorary_titles_interaction = { # todo_cd_polish add different optio
 		}
 	}
 
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 60
-		empire = 60
-		hegemony = 60
-	}
+	ai_frequency = 60
 
 	ai_potential = {
 		exists = house
@@ -809,9 +708,11 @@ fp3_request_honorary_titles_interaction = { # todo_cd_polish add different optio
 				count >= 3
 			}
 		}
+		ai_has_warlike_personality = no
 	}
 
 	ai_targets = {
+		# For the AI, we limit it to neighboring_rulers
 		ai_recipients = vassals
 	}
 
@@ -892,14 +793,7 @@ fp3_request_house_unity_change_interaction = {
 		}
 	}
 
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 60
-		empire = 60
-		hegemony = 60
-	}
+	ai_frequency = 60
 
 	ai_potential = {
 		exists = house

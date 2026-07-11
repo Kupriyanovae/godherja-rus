@@ -90,23 +90,23 @@ get_bone_artifact_quality_effect = {
 					exists = court_owner
 					court_owner = {
 						has_royal_court = yes
-						amenity_level = { target = court_lodging_standards value > low_amenity_level }
+						amenity_level = { type = court_lodging_standards value > low_amenity_level }
 					}
 				}
 				if = {
-					limit = { court_owner = { amenity_level = { target = court_lodging_standards value >= max_amenity_level } } }
+					limit = { court_owner = { amenity_level = { type = court_lodging_standards value >= max_amenity_level } } }
 					add = 6
 				}
 				else_if = {
-					limit = { court_owner = { amenity_level = { target = court_lodging_standards value >= very_high_amenity_level } } }
+					limit = { court_owner = { amenity_level = { type = court_lodging_standards value >= very_high_amenity_level } } }
 					add = 4
 				}
 				else_if = {
-					limit = { court_owner = { amenity_level = { target = court_lodging_standards value >= high_amenity_level } } }
+					limit = { court_owner = { amenity_level = { type = court_lodging_standards value >= high_amenity_level } } }
 					add = 3
 				}
 				else_if = {
-					limit = { court_owner = { amenity_level = { target = court_lodging_standards value >= medium_amenity_level } } }
+					limit = { court_owner = { amenity_level = { type = court_lodging_standards value >= medium_amenity_level } } }
 					add = 2
 				}
 				else = {

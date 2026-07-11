@@ -897,19 +897,26 @@ assign_all_lifepath_trait = {
 		}
 		opakhasia_lifepaths_effect = { MODE = check_any }
 	}
-	else_if = {
+	if = {
 		limit = {
 			has_faith = faith:four_steps_of_salvation
 		}
 		four_steps_lifepaths_effect = { MODE = check_any }
 	}
-	else_if = {
+	if = {
 		limit = {
 			has_faith = faith:darrallianism
 		}
 		tripath_lifepaths_effect = { MODE = check_any }
 	}
-	else = {
+	if = {
+		limit = {
+			OR = {
+				NOT = { has_faith = faith:conclave_of_opakhasia }
+				NOT = { has_faith = faith:four_steps_of_salvation }
+				NOT = { has_faith = faith:darrallianism }
+			}
+		}
 		lifepaths_effect = { MODE = check_any }
 	}
 	
@@ -919,12 +926,7 @@ assign_all_lifepath_trait = {
 assign_lifepath_trait = {
 	if = {
 		limit = {
-			faith = { 
-				OR = {
-					has_variable = faith_has_lifepaths
-					has_doctrine = tenet_lifepath_religion_syncretism 
-				}
-			}
+			faith = { has_variable = faith_has_lifepaths }
 			is_adult = yes
 		}
 		if = {
@@ -933,7 +935,7 @@ assign_lifepath_trait = {
 			}
 			add_valid_opakhasia_lifepath_traits = yes
 		}
-		else_if = {
+		if = {
 			limit = { 
 				faith = { has_doctrine_parameter = tripath_lifepaths }
 			}

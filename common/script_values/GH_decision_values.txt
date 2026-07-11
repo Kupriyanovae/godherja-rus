@@ -31,7 +31,7 @@ extort_subjects_cooldown_time = {
 	}
 }
 
-aversaria_formable_percent_value = 80
+aversaria_formable_percent_value = 75
 
 aversarian_formable_percent_decimal_value = {
 	value = aversaria_formable_percent_value
@@ -329,9 +329,9 @@ current_controlled_gurdurbok_decision_region_owned_percent_value = {
 	multiply = 100
 }
 
-current_k_natha_nattana_decision_region_owned_value = {    
+current_k_currentsprings_decision_region_owned_value = {    
     value = 0
-    title:k_natha_nattana = {
+    title:k_currentsprings = {
         every_de_jure_county = {
             limit = { 
 				tier = tier_county 
@@ -342,24 +342,24 @@ current_k_natha_nattana_decision_region_owned_value = {
     }
 }
 
-current_k_natha_nattana_decision_region_total_value = {    
+current_k_currentsprings_decision_region_total_value = {    
     value = 0
-    title:k_natha_nattana = {
+    title:k_currentsprings = {
         every_de_jure_county = {
             add = 1
         }
     }
 }
 
-current_controlled_k_natha_nattana_decision_region_owned_percent_value = {
-    value = current_k_natha_nattana_decision_region_owned_value
-    divide = current_k_natha_nattana_decision_region_total_value
+current_controlled_k_currentsprings_decision_region_owned_percent_value = {
+    value = current_k_currentsprings_decision_region_owned_value
+    divide = current_k_currentsprings_decision_region_total_value
     multiply = 100
 }
 
-current_k_tas_nattana_decision_region_owned_value = {    
+current_k_west_nattana_decision_region_owned_value = {    
     value = 0
-    title:k_tas_nattana = {
+    title:k_west_nattana = {
         every_de_jure_county = {
             limit = { 
 				tier = tier_county 
@@ -370,24 +370,24 @@ current_k_tas_nattana_decision_region_owned_value = {
     }
 }
 
-current_k_tas_nattana_decision_region_total_value = {    
+current_k_west_nattana_decision_region_total_value = {    
     value = 0
-    title:k_tas_nattana = {
+    title:k_west_nattana = {
         every_de_jure_county = {
             add = 1
         }
     }
 }
 
-current_controlled_k_tas_nattana_decision_region_owned_percent_value = {
-    value = current_k_tas_nattana_decision_region_owned_value
-    divide = current_k_tas_nattana_decision_region_total_value
+current_controlled_k_west_nattana_decision_region_owned_percent_value = {
+    value = current_k_west_nattana_decision_region_owned_value
+    divide = current_k_west_nattana_decision_region_total_value
     multiply = 100
 }
 
-current_k_cas_nattana_decision_region_owned_value = {    
+current_k_east_nattana_decision_region_owned_value = {    
     value = 0
-    title:k_cas_nattana = {
+    title:k_east_nattana = {
         every_de_jure_county = {
             limit = { 
 				tier = tier_county 
@@ -398,18 +398,18 @@ current_k_cas_nattana_decision_region_owned_value = {
     }
 }
 
-current_k_cas_nattana_decision_region_total_value = {    
+current_k_east_nattana_decision_region_total_value = {    
     value = 0
-    title:k_cas_nattana = {
+    title:k_east_nattana = {
         every_de_jure_county = {
             add = 1
         }
     }
 }
 
-current_controlled_k_cas_nattana_decision_region_owned_percent_value = {
-    value = current_k_cas_nattana_decision_region_owned_value
-    divide = current_k_cas_nattana_decision_region_total_value
+current_controlled_k_east_nattana_decision_region_owned_percent_value = {
+    value = current_k_east_nattana_decision_region_owned_value
+    divide = current_k_east_nattana_decision_region_total_value
     multiply = 100
 }
 
@@ -441,199 +441,3 @@ current_controlled_e_thura_taw_decision_region_owned_percent_value = {
     divide = current_e_thura_taw_decision_region_total_value
     multiply = 100
 }
-
-bronzeport_percent_value = 90
-
-bronzeport_percent_decimal_value = {
-	value = bronzeport_percent_value
-	divide = 100
-	max = 1
-}
-
-current_bronzeport_decision_region_owned_value = {
-	value = 0
-	every_county_in_region = {
-		region = trade_confluence_bronzeport_core_area
-		limit = { holder.top_liege = root }
-		add = 1
-	}
-}
-
-current_bronzeport_decision_region_total_value = {
-	every_county_in_region = {
-		region = trade_confluence_bronzeport_core_area
-		add = 1
-	}
-}
-
-current_controlled_bronzeport_decision_region_owned_percent_value = {
-	value = current_bronzeport_decision_region_owned_value
-	divide = current_bronzeport_decision_region_total_value
-	multiply = 100
-}
-
-operational_efficiency_denominator_value = 100
-operational_efficiency_total_value = {
-	value = global_var:operational_efficiency_molecule_value
-	divide = operational_efficiency_denominator_value
-	max = 1
-}
-
-craftsmen_buildings_number_value = {
-	value = 0
-	root = {
-		every_realm_province = {
-			limit = {
-				OR = {
-					has_building_or_higher = artisan_quarters_04
-					has_building_or_higher = wind_furnace_04
-					has_building_or_higher = smiths_04
-					has_building_or_higher = siege_works_03
-					has_building_or_higher = blacksmiths_03
-				}
-			}
-			add = 1
-		}
-	}
-}
-
-dahnagon_vassl_power_value = {
-	value = 0
-		every_vassal_or_below = {
-			limit = {
-				highest_held_title_tier = tier_county
-			}
-			add = 25
-		}
-		every_vassal_or_below = {
-			limit = {
-				highest_held_title_tier = tier_duchy
-			}
-			add = 50
-		}
-		every_vassal_or_below = {
-			limit = {
-				highest_held_title_tier = tier_kingdom
-			}
-			add = 100
-		}
-	if = {
-		limit = {
-			government_has_flag = government_is_administrative
-		}
-		multiply = 0.2
-	}
-}
-
-dahangon_elepthants_number_value = {
-	value = 0 
-	root = {
-		every_realm_province = {
-			limit = {
-				has_building_or_higher = elephant_pens_04
-			}
-			add = 1
-		}
-	}
-}
-
-chinlin_dynasty_vassal_member_value = {
-	value = 0 
-		every_vassal_or_below = {
-			limit = {
-				dynasty = root.dynasty
-				highest_held_title_tier >= tier_county
-				opinion = {
-					target = root
-					value >= 50
-				}
-			}
-			add = 1
-		}
-
-}
-
-chinlin_inland_water_transport_value = {
-	value = 0 
-	root = {
-		every_realm_province = {
-			limit = {
-				geographical_region = trade_confluence_tagsan_navigable_area
-				OR = {
-					has_building_or_higher = common_tradeport_06
-					has_building_or_higher = caravanserai_05
-				}
-			}
-			add = 1
-		}
-	}
-}
-
-chinlin_inland_water_transport_income_value = {
-	value = chinlin_inland_water_transport_value
-	multiply = 150
-	if = {
-		limit = {
-			always = yes
-		}
-		add = 250
-	}
-}
-
-fourteen_heavenly_methods_in_dahangon_region_value = {    
-    value = 0
-    title:e_chinlin = {
-        every_de_jure_county = {
-            limit = { 
-				tier = tier_county 
-				faith = root.faith
-			}
-            add = 1
-        }
-    }
-}
-
-fourteen_heavenly_methods_in_dahangon_region_total_value = {    
-    value = 0
-    title:e_chinlin = {
-        every_de_jure_county = {
-            add = 1
-        }
-    }
-}
-
-fourteen_heavenly_methods_in_dahangon_region_percentage_value = {    
-    value = fourteen_heavenly_methods_in_dahangon_region_value
-	divide = fourteen_heavenly_methods_in_dahangon_region_total_value
-	multiply = 100
-}
-
-xin_xue_county_in_realm_value = {
-	value = 0
-	root = {
-		every_realm_county = {
-			limit = {
-				faith = faith:xin_xue
-			}
-			add = 1
-		}
-	}
-}
-
-rule_county_in_realm_value = {
-	value = 0
-	root = {
-		every_realm_county = {
-			add = 1
-		}
-	}
-}
-
-xin_xue_believers_proportion_value = {
-	value = xin_xue_county_in_realm_value
-	divide = rule_county_in_realm_value
-	multiply = 100
-}
-
-
-

@@ -38,7 +38,6 @@ faith_doctrine_cost_mid = 400
 faith_doctrine_cost_high = 600
 faith_doctrine_cost_massive = 1000
 
-faith_tenet_cost_discount_scholar_official_tradition = 0
 faith_tenet_cost_low = 500
 faith_tenet_cost_mid = 1000
 faith_tenet_cost_high = 1500
@@ -73,8 +72,6 @@ regional_heresy_factor = {
 }
 
 meditation_duration = 185 # In days
-
-local_shrine_duration = 14
 
 faction_county_opinion_astray = {
 	value = county_opinion
@@ -379,7 +376,7 @@ claim_piety_value = {
 		# Landless adventurers can't get cheap access to legitimists without putting in some leg-work.
 		if = {
 			limit = {
-				scope:actor = { has_government = landless_adventurer_government }
+				scope:actor = { is_landless_adventurer = yes }
 			}
 			multiply = 10
 		}
@@ -752,7 +749,7 @@ great_holy_war_target_kingdom_weight = {
 				limit = {
 					title_capital_county = {
 						squared_distance = {
-							target = title:c_lwydmynyD_
+							target = title:c_lwydmyny
 							value >= ghw_target_distance_01_threshold
 						}
 					}
@@ -851,7 +848,7 @@ great_holy_war_target_kingdom_weight = {
 				limit = {
 					title_capital_county = {
 						squared_distance = {
-							target = title:c_lwydmynyD_
+							target = title:c_lwydmyny
 							value >= ghw_target_distance_02_threshold
 						}
 					}
@@ -948,7 +945,7 @@ great_holy_war_target_kingdom_weight = {
 				limit = {
 					title_capital_county = {
 						squared_distance = {
-							target = title:c_lwydmynyD_
+							target = title:c_lwydmyny
 							value >= ghw_target_distance_03_threshold
 						}
 					}
@@ -1128,11 +1125,11 @@ holy_war_defensive_join_value = {
 
 # Root = faith
 faith_conversion_fervor_mult = {
-	value = define:NFaith|MAX_FERVOR
+	value = define:NReligion|MAX_FERVOR
 	subtract = fervor
-	multiply = define:NFaith|FAITH_CREATION_FERVOR_DISCOUNT_PER_MISSING_FERVOR
-	max = define:NFaith|FAITH_CREATION_FERVOR_DISCOUNT_MAX
-	divide = define:NFaith|MAX_FERVOR
+	multiply = define:NReligion|FAITH_CREATION_FERVOR_DISCOUNT_PER_MISSING_FERVOR
+	max = define:NReligion|FAITH_CREATION_FERVOR_DISCOUNT_MAX
+	divide = define:NReligion|MAX_FERVOR
 }
 
 # Modify (multiply) the doctrine cost when creating a faith.
@@ -1175,9 +1172,6 @@ faith_conversion_cost_mult = {
 		}
 	}
 	if = {
-		limit = {
-			always = yes
-		}
 		multiply = {
 			value = 1
 			add = {
@@ -1353,20 +1347,6 @@ faith_conversion_cost_mult = {
 	# Switching religion/family penalties #
 	#######################################
 	# More expensive if you convert to a faith outside of your religion's family
-	if = {
-		limit = {
-			scope:new_faith = { has_doctrine = special_doctrine_immaterial_harmony }
-			scope:character.faith = { has_doctrine = special_doctrine_immaterial_harmony }
-		}
-		multiply = {
-			value = 1
-			add = {
-				desc = faith_conversion_cost_immaterial_harmony
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = -0.5
-			}
-		}
-	}
 	if = {
 		limit = {
 			scope:new_faith = {
@@ -2051,87 +2031,6 @@ faith_conversion_cost_mult = {
 		}
 	}
 
-	################################################
-	# Conversion Discount from Confucian Education
-	################################################
-
-	if = {
-		limit = {
-			always = no #scope:new_faith.religion = religion:confucianism_religion
-			scope:character = {
-				has_trait = confucian_education
-				has_trait_xp = {
-					trait = confucian_education
-					value >= 20 #Confused Confucian
-				}
-			}
-		}
-		if = {
-			limit = {
-				scope:character = {
-					has_trait_xp = {
-						trait = confucian_education
-						value >= 80 #Moral Paragon
-					}
-				}
-			}
-			multiply = {
-				value = 1 
-				subtract = {
-					desc = faith_conversion_cost_confucian_education
-					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-					value = 0.7
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				scope:character = {
-					has_trait_xp = {
-						trait = confucian_education
-						value >= 60 #Virtuous Ethicist
-					}
-				}
-			}
-			multiply = {
-				value = 1 
-				subtract = {
-					desc = faith_conversion_cost_confucian_education
-					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-					value = 0.5
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				scope:character = {
-					has_trait_xp = {
-						trait = confucian_education
-						value >= 40 #Studious Classicist
-					}
-				}
-			}
-			multiply = {
-				value = 1 
-				subtract = {
-					desc = faith_conversion_cost_confucian_education
-					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-					value = 0.25
-				}
-			}
-		}
-		else = {
-			multiply = {
-				value = 1 
-				subtract = {
-					desc = faith_conversion_cost_confucian_education
-					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-					value = 0.1
-				}
-			}
-		}
-	}
-
 	########################################
 	# Conversion Discounts from Traditions #
 	########################################
@@ -2324,7 +2223,6 @@ holy_site_reform_tracker_value = {
 					OR = {
 						is_holy_site_controlled_by = root
 						root.confederation ?= {
-							is_house_based = no # any_confederation_member is not performant for house blocs
 							any_confederation_member = {
 								scope:current_holy_site = {
 									is_holy_site_controlled_by = prev

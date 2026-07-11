@@ -41,12 +41,6 @@ hunt_random_pulse = {
 		100 = hunt.4015 #You walk in (out?) on lovers
 		100 = hunt.5001 #You get the urge to pick herbs and flowers
 		100 = hunt.5002 #Someone in your hunting party gets the urge to pick herbs and flowers
-		50 = hunt_events_anna.0001 #Carving initials of your loved one into the bark of a tree
-		75 = hunt_events_anna.0005 #Skinning a small animal found by a hunting member
-		5 = hunt_events_anna.0010 #Getting stuck in a pitfall trap
-		75 = hunt_events_anna.0015 #Helping your child to become a better shot
-		#5 = hunt_events_anna.0020 #Severely wounded pet dog in a hunt
-		#20 = hunt_events_anna.0025 #A Moment of Peace
 		# Legendary
 		5 = hunt.4012 #See glimpse of mystical animal - starts story from sighting/randomly
 		5 = hunt.7001 #Meet local madman (Shrek)
@@ -79,14 +73,6 @@ hunt_random_pulse = {
 		250 = mpo_hunt.0040 # Your horses grow lean from the chase
 		250 = mpo_hunt.0050 # Local hunters seek to aid you
 		250 = mpo_hunt.0060 # You come across a colony of marmots to massacre
-		# TGP - East Asian Hunt Flavor Events
-		100 = tgp_hunt.0002 # Remorse for Killed Animal
-		100 = tgp_hunt.0004 # Spiritual Figurine
-	 	100 = tgp_hunt.0006 # Poet writes a poem
-	 	100 = tgp_hunt.0007 # Fangsheng
-	 	100 = tgp_hunt.0008 # Hunter Abandons Lifestyle
-		#100 = tgp_hunt.0009 # Buddhist Hermit
-		100 = tgp_hunt.0010 # Red-Crowned Crane
 	}
 	effect = { # Used to ensure a certain progress has been made before some events to fire
 		involved_activity = { set_variable = hunt_outcome_random }
@@ -154,8 +140,6 @@ hunt_outcome_complication_events = {
 		10 = hunt.8570 # Herd animal complication: a hunt participant is caught in a stampede!
 		25 = hunt.8580 # Predator complication: you find your prey but you're alone! Stare down the wolf
 		25 = hunt.8590 # Predator complication: you find their cave
-		# TGP
-		25 = tgp_hunt.0005 
 	}
 }
 
@@ -237,7 +221,7 @@ hunt_sighting_on_action = {
 			if = {
 				limit = {
 					has_character_flag = had_mystical_animal_story
-					any_owned_story = { type = story_cycle_hunt_mystical_animal }
+					any_owned_story = { story_type = story_cycle_hunt_mystical_animal }
 					NOT = {
 						any_sub_realm_county = {
 							has_county_modifier = hunt_sighting_legendary_modifier

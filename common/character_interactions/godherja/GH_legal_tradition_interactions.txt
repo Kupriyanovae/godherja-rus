@@ -498,6 +498,7 @@ justify_claim_interaction = {
 				piety >= massive_justify_claim_piety_value
 			}
 		}
+		scope:recipient = { is_busy_in_events_localised = yes }
 		scope:recipient = { NOT = { has_strong_hook = scope:actor } }
 	}
 	

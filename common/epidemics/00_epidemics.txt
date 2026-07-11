@@ -484,7 +484,7 @@ bubonic_plague = {
 				# GH TODO: GH Historical "Black Death"
 				#if = {
 				#	limit = {
-				#		current_date >= 6346.1.1
+				#		current_date >= 1346.1.1
 				#		has_game_rule = bd_occurrence_historical
 				#		NOT = {
 				#			has_global_variable = black_death_happened
@@ -910,7 +910,7 @@ consumption = { #Tuberculosis
 				#		outbreak_province = {
 				#			county.culture = {
 				#				OR = {
-				#					has_cultural_pillar = heritage_easterner
+				#					has_cultural_pillar = heritage_chinese
 				#					has_cultural_pillar = language_chinese
 				#				}
 				#			}
@@ -1021,22 +1021,25 @@ consumption = { #Tuberculosis
 		minor = {
 			outbreak_chance = {
 				value = outbreak_chance_minor_default_value
+				multiply = outbreak_chance_minor_mult_value
+				multiply = recent_epidemics_outbreak_mult_value
 
 				#Are you in the consumption zone?
 				if = {
 					limit = {
 						geographical_region = GH_REPLACE_world_atlantic
 					}
-					add = outbreak_increase_add_low
+					add = outbreak_increase_add_extra_high
+				}
+				else = {
+					add = outbreak_decrease_add_high
 				}
 
-				#Endemism
+				#Endemism overrides everything
 				if = {
 					limit = { has_variable = consumption_endemic_variable }
 					add = outbreak_increase_add_high
 				}
-				
-				multiply = outbreak_chance_minor_mult_value
 				
 				### NO DLC - We increase the chance to make up for the locked diseases ###
 				if = {
@@ -1051,7 +1054,6 @@ consumption = { #Tuberculosis
 					}
 					multiply = 0
 				}
-				multiply = recent_epidemics_outbreak_mult_value
 			}
 			spread_chance = {
 				value = spread_chance_epidemics_default_value
@@ -1075,22 +1077,25 @@ consumption = { #Tuberculosis
 		major = {
 			outbreak_chance = {
 				value = outbreak_chance_major_default_value
+				multiply = outbreak_chance_major_mult_value
+				multiply = recent_epidemics_outbreak_mult_value
 
 				#Are you in the consumption zone?
 				if = {
 					limit = {
 						geographical_region = GH_REPLACE_world_atlantic
 					}
-					add = outbreak_increase_add_medium
+					add = outbreak_increase_add_low
+				}
+				else = {
+					add = outbreak_decrease_add_very_high
 				}
 
-				#Endemism
+				#Endemism overrides everything
 				if = {
 					limit = { has_variable = consumption_endemic_variable }
 					add = outbreak_increase_add_low
 				}
-				
-				multiply = outbreak_chance_major_mult_value
 				
 				### NO DLC - We increase the chance to make up for the locked diseases ###
 				if = {
@@ -1105,7 +1110,6 @@ consumption = { #Tuberculosis
 					}
 					multiply = 0
 				}
-				multiply = recent_epidemics_outbreak_mult_value
 			}
 			spread_chance = {
 				value = spread_chance_epidemics_default_value
@@ -1129,16 +1133,25 @@ consumption = { #Tuberculosis
 		apocalyptic = {
 			outbreak_chance = {
 				value = outbreak_chance_apocalyptic_default_value
+				multiply = outbreak_chance_apocalyptic_mult_value
+				multiply = recent_epidemics_outbreak_mult_value
 
 				#Are you in the consumption zone?
+				if = {
+					limit = {
+						geographical_region = GH_REPLACE_world_atlantic
+					}
+					multiply = 0.5
+				}
+				else = {
+					multiply = 0.25
+				}
+
+				#Endemism overrides everything
 				if = {
 					limit = { has_variable = consumption_endemic_variable }
 					add = outbreak_increase_add_low
 				}
-
-				#GH REMOVED: Atlantic mention
-				
-				multiply = outbreak_chance_apocalyptic_mult_value
 				
 				### NO DLC - We increase the chance to make up for the locked diseases ###
 				if = {
@@ -1153,7 +1166,6 @@ consumption = { #Tuberculosis
 					}
 					multiply = 0
 				}
-				multiply = recent_epidemics_outbreak_mult_value
 			}
 			spread_chance = {
 				value = spread_chance_epidemics_default_value
@@ -1324,17 +1336,16 @@ measles = {
 		minor = {
 			outbreak_chance = {
 				value = outbreak_chance_minor_default_value
+				multiply = outbreak_chance_minor_mult_value
+				multiply = recent_epidemics_outbreak_mult_value
+				#Measles should be pretty common
+				multiply = 1.25
 
 				#Endemism
 				if = {
 					limit = { has_variable = measles_endemic_variable }
 					add = outbreak_increase_add_high
 				}
-				
-				multiply = outbreak_chance_minor_mult_value
-				multiply = recent_epidemics_outbreak_mult_value
-				#Measles should be pretty common
-				multiply = 1.25
 				
 				### DLC LOCKING ###
 				if = {
@@ -1372,7 +1383,10 @@ measles = {
 		major = {
 			outbreak_chance = {
 				value = outbreak_chance_major_default_value
+				multiply = outbreak_chance_major_mult_value
+				multiply = recent_epidemics_outbreak_mult_value
 				
+
 				#Endemism
 				if = {
 					limit = { has_variable = measles_endemic_variable }
@@ -1381,9 +1395,6 @@ measles = {
 				else = {
 					multiply = 0.5
 				}
-				
-				multiply = outbreak_chance_major_mult_value
-				multiply = recent_epidemics_outbreak_mult_value
 				
 				### DLC LOCKING ###
 				if = {
@@ -1421,6 +1432,8 @@ measles = {
 		apocalyptic = {
 			outbreak_chance = {
 				value = outbreak_chance_apocalyptic_default_value
+				multiply = outbreak_chance_apocalyptic_mult_value
+				multiply = recent_epidemics_outbreak_mult_value
 
 				#Endemism
 				if = {
@@ -1430,9 +1443,6 @@ measles = {
 				else = {
 					multiply = 0.25
 				}
-				
-				multiply = outbreak_chance_apocalyptic_mult_value
-				multiply = recent_epidemics_outbreak_mult_value
 				
 				### DLC LOCKING ###
 				if = {

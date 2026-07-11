@@ -11,10 +11,8 @@ ransom_interaction_effect = {
 				scope:gold = yes
 				scope:current_gold = yes
 				scope:favor = yes
-				scope:hook ?= yes
+				scope:hook = yes
 			}
-			#This should not trigger if you're manually ransoming yourself
-			exists = scope:payer
 		}
 		save_scope_value_as = {
 			name = ransom_saved_gold_value
@@ -25,7 +23,7 @@ ransom_interaction_effect = {
 				scope:imprisoner.dynasty ?= { has_dynasty_perk = fp1_pillage_legacy_3 }
 				scope:payer.gold >= scope:prisoner.increased_ransom_cost_value
 			}
-			save_scope_value_as = { name = extortionate_gold value = yes }
+			save_scope_value_as = { name = extortionate_current_gold value = yes }
 		}
 		else_if = {
 			limit = {
@@ -33,7 +31,7 @@ ransom_interaction_effect = {
 				scope:payer.gold < scope:prisoner.increased_ransom_cost_value
 				scope:payer.gold >= 1
 			}
-			save_scope_value_as = { name = extortionate_current_gold value = yes }
+			save_scope_value_as = { name = extortionate_gold value = yes }
 		}
 		else_if = {
 			limit = { scope:payer.gold >= scope:prisoner.ransom_cost_value }
@@ -56,7 +54,7 @@ ransom_interaction_effect = {
 			days = 1
 		}
 		if = { # no opinion if you ransomed yourself
-			limit = { this != scope:payer }
+			limit = { NOT = { this = scope:payer } }
 			if = { #Only visible if a player is involved
 				limit = {
 					OR = {
@@ -144,33 +142,24 @@ ransom_interaction_effect = {
 					gold = scope:prisoner.increased_ransom_cost_value
 					target = scope:imprisoner
 				}
-				scope:imprisoner = { 
-					add_prestige = scope:prisoner.increased_ransom_cost_value
-					mandala_trickster_increment_gold_ransomed_effect = { GOLD_AMOUNT = scope:prisoner.increased_ransom_cost_value }
-				}
-				## GH ADDITION ##
+				scope:imprisoner = { add_prestige = scope:prisoner.increased_ransom_cost_value }
 				if = {
 					limit = { character_has_any_patron_saint = yes }
 					patron_saint_affinity_from_ransom_check = { GOLD = scope:prisoner.increased_ransom_cost_value }
 				}
-				## GH END ##
 			}
+
 			# Perk: whatever they can pay + bonus prestige
 			scope:extortionate_current_gold = {
 				pay_short_term_gold = {
 					gold = scope:ransom_saved_gold_value # Calculated earlier in the ransom interaction.
 					target = scope:imprisoner
 				}
-				scope:imprisoner = { 
-					add_prestige = scope:ransom_saved_gold_value
-					mandala_trickster_increment_gold_ransomed_effect = { GOLD_AMOUNT = scope:ransom_saved_gold_value }
-				}
-				## GH ADDITION ##
+				scope:imprisoner = { add_prestige = scope:ransom_saved_gold_value }
 				if = {
 					limit = { character_has_any_patron_saint = yes }
 					patron_saint_affinity_from_ransom_check = { GOLD = scope:ransom_saved_gold_value  }
 				}
-				## GH END ##
 			}
 			# Full ransom
 			scope:gold = {
@@ -178,15 +167,10 @@ ransom_interaction_effect = {
 					gold = scope:prisoner.ransom_cost_value
 					target = scope:imprisoner
 				}
-				scope:imprisoner = { 
-					mandala_trickster_increment_gold_ransomed_effect = { GOLD_AMOUNT = scope:prisoner.ransom_cost_value }
-				}
-				## GH ADDITION ##
 				if = {
 					limit = { character_has_any_patron_saint = yes }
 					patron_saint_affinity_from_ransom_check = { GOLD = scope:prisoner.ransom_cost_value }
 				}
-				## GH END ##
 			}
 			# Whatever they can pay
 			scope:current_gold = {
@@ -194,62 +178,41 @@ ransom_interaction_effect = {
 					gold = scope:ransom_saved_gold_value # Calculated earlier in the ransom interaction.
 					target = scope:imprisoner
 				}
-				scope:imprisoner = { 
-					mandala_trickster_increment_gold_ransomed_effect = { GOLD_AMOUNT = scope:ransom_saved_gold_value }
-				}
-				## GH ADDITION ##
 				if = {
 					limit = { character_has_any_patron_saint = yes }
 					patron_saint_affinity_from_ransom_check = { GOLD = scope:ransom_saved_gold_value  }
 				}
-				## GH END ##
 			}
-		}
-		# Favor hook
-		if = {
-			limit = { scope:favor = yes }
-			if = {
-				limit = { scope:payer = scope:prisoner }
-				add_opinion = {
-					modifier = demanded_hook
-					target = scope:imprisoner
+			# Favor hook
+			scope:favor = {
+				if = {
+					limit = { scope:payer = scope:prisoner }
+					add_opinion = {
+						modifier = demanded_hook
+						target = scope:imprisoner
+					}
 				}
-			}
-			scope:imprisoner = {
-				add_hook = {
-					target = scope:payer
-					type = favor_hook
-				}
-			}
-		}
-		# Influence
-		if = {
-			limit = { scope:influence_send_option = yes }
-			scope:payer = {
-				change_influence = {
-					value = {
-						value = medium_influence_value
-						multiply = -1
+				scope:imprisoner = {
+					add_hook = {
+						target = scope:payer
+						type = favor_hook
 					}
 				}
 			}
-			scope:imprisoner = { change_influence = scope:payer.medium_influence_value }
 		}
-		## GH ADDITION ##
 		scope:imprisoner = {
 			if = {
 				limit = { character_has_any_patron_saint = yes }
 				patron_saint_affinity_from_ransom_check = { GOLD = scope:prisoner.ransom_cost_value }
 			}
 		}
-		## GH END ##
 		# Herd
 		if = {
 			limit = { scope:herd_send_option = yes }
 			scope:payer = {
 				pay_herd = {
 					target = scope:imprisoner
-					value = scope:payer.ransom_herd_value
+					value = scope:payer.domicile.medium_herd_value
 				}
 			}
 		}
@@ -257,7 +220,7 @@ ransom_interaction_effect = {
 	scope:prisoner = { release_from_prison = yes }
 }
 
-#Used for all executions, except Extinguish Noble Family in China, which uses family_purge_execute_prisoner_effect
+#Used for all executions
 execute_prisoner_effect = {
 
 	$VICTIM$ = {
@@ -326,7 +289,8 @@ execute_prisoner_effect = {
 						AND = { # Peer Vassals
 							exists = primary_title
 							primary_title.tier > tier_barony
-							liege ?= scope:executioner.liege
+							exists = liege
+							liege = scope:executioner.liege
 						}
 						has_trait = peasant_leader
 					}
@@ -362,7 +326,6 @@ execute_prisoner_effect = {
 		# Piety loss (or gain) from executions
 		if = {
 			limit = {
-				## GH ADDITION ##
 				OR = {
 					faith = { has_doctrine_parameter = human_sacrifice_active }
 					faith = { has_doctrine_parameter = piety_for_rival_kill }
@@ -371,7 +334,6 @@ execute_prisoner_effect = {
 						scope:victim.culture = { has_cultural_pillar = heritage_aversarian }
 					}
 				}
-				## GH END ##
 			}
 			scope:victim = {
 				if = {
@@ -382,7 +344,6 @@ execute_prisoner_effect = {
 								highest_held_title_tier >= tier_empire
 							}
 						}
-						## GH ADDITION ##
 						AND = { # Don't give massive piety to characters who are only getting piety from a rival kill
 							faith = { has_doctrine_parameter = piety_for_rival_kill }
 							NOR = {
@@ -390,7 +351,6 @@ execute_prisoner_effect = {
 								faith = { has_doctrine_parameter = chosen_man_mechanics_active }
 							}
 						}
-						## GH END ##
 					}
 					scope:executioner = { add_piety = massive_piety_gain }
 				}
@@ -401,12 +361,10 @@ execute_prisoner_effect = {
 							any_close_family_member = {
 								highest_held_title_tier >= tier_kingdom
 							}
-							## GH ADDITION ##
 							AND = {
 								has_relation_rival = scope:executioner
 								faith = { has_doctrine_parameter = piety_for_rival_kill }
 							}
-							## GH END ##
 						}
 					}
 					scope:executioner = { add_piety = major_piety_gain }
@@ -453,12 +411,10 @@ execute_prisoner_effect = {
 			limit = {
 				faith = scope:victim.faith
 				NOT = { has_perk = divine_retribution_perk }
-				## GH ADDITION ##
 				NAND = {
 					scope:executioner.culture = { has_cultural_parameter = can_freely_execute_and_torture_commoners }
 					scope:victim = { is_lowborn = yes }
 				}
-				## GH END ##
 			}
 			add_piety = medium_piety_loss
 		}
@@ -490,7 +446,7 @@ execute_prisoner_effect = {
 		else_if = { #Killing infidels is relaxing
 			limit = {
 				has_trait = zealous
-				scope:executioner.faith != scope:victim.faith
+				NOT = { scope:executioner.faith = scope:victim.faith }
 			}
 
 			if = {
@@ -556,6 +512,7 @@ execute_prisoner_effect = {
 				trusting = minor_stress_impact_gain
 				content = minor_stress_impact_gain
 				family_first = minor_stress_impact_gain
+				just = medium_stress_impact_gain # GH ADDITION: Do we still want this?
 			}
 			if = {
 				limit = {
@@ -609,7 +566,6 @@ execute_prisoner_effect = {
 				generous = minor_stress_impact_gain
 			}
 		}
-		## GH ADDITION ##
 		else_if = {
 			limit = { # Cynical skulltakers probably dont think this is quite as dope as the rest
 				faith = { has_doctrine_parameter = can_take_skulls }
@@ -626,7 +582,6 @@ execute_prisoner_effect = {
 				sadistic = medium_stress_impact_loss
 			}
 		}
-		## GH END ##
 		else = {
 			stress_impact = {
 				sadistic = medium_stress_impact_loss
@@ -727,7 +682,7 @@ execute_prisoner_effect = {
 					NOT = { exists = liege }
 					exists = host
 				}
-				any_pool_guest = { }
+				any_pool_guest = { count > 0 }
 			}
 			every_pool_guest = {
 				limit = {
@@ -742,7 +697,7 @@ execute_prisoner_effect = {
 				list = guest_list
 				custom = all_your_guests
                 limit = {
-                    this != scope:executioner
+                    NOT = { this = scope:executioner }
                 }
 				add_opinion = {
 					target = scope:executioner
@@ -1025,7 +980,7 @@ execute_prisoner_effect = {
 			}
 		}
 	}
-	## GH ADDITION ##
+
 	if = { # GH ADDITION: Chosen Man trait gain
 		limit = {
 			scope:executioner = {
@@ -1074,7 +1029,6 @@ execute_prisoner_effect = {
 			patron_saint_affinity_from_executing_heathens_check = yes
 		}
 	}
-	## GH END ##
 
 	#If you have the Human Sacrifice tenet, give victim an appropriate death reason
 	hidden_effect = { # GH TODO: We should probably add to this
@@ -1103,7 +1057,6 @@ execute_prisoner_effect = {
 				}
 			}
 		}
-		## GH ADDITION ##
 		else_if = { # GH ADDITION: Death reason for sacrificing to ritual
 			limit = {
 				scope:victim = {
@@ -1117,7 +1070,6 @@ execute_prisoner_effect = {
 				}
 			}			
 		}
-		## GH END ##
 		else = {
 			$VICTIM$ = {
 				death = {
@@ -1254,18 +1206,6 @@ execute_opinion_effect = {
 				}
 			}
 		}
-
-		# House Relation
-		house ?= {
-			change_house_relation_effect = {
-				HOUSE = $EXECUTIONER$.house
-				VALUE = house_relation_damage_medium_value
-				REASON = execution
-				CHAR = $EXECUTIONER$
-				TARGET_CHAR = $VICTIM$
-				TITLE = scope:dummy_gender
-			}
-		}
 	}
 }
 
@@ -1374,7 +1314,7 @@ sacrifice_prisoner_effect = {
 		if = {
 			limit = { #Killing infidels is relaxing
 				has_trait = zealous
-				scope:executioner.faith != scope:victim.faith
+				NOT = { scope:executioner.faith = scope:victim.faith }
 				NOT = {
 					scope:executioner.faith = {
 						has_doctrine_parameter = human_sacrifice_active
@@ -1388,7 +1328,7 @@ sacrifice_prisoner_effect = {
 		if = {
 			limit = { #Even more so if the religion is in favor of doing it.
 				has_trait = zealous
-				scope:executioner.faith != scope:victim.faith
+				NOT = { scope:executioner.faith = scope:victim.faith }
 				scope:executioner.faith = {
 					has_doctrine_parameter = human_sacrifice_active
 				}
@@ -1528,7 +1468,7 @@ imprison_character_effect = {
 					hidden_effect = {
 						every_close_or_extended_family_member = {
 							limit = {
-								scope:imprisoner != this
+								NOT = { scope:imprisoner = this }
 							}
 							add_opinion = {
 								modifier = imprisoned_family_member_dungeon
@@ -2369,7 +2309,7 @@ imprison_tyranny_effect = {
 		if = {
 			limit = { has_imprisonment_reason = scope:recipient }
 			consume_imprisonment_reasons = scope:recipient
-			scope:actor = { patron_saint_affinity_just_rule_check = { PUNISHED = scope:recipient } } ## GH ADDITION ##
+			scope:actor = { patron_saint_affinity_just_rule_check = { PUNISHED = scope:recipient } }
 		}
 		else = { change_strife_opinion = medium_strife_gain }
 	}
@@ -2397,8 +2337,7 @@ imprison_tyranny_effect = {
 			scope:actor = { has_imprisonment_reason = scope:recipient }
 		}
 		custom_tooltip = IS_ALLOWED_TO_IMPRISON_DESC
-		scope:actor = { patron_saint_affinity_just_rule_check = { PUNISHED = scope:recipient } } ## GH ADDITION ##
-
+		scope:actor = { patron_saint_affinity_just_rule_check = { PUNISHED = scope:recipient } }
 	}
 	# Is at war or edge-case pondering general imprisonment
 	else_if = {
@@ -2422,10 +2361,7 @@ imprison_tyranny_effect = {
 			}
 			scope:actor = {
 				if = {
-					limit = {
-						has_legitimacy = yes
-						this = top_liege
-					}
+					limit = { has_legitimacy = yes }
 					add_legitimacy = miniscule_legitimacy_loss
 				}
 			}
@@ -2557,10 +2493,6 @@ diarch_imprison_general_accept_effect = {
 				compassionate = medium_stress_impact_gain
 			}
 		}
-		tgp_activate_catalyst_against_hegemon_effect = {
-			HEGEMON = scope:actor.top_liege
-			CATALYST = catalyst_diarch_mandate
-		}
 	}
 	# Imprison the actual character.
 	imprison_character_effect = {
@@ -2575,128 +2507,5 @@ diarch_imprison_general_accept_effect = {
 			scope:actor = { has_character_flag = flag_hostile_actions_disabled_delay }
 		}
 		scope:actor = { remove_character_flag = flag_hostile_actions_disabled_delay }
-	}
-}
-
-family_purge_execute_prisoner_effect = {
-	$VICTIM$ = {
-		save_scope_as = victim
-	}
-
-	$EXECUTIONER$ = {
-		save_scope_as = executioner
-		save_scope_as = imprisoner #Save this scope to show correct tyranny tooltip
-	}
-
-	family_purge_execute_opinion_effect = { VICTIM = scope:victim EXECUTIONER = scope:executioner }
-
-	$VICTIM$ = {
-		death = {
-			death_reason = death_execution
-			killer = $EXECUTIONER$
-		}
-	}
-}
-
-# Because the entire family is being collectively purged, the original effect will try to add opinion modifiers to people who may be killed in the course of the parent effect, and so we need a separate instance with an is_alive sanity check to avoid errors
-family_purge_execute_opinion_effect = {
-	$VICTIM$ = {
-		# Victim's family & spouse hates executioner
-		every_close_family_member = {
-			limit = { NOT = { this = $EXECUTIONER$ } }
-			add_to_temporary_list = victim_family_list
-		}
-		every_spouse = {
-			limit = {
-				NOR = {
-					this = $EXECUTIONER$
-					is_in_list = victim_family_list
-				}
-			}
-			add_to_temporary_list = victim_family_list
-		}
-		every_in_list = {
-			list = victim_family_list
-			custom = all_close_family_and_spouses
-			limit = {
-				is_alive = yes
-			}
-			if = {
-				limit = {
-					$EXECUTIONER$ = {
-						has_execute_reason = $VICTIM$
-					}
-				}
-				add_opinion = {
-					target = $EXECUTIONER$
-					modifier = executed_close_family
-				}
-			}
-			else = {
-				add_opinion = {
-					target = $EXECUTIONER$
-					modifier = executed_close_family_crime
-				}
-			}
-		}
-		# Victim's dynasty hates executioner
-		if = {
-			limit = {
-				exists = dynasty
-				exists = $EXECUTIONER$.dynasty
-				NOT = { dynasty = $EXECUTIONER$.dynasty }
-				NOT = {
-					$EXECUTIONER$ = {
-						has_execute_reason = $VICTIM$
-					}
-				}
-			}
-			dynasty = {
-				every_dynasty_member = {
-					limit = {
-						NOR = {
-							this = $VICTIM$
-							is_in_list = victim_family_list
-						}
-						is_alive = yes
-					}
-					custom = all_dynasty_members
-					add_to_temporary_list = victim_dynasty_list
-					add_opinion = {
-						target = $EXECUTIONER$
-						modifier = executed_dynasty_member
-					}
-				}
-			}
-		}
-		
-		# Victim's friends and lovers
-		every_relation = {
-			type = friend
-			type = lover
-			limit = {
-				NOT = {
-					this = $EXECUTIONER$ 
-				}
-				is_alive = yes
-			}
-			custom = all_friends_and_lovers
-			add_opinion = {
-				target = $EXECUTIONER$
-				modifier = executed_close_relation_opinion
-			}
-		}
-
-		# House Relation
-		house ?= {
-			change_house_relation_effect = {
-				HOUSE = $EXECUTIONER$.house
-				VALUE = house_relation_damage_medium_value
-				REASON = execution
-				CHAR = $EXECUTIONER$
-				TARGET_CHAR = $VICTIM$
-				TITLE = scope:dummy_gender
-			}
-		}
 	}
 }

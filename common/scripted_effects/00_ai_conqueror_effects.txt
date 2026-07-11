@@ -1,7 +1,7 @@
 ﻿ai_conqueror_yearly_effect = {
 	if = {
 		limit = {
-			has_variable = conqueror
+			ai_has_conqueror_personality = yes
 			top_liege = this
 		}
 		save_scope_as = root_scope
@@ -60,28 +60,12 @@
 			}
 			move_budget_gold = { gold = long_term_gold from = budget_long_term to = budget_short_term }
 			move_budget_gold = { gold = war_chest_gold from = budget_war_chest to = budget_short_term }
-			if = {
-				limit = {
-					has_treasury = yes
-				}
-				move_budget_treasury = { treasury = long_term_treasury from = budget_long_term to = budget_short_term }
-				move_budget_treasury = { treasury = war_chest_treasury from = budget_war_chest to = budget_short_term }
-			}
 		}
 		else = { # Conquerors are special; they don't care about states or eras - they just want to conquer, and put their resources towards just that.
 			move_budget_gold = { gold = long_term_gold from = budget_long_term to = budget_war_chest }
 			move_budget_gold = { gold = short_term_gold from = budget_short_term to = budget_war_chest }
 			# Conquerors have no concern for the future; only here and now matters
 			move_budget_gold = { gold = long_term_gold from = budget_long_term to = budget_short_term }
-			if = {
-				limit = {
-					has_treasury = yes
-				}
-				move_budget_treasury = { treasury = long_term_treasury from = budget_long_term to = budget_war_chest }
-				move_budget_treasury = { treasury = short_term_treasury from = budget_short_term to = budget_war_chest }
-				# Conquerorstreasurye no treasuryern for the future; only here and now matters
-				move_budget_treasury = { treasury = long_term_treasury from = budget_long_term to = budget_short_term }
-			}
 		}
 		
 		###### IMPORTANT DECISIONS
@@ -163,7 +147,7 @@
 				limit = {
 					NOT = { has_focus = martial_authority_focus }
 					any_held_title = {
-						title_tier = county
+						tier = tier_county
 						county_control < 100
 					}
 				}
@@ -189,13 +173,13 @@
 		if = { # End murder schemes that are useless
 			limit = {
 				any_scheme = {
-					type = murder
+					scheme_type = murder
 					is_scheme_exposed = yes
 				}
 			}
 			every_scheme = {
-				type = murder
 				limit = {
+					scheme_type = murder
 					is_scheme_exposed = yes
 				}
 				end_scheme = yes
@@ -234,10 +218,8 @@
 			every_neighboring_and_across_water_top_liege_realm_owner = { # Weaken strong neighbours
 				limit = {
 					save_temporary_scope_as = target_scope
-					scope:root_scope = {
-						current_military_strength >= scope:target_scope.current_military_strength
-						has_any_cb_on = scope:target_scope
-					}
+					current_military_strength >= scope:target_scope.current_military_strength
+					scope:root_scope = { has_any_cb_on = scope:target_scope }
 					NOR = {
 						is_allied_to = scope:root_scope
 						has_relation_friend = scope:root_scope
@@ -267,8 +249,8 @@
 				add_to_list = targets
 			}
 			every_targeting_faction = {
-				faction_type = claimant_faction
 				limit = {
+					faction_is_type = claimant_faction
 					exists = special_character
 					save_temporary_scope_as = faction_in_question
 					scope:root_scope = {
@@ -303,13 +285,13 @@
 		if = { # End hook schemes that are useless
 			limit = {
 				any_scheme = {
-					type = fabricate_hook
+					scheme_type = fabricate_hook
 					is_scheme_exposed = yes
 				}
 			}
 			every_scheme = {
-				type = fabricate_hook
 				limit = {
+					scheme_type = fabricate_hook
 					is_scheme_exposed = yes
 				}
 				end_scheme = yes
@@ -540,16 +522,8 @@
 			}
 		}
 		
-		###### WAR! Or, well... Coronation first
+		###### WAR!
 		if = {
-			limit = {
-				highest_held_title_tier >= tier_kingdom
-				has_realm_law = uncrowned
-				can_host_activity = activity_coronation
-			}
-			ai_attempt_to_host_activity = activity_coronation
-		}
-		else_if = {
 			limit = {
 				is_at_war = no
 				war_chest_gold >= war_chest_gold_maximum

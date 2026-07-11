@@ -553,7 +553,9 @@ apply_high_court_legitimacy_doctrine_effect = {
 		every_in_list = {
 			variable = faiths_recognizing_high_court
 			limit = { NOT = { has_doctrine = wardenite_high_court_legitimacy_high_doctrine } }
-			remove_high_court_legitimacy_doctrines_effect = yes
+			this = {
+				remove_high_court_legitimacy_doctrines_effect = yes
+			}
 			add_doctrine = wardenite_high_court_legitimacy_high_doctrine
 		}
 	}
@@ -564,7 +566,9 @@ apply_high_court_legitimacy_doctrine_effect = {
 		every_in_list = {
 			variable = faiths_recognizing_high_court
 			limit = { NOT = { has_doctrine = wardenite_high_court_legitimacy_neutral_doctrine } }
-			remove_high_court_legitimacy_doctrines_effect = yes
+			this = {
+				remove_high_court_legitimacy_doctrines_effect = yes
+			}
 			add_doctrine = wardenite_high_court_legitimacy_neutral_doctrine
 		}
 	}
@@ -575,7 +579,9 @@ apply_high_court_legitimacy_doctrine_effect = {
 		every_in_list = {
 			variable = faiths_recognizing_high_court
 			limit = { NOT = { has_doctrine = wardenite_high_court_legitimacy_low_doctrine } }
-			remove_high_court_legitimacy_doctrines_effect = yes
+			this = {
+				remove_high_court_legitimacy_doctrines_effect = yes
+			}
 			add_doctrine = wardenite_high_court_legitimacy_low_doctrine
 		}
 	}
@@ -583,7 +589,9 @@ apply_high_court_legitimacy_doctrine_effect = {
 		every_in_list = {
 			variable = faiths_recognizing_high_court
 			limit = { NOT = { has_doctrine = wardenite_high_court_legitimacy_very_low_doctrine } }
-			remove_high_court_legitimacy_doctrines_effect = yes
+			this = {
+				remove_high_court_legitimacy_doctrines_effect = yes
+			}
 			add_doctrine = wardenite_high_court_legitimacy_very_low_doctrine
 		}
 	}

@@ -2,6 +2,13 @@
 	save_scope_as = governor
 	if = {
 		limit = {
+			NOT = { government_has_flag = government_is_judicial_republic }
+		}
+		change_government = judicial_republic_government
+		save_scope_as = new_admin
+	}
+	if = {
+		limit = {
 			primary_title.tier >= tier_duchy
 			liege = {
 				is_independent_ruler = yes
@@ -13,7 +20,7 @@
 				}
 			}
 		}
-		create_noble_family_effect = { GOVERNMENT_GIVER = root }
+		create_noble_family_effect = yes
 	}
 
 	hidden_effect = {
@@ -23,7 +30,6 @@
 				NOT = { has_trait = governor }
 			}
 			add_trait = governor
-			gh_setup_otachedian_governor_character_effect = yes ## GH ADDITION: Otachedian Law
 		}
 	}
 	if = {
@@ -31,13 +37,6 @@
 		domicile ?= {
 			set_up_domicile_estate_effect = yes
 		}
-	}
-	if = {
-		limit = {
-			NOT = { government_has_flag = government_is_judicial_republic }
-		}
-		change_government = judicial_republic_government
-		save_scope_as = new_admin
 	}
 }
 
@@ -55,7 +54,7 @@ change_to_administrative_republic_effect = {
 			primary_title.tier >= tier_duchy
 			liege = {
 				is_independent_ruler = yes
-				government_has_flag = government_is_administrative_republic
+				government_allows = administrative
 			}
 			house.house_head = {
 				NOT = {
@@ -63,50 +62,7 @@ change_to_administrative_republic_effect = {
 				}
 			}
 		}
-		create_noble_family_effect = { GOVERNMENT_GIVER = root }
-	}
-
-	hidden_effect = {
-		if = {
-			limit = {
-				is_governor = yes
-				NOT = { has_trait = governor }
-			}
-			add_trait = governor
-			gh_setup_otachedian_governor_character_effect = yes ## GH ADDITION: Otachedian Law
-		}
-	}
-	if = {
-		limit = { exists = scope:new_admin }
-		domicile ?= {
-			set_up_domicile_estate_effect = yes
-		}
-	}
-}
-
-change_to_playable_republic_effect = {
-	save_scope_as = governor
-	if = {
-		limit = {
-			NOT = { government_has_flag = government_is_playable_republic }
-		}
-		change_government = republic_playable_government
-		save_scope_as = new_admin
-	}
-	if = {
-		limit = {
-			primary_title.tier >= tier_county
-			liege = {
-				is_independent_ruler = yes
-				government_has_flag = government_is_playable_republic
-			}
-			house.house_head = {
-				NOT = {
-					any_held_title = { is_noble_family_title = yes }
-				}
-			}
-		}
-		create_noble_family_effect = { GOVERNMENT_GIVER = root }
+		create_noble_family_effect = yes
 	}
 
 	hidden_effect = {
@@ -350,7 +306,7 @@ reform_the_republic_effect = {
 					any_held_title = { is_noble_family_title = yes }
 				}
 			}
-			create_noble_family_effect = { GOVERNMENT_GIVER = scope:actor }
+			create_noble_family_effect = yes
 		}
 	}
 

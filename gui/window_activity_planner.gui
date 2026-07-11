@@ -113,7 +113,7 @@
 	#				blockoverride "scrollbox_content" {
 	#					vbox = {
 	#						name = "spell_list"
-	#						datamodel = "[GetPlayer.MakeScope.GetList('known_spell_gui_list')]"
+	#						datamodel = "[GetPlayer.MakeScope.GetList('known_spell_list')]"
 	#						layoutpolicy_horizontal = expanding
 	#						spacing = 12
 	#	
@@ -356,7 +356,7 @@
 	#										}
 	#										
 	#										text_single = {
-	#											raw_text = "[SelectLocalization(GreaterThan_CFixedPoint(GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('total_spell_cost'),GetPlayer.MakeScope.Var('magic_counter').GetValue),'#negative_value','#positive_value')] [GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('total_spell_cost')|0]#!"
+	#											raw_text = "[SelectLocalization(GreaterThan_CFixedPoint(GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('total_spell_cost'),GetPlayer.MakeScope.Var('magic_counter').GetValue),'#negative_value','#positive_value')] [GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('total_spell_cost')|0]#!"
 	#
 	#											parentanchor = hcenter|vcenter
 	#											margin_left = 30
@@ -386,7 +386,7 @@
 	#										
 	#										text_single = {
 	#											visible = "[GetPlayer.MakeScope.Var('selected_spell').IsSet]"
-	#											text = "[GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('total_spell_gold_cost')|0]"
+	#											text = "[GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('total_spell_gold_cost')|0]"
 	#											
 	#											parentanchor = hcenter|vcenter
 	#											margin_left = 30
@@ -414,7 +414,7 @@
 	#										}
 	#										
 	#										text_single = {
-	#											raw_text = "[SelectLocalization(GreaterThan_CFixedPoint(GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('spell_success_chance'),'(CFixedPoint)50'),'#positive_value','#negative_value')] [GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('spell_success_chance')|0]%#!"
+	#											raw_text = "[SelectLocalization(GreaterThan_CFixedPoint(GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('spell_success_chance'),'(CFixedPoint)50'),'#positive_value','#negative_value')] [GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('spell_success_chance')|0]%#!"
 	#											visible = "[GetPlayer.MakeScope.Var('selected_spell').IsSet]"
 	#											parentanchor = hcenter|vcenter
 	#											margin_left = 30
@@ -504,7 +504,7 @@
 	#												text_single = {
 	#													name = "selected_spell_aspect_level"
 	#													visible = "[Not(Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).IsSet)]"
-	#													raw_text = "[Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)1' ), 'I', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)2' ), 'II', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)3' ), 'III', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)4' ), 'IV', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)5' ), 'V', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)6' ), 'VI', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)7' ), 'VII', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)8' ), 'VIII', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)9' ), 'IX', 'X')))))))))]#! [Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [Localize(Concatenate(Scope.GetFlagName,'_name'))]#!"
+	#													raw_text = "[Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)1' ), 'I', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)2' ), 'II', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)3' ), 'III', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)4' ), 'IV', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)5' ), 'V', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)6' ), 'VI', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)7' ), 'VII', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)8' ), 'VIII', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)9' ), 'IX', 'X')))))))))]#! [Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [Localize(Concatenate(Scope.GetFlagName,'_name'))]#!"
 	#													
 	#													parentanchor = hcenter|vcenter
 	#													margin_bottom = 5
@@ -518,7 +518,7 @@
 	#												text_single = {
 	#													name = "selected_spell_aspect_level_with_max"
 	#													visible = "[Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).IsSet]"
-	#													raw_text = "[Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)1' ), 'I', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)2' ), 'II', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)3' ), 'III', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)4' ), 'IV', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)5' ), 'V', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)6' ), 'VI', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)7' ), 'VII', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)8' ), 'VIII', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)9' ), 'IX', 'X')))))))))]/[SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)1' ), 'I', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)2' ), 'II', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)3' ), 'III', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)4' ), 'IV', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)5' ), 'V', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)6' ), 'VI', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)7' ), 'VII', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)8' ), 'VIII', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)9' ), 'IX', 'X')))))))))]#! [Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [Localize(Concatenate(Scope.GetFlagName,'_name'))]#!"
+	#													raw_text = "[Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)1' ), 'I', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)2' ), 'II', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)3' ), 'III', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)4' ), 'IV', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)5' ), 'V', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)6' ), 'VI', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)7' ), 'VII', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)8' ), 'VIII', SelectLocalization(EqualTo_CFixedPoint( GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')) , '(CFixedPoint)9' ), 'IX', 'X')))))))))]/[SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)1' ), 'I', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)2' ), 'II', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)3' ), 'III', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)4' ), 'IV', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)5' ), 'V', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)6' ), 'VI', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)7' ), 'VII', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)8' ), 'VIII', SelectLocalization(EqualTo_CFixedPoint( Story.MakeScope.Var(Concatenate(Scope.GetFlagName, '_max')).GetValue , '(CFixedPoint)9' ), 'IX', 'X')))))))))]#! [Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [Localize(Concatenate(Scope.GetFlagName,'_name'))]#!"
 	#													
 	#													parentanchor = hcenter|vcenter
 	#													margin_bottom = 5
@@ -859,7 +859,7 @@ types ActivityPlannerTypes
 				}
 
 				expand = {}
-
+				
 				block "extra_data"
 				{
 				}
@@ -1322,7 +1322,6 @@ types ActivityPlannerTypes
 							button_standard_clean = {
 								name = "special_option_button"
 								size = { 100% 100% }
-								using = TabShortcut
 
 								allow_outside = yes
 
@@ -1481,7 +1480,7 @@ types ActivityPlannerNewTypes
 		datacontext = "[ActivityPlanner.GetActivityType]"
 
 		background = {
-			texture = "gfx/interface/skinned/tile_window_background_subwindow.dds"
+			texture = "gfx/interface/component_tiles/tile_window_background_subwindow.dds"
 			spriteType = Corneredtiled
 			spriteborder = { 18 18 }
 			texture_density = 2
@@ -1819,15 +1818,16 @@ types ActivityPlannerNewTypes
 		name = "activity_planning_header"
 		size = { 100 56 }
 
-			background = {
-				using = Background_Header
-				margin_left = 30
-			}
+		background = {
+			using = Background_Header
+			margin_left = 30
 
-			background = {
-				using = Background_Header_Pattern
-				margin_left = 30
+			modify_texture = {
+				texture = "gfx/interface/component_masks/mask_fade_horizontal_short.dds"
+				blend_mode = alphamultiply
+				mirror = horizontal
 			}
+		}
 
 		text_single = {
 			name = "header_text"
@@ -1864,7 +1864,7 @@ types ActivityPlannerNewTypes
 			allow_outside = yes
 
 			background = {
-				texture = "gfx/interface/skinned/tile_window_background_subwindow_rounded.dds"
+				texture = "gfx/interface/window_activities/activity_planning/tile_window_background_subwindow_rounded.dds"
 				spriteType = Corneredtiled
 				spriteborder = { 96 0 }
 				margin = { 0 16 }
@@ -1990,7 +1990,6 @@ types ActivityPlannerNewTypes
 						size = { 270 44 }
 						datacontext = "[ActivityIntentData.GetType]"
 						visible = "[GreaterThan_int32( GetDataModelSize( ActivityType.GetHostIntents ), '(int32)1' )]"
-						shortcut = intent
 
 						onclick = "[ToggleGameViewData( 'activity_intent_selection', ActivityPlanner.AccessSelf )]"
 						tooltip = "ACTIVITY_OPEN_INTENT_WINDOW"
@@ -2200,7 +2199,6 @@ types ActivityPlannerNewTypes
 									datacontext = "[ActiveActivityOption.GetOption]"
 									visible = "[Not( ObjectsEqual( ActiveActivityOption.GetCategory, ActivityType.GetSpecialOptionCategory ) )]"
 									size = { 66 110 }
-									using = TabShortcut
 
 									onclick = "[ActivityPlanner.ToggleEditingOption( ActiveActivityOption.AccessSelf )]"
 
@@ -2279,8 +2277,8 @@ types ActivityPlannerNewTypes
 					expand = {}
 
 					cost_breakdown_vbox = {
-						name = "activity_cost"
 						datacontext = "[ActivityPlanner.AccessCostBreakdown]"
+						name = "activity_cost"
 					}
 
 					button_standard = {
@@ -2434,7 +2432,6 @@ types ActivityPlannerNewTypes
 					button_radio = {
 						visible = "[ActivityOption.IsShown( GetPlayer, ActivityPlanner.GetSelectedSpecialOption )]"
 						size = { 30 30 }
-						using = SubTabShortcut
 
 						enabled = "[ActivityOption.IsValid( GetPlayer, ActivityPlanner.GetSelectedSpecialOption )]"
 						onclick = "[ActivityPlanner.SelectOption( ActivityOption.Self )]"

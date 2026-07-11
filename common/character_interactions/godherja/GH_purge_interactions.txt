@@ -634,15 +634,9 @@ gh_redlands_decay_county_interaction = {
 
 	auto_accept = yes
 
-	ai_potential = { always = yes }
-	ai_will_do = { base = 100 }
-	ai_frequency = 24
-	ai_targets = { ai_recipients = self }
-
 	is_shown = {
-		#can_do_diplomacy_trigger = yes
+		can_do_diplomacy_trigger = yes
 		scope:actor = {
-			#is_ai = no
 			this = scope:recipient
 			has_religion = religion:redland_cults_religion
 		}
@@ -676,5 +670,9 @@ gh_redlands_decay_county_interaction = {
 		scope:actor = {
 			trigger_event = redlands_decision.1000 # Triggers choice between wastelanding and culture-flipping
 		}
+	}
+
+	ai_will_do = {
+		base = 100
 	}
 }

@@ -12,14 +12,7 @@ offer_vassalization_interaction = {
 	ai_target_quick_trigger = {
 		adult = yes
 	}
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 12
-		kingdom = 12
-		empire = 12
-		hegemony = 12
-	}
+	ai_frequency = 12
 
 	is_shown = {
 		bilateral_nonsentient_diplomatic_block = yes
@@ -35,31 +28,22 @@ offer_vassalization_interaction = {
 				scope:actor.faith = { has_doctrine = tenet_the_mistmothers_speak }
 				scope:recipient.faith = { has_doctrine = tenet_the_mistmothers_speak }
 			}
-			is_redlander = no
 		}
 		scope:recipient = {
-			this != scope:actor
+			NOT = { this = scope:actor }
 			is_playable_character = yes
 			OR = {
 				AND = {
-					top_liege = this
+					is_independent_ruler = yes
 					is_tributary = no
 				}
 				is_tributary_of_suzerain_or_above = scope:actor
 			}
-			trigger_if = {
-				limit = {
-					scope:actor = {
-						NOT = { government_has_flag = government_is_mandala }
-					}
-				}
-				highest_held_title_tier < scope:actor.highest_held_title_tier
-			}
-			NOR = {
-				government_has_flag = cannot_be_vassal_or_liege
+			highest_held_title_tier < scope:actor.highest_held_title_tier
+			NOR = { 
+				government_has_flag = cannot_be_vassal_or_liege 
 				government_has_flag = government_is_herder
 			}
-			is_redlander = no
 		}
 		# Temujin cannot make Jamukha his subject once he leaves him
 		NOT = {
@@ -72,30 +56,7 @@ offer_vassalization_interaction = {
 
 	is_valid_showing_failures_only = {
 		scope:actor = {
-			trigger_if = {
-				limit = { is_confederation_member = yes }
-				exists = house.house_confederation
-			}
-			trigger_if = {
-				limit = {
-					has_title = title:h_aversarinas_aautokrata
-					exists = situation:dynastic_cycle
-				}
-				situation:dynastic_cycle ?= {
-					NOT = { situation_current_phase = situation_dynastic_cycle_phase_instability }
-					trigger_if = {
-						limit = {
-							situation_current_phase = situation_dynastic_cycle_phase_stability_advancement
-						}
-						scope:recipient = {
-							custom_tooltip = {
-								text = recipient_is_not_celestial_desc
-								government_has_flag = government_is_celestial
-							}
-						}
-					}
-				}
-			}
+			is_confederation_member = no
 		}
 		scope:recipient = {
 			is_at_war = no
@@ -110,18 +71,25 @@ offer_vassalization_interaction = {
 					}
 				}
 			}
-			trigger_if = {
-				limit = { is_tributary = yes }
-				custom_tooltip = {
-					text = was_recently_granted_independence
-					scope:recipient.suzerain = scope:actor
-				}	
+		}
+		scope:actor = {
+			primary_title = {
+				is_noble_family_title = no
 			}
-			trigger_if = {
-				limit = {
-					scope:actor = { government_has_flag = government_is_mandala }
+		}
+		custom_description = {
+			text "republic_titular_title"
+			OR = {
+				scope:actor = {
+					NOT = {
+						primary_title = {
+							has_variable = republic_titular_title
+						}
+					}
 				}
-				highest_held_title_tier < scope:actor.highest_held_title_tier
+				scope:recipient = {
+					government_has_flag = government_is_administrative_republic
+				}
 			}
 		}
 	}
@@ -136,15 +104,6 @@ offer_vassalization_interaction = {
 				limit = { scope:influence_send_option = yes }
 				add = scope:actor.medium_influence_value
 				desc = INFLUENCE_INTERACTION_ACCEPTANCE_SEND_OPTION
-			}
-		}
-		piety = {
-			value = 0
-			scope:actor = {
-				if = {
-					limit = { government_has_flag = government_is_mandala }
-					add = medium_piety_value
-				}
 			}
 		}
 	}
@@ -173,9 +132,7 @@ offer_vassalization_interaction = {
 		# OPINION SCALES
 		# Dread
 		# Compare Opinion modifier.
-
-		#ALL these modifiers are also used in impress_intent_vassalization_acceptance_value, keep them synced
-
+		
 		# PERKS
 		modifier = { # Perk boost
 			desc = offer_vassalization_true_ruler_perk_tt
@@ -226,19 +183,6 @@ offer_vassalization_interaction = {
 				}
 			}
 		}
-
-		modifier = { #Has no Available Vassal Limit
-			desc = offer_vassalization_interaction_aibehavior_vassal_limit_tt
-			trigger = {
-				scope:actor = {
-					vassal_limit_available < 1
-				}
-			}
-			add = {
-				value = -1000
-			}
-		}
-		
 
 		# MAIN
 		modifier = { #Different faith, no pluralism.
@@ -294,7 +238,9 @@ offer_vassalization_interaction = {
 					}
 				}
 				scope:recipient = {
-					faith != scope:actor.faith
+					NOT = {
+						faith = scope:actor.faith
+					}
 					NOT = {
 						scope:actor.faith = { has_doctrine = doctrine_pluralism_pluralistic }
 					}
@@ -338,7 +284,9 @@ offer_vassalization_interaction = {
 					}
 				}
 				scope:recipient = {
-					faith != scope:actor.faith
+					NOT = {
+						faith = scope:actor.faith
+					}
 					scope:actor.faith = { has_doctrine = doctrine_pluralism_pluralistic }
 					faith = { has_doctrine = doctrine_pluralism_pluralistic }
 				}
@@ -369,19 +317,10 @@ offer_vassalization_interaction = {
 				}
 			}
 		}
-		modifier = { #I am a King! Or Emperor!
-			desc = offer_vassalization_interaction_aibehavior_hightier_tt
+		modifier = { #I am a King!
+			desc = offer_vassalization_interaction_aibehavior_amkingtier_tt
 			trigger = {
-				NAND = {
-					scope:actor = {
-						government_has_flag = government_is_celestial
-						highest_held_title_tier >= tier_hegemony
-					}
-					scope:recipient = {
-						government_has_flag = government_is_celestial
-					}
-				}
-				scope:recipient = { highest_held_title_tier >= tier_kingdom }
+				scope:recipient = { highest_held_title_tier = tier_kingdom }
 			}
 			add = {
 				value = -50
@@ -398,21 +337,15 @@ offer_vassalization_interaction = {
 				}
 				if = {
 					limit = {
-						scope:recipient.sub_realm_size >= 10
+						scope:recipient.sub_realm_size >= 5
 					}
 					add = -50
 				}
 				if = {
 					limit = {
-						scope:recipient.sub_realm_size >= 20
+						scope:recipient.sub_realm_size >= 10
 					}
 					add = -100
-				}
-				if = {
-					limit = {
-						scope:recipient = { highest_held_title_tier = tier_empire }
-					}
-					multiply = 1.5 # We bump this up for emperors
 				}
 			}
 		}
@@ -511,7 +444,9 @@ offer_vassalization_interaction = {
 		modifier = { # Isolationist tradition
 			desc = isolationist_reason
 			trigger = {
-				scope:actor.culture != scope:recipient.culture
+				NOT = {
+					scope:actor.culture = scope:recipient.culture
+				}
 				scope:recipient.culture = {
 					has_cultural_tradition = tradition_isolationist
 				}
@@ -529,46 +464,11 @@ offer_vassalization_interaction = {
 			desc = offer_vassalization_interaction_aibehavior_widetitletier_tt
 			trigger = {
 				scope:actor = {
-					OR = {
-						NOT = { government_has_flag = government_is_celestial }
-						scope:recipient = {
-							NOT = { government_has_flag = government_is_celestial }
-						}
-					}
 					tier_difference = {
 						target = scope:recipient
 						value > 1
 					}
 				}
-			}
-			add = 10
-		}
-		modifier = { #Wide difference in rank (Celestial to Celestial)
-			desc = offer_vassalization_interaction_aibehavior_widetitletier_tt
-			trigger = {
-				scope:actor = {
-					government_has_flag = government_is_celestial
-					tier_difference = {
-						target = scope:recipient
-						value > 1
-					}
-				}
-				scope:recipient = {
-					government_has_flag = government_is_celestial
-				}
-			}
-			add = {
-				value = 20
-				multiply = {
-					value = scope:actor.highest_held_title_tier
-					subtract = scope:recipient.highest_held_title_tier
-				}
-			}
-		}
-		modifier = { # Is a Hegemon
-			desc = offer_vassalization_interaction_aibehavior_hegemony_tt
-			trigger = {
-				scope:actor = { highest_held_title_tier = tier_hegemony }
 			}
 			add = 10
 		}
@@ -603,7 +503,9 @@ offer_vassalization_interaction = {
 				scope:recipient = {
 					NOT = {
 						any_neighboring_top_liege_realm_owner = {
-							this != scope:actor
+							NOT = {
+								this = scope:actor
+							}
 						}
 					}
 					NOT = {
@@ -636,14 +538,7 @@ offer_vassalization_interaction = {
 						character_is_realm_neighbor = scope:recipient
 					}
 				}
-				scope:recipient = {
-					# landless ruler count as within realm
-					trigger_if = {
-						limit = { is_landed = no }
-						NOT = { capital_county.holder = { target_is_same_character_or_above = scope:actor } }
-					}
-					capital_province = { squared_distance = { target = scope:actor.capital_province value < 200000 } }
-				}
+				scope:recipient.capital_province = { squared_distance = { target = scope:actor.capital_province value < 200000 } }
 			}
 			add = -250
 		}
@@ -655,18 +550,11 @@ offer_vassalization_interaction = {
 						character_is_realm_neighbor = scope:recipient
 					}
 				}
-				scope:recipient = {
-					# landless ruler count as within realm
-					trigger_if = {
-						limit = { is_landed = no }
-						NOT = { capital_county.holder = { target_is_same_character_or_above = scope:actor } }
-					}
-					capital_province = { squared_distance = { target = scope:actor.capital_province value >= 200000 } }
-				}
+				scope:recipient.capital_province = { squared_distance = { target = scope:actor.capital_province value >= 200000 } }
 			}
 			add = -500
 		}
-		modifier = { #Military Strength
+		modifier = {
 			desc = offer_vassalization_interaction_aibehavior_power_tt
 	  	  	add = {
 				value = 1
@@ -678,10 +566,12 @@ offer_vassalization_interaction = {
 				ceiling = yes
 	  		}
 		}
-		modifier = { #Vassal opinion
+		modifier = {
 			desc = offer_vassalization_interaction_aibehavior_vassal_opinion_tt
 			trigger = {
-				scope:actor = { number_of_powerful_vassals >= 1 }
+				scope:actor = {
+				number_of_powerful_vassals >= 1
+				}
 			}
 
 	  	  	add = {
@@ -869,17 +759,17 @@ offer_vassalization_interaction = {
 		modifier = { #Illegitimacy modifier.
 			desc = offer_vassalization_interaction_aibehavior_illegitimate_tt
 			trigger = {
-				scope:actor = {
-					OR = {
-						AND = {
+				OR = {
+					AND = {
+						scope:actor = {
 							has_trait = bastard
-							scope:recipient = {
-								faith = { NOT = { has_doctrine = doctrine_bastardry_none } }
-							}
 						}
-						has_trait = denounced
-						has_trait = disinherited
+						scope:recipient = {
+							faith = { NOT = { has_doctrine = doctrine_bastardry_none } }
+						}
 					}
+					has_trait = denounced
+					has_trait = disinherited
 				}
 			}
 			add = -10
@@ -1021,9 +911,6 @@ offer_vassalization_interaction = {
 		}
 		opinion_modifier = { #Compare Opinion modifier.
 			trigger = {
-				NOT = { 
-					scope:actor = { government_has_flag = government_is_mandala } #Has their own Opinion modifier
-				}
 				OR = {
 					scope:actor = {
 						NOR = {
@@ -1228,71 +1115,8 @@ offer_vassalization_interaction = {
 		#	add = -50
 		#}
 
-		
-		
-		modifier = {
-			scope:actor = {
-				has_variable = severed_head_vassalization
-				var:severed_head_vassalization = {
-					this = scope:recipient
-				}
-			}
-			add = 200
-			desc = COWED_BY_SEVERED_HEAD_MODIFIER
-		}
-
 		#ALL these modifiers are also used in impress_intent_vassalization_acceptance_value, keep them synced
 
-		#Mandala
-			#Mandala Tributaries should not want to be vassals
-			modifier = {
-				scope:recipient = { is_tributary_of = scope:actor }
-				scope:actor = { government_has_flag = government_is_mandala }
-				add = -35
-				desc = is_tributary_of_me_mandala
-			}
-
-			modifier = {
-				scope:recipient = { government_has_flag = government_is_mandala }
-				scope:actor = { government_has_flag = government_is_mandala }
-				add = -25
-				desc = is_mandala_government
-			}
-
-			#Your Radiance
-			modifier = {
-				scope:actor = { has_mandala_capital_trigger = yes }
-				add = scope:actor.mandala_radiance_value
-				desc = actor_positive_mandala_radiance
-			}
-
-			#Tributary Realm Size
-			subject_realm_size_lose_weight_modifier = {
-				DEVARAJA = scope:actor
-				SUBJECT = scope:recipient
-			}
-			
-			#Do they like you?
-			opinion_modifier = { 
-				trigger = {
-					scope:actor = { government_has_flag = government_is_mandala }
-				}
-				who = scope:recipient
-				opinion_target = scope:actor
-				multiplier = 1
-			}
-		
-		
-		# GH_ADDITION
-		# The Imperrech AI shouldn't generally be picking up new vassals this way to avoid swallowing back up those that already left
-		modifier = {
-			scope:actor = {
-				has_title_migrant_coalition_trigger = yes
-				is_ai = yes
-			}
-			factor = 0
-		}
-		
 		modifier = {
 			desc = otachedian_law_modifier_reason
 			trigger = {
@@ -1304,32 +1128,14 @@ offer_vassalization_interaction = {
 			add = 15
 		}
 
+		# GH_ADDITION
+		# The Imperrech AI shouldn't generally be picking up new vassals this way to avoid swallowing back up those that already left
 		modifier = {
-			add = 15
 			scope:actor = {
-				OR = {
-					AND = {
-						has_religion = religion:wardenism_religion
-						any_character_struggle = {
-							involvement = involved
-							has_struggle_phase_parameter = wardenite_vassalization_bonus
-						}
-					}
-					AND = {
-						has_religion = religion:ritualist_religion
-						any_character_struggle = {
-							involvement = involved
-							has_struggle_phase_parameter = ritualist_vassalization_bonus
-						}
-					}
-					AND = {
-						has_religion = religion:agionism_religion
-						any_character_struggle = {
-							has_struggle_phase_parameter = agionist_vassalization_bonus
-						}
-					}
-				}
+				has_title_migrant_coalition_trigger = yes
+				is_ai = yes
 			}
+			factor = 0
 		}
 	}
 
@@ -1376,7 +1182,7 @@ offer_vassalization_interaction = {
 			}
 		}
 		is_valid = {
-			scope:recipient.faith != scope:actor.faith
+			NOT = { scope:recipient.faith = scope:actor.faith }
 		}
 		flag = religious_exemption
 		localization = religious_exemption
@@ -1393,7 +1199,7 @@ offer_vassalization_interaction = {
 			}
 		}
 		is_valid = {
-			scope:recipient.faith != scope:actor.faith
+			NOT = { scope:recipient.faith = scope:actor.faith }
 		}
 		flag = religious_exemption_clan
 		localization = religious_exemption
@@ -1457,9 +1263,8 @@ offer_vassalization_interaction = {
 
 	ai_potential = {
 		is_adult = yes
-		top_liege = this
+		is_independent_ruler = yes
 		highest_held_title_tier > tier_county
-		vassal_limit_available > 1
 	}
 
 	ai_will_do = {
@@ -1467,12 +1272,17 @@ offer_vassalization_interaction = {
 
 		# AI prefers to receive higher obligations from their vassals when possible.
 		modifier = {
-			factor = 3
+			add = 2
+			scope:low_obligations = yes
+		}
+
+		modifier = {
+			add = 3
 			scope:normal_obligations = yes
 		}
 
 		modifier = {
-			factor = 4
+			add = 4
 			scope:high_obligations = yes
 		}
 
@@ -1529,19 +1339,16 @@ offer_fealty_interaction = {
 			}
 		}
 		scope:recipient = {
-			this != scope:actor
+			NOT = { this = scope:actor }
 			is_landed = yes
-			top_liege = this # Target has to be independent
-			is_redlander = no
+			is_independent_ruler = yes # Target has to be independent
 		}
 		scope:actor.highest_held_title_tier < scope:recipient.highest_held_title_tier
 		scope:actor = {
 			is_human = yes
 			is_landed = yes
-			top_liege = this # You have to be independent - This check exists to prevent a lot of edge-cases where you can change liege
+			is_independent_ruler = yes # You have to be independent - This check exists to prevent a lot of edge-cases where you can change liege
 			NOT = { government_has_flag = cannot_be_vassal_or_liege }
-			is_confederation_member = no
-			is_redlander = no
 		}
 	}
 
@@ -1572,6 +1379,27 @@ offer_fealty_interaction = {
 				government_has_flag = government_is_landless_adventurer
 				government_has_flag = government_is_holy_order
 				government_has_flag = government_is_mercenary
+			}
+		}
+		scope:recipient = {
+			primary_title = {
+				is_noble_family_title = no
+			}
+		}
+		
+		custom_description = {
+			text = "republic_titular_title"
+			OR = {
+				scope:recipient = {
+					NOT = {
+						primary_title = {
+							has_variable = republic_titular_title
+						}
+					}
+				}
+				scope:actor = {
+					government_has_flag = government_is_administrative_republic
+				}
 			}
 		}
 	}
@@ -1638,7 +1466,7 @@ offer_fealty_interaction = {
 		}
 
 		modifier = { # I am a King!
-			desc = offer_fealty_interaction_aibehavior_hightier_tt
+			desc = offer_fealty_interaction_aibehavior_amkingtier_tt
 			trigger = {
 				scope:actor = {
 					highest_held_title_tier >= tier_kingdom
@@ -1672,13 +1500,8 @@ offer_fealty_interaction = {
 					NOT = {
 						any_neighboring_top_liege_realm_owner = { this = scope:recipient }
 					}
-					# landless ruler count as within realm
-					trigger_if = {
-						limit = { is_landed = no }
-						NOT = { capital_county.holder = { target_is_same_character_or_above = scope:actor } }
-					}
-					capital_province = { squared_distance = { target = scope:recipient.capital_province value < 200000 } }
 				}
+				scope:actor.capital_province = { squared_distance = { target = scope:recipient.capital_province value < 200000 } }
 			}
 			add = -15
 		}
@@ -1689,13 +1512,8 @@ offer_fealty_interaction = {
 					NOT = {
 						any_neighboring_top_liege_realm_owner = { this = scope:recipient }
 					}
-					# landless ruler count as within realm
-					trigger_if = {
-						limit = { is_landed = no }
-						NOT = { capital_county.holder = { target_is_same_character_or_above = scope:actor } }
-					}
-					capital_province = { squared_distance = { target = scope:recipient.capital_province value >= 200000 } }
 				}
+				scope:actor.capital_province = { squared_distance = { target = scope:recipient.capital_province value >= 200000 } }
 			}
 			add = -25
 		}
@@ -1718,7 +1536,7 @@ offer_fealty_interaction = {
 					has_relation_nemesis = scope:actor
 				}
 			}
-			add = -100
+			add = -30
 		}
 		modifier = { # Same Dynasty modifier.
 			desc = offer_vassalization_interaction_aibehavior_dynasty_tt
@@ -1831,10 +1649,10 @@ offer_fealty_interaction = {
 		# EP3
 		modifier = { # cowed from an emperor's impressive visit
 			add = 10
-			desc = cowed_from_visit_interaction_reason
+			desc = speaks_same_language_interaction_reason
 			trigger = {
 				scope:actor = {
-					has_character_flag = cowed_increased_vassalization_acceptance
+					knows_language_of_culture = scope:recipient.culture
 				}
 			}
 		}
@@ -1921,7 +1739,7 @@ offer_fealty_interaction = {
 			}
 		}
 		is_valid = {
-			scope:recipient.faith != scope:actor.faith
+			NOT = { scope:recipient.faith = scope:actor.faith }
 		}
 		flag = religious_taxation
 		localization = religious_taxation
@@ -1938,7 +1756,7 @@ offer_fealty_interaction = {
 			}
 		}
 		is_valid = {
-			scope:recipient.faith != scope:actor.faith
+			NOT = { scope:recipient.faith = scope:actor.faith }
 		}
 		flag = religious_exemption_clan
 		localization = religious_exemption
@@ -2001,7 +1819,7 @@ offer_fealty_interaction = {
 						}
 					}
 				}
-
+				
 				add_character_flag = {
 					flag = new_confederate
 					years = 3
@@ -2016,7 +1834,7 @@ offer_fealty_interaction = {
 					}
 				}
 			}
-
+			
 			# If you have a suzerain, they will get a lower opinion of you for not paying tribute anymore
 			suzerain ?= {
 				if = {
@@ -2061,7 +1879,7 @@ offer_fealty_interaction = {
 
 	on_intermediary_accept = {
 	}
-
+	
 	on_decline = {
 		scope:actor = {
 			trigger_event = char_interaction.0011
@@ -2116,7 +1934,7 @@ force_vote_in_succession_election_interaction = {
 				use_hook = scope:recipient
 			}
 		}
-
+		
 		# If we're a clan this interaction affects unity
 		add_clan_unity_interaction_effect = {
 			CHARACTER = scope:actor
@@ -2140,9 +1958,12 @@ set_primary_spouse_interaction = {
 		scope:actor = {
 			is_spouse_of = scope:recipient
 		}
-		scope:actor.primary_spouse != scope:recipient
+		NOT = {
+			scope:actor.primary_spouse = scope:recipient
+		}
 	}
 	is_valid_showing_failures_only = {
+		scope:recipient = { is_busy_in_events_localised = yes }
 		scope:recipient = {
 			NOT = {
 				has_trait = incapable
@@ -2210,7 +2031,7 @@ set_primary_spouse_interaction = {
 						target = scope:actor
 						opinion = -30
 					}
-				}
+				}	
 			}
 			set_primary_spouse = scope:recipient
 			hidden_effect = {
@@ -2261,14 +2082,7 @@ set_primary_spouse_interaction = {
 	ai_target_quick_trigger = {
 		adult = yes
 	}
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 72
-		kingdom = 72
-		empire = 72
-		hegemony = 72
-	}
+	ai_frequency = 72
 
 	ai_potential = {
 		any_spouse = {
@@ -2308,14 +2122,10 @@ grant_independence_interaction = {
 	is_shown = {
 		can_do_diplomacy_trigger = yes
 		scope:actor = {
-			trigger_if = {
-				limit = { is_confederation_member = yes }
-				exists = house.house_confederation
-			}
+			is_confederation_member = no
 		}
 		scope:recipient = {
 			is_vassal_of = scope:actor
-			is_landed = yes
 		}
 		NOR = { 
 			scope:recipient = scope:actor
@@ -2340,7 +2150,7 @@ grant_independence_interaction = {
 			}
 		}
 		scope:actor = {
-			top_liege = this
+			is_independent_ruler = yes
 			NOT = {
 				is_at_war = yes
 			}
@@ -2359,7 +2169,7 @@ grant_independence_interaction = {
 		custom_description = {
 			text = is_de_jure_vassal_check
 			object = scope:recipient
-
+			
 			trigger_if = { # Admin rulers can grant tribal vassals independence regardless of de jure
 				limit = {
 					scope:actor = { government_has_flag = government_is_administrative }
@@ -2376,13 +2186,12 @@ grant_independence_interaction = {
 					}
 				}
 			}
-
+			
 		}
 		custom_tooltip = {
 			text = can_only_remove_diarch_by_elevating_them.tt
 			NOT = { scope:recipient ?= scope:actor.diarch }
 		}
-		#GH REMOVED: tgp_blocked_action_against_tenno_trigger
 	}
 
 	auto_accept = yes
@@ -2431,13 +2240,13 @@ grant_independence_interaction = {
 				limit = {
 					any_liege_or_above = {
 						is_ai = no
-						this != scope:actor
+						NOT = { this = scope:actor }
 					}
 				}
 				every_liege_or_above = {
 					limit = {
 						is_ai = no
-						this != scope:actor
+						NOT = { this = scope:actor }
 					}
 					trigger_event = vassal_interaction.0023
 				}
@@ -2467,7 +2276,7 @@ grant_independence_interaction = {
 					every_vassal = {
 						limit = {
 							is_ai = no
-							this != scope:recipient
+							NOT = { this = scope:recipient }
 						}
 						trigger_event = {
 							id = vassal_interaction.0022
@@ -2643,12 +2452,13 @@ expose_secret_interaction = {
 			any_secret = {
 				is_known_by = scope:actor
 			}
-			this != scope:actor
+			NOT = { this = scope:actor }
 			age > 10
 		}
 	}
 
 	is_valid_showing_failures_only = {
+		scope:recipient = { is_busy_in_events_localised = yes }
 	}
 
 	on_accept = {
@@ -2691,49 +2501,6 @@ expose_secret_interaction = {
 						secret_owner = scope:recipient
 					}
 					expose_secret = scope:actor
-				}
-			}
-			if = {
-				limit = {
-					has_title = title:e_minister_of_justice
-					top_participant_group:dynastic_cycle ?= {
-						NOT = { participant_group_type = other_rulers }
-					}
-					OR = {
-						scope:recipient = {
-							top_participant_group:dynastic_cycle ?= {
-								NOT = { participant_group_type = other_rulers }
-							}
-						}
-						scope:target.secret_target = {
-							top_participant_group:dynastic_cycle ?= {
-								NOT = { participant_group_type = other_rulers }
-							}
-						}
-					}
-				}
-				add_merit_if_relevant_effect = {
-					MERIT = minor_merit_value
-				}
-				if = {
-					limit = {
-						government_has_flag = government_has_influence
-					}
-					change_influence = {
-						value = minor_influence_gain
-						multiply = scope:recipient.highest_held_title_tier
-					}
-				}
-				situation:dynastic_cycle = {
-					if = {
-						limit = {
-							situation_top_has_catalyst = catalyst_minister_exposed_secret
-						}
-						trigger_situation_catalyst = {
-							catalyst = catalyst_minister_exposed_secret
-							character = scope:actor
-						}
-					}
 				}
 			}
 

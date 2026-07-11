@@ -27,16 +27,16 @@ court_trait_handle_multiple_scopes_effect = {
 		limit = {
 			ep1_courtier_valid_for_court_trait_$TRAIT_LEVEL$_trigger = { TYPE = $COURT_TYPE$ }
 			is_of_major_interest_to_root_trigger = yes
-			this != scope:courtier_1
+			NOT = { this = scope:courtier_1 }
 		}
 		alternative_limit = {
 			ep1_courtier_valid_for_court_trait_$TRAIT_LEVEL$_trigger = { TYPE = $COURT_TYPE$ }
 			is_of_minor_interest_to_root_trigger = yes
-			this != scope:courtier_1
+			NOT = { this = scope:courtier_1 }
 		}
 		alternative_limit = {
 			ep1_courtier_valid_for_court_trait_$TRAIT_LEVEL$_trigger = { TYPE = $COURT_TYPE$ }
-			this != scope:courtier_1
+			NOT = { this = scope:courtier_1 }
 		}
 		save_scope_as = courtier_2
 	}
@@ -180,8 +180,12 @@ assign_court_type_traits_to_courtiers_effect = {
 			any_courtier = {
 				days_since_joined_court >= days_to_gain_court_type_trait
 				OR = { #Either they have no trait, or they have one we can level
-					ep1_courtier_valid_for_court_trait_1_trigger = { TYPE = diplomatic }
-					ep1_courtier_valid_for_court_trait_2_trigger = { TYPE = diplomatic }
+					AND = {
+						ep1_courtier_valid_for_court_trait_1_trigger = { TYPE = diplomatic }
+					}
+					AND = {
+						ep1_courtier_valid_for_court_trait_2_trigger = { TYPE = diplomatic }
+					}
 				}
 			}
 		}
@@ -198,8 +202,12 @@ assign_court_type_traits_to_courtiers_effect = {
 			any_courtier = {
 				days_since_joined_court >= days_to_gain_court_type_trait
 				OR = { #Either they have no trait, or they have one we can level
-					ep1_courtier_valid_for_court_trait_1_trigger = { TYPE = warlike }
-					ep1_courtier_valid_for_court_trait_2_trigger = { TYPE = warlike }
+					AND = {
+						ep1_courtier_valid_for_court_trait_1_trigger = { TYPE = warlike }
+					}
+					AND = {
+						ep1_courtier_valid_for_court_trait_2_trigger = { TYPE = warlike }
+					}
 				}
 			}
 		}
@@ -213,8 +221,12 @@ assign_court_type_traits_to_courtiers_effect = {
 			any_courtier = {
 				days_since_joined_court >= days_to_gain_court_type_trait
 				OR = { #Either they have no trait, or they have one we can level
-					ep1_courtier_valid_for_court_trait_1_trigger = { TYPE = administrative }
-					ep1_courtier_valid_for_court_trait_2_trigger = { TYPE = administrative }
+					AND = {
+						ep1_courtier_valid_for_court_trait_1_trigger = { TYPE = administrative }
+					}
+					AND = {
+						ep1_courtier_valid_for_court_trait_2_trigger = { TYPE = administrative }
+					}
 				}
 			}
 		}
@@ -228,8 +240,12 @@ assign_court_type_traits_to_courtiers_effect = {
 			any_courtier = {
 				days_since_joined_court >= days_to_gain_court_type_trait
 				OR = { #Either they have no trait, or they have one we can level
-					ep1_courtier_valid_for_court_trait_1_trigger = { TYPE = intrigue }
-					ep1_courtier_valid_for_court_trait_2_trigger = { TYPE = intrigue }
+					AND = {
+						ep1_courtier_valid_for_court_trait_1_trigger = { TYPE = intrigue }
+					}
+					AND = {
+						ep1_courtier_valid_for_court_trait_2_trigger = { TYPE = intrigue }
+					}
 				}
 			}
 		}
@@ -243,14 +259,20 @@ assign_court_type_traits_to_courtiers_effect = {
 			any_courtier = {
 				days_since_joined_court >= days_to_gain_court_type_trait
 				OR = { #Either they have no trait, or they have one we can level
-					ep1_courtier_valid_for_court_trait_1_trigger = { TYPE = scholarly }
-					ep1_courtier_valid_for_court_trait_2_trigger = { TYPE = scholarly }
+					AND = {
+						ep1_courtier_valid_for_court_trait_1_trigger = { TYPE = scholarly }
+					}
+					AND = {
+						ep1_courtier_valid_for_court_trait_2_trigger = { TYPE = scholarly }
+					}
 				}
 			}
 		}
 		court_trait_save_scopes_and_send_interface_message_effect = { COURT_TYPE = scholarly }
 	}
+	
 	## GH ADDITIONS ##
+
 	# Magi Court
 	if = {
 		limit = {
@@ -258,13 +280,16 @@ assign_court_type_traits_to_courtiers_effect = {
 			any_courtier = {
 				days_since_joined_court >= days_to_gain_court_type_trait
 				OR = { #Either they have no trait, or they have one we can level
-					ep1_courtier_valid_for_court_trait_1_trigger = { TYPE = magic }
-					ep1_courtier_valid_for_court_trait_2_trigger = { TYPE = magic }
+					AND = {
+						ep1_courtier_valid_for_court_trait_1_trigger = { TYPE = magic }
+					}
+					AND = {
+						ep1_courtier_valid_for_court_trait_2_trigger = { TYPE = magic }
+					}
 				}
 			}
 		}
 		court_trait_save_scopes_and_send_interface_message_effect = { COURT_TYPE = magic }
 	}
-	## GH END ##
 }
  

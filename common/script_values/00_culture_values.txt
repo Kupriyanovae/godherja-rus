@@ -8,7 +8,7 @@ grant_title_cultural_acceptance_impact = {
 			list = target_titles
 			limit = {
 				tier = tier_county
-				culture != scope:actor.culture
+				NOT = { culture = scope:actor.culture }
 				culture = scope:recipient.culture
 				NOT = {
 					recent_history = {
@@ -35,7 +35,7 @@ grant_title_cultural_acceptance_impact = {
 				limit = {
 					tier = tier_duchy
 					title_capital_county = {
-						culture != scope:actor.culture
+						NOT = { culture = scope:actor.culture }
 						culture = scope:recipient.culture
 					}
 					NOT = {
@@ -54,7 +54,7 @@ grant_title_cultural_acceptance_impact = {
 				limit = {
 					tier = tier_kingdom
 					title_capital_county = {
-						culture != scope:actor.culture
+						NOT = { culture = scope:actor.culture }
 						culture = scope:recipient.culture
 					}
 					NOT = {
@@ -77,7 +77,7 @@ revoke_title_culture_acceptance_impact = {
 		limit = {
 			scope:landed_title = {
 				tier = tier_county
-				culture != scope:actor.culture
+				NOT = { culture = scope:actor.culture }
 				culture = scope:recipient.culture
 				NOT = {
 					recent_history = {
@@ -256,14 +256,14 @@ hybridization_threshold_value = {
 		}
 		multiply = 1.5
 	}
-	#if = {
-	#	limit = {
-	#		exists = scope:culture
-	#		root.culture = { has_cultural_parameter = otachedian_hybridization }
-	#		scope:culture = { has_cultural_parameter = otachedian_hybridization }
-	#	}
-	#	multiply = 0.75
-	#}
+	if = {
+		limit = {
+			exists = scope:culture
+			root.culture = { has_cultural_parameter = otachedian_hybridization }
+			scope:culture = { has_cultural_parameter = otachedian_hybridization }
+		}
+		multiply = 0.75
+	}
 	max = 100
 	min = 0
 }
@@ -507,7 +507,6 @@ divergence_yearly_chance = {
 miniscule_positive_culture_acceptance = 2
 low_positive_culture_acceptance = 5
 medium_positive_culture_acceptance = 10
-major_positive_culture_acceptance = 25
 miniscule_negative_culture_acceptance = -2
 low_negative_culture_acceptance = -5
 medium_negative_culture_acceptance = -10
@@ -591,7 +590,8 @@ language_soft_cap = {
 	}
 	if = {
 		limit = {
-			dynasty ?= {
+			exists = dynasty
+			dynasty = {
 				has_dynasty_perk = ep1_culture_legacy_1
 			}
 		}
@@ -657,7 +657,9 @@ family_business_court_poistion_aptitude_bonus = 20
 court_position_aptitude_family_business_value = {
 	if = {
 		limit = {
-			liege.culture ?= { has_cultural_parameter = close_family_better_court_positions }
+			exists = liege
+			culture = liege.culture
+			culture = { has_cultural_parameter = close_family_better_court_positions }
 			is_close_family_of = liege
 		}
 		add = {
@@ -694,21 +696,11 @@ court_language_ai_score = {
 	add = {
 		value = scope:their_language_counties
 		multiply = 10
-		divide = {
-			value = scope:total_counties
-			min = 1
-		}
+		divide = scope:total_counties
 	}
 	if = {
 		limit = { scope:checking_native_language = no }
 		subtract = scope:my_language_counties
-		min = 1
-	}
-
-	#Increase from number of other courts using the Language (1.5 per court).
-	add = {
-		value = scope:courts_with_language
-		multiply = 1.5
 	}
 
 	#Adjust for Court Grandeur.
@@ -925,30 +917,28 @@ traditionalist_discount = {
 court_position_aptitude_eunuch_tradition_value = {
 	if = {
 		limit = {
-			liege.culture ?= {
-				OR = {
-					has_cultural_parameter = eunuch_trait_bonuses
-					has_cultural_parameter = court_machinations_eunuch_trait_bonuses
-				}
+			exists = liege
+			liege.culture = {
+				has_cultural_parameter = eunuch_trait_bonuses
 			}
+			has_trait = eunuch_1
 		}
-		if = {
-			limit = {
-				has_trait = eunuch_1
-			}
-			add = {
-				value = 30
-				desc = court_position_eunuch_trait
-			}
+		add = {
+			value = 30
+			desc = court_position_eunuch_trait
 		}
-		else_if = {
-			limit = {
-				has_trait = beardless_eunuch
+	}
+	else_if = {
+		limit = {
+			exists = liege
+			liege.culture = {
+				has_cultural_parameter = eunuch_trait_bonuses
 			}
-			add = {
-				value = 30
-				desc = court_position_beardless_eunuch_trait
-			}
+			has_trait = beardless_eunuch
+		}
+		add = {
+			value = 30
+			desc = court_position_beardless_eunuch_trait
 		}
 	}
 }

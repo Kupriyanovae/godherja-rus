@@ -9,14 +9,7 @@ new_mountain_home_decision = {
 		reference = "gfx/interface/illustrations/decisions/decision_ruins.dds"
 	}
 	decision_group_type = goan
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 120
-		kingdom = 120
-		empire = 120
-		hegemony = 120
-	}
+	ai_check_interval = 120
 	desc = new_mountain_home_decision_desc
 
 	is_shown = {
@@ -33,7 +26,8 @@ new_mountain_home_decision = {
 		culture = { has_cultural_pillar = heritage_goan }
 		OR = {
 			AND = {
-				highest_held_title_tier <= tier_duchy
+				highest_held_title_tier <= tier_kingdom
+				highest_held_title_tier = tier_duchy
 				custom_description = {
 					text = need_3_duchies
 					any_held_title = {
@@ -275,100 +269,5 @@ new_mountain_home_decision = {
 	}
 	ai_will_do = {
 		base = 100
-	}
-}
-
-reform_gethian_faith_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_ck2_tribal_shrine_cm.dds"
-	}
-	decision_group_type = goan
-
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 120
-		empire = 120
-		hegemony = 120
-	}
-
-	desc = reform_gethian_faith_decision_desc
-	selection_tooltip = reform_gethian_faith_decision_tooltip
-
-	is_shown = {
-		is_playable_character = yes
-		exists = dynasty
-		faith = faith:gethian
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:reform_gethian_faith_decision
-			}
-		}
-	}
-
-	is_valid = {
-		custom_description = {
-			text = reform_gethian_faith_decision.you_have_x_or_more_traits_virtuous_to_gethian_reformed
-			num_virtuous_traits = {
-				value >= 2
-				target = faith:gethian_reformed
-			}
-		}
-		has_title = title:k_nayam_pahagara
-		top_liege = this
-	}
-
-	is_valid_showing_failures_only = {
-		is_available_at_peace_adult = yes
-	}
-
-	effect = {
-		gain_holy_legend_seed_tooltip_effect = yes
-		save_scope_as = religious_leader
-		faith = { save_scope_as = old_faith }
-		faith:gethian_reformed = { save_scope_as = new_faith }
-		show_as_tooltip = { reform_gethian_faith_decision_generic_effects_scripted_effect = yes }
-		trigger_event = sjalvolki_reformation.0401
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:reform_gethian_faith_decision
-			}
-		}
-	}
-
-	cost = {
-		piety = 1000
-		prestige = 1000
-	}
-
-	ai_potential = {
-		highest_held_title_tier >= tier_kingdom
-	}
-
-	ai_will_do = {
-		base = 0
-
-		modifier = {
-			add = 25
-			has_trait = arrogant
-		}
-		modifier = {
-			add = 25
-			has_trait = stubborn
-		}
-		modifier = {
-			add = 25
-			has_trait = zealous
-		}
-		modifier = {
-			add = 75
-			any_sub_realm_county = {
-				percent >= 0.51
-				culture = culture:goans
-			}
-		}
 	}
 }

@@ -416,21 +416,6 @@ GetRandomRegionalSmallGame = {
 		}
 		localization_key = animal_gerbil
 	}
-	text = {
-		trigger = {
-			location = {
-				geographical_region = world_steppe
-			}
-		}
-		localization_key = animal_marmot
-	}
-}
-
-GetRandomRegionalSmallGamePlural = {
-	type = character
-	random_valid = yes
-	parent = GetRandomRegionalSmallGame
-	suffix = "_plural"
 }
 
 GetRandomRegionalBird = {
@@ -555,7 +540,6 @@ GetRandomRegionalWildDaytimeBird = {
 			location = {
 				OR = {
 					is_coastal = yes
-					is_sea_province = yes
 					NOR = {
 						GH_any_desert_terrain_trigger = yes
 						GH_any_mountains_terrain_trigger = yes
@@ -668,10 +652,7 @@ GetRandomRegionalWildDaytimeBird = {
 	text = {
 		trigger = {
 			location = {
-				OR = {
-					is_coastal = yes
-					is_sea_province = yes
-				}
+				is_coastal = yes
 			}
 		}
 		localization_key = seagull
@@ -1566,13 +1547,6 @@ GetPrecariousTerrainFeature = {
 			terrain = wetlands
 		}
 		localization_key = terrain_challenge_wetlands
-	}
-
-	text = {
-		trigger = {
-			terrain = terraced_hills
-		}
-		localization_key = terrain_challenge_terraced_hills
 	}
 }
 

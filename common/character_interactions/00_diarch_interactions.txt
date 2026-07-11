@@ -68,6 +68,7 @@ diarch_revoke_title_interaction = {
 	popup_on_receive = yes
 	pause_on_receive = yes
 
+	interface_priority = 60
 	ai_min_reply_days = 4
 	ai_max_reply_days = 9
 
@@ -77,7 +78,7 @@ diarch_revoke_title_interaction = {
 	is_shown = {
 		can_do_diplomacy_trigger = yes
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
@@ -88,24 +89,21 @@ diarch_revoke_title_interaction = {
 				}
 				is_designated_diarch = yes
 			}
-			liege = {
-				has_diarchy_parameter = unlock_diarch_revoke_title_interaction
-			}
 		}
 		# Make sure scope:recipient is suitable.
 		scope:recipient = {
 			# We only target vassals of the liege...
 			liege = scope:actor.liege
-			this != scope:actor.liege
+			NOT = { this = scope:actor.liege }
 			# ... who are appropriately landed.
 			is_landed_or_landless_administrative = yes
 			scope:recipient.highest_held_title_tier >= tier_county
 		}
 	}
-
+	
 	is_valid = {
 		# Here to correct for some dodgy inheritance situations.
-		scope:actor != scope:intermediary
+		NOT = { scope:actor = scope:intermediary }
 	}
 	is_valid_showing_failures_only = {
 		# Standard validity checks.
@@ -186,12 +184,12 @@ diarch_revoke_title_interaction = {
 			}
 		}
 	}
-
+	
 	is_highlighted = {
 		# Diarch revocations require a claim - this is uncommon, so we always highlight it.
 		diarch_revocation_has_claim_check_trigger = yes
 	}
-
+		
 	can_be_picked_title = {
 		scope:target = {
 			title_revocation_standard_can_pick_title_trigger = yes
@@ -259,9 +257,9 @@ diarch_revoke_title_interaction = {
 		hidden_effect = {
 			scope:actor = {
 				if = {
-					limit = {
+					limit = { 
 						is_landed_or_landless_administrative = no
-						scope:intermediary != scope:recipient
+						NOT = { scope:intermediary = scope:recipient }
 					}
 					# This has a delay of 1 day (if no delay then the liege change doesn't stick) which really isn't ideal and should be looked into/fixed so that it happens when the action goes into effect
 					trigger_event = { id = diarchy.0141 days = 1 }
@@ -467,7 +465,7 @@ diarch_revoke_title_interaction = {
 		# I am a King!
 		modifier = {
 			add = -20
-			desc = offer_vassalization_interaction_aibehavior_hightier_tt
+			desc = offer_vassalization_interaction_aibehavior_amkingtier_tt
 			scope:recipient = { highest_held_title_tier = tier_kingdom }
 		}
 		# Title is part of vassal's primary title de-jure.
@@ -561,14 +559,7 @@ diarch_revoke_title_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = peer_vassals }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 6
-		kingdom = 6
-		empire = 6
-		hegemony = 6
-	}
+	ai_frequency = 6
 
 	ai_potential = {
 		is_diarch = yes
@@ -740,16 +731,17 @@ diarch_retract_vassal_interaction = {
 	can_send_despite_rejection = yes
 	popup_on_receive = yes
 	pause_on_receive = yes
-
+	
+	interface_priority = 55
 	ai_min_reply_days = 4
 	ai_max_reply_days = 9
-
+	
 	on_decline_summary = diarch_rebel_or_crime_summary.retract
 
 	is_shown = {
 		can_do_diplomacy_trigger = yes
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
@@ -760,7 +752,6 @@ diarch_retract_vassal_interaction = {
 				}
 				is_designated_diarch = yes
 			}
-			liege = { has_diarchy_parameter = unlock_diarch_retract_vassal_interaction }
 			# Plus you need to be landed for this.
 			is_landed_or_landless_administrative = yes
 		}
@@ -768,16 +759,16 @@ diarch_retract_vassal_interaction = {
 		scope:recipient = {
 			# We only target vassals of the liege...
 			liege = scope:actor.liege
-			this != scope:actor.liege
+			NOT = { this = scope:actor.liege }
 			# ... who are appropriately landed.
 			is_landed_or_landless_administrative = yes
 			scope:recipient.highest_held_title_tier >= tier_duchy
 		}
 	}
-
+	
 	is_valid = {
 		# Here to correct for some dodgy inheritance situations.
-		scope:actor != scope:intermediary
+		NOT = { scope:actor = scope:intermediary }
 	}
 	is_valid_showing_failures_only = {
 		# Standard validity checks.
@@ -790,7 +781,7 @@ diarch_retract_vassal_interaction = {
 				text = "you_must_have_a_de_jure_vassal_to_retract"
 				object = scope:recipient
 				any_held_title = {
-					title_tier >= duchy
+					tier >= tier_duchy
 					any_direct_de_jure_vassal_title = {
 						exists = holder
 						holder.liege = scope:recipient
@@ -833,7 +824,7 @@ diarch_retract_vassal_interaction = {
 		trigger_if = {
 			limit = {
 				scope:actor = { is_diarch = yes }
-			}
+			}	
 			# Diarchs must have unlocked the appropriate power.
 			scope:actor.liege = { has_diarchy_active_parameter = unlock_diarch_retract_vassal_interaction }
 		}
@@ -842,7 +833,7 @@ diarch_retract_vassal_interaction = {
 			scope:actor = { is_at_war_with = scope:actor.liege }
 		}
 	}
-
+	
 	cooldown = { years = 1 }
 	cooldown_against_recipient = { years = 3 }
 
@@ -863,7 +854,7 @@ diarch_retract_vassal_interaction = {
 	populate_recipient_list = {
 		scope:actor = {
 			every_held_title = {
-				title_tier >= duchy
+				limit = { tier >= tier_duchy }
 				every_direct_de_jure_vassal_title = {
 					limit = { exists = holder }
 					holder = {
@@ -892,7 +883,7 @@ diarch_retract_vassal_interaction = {
 	extra_icon = "gfx/interface/icons/character_interactions/hook_icon.dds"
 
 	send_options_exclusive = no
-
+	
 	on_send = {
 		scope:actor = {
 			add_character_flag = {
@@ -905,7 +896,7 @@ diarch_retract_vassal_interaction = {
 	on_auto_accept = {
 		scope:recipient = { trigger_event = char_interaction.0271 }
 	}
-
+	
 	on_accept = {
 		# Follow the standard flow for retraction.
 		save_scope_value_as = {
@@ -975,7 +966,7 @@ diarch_retract_vassal_interaction = {
 			diarch_interaction_add_to_global_list_effect = { VARIABLE_LIST = di_track_retract_veto_intermediary_list }
 		}
 	}
-
+	
 	on_decline = {
 		scope:actor = {
 			# Tell them that the retraction ran into issues.
@@ -1021,7 +1012,7 @@ diarch_retract_vassal_interaction = {
 			diarch_interaction_add_to_global_list_effect = { VARIABLE_LIST = di_track_retract_decline_intermediary_list }
 		}
 	}
-
+	
 	auto_accept = {
 		OR = {
 			scope:recipient = {
@@ -1067,7 +1058,7 @@ diarch_retract_vassal_interaction = {
 	}
 	ai_accept = {
 		base = 0 # Try to make it 0 for most interactions
-
+	
 		# Hook used
 		modifier = {
 			add = 40
@@ -1087,7 +1078,7 @@ diarch_retract_vassal_interaction = {
 			desc = AI_REFUSAL_IS_TREASON
 			scope:actor = { has_realm_law_flag = vassal_refusal_is_treason }
 		}
-
+	
 		ai_value_modifier = {
 			who = scope:recipient
 			ai_greed = {
@@ -1127,7 +1118,7 @@ diarch_retract_vassal_interaction = {
 				}
 			}
 		}
-
+	
 		modifier = { #Sub-Vassal is NOT De jure of current Vassal.
 			add = 25
 			desc = AI_REFUSAL_IS_NOT_DE_JURE_LIEGE
@@ -1220,15 +1211,8 @@ diarch_retract_vassal_interaction = {
 	
 	# AI
 	ai_targets = { ai_recipients = peer_vassals }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 24
-		kingdom = 24
-		empire = 24
-		hegemony = 24
-	}
-
+	ai_frequency = 24
+	
 	ai_potential = {
 		is_diarch = yes
 		has_realm_law_flag = title_revocation_allowed
@@ -1236,7 +1220,7 @@ diarch_retract_vassal_interaction = {
 		# Loyal diarchs don't engage in skullduggery.
 		diarch_loyalty < diarch_loyalty_visibly_loyal_threshold
 	}
-
+	
 	ai_will_do = {
 		# We're generally ruthless here.
 		base = @ai_secondary_powers_base_value
@@ -1393,6 +1377,7 @@ diarch_imprison_interaction = {
 	popup_on_receive = yes
 	pause_on_receive = yes
 
+	interface_priority = 60
 	ai_min_reply_days = 4
 	ai_max_reply_days = 9
 
@@ -1401,7 +1386,7 @@ diarch_imprison_interaction = {
 	is_shown = {
 		can_do_diplomacy_trigger = yes
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
@@ -1412,7 +1397,6 @@ diarch_imprison_interaction = {
 				}
 				is_designated_diarch = yes
 			}
-			liege = { has_diarchy_parameter = unlock_diarch_imprison_interaction }
 			# The prisoner goes to your dungeon, so we want you to actually have one.
 			is_landed_or_landless_administrative = yes
 		}
@@ -1442,7 +1426,7 @@ diarch_imprison_interaction = {
 
 	is_valid = {
 		# Here to correct for some dodgy inheritance situations.
-		scope:actor != scope:intermediary
+		NOT = { scope:actor = scope:intermediary }
 	}
 	is_valid_showing_failures_only = {
 		scope:actor = {
@@ -1460,7 +1444,7 @@ diarch_imprison_interaction = {
 		trigger_if = {
 			limit = {
 				scope:actor = { is_diarch = yes }
-			}
+			}	
 			# Diarchs must have unlocked the appropriate power.
 			scope:actor.liege = { has_diarchy_active_parameter = unlock_diarch_imprison_interaction }
 			scope:actor.liege = {
@@ -1487,7 +1471,7 @@ diarch_imprison_interaction = {
 			}
 		}
 	}
-
+	
 	is_highlighted = {
 		scope:recipient = { is_imprisoned = no }
 		scope:actor = { has_imprisonment_reason = scope:recipient }
@@ -1595,17 +1579,12 @@ diarch_imprison_interaction = {
 	}
 
 	on_decline = {
-		scope:actor = {
-			save_scope_as = use_strife_not_tyranny
-			imprison_HoF_consequences_effect = yes
+		scope:actor = { 
+			imprison_HoF_consequences_effect = yes 
 			imprison_tyranny_effect = yes
 		}
 		# Do we want a war or an escape?
 		scope:recipient = {
-			add_opinion = {
-				target = scope:actor
-				modifier = attempted_imprisonment_opinion
-			}
 			# If target is count or higher, we want the option to start a war.
 			if = {
 				limit = {
@@ -1623,11 +1602,6 @@ diarch_imprison_interaction = {
 							diarch_declare_recipient_criminal_effect = yes
 						}
 						50 = {
-							trigger = {
-								scope:actor = {
-									is_landed = yes  # consistent with char_interaction.0283
-								}
-							}
 							show_chance = no
 							desc = char_interaction.0263.result.war
 							scope:recipient = {
@@ -1655,7 +1629,7 @@ diarch_imprison_interaction = {
 				}
 				if = {
 					limit = { is_landed_or_landless_administrative = yes }
-					depose_effect = { DEPOSER = scope:actor }
+					depose_effect = { DEPOSER = root }
 				}
 				if = {
 					limit = {
@@ -1666,7 +1640,7 @@ diarch_imprison_interaction = {
 						}
 						trigger_if = {
 							limit = { exists = scope:actor.faith.religious_head }
-							scope:actor.faith.religious_head != scope:recipient
+							NOT = { scope:actor.faith.religious_head = scope:recipient }
 						}
 					}
 					custom_tooltip = deposed_and_become_wanderer
@@ -1772,7 +1746,7 @@ diarch_imprison_interaction = {
 	}
 
 	auto_accept = no
-
+	
 	ai_intermediary_accept = {
 		# The AI should be inclined to trust their regent, at least a little.
 		base = 0
@@ -1841,7 +1815,7 @@ diarch_imprison_interaction = {
 		}
 		modifier = { #I am a King!
 			add = -40
-			desc = offer_vassalization_interaction_aibehavior_hightier_tt
+			desc = offer_vassalization_interaction_aibehavior_amkingtier_tt
 			scope:recipient = { highest_held_title_tier = tier_kingdom }
 		}
 		modifier = { #Courtiers.
@@ -1864,9 +1838,10 @@ diarch_imprison_interaction = {
 			scope:actor = {
 				OR = {
 					any_targeting_faction = {
-						faction_type = claimant_faction
+						faction_is_type = claimant_faction
 						faction_is_at_war = yes
-						special_character ?= scope:recipient
+						exists = special_character
+						special_character = scope:recipient
 					}
 					AND = {
 						exists = var:claimant_faction_sent_demand
@@ -2003,18 +1978,9 @@ diarch_imprison_interaction = {
 	}
 
 	# AI
-	ai_targets = {
-		ai_recipients = peer_vassals
-		ai_recipients = scripted_relations
-	}
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 12
-		kingdom = 12
-		empire = 12
-		hegemony = 12
-	}
+	ai_targets = { ai_recipients = peer_vassals }
+	ai_targets = { ai_recipients = scripted_relations }
+	ai_frequency = 12
 
 	ai_will_do = {
 		# You should have a _reason_ to try to imprison someone.
@@ -2187,7 +2153,7 @@ diarch_imprison_interaction = {
 				}
 			}
 		}
-	}
+	}	
 }
 
 # Diarch (actor) offers to boost the CA/TA/IB of liege (recipient), taking on the costs and negatives themselves so that they can use their diarch powers.
@@ -2203,15 +2169,15 @@ diarch_subsidise_crown_authority_interaction = {
 	pause_on_receive = yes
 
 	is_shown = {
+		can_do_diplomacy_trigger = yes
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
 			exists = liege
 			is_diarch_of_target = liege
 			liege_has_co_emperorship_trigger = no
-			liege = { has_diarchy_parameter = diarch_can_subsidise_liege_authority }
 		}
 		# Same sub-realm only.
 		OR = {
@@ -2263,7 +2229,7 @@ diarch_subsidise_crown_authority_interaction = {
 				limit = { has_realm_law = crown_authority_2 }
 				can_pass_law_ca3_trigger = yes
 			}
-
+			
 			# If the liege is administrative, they have to be independent.
 			trigger_if = {
 				limit = { government_allows = administrative }
@@ -2285,7 +2251,7 @@ diarch_subsidise_crown_authority_interaction = {
 			multiply = subsidised_liege_authority_discount_value
 		}
 	}
-
+	
 	on_accept = {
 		scope:actor = {
 			send_interface_toast = {
@@ -2323,7 +2289,7 @@ diarch_subsidise_crown_authority_interaction = {
 			}
 		}
 	}
-
+	
 	ai_accept = {
 		base = 0
 
@@ -2337,7 +2303,7 @@ diarch_subsidise_crown_authority_interaction = {
 
 	auto_accept = {
 		custom_description = {
-			text = auto_accept_interaction_ai
+			text = auto_accept_interaction_ai	
 			object = scope:recipient
 			scope:recipient = {
 				is_ai = yes
@@ -2347,14 +2313,7 @@ diarch_subsidise_crown_authority_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = liege }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 48
-		duchy = 24
-		kingdom = 24
-		empire = 24
-		hegemony = 24
-	}
+	ai_frequency = 24
 	ai_potential = {
 		is_diarch = yes
 		# Loyal diarchs don't engage in skullduggery.
@@ -2409,14 +2368,13 @@ diarch_adjust_bureaucracy_interaction = {
 
 	is_shown = {
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
 			exists = liege
 			is_diarch_of_target = liege
 			liege_has_co_emperorship_trigger = yes
-			liege = { has_diarchy_parameter = unlock_adjust_imperial_bureaucracy_interaction }
 		}
 		# Same sub-realm only.
 		OR = {
@@ -2488,7 +2446,7 @@ diarch_adjust_bureaucracy_interaction = {
 		localization = decrease_centralisation_name
 		current_description = decrease_centralisation
 	}
-
+	
 	on_send = {
 		# Tell the AI to set their only send option.
 		if = {
@@ -2547,7 +2505,7 @@ diarch_adjust_bureaucracy_interaction = {
 			}
 		}
 	}
-
+	
 	ai_accept = {
 		base = -25
 
@@ -2674,7 +2632,7 @@ diarch_adjust_bureaucracy_interaction = {
 
 	auto_accept = {
 		custom_description = {
-			text = auto_accept_interaction_ai
+			text = auto_accept_interaction_ai	
 			object = scope:recipient
 			scope:recipient = {
 				is_ai = yes
@@ -2685,14 +2643,7 @@ diarch_adjust_bureaucracy_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = liege }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 24
-		hegemony = 24
-	}
+	ai_frequency = 24
 	ai_potential = {
 		is_diarch = yes
 		liege_has_co_emperorship_trigger = yes
@@ -2757,10 +2708,12 @@ diarch_legal_meddling_interaction = {
 	target_filter = recipient_domain_titles
 	popup_on_receive = yes
 
+	interface_priority = 60
+
 	is_shown = {
 		can_do_diplomacy_trigger = yes
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
@@ -2771,19 +2724,18 @@ diarch_legal_meddling_interaction = {
 				}
 				is_designated_diarch = yes
 			}
-			liege = { has_diarchy_parameter = unlock_legal_meddling_interaction }
 		}
 		# Make sure scope:recipient is suitable.
 		scope:recipient = {
 			# We only target vassals of the liege...
 			liege = scope:actor.liege
-			this != scope:actor.liege
+			NOT = { this = scope:actor.liege }
 			# ... who are appropriately landed.
 			is_landed_or_landless_administrative = yes
 			scope:recipient.highest_held_title_tier >= tier_county
-		}
+		}	
 	}
-
+	
 	is_valid_showing_failures_only = {
 		# You can't claim a title from someone if you already have claims on all their titles.
 		custom_tooltip = {
@@ -2805,7 +2757,7 @@ diarch_legal_meddling_interaction = {
 		trigger_if = {
 			limit = {
 				scope:actor = { is_diarch = yes }
-			}
+			}	
 			# Diarchs must have unlocked the appropriate power.
 			scope:actor.liege = { has_diarchy_active_parameter = unlock_legal_meddling_interaction }
 		}
@@ -2837,7 +2789,7 @@ diarch_legal_meddling_interaction = {
 
 	cooldown = { months = 6 }
 	cooldown_against_recipient = { years = 3 }
-
+	
 	can_be_picked_title = {
 		scope:target = {
 			# Really anything you don't already have a claim on and which isn't special.
@@ -2945,14 +2897,7 @@ diarch_legal_meddling_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = peer_vassals }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 6
-		kingdom = 6
-		empire = 6
-		hegemony = 6
-	}
+	ai_frequency = 6
 
 	ai_potential = {
 		is_diarch = yes
@@ -3030,7 +2975,8 @@ diarch_legal_meddling_interaction = {
 			scope:actor = {
 				any_held_title = {
 					any_direct_de_jure_vassal_title = {
-						holder ?= {
+						exists = holder
+						holder = {
 							OR = {
 								this = scope:recipient
 								this = {
@@ -3046,8 +2992,8 @@ diarch_legal_meddling_interaction = {
 		modifier = {
 			add = -100
 			is_landed_or_landless_administrative = yes
-			scope:recipient.primary_title.de_jure_liege ?= {
-				this != scope:actor.primary_title.de_jure_liege
+			scope:recipient.primary_title.kingdom ?= {
+				NOT = { this = scope:actor.primary_title.kingdom }
 			}
 		}
 		## Landless characters want land, but also want to focus on taking from those who might give it up.
@@ -3174,7 +3120,7 @@ diarch_syphon_treasury_interaction = {
 	is_shown = {
 		can_do_diplomacy_trigger = yes
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
@@ -3185,7 +3131,6 @@ diarch_syphon_treasury_interaction = {
 				}
 				is_designated_diarch = yes
 			}
-			liege = { has_diarchy_parameter = unlock_syphon_treasury_interaction }
 		}
 		# Make sure scope:recipient is suitable.
 		scope:recipient = {
@@ -3197,7 +3142,7 @@ diarch_syphon_treasury_interaction = {
 			}
 		}
 	}
-
+	
 	is_valid_showing_failures_only = {
 		# Make sure scope:recipient is the liege.
 		custom_tooltip = {
@@ -3225,7 +3170,7 @@ diarch_syphon_treasury_interaction = {
 		trigger_if = {
 			limit = {
 				scope:actor = { is_diarch = yes }
-			}
+			}	
 			# Diarchs must have unlocked the appropriate power.
 			scope:actor.liege = { has_diarchy_active_parameter = unlock_syphon_treasury_interaction }
 		}
@@ -3327,15 +3272,15 @@ diarch_syphon_treasury_interaction = {
 					# Inform scope:actor what type of embezzlement they'll be pursuing.
 					## Very high stewardship characters syphon development growth from a few counties.
 					if = {
-						limit = {
+						limit = { 
 							stewardship >= syphon_treasury_stewardship_very_high
-							NOT = { government_has_flag = government_is_nomadic }
+							NOT = { government_has_flag = government_is_nomadic } 
 						}
 						custom_tooltip = diarch_syphon_treasury_interaction.tt.success.syphon_development_growth
 					}
 					## Alternatively, herd for nomadic rulers
 					else_if = {
-						limit = {
+						limit = { 
 							stewardship >= syphon_treasury_stewardship_very_high
 							government_has_flag = government_is_nomadic
 						}
@@ -3430,27 +3375,27 @@ diarch_syphon_treasury_interaction = {
 							## Very high.
 							if = {
 								limit = { always = scope:diarch_syphon_treasury_sum_huge }
-								scope:recipient = {
+								scope:recipient = { 
 									domicile ?= { change_herd = monumental_herd_loss }
 								}
 							}
 							## High.
 							else_if = {
 								limit = { always = scope:diarch_syphon_treasury_sum_large }
-								scope:recipient = {
+								scope:recipient = { 
 									domicile ?= { change_herd = massive_herd_loss }
 								}
 							}
 							## Medium.
 							else_if = {
 								limit = { always = scope:diarch_syphon_treasury_sum_medium }
-								scope:recipient = {
+								scope:recipient = { 
 									domicile ?= { change_herd = major_herd_loss }
 								}
 							}
 							## Low.
 							else = {
-								scope:recipient = {
+								scope:recipient = { 
 									domicile ?= { change_herd = medium_herd_loss }
 								}
 							}
@@ -3489,7 +3434,7 @@ diarch_syphon_treasury_interaction = {
 								random_held_county = {
 									# Try to prefer against the capital, as that's more noticeable.
 									limit = {
-										this != scope:recipient.capital_county
+										NOT = { this = scope:recipient.capital_county }
 									}
 									alternative_limit = { always = yes }
 									change_county_control = monumental_county_control_loss
@@ -3501,7 +3446,7 @@ diarch_syphon_treasury_interaction = {
 								random_held_county = {
 									# Try to prefer against the capital, as that's more noticeable.
 									limit = {
-										this != scope:recipient.capital_county
+										NOT = { this = scope:recipient.capital_county }
 									}
 									alternative_limit = { always = yes }
 									change_county_control = extreme_county_control_loss
@@ -3513,7 +3458,7 @@ diarch_syphon_treasury_interaction = {
 								random_held_county = {
 									# Try to prefer against the capital, as that's more noticeable.
 									limit = {
-										this != scope:recipient.capital_county
+										NOT = { this = scope:recipient.capital_county }
 									}
 									alternative_limit = { always = yes }
 									change_county_control = major_county_control_loss
@@ -3524,7 +3469,7 @@ diarch_syphon_treasury_interaction = {
 								random_held_county = {
 									# Try to prefer against the capital, as that's more noticeable.
 									limit = {
-										this != scope:recipient.capital_county
+										NOT = { this = scope:recipient.capital_county }
 									}
 									alternative_limit = { always = yes }
 									change_county_control = medium_county_control_loss
@@ -3632,14 +3577,7 @@ diarch_syphon_treasury_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = liege }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 24
-		duchy = 12
-		kingdom = 12
-		empire = 12
-		hegemony = 12
-	}
+	ai_frequency = 12
 
 	ai_potential = {
 		is_diarch = yes
@@ -3839,7 +3777,7 @@ diarch_shift_privileges_interaction = {
 	is_shown = {
 		can_do_diplomacy_trigger = yes
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
@@ -3850,19 +3788,18 @@ diarch_shift_privileges_interaction = {
 				}
 				is_designated_diarch = yes
 			}
-			liege = { has_diarchy_parameter = unlock_shift_privileges_interaction }
 		}
 		# Make sure scope:recipient is suitable.
 		scope:recipient = {
 			# We only target vassals of the liege...
 			liege = scope:actor.liege
-			this != scope:actor.liege
+			NOT = { this = scope:actor.liege }
 			# ... who are appropriately landed.
 			is_landed_or_landless_administrative = yes
 			scope:recipient.highest_held_title_tier >= tier_county
 		}
 	}
-
+	
 	is_valid_showing_failures_only = {
 		# Diarch must be able to act.
 		diarch_cannot_be_disabled_trigger = { DIARCH = scope:actor }
@@ -3882,7 +3819,7 @@ diarch_shift_privileges_interaction = {
 		trigger_if = {
 			limit = {
 				scope:actor = { is_diarch = yes }
-			}
+			}	
 			# Diarchs must have unlocked the appropriate power.
 			scope:actor.liege = { has_diarchy_active_parameter = unlock_shift_privileges_interaction }
 		}
@@ -4018,10 +3955,6 @@ diarch_shift_privileges_interaction = {
 			}
 			## Soz mate, yerr payin' full price.
 			else = { add_prestige = shift_privileges_interaction_target_cost_value }
-			tgp_activate_catalyst_against_hegemon_effect = {
-				HEGEMON = scope:actor.top_liege
-				CATALYST = catalyst_diarch_mandate
-			}
 		}
 
 		# Debug logging.
@@ -4032,14 +3965,7 @@ diarch_shift_privileges_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = peer_vassals }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 6
-		kingdom = 6
-		empire = 6
-		hegemony = 6
-	}
+	ai_frequency = 6
 
 	ai_potential = {
 		is_diarch = yes
@@ -4174,7 +4100,7 @@ diarch_request_imperial_expedition_interaction = {
 
 	is_shown = {
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
@@ -4238,7 +4164,7 @@ diarch_request_imperial_expedition_interaction = {
 			}
 		}
 	}
-
+	
 	# How much influence do we want to outlay on this?
 	## A cheapy amount.
 	send_option = {
@@ -4293,7 +4219,7 @@ diarch_request_imperial_expedition_interaction = {
 			trigger_event = diarchy.8002
 		}
 	}
-
+	
 	auto_accept = {
 		scope:recipient = {
 			trigger_if = {
@@ -4453,14 +4379,7 @@ diarch_request_imperial_expedition_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = liege }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 48
-		duchy = 24
-		kingdom = 24
-		empire = 24
-		hegemony = 24
-	}
+	ai_frequency = 24
 	ai_potential = {
 		is_diarch = yes
 		liege = { has_diarchy_active_parameter = unlock_diarch_requests_military_expedition_interaction }
@@ -4575,7 +4494,7 @@ diarch_demand_despotate_interaction = {
 
 	is_shown = {
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
@@ -4632,7 +4551,7 @@ diarch_demand_despotate_interaction = {
 			}
 		}
 	}
-
+	
 	# How much influence do we want to outlay on this?
 	## A cheapy amount.
 	send_option = {
@@ -4709,7 +4628,7 @@ diarch_demand_despotate_interaction = {
 			trigger_event = diarchy.8032
 		}
 	}
-
+	
 	auto_accept = {
 		scope:recipient = {
 			trigger_if = {
@@ -4866,7 +4785,7 @@ diarch_demand_despotate_interaction = {
 		scope:recipient = {
 			# Grab our empires.
 			every_held_title = {
-				title_tier >= empire
+				limit = { tier >= tier_empire }
 				add_to_list = empires_list
 			}
 			# Then from that, formulate our kingdoms.
@@ -4903,14 +4822,7 @@ diarch_demand_despotate_interaction = {
 		}
 	}
 	ai_targets = { ai_recipients = liege }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 24
-		hegemony = 24
-	}
+	ai_frequency = 24
 	ai_potential = {
 		is_diarch = yes
 		liege = { has_diarchy_active_parameter = unlock_diarch_demand_kingdom_interaction }
@@ -5018,7 +4930,7 @@ diarch_coup_liege_interaction = {
 		scope:actor.liege = {
 			every_powerful_vassal = {
 				limit = {
-					this != scope:actor
+					NOT = { this = scope:actor }
 				}
 				add_to_list = characters
 			}
@@ -5042,15 +4954,13 @@ diarch_coup_liege_interaction = {
 					scope:recipient = scope:actor.liege
 				}
 			}
-			scope:recipient = {
-				save_scope_as = secondary_recipient
-			}
+			scope:recipient = { save_scope_as = secondary_recipient }
 		}
 		# Always make sure we're targeting your liege as the recipient for UX consistency.
-		scope:actor.liege = {
-			save_scope_as = recipient
-		}
+		scope:actor.liege = { save_scope_as = recipient }
 	}
+
+	interface_priority = 20
 
 	is_shown = {
 		# Diarchy checks for scope:actor.
@@ -5064,11 +4974,12 @@ diarch_coup_liege_interaction = {
 				is_designated_diarch = yes
 			}
 		}
-		# secondary_recipient is always saved whenever you use it on anyone who isn't yourself or your liege, so we use this fact to validate it after the redirect, otherwise it will show up on every other ruler in the game
-		trigger_if = {
-			limit = {
-				exists = scope:secondary_recipient
-			}
+		# Valid on vassals of your liege or your liege themselves.
+		## More complex triggers don't generally work because redirect brings the interaction back to targeting the liege as scope:recipient, so we're left with this.
+		### Don't try to improve it, it's not worth it, but if you _do_, then test your changes thoroughly.
+		#### When this breaks (which it does easily), it tends to mean the interaction shows up as valid against _every_ other character in diplomatic range.
+		OR = {
+			scope:recipient = scope:actor.liege
 			scope:secondary_recipient.liege ?= scope:actor.liege
 		}
 	}
@@ -5107,7 +5018,7 @@ diarch_coup_liege_interaction = {
 		trigger_if = {
 			limit = {
 				scope:actor = { is_diarch = yes }
-			}
+			}	
 			# Diarchs must have unlocked the appropriate power.
 			scope:actor.liege ?= { has_diarchy_active_parameter = regents_can_try_to_overthrow_present_lieges }
 		}
@@ -5149,7 +5060,7 @@ diarch_coup_liege_interaction = {
 		## It's actually technically harmless - they won't help but don't get their payout if they're not powerful when the coup hits.
 		trigger_if = {
 			limit = {
-				scope:recipient = { government_has_flag = government_has_powerful_families }
+				scope:recipient = { government_has_flag = government_is_administrative }
 			}
 			scope:secondary_recipient.house = { is_powerful_family = yes }
 		}
@@ -5200,7 +5111,7 @@ diarch_coup_liege_interaction = {
 		if = {
 			limit = { exists = scope:secondary_recipient }
 			scope:actor = {
-				# Scope:secondary_recipient joins your conspiracy.
+				# Scope:secondary_recipient joins your conspiracy. 
 				custom_tooltip = diarch_coup_liege_interaction.tt.secondary_recipient.joins_conspiracy
 				## Send a notification just for a bit of extra feedback.
 				send_interface_toast = {
@@ -5272,10 +5183,6 @@ diarch_coup_liege_interaction = {
 						target = scope:secondary_recipient
 					}
 				}
-				tgp_activate_catalyst_against_hegemon_effect = {
-					HEGEMON = scope:actor.top_liege
-					CATALYST = catalyst_diarch_mandate
-				}
 			}
 		}
 	}
@@ -5291,18 +5198,12 @@ diarch_coup_liege_interaction = {
 		# Opinion.
 		## Of scope:actor.
 		opinion_modifier = {
-			trigger = {
-				exists = scope:secondary_recipient # because the secondary_recipient hasn't been chosen when the interaction is initialized
-			}
 			who = scope:secondary_recipient
 			opinion_target = scope:actor
 			multiplier = 1
 		}
 		## Of scope:recipient.
 		opinion_modifier = {
-			trigger = {
-				exists = scope:secondary_recipient
-			}
 			who = scope:secondary_recipient
 			opinion_target = scope:recipient
 			multiplier = -0.5
@@ -5310,9 +5211,6 @@ diarch_coup_liege_interaction = {
 		# Personality.
 		## Values.
 		ai_value_modifier = {
-			trigger = {
-				exists = scope:secondary_recipient
-			}
 			who = scope:secondary_recipient
 			ai_honor = -1
 			ai_boldness = 0.25
@@ -5322,69 +5220,68 @@ diarch_coup_liege_interaction = {
 		modifier = {
 			add = diarch_ai_desire_plus_3_value
 			desc = diarch_coup_liege_interaction.tt.liege_has_loyalty_hook.tt.has_trait.disloyal
-			scope:secondary_recipient ?= { has_trait = disloyal }
+			scope:secondary_recipient = { has_trait = disloyal }
 		}
 		### +++ Ambitious.
 		modifier = {
 			add = diarch_ai_desire_plus_3_value
 			desc = diarch_coup_liege_interaction.tt.liege_has_loyalty_hook.tt.has_trait.ambitious
-			scope:secondary_recipient ?= { has_trait = ambitious }
+			scope:secondary_recipient = { has_trait = ambitious }
 		}
 		### ++ Arbitrary.
 		modifier = {
 			add = diarch_ai_desire_plus_2_value
 			desc = diarch_coup_liege_interaction.tt.liege_has_loyalty_hook.tt.has_trait.arbitrary
-			scope:secondary_recipient ?= { has_trait = arbitrary }
+			scope:secondary_recipient = { has_trait = arbitrary }
 		}
 		### + Fickle.
 		modifier = {
 			add = diarch_ai_desire_plus_1_value
 			desc = diarch_coup_liege_interaction.tt.liege_has_loyalty_hook.tt.has_trait.fickle
-			scope:secondary_recipient ?= { has_trait = fickle }
+			scope:secondary_recipient = { has_trait = fickle }
 		}
 		### - Stubborn.
 		modifier = {
 			add = diarch_ai_desire_minus_1_value
 			desc = diarch_coup_liege_interaction.tt.liege_has_loyalty_hook.tt.has_trait.stubborn
-			scope:secondary_recipient ?= { has_trait = stubborn }
+			scope:secondary_recipient = { has_trait = stubborn }
 		}
 		### -- Just.
 		modifier = {
 			add = diarch_ai_desire_minus_2_value
 			desc = diarch_coup_liege_interaction.tt.liege_has_loyalty_hook.tt.has_trait.just
-			scope:secondary_recipient ?= { has_trait = just }
+			scope:secondary_recipient = { has_trait = just }
 		}
 		### --- Content.
 		modifier = {
 			add = diarch_ai_desire_minus_3_value
 			desc = diarch_coup_liege_interaction.tt.liege_has_loyalty_hook.tt.has_trait.content
-			scope:secondary_recipient ?= { has_trait = content }
+			scope:secondary_recipient = { has_trait = content }
 		}
 		### --- Loyal.
 		modifier = {
 			add = diarch_ai_desire_minus_3_value
 			desc = diarch_coup_liege_interaction.tt.liege_has_loyalty_hook.tt.has_trait.loyal
-			scope:secondary_recipient ?= { has_trait = loyal }
+			scope:secondary_recipient = { has_trait = loyal }
 		}
 		# Hooks.
 		## Weak hooks are happy to have you in power.
 		modifier = {
 			add = 25
-			scope:secondary_recipient ?= { has_weak_hook = scope:actor }
+			scope:secondary_recipient = { has_weak_hook = scope:actor }
 		}
 		## Strong hooks are *very* happy to have you in power.
 		modifier = {
 			add = 75
-			scope:secondary_recipient ?= { has_strong_hook = scope:actor }
+			scope:secondary_recipient = { has_strong_hook = scope:actor }
 		}
 		## And conversely, don't want you to coup scope:recipient if they've already got a strong hook on them.
 		modifier = {
 			add = -100
-			scope:secondary_recipient ?= { has_strong_hook = scope:recipient }
+			scope:secondary_recipient = { has_strong_hook = scope:recipient }
 		}
 		## Loyalty hooks stop the AI signing up.
 		modifier = {
-			exists = scope:secondary_recipient
 			add = -1000
 			desc = diarch_coup_liege_interaction.tt.liege_has_loyalty_hook
 			diarch_loyalty_due_to_hook_trigger = {
@@ -5400,12 +5297,12 @@ diarch_coup_liege_interaction = {
 				# Reduce the malus a little if also allied to scope:actor.
 				if = {
 					limit = {
-						scope:secondary_recipient ?= { is_allied_to = scope:actor }
+						scope:secondary_recipient = { is_allied_to = scope:actor }
 					}
 					add = 50
 				}
 			}
-			scope:secondary_recipient ?= { is_allied_to = scope:recipient }
+			scope:secondary_recipient = { is_allied_to = scope:recipient }
 		}
 		## Heirs don't generally want to betray scope:recipient, as they'll lose out.
 		modifier = {
@@ -5556,7 +5453,7 @@ mulct_vizier_interaction = {
 
 	# Don't squeeze them too often.
 	cooldown = { years = 10 }
-
+	
 	# Attempt Methods
 	send_options_exclusive = yes
 	## Minimal.
@@ -5689,19 +5586,12 @@ mulct_vizier_interaction = {
 			diarch_interaction_add_to_global_list_effect = { VARIABLE_LIST = di_track_vizmulct_accept_recipient_list }
 		}
 	}
-
+	
 	auto_accept = yes
 
 	# AI
 	ai_targets = { ai_recipients = diarch }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 120
-		kingdom = 120
-		empire = 120
-		hegemony = 120
-	}
+	ai_frequency = 120
 	ai_potential = {
 		has_active_diarchy = yes
 		has_diarchy_parameter = unlock_mulct_vizier_interaction
@@ -5926,10 +5816,6 @@ scapegoat_counterpart_interaction = {
 			}
 			# And our effects for the liege.
 			else = {
-				tgp_activate_catalyst_against_hegemon_effect = {
-					HEGEMON = scope:actor.top_liege
-					CATALYST = catalyst_diarch_mandate
-				}
 				trigger_event = diarchy.8042
 				every_player = {
 					limit = {
@@ -5967,14 +5853,7 @@ scapegoat_counterpart_interaction = {
 	# AI
 	ai_targets = { ai_recipients = liege }
 	ai_targets = { ai_recipients = diarch }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 36
-		duchy = 12
-		kingdom = 12
-		empire = 12
-		hegemony = 12
-	}
+	ai_frequency = 12
 
 	ai_potential = {
 		OR = {
@@ -6352,7 +6231,6 @@ swing_scales_currency_interaction = {
 			}
 		}
 		is_valid = {
-			scope:actor = { government_allows = administrative }
 			# Can't be a liege with the scales swung completely towards them.
 			trigger_if = {
 				limit = {
@@ -6368,29 +6246,6 @@ swing_scales_currency_interaction = {
 		flag = swing_influence
 		localization = SWING_INFLUENCE
 		current_description = SWING_INFLUENCE_DESC
-	}
-	# Movement Power
-	send_option = {
-		starts_enabled = {
-			exists = scope:actor.var:movement_power_individual
-			scope:actor.var:movement_power_individual >= decent_movement_power_value
-		}
-		is_shown = {
-			scope:actor = {
-				government_has_flag = government_is_celestial
-				is_diarch_of_target = scope:recipient
-			}
-			scope:recipient = { government_has_flag = government_is_celestial }
-		}
-		is_valid = {
-			custom_tooltip = {
-				text = swing_scales_currency_interaction.tt.scales_min_movement_power
-				scope:actor.var:movement_power_individual >= medium_movement_power_value
-			}
-		}
-		flag = swing_movement_power
-		localization = SWING_MOVEMENT_POWER
-		current_description = SWING_MOVEMENT_POWER_DESC
 	}
 	# Cede control voluntarily.
 	send_option = {
@@ -6546,8 +6401,8 @@ swing_scales_currency_interaction = {
 						# Viziers give you more bang for your buck when swinging against 'em.
 						# Perk check for Voyager perk
 						if = {
-							limit = {
-								has_diarchy_active_parameter = lieges_swing_more_against_diarchs
+							limit = { 
+								has_diarchy_active_parameter = lieges_swing_more_against_diarchs 
 								has_perk = power_at_home_perk
 								is_travelling = yes
 							}
@@ -6560,7 +6415,7 @@ swing_scales_currency_interaction = {
 						else_if = {
 							limit = {
 								OR = {
-									has_diarchy_active_parameter = lieges_swing_more_against_diarchs
+									has_diarchy_active_parameter = lieges_swing_more_against_diarchs 
 									AND = {
 										has_perk = power_at_home_perk
 										is_travelling = yes
@@ -6609,8 +6464,8 @@ swing_scales_currency_interaction = {
 						# Viziers give you more bang for your buck when swinging against 'em.
 						# Perk check for Voyager perk
 						if = {
-							limit = {
-								has_diarchy_active_parameter = lieges_swing_more_against_diarchs
+							limit = { 
+								has_diarchy_active_parameter = lieges_swing_more_against_diarchs 
 								has_perk = power_at_home_perk
 								is_travelling = yes
 							}
@@ -6623,7 +6478,7 @@ swing_scales_currency_interaction = {
 						else_if = {
 							limit = {
 								OR = {
-									has_diarchy_active_parameter = lieges_swing_more_against_diarchs
+									has_diarchy_active_parameter = lieges_swing_more_against_diarchs 
 									AND = {
 										has_perk = power_at_home_perk
 										is_travelling = yes
@@ -6779,18 +6634,9 @@ swing_scales_currency_interaction = {
 	auto_accept = yes
 
 	# AI
-	ai_targets = {
-		ai_recipients = liege
-		ai_recipients = diarch
-	}
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 48
-		duchy = 24
-		kingdom = 24
-		empire = 24
-		hegemony = 24
-	}
+	ai_targets = { ai_recipients = liege }
+	ai_targets = { ai_recipients = diarch }
+	ai_frequency = 24
 
 	ai_potential = {
 		OR = {
@@ -6822,12 +6668,8 @@ swing_scales_currency_interaction = {
 		## Flag management.
 		### Influence.
 		modifier = {
-			add = 7
-			scope:swing_influence = yes
-		}
-		modifier = {
 			add = 6
-			scope:swing_movement_power = yes
+			scope:swing_influence = yes
 		}
 		### Cede Authority.
 		#### Only do this if you're also humble.
@@ -6920,7 +6762,7 @@ diarch_swing_scales_currency_interaction = {
 	}
 
 	cooldown = { years = 2 }
-
+	
 	cost = {
 		influence = {
 			if = {
@@ -7029,38 +6871,10 @@ diarch_swing_scales_currency_interaction = {
 				}
 			}
 		}
-		is_valid = {
-			scope:actor = { government_allows = administrative }
-		}
 		starts_enabled = { scope:actor.influence >= scope:actor.swing_scales_influence_cost_value }
 		flag = swing_influence
 		localization = SWING_INFLUENCE
 		current_description = SWING_INFLUENCE_DESC
-	}
-	# Movement Power
-	send_option = {
-		starts_enabled = {
-			exists = scope:actor.var:movement_power_individual
-			scope:actor.var:movement_power_individual >= decent_movement_power_value
-		}
-		is_shown = {
-			exists = scope:actor.var:movement_power_individual
-			scope:actor = {
-				government_has_flag = government_is_celestial
-				is_diarch_of_target = scope:recipient
-				exists = var:movement_power_individual
-			}
-			scope:recipient = { government_has_flag = government_is_celestial }
-		}
-		is_valid = {
-			custom_tooltip = {
-				text = swing_scales_currency_interaction.tt.scales_min_movement_power
-				scope:actor.var:movement_power_individual >= medium_movement_power_value
-			}
-		}
-		flag = swing_movement_power
-		localization = SWING_MOVEMENT_POWER
-		current_description = SWING_MOVEMENT_POWER_DESC
 	}
 	# Prestige
 	send_option = {
@@ -7156,14 +6970,7 @@ diarch_swing_scales_currency_interaction = {
 	# AI
 	ai_targets = { ai_recipients = liege }
 	# We turn the frequency up higher than the cooldown so that diarchs don't take two years to get into the loop.
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 6
-		duchy = 6
-		kingdom = 6
-		empire = 6
-		hegemony = 6
-	}
+	ai_frequency = 6
 
 	ai_potential = {
 		# Double check due to some irritating errors.
@@ -7235,7 +7042,7 @@ diarch_entrench_regency_interaction = {
 	is_shown = {
 		can_do_diplomacy_trigger = yes
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
@@ -7257,7 +7064,7 @@ diarch_entrench_regency_interaction = {
 		# You must be able to act as diarch.
 		diarch_cannot_be_disabled_trigger = { DIARCH = scope:actor }
 	}
-
+	
 	on_accept = {
 		scope:recipient = {
 			# Tell scope:recipient what's up.
@@ -7296,14 +7103,7 @@ diarch_entrench_regency_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = liege }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 12
-		duchy = 6
-		kingdom = 6
-		empire = 6
-		hegemony = 6
-	}
+	ai_frequency = 6
 	ai_potential = {
 		is_diarch = yes
 		# Don't entrench for no reason — we want to have a bit of a delay so that the AI can go off travelling or get locked in prison once in a while.
@@ -7330,7 +7130,7 @@ diarch_regent_appoints_self_co_emperor_interaction = {
 
 	is_shown = {
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
@@ -7377,6 +7177,7 @@ diarch_regent_appoints_self_co_emperor_interaction = {
 	
 	on_accept = {
 		scope:recipient = {
+			#TODO_CD_EP3_POLISH; this should really be a letter event rather than just a notification, plus notifications for player governors.
 			# Tell scope:recipient what's up.
 			send_interface_toast = {
 				type = msg_start_diarchy
@@ -7417,14 +7218,7 @@ diarch_regent_appoints_self_co_emperor_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = liege }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 12
-		hegemony = 12
-	}
+	ai_frequency = 12
 	ai_potential = {
 		is_diarch = yes
 		# Filter us down nice'n'tight.
@@ -7451,11 +7245,12 @@ liege_dismiss_temporary_regency_interaction = {
 	is_shown = {
 		can_do_diplomacy_trigger = yes
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
-			diarch ?= scope:recipient
+			exists = diarch
+			diarch = scope:recipient
 			# With the extra consideration that we only want this to appear for Temporary Regencies.
 			has_diarchy_parameter = can_be_instantly_dismissed
 		}
@@ -7510,14 +7305,7 @@ liege_dismiss_temporary_regency_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = diarch }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 48
-		duchy = 24
-		kingdom = 12
-		empire = 12
-		hegemony = 12
-	}
+	ai_frequency = 24
 	ai_potential = { has_active_diarchy = yes }
 
 	ai_will_do = {
@@ -7547,19 +7335,14 @@ liege_dismiss_entrenched_regency_interaction = {
 	is_shown = {
 		can_do_diplomacy_trigger = yes
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
-			diarch ?= scope:recipient
+			exists = diarch
+			diarch = scope:recipient
 			# With the extra consideration that we only want this to appear for Entrenched Regencies.
-			OR = {
-				has_diarchy_parameter = dismissal_requires_gift
-				AND = {
-					has_diarchy_parameter = dismissal_requires_no_ministry
-					tgp_has_access_to_ministry_trigger = no
-				}
-			}
+			has_diarchy_parameter = dismissal_requires_gift
 		}
 	}
 
@@ -7589,14 +7372,6 @@ liege_dismiss_entrenched_regency_interaction = {
 					scope:diarchy_ending_gift_cash = yes
 					scope:diarchy_ending_gift_herd = yes
 				}
-			}
-		}
-		# Japanese Emperor cannot take this action
-		#scope:actor = { tgp_is_japanese_emperor_trigger = no }
-		custom_tooltip = {
-			text = government_is_celestial_tt
-			scope:actor = {
-				tgp_has_access_to_ministry_trigger = no
 			}
 		}
 	}
@@ -7650,7 +7425,9 @@ liege_dismiss_entrenched_regency_interaction = {
 			# And make sure that they don't share a dynasty.
 			trigger_if = {
 				limit = { exists = scope:actor.dynasty }
-				scope:actor.dynasty != scope:recipient.dynasty
+				NOT = {
+					scope:actor.dynasty = scope:recipient.dynasty
+				}
 			}
 		}
 	}
@@ -7677,8 +7454,8 @@ liege_dismiss_entrenched_regency_interaction = {
 		current_description = diarchy_ending_gift_herd_desc
 		is_shown = {
 			# Can only pay herd if actor has herd to pay and recipient accepts herd as a currency
-			scope:actor = { government_has_flag = government_is_nomadic }
-			scope:recipient = { government_has_flag = government_is_nomadic }
+			scope:actor = { government_has_flag = government_is_nomadic } 
+			scope:recipient = { government_has_flag = government_is_nomadic } 
 		}
 	}
 
@@ -8245,7 +8022,7 @@ liege_dismiss_entrenched_regency_interaction = {
 			add = 30
 			desc = liege_dismiss_entrenched_regency_interaction.tt.offered_gift
 			scope:diarchy_ending_gift_dynasty_prestige = yes
-			this != dynasty.dynast
+			NOT = { this = dynasty.dynast }
 		}
 		## Piety.
 		### Zealous variant.
@@ -8288,14 +8065,7 @@ liege_dismiss_entrenched_regency_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = diarch }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 48
-		duchy = 24
-		kingdom = 12
-		empire = 12
-		hegemony = 12
-	}
+	ai_frequency = 24
 	ai_potential = {
 		# Are we in a diarchy at all?
 		has_active_diarchy = yes
@@ -8367,7 +8137,7 @@ liege_dismiss_vizier_interaction = {
 	is_shown = {
 		can_do_diplomacy_trigger = yes
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Diarchy checks for scope:actor.
 		scope:actor = {
 			# If you're not in a diarchy, we don't care.
@@ -8502,14 +8272,7 @@ liege_dismiss_vizier_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = diarch }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 120
-		duchy = 24
-		kingdom = 24
-		empire = 24
-		hegemony = 24
-	}
+	ai_frequency = 24
 	ai_potential = { has_active_diarchy = yes }
 
 	ai_will_do = {
@@ -8636,7 +8399,6 @@ liege_dismiss_vizier_interaction = {
 declare_me_regent_interaction = {
 	category = interaction_category_diarch
 	icon = icon_declare_me_regent
-	filter_tags = { admin_liege }
 
 	desc = declare_me_regent_interaction_desc
 	notification_text = DECLARE_ME_REGENT_PROPOSAL
@@ -8648,36 +8410,15 @@ declare_me_regent_interaction = {
 	is_shown = {
 		can_do_diplomacy_trigger = yes
 		# The obvious.
-		scope:actor != scope:recipient
+		NOT = { scope:actor = scope:recipient }
 		# Only useable on your liege.
 		scope:recipient = scope:actor.liege
 		# And said-liege can't be in a regency already...
-		scope:recipient = {
-			trigger_if = {
-				limit = {
-					NOT = { has_diarchy_type = grand_secretariat }
-				}
-				has_active_diarchy = no
-			}
-			trigger_else = {
-				scope:actor = {
-					OR = {
-						has_title = title:e_minister_grand_marshal
-						has_title = title:e_minister_chancellor
-						has_title = title:e_minister_censor
-					}
-				}
-			}
-		}
+		scope:recipient = { has_active_diarchy = no }
 		# ... or have declared you their regent already!
-		scope:actor = {
-			is_designated_diarch = no
-			NOR = {
-				is_diarch_of_target = scope:recipient
-				# Can't be used during the Cid story cycle
-				has_variable = ongoing_cid_story_cycle
-			}
-		}
+		scope:actor = { is_designated_diarch = no }
+		# Can't be used during the Cid story cycle
+		scope:actor = { NOT = { has_variable = ongoing_cid_story_cycle } }
 	}
 
 	is_valid_showing_failures_only = {
@@ -8690,7 +8431,6 @@ declare_me_regent_interaction = {
 			is_imprisoned = no
 			# Or, for that matter, incapable.
 			NOT = { has_trait = incapable }
-			is_diarch_valid_trigger = yes
 		}
 		# Put a general cooldown on this stuff.
 		scope:recipient = {
@@ -8731,46 +8471,7 @@ declare_me_regent_interaction = {
 				title = declare_me_regent_interaction.tt.success
 				left_icon = scope:recipient
 				# Jump the queue to become diarch.
-				scope:recipient = {
-					if = {
-						limit = {
-							has_diarchy_type = grand_secretariat
-						}
-						if = {
-							limit = {
-								scope:actor = {
-									has_title = title:e_minister_grand_marshal
-								}
-							}
-							add_realm_law = grand_marshal_law
-						}
-						else_if = {
-							limit = {
-								scope:actor = {
-									has_title = title:e_minister_chancellor
-								}
-							}
-							add_realm_law = grand_chancellor_law
-						}
-						else_if = {
-							limit = {
-								scope:actor = {
-									has_title = title:e_minister_censor
-								}
-							}
-							add_realm_law = grand_censor_law
-						}
-						scope:actor = {
-							set_variable = {
-								name = asked_to_be_secretary_director
-								value = yes
-							}
-						}
-					}
-					else = {
-						designate_diarch = scope:actor
-					}
-				}
+				scope:recipient = { designate_diarch = scope:actor }
 				# This prompts some strife.
 				change_strife_opinion = major_strife_gain
 			}
@@ -8939,7 +8640,9 @@ declare_me_regent_interaction = {
 			}
 			# Make sure this isn't cancelled out by the incumbent sharing the relation.
 			diarchy_successor = {
-				house != scope:recipient.house
+				NOT = {
+					house = scope:recipient.house
+				}
 			}
 		}
 		# Relationships.
@@ -8961,121 +8664,32 @@ declare_me_regent_interaction = {
 		modifier = {
 			add = scope:actor.diarchy_regent_succession_score_value
 			desc = declare_me_regent_interaction.tt.actor_is.succession_score
-			scope:recipient = {
-				NOT = { has_diarchy_type = grand_secretariat }
-			}
-		}
-
-		# Grand Secretariat
-		modifier = {
-			scope:recipient = {
-				has_diarchy_type = grand_secretariat
-			}
-			scope:actor.top_participant_group:dynastic_cycle ?= {
-				exists = var:movement_favored
-	 		}
-	 		desc = diarch_candidate_score.grand_secretariat.favored_value
-			add = 20
-		}
-		modifier = {
-			scope:recipient = {
-				has_diarchy_type = grand_secretariat
-			}
-			scope:actor = {
-				is_any_movement_leader = yes
-	 		}
-	 		desc = you_are_a_movement_leader_desc_value
-			add = 20
-		}
-		modifier = {
-			scope:recipient = {
-				has_diarchy_type = grand_secretariat
-			}
-			scope:actor = {
-				is_in_pro_hegemon_or_hegemon_movement = yes
-	 		}
-	 		desc = diarch_candidate_score.grand_secretariat.pro_hegemon_value
-			add = 20
-		}
-		modifier = {
-			scope:recipient = {
-				has_diarchy_type = grand_secretariat
-			}
-			scope:actor = {
-				has_court_position = favored_minister_court_position
-			}
-			desc = grand_secretariat_aptitude.favored_minister_value
-			add = 20
-		}
-		modifier = {
-			scope:recipient = {
-				has_diarchy_type = grand_secretariat
-			}
-			desc = actors_merit_level_desc
-			add = {
-				if = {
-					limit = {
-						scope:actor.merit_level >= scope:actor.top_liege.diarch.merit_level
-						scope:actor.merit >= scope:actor.top_liege.merit
-					}
-					add = 10
-				}
-				else = {
-					add = -10
-				}
-			}
-		}
-		modifier = {
-			scope:recipient = {
-				has_diarchy_type = grand_secretariat
-			}
-			desc = ACTOR_HIGH_MOVEMENT_POWER
-			add = {
-				if = {
-					limit = {
-						exists = scope:actor.top_liege.diarch.var:movement_power
-						exists = scope:actor.var:movement_power
-				 		scope:actor.var:movement_power >= scope:actor.top_liege.diarch.var:movement_power
-					}
-					add = 10
-				}
-				else = {
-					add = -40
-				}
-			}
-		}
-		# Events 
-		modifier = {
-			add = 25
-			desc = tgp_power_undermined_modifier_tt
-			has_character_modifier = tgp_power_undermined_modifier
-			# We don't factor for this in the designated/expected diarch 'cause the matrix of overlap'd be hellish.
 		}
 	}
 
 	# AI
-	#ai_targets = { ai_recipients = liege }
-	#ai_frequency = 0
-	#
-	#ai_potential = {
-	#	# Turning off for the AI for the moment due to not being able to display who you'll offend if you do it.
-	#	## Should otherwise work and can be turned back on again if wished.
-	#	always = no
-	#	# Some traits lock the AI out.
-	#	## Calc these first 'cause they're cheaper.
-	#	NOR = {
-	#		has_trait = lazy
-	#		has_trait = humble
-	#		has_trait = content
-	#	}
-	#	OR = {
-	#		# Driven by traits or personality.
-	#		has_trait = arrogant
-	#		has_trait = ambitious
-	#		# Family think themselves worthy.
-	#		any_close_or_extended_family_member = { this = liege }
-	#	}
-	#}
+	ai_targets = { ai_recipients = liege }
+	ai_frequency = 150
+
+	ai_potential = {
+		# Turning off for the AI for the moment due to not being able to display who you'll offend if you do it.
+		## Should otherwise work and can be turned back on again if wished.
+		always = no
+		# Some traits lock the AI out.
+		## Calc these first 'cause they're cheaper.
+		NOR = {
+			has_trait = lazy
+			has_trait = humble
+			has_trait = content
+		}
+		OR = {
+			# Driven by traits or personality.
+			has_trait = arrogant
+			has_trait = ambitious
+			# Family think themselves worthy.
+			any_close_or_extended_family_member = { this = liege }
+		}
+	}
 
 	ai_will_do = {
 		# Most AI think this is audacious.
@@ -9185,52 +8799,6 @@ declare_me_regent_interaction = {
 			scope:hook = yes
 			add = -1
 		}
-		# Grand Secretariat
-		modifier = {
-			scope:recipient = {
-				has_diarchy_type = grand_secretariat
-			}
-			add = {
-				if = {
-	 				limit = {
-			 			scope:actor.top_participant_group:dynastic_cycle ?= {
-				 			exists = var:movement_favored
-		 				}
-		 			}
-					add = 10
-				}
-				if = {
-					limit = {
-						scope:actor = {
-							has_court_position = favored_minister_court_position
-						}
-					}
-					add = 20
-				}
-				if = {
-	 				limit = {
-	 					scope:actor.merit_level >= scope:actor.top_liege.diarch.merit_level
-	 					scope:actor.merit >= scope:actor.top_liege.merit
-		 			}
-					add = 10
-				}
-				if = {
-					limit = {
-						exists = scope:actor.top_liege.diarch.var:movement_power
-						exists = scope:actor.var:movement_power
-					}
-					if = {
-		 				limit = {
-				 			scope:actor.var:movement_power >= scope:actor.top_liege.diarch.var:movement_power
-			 			}
-						add = 10
-					}
-					else = {
-						add = -100
-					}
-				}
-			}
-		}
 	}
 }
 
@@ -9251,24 +8819,14 @@ appoint_vizier_interaction = {
 			NOT = { has_diarchy_active_parameter = diarchy_is_vizierate }
 		}
 		# We perform this upon ourselves or our (probable) candidates.
-		trigger_if = {
-			limit = {
-				exists = scope:secondary_recipient
-			}
-			scope:secondary_recipient = {
-				is_valid_basic_candidate_for_vizier_trigger = yes
-				OR = {
-					is_courtier_of = scope:actor
-					AND = {
-						highest_held_title_tier = tier_barony
-						liege = scope:actor
-					}
-				}
-			}
-		}
-		trigger_else = {
-			scope:recipient = {
+		scope:recipient = {
+			OR = {
 				this = scope:actor
+				is_courtier_of = scope:actor
+				AND = {
+					highest_held_title_tier = tier_barony
+					liege = scope:actor
+				}
 			}
 		}
 	}
@@ -9295,14 +8853,6 @@ appoint_vizier_interaction = {
 
 	populate_recipient_list = { sort_vizier_candidates_to_list_effect = yes }
 
-	redirect = {
-		if = {
-			limit = { scope:recipient != scope:actor }
-			scope:recipient = { save_scope_as = secondary_recipient }
-			scope:actor = { save_scope_as = recipient }
-		}
-	}
-
 	cost = {
 		prestige = major_prestige_value
 		renown = {
@@ -9312,7 +8862,7 @@ appoint_vizier_interaction = {
 					exists = scope:actor.house
 					scope:secondary_recipient.house ?= scope:actor.house
 				}
-				add = scope:actor.dynasty.massive_dynasty_prestige_value
+				add = massive_dynasty_prestige_value
 			}
 		}
 	}
@@ -9404,7 +8954,7 @@ appoint_vizier_interaction = {
 				# Is our chap _the_ chap?
 				if = {
 					limit = {
-						scope:secondary_recipient != scope:best_candidate
+						NOT = { scope:secondary_recipient = scope:best_candidate }
 					}
 					# Ok, now display some warnings.
 					custom_tooltip = appoint_vizier_interaction.tt.secondary_recipient_is_not_best_candidate
@@ -9426,7 +8976,7 @@ appoint_vizier_interaction = {
 			designated_diarch ?= {
 				if = {
 					limit = {
-						this != scope:secondary_recipient
+						NOT = { this = scope:secondary_recipient }
 					}
 					add_opinion = {
 						target = scope:actor
@@ -9468,14 +9018,7 @@ appoint_vizier_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = self }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 240
-		kingdom = 120
-		empire = 120
-		hegemony = 120
-	}
+	ai_frequency = 240
 	
 	ai_potential = {
 		government_has_flag = may_appoint_viziers
@@ -9700,7 +9243,6 @@ appoint_junior_emperor_interaction = {
 		if = {
 			limit = {
 				scope:secondary_recipient = { is_ruler = no }
-				scope:secondary_recipient = { NOT = { is_in_the_same_court_as = scope:actor } }
 			}
 			scope:actor = { add_courtier = scope:secondary_recipient }
 		}
@@ -9731,10 +9273,10 @@ appoint_junior_emperor_interaction = {
 			}
 			resolve_title_and_vassal_change = scope:change
 		}
-
-
-
-
+		
+		#TODO_CD_EP3_POLISH; notification event for the relevant parties if they're players.
+		#TODO_CD_EP3_POLISH; memories for those involved, plus probably a rivalry reason with at least designated heirs.
+		
 		# Object explorer logging.
 		scope:actor = {
 			diarch_interaction_set_or_update_global_variable_effect = { VARIABLE = di_track_appjunemp_accept }
@@ -9747,15 +9289,8 @@ appoint_junior_emperor_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = children }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 60
-		hegemony = 60
-	}
-
+	ai_frequency = 60
+	
 	ai_potential = {
 		# Filter us down nice'n'tight.
 		may_appoint_co_emperors_trigger = yes
@@ -9768,7 +9303,7 @@ appoint_junior_emperor_interaction = {
 			is_adult = no
 		}
 	}
-
+	
 	ai_will_do = {
 		# The AI doesn't like doing this without good reason.
 		base = -100
@@ -9790,7 +9325,7 @@ appoint_co_emperor_interaction = {
 		if = {
 			limit = {
 				NOT = {
-					scope:secondary_recipient ?= {
+					scope:secondary_recipient ?= { 
 						valid_co_emperor_candidate_trigger = { LIEGE = scope:actor }
 					}
 				}
@@ -9877,7 +9412,7 @@ appoint_co_emperor_interaction = {
 			## The player uses scope:secondary_recipient.
 			if = {
 				limit = {
-					# We use a NOT here rather than is_ai = no because the AI was occasionally managing to bork its selection process, and the title does _not_ like setting an empty diarch, so we fallback AI who can't behave to a sub-optimal choice.
+					# We use a NOT here  rather than is_ai = no because the AI was occasionally managing to bork its selection process, and the title does _not_ like setting an empty diarch, so we fallback AI who can't behave to a sub-optimal choice.
 					NOT = { exists = scope:ai_recipient }
 				}
 				custom_tooltip = {
@@ -9953,10 +9488,7 @@ appoint_co_emperor_interaction = {
 		}
 		## Vassals are retracted.
 		if = {
-			limit = {
-				scope:secondary_recipient.liege != scope:actor
-				scope:secondary_recipient = { NOT = { is_in_the_same_court_as = scope:actor } }
-			}
+			limit = { scope:secondary_recipient.liege != scope:actor }
 			scope:secondary_recipient.liege = {
 				add_opinion = {
 					target = scope:actor
@@ -9976,9 +9508,9 @@ appoint_co_emperor_interaction = {
 			resolve_title_and_vassal_change = scope:change
 		}
 
-
-
-
+		#TODO_CD_EP3_POLISH; notification event for the relevant parties if they're players.
+		#TODO_CD_EP3_POLISH; memories for those involved, plus probably a rivalry reason with at least designated heirs.
+		
 		# Object explorer logging.
 		scope:actor = {
 			diarch_interaction_set_or_update_global_variable_effect = { VARIABLE = di_track_appcoemp_accept }
@@ -9992,15 +9524,8 @@ appoint_co_emperor_interaction = {
 	# AI
 	ai_targets = { ai_recipients = children }
 	ai_targets = { ai_recipients = vassals }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 60
-		hegemony = 60
-	}
-
+	ai_frequency = 60
+	
 	ai_potential = {
 		# Filter us down nice'n'tight.
 		may_appoint_co_emperors_trigger = yes
@@ -10010,7 +9535,7 @@ appoint_co_emperor_interaction = {
 		age >= 50
 		any_child = { is_adult = yes }
 	}
-
+	
 	ai_will_do = {
 		# The AI doesn't like doing this without good reason.
 		base = -100
@@ -10158,7 +9683,6 @@ appoint_co_monarch_interaction = {
 		if = {
 			limit = {
 				scope:secondary_recipient = { is_ruler = no }
-				scope:secondary_recipient = { NOT = { is_in_the_same_court_as = scope:actor } }
 			}
 			scope:actor = { add_courtier = scope:secondary_recipient }
 		}
@@ -10184,9 +9708,9 @@ appoint_co_monarch_interaction = {
 			resolve_title_and_vassal_change = scope:change
 		}
 
-
-
-
+		#TODO_CD_EP3_POLISH; notification event for the relevant parties if they're players.
+		#TODO_CD_EP3_POLISH; memories for those involved, plus probably a rivalry reason with at least designated heirs.
+		
 		# Object explorer logging.
 		scope:actor = {
 			diarch_interaction_set_or_update_global_variable_effect = { VARIABLE = di_track_appcomon_accept }
@@ -10199,15 +9723,8 @@ appoint_co_monarch_interaction = {
 
 	# AI
 	ai_targets = { ai_recipients = children }
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 120
-		empire = 120
-		hegemony = 120
-	}
-
+	ai_frequency = 120
+	
 	ai_potential = {
 		# Filter us down nice'n'tight.
 		may_appoint_co_monarchs_trigger = yes
@@ -10217,7 +9734,7 @@ appoint_co_monarch_interaction = {
 		age >= 50
 		any_child = { is_adult = yes }
 	}
-
+	
 	ai_will_do = {
 		# The AI doesn't like doing this without good reason.
 		base = -100
@@ -10246,11 +9763,11 @@ overthrow_regent_scheme_interaction = {
 			has_diarchy_parameter = diarchy_is_regency
 		}
 		scope:recipient = {
-			this != scope:actor
+			NOT = { this = scope:actor }
 			liege ?= {
 				this = scope:actor.liege
 				diarch ?= scope:recipient
-				this != scope:actor
+				NOT = { this = scope:actor }
 			}
 		}
 	}
@@ -10381,14 +9898,7 @@ overthrow_regent_scheme_interaction = {
 		ai_recipients = peer_vassals
 		ai_recipients = scripted_relations
 	}
-	ai_frequency_by_tier = {
-		barony = 0
-		county = 120
-		duchy = 60
-		kingdom = 60
-		empire = 60
-		hegemony = 60
-	}
+	ai_frequency = 60
 
 	ai_potential = {
 		# Some traits lock the AI out.

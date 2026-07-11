@@ -124,7 +124,8 @@ is_crescent_moon_trigger = {
 }
 
 is_full_moon_trigger = {
-	global_var:current_moon_phase ?= {
+	exists = global_var:current_moon_phase
+	global_var:current_moon_phase = {
 		var:moon_phase_name = flag:full_moon
 	}
 }
@@ -589,7 +590,7 @@ magic_spell_is_known_by_trigger = { # does MAGI know the SPELL?
 		has_variable_list = known_spell_list
 		is_target_in_variable_list = {
 			name = known_spell_list
-			target = $SPELL$.var:parent_spell
+			target = $SPELL$
 		}
 	}
 }
@@ -668,45 +669,3 @@ gh_enchantment_perdition_trigger = { # Perdition Enchantment
 	trigger_else = { always = no }
 }
 
-#####################
-# DOCTRINE TRIGGERS #
-#####################
-
-disliked_magi_gender_trigger = {
-	OR = {
-		AND = {
-			is_female = no
-			faith = { has_doctrine_parameter = female_magi_preferred }
-		}
-		AND = {
-			is_female = yes
-			faith = { has_doctrine_parameter = male_magi_preferred }
-		}
-	}
-}
-
-preferred_magi_gender_trigger = {
-	OR = {
-		AND = {
-			is_female = no
-			faith = { has_doctrine_parameter = male_magi_preferred }
-		}
-		AND = {
-			is_female = yes
-			faith = { has_doctrine_parameter = female_magi_preferred }
-		}
-	}
-}
-
-worse_magi_education_outcomes_trigger = {
-	OR = {
-		AND = {
-			is_female = no
-			faith = { has_doctrine_parameter = male_magi_worse_education_outcomes }
-		}
-		AND = {
-			is_female = yes
-			faith = { has_doctrine_parameter = female_magi_worse_education_outcomes }
-		}
-	}
-}

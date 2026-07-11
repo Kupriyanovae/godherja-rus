@@ -5,7 +5,11 @@
 spell_level_iteration_value = 25
 
 spell_level_value = {
-	value = aspect_total_base_spell_level_value
+	value = 0
+	if = {
+		limit = { exists = var:spell_level }
+		add = var:spell_level
+	}
 }
 
 very_low_spell_cost = {
@@ -159,10 +163,10 @@ spell_cost_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			exists = scope:spell_preparation_story_cycle.var:total_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			exists = scope:spell_preparation_story_cycle_scope.var:total_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:total_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:total_overcharge
 		multiply = 25
 	}
 	if = {
@@ -175,17 +179,8 @@ spell_cost_overcharge_value = {
 }
 
 total_spell_cost = {
-	#value = {
-	#	value = var:spell_cost
-	#	desc = "base_value_desc"
-	#	format = "SPELL_MAGIC_COST_VALUE_FORMAT"
-	#}
-	# GH TODO: Make this modifiable, so that manually setting works again
 	value = {
-		value = {
-			value = 25
-			multiply = aspect_total_base_spell_level_value
-		}
+		value = var:spell_cost
 		desc = "base_value_desc"
 		format = "SPELL_MAGIC_COST_VALUE_FORMAT"
 	}
@@ -341,67 +336,6 @@ total_spell_gold_cost = {
 			format = "SPELL_GOLD_COST_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = {
-			exists = var:target_character_gold_cost
-			scope:spell_organizer ?= { has_variable_list = spell_targets }
-		}
-		add = {
-			value = {
-				value = 0
-				scope:spell_organizer = {
-					every_in_list = {
-						variable = spell_targets
-						add = 1
-					}
-				}
-				multiply = var:target_character_gold_cost
-			}
-			desc = "Target [characters|E]"
-			format = "SPELL_GOLD_COST_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			exists = var:target_province_gold_cost
-			scope:spell_organizer ?= { has_variable_list = spell_target_province_list }
-		}
-		add = {
-			value = {
-				value = 0
-				scope:spell_organizer = {
-					every_in_list = {
-						variable = spell_target_province_list
-						add = 1
-					}
-				}
-				multiply = var:target_province_gold_cost
-			}
-			desc = "Target [provinces|E]"
-			format = "SPELL_GOLD_COST_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			exists = var:target_artifact_gold_cost
-			scope:spell_organizer ?= { has_variable_list = spell_target_artifacts }
-		}
-		add = {
-			value = {
-				value = 0
-				scope:spell_organizer = {
-					every_in_list = {
-						variable = spell_target_artifacts
-						add = 1
-					}
-				}
-				min = 1
-				multiply = var:target_artifact_gold_cost
-			}
-			desc = "Target [artifacts|E]"
-			format = "SPELL_GOLD_COST_VALUE_FORMAT"
-		}
-	}
 	if = { # bonus from personal power arcana lifestyle tree
 		limit = { scope:spell_organizer ?= { has_perk = arcana_cognition_perk6_tree2 } }
 		multiply = {
@@ -411,58 +345,42 @@ total_spell_gold_cost = {
 		}
 	}
 	if = {
-		limit = { exists = scope:spell_preparation_story_cycle }
-		if = {
-			limit = {
-				scope:spell_preparation_story_cycle ?= { has_variable_list = spell_component_being_prepared_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = spell_component_being_prepared_list
-					if = {
-						limit = {
-							exists = var:spell_component_template.var:gold_cost_add
-							exists = var:spell_component_template.var:character_spell_component_input
-							exists = var:spell_component_character_selection
-							var:spell_component_character_selection = {
-								save_temporary_scope_as = character_being_checked_for_suitability
-							}
-						}
-						add = {
-							value = var:spell_component_template.character_spell_component_suitability_value
-							multiply = var:spell_component_template.var:gold_cost_add
-						}
-					}
-					else_if = {
-						limit = {
-							exists = var:spell_component_template.var:gold_cost_subtract
-							exists = var:spell_component_template.var:character_spell_component_input
-							exists = var:spell_component_character_selection
-							var:spell_component_character_selection = {
-								save_temporary_scope_as = character_being_checked_for_suitability
-							}
-						}
-						subtract = {
-							value = var:spell_component_template.character_spell_component_suitability_value
-							multiply = var:spell_component_template.var:gold_cost_subtract
-						}
-					}
-					var:spell_component_ingredient_selection ?= {
-						add = var:ingredient_price
-					}
-				}
+		limit = {
+			scope:spell_organizer ?= {
+				has_variable_list = spell_component_being_prepared_list
 			}
 		}
-		if = {
-			limit = {
-				scope:spell_preparation_story_cycle ?= { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					add = 100
+		scope:spell_organizer = {
+			every_in_list = {
+				variable = spell_component_being_prepared_list
+				if = {
+					limit = { 
+						exists = var:spell_component_template.var:gold_cost_add
+						exists = var:spell_component_template.var:character_spell_component_input 
+						exists = var:spell_component_character_selection
+						var:spell_component_character_selection = {
+							save_temporary_scope_as = character_being_checked_for_suitability
+						}
+					}
+					add = {
+						value = var:spell_component_template.character_spell_component_suitability_value
+						multiply = var:spell_component_template.var:gold_cost_add
+					}
 				}
-				subtract = 100
+				else_if = {
+					limit = {
+						exists = var:spell_component_template.var:gold_cost_subtract
+						exists = var:spell_component_template.var:character_spell_component_input 
+						exists = var:spell_component_character_selection
+						var:spell_component_character_selection = {
+							save_temporary_scope_as = character_being_checked_for_suitability
+						}
+					}
+					subtract = {
+						value = var:spell_component_template.character_spell_component_suitability_value
+						multiply = var:spell_component_template.var:gold_cost_subtract
+					}
+				}
 			}
 		}
 	}
@@ -492,6 +410,15 @@ spell_target_number_value = {
 	value = 0
 	every_in_list = {
 		list = spell_targets
+		add = 1
+	}
+	min = 1
+}
+
+spell_l_target_number_value = {
+	value = 0
+	every_in_list = {
+		list = spell_l_targets
 		add = 1
 	}
 	min = 1
@@ -723,35 +650,6 @@ character_spell_component_suitability_value = {
 		}
 		if = {
 			limit = {
-				var:spell_component_template = {
-					has_variable_list = spell_component_input_modifier_trait_group_list
-					any_in_list = {
-						variable = spell_component_input_modifier_trait_group_list
-						this = flag:physique_good_1
-					}
-				}
-			}
-			if = {
-				limit = { scope:character_being_checked_for_suitability = { has_trait = physique_good_3 } }
-				add = {
-					value = var:spell_component_template.var:physique_good_1
-					multiply = 3
-				}
-			}
-			else_if = {
-				limit = { scope:character_being_checked_for_suitability = { has_trait = physique_good_2 } }
-				add = {
-					value = var:spell_component_template.var:physique_good_1
-					multiply = 2
-				}
-			}
-			else_if = {
-				limit = { scope:character_being_checked_for_suitability = { has_trait = physique_good_1 } }
-				add = var:spell_component_template.var:physique_good_1
-			}
-		}
-		if = {
-			limit = {
 				var:spell_component_template = { has_variable_list = spell_component_input_modifier_trait_list }
 			}
 			if = {
@@ -969,18 +867,6 @@ character_spell_component_suitability_value = {
 					}
 				}
 				add = var:spell_component_template.var:fecund
-			}
-			if = {
-				limit = {
-					var:spell_component_template = {
-						any_in_list = {
-							variable = spell_component_input_modifier_trait_list
-							this = flag:strong
-						}
-						scope:character_being_checked_for_suitability = { has_trait = strong }
-					}
-				}
-				add = var:spell_component_template.var:strong
 			}
 		}
 		if = {

@@ -27,16 +27,8 @@
 	
 
 	scope:kabayo_konsa = {
-		if = {
-			limit = { is_ai = yes }
-			spawn_adabyss_starting_troops_effect = yes	
-			start_wars_for_damota_effect = yes
-			set_global_variable = {
-				name = adabyss_invader
-				value = root
-			}
-		}
-		adabyss_ai_effect = yes
+		trigger_event = adabyss_opening.2
+		trigger_event = adabyss_opening.9001
 	}
 }
 
@@ -367,11 +359,11 @@ adabyss_ai_effect = {
 					#EAST AND WEST
 					adabyss_conquer_kingdom = { KINGDOM_NAME = k_thaliteia }
 					adabyss_conquer_kingdom = { KINGDOM_NAME = k_tifrennesh }
-					adabyss_conquer_kingdom = { KINGDOM_NAME = k_kekhenemhat }
+					adabyss_conquer_kingdom = { KINGDOM_NAME = k_aglabolu }
 					
 					#FURTHER BEYOND
 #					adabyss_conquer_empire = { EMPIRE_NAME = e_farhadd }
-					adabyss_conquer_empire = { EMPIRE_NAME = h_sarradon }
+					adabyss_conquer_empire = { EMPIRE_NAME = e_sarradon }
 				}
 			}
 		}
@@ -494,11 +486,11 @@ spawn_army = {
 
 spawn_adabyss_reclaimer_character_effect = {
 
-	title:c_nagom_kakezihi.holder.top_liege = {
+	title:c_adabyssfort.holder.top_liege = {
 		save_scope_as = fort_taker
 	}
 
-	title:c_nagom_kakezihi.title_province = {
+	title:c_adabyssfort.title_province = {
 		save_scope_as = adabyss_borderfort
 	}
 
@@ -537,7 +529,7 @@ give_banerisa_land_effect = {
 		save_scope_as = title_change
 		add_claim_on_loss = no
 	}
-	title:c_nagom_kakezihi = {
+	title:c_adabyssfort = {
 		change_title_holder = {
 			holder = scope:adabyss_leader
 			change = scope:title_change
@@ -786,11 +778,11 @@ spawn_army = {
 
 spawn_damned_leader_effect = {
 
-	title:c_nagom_kakezihi.holder.top_liege = {
+	title:c_adabyssfort.holder.top_liege = {
 		save_scope_as = fort_taker_heir
 	}
 
-	title:c_nagom_kakezihi.title_province = {
+	title:c_adabyssfort.title_province = {
 		save_scope_as = adabyss_borderfort
 	}
 
@@ -831,7 +823,7 @@ give_damned_land_effect = {
 		save_scope_as = title_change
 		add_claim_on_loss = no
 	}
-	title:c_nagom_kakezihi = {
+	title:c_adabyssfort = {
 		change_title_holder = {
 			holder = scope:adabyss_leader
 			change = scope:title_change
@@ -848,11 +840,11 @@ give_damned_land_effect = {
 
 spawn_warlord_leader_effect = {
 
-	title:c_nagom_kakezihi.holder.top_liege = {
+	title:c_adabyssfort.holder.top_liege = {
 		save_scope_as = fort_taker_heir
 	}
 
-	title:c_nagom_kakezihi.title_province = {
+	title:c_adabyssfort.title_province = {
 		save_scope_as = adabyss_borderfort
 	}
 
@@ -893,7 +885,7 @@ give_warlord_land_effect = {
 		save_scope_as = title_change
 		add_claim_on_loss = no
 	}
-	title:c_nagom_kakezihi = {
+	title:c_adabyssfort = {
 		change_title_holder = {
 			holder = scope:adabyss_leader
 			change = scope:title_change

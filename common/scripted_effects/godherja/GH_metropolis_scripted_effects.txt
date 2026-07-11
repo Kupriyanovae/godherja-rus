@@ -1,4 +1,46 @@
-﻿clear_ruin_effect = {
+﻿initialize_metropoli_effect = {	# Run on game start to add building slots to metropoli and add in buildings that would otherwise refuse to load due to previous build cap
+	initialize_district_types_effect = yes
+	every_county = {
+		limit = {
+			title_province = {	is_any_metropolis_or_ruined_district_trigger = yes }
+		}
+		every_county_province = {
+			if = {
+				limit = {	# County capitals get two additional building slots
+					is_county_capital = yes
+				}
+				add_province_modifier = extra_building_slot
+				add_district_list_effect = yes
+				add_random_district_effect = yes
+				add_random_district_effect = yes
+			}
+		}
+	}# GH TODO: due to building slot changes these dont currently work
+	#title:c_oraispol = {
+	#	title_province = {
+	#		add_building = gh_walls_03
+	#		add_building = administration_03
+	#	}
+	#}
+	title:c_naupirnox = {
+		title_province = {
+			add_building = gh_walls_01
+		}
+	}
+	#title:c_tchouran = {
+	#	title_province = {
+	#		add_building = gh_walls_03
+	#		add_building = administration_02
+	#	}
+	#}
+	#title:c_sereksi = {
+	#	title_province = {
+	#		add_building = gh_walls_02
+	#	}
+	#}
+}
+
+clear_ruin_effect = {
 	if = {
 		limit = { 
 			always = no
@@ -11,7 +53,7 @@
 	}
 }
 
-gh_initialize_district_types_effect = {
+initialize_district_types_effect = {
 	add_to_global_variable_list = {
 		name = metro_district_types
 		target = flag:martial_district

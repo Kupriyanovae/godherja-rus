@@ -38,12 +38,12 @@
 			} 
 		}
 		is_independent_ruler = yes
-		title:b_myinthar_kyun = {
+		title:b_spinstersmonastery = {
 			title_province = {
 				has_building = 01_burning_palace
 			}
 		}
-		title:b_khupong = {
+		title:b_9219 = {
 			title_province = {
 				has_building = 01_temple_of_korlacu
 			}
@@ -292,7 +292,7 @@ assert_korlacan_supremacy_decision = { #1st decision
 
 	is_shown = {
 		culture = { has_cultural_pillar = heritage_korlacan }
-		game_start_date >= 6200.1.1
+		game_start_date >= 1200.1.1
 		highest_held_title_tier <= tier_kingdom
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -306,7 +306,7 @@ assert_korlacan_supremacy_decision = { #1st decision
 		culture = { has_cultural_pillar = heritage_korlacan }
 		custom_tooltip = {
 			NOT = {
-				exists = title:d_sepattan_high_priesthood.holder
+				exists = title:d_the_sepattan.holder
 			}
 			text = no_sepattan_exists_tooltip
 		}
@@ -369,14 +369,13 @@ establish_aungkyi_thuriya_decision = {
 
 	is_shown = {
 		culture = { has_cultural_pillar = heritage_korlacan}
-		game_start_date >= 6200.1.1
+		game_start_date >= 1200.1.1
 		OR = {
 			calc_true_if = { #At least 2 of the titles has de jure land
 				amount >= 2
-				title:k_berong_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
-				title:k_tas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
-				title:k_cas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
-				#title:k_sas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
+				title:k_currentsprings = { any_in_de_jure_hierarchy = { tier = tier_county } }
+				title:k_west_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
+				title:k_east_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
 			}
 		}
 		NOT = {
@@ -393,24 +392,19 @@ establish_aungkyi_thuriya_decision = {
 		prestige_level >= 4
 		piety_level >= 4
 		trigger_if = {
-			limit = { title:k_berong_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
-			completely_controls = title:k_berong_nattana
-			has_title = title:k_berong_nattana
+			limit = { title:k_currentsprings = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+			completely_controls = title:k_currentsprings
+			has_title = title:k_currentsprings
 		}
 		trigger_if = {
-			limit = { title:k_sas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
-			completely_controls = title:k_sas_nattana
-			has_title = title:k_sas_nattana
+			limit = { title:k_west_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+			completely_controls = title:k_west_nattana
+			has_title = title:k_west_nattana
 		}
 		trigger_if = {
-			limit = { title:k_tas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
-			completely_controls = title:k_tas_nattana
-			has_title = title:k_tas_nattana
-		}
-		trigger_if = {
-			limit = { title:k_cas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
-			completely_controls = title:k_cas_nattana
-			has_title = title:k_cas_nattana
+			limit = { title:k_east_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+			completely_controls = title:k_east_nattana
+			has_title = title:k_east_nattana
 		}
 	}
 
@@ -424,7 +418,7 @@ establish_aungkyi_thuriya_decision = {
 			add_dynasty_prestige = 1500
 			add_dynasty_prestige_level = 1
 		}
-		save_scope_as = korlacan_conqueror
+		save_scope_as = korlacan_conquerer
 		get_title = title:e_aungkyi_thuriya
 		set_primary_title_to = title:e_aungkyi_thuriya
 		show_as_tooltip = { establish_aungkyi_thuriya_decision_effects = yes } #Actually applied in gh_korlacan_events.0003 - prestige, laws, title changes
@@ -434,8 +428,8 @@ establish_aungkyi_thuriya_decision = {
 		trigger_event = gh_korlacan_events.0004
 		every_player = {
 			limit = {
-				NOT = { this = scope:korlacan_conqueror }
-				is_within_diplo_range = { CHARACTER = scope:korlacan_conqueror }
+				NOT = { this = scope:korlacan_conquerer }
+				is_within_diplo_range = { CHARACTER = scope:korlacan_conquerer }
 			}
 			trigger_event = gh_korlacan_events.0005
 		}
@@ -447,11 +441,11 @@ establish_aungkyi_thuriya_decision = {
 		}
 		set_global_variable = {
 			name = establish_aungkyi_thuriya_decision
-			value = scope:korlacan_conqueror
+			value = scope:korlacan_conquerer
 		}
 		set_global_variable = {
 			name = establish_aungkyi_thuriya_decision_title
-			value = scope:korlacan_conqueror.primary_title
+			value = scope:korlacan_conquerer.primary_title
 		}
 	}
 
@@ -474,13 +468,13 @@ reignite_the_fires_of_industry_decision = {
 
 	is_shown = {
 		culture = { has_cultural_pillar = heritage_korlacan}
-		game_start_date >= 6200.1.1
+		game_start_date >= 1200.1.1
 		OR = {
 			calc_true_if = { #At least 2 of the titles has de jure land
 				amount >= 2
-				title:k_berong_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
-				title:k_tas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
-				title:k_cas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
+				title:k_currentsprings = { any_in_de_jure_hierarchy = { tier = tier_county } }
+				title:k_west_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
+				title:k_east_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
 			}
 		}
 		NOT = {
@@ -497,12 +491,12 @@ reignite_the_fires_of_industry_decision = {
 		title:e_aungkyi_thuriya = { title_held_years >= 30 }
 		prestige_level >= 4
 		piety_level >= 4
-		title:b_pyay = {
+		title:b_9216 = {
 			title_province = {
 				has_building = 01_renewed_fortress #tier 3 special fort
 			}
 		}
-		title:b_adhit_tom = {
+		title:b_9342 = {
 			title_province = {
 				has_building = 05_korlacan_mines #tier 5 special mine
 			}
@@ -619,8 +613,8 @@ summon_disciple_from_the_burning_temple_decision = { #NON-HOF; no heir
 	}
 	is_valid = {
 		culture = { has_cultural_pillar = heritage_korlacan }
-		faith = {
-			NOR = {
+		NOR = {
+			OR = {
 				has_doctrine = sepattan_twin_gods_doctrine
 				has_doctrine = sepattan_reincarnate_twin_gods_doctrine
 			}
@@ -632,11 +626,11 @@ summon_disciple_from_the_burning_temple_decision = { #NON-HOF; no heir
 			count >= 1
 			tier >= tier_county
 		}
-		title:b_khupong = { 
+		title:b_9219 = {
 			title_province = {
-				has_building = 01_temple_of_korlacu
+					has_building = 01_temple_of_korlacu
+				}
 			}
-		}
 	}
 
 	cooldown = { years = 10 }
@@ -683,8 +677,8 @@ request_heir_from_burning_temple_decision = { #HOF; HEIR
 		is_ruler = yes
 		has_title = title:k_eternal_flame
 		culture = { has_cultural_pillar = heritage_korlacan }
-		faith = {
-			NOR = {
+		NOT = {
+			OR = {
 				has_doctrine = sepattan_twin_gods_doctrine
 				has_doctrine = sepattan_reincarnate_twin_gods_doctrine
 			}
@@ -699,7 +693,7 @@ request_heir_from_burning_temple_decision = { #HOF; HEIR
 			count >= 1
 			tier >= tier_county
 		}
-		title:b_myinthar_kyun = {
+		title:b_spinstersmonastery = {
 			title_province = {
 				has_building = 01_burning_palace
 			}

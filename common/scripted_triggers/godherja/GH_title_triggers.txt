@@ -110,11 +110,6 @@ gh_empires_allowed_trigger = {
 	gh_kingdoms_and_above_allowed_trigger = yes
 }
 
-# GH NOTE: DO NOT CORRECT THE SPELLING!
-gh_hegemonys_allowed_trigger = {
-	gh_empires_allowed_trigger = yes
-}
-
 gh_e_sarradon_can_create_trigger = {
 	gh_empires_allowed_trigger = yes
 
@@ -146,7 +141,7 @@ gh_e_chevalie_can_create_trigger = {
 
 gh_e_thura_taw_can_create_trigger = {
 	trigger_if = {
-		limit = { current_date <= 6354.1.1 }
+		limit = { current_date <= 1354.1.1 }
 		culture = {
 			OR = {
 				has_cultural_pillar = heritage_nattanan 
@@ -163,7 +158,7 @@ gh_e_thura_taw_can_create_trigger = {
 
 gh_k_eternal_flame_can_create_trigger = {
 	trigger_if = {
-		limit = { current_date >= 6254.1.1 }
+		limit = { current_date >= 1254.1.1 }
 		culture = {
 			has_cultural_pillar = heritage_korlacan
 		}
@@ -185,7 +180,7 @@ gh_is_cultist = {
 ###################
 ## HasTitle Triggers
 
-has_titlh_aversarinas_aautokrata_trigger = { has_title = title:h_aversarinas_aautokrata }
+has_title_aversarinas_aautokrata_trigger = { has_title = title:e_aversarinas_aautokrata }
 has_title_band_of_bastards_trigger = { has_title = title:d_band_of_bastards }
 has_title_bloodied_throne_trigger = { has_title = title:k_the_bloodied_throne }
 has_title_ebony_league_trigger = { has_title = title:k_epavarion }
@@ -212,7 +207,7 @@ has_any_major_aversarian_title_trigger = {
 # For the Aautokrata and pretenders
 has_any_imperial_aversarian_title_trigger = {
 	OR = {
-		has_title = title:h_aversarinas_aautokrata
+		has_title = title:e_aversarinas_aautokrata
 		has_title = title:e_oraispol_aautokrata
 		has_title = title:e_asiupoli_aautokrata
 	}
@@ -250,6 +245,74 @@ has_any_king_governorate_title_trigger = {
 	}
 }
 
+has_any_legion_title_trigger = { # GH TODO: Add a Legion flag for titles so they can be dynamic
+	OR = {
+		has_title = title:d_legio_iv_elenos
+		has_title = title:d_legio_lix_parfovos
+		has_title = title:d_legio_lxxvii_pirateslayers
+		has_title = title:d_legio_lxxx_shield_of_the_north
+		has_title = title:d_legio_vii_parataros
+		has_title = title:d_legio_xciv_shipbreakers
+		has_title = title:d_legio_xcv_viesuados_heir
+		has_title = title:d_legio_xcv_viesuados_jackals
+		has_title = title:d_legio_xcv_viesuados_wrath
+		has_title = title:d_legio_xiv_chainforgers
+		has_title = title:d_legio_xxvi_exodian
+		has_title = title:d_legio_xxxiv_heartfire
+		has_title = title:k_legio_lxi_anoterion
+		has_title = title:k_legio_vii_anthiope
+		has_title = title:k_legio_xcv_viesuados
+		has_title = title:k_legio_xvii_stereon
+		has_title = title:k_legio_xxi_axiaothea
+		has_title = title:k_winter_legion
+		has_title = title:d_legio_liv_particulars
+		has_title = title:d_legio_xlv_silverbloods
+		has_title = title:d_legio_xxxix_protemaxos
+		has_title = title:d_legio_lxxii_potirion
+		has_title = title:d_legio_lxxi_brassarms
+		has_title = title:d_legio_lxxiii_goldclad
+		has_title = title:d_legio_lxv_axedancers
+		has_title = title:d_legio_li_riverfiends
+		has_title = title:k_legio_xxv_flamestriders
+		has_title = title:k_legio_xxxiii_blackeyes
+		has_title = title:d_legio_xcii_swords_of_tharenion
+		has_title = title:d_legio_xxxviii_vigilant
+		has_title = title:d_legio_lxxiv_riverwards
+		has_title = title:d_legio_xxi_heartrenders
+		has_title = title:d_legio_xliv_kartharaddis_fear
+		has_title = title:d_legio_lxiv_gravitas
+		has_title = title:d_legio_lxxxvii_shatter_swords
+		has_title = title:d_legio_xviii_philantros
+		has_title = title:d_legio_xii_sea_walkers
+		has_title = title:d_legio_v_golems_fury
+		has_title = title:d_legio_xliii_firstborn
+		has_title = title:d_legio_xx_conclaves_own
+		has_title = title:d_legio_xxviii_the_invincibles
+		has_title = title:d_legio_x_bravest
+		has_title = title:d_legio_xix_mavia
+		has_title = title:d_legio_viii_enortax
+		has_title = title:d_legio_xvii_pathos
+		has_title = title:d_legio_ii_proudest
+		has_title = title:d_legio_xliv_stalwart
+		has_title = title:d_legio_xxxv_diyotesmaxos
+		has_title = title:d_legio_xxiii_greenfingers
+		has_title = title:k_legio_xlii_pride_of_aversaria
+		has_title = title:d_legio_viii_tomanyros
+		has_title = title:d_legio_xxxviii_winters_wolves
+		has_title = title:d_legio_xlix_starward
+		has_title = title:k_legio_xiii_aautosaxias
+		has_title = title:d_legio_xxi_veracity
+		has_title = title:d_legio_vi_manherders
+		has_title = title:d_legio_xxii_resplendent
+		has_title = title:k_legio_lii_redrock_guard
+		has_title = title:d_legio_clxxxvi_intrepid
+		has_title = title:d_legio_lxviii_trailblazers
+		has_title = title:k_legio_xi_silverwind
+		has_title = title:d_legio_lxxxv_iron_wolves
+		has_title = title:d_shattered_legions
+	}
+}
+
 has_any_scary_adabyssian_title_trigger = { # GH TODO: Add a Legion flag for titles so they can be dynamic
 	OR = {
 		has_title = title:e_adabyssian_warlord
@@ -263,7 +326,7 @@ has_any_scary_adabyssian_title_trigger = { # GH TODO: Add a Legion flag for titl
 
 title_behavior_independence_faction_blocker_trigger = { # GH TODO: Currently blocks factions forming in faction_demands.txt - make sure this is everything we want and whether or not we want these empires here
 	OR = {
-		has_titlh_aversarinas_aautokrata_trigger = yes # GH QUESTION: Do we want this?
+		has_title_aversarinas_aautokrata_trigger = yes # GH QUESTION: Do we want this?
 		has_title_migrant_coalition_trigger = yes
 		has_any_scary_adabyssian_title_trigger = yes
 		has_title = title:e_foglands
@@ -335,6 +398,8 @@ tribal_title = { #should be destroyed if owner gains landed title of same rank
 		this = title:k_calagonii
 		this = title:k_archexate_ti_karanthos
 		this = title:k_kardwen_confederacy
+		this = title:d_sayuha_ko_wedo
+		this = title:d_sayuha_ko_khoya
 		this = title:d_vhadrodizen
 		this = title:k_marrudolem
 	}
@@ -414,12 +479,5 @@ gh_aldergreen_percent_controlled_trigger = {
 		region = migration_aldergreen_controlled_region
 		percent <= sjalvolki_conquest_controlled_regions_percent_value
 		holder.top_liege = root
-	}
-}
-
-must_have_ayraal_trigger = {
-	custom_tooltip = {
-		text = MUST_HAVE_AYRAAL_TRIGGER
-		any_equipped_character_artifact = { has_variable = ayraal_authority }
 	}
 }

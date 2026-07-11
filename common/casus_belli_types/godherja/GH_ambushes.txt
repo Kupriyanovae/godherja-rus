@@ -23,14 +23,7 @@
 	on_defeat_desc = {}
 
 	should_invalidate = {
-		OR = {
-			scope:defender = { is_fogeater = yes }
-			scope:attacker = {
-				any_character_war = {
-					attacker_war_score <= 50
-				}
-			}
-		}
+		scope:defender = { is_fogeater = yes }
 	}
 
 	on_invalidated_desc = {}
@@ -94,14 +87,7 @@ fleshmaw_consume_cb = {
 	allowed_against_character = { scope:defender = { is_ruin = no } }
 
 	should_invalidate = {
-		OR = {
-			scope:defender = { is_ruin = yes }
-			scope:attacker = {
-				any_character_war = {
-					attacker_war_score <= 50
-				}
-			}
-		}
+		scope:defender = { is_ruin = yes }
 	}
 
 	on_declaration = {
@@ -186,14 +172,7 @@ worldeater_destruction_cb = {
 	allowed_against_character = { scope:defender = { is_ruin = no } }
 
 	should_invalidate = {
-		OR = {
-			scope:defender = { is_ruin = yes }
-			scope:attacker = {
-				any_character_war = {
-					attacker_war_score <= 50
-				}
-			}
-		}
+		scope:defender = { is_ruin = yes }
 	}
 
 	on_declaration = {

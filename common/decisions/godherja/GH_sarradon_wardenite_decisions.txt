@@ -271,7 +271,7 @@ refound_far_east_mamur_decision = {
 		any_held_title = {
 			tier = tier_county
 			OR = {
-				empire = title:e_kratemezin
+				empire = title:e_crater
 				empire = title:e_rojihlat_mara
 				empire = title:e_cyrat
 			}
@@ -307,7 +307,7 @@ refound_far_east_mamur_decision = {
 		#Should have a decent piety level.
 		piety_level >= high_piety_level
 		#Rules Kratemezin
-		has_title = title:e_kratemezin
+		has_title = title:e_crater
 	}
 
 	is_valid_showing_failures_only = {
@@ -502,7 +502,7 @@ found_far_western_mamur_decision = {
 		any_held_title = {
 			tier = tier_county
 			OR = {
-				empire = title:e_amsari_hiklahn
+				empire = title:e_amsari
 				empire = title:e_kemsar
 			}
 		}
@@ -542,7 +542,7 @@ found_far_western_mamur_decision = {
 		#Should have a massive piety level.
 		piety_level >= max_piety_level
 		#Rules Damota
-		has_title = title:e_amsari_hiklahn
+		has_title = title:e_amsari
 	}
 
 	is_valid_showing_failures_only = {
@@ -764,7 +764,7 @@ wardenite_mamur_reclaim_kotserion_decision = {
 		title:e_central_mamuramat = {
 			if = {
 				limit = {
-					current_date < 6300.1.1
+					current_date < 1300.1.1
 				}
 			set_variable = {
 				name = kotserion_retaken_gen_1
@@ -772,7 +772,7 @@ wardenite_mamur_reclaim_kotserion_decision = {
 			}
 			else_if = {
 				limit = {
-					current_date < 6330.1.1
+					current_date < 1330.1.1
 				}
 			set_variable = {
 				name = kotserion_retaken_gen_2
@@ -780,7 +780,7 @@ wardenite_mamur_reclaim_kotserion_decision = {
 			}
 			else_if = {
 				limit = {
-					current_date < 6360.1.1
+					current_date < 1360.1.1
 				}			
 			set_variable = {
 				name = kotserion_retaken_gen_3
@@ -863,7 +863,7 @@ wardenite_mamur_reclaim_sianna_decision = {
 		title:e_central_mamuramat = {
 			if = {
 				limit = {
-					current_date < 6300.1.1
+					current_date < 1300.1.1
 				}
 			
 			set_variable = {
@@ -872,7 +872,7 @@ wardenite_mamur_reclaim_sianna_decision = {
 			}
 			else_if = {
 				limit = {
-					current_date < 6330.1.1
+					current_date < 1330.1.1
 				}
 			
 			set_variable = {
@@ -881,7 +881,7 @@ wardenite_mamur_reclaim_sianna_decision = {
 			}
 			else_if = {
 				limit = {
-					current_date < 6360.1.1
+					current_date < 1360.1.1
 				}
 			
 			set_variable = {
@@ -963,7 +963,7 @@ wardenite_mamur_reclaim_skiadhadhes_decision = {
 		title:e_central_mamuramat = {
 			if = {
 				limit = {
-					current_date < 6300.1.1
+					current_date < 1300.1.1
 				}
 			
 			set_variable = {
@@ -972,7 +972,7 @@ wardenite_mamur_reclaim_skiadhadhes_decision = {
 			}
 			else_if = {
 				limit = {
-					current_date < 6330.1.1
+					current_date < 1330.1.1
 				}
 			
 			set_variable = {
@@ -981,7 +981,7 @@ wardenite_mamur_reclaim_skiadhadhes_decision = {
 			}
 			else_if = {
 				limit = {
-					current_date < 6360.1.1
+					current_date < 1360.1.1
 				}
 			
 			set_variable = {
@@ -1074,7 +1074,7 @@ wardenite_mamur_reclaim_chegea_decision = {
 		title:e_central_mamuramat = {
 			if = {
 				limit = {
-					current_date < 6300.1.1
+					current_date < 1300.1.1
 				}
 			
 			set_variable = {
@@ -1083,7 +1083,7 @@ wardenite_mamur_reclaim_chegea_decision = {
 			}
 			else_if = {
 				limit = {
-					current_date < 6330.1.1
+					current_date < 1330.1.1
 				}
 			
 			set_variable = {
@@ -1092,7 +1092,7 @@ wardenite_mamur_reclaim_chegea_decision = {
 			}
 			else_if = {
 				limit = {
-					current_date < 6360.1.1
+					current_date < 1360.1.1
 				}
 			
 			set_variable = {
@@ -1180,7 +1180,7 @@ wardenite_mamur_reclaim_almubid_decision = {
 		title:e_central_mamuramat = {
 			if = {
 				limit = {
-					current_date < 6300.1.1
+					current_date < 1300.1.1
 				}
 			
 			set_variable = {
@@ -1189,7 +1189,7 @@ wardenite_mamur_reclaim_almubid_decision = {
 			}
 			else_if = {
 				limit = {
-					current_date < 6330.1.1
+					current_date < 1330.1.1
 				}
 			
 			set_variable = {
@@ -1198,7 +1198,7 @@ wardenite_mamur_reclaim_almubid_decision = {
 			}
 			else_if = {
 				limit = {
-					current_date < 6360.1.1
+					current_date < 1360.1.1
 				}
 			
 			set_variable = {
@@ -1424,77 +1424,5 @@ loot_tabik_betemisit = {
 			set_global_variable = nomorehalfmeasures_looted
 			GH_achiev_nomorehalfmeasures_check = yes
 		}
-	}
-}
-
-gh_reclaim_wardenite_the_eastern_lands_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/gh_hammuhat_eastern_restauration_decision.dds"
-	}
-	desc = gh_reclaim_wardenite_the_eastern_lands_decision_desc
-	selection_tooltip = gh_reclaim_wardenite_the_eastern_lands_decision_tooltip
-	decision_group_type = wardenite
-
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 120
-		empire = 0
-		hegemony = 0
-	}
-
-	is_shown = {
-		game_start_date >= 6298.1.1
-		is_ruler = yes
-		is_playable_character = yes
-		has_title = title:k_eastern_frontier
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_created_greater_hammuhat_kingdom
-			}
-		}
-	}
-
-	is_valid = {
-		prestige_level >= high_prestige_level
-		highest_held_title_tier = tier_kingdom
-		completely_controls_region = gh_custom_greater_hammuat_core 
-		dynasty = dynasty:dyn_sarradon_1
-		has_title = title:k_eastern_frontier
-	}
-
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
-		is_at_war = no
-	}
-
-	effect = {
-		custom_tooltip = create_greater_hammuhat_decision_effect_tooltip
-		gain_heroic_legend_seed_tooltip_effect = yes
-		show_as_tooltip = {
-			restore_greater_hammuhat_scripted_effect = yes
-		}
-		trigger_event = {
-			id =  sarradon_decisions.3004
-		}
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_created_greater_hammuhat_kingdom
-			}
-		}
-	}
-
-	ai_potential = {
-		always = yes
-	}
-
-	ai_will_do = {
-		base = 100
 	}
 }

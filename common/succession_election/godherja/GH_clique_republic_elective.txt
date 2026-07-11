@@ -47,8 +47,6 @@
 			limit = {
 				GH_is_any_republic_government_trigger = yes
 				age > 15
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
 			}
 		}
 		add = {
@@ -59,8 +57,6 @@
 					is_playable_character = no
 				}
 				age > 15
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
 			}
 		}
 		add = {
@@ -71,8 +67,6 @@
 					is_playable_character = no
 				}
 				age > 15
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
 				culture = { has_same_culture_heritage = scope:holder.culture }
 			}
 		}
@@ -218,26 +212,18 @@ oligarchic_elective = { # The Landed Nobility still exerts some power in affairs
 			limit = {
 				is_vassal_of = scope:holder
 				feudal_elective_potential_landed_candidate_trigger = yes
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
 			}
 		}
 		
 		add = {
 			type = title_claimants
-			limit = {
-				feudal_elective_potential_landless_claimant_candidate_trigger = yes 
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
-			}
+			limit = { feudal_elective_potential_landless_claimant_candidate_trigger = yes }
 		}
 		add = {
 			type = holder_close_family
 			limit = {
 				is_close_family_of = scope:holder
 				feudal_elective_potential_landless_dynastic_candidate_trigger = yes
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
 			}
 		}
 	}
@@ -422,8 +408,6 @@ stratocratic_elective = {
 				is_vassal_of = scope:holder
 				is_adult = yes
 				feudal_elective_potential_landed_candidate_trigger = yes
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
 			}
 		}
 		 
@@ -432,8 +416,6 @@ stratocratic_elective = {
 			limit = {
 				is_adult = yes
 				feudal_elective_potential_landless_claimant_candidate_trigger = yes
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
 			}
 		}
 		add = {
@@ -442,8 +424,6 @@ stratocratic_elective = {
 				is_close_family_of = scope:holder
 				is_adult = yes
 				feudal_elective_potential_landless_dynastic_candidate_trigger = yes
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
 			}
 		}
 	}
@@ -629,8 +609,6 @@ mercantile_elective = {
 				is_adult = yes
 				is_vassal_of = scope:holder
 				feudal_elective_potential_landed_candidate_trigger = yes
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
 			}
 		}
 		 
@@ -639,8 +617,6 @@ mercantile_elective = {
 			limit = {
 				is_adult = yes
 				feudal_elective_potential_landless_claimant_candidate_trigger = yes
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
 			}
 		}
 		add = {
@@ -649,8 +625,6 @@ mercantile_elective = {
 				is_close_family_of = scope:holder
 				is_adult = yes
 				feudal_elective_potential_landless_dynastic_candidate_trigger = yes
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
 			}
 		}
 	}
@@ -770,11 +744,7 @@ blood_elective = {
 	candidates = {
 		add = {
 			type = holder_close_or_extended_family
-			limit = { 
-				is_adult = yes
-				# We dont want the Konijk King taking power electorally!
-				NOT = { has_title = title:d_kanzelerij_monarchy }
-			}
+			limit = { is_adult = yes }
 		}
 	}
 }

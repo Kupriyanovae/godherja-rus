@@ -258,7 +258,6 @@ building_03_special_aervalr_shard_add = 30
 building_04_special_aervalr_shard_add = 40
 building_magi_tower_01_add = 10
 building_magi_tower_02_add = 20
-building_magi_tower_03_add = 30
 building_01_special_bloodcrystal_add = 10
 building_02_special_bloodcrystal_add = 20
 building_03_special_bloodcrystal_add = 30
@@ -283,10 +282,7 @@ building_dark_obelisk_06_add = 60
 building_dark_obelisk_07_add = 70
 building_dark_obelisk_08_add = 80
 building_01_halite_temple_add = 25 
-building_02_halite_temple_add = 50
-building_01_shenewuh_warrior_temple_add = 8
-building_02_shenewuh_warrior_temple_add = 20
-building_03_shenewuh_warrior_temple_add = 40
+building_02_halite_temple_add = 50 
 
 magic_legacy_1_add = 50
 
@@ -653,31 +649,11 @@ character_extended_magic_baseline_value = {
 	}
 	if = {
 		limit = {
-			any_directly_owned_province = { has_building_or_higher = magi_tower_02 }
+			any_directly_owned_province = { has_building = magi_tower_02 }
 		}
 		add = {
 			value = building_magi_tower_02_add
 			desc = magi_tower_02_value_desc
-			format = "MAGIC_BASELINE_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			any_directly_owned_province = { has_building = arcane_foundations_01 }
-		}
-		add = {
-			value = building_magi_tower_02_add
-			desc = arcane_foundations_01_value_desc
-			format = "MAGIC_BASELINE_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			any_directly_owned_province = { has_building_or_higher = arcane_foundations_02 }
-		}
-		add = {
-			value = building_magi_tower_03_add
-			desc = arcane_foundations_01_value_desc
 			format = "MAGIC_BASELINE_VALUE_FORMAT"
 		}
 	}
@@ -906,36 +882,6 @@ character_extended_magic_baseline_value = {
 		add = {
 			value = building_02_halite_temple_add
 			desc = 02_halite_temple_value_desc
-			format = "MAGIC_BASELINE_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			any_directly_owned_province = { has_building = 01_shenewuh_warrior_temple }
-		}
-		add = {
-			value = building_01_shenewuh_warrior_temple_add
-			desc = 01_shenewuh_warrior_temple_value_desc
-			format = "MAGIC_BASELINE_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			any_directly_owned_province = { has_building = 02_shenewuh_warrior_temple }
-		}
-		add = {
-			value = building_01_shenewuh_warrior_temple_add
-			desc = 02_shenewuh_warrior_temple_value_desc
-			format = "MAGIC_BASELINE_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			any_directly_owned_province = { has_building = 03_shenewuh_warrior_temple }
-		}
-		add = {
-			value = building_01_shenewuh_warrior_temple_add
-			desc = 03_shenewuh_warrior_temple_value_desc
 			format = "MAGIC_BASELINE_VALUE_FORMAT"
 		}
 	}

@@ -5,7 +5,7 @@
 # Code on-action: character being imprisoned in root scope
 # imprisoning character set as scope:imprisoner
 on_imprison = {
-	effect = { # You no longer make such decisions over your life :(
+	effect = { #You no longer make such decisions over your life :(
 		# EP2: Cancel associated activity and travel plan if they exist
 		if = {
 			limit = {
@@ -31,13 +31,6 @@ on_imprison = {
 			else = {
 				remove_character = root
 		 	}
-		}
-
-		if = {
-			limit = {
-				has_character_flag = travel_option_added_character
-			}
-			remove_character_flag = travel_option_added_character
 		}
 
 		if = {
@@ -92,15 +85,17 @@ on_imprison = {
 			limit = {
 				has_trait = fp3_struggle_supporter
 				any_character_struggle = {
-					activate_struggle_catalyst_secondary_character_involvement_either_trigger = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
 						CATALYST = catalyst_imprison_supporter
 						CHAR = scope:imprisoner
 					}
 				}
 			}
 			every_character_struggle = {
+				involvement = involved
 				limit = {
-					activate_struggle_catalyst_secondary_character_involvement_either_trigger = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
 						CATALYST = catalyst_imprison_supporter
 						CHAR = scope:imprisoner
 					}
@@ -116,15 +111,17 @@ on_imprison = {
 			limit = {
 				has_trait = fp3_struggle_detractor
 				any_character_struggle = {
-					activate_struggle_catalyst_secondary_character_involvement_either_trigger = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
 						CATALYST = catalyst_imprison_detractor
 						CHAR = scope:imprisoner
 					}
 				}
 			}
 			every_character_struggle = {
+				involvement = involved
 				limit = {
-					activate_struggle_catalyst_secondary_character_involvement_either_trigger = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
 						CATALYST = catalyst_imprison_detractor
 						CHAR = scope:imprisoner
 					}
@@ -156,7 +153,7 @@ on_imprison = {
 				has_bp2_dlc_trigger = yes
 				is_adult = yes
 				any_memory = {
-					memory_type = imprisoned
+					has_memory_type = imprisoned
 					has_variable = childhood_memory
 				}
 			}
@@ -205,7 +202,7 @@ on_imprison = {
 				has_bp2_dlc_trigger = yes
 				scope:imprisoner = {
 					any_memory = {
-						memory_type = relative_died
+						has_memory_type = relative_died
 						any_memory_participant = {
 							exists = this.killer
 							killer = {
@@ -221,17 +218,6 @@ on_imprison = {
 					id = bp2_yearly.4001
 					days = 1
 				}
-			}
-		}
-
-		house ?= {
-			change_house_relation_effect = {
-				HOUSE = scope:imprisoner.house
-				VALUE = house_relation_damage_medium_value
-				REASON = imprisonment
-				CHAR = scope:imprisoner
-				TARGET_CHAR = root
-				TITLE = scope:dummy_gender
 			}
 		}
 	}
@@ -357,7 +343,7 @@ on_release_from_prison = {
 ################
 quarterly_prison_maintenance_pulse = {
 	trigger = {
-		any_prisoner = { }
+		any_prisoner = { count >= 1 }
 	}
 	effect = { #Fire the correct events for all prisoners
 		every_prisoner = {

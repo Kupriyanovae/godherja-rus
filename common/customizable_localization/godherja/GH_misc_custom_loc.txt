@@ -139,12 +139,12 @@ champion_grounds_instructor = {
     type = character
 
     text = {
-        trigger = { current_date >= 6300.1.1 }
+        trigger = { current_date >= 1300.1.1 }
         localization_key = legion_trained
     }
 
     text = {
-        trigger = { current_date < 6300.1.1 }
+        trigger = { current_date < 1300.1.1 }
         localization_key = legion_veteran
     }
 }
@@ -1381,172 +1381,5 @@ GetHolySiteMigrationRegionDescription = {
 	text = {
 		trigger = { scope:holy_sites_kasiryat = yes }
 		localization_key = custom_holysite_migration_kasiryat_desc
-	}
-}
-
-check_ayraal_law_gui = { # Used for gui purposes
-	type = character
-
-	text = {
-		trigger = { government_has_flag = has_ayraal_system }
-		localization_key = has_ayraal_law
-	}
-
-	text = { localization_key = no_ayraal_law }
-}
-
-AyraalArtifactLevel = { # Used for artifact-desc mention of what tier ayraal it is
-	type = artifact
-	random_valid = yes
-
-	text = {
-		trigger = {
-			has_variable = ayraal_authority
-			var:ayraal_authority ?= flag:empire_ayraal
-		}
-		localization_key = empire_ayraal_desc
-	}
-	text = {
-		trigger = {
-			has_variable = ayraal_authority
-			var:ayraal_authority ?= flag:kingdom_ayraal
-		}
-		localization_key = kingdom_ayraal_desc
-	}
-	text = {
-		trigger = {
-			has_variable = ayraal_authority
-			var:ayraal_authority ?= flag:duchy_ayraal
-		}
-		localization_key = duchy_ayraal_desc
-	}
-	text = {
-		trigger = {
-			has_variable = ayraal_authority
-			var:ayraal_authority ?= flag:county_ayraal
-		}
-		localization_key = county_ayraal_desc
-	}
-}
-
-GetGovernessGovernor = {
-	type = character
-
-	text = {
-		trigger = { is_female = yes }
-		localization_key = duke_administrative_female
-	}
-
-	text = { localization_key = trait_governor }
-}
-GetHighestHeldTitleRankNameConceptArticle = { # Get Character Rank with article (e.g. an Empress)
-	type = character
-	text = { # Adventurer
-		trigger = { has_government = landless_adventurer_government }
-		localization_key = highest_held_title_rank_name_concept_article_adventurer
-	}
-
-	text = { # Noble Family House Head
-		trigger = {
-			is_landless_ruler = yes
-			any_held_title = { is_noble_family_title = yes }
-		}
-		localization_key = highest_held_title_rank_name_concept_article_noble_family_house_head
-	}
-
-	text = { # A Baron
-		trigger = {
-			is_male = yes
-			highest_held_title_tier = tier_barony
-		}
-		localization_key = highest_held_title_rank_name_concept_article_baron
-	}
-
-	text = { # A Count
-		trigger = {
-			is_male = yes
-			highest_held_title_tier = tier_county
-		}
-		localization_key = highest_held_title_rank_name_concept_article_count
-	}
-
-	text = { # A Duke
-		trigger = {
-			is_male = yes
-			highest_held_title_tier = tier_duchy
-		}
-		localization_key = highest_held_title_rank_name_concept_article_duke
-	}
-
-	text = { # A King
-		trigger = {
-			is_male = yes
-			highest_held_title_tier = tier_kingdom
-		}
-		localization_key = highest_held_title_rank_name_concept_article_king
-	}
-
-	text = { # An Emperor
-		trigger = {
-			is_male = yes
-			highest_held_title_tier = tier_empire
-		}
-		localization_key = highest_held_title_rank_name_concept_article_emperor
-	}
-
-	text = { # A Hegemon
-		trigger = {
-			is_male = yes
-			highest_held_title_tier = tier_hegemony
-		}
-		localization_key = highest_held_title_rank_name_concept_article_hegemon
-	}
-
-	text = { # A Baroness
-		trigger = {
-			is_female = yes
-			highest_held_title_tier = tier_barony
-		}
-		localization_key = highest_held_title_rank_name_concept_article_baroness
-	}
-
-	text = { # A Countess
-		trigger = {
-			is_female = yes
-			highest_held_title_tier = tier_county
-		}
-		localization_key = highest_held_title_rank_name_concept_article_countess
-	}
-
-	text = { # A Duchess
-		trigger = {
-			is_female = yes
-			highest_held_title_tier = tier_duchy
-		}
-		localization_key = highest_held_title_rank_name_concept_article_duchess
-	}
-
-	text = { # A Queen
-		trigger = {
-			is_female = yes
-			highest_held_title_tier = tier_kingdom
-		}
-		localization_key = highest_held_title_rank_name_concept_article_queen
-	}
-
-	text = { # An Empress
-		trigger = {
-			is_female = yes
-			highest_held_title_tier = tier_empire
-		}
-		localization_key = highest_held_title_rank_name_concept_article_empress
-	}
-
-	text = { # A Hegemoness
-		trigger = {
-			is_female = yes
-			highest_held_title_tier = tier_hegemony
-		}
-		localization_key = highest_held_title_rank_name_concept_article_hegemoness
 	}
 }

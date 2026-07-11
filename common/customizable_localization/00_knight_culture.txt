@@ -3,7 +3,7 @@
 
 	text = {
 		trigger = {
-			has_government = landless_adventurer_government
+			is_landless_adventurer = yes
 			NOR = {
 				has_trait = knight_errant
 			}
@@ -71,16 +71,6 @@
 			culture ?= { has_cultural_pillar = heritage_zarasadari }
 		}
 		localization_key = knight_mazhakis
-	}
-	text = {
-		trigger = {
-			OR = {
-				culture ?= { has_cultural_pillar = heritage_marmaladid }
-				culture ?= { has_cultural_pillar = heritage_zanaumaures }
-				culture ?= { has_cultural_pillar = heritage_takopara }
-			}
-		}
-		localization_key = knight_imushar
 	}
 	text = {
 		localization_key = knight_default

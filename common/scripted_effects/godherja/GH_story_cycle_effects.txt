@@ -274,21 +274,3 @@ assign_roc_color_effect = {
 		}
 	}
 }
-
-personal_inspiration_refund_effect = { # Calculate personal inspiration refund
-	if = { # Regular application
-		limit = { NOT = { exists = scope:personal_inpiration_total_gold_investment_scope } }
-		add_gold = {
-			value = scope:story.var:personal_inspiration_total_gold_investment
-			multiply = personal_inspiration_refund_percentage
-			round = yes
-		}
-	}
-	else = { # For cases where the story object is deleted early
-		add_gold = {
-			value = scope:personal_inpiration_total_gold_investment_scope
-			multiply = personal_inspiration_refund_percentage
-			round = yes
-		}
-	}
-}

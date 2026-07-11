@@ -230,8 +230,8 @@ tradition_forest_fighters = {
 					percent >= 0.6
 					any_county_province = {
 						OR = {
-							GH_any_forest_terrain_trigger = yes
-							GH_any_taiga_terrain_trigger = yes
+							terrain = forest
+							terrain = taiga
 						}
 					}
 				}
@@ -307,12 +307,7 @@ tradition_mountaineers = {
 					NOT = {
 						any_culture_county = {
 							percent >= 0.3
-							any_county_province = {
-								OR = {
-									GH_any_mountains_terrain_trigger = yes
-									GH_any_desert_mountains_terrain_trigger = yes
-								}
-							}
+							any_county_province = { GH_any_mountains_terrain_trigger = yes }
 						}
 					}
 				}
@@ -344,45 +339,12 @@ tradition_mountaineers = {
 						any_sub_realm_county = {
 							percent >= 0.2
 							culture = scope:character.culture
-							any_county_province = {
-								OR = {
-									GH_any_mountains_terrain_trigger = yes
-									GH_any_desert_mountains_terrain_trigger = yes
-								}
-							}
+							any_county_province = { GH_any_mountains_terrain_trigger = yes }
 						}
 					}
 				}
 			}
 			multiply = 0
-		}
-		else_if = {
-			limit = {
-				scope:character.culture ?= {
-					any_culture_county = {
-						percent > 0.6
-						county_has_province_with_terrain = {
-								terrain = mountains
-								terrain = desert_mountains
-						}
-					}
-				}
-			}
-			multiply = 6
-		}
-		else_if = {
-			limit = {
-				scope:character.culture ?= {
-					any_culture_county = {
-						percent > 0.4
-						county_has_province_with_terrain = {
-							terrain = mountains
-							terrain = desert_mountains
-						}
-					}
-				}
-			}
-			multiply = 2
 		}
 	}
 }
@@ -656,7 +618,7 @@ tradition_highland_warriors = {
 					any_culture_county = {
 						percent > 0.6
 						any_county_province = {
-							GH_any_hills_terrain_trigger = yes
+							terrain = hills
 						}
 					}
 				}
@@ -669,7 +631,7 @@ tradition_highland_warriors = {
 					any_culture_county = {
 						percent > 0.4
 						any_county_province = {
-							GH_any_hills_terrain_trigger = yes
+							terrain = hills
 						}
 					}
 				}
@@ -780,7 +742,7 @@ tradition_jungle_warriors = {
 				scope:character.culture ?= {
 					any_culture_county = {
 						percent > 0.6
-						county_has_province_with_terrain = {
+						any_county_province = {
 							terrain = jungle
 						}
 					}
@@ -793,7 +755,7 @@ tradition_jungle_warriors = {
 				scope:character.culture ?= {
 					any_culture_county = {
 						percent > 0.4
-						county_has_province_with_terrain = {
+						any_county_province = {
 							terrain = jungle
 						}
 					}
@@ -1033,6 +995,7 @@ tradition_warrior_monks = {
 	}
 	
 	can_pick = {
+		
 	}
 	
 	parameters = {
@@ -1327,21 +1290,15 @@ tradition_frugal_armorsmiths = {
 	}
 
 	parameters = {
-		frugal_blacksmith_invite_knight_decision_cooldown = yes
-		frugal_blacksmith_better_invite_knight_decision = yes
-		frugal_blacksmith_cheaper_invite_knight_decision = yes
-		frugal_blacksmith_cheaper_recruit_to_court = yes
+		frugal_blacksmith_maa_size = yes
 	}
 	
 	character_modifier = {
-		levy_size = 0.1
-		knight_limit = 5
-		men_at_arms_limit = 3
 		army_maintenance_mult = -0.25
 		men_at_arms_recruitment_cost = -0.25
-		knight_effectiveness_mult = -0.4
-		levy_toughness = -2
-		heavy_cavalry_toughness_mult = -0.3
+		knight_effectiveness_mult = -0.6
+		levy_toughness = -8
+		heavy_cavalry_toughness_mult = -0.5
 		pikemen_toughness_mult = -0.15
 		heavy_infantry_toughness_mult = -0.25
 	}
@@ -1539,7 +1496,6 @@ tradition_quarrelsome = {
 		cheaper_cbs = yes
 		disloyal_trait_less_spurned = yes
 		disloyal_trait_more_common = yes
-		less_likely_to_accept_alliances = yes ## GH ADDITION ##
 	}
 	character_modifier = {
 		monthly_county_control_growth_factor = -0.4
@@ -1615,6 +1571,11 @@ tradition_quarrelsome = {
 			limit = {
 				NOT = {
 					scope:character = {
+					
+					
+					
+					
+					
 						GH_is_any_tribal_government_trigger = yes
 					}
 				}
@@ -1986,7 +1947,9 @@ tradition_battlefield_looters = {
 								count >= 3
 								culture = prev
 								primary_title.tier >= tier_county
-								has_trait = reaver
+								OR = {
+									has_trait = reaver
+								}
 							}
 						}
 					}
@@ -2149,7 +2112,7 @@ tradition_stand_and_fight = {
 		levy_toughness = 2
 		maa_toughness_mult = 0.1
 		heavy_infantry_toughness_mult = 0.1
-		heavy_cavalry_toughness_mult = 0.1
+		heavy_cavalry_toughness_mult = 1
 		pikemen_toughness_mult = 0.2
 		hard_casualty_modifier = 0.4
 		defender_advantage = 8

@@ -10,34 +10,6 @@
 # Fired from spell scope
 generate_spell_effect_target_lists_effect = {
 	every_in_list = {
-		list = spell_target_list
-		remove_from_list = spell_target_list
-	}
-	if = {
-		limit = {
-			OR = {
-				has_variable_list = affects_spell_target_effect_list
-			}
-		}
-		$SOURCE$ = {
-			
-		}
-	}
-	every_in_list = {
-		list = cantrip_wielder_list
-		remove_from_list = cantrip_wielder_list
-	}
-	if = {
-		limit = {
-			OR = {
-				has_variable_list = affects_cantrip_wielder_effect_list
-			}
-		}
-		$SOURCE$ = {
-			
-		}
-	}
-	every_in_list = {
 		list = target_list
 		remove_from_list = target_list
 	}
@@ -58,17 +30,7 @@ generate_spell_effect_target_lists_effect = {
 
 			if = {
 				limit = { list_size = { name = target_list value <= 0 } }
-				if = {
-				    limit = {
-				        NOR = {
-				            has_variable_list = spell_target_province_list
-				            has_variable_list = spell_target_artifacts
-				            exists = scope:cantrip_scope
-				        }
-				    }
-				    scope:spell_organizer = { add_to_list = target_list }
-				}
-
+				scope:spell_organizer = { add_to_list = target_list }
 			}
 		}
 	}
@@ -109,7 +71,6 @@ generate_spell_effect_target_lists_effect = {
 			OR = {
 				has_variable_list = affects_target_province_effect_list
 				has_variable_list = affects_target_province_character_effect_list
-				has_variable_list = affects_target_title_effect_list
 			}
 		}
 		$SOURCE$ = {
@@ -121,6 +82,22 @@ generate_spell_effect_target_lists_effect = {
 			    }
 			}
 
+			if = {
+				limit = { list_size = { name = target_province_list value <= 0 } }
+				if = {
+				    limit = { exists = capital_province }
+				    capital_province = { 
+				        add_to_list = target_province_list
+				    }
+				}
+				else_if = {
+				    limit = { exists = location }
+				    location = { 
+				        add_to_list = target_province_list
+				    } 
+				}
+
+			}
 		}
 	}
 	every_in_list = {
@@ -142,6 +119,22 @@ generate_spell_effect_target_lists_effect = {
 			    }
 			}
 
+			if = {
+				limit = { list_size = { name = target_title_list value <= 0 } }
+				if = {
+				    limit = { exists = capital_county }
+				    capital_county = { 
+				        add_to_list = target_title_list
+				    }
+				}
+				else_if = {
+				    limit = { exists = location }
+				    location.county = { 
+				        add_to_list = target_title_list
+				    } 
+				}
+
+			}
 		}
 	}
 	every_in_list = {
@@ -152,18 +145,28 @@ generate_spell_effect_target_lists_effect = {
 		limit = {
 			OR = {
 				has_variable_list = affects_target_artifact_effect_list
-				has_variable_list = affects_artifact_owner_effect_list
 			}
 		}
 		$SOURCE$ = {
 			if = {
-			    limit = { has_variable_list = spell_target_artifacts }
+			    limit = { has_variable_list = spell_target_titles }
 			    every_in_list = {
-			        variable = spell_target_artifacts
-			        add_to_list = target_artifact_list
+			        variable = spell_target_titles
+			        add_to_list = target_title_list
 			    }
 			}
 
+			if = {
+				limit = { list_size = { name = target_artifact_list value <= 0 } }
+				if = {
+				    limit = { has_variable_list = spell_target_artifacts }
+				    every_in_list = {
+				        variable = spell_target_artifacts
+				        add_to_list = target_artifact_list
+				    }
+				}
+
+			}
 		}
 	}
 	every_in_list = {
@@ -203,94 +206,10 @@ generate_spell_effect_target_lists_effect = {
 			scope:child ?= { add_to_list = target_newborn_child_list }
 		}
 	}
-	every_in_list = {
-		list = artifact_owner_list
-		remove_from_list = artifact_owner_list
-	}
-	if = {
-		limit = {
-			OR = {
-				has_variable_list = affects_artifact_owner_effect_list
-			}
-		}
-		$SOURCE$ = {
-			if = {
-			    limit = { list_size = { name = target_artifact_list value > 0 } }
-			    every_in_list = {
-			        list = target_artifact_list
-			        artifact_owner = {
-			            add_to_list = artifact_owner_list
-			        }
-			    }
-			}
-
-		}
-	}
-	every_in_list = {
-		list = newly_created_artifact_list
-		remove_from_list = newly_created_artifact_list
-	}
-	if = {
-		limit = {
-			OR = {
-				has_variable_list = affects_newly_created_artifact_effect_list
-			}
-		}
-		$SOURCE$ = {
-			scope:newly_created_artifact ?= { add_to_list = newly_created_artifact_list }
-		}
-	}
-	save_scope_value_as = { name = target_lists_already_generated value = yes }
 }
 
 # Fired from spell scope
 generate_unwanted_spell_target_list_effect = {
-	if = {
-		limit = { list_size = { name = spell_target_list value > 0 } }
-		every_in_list = {
-			list = spell_target_list
-			if = {
-				limit = { NOT = { exists = scope:spell_being_checked_ai_target } }
-				save_temporary_scope_as = spell_being_checked_ai_target
-			}
-			if = {
-				limit = {
-					NOR = {
-						this = scope:spell_organizer
-						this = scope:caster
-					}
-					OR = {
-						is_ai = no
-						prev.ai_spell_weight_value < 0
-					}
-				}
-				add_to_list = unwanted_spell_targets
-			}
-		}
-	}
-	if = {
-		limit = { list_size = { name = cantrip_wielder_list value > 0 } }
-		every_in_list = {
-			list = cantrip_wielder_list
-			if = {
-				limit = { NOT = { exists = scope:spell_being_checked_ai_target } }
-				save_temporary_scope_as = spell_being_checked_ai_target
-			}
-			if = {
-				limit = {
-					NOR = {
-						this = scope:spell_organizer
-						this = scope:caster
-					}
-					OR = {
-						is_ai = no
-						prev.ai_spell_weight_value < 0
-					}
-				}
-				add_to_list = unwanted_spell_targets
-			}
-		}
-	}
 	if = {
 		limit = { list_size = { name = target_list value > 0 } }
 		every_in_list = {
@@ -406,72 +325,47 @@ generate_unwanted_spell_target_list_effect = {
 			}
 		}
 	}
-	if = {
-		limit = { list_size = { name = artifact_owner_list value > 0 } }
-		every_in_list = {
-			list = artifact_owner_list
-			if = {
-				limit = { NOT = { exists = scope:spell_being_checked_ai_target } }
-				save_temporary_scope_as = spell_being_checked_ai_target
-			}
-			if = {
-				limit = {
-					NOR = {
-						this = scope:spell_organizer
-						this = scope:caster
-					}
-					OR = {
-						is_ai = no
-						prev.ai_spell_weight_value < 0
-					}
-				}
-				add_to_list = unwanted_spell_targets
-			}
-		}
-	}
 }
 
 generate_unwanted_spell_target_secrets_effect = {
-	hidden_effect = {
-		# This list is compiled before the effects take place because the effects of the spell itself might change the calculus of whether a spell is desired or no
-		every_in_list = {
-			list = unwanted_spell_targets
-			save_temporary_scope_as = spell_being_checked_ai_target
-			save_temporary_scope_as = spell_defender
-			random_list = {
-				100 = {
-					modifier = {
-						add = {
-							value = scope:spell_being_casted.spellcasting_discovery_chance_value
-							multiply = -1
-						}
+	# This list is compiled before the effects take place because the effects of the spell itself might change the calculus of whether a spell is desired or no
+	every_in_list = {
+		list = unwanted_spell_targets
+		save_temporary_scope_as = spell_being_checked_ai_target
+		save_temporary_scope_as = spell_defender
+		random_list = {
+			100 = {
+				modifier = {
+					add = {
+						value = scope:spell_being_casted.spellcasting_discovery_chance_value
+						multiply = -1
 					}
-					scope:spell_organizer = {
-						add_secret = { 
-							type = secret_magic_harm
-							target = scope:spell_being_checked_ai_target
-						}
-						if = {
-							limit = { NOT = { scope:caster = scope:spell_organizer } }
-							random_secret = { #Find the secret
-								limit = {
-									secret_type = secret_magic_harm
-									secret_target = scope:spell_being_checked_ai_target
-								}
-								add_secret_participant = scope:caster
+				}
+				scope:spell_organizer = {
+					add_secret = { 
+						type = secret_magic_harm
+						target = scope:spell_being_checked_ai_target
+					}
+					if = {
+						limit = { NOT = { scope:caster = scope:spell_organizer } }
+						random_secret = { #Find the secret
+							limit = {
+								secret_type = secret_magic_harm
+								secret_target = scope:spell_being_checked_ai_target
 							}
+							add_secret_participant = scope:caster
 						}
 					}
 				}
-				0 = {
-					trigger = {
-						NOT = { scope:spell_being_casted = { scope:spell_being_casted = { has_variable_list = spell_activation_trigger_list } } }
-					}
-					modifier = {
-						add = scope:spell_being_casted.spellcasting_discovery_chance_value
-					}
-					casted_unwanted_magic_effect = { TARGET = scope:spell_being_checked_ai_target CASTER = scope:spell_organizer }
+			}
+			0 = {
+				trigger = {
+					NOT = { scope:spell_being_casted = { scope:spell_being_casted = { has_variable_list = spell_activation_trigger_list } } }
 				}
+				modifier = {
+					add = scope:spell_being_casted.spellcasting_discovery_chance_value
+				}
+				casted_unwanted_magic_effect = { TARGET = scope:spell_being_checked_ai_target CASTER = scope:spell_organizer }
 			}
 		}
 	}
@@ -588,130 +482,6 @@ apply_regular_spell_effects = {
 	generate_unwanted_spell_target_secrets_effect = yes
 	
 	scope:spell_organizer ?= {
-		if = {
-			limit = {
-				scope:spell_being_casted ?= { has_variable_list = affects_spell_target_effect_list }
-			}
-			if = {
-				limit = { list_size = { name = spell_target_list value > 0 } }
-				every_in_list = { #Apply all relevant spell effects to every character targeted
-					list = spell_target_list
-					save_temporary_scope_as = spell_defender
-					if = {
-						limit = { NOT = { is_in_list = unwanted_spell_targets } }
-						if = {
-							limit = {
-								OR = {
-									this = scope:spell_organizer
-									is_ai = yes
-								}
-							}
-							apply_spell_effects_to_targets = { TARGET = spell_target }
-						}
-						else = {
-							show_as_tooltip = { apply_spell_effects_to_targets = { TARGET = spell_target } }
-							trigger_event = magic.0011
-						}
-					}
-					else = {
-						random_list = {
-							100 = {
-								modifier = {
-									add = {
-										value = scope:spell_being_casted.magic_resistance_chance
-										multiply = -1
-									}
-								}
-								if = {
-									limit = {
-										is_ai = yes
-									}
-									apply_spell_effects_to_targets = { TARGET = spell_target }
-								}
-								else = {
-									show_as_tooltip = { apply_spell_effects_to_targets = { TARGET = spell_target } }
-									trigger_event = magic.0011
-								}
-							}
-							0 = {
-								trigger = {
-									NOT = { scope:spell_being_casted = { scope:spell_being_casted = { has_variable_list = spell_activation_trigger_list } } }
-								}
-								modifier = {
-									add = {
-										value = scope:spell_being_casted.magic_resistance_chance
-										multiply = 1
-									}
-								}
-								custom_tooltip = successful_magic_resistance_tooltip
-							}
-						}
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				scope:spell_being_casted ?= { has_variable_list = affects_cantrip_wielder_effect_list }
-			}
-			if = {
-				limit = { list_size = { name = cantrip_wielder_list value > 0 } }
-				every_in_list = { #Apply all relevant spell effects to every character targeted
-					list = cantrip_wielder_list
-					save_temporary_scope_as = spell_defender
-					if = {
-						limit = { NOT = { is_in_list = unwanted_spell_targets } }
-						if = {
-							limit = {
-								OR = {
-									this = scope:spell_organizer
-									is_ai = yes
-								}
-							}
-							apply_spell_effects_to_targets = { TARGET = cantrip_wielder }
-						}
-						else = {
-							show_as_tooltip = { apply_spell_effects_to_targets = { TARGET = cantrip_wielder } }
-							trigger_event = magic.0011
-						}
-					}
-					else = {
-						random_list = {
-							100 = {
-								modifier = {
-									add = {
-										value = scope:spell_being_casted.magic_resistance_chance
-										multiply = -1
-									}
-								}
-								if = {
-									limit = {
-										is_ai = yes
-									}
-									apply_spell_effects_to_targets = { TARGET = cantrip_wielder }
-								}
-								else = {
-									show_as_tooltip = { apply_spell_effects_to_targets = { TARGET = cantrip_wielder } }
-									trigger_event = magic.0011
-								}
-							}
-							0 = {
-								trigger = {
-									NOT = { scope:spell_being_casted = { scope:spell_being_casted = { has_variable_list = spell_activation_trigger_list } } }
-								}
-								modifier = {
-									add = {
-										value = scope:spell_being_casted.magic_resistance_chance
-										multiply = 1
-									}
-								}
-								custom_tooltip = successful_magic_resistance_tooltip
-							}
-						}
-					}
-				}
-			}
-		}
 		if = {
 			limit = {
 				scope:spell_being_casted ?= { has_variable_list = affects_target_effect_list }
@@ -1119,292 +889,6 @@ apply_regular_spell_effects = {
 				}
 			}
 		}
-		if = {
-			limit = {
-				scope:spell_being_casted ?= { has_variable_list = affects_artifact_owner_effect_list }
-			}
-			if = {
-				limit = { list_size = { name = artifact_owner_list value > 0 } }
-				every_in_list = { #Apply all relevant spell effects to every character targeted
-					list = artifact_owner_list
-					save_temporary_scope_as = spell_defender
-					if = {
-						limit = { NOT = { is_in_list = unwanted_spell_targets } }
-						if = {
-							limit = {
-								OR = {
-									this = scope:spell_organizer
-									is_ai = yes
-								}
-							}
-							apply_spell_effects_to_targets = { TARGET = artifact_owner }
-						}
-						else = {
-							show_as_tooltip = { apply_spell_effects_to_targets = { TARGET = artifact_owner } }
-							trigger_event = magic.0011
-						}
-					}
-					else = {
-						random_list = {
-							100 = {
-								modifier = {
-									add = {
-										value = scope:spell_being_casted.magic_resistance_chance
-										multiply = -1
-									}
-								}
-								if = {
-									limit = {
-										is_ai = yes
-									}
-									apply_spell_effects_to_targets = { TARGET = artifact_owner }
-								}
-								else = {
-									show_as_tooltip = { apply_spell_effects_to_targets = { TARGET = artifact_owner } }
-									trigger_event = magic.0011
-								}
-							}
-							0 = {
-								trigger = {
-									NOT = { scope:spell_being_casted = { scope:spell_being_casted = { has_variable_list = spell_activation_trigger_list } } }
-								}
-								modifier = {
-									add = {
-										value = scope:spell_being_casted.magic_resistance_chance
-										multiply = 1
-									}
-								}
-								custom_tooltip = successful_magic_resistance_tooltip
-							}
-						}
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				scope:spell_being_casted ?= { has_variable_list = affects_newly_created_artifact_effect_list }
-			}
-			if = {
-				limit = { list_size = { name = newly_created_artifact_list value > 0 } }
-				every_in_list = { #Apply all relevant spell effects to every character targeted
-					list = newly_created_artifact_list
-					save_temporary_scope_as = spell_defender
-					apply_spell_effects_to_targets = { TARGET = newly_created_artifact }
-				}
-			}
-		}
-	}
-}
-
-apply_regular_spell_effects_no_resistance = {
-	save_scope_as = spell_being_casted
-	
-	if = {
-		limit = { NOT = { exists = scope:target_lists_already_generated } }
-		generate_spell_effect_target_lists_effect = { SOURCE = scope:spell_organizer }
-	}
-	generate_unwanted_spell_target_list_effect = yes
-	generate_unwanted_spell_target_secrets_effect = yes
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_spell_target_effect_list }
-		}
-		if = {
-			limit = { list_size = { name = spell_target_list value > 0 } }
-			every_in_list = { #Apply all relevant spell effects to every character targeted
-				list = spell_target_list
-				save_temporary_scope_as = spell_defender
-				send_interface_toast = {
-					title = affected_by_loitering_magic
-					apply_spell_effects_to_targets = { TARGET = spell_target }
-				}
-			}
-		}
-	}
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_cantrip_wielder_effect_list }
-		}
-		if = {
-			limit = { list_size = { name = cantrip_wielder_list value > 0 } }
-			every_in_list = { #Apply all relevant spell effects to every character targeted
-				list = cantrip_wielder_list
-				save_temporary_scope_as = spell_defender
-				send_interface_toast = {
-					title = affected_by_loitering_magic
-					apply_spell_effects_to_targets = { TARGET = cantrip_wielder }
-				}
-			}
-		}
-	}
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_target_effect_list }
-		}
-		if = {
-			limit = { list_size = { name = target_list value > 0 } }
-			every_in_list = { #Apply all relevant spell effects to every character targeted
-				list = target_list
-				save_temporary_scope_as = spell_defender
-				send_interface_toast = {
-					title = affected_by_loitering_magic
-					apply_spell_effects_to_targets = { TARGET = target }
-				}
-			}
-		}
-	}
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_spell_organizer_effect_list }
-		}
-		if = {
-			limit = { list_size = { name = spell_organizer_list value > 0 } }
-			every_in_list = { #Apply all relevant spell effects to every character targeted
-				list = spell_organizer_list
-				save_temporary_scope_as = spell_defender
-				send_interface_toast = {
-					title = affected_by_loitering_magic
-					apply_spell_effects_to_targets = { TARGET = spell_organizer }
-				}
-			}
-		}
-	}
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_caster_effect_list }
-		}
-		if = {
-			limit = { list_size = { name = caster_list value > 0 } }
-			every_in_list = { #Apply all relevant spell effects to every character targeted
-				list = caster_list
-				save_temporary_scope_as = spell_defender
-				send_interface_toast = {
-					title = affected_by_loitering_magic
-					apply_spell_effects_to_targets = { TARGET = caster }
-				}
-			}
-		}
-	}
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_target_province_effect_list }
-		}
-		if = {
-			limit = { list_size = { name = target_province_list value > 0 } }
-			every_in_list = { #Apply all relevant spell effects to every character targeted
-				list = target_province_list
-				save_temporary_scope_as = spell_defender
-				apply_spell_effects_to_targets = { TARGET = target_province }
-			}
-		}
-	}
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_target_title_effect_list }
-		}
-		if = {
-			limit = { list_size = { name = target_title_list value > 0 } }
-			every_in_list = { #Apply all relevant spell effects to every character targeted
-				list = target_title_list
-				save_temporary_scope_as = spell_defender
-				apply_spell_effects_to_targets = { TARGET = target_title }
-			}
-		}
-	}
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_target_artifact_effect_list }
-		}
-		if = {
-			limit = { list_size = { name = target_artifact_list value > 0 } }
-			every_in_list = { #Apply all relevant spell effects to every character targeted
-				list = target_artifact_list
-				save_temporary_scope_as = spell_defender
-				apply_spell_effects_to_targets = { TARGET = target_artifact }
-			}
-		}
-	}
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_target_province_character_effect_list }
-		}
-		if = {
-			limit = { list_size = { name = target_province_character_list value > 0 } }
-			every_in_list = { #Apply all relevant spell effects to every character targeted
-				list = target_province_character_list
-				save_temporary_scope_as = spell_defender
-				send_interface_toast = {
-					title = affected_by_loitering_magic
-					apply_spell_effects_to_targets = { TARGET = target_province_character }
-				}
-			}
-		}
-	}
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_target_newborn_child_effect_list }
-		}
-		if = {
-			limit = { list_size = { name = target_newborn_child_list value > 0 } }
-			every_in_list = { #Apply all relevant spell effects to every character targeted
-				list = target_newborn_child_list
-				save_temporary_scope_as = spell_defender
-				send_interface_toast = {
-					title = affected_by_loitering_magic
-					apply_spell_effects_to_targets = { TARGET = target_newborn_child }
-				}
-			}
-		}
-	}
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_artifact_owner_effect_list }
-		}
-		if = {
-			limit = { list_size = { name = artifact_owner_list value > 0 } }
-			every_in_list = { #Apply all relevant spell effects to every character targeted
-				list = artifact_owner_list
-				save_temporary_scope_as = spell_defender
-				send_interface_toast = {
-					title = affected_by_loitering_magic
-					apply_spell_effects_to_targets = { TARGET = artifact_owner }
-				}
-			}
-		}
-	}
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_newly_created_artifact_effect_list }
-		}
-		if = {
-			limit = { list_size = { name = newly_created_artifact_list value > 0 } }
-			every_in_list = { #Apply all relevant spell effects to every character targeted
-				list = newly_created_artifact_list
-				save_temporary_scope_as = spell_defender
-				apply_spell_effects_to_targets = { TARGET = newly_created_artifact }
-			}
-		}
-	}
-}
-
-apply_cantrip_spell_effects = {
-	save_scope_as = spell_being_casted
-	
-	if = {
-		limit = {
-			scope:spell_being_casted ?= { has_variable_list = affects_cantrip_wielder_effect_list }
-		}
-		scope:spell_organizer ?= { #Apply all relevant spell effects to every character targeted
-			apply_spell_effects_to_targets = { TARGET = cantrip_wielder }
-		}
-	}
-}
-
-set_spell_tag_target_type = {
-	set_variable = {
-		name = target_type
-		value = flag:$TARGET$
 	}
 }
 
@@ -1562,9 +1046,5 @@ assign_magic_school_trait_effect = {
 	else_if = {
 		limit = { $MAGIC_SCHOOL$.var:unique_magic_school_identifier ?= flag:auroral_cycle }
 		add_trait = magic_school_auroral_cycle_1
-	}
-	else_if = {
-		limit = { $MAGIC_SCHOOL$.var:unique_magic_school_identifier ?= flag:talita_namit_school }
-		add_trait = magic_school_talita_namit_school_1
 	}
 }

@@ -114,36 +114,6 @@ initialize_global_ingredient_list_effect = {
 	create_ingredient_effect = { NAME = ash_ward RARITY = uncommon PRICE = uncommon_ingredient_cost }
 	add_ingredient_aspect_to_last_created_ingredient_effect = { ASPECT = nature VALUE = 1 }
 	add_ingredient_aspect_to_last_created_ingredient_effect = { ASPECT = stone VALUE = 1 }
-	create_ingredient_effect = { NAME = wyvernbone RARITY = rare PRICE = rare_ingredient_cost }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = set_artifact_feature_material_metal TARGET = newly_created_artifact SCALED_BY = flag:fire THRESHOLD = -1 }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = add_artifact_aspect_fire TARGET = newly_created_artifact SCALED_BY = flag:fire THRESHOLD = 0 }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = add_artifact_aspect_death TARGET = newly_created_artifact SCALED_BY = flag:death THRESHOLD = 0 }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = add_artifact_modifier_magic_prowess_gain_modifier_permanent TARGET = newly_created_artifact SCALED_BY = flag:fire THRESHOLD = 0 }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = add_artifact_modifier_magic_enemy_hostile_scheme_phase_duration_add_modifier_permanent TARGET = newly_created_artifact SCALED_BY = flag:death THRESHOLD = 0 }
-	add_ingredient_aspect_to_last_created_ingredient_effect = { ASPECT = fire VALUE = 2 }
-	add_ingredient_aspect_to_last_created_ingredient_effect = { ASPECT = death VALUE = 1 }
-	create_ingredient_effect = { NAME = wyrmbone RARITY = rare PRICE = rare_ingredient_cost }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = set_artifact_feature_material_metal TARGET = newly_created_artifact SCALED_BY = flag:stone THRESHOLD = -1 }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = add_artifact_aspect_stone TARGET = newly_created_artifact SCALED_BY = flag:stone THRESHOLD = 0 }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = add_artifact_aspect_death TARGET = newly_created_artifact SCALED_BY = flag:death THRESHOLD = 0 }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = add_artifact_modifier_magic_intrigue_gain_modifier_permanent TARGET = newly_created_artifact SCALED_BY = flag:stone THRESHOLD = 0 }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = add_artifact_modifier_diplomacy_magic_modifier_vassal_opinion_positive_permanent TARGET = newly_created_artifact SCALED_BY = flag:death THRESHOLD = 0 }
-	add_ingredient_aspect_to_last_created_ingredient_effect = { ASPECT = stone VALUE = 2 }
-	add_ingredient_aspect_to_last_created_ingredient_effect = { ASPECT = death VALUE = 1 }
-	create_ingredient_effect = { NAME = dragonbone RARITY = very_rare PRICE = very_rare_ingredient_cost }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = set_artifact_feature_material_metal TARGET = newly_created_artifact SCALED_BY = flag:fire THRESHOLD = -1 }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = add_artifact_aspect_fire TARGET = newly_created_artifact SCALED_BY = flag:fire THRESHOLD = 0 }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = add_artifact_aspect_death TARGET = newly_created_artifact SCALED_BY = flag:death THRESHOLD = 0 }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = add_artifact_modifier_magic_prowess_gain_modifier_permanent TARGET = newly_created_artifact SCALED_BY = flag:fire THRESHOLD = 0 }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = add_artifact_modifier_diplomacy_magic_modifier_vassal_opinion_positive_permanent TARGET = newly_created_artifact SCALED_BY = flag:death THRESHOLD = 0 }
-	add_ingredient_aspect_to_last_created_ingredient_effect = { ASPECT = fire VALUE = 3 }
-	add_ingredient_aspect_to_last_created_ingredient_effect = { ASPECT = death VALUE = 1 }
-	create_ingredient_effect = { NAME = ring_blueprint RARITY = common PRICE = common_ingredient_cost }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = create_artifact_ring TARGET = spell_organizer SCALED_BY = flag:total_spell_level THRESHOLD = -1 }
-	create_ingredient_effect = { NAME = brooch_blueprint RARITY = common PRICE = common_ingredient_cost }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = create_artifact_brooch TARGET = spell_organizer SCALED_BY = flag:none THRESHOLD = -1 }
-	create_ingredient_effect = { NAME = necklace_blueprint RARITY = common PRICE = common_ingredient_cost }
-	add_spell_effect_tag_to_last_created_ingredient_scripted_effect = { NAME = create_artifact_necklace TARGET = spell_organizer SCALED_BY = flag:total_spell_level THRESHOLD = -1 }
 	
 	### PLANTS
 	
@@ -611,33 +581,6 @@ create_powder_spell_component_effect = {
 			}
 			add_spell_component_ingredient_effect = { INGREDIENT = global_var:kharadan_salt }
 		}
-		if = {
-			limit = {
-				OR = {
-					exists = prev.var:fire
-					exists = prev.var:death
-				}
-			}
-			add_spell_component_ingredient_effect = { INGREDIENT = global_var:wyvernbone }
-		}
-		if = {
-			limit = {
-				OR = {
-					exists = prev.var:stone
-					exists = prev.var:death
-				}
-			}
-			add_spell_component_ingredient_effect = { INGREDIENT = global_var:wyrmbone }
-		}
-		if = {
-			limit = {
-				OR = {
-					exists = prev.var:fire
-					exists = prev.var:death
-				}
-			}
-			add_spell_component_ingredient_effect = { INGREDIENT = global_var:dragonbone }
-		}
 		add_spell_component_bonus_or_cost_effect = { TYPE = $REWARD_TYPE$ VALUE = $REWARD_AMOUNT$ }
 	}
 	
@@ -918,72 +861,6 @@ create_medication_spell_component_effect = {
 			target = scope:medication_spell_component_scope
 		}
 		scope:medication_spell_component_scope = { end_story = yes }
-	}
-}
-create_crafting_material_spell_component_effect = {
-	create_spell_component_effect = { COMPONENT_NAME = crafting_material_spell_component REQUIRED = $REQUIRED$ }
-	scope:crafting_material_spell_component_scope ?= {
-		if = {
-			limit = {
-				OR = {
-					exists = prev.var:fire
-					exists = prev.var:death
-				}
-			}
-			add_spell_component_ingredient_effect = { INGREDIENT = global_var:wyvernbone }
-		}
-		if = {
-			limit = {
-				OR = {
-					exists = prev.var:stone
-					exists = prev.var:death
-				}
-			}
-			add_spell_component_ingredient_effect = { INGREDIENT = global_var:wyrmbone }
-		}
-		if = {
-			limit = {
-				OR = {
-					exists = prev.var:fire
-					exists = prev.var:death
-				}
-			}
-			add_spell_component_ingredient_effect = { INGREDIENT = global_var:dragonbone }
-		}
-		add_spell_component_bonus_or_cost_effect = { TYPE = $REWARD_TYPE$ VALUE = $REWARD_AMOUNT$ }
-	}
-	
-	# Delete the spell component in case no valid ingredients were found
-	if = {
-		limit = {
-			scope:crafting_material_spell_component_scope ?= { NOT = { has_variable_list = spell_component_ingredient_list } }
-		}
-		remove_list_variable = {
-			name = spell_component_list
-			target = scope:crafting_material_spell_component_scope
-		}
-		scope:crafting_material_spell_component_scope = { end_story = yes }
-	}
-}
-create_small_crafting_blueprint_spell_component_effect = {
-	create_spell_component_effect = { COMPONENT_NAME = small_crafting_blueprint_spell_component REQUIRED = $REQUIRED$ }
-	scope:small_crafting_blueprint_spell_component_scope ?= {
-		add_spell_component_ingredient_effect = { INGREDIENT = global_var:ring_blueprint }
-		add_spell_component_ingredient_effect = { INGREDIENT = global_var:brooch_blueprint }
-		add_spell_component_ingredient_effect = { INGREDIENT = global_var:necklace_blueprint }
-		add_spell_component_bonus_or_cost_effect = { TYPE = $REWARD_TYPE$ VALUE = $REWARD_AMOUNT$ }
-	}
-	
-	# Delete the spell component in case no valid ingredients were found
-	if = {
-		limit = {
-			scope:small_crafting_blueprint_spell_component_scope ?= { NOT = { has_variable_list = spell_component_ingredient_list } }
-		}
-		remove_list_variable = {
-			name = spell_component_list
-			target = scope:small_crafting_blueprint_spell_component_scope
-		}
-		scope:small_crafting_blueprint_spell_component_scope = { end_story = yes }
 	}
 }
 
@@ -1466,78 +1343,6 @@ create_randomized_spell_component_effect = {
 				}
 				add_spell_component_ingredient_effect = { INGREDIENT = global_var:ash_ward }
 			}
-			0 = {
-				limit = {
-					OR = {
-						exists = prev.var:fire
-						exists = prev.var:death
-					}
-				}
-				modifier = {
-					add = 1
-					exists = prev.var:fire
-				}
-				modifier = {
-					add = 1
-					exists = prev.var:death
-				}
-				add_spell_component_ingredient_effect = { INGREDIENT = global_var:wyvernbone }
-			}
-			0 = {
-				limit = {
-					OR = {
-						exists = prev.var:stone
-						exists = prev.var:death
-					}
-				}
-				modifier = {
-					add = 1
-					exists = prev.var:stone
-				}
-				modifier = {
-					add = 1
-					exists = prev.var:death
-				}
-				add_spell_component_ingredient_effect = { INGREDIENT = global_var:wyrmbone }
-			}
-			0 = {
-				limit = {
-					OR = {
-						exists = prev.var:fire
-						exists = prev.var:death
-					}
-				}
-				modifier = {
-					add = 1
-					exists = prev.var:fire
-				}
-				modifier = {
-					add = 1
-					exists = prev.var:death
-				}
-				add_spell_component_ingredient_effect = { INGREDIENT = global_var:dragonbone }
-			}
-			0 = {
-				limit = {
-					OR = {
-					}
-				}
-				add_spell_component_ingredient_effect = { INGREDIENT = global_var:ring_blueprint }
-			}
-			0 = {
-				limit = {
-					OR = {
-					}
-				}
-				add_spell_component_ingredient_effect = { INGREDIENT = global_var:brooch_blueprint }
-			}
-			0 = {
-				limit = {
-					OR = {
-					}
-				}
-				add_spell_component_ingredient_effect = { INGREDIENT = global_var:necklace_blueprint }
-			}
 		}
 		add_spell_component_bonus_or_cost_effect = { TYPE = $REWARD_TYPE$ VALUE = $REWARD_AMOUNT$ }
 	}
@@ -1729,41 +1534,6 @@ generate_procedural_spell_component_list_effect = {
 				}
 				create_medication_spell_component_effect = { REWARD_TYPE = inherits_aspects REWARD_AMOUNT = 0 REQUIRED = no }
 			}
-			0 = {
-				trigger = {
-					trigger_if = {
-						limit = { has_variable_list = spell_component_list }
-						NOT = {
-							any_in_list = {
-								variable = spell_component_list
-								var:spell_component_name ?= flag:crafting_material_spell_component
-							}
-						}
-					}
-					OR = {
-						exists = var:fire
-						exists = var:death
-						exists = var:stone
-					}
-				}
-				create_crafting_material_spell_component_effect = { REWARD_TYPE = inherits_aspects REWARD_AMOUNT = 0 REQUIRED = no }
-			}
-			0 = {
-				trigger = {
-					trigger_if = {
-						limit = { has_variable_list = spell_component_list }
-						NOT = {
-							any_in_list = {
-								variable = spell_component_list
-								var:spell_component_name ?= flag:small_crafting_blueprint_spell_component
-							}
-						}
-					}
-					OR = {
-					}
-				}
-				create_small_crafting_blueprint_spell_component_effect = { REWARD_TYPE = inherits_aspects REWARD_AMOUNT = 0 REQUIRED = no }
-			}
 		}
 	}
 }
@@ -1894,23 +1664,15 @@ create_spell_component_effect = {
 		}
 		set_variable = {
 			name = spell_component_parent_spell
-			value = scope:new_spell_scope
+			value = prev
 		}
 		if = { #Set whether or not the spell component is required for the spell
 			limit = { always = $REQUIRED$ }
 			set_variable = spell_component_required
 		}
 	}
-	scope:new_spell_scope ?= {
-		if = { #Have the spell save the component
-			limit = { 
-				exists = scope:$COMPONENT_NAME$_scope 
-			}
-			add_to_variable_list = {
-				name = spell_component_list
-				target = scope:$COMPONENT_NAME$_scope
-			}
-		}
+	if = { #Have the spell save the component
+		limit = { exists = scope:$COMPONENT_NAME$_scope }
 		add_to_variable_list = {
 			name = spell_component_list
 			target = scope:$COMPONENT_NAME$_scope

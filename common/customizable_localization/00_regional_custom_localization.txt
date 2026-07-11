@@ -59,32 +59,14 @@ LevyMenWomen = {
 	#Gender law triggers
 
 	text = {
-		trigger = {
-			dummy_male = {
-				can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
-			}
-		}
 		localization_key = levies_men
 	}
 
 	text = {
-		trigger = {
-			dummy_female = {
-				can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
-			}
-		}
 		localization_key = levies_women
 	}
 
 	text = {
-		trigger = {
-			dummy_male = {
-				can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
-			}
-			dummy_female = {
-				can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
-			}
-		}
 		localization_key = levies_people
 	}
 }
@@ -110,17 +92,8 @@ ResidenceBuilding = { #Castle, Palace, etc.
 	text = {
 		trigger = {
 			government_has_flag = government_is_nomadic
-			NOT = { culture = { has_cultural_tradition = tradition_desert_nomads } }
 		}
 		localization_key = yurt_residence
-	}
-
-	text = {
-		trigger = {
-			government_has_flag = government_is_nomadic
-			culture = { has_cultural_tradition = tradition_desert_nomads }
-		}
-		localization_key = ahan_residence
 	}
 
 	text = {
@@ -155,20 +128,16 @@ ResidenceBuilding = { #Castle, Palace, etc.
 	text = {
 		trigger = {
 			any_held_title = { is_noble_family_title = yes }
-			is_governor = no
 		}
 		localization_key = estate
 	}
 
 	text = {
 		trigger = {
-			is_landless_adventurer = no
 			NOR = {
 				government_flag_magocracy_trigger = yes
 				gov_mix_rep_or_playrep_trigger = yes
 				gov_mix_theo_or_ho_trigger = yes
-				any_held_title = { is_noble_family_title = yes }
-				is_theocratic_lessee = yes
 			}
 		}
 		localization_key = castle
@@ -186,17 +155,8 @@ ResidenceBuildingPlural = { #Castles, Palaces, etc.
 	text = {
 		trigger = {
 			government_has_flag = government_is_nomadic
-			NOT = { culture = { has_cultural_tradition = tradition_desert_nomads } }
 		}
 		localization_key = yurt_residence_plural
-	}
-
-	text = {
-		trigger = {
-			government_has_flag = government_is_nomadic
-			culture = { has_cultural_tradition = tradition_desert_nomads }
-		}
-		localization_key = ahan_residence_plural
 	}
 
 	text = {
@@ -1476,7 +1436,12 @@ RandomInformativeTextName = {
 		localization_key = random_informative_text_the_improvement_of_the_moral_qualities
 	}
 
-	#GH REMOVED: armes_prydein
+	text = {
+		trigger = {
+			scope:informative_book_title = flag:armes_prydein
+		}
+		localization_key = random_informative_text_armes_prydein
+	}
 
 	text = {
 		trigger = {
@@ -1646,15 +1611,13 @@ get_region_dog_type = {
 	}
 }
 
-## GH TODO: Add GH-Specific flower species
-
 get_region_flower_type = {
 	type = province
 	random_valid = yes
 
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_ga_kashirya
 				geographical_region = world_sarradon
 				geographical_region = world_ga_pirate_coast
@@ -1664,7 +1627,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_ga_kashirya
 				geographical_region = world_ga_pirate_coast
 			}
@@ -1673,7 +1636,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_ga_aironoi
 				geographical_region = world_ga_kashirya
 			}
@@ -1682,7 +1645,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_ga_aironoi
 				geographical_region = world_ga_kashirya
 			}
@@ -1691,7 +1654,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_ga_kashirya
 				geographical_region = world_sarradon
 				geographical_region = world_ga_aironoi
@@ -1701,7 +1664,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_greater_aversaria
 				geographical_region = world_sarradon
 				geographical_region = world_ga_aironoi
@@ -1712,7 +1675,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_greater_aversaria
 				geographical_region = world_sarradon
 				geographical_region = world_ga_aironoi
@@ -1722,7 +1685,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_greater_aversaria
 				geographical_region = world_sarradon
 				geographical_region = world_ga_aironoi
@@ -1732,7 +1695,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_greater_aversaria
 				geographical_region = world_sarradon
 				geographical_region = world_ga_aironoi
@@ -1742,7 +1705,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_greater_aversaria
 				geographical_region = world_sarradon
 				geographical_region = world_ga_aironoi
@@ -1753,7 +1716,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_greater_aversaria
 				geographical_region = world_sarradon
 				geographical_region = world_ga_aironoi
@@ -1763,7 +1726,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_greater_aversaria
 				geographical_region = world_sarradon
 				geographical_region = world_ga_aironoi
@@ -1773,7 +1736,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_greater_aversaria
 				geographical_region = world_sarradon
 				geographical_region = world_ga_aironoi
@@ -1784,7 +1747,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_ga_western_aversaria
 				geographical_region = world_es_damota
 			}
@@ -1793,7 +1756,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_ga_western_aversaria
 				geographical_region = world_es_damota
 			}
@@ -1802,7 +1765,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_greater_aversaria
 				geographical_region = world_es_damota
 				geographical_region = world_ga_aironoi
@@ -1814,7 +1777,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_ga_western_aversaria
 				geographical_region = world_es_damota
 				geographical_region = world_ga_aironoi
@@ -1826,7 +1789,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_ga_aironoi
 				geographical_region = world_sarradon
 			}
@@ -1835,7 +1798,7 @@ get_region_flower_type = {
 	}
 	text = {
 		trigger = {
-			OR = { ## GH CHANGE: GH Regions
+			OR = {
 				geographical_region = world_ga_western_aversaria
 				geographical_region = world_es_damota
 				geographical_region = world_ga_aironoi
@@ -1844,146 +1807,6 @@ get_region_flower_type = {
 			}
 		}
 		localization_key = flower_type_poppy # Poppy
-	}
-	# Asia
-	text = {
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = world_ga_dahangon_formable
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_camellia # Camellia
-	}
-	text = {
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = world_ga_dahangon_formable
-				geographical_region = world_ga_aironoi
-				geographical_region = GH_geographic_chevalie
-				geographical_region = GH_geographic_konij
-				geographical_region = GH_geographic_clanlands
-			}
-		}
-		## GH NOTE: Actually generic primrose
-		localization_key = flower_type_chinese_primrose # Chinese Primrose
-	}
-	text = {
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = world_ga_dahangon_formable
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_plum_blossom # Plum Blossom
-	}
-	#text = { ## GH TODO: Add more regions
-	#	trigger = { geographical_region = world_asia_japan }
-	#	localization_key = flower_type_cherry_blossom # Cherry Blossom
-	#}
-	#text = { ## GH TODO: Add more regions
-	#	trigger = { geographical_region = world_asia_japan }
-	#	localization_key = flower_type_japanese_iridaceae # Japanese Iridaceae
-	#}
-	text = {
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = GH_geographic_shattered_coast
-				## GH TODO: Add more regions
-			}
-		}
-		## GH NOTE: Actually generic bellflower
-		localization_key = flower_type_korean_bellflower # Korean Bellflower
-	}
-	text = { ## GH TODO: Add more regions
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = GH_geographic_amaghea_mountains
-				geographical_region = GH_geographic_north_kharadan
-				geographical_region = GH_geographic_hyratan
-				## GH TODO: Add more regions
-			}
-		}
-		## GH NOTE: Actually generic rhododendron
-		localization_key = flower_type_korean_rhododendron # Korean Rhododendron
-	}
-	#text = { ## GH NOTE: Strong IRL link
-	#	trigger = { geographical_region = world_asia_sakhalin_hokkaido }
-	#	localization_key = flower_type_hokkaido_alpine # Hokkaido Alpine
-	#}
-	text = {
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = world_es_damota
-				geographical_region = GH_graphical_cyrat
-				geographical_region = GH_geographic_rovarska
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_tropical_rafflesia # Tropical Rafflesia
-	}
-	text = {
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = world_es_damota
-				geographical_region = GH_graphical_cyrat
-				geographical_region = GH_geographic_rovarska
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_nepenthes_pitcher # Nephentese Pitcher
-	}
-	text = {
-		trigger = { ## GH CHANGE: GH Regions
-			OR = {
-				geographical_region = GH_geographic_nightcoast
-				geographical_region = GH_geographic_rovarska
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_jade_vine # Jade Vine
-	}
-	text = {
-		trigger = { ## GH CHANGE: GH Regions
-			OR = {
-				geographical_region = GH_geographic_nightcoast
-				geographical_region = GH_geographic_rovarska
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_medinilla # Medinilla
-	}
-	text = {
-		trigger = { ## GH CHANGE: GH Regions
-			OR = {
-				geographical_region = GH_geographic_nightcoast
-				geographical_region = GH_geographic_rovarska
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_tiger_orchid # Tiger Orchid
-	}
-	text = {
-		trigger = { ## GH CHANGE: GH Regions
-			OR = {
-				geographical_region = world_ga_dahangon_formable
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_telipogon # Telipogon
-	}
-	#text = { ## GH NOTE: Strong IRL link
-	#	trigger = { geographical_region = world_asia_southeast_mainland }
-	#	localization_key = flower_type_bali_orchid # Bali Orchid
-	#}
-	text = {
-		trigger = { ## GH CHANGE: GH Regions
-			OR = {
-				geographical_region = world_ga_dahangon_formable
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_weigela # Weigela
 	}
 	text = {
 		trigger = { always = yes }
@@ -2192,168 +2015,10 @@ get_region_flower_type_plural = {
 		}
 		localization_key = flower_type_poppy_plural # Poppies
 	}
-	# Asia
 	text = {
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = world_ga_dahangon_formable
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_camellia_plural # Camellias
+		trigger = { always = yes }
+		localization_key = flower_type_rose_plural # Roses
 	}
-	text = {
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = world_ga_dahangon_formable
-				geographical_region = world_ga_aironoi
-				geographical_region = GH_geographic_chevalie
-				geographical_region = GH_geographic_konij
-				geographical_region = GH_geographic_clanlands
-			}
-		}
-		## GH NOTE: Actually generic primrose
-		localization_key = flower_type_chinese_primrose_plural # Chinese Primroses
-	}
-	text = {
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = world_ga_dahangon_formable
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_plum_blossom_plural # Plum Blossoms
-	}
-	#text = { ## GH TODO: Add more regions
-	#	trigger = { geographical_region = world_asia_japan }
-	#	localization_key = flower_type_cherry_blossom_plural # Cherry Blossoms
-	#}
-	#text = { ## GH TODO: Add more regions
-	#	trigger = { geographical_region = world_asia_japan }
-	#	localization_key = flower_type_japanese_iridaceae # Japanese Iridaceae
-	#}
-	text = {
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = GH_geographic_shattered_coast
-				## GH TODO: Add more regions
-			}
-		}
-		## GH NOTE: Actually generic bellflower
-		localization_key = flower_type_korean_bellflower_plural # Korean Bellflowers
-	}
-	text = { ## GH TODO: Add more regions
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = GH_geographic_amaghea_mountains
-				geographical_region = GH_geographic_north_kharadan
-				geographical_region = GH_geographic_hyratan
-				## GH TODO: Add more regions
-			}
-		}
-		## GH NOTE: Actually generic rhododendron
-		localization_key = flower_type_korean_rhododendron_plural # Korean Rhododendrons
-	}
-	#text = { ## GH NOTE: Strong IRL link
-	#	trigger = { geographical_region = world_asia_sakhalin_hokkaido }
-	#	localization_key = flower_type_hokkaido_alpine_plural # Hokkaido Alpines
-	#}
-	text = {
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = world_es_damota
-				geographical_region = GH_graphical_cyrat
-				geographical_region = GH_geographic_rovarska
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_tropical_rafflesia_plural # Tropical Rafflesias
-	}
-	text = {
-		trigger = {
-			OR = { ## GH CHANGE: GH Regions
-				geographical_region = world_es_damota
-				geographical_region = GH_graphical_cyrat
-				geographical_region = GH_geographic_rovarska
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_nepenthes_pitcher_plural # Nephentese Pitchers
-	}
-	text = {
-		trigger = { ## GH CHANGE: GH Regions
-			OR = {
-				geographical_region = GH_geographic_nightcoast
-				geographical_region = GH_geographic_rovarska
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_jade_vine_plural # Jade Vines
-	}
-	text = {
-		trigger = { ## GH CHANGE: GH Regions
-			OR = {
-				geographical_region = GH_geographic_nightcoast
-				geographical_region = GH_geographic_rovarska
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_medinilla_plural # Medinillas
-	}
-	text = {
-		trigger = { ## GH CHANGE: GH Regions
-			OR = {
-				geographical_region = GH_geographic_nightcoast
-				geographical_region = GH_geographic_rovarska
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_tiger_orchid_plural # Tiger Orchids
-	}
-	text = {
-		trigger = { ## GH CHANGE: GH Regions
-			OR = {
-				geographical_region = world_ga_dahangon_formable
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_telipogon_plural # Telipogons
-	}
-	#text = { ## GH NOTE: Strong IRL link
-	#	trigger = { geographical_region = world_asia_southeast_mainland }
-	#	localization_key = flower_type_bali_orchid_plural # Bali Orchids
-	#}
-	text = {
-		trigger = { ## GH CHANGE: GH Regions
-			OR = {
-				geographical_region = world_ga_dahangon_formable
-				## GH TODO: Add more regions
-			}
-		}
-		localization_key = flower_type_weigela_plural # Weigelas
-	}
-
-	## GH BUGFIX: Singular loc in plural custom loc
-
-	#text = {
-	#	trigger = { always = yes }
-	#	localization_key = flower_type_rose # Rose
-	#}
-	#text = {
-	#	trigger = { always = yes }
-	#	localization_key = flower_type_orchid # Orchid
-	#}
-	#text = {
-	#	trigger = { always = yes }
-	#	localization_key = flower_type_aster # Aster/Daisy
-	#}
-	#text = {
-	#	trigger = { always = yes }
-	#	localization_key = flower_type_rose_plural # Roses
-	#}
-
-	## END OF GH BUGFIX
-
 	text = {
 		trigger = { always = yes }
 		localization_key = flower_type_orchid_plural # Orchids
@@ -2777,7 +2442,7 @@ RegionalArtilleryType = {
 	type = character
 
 	text = {
-		trigger = { culture = { has_innovation = innovation_gunpowder } }
+		trigger = { culture = { has_innovation = innovation_bombard } }
 		localization_key = regional_artillery_bombard
 	}
 	text = {
@@ -2973,165 +2638,4 @@ GetKnightErrantAnimal = {
 		localization_key = GetKnightErrantAnimal_hart
 		fallback = yes
 	}
-}
-
-RegionalWeaponMetal = {
-	type = character
-
-	# GH TODO: Add GH variant if we have any
-	text = {
-		trigger = {
-			NOR = {
-				government_has_flag = government_is_tribal
-				government_has_flag = government_is_nomadic
-			}
-		}
-		localization_key = metal_steel
-	}
-
-	text = {
-		localization_key = metal_iron
-		fallback = yes
-	}
-}
-
-RegionalFabric = {
-	type = character
-	random_valid = yes
-
-	# GH TODO: Add GH variant if we have any
-
-	text = {
-		localization_key = cloth_wool
-		fallback = yes
-	}
-}
-
-TerrainStruggleLoc = {
-	type = character
-
-	text = {
-		trigger = {
-			current_season_trigger = {
-				SEASON = winter
-			}
-		}
-		localization_key = TerrainStruggleWinter
-	}
-	text = {
-		trigger = {
-			current_season_trigger = {
-				SEASON = rainy_season
-			}
-		}
-		localization_key = TerrainStruggleRain
-	}
-	text = {
-		trigger = {
-			current_season_trigger = {
-				SEASON = summer
-			}
-		}
-		localization_key = TerrainStruggleSun
-	}
-}
-
-TerrainInspirationLoc = {
-	type = province
-
-	text = {
-		trigger = {
-			GH_any_mountains_terrain_trigger = yes
-		}
-		localization_key = TerrainInspirationMountains
-	}
-	text = {
-		trigger = {
-			GH_any_hills_terrain_trigger = yes
-		}
-		localization_key = TerrainInspirationHills
-	}
-	text = {
-		trigger = {
-			GH_any_jungle_terrain_trigger = yes
-		}
-		localization_key = TerrainInspirationJungle
-	}
-	text = {
-		trigger = {
-			GH_any_taiga_terrain_trigger = yes
-		}
-		localization_key = TerrainInspirationTaiga
-	}
-	text = {
-		trigger = {
-			GH_any_wetlands_terrain_trigger = yes
-		}
-		localization_key = TerrainInspirationWetlands
-	}
-	text = {
-		trigger = {
-			GH_any_floodplains_terrain_trigger = yes
-		}
-		localization_key = TerrainInspirationFloodplains
-	}
-	text = {
-		trigger = {
-			GH_any_desert_terrain_trigger = yes
-		}
-		localization_key = TerrainInspirationDesert
-	}
-	text = {
-		trigger = {
-			GH_any_forest_terrain_trigger = yes
-		}
-		localization_key = TerrainInspirationForest
-	}
-	text = {
-		trigger = {
-			GH_any_farmlands_terrain_trigger = yes
-		}
-		localization_key = TerrainInspirationFarmlands
-	}
-	text = {
-		trigger = {
-			GH_any_steppe_terrain_trigger = yes
-		}
-		localization_key = TerrainInspirationSteppe
-	}
-	text = {
-		trigger = {
-			GH_any_drylands_terrain_trigger = yes
-		}
-		localization_key = TerrainInspirationdrylands
-	}
-}
-
-GetProvinceTricksterSpirit = {
-	type = province
-
-	# GH TODO: Add GH variant if we have any
-
-	text = {
-		fallback = yes
-		localization_key = trickster_spirit_default
-	}
-}
-
-#This is used only in the peasant uprisings, make your own custom loc if you want it in events
-RegionalPeasantHeadgear = {
-	type = character
-
-	# GH TODO: Add GH variant if we have any
-
-	text = {
-		localization_key = peasant_headgear_cap
-	}
-}
-
-RegionalPeasantHeadgearPlural = {
-	type = character
-
-	parent = RegionalPeasantHeadgear
-	suffix = "_plural"
 }

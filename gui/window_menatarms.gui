@@ -77,8 +77,9 @@ window = {
 					background = {
 						name = "image"
 						datacontext = "[Regiment.GetMAAType]"
-						texture = "[MenAtArmsType.GetHorizontalImageForCulture( Regiment.GetOwner.GetCulture )]"
+						texture = "[MenAtArmsType.GetHorizontalImage]"
 						fittype = centercrop
+
 						using = Mask_Rough_Edges
 					}
 
@@ -96,7 +97,6 @@ window = {
 						}
 
 						text_label_left = {
-							# GH ADDITION: Healthbar
 							visible = "[Not(GetScriptedGui('maa_uses_healthbar').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('healthbar_maa', Regiment.MakeScope).End))]"
 							text = "[Regiment.BuildCurrentRegimentCountString]"
 							default_format = "#high"
@@ -104,7 +104,6 @@ window = {
 							align = nobaseline
 						}
 
-						# GH ADDITION: Healthbar
 						progressbar_standard = {
 							visible = "[GetScriptedGui('maa_uses_healthbar').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('healthbar_maa', Regiment.MakeScope).End)]"
 							value = [Regiment.CalcMenAliveCount]
@@ -113,6 +112,8 @@ window = {
 							size = { 100 20 }  ## Adjust size as needed
 							tooltip = "HEALTHBAR_TOOLTIP"
 						}
+
+						
 
 						expand = {}
 
@@ -154,16 +155,15 @@ window = {
 						enabled = "[MenAtArmsView.CanBuyMaa]"
 
 						visible = "[NotEqualTo_int32( Regiment.GetMAAChunkCount, Regiment.CalcMaxMAAChunkCount )]"
-
+					
 						tooltipwidget = {
 							change_maa_tooltip = {
-
 								blockoverride "enable_tooltip" {
 									visible = "[MenAtArmsView.CanBuyMaa]"
 								}
 
 								blockoverride "enable_tooltip_text" {
-									text = "[MenAtArmsView.GetIncreaseSizeTooltip]"
+									text = "MAA_INCREASE_SIZE_TOOLTIP"
 								}
 
 								blockoverride "disable_tooltip" {
@@ -224,13 +224,12 @@ window = {
 
 							tooltipwidget = {
 								change_maa_tooltip = {
-
 									blockoverride "enable_tooltip" {
 										visible = "[MenAtArmsView.CanSellMaa]"
 									}
 
 									blockoverride "enable_tooltip_text" {
-										text = "[MenAtArmsView.GetDecreaseSizeTooltip]"
+										text = "MAA_DECREASE_SIZE_TOOLTIP"
 									}
 
 									blockoverride "disable_tooltip" {
@@ -301,9 +300,7 @@ window = {
 			hbox_maa_location = {
 				name = "maa_location"
 				layoutpolicy_horizontal = expanding
-				
 				margin = { 15 0 }
-				margin_top = 10
 
 				blockoverride "no_location"
 				{

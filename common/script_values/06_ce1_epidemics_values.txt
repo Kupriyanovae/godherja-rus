@@ -1908,92 +1908,63 @@ spread_chance_epidemics_default_value = {
 	#Tradeports
 	if = {
 		limit = {
-			has_building_or_higher = common_tradeport_08
-		}
-		add = spread_increase_add_high
-		add = spread_increase_add_high
-		add = spread_increase_add_medium
-		add = spread_increase_add_medium
-		add = spread_increase_add_medium
-		add = spread_increase_add_low
-		add = spread_increase_add_low
-		add = spread_increase_add_low
-	}
-	else_if = {
-		limit = {
-			has_building_or_higher = common_tradeport_07
-		}
-		add = spread_increase_add_high
-		add = spread_increase_add_medium
-		add = spread_increase_add_medium
-		add = spread_increase_add_medium
-		add = spread_increase_add_low
-		add = spread_increase_add_low
-		add = spread_increase_add_low
-	}
-	else_if = {
-		limit = {
-			has_building_or_higher = common_tradeport_06
-		}
-		add = spread_increase_add_medium
-		add = spread_increase_add_medium
-		add = spread_increase_add_medium
-		add = spread_increase_add_low
-		add = spread_increase_add_low
-		add = spread_increase_add_low
-	}
-	else_if = {
-		limit = {
-			has_building_or_higher = common_tradeport_05
-		}
-		add = spread_increase_add_medium
-		add = spread_increase_add_medium
-		add = spread_increase_add_low
-		add = spread_increase_add_low
-		add = spread_increase_add_low
-	}
-	else_if = {
-		limit = {
-			has_building_or_higher = common_tradeport_04
-		}
-		add = spread_increase_add_medium
-		add = spread_increase_add_low
-		add = spread_increase_add_low
-		add = spread_increase_add_low
-	}
-	else_if = {
-		limit = {
-			has_building_or_higher = common_tradeport_03
+			has_building_or_higher = common_tradeport_01
 		}
 		add = spread_increase_add_low
-		add = spread_increase_add_low
-		add = spread_increase_add_low
 	}
-	else_if = {
+	if = {
 		limit = {
 			has_building_or_higher = common_tradeport_02
 		}
 		add = spread_increase_add_low
-		add = spread_increase_add_low
 	}
-	else_if = {
+	if = {
 		limit = {
-			has_building_or_higher = common_tradeport_01
+			has_building_or_higher = common_tradeport_03
 		}
 		add = spread_increase_add_low
+	}
+	if = {
+		limit = {
+			has_building_or_higher = common_tradeport_04
+		}
+		add = spread_increase_add_medium
+	}
+	if = {
+		limit = {
+			has_building_or_higher = common_tradeport_05
+		}
+		add = spread_increase_add_medium
+	}
+	if = {
+		limit = {
+			has_building_or_higher = common_tradeport_06
+		}
+		add = spread_increase_add_medium
+	}
+	if = {
+		limit = {
+			has_building_or_higher = common_tradeport_07
+		}
+		add = spread_increase_add_high
+	}
+	if = {
+		limit = {
+			has_building_or_higher = common_tradeport_08
+		}
+		add = spread_increase_add_high
 	}
 
 	#Markets
 	if = {
 		limit = {
-			has_building_or_higher = market_villages_02
+			has_building_or_higher = market_villages_01
 		}
 		add = spread_increase_add_low
-		add = spread_increase_add_low
 	}
-	else_if = {
+	if = {
 		limit = {
-			has_building_or_higher = market_villages_01
+			has_building_or_higher = market_villages_02
 		}
 		add = spread_increase_add_low
 	}
@@ -2001,34 +1972,29 @@ spread_chance_epidemics_default_value = {
 	#Guild Halls
 	if = {
 		limit = {
-			has_building_or_higher = guild_halls_08
-		}
-		add = spread_increase_add_high
-		add = spread_increase_add_high
-		add = spread_increase_add_high
-		add = spread_increase_add_high
-	}
-	else_if = {
-		limit = {
-			has_building_or_higher = guild_halls_06
-		}
-		add = spread_increase_add_high
-		add = spread_increase_add_high
-		add = spread_increase_add_high
-	}
-	else_if = {
-		limit = {
-			has_building_or_higher = guild_halls_04
-		}
-		add = spread_increase_add_high
-		add = spread_increase_add_high
-	}
-	else_if = {
-		limit = {
 			has_building_or_higher = guild_halls_02
 		}
 		add = spread_increase_add_high
 	}
+	if = {
+		limit = {
+			has_building_or_higher = guild_halls_04
+		}
+		add = spread_increase_add_high
+	}
+	if = {
+		limit = {
+			has_building_or_higher = guild_halls_06
+		}
+		add = spread_increase_add_high
+	}
+	if = {
+		limit = {
+			has_building_or_higher = guild_halls_08
+		}
+		add = spread_increase_add_high
+	}
+
 
 	#Terrain
 	if = {
@@ -2208,8 +2174,10 @@ spread_chance_epidemics_mult_value = {
 	if = {
 		limit = {
 			county = {
-				any_county_province_epidemic = {
-					this.epidemic_type = scope:epidemic.epidemic_type
+				any_county_province = {
+					any_province_epidemic = {
+						this.epidemic_type = scope:epidemic.epidemic_type
+					}
 				}
 			}
 		}
@@ -2221,6 +2189,7 @@ spread_chance_epidemics_mult_value = {
 		value = county.development_level
 		multiply = 0.025
 	}
+
 
 	# Game rules
 	if = {
@@ -2991,7 +2960,6 @@ recent_epidemics_outbreak_mult_value = {
 			value = outbreak_decrease_mult_high
 		}
 	}
-	min = 0
 }
 
 #How badly effected is a county's development?

@@ -77,18 +77,6 @@ spell_has_activation_condition_with_target_trigger = {
 conditional_spell_tags_fulfilled_trigger = {
 	save_temporary_scope_as = spell_being_casted
 	trigger_if = {
-		limit = { has_variable_list = affects_spell_target_trigger_list }
-		$TARGET_LIST_SOURCE$ = {
-			
-		}
-	}
-	trigger_if = {
-		limit = { has_variable_list = affects_cantrip_wielder_trigger_list }
-		$TARGET_LIST_SOURCE$ = {
-			
-		}
-	}
-	trigger_if = {
 		limit = { has_variable_list = affects_target_trigger_list }
 		$TARGET_LIST_SOURCE$ = {
 			trigger_if = {
@@ -102,17 +90,7 @@ conditional_spell_tags_fulfilled_trigger = {
 
 			trigger_if = {
 				limit = { list_size = { name = target_list value <= 0 } }
-				trigger_if = {
-				    limit = {
-				        NOR = {
-				            has_variable_list = spell_target_province_list
-				            has_variable_list = spell_target_artifacts
-				            exists = scope:cantrip_scope
-				        }
-				    }
-				    scope:spell_organizer = { add_to_temporary_list = target_list }
-				}
-
+				scope:spell_organizer = { add_to_temporary_list = target_list }
 			}
 		}
 	}
@@ -140,6 +118,22 @@ conditional_spell_tags_fulfilled_trigger = {
 			    }
 			}
 
+			trigger_if = {
+				limit = { list_size = { name = target_province_list value <= 0 } }
+				trigger_if = {
+				    limit = { exists = capital_province }
+				    capital_province = { 
+				        add_to_temporary_list = target_province_list
+				    }
+				}
+				trigger_else_if = {
+				    limit = { exists = location }
+				    location = { 
+				        add_to_temporary_list = target_province_list
+				    } 
+				}
+
+			}
 		}
 	}
 	trigger_if = {
@@ -154,20 +148,48 @@ conditional_spell_tags_fulfilled_trigger = {
 			    }
 			}
 
+			trigger_if = {
+				limit = { list_size = { name = target_title_list value <= 0 } }
+				trigger_if = {
+				    limit = { exists = capital_county }
+				    capital_county = { 
+				        add_to_temporary_list = target_title_list
+				    }
+				}
+				trigger_else_if = {
+				    limit = { exists = location }
+				    location.county = { 
+				        add_to_temporary_list = target_title_list
+				    } 
+				}
+
+			}
 		}
 	}
 	trigger_if = {
 		limit = { has_variable_list = affects_target_artifact_trigger_list }
 		$TARGET_LIST_SOURCE$ = {
 			trigger_if = {
-			    limit = { has_variable_list = spell_target_artifacts }
+			    limit = { has_variable_list = spell_target_titles }
 			    any_in_list = {
-			        variable = spell_target_artifacts
+			        variable = spell_target_titles
 			        count = all
-			        add_to_temporary_list = target_artifact_list
+			        add_to_temporary_list = target_title_list
 			    }
 			}
 
+			trigger_if = {
+				limit = { list_size = { name = target_artifact_list value <= 0 } }
+				trigger_if = {
+				    limit = { has_variable_list = spell_target_artifacts }
+				    any_in_list = {
+				        variable = spell_target_artifacts
+				        count = all
+				        add_to_temporary_list = target_artifact_list
+				    }
+				}
+
+			}
 		}
 	}
 	trigger_if = {
@@ -197,100 +219,6 @@ conditional_spell_tags_fulfilled_trigger = {
 
 		}
 	}
-	trigger_if = {
-		limit = { has_variable_list = affects_artifact_owner_trigger_list }
-		$TARGET_LIST_SOURCE$ = {
-			trigger_if = {
-			    limit = { list_size = { name = target_artifact_list value > 0 } }
-			    any_in_list = {
-			        list = target_artifact_list
-			        count = all
-			        artifact_owner = {
-			            add_to_temporary_list = artifact_owner_list
-			        }
-			    }
-			}
-
-		}
-	}
-	trigger_if = {
-		limit = { has_variable_list = affects_newly_created_artifact_trigger_list }
-		$TARGET_LIST_SOURCE$ = {
-			scope:newly_created_artifact ?= { add_to_temporary_list = newly_created_artifact_list }
-		}
-	}
-	any_in_list = {
-		list = spell_target_list
-		count = all
-		save_temporary_scope_as = spell_target
-		prev = {
-			any_in_list = {
-				variable = spell_$GROUP$_trigger_list
-				count = all
-				trigger_if = {
-					limit = { var:target_type = flag:spell_target }
-					trigger_if = {
-						limit = { spell_tag_has_fulfilled_conditions_trigger = yes }	# Yes, spell triggers can have their own triggers
-						OR = {
-							index_and_check_spell_trigger = yes
-							#AND = {
-							#	has_variable_list = alternative_spell_trigger_tag_list
-							#	any_in_list = {
-							#		variable = alternative_spell_trigger_tag_list
-							#		index_and_check_spell_trigger = yes
-							#	}
-							#}
-							#AND = {
-							#	exists = var:alternative_spell_trigger_tag_list_root
-							#	var:alternative_spell_trigger_tag_list_root = {
-							#		any_in_list = {
-							#			variable = alternative_spell_trigger_tag_list
-							#			index_and_check_spell_trigger = yes
-							#		}
-							#	}
-							#}
-						}
-					}
-				}
-			}
-		}
-	}
-	any_in_list = {
-		list = cantrip_wielder_list
-		count = all
-		save_temporary_scope_as = spell_target
-		prev = {
-			any_in_list = {
-				variable = spell_$GROUP$_trigger_list
-				count = all
-				trigger_if = {
-					limit = { var:target_type = flag:cantrip_wielder }
-					trigger_if = {
-						limit = { spell_tag_has_fulfilled_conditions_trigger = yes }	# Yes, spell triggers can have their own triggers
-						OR = {
-							index_and_check_spell_trigger = yes
-							#AND = {
-							#	has_variable_list = alternative_spell_trigger_tag_list
-							#	any_in_list = {
-							#		variable = alternative_spell_trigger_tag_list
-							#		index_and_check_spell_trigger = yes
-							#	}
-							#}
-							#AND = {
-							#	exists = var:alternative_spell_trigger_tag_list_root
-							#	var:alternative_spell_trigger_tag_list_root = {
-							#		any_in_list = {
-							#			variable = alternative_spell_trigger_tag_list
-							#			index_and_check_spell_trigger = yes
-							#		}
-							#	}
-							#}
-						}
-					}
-				}
-			}
-		}
-	}
 	any_in_list = {
 		list = target_list
 		count = all
@@ -298,32 +226,9 @@ conditional_spell_tags_fulfilled_trigger = {
 		prev = {
 			any_in_list = {
 				variable = spell_$GROUP$_trigger_list
+				limit = { var:target_type = flag:target }
 				count = all
-				trigger_if = {
-					limit = { var:target_type = flag:target }
-					trigger_if = {
-						limit = { spell_tag_has_fulfilled_conditions_trigger = yes }	# Yes, spell triggers can have their own triggers
-						OR = {
-							index_and_check_spell_trigger = yes
-							#AND = {
-							#	has_variable_list = alternative_spell_trigger_tag_list
-							#	any_in_list = {
-							#		variable = alternative_spell_trigger_tag_list
-							#		index_and_check_spell_trigger = yes
-							#	}
-							#}
-							#AND = {
-							#	exists = var:alternative_spell_trigger_tag_list_root
-							#	var:alternative_spell_trigger_tag_list_root = {
-							#		any_in_list = {
-							#			variable = alternative_spell_trigger_tag_list
-							#			index_and_check_spell_trigger = yes
-							#		}
-							#	}
-							#}
-						}
-					}
-				}
+				index_and_check_spell_trigger = yes
 			}
 		}
 	}
@@ -334,32 +239,9 @@ conditional_spell_tags_fulfilled_trigger = {
 		prev = {
 			any_in_list = {
 				variable = spell_$GROUP$_trigger_list
+				limit = { var:target_type = flag:spell_organizer }
 				count = all
-				trigger_if = {
-					limit = { var:target_type = flag:spell_organizer }
-					trigger_if = {
-						limit = { spell_tag_has_fulfilled_conditions_trigger = yes }	# Yes, spell triggers can have their own triggers
-						OR = {
-							index_and_check_spell_trigger = yes
-							#AND = {
-							#	has_variable_list = alternative_spell_trigger_tag_list
-							#	any_in_list = {
-							#		variable = alternative_spell_trigger_tag_list
-							#		index_and_check_spell_trigger = yes
-							#	}
-							#}
-							#AND = {
-							#	exists = var:alternative_spell_trigger_tag_list_root
-							#	var:alternative_spell_trigger_tag_list_root = {
-							#		any_in_list = {
-							#			variable = alternative_spell_trigger_tag_list
-							#			index_and_check_spell_trigger = yes
-							#		}
-							#	}
-							#}
-						}
-					}
-				}
+				index_and_check_spell_trigger = yes
 			}
 		}
 	}
@@ -370,32 +252,9 @@ conditional_spell_tags_fulfilled_trigger = {
 		prev = {
 			any_in_list = {
 				variable = spell_$GROUP$_trigger_list
+				limit = { var:target_type = flag:caster }
 				count = all
-				trigger_if = {
-					limit = { var:target_type = flag:caster }
-					trigger_if = {
-						limit = { spell_tag_has_fulfilled_conditions_trigger = yes }	# Yes, spell triggers can have their own triggers
-						OR = {
-							index_and_check_spell_trigger = yes
-							#AND = {
-							#	has_variable_list = alternative_spell_trigger_tag_list
-							#	any_in_list = {
-							#		variable = alternative_spell_trigger_tag_list
-							#		index_and_check_spell_trigger = yes
-							#	}
-							#}
-							#AND = {
-							#	exists = var:alternative_spell_trigger_tag_list_root
-							#	var:alternative_spell_trigger_tag_list_root = {
-							#		any_in_list = {
-							#			variable = alternative_spell_trigger_tag_list
-							#			index_and_check_spell_trigger = yes
-							#		}
-							#	}
-							#}
-						}
-					}
-				}
+				index_and_check_spell_trigger = yes
 			}
 		}
 	}
@@ -406,32 +265,9 @@ conditional_spell_tags_fulfilled_trigger = {
 		prev = {
 			any_in_list = {
 				variable = spell_$GROUP$_trigger_list
+				limit = { var:target_type = flag:target_province }
 				count = all
-				trigger_if = {
-					limit = { var:target_type = flag:target_province }
-					trigger_if = {
-						limit = { spell_tag_has_fulfilled_conditions_trigger = yes }	# Yes, spell triggers can have their own triggers
-						OR = {
-							index_and_check_spell_trigger = yes
-							#AND = {
-							#	has_variable_list = alternative_spell_trigger_tag_list
-							#	any_in_list = {
-							#		variable = alternative_spell_trigger_tag_list
-							#		index_and_check_spell_trigger = yes
-							#	}
-							#}
-							#AND = {
-							#	exists = var:alternative_spell_trigger_tag_list_root
-							#	var:alternative_spell_trigger_tag_list_root = {
-							#		any_in_list = {
-							#			variable = alternative_spell_trigger_tag_list
-							#			index_and_check_spell_trigger = yes
-							#		}
-							#	}
-							#}
-						}
-					}
-				}
+				index_and_check_spell_trigger = yes
 			}
 		}
 	}
@@ -442,32 +278,9 @@ conditional_spell_tags_fulfilled_trigger = {
 		prev = {
 			any_in_list = {
 				variable = spell_$GROUP$_trigger_list
+				limit = { var:target_type = flag:target_title }
 				count = all
-				trigger_if = {
-					limit = { var:target_type = flag:target_title }
-					trigger_if = {
-						limit = { spell_tag_has_fulfilled_conditions_trigger = yes }	# Yes, spell triggers can have their own triggers
-						OR = {
-							index_and_check_spell_trigger = yes
-							#AND = {
-							#	has_variable_list = alternative_spell_trigger_tag_list
-							#	any_in_list = {
-							#		variable = alternative_spell_trigger_tag_list
-							#		index_and_check_spell_trigger = yes
-							#	}
-							#}
-							#AND = {
-							#	exists = var:alternative_spell_trigger_tag_list_root
-							#	var:alternative_spell_trigger_tag_list_root = {
-							#		any_in_list = {
-							#			variable = alternative_spell_trigger_tag_list
-							#			index_and_check_spell_trigger = yes
-							#		}
-							#	}
-							#}
-						}
-					}
-				}
+				index_and_check_spell_trigger = yes
 			}
 		}
 	}
@@ -478,32 +291,9 @@ conditional_spell_tags_fulfilled_trigger = {
 		prev = {
 			any_in_list = {
 				variable = spell_$GROUP$_trigger_list
+				limit = { var:target_type = flag:target_artifact }
 				count = all
-				trigger_if = {
-					limit = { var:target_type = flag:target_artifact }
-					trigger_if = {
-						limit = { spell_tag_has_fulfilled_conditions_trigger = yes }	# Yes, spell triggers can have their own triggers
-						OR = {
-							index_and_check_spell_trigger = yes
-							#AND = {
-							#	has_variable_list = alternative_spell_trigger_tag_list
-							#	any_in_list = {
-							#		variable = alternative_spell_trigger_tag_list
-							#		index_and_check_spell_trigger = yes
-							#	}
-							#}
-							#AND = {
-							#	exists = var:alternative_spell_trigger_tag_list_root
-							#	var:alternative_spell_trigger_tag_list_root = {
-							#		any_in_list = {
-							#			variable = alternative_spell_trigger_tag_list
-							#			index_and_check_spell_trigger = yes
-							#		}
-							#	}
-							#}
-						}
-					}
-				}
+				index_and_check_spell_trigger = yes
 			}
 		}
 	}
@@ -514,32 +304,9 @@ conditional_spell_tags_fulfilled_trigger = {
 		prev = {
 			any_in_list = {
 				variable = spell_$GROUP$_trigger_list
+				limit = { var:target_type = flag:target_province_character }
 				count = all
-				trigger_if = {
-					limit = { var:target_type = flag:target_province_character }
-					trigger_if = {
-						limit = { spell_tag_has_fulfilled_conditions_trigger = yes }	# Yes, spell triggers can have their own triggers
-						OR = {
-							index_and_check_spell_trigger = yes
-							#AND = {
-							#	has_variable_list = alternative_spell_trigger_tag_list
-							#	any_in_list = {
-							#		variable = alternative_spell_trigger_tag_list
-							#		index_and_check_spell_trigger = yes
-							#	}
-							#}
-							#AND = {
-							#	exists = var:alternative_spell_trigger_tag_list_root
-							#	var:alternative_spell_trigger_tag_list_root = {
-							#		any_in_list = {
-							#			variable = alternative_spell_trigger_tag_list
-							#			index_and_check_spell_trigger = yes
-							#		}
-							#	}
-							#}
-						}
-					}
-				}
+				index_and_check_spell_trigger = yes
 			}
 		}
 	}
@@ -550,101 +317,74 @@ conditional_spell_tags_fulfilled_trigger = {
 		prev = {
 			any_in_list = {
 				variable = spell_$GROUP$_trigger_list
+				limit = { var:target_type = flag:target_newborn_child }
 				count = all
-				trigger_if = {
-					limit = { var:target_type = flag:target_newborn_child }
-					trigger_if = {
-						limit = { spell_tag_has_fulfilled_conditions_trigger = yes }	# Yes, spell triggers can have their own triggers
-						OR = {
-							index_and_check_spell_trigger = yes
-							#AND = {
-							#	has_variable_list = alternative_spell_trigger_tag_list
-							#	any_in_list = {
-							#		variable = alternative_spell_trigger_tag_list
-							#		index_and_check_spell_trigger = yes
-							#	}
-							#}
-							#AND = {
-							#	exists = var:alternative_spell_trigger_tag_list_root
-							#	var:alternative_spell_trigger_tag_list_root = {
-							#		any_in_list = {
-							#			variable = alternative_spell_trigger_tag_list
-							#			index_and_check_spell_trigger = yes
-							#		}
-							#	}
-							#}
+				index_and_check_spell_trigger = yes
+			}
+		}
+	}
+	# Artifact
+	custom_tooltip = {
+		text = casting_condition_artifact_type_helmet_tooltip
+		trigger_if = {
+			limit = { spell_has_tag_with_target_trigger = { NAME = flag:casting_condition_artifact_type_helmet TARGET = target_artifacts } }
+			trigger_if = {
+				limit = { scope:spell_organizer = { has_variable_list = spell_targets_artifacts } }
+				scope:spell_organizer = {
+					NOT = {
+						any_in_list = {
+							variable = spell_targets_artifacts
+							NOR = {
+								artifact_type = helmet
+							}
+							NOR = {
+							}
 						}
 					}
 				}
 			}
 		}
 	}
-	any_in_list = {
-		list = artifact_owner_list
-		count = all
-		save_temporary_scope_as = spell_target
-		prev = {
-			any_in_list = {
-				variable = spell_$GROUP$_trigger_list
-				count = all
-				trigger_if = {
-					limit = { var:target_type = flag:artifact_owner }
-					trigger_if = {
-						limit = { spell_tag_has_fulfilled_conditions_trigger = yes }	# Yes, spell triggers can have their own triggers
-						OR = {
-							index_and_check_spell_trigger = yes
-							#AND = {
-							#	has_variable_list = alternative_spell_trigger_tag_list
-							#	any_in_list = {
-							#		variable = alternative_spell_trigger_tag_list
-							#		index_and_check_spell_trigger = yes
-							#	}
-							#}
-							#AND = {
-							#	exists = var:alternative_spell_trigger_tag_list_root
-							#	var:alternative_spell_trigger_tag_list_root = {
-							#		any_in_list = {
-							#			variable = alternative_spell_trigger_tag_list
-							#			index_and_check_spell_trigger = yes
-							#		}
-							#	}
-							#}
+	custom_tooltip = {
+		text = casting_condition_artifact_type_bladed_tooltip
+		trigger_if = {
+			limit = { spell_has_tag_with_target_trigger = { NAME = flag:casting_condition_artifact_type_bladed TARGET = target_artifacts } }
+			trigger_if = {
+				limit = { scope:spell_organizer = { has_variable_list = spell_targets_artifacts } }
+				scope:spell_organizer = {
+					NOT = {
+						any_in_list = {
+							variable = spell_targets_artifacts
+							NOR = {
+								artifact_type = sword
+								artifact_type = dagger
+							}
+							NOR = {
+							}
 						}
 					}
 				}
 			}
 		}
 	}
-	any_in_list = {
-		list = newly_created_artifact_list
-		count = all
-		save_temporary_scope_as = spell_target
-		prev = {
-			any_in_list = {
-				variable = spell_$GROUP$_trigger_list
-				count = all
-				trigger_if = {
-					limit = { var:target_type = flag:newly_created_artifact }
-					trigger_if = {
-						limit = { spell_tag_has_fulfilled_conditions_trigger = yes }	# Yes, spell triggers can have their own triggers
-						OR = {
-							index_and_check_spell_trigger = yes
-							#AND = {
-							#	has_variable_list = alternative_spell_trigger_tag_list
-							#	any_in_list = {
-							#		variable = alternative_spell_trigger_tag_list
-							#		index_and_check_spell_trigger = yes
-							#	}
-							#}
-							#AND = {
-							#	exists = var:alternative_spell_trigger_tag_list_root
-							#	var:alternative_spell_trigger_tag_list_root = {
-							#		any_in_list = {
-							#			variable = alternative_spell_trigger_tag_list
-							#			index_and_check_spell_trigger = yes
-							#		}
-							#	}
-							#}
+	custom_tooltip = {
+		text = casting_condition_artifact_feature_blade_metal_iron_tooltip
+		trigger_if = {
+			limit = { spell_has_tag_with_target_trigger = { NAME = flag:casting_condition_artifact_feature_blade_metal_iron TARGET = target_artifacts } }
+			trigger_if = {
+				limit = { scope:spell_organizer = { has_variable_list = spell_targets_artifacts } }
+				scope:spell_organizer = {
+					NOT = {
+						any_in_list = {
+							variable = spell_targets_artifacts
+							NOR = {
+								artifact_type = sword
+								artifact_type = dagger
+							}
+							NOR = {
+								has_artifact_feature = blade_metal_wrought_iron
+								has_artifact_feature = blade_metal_folded_iron
+							}
 						}
 					}
 				}
@@ -707,16 +447,28 @@ conditional_spell_tags_fulfilled_trigger = {
 spell_tag_has_fulfilled_conditions_trigger = {
 	trigger_if = {
 		limit = {
-			has_variable_list = spell_activation_trigger_list
+			has_variable_list = activation_condition_list
 		}
-		any_in_list = {
-			variable = spell_activation_trigger_list
-			count = all
-			index_and_check_spell_trigger = yes
+		trigger_if = {
+			limit = {
+				is_target_in_variable_list = {
+					name = activation_condition_list
+					target = flag:trait
+				}
+				exists = var:activation_condition_trait
+			}
+			scope:spell_target ?= { has_trait = prev.var:activation_condition_trait }
 		}
-	}
-	trigger_else = {
-		always = yes
+		trigger_if = {
+			limit = {
+				is_target_in_variable_list = {
+					name = activation_condition_list
+					target = flag:trait_negative
+				}
+				exists = var:activation_condition_trait_negative
+			}
+			scope:spell_target ?= { NOT = { has_trait = prev.var:activation_condition_trait_negative } }
+		}
 	}
 }
 

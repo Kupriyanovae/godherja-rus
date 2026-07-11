@@ -32,7 +32,6 @@ become_pirate_emperor = {
 			commerce_raiding_income_greater_than = { VALUE = 40 }
 		}
 		highest_held_title_tier <= tier_kingdom
-		completely_controls = title:c_kolonnalle
 	}
 	effect = {
 		save_scope_as = founder
@@ -71,7 +70,7 @@ unite_the_eastern_coast_decision = {
 	desc = unite_the_eastern_coast_decision_desc
 
 	is_shown = {
-		game_start_date >= 6100.1.1
+		game_start_date >= 1100.1.1
 		any_held_title = {
 			tier = tier_county
 			title_province = { geographical_region = world_ga_pirate_coast }
@@ -267,7 +266,7 @@ establish_legitimacy_over_kinilam_decision = {
 	desc = establish_legitimacy_over_kinilam_decision_desc
 	
 	is_shown = {
-		game_start_date >= 6254.1.1
+		game_start_date >= 1254.1.1
 		has_title = title:k_kinilam_regency
 		NOT = {
 			is_target_in_global_variable_list = {

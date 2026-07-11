@@ -158,7 +158,6 @@ tradition_fp2_strategy_gamers = {
 		commanders_likelier_to_gain_commander_traits = yes
 		may_challenge_to_board_games = yes
 		may_wager_land_on_board_games = yes
-		withering_mind_less_likely = yes
 	}
 
 	character_modifier = {
@@ -359,7 +358,10 @@ tradition_fp2_ritualised_friendship = {
 		custom_tooltip = {
 			text = need_at_least_one_friend
 			culture_head ?= {
-				any_relation = { type = friend }
+				any_relation = {
+					type = friend
+					count >= 1
+				}
 			}
 		}
 	}
@@ -456,7 +458,10 @@ tradition_fp2_ritualised_friendship = {
 				# As does having a best friend already.
 				if = {
 					limit = {
-						any_relation = { type = best_friend }
+						any_relation = {
+							type = best_friend
+							count >= 1
+						}
 					}
 					add = 25
 				}

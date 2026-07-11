@@ -99,25 +99,18 @@ initialize_global_knowledge_entries_effect = {
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = dark SCALE = 1 }
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = laser_beam_spell_ke BONUS = learn_spell SCALE = 1 SKILL = light DIFFICULTY = excellent_skill_level }
 	scope:new_knowledge_entry_scope ?= {
-		if = {
-			limit = { has_global_variable = laser_beam }
-			add_to_variable_list = {
-				name = knowledge_entry_spell_list
-				target = global_var:laser_beam
-			}
+		add_to_variable_list = {
+			name = knowledge_entry_spell_list
+			target = global_var:laser_beam
 		}
 	}
 
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = empty_island_corvanor BONUS = learn_spell SCALE = 1 SKILL = arcana DIFFICULTY = average_skill_level }
 	scope:new_knowledge_entry_scope ?= {
-		if = {
-			limit = { has_global_variable = solar_bombardment }
-			add_to_variable_list = {
-				name = knowledge_entry_spell_list
-				target = global_var:solar_bombardment
-			}
+		add_to_variable_list = {
+			name = knowledge_entry_spell_list
+			target = global_var:solar_bombardment
 		}
-		
 	}
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = light SCALE = 1 }
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = fire SCALE = 1 }
@@ -128,14 +121,10 @@ initialize_global_knowledge_entries_effect = {
 	##################
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = preliminary_results BONUS = learn_spell SCALE = 1 SKILL = arcana DIFFICULTY = average_skill_level }
 	scope:new_knowledge_entry_scope ?= {
-		if = {
-			limit = { has_global_variable = petrify }
-			add_to_variable_list = {
-				name = knowledge_entry_spell_list
-				target = global_var:petrify
-			}
+		add_to_variable_list = {
+			name = knowledge_entry_spell_list
+			target = global_var:petrify
 		}
-		
 	}
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = stone SCALE = 1 }
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = blood SCALE = 1 }
@@ -169,12 +158,9 @@ initialize_global_knowledge_entries_effect = {
 
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = fall_of_relar_outpost BONUS = learn_spell SCALE = 1 SKILL = dark DIFFICULTY = excellent_skill_level }
 	scope:new_knowledge_entry_scope ?= {
-		if = {
-			limit = { has_global_variable = shade_slayed }
-			add_to_variable_list = {
-				name = knowledge_entry_spell_list
-				target = global_var:shade_slayed
-			}
+		add_to_variable_list = {
+			name = knowledge_entry_spell_list
+			target = global_var:shade_slayed
 		}
 	} #potentially add air teleport spell
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = dark SCALE = 3 }
@@ -258,14 +244,10 @@ initialize_global_knowledge_entries_effect = {
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = sanity_loss SCALE = 1 }
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = lenses_oracle BONUS = learn_spell SCALE = 1 SKILL = air DIFFICULTY = average_skill_level }
 	scope:new_knowledge_entry_scope ?= {
-		if = {
-			limit = { has_global_variable = birdseye_oracle }
-			add_to_variable_list = {
-				name = knowledge_entry_spell_list
-				target = global_var:birdseye_oracle
-			}
+		add_to_variable_list = {
+			name = knowledge_entry_spell_list
+			target = global_var:birdseye_oracle
 		}
-		
 	}
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = air SCALE = 2 }
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = dark SCALE = 2 }
@@ -282,26 +264,19 @@ initialize_global_knowledge_entries_effect = {
 	
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = admiral_of_the_deep BONUS = learn_spell SCALE = 1 SKILL = water DIFFICULTY = good_skill_level }
 	scope:new_knowledge_entry_scope ?= {
-		if = {
-			limit = { has_global_variable = calming_of_the_sea_queen }
-			add_to_variable_list = {
-				name = knowledge_entry_spell_list
-				target = global_var:calming_of_the_sea_queen
-			}
+		add_to_variable_list = {
+			name = knowledge_entry_spell_list
+			target = global_var:calming_of_the_sea_queen
 		}
-		
 	}
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = water SCALE = 1 }
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = hymns SCALE = 1 }
 	
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = minstrel_of_the_reef BONUS = learn_spell SCALE = 1 SKILL = water DIFFICULTY = excellent_skill_level }
 	scope:new_knowledge_entry_scope ?= {
-		if = {
-			limit = { has_global_variable = anger_of_the_sea_queen }
-			add_to_variable_list = {
-				name = knowledge_entry_spell_list
-				target = global_var:anger_of_the_sea_queen
-			}
+		add_to_variable_list = {
+			name = knowledge_entry_spell_list
+			target = global_var:anger_of_the_sea_queen
 		}
 	}
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = water SCALE = 1 }
@@ -317,12 +292,9 @@ initialize_global_knowledge_entries_effect = {
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = nature SCALE = 2 }
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = spring_blessing BONUS = learn_spell SCALE = 1 SKILL = nature DIFFICULTY = good_skill_level }
 	scope:new_knowledge_entry_scope ?= {
-		if = {
-			limit = { has_global_variable = verdant_growth }
-			add_to_variable_list = {
-				name = knowledge_entry_spell_list
-				target = global_var:verdant_growth
-			}
+		add_to_variable_list = {
+			name = knowledge_entry_spell_list
+			target = global_var:verdant_growth
 		}
 	}
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = the_fell_one BONUS = add_arcana_lifestyle_xp SCALE = 300 SKILL = nature DIFFICULTY = excellent_skill_level }
@@ -344,14 +316,10 @@ initialize_global_knowledge_entries_effect = {
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = sanity_loss SCALE = 2 }
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = key_of_the_obsidian_gate_ke BONUS = learn_spell SCALE = 1 SKILL = dream DIFFICULTY = good_skill_level }
 	scope:new_knowledge_entry_scope ?= {
-		if = {
-			limit = { has_global_variable = key_of_the_obsidian_gate }
-			add_to_variable_list = {
-				name = knowledge_entry_spell_list
-				target = global_var:key_of_the_obsidian_gate
-			}
+		add_to_variable_list = {
+			name = knowledge_entry_spell_list
+			target = global_var:key_of_the_obsidian_gate
 		}
-		
 	}
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = wakeless_glass BONUS = dream SCALE = 1 SKILL = dream DIFFICULTY = poor_skill_level }
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = wakeless_rubies BONUS = dream SCALE = 3 SKILL = dream DIFFICULTY = good_skill_level }
@@ -375,14 +343,10 @@ initialize_global_knowledge_entries_effect = {
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = sanity_loss SCALE = 1 }
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = neverending_dream_spider_queen BONUS = learn_spell SCALE = 1 SKILL = dream DIFFICULTY = average_skill_level }
 	scope:new_knowledge_entry_scope ?= {
-		if = {
-			limit = { has_global_variable = weavers_descent }
-			add_to_variable_list = {
-				name = knowledge_entry_spell_list
-				target = global_var:weavers_descent
-			}
+		add_to_variable_list = {
+			name = knowledge_entry_spell_list
+			target = global_var:weavers_descent
 		}
-		
 	}
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = dream SCALE = 2 }
 	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = sanity_loss SCALE = 1 }
@@ -396,245 +360,6 @@ initialize_global_knowledge_entries_effect = {
 	################
 
 	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = germaines_journal_part_one BONUS = ice SCALE = 2 SKILL = arcana DIFFICULTY = average_skill_level }
-
-	###########################################
-	# GENERIC KNOWLEDGE ENTRIES FOR LIBRARIES #
-	###########################################
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_theology_topic_ke_learning BONUS = learning SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_law_and_governance_topic_ke_stewardship BONUS = stewardship SCALE = 1 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_stewardship_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_warfare_topic_ke_martial BONUS = martial SCALE = 1 SKILL = martial DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_martial_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_philosophy_topic_ke_learning BONUS = learning SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_philosophy_topic_ke_diplomacy BONUS = diplomacy SCALE = 1 SKILL = diplomacy DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_diplomacy_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_arcana BONUS = arcana SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_dream BONUS = dream SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_blood BONUS = blood SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_fire BONUS = fire SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_air BONUS = air SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_nature BONUS = nature SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_water BONUS = water SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_dark BONUS = dark SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_light BONUS = light SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_ice BONUS = ice SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_celestial BONUS = celestial SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_ethereal BONUS = ethereal SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_language_and_letters_topic_ke_diplomacy BONUS = diplomacy SCALE = 1 SKILL = diplomacy DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_diplomacy_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_history_topic_ke_learning BONUS = learning SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_mathematics_topic_ke_stewardship BONUS = stewardship SCALE = 1 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_stewardship_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_mathematics_topic_ke_learning BONUS = learning SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_cosmology_topic_ke_intrigue BONUS = intrigue SCALE = 1 SKILL = intrigue DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_intrigue_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_cosmology_topic_ke_learning BONUS = learning SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_natural_sciences_topic_ke_learning BONUS = learning SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_medicine_topic_ke_learning BONUS = learning SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_practical_arts_topic_ke_stewardship BONUS = stewardship SCALE = 1 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_stewardship_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_commerce_topic_ke_stewardship BONUS = stewardship SCALE = 1 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_stewardship_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_literature_topic_ke_diplomacy BONUS = diplomacy SCALE = 1 SKILL = diplomacy DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_diplomacy_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_literature_topic_ke_learning BONUS = learning SCALE = 1 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_learning_lifestyle_xp SCALE = 300 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_theology_topic_ke_monthly_piety_gain_mult_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_theology_topic_ke_monthly_piety_gain_mult_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_theology_topic_ke_same_faith_opinion_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_theology_topic_ke_same_faith_opinion_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_theology_topic_ke_realm_priest_opinion_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_theology_topic_ke_realm_priest_opinion_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_law_and_governance_topic_ke_vassal_tax_contribution_mult_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_law_and_governance_topic_ke_vassal_tax_contribution_mult_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_law_and_governance_topic_ke_vassal_levy_contribution_mult_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_law_and_governance_topic_ke_vassal_levy_contribution_mult_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_law_and_governance_topic_ke_direct_vassal_opinion_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_law_and_governance_topic_ke_direct_vassal_opinion_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_law_and_governance_topic_ke_monthly_legitimacy_add_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_law_and_governance_topic_ke_monthly_legitimacy_add_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_warfare_topic_ke_dread_gain_mult_modifier BONUS = add_martial_lifestyle_xp SCALE = 300 SKILL = martial DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_warfare_topic_ke_dread_gain_mult_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_warfare_topic_ke_levy_size_modifier BONUS = add_martial_lifestyle_xp SCALE = 300 SKILL = martial DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_warfare_topic_ke_levy_size_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_warfare_topic_ke_independent_ruler_opinion_modifier BONUS = add_martial_lifestyle_xp SCALE = 300 SKILL = martial DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_warfare_topic_ke_independent_ruler_opinion_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_philosophy_topic_ke_monthly_prestige_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_philosophy_topic_ke_monthly_prestige_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_magic_topic_ke_health_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_magic_topic_ke_health_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_language_and_letters_topic_ke_courtier_and_guest_opinion_modifier BONUS = add_diplomacy_lifestyle_xp SCALE = 300 SKILL = diplomacy DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_language_and_letters_topic_ke_courtier_and_guest_opinion_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_language_and_letters_topic_ke_monthly_prestige_modifier BONUS = add_diplomacy_lifestyle_xp SCALE = 300 SKILL = diplomacy DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_language_and_letters_topic_ke_monthly_prestige_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_language_and_letters_topic_ke_court_grandeur_baseline_add_modifier BONUS = add_diplomacy_lifestyle_xp SCALE = 300 SKILL = diplomacy DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_language_and_letters_topic_ke_court_grandeur_baseline_add_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_history_topic_ke_monthly_prestige_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_history_topic_ke_monthly_prestige_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_history_topic_ke_legitimacy_gain_mult_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_history_topic_ke_legitimacy_gain_mult_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_history_topic_ke_dynasty_house_opinion_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_history_topic_ke_dynasty_house_opinion_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_history_topic_ke_monthly_dynasty_prestige_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_history_topic_ke_monthly_dynasty_prestige_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_mathematics_topic_ke_monthly_income_mult_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_mathematics_topic_ke_monthly_income_mult_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_mathematics_topic_ke_build_gold_cost_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_mathematics_topic_ke_build_gold_cost_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_mathematics_topic_ke_build_speed_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_mathematics_topic_ke_build_speed_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_cosmology_topic_ke_monthly_piety_gain_mult_modifier BONUS = add_intrigue_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_cosmology_topic_ke_monthly_piety_gain_mult_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_cosmology_topic_ke_monthly_piety_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_cosmology_topic_ke_monthly_piety_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_cosmology_topic_ke_legitimacy_gain_mult_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_cosmology_topic_ke_legitimacy_gain_mult_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_natural_sciences_topic_ke_monthly_prestige_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_natural_sciences_topic_ke_monthly_prestige_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_natural_sciences_topic_ke_health_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_natural_sciences_topic_ke_health_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_natural_sciences_topic_ke_epidemic_resistance_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_natural_sciences_topic_ke_epidemic_resistance_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_natural_sciences_topic_ke_monthly_income_mult_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_natural_sciences_topic_ke_monthly_income_mult_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_medicine_topic_ke_monthly_prestige_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_medicine_topic_ke_monthly_prestige_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_medicine_topic_ke_health_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_medicine_topic_ke_health_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_medicine_topic_ke_epidemic_resistance_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_medicine_topic_ke_epidemic_resistance_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_medicine_topic_ke_stress_gain_mult_modifier BONUS = add_learning_lifestyle_xp SCALE = 300 SKILL = learning DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_medicine_topic_ke_stress_gain_mult_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_practical_arts_topic_ke_monthly_prestige_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_practical_arts_topic_ke_monthly_prestige_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_practical_arts_topic_ke_monthly_income_mult_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_practical_arts_topic_ke_monthly_income_mult_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_practical_arts_topic_ke_build_speed_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_practical_arts_topic_ke_build_speed_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_practical_arts_topic_ke_build_gold_cost_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_practical_arts_topic_ke_build_gold_cost_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_practical_arts_topic_ke_county_opinion_add_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_practical_arts_topic_ke_county_opinion_add_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_commerce_topic_ke_monthly_prestige_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_commerce_topic_ke_monthly_prestige_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_commerce_topic_ke_monthly_income_mult_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_commerce_topic_ke_monthly_income_mult_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_commerce_topic_ke_vassal_tax_contribution_mult_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_commerce_topic_ke_vassal_tax_contribution_mult_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_commerce_topic_ke_build_gold_cost_modifier BONUS = add_stewardship_lifestyle_xp SCALE = 300 SKILL = stewardship DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_commerce_topic_ke_build_gold_cost_modifier SCALE = 1 }
-
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_literature_topic_ke_monthly_prestige_modifier BONUS = add_diplomacy_lifestyle_xp SCALE = 300 SKILL = diplomacy DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_literature_topic_ke_monthly_prestige_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_literature_topic_ke_courtier_opinion_modifier BONUS = add_diplomacy_lifestyle_xp SCALE = 300 SKILL = diplomacy DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_literature_topic_ke_courtier_opinion_modifier SCALE = 1 }
-
-	create_knowledge_entry_effect = { KNOWLEDGE_ENTRY_IDENTIFIER = gh_literature_topic_ke_attraction_opinion_modifier BONUS = add_diplomacy_lifestyle_xp SCALE = 300 SKILL = diplomacy DIFFICULTY = average_skill_level }
-	add_bonus_to_last_created_knowledge_entry_effect = { BONUS = add_character_modifier_gh_literature_topic_ke_attraction_opinion_modifier SCALE = 1 }
 }
 
 
@@ -1188,20 +913,9 @@ learn_knowledge_entry_bonus_effect = {
 		}
 		scope:learn_knowledge_entry_bonus_character_scope = {
 			$NAME$_knowledge_entry_effect = yes
-			if = {
-				limit = { has_variable = gh_temporary_knowledge_entry_character }
-				remove_variable = gh_temporary_knowledge_entry_character
-				add_to_variable_list = {
-					name = known_knowledge_entry_list
-					target = scope:knowledge_entry_scope
-					years = 10
-				}
-			}
-			else = {
-				add_to_variable_list = {
-					name = known_knowledge_entry_list
-					target = scope:knowledge_entry_scope
-				}
+			add_to_variable_list = {
+				name = known_knowledge_entry_list
+				target = scope:knowledge_entry_scope
 			}
 		}
 	}

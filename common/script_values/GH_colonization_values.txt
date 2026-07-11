@@ -683,14 +683,6 @@ county_habitability_value = {
 		}
 	}
 	else_if = {
-		limit = { title_province = { terrain = underworld_expanse } }
-		add = {
-			value = -70
-			desc = county_capital_terrain_value_desc
-			format = "HABITABILITY_VALUE_FORMAT"
-		}
-	}
-	else_if = {
 		limit = { title_province = { terrain = mayik_caverns } }
 		add = {
 			value = -70
@@ -821,17 +813,6 @@ county_habitability_value = {
 			format = "HABITABILITY_VALUE_FORMAT"
 		}
 	}
-	if = { # Glowmoss Cultivation - bioluminescent networks make underground counties more habitable
-		limit = {
-			title_province = { GH_any_underground_terrain_trigger = yes }
-			holder.culture = { has_innovation = innovation_mayik_glowmoss_cultivation }
-		}
-		add = {
-			value = 15
-			desc = habitability_mayik_glowmoss_cultivation_desc
-			format = "HABITABILITY_VALUE_FORMAT"
-		}
-	}
 	add = habitability_modifier_value
 	if = { # Keep this at the bottom for a nicer tooltip
 		limit = { total_ambient_magic_value > 50 }
@@ -847,11 +828,7 @@ county_habitability_value = {
 }
 
 colonization_threshold_value = {
-	add = {
-		value = 50
-		desc = nonbold_base_value_desc
-		format = "COLONIZATION_THRESHOLD_BASE_FORMAT"
-	}
+	value = 50
 	if = { # Hill Dwellers
 		limit = {
 			culture = { has_cultural_tradition = tradition_hill_dwellers }
@@ -870,17 +847,6 @@ colonization_threshold_value = {
 		}
 		add = {
 			value = -10
-			desc = colonization_forest_folk_desc
-			format = "COLONIZATION_THRESHOLD_VALUE_FORMAT"
-		}
-	}
-	if = { # Whistling Wilds
-		limit = {
-			culture = { has_cultural_tradition = tradition_whistling_wilds }
-			scope:target.title_province = { GH_any_forest_or_taiga_terrain_trigger = yes }
-		}
-		add = {
-			value = -25
 			desc = colonization_forest_folk_desc
 			format = "COLONIZATION_THRESHOLD_VALUE_FORMAT"
 		}
@@ -1007,7 +973,7 @@ colonization_threshold_value = {
 			}
 		}
 		add = {
-			value = -40
+			value = -30
 			desc = colonization_desert_nomads_desc
 			format = "COLONIZATION_THRESHOLD_VALUE_FORMAT"
 		}
@@ -1068,39 +1034,6 @@ colonization_threshold_value = {
 		add = {
 			value = -20
 			desc = colonization_spiritskin_desc
-			format = "COLONIZATION_THRESHOLD_VALUE_FORMAT"
-		}
-	}
-	if = { # Underground Husbandry - early knowledge of cave ecosystem management
-		limit = {
-			culture = { has_innovation = innovation_mayik_underground_husbandry }
-			scope:target.title_province = { GH_any_underground_terrain_trigger = yes }
-		}
-		add = {
-			value = -10
-			desc = colonization_mayik_underground_husbandry_desc
-			format = "COLONIZATION_THRESHOLD_VALUE_FORMAT"
-		}
-	}
-	if = { # Undergrowth Mastery - systematic deep cultivation knowledge
-		limit = {
-			culture = { has_innovation = innovation_mayik_undergrowth_mastery }
-			scope:target.title_province = { GH_any_underground_terrain_trigger = yes }
-		}
-		add = {
-			value = -10
-			desc = colonization_mayik_undergrowth_mastery_desc
-			format = "COLONIZATION_THRESHOLD_VALUE_FORMAT"
-		}
-	}
-	if = { # Deep Engineering - mastery of underground construction and expansion
-		limit = {
-			culture = { has_innovation = innovation_mayik_deep_engineering }
-			scope:target.title_province = { GH_any_underground_terrain_trigger = yes }
-		}
-		add = {
-			value = -15
-			desc = colonization_mayik_deep_engineering_desc
 			format = "COLONIZATION_THRESHOLD_VALUE_FORMAT"
 		}
 	}

@@ -237,6 +237,20 @@ GH_hunt_animal_rodent_trigger = {
 
 GH_hunt_animal_rodent_native_range_trigger = {
 	OR = {
+		AND = {
+			OR = {
+				GH_any_plains_terrain_trigger = yes
+				GH_any_floodplains_terrain_trigger = yes
+				GH_any_farmlands_terrain_trigger = yes
+				GH_any_steppe_terrain_trigger = yes
+				GH_any_drylands_terrain_trigger = yes
+				GH_any_hills_terrain_trigger = yes
+				GH_any_mountains_terrain_trigger = yes
+				GH_any_forest_terrain_trigger = yes
+				GH_any_taiga_terrain_trigger = yes
+				GH_any_archipelagic_terrain_trigger = yes
+			}
+		}
 		GH_hunt_animal_porcupine_trigger = yes
 		GH_hunt_animal_mongoose_trigger = yes
 	}
@@ -2118,7 +2132,7 @@ GH_hunt_animal_canine_native_range_trigger = {
 		GH_hunt_animal_jackal_trigger = yes
 		GH_hunt_animal_lymrill_trigger = yes
 		GH_hunt_animal_crocotta_trigger = yes
-		GH_hunt_animal_apep_ibizan_trigger = yes
+		GH_hunt_animal_apep-ibizan_trigger = yes
 		GH_hunt_animal_kursha_trigger = yes
 	}
 	trigger_if = {
@@ -2138,7 +2152,7 @@ GH_hunt_activity_canine_trigger = {
 		GH_hunt_activity_jackal_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_lymrill_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_crocotta_trigger = { VAR = $VAR$ }
-		GH_hunt_activity_apep_ibizan_trigger = { VAR = $VAR$ }
+		GH_hunt_activity_apep-ibizan_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_kursha_trigger = { VAR = $VAR$ }
 	}
 }
@@ -2330,12 +2344,12 @@ GH_hunt_activity_crocotta_trigger = {
 	}
 }
 	
-GH_hunt_animal_apep_ibizan_trigger = {
-	GH_hunt_animal_apep_ibizan_native_range_trigger = yes
-	GH_hunt_animal_apep_ibizan_seasonally_available_trigger = yes
+GH_hunt_animal_apep-ibizan_trigger = {
+	GH_hunt_animal_apep-ibizan_native_range_trigger = yes
+	GH_hunt_animal_apep-ibizan_seasonally_available_trigger = yes
 }
 
-GH_hunt_animal_apep_ibizan_native_range_trigger = {
+GH_hunt_animal_apep-ibizan_native_range_trigger = {
 	OR = {
 		AND = {
 			OR = {
@@ -2354,12 +2368,12 @@ GH_hunt_animal_apep_ibizan_native_range_trigger = {
 	}
 }
 
-GH_hunt_animal_apep_ibizan_seasonally_available_trigger = {
+GH_hunt_animal_apep-ibizan_seasonally_available_trigger = {
 }
 
-GH_hunt_activity_apep_ibizan_trigger = {
+GH_hunt_activity_apep-ibizan_trigger = {
 	OR = {
-		$VAR$ ?= flag:apep_ibizan
+		$VAR$ ?= flag:apep-ibizan
 	}
 }
 	
@@ -3581,7 +3595,7 @@ GH_hunt_animal_lemur_trigger = {
 
 GH_hunt_animal_lemur_native_range_trigger = {
 	OR = {
-		GH_hunt_animal_ring_tailed_lemur_trigger = yes
+		GH_hunt_animal_ring-tailed_lemur_trigger = yes
 		GH_hunt_animal_brown_lemur_trigger = yes
 		GH_hunt_animal_black_lemur_trigger = yes
 		GH_hunt_animal_indri_trigger = yes
@@ -3598,19 +3612,19 @@ GH_hunt_animal_lemur_seasonally_available_trigger = {
 GH_hunt_activity_lemur_trigger = {
 	OR = {
 		$VAR$ ?= flag:lemur
-		GH_hunt_activity_ring_tailed_lemur_trigger = { VAR = $VAR$ }
+		GH_hunt_activity_ring-tailed_lemur_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_brown_lemur_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_black_lemur_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_indri_trigger = { VAR = $VAR$ }
 	}
 }
 	
-GH_hunt_animal_ring_tailed_lemur_trigger = {
-	GH_hunt_animal_ring_tailed_lemur_native_range_trigger = yes
-	GH_hunt_animal_ring_tailed_lemur_seasonally_available_trigger = yes
+GH_hunt_animal_ring-tailed_lemur_trigger = {
+	GH_hunt_animal_ring-tailed_lemur_native_range_trigger = yes
+	GH_hunt_animal_ring-tailed_lemur_seasonally_available_trigger = yes
 }
 
-GH_hunt_animal_ring_tailed_lemur_native_range_trigger = {
+GH_hunt_animal_ring-tailed_lemur_native_range_trigger = {
 	OR = {
 		AND = {
 			OR = {
@@ -3630,12 +3644,12 @@ GH_hunt_animal_ring_tailed_lemur_native_range_trigger = {
 	}
 }
 
-GH_hunt_animal_ring_tailed_lemur_seasonally_available_trigger = {
+GH_hunt_animal_ring-tailed_lemur_seasonally_available_trigger = {
 }
 
-GH_hunt_activity_ring_tailed_lemur_trigger = {
+GH_hunt_activity_ring-tailed_lemur_trigger = {
 	OR = {
-		$VAR$ ?= flag:ring_tailed_lemur
+		$VAR$ ?= flag:ring-tailed_lemur
 	}
 }
 	
@@ -3816,7 +3830,7 @@ GH_hunt_animal_snake_native_range_trigger = {
 	OR = {
 		GH_hunt_animal_king_cobra_trigger = yes
 		GH_hunt_animal_emperor_cobra_trigger = yes
-		GH_hunt_animal_twin_serpent_trigger = yes
+		GH_hunt_animal_twin-serpent_trigger = yes
 	}
 	trigger_if = {
 		limit = { exists = barony }
@@ -3832,7 +3846,7 @@ GH_hunt_activity_snake_trigger = {
 		$VAR$ ?= flag:snake
 		GH_hunt_activity_king_cobra_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_emperor_cobra_trigger = { VAR = $VAR$ }
-		GH_hunt_activity_twin_serpent_trigger = { VAR = $VAR$ }
+		GH_hunt_activity_twin-serpent_trigger = { VAR = $VAR$ }
 	}
 }
 	
@@ -3911,12 +3925,12 @@ GH_hunt_activity_emperor_cobra_trigger = {
 	}
 }
 	
-GH_hunt_animal_twin_serpent_trigger = {
-	GH_hunt_animal_twin_serpent_native_range_trigger = yes
-	GH_hunt_animal_twin_serpent_seasonally_available_trigger = yes
+GH_hunt_animal_twin-serpent_trigger = {
+	GH_hunt_animal_twin-serpent_native_range_trigger = yes
+	GH_hunt_animal_twin-serpent_seasonally_available_trigger = yes
 }
 
-GH_hunt_animal_twin_serpent_native_range_trigger = {
+GH_hunt_animal_twin-serpent_native_range_trigger = {
 	OR = {
 		AND = {
 			OR = {
@@ -3933,12 +3947,12 @@ GH_hunt_animal_twin_serpent_native_range_trigger = {
 	}
 }
 
-GH_hunt_animal_twin_serpent_seasonally_available_trigger = {
+GH_hunt_animal_twin-serpent_seasonally_available_trigger = {
 }
 
-GH_hunt_activity_twin_serpent_trigger = {
+GH_hunt_activity_twin-serpent_trigger = {
 	OR = {
-		$VAR$ ?= flag:twin_serpent
+		$VAR$ ?= flag:twin-serpent
 	}
 }
 	
@@ -4213,7 +4227,7 @@ GH_hunt_animal_waterfowl_trigger = {
 
 GH_hunt_animal_waterfowl_native_range_trigger = {
 	OR = {
-		GH_hunt_animal_duck_fix_trigger = yes
+		GH_hunt_animal_duck_trigger = yes
 		GH_hunt_animal_whistling_duck_trigger = yes
 		GH_hunt_animal_goose_trigger = yes
 		GH_hunt_animal_swan_trigger = yes
@@ -4228,7 +4242,7 @@ GH_hunt_animal_waterfowl_seasonally_available_trigger = {
 GH_hunt_activity_waterfowl_trigger = {
 	OR = {
 		$VAR$ ?= flag:waterfowl
-		GH_hunt_activity_duck_fix_trigger = { VAR = $VAR$ }
+		GH_hunt_activity_duck_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_whistling_duck_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_goose_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_swan_trigger = { VAR = $VAR$ }
@@ -4237,12 +4251,12 @@ GH_hunt_activity_waterfowl_trigger = {
 	}
 }
 	
-GH_hunt_animal_duck_fix_trigger = {
-	GH_hunt_animal_duck_fix_native_range_trigger = yes
-	GH_hunt_animal_duck_fix_seasonally_available_trigger = yes
+GH_hunt_animal_duck_trigger = {
+	GH_hunt_animal_duck_native_range_trigger = yes
+	GH_hunt_animal_duck_seasonally_available_trigger = yes
 }
 
-GH_hunt_animal_duck_fix_native_range_trigger = {
+GH_hunt_animal_duck_native_range_trigger = {
 	OR = {
 		GH_hunt_animal_mallard_trigger = yes
 		GH_hunt_animal_gadwall_trigger = yes
@@ -4254,16 +4268,16 @@ GH_hunt_animal_duck_fix_native_range_trigger = {
 		GH_hunt_animal_tufted_duck_trigger = yes
 		GH_hunt_animal_scoter_trigger = yes
 		GH_hunt_animal_velvet_scoter_trigger = yes
-		GH_hunt_animal_long_tailed_duck_trigger = yes
+		GH_hunt_animal_long-tailed_duck_trigger = yes
 		GH_hunt_animal_goldeneye_trigger = yes
 		GH_hunt_animal_smew_trigger = yes
 		GH_hunt_animal_merganser_trigger = yes
 		GH_hunt_animal_wigeon_trigger = yes
 		GH_hunt_animal_black_duck_trigger = yes
 		GH_hunt_animal_goldenbill_duck_trigger = yes
-		GH_hunt_animal_kashiryan_spot_billed_duck_trigger = yes
+		GH_hunt_animal_kashiryan_spot-billed_duck_trigger = yes
 		GH_hunt_animal_pochard_trigger = yes
-		GH_hunt_animal_red_crested_pochard_trigger = yes
+		GH_hunt_animal_red-crested_pochard_trigger = yes
 	}
 	trigger_if = {
 		limit = { exists = barony }
@@ -4271,12 +4285,12 @@ GH_hunt_animal_duck_fix_native_range_trigger = {
 	}
 }
 
-GH_hunt_animal_duck_fix_seasonally_available_trigger = {
+GH_hunt_animal_duck_seasonally_available_trigger = {
 }
 
-GH_hunt_activity_duck_fix_trigger = {
+GH_hunt_activity_duck_trigger = {
 	OR = {
-		$VAR$ ?= flag:duck_fix
+		$VAR$ ?= flag:duck
 		GH_hunt_activity_mallard_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_gadwall_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_teal_trigger = { VAR = $VAR$ }
@@ -4287,16 +4301,16 @@ GH_hunt_activity_duck_fix_trigger = {
 		GH_hunt_activity_tufted_duck_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_scoter_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_velvet_scoter_trigger = { VAR = $VAR$ }
-		GH_hunt_activity_long_tailed_duck_trigger = { VAR = $VAR$ }
+		GH_hunt_activity_long-tailed_duck_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_goldeneye_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_smew_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_merganser_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_wigeon_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_black_duck_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_goldenbill_duck_trigger = { VAR = $VAR$ }
-		GH_hunt_activity_kashiryan_spot_billed_duck_trigger = { VAR = $VAR$ }
+		GH_hunt_activity_kashiryan_spot-billed_duck_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_pochard_trigger = { VAR = $VAR$ }
-		GH_hunt_activity_red_crested_pochard_trigger = { VAR = $VAR$ }
+		GH_hunt_activity_red-crested_pochard_trigger = { VAR = $VAR$ }
 	}
 }
 	
@@ -5047,12 +5061,12 @@ GH_hunt_activity_velvet_scoter_trigger = {
 	}
 }
 	
-GH_hunt_animal_long_tailed_duck_trigger = {
-	GH_hunt_animal_long_tailed_duck_native_range_trigger = yes
-	GH_hunt_animal_long_tailed_duck_seasonally_available_trigger = yes
+GH_hunt_animal_long-tailed_duck_trigger = {
+	GH_hunt_animal_long-tailed_duck_native_range_trigger = yes
+	GH_hunt_animal_long-tailed_duck_seasonally_available_trigger = yes
 }
 
-GH_hunt_animal_long_tailed_duck_native_range_trigger = {
+GH_hunt_animal_long-tailed_duck_native_range_trigger = {
 	OR = {
 		AND = {
 			OR = {
@@ -5078,7 +5092,7 @@ GH_hunt_animal_long_tailed_duck_native_range_trigger = {
 	}
 }
 
-GH_hunt_animal_long_tailed_duck_seasonally_available_trigger = {
+GH_hunt_animal_long-tailed_duck_seasonally_available_trigger = {
 	trigger_if = {
 		limit = {
 			OR = {
@@ -5113,9 +5127,9 @@ GH_hunt_animal_long_tailed_duck_seasonally_available_trigger = {
 	}
 }
 
-GH_hunt_activity_long_tailed_duck_trigger = {
+GH_hunt_activity_long-tailed_duck_trigger = {
 	OR = {
-		$VAR$ ?= flag:long_tailed_duck
+		$VAR$ ?= flag:long-tailed_duck
 	}
 }
 	
@@ -5529,12 +5543,12 @@ GH_hunt_activity_goldenbill_duck_trigger = {
 	}
 }
 	
-GH_hunt_animal_kashiryan_spot_billed_duck_trigger = {
-	GH_hunt_animal_kashiryan_spot_billed_duck_native_range_trigger = yes
-	GH_hunt_animal_kashiryan_spot_billed_duck_seasonally_available_trigger = yes
+GH_hunt_animal_kashiryan_spot-billed_duck_trigger = {
+	GH_hunt_animal_kashiryan_spot-billed_duck_native_range_trigger = yes
+	GH_hunt_animal_kashiryan_spot-billed_duck_seasonally_available_trigger = yes
 }
 
-GH_hunt_animal_kashiryan_spot_billed_duck_native_range_trigger = {
+GH_hunt_animal_kashiryan_spot-billed_duck_native_range_trigger = {
 	OR = {
 		AND = {
 			OR = {
@@ -5557,12 +5571,12 @@ GH_hunt_animal_kashiryan_spot_billed_duck_native_range_trigger = {
 	}
 }
 
-GH_hunt_animal_kashiryan_spot_billed_duck_seasonally_available_trigger = {
+GH_hunt_animal_kashiryan_spot-billed_duck_seasonally_available_trigger = {
 }
 
-GH_hunt_activity_kashiryan_spot_billed_duck_trigger = {
+GH_hunt_activity_kashiryan_spot-billed_duck_trigger = {
 	OR = {
-		$VAR$ ?= flag:kashiryan_spot_billed_duck
+		$VAR$ ?= flag:kashiryan_spot-billed_duck
 	}
 }
 	
@@ -5636,12 +5650,12 @@ GH_hunt_activity_pochard_trigger = {
 	}
 }
 	
-GH_hunt_animal_red_crested_pochard_trigger = {
-	GH_hunt_animal_red_crested_pochard_native_range_trigger = yes
-	GH_hunt_animal_red_crested_pochard_seasonally_available_trigger = yes
+GH_hunt_animal_red-crested_pochard_trigger = {
+	GH_hunt_animal_red-crested_pochard_native_range_trigger = yes
+	GH_hunt_animal_red-crested_pochard_seasonally_available_trigger = yes
 }
 
-GH_hunt_animal_red_crested_pochard_native_range_trigger = {
+GH_hunt_animal_red-crested_pochard_native_range_trigger = {
 	OR = {
 		AND = {
 			OR = {
@@ -5683,7 +5697,7 @@ GH_hunt_animal_red_crested_pochard_native_range_trigger = {
 	}
 }
 
-GH_hunt_animal_red_crested_pochard_seasonally_available_trigger = {
+GH_hunt_animal_red-crested_pochard_seasonally_available_trigger = {
 	trigger_if = {
 		limit = {
 			OR = {
@@ -5710,9 +5724,9 @@ GH_hunt_animal_red_crested_pochard_seasonally_available_trigger = {
 	}
 }
 
-GH_hunt_activity_red_crested_pochard_trigger = {
+GH_hunt_activity_red-crested_pochard_trigger = {
 	OR = {
-		$VAR$ ?= flag:red_crested_pochard
+		$VAR$ ?= flag:red-crested_pochard
 	}
 }
 	
@@ -5790,10 +5804,10 @@ GH_hunt_animal_goose_native_range_trigger = {
 		GH_hunt_animal_greylag_goose_trigger = yes
 		GH_hunt_animal_barnacle_goose_trigger = yes
 		GH_hunt_animal_brant_trigger = yes
-		GH_hunt_animal_red_breasted_goose_trigger = yes
+		GH_hunt_animal_red-breasted_goose_trigger = yes
 		GH_hunt_animal_khenemhat_goose_trigger = yes
 		GH_hunt_animal_cotton_pygmy_goose_trigger = yes
-		GH_hunt_animal_spur_winged_goose_trigger = yes
+		GH_hunt_animal_spur-winged_goose_trigger = yes
 	}
 	trigger_if = {
 		limit = { exists = barony }
@@ -5810,10 +5824,10 @@ GH_hunt_activity_goose_trigger = {
 		GH_hunt_activity_greylag_goose_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_barnacle_goose_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_brant_trigger = { VAR = $VAR$ }
-		GH_hunt_activity_red_breasted_goose_trigger = { VAR = $VAR$ }
+		GH_hunt_activity_red-breasted_goose_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_khenemhat_goose_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_cotton_pygmy_goose_trigger = { VAR = $VAR$ }
-		GH_hunt_activity_spur_winged_goose_trigger = { VAR = $VAR$ }
+		GH_hunt_activity_spur-winged_goose_trigger = { VAR = $VAR$ }
 	}
 }
 	
@@ -6016,12 +6030,12 @@ GH_hunt_activity_brant_trigger = {
 	}
 }
 	
-GH_hunt_animal_red_breasted_goose_trigger = {
-	GH_hunt_animal_red_breasted_goose_native_range_trigger = yes
-	GH_hunt_animal_red_breasted_goose_seasonally_available_trigger = yes
+GH_hunt_animal_red-breasted_goose_trigger = {
+	GH_hunt_animal_red-breasted_goose_native_range_trigger = yes
+	GH_hunt_animal_red-breasted_goose_seasonally_available_trigger = yes
 }
 
-GH_hunt_animal_red_breasted_goose_native_range_trigger = {
+GH_hunt_animal_red-breasted_goose_native_range_trigger = {
 	OR = {
 		AND = {
 			OR = {
@@ -6038,7 +6052,7 @@ GH_hunt_animal_red_breasted_goose_native_range_trigger = {
 	}
 }
 
-GH_hunt_animal_red_breasted_goose_seasonally_available_trigger = {
+GH_hunt_animal_red-breasted_goose_seasonally_available_trigger = {
 	trigger_if = {
 		limit = {
 			OR = {
@@ -6057,9 +6071,9 @@ GH_hunt_animal_red_breasted_goose_seasonally_available_trigger = {
 	}
 }
 
-GH_hunt_activity_red_breasted_goose_trigger = {
+GH_hunt_activity_red-breasted_goose_trigger = {
 	OR = {
-		$VAR$ ?= flag:red_breasted_goose
+		$VAR$ ?= flag:red-breasted_goose
 	}
 }
 	
@@ -6139,12 +6153,12 @@ GH_hunt_activity_cotton_pygmy_goose_trigger = {
 	}
 }
 	
-GH_hunt_animal_spur_winged_goose_trigger = {
-	GH_hunt_animal_spur_winged_goose_native_range_trigger = yes
-	GH_hunt_animal_spur_winged_goose_seasonally_available_trigger = yes
+GH_hunt_animal_spur-winged_goose_trigger = {
+	GH_hunt_animal_spur-winged_goose_native_range_trigger = yes
+	GH_hunt_animal_spur-winged_goose_seasonally_available_trigger = yes
 }
 
-GH_hunt_animal_spur_winged_goose_native_range_trigger = {
+GH_hunt_animal_spur-winged_goose_native_range_trigger = {
 	OR = {
 		AND = {
 			OR = {
@@ -6166,12 +6180,12 @@ GH_hunt_animal_spur_winged_goose_native_range_trigger = {
 	}
 }
 
-GH_hunt_animal_spur_winged_goose_seasonally_available_trigger = {
+GH_hunt_animal_spur-winged_goose_seasonally_available_trigger = {
 }
 
-GH_hunt_activity_spur_winged_goose_trigger = {
+GH_hunt_activity_spur-winged_goose_trigger = {
 	OR = {
-		$VAR$ ?= flag:spur_winged_goose
+		$VAR$ ?= flag:spur-winged_goose
 	}
 }
 	
@@ -6719,7 +6733,7 @@ GH_hunt_animal_loon_trigger = {
 GH_hunt_animal_loon_native_range_trigger = {
 	OR = {
 		GH_hunt_animal_common_loon_trigger = yes
-		GH_hunt_animal_red_throated_loon_trigger = yes
+		GH_hunt_animal_red-throated_loon_trigger = yes
 		GH_hunt_animal_arctic_loon_trigger = yes
 	}
 	trigger_if = {
@@ -6735,7 +6749,7 @@ GH_hunt_activity_loon_trigger = {
 	OR = {
 		$VAR$ ?= flag:loon
 		GH_hunt_activity_common_loon_trigger = { VAR = $VAR$ }
-		GH_hunt_activity_red_throated_loon_trigger = { VAR = $VAR$ }
+		GH_hunt_activity_red-throated_loon_trigger = { VAR = $VAR$ }
 		GH_hunt_activity_arctic_loon_trigger = { VAR = $VAR$ }
 	}
 }
@@ -6797,12 +6811,12 @@ GH_hunt_activity_common_loon_trigger = {
 	}
 }
 	
-GH_hunt_animal_red_throated_loon_trigger = {
-	GH_hunt_animal_red_throated_loon_native_range_trigger = yes
-	GH_hunt_animal_red_throated_loon_seasonally_available_trigger = yes
+GH_hunt_animal_red-throated_loon_trigger = {
+	GH_hunt_animal_red-throated_loon_native_range_trigger = yes
+	GH_hunt_animal_red-throated_loon_seasonally_available_trigger = yes
 }
 
-GH_hunt_animal_red_throated_loon_native_range_trigger = {
+GH_hunt_animal_red-throated_loon_native_range_trigger = {
 	OR = {
 		AND = {
 			OR = {
@@ -6829,7 +6843,7 @@ GH_hunt_animal_red_throated_loon_native_range_trigger = {
 	}
 }
 
-GH_hunt_animal_red_throated_loon_seasonally_available_trigger = {
+GH_hunt_animal_red-throated_loon_seasonally_available_trigger = {
 	trigger_if = {
 		limit = {
 			OR = {
@@ -6864,9 +6878,9 @@ GH_hunt_animal_red_throated_loon_seasonally_available_trigger = {
 	}
 }
 
-GH_hunt_activity_red_throated_loon_trigger = {
+GH_hunt_activity_red-throated_loon_trigger = {
 	OR = {
-		$VAR$ ?= flag:red_throated_loon
+		$VAR$ ?= flag:red-throated_loon
 	}
 }
 	
@@ -11454,14 +11468,14 @@ GH_hunt_standard_local_game_available_in_province_trigger = {
 		GH_hunt_animal_monkey_trigger = yes
 		GH_hunt_animal_gorilla_trigger = yes
 		GH_hunt_animal_lemur_trigger = yes
-		GH_hunt_animal_ring_tailed_lemur_trigger = yes
+		GH_hunt_animal_ring-tailed_lemur_trigger = yes
 		GH_hunt_animal_brown_lemur_trigger = yes
 		GH_hunt_animal_black_lemur_trigger = yes
 		GH_hunt_animal_indri_trigger = yes
 		GH_hunt_animal_snake_trigger = yes
 		GH_hunt_animal_king_cobra_trigger = yes
 		GH_hunt_animal_emperor_cobra_trigger = yes
-		GH_hunt_animal_twin_serpent_trigger = yes
+		GH_hunt_animal_twin-serpent_trigger = yes
 		GH_hunt_animal_reptile_trigger = yes
 		GH_hunt_animal_rovarskan_dragon_trigger = yes
 		GH_hunt_animal_crocodile_trigger = yes
@@ -11500,7 +11514,7 @@ GH_hunt_small_local_game_available_in_province_trigger = {
 		GH_hunt_animal_tahr_trigger = yes
 		GH_hunt_animal_markhor_trigger = yes
 		GH_hunt_animal_lemur_trigger = yes
-		GH_hunt_animal_ring_tailed_lemur_trigger = yes
+		GH_hunt_animal_ring-tailed_lemur_trigger = yes
 		GH_hunt_animal_brown_lemur_trigger = yes
 		GH_hunt_animal_black_lemur_trigger = yes
 		GH_hunt_animal_indri_trigger = yes
@@ -11509,9 +11523,9 @@ GH_hunt_small_local_game_available_in_province_trigger = {
 		GH_hunt_animal_snake_trigger = yes
 		GH_hunt_animal_king_cobra_trigger = yes
 		GH_hunt_animal_emperor_cobra_trigger = yes
-		GH_hunt_animal_twin_serpent_trigger = yes
+		GH_hunt_animal_twin-serpent_trigger = yes
 		GH_hunt_animal_waterfowl_trigger = yes
-		GH_hunt_animal_duck_fix_trigger = yes
+		GH_hunt_animal_duck_trigger = yes
 		GH_hunt_animal_mallard_trigger = yes
 		GH_hunt_animal_gadwall_trigger = yes
 		GH_hunt_animal_teal_trigger = yes
@@ -11522,26 +11536,26 @@ GH_hunt_small_local_game_available_in_province_trigger = {
 		GH_hunt_animal_tufted_duck_trigger = yes
 		GH_hunt_animal_scoter_trigger = yes
 		GH_hunt_animal_velvet_scoter_trigger = yes
-		GH_hunt_animal_long_tailed_duck_trigger = yes
+		GH_hunt_animal_long-tailed_duck_trigger = yes
 		GH_hunt_animal_goldeneye_trigger = yes
 		GH_hunt_animal_smew_trigger = yes
 		GH_hunt_animal_merganser_trigger = yes
 		GH_hunt_animal_wigeon_trigger = yes
 		GH_hunt_animal_black_duck_trigger = yes
 		GH_hunt_animal_goldenbill_duck_trigger = yes
-		GH_hunt_animal_kashiryan_spot_billed_duck_trigger = yes
+		GH_hunt_animal_kashiryan_spot-billed_duck_trigger = yes
 		GH_hunt_animal_pochard_trigger = yes
-		GH_hunt_animal_red_crested_pochard_trigger = yes
+		GH_hunt_animal_red-crested_pochard_trigger = yes
 		GH_hunt_animal_whistling_duck_trigger = yes
 		GH_hunt_animal_kashiryan_whistling_duck_trigger = yes
 		GH_hunt_animal_goose_trigger = yes
 		GH_hunt_animal_greylag_goose_trigger = yes
 		GH_hunt_animal_barnacle_goose_trigger = yes
 		GH_hunt_animal_brant_trigger = yes
-		GH_hunt_animal_red_breasted_goose_trigger = yes
+		GH_hunt_animal_red-breasted_goose_trigger = yes
 		GH_hunt_animal_khenemhat_goose_trigger = yes
 		GH_hunt_animal_cotton_pygmy_goose_trigger = yes
-		GH_hunt_animal_spur_winged_goose_trigger = yes
+		GH_hunt_animal_spur-winged_goose_trigger = yes
 		GH_hunt_animal_swan_trigger = yes
 		GH_hunt_animal_whooper_swan_trigger = yes
 		GH_hunt_animal_mute_swan_trigger = yes
@@ -11553,7 +11567,7 @@ GH_hunt_small_local_game_available_in_province_trigger = {
 		GH_hunt_animal_silver_grebe_trigger = yes
 		GH_hunt_animal_loon_trigger = yes
 		GH_hunt_animal_common_loon_trigger = yes
-		GH_hunt_animal_red_throated_loon_trigger = yes
+		GH_hunt_animal_red-throated_loon_trigger = yes
 		GH_hunt_animal_arctic_loon_trigger = yes
 		GH_hunt_animal_gamebird_trigger = yes
 		GH_hunt_animal_quail_trigger = yes
@@ -11603,7 +11617,7 @@ GH_hunt_trophy_hide_small_available_in_province_trigger = {
 		GH_hunt_animal_three_toed_sloth_trigger = yes
 		GH_hunt_animal_kursha_trigger = yes
 		GH_hunt_animal_lemur_trigger = yes
-		GH_hunt_animal_ring_tailed_lemur_trigger = yes
+		GH_hunt_animal_ring-tailed_lemur_trigger = yes
 		GH_hunt_animal_brown_lemur_trigger = yes
 		GH_hunt_animal_black_lemur_trigger = yes
 		GH_hunt_animal_indri_trigger = yes
@@ -11667,7 +11681,7 @@ GH_hunt_herbivore_available_in_province_trigger = {
 		GH_hunt_animal_markhor_trigger = yes
 		GH_hunt_animal_rhinoceros_trigger = yes
 		GH_hunt_animal_lemur_trigger = yes
-		GH_hunt_animal_ring_tailed_lemur_trigger = yes
+		GH_hunt_animal_ring-tailed_lemur_trigger = yes
 		GH_hunt_animal_brown_lemur_trigger = yes
 		GH_hunt_animal_black_lemur_trigger = yes
 		GH_hunt_animal_indri_trigger = yes
@@ -11882,7 +11896,7 @@ GH_hunt_dangerous_local_game_available_in_province_trigger = {
 		GH_hunt_animal_jackal_trigger = yes
 		GH_hunt_animal_lymrill_trigger = yes
 		GH_hunt_animal_crocotta_trigger = yes
-		GH_hunt_animal_apep_ibizan_trigger = yes
+		GH_hunt_animal_apep-ibizan_trigger = yes
 		GH_hunt_animal_hyena_trigger = yes
 		GH_hunt_animal_bear_trigger = yes
 		GH_hunt_animal_brown_bear_trigger = yes
@@ -11910,7 +11924,7 @@ GH_hunt_dangerous_local_game_available_in_province_trigger = {
 		GH_hunt_animal_snake_trigger = yes
 		GH_hunt_animal_king_cobra_trigger = yes
 		GH_hunt_animal_emperor_cobra_trigger = yes
-		GH_hunt_animal_twin_serpent_trigger = yes
+		GH_hunt_animal_twin-serpent_trigger = yes
 		GH_hunt_animal_reptile_trigger = yes
 		GH_hunt_animal_rovarskan_dragon_trigger = yes
 		GH_hunt_animal_great_rahksasa_trigger = yes
@@ -11994,7 +12008,7 @@ GH_hunt_monstrous_local_game_available_in_province_trigger = {
 		GH_hunt_animal_dire_stag_trigger = yes
 		GH_hunt_animal_lymrill_trigger = yes
 		GH_hunt_animal_crocotta_trigger = yes
-		GH_hunt_animal_apep_ibizan_trigger = yes
+		GH_hunt_animal_apep-ibizan_trigger = yes
 		GH_hunt_animal_kursha_trigger = yes
 		GH_hunt_animal_owlbear_trigger = yes
 		GH_hunt_animal_karkadann_trigger = yes
@@ -12109,7 +12123,7 @@ GH_hunt_trophy_skull_available_in_province_trigger = {
 		GH_hunt_animal_sand_fox_trigger = yes
 		GH_hunt_animal_fennec_fox_trigger = yes
 		GH_hunt_animal_crocotta_trigger = yes
-		GH_hunt_animal_apep_ibizan_trigger = yes
+		GH_hunt_animal_apep-ibizan_trigger = yes
 		GH_hunt_animal_goat_trigger = yes
 		GH_hunt_animal_ibex_trigger = yes
 		GH_hunt_animal_tahr_trigger = yes
@@ -12205,7 +12219,7 @@ GH_hunt_predator_available_in_province_trigger = {
 		GH_hunt_animal_jackal_trigger = yes
 		GH_hunt_animal_lymrill_trigger = yes
 		GH_hunt_animal_crocotta_trigger = yes
-		GH_hunt_animal_apep_ibizan_trigger = yes
+		GH_hunt_animal_apep-ibizan_trigger = yes
 		GH_hunt_animal_hyena_trigger = yes
 		GH_hunt_animal_bear_trigger = yes
 		GH_hunt_animal_brown_bear_trigger = yes
@@ -12228,7 +12242,7 @@ GH_hunt_predator_available_in_province_trigger = {
 		GH_hunt_animal_snake_trigger = yes
 		GH_hunt_animal_king_cobra_trigger = yes
 		GH_hunt_animal_emperor_cobra_trigger = yes
-		GH_hunt_animal_twin_serpent_trigger = yes
+		GH_hunt_animal_twin-serpent_trigger = yes
 		GH_hunt_animal_reptile_trigger = yes
 		GH_hunt_animal_rovarskan_dragon_trigger = yes
 		GH_hunt_animal_great_rahksasa_trigger = yes
@@ -12274,7 +12288,7 @@ GH_hunt_intelligent_available_in_province_trigger = {
 GH_hunt_extremely_dangerous_local_game_available_in_province_trigger = {
 	OR = {
 		GH_hunt_animal_crocotta_trigger = yes
-		GH_hunt_animal_apep_ibizan_trigger = yes
+		GH_hunt_animal_apep-ibizan_trigger = yes
 		GH_hunt_animal_owlbear_trigger = yes
 		GH_hunt_animal_karkadann_trigger = yes
 		GH_hunt_animal_armazli_rhinoceros_trigger = yes
@@ -12313,7 +12327,7 @@ GH_hunt_trophy_toxin_available_in_province_trigger = {
 		GH_hunt_animal_snake_trigger = yes
 		GH_hunt_animal_king_cobra_trigger = yes
 		GH_hunt_animal_emperor_cobra_trigger = yes
-		GH_hunt_animal_twin_serpent_trigger = yes
+		GH_hunt_animal_twin-serpent_trigger = yes
 		GH_hunt_animal_rovarskan_dragon_trigger = yes
 		GH_hunt_animal_great_rahksasa_trigger = yes
 		GH_hunt_animal_naga_trigger = yes
@@ -12334,7 +12348,7 @@ GH_hunt_trophy_toxin_available_in_province_trigger = {
 GH_hunt_falconry_local_game_available_in_province_trigger = {
 	OR = {
 		GH_hunt_animal_waterfowl_trigger = yes
-		GH_hunt_animal_duck_fix_trigger = yes
+		GH_hunt_animal_duck_trigger = yes
 		GH_hunt_animal_mallard_trigger = yes
 		GH_hunt_animal_gadwall_trigger = yes
 		GH_hunt_animal_teal_trigger = yes
@@ -12345,26 +12359,26 @@ GH_hunt_falconry_local_game_available_in_province_trigger = {
 		GH_hunt_animal_tufted_duck_trigger = yes
 		GH_hunt_animal_scoter_trigger = yes
 		GH_hunt_animal_velvet_scoter_trigger = yes
-		GH_hunt_animal_long_tailed_duck_trigger = yes
+		GH_hunt_animal_long-tailed_duck_trigger = yes
 		GH_hunt_animal_goldeneye_trigger = yes
 		GH_hunt_animal_smew_trigger = yes
 		GH_hunt_animal_merganser_trigger = yes
 		GH_hunt_animal_wigeon_trigger = yes
 		GH_hunt_animal_black_duck_trigger = yes
 		GH_hunt_animal_goldenbill_duck_trigger = yes
-		GH_hunt_animal_kashiryan_spot_billed_duck_trigger = yes
+		GH_hunt_animal_kashiryan_spot-billed_duck_trigger = yes
 		GH_hunt_animal_pochard_trigger = yes
-		GH_hunt_animal_red_crested_pochard_trigger = yes
+		GH_hunt_animal_red-crested_pochard_trigger = yes
 		GH_hunt_animal_whistling_duck_trigger = yes
 		GH_hunt_animal_kashiryan_whistling_duck_trigger = yes
 		GH_hunt_animal_goose_trigger = yes
 		GH_hunt_animal_greylag_goose_trigger = yes
 		GH_hunt_animal_barnacle_goose_trigger = yes
 		GH_hunt_animal_brant_trigger = yes
-		GH_hunt_animal_red_breasted_goose_trigger = yes
+		GH_hunt_animal_red-breasted_goose_trigger = yes
 		GH_hunt_animal_khenemhat_goose_trigger = yes
 		GH_hunt_animal_cotton_pygmy_goose_trigger = yes
-		GH_hunt_animal_spur_winged_goose_trigger = yes
+		GH_hunt_animal_spur-winged_goose_trigger = yes
 		GH_hunt_animal_swan_trigger = yes
 		GH_hunt_animal_whooper_swan_trigger = yes
 		GH_hunt_animal_mute_swan_trigger = yes
@@ -12376,7 +12390,7 @@ GH_hunt_falconry_local_game_available_in_province_trigger = {
 		GH_hunt_animal_silver_grebe_trigger = yes
 		GH_hunt_animal_loon_trigger = yes
 		GH_hunt_animal_common_loon_trigger = yes
-		GH_hunt_animal_red_throated_loon_trigger = yes
+		GH_hunt_animal_red-throated_loon_trigger = yes
 		GH_hunt_animal_arctic_loon_trigger = yes
 		GH_hunt_animal_gamebird_trigger = yes
 		GH_hunt_animal_quail_trigger = yes
@@ -12406,7 +12420,7 @@ GH_hunt_falconry_local_game_available_in_province_trigger = {
 GH_hunt_migratory_available_in_province_trigger = {
 	OR = {
 		GH_hunt_animal_waterfowl_trigger = yes
-		GH_hunt_animal_duck_fix_trigger = yes
+		GH_hunt_animal_duck_trigger = yes
 		GH_hunt_animal_mallard_trigger = yes
 		GH_hunt_animal_gadwall_trigger = yes
 		GH_hunt_animal_teal_trigger = yes
@@ -12417,26 +12431,26 @@ GH_hunt_migratory_available_in_province_trigger = {
 		GH_hunt_animal_tufted_duck_trigger = yes
 		GH_hunt_animal_scoter_trigger = yes
 		GH_hunt_animal_velvet_scoter_trigger = yes
-		GH_hunt_animal_long_tailed_duck_trigger = yes
+		GH_hunt_animal_long-tailed_duck_trigger = yes
 		GH_hunt_animal_goldeneye_trigger = yes
 		GH_hunt_animal_smew_trigger = yes
 		GH_hunt_animal_merganser_trigger = yes
 		GH_hunt_animal_wigeon_trigger = yes
 		GH_hunt_animal_black_duck_trigger = yes
 		GH_hunt_animal_goldenbill_duck_trigger = yes
-		GH_hunt_animal_kashiryan_spot_billed_duck_trigger = yes
+		GH_hunt_animal_kashiryan_spot-billed_duck_trigger = yes
 		GH_hunt_animal_pochard_trigger = yes
-		GH_hunt_animal_red_crested_pochard_trigger = yes
+		GH_hunt_animal_red-crested_pochard_trigger = yes
 		GH_hunt_animal_whistling_duck_trigger = yes
 		GH_hunt_animal_kashiryan_whistling_duck_trigger = yes
 		GH_hunt_animal_goose_trigger = yes
 		GH_hunt_animal_greylag_goose_trigger = yes
 		GH_hunt_animal_barnacle_goose_trigger = yes
 		GH_hunt_animal_brant_trigger = yes
-		GH_hunt_animal_red_breasted_goose_trigger = yes
+		GH_hunt_animal_red-breasted_goose_trigger = yes
 		GH_hunt_animal_khenemhat_goose_trigger = yes
 		GH_hunt_animal_cotton_pygmy_goose_trigger = yes
-		GH_hunt_animal_spur_winged_goose_trigger = yes
+		GH_hunt_animal_spur-winged_goose_trigger = yes
 		GH_hunt_animal_swan_trigger = yes
 		GH_hunt_animal_whooper_swan_trigger = yes
 		GH_hunt_animal_mute_swan_trigger = yes
@@ -12448,7 +12462,7 @@ GH_hunt_migratory_available_in_province_trigger = {
 		GH_hunt_animal_silver_grebe_trigger = yes
 		GH_hunt_animal_loon_trigger = yes
 		GH_hunt_animal_common_loon_trigger = yes
-		GH_hunt_animal_red_throated_loon_trigger = yes
+		GH_hunt_animal_red-throated_loon_trigger = yes
 		GH_hunt_animal_arctic_loon_trigger = yes
 		GH_hunt_animal_gamebird_trigger = yes
 		GH_hunt_animal_quail_trigger = yes
@@ -12646,14 +12660,14 @@ GH_creature_danger_tier_01_trigger = {
 		$VAR$ ?= flag:sloth
 		$VAR$ ?= flag:three_toed_sloth
 		$VAR$ ?= flag:lemur
-		$VAR$ ?= flag:ring_tailed_lemur
+		$VAR$ ?= flag:ring-tailed_lemur
 		$VAR$ ?= flag:brown_lemur
 		$VAR$ ?= flag:black_lemur
 		$VAR$ ?= flag:indri
 		$VAR$ ?= flag:bat
 		$VAR$ ?= flag:vampire_bat
 		$VAR$ ?= flag:waterfowl
-		$VAR$ ?= flag:duck_fix
+		$VAR$ ?= flag:duck
 		$VAR$ ?= flag:mallard
 		$VAR$ ?= flag:gadwall
 		$VAR$ ?= flag:teal
@@ -12664,16 +12678,16 @@ GH_creature_danger_tier_01_trigger = {
 		$VAR$ ?= flag:tufted_duck
 		$VAR$ ?= flag:scoter
 		$VAR$ ?= flag:velvet_scoter
-		$VAR$ ?= flag:long_tailed_duck
+		$VAR$ ?= flag:long-tailed_duck
 		$VAR$ ?= flag:goldeneye
 		$VAR$ ?= flag:smew
 		$VAR$ ?= flag:merganser
 		$VAR$ ?= flag:wigeon
 		$VAR$ ?= flag:black_duck
 		$VAR$ ?= flag:goldenbill_duck
-		$VAR$ ?= flag:kashiryan_spot_billed_duck
+		$VAR$ ?= flag:kashiryan_spot-billed_duck
 		$VAR$ ?= flag:pochard
-		$VAR$ ?= flag:red_crested_pochard
+		$VAR$ ?= flag:red-crested_pochard
 		$VAR$ ?= flag:whistling_duck
 		$VAR$ ?= flag:kashiryan_whistling_duck
 		$VAR$ ?= flag:swan
@@ -12687,7 +12701,7 @@ GH_creature_danger_tier_01_trigger = {
 		$VAR$ ?= flag:silver_grebe
 		$VAR$ ?= flag:loon
 		$VAR$ ?= flag:common_loon
-		$VAR$ ?= flag:red_throated_loon
+		$VAR$ ?= flag:red-throated_loon
 		$VAR$ ?= flag:arctic_loon
 		$VAR$ ?= flag:gamebird
 		$VAR$ ?= flag:quail
@@ -12747,10 +12761,10 @@ GH_creature_danger_tier_02_trigger = {
 		$VAR$ ?= flag:greylag_goose
 		$VAR$ ?= flag:barnacle_goose
 		$VAR$ ?= flag:brant
-		$VAR$ ?= flag:red_breasted_goose
+		$VAR$ ?= flag:red-breasted_goose
 		$VAR$ ?= flag:khenemhat_goose
 		$VAR$ ?= flag:cotton_pygmy_goose
-		$VAR$ ?= flag:spur_winged_goose
+		$VAR$ ?= flag:spur-winged_goose
 		$VAR$ ?= flag:emperor_peafowl
 		$VAR$ ?= flag:ostrich
 		$VAR$ ?= flag:raptor
@@ -12777,6 +12791,7 @@ GH_creature_danger_tier_03_trigger = {
 		$VAR$ ?= flag:oryx
 		$VAR$ ?= flag:screwhorn_antelope
 		$VAR$ ?= flag:saiga
+		$VAR$ ?= flag:dwarf_elephant
 		$VAR$ ?= flag:steppe_wolf
 		$VAR$ ?= flag:jackal
 		$VAR$ ?= flag:kursha
@@ -12812,7 +12827,6 @@ GH_creature_danger_tier_04_trigger = {
 		$VAR$ ?= flag:wood_bison
 		$VAR$ ?= flag:steppe_bison
 		$VAR$ ?= flag:gaur
-		$VAR$ ?= flag:dwarf_elephant
 		$VAR$ ?= flag:aurochs
 		$VAR$ ?= flag:pig
 		$VAR$ ?= flag:boar
@@ -12822,7 +12836,7 @@ GH_creature_danger_tier_04_trigger = {
 		$VAR$ ?= flag:caracal
 		$VAR$ ?= flag:gorilla
 		$VAR$ ?= flag:emperor_cobra
-		$VAR$ ?= flag:twin_serpent
+		$VAR$ ?= flag:twin-serpent
 		$VAR$ ?= flag:royal_falcon
 		$VAR$ ?= flag:giant_reptile
 		$VAR$ ?= flag:giant_worm
@@ -12934,7 +12948,7 @@ GH_creature_danger_tier_07_trigger = {
 GH_creature_danger_tier_08_trigger = {
 	OR = {
 		$VAR$ = flag:any
-		$VAR$ ?= flag:apep_ibizan
+		$VAR$ ?= flag:apep-ibizan
 		$VAR$ ?= flag:roc
 		$VAR$ ?= flag:gaunt
 		$VAR$ ?= flag:zilant
@@ -12994,7 +13008,7 @@ GH_creature_prestige_tier_01_trigger = {
 		$VAR$ ?= flag:bat
 		$VAR$ ?= flag:vampire_bat
 		$VAR$ ?= flag:waterfowl
-		$VAR$ ?= flag:duck_fix
+		$VAR$ ?= flag:duck
 		$VAR$ ?= flag:mallard
 		$VAR$ ?= flag:gadwall
 		$VAR$ ?= flag:teal
@@ -13002,20 +13016,20 @@ GH_creature_prestige_tier_01_trigger = {
 		$VAR$ ?= flag:shelduck
 		$VAR$ ?= flag:scaup
 		$VAR$ ?= flag:eider
-		$VAR$ ?= flag:long_tailed_duck
+		$VAR$ ?= flag:long-tailed_duck
 		$VAR$ ?= flag:goldeneye
 		$VAR$ ?= flag:merganser
 		$VAR$ ?= flag:wigeon
-		$VAR$ ?= flag:kashiryan_spot_billed_duck
+		$VAR$ ?= flag:kashiryan_spot-billed_duck
 		$VAR$ ?= flag:pochard
-		$VAR$ ?= flag:red_crested_pochard
+		$VAR$ ?= flag:red-crested_pochard
 		$VAR$ ?= flag:wader
 		$VAR$ ?= flag:grebe
 		$VAR$ ?= flag:dabchick
 		$VAR$ ?= flag:horned_grebe
 		$VAR$ ?= flag:loon
 		$VAR$ ?= flag:common_loon
-		$VAR$ ?= flag:red_throated_loon
+		$VAR$ ?= flag:red-throated_loon
 		$VAR$ ?= flag:arctic_loon
 		$VAR$ ?= flag:gamebird
 		$VAR$ ?= flag:quail
@@ -13082,10 +13096,10 @@ GH_creature_prestige_tier_02_trigger = {
 		$VAR$ ?= flag:greylag_goose
 		$VAR$ ?= flag:barnacle_goose
 		$VAR$ ?= flag:brant
-		$VAR$ ?= flag:red_breasted_goose
+		$VAR$ ?= flag:red-breasted_goose
 		$VAR$ ?= flag:khenemhat_goose
 		$VAR$ ?= flag:cotton_pygmy_goose
-		$VAR$ ?= flag:spur_winged_goose
+		$VAR$ ?= flag:spur-winged_goose
 		$VAR$ ?= flag:swan
 		$VAR$ ?= flag:whooper_swan
 		$VAR$ ?= flag:mute_swan
@@ -13108,7 +13122,7 @@ GH_creature_prestige_tier_03_trigger = {
 		$VAR$ ?= flag:kursha
 		$VAR$ ?= flag:hyena
 		$VAR$ ?= flag:lemur
-		$VAR$ ?= flag:ring_tailed_lemur
+		$VAR$ ?= flag:ring-tailed_lemur
 		$VAR$ ?= flag:indri
 		$VAR$ ?= flag:reptile
 		$VAR$ ?= flag:black_duck
@@ -13164,7 +13178,7 @@ GH_creature_prestige_tier_04_trigger = {
 		$VAR$ ?= flag:fossa
 		$VAR$ ?= flag:gorilla
 		$VAR$ ?= flag:emperor_cobra
-		$VAR$ ?= flag:twin_serpent
+		$VAR$ ?= flag:twin-serpent
 		$VAR$ ?= flag:smew
 		$VAR$ ?= flag:emperor_peafowl
 		$VAR$ ?= flag:royal_falcon
@@ -13279,7 +13293,7 @@ GH_creature_prestige_tier_07_trigger = {
 GH_creature_prestige_tier_08_trigger = {
 	OR = {
 		$VAR$ = flag:any
-		$VAR$ ?= flag:apep_ibizan
+		$VAR$ ?= flag:apep-ibizan
 		$VAR$ ?= flag:roc
 		$VAR$ ?= flag:roaring_lizard
 		$VAR$ ?= flag:chimera
@@ -13330,7 +13344,7 @@ GH_creature_provisions_tier_01_trigger = {
 		$VAR$ ?= flag:tahr
 		$VAR$ ?= flag:markhor
 		$VAR$ ?= flag:lemur
-		$VAR$ ?= flag:ring_tailed_lemur
+		$VAR$ ?= flag:ring-tailed_lemur
 		$VAR$ ?= flag:brown_lemur
 		$VAR$ ?= flag:black_lemur
 		$VAR$ ?= flag:indri
@@ -13349,7 +13363,7 @@ GH_creature_provisions_tier_01_trigger = {
 		$VAR$ ?= flag:silver_grebe
 		$VAR$ ?= flag:loon
 		$VAR$ ?= flag:common_loon
-		$VAR$ ?= flag:red_throated_loon
+		$VAR$ ?= flag:red-throated_loon
 		$VAR$ ?= flag:arctic_loon
 		$VAR$ ?= flag:gamebird
 		$VAR$ ?= flag:quail
@@ -13420,7 +13434,7 @@ GH_creature_provisions_tier_02_trigger = {
 		$VAR$ ?= flag:monkey
 		$VAR$ ?= flag:emperor_cobra
 		$VAR$ ?= flag:waterfowl
-		$VAR$ ?= flag:duck_fix
+		$VAR$ ?= flag:duck
 		$VAR$ ?= flag:mallard
 		$VAR$ ?= flag:gadwall
 		$VAR$ ?= flag:teal
@@ -13431,26 +13445,26 @@ GH_creature_provisions_tier_02_trigger = {
 		$VAR$ ?= flag:tufted_duck
 		$VAR$ ?= flag:scoter
 		$VAR$ ?= flag:velvet_scoter
-		$VAR$ ?= flag:long_tailed_duck
+		$VAR$ ?= flag:long-tailed_duck
 		$VAR$ ?= flag:goldeneye
 		$VAR$ ?= flag:smew
 		$VAR$ ?= flag:merganser
 		$VAR$ ?= flag:wigeon
 		$VAR$ ?= flag:black_duck
 		$VAR$ ?= flag:goldenbill_duck
-		$VAR$ ?= flag:kashiryan_spot_billed_duck
+		$VAR$ ?= flag:kashiryan_spot-billed_duck
 		$VAR$ ?= flag:pochard
-		$VAR$ ?= flag:red_crested_pochard
+		$VAR$ ?= flag:red-crested_pochard
 		$VAR$ ?= flag:whistling_duck
 		$VAR$ ?= flag:kashiryan_whistling_duck
 		$VAR$ ?= flag:goose
 		$VAR$ ?= flag:greylag_goose
 		$VAR$ ?= flag:barnacle_goose
 		$VAR$ ?= flag:brant
-		$VAR$ ?= flag:red_breasted_goose
+		$VAR$ ?= flag:red-breasted_goose
 		$VAR$ ?= flag:khenemhat_goose
 		$VAR$ ?= flag:cotton_pygmy_goose
-		$VAR$ ?= flag:spur_winged_goose
+		$VAR$ ?= flag:spur-winged_goose
 		$VAR$ ?= flag:raptor
 		$VAR$ ?= flag:karankoncolos
 		$VAR$ ?= flag:giant_reptile
@@ -13492,13 +13506,13 @@ GH_creature_provisions_tier_03_trigger = {
 		$VAR$ ?= flag:wolf
 		$VAR$ ?= flag:steppe_wolf
 		$VAR$ ?= flag:jackal
-		$VAR$ ?= flag:apep_ibizan
+		$VAR$ ?= flag:apep-ibizan
 		$VAR$ ?= flag:kursha
 		$VAR$ ?= flag:hyena
 		$VAR$ ?= flag:owlbear
 		$VAR$ ?= flag:panther
 		$VAR$ ?= flag:primate
-		$VAR$ ?= flag:twin_serpent
+		$VAR$ ?= flag:twin-serpent
 		$VAR$ ?= flag:reptile
 		$VAR$ ?= flag:equine
 		$VAR$ ?= flag:zebra
@@ -13733,14 +13747,14 @@ GH_animal_type_standard_local_game_trigger = {
 		$VAR$ ?= flag:monkey
 		$VAR$ ?= flag:gorilla
 		$VAR$ ?= flag:lemur
-		$VAR$ ?= flag:ring_tailed_lemur
+		$VAR$ ?= flag:ring-tailed_lemur
 		$VAR$ ?= flag:brown_lemur
 		$VAR$ ?= flag:black_lemur
 		$VAR$ ?= flag:indri
 		$VAR$ ?= flag:snake
 		$VAR$ ?= flag:king_cobra
 		$VAR$ ?= flag:emperor_cobra
-		$VAR$ ?= flag:twin_serpent
+		$VAR$ ?= flag:twin-serpent
 		$VAR$ ?= flag:reptile
 		$VAR$ ?= flag:rovarskan_dragon
 		$VAR$ ?= flag:crocodile
@@ -13779,7 +13793,7 @@ GH_animal_type_small_local_game_trigger = {
 		$VAR$ ?= flag:tahr
 		$VAR$ ?= flag:markhor
 		$VAR$ ?= flag:lemur
-		$VAR$ ?= flag:ring_tailed_lemur
+		$VAR$ ?= flag:ring-tailed_lemur
 		$VAR$ ?= flag:brown_lemur
 		$VAR$ ?= flag:black_lemur
 		$VAR$ ?= flag:indri
@@ -13788,9 +13802,9 @@ GH_animal_type_small_local_game_trigger = {
 		$VAR$ ?= flag:snake
 		$VAR$ ?= flag:king_cobra
 		$VAR$ ?= flag:emperor_cobra
-		$VAR$ ?= flag:twin_serpent
+		$VAR$ ?= flag:twin-serpent
 		$VAR$ ?= flag:waterfowl
-		$VAR$ ?= flag:duck_fix
+		$VAR$ ?= flag:duck
 		$VAR$ ?= flag:mallard
 		$VAR$ ?= flag:gadwall
 		$VAR$ ?= flag:teal
@@ -13801,26 +13815,26 @@ GH_animal_type_small_local_game_trigger = {
 		$VAR$ ?= flag:tufted_duck
 		$VAR$ ?= flag:scoter
 		$VAR$ ?= flag:velvet_scoter
-		$VAR$ ?= flag:long_tailed_duck
+		$VAR$ ?= flag:long-tailed_duck
 		$VAR$ ?= flag:goldeneye
 		$VAR$ ?= flag:smew
 		$VAR$ ?= flag:merganser
 		$VAR$ ?= flag:wigeon
 		$VAR$ ?= flag:black_duck
 		$VAR$ ?= flag:goldenbill_duck
-		$VAR$ ?= flag:kashiryan_spot_billed_duck
+		$VAR$ ?= flag:kashiryan_spot-billed_duck
 		$VAR$ ?= flag:pochard
-		$VAR$ ?= flag:red_crested_pochard
+		$VAR$ ?= flag:red-crested_pochard
 		$VAR$ ?= flag:whistling_duck
 		$VAR$ ?= flag:kashiryan_whistling_duck
 		$VAR$ ?= flag:goose
 		$VAR$ ?= flag:greylag_goose
 		$VAR$ ?= flag:barnacle_goose
 		$VAR$ ?= flag:brant
-		$VAR$ ?= flag:red_breasted_goose
+		$VAR$ ?= flag:red-breasted_goose
 		$VAR$ ?= flag:khenemhat_goose
 		$VAR$ ?= flag:cotton_pygmy_goose
-		$VAR$ ?= flag:spur_winged_goose
+		$VAR$ ?= flag:spur-winged_goose
 		$VAR$ ?= flag:swan
 		$VAR$ ?= flag:whooper_swan
 		$VAR$ ?= flag:mute_swan
@@ -13832,7 +13846,7 @@ GH_animal_type_small_local_game_trigger = {
 		$VAR$ ?= flag:silver_grebe
 		$VAR$ ?= flag:loon
 		$VAR$ ?= flag:common_loon
-		$VAR$ ?= flag:red_throated_loon
+		$VAR$ ?= flag:red-throated_loon
 		$VAR$ ?= flag:arctic_loon
 		$VAR$ ?= flag:gamebird
 		$VAR$ ?= flag:quail
@@ -13882,7 +13896,7 @@ GH_animal_type_trophy_hide_small_trigger = {
 		$VAR$ ?= flag:three_toed_sloth
 		$VAR$ ?= flag:kursha
 		$VAR$ ?= flag:lemur
-		$VAR$ ?= flag:ring_tailed_lemur
+		$VAR$ ?= flag:ring-tailed_lemur
 		$VAR$ ?= flag:brown_lemur
 		$VAR$ ?= flag:black_lemur
 		$VAR$ ?= flag:indri
@@ -13946,7 +13960,7 @@ GH_animal_type_herbivore_trigger = {
 		$VAR$ ?= flag:markhor
 		$VAR$ ?= flag:rhinoceros
 		$VAR$ ?= flag:lemur
-		$VAR$ ?= flag:ring_tailed_lemur
+		$VAR$ ?= flag:ring-tailed_lemur
 		$VAR$ ?= flag:brown_lemur
 		$VAR$ ?= flag:black_lemur
 		$VAR$ ?= flag:indri
@@ -14161,7 +14175,7 @@ GH_animal_type_dangerous_local_game_trigger = {
 		$VAR$ ?= flag:jackal
 		$VAR$ ?= flag:lymrill
 		$VAR$ ?= flag:crocotta
-		$VAR$ ?= flag:apep_ibizan
+		$VAR$ ?= flag:apep-ibizan
 		$VAR$ ?= flag:hyena
 		$VAR$ ?= flag:bear
 		$VAR$ ?= flag:brown_bear
@@ -14189,7 +14203,7 @@ GH_animal_type_dangerous_local_game_trigger = {
 		$VAR$ ?= flag:snake
 		$VAR$ ?= flag:king_cobra
 		$VAR$ ?= flag:emperor_cobra
-		$VAR$ ?= flag:twin_serpent
+		$VAR$ ?= flag:twin-serpent
 		$VAR$ ?= flag:reptile
 		$VAR$ ?= flag:rovarskan_dragon
 		$VAR$ ?= flag:great_rahksasa
@@ -14273,7 +14287,7 @@ GH_animal_type_monstrous_local_game_trigger = {
 		$VAR$ ?= flag:dire_stag
 		$VAR$ ?= flag:lymrill
 		$VAR$ ?= flag:crocotta
-		$VAR$ ?= flag:apep_ibizan
+		$VAR$ ?= flag:apep-ibizan
 		$VAR$ ?= flag:kursha
 		$VAR$ ?= flag:owlbear
 		$VAR$ ?= flag:karkadann
@@ -14388,7 +14402,7 @@ GH_animal_type_trophy_skull_trigger = {
 		$VAR$ ?= flag:sand_fox
 		$VAR$ ?= flag:fennec_fox
 		$VAR$ ?= flag:crocotta
-		$VAR$ ?= flag:apep_ibizan
+		$VAR$ ?= flag:apep-ibizan
 		$VAR$ ?= flag:goat
 		$VAR$ ?= flag:ibex
 		$VAR$ ?= flag:tahr
@@ -14484,7 +14498,7 @@ GH_animal_type_predator_trigger = {
 		$VAR$ ?= flag:jackal
 		$VAR$ ?= flag:lymrill
 		$VAR$ ?= flag:crocotta
-		$VAR$ ?= flag:apep_ibizan
+		$VAR$ ?= flag:apep-ibizan
 		$VAR$ ?= flag:hyena
 		$VAR$ ?= flag:bear
 		$VAR$ ?= flag:brown_bear
@@ -14507,7 +14521,7 @@ GH_animal_type_predator_trigger = {
 		$VAR$ ?= flag:snake
 		$VAR$ ?= flag:king_cobra
 		$VAR$ ?= flag:emperor_cobra
-		$VAR$ ?= flag:twin_serpent
+		$VAR$ ?= flag:twin-serpent
 		$VAR$ ?= flag:reptile
 		$VAR$ ?= flag:rovarskan_dragon
 		$VAR$ ?= flag:great_rahksasa
@@ -14553,7 +14567,7 @@ GH_animal_type_intelligent_trigger = {
 GH_animal_type_extremely_dangerous_local_game_trigger = {
 	OR = {
 		$VAR$ ?= flag:crocotta
-		$VAR$ ?= flag:apep_ibizan
+		$VAR$ ?= flag:apep-ibizan
 		$VAR$ ?= flag:owlbear
 		$VAR$ ?= flag:karkadann
 		$VAR$ ?= flag:armazli_rhinoceros
@@ -14592,7 +14606,7 @@ GH_animal_type_trophy_toxin_trigger = {
 		$VAR$ ?= flag:snake
 		$VAR$ ?= flag:king_cobra
 		$VAR$ ?= flag:emperor_cobra
-		$VAR$ ?= flag:twin_serpent
+		$VAR$ ?= flag:twin-serpent
 		$VAR$ ?= flag:rovarskan_dragon
 		$VAR$ ?= flag:great_rahksasa
 		$VAR$ ?= flag:naga
@@ -14613,7 +14627,7 @@ GH_animal_type_trophy_toxin_trigger = {
 GH_animal_type_falconry_local_game_trigger = {
 	OR = {
 		$VAR$ ?= flag:waterfowl
-		$VAR$ ?= flag:duck_fix
+		$VAR$ ?= flag:duck
 		$VAR$ ?= flag:mallard
 		$VAR$ ?= flag:gadwall
 		$VAR$ ?= flag:teal
@@ -14624,26 +14638,26 @@ GH_animal_type_falconry_local_game_trigger = {
 		$VAR$ ?= flag:tufted_duck
 		$VAR$ ?= flag:scoter
 		$VAR$ ?= flag:velvet_scoter
-		$VAR$ ?= flag:long_tailed_duck
+		$VAR$ ?= flag:long-tailed_duck
 		$VAR$ ?= flag:goldeneye
 		$VAR$ ?= flag:smew
 		$VAR$ ?= flag:merganser
 		$VAR$ ?= flag:wigeon
 		$VAR$ ?= flag:black_duck
 		$VAR$ ?= flag:goldenbill_duck
-		$VAR$ ?= flag:kashiryan_spot_billed_duck
+		$VAR$ ?= flag:kashiryan_spot-billed_duck
 		$VAR$ ?= flag:pochard
-		$VAR$ ?= flag:red_crested_pochard
+		$VAR$ ?= flag:red-crested_pochard
 		$VAR$ ?= flag:whistling_duck
 		$VAR$ ?= flag:kashiryan_whistling_duck
 		$VAR$ ?= flag:goose
 		$VAR$ ?= flag:greylag_goose
 		$VAR$ ?= flag:barnacle_goose
 		$VAR$ ?= flag:brant
-		$VAR$ ?= flag:red_breasted_goose
+		$VAR$ ?= flag:red-breasted_goose
 		$VAR$ ?= flag:khenemhat_goose
 		$VAR$ ?= flag:cotton_pygmy_goose
-		$VAR$ ?= flag:spur_winged_goose
+		$VAR$ ?= flag:spur-winged_goose
 		$VAR$ ?= flag:swan
 		$VAR$ ?= flag:whooper_swan
 		$VAR$ ?= flag:mute_swan
@@ -14655,7 +14669,7 @@ GH_animal_type_falconry_local_game_trigger = {
 		$VAR$ ?= flag:silver_grebe
 		$VAR$ ?= flag:loon
 		$VAR$ ?= flag:common_loon
-		$VAR$ ?= flag:red_throated_loon
+		$VAR$ ?= flag:red-throated_loon
 		$VAR$ ?= flag:arctic_loon
 		$VAR$ ?= flag:gamebird
 		$VAR$ ?= flag:quail
@@ -14685,7 +14699,7 @@ GH_animal_type_falconry_local_game_trigger = {
 GH_animal_type_migratory_trigger = {
 	OR = {
 		$VAR$ ?= flag:waterfowl
-		$VAR$ ?= flag:duck_fix
+		$VAR$ ?= flag:duck
 		$VAR$ ?= flag:mallard
 		$VAR$ ?= flag:gadwall
 		$VAR$ ?= flag:teal
@@ -14696,26 +14710,26 @@ GH_animal_type_migratory_trigger = {
 		$VAR$ ?= flag:tufted_duck
 		$VAR$ ?= flag:scoter
 		$VAR$ ?= flag:velvet_scoter
-		$VAR$ ?= flag:long_tailed_duck
+		$VAR$ ?= flag:long-tailed_duck
 		$VAR$ ?= flag:goldeneye
 		$VAR$ ?= flag:smew
 		$VAR$ ?= flag:merganser
 		$VAR$ ?= flag:wigeon
 		$VAR$ ?= flag:black_duck
 		$VAR$ ?= flag:goldenbill_duck
-		$VAR$ ?= flag:kashiryan_spot_billed_duck
+		$VAR$ ?= flag:kashiryan_spot-billed_duck
 		$VAR$ ?= flag:pochard
-		$VAR$ ?= flag:red_crested_pochard
+		$VAR$ ?= flag:red-crested_pochard
 		$VAR$ ?= flag:whistling_duck
 		$VAR$ ?= flag:kashiryan_whistling_duck
 		$VAR$ ?= flag:goose
 		$VAR$ ?= flag:greylag_goose
 		$VAR$ ?= flag:barnacle_goose
 		$VAR$ ?= flag:brant
-		$VAR$ ?= flag:red_breasted_goose
+		$VAR$ ?= flag:red-breasted_goose
 		$VAR$ ?= flag:khenemhat_goose
 		$VAR$ ?= flag:cotton_pygmy_goose
-		$VAR$ ?= flag:spur_winged_goose
+		$VAR$ ?= flag:spur-winged_goose
 		$VAR$ ?= flag:swan
 		$VAR$ ?= flag:whooper_swan
 		$VAR$ ?= flag:mute_swan
@@ -14727,7 +14741,7 @@ GH_animal_type_migratory_trigger = {
 		$VAR$ ?= flag:silver_grebe
 		$VAR$ ?= flag:loon
 		$VAR$ ?= flag:common_loon
-		$VAR$ ?= flag:red_throated_loon
+		$VAR$ ?= flag:red-throated_loon
 		$VAR$ ?= flag:arctic_loon
 		$VAR$ ?= flag:gamebird
 		$VAR$ ?= flag:quail
@@ -14939,7 +14953,7 @@ GH_hunt_killed_by_animal_trigger = {
 		death_reason = death_sand_fox
 		death_reason = death_fennec_fox
 		death_reason = death_crocotta
-		death_reason = death_apep_ibizan
+		death_reason = death_apep-ibizan
 		death_reason = death_goat
 		death_reason = death_ibex
 		death_reason = death_tahr

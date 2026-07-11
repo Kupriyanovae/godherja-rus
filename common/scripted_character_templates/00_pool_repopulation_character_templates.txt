@@ -61,33 +61,10 @@ pool_repopulate_prowess = {
 	}
 	dynasty = none
 	after_creation = {
-		random_list = {
-			200 = {
-				# Character is of average weight, nothing happens	
-			}
-			25 = {
-				change_current_weight = -25
-			}
-			25 = {
-				change_current_weight = -75
-			}
-			25 = {
-				change_current_weight = 25
-			}
-			25 = {
-				change_current_weight = 75
-			}
-			5 = {
-				change_current_weight = 100
-			}
-			5 = {
-				change_current_weight = 200
-			}
-		}
 		random = {
 			chance = 1
 			
-			add_trait = lifestyle_poet
+			add_trait = poet
 			
 			modifier = {
 				add = 10
@@ -185,20 +162,6 @@ pool_repopulate_prowess = {
 				}
 			}
 		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = giant_trait_more_common
-				}
-				NOT = {
-					has_trait = giant
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = giant
-			}
-		}
 		set_interesting_traits_and_modifiers_effect = yes
 		add_random_tiered_trait_xp_effect = {
 			TRAIT = lifestyle_blademaster
@@ -266,39 +229,16 @@ pool_repopulate_diplomacy = {
 		compassionate = {}
 		fickle = {}
 		forgiving = {}
-		lifestyle_poet = {}
+		poet = {}
 		tourney_participant = {}
 		lifestyle_traveler = {}
 	}
 	dynasty = none
 	after_creation = {
-		random_list = {
-			200 = {
-				# Character is of average weight, nothing happens	
-			}
-			25 = {
-				change_current_weight = -25
-			}
-			25 = {
-				change_current_weight = -75
-			}
-			25 = {
-				change_current_weight = 25
-			}
-			25 = {
-				change_current_weight = 75
-			}
-			5 = {
-				change_current_weight = 100
-			}
-			5 = {
-				change_current_weight = 200
-			}
-		}
 		random = {
 			chance = 1
 			
-			add_trait = lifestyle_poet
+			add_trait = poet
 			
 			modifier = {
 				add = 15
@@ -355,17 +295,6 @@ pool_repopulate_diplomacy = {
 				MAX_SPELL_LEVEL = generated_character_max_spell_level_default_value
 			}
 		}
-		if = { ## GH ADDITION: Glassmaking
-			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
-			random = {
-				chance = 10
-				add_trait = gh_lifestyle_glassmith
-				add_trait_xp = {
-					trait = gh_lifestyle_glassmith
-					value = { 5 30 }
-				}
-			}
-		}
 		set_random_base_arcana = yes
 	}
 }
@@ -404,12 +333,12 @@ pool_repopulate_martial = {
 					has_cultural_parameter = poet_trait_more_common
 				}
 				NOT = {
-					has_trait = lifestyle_poet
+					has_trait = poet
 				}
 			}
 			random = {
 				chance = 10
-				add_trait = lifestyle_poet
+				add_trait = poet
 			}
 		}
 		if = {
@@ -497,20 +426,6 @@ pool_repopulate_martial = {
 		}
 		
 		# GH ADDITIONS: Wastelands, magic, wardenite stuff...
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = giant_trait_more_common
-				}
-				NOT = {
-					has_trait = giant
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = giant
-			}
-		}
 		increase_congenital_and_living_magic_effect = yes
 		convert_wasteland_to_fogeater_effect = yes
 		give_jurist_trait_if_clergy = { CHANCE_OF_NONE = 90 CHANCE_OF_TRAIT = 10 }
@@ -534,17 +449,6 @@ pool_repopulate_martial = {
 				add_trait_xp = {
 					trait = lifestyle_gh_steppe_queen
 					value = { 5 60 }
-				}
-			}
-		}
-		if = { ## GH ADDITION: Glassmaking
-			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
-			random = {
-				chance = 10
-				add_trait = gh_lifestyle_glassmith
-				add_trait_xp = {
-					trait = gh_lifestyle_glassmith
-					value = { 5 30 }
 				}
 			}
 		}
@@ -579,33 +483,10 @@ pool_repopulate_stewardship = {
 	}
 	dynasty = none
 	after_creation = {
-		random_list = {
-			200 = {
-				# Character is of average weight, nothing happens	
-			}
-			25 = {
-				change_current_weight = -25
-			}
-			25 = {
-				change_current_weight = -75
-			}
-			25 = {
-				change_current_weight = 25
-			}
-			25 = {
-				change_current_weight = 75
-			}
-			5 = {
-				change_current_weight = 100
-			}
-			5 = {
-				change_current_weight = 200
-			}
-		}
 		random = {
 			chance = 1
 			
-			add_trait = lifestyle_poet
+			add_trait = poet
 			
 			modifier = {
 				add = 10
@@ -628,17 +509,6 @@ pool_repopulate_stewardship = {
 				MIN_SPELLS = generated_character_min_spells_default_value
 				MAX_SPELLS = generated_character_max_spells_default_value
 				MAX_SPELL_LEVEL = generated_character_max_spell_level_default_value
-			}
-		}
-		if = { ## GH ADDITION: Glassmaking
-			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
-			random = {
-				chance = 30
-				add_trait = gh_lifestyle_glassmith
-				add_trait_xp = {
-					trait = gh_lifestyle_glassmith
-					value = { 20 70 }
-				}
 			}
 		}
 		set_random_base_arcana = yes
@@ -677,33 +547,10 @@ pool_repopulate_intrigue = {
 	}
 	dynasty = none
 	after_creation = {
-		random_list = {
-			200 = {
-				# Character is of average weight, nothing happens	
-			}
-			25 = {
-				change_current_weight = -25
-			}
-			25 = {
-				change_current_weight = -75
-			}
-			25 = {
-				change_current_weight = 25
-			}
-			25 = {
-				change_current_weight = 75
-			}
-			5 = {
-				change_current_weight = 100
-			}
-			5 = {
-				change_current_weight = 200
-			}
-		}
 		random = {
 			chance = 1
 			
-			add_trait = lifestyle_poet
+			add_trait = poet
 			
 			modifier = {
 				add = 10
@@ -726,17 +573,6 @@ pool_repopulate_intrigue = {
 				MIN_SPELLS = generated_character_min_spells_default_value
 				MAX_SPELLS = generated_character_max_spells_default_value
 				MAX_SPELL_LEVEL = generated_character_max_spell_level_default_value
-			}
-		}
-		if = { ## GH ADDITION: Glassmaking
-			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
-			random = {
-				chance = 15
-				add_trait = gh_lifestyle_glassmith
-				add_trait_xp = {
-					trait = gh_lifestyle_glassmith
-					value = { 10 40 }
-				}
 			}
 		}
 		set_random_base_arcana = yes
@@ -777,29 +613,6 @@ pool_repopulate_learning = {
 	}
 	dynasty = none
 	after_creation = {
-		random_list = {
-			200 = {
-				# Character is of average weight, nothing happens	
-			}
-			25 = {
-				change_current_weight = -25
-			}
-			25 = {
-				change_current_weight = -75
-			}
-			25 = {
-				change_current_weight = 25
-			}
-			25 = {
-				change_current_weight = 75
-			}
-			5 = {
-				change_current_weight = 100
-			}
-			5 = {
-				change_current_weight = 200
-			}
-		}
 		if = {
 			limit = {
 				faith = {
@@ -816,7 +629,7 @@ pool_repopulate_learning = {
 		random = {
 			chance = 1
 			
-			add_trait = lifestyle_poet
+			add_trait = poet
 			
 			modifier = {
 				add = 10
@@ -851,21 +664,10 @@ pool_repopulate_learning = {
 				MAX_SPELL_LEVEL = generated_character_max_spell_level_default_value
 			}
 		}
-		if = { ## GH ADDITION: Glassmaking
-			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
-			random = {
-				chance = 30
-				add_trait = gh_lifestyle_glassmith
-				add_trait_xp = {
-					trait = gh_lifestyle_glassmith
-					value = { 30 80 }
-				}
-			}
-		}
 		set_random_base_arcana = yes
 	}
 }
-
+		
 
 pool_repopulate_spouse = {
 	gender_female_chance = root.marriage_gender_adjusted_female_chance
@@ -966,33 +768,10 @@ pool_repopulate_spouse = {
 	}
 	dynasty = none
 	after_creation = {
-		random_list = {
-			200 = {
-				# Character is of average weight, nothing happens	
-			}
-			25 = {
-				change_current_weight = -25
-			}
-			25 = {
-				change_current_weight = -75
-			}
-			25 = {
-				change_current_weight = 25
-			}
-			25 = {
-				change_current_weight = 75
-			}
-			5 = {
-				change_current_weight = 100
-			}
-			5 = {
-				change_current_weight = 200
-			}
-		}
 		random = {
 			chance = 1
 			
-			add_trait = lifestyle_poet
+			add_trait = poet
 			
 			modifier = {
 				add = 10
@@ -1050,7 +829,7 @@ pool_repopulate_local_flavor = {
 						geographical_region = world_ga_central_aversaria	# From the Thanatosia valley
 					}
 				}
-				current_date <= 6300.1.1	# After 50 years, safe to say that everyone of this culture is either dead, assimilated or irrelevant
+				current_date <= 1300.1.1	# After 50 years, safe to say that everyone of this culture is either dead, assimilated or irrelevant
 			}
 			weight = { base = 20 }
 		}
@@ -1066,7 +845,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = world_ga_clanlands
 				}
-				current_date <= 6350.1.1	# After 100 years, should fade away completely
+				current_date <= 1350.1.1	# After 100 years, should fade away completely
 			}
 			weight = { base = 20 }
 		}
@@ -1082,7 +861,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = world_ga_aironoi
 				}
-				current_date <= 6350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
+				current_date <= 1350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
 			}
 			weight = { base = 20 }
 		}
@@ -1101,7 +880,7 @@ pool_repopulate_local_flavor = {
 						geographical_region = world_ga_opakhasia_formable
 					}
 				}
-				current_date <= 6350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
+				current_date <= 1350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
 			}
 			weight = { base = 20 }
 		}
@@ -1117,7 +896,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = world_ga_western_aversaria
 				}
-				current_date <= 6350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
+				current_date <= 1350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
 			}
 			weight = { base = 20 }
 		}
@@ -1133,7 +912,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = world_ga_malcois_formable
 				}
-				current_date <= 6350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
+				current_date <= 1350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
 			}
 			weight = { base = 20 }
 		}
@@ -1149,7 +928,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = governate_aversarian_sarradon
 				}
-				current_date <= 6350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
+				current_date <= 1350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
 			}
 			weight = { base = 10 }
 		}
@@ -1165,7 +944,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = governate_aversarian_sarradon
 				}
-				current_date <= 6350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
+				current_date <= 1350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
 			}
 			weight = { base = 20 }
 		}
@@ -1184,7 +963,7 @@ pool_repopulate_local_flavor = {
 						geographical_region = world_ga_clanlands
 					}
 				}
-				current_date <= 6350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
+				current_date <= 1350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
 			}
 			weight = { base = 10 }
 		}
@@ -1425,7 +1204,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = world_ga_clanlands
 				}
-				current_date <= 6300.1.1	# Pre-Migration
+				current_date <= 1300.1.1	# Pre-Migration
 			}
 			weight = { base = 10 }
 		}
@@ -1441,7 +1220,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = world_ga_clanlands
 				}
-				current_date <= 6300.1.1	# Pre-Migration
+				current_date <= 1300.1.1	# Pre-Migration
 			}
 			weight = { base = 5 }
 		}
@@ -1457,7 +1236,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = world_ga_clanlands
 				}
-				current_date <= 6300.1.1	# Pre-Migration
+				current_date <= 1300.1.1	# Pre-Migration
 			}
 			weight = { base = 5 }
 		}
@@ -1473,7 +1252,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = world_ga_clanlands
 				}
-				current_date <= 6300.1.1	# Pre-Migration
+				current_date <= 1300.1.1	# Pre-Migration
 			}
 			weight = { base = 10 }
 		}
@@ -1489,7 +1268,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = world_ga_clanlands
 				}
-				current_date <= 6300.1.1	# Pre-Migration
+				current_date <= 1300.1.1	# Pre-Migration
 			}
 			weight = { base = 10 }
 		}
@@ -1505,7 +1284,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = world_ga_clanlands
 				}
-				current_date <= 6300.1.1	# Pre-Migration
+				current_date <= 1300.1.1	# Pre-Migration
 			}
 			weight = { base = 10 }
 		}
@@ -1521,7 +1300,7 @@ pool_repopulate_local_flavor = {
 				root.capital_province = {
 					geographical_region = world_ga_clanlands
 				}
-				current_date <= 6300.1.1	# Pre-Migration
+				current_date <= 1300.1.1	# Pre-Migration
 			}
 			weight = { base = 10 }
 		}
@@ -1674,7 +1453,7 @@ pool_repopulate_local_flavor = {
 				}
 				10 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = agionism_religion
 						}
 					}
@@ -1695,7 +1474,7 @@ pool_repopulate_local_flavor = {
 				}
 				10 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = aversarinas_aagiokrata_religion
 						}
 					}
@@ -1728,7 +1507,7 @@ pool_repopulate_local_flavor = {
 				}
 				20 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = lifepath_religion
 						}
 					}
@@ -1752,7 +1531,7 @@ pool_repopulate_local_flavor = {
 				}
 				40 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = samojitian_religion
 						}
 					}
@@ -1770,7 +1549,7 @@ pool_repopulate_local_flavor = {
 				}
 				20 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = iyrossi_religion
 						}
 					}
@@ -1788,7 +1567,7 @@ pool_repopulate_local_flavor = {
 				}
 				20 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = salacad_religion
 						}
 					}
@@ -1806,7 +1585,7 @@ pool_repopulate_local_flavor = {
 				}
 				20 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = gethian_religion
 						}
 					}
@@ -1815,13 +1594,22 @@ pool_repopulate_local_flavor = {
 			}
 		}
 		else_if = {
-			limit = { culture = { has_cultural_pillar = heritage_kardwen } }
+			limit = {
+				culture = { has_cultural_pillar = heritage_kardwen }
+			}
 			random_list = {
-				2 = { set_character_faith = faith:benkassai
+				2 = {
+					set_character_faith = faith:benkassai
 				}
-				10 = { set_character_faith = faith:kardawai }
+				10 = {
+					set_character_faith = faith:kardawai
+				}
 				20 = {
-					trigger = { root.capital_county.faith ?= { religion_tag = kardawai_religion } }
+					trigger = {
+						root.capital_county.faith = {
+							religion_tag = kardawai_religion
+						}
+					}
 					set_character_faith = root.capital_county.faith
 				}
 			}
@@ -1842,7 +1630,7 @@ pool_repopulate_local_flavor = {
 				}
 				30 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = stodherrn_religion
 						}
 					}
@@ -1863,7 +1651,7 @@ pool_repopulate_local_flavor = {
 				}
 				20 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = kakarataki_religion
 						}
 					}
@@ -1884,7 +1672,7 @@ pool_repopulate_local_flavor = {
 				}
 				20 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = apti_religion
 						}
 					}
@@ -1902,7 +1690,7 @@ pool_repopulate_local_flavor = {
 				}
 				20 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = partic_religion
 						}
 					}
@@ -1932,7 +1720,7 @@ pool_repopulate_local_flavor = {
 				}
 				5 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = lifepath_religion
 						}
 					}
@@ -1940,7 +1728,7 @@ pool_repopulate_local_flavor = {
 				}
 				20 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = graveright_religion
 						}
 					}
@@ -1958,7 +1746,7 @@ pool_repopulate_local_flavor = {
 				}
 				20 = {
 					trigger = {
-						root.capital_county.faith ?= {
+						root.capital_county.faith = {
 							religion_tag = lifepath_religion
 						}
 					}
@@ -2191,7 +1979,7 @@ pool_repopulate_local_flavor = {
 					add_trait = giant
 				}
 				10 = {
-					add_trait = lifestyle_poet
+					add_trait = poet
 				}
 				20 = {
 					trigger = {
@@ -2205,18 +1993,6 @@ pool_repopulate_local_flavor = {
 						}
 					}
 					add_trait = berserker
-				}
-			}
-		}
-
-		if = { ## GH ADDITION: Glassmaking
-			limit = { culture = { has_cultural_parameter = unlock_glassmith_trait } }
-			random = {
-				chance = 25
-				add_trait = gh_lifestyle_glassmith
-				add_trait_xp = {
-					trait = gh_lifestyle_glassmith
-					value = { 15 50 }
 				}
 			}
 		}

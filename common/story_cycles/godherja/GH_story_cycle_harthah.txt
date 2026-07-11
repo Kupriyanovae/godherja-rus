@@ -1,65 +1,10 @@
 ﻿
 story_cycle_harthah = {
-	visible = yes
-	icon = {
-		trigger = {
-			always = yes
-		}
-		reference = "gfx/interface/icons/struggle_types/struggle_wih_central_sarradon_phase_wardenite_dominance.dds"
-	}
-
-	background = {
-		reference = "gfx/interface/illustrations/event_scenes/armory.dds"
-	}
-
-	visualization = {
-		custom_string_key = "HARTHAH_STORY_PRACTICAL_INFORMATION_STRING"
-		character = { variable_name = "harthah_character" label = "ibn_sarradon" }
-		title_list = {
-			variable_name = "agionist_kingdom_titles"
-			label = "AGIONIST_KINGDOM_TITLES"
-		}
-		decisions = {
-			refound_east_mamur_decision
-			refound_far_east_mamur_decision
-		}
-	}
 
 	on_setup = {
-		save_scope_as = harthah_story
-		scope:harthah_story = {
-			add_to_variable_list = {
-				name = agionist_kingdom_titles
-				target = title:k_thaliteia
-			}
-			add_to_variable_list = {
-				name = agionist_kingdom_titles
-				target = title:k_tifrennesh
-			}
-			add_to_variable_list = {
-				name = agionist_kingdom_titles
-				target = title:k_sorros_mar
-			}
-			add_to_variable_list = {
-				name = agionist_kingdom_titles
-				target = title:k_isle_of_visions
-			}
-			add_to_variable_list = {
-				name = agionist_kingdom_titles
-				target = title:k_emporia
-			}
-			add_to_variable_list = {
-				name = agionist_kingdom_titles
-				target = title:k_mukhtab
-			}
-			add_to_variable_list = {
-				name = target_religions
-				target = religion:agionism_religion
-			}
-		}
-		set_variable = {
-			name = harthah_character
-			value = story_owner
+		add_to_variable_list = {
+			name = target_religions
+			target = religion:agionism_religion
 		}
 		story_owner = {
 			ai_conquer_kingdom_effect = { 

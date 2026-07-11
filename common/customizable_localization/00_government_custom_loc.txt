@@ -38,10 +38,10 @@ GetChamber = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = tent
@@ -66,10 +66,10 @@ GetChambersOrTent = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = tent
@@ -89,10 +89,10 @@ GetRoom = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = tent
@@ -117,10 +117,10 @@ GetCourtyard = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = camp
@@ -141,10 +141,10 @@ GetCourt = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = camp
@@ -163,10 +163,10 @@ GetCourtConcept = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = CAMP
@@ -183,14 +183,14 @@ GetCourtierGendered = {
 
 	text = {
 		trigger = {
-			liege ?= { has_government = landless_adventurer_government }
+			liege ?= { is_landless_adventurer = yes }
 			is_female = yes
 		}
 		localization_key = follower_female
 	}
 	text = {
 		trigger = {
-			liege ?= { has_government = landless_adventurer_government }
+			liege ?= { is_landless_adventurer = yes }
 			is_male = yes
 		}
 		localization_key = follower_male
@@ -218,10 +218,10 @@ GetCourtier = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = follower
@@ -246,10 +246,10 @@ GetCourtierConcept = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = FOLLOWER
@@ -274,10 +274,10 @@ GetSubject = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = follower
@@ -302,20 +302,10 @@ GetSuccessionHeirMotion = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				OR = {
-					has_government = landless_adventurer_government
-					AND = {
-						OR = {
-							any_held_title = { is_noble_family_title = yes }
-							government_allows = administrative
-						}
-						is_independent_ruler = no
-					}
-					tgp_is_ceremonial_regent_trigger = yes
-				}
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = succession_heir_leader
@@ -334,10 +324,10 @@ GetDungeon = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = stockade
@@ -362,10 +352,10 @@ GetDungeonConcept = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = STOCKADE_CONCEPT
@@ -390,10 +380,22 @@ GetRealmOrDomicile = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_nomad = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_nomad = yes }
+			}
+		}
+		localization_key = NOMAD
+	}
+	text = {
+		trigger = {
+			trigger_if = {
+				limit = { is_ruler = yes }
+				is_landless_adventurer = yes
+			}
+			trigger_else = {
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = game_concept_camp
@@ -431,27 +433,15 @@ GetRealmOrDomicile = {
 
 GetRealmOrDomicileTooltip = {
 	type = character
-	
+
 	text = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				is_nomad = yes
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { is_nomad = yes }
-			}
-		}
-		localization_key = NOMAD
-	}
-	text = {
-		trigger = {
-			trigger_if = {
-				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
-			}
-			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = ADVENTURER
@@ -518,10 +508,10 @@ GetRealmOrDomicileTooltip = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				is_governor_or_admin_count = yes
+				is_governor = yes
 			}
 			trigger_else = {
-				liege ?= { is_governor_or_admin_count = yes }
+				liege ?= { is_governor = yes }
 			}
 		}
 		localization_key = GOVERNORSHIP_TOOLTIP
@@ -530,10 +520,10 @@ GetRealmOrDomicileTooltip = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				top_liege != this
+				is_independent_ruler = no
 			}
 			trigger_else = {
-				liege ?= { top_liege != this }
+				liege ?= { is_independent_ruler = no }
 			}
 		}
 		localization_key = VASSAL_TOOLTIP
@@ -552,10 +542,10 @@ GetRealmOrDomicileConcept = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = CAMP
@@ -665,7 +655,7 @@ GetCourtOwner = {
 	type = character
 
 	text = {
-		trigger = { has_government = landless_adventurer_government }
+		trigger = { is_landless_adventurer = yes }
 		localization_key = court_owner_adventurer
 	}
 	text = {
@@ -682,10 +672,10 @@ GetValidKnightsHeader = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = KNIGHTS_SUBHEADER_LANDLESS_ADVENTURER
@@ -704,10 +694,10 @@ GetDoor = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				has_government = landless_adventurer_government
+				is_landless_adventurer = yes
 			}
 			trigger_else = {
-				liege ?= { has_government = landless_adventurer_government }
+				liege ?= { is_landless_adventurer = yes }
 			}
 		}
 		localization_key = tent_flap
@@ -724,7 +714,7 @@ GetHuntDesc = {
 
 	text = {
 		trigger = {
-			has_government = landless_adventurer_government
+			is_landless_adventurer = yes
 		}
 		localization_key = activity_hunt_desc_adventurer
 	}
@@ -740,7 +730,7 @@ GetHuntMasterDesc = {
 
 	text = {
 		trigger = {
-			has_government = landless_adventurer_government
+			is_landless_adventurer = yes
 		}
 		localization_key = activity_huntmaster_desc_adventurer
 	}
@@ -756,7 +746,7 @@ GetHuntMasterTooltipDesc = {
 
 	text = {
 		trigger = {
-			has_government = landless_adventurer_government
+			is_landless_adventurer = yes
 		}
 		localization_key = activity_huntmaster_tooltip_desc_adventurer
 	}
@@ -772,7 +762,7 @@ GetServants = {
 
 	text = {
 		trigger = {
-			has_government = landless_adventurer_government
+			is_landless_adventurer = yes
 		}
 		localization_key = followers_adventurer
 	}
@@ -788,7 +778,7 @@ GetFollowerOrVassal = {
 
 	text = {
 		trigger = {
-			has_government = landless_adventurer_government
+			is_landless_adventurer = yes
 		}
 		localization_key = follower
 	}
@@ -810,7 +800,7 @@ GetGameKeepers = {
 
 	text = {
 		trigger = {
-			has_government = landless_adventurer_government
+			is_landless_adventurer = yes
 		}
 		localization_key = flushers_adventurer
 	}
@@ -836,7 +826,7 @@ GetDoorPlural = {
 GetGovernmentIcon = {
 	type = character
 
-	text = { # Holy Order
+	text = {
 		trigger = {
 			trigger_if = {
 				limit = {
@@ -874,7 +864,7 @@ GetGovernmentIcon = {
 				}
 			}
 		}
-		localization_key = landed_order_icon_concept
+		localization_key = holy_order_icon_concept
 	}
 	text = {
 		trigger = {
@@ -914,7 +904,7 @@ GetGovernmentIcon = {
 				}
 			}
 		}
-		localization_key = pirate_icon_concept
+		localization_key = mercenary_icon_concept
 	}
 	text = {
 		trigger = {
@@ -996,7 +986,7 @@ GetGovernmentIcon = {
 				}
 			}
 		}
-		localization_key = continental_clan_icon_concept
+		localization_key = tribal_icon_concept
 	}
 	text = {
 		trigger = {
@@ -1020,7 +1010,7 @@ GetGovernmentIcon = {
 		}
 		localization_key = nomadic_icon_concept
 	}
-	text = { # Herder
+	text = {
 		trigger = {
 			trigger_if = {
 				limit = {
@@ -1042,79 +1032,7 @@ GetGovernmentIcon = {
 		}
 		localization_key = herder_icon_concept
 	}
-	text = { # Celestial
-		trigger = {
-			trigger_if = {
-				limit = { is_alive = no }
-				has_government = celestial_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					government_has_flag = government_is_celestial
-				}
-				trigger_else = {
-					liege ?= { government_has_flag = government_is_celestial }
-				}
-			}
-		}
-		localization_key = celestial_icon_concept
-	}
-	text = { # Mandala
-		trigger = {
-			trigger_if = {
-				limit = { is_alive = no }
-				has_government = mandala_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					government_has_flag = government_is_mandala
-				}
-				trigger_else = {
-					liege ?= { government_has_flag = government_is_mandala }
-				}
-			}
-		}
-		localization_key = mandala_icon_concept
-	}
-	text = { # Maritime Tribal
-		trigger = {
-			trigger_if = {
-				limit = { is_alive = no }
-				has_government = wanua_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					government_has_flag = government_is_wanua
-				}
-				trigger_else = {
-					liege ?= { government_has_flag = government_is_wanua }
-				}
-			}
-		}
-		localization_key = wanua_icon_concept
-	}
-	text = { # Meritocratic
-		trigger = {
-			trigger_if = {
-				limit = { is_alive = no }
-				has_government = meritocratic_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					government_has_flag = government_is_meritocratic
-				}
-				trigger_else = {
-					liege ?= { government_has_flag = government_is_meritocratic }
-				}
-			}
-		}
-		localization_key = meritocratic_icon_concept
-	}
-	text = { # Tribal
+	text = {
 		trigger = {
 			trigger_if = {
 				limit = {
@@ -1126,19 +1044,15 @@ GetGovernmentIcon = {
 				trigger_if = {
 					limit = { is_ruler = yes }
 					government_has_flag = government_is_tribal
-					NOT = { government_has_flag = government_is_wanua }
 				}
 				trigger_else = {
-					liege ?= { 
-						government_has_flag = government_is_tribal 
-						NOT = { government_has_flag = government_is_wanua }
-					}
+					liege ?= { government_has_flag = government_is_tribal }
 				}
 			}
 		}
 		localization_key = tribal_icon_concept
 	}
-	text = { # Clan
+	text = {
 		trigger = {
 			trigger_if = {
 				limit = {
@@ -1157,120 +1071,6 @@ GetGovernmentIcon = {
 			}
 		}
 		localization_key = clan_icon_concept
-	}
-	text = { # Japanese Admin
-		trigger = {
-			trigger_if = {
-				limit = { is_alive = no }
-				has_government = japan_administrative_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					has_government = japan_administrative_government
-				}
-				trigger_else = {
-					liege ?= { has_government = japan_administrative_government }
-				}
-			}
-		}
-		localization_key = japan_administrative_icon_concept
-	}
-	text = { # Admin
-		trigger = {
-			trigger_if = {
-				limit = {
-					is_alive = no
-				}
-				has_government = administrative_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					government_has_flag = government_is_administrative
-				}
-				trigger_else = {
-					liege ?= { government_has_flag = government_is_administrative }
-				}
-			}
-		}
-		localization_key = administrative_icon_concept
-	}
-	text = { # Republic
-		trigger = {
-			trigger_if = {
-				limit = {
-					is_alive = no
-				}
-				has_government = republic_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					government_has_flag = government_is_republic
-				}
-				trigger_else = {
-					liege ?= { government_has_flag = government_is_republic }
-				}
-			}
-		}
-		localization_key = republic_icon_concept
-	}
-	text = { # Theocracy
-		trigger = {
-			trigger_if = {
-				limit = {
-					is_alive = no
-				}
-				has_government = theocracy_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					government_has_flag = government_is_theocracy
-				}
-				trigger_else = {
-					liege ?= { government_has_flag = government_is_theocracy }
-				}
-			}
-		}
-		localization_key = theocracy_icon_concept
-	}
-	text = { # Japanese Feudal
-		trigger = {
-			trigger_if = {
-				limit = { is_alive = no }
-				has_government = japan_feudal_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					has_government = japan_feudal_government
-				}
-				trigger_else = {
-					liege ?= { has_government = japan_feudal_government }
-				}
-			}
-		}
-		localization_key = japan_feudal_icon_concept
-	}
-	text = { # Steppe Admin
-		trigger = {
-			trigger_if = {
-				limit = { is_alive = no }
-				has_government = steppe_admin_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					has_government = steppe_admin_government
-				}
-				trigger_else = {
-					liege ?= { has_government = steppe_admin_government }
-				}
-			}
-		}
-		localization_key = steppe_admin_icon_concept
 	}
 	text = {
 		trigger = {
@@ -1318,6 +1118,46 @@ GetGovernmentIcon = {
 				limit = {
 					is_alive = no
 				}
+				has_government = administrative_government
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					government_has_flag = government_is_administrative
+				}
+				trigger_else = {
+					liege ?= { government_has_flag = government_is_administrative }
+				}
+			}
+		}
+		localization_key = administrative_icon_concept
+	}
+	text = {
+		trigger = {
+			trigger_if = {
+				limit = {
+					is_alive = no
+				}
+				has_government = republic_government
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					government_has_flag = government_is_republic
+				}
+				trigger_else = {
+					liege ?= { government_has_flag = government_is_republic }
+				}
+			}
+		}
+		localization_key = republic_icon_concept
+	}
+	text = {
+		trigger = {
+			trigger_if = {
+				limit = {
+					is_alive = no
+				}
 				has_government = republic_playable_government
 			}
 			trigger_else = {
@@ -1338,6 +1178,26 @@ GetGovernmentIcon = {
 				limit = {
 					is_alive = no
 				}
+				has_government = theocracy_government
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					government_has_flag = government_is_theocracy
+				}
+				trigger_else = {
+					liege ?= { government_has_flag = government_is_theocracy }
+				}
+			}
+		}
+		localization_key = theocracy_icon_concept
+	}
+	text = {
+		trigger = {
+			trigger_if = {
+				limit = {
+					is_alive = no
+				}
 				has_government = military_unit_government
 			}
 			trigger_else = {
@@ -1351,46 +1211,6 @@ GetGovernmentIcon = {
 			}
 		}
 		localization_key = military_unit_icon_concept
-	}
-	text = {
-		trigger = {
-			trigger_if = {
-				limit = {
-					is_alive = no
-				}
-				has_government = landed_order_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					government_has_flag = government_is_landed_order
-				}
-				trigger_else = {
-					liege ?= { government_has_flag = government_is_landed_order }
-				}
-			}
-		}
-		localization_key = landed_order_icon_concept
-	}
-	text = {
-		trigger = {
-			trigger_if = {
-				limit = {
-					is_alive = no
-				}
-				has_government = pirate_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					government_has_flag = government_is_pirate
-				}
-				trigger_else = {
-					liege ?= { government_has_flag = government_is_pirate }
-				}
-			}
-		}
-		localization_key = pirate_icon_concept
 	}
 	text = {
 		trigger = {
@@ -1452,28 +1272,7 @@ GetGovernmentIcon = {
 		}
 		localization_key = peasant_republic_icon_concept
 	}
-	text = { # Admin
-		trigger = {
-			trigger_if = {
-				limit = {
-					is_alive = no
-				}
-				has_government = otachedian_government
-			}
-			trigger_else = {
-				trigger_if = {
-					limit = { is_ruler = yes }
-					government_has_flag = government_is_otachedian
-				}
-				trigger_else = {
-					liege ?= { government_has_flag = government_is_otachedian }
-				}
-			}
-		}
-		localization_key = otachedian_icon_concept
-	}
-
-	text = { # Feudal
+	text = {
 		trigger = { always = no }
 		localization_key = feudal_icon_concept
 		fallback = yes

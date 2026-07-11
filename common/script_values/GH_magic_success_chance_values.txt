@@ -10,11 +10,13 @@ spell_success_chance = {
 	value = {
 		value = 50
 		desc = spell_success_chance_base_value_desc
+		format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 	}
 	subtract = {
 		value = spell_level_value
 		multiply = 15
 		desc = aspect_total_spell_level_value_desc
+		format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 	}
 	if = {
 		limit = { 
@@ -46,6 +48,7 @@ spell_success_chance = {
 			add = {
 				value = 10
 				desc = magic_court_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from Arcana Lifestyle
@@ -58,6 +61,7 @@ spell_success_chance = {
 			add = {
 				value = 5
 				desc = arcana_actuation_focus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		if = {
@@ -69,6 +73,7 @@ spell_success_chance = {
 			add = {
 				value = 8
 				desc = arcana_actuation_perk3_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		if = {
@@ -82,6 +87,7 @@ spell_success_chance = {
 					multiply = scope:caster.piety_level
 				}
 				desc = caster_spell_faith_piety_level_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		else_if = {
@@ -91,6 +97,7 @@ spell_success_chance = {
 			add = {
 				value = -50
 				desc = caster_not_spell_faith_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -102,6 +109,7 @@ spell_success_chance = {
 					multiply = fire_aspect_spell_ratio_value
 				}
 				desc = fire_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -110,6 +118,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.fire_aspect_overcharge_success_chance_decrease_value
 				desc = fire_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -121,6 +130,7 @@ spell_success_chance = {
 					multiply = water_aspect_spell_ratio_value
 				}
 				desc = water_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -129,6 +139,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.water_aspect_overcharge_success_chance_decrease_value
 				desc = water_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -140,6 +151,7 @@ spell_success_chance = {
 					multiply = ice_aspect_spell_ratio_value
 				}
 				desc = ice_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -148,6 +160,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.ice_aspect_overcharge_success_chance_decrease_value
 				desc = ice_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -159,6 +172,7 @@ spell_success_chance = {
 					multiply = air_aspect_spell_ratio_value
 				}
 				desc = air_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -167,6 +181,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.air_aspect_overcharge_success_chance_decrease_value
 				desc = air_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -178,6 +193,7 @@ spell_success_chance = {
 					multiply = stone_aspect_spell_ratio_value
 				}
 				desc = stone_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -186,6 +202,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.stone_aspect_overcharge_success_chance_decrease_value
 				desc = stone_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -197,6 +214,7 @@ spell_success_chance = {
 					multiply = dream_aspect_spell_ratio_value
 				}
 				desc = dream_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -205,6 +223,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.dream_aspect_overcharge_success_chance_decrease_value
 				desc = dream_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -216,6 +235,7 @@ spell_success_chance = {
 					multiply = celestial_aspect_spell_ratio_value
 				}
 				desc = celestial_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -224,6 +244,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.celestial_aspect_overcharge_success_chance_decrease_value
 				desc = celestial_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -235,6 +256,7 @@ spell_success_chance = {
 					multiply = dark_aspect_spell_ratio_value
 				}
 				desc = dark_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -243,6 +265,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.dark_aspect_overcharge_success_chance_decrease_value
 				desc = dark_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -254,6 +277,7 @@ spell_success_chance = {
 					multiply = light_aspect_spell_ratio_value
 				}
 				desc = light_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -262,6 +286,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.light_aspect_overcharge_success_chance_decrease_value
 				desc = light_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -273,6 +298,7 @@ spell_success_chance = {
 					multiply = blood_aspect_spell_ratio_value
 				}
 				desc = blood_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -281,6 +307,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.blood_aspect_overcharge_success_chance_decrease_value
 				desc = blood_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -292,6 +319,7 @@ spell_success_chance = {
 					multiply = nature_aspect_spell_ratio_value
 				}
 				desc = nature_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -300,6 +328,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.nature_aspect_overcharge_success_chance_decrease_value
 				desc = nature_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -311,6 +340,7 @@ spell_success_chance = {
 					multiply = ethereal_aspect_spell_ratio_value
 				}
 				desc = ethereal_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -319,6 +349,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.ethereal_aspect_overcharge_success_chance_decrease_value
 				desc = ethereal_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -330,6 +361,7 @@ spell_success_chance = {
 					multiply = hymns_aspect_spell_ratio_value
 				}
 				desc = hymns_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -338,6 +370,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.hymns_aspect_overcharge_success_chance_decrease_value
 				desc = hymns_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -349,6 +382,7 @@ spell_success_chance = {
 					multiply = death_aspect_spell_ratio_value
 				}
 				desc = death_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -357,6 +391,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.death_aspect_overcharge_success_chance_decrease_value
 				desc = death_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -368,6 +403,7 @@ spell_success_chance = {
 					multiply = sand_aspect_spell_ratio_value
 				}
 				desc = sand_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -376,6 +412,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.sand_aspect_overcharge_success_chance_decrease_value
 				desc = sand_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -387,6 +424,7 @@ spell_success_chance = {
 					multiply = metal_aspect_spell_ratio_value
 				}
 				desc = metal_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -395,6 +433,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.metal_aspect_overcharge_success_chance_decrease_value
 				desc = metal_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -406,6 +445,7 @@ spell_success_chance = {
 					multiply = time_aspect_spell_ratio_value
 				}
 				desc = time_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -414,6 +454,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.time_aspect_overcharge_success_chance_decrease_value
 				desc = time_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -425,6 +466,7 @@ spell_success_chance = {
 					multiply = dawn_aspect_spell_ratio_value
 				}
 				desc = dawn_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -433,6 +475,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.dawn_aspect_overcharge_success_chance_decrease_value
 				desc = dawn_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
 			}
 		}
 	}
@@ -444,6 +487,7 @@ spell_success_chance = {
 		add = {
 			value = scope:caster.cp:councillor_court_magi.spellcasting_value
 			desc = caster_magic_prowess_value_desc
+			format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 		}
 		# Bonus from aspect-specific spellcasting skill
 		if = {
@@ -454,6 +498,7 @@ spell_success_chance = {
 					multiply = fire_aspect_spell_ratio_value
 				}
 				desc = fire_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -462,6 +507,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.fire_aspect_overcharge_success_chance_decrease_value
 				desc = fire_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -473,6 +519,7 @@ spell_success_chance = {
 					multiply = water_aspect_spell_ratio_value
 				}
 				desc = water_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -481,6 +528,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.water_aspect_overcharge_success_chance_decrease_value
 				desc = water_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -492,6 +540,7 @@ spell_success_chance = {
 					multiply = ice_aspect_spell_ratio_value
 				}
 				desc = ice_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -500,6 +549,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.ice_aspect_overcharge_success_chance_decrease_value
 				desc = ice_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -511,6 +561,7 @@ spell_success_chance = {
 					multiply = air_aspect_spell_ratio_value
 				}
 				desc = air_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -519,6 +570,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.air_aspect_overcharge_success_chance_decrease_value
 				desc = air_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -530,6 +582,7 @@ spell_success_chance = {
 					multiply = stone_aspect_spell_ratio_value
 				}
 				desc = stone_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -538,6 +591,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.stone_aspect_overcharge_success_chance_decrease_value
 				desc = stone_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -549,6 +603,7 @@ spell_success_chance = {
 					multiply = dream_aspect_spell_ratio_value
 				}
 				desc = dream_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -557,6 +612,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.dream_aspect_overcharge_success_chance_decrease_value
 				desc = dream_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -568,6 +624,7 @@ spell_success_chance = {
 					multiply = celestial_aspect_spell_ratio_value
 				}
 				desc = celestial_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -576,6 +633,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.celestial_aspect_overcharge_success_chance_decrease_value
 				desc = celestial_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -587,6 +645,7 @@ spell_success_chance = {
 					multiply = dark_aspect_spell_ratio_value
 				}
 				desc = dark_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -595,6 +654,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.dark_aspect_overcharge_success_chance_decrease_value
 				desc = dark_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -606,6 +666,7 @@ spell_success_chance = {
 					multiply = light_aspect_spell_ratio_value
 				}
 				desc = light_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -614,6 +675,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.light_aspect_overcharge_success_chance_decrease_value
 				desc = light_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -625,6 +687,7 @@ spell_success_chance = {
 					multiply = blood_aspect_spell_ratio_value
 				}
 				desc = blood_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -633,6 +696,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.blood_aspect_overcharge_success_chance_decrease_value
 				desc = blood_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -644,6 +708,7 @@ spell_success_chance = {
 					multiply = nature_aspect_spell_ratio_value
 				}
 				desc = nature_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -652,6 +717,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.nature_aspect_overcharge_success_chance_decrease_value
 				desc = nature_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -663,6 +729,7 @@ spell_success_chance = {
 					multiply = ethereal_aspect_spell_ratio_value
 				}
 				desc = ethereal_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -671,6 +738,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.ethereal_aspect_overcharge_success_chance_decrease_value
 				desc = ethereal_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -682,6 +750,7 @@ spell_success_chance = {
 					multiply = hymns_aspect_spell_ratio_value
 				}
 				desc = hymns_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -690,6 +759,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.hymns_aspect_overcharge_success_chance_decrease_value
 				desc = hymns_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -701,6 +771,7 @@ spell_success_chance = {
 					multiply = death_aspect_spell_ratio_value
 				}
 				desc = death_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -709,6 +780,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.death_aspect_overcharge_success_chance_decrease_value
 				desc = death_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -720,6 +792,7 @@ spell_success_chance = {
 					multiply = sand_aspect_spell_ratio_value
 				}
 				desc = sand_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -728,6 +801,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.sand_aspect_overcharge_success_chance_decrease_value
 				desc = sand_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -739,6 +813,7 @@ spell_success_chance = {
 					multiply = metal_aspect_spell_ratio_value
 				}
 				desc = metal_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -747,6 +822,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.metal_aspect_overcharge_success_chance_decrease_value
 				desc = metal_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -758,6 +834,7 @@ spell_success_chance = {
 					multiply = time_aspect_spell_ratio_value
 				}
 				desc = time_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -766,6 +843,7 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.time_aspect_overcharge_success_chance_decrease_value
 				desc = time_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Bonus from aspect-specific spellcasting skill
@@ -777,6 +855,7 @@ spell_success_chance = {
 					multiply = dawn_aspect_spell_ratio_value
 				}
 				desc = dawn_aspect_bonus_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
 		# Malus from overcharge
@@ -785,1542 +864,12 @@ spell_success_chance = {
 			subtract = {
 				value = scope:caster.cp:councillor_court_magi.dawn_aspect_overcharge_success_chance_decrease_value
 				desc = dawn_aspect_overcharge_success_chance_value_desc
+				format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 			}
 		}
-	}
-	add = {
-		value = spell_success_chance_from_primary_locus_value
-		desc = "Primary Lous"
-	}
-	add = {
-		value = spell_success_chance_from_secondary_loci_value
-		desc = "Secondary Loci"
 	}
 	max = 100
 	min = 0
-}
-
-spell_success_chance_from_primary_locus_value = {
-	value = 0
-	# Bonus from loci
-	if = {
-		limit = { fire_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.fire_aspect_province_value
-					multiply = fire_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.fire_aspect_province_value
-					multiply = fire_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { water_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.water_aspect_province_value
-					multiply = water_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.water_aspect_province_value
-					multiply = water_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { ice_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.ice_aspect_province_value
-					multiply = ice_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.ice_aspect_province_value
-					multiply = ice_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { air_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.air_aspect_province_value
-					multiply = air_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.air_aspect_province_value
-					multiply = air_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { stone_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.stone_aspect_province_value
-					multiply = stone_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.stone_aspect_province_value
-					multiply = stone_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { dream_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.dream_aspect_province_value
-					multiply = dream_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.dream_aspect_province_value
-					multiply = dream_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { celestial_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.celestial_aspect_province_value
-					multiply = celestial_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.celestial_aspect_province_value
-					multiply = celestial_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { dark_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.dark_aspect_province_value
-					multiply = dark_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.dark_aspect_province_value
-					multiply = dark_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { light_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.light_aspect_province_value
-					multiply = light_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.light_aspect_province_value
-					multiply = light_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { blood_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.blood_aspect_province_value
-					multiply = blood_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.blood_aspect_province_value
-					multiply = blood_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { nature_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.nature_aspect_province_value
-					multiply = nature_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.nature_aspect_province_value
-					multiply = nature_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { ethereal_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.ethereal_aspect_province_value
-					multiply = ethereal_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.ethereal_aspect_province_value
-					multiply = ethereal_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { hymns_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.hymns_aspect_province_value
-					multiply = hymns_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.hymns_aspect_province_value
-					multiply = hymns_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { death_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.death_aspect_province_value
-					multiply = death_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.death_aspect_province_value
-					multiply = death_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { sand_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.sand_aspect_province_value
-					multiply = sand_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.sand_aspect_province_value
-					multiply = sand_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { metal_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.metal_aspect_province_value
-					multiply = metal_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.metal_aspect_province_value
-					multiply = metal_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { time_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.time_aspect_province_value
-					multiply = time_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.time_aspect_province_value
-					multiply = time_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { dawn_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				exists = scope:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_preparation_story_cycle.var:primary_locus.dawn_aspect_province_value
-					multiply = dawn_aspect_spell_ratio_value
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus
-			}
-			add = {
-				value = {
-					value = scope:spell_organizer.var:spell_preparation_story_cycle.var:primary_locus.dawn_aspect_province_value
-					multiply = dawn_aspect_spell_ratio_value
-				}
-			}
-		}
-	}
-	multiply = 5
-}
-
-spell_success_chance_from_secondary_loci_value = {
-	value = 0
-	# Bonus from loci
-	if = {
-		limit = { fire_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = fire_aspect_province_value
-							multiply = prev.var:spell_being_prepared.fire_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = fire_aspect_province_value
-							multiply = prev.var:spell_being_prepared.fire_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { water_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = water_aspect_province_value
-							multiply = prev.var:spell_being_prepared.water_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = water_aspect_province_value
-							multiply = prev.var:spell_being_prepared.water_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { ice_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = ice_aspect_province_value
-							multiply = prev.var:spell_being_prepared.ice_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = ice_aspect_province_value
-							multiply = prev.var:spell_being_prepared.ice_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { air_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = air_aspect_province_value
-							multiply = prev.var:spell_being_prepared.air_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = air_aspect_province_value
-							multiply = prev.var:spell_being_prepared.air_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { stone_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = stone_aspect_province_value
-							multiply = prev.var:spell_being_prepared.stone_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = stone_aspect_province_value
-							multiply = prev.var:spell_being_prepared.stone_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { dream_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = dream_aspect_province_value
-							multiply = prev.var:spell_being_prepared.dream_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = dream_aspect_province_value
-							multiply = prev.var:spell_being_prepared.dream_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { celestial_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = celestial_aspect_province_value
-							multiply = prev.var:spell_being_prepared.celestial_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = celestial_aspect_province_value
-							multiply = prev.var:spell_being_prepared.celestial_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { dark_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = dark_aspect_province_value
-							multiply = prev.var:spell_being_prepared.dark_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = dark_aspect_province_value
-							multiply = prev.var:spell_being_prepared.dark_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { light_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = light_aspect_province_value
-							multiply = prev.var:spell_being_prepared.light_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = light_aspect_province_value
-							multiply = prev.var:spell_being_prepared.light_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { blood_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = blood_aspect_province_value
-							multiply = prev.var:spell_being_prepared.blood_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = blood_aspect_province_value
-							multiply = prev.var:spell_being_prepared.blood_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { nature_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = nature_aspect_province_value
-							multiply = prev.var:spell_being_prepared.nature_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = nature_aspect_province_value
-							multiply = prev.var:spell_being_prepared.nature_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { ethereal_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = ethereal_aspect_province_value
-							multiply = prev.var:spell_being_prepared.ethereal_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = ethereal_aspect_province_value
-							multiply = prev.var:spell_being_prepared.ethereal_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { hymns_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = hymns_aspect_province_value
-							multiply = prev.var:spell_being_prepared.hymns_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = hymns_aspect_province_value
-							multiply = prev.var:spell_being_prepared.hymns_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { death_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = death_aspect_province_value
-							multiply = prev.var:spell_being_prepared.death_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = death_aspect_province_value
-							multiply = prev.var:spell_being_prepared.death_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { sand_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = sand_aspect_province_value
-							multiply = prev.var:spell_being_prepared.sand_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = sand_aspect_province_value
-							multiply = prev.var:spell_being_prepared.sand_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { metal_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = metal_aspect_province_value
-							multiply = prev.var:spell_being_prepared.metal_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = metal_aspect_province_value
-							multiply = prev.var:spell_being_prepared.metal_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { time_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = time_aspect_province_value
-							multiply = prev.var:spell_being_prepared.time_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = time_aspect_province_value
-							multiply = prev.var:spell_being_prepared.time_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	# Bonus from loci
-	if = {
-		limit = { dawn_aspect_total_spell_level_value > 0 }
-		if = {
-			limit = { 
-				exists = scope:spell_preparation_story_cycle
-				scope:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = dawn_aspect_province_value
-							multiply = prev.var:spell_being_prepared.dawn_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = scope:spell_organizer
-				exists = scope:spell_organizer.var:spell_preparation_story_cycle
-				scope:spell_organizer.var:spell_preparation_story_cycle = { has_variable_list = locus_list }
-			}
-			scope:spell_organizer.var:spell_preparation_story_cycle = {
-				every_in_list = {
-					variable = locus_list
-					limit = {
-						NOT = {
-							AND = {
-								exists = scope:spell_preparation_story_cycle.var:primary_locus
-								this = scope:spell_preparation_story_cycle.var:primary_locus
-							}
-						}
-					}
-					add = {
-						value = {
-							value = dawn_aspect_province_value
-							multiply = prev.var:spell_being_prepared.dawn_aspect_spell_ratio_value
-						}
-					}
-				}
-			}
-		}
-	}
-	multiply = 2.5
-	floor = yes
 }
 
 task_court_magi_defend_against_hostile_magic_resistance_value = {
@@ -2592,30 +1141,6 @@ magic_resistance_value = {
 			value = -10
 			desc = magic_debuff_1_magic_penetration_bonus_value_desc
 			format = "SPELLCASTING_ABILITY_VALUE_FORMAT_NEG"
-		}
-	}
-	else_if = {
-		limit = { has_character_modifier = talfasomoll_dream_modifier_9 }
-		add = {
-			value = 5
-			desc = talfasomoll_dream_9_bonus_value_desc
-			format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
-		}
-	}
-	else_if = {
-		limit = { has_character_modifier = talfasomoll_dream_modifier_11 }
-		add = {
-			value = 10
-			desc = talfasomoll_dream_11_bonus_value_desc
-			format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
-		}
-	}
-	else_if = {
-		limit = { has_character_modifier = talfasomoll_dream_modifier_14 }
-		add = {
-			value = 15
-			desc = talfasomoll_dream_14_bonus_value_desc
-			format = "SPELLCASTING_ABILITY_VALUE_FORMAT_POS"
 		}
 	}
 	add = {
@@ -3412,15 +1937,13 @@ spell_effect_chance_value = {
 		value = var:spell_effect_chance
 		if = {
 			limit = { NOT = { exists = var:spell_effect_chance_iteration } }
-			add = {
-				value = var:spell_effect_chance
-				multiply = spell_tag_scalar_spell_effect_chance_iteration_value
-			}
+			multiply = spell_tag_scalar_threshold_diff_value
 		}
 		else = {
 			add = {
 				value = var:spell_effect_chance_iteration
-				multiply = spell_tag_scalar_spell_effect_chance_iteration_value
+				subtract = 1
+				multiply = spell_tag_scalar_threshold_diff_value
 			}
 		}
 	}

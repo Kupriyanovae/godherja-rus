@@ -3,53 +3,14 @@
 		nickname_preparation_on_birth_child
 	}
 	effect = {
-		if = { # Some folks are doomed to be super mutants
-			limit = {
-				faith = { has_doctrine_parameter = mutation_guaranteed }
-			}
-			add_trait = gh_deep_mutation
-		}
-
-		if = { # Skrattaki should be born blind
-			limit = {
-				faith = faith:skrattaki # GH TODO: Replace with a faith param on a tenet
-			}
-			add_trait = blind
-		}
-
 		if = {
 			limit = {
-				scope:mother ?= {
+				scope:mother = {
 					has_variable = carrying_gedeora_child
 				}
 			}
 			gedeora_child_on_birth_effect = yes
 			GH_blacksheep_check = yes
-		}
-
-		if = { # Chance for childhood mutation
-			limit = {
-				any_parent = { child_magic_defect_chance_value > 0 }
-			}
-			random_list = { # GH TODO: Should probably account for the child's magic level somewhat too
-				100 = { }
-				0 = {
-					modifier = {
-						exists = scope:real_father
-						add = scope:real_father.child_magic_defect_chance_value
-					}
-					modifier = {
-						NOT = { exists = scope:real_father }
-						exists = scope:father
-						add = scope:father.child_magic_defect_chance_value
-					}
-					modifier = {
-						exists = scope:mother
-						add = scope:mother.child_magic_defect_chance_value
-					}
-					add_mutation_childbirth_effect = yes
-				}
-			}
 		}
 
 		hidden_effect = {
@@ -82,16 +43,6 @@
 						trait = magic_good
 						rank = 1
 					}
-				}
-			}
-			if = {
-				limit = { 
-					scope:mother.culture = { has_cultural_parameter = giant_trait_more_common }
-					NOT = { has_trait = giant }
-				}
-				random = {
-					chance = 10
-					add_trait = giant
 				}
 			}
 			set_variable = {

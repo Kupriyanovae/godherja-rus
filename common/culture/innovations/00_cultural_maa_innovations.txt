@@ -14,7 +14,6 @@
 @maa_02 = "gfx/interface/icons/culture_innovations/innovation_maa_02.dds"
 @weapons_and_armor_01 = "gfx/interface/icons/culture_innovations/innovation_weapons_and_armor_01.dds"
 @weapons_and_armor_02 = "gfx/interface/icons/culture_innovations/innovation_weapons_and_armor_02.dds"
-@hird = "gfx/interface/icons/culture_innovations/innovation_hird.dds"
 @knight = "gfx/interface/icons/culture_innovations/innovation_knight.dds"
 @majesty_01 = "gfx/interface/icons/culture_innovations/innovation_majesty_01.dds"
 @majesty_02 = "gfx/interface/icons/culture_innovations/innovation_majesty_02.dds"
@@ -24,21 +23,14 @@
 @nobility_03 = "gfx/interface/icons/culture_innovations/innovation_nobility_03.dds"
 @nobility_04 = "gfx/interface/icons/culture_innovations/innovation_nobility_04.dds"
 @misc_inventions = "gfx/interface/icons/culture_innovations/innovation_misc_inventions.dds"
-@gunpowder = "gfx/interface/icons/culture_innovations/innovation_gunpowder.dds"
-@caballeros = "gfx/interface/icons/culture_innovations/innovation_caballeros.dds"
 
 @camel = "gfx/interface/icons/culture_innovations/innovation_camel.dds"
 @elephant = "gfx/interface/icons/culture_innovations/innovation_elephant.dds"
 @mammoth = "gfx/interface/icons/culture_innovations/innovation_mammoth.dds"
 @special_maa_01 = "gfx/interface/icons/culture_innovations/innovation_special_maa_01.dds"
 @special_maa_02 = "gfx/interface/icons/culture_innovations/innovation_special_maa_02.dds"
-@bombards = "gfx/interface/icons/culture_innovations/innovation_bombards.dds"
-@dragon_kiln = "gfx/interface/icons/culture_innovations/innovation_dragon_kiln.dds"
-@wotz_steel = "gfx/interface/icons/culture_innovations/innovation_wotz_steel.dds"
-
 
 innovation_imperial_magic = {
-	skill = learning
 	group = culture_group_regional
 	culture_era = culture_era_tribal
 	icon = @maa_01
@@ -47,22 +39,18 @@ innovation_imperial_magic = {
 		OR = {
 			# Imperial
 			has_cultural_pillar = heritage_aversarian
-			has_cultural_pillar = heritage_opakhasian
-			has_cultural_pillar = heritage_aironoian
 			has_cultural_tradition = tradition_legacy_of_aversaria
 			has_cultural_tradition = tradition_legacy_of_aversaria_lesser
 		}
 	}
 
 	unlock_maa = arcane_auxiliaries
-	custom = eligible_accolade_magi_attribute
 	custom = more_magic_focused
 
 	flag = global_maa
 }
 
 innovation_anti_magic_combat = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_tribal
 	icon = @maa_01
@@ -77,13 +65,12 @@ innovation_anti_magic_combat = {
 	}
 
 	unlock_building = 01_antimagi_chapterhouse
-	custom = eligible_accolade_anti_magi_attribute
+	#custom = less_magic_focused
 
 	flag = global_maa
 }
 
 innovation_berserkers = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_tribal
 	icon = @maa_01
@@ -104,7 +91,6 @@ innovation_berserkers = {
 # new innovations
 
 innovation_wodes = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_tribal
 	icon = @maa_01
@@ -120,7 +106,6 @@ innovation_wodes = {
 }
 
 innovation_grave_wardens = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_early_medieval
 	icon = @maa_01
@@ -142,7 +127,6 @@ innovation_grave_wardens = {
 }
 
 innovation_flying_lances = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_late_medieval
 	icon = @maa_01
@@ -164,7 +148,6 @@ innovation_flying_lances = {
 }
 
 innovation_golden_spears = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_tribal
 	icon = @maa_01
@@ -182,7 +165,6 @@ innovation_golden_spears = {
 }
 
 innovation_the_bloodied = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_tribal
 	icon = @maa_01
@@ -198,7 +180,6 @@ innovation_the_bloodied = {
 }
 
 innovation_grove_guardians = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_tribal
 	icon = @maa_01
@@ -213,7 +194,6 @@ innovation_grove_guardians = {
 }
 
 innovation_jerniems_rangers = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_high_medieval
 	icon = @maa_01
@@ -228,7 +208,6 @@ innovation_jerniems_rangers = {
 }
 
 innovation_crimson_spears = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_tribal
 	icon = @maa_01
@@ -244,7 +223,6 @@ innovation_crimson_spears = {
 }
 
 innovation_molten_vanguard = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_high_medieval
 	icon = @maa_01
@@ -260,7 +238,6 @@ innovation_molten_vanguard = {
 }
 
 innovation_prophets_sons = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_early_medieval
 	icon = @maa_01
@@ -278,7 +255,6 @@ innovation_prophets_sons = {
 }
 
 innovation_marcher_knights = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_high_medieval
 	icon = @maa_01
@@ -294,7 +270,6 @@ innovation_marcher_knights = {
 }
 
 innovation_brother_riders = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_early_medieval
 	icon = @maa_01
@@ -310,7 +285,6 @@ innovation_brother_riders = {
 }
 
 innovation_moonkin = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_tribal
 	icon = @maa_01
@@ -325,7 +299,6 @@ innovation_moonkin = {
 }
 
 innovation_konijkmener_pikes = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_early_medieval
 	icon = @maa_01
@@ -340,7 +313,6 @@ innovation_konijkmener_pikes = {
 }
 
 innovation_partic_seers = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_early_medieval
 	icon = @maa_01
@@ -355,16 +327,12 @@ innovation_partic_seers = {
 }
 
 innovation_aversarian_legionaires = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_high_medieval
 	icon = @maa_01
 
 	potential = {
-		OR = {
-			has_cultural_pillar = heritage_aversarian
-			any_parent_culture_or_above = { has_cultural_pillar = heritage_aversarian }
-		}
+		has_cultural_pillar = heritage_aversarian
 	}
 
 	unlock_maa = aversarian_legionaires
@@ -393,7 +361,6 @@ innovation_aversarian_legionaires = {
 # GH unique non MAA giving cultural specific innovations 
 
 innovation_doriosian_reforms = {
-	skill = stewardship
 	group = culture_group_regional
 	culture_era = culture_era_early_medieval
 	icon = @weapons_and_armor_01
@@ -418,16 +385,11 @@ innovation_doriosian_reforms = {
 
 innovation_imperial_religious_reformation = {
 	group = culture_group_regional
-	skill = stewardship
 	culture_era = culture_era_early_medieval
 	icon = @administration_1
 
 	potential = {
-		OR = {
-			has_cultural_pillar = heritage_aversarian
-			has_cultural_pillar = heritage_opakhasian
-			has_cultural_pillar = heritage_aironoian
-		}
+		has_cultural_pillar = heritage_aversarian
 	}
 
 	character_modifier = {
@@ -436,7 +398,6 @@ innovation_imperial_religious_reformation = {
 }
 
 innovation_eastern_cav = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_tribal
 	icon = @special_maa_02
@@ -451,7 +412,6 @@ innovation_eastern_cav = {
 }
 
 innovation_adabyss = {
-	skill = stewardship
 	group = culture_group_regional
 	culture_era = culture_era_tribal
 	icon = @maa_01
@@ -469,7 +429,6 @@ innovation_adabyss = {
 }
 
 innovation_griffon_riders = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_early_medieval
 	icon = @maa_01
@@ -488,7 +447,6 @@ innovation_griffon_riders = {
 }
 
 innovation_bloodbound = {
-	skill = martial
 	group = culture_group_regional
 	culture_era = culture_era_tribal
 	icon = @maa_01
@@ -507,15 +465,11 @@ innovation_bloodbound = {
 
 innovation_legion_raiders = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @maa_01
 
 	potential = {
-		OR = {
-			this = culture:centralimperial
-			any_parent_culture_or_above = { this = culture:centralimperial }
-		}
+		has_cultural_pillar = heritage_aversarian
 	}
 
 	unlock_maa = legion_raiders
@@ -525,7 +479,6 @@ innovation_legion_raiders = {
 
 innovation_home_legions = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @maa_01
 
@@ -543,7 +496,6 @@ innovation_home_legions = {
 
 innovation_pure_pikes = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @maa_01
 
@@ -567,7 +519,6 @@ innovation_pure_pikes = {
 
 innovation_legion_outriders = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @maa_01
 
@@ -585,7 +536,6 @@ innovation_legion_outriders = {
 
 innovation_north_shields = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @maa_01
 
@@ -603,7 +553,6 @@ innovation_north_shields = {
 
 innovation_legion_marines = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @maa_01
 
@@ -639,7 +588,6 @@ innovation_legion_marines = {
 
 innovation_duneriders = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @maa_01
 
@@ -676,7 +624,6 @@ innovation_duneriders = {
 
 innovation_mountainstrikers = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @maa_01
 
@@ -694,7 +641,6 @@ innovation_mountainstrikers = {
 
 innovation_thrill_of_the_hunt = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @maa_01
 
@@ -709,7 +655,6 @@ innovation_thrill_of_the_hunt = {
 
 innovation_stoneforged = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_high_medieval
 	icon = @weapons_and_armor_01
 
@@ -723,7 +668,6 @@ innovation_stoneforged = {
 
 innovation_sunstriders = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_early_medieval
 	icon = @knight
 
@@ -742,7 +686,6 @@ innovation_sunstriders = {
 
 innovation_observant = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @raised_banner
 	
@@ -757,7 +700,6 @@ innovation_observant = {
 
 innovation_huegodoc_legion = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_high_medieval
 	icon = @knight
 	
@@ -771,7 +713,6 @@ innovation_huegodoc_legion = {
 
 innovation_warisnik_mammoths = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @mammoth
 	potential = {
@@ -790,7 +731,6 @@ innovation_warisnik_mammoths = {
 
 innovation_jokhosani = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @maa_01
 
@@ -805,7 +745,6 @@ innovation_jokhosani = {
 
 innovation_kafasali_steel = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_early_medieval
 	region = world_ga_kashirya
 	icon = @weapons_and_armor_01
@@ -825,7 +764,6 @@ innovation_kafasali_steel = {
 
 innovation_talabhau = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @maa_01
 
@@ -844,7 +782,6 @@ innovation_talabhau = {
 
 innovation_kaphral = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_early_medieval
 	icon = @maa_01
 	
@@ -862,7 +799,6 @@ innovation_kaphral = {
 
 innovation_sword_oaths = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @leadership_1
 	potential = {
@@ -876,26 +812,20 @@ innovation_sword_oaths = {
 
 innovation_terrors_of_the_void = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @leadership_1
 	potential = {
 		has_cultural_pillar = heritage_redlander
 	}
-	#unlock_maa = chasm_terrors
+	unlock_maa = chasm_terrors
 	unlock_maa = redland_cultists
-	unlock_maa = willing_acolytes
-	#unlock_maa = voidhosts
-	#unlock_maa = nascent_shadehosts
-
-	custom = unlock_tribal_magical_buildings
+	unlock_maa = voidhosts
 	
 	flag = global_maa
 }
 
 innovation_sjalvolki_adventurers = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_tribal
 	icon = @maa_01
 
@@ -908,7 +838,6 @@ innovation_sjalvolki_adventurers = {
 
 innovation_bronzecast = {
 	group = culture_group_regional
-	skill = martial
 	culture_era = culture_era_high_medieval
 	icon = @siege_weapons
 
@@ -929,239 +858,3 @@ innovation_bronzecast = {
 	
 	flag = global_maa
 }
-
-innovation_beast_cavalry = {
-	group = culture_group_regional
-	culture_era = culture_era_early_medieval
-	icon = @maa_01
-	
-	potential = {
-		OR = {
-			this = culture:emberclan
-			any_parent_culture_or_above = { this = culture:emberclan }
-			has_cultural_tradition = tradition_southern_nomads
-		}
-	}
-
-	unlock_maa = tetukor
-	
-	flag = global_maa
-}
-
-innovation_military_structure = {
-	group = culture_group_regional
-	culture_era = culture_era_tribal
-	icon = @maa_01
-	
-	potential = {
-		OR = {
-			has_cultural_tradition = tradition_kathunkai_cultural_circle
-			this = culture:averkathuni
-			any_parent_culture_or_above = { this = culture:averkathuni }
-		}
-	}
-
-	unlock_maa = lujian
-	
-	flag = global_maa
-}
-
-innovation_yamen_troops = {
-	group = culture_group_regional
-	culture_era = culture_era_high_medieval
-	icon = @maa_01
-
-	potential = {
-		OR ={
-			this = culture:lanonan
-			any_parent_culture_or_above = { this = culture:lanonan }
-		}
-	}
-
-	unlock_maa = yamen_troops
-
-	flag = global_maa
-}
-
-#innovation_burstbolt = { # COMMENTED OUT: Currently unfinished, lacking locs
-#	group = culture_group_regional
-#	culture_era = culture_era_late_medieval
-#	icon = @maa_01
-#
-#	potential = {
-#		OR = {
-#			this = culture:lakoeng
-#			any_parent_culture_or_above = { this = culture:lakoeng }
-#		}
-#		NOT = {
-#			this = culture:langanafam
-#		}
-#		has_innovation = innovation_alchemical_gunpowder
-#	}
-#
-#	unlock_maa = bolt_trooper
-#	
-#	flag = global_maa
-#}
-
-innovation_banners = {
-	group = culture_group_regional
-	culture_era = culture_era_early_medieval
-	icon = @maa_01
-
-	potential = {
-		has_cultural_tradition = tradition_kathunkai_cultural_circle
-	}
-
-	unlock_maa = banners
-	
-	flag = global_maa
-}
-innovation_repeating_crossbow = {
-	skill = learning
-	group = culture_group_military
-	culture_era = culture_era_tribal
-	icon = @special_maa_02
-
-	potential = { ## GH URGENT: GHify
-		always = no
-		#OR = {
-		#	has_cultural_pillar = heritage_easterner
-		#	has_cultural_pillar = heritage_marcher
-		#}
-	}
-
-	asset = {
-		trigger = {
-			has_cultural_pillar = heritage_easterner
-		}
-		icon = @special_maa_02
-		name = innovation_repeating_crossbow_chinese
-	}
-
-	#unlock_maa = shenbigong
-
-	flag = global_maa
-	
-	ai_weight_for_fascination = {
-		value = 100
-	}
-}
-
-innovation_pole_vault = {
-	skill = martial
-	group = culture_group_military
-	culture_era = culture_era_tribal
-	icon = @weapons_and_armor_01
-
-	potential = { #GH_TODO_AUH: Give this to someone maybe?
-		always = no
-	}
-
-	unlock_maa = guanch_vaulter
-
-	flag = global_maa
-	
-	ai_weight_for_fascination = {
-		value = 100
-	}
-}
-
-innovation_alchemical_gunpowder = {
-	group = culture_group_regional
-	culture_era = culture_era_high_medieval
-	icon = @gunpowder
-
-	maa_upgrade = {
-		type = archers
-		damage = 15
-		toughness = 5
-	}
-
-	maa_upgrade = {
-		type = archer_cavalry
-		damage = 10
-		toughness = 3
-	}
-
-	maa_upgrade = {
-		type = gunpowder
-		damage = 12
-		toughness = 6
-	}
-
-	character_modifier = {
-		men_at_arms_maintenance = 0.1
-	}
-	
-	potential = {
-		has_cultural_pillar = heritage_easterner
-	}
-
-	can_progress = {
-		has_innovation = innovation_fire_medicine
-	}
-}
-
-innovation_heavy_siege_artillery = {
-	group = culture_group_regional
-	culture_era = culture_era_late_medieval
-	icon = @bombards
-
-	character_modifier = {
-		siege_weapon_damage_mult = 0.2
-	}
-
-	custom = unlock_maa_ding
-	
-	potential = {
-		has_cultural_pillar = heritage_easterner
-	}
-
-	can_progress = {
-		has_innovation = innovation_alchemical_gunpowder
-	}
-}
-
-innovation_specialized_banners_unit = {
-	group = culture_group_regional
-	culture_era = culture_era_high_medieval
-	icon = @wotz_steel
-
-	maa_upgrade = {
-		men_at_arms = banners
-		damage = 20
-	}
-
-	character_modifier = {
-		heavy_cavalry_maintenance_mult = 0.15
-	}
-
-	can_progress = {
-		has_innovation = innovation_banners
-	}
-
-	
-	potential = {
-		has_cultural_pillar = heritage_easterner
-	}
-}
-
-innovation_lihuo = {
-	group = culture_group_regional
-	culture_era = culture_era_high_medieval
-	icon = @dragon_kiln
-
-	maa_upgrade = {
-		type = magi
-		damage = 40
-		toughness = -25
-	}
-
-	
-	potential = {
-		has_cultural_pillar = heritage_easterner
-	}
-}
-
-

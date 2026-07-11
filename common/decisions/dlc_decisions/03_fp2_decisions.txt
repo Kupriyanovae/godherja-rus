@@ -148,10 +148,6 @@ struggle_iberia_ending_hostility_decision = {
 	}
 
 	effect = {
-		if = {
-			limit = { has_ach_dlc_trigger = yes }
-			add_character_flag = ach_ended_struggle
-		}
 		##### Major Effects #####
 		show_as_tooltip = {
 			dynasty = { add_dynasty_prestige = 10000 }
@@ -262,11 +258,9 @@ struggle_iberia_ending_compromise_decision = {
 				struggle:ritewars_struggle = {
 					any_involved_ruler = {
 						is_independent_ruler = yes
-						is_landless_adventurer = no		 
 						primary_title = { is_mercenary_company = no }
 						any_primary_war_enemy = {
 							is_independent_ruler = yes
-							is_landless_adventurer = no	  
 							any_character_struggle = {
 								involvement = involved
 								is_struggle_type = ritewars_struggle
@@ -289,7 +283,6 @@ struggle_iberia_ending_compromise_decision = {
 							is_independent_ruler = yes
 							primary_title = { is_holy_order = no }
 							primary_title = { is_mercenary_company = no }
-							is_landless_adventurer = no	  
 							save_temporary_scope_as = this_character
 							NOR = {
 								root = { has_strong_hook = scope:this_character }
@@ -311,7 +304,6 @@ struggle_iberia_ending_compromise_decision = {
 							NOT = { this = root }
 							is_independent_ruler = yes
 							primary_title = { is_mercenary_company = no }
-							is_landless_adventurer = no	  
 							primary_title.tier >= tier_kingdom
 						}
 					}
@@ -337,10 +329,6 @@ struggle_iberia_ending_compromise_decision = {
 				STRUGGLE = ritewars_struggle
 				STRUGGLE_ENDING = concordat
 			}
-		}
-		if = {
-			limit = { has_ach_dlc_trigger = yes }
-			add_character_flag = ach_ended_struggle
 		}
 		##### Major Effects #####
 		# Personal effects for ruler
@@ -484,10 +472,6 @@ struggle_iberia_ending_conciliation_decision = {
 				STRUGGLE = ritewars_struggle
 				STRUGGLE_ENDING = concordat
 			}
-		}
-		if = {
-			limit = { has_ach_dlc_trigger = yes }
-			add_character_flag = ach_ended_struggle
 		}
 		##### Major Effects #####
 		show_as_tooltip = {

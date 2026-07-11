@@ -146,7 +146,8 @@ portrait_scottish_unique_haircut = {
 portrait_frankish_unique_haircut = {
 	modifier = {
 		add = 60
-		culture ?= { has_cultural_pillar = heritage_marcher  }
+		exists = culture
+		culture = { has_cultural_pillar = heritage_marcher  }
 	}
 }
 

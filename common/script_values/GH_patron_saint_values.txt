@@ -129,29 +129,8 @@ patron_saint_affinity_total_value = {
 		add = patron_saint_affinity_piety_value
 	}
 	
+	
 	add = patron_saint_affinity_skill_value
-
-	add = patron_saint_ending_struggle_value
-}
-
-patron_saint_ending_struggle_value = {
-	value = 0
-	if = {
-		limit = { has_variable = gh_ended_central_sarradon_wih_struggle_patron_affinity }
-		add = 50	
-	}
-	if = {
-		limit = { has_variable = gh_ended_eastern_sarradon_wih_struggle_patron_affinity }
-		add = 50	
-	}
-	if = {
-		limit = { house ?= { has_house_modifier = gh_house_ended_central_sarradon_wih_struggle_patron_affinity } }
-		add = 30	
-	}
-	if = {
-		limit = { house ?= { has_house_modifier = gh_house_ended_eastern_sarradon_wih_struggle_patron_affinity } }
-		add = 30	
-	}
 }
 
 patron_saint_affinity_piety_value = {
@@ -655,7 +634,7 @@ patron_saint_affinity_generosity_function_base_value = {
 }
 
 patron_saint_hunting_gold_cost = {
-	value = standard_activity_base_cost
+	value = standard_activity_cost
 	divide = 1.5
 	if = {
 		limit = {

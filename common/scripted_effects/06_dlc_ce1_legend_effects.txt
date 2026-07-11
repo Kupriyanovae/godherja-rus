@@ -27,7 +27,7 @@ grab_appropriate_chronicler_effect = {
 				culture = { has_cultural_tradition = tradition_storytellers }
 				culture = { has_cultural_tradition = tradition_chanson_de_geste }
 				faith = {
-					trait_is_virtue = lifestyle_poet
+					trait_is_virtue = poet
 				}
 			}
 			any_court_position_holder = {
@@ -91,7 +91,7 @@ grab_appropriate_chronicler_effect = {
 	else = {
 		ordered_courtier = {
 			limit = {
-				this != root
+				NOT = { this = root }
 				is_available_ai_adult = yes
 			}
 			order_by = {
@@ -99,7 +99,7 @@ grab_appropriate_chronicler_effect = {
 				if = {
 					limit = {
 						OR = {
-							has_trait = lifestyle_poet
+							has_trait = poet
 							has_trait = journaller
 						}
 					}
@@ -168,7 +168,7 @@ grab_appropriate_bard_feast_effect = {
 						is_vassal_of = root
 						is_courtier_of = root
 					}
-					this != root
+					NOT = { this = root }
 					NOT = { is_spouse_of = root }
 					NOT = { is_child_of = root }
 					NOT = { is_councillor_of = root }
@@ -183,7 +183,7 @@ grab_appropriate_bard_feast_effect = {
 						is_vassal_of = root
 						is_courtier_of = root
 					}
-					this != root
+					NOT = { this = root }
 					NOT = { is_spouse_of = root }
 					NOT = { is_child_of = root }
 					is_physically_able_ai_adult = yes
@@ -192,7 +192,7 @@ grab_appropriate_bard_feast_effect = {
 					value = diplomacy
 					if = {
 						limit = {
-							has_trait = lifestyle_poet
+							has_trait = poet
 						}
 						add = 10
 					}
@@ -250,7 +250,7 @@ grab_appropriate_bard_effect = {
 	else_if = {
 		limit = {
 			any_courtier = {
-				this != root
+				NOT = { this = root }
 				NOT = { is_spouse_of = root }
 				NOT = { is_child_of = root }
 				NOT = { is_councillor_of = root }
@@ -259,7 +259,7 @@ grab_appropriate_bard_effect = {
 		}
 		ordered_courtier = {
 			limit = {
-				this != root
+				NOT = { this = root }
 				NOT = { is_spouse_of = root }
 				NOT = { is_child_of = root }
 				NOT = { is_councillor_of = root }
@@ -269,7 +269,7 @@ grab_appropriate_bard_effect = {
 				value = diplomacy
 				if = {
 					limit = {
-						has_trait = lifestyle_poet
+						has_trait = poet
 					}
 					add = 10
 				}
@@ -376,7 +376,7 @@ grab_mythical_founder_effect = {
 #						root.primary_title = title:k_cornwall
 #					}
 #					modifier = {
-#						current_date < 6000.1.1
+#						current_date < 1000.1.1
 #						factor = 3
 #					}
 #					set_variable = { name = mythical_ancestor_var value = flag:corineus }
@@ -386,7 +386,7 @@ grab_mythical_founder_effect = {
 #						root.primary_title = title:k_wales
 #					}
 #					modifier = {
-#						current_date < 6000.1.1
+#						current_date < 1000.1.1
 #						factor = 3
 #					}
 #					set_variable = { name = mythical_ancestor_var value = flag:magnus_maximus }
@@ -425,7 +425,7 @@ grab_mythical_founder_effect = {
 #							root.primary_title = title:k_scotland
 #							root.primary_title = title:k_marroux
 #						}
-#						current_date > 6100.1.1
+#						current_date > 1100.1.1
 #					}
 #					modifier = {
 #						root.primary_title = title:k_scotland
@@ -697,7 +697,7 @@ grab_mythical_founder_effect = {
 #				10 = { # Genghis Khan
 #					trigger = {
 #						root.culture = { has_cultural_pillar = heritage_mongolic }
-#						current_date > 6228.1.1
+#						current_date > 1228.1.1
 #					}
 #					set_variable = { name = mythical_ancestor_var value = flag:genghis }
 #				}
@@ -732,7 +732,7 @@ grab_mythical_founder_effect = {
 #							#Started in Lusignan
 #							root.primary_title = title:d_poitou
 #						}
-#						current_date > 6060.1.1
+#						current_date > 1060.1.1
 #					}
 #					modifier = { #The first Plantagenets go crazy over her
 #						OR = {
@@ -740,8 +740,8 @@ grab_mythical_founder_effect = {
 #							root.primary_title = title:d_anjou
 #							root.primary_title = title:d_poitou
 #						}
-#						current_date > 6060.1.1
-#						current_date < 6200.1.1
+#						current_date > 1060.1.1
+#						current_date < 1200.1.1
 #						factor = 5
 #					}
 #					set_variable = { name = mythical_ancestor_var value = flag:melusine }
@@ -1237,13 +1237,6 @@ legend_ending_rewards_legitimizing_effect = {
 				scope:title_claim.holder = root
 			}
 		}
-
-	}
-	else_if = {
-		limit = {
-			exists = scope:title_claim.holder
-			scope:title_claim.holder != root
-		}
 		add_pressed_claim = scope:title_claim
 		add_to_variable_list = {
 			name = legendary_claims
@@ -1490,7 +1483,7 @@ get_appropriate_ancient_people = {
 #			}
 #			set_variable = {
 #				name = original_region
-#				value = geographical_region:GH_REPLACE_world_europe_south_east
+#				value = geographical_region:world_europe_south_east
 #				years = 1
 #			}
 #			culture:macedonian = { save_scope_as = ancient_culture }
@@ -2651,13 +2644,13 @@ give_legendary_building_location_standard_effect = {
 	else_if = { # Otherwise, prioritize a title you hold directly
 		limit = {
 			any_held_title = {
-				title_tier = county
+				tier = tier_county
 				title_province = { has_special_building_slot = no }
 			}
 		}
 		random_held_title = {
-			title_tier = county
 			limit = {
+				tier = tier_county
 				title_province = { has_special_building_slot = no }
 			}
 			title_province = { save_scope_as = legendary_locale }
@@ -2666,15 +2659,15 @@ give_legendary_building_location_standard_effect = {
 	else_if = { #Otherwise, prioritize a barony that you hold directly
 		limit = {
 			any_held_title = {
-				title_tier = barony
+				tier = tier_barony
 				title_province = {
 					has_special_building_slot = no
 				}
 			}
 		}
 		random_held_title = {
-			title_tier = barony
 			limit = {
+				tier = tier_barony
 				title_province = {
 					has_special_building_slot = no
 				}
@@ -2688,13 +2681,13 @@ give_legendary_building_location_standard_effect = {
 	else_if = { # Otherwise, prioritize a barony within a title you hold
 		limit = {
 			any_held_title = {
-				title_tier = county
+				tier = tier_county
 				any_county_province = { has_special_building_slot = no }
 			}
 		}
 		random_held_title = {
-			title_tier = county
 			limit = {
+				tier = tier_county
 				any_county_province = { has_special_building_slot = no }
 			}
 			random_county_province = {
@@ -2825,31 +2818,14 @@ legend_seed_new_title_effect = {
 legend_seed_great_deed_dynasty_effect = {
 	if = {
 		limit = { has_dlc_feature = legends }
-		if = {
-			limit = {
-				highest_held_title_tier < tier_hegemony
-			}
-			create_legend_seed = {
-				type = legitimizing
-				quality = famed
-				chronicle = great_deed_dynasty
-				properties = {
-					dynasty = root.dynasty
-					founder = root
-					title = root.primary_title.empire
-				}
-			}
-		}
-		else = {
-			create_legend_seed = {
-				type = legitimizing
-				quality = famed
-				chronicle = great_deed_dynasty
-				properties = {
-					dynasty = root.dynasty
-					founder = root
-					title = root.primary_title
-				}
+		create_legend_seed = {
+			type = legitimizing
+			quality = famed
+			chronicle = great_deed_dynasty
+			properties = {
+				dynasty = root.dynasty
+				founder = root
+				title = root.primary_title.empire
 			}
 		}
 	}
@@ -2930,7 +2906,7 @@ mark_historical_legend_as_done = {
 	if = { # Anesimasios
 		limit = {
 			legend_property:ancestor ?= character:centralimperial_aversarinas_aagiokrata_45
-			legend_property:title ?= title:h_aversarinas_aautokrata
+			legend_property:title ?= title:e_aversarinas_aautokrata
 		}
 		set_global_variable = {
 			name = anesimasios_legend
@@ -2940,7 +2916,7 @@ mark_historical_legend_as_done = {
 	if = { # Theyssia
 		limit = {
 			legend_property:ancestor ?= character:southernimperial_aversarinas_aagiokrata_1
-			legend_property:title ?= title:h_aversarinas_aautokrata
+			legend_property:title ?= title:e_aversarinas_aautokrata
 		}
 		set_global_variable = {
 			name = theyssia_legend
@@ -3039,7 +3015,7 @@ mark_historical_legend_as_done = {
 	if = { # Aeschraes
 		limit = {
 			legend_property:ancestor ?= character:westernimperial_aeschraes_aagiokrata_1
-			legend_property:title ?= title:h_aversarinas_aautokrata
+			legend_property:title ?= title:e_aversarinas_aautokrata
 		}
 		set_global_variable = {
 			name = aeschraes_legend
@@ -3102,77 +3078,6 @@ mark_historical_legend_as_done = {
 		}
 		set_global_variable = {
 			name = iyrossi_kings_legend
-			value = yes
-		}
-	}
-	# Marmaladids
-	if = { # Dawas
-		limit = {
-			legend_property:founder ?= character:marmaladid_marmaladid_3
-			legend_property:title ?= title:h_great_tarrafent
-		}
-		set_global_variable = {
-			name = dawas_legend
-			value = yes
-		}
-	}
-	if = { # Mutsar
-		limit = {
-			legend_property:founder ?= character:marmaladid_marmaladid_4
-			legend_property:title ?= title:h_great_tarrafent
-		}
-		set_global_variable = {
-			name = mutsar_legend
-			value = yes
-		}
-	}
-	if = { # Utyal
-		limit = {
-			legend_property:founder ?= character:marmaladid_marmaladid_1
-			legend_property:title ?= title:h_great_tarrafent
-		}
-		set_global_variable = {
-			name = utyal_legend
-			value = yes
-		}
-	}
-	if = { # Gwasil
-		limit = {
-			legend_property:founder ?= character:marmaladid_marmaladid_2
-			legend_property:title ?= title:h_great_tarrafent
-		}
-		set_global_variable = {
-			name = gwasil_legend
-			value = yes
-		}
-	}
-	if = { # Nonn
-		limit = {
-			legend_property:founder ?= character:marmaladid_marmaladid_6
-			legend_property:title ?= title:h_great_tarrafent
-		}
-		set_global_variable = {
-			name = nonn_legend
-			value = yes
-		}
-	}
-	if = { # Morimal
-		limit = {
-			legend_property:founder ?= character:marmaladid_marmaladid_5
-			legend_property:title ?= title:h_great_tarrafent
-		}
-		set_global_variable = {
-			name = morimal_legend
-			value = yes
-		}
-	}
-	if = { # Akhtar
-		limit = {
-			legend_property:founder ?= character:marmaladid_marmaladid_15
-			legend_property:title ?= title:h_great_tarrafent
-		}
-		set_global_variable = {
-			name = akhtar_legend
 			value = yes
 		}
 	}

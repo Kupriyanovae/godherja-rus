@@ -70,7 +70,7 @@ tradition_redlanders = {
 	is_shown = { #Replaced by Mubarizuns
 		has_cultural_pillar = heritage_iseni
 	}
-
+	
 	can_pick = {
 		culture_not_pacifistic_trigger = yes
 		custom_description = {
@@ -88,7 +88,6 @@ tradition_redlanders = {
 		NOT = { has_cultural_tradition = tradition_warriors_of_the_dry }
 		NOT = { has_cultural_tradition = tradition_dryland_dwellers }
 	}
-
 	parameters = {
 		desert_warrior_trait_more_common = yes
 		dry_trait_bonuses = yes
@@ -99,12 +98,10 @@ tradition_redlanders = {
 		culture_can_raid_at_sea_even_if_feudal = yes
 		no_standard_maa = yes
 	}
-
 	county_modifier = {
 		desert_development_growth_factor = 0.35
 		drylands_development_growth_factor = 0.15
 	}
-
 	province_modifier = {
 		drylands_levy_size = 0.1
 		desert_levy_size = 0.1
@@ -117,14 +114,6 @@ tradition_redlanders = {
 	}
 	character_modifier = {
 		mercenary_hire_cost_mult = 10
-		ai_boldness = 25
-		ai_rationality = -15
-		ai_zeal = 10
-		ai_energy = 20
-		ai_vengefulness = 10
-		ai_greed = 5
-		ai_war_chance = 1
-		ai_war_cooldown = -0.66
 	}
 	culture_modifier = {
 		mercenary_count_mult = -10
@@ -140,8 +129,8 @@ tradition_redlanders = {
 				limit = {
 					NOR = {
 						culture_pillar:ethos_bellicose = { is_in_list = traits }
-						culture_pillar:ethos_stoic = { is_in_list = traits }
 						culture_pillar:ethos_communal = { is_in_list = traits }
+						culture_pillar:ethos_stoic = { is_in_list = traits }
 					}
 				}
 				add = {
@@ -172,7 +161,6 @@ tradition_redlanders = {
 			multiply = tradition_replacement_cost_if_relevant
 		}
 	}
-
 	ai_will_do = {
 		value = 100
 		if = {
@@ -194,218 +182,5 @@ tradition_redlanders = {
 			}
 			multiply = 0
 		}
-	}
-}
-
-tradition_shooting_specialization = {
-	category = combat
-
-	layers = {
-		0 = intrigue
-		1 = western
-		4 = soldiers4.dds
-	}
-
-	parameters = {
-		next_level_military_camps = yes
-		hunting_archery_building_bonuses = yes
-	}
-	
-	character_modifier = {
-		archers_damage_mult = 0.35
-		archers_toughness_mult = 0.15
-		archers_max_size_add = 3
-		knight_effectiveness_mult = -0.15
-		heavy_infantry_max_size_add = -2
-		pikemen_max_size_add = -2
-		heavy_infantry_toughness_mult = -0.15
-		pikemen_toughness_mult = -0.15
-	}
-	
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			if = {
-				limit = {
-					NOR = {
-						culture_pillar:ethos_bellicose = { is_in_list = traits }
-						culture_pillar:ethos_spiritual = { is_in_list = traits }
-						culture_pillar:ethos_stoic = { is_in_list = traits }
-					}
-				}
-				add = {
-					value = tradition_incompatible_ethos_penalty
-					desc = not_bellicose_spiritual_or_stoic_desc
-				}
-			}
-			if = {
-				limit = {
-					NOT = {
-						scope:character = {
-							number_maa_soldiers_of_base_type = {
-								type = skirmishers
-								value >= 500
-							}	
-							number_maa_soldiers_of_base_type = {
-								type = archers
-								value >= 500
-							}
-						}
-					}
-				}
-				add = {
-					value = tradition_unfulfilled_criteria_penalty
-					desc = culture_head_small_soldiers_desc
-				}
-			}
-
-			if = {
-				limit = {
-					culture_tradition_reduction_trigger = { TRADITION = tradition_adaptive_skirmishing }
-				}
-				multiply = {
-					value = 0.5
-					desc = inspired_by_culture_desc
-				}
-			}
-			
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-	
-	ai_will_do = {
-		value = 400
-		if = {
-			limit = {
-				scope:character = {
-					OR = {
-						number_maa_soldiers_of_base_type = {
-							type = heavy_infantry
-							value >= 200
-						}	
-						number_maa_soldiers_of_base_type = {
-							type = pikemen
-							value >= 200
-						}
-					}
-				}
-			}
-			multiply = 0
-		}
-		if = {
-			limit = {
-				OR = {
-					culture_has_heavy_infantry_maa = yes
-					culture_has_heavy_cavalry_maa = yes
-				}
-			}
-			multiply = 0
-		}
-		else_if = {
-			limit = {
-				NOR = {
-					culture_has_archer_maa = yes
-					culture_has_skirmisher_maa = yes
-				}
-			}
-			multiply = 0.25
-		}
-		else_if = {
-			limit = {
-				scope:character ?= {
-					ai_has_warlike_personality = yes
-				}
-			}
-			multiply = 2
-		}
-	}
-}
-
-tradition_dragonrider_cliques = {
-	category = combat
-	layers = {
-		0 = martial
-		1 = western
-		4 = knight.dds
-	}
-	
-	is_shown = { GH_dragonrider_culture_trigger = yes }
-	can_pick = {
-		AND = {
-			dragons_extinct_trigger = no
-			GH_dragonrider_culture_trigger = yes
-		}
-	}
-	
-	parameters = {
-		dragonrider_trait_bonuses = yes
-		dragonrider_traits_give_dread = yes
-		unlock_maa_dragonriders = yes
-	}
-	character_modifier = {
-		knight_limit = 3
-		men_at_arms_maintenance = 0.5
-		# GH TODO: Dragonrider / Dragon MAA bonuses instead of Flying 
-		flying_damage_mult = 0.2
-		flying_maintenance_mult = -0.75
-	}
-	
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			# Ethos requirement.
-			if = {
-				limit = {
-					NOR = {
-						culture_pillar:ethos_bellicose = { is_in_list = traits }
-						culture_pillar:ethos_spiritual = { is_in_list = traits }
-					}
-				}
-				add = {
-					value = tradition_incompatible_ethos_penalty
-					desc = not_bellicose_or_spiritual_desc
-				}
-			}
-			# Certain number of monsters MaA requirement.
-			if = {
-				limit = {
-					scope:character = {
-						number_maa_soldiers_of_base_type = {
-							type = monsters # GH TODO: Change to dragons
-							# Remember to sync the below with dragonrider_cliques_minimum_dragon_maa_value.
-							value < dragonrider_cliques_minimum_dragon_maa_value
-						}
-					}
-				}
-				add = {
-					value = tradition_unfulfilled_criteria_penalty
-					desc = culture_head_lacks_dragon_maa_desc
-				}
-			}
-
-			if = {
-				limit = {
-					culture_tradition_reduction_trigger = { TRADITION = tradition_dragonrider_cliques }
-				}
-				multiply = {
-					value = 0.5
-					desc = inspired_by_culture_desc
-				}
-			}
-			
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-	
-	ai_will_do = {
-		value = 0 # GH TODO: Proper values
 	}
 }

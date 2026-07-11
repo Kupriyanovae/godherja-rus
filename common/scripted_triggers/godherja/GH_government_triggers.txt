@@ -4,14 +4,9 @@
 # Pirate
 # Magocracies
 # Peasant Republic
-# Judicial Republic
-# Administrative Republic
 # Landed Order
 # Military Unit
 # Migratory
-# Otachedian
-# Continental Clan
-# Landed Cultist
 #
 ## Vanilla Governments
 # Tribal
@@ -222,7 +217,7 @@ GH_is_unplayable_government_trigger = {
 
 GH_is_any_republic_government_trigger = {
 	OR = {
-		#government_has_flag = government_is_republic
+		government_has_flag = government_is_republic
 		government_has_flag = government_is_republic_playable
 		GH_is_any_special_republic_government_trigger = yes
 		GH_is_judicial_republic_government_trigger = yes
@@ -255,8 +250,4 @@ GH_is_any_organized_government_trigger = { # For can_have_partition_succession_l
 		government_has_flag = government_is_magocratic
 		government_has_flag = government_is_feudal
 	}
-}
-
-gh_can_become_otachedian_trigger = {
-	culture = { has_cultural_tradition = tradition_otachedian_law }
 }

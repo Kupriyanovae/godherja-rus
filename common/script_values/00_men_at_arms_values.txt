@@ -38,9 +38,7 @@
 @siege_weapons_low_maint_cost = 0.1
 @siege_weapons_high_maint_cost = @[siege_weapons_low_maint_cost * high_maint_mult]
 
-@gunpowder_recruitment_cost = 76
-@gunpowder_low_maint_cost = 0.35
-@gunpowder_high_maint_cost = @[gunpowder_low_maint_cost * high_maint_mult]
+### Specialist Cost Values
 
 @undead_recruitment_cost = 10
 @undead_low_maint_cost = 0
@@ -65,10 +63,6 @@
 @flying_recruitment_cost = 400
 @flying_low_maint_cost = 1
 @flying_high_maint_cost = @[flying_low_maint_cost * high_maint_mult]
-
-@void_recruitment_cost = 100
-@void_low_maint_cost = 0.5
-@void_high_maint_cost = 1
 
 ### Base MAA
 skirmisher_recruitment_cost = @[skirmisher_recruitment_cost]
@@ -98,10 +92,6 @@ light_cavalry_high_maint_cost = @[light_cavalry_high_maint_cost]
 heavy_cavalry_recruitment_cost = @[heavy_cavalry_recruitment_cost]
 heavy_cavalry_low_maint_cost = @[heavy_cavalry_low_maint_cost]
 heavy_cavalry_high_maint_cost = @[heavy_cavalry_high_maint_cost]
-
-handgunner_recruitment_cost = @[gunpowder_recruitment_cost]
-handgunner_low_maint_cost = @[gunpowder_low_maint_cost]
-handgunner_high_maint_cost = @[gunpowder_high_maint_cost]
 
 ### Specialist MAA
 monsters_recruitment_cost = @[monsters_recruitment_cost]
@@ -149,22 +139,6 @@ bombard_recruitment_cost = @[siege_weapons_recruitment_cost * 1.6]
 bombard_low_maint_cost = @[siege_weapons_low_maint_cost * 1.6]
 bombard_high_maint_cost = @[siege_weapons_high_maint_cost * 1.6]
 
-ballista_recruitment_cost = @[siege_weapons_recruitment_cost]
-ballista_low_maint_cost = @[siege_weapons_low_maint_cost]
-ballista_high_maint_cost = @[siege_weapons_high_maint_cost]
-
-cloud_ladder_recruitment_cost = @[siege_weapons_recruitment_cost * 1.1]
-cloud_ladder_low_maint_cost = @[siege_weapons_low_maint_cost * 1.1]
-cloud_ladder_high_maint_cost = @[siege_weapons_high_maint_cost * 1.1]
-
-siege_tower_recruitment_cost = @[siege_weapons_recruitment_cost * 1.3]
-siege_tower_low_maint_cost = @[siege_weapons_low_maint_cost * 1.3]
-siege_tower_high_maint_cost = @[siege_weapons_high_maint_cost * 1.3]
-
-cannon_recruitment_cost = @[gunpowder_recruitment_cost * 1.6]
-cannon_low_maint_cost = @[gunpowder_low_maint_cost * 1.6]
-cannon_high_maint_cost = @[gunpowder_high_maint_cost * 1.6]
-
 ### Cultural MAA
 huscarls_recruitment_cost = @[heavy_infantry_recruitment_cost * 1.28]
 huscarls_low_maint_cost = @[heavy_infantry_low_maint_cost * 1.28]
@@ -178,92 +152,6 @@ horse_archers_recruitment_cost = @[skirmisher_recruitment_cost * 3]
 horse_archers_low_maint_cost = @[skirmisher_low_maint_cost * 3]
 horse_archers_high_maint_cost = @[skirmisher_high_maint_cost * 3]
 
-warrior_monks_gold_recruitment_cost = 45
-warrior_monks_piety_recruitment_cost = 200
-warrior_monks_gold_low_maint_cost = 0.1
-warrior_monks_gold_high_maint_cost = 0.3
-warrior_monks_piety_low_maint_cost = 0.2
-warrior_monks_piety_high_maint_cost = 0.6
-
-ayyar_recruitment_cost = @[heavy_infantry_recruitment_cost - 15]
-ayyar_low_maint_cost = @[heavy_infantry_low_maint_cost * 0.9]
-ayyar_high_maint_cost = @[heavy_infantry_high_maint_cost * 0.9]
-
-palace_guards_recruitment_cost = @[heavy_infantry_recruitment_cost * 1.2]
-palace_guards_low_maint_cost = @[heavy_infantry_low_maint_cost * 1.2]
-palace_guards_high_maint_cost = @[heavy_infantry_high_maint_cost * 1.2]
-fire_lancers_recruitment_cost = @[gunpowder_recruitment_cost]
-fire_lancers_low_maint_cost = @[gunpowder_low_maint_cost]
-fire_lancers_high_maint_cost = @[gunpowder_high_maint_cost]
-
-tawashi_recruitment_cost = @[light_cavalry_recruitment_cost * 1.1]
-tawashi_low_maint_cost = @[light_cavalry_low_maint_cost * 1.1]
-tawashi_high_maint_cost = @[light_cavalry_high_maint_cost * 1.1]
-
-ayrudzi_recruitment_cost = @[light_cavalry_recruitment_cost]
-ayrudzi_low_maint_cost = @[light_cavalry_low_maint_cost]
-ayrudzi_high_maint_cost = @[light_cavalry_high_maint_cost]
-
-conrois_recruitment_cost = @[heavy_cavalry_recruitment_cost * 0.85]
-conrois_low_maint_cost = @[heavy_cavalry_low_maint_cost * 0.85]
-conrois_high_maint_cost = @[heavy_cavalry_high_maint_cost * 0.85]
-
-akritai_recruitment_cost = @[skirmisher_recruitment_cost * 0.9]
-akritai_low_maint_cost = @[skirmisher_low_maint_cost * 0.9]
-akritai_high_maint_cost = @[skirmisher_high_maint_cost * 0.9]
-
-skoutatoi_recruitment_cost = @[pikemen_recruitment_cost * 1.1]
-skoutatoi_low_maint_cost = @[pikemen_low_maint_cost * 1.1]
-skoutatoi_high_maint_cost = @[pikemen_high_maint_cost * 1.1]
-
-ballistrai_recruitment_cost = @[archers_recruitment_cost * 1.15]
-ballistrai_low_maint_cost = @[archers_low_maint_cost * 0.75]
-ballistrai_high_maint_cost = @[archers_high_maint_cost * 0.75]
-
-asawira_recruitment_cost = 300
-asawira_low_maint_cost = 1
-asawira_high_maint_cost = 3
-
-fire_lancers_recruitment_cost = @[gunpowder_recruitment_cost]
-fire_lancers_low_maint_cost = @[gunpowder_low_maint_cost]
-fire_lancers_high_maint_cost = @[gunpowder_high_maint_cost]
-
-gakgung_archers_recruitment_cost = @[archers_recruitment_cost * 1.2]
-gakgung_archers_low_maint_cost = @[archers_low_maint_cost * 1.2]
-gakgung_archers_high_maint_cost = @[archers_high_maint_cost * 1.2]
-
-ballista_elephant_recruitment_cost = @[heavy_cavalry_recruitment_cost * 2.2]
-ballista_elephant_low_maint_cost = @[heavy_cavalry_low_maint_cost * 1.4]
-ballista_elephant_high_maint_cost = @[heavy_cavalry_high_maint_cost * 1.6]
-
-pesilat_warriors_recruitment_cost = @[skirmisher_recruitment_cost * 0.9]
-pesilat_warriors_low_maint_cost = @[skirmisher_low_maint_cost * 0.9]
-pesilat_warriors_high_maint_cost = @[skirmisher_high_maint_cost * 0.9]
-
-samurai_recruitment_cost = @[heavy_infantry_recruitment_cost * 1.67]
-samurai_low_maint_cost = @[heavy_infantry_low_maint_cost * 1.67]
-samurai_high_maint_cost = @[heavy_infantry_high_maint_cost * 1.67]
-
-zhanmadao_infantry_recruitment_cost = @[heavy_infantry_recruitment_cost * 0.95]
-zhanmadao_infantry_low_maint_cost = @[heavy_infantry_low_maint_cost * 1.05]
-zhanmadao_infantry_high_maint_cost = @[heavy_infantry_high_maint_cost * 1.05]
-
-burenjia_recruitment_cost = @[heavy_infantry_recruitment_cost - 15]
-burenjia_low_maint_cost = @[heavy_infantry_low_maint_cost * 0.9]
-burenjia_high_maint_cost = @[heavy_infantry_high_maint_cost * 0.75]
-
-tiefutu_recruitment_cost = @[heavy_cavalry_recruitment_cost * 1.3]
-tiefutu_low_maint_cost = @[heavy_cavalry_low_maint_cost * 1.3]
-tiefutu_high_maint_cost = @[heavy_cavalry_high_maint_cost * 1.3]
-
-black_armor_cavalry_recruitment_cost = @[heavy_cavalry_recruitment_cost * 1.3]
-black_armor_cavalry_low_maint_cost = @[heavy_cavalry_low_maint_cost * 1.3]
-black_armor_cavalry_high_maint_cost = @[heavy_cavalry_high_maint_cost * 1.3]
-
-rocket_carts_recruitment_cost = @[archers_recruitment_cost * 1.25]
-rocket_carts_low_maint_cost = @[archers_low_maint_cost * 0.9]	# uses gunpowder, but also uses less men than archers would
-rocket_carts_high_maint_cost = @[archers_high_maint_cost * 0.9]
-
 ### Regional MAA
 camel_rider_recruitment_cost = @[light_cavalry_recruitment_cost + 0]
 camel_rider_low_maint_cost = @[light_cavalry_low_maint_cost * 0.8]
@@ -272,10 +160,6 @@ camel_rider_high_maint_cost = @[light_cavalry_high_maint_cost * 0.8]
 war_elephant_recruitment_cost = @[heavy_cavalry_recruitment_cost * 2]
 war_elephant_low_maint_cost = @[heavy_cavalry_low_maint_cost * 1.2]
 war_elephant_high_maint_cost = @[heavy_cavalry_high_maint_cost * 1.4]
-
-guanch_vaulter_recruitment_cost = @[skirmisher_recruitment_cost * 1.2]
-guanch_vaulter_low_maint_cost = @[skirmisher_low_maint_cost * 1.2]
-guanch_vaulter_high_maint_cost = @[skirmisher_high_maint_cost * 1.2]
 
 ###Accolade MaA
 
@@ -290,20 +174,11 @@ accolade_camel_rider_recruitment_cost = @[light_cavalry_recruitment_cost * 2]
 accolade_siege_weapons_recruitment_cost = @[siege_weapons_recruitment_cost * 2]
 accolade_war_elephant_recruitment_cost = @[heavy_cavalry_recruitment_cost * 4]
 accolade_horse_archers_recruitment_cost = @[skirmisher_recruitment_cost * 3 * 2]
+accolade_magi_recruitment_cost = @[magi_recruitment_cost * 2]
 
 ######################################################
 ## Godherja Men-at-Arms Values
-# by: Heisenbee/zslayernslay - Redone by Lonely Knightess
-
-# Flying
-
-dragonriders_recruitment_cost = @[flying_recruitment_cost * 4]
-dragonriders_low_maint_cost = @[flying_low_maint_cost * 2]
-dragonriders_high_maint_cost = @[flying_high_maint_cost * 2]
-dragonriders_piety_recruitment_cost = @[flying_recruitment_cost * 2]
-dragonriders_prestige_recruitment_cost = @[flying_recruitment_cost * 2]
-dragonriders_low_prestige_maint_cost = @[flying_low_maint_cost * 3]
-dragonriders_high_prestige_maint_cost = @[flying_high_maint_cost * 3]
+# by: Heisenbee/zslayernslay - Redone by Lonely Knight
 
 # Adventurers
 
@@ -362,10 +237,6 @@ jerniems_rangers_high_maint_cost = @[archers_high_maint_cost * 2.5]
 jerniems_rangers_low_maint_cost = @[archers_low_maint_cost * 1.5]
 jerniems_rangers_recruitment_cost = @[archers_recruitment_cost * 2.5]
 
-#bolt_trooper_high_maint_cost = @[archers_high_maint_cost * 1.6]
-#bolt_trooper_low_maint_cost = @[archers_low_maint_cost * 1.6]
-#bolt_trooper_recruitment_cost = @[archers_recruitment_cost * 1.8]
-
 # Heavy Cavalry
 
 ahbshaani_devouts_high_maint_cost = @[heavy_cavalry_high_maint_cost * 1.4]
@@ -413,19 +284,14 @@ sunstriders_high_maint_cost = @[heavy_cavalry_high_maint_cost * 1.3]
 sunstriders_low_maint_cost = @[heavy_cavalry_low_maint_cost * 1.3]
 sunstriders_recruitment_cost = @[heavy_cavalry_recruitment_cost * 1.3]
 
-war_chariots_recruitment_cost = @[heavy_cavalry_recruitment_cost * 0.9 ]
-war_chariots_recruitment_cost_prestige = @[heavy_cavalry_recruitment_cost * 0.5 ]
+war_chariots_cost = @[heavy_cavalry_recruitment_cost * 0.9 ]
+war_chariots_cost_prestige = @[heavy_cavalry_recruitment_cost * 0.5 ]
 war_chariots_high_maint_cost = @[heavy_cavalry_high_maint_cost * 1.5 ]
 war_chariots_low_maint_cost = @[heavy_cavalry_low_maint_cost * 1.2 ]
 
 war_mammoth_high_maint_cost = @[heavy_cavalry_high_maint_cost * 1.4]
 war_mammoth_low_maint_cost = @[heavy_cavalry_low_maint_cost * 1.2]
 war_mammoth_recruitment_cost = @[heavy_cavalry_recruitment_cost * 2]
-
-banners_high_maint_cost = @[heavy_cavalry_high_maint_cost * 1.3]
-banners_low_maint_cost = @[heavy_cavalry_low_maint_cost * 1.4]
-banners_recruitment_cost = @[heavy_cavalry_recruitment_cost * 1.5]
-banners_recruitment_cost_prestige = 120
 
 # Heavy Infantry
 
@@ -482,15 +348,7 @@ talabhau_high_maint_cost = @[heavy_infantry_high_maint_cost * 1.3]
 talabhau_low_maint_cost = @[heavy_infantry_low_maint_cost * 1.3]
 talabhau_recruitment_cost = @[heavy_infantry_recruitment_cost * 1.3]
 
-yamen_troops_high_maint_cost = @[heavy_infantry_high_maint_cost * 1.6]
-yamen_troops_low_maint_cost = @[heavy_infantry_low_maint_cost * 1.6]
-yamen_troops_recruitment_cost = @[heavy_infantry_recruitment_cost * 1.5]
-
 # Light Cavalry
-
-mulaththamun_recruitment_cost = @[light_cavalry_recruitment_cost + 0]
-mulaththamun_low_maint_cost = @[light_cavalry_low_maint_cost * 1.1]
-mulaththamun_high_maint_cost = @[light_cavalry_high_maint_cost * 1.1]
 
 brother_riders_high_maint_cost = @[light_cavalry_high_maint_cost * 1.45]
 brother_riders_low_maint_cost = @[light_cavalry_low_maint_cost * 1.45]
@@ -516,28 +374,7 @@ tskherosan_high_maint_cost = @[light_cavalry_high_maint_cost * 1.4]
 tskherosan_low_maint_cost = @[light_cavalry_low_maint_cost * 1.4]
 tskherosan_recruitment_cost = @[light_cavalry_recruitment_cost * 1.4]
 
-tetukor_high_maint_cost = @[light_cavalry_high_maint_cost * 1.2]
-tetukor_low_maint_cost = @[light_cavalry_low_maint_cost * 1.2]
-tetukor_recruitment_cost = @[light_cavalry_recruitment_cost * 1.25]
-
 # Magi
-shamans_high_maint_cost = @[magi_high_maint_cost * 0.9]
-shamans_low_maint_cost = @[magi_low_maint_cost * 0.9]
-shamans_recruitment_cost = @[magi_recruitment_cost * 0.9]
-shamans_recruitment_cost_piety = @[magi_recruitment_cost * 0.8 ]
-shamans_recruitment_cost_prestige = @[magi_recruitment_cost * 0.8 ]
-
-cultists_high_maint_cost = @[magi_high_maint_cost * 0.75 ]
-cultists_low_maint_cost = @[magi_low_maint_cost * 0.75 ]
-cultists_recruitment_cost = @[magi_recruitment_cost * 0.75 ]
-cultists_recruitment_cost_piety = @[magi_recruitment_cost * 1.2 ]
-cultists_recruitment_cost_prestige = @[magi_recruitment_cost * 1.2 ]
-
-raving_zealots_high_maint_cost = @[magi_high_maint_cost * 0.5]
-raving_zealots_low_maint_cost = @[magi_low_maint_cost * 0.5]
-raving_zealots_recruitment_cost = @[magi_recruitment_cost * 0.5]
-raving_zealots_recruitment_cost_piety = @[magi_recruitment_cost * 1.2 * 1.25]
-raving_zealots_recruitment_cost_prestige = @[magi_recruitment_cost * 1.2]
 
 arcane_auxiliaries_high_maint_cost = @[magi_high_maint_cost * 1.2]
 arcane_auxiliaries_low_maint_cost = @[magi_low_maint_cost * 1.2]
@@ -561,13 +398,13 @@ redland_cultists_high_maint_cost_piety = @[magi_high_maint_cost * 0.1]
 redland_cultists_low_maint_cost_piety = @[magi_low_maint_cost * 0.1]
 redland_cultists_recruitment_cost_piety = @[magi_recruitment_cost * 1.5]
 
-#voidhosts_high_maint_cost_piety = @[magi_high_maint_cost * 0.5]
-#voidhosts_low_maint_cost_piety = @[magi_low_maint_cost * 0.4]
-#voidhosts_recruitment_cost_piety = @[magi_recruitment_cost * 2]
+voidhosts_high_maint_cost_piety = @[magi_high_maint_cost * 0.6]
+voidhosts_low_maint_cost_piety = @[magi_low_maint_cost * 0.6]
+voidhosts_recruitment_cost_piety = @[magi_recruitment_cost * 2]
 
-#chasm_terror_high_maint_cost_piety = @[magi_high_maint_cost * 1.2]
-#chasm_terror_low_maint_cost_piety = @[magi_low_maint_cost * 0.5]
-#chasm_terror_recruiment_cost_piety = @[magi_recruitment_cost * 3.0]
+chasm_terror_high_maint_cost_piety = @[magi_high_maint_cost * 3]
+chasm_terror_low_maint_cost_piety = @[magi_low_maint_cost * 1.2]
+chasm_terror_recruiment_cost_piety = @[magi_recruitment_cost * 2.3]
 
 stepwalkers_high_maint_cost = @[magi_high_maint_cost * 1.3]
 stepwalkers_low_maint_cost = @[magi_low_maint_cost * 1.3]
@@ -619,14 +456,6 @@ rearka_high_maint_cost = @[pikemen_high_maint_cost]
 rearka_low_maint_cost = @[pikemen_low_maint_cost]
 rearka_recruitment_cost = @[pikemen_recruitment_cost]
 
-lujian_high_maint_cost = @[pikemen_high_maint_cost * 1.1]
-lujian_low_maint_cost = @[pikemen_low_maint_cost * 1.1]
-lujian_recruitment_cost = @[pikemen_recruitment_cost * 1.2]
-
-phkamakara_high_maint_cost = @[pikemen_high_maint_cost * 1.3]
-phkamakara_low_maint_cost = @[pikemen_low_maint_cost * 1.3]
-phkamakara_recruitment_cost = @[pikemen_recruitment_cost * 1.3]
-
 # Siege Weapons
 
 airship_recruitment_cost = @[siege_weapons_recruitment_cost * 6.3]
@@ -646,10 +475,6 @@ darksteel_colossi_recruitment_cost = @[siege_weapons_recruitment_cost * 5 ]
 darksteel_colossi_recruitment_cost_prestige = 500
 darksteel_colossi_low_maint_cost = @[siege_weapons_low_maint_cost * 5 ]
 darksteel_colossi_high_maint_cost = @[siege_weapons_high_maint_cost * 5 ]
-
-ding_recruitment_cost = @[siege_weapons_recruitment_cost * 3.5 ]
-ding_low_maint_cost = @[siege_weapons_low_maint_cost * 3.5 ]
-ding_high_maint_cost = @[siege_weapons_high_maint_cost * 5 ]
 
 # Skirmishers
 
@@ -727,7 +552,7 @@ death_seekers_high_maint_cost = @[heavy_infantry_high_maint_cost * 10]
 death_seekers_recruitment_cost_piety = @[heavy_infantry_recruitment_cost * 7]
 death_seekers_recruitment_cost_prestige = @[heavy_infantry_recruitment_cost * 7]
 
-sidharakyan_high_maint_cost = @[heavy_infantry_high_maint_cost * 1.3]
+sidharakyan_high_maint_cost = @[heavy_infantry_recruitment_cost * 1.3]
 sidharakyan_low_maint_cost = @[heavy_infantry_low_maint_cost * 1.3]
 sidharakyan_recruitment_cost = @[heavy_infantry_recruitment_cost * 1.3]
 
@@ -735,42 +560,11 @@ dhageray_recruitment_cost = @[skirmisher_recruitment_cost * 1.3]
 dhageray_low_maint_cost = @[skirmisher_low_maint_cost * 1.3]
 dhageray_high_maint_cost = @[skirmisher_high_maint_cost * 1.3]
 
-bluescars_high_maint_cost = @[heavy_infantry_high_maint_cost * 2.5]
+bluescars_high_maint_cost = @[heavy_infantry_recruitment_cost * 2.5]
 bluescars_low_maint_cost = @[heavy_infantry_low_maint_cost * 2.5]
 bluescars_recruitment_cost = @[heavy_infantry_recruitment_cost * 2.5]
 
-accolade_chariot_cavalry_cost = @[heavy_cavalry_recruitment_cost * 2]
 accolade_war_mammoth_recruitment_cost = @[heavy_cavalry_recruitment_cost * 4]
-accolade_magi_recruitment_cost = @[magi_recruitment_cost * 2]
-accolade_anti_magi_recruitment_cost = @[heavy_infantry_recruitment_cost * 2]
-accolade_silencers_recruitment_cost = @[heavy_cavalry_recruitment_cost * 4]
-accolade_war_mastiffs_recruitment_cost = @[monsters_recruitment_cost * 1.5]
-accolade_war_lions_recruitment_cost = @[monsters_recruitment_cost * 3]
-accolade_owlbears_recruitment_cost = @[monsters_recruitment_cost * 5]
-accolade_bottled_oozes_recruitment_cost = @[monsters_recruitment_cost * 10]
-accolade_pseudodragons_recruitment_cost = @[monsters_recruitment_cost * 20]
-
-## Redlands
-
-void_tier_one_high_maint_cost_piety = @[void_high_maint_cost * 0.0]
-void_tier_one_low_maint_cost_piety = @[void_low_maint_cost * 0.0]
-void_tier_one_recruiment_cost_piety = @[void_recruitment_cost * 1.0]
-
-void_tier_two_high_maint_cost_piety = @[void_high_maint_cost * 0.0]
-void_tier_two_low_maint_cost_piety = @[void_low_maint_cost * 0.0]
-void_tier_two_recruiment_cost_piety = @[void_recruitment_cost * 2.0]
-
-void_tier_three_high_maint_cost_piety = @[void_high_maint_cost * 0.0]
-void_tier_three_low_maint_cost_piety = @[void_low_maint_cost * 0.0]
-void_tier_three_recruiment_cost_piety = @[void_recruitment_cost * 3.0]
-
-void_tier_four_high_maint_cost_piety = @[void_high_maint_cost * 0.0]
-void_tier_four_low_maint_cost_piety = @[void_low_maint_cost * 0.0]
-void_tier_four_recruiment_cost_piety = @[void_recruitment_cost * 4.0]
-
-void_tier_five_high_maint_cost_piety = @[void_high_maint_cost * 0.0]
-void_tier_five_low_maint_cost_piety = @[void_low_maint_cost * 0.0]
-void_tier_five_recruiment_cost_piety = @[void_recruitment_cost * 5.0]
 
 @magical_recruitment_cost = 100
 @magical_low_maint_cost = 0.1
@@ -1230,7 +1024,7 @@ culture_ai_weight_elephants = {
 	if = { # Cultures that favours war elephants
 		limit = {
 			culture = {
-				culture_specializes_in_elephant_cavalry_maa = yes ## GH CHANGE: Unified trigger
+				has_innovation = innovation_elephantry
 			}
 		}
 		add = 60
@@ -1311,32 +1105,6 @@ counter_synergy_ai_weight_heavy_infantry = {
 	}
 }
 
-counter_synergy_ai_weight_gunpowder = {
-	value = 200 # Since these are hard-limited elsewhere, prefer them highly
-	if = {
-		limit = {
-			culture = { has_cultural_era_or_later = culture_era_late_medieval }
-			number_maa_regiments_of_base_type = {
-				type = pikemen
-				value >= 3
-			}
-			NOT = {
-				number_maa_regiments_of_base_type = {
-					type = gunpowder
-					value >= 1
-				}
-			}
-		}
-		add = 60
-	}
-	if = {
-		limit = {
-			culture = { has_cultural_pillar = heritage_easterner }
-		}
-		add = 10	# more gun
-	}
-}
-
 counter_synergy_ai_weight_light_cavalry = {
 	value = 0
 	if = {
@@ -1356,29 +1124,6 @@ counter_synergy_ai_weight_light_cavalry = {
 	}
 }
 
-culture_ai_weight_crossbowmen = {
-	value = counter_synergy_ai_weight_crossbowmen
-
-	if = { # Cultures with a special MaA of that type should avoid the base version of the unit
-		limit = {
-			culture = {
-				culture_has_improved_crossbowmen = yes
-			}
-		}
-		add = -500
-	}
-}
-
-counter_synergy_ai_weight_crossbowmen = {
-	value = counter_synergy_ai_weight_archers
-
-	if = { # They counter heavy cavalry, so less interesting early on
-		limit = {
-			current_date < 1150.1.1
-		}
-		add = -100
-	}
-}
 
 ###################
 # Provisions Costs #
@@ -1401,73 +1146,6 @@ provisions_cost_special_cheap = 6
 provisions_cost_special_moderate = 12
 provisions_cost_special_expensive = 18
 provisions_cost_special_bankrupting = 24
-
-############
-# GUN MATH #
-############
-
-gunpowder_raise_limit_existing_gunpowder_units = {
-	value = 0
-
-	every_maa_regiment = {
-		limit = {
-			is_personal_maa_regiment = yes
-			OR = {
-				is_maa_type = handgunners
-				is_maa_type = fire_lancers
-			}
-		}
-		add = 1
-	}
-}
-
-gunpowder_raise_limit_existing_gunpowder_buildings = {
-	value = 0
-
-	every_directly_owned_province = {
-		limit = {
-			has_building_or_higher = powder_magazine_01
-		}
-		if = {
-			limit = {
-				has_building_or_higher = powder_magazine_07
-			}
-			add = gunpowder_building_limit_bonus_3
-		}
-		else_if = {
-			limit = {
-				has_building_or_higher = powder_magazine_04
-			}
-			add = gunpowder_building_limit_bonus_2
-		}
-		else = {
-			add = gunpowder_building_limit_bonus_1
-		}
-	}
-	if = {
-		limit = {
-			exists = domicile
-		}
-		domicile = {
-			if = {
-				limit = {
-					has_domicile_building_or_higher = east_asian_estate_gunpowder_storage_03
-				}
-				add = gunpowder_building_limit_bonus_2
-			}
-			else_if = {
-				limit = {
-					has_domicile_building_or_higher = east_asian_estate_gunpowder_storage_01
-				}
-				add = gunpowder_building_limit_bonus_1
-			}
-		}
-	}
-}
-
-gunpowder_building_limit_bonus_1 = 1
-gunpowder_building_limit_bonus_2 = 2
-gunpowder_building_limit_bonus_3 = 3
 
 
 culture_ai_weight_anti_magi = {
@@ -1555,7 +1233,7 @@ culture_ai_weight_magi = {
 	}
 }
 
-culture_ai_weight_chariot_cavalry = {
+culture_ai_weight_charioteers = {
 	value = 0
 
 	if = { # Cultures that favours chariots
@@ -1601,7 +1279,7 @@ culture_ai_weight_monsters = {
 	if = {
 		limit = {
 			culture = {
-				culture_has_monsters_maa = yes
+				culture_has_monster_maa = yes
 			}
 		}
 		add = -999

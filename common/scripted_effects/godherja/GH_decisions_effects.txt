@@ -17,6 +17,22 @@
 	resolve_title_and_vassal_change = scope:title_change
 }
 
+initialize_traditional_borders = {
+	every_duchy = {
+		set_variable = {
+			name = traditional_de_jure_kingdom
+			value = this.kingdom
+		}
+	}
+	every_kingdom = {
+		limit = { exists = empire }
+		set_variable = {
+			name = traditional_de_jure_empire
+			value = this.empire
+		}
+	}
+}
+
 restore_traditional_borders = {
 	every_duchy = {
 		limit = { 
@@ -82,12 +98,12 @@ restore_traditional_aversarian_borders_mikros_kalathipsomi = {
 	restore_traditional_borders = { KINGDOM_NAME = k_everrain }
 	restore_traditional_borders = { KINGDOM_NAME = k_heartwood }
 	restore_traditional_borders = { KINGDOM_NAME = k_skycrown }
-	restore_traditional_borders = { KINGDOM_NAME = k_abrasos }
+	restore_traditional_borders = { KINGDOM_NAME = k_easternkatraddia8 }
 }
 
 restore_traditional_aversarian_borders_etepezea = {
 	# restore_traditional_borders = { KINGDOM_NAME = k_dragonmarch }
-	restore_traditional_borders = { KINGDOM_NAME = k_wyrmrest }
+	restore_traditional_borders = { KINGDOM_NAME = k_assocaea }
 	restore_traditional_borders = { KINGDOM_NAME = k_pergicos }
 	restore_traditional_borders = { KINGDOM_NAME = k_palitake }
 	## restore_traditional_borders = { KINGDOM_NAME = k_cycladecia }
@@ -152,8 +168,8 @@ restore_traditional_aversarian_borders_aironoi = {
 }
 
 restore_traditional_aversarian_borders_gurdurbok = {
-	restore_traditional_borders = { KINGDOM_NAME = k_nysinia }
-	restore_traditional_borders = { KINGDOM_NAME = k_niodni }
+	restore_traditional_borders = { KINGDOM_NAME = k_vyshtanka }
+	restore_traditional_borders = { KINGDOM_NAME = k_niidinia }
 }
 
 reunite_the_empire_decision_effects = {
@@ -173,7 +189,7 @@ reunite_the_empire_decision_effects = {
 			quality = illustrious
 			chronicle = new_title
 			properties = {
-				title = title:h_aversarinas_aautokrata
+				title = title:e_aversarinas_aautokrata
 				founder = root
 			}
 		}
@@ -183,8 +199,8 @@ reunite_the_empire_decision_effects = {
 	# TODO: improve custom loc here
 
 	hidden_effect = {
-		get_title = title:h_aversarinas_aautokrata
-		set_primary_title_to = title:h_aversarinas_aautokrata
+		get_title = title:e_aversarinas_aautokrata
+		set_primary_title_to = title:e_aversarinas_aautokrata
 		
 		if = {
 			limit = { 
@@ -197,7 +213,7 @@ reunite_the_empire_decision_effects = {
 			title:e_asiupoli_aautokrata = {  
 				every_in_de_jure_hierarchy = {
 					limit = { tier = tier_kingdom }
-					set_de_jure_liege_title = title:h_aversarinas_aautokrata
+					set_de_jure_liege_title = title:e_aversarinas_aautokrata
 				}
 			}
 		}
@@ -219,7 +235,7 @@ reunite_the_empire_decision_effects = {
 			title:e_oraispol_aautokrata = {  
 				every_in_de_jure_hierarchy = {
 					limit = { tier = tier_kingdom }
-					set_de_jure_liege_title = title:h_aversarinas_aautokrata
+					set_de_jure_liege_title = title:e_aversarinas_aautokrata
 				}
 			}
 		}
@@ -230,16 +246,16 @@ reunite_the_empire_decision_effects = {
 			}
 			destroy_title = title:e_oraispol_aautokrata
 		}
-		title:h_aversarinas_aautokrata = {
+		title:e_aversarinas_aautokrata = {
 			set_capital_county = title:c_oraispol
 		}
-		#every_held_title = {
-			#limit = {
-				#tier = tier_empire
-				#NOT = { this = title:h_aversarinas_aautokrata }
-			#}
-			#demote_empire_to_kingdom_effect = { NEW_EMPIRE_LIEGE_TITLE = #title:h_aversarinas_aautokrata }
-		#}
+		every_held_title = {
+			limit = {
+				tier = tier_empire
+				NOT = { this = title:e_aversarinas_aautokrata }
+			}
+			demote_empire_to_kingdom_effect = { NEW_EMPIRE_LIEGE_TITLE = title:e_aversarinas_aautokrata }
+		}
 	}
 }
 
@@ -643,14 +659,14 @@ hubarite_empire_decision_effects = {
 		}
 	}
 
-	title:k_haven = {
+	title:k_southeastern_isles = {
 		if = {
 			limit = { is_in_list = hubarite_empire_kingdoms }
 			set_de_jure_liege_title = title:e_shanisa_hubarin
 		}
 	}
 
-	title:k_sarrach_isles = {
+	title:k_southwestern_isles = {
 		if = {
 			limit = { is_in_list = hubarite_empire_kingdoms }
 			set_de_jure_liege_title = title:e_shanisa_hubarin
@@ -712,7 +728,7 @@ kingdom_of_the_clouds_decision_effect = {
 		save_scope_as = title_change
 		add_claim_on_loss = no
 	}
-	title:k_szamazonas = {
+	title:k_samazonas = {
 		change_title_holder = {
 			holder = root
 			change = scope:title_change
@@ -721,36 +737,36 @@ kingdom_of_the_clouds_decision_effect = {
 	resolve_title_and_vassal_change = scope:title_change
 	custom_tooltip = {
 		text = kingdom_of_the_clouds_decision_effect_duchy_tooltip
-		set_primary_title_to = title:k_szamazonas
-		root.capital_county.empire ?= { title:k_szamazonas = { set_de_jure_liege_title = prev } }
+		set_primary_title_to = title:k_samazonas
+		root.capital_county.empire ?= { title:k_samazonas = { set_de_jure_liege_title = prev } }
 		scope:old_kingdom ?= { # Add all duchy titles of the old kingdom to the dejure
 			every_in_de_jure_hierarchy = {
 				limit = { tier = tier_duchy }
-				set_de_jure_liege_title = title:k_szamazonas
+				set_de_jure_liege_title = title:k_samazonas
 			}
 			prev = { destroy_title = prev }
 		}
 		every_held_title = { # Add all duchy titles we hold to the dejure
 			limit = {
 				tier = tier_duchy
-				NOT = { kingdom = title:k_szamazonas }
+				NOT = { kingdom = title:k_samazonas }
 				is_titular = no
 			}
-			set_de_jure_liege_title = title:k_szamazonas
+			set_de_jure_liege_title = title:k_samazonas
 		}
 		every_realm_de_jure_duchy = { # Add all duchy titles we completely control to the dejure
 			limit = {
 				NOR = {
-					kingdom = title:k_szamazonas
+					kingdom = title:k_samazonas
 					any_in_de_jure_hierarchy = {
 						tier = tier_county
 						NOT = { holder.top_liege = root }
 					}
 				}
 			}
-			set_de_jure_liege_title = title:k_szamazonas
+			set_de_jure_liege_title = title:k_samazonas
 		}
-		title:k_szamazonas = { set_capital_county = root.capital_county }
+		title:k_samazonas = { set_capital_county = root.capital_county }
 	}
 	capital_county = {
 		change_development_level = 10
@@ -911,41 +927,6 @@ decide_the_fate_of_the_sarminians_decision_effect = {
 	}
 }
 
-decide_the_fate_of_the_kardwen_decision_effect = {
-	save_scope_as = reformer
-	culture = {
-		switch = {
-			trigger = yes
-			scope:kardwen_whistletongue = {
-				add_culture_tradition = tradition_enigmatic_stalkers
-			}
-			scope:kardwen_truetongue = {
-				add_culture_tradition = tradition_skull_meisters
-			}
-			scope:kardwen_rekvolki = {
-				set_culture_pillar = language_rekvolki
-				add_culture_tradition = tradition_skull_meisters
-			}
-			scope:kardwen_marcher = {
-				set_culture_pillar = language_marcher
-				add_culture_tradition = tradition_skull_meisters
-			}
-			scope:kardwen_aversarian = {
-				set_culture_pillar = language_aversarian
-				add_culture_tradition = tradition_skull_meisters
-			}
-			scope:kardwen_thalite = {
-				set_culture_pillar = language_thalite
-				add_culture_tradition = tradition_skull_meisters
-			}
-			scope:kardwen_local = {
-				set_culture_pillar = language_konijkmener
-				add_culture_tradition = tradition_skull_meisters
-			}
-		}
-	}
-}
-
 form_taryaad_saramsaasan_effect = {
 	hidden_effect = {
 		every_held_title = { #Should shift all dejure of all Empires owned at the time.
@@ -983,20 +964,20 @@ form_taryaad_saramsaasan_effect = {
 	}
 	if = { #Automatically move capital to Patas.
 		limit = {
-			NOT = { capital_county = { this = title:c_patas } }
+			NOT = { capital_county = { this = title:c_southkashirya_isles_1 } }
 			exists = title:e_taryaad_saramsaasan.holder
 		}
 		hidden_effect = {
 			if = { #Usurp if not held personally.
 				limit = {
-					NOT = { title:c_patas.holder = { this = root } }
+					NOT = { title:c_southkashirya_isles_1.holder = { this = root } }
 				}
 				create_title_and_vassal_change = {
 					type = returned
 					save_scope_as = change
 					add_claim_on_loss = no
 				}
-				title:c_patas = {
+				title:c_southkashirya_isles_1 = {
 					change_title_holder = {
 						holder = root
 						change = scope:change
@@ -1009,7 +990,7 @@ form_taryaad_saramsaasan_effect = {
 }
 
 form_stellios_aautokrata_scripted_effect = { 
-	title:d_reketh = {
+	title:d_detharax = {
 		set_de_jure_liege_title = title:k_kyvernis_leidokos
 	}
 	title:d_chacos = {
@@ -1021,7 +1002,7 @@ form_stellios_aautokrata_scripted_effect = {
 	title:d_voraxos = {
 		set_de_jure_liege_title = title:k_kyvernis_leidokos
 	}
-	title:d_matras = {
+	title:d_asthaeradae = {
 		set_de_jure_liege_title = title:k_kyvernis_leidokos
 	}
 	#title:d_detherax = {
@@ -1033,8 +1014,11 @@ form_stellios_aautokrata_scripted_effect = {
 	title:d_vonatolos = {
 		set_de_jure_liege_title = title:k_kyvernis_vonatos
 	}
-	title:d_axon = {
+	title:d_vatos = {
 		set_de_jure_liege_title = title:k_kyvernis_vonatos
+	}
+	title:d_chacos = {
+		set_de_jure_liege_title = title:k_kyvernis_leidokos
 	}
 }
 
@@ -1325,7 +1309,7 @@ reform_ufaliracci_decision_effect = {
 		}
 		set_de_jure_liege_title = title:k_ufaliracci
 	}
-	hidden_effect = { title:k_ufaliracci = { set_de_jure_liege_title = title:e_rovarska } }
+	hidden_effect = { title:k_ufaliracci = { set_de_jure_liege_title = title:e_rovarksa } }
 	every_in_list = {
 		list = kingdom_ufaliracci_opinion_list
 		limit = { is_ai = yes }
@@ -1370,7 +1354,7 @@ otachedian_restoration_decision_effects = {
 	}
 	# add all dejure kingdoms that MUST be changed
 	title:k_taleshtadendar = { add_to_list = otached_kingdoms }
-	title:k_kashti = { add_to_list = otached_kingdoms }
+	title:k_kasharya = { add_to_list = otached_kingdoms }
 	title:k_magiyor = { add_to_list = otached_kingdoms }
 	title:k_kafasali = { add_to_list = otached_kingdoms }
 	title:k_adlurbad = { add_to_list = otached_kingdoms }
@@ -1493,18 +1477,18 @@ declare_rivarisian_kingdom_decision_effects = {
 	}
 	title:d_vallguedoc = {
 		save_scope_as = d_vallguedoc
-		set_de_jure_liege_title = title:k_the_riverlands
+		set_de_jure_liege_title = title:k_riverlands
 	}
 	title:d_grascoi = {
 		save_scope_as = d_grascoi
-		set_de_jure_liege_title = title:k_the_riverlands
+		set_de_jure_liege_title = title:k_riverlands
 	}
 	title:d_cavrine = {
 		save_scope_as = d_cavrine
-		set_de_jure_liege_title = title:k_the_riverlands
+		set_de_jure_liege_title = title:k_riverlands
 	}
-	title:k_the_riverlands = {
-		save_scope_as = title_k_the_riverlands
+	title:k_riverlands = {
+		save_scope_as = title_k_riverlands
 	}
 
 	create_title_and_vassal_change = {
@@ -1512,23 +1496,23 @@ declare_rivarisian_kingdom_decision_effects = {
 		save_scope_as = title_change
 		add_claim_on_loss = no
 	}
-	title:k_the_riverlands = {
+	title:k_riverlands = {
 		change_title_holder = {
 			holder = root
 			change = scope:title_change
 		}
-		save_scope_as = title_k_the_riverlands
+		save_scope_as = title_k_riverlands
 	}
 	resolve_title_and_vassal_change = scope:title_change
 
 	if = {
 		limit = {
 			NOR = {
-				primary_title = { this = title:k_the_riverlands }
+				primary_title = { this = title:k_riverlands }
 				highest_held_title_tier = tier_empire
 			}
 		}
-		set_primary_title_to = title:k_the_riverlands
+		set_primary_title_to = title:k_riverlands
 	}
 
 	#Prestige
@@ -1585,66 +1569,62 @@ establish_southsea_protectorate_decision_effects = {
 		}
 	}
 	resolve_title_and_vassal_change = scope:title_change
+	add_prestige = major_prestige_gain
 	set_primary_title_to = title:e_protectorate_of_the_southsea
-	add_prestige = 1000
-	dynasty = {
-		add_dynasty_prestige = 600
+	if = {
+		limit = {
+			NOT = { title:k_peytrelle.holder = ROOT }
+			exists = title:k_peytrelle.holder
+		}
+		title:k_peytrelle.holder = {
+			add_opinion = {
+				modifier= usurped_title
+				target = ROOT
+			}
+		}
+		destroy_title = title:k_peytrelle
 	}
 	if = {
 		limit = {
-			root = {
-				has_nickname = nick_white_dragon
+			NOT = { title:k_bowerenclosure.holder = ROOT }
+			exists = title:k_bowerenclosure.holder
+		}
+		title:k_bowerenclosure.holder = {
+			add_opinion = {
+				modifier = usurped_title
+				target = ROOT
 			}
 		}
-		give_nickname = nick_dragon_king
+		destroy_title = title:k_bowerenclosure
 	}
-	else_if = {
+	if = {
 		limit = {
-			NOT = {
-				has_nickname = nick_white_dragon
+			NOT = { title:k_angryravine.holder = ROOT }
+			exists = title:k_angryravine.holder
+		}
+		title:k_angryravine.holder = {
+			add_opinion = {
+				modifier = usurped_title
+				target = ROOT
 			}
 		}
-		give_nickname = nick_southsea_guard
+		destroy_title = title:k_angryravine
 	}
-	culture = {
-		add_innovation = innovation_protectorate_system
+	title:k_peytrelle = { set_de_jure_liege_title = title:e_protectorate_of_the_southsea }
+	title:k_bowerenclosure = { set_de_jure_liege_title = title:e_protectorate_of_the_southsea }
+	title:k_angryravine = { set_de_jure_liege_title = title:e_protectorate_of_the_southsea }	
+
+	if = {
+		limit = { completely_controls = title:k_sheytara }
+		title:k_sheytara = { set_de_jure_liege_title = title:e_protectorate_of_the_southsea }
 	}
-	destroy_title = title:k_protectorate_of_the_southlands
-	every_realm_county = {
-		custom = establish_southsea_protectorate_decision_1.tt
-		change_county_control = 30
+	if = {
+		limit = { completely_controls = title:k_autumngate }
+		title:k_autumngate = { set_de_jure_liege_title = title:e_protectorate_of_the_southsea }
 	}
-	title:k_songnuan = { set_de_jure_liege_title = title:e_protectorate_of_the_southsea }
-	title:k_caophaeng = { set_de_jure_liege_title = title:e_protectorate_of_the_southsea }
-	custom_tooltip = {
-		text = establish_southsea_protectorate_decision.tt
-		if = {
-			limit = { 
-				OR = {
-					completely_controls = title:k_dranfan 
-					has_title = title:k_dranfan
-				}
-			}
-			title:k_dranfan = { set_de_jure_liege_title = title:e_protectorate_of_the_southsea }
-		}
-		if = {
-			limit = { 
-				OR = {
-					completely_controls = title:k_tuleang 
-					has_title = title:k_tuleang
-				}
-			}
-			title:k_tuleang = { set_de_jure_liege_title = title:e_protectorate_of_the_southsea }
-		}
-		if = {
-			limit = { 
-				OR = {
-					completely_controls = title:k_yantalin 
-					has_title = title:k_yantalin
-				}
-			}
-			title:k_yantalin = { set_de_jure_liege_title = title:e_protectorate_of_the_southsea }
-		}
+	if = {
+		limit = { completely_controls = title:k_wellatola }
+		title:k_wellatola = { set_de_jure_liege_title = title:e_protectorate_of_the_southsea }
 	}
 }
 
@@ -1951,8 +1931,8 @@ form_anastereias_scripted_effect = {
 		title:k_taleshtadendar = { set_de_jure_liege_title = title:e_aversaria_anastereias }
 	}
 	if = {
-		limit = { completely_controls = title:k_kashti }
-		title:k_kashti = { set_de_jure_liege_title = title:e_aversaria_anastereias }
+		limit = { completely_controls = title:k_kasharya }
+		title:k_kasharya = { set_de_jure_liege_title = title:e_aversaria_anastereias }
 	}
 	if = {
 		limit = { completely_controls = title:k_dartar }
@@ -2051,1796 +2031,5 @@ anastereias_traditionalist_county_scripted_effect = {
 			modifier = city_of_kasiryat_county_modifier
 			years = 100
 		}
-	}
-}
-
-create_redlander_duchy_effect = {
-	save_scope_as = root_scope
-	custom_tooltip = create_new_duchy
-	show_as_tooltip = {
-		primary_title = {
-			custom_tooltip = create_custom_duchy_de_jure_changes
-		}
-	}
-
-	hidden_effect = {
-		save_scope_as = founder
-		primary_title = {
-			save_scope_as = old_title
-		}
-		
-		create_dynamic_title = {
-			tier = duchy
-			name = NEW_CREATED_TITLE_NAME
-		}
-		create_title_and_vassal_change = {
-			type = created
-			save_scope_as = change
-			add_claim_on_loss = no
-		}
-		
-		scope:new_title = {
-			change_title_holder = {
-				holder = root
-				change = scope:change
-			}
-		}
-		
-		resolve_title_and_vassal_change = scope:change
-		
-		scope:new_title = {
-			set_coa = scope:old_title
-			set_color_from_title = scope:old_title
-			set_capital_county = scope:old_title.title_capital_county
-			add_title_law = magocratic_elective_title_succession_law
-		}
-		set_primary_title_to = scope:new_title
-		
-		#trigger_event = major_decisions.1101
-	}
-}
-
-redland_cults_proliferation_scripted_effect = {
-	#custom_tooltip = 
-
-	$CULTOWNER$ = { save_scope_as = old_cult_owner }
-	$EXTRATITLE$ = { save_scope_as = extra_title }
-
-	hidden_effect = {
-		create_character = {
-			template = pit_redlander_medium
-			location = root.capital_province
-			save_scope_as = new_cult_owner
-		}
-
-		#scope:old_cult_owner = {
-		#	adopt = scope:new_cult_owner
-		#}
- 
-		scope:new_cult_owner = {
-			set_house = scope:old_cult_owner.house
-			if = {
-				limit = { has_trait = trait:gh_blackspawn_5 }
-		
-				remove_trait = trait:gh_blackspawn_5
-				add_trait = trait:gh_blackspawn_4
-			}
-		}
-
-		create_title_and_vassal_change = {
-			type = granted
-			save_scope_as = change
-			add_claim_on_loss = no
-		}
-		
-		scope:extra_title = {
-			change_title_holder = {
-				holder = scope:new_cult_owner
-				change = scope:change
-			}
-		}
-		resolve_title_and_vassal_change = scope:change
-	}
-	scope:old_cult_owner = { add_piety = 99 }
-	clear_saved_scope = old_cult_owner
-	clear_saved_scope = extra_title
-}
-form_krehejad_scripted_effect = { 
-	resolve_title_and_vassal_change = scope:title_change
-	title:k_kyvernis_leidokos = {
-		set_de_jure_liege_title = title:e_krehejad
-	}
-	title:k_kyvernis_vonatos = {
-		set_de_jure_liege_title = title:e_krehejad
-	}
-	title:d_reketh = {
-		set_de_jure_liege_title = title:k_kyvernis_leidokos
-	}
-	title:d_theslaxxos = {
-		set_de_jure_liege_title = title:k_kyvernis_leidokos
-	}
-	title:d_voraxos = {
-		set_de_jure_liege_title = title:k_kyvernis_leidokos
-	}
-	title:d_matras = {
-		set_de_jure_liege_title = title:k_kyvernis_leidokos
-	}
-	title:d_avirios = {
-		set_de_jure_liege_title = title:k_kyvernis_vonatos
-	}
-	title:d_vonatolos = {
-		set_de_jure_liege_title = title:k_kyvernis_vonatos
-	}
-	title:d_axon = {
-		set_de_jure_liege_title = title:k_kyvernis_vonatos
-	}
-	title:d_chacos = {
-		set_de_jure_liege_title = title:k_kyvernis_leidokos
-	}
-}
-
-agadari_resurgence_decision_effect = {
-	capital_county = {
-		set_county_culture = root.culture
-		set_county_faith = root.faith
-	}
-
-	every_sub_realm_county = {
-		limit = {
-			NOT = {
-				culture = { has_cultural_pillar = heritage_agadari }
-			}
-			title_province = { geographical_region = krehejad_biozone }
-		}
-		custom = agadari_resurgence_modifier.0001.custom
-		add_county_modifier = {
-			modifier = agadari_resurgence_culture_modifier
-			days = 18263
-		}
-	}
-}
-
-restore_power_of_kathunkai_effect = {
-	add_prestige = 800
-	add_character_modifier = {
-		modifier = newborn_yuankang_republic_modifier
-		years = 50
-	}
-	if = {
-		limit = {
-			root = {
-				government_has_flag = government_has_influence
-			}
-		}
-		change_influence = 600
-	}
-	dynasty = {
-		add_dynasty_prestige = 1500
-	}
-	add_trait = gh_yuankang_founding_father
-	save_scope_as = bronzeport_restore
-	create_title_and_vassal_change = {
-		type = created
-		save_scope_as = title_change
-		add_claim_on_loss = no
-	}
-	title:e_yuankang = {
-		change_title_holder = {
-			holder = scope:bronzeport_restore
-			change = scope:title_change
-		}
-	}
-	resolve_title_and_vassal_change = scope:title_change
-	set_primary_title_to = title:e_yuankang
-	custom_tooltip = {
-		text = declare_establishment_of_Yuankang_decision_1.tt
-		title:k_dranfan = { set_de_jure_liege_title = title:e_yuankang }
-		title:k_yantalin = { set_de_jure_liege_title = title:e_yuankang }
-		title:k_peytrelle = { set_de_jure_liege_title = title:e_yuankang }
-		title:k_suyrop = { set_de_jure_liege_title = title:e_yuankang }
-		title:d_chaedaeng = { set_de_jure_liege_title = title:k_suyrop }
-		title:d_waladeru = { set_de_jure_liege_title = title:k_suyrop }
-		title:d_welapad = { set_de_jure_liege_title = title:k_suyrop }
-		title:d_rateha = { set_de_jure_liege_title = title:k_suyrop }
-	}
-	destroy_title = title:k_bronzeport
-	spawn_army = {
-		inheritable = yes
-		name = "Yuankang_republican_guard"
-		levies = {
-			value = 2000
-		}
-		men_at_arms = {
-			type = armored_footmen
-			men = 500
-		}
-		men_at_arms = {
-			type = bronzecast
-			men = 30
-		}
-		location = root.capital_province
-	}
-		
-}
-
-kathunkai_forces_surrender_effect = {
-	every_independent_ruler = {
-		limit = {
-			culture = {
-				has_cultural_pillar = heritage_easterner
-			}
-			capital_province = {
-				geographical_region = world_ga_southsea_formable
-			}
-			highest_held_title_tier < tier_kingdom
-			sub_realm_size <= 15
-			sub_realm_size >= 1 
-			NOT = { this = root }
-			NOT = {
-				OR = {
-					government_has_flag = pirate_government
-					government_has_flag = peasant_republic
-				}
-			}
-			opinion = {
-				target = root
-				value >= 60
-			}
-		}
-		create_title_and_vassal_change = {
-			type = swear_fealty
-			save_scope_as = title_change
-			add_claim_on_loss = no
-		}
-		change_liege = {
-			liege = root
-			change = scope:title_change
-		}
-		resolve_title_and_vassal_change = scope:title_change
-	}
-}
-
-dahangong_people_surrender_effect = {
-	custom_tooltip = {
-		text = dahangong_people_surrender_effect.tt
-		random_county_in_region = {
-			region = world_ga_dahangon_formable
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_pillar = heritage_wasteland
-					}
-				}
-				NOT = {
-					culture = {
-						has_cultural_pillar = heritage_easterner
-					}
-				}
-			}
-			set_county_culture = culture:chenhan
-			set_county_faith = root.faith
-		}
-		random_county_in_region = {
-			region = world_ga_dahangon_formable
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_pillar = heritage_wasteland
-					}
-				}
-				NOT = {
-					culture = {
-						has_cultural_pillar = heritage_easterner
-					}
-				}
-			}
-			set_county_culture = culture:chenhan
-			set_county_faith = root.faith
-		}
-		random_county_in_region = {
-			region = world_ga_dahangon_formable
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_pillar = heritage_wasteland
-					}
-				}
-				NOT = {
-					culture = {
-						has_cultural_pillar = heritage_easterner
-					}
-				}
-			}
-			set_county_culture = culture:chenhan
-			set_county_faith = root.faith
-		}
-		culture = {
-			if = {
-				limit = {
-					this = culture:banwagul
-				}
-				change_cultural_acceptance = {
-					target = root.culture
-					desc = chinlin_rule_recognized_desc
-					value = 10
-				}
-			}
-		}
-		if = {
-			limit = {
-				dynasty = {
-					has_dynasty_modifier = unrecognized_rule_modifier
-				}
-			}
-			dynasty = {
-				
-				remove_dynasty_modifier = unrecognized_rule_modifier
-				add_dynasty_modifier = barely_acceptable_rule_modifier
-			}
-		}
-		else_if = {
-			limit = {
-				dynasty = {
-					has_dynasty_modifier = barely_acceptable_rule_modifier
-				}
-				
-			}
-			dynasty = {
-				remove_dynasty_modifier = barely_acceptable_rule_modifier
-				add_dynasty_modifier = partially_recognized_rule_modifier
-			}
-			
-		}
-		else_if = {
-			limit = {
-				dynasty = {
-					has_dynasty_modifier = partially_recognized_rule_modifier
-				}
-			}
-			dynasty = {
-				remove_dynasty_modifier = partially_recognized_rule_modifier
-				add_dynasty_modifier = accustomed_rule_modifier
-			}
-		}
-		else_if = {
-			limit = {
-				dynasty = {
-					has_dynasty_modifier = accustomed_rule_modifier
-				}
-				
-			}
-			dynasty = {
-				remove_dynasty_modifier = accustomed_rule_modifier
-				add_dynasty_modifier = blessed_rule_modifier
-			}
-		}
-	}
-}
-chinlin_nolan_add_bloodline_effect = {
-	if = {
-		limit = {
-			is_male = yes
-		}
-		add_trait = gh_scion_of_nolan
-		every_child = {
-			chinlin_nolan_add_bloodline_effect = yes
-		}
-	}
-	
-}
-
-change_watermills_level_effect = {
-	custom_tooltip = {
-		text = change_watermills_level_effect_desc
-		if = {
-			limit = {
-				has_building = watermills_01 
-			}
-			remove_building = watermills_01 
-			add_building = watermills_02
-		}
-		else_if = {
-			limit = {
-				has_building = watermills_02 
-			}
-			remove_building = watermills_02 
-			add_building = watermills_03
-		}
-		else_if = {
-			limit = {
-				has_building = watermills_03 
-			}
-			remove_building = watermills_03
-			add_building = watermills_04
-		}
-		else_if = {
-			limit = {
-				has_building = watermills_04 
-			}
-			remove_building = watermills_04 
-			add_building = watermills_05
-		}
-		else_if = {
-			limit = {
-				has_building = watermills_05
-			}
-			remove_building = watermills_05
-			add_building = watermills_06
-		}
-		else_if = {
-			limit = {
-				has_building = watermills_06 
-			}
-			remove_building = watermills_06 
-			add_building = watermills_07
-		}
-		else_if = {
-			limit = {
-				has_building = watermills_07 
-			}
-			remove_building = watermills_07 
-			add_building = watermills_08
-		}
-	}
-}
-
-decrease_oe_level_effect = {
-	random_list = {
-		25 = {
-			custom_tooltip = {
-				text = decrease_operational_efficiency_5.tt
-				if = {
-					limit = {
-						global_var:operational_efficiency_molecule_value >= 0.05
-					}
-					change_global_variable = {
-						name = operational_efficiency_molecule_value
-						add = -0.05
-					}
-				}
-				else_if = {
-					limit =  {
-						global_var:operational_efficiency_molecule_value < 0.05
-					}
-					set_global_variable = {
-						name = operational_efficiency_molecule_value
-						value = 0
-					}
-				}
-			}
-		}
-		25 = {
-			custom_tooltip = {
-				text = decrease_operational_efficiency_8.tt
-				if = {
-					limit = {
-						global_var:operational_efficiency_molecule_value >= 0.08
-					}
-					change_global_variable = {
-						name = operational_efficiency_molecule_value
-						add = -0.08
-					}
-				}
-				else_if = {
-					limit =  {
-						global_var:operational_efficiency_molecule_value < 0.08
-					}
-					set_global_variable = {
-						name = operational_efficiency_molecule_value
-						value = 0
-					}
-				}
-			}
-		}
-		25 = {
-			custom_tooltip = {
-				text = decrease_operational_efficiency_10.tt
-				if = {
-					limit = {
-						global_var:operational_efficiency_molecule_value >= 0.1
-					}
-					change_global_variable = {
-						name = operational_efficiency_molecule_value
-						add = -0.1
-					}
-				}
-				else_if = {
-					limit =  {
-						global_var:operational_efficiency_molecule_value < 0.1
-					}
-					set_global_variable = {
-						name = operational_efficiency_molecule_value
-						value = 0
-					}
-				}
-			}
-		}
-		25 = {
-			custom_tooltip = {
-				text = decrease_operational_efficiency_15.tt
-				if = {
-					limit = {
-						global_var:operational_efficiency_molecule_value >= 0.15
-					}
-					change_global_variable = {
-						name = operational_efficiency_molecule_value
-						add = -0.15
-					}
-				}
-				else_if = {
-					limit =  {
-						global_var:operational_efficiency_molecule_value < 0.15
-					}
-					set_global_variable = {
-						name = operational_efficiency_molecule_value
-						value = 0
-					}
-				}
-			}
-		}
-	}
-}
-
-change_oe_modifier_effect = {
-	hidden_effect = {
-		title:c_takaday = {
-			remove_county_modifier = corniche_modifier
-			add_county_modifier = {
-				modifier = corniche_modifier
-			}
-		}
-		every_county_in_region = {
-			region = trade_confluence_corniche_influence_sphere
-			limit = {
-				culture = {
-					NOT = {
-						has_cultural_pillar = heritage_wasteland
-					}
-				}
-			}
-			remove_county_modifier = corniche_range_modifier
-			add_county_modifier = {
-				modifier = corniche_range_modifier
-			}
-		}
-	}
-}
-
-add_oe_level_5_effect = {
-	remove_reserved_gold = 250
-	custom_tooltip = {
-		text = change_operational_efficiency_5.tt
-		if = {
-			limit = {
-				global_var:operational_efficiency_molecule_value <= 0.95
-			}
-			change_global_variable = {
-				name = operational_efficiency_molecule_value
-				add = 0.05
-			}
-		}
-		else_if = {
-			limit =  {
-				global_var:operational_efficiency_molecule_value > 0.95
-			}
-			set_global_variable = {
-				name = operational_efficiency_molecule_value
-				value = 1
-			}
-		}
-	}
-}
-
-add_oe_level_8_effect = {
-	remove_reserved_gold = 500
-	custom_tooltip = {
-		text = change_operational_efficiency_8.tt
-		if = {
-			limit = {
-				global_var:operational_efficiency_molecule_value <= 0.92
-			}
-			change_global_variable = {
-				name = operational_efficiency_molecule_value
-				add = 0.08
-			}
-		}
-		else_if = {
-			limit =  {
-				global_var:operational_efficiency_molecule_value > 0.92
-			}
-			set_global_variable = {
-				name = operational_efficiency_molecule_value
-				value = 1
-			}
-		}
-	}
-}
-
-add_oe_level_10_effect = {
-	remove_reserved_gold = 1000
-	custom_tooltip = {
-		text = change_operational_efficiency_10.tt
-		if = {
-			limit = {
-				global_var:operational_efficiency_molecule_value <= 0.9
-			}
-			change_global_variable = {
-				name = operational_efficiency_molecule_value
-				add = 0.1
-			}
-		}
-		else_if = {
-			limit =  {
-				global_var:operational_efficiency_molecule_value > 0.9
-			}
-			set_global_variable = {
-				name = operational_efficiency_molecule_value
-				value = 1
-			}
-		}
-	}
-}
-
-add_oe_level_15_effect = {
-	remove_reserved_gold = 1500
-	custom_tooltip = {
-		text = change_operational_efficiency_15.tt
-		if = {
-			limit = {
-				global_var:operational_efficiency_molecule_value <= 0.85
-			}
-			change_global_variable = {
-				name = operational_efficiency_molecule_value
-				add = 0.1
-			}
-		}
-		else_if = {
-			limit =  {
-				global_var:operational_efficiency_molecule_value > 0.85
-			}
-			set_global_variable = {
-				name = operational_efficiency_molecule_value
-				value = 1
-			}
-		}
-	}
-}
-
-gh_change_farmland_building_effect = {
-	if = {
-		limit = {
-			has_building = cereal_fields_01
-		}
-		remove_building = cereal_fields_01
-		add_building = cereal_fields_02
-	}
-	else_if = {
-		limit = {
-			has_building = cereal_fields_02
-		}
-		remove_building = cereal_fields_02
-		add_building = cereal_fields_03
-	}
-	else_if = {
-		limit = {
-			has_building = cereal_fields_03
-		}
-		remove_building = cereal_fields_03
-		add_building = cereal_fields_04
-	}
-	else_if = {
-		limit = {
-			has_building = cereal_fields_04
-		}
-		remove_building = cereal_fields_04
-		add_building = cereal_fields_05
-	}
-	else_if = {
-		limit = {
-			has_building = cereal_fields_05
-		}
-		remove_building = cereal_fields_05
-		add_building = cereal_fields_06
-	}
-	else_if = {
-		limit = {
-			has_building = cereal_fields_06
-		}
-		remove_building = cereal_fields_06
-		add_building = cereal_fields_06
-	}
-	else_if = {
-		limit = {
-			has_building = cereal_fields_07
-		}
-		remove_building = cereal_fields_07
-		add_building = cereal_fields_08
-	}
-	else_if = {
-		limit = {
-			has_building = cereal_fields_08
-		}
-		change_development_level = 2
-	}
-	if = {
-		limit = {
-			has_building = paddy_fields_01
-		}
-		remove_building = paddy_fields_01
-		add_building = paddy_fields_02
-	}
-	else_if = {
-		limit = {
-			has_building = paddy_fields_02
-		}
-		remove_building = paddy_fields_02
-		add_building = paddy_fields_03
-	}
-	else_if = {
-		limit = {
-			has_building = paddy_fields_03
-		}
-		remove_building = paddy_fields_03
-		add_building = paddy_fields_04
-	}
-	else_if = {
-		limit = {
-			has_building = paddy_fields_04
-		}
-		remove_building = paddy_fields_04
-		add_building = paddy_fields_05
-	}
-	else_if = {
-		limit = {
-			has_building = paddy_fields_05
-		}
-		remove_building = paddy_fields_05
-		add_building = paddy_fields_06
-	}
-	else_if = {
-		limit = {
-			has_building = paddy_fields_06
-		}
-		remove_building = paddy_fields_06
-		add_building = paddy_fields_06
-	}
-	else_if = {
-		limit = {
-			has_building = paddy_fields_07
-		}
-		remove_building = paddy_fields_07
-		add_building = paddy_fields_08
-	}
-	else_if = {
-		limit = {
-			has_building = paddy_fields_08
-		}
-		change_development_level = 2
-	}
-}
-
-proclaim_chin_lin_emperor_effect = {
-	add_prestige = 2000
-	add_piety = 1200
-		add_trait = gh_high_emperor
-		dynasty = {
-			add_dynasty_prestige = 1500
-			add_dynasty_modifier = {
-				modifier = take_over_dahangon_modifier
-				years = 100
-			}
-			add_dynasty_modifier = {
-				modifier = unrecognized_rule_modifier
-			}
-		}
-		create_title_and_vassal_change = {
-			type = created
-			save_scope_as = change
-			add_claim_on_loss = no
-		}
-		title:e_chinlin = {
-			change_title_holder = {
-				holder = root
-				change = scope:change
-			}
-		}
-		resolve_title_and_vassal_change = scope:change
-		set_culture = culture:chenhan
-		capital_county.duchy = {
-			if = {
-				limit = {
-					NOT = {
-						culture = culture:wasteland
-					}
-				}
-				set_county_culture = culture:chenhan
-			}
-		}
-		title:e_dahangon = {
-			every_in_de_jure_hierarchy = {
-				limit = {
-					tier = tier_kingdom
-				}
-				set_de_jure_liege_title = title:e_chinlin		
-			}
-		}
-		custom_tooltip = proclaim_chin_lin_emperor_decision.tt
-	hidden_effect = {
-		every_courtier = {
-			limit = {
-				culture = {
-					has_cultural_pillar = heritage_easterner
-				}
-			}
-			set_culture = culture:chenhan
-		}
-		every_vassal_or_below = {
-			limit = {
-				culture = {
-					has_cultural_pillar = heritage_easterner
-				}
-				opinion = {
-					target = root
-					value >= 50
-				}
-			}
-			set_culture = culture:chenhan
-			every_courtier = {
-				limit = {
-					culture = {
-						has_cultural_pillar = heritage_easterner
-					}
-				}
-				set_culture = culture:chenhan
-			}
-		}
-	}
-}
-
-conquer_the_kashirya_states_effect = {
-	add_prestige = 800
-	dynasty = { 
-		add_dynasty_prestige = 600
-	}
-	custom_tooltip = conquer_the_kashirya_states_decision.tt
-	title:k_adlurbad = {
-		custom_tooltip = {
-			text = dahnagon_change_control.tt
-			every_de_jure_county = {
-				change_county_control = 15
-			}
-		}
-		set_de_jure_liege_title = title:e_chinlin
-	}
-	title:k_sheytara = {
-		custom_tooltip = {
-			text = dahnagon_change_control.tt
-			every_de_jure_county = {
-				change_county_control = 15
-			}
-		}
-		set_de_jure_liege_title = title:e_chinlin
-	}
-}
-
-advance_into_the_shrunfan_effect = {
-	add_prestige = 600
-	add_piety = 500
-	dynasty = {
-		add_dynasty_modifier = shrunfan_conqueror_modifier
-	}
-	culture = {
-		add_innovation = innovation_kathunkai_infantry_tactics
-	}
-	title:k_songnuan = {
-		custom_tooltip = {
-			text = dahnagon_change_control.tt
-			every_de_jure_county = {
-				change_county_control = 25
-			}
-		}
-		set_de_jure_liege_title = title:e_chinlin
-	}
-	title:k_caophaeng = {
-		custom_tooltip = {
-			text = dahnagon_change_control.tt
-			every_de_jure_county = {
-				change_county_control = 25
-			}
-		}
-		set_de_jure_liege_title = title:e_chinlin
-	}
-}
-
-restore_the_tilolan_system_effect = {
-	dahangong_people_surrender_effect = yes
-	if = {
-		limit = {
-			root = {
-				government_has_flag = government_is_administrative
-			}
-		}
-		custom_tooltip = {
-			text = restore_the_tilolan_system_decision.tt
-			change_influence = dahnagon_vassl_power_value
-		}
-	}
-	else_if = {
-		limit = {
-
-		}
-		custom_tooltip = {
-			text = restore_the_tilolan_system_decision_one.tt
-			add_prestige = dahnagon_vassl_power_value
-		}
-	}
-	
-	dynasty = {
-		add_dynasty_prestige_level = 1
-		add_dynasty_modifier = legitimacy_dahangon_monarch_modifier
-	}
-	culture = {
-		add_innovation = innovation_tilolan_system
-	}
-}
-
-grant_the_artisans_guild_royal_title_effect = {
-	add_prestige = 1000
-	dynasty = {
-		add_dynasty_modifier = naftney_craftsmen_association_modifier
-	}
-	culture = {
-		add_random_innovation = culture_group_civic
-	}
-	title:c_ilanila.title_province = {
-		add_building = 01_chinlin_royal_workshop
-	}
-	dahangong_people_surrender_effect = yes
-	custom_tooltip = {
-		text = grant_the_artisans_guild_royal_title_decision.tt
-		title:e_chinlin.holder = {
-			every_realm_county = {
-				limit = {
-					development_level <= 35
-					any_province = {
-						OR = {
-							has_building_or_higher = artisan_quarters_04
-							has_building_or_higher = wind_furnace_04
-							has_building_or_higher = smiths_04
-							has_building_or_higher = siege_works_03
-							has_building_or_higher = blacksmiths_03
-						}
-					}
-				}
-				change_development_level = 5
-				add_county_modifier = {
-					modifier = recruit_artisan_modifier
-					years = 20
-				}
-			}
-		}
-	}
-}
-
-rebuild_the_pearl_of_dahangon_effect = {
-	title:c_samut_sakkam.title_province = {
-		set_holding_type = metro_holding
-	}
-	dahangong_people_surrender_effect = yes
-	if = {
-		limit = {
-			title:c_samut_sakkam.title_province = {
-				OR = {
-					has_building = 01_yuxuchen
-					has_building = 02_yuxuchen
-					has_building = 01_dawang_tarmak
-				}
-			}
-		}
-		custom_tooltip = rebuild_the_pearl_of_dahangon_decision.tt
-		
-	}
-	else_if = {
-		limit = {
-			title:c_samut_sakkam.title_province = {
-				has_building = 02_dawang_tarmak
-			}
-		}
-		add_prestige = 1200
-		title:c_samut_sakkam.county = {
-			change_development_level = 10
-			add_county_modifier = {
-				modifier = gh_dahangon_recovering_metropolis_modifier
-				years = 15
-			}
-		}
-	}
-	if = {
-		limit = {
-			title:c_samut_sakkam.title_province = {
-				has_building_or_higher = 03_yuxuchen
-				
-			}
-		}
-		add_prestige = 2000
-		title:c_samut_sakkam.county = {
-			change_development_level = 12
-			add_county_modifier = {
-				modifier = gh_dahangon_recovering_metropolis_modifier
-				years = 25
-			}
-		}
-	}
-	else_if = {
-		limit = {
-			title:c_samut_sakkam.title_province = {
-				has_building_or_higher = 04_yuxuchen
-			}
-		}
-		add_prestige = 2500
-		title:c_samut_sakkam.county = {
-			change_development_level = 18
-			add_county_modifier = {
-				modifier = gh_dahangon_recovering_metropolis_modifier
-				years = 40
-			}
-		}
-	}
-	else_if = {
-		limit = {
-			title:c_samut_sakkam.title_province = {
-				has_building_or_higher = 05_yuxuchen
-			}
-		}
-		add_prestige = 3000
-		title:c_samut_sakkam.county = {
-			change_development_level = 25
-			add_county_modifier = {
-				modifier = chinlin_imperial_capital_modifier
-			}
-		}
-	}
-}
-
-claim_naklan_ancestry_effect = {
-	add_trait = gh_scion_of_nolan
-	dahangong_people_surrender_effect = yes
-	custom_tooltip = {
-		text = chinlin_nolan_add_bloodline_effect_desc
-		every_child = {
-			chinlin_nolan_add_bloodline_effect = yes
-		}
-	}
-	dynasty = {
-		add_dynasty_prestige = 2000
-		add_dynasty_perk = chinlin_legacy_1
-	}
-	title:c_samut_sakkam.title_province = {
-		add_building = 01_nolan_shrine
-	}
-}
-
-mobile_fortress_in_the_jungle_effect = {
-	dynasty = {
-		add_dynasty_modifier = forest_behemoth_modifier
-	}
-	culture = {
-		add_innovation = innovation_chinlin_elephant_training_technique
-	}
-	create_maa_regiment = {
-		type = chinlin_iron_elephant       
-		check_can_recruit = no
-		size = 4
-	}
-	every_realm_county = {
-		limit = {
-			any_province = {
-				has_building_or_higher = elephant_pens_04
-			}
-		}
-		custom = mobile_fortress_in_the_jungle_decision.tt
-		add_county_modifier = {
-			modifier = elephant_farming_modifier
-			years = 50
-		}
-		change_development_level = 2
-	}
-}
-
-enfeoff_family_members_effect = {
-	add_prestige = 1200
-	if = {
-		limit = {
-			government_has_flag = government_is_administrative
-		}
-		change_influence = 800
-	}
-	dynasty = {
-		add_dynasty_modifier = royal_supervision_modifier
-	}
-	dahangong_people_surrender_effect = yes
-	custom_tooltip = {
-		text = chinlin_dynasty_vassal_opinion_desc
-		every_vassal_or_below = {
-			limit = {
-				dynasty = root.dynasty
-			}
-			add_opinion = {
-				modifier = grateful_opinion
-				target = root
-				opinion = 40
-			}
-		}
-	}
-	every_held_county = {
-		custom = chinlin_county_controls_add_desc.tt
-		change_county_control = 30
-		add_county_modifier = {
-			modifier = supervised_local_administration_modifier
-			years = 30
-		}
-	}
-	hidden_effect = {
-		every_vassal_or_below = {
-			every_held_county = {
-				change_county_control = 30
-				add_county_modifier = {
-					modifier = supervised_local_administration_modifier
-					years = 30
-				}
-			}
-		}
-	}
-	hidden_effect = {
-		if = {
-			limit = { has_realm_law = crown_authority_0 }
-			remove_realm_law = crown_authority_0
-			add_realm_law = crown_authority_1
-		}
-		if = {
-			limit = { has_realm_law = crown_authority_1 }
-			remove_realm_law = crown_authority_1
-			add_realm_law = crown_authority_2
-		}
-		if = {
-			limit = { has_realm_law = crown_authority_2 }
-			remove_realm_law = crown_authority_2
-			add_realm_law = crown_authority_3
-		}
-	}
-}
-
-
-develop_inland_water_transport_effect = {
-	custom_tooltip = {
-		text = chinlin_inland_water_transport_income_value_desc
-		add_gold = chinlin_inland_water_transport_income_value
-	}
-	every_county = {
-		limit = {
-			is_landless_type_title = no 
-			development_level <= 40
-			NOT = {
-				culture = {
-					has_cultural_pillar = heritage_wasteland
-				}
-			}
-			any_county_province = {
-				geographical_region = trade_confluence_tagsan_navigable_area
-			}
-		}
-		custom = develop_inland_water_transport_decision.tt
-		change_development_level = 8
-		add_county_modifier = inland_water_transport_modifier 
-	}	
-	custom_tooltip = {
-		text = chinlin_vassal_opinion_add_desc
-		every_vassal_or_below = {
-			limit = {
-				any_held_county = {
-					any_county_province = {
-						geographical_region = trade_confluence_tagsan_navigable_area
-					}
-				}
-			}
-			add_opinion = {
-				modifier = grateful_opinion
-				target = root
-				opinion = 15
-			}
-		}
-	}
-}
-
-establish_absolute_leadership_over_the_dahala_effect = {
-	if = {
-		limit = {
-			root = { religion = religion:fourteen_heavenly_methods_religion } 
-		}
-		custom_tooltip = winner_of_dahangon_religious.tt
-		add_piety_level = 1
-		dynasty = {
-			add_dynasty_prestige = 800
-			add_dynasty_modifier = supreme_religious_authority_modifier
-		}
-		custom_tooltip = {
-			text = fhmr_winner_decisions.tt
-			religion:dahala_religion = {
-				every_faith = {
-					limit = {
-						OR = { 
-							has_doctrine = doctrine_spiritual_head
-							has_doctrine = doctrine_temporal_head
-						}
-					}
-					hidden_effect = {
-						remove_doctrine = doctrine_spiritual_head
-						remove_doctrine = doctrine_temporal_head
-					}
-					add_doctrine = doctrine_no_head
-				}
-			}
-		}
-		root.faith = {
-			change_fervor = {
-				value = 15
-				desc = new_religious_core_desc
-			}
-		}
-		hidden_effect = {
-			religion:dahala_religion = {
-				every_faith = {
-					change_fervor = {
-						value = -50
-						desc = collapse_religious_authority_desc
-					}
-				}
-			}
-		}
-		every_realm_county = {
-			limit = {
-				religion = religion:dahala_religion
-			}
-			custom = fhmr_winner_decisions_one.tt
-			add_county_modifier = {
-				modifier = lose_religious_dominance_modifier
-				years = 15
-			}
-			set_county_faith = root.faith
-		}
-	}
-	if = {
-		limit = {
-			root = {religion = religion:dahala_religion}
-		}
-		custom_tooltip = winner_of_dahangon_religious_dahala.tt
-		add_piety = 2500
-		dynasty = {
-			add_dynasty_modifier = {
-				modifier = dahala_religious_victory_modifier
-			}
-		}
-		custom_tooltip = {
-			text = make_religious_leader.tt
-			root.faith = {
-				remove_doctrine = doctrine_spiritual_head
-				remove_doctrine = doctrine_theocracy_temporal
-				add_doctrine = doctrine_temporal_head
-				add_doctrine = doctrine_theocracy_lay_clergy
-				set_religious_head_title = title:e_chinlin
-			}
-		}
-		hidden_effect = {
-			title:b_9384.title_province = {
-				set_holding_type = castle_holding
-			}
-		}
-		custom_tooltip = create_random_holy_order_decision_effect_desc
-	
-	if = {
-		limit = {
-			exists = title:b_9384
-		}
-		hidden_effect = {
-			if = {
-				limit = { 
-					title:b_9384.holder.top_liege = root 
-					NOT = {
-						title:b_9384.holder = root  
-					}
-				}
-				create_title_and_vassal_change = {
-					type = leased_out
-					save_scope_as = change
-					add_claim_on_loss = no
-				}
-				title:b_9384 = {
-					change_title_holder_include_vassals = {
-						holder = root
-						change = scope:change
-					}
-				}
-				resolve_title_and_vassal_change = scope:change
-			}
-		}
-
-		create_character = {
-			template = holy_order_leader_character
-			location = title:b_9384.title_province
-			save_scope_as = leader
-		}
-
-		create_holy_order_neutral_effect = {
-			LEADER = scope:leader
-			CAPITAL = title:b_9384
-			NEW_HO_SCOPE = new_holy_order
-			FOUNDER = root
-		}
-	}
-	create_holy_order_effect = yes
-		custom_tooltip = {
-			text = dahala_winner.tt
-			every_realm_county = {
-				limit = {
-					NOT = {
-						religion = religion:dahala_religion
-					} 
-				}
-				random_list = {
-					40 = {
-					}
-					60 = {
-						set_county_faith = root.faith
-					}
-				}
-				
-			}
-		} 
-	}
-}
-
-restore_the_protectorate_of_lanonan_effect = {
-	add_prestige = 500
-	add_character_modifier = {
-		modifier = restore_protectorate_modifier
-		years = 15
-	}
-	every_realm_county = {
-		limit = {
-			any_province = {
-				geographical_region = world_ga_cangriver_formable
-			}
-		}
-		custom = give_cangriver_region_modifier.tt
-		add_county_modifier = {
-			modifier = stable_situation_modifier
-			years = 15
-		}
-	}
-			create_title_and_vassal_change = {
-				type = created
-				save_scope_as = change
-				add_claim_on_loss = no
-			}
-			title:k_protectorate_of_the_southlands = {
-				change_title_holder = {
-					holder = root
-					change = scope:change
-				}
-			}
-			resolve_title_and_vassal_change = scope:change
-			set_primary_title_to = title:k_protectorate_of_the_southlands
-			every_vassal_or_below = {
-				limit = {
-					culture = {
-						has_cultural_pillar = heritage_easterner
-					}
-				}
-				custom = restore_the_protectorate_of_lanonan_decision.tt
-				add_opinion = {
-					target = root
-					modifier = happy_opinion
-					opinion = 20
-					years = 25
-				}
-			}
-			if = {
-				limit = {
-					has_title = title:d_hanli_camp
-				}
-				destroy_title = title:d_hanli_camp
-			}
-			custom_tooltip = {
-				text = threatened_by_lanonan.tt
-				if = {
-					limit = {
-						AND = {
-							title:k_miat_shrunfan = {
-								is_title_created = yes
-							}
-							title:k_miat_shrunfan.holder = {
-								NOT = {
-									this = root
-								}
-								is_ai = yes
-							}
-						}
-					}
-					title:k_miat_shrunfan.holder = {
-						add_character_modifier = {
-							modifier = threatened_by_lanonan_modifier
-							years = 25
-						}
-						spawn_army = {
-							name = shrunfan_army
-							levies = 2500
-							men_at_arms = {
-								type = pikemen_unit
-								men = 250
-							}
-							men_at_arms = {
-								type = armored_footmen
-								men = 250
-							}
-							men_at_arms = {
-								type = armored_horsemen
-								men = 100
-							}
-							men_at_arms = {
-								type = crossbowmen
-								men = 200
-							}
-							men_at_arms = {
-								type = trebuchet
-								men = 50
-							}
-							location = this.capital_province
-							uses_supply = yes
-							inheritable = yes
-						}
-					}
-				}
-			}
-}
-
-mobilize_troops_and_prepare_for_war_effect = {
-	add_character_modifier = {
-		modifier = fully_prepared_lanonan_army_modifier
-		years = 20
-	}
-	every_knight = {
-		custom = mobilize_troops_and_prepare_for_war.tt
-		add_prowess_skill = 3
-	}
-	spawn_army = {
-		name = changlu_army
-		levies = 1000
-		men_at_arms = {
-			type = lujian
-			men = 500
-		}
-		men_at_arms = {
-			type = banners
-			men = 100
-		}
-		men_at_arms = {
-			type = trebuchet
-			men = 20
-		}
-		location = root.capital_province
-		uses_supply = yes
-		inheritable = yes
-	}
-}
-
-founding_of_the_tongkang_society_decision_effect = {
-	add_piety = 900
-	add_character_modifier = {
-		modifier = xinxue_leader_of_southsea_modifier
-		years = 30
-	}
-	custom_tooltip = {
-		text = founding_of_the_tongkang_society_decision.tt
-		every_county = {
-			limit = {
-				any_county_province = {
-					geographical_region = world_ga_southsea_formable
-				}
-				religion = religion:fourteen_heavenly_methods_religion
-				NOT = {
-					faith = faith:xin_xue 
-				}
-			}
-			random_list = {
-				20 = {
-					set_county_faith = faith:xin_xue 
-				}
-				80 = {}
-			}
-		}
-
-	}
-	every_ruler = {
-		limit = {
-			faith = faith:xin_xue
-			NOT = {
-				this = root
-			}
-		}
-		custom = founding_of_the_tongkang_society_decision_1.tt
-		add_opinion = {
-			target = root
-			modifier = created_a_xinxue_base
-			opinion = 20
-		}
-	}
-	faith = {
-		change_fervor = {
-			value = 20
-			desc = founding_of_the_tongkang_society_desc
-		}
-		add_doctrine = tongkang_republic_theory_doctrine
-	}
-}
-
-stability_in_recovering_lost_territories_decision_effect = {
-	add_prestige = 300
-	set_realm_capital  = title:c_thiettanang
-	title:c_thiettanang = {
-		set_county_culture = culture:lanonan 
-		add_county_modifier = {
-			modifier = seat_of_the_protectorate_modifier
-			years = 50
-		}
-	}
-	every_county = {
-		limit = {
-			any_county_province = {
-				geographical_region = world_ga_weizhou_formable
-			}
-		}
-		custom = stability_in_recovering_lost_territories_decision.tt
-		add_county_modifier = {
-			modifier = restore_fallow_fields_modifier
-			years = 20
-		}
-		custom_tooltip = {
-			text = stability_in_recovering_lost_territories_decision_2.tt
-			every_county_province = {
-				limit = {
-					OR = {
-						has_building_or_higher = cereal_fields_01
-						has_building_or_higher = paddy_fields_01
-					}
-				}
-				gh_change_farmland_building_effect = yes
-			}
-		}
-	}
-	custom_tooltip = {
-		text = stability_in_recovering_lost_territories_decision_1.tt
-		every_realm_county = {
-			limit = {
-				any_county_province = {
-					geographical_region = world_ga_weizhou_formable
-				}
-				NOT = {
-					culture = {
-						has_cultural_pillar = heritage_easterner
-					}
-				}
-			}
-			set_county_culture = culture:saeridian 
-			change_development_level = 2
-		}
-	}
-}
-
-accept_saielaian_as_part_of_kathunkai_decision_effect = {
-	add_learning_skill = 2
-	add_diplomacy_skill = 3
-	dynasty = {
-		add_dynasty_modifier = {
-			modifier = southern_frontier_submission_modifier
-		}
-	}
-	culture:saeridian = {
-		add_culture_tradition = tradition_kathunkai_cultural_circle
-		change_cultural_acceptance = {
-			target = root.culture
-			value = 30
-			desc = accept_saielaian_culture
- 		}
-	}
-	every_county = {
-		limit = {
-			culture = {
-				has_cultural_pillar = heritage_saielaian
-			}
-		}
-		custom = accept_saielaian_as_part_of_kathunkai_decision.tt
-		set_county_culture = culture:saeridian
-	}
-}
-
-abolish_the_bureau_of_the_bronzeport_decision_effect = {
-	add_prestige_level = 1
-	add_character_modifier = {
-		modifier = the_terminator_of_bronzeport_modifier
-		years = 30
-	}
-	add_gold = 1000
-	every_vassal_or_below = {
-		limit = {
-			culture = {
-				has_cultural_pillar = heritage_easterner
-			}
-		}
-		custom = abolish_the_bureau_of_the_bronzeport_decision_1.tt
-		add_opinion = {
-			target = root
-			modifier = abolish_the_bureau_of_the_bronzeport_opinion
-		}
-	}
-	title:c_ganilok = {
-		add_county_modifier = {
-			modifier = bronzeport_military_political_supervision_department_modifier
-		}
-	}
-	spawn_army = {
-		name = bronzeport_garrison
-		levies = {
-			value = 2000
-		}
-		men_at_arms = {
-			type = armored_horsemen
-			men = 500
-		}
-		men_at_arms = {
-			type = lujian
-			men = 500
-		}
-		location = title:b_the_bronzeport.title_province
-		uses_supply = no
-		inheritable = yes
-	}
-	if = {
-		limit = {
-			title:k_bronzeport = {
-				is_title_created = yes
-			}
-		}
-		destroy_title = title:k_bronzeport
-		custom_tooltip = {
-			text = abolish_the_bureau_of_the_bronzeport_decision.tt
-			title:k_bronzeport.holder = {
-				every_vassal = {
-					create_title_and_vassal_change = {
-						type = swear_fealty
-						save_scope_as = title_change
-						add_claim_on_loss = no
-					}
-					change_liege = {
-						liege = root
-						change = scope:title_change
-					}
-					resolve_title_and_vassal_change = scope:title_change
-				}
-			}
-		}
-		
-	}
-}
-
-stand_on_the_land_beyond_north_wind_decision_effect = {
-	give_nickname = nick_the_lord_of_orient
-	dynasty = {
-		add_dynasty_prestige = 1000
-	}
-	
-	create_title_and_vassal_change = {
-		type = created
-		save_scope_as = change
-		add_claim_on_loss = no
-	}
-	title:e_kasiaeolia = {			
-		change_title_holder = {			
-			holder = root
-			change = scope:change
-		}		
-	}
-	resolve_title_and_vassal_change = scope:change
-	every_ruler = {
-		limit = { culture = { has_cultural_pillar = heritage_aversarian } }
-		custom = stand_on_the_land_beyond_north_wind_decision_2.tt
-		add_opinion = {
-			opinion = 30
-			modifier = conquer_lands_of_foreign_opinion
-			target = root
-		}
-	}
-	spawn_army = {
-		name = conqueror_retinue
-		levies = {
-			value = 4500
-		}
-		men_at_arms = {
-			type = armored_horsemen
-			men = 450
-		}
-		men_at_arms = {
-			type = arcane_auxiliaries
-			men = 130
-		}
-		men_at_arms = {
-			type = armored_footmen
-			men = 1000
-		}
-		men_at_arms = {
-			type = mangonel
-			men = 50
-		}
-		location = root.capital_province
-	}
-	add_trait = gh_king_of_conquerors
-	custom_tooltip = {
-		text = stand_on_the_land_beyond_north_wind_decision_1.tt
-		every_held_title = {
-			limit = {
-				tier = tier_kingdom
-				OR = {
-					target_is_de_jure_liege_or_above = title:e_darmirat
-					target_is_de_jure_liege_or_above = title:e_naavjagarad
-					target_is_de_jure_liege_or_above = title:e_rovarska
-				}
-			}
-			set_de_jure_liege_title = title:e_kasiaeolia
-		}
-		every_vassal_or_below = {
-			every_held_title = {
-				limit = {
-					tier = tier_kingdom
-					OR = {
-						target_is_de_jure_liege_or_above = title:e_darmirat
-						target_is_de_jure_liege_or_above = title:e_naavjagarad
-						target_is_de_jure_liege_or_above = title:e_rovarska
-					}
-				}
-				set_de_jure_liege_title = title:e_kasiaeolia
-			}
-		}
-	}
-
-	#custom_tooltip = {
-	#	text = stand_on_the_land_beyond_north_wind_decision.tt
-	#	if = { 
-	#		limit = { has_trait = education_martial_1 } 
-	#		remove_trait = education_martial_1
-	#		add_trait = education_martial_2
-	#	}
-	#	else_if = {
-	#		limit = { has_trait = education_martial_2 } 
-	#		remove_trait = education_martial_2
-	#		add_trait = education_martial_3
-	#	}
-	#	else_if = {
-	#		limit = { has_trait = education_martial_3 } 
-	#		remove_trait = education_martial_3
-	#		add_trait = education_martial_4
-	#	}
-	#	else_if = {
-	#		limit = { has_trait = education_martial_4 } 
-	#		remove_trait = education_martial_4
-	#		add_trait = education_martial_5
-	#	}
-	#	else_if = {
-	#		limit = { has_trait = education_martial_5 } 
-	#		add_prestige_level = 1
-	#	}
-	#}
-	
-	add_character_modifier = {
-		modifier = eastern_conquest_enterprise_modifier
-		years = 30
 	}
 }

@@ -258,7 +258,7 @@ hunt_success_chance_roco_amenity_level_value = {
 		if = {
 			limit = {
 				activity_host = {
-					amenity_level = { target = court_servants value = low_amenity_level }
+					amenity_level = { type = court_servants value = low_amenity_level }
 				}
 			}
 			add = 1
@@ -266,7 +266,7 @@ hunt_success_chance_roco_amenity_level_value = {
 		else_if = {
 			limit = {
 				activity_host = {
-					amenity_level = { target = court_servants value = medium_amenity_level }
+					amenity_level = { type = court_servants value = medium_amenity_level }
 				}
 			}
 			add = 2
@@ -274,7 +274,7 @@ hunt_success_chance_roco_amenity_level_value = {
 		else_if = {
 			limit = {
 				activity_host = {
-					amenity_level = { target = court_servants value = high_amenity_level }
+					amenity_level = { type = court_servants value = high_amenity_level }
 				}
 			}
 			add = 3
@@ -282,7 +282,7 @@ hunt_success_chance_roco_amenity_level_value = {
 		else_if = {
 			limit = {
 				activity_host = {
-					amenity_level = { target = court_servants value = very_high_amenity_level }
+					amenity_level = { type = court_servants value = very_high_amenity_level }
 				}
 			}
 			add = 4
@@ -290,7 +290,7 @@ hunt_success_chance_roco_amenity_level_value = {
 		else_if = {
 			limit = {
 				activity_host = {
-					amenity_level = { target = court_servants value = max_amenity_level }
+					amenity_level = { type = court_servants value = max_amenity_level }
 				}
 			}
 			add = 5
@@ -589,7 +589,6 @@ hunt_success_chance_value = {
 				desc = estate_has_kennels
 			}
 		}
-		# HUNTING EAGLE
 		if = {
 			limit = { 
 				involved_activity = {
@@ -1518,15 +1517,6 @@ hunt_prestige_reward_value = {
 		}
 		multiply = 0.25
 	}
-
-	if = {
-		limit = {
-			scope:activity.activity_host = {
-				has_character_modifier = oath_greatest_hunter 
-			}
-		}
-		multiply = 1.1
-	}
 }
 
 hunt_provisions_reward_value = {
@@ -1787,7 +1777,7 @@ impressive_nerge_guest_prestige_value = {
 # Great Nerge
 great_nerge_dread_value = 40
 great_nerge_prestige_value = {
-	value = 250
+	value = 300
 	multiply = nerge_prestige_multiplier
 }
 great_nerge_gold_value = 150
@@ -1803,10 +1793,10 @@ great_nerge_guest_prestige_value = {
 # Fantastic Nerge
 fantastic_nerge_dread_value = 50
 fantastic_nerge_prestige_value = {
-	value = 350
+	value = 400
 	multiply = nerge_prestige_multiplier
 }
-fantastic_nerge_gold_value = 250
+fantastic_nerge_gold_value = 350
 fantastic_nerge_legitimacy_value = 200
 fantastic_nerge_martial_value = 1
 fantastic_nerge_guest_prestige_value = {

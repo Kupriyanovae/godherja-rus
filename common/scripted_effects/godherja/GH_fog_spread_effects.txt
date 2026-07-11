@@ -652,24 +652,24 @@ fog_exodian_holdouts = {
 		spread_fog_effect = yes
 	}
 	#These guys are missed by the spread fog effect
-	title:c_vor_pulozhsk = {
-		spawn_ruin = { COUNTY = title:c_vor_pulozhsk }
+	title:c_elrica = {
+		spawn_ruin = { COUNTY = title:c_elrica }
 		add_county_modifier = bordering_fog_modifier
 	}
-	title:c_praaza = {
-		spawn_ruin = { COUNTY = title:c_praaza }
+	title:c_provincenewasoro = {
+		spawn_ruin = { COUNTY = title:c_provincenewasoro }
 		add_county_modifier = bordering_fog_modifier
 	}
 	#title:c_west_lichd141241421oms_47 = {
 	#	spawn_ruin = { COUNTY = title:c_west_lichd141241421oms_47 }
 	#	add_county_modifier = bordering_fog_modifier
 	#}
-	title:c_svobeca = {
-		spawn_ruin = { COUNTY = title:c_svobeca }
+	title:c_west_lfafafafa7 = {
+		spawn_ruin = { COUNTY = title:c_west_lfafafafa7 }
 		add_county_modifier = bordering_fog_modifier
 	}
-	title:c_sreod = {
-		spawn_ruin = { COUNTY = title:c_sreod }
+	title:c_provincexeneornos = {
+		spawn_ruin = { COUNTY = title:c_provincexeneornos }
 		add_county_modifier = bordering_fog_modifier
 	}
 }
@@ -679,7 +679,7 @@ fog_exodian_holdouts = {
 # INITIALIZAITION #
 ###################
 
-gh_initialize_fog_paramaters = { # This initializes the Fog clock and provincial Fog resistances. Called on game start
+initialize_fog_paramaters = {	# This initializes the Fog clock and provincial Fog resistances. Called on game start
 	title:c_oraispol = { # Setting up the Fog clock
 		set_variable = {
 			name = fog_clock

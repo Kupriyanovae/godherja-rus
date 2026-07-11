@@ -3,27 +3,27 @@
 		# Exodian fogging
 		if = {
 			limit = {
-				game_start_date = 6254.1.1 # Exodian exists in the fog in this start
+				game_start_date = 1254.1.1 # Exodian exists in the fog in this start
 				NOT = { has_global_variable = exodian_fogged }
-				current_date <= 6260.1.1 # By this point Exodian is dead
+				current_date <= 1260.1.1 # By this point Exodian is dead
 			}
 			random = {
 				chance = 0 # No chance the first year of play
 				modifier = {
 					add = 20
-					current_date >= 6254.6.1
+					current_date >= 1254.6.1
 				}
 				modifier = { # Steadily increases as the years pass
 					add = 20
-					current_date >= 6255.6.1
+					current_date >= 1255.6.1
 				}
 				modifier = {
 					add = 20
-					current_date >= 6256.6.1
+					current_date >= 1256.6.1
 				}
 				modifier = { # Exodian should die by the 4-5 year mark
 					add = 40
-					current_date >= 6257.6.1
+					current_date >= 1257.6.1
 				}
 				set_global_variable = {
 					name = exodian_fogged
@@ -34,6 +34,12 @@
 					days = { 60 300 }
 				}
 			}
+		}
+		
+		## GH URGENT: REMOVE THIS ONCE WE GET TO THE NEXT SAVEGAME-INCOMPATIBLE PATCH!!!!!!
+		if = {
+			limit = { NOT = { has_global_variable_list = global_aspect_list } }
+			initialize_global_aspect_list_effect = yes
 		}
 
 		## Maintenance for Republic elections
@@ -66,7 +72,7 @@
 		biannual_moon_cycle
 		#annual_unlanded_magi_ai_pulse
 		dergi_yearly
-		#on_biannual_fog
+		on_biannual_fog
 		yearly_clique_pulse
 		yearly_patron_pulse
 		#repopulation_pulse
@@ -79,14 +85,13 @@
 		#GH_yearly_ai_pulse
 		
 		delay = { months = 6 }
-		#on_biannual_fog
+		on_biannual_fog
 		biannual_moon_cycle
 		GH_yearly_ai_pulse
 		magic_riftsight_pulse
 		magic_prowess_pulse
 		#harthah_ai_pulse
 		#yearly_fogeater_invasion_check_pulse
-		sarradonian_oasis_spawning_pulse
 	}
 }
 
@@ -258,7 +263,6 @@ GH_on_yearly_events = {
 		25 = gh_sarminian_events.0003						# Surplus Arrowheads
 		50 = gh_sarminian_events.0004						# Local Falcons Eliminate Rats
 		25 = gh_sarminian_events.0008						# Lye Merchant
-		100 = gh_sarminian_events.0010						# Stranger at the Fire
 		100 = gh_sarminian_events.0101						# A Friendly Archery Competition
 		50 = gh_sarminian_events.0201						# A Veteran Steppe Queen Offers Their Services
 
@@ -272,25 +276,6 @@ GH_on_yearly_events = {
 		## Aeschraes Events ##
 		200 = aeschraes_event.0001							#Aeschraes gets mad at axi
 		50 = aeschraes_event.0002							#Aeschraes gets mad at randoms
-
-		## Sarradonian Desert Events ##
-		100 = GH_RICE_oasis_event.0021 					# Courtier has takarakit
-		100 = GH_RICE_oasis_event.0022 					# Eating Taguella
-		100 = GH_RICE_oasis_event.0023 					# Inadan artisans gain renown
-		100 = GH_RICE_oasis_event.0030 					# Buy a Well?
-		100 = GH_RICE_oasis_event.0031 					# Gift of olives and dates
-		100 = GH_RICE_desert_event.0012					# Counting Livestock is bad luck!
-		100 = GH_RICE_desert_event.0013 				# Scarab Thief caught
-		100 = GH_RICE_desert_event.0014 				# Runaway Slaves
-		100 = GH_RICE_desert_event.0015 				# Fisherman killed mysteriously
-		100 = GH_RICE_desert_event.0016 				# Peasants prepare to move to Usehhar Mountains
-		100 = GH_RICE_desert_event.0017 				# Hyena attacks on carvans increase
-		100 = gh_oasis_event.1001 						# Scarab Stampede
-		100 = gh_oasis_event.1011 						# Discover decrepit pieces of a Sand-Skiff
-		100 = gh_oasis_event.1021 						# Extra maintenance on Sand-Skiffs necessary
-		100 = gh_oasis_event.1041 						# Oasis attracts more people than expected
-		100 = gh_oasis_event.1051 						# Powerful monster spotted in Oasis
-		100 = gh_oasis_event.1061 						# Merchant hawking "holy waters"
 	}
 }
 

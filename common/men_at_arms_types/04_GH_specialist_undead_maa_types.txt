@@ -50,7 +50,7 @@ skeleton_archers = {
 	#low_maintenance_cost = { gold = name_low_maint_cost }
 	#high_maintenance_cost = { gold = name_low_maint_cost }
 	#provision_cost = @provisions_cost_infantry_expensive
-	special_recruit_only = yes
+	can_recruit = { always = no }
 	stack = 250
 
 	terrain_bonus = {
@@ -68,7 +68,7 @@ skeleton_archers = {
 
 elite_undead = {
 	type = undead
-	special_recruit_only = yes
+	can_recruit = { always = no }
 
 	damage = 28
 	toughness = 35
@@ -86,7 +86,6 @@ elite_undead = {
 		mayik_caverns = { pursuit = 10 screen = 12 }
 		mayik_corridors = { pursuit = 8 screen = 10 }
 		mayik_chamber = { pursuit = 6 screen = 8 }
-		underworld_expanse = { pursuit = 4 screen = 6 }
 	}
 
 	counters = {
@@ -106,7 +105,7 @@ elite_undead = {
 
 spirits_of_the_horn = { # Unique MAA for using the BLACK HORN
 	type = undead
-	special_recruit_only = yes
+	can_recruit = { always = no }
 
 	damage = 26
 	toughness = 70
@@ -156,7 +155,6 @@ undead_skirmishers = {
 		mayik_caverns = { damage = 8 toughness = 10 pursuit = 12 screen = 14 }
 		mayik_corridors = { damage = 6 toughness = 8 pursuit = 10 screen = 12 }
 		mayik_chamber = { damage = 4 toughness = 6 pursuit = 8 screen = 10 }
-		underworld_expanse = { damage = 4 toughness = 6 pursuit = 8 screen = 10 }
 	}
 
 	counters = {
@@ -168,7 +166,7 @@ undead_skirmishers = {
 	high_maintenance_cost = { gold = skirmisher_high_maint_cost }
 	provision_cost = @provisions_cost_infantry_expensive
 
-	special_recruit_only = yes
+	can_recruit = { always = no }
 
 	stack = 100
 	ai_quality = { value = culture_ai_weight_skirmishers }
@@ -200,7 +198,6 @@ undead_bowmen = {
 		mayik_caverns = { damage = -16 }
 		mayik_corridors = { damage = -13 }
 		mayik_chamber = { damage = -10 }
-		underworld_expanse = { damage = -7 }
 	}
 
 	counters = {
@@ -212,7 +209,7 @@ undead_bowmen = {
 	high_maintenance_cost = { gold = bowmen_high_maint_cost }
 	provision_cost = @provisions_cost_infantry_expensive
 
-	special_recruit_only = yes
+	can_recruit = { always = no }
 
 	stack = 100
 	ai_quality = {
@@ -249,7 +246,6 @@ undead_light_horsemen = {
 		mayik_caverns = { damage = -20 toughness = -15 pursuit = -30 screen = -30 }
 		mayik_corridors = { damage = -18 toughness = -13 pursuit = -30 screen = -30 }
 		mayik_chamber = { damage = -16 toughness = -11 pursuit = -30 screen = -30 }
-		underworld_expanse = { damage = -14 toughness = -9 pursuit = -30 screen = -30 }
 	}
 
 	counters = {
@@ -265,7 +261,7 @@ undead_light_horsemen = {
 	high_maintenance_cost = { gold = light_cavalry_high_maint_cost }
 	provision_cost = @provisions_cost_infantry_expensive
 
-	special_recruit_only = yes
+	can_recruit = { always = no }
 
 	stack = 100
 	ai_quality = {
@@ -299,7 +295,6 @@ undead_pikemen_unit = {
 		mayik_caverns = { toughness = 12 }
 		mayik_chamber = { toughness = 8 }
 		mayik_corridors = { toughness = 12 }
-		underworld_expanse = { toughness = 6 }
 	}
 
 	counters = {
@@ -316,7 +311,7 @@ undead_pikemen_unit = {
 	high_maintenance_cost = { gold = pikemen_high_maint_cost }
 	provision_cost = @provisions_cost_infantry_expensive
 
-	special_recruit_only = yes
+	can_recruit = { always = no }
 
 	stack = 100
 	ai_quality = { value = culture_ai_weight_pikemen }
@@ -351,7 +346,7 @@ undead_armored_footmen = {
 	high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
 	provision_cost = @provisions_cost_infantry_expensive
 
-	special_recruit_only = yes
+	can_recruit = { always = no }
 	stack = 100
 	ai_quality = {
 		value = culture_ai_weight_heavy_infantry
@@ -390,7 +385,6 @@ undead_armored_horsemen = {
 		mayik_caverns = { damage = -90 toughness = -20 pursuit = -20 }
 		mayik_corridors = { damage = -85 toughness = -15 pursuit = -20 }
 		mayik_chamber = { damage = -80 toughness = -10 pursuit = -20 }
-		underworld_expanse = { damage = -70 toughness = -5 pursuit = -20 }
 	}
 
 	counters = {
@@ -401,7 +395,7 @@ undead_armored_horsemen = {
 		normal_winter = { damage = -10 toughness = -5 }
 		harsh_winter = { damage = -20 toughness = -10 }
 	}
-	special_recruit_only = yes
+	can_recruit = { always = no }
 
 	buy_cost = { gold = heavy_cavalry_recruitment_cost }
 	low_maintenance_cost = { gold = heavy_cavalry_low_maint_cost }
@@ -440,7 +434,6 @@ undead_crossbowmen = {
 		mayik_caverns = { damage = -8 }
 		mayik_chamber = { damage = -6 }
 		mayik_corridors = { damage = -8 }
-		underworld_expanse = { damage = -4 }
 	}
 
 	counters = {
@@ -448,7 +441,7 @@ undead_crossbowmen = {
 		heavy_cavalry = 1
 		archer_cavalry = 0.5
 	}
-	special_recruit_only = yes
+	can_recruit = { always = no }
 
 	buy_cost = { gold = crossbowmen_recruitment_cost }
 	low_maintenance_cost = { gold = crossbowmen_low_maint_cost }
@@ -487,7 +480,6 @@ undead_horse_archers = {
 		mayik_caverns = { damage = -44 pursuit = -40 screen = -30 }
 		mayik_corridors = { damage = -42 pursuit = -40 screen = -30 }
 		mayik_chamber = { damage = -40 pursuit = -40 screen = -30 }
-		underworld_expanse = { damage = -35 pursuit = -40 screen = -30 }
 
 		deadlands = { damage = 20 }
 	}
@@ -497,7 +489,7 @@ undead_horse_archers = {
 		heavy_infantry = 1
 	}
 
-	special_recruit_only = yes
+	can_recruit = { always = no }
 
 	buy_cost = { gold = horse_archers_recruitment_cost }
 	low_maintenance_cost = { gold = horse_archers_low_maint_cost }
@@ -547,7 +539,7 @@ undead_camel_rider = {
 		harsh_winter = { damage = -5 toughness = -2 }
 	}
 
-	special_recruit_only = yes
+	can_recruit = { always = no }
 
 	buy_cost = { gold = camel_rider_recruitment_cost }
 	low_maintenance_cost = { gold = camel_rider_low_maint_cost }
@@ -593,7 +585,7 @@ undead_war_elephant = {
 		harsh_winter = { damage = -60 toughness = -10 }
 	}
 
-	special_recruit_only = yes
+	can_recruit = { always = no }
 
 	buy_cost = { gold = war_elephant_recruitment_cost }
 	low_maintenance_cost = { gold = war_elephant_low_maint_cost }
@@ -668,7 +660,7 @@ undead_worldeater = {
 	pursuit = 58
 	screen = 7000
 
-	special_recruit_only = yes
+	can_recruit = { always = no }
 
 	terrain_bonus = {
 		wetlands = { damage = 250 pursuit = 250 }

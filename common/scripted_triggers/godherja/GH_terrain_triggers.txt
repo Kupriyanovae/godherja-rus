@@ -8,13 +8,19 @@
 province_has_underground_terrain = {
 	GH_any_underground_terrain_trigger = yes
 	trigger_if = {
-		limit = { exists = duchy }
-		empire = title:d_scriptoriums
+		limit = { exists = empire }
+		OR = {
+			empire = title:e_abyssal_pits
+			empire = title:e_western_undercity
+			empire = title:e_eastern_undercity
+			empire = title:e_red_chasm
+			empire = title:e_sunken_depths
+		}
 	}
-	#trigger_if = {
-	#	limit = { exists = kingdom }
-	#	kingdom = title:k_the_portalage
-	#}
+	trigger_if = {
+		limit = { exists = kingdom }
+		kingdom = title:k_the_mistake
+	}
 }
 
 GH_any_marcher_terrain_trigger = {
@@ -98,7 +104,6 @@ GH_any_underground_terrain_trigger = {
 		terrain = mayik_chamber
 		terrain = mayik_corridors
 		terrain = mayik_caverns
-		terrain = underworld_expanse
 	}
 }
 
@@ -107,7 +112,6 @@ GH_any_mayik_trigger = {
 		terrain = mayik_chamber
 		terrain = mayik_corridors
 		terrain = mayik_caverns
-		terrain = underworld_expanse
 	}
 }
 

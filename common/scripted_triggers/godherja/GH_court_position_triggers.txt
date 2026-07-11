@@ -4,20 +4,3 @@
 court_position_lich_trigger = { # Is courtier suited to... Lich... positions?
 	has_education_lich_trigger = yes
 }
-
-court_gaffer_validity_trigger = {
-	base_court_position_validity_trigger = { EMPLOYER = $EMPLOYER$ }
-	is_landed = no
-	custom_tooltip = {
-		text = NONE_NOT_THE_SPOUSE_OF_CHARACTER_COURT_POSITION
-		NOT = { is_spouse_of = $EMPLOYER$ }
-	}
-	has_trait = gh_lifestyle_glassmith
-	custom_tooltip = {
-		text = none_does_not_have_a_full_time_job
-		trigger_if = {
-			limit = { NOT = { has_court_position = court_gaffer_court_position } }
-			court_position_does_not_already_have_a_job_trigger = yes
-		}
-	}
-}

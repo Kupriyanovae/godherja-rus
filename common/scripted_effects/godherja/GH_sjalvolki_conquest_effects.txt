@@ -760,10 +760,8 @@
 
 setup_sjalvolki_conquest_effect = {
 	character:daukeni_sjalvolki_1 = {
-		create_story = story_great_migration
-		random_owned_story = {
-			type = story_great_migration
-			save_scope_as = story_great_migration
+		setup_global_story_effect = { STORY_TYPE = story_great_migration STORY_NAME = the_sjalvolki_conquest STORY_ILLUSTRATION = tribal_challenge_ruler }
+		scope:story_great_migration = {
 			story_owner = {
 				every_realm_county = {
 					limit = {
@@ -1275,7 +1273,7 @@ release_migration_vassals = {
 		limit = {
 			NOR = {
 				capital_county.kingdom = title:k_palitake 
-				capital_county.kingdom = title:k_haven
+				capital_county.kingdom = title:k_southeastern_isles
 			}
 			OR = {
 				#AND = {

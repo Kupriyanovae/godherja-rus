@@ -60,7 +60,6 @@
 				scope:pretender = { is_ruler = yes }
 				scope:pretender.highest_held_title_tier > scope:supporter.highest_held_title_tier
 				NOT = { scope:pretender = scope:supporter }
-				NOT = { scope:supporter ?= character:siralagi_mahndayana_27 }
 			}
 			create_title_and_vassal_change = {
 				type = swear_fealty
@@ -264,7 +263,7 @@ gh_acw_find_other_pretender_effect = {
 			}
 			modifier = {
 				add = -1
-				has_title = title:e_amsari_hiklahn
+				has_title = title:e_amsari
 			}
 			modifier = {
 				add = 1
@@ -398,7 +397,7 @@ remove_support_to_amsari_pretender_effect = {
 										}
 										this = scope:old_pretender
 										is_at_war_with = scope:old_pretender
-										this = title:e_amsari_hiklahn.holder
+										this = title:e_amsari.holder
 									}
 									is_alive = yes
 									is_landed = yes
@@ -416,7 +415,7 @@ remove_support_to_amsari_pretender_effect = {
 										exists = this.var:gh_amsari_civil_war_info_story.var:amsari_civil_war_supporting 
 										this = scope:old_pretender
 										is_at_war_with = scope:old_pretender
-										this = title:e_amsari_hiklahn.holder
+										this = title:e_amsari.holder
 									}
 									is_alive = yes
 									is_landed = yes
@@ -564,7 +563,7 @@ support_amsari_pretender_global_ai_effect = {
 		limit = { 
 			character:amsari_mahndayana_3 = { 
 				is_alive = yes 
-				this = title:e_amsari_hiklahn.holder
+				this = title:e_amsari.holder
 			}
 			OR = {
 				character:amsari_mahndayana_4 = { 
@@ -650,7 +649,7 @@ support_amsari_pretender_global_ai_effect = {
 					change = scope:change
 				}
 			}
-			title:e_amsari_hiklahn = {
+			title:e_amsari = {
 				change_title_holder = {
 					holder = scope:hiklahn_thief
 					change = scope:change
@@ -660,7 +659,7 @@ support_amsari_pretender_global_ai_effect = {
 		}
 		
 		# Everyone becomes independent
-		title:e_amsari_hiklahn.holder = {
+		title:e_amsari.holder = {
 			every_vassal = {
 				create_title_and_vassal_change = {
 					type = independency
@@ -744,7 +743,7 @@ support_amsari_pretender_global_ai_effect = {
 			START_PRETENDER = character:amsari_mahndayana_9
 		}
 		support_acw_start_effect = {
-			START_SUPPORTER = title:d_khvoshinan_e_sofla.holder
+			START_SUPPORTER = title:d_khvoshinane_sofla.holder
 			START_PRETENDER = character:amsari_mahndayana_2_daughter_2
 		}
 		support_acw_start_effect = {
@@ -760,7 +759,7 @@ support_amsari_pretender_global_ai_effect = {
 			START_PRETENDER = character:amsari_mahndayana_5
 		}
 		support_acw_start_effect = {
-			START_SUPPORTER = title:c_biyaban_e_shomali.holder
+			START_SUPPORTER = title:c_shahrake_shahid_bahonar.holder
 			START_PRETENDER = character:amsari_mahndayana_15
 		}
 		support_acw_start_effect = {
@@ -783,9 +782,9 @@ support_amsari_pretender_global_ai_effect = {
 				limit = { is_ai = yes }
 				start_war = {
 					cb = claim_cb
-					target = title:c_biyaban_e_shomali.holder
+					target = title:c_shahrake_shahid_bahonar.holder
 					claimant = this
-					target_title = title:c_biyaban_e_shomali
+					target_title = title:c_shahrake_shahid_bahonar
 				}
 			}
 		}
@@ -941,7 +940,7 @@ support_amsari_pretender_global_ai_effect = {
 	}
 	else = {
 		# Everyone becomes independent
-		title:e_amsari_hiklahn.holder = {
+		title:e_amsari.holder = {
 			every_vassal = {
 				create_title_and_vassal_change = {
 					type = independency
@@ -965,7 +964,7 @@ support_amsari_pretender_global_ai_effect = {
 				limit = {
 					NOR = { 
 						exists = this.var:gh_amsari_civil_war_info_story.var:amsari_civil_war_supporting
-						this = title:e_amsari_hiklahn.holder 
+						this = title:e_amsari.holder 
 						has_trait = gh_trait_amsari_pretender
 						has_trait = gh_trait_renounced_claim
 						has_trait = disinherited
@@ -999,7 +998,7 @@ gh_acw_start_war_effect = {
 		save_temporary_scope_as = defender
 		limit = {
 			exists = this.var:gh_amsari_civil_war_info_story.var:amsari_civil_war_supporting
-			NOT = { this = title:e_amsari_hiklahn.holder }
+			NOT = { this = title:e_amsari.holder }
 		}			
 		every_in_global_list = {
 			variable = involved_character_amsari_civil_war
@@ -1016,7 +1015,7 @@ gh_acw_start_war_effect = {
 						this.var:gh_amsari_civil_war_info_story.var:amsari_civil_war_supporting = scope:defender.var:gh_amsari_civil_war_info_story.var:amsari_civil_war_supporting			
 					}
 					is_allied_to = scope:defender
-					this = title:e_amsari_hiklahn.holder
+					this = title:e_amsari.holder
 					
 				}
 			}
@@ -1029,9 +1028,9 @@ gh_acw_start_war_effect = {
 		this.var:gh_amsari_civil_war_info_story.var:amsari_civil_war_supporting ?= { save_scope_as = gh_amsari_pretender }
 		start_war = {
 			cb = gh_acw_claim_cb
-			target = title:e_amsari_hiklahn.holder
+			target = title:e_amsari.holder
 			claimant = scope:gh_amsari_pretender
-			target_title = title:e_amsari_hiklahn
+			target_title = title:e_amsari
 		}
 	}
 }
@@ -1079,7 +1078,7 @@ gh_acw_historical_save_character_scope_immediate_effect = {
 	}
 	else_if = {
 		limit = { 
-			root = title:d_khvoshinan_e_sofla.holder
+			root = title:d_khvoshinane_sofla.holder
 			character:amsari_mahndayana_2_daughter_2 = { amsari_historical_pretender_is_ai_trigger = yes }
 		}
 		character:amsari_mahndayana_2_daughter_2 = { save_scope_as = amsari_pretender }
@@ -1121,7 +1120,7 @@ gh_acw_historical_save_character_scope_immediate_effect = {
 	}
 	else_if = {
 		limit = { 
-			root = title:c_biyaban_e_shomali.holder
+			root = title:c_shahrake_shahid_bahonar.holder
 			character:amsari_mahndayana_15 = { amsari_historical_pretender_is_ai_trigger = yes }
 		}
 		character:amsari_mahndayana_15 = { save_scope_as = amsari_pretender }
@@ -1213,9 +1212,9 @@ support_amsari_pretender_player_effect = {
 			}
 		}
 		else_if = {
-			limit = { root = title:d_khvoshinan_e_sofla.holder }
+			limit = { root = title:d_khvoshinane_sofla.holder }
 			support_acw_start_effect = {
-				START_SUPPORTER = title:d_khvoshinan_e_sofla.holder
+				START_SUPPORTER = title:d_khvoshinane_sofla.holder
 				START_PRETENDER = character:amsari_mahndayana_2_daughter_2
 			}
 		}
@@ -1252,9 +1251,9 @@ support_amsari_pretender_player_effect = {
 			}
 		}
 		else_if = {
-			limit = { root = title:c_biyaban_e_shomali.holder }
+			limit = { root = title:c_shahrake_shahid_bahonar.holder }
 			support_acw_start_effect = {
-				START_SUPPORTER = title:c_biyaban_e_shomali.holder
+				START_SUPPORTER = title:c_shahrake_shahid_bahonar.holder
 				START_PRETENDER = character:amsari_mahndayana_15
 			}
 		}
@@ -1320,9 +1319,9 @@ extra_amsari_civil_war_effect_option = {
 		limit = { root = title:c_damdama.holder }
 		start_war = {
 			cb = claim_cb
-			target = title:c_biyaban_e_shomali.holder
+			target = title:c_shahrake_shahid_bahonar.holder
 			claimant = this
-			target_title = title:c_biyaban_e_shomali
+			target_title = title:c_shahrake_shahid_bahonar
 		}
 	}
 	else_if = {
@@ -1401,7 +1400,7 @@ join_amsari_civil_war_player_effect = {
 						this.var:gh_amsari_civil_war_info_story.var:amsari_civil_war_supporting = root.var:gh_amsari_civil_war_info_story.var:amsari_civil_war_supporting			
 					}
 					is_allied_to = root
-					this = title:e_amsari_hiklahn.holder
+					this = title:e_amsari.holder
 				}
 			}			
 			save_scope_as = defender			
@@ -1441,9 +1440,9 @@ join_amsari_civil_war_player_effect = {
 	this.var:gh_amsari_civil_war_info_story.var:amsari_civil_war_supporting ?= { save_scope_as = gh_amsari_pretender }
 	start_war = {
 		cb = gh_acw_claim_cb
-		target = title:e_amsari_hiklahn.holder
+		target = title:e_amsari.holder
 		claimant = scope:gh_amsari_pretender
-		target_title = title:e_amsari_hiklahn
+		target_title = title:e_amsari
 	}
 }
 
@@ -1922,185 +1921,3 @@ gh_acw_create_landless_adventurer_title_effect = {
 	}
 	set_variable = flavourise_camp_purpose_wanderers
 }
-
-gh_1298_start_acw_effect = {
-	if = {
-		limit = { character:amsari_mahndayana_120 ?= { is_alive = yes } }
-		character:amsari_mahndayana_2 ?= {
-			create_story = {
-				type = story_gh_amsari_civil_war
-				save_scope_as = acw_save_story
-			}
-			save_scope_as = acw_story_owner
-		}
-	}
-	else_if = {
-		limit = { character:amsari_mahndayana_24 ?= { is_alive = yes } }
-		character:amsari_mahndayana_2 ?= {
-			create_story = {
-				type = story_gh_amsari_civil_war
-				save_scope_as = acw_save_story
-			}
-			save_scope_as = acw_story_owner
-		}
-	}
-	else_if = {
-		limit = { character:amsari_mahndayana_518 ?= { is_alive = yes } }
-		character:amsari_mahndayana_2 ?= {
-			create_story = {
-				type = story_gh_amsari_civil_war
-				save_scope_as = acw_save_story
-			}
-			save_scope_as = acw_story_owner
-		}
-	}
-	# We place the story on a global variable
-	set_global_variable = {
-		name = story_gh_amsari_civil_war
-		value = scope:acw_save_story
-	}	
-
-	# We save the current ruling house dynasty oof the hiklahn to access it in GUI and anywhere else needed
-	scope:acw_story_owner = { house = { save_scope_as = gh_ruling_dynasty_house } }
-	set_global_variable = {
-		name = gh_hiklahn_ruling_dynasty_var
-		value = scope:gh_ruling_dynasty_house
-	}
-	#Just a check to make sure some things don't fire at the beginning
-	set_global_variable = {
-		name = gh_amsari_recent_civil_war
-		days = 15
-	}
-	# Used to know when the civil war started
-	set_global_variable = {
-		name = gh_acw_started_date
-		value = 6257
-	}
-	# The ACW started a we want the ruling house members to fight
-	global_var:gh_hiklahn_ruling_dynasty_var ?= {
-		add_unity_value = {
-			value = { -72 -79 }
-			character = scope:acw_story_owner
-			desc = gh_acw_started.desc
-		}
-	}
-	global_var:story_gh_amsari_civil_war ?= {
-		set_variable = {
-			name = story_name
-			value = flag:story_gh_amsari_civil_war
-		}
-		set_variable = {
-			name = story_decision_illustration
-			value = flag:gh_acw_assassinate
-		}
-		set_variable = {
-			name = story_start_year
-			value = 6257
-		}
-		gh_historical_character_setup_1298_acw_effect = yes
-	}
-	add_to_global_variable_list = {
-		name = global_story_cycle_list
-		target = global_var:story_gh_amsari_civil_war
-	}	
-}
-
-gh_historical_character_setup_1298_acw_effect = {
-	support_acw_start_effect = {
-		START_SUPPORTER = character:amsari_mahndayana_120
-		START_PRETENDER = character:amsari_mahndayana_120
-	}
-	support_amsari_pretender_effect = {
-		SUPPORTER = character:leviden_mahndayana_8
-		PRETENDER = character:leviden_mahndayana_20
-	}	
-	support_amsari_pretender_effect = {
-		SUPPORTER = character:sarthian_mahndayana_4
-		PRETENDER = character:amsari_mahndayana_39
-	}
-	support_amsari_pretender_effect = {
-		SUPPORTER = character:amsari_mahndayana_518
-		PRETENDER = character:amsari_mahndayana_518
-	}
-	add_to_global_variable_list = {
-		name = gh_global_list_acw_pretenders
-		target = character:hixartii_mahndayana_10
-	}
-	support_amsari_pretender_effect = {
-		SUPPORTER = character:hixartii_mahndayana_10
-		PRETENDER = character:hixartii_mahndayana_10
-	}
-	support_amsari_pretender_effect = {
-		SUPPORTER = character:siralagi_mahndayana_22
-		PRETENDER = character:amsari_mahndayana_285
-	}
-	support_amsari_pretender_effect = {
-		SUPPORTER = character:siralagi_mahndayana_27
-		PRETENDER = character:hixartii_mahndayana_10
-	}
-
-	title:c_tazehabad_e_badr_gerd.holder = {
-		add_to_global_variable_list = {
-			name = involved_character_amsari_civil_war
-			target = this
-		}
-	}
-	title:c_biyaban_e_shomali.holder = {
-		add_to_global_variable_list = {
-			name = involved_character_amsari_civil_war
-			target = this
-		}
-	}
-	title:c_dirhad.holder = {
-		add_to_global_variable_list = {
-			name = involved_character_amsari_civil_war
-			target = this
-		}
-	}
-
-	# We trigger the civil war, and check if it can be historical or not
-	scope:acw_story_owner = {
-		dynasty = {
-			every_dynasty_member = {
-				limit = { 
-					has_trait = gh_blood_of_prophet
-					NOT = { has_trait = gh_trait_renounced_claim }
-					age > 14
-				}
-				add_to_global_variable_list = {
-					name = gh_global_list_acw_pretenders
-					target = this
-				}
-				if = {
-					limit = { NOT = { has_variable = gh_amsari_civil_war_info_story } }
-					create_story = gh_amsari_civil_war_info_story
-				}
-			}
-		}
-	}	
-
-	# Chose random pretender 
-	every_in_global_list = {
-		variable = involved_character_amsari_civil_war
-		save_scope_as = supporter
-		random_in_global_list = {
-			variable = gh_global_list_acw_pretenders
-			limit = {
-				NOR = { 
-					exists = this.var:gh_amsari_civil_war_info_story.var:amsari_civil_war_supporting
-					this = title:e_amsari_hiklahn.holder 
-					has_trait = gh_trait_amsari_pretender
-					has_trait = gh_trait_renounced_claim
-					has_trait = disinherited
-					any_parent = { has_trait = gh_trait_amsari_pretender  }
-				}
-				is_available_adult = yes					
-			}
-			save_scope_as = pretender
-			support_acw_start_effect = {
-				START_SUPPORTER = scope:supporter
-				START_PRETENDER = scope:pretender
-			}
-		}
-	}
-}	

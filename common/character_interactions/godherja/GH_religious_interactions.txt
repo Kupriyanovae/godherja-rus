@@ -208,6 +208,7 @@ medical_experiment_scheme_interaction = {
 	}
 
 	is_valid_showing_failures_only = {
+		scope:recipient = { is_busy_in_events_localised = yes } #Prisoner
 		scope:recipient = { NOT = { has_strong_hook = scope:actor } }
 		scope:recipient = {
 			custom_description = {
@@ -290,8 +291,20 @@ medical_experiment_scheme_interaction = {
 		#Scope:target has caused internal strife in the realm
 		character_hates_scope_due_to_strife_modifier = { TARGET = scope:recipient }
 		modifier = { # Family Feud
+			exists = scope:actor.house
+			exists = scope:recipient.house
 			scope:actor = {
-				house_has_feud_relation_with_trigger = { TARGET = scope:recipient }
+				house.house_head = {
+					any_owned_story = {
+						story_type = story_cycle_house_feud
+						has_variable = house_feud_house
+						var:house_feud_house = scope:recipient.house
+					}
+				}
+				has_opinion_modifier = {
+					modifier = house_feud_opinion
+					target = scope:recipient.house.house_head
+				}
 			}
 			add = 30
 		}

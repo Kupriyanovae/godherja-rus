@@ -8,7 +8,7 @@
 	
 	is_shown = {
 		culture = { has_cultural_pillar = heritage_nattanan }
-		has_title = title:d_sepattan_high_priesthood
+		has_title = title:d_the_sepattan
 		NOT = {
 			OR =  {
 				faith = faith:korlenalmic
@@ -23,16 +23,16 @@
 	}
 	
 	is_valid = {
-		has_title = title:d_sepattan_high_priesthood
+		has_title = title:d_the_sepattan
 		prestige_level >= 3
 		piety_level >= 3
-		completely_controls = title:d_babwe
-		completely_controls = title:d_zomrach_folly
-		title:d_nun_hullo = { title_held_years >= 15 }
-		title:d_babwe = { title_held_years >= 15 }
+		completely_controls = title:d_lowlandtide
+		completely_controls = title:d_graythorpe
+		title:d_lowlandtide = { title_held_years >= 15 }
+		title:d_graythorpe = { title_held_years >= 15 }
 		custom_tooltip = {
 			text = arise_graythorpe_tt
-			title:d_babwe = {
+			title:d_graythorpe = {
 				any_de_jure_county = {
 					percent >= 1
 					faith = root.faith
@@ -40,8 +40,8 @@
 			}
 		}
 		custom_tooltip = {
-			text = arise_zomrach_folly_tt
-			title:d_nun_hullo = {
+			text = arise_lowlandtide_tt
+			title:d_lowlandtide = {
 				any_de_jure_county = {
 					percent >= 1
 					faith = root.faith
@@ -54,12 +54,12 @@
 			faith = faith:gotharnalmic
 		}
 		is_independent_ruler = yes
-		title:b_myinthar_kyun = {
+		title:b_spinstersmonastery = {
 			title_province = {
 				has_building = 01_tarfal_garden
 			}
 		}
-		title:b_khupong = {
+		title:b_9219 = {
 			title_province = {
 				has_building = 01_ruins_of_korlacu
 			}
@@ -298,7 +298,7 @@ assert_nattanan_supremacy_decision = { #first decision
 	
 	is_shown = {
 		culture = { has_cultural_pillar = heritage_nattanan }
-		game_start_date >= 6254.1.1
+		game_start_date >= 1254.1.1
 		highest_held_title_tier <= tier_kingdom
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -311,12 +311,11 @@ assert_nattanan_supremacy_decision = { #first decision
 	is_valid = {
 		culture = { has_cultural_pillar = heritage_nattanan }
 		piety_level >= 3
-		faith.religion = religion:sepattan_religion	
-		NOT = {
-			any_county_in_region = {
-				region = nattanan_highlands_biozone
-				faith.religion = religion:sepattan_religion
-			}
+		title:c_batreef = {
+			faith = root.faith
+		}
+		title:c_herder_hills = {
+			faith = root.faith
 		}
 		
 		custom_tooltip = {
@@ -374,10 +373,10 @@ offer_patronage_to_sepattan_decision = { #second decision
 
 	is_shown = {
 		culture = { has_cultural_pillar = heritage_nattanan }
-		game_start_date >= 6200.1.1
+		game_start_date >= 1200.1.1
 		NOT = {
-			has_title = title:d_sepattan_high_priesthood
-			exists = title:d_sepattan_high_priesthood 
+			has_title = title:d_the_sepattan
+			exists = title:d_the_sepattan 
 		}
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -390,10 +389,10 @@ offer_patronage_to_sepattan_decision = { #second decision
 	is_valid = {
 		OR = {
 			highest_held_title_tier = tier_kingdom
-			has_title = title:k_natha_nattana
+			has_title = title:k_currentsprings
 		}
 		custom_tooltip = {
-			exists = title:d_sepattan_high_priesthood.holder
+			exists = title:d_the_sepattan.holder
 			text = sepattan_exists_tooltip
 		}
 		OR = {
@@ -452,7 +451,7 @@ offer_patronage_to_sepattan_decision = { #second decision
     }
 }
 
-establish_thura_taw_decision = { #third decision for Head of Faith
+establish_thura_taw_decision = { #third decision 
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
 	}
@@ -462,14 +461,13 @@ establish_thura_taw_decision = { #third decision for Head of Faith
 
 	is_shown = {
 		culture = { has_cultural_pillar = heritage_nattanan }
-		game_start_date >= 6200.1.1
+		game_start_date >= 1200.1.1
 		OR = {
 			calc_true_if = { #At least 2 of the titles has de jure land
 				amount >= 2
-				title:k_natha_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
-				title:k_tas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
-				title:k_cas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
-				title:k_sas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
+				title:k_currentsprings = { any_in_de_jure_hierarchy = { tier = tier_county } }
+				title:k_west_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
+				title:k_east_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } }
 			}
 		}
 		NOT = {
@@ -485,26 +483,20 @@ establish_thura_taw_decision = { #third decision for Head of Faith
 		culture = { has_cultural_pillar = heritage_nattanan }
 		prestige_level >= 4
 		piety_level >= 4
-		has_title = title:d_sepattan_high_priesthood
 		trigger_if = {
-			limit = { title:k_berong_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
-			completely_controls = title:k_berong_nattana
-			has_title = title:k_berong_nattana
+			limit = { title:k_currentsprings = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+			completely_controls = title:k_currentsprings
+			has_title = title:k_currentsprings
 		}
 		trigger_if = {
-			limit = { title:k_sas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
-			completely_controls = title:k_sas_nattana
-			has_title = title:k_sas_nattana
+			limit = { title:k_west_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+			completely_controls = title:k_west_nattana
+			has_title = title:k_west_nattana
 		}
 		trigger_if = {
-			limit = { title:k_tas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
-			completely_controls = title:k_tas_nattana
-			has_title = title:k_tas_nattana
-		}
-		trigger_if = {
-			limit = { title:k_cas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
-			completely_controls = title:k_cas_nattana
-			has_title = title:k_cas_nattana
+			limit = { title:k_east_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+			completely_controls = title:k_east_nattana
+			has_title = title:k_east_nattana
 		}
 
 	
@@ -580,7 +572,7 @@ establish_thura_myo_decision = { #Foreign ruler
 			tier = tier_county
 			title_province = { geographical_region = nattanan_highlands_biozone }
 		}
-   		game_start_date >= 6200.1.1
+   		game_start_date >= 1200.1.1
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -599,24 +591,19 @@ establish_thura_myo_decision = { #Foreign ruler
 		prestige_level >= 4
 		piety_level >= 4
 		trigger_if = {
-			limit = { title:k_berong_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
-			completely_controls = title:k_berong_nattana
-			has_title = title:k_berong_nattana
+			limit = { title:k_currentsprings = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+			completely_controls = title:k_currentsprings
+			has_title = title:k_currentsprings
 		}
 		trigger_if = {
-			limit = { title:k_sas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
-			completely_controls = title:k_sas_nattana
-			has_title = title:k_sas_nattana
+			limit = { title:k_west_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+			completely_controls = title:k_west_nattana
+			has_title = title:k_west_nattana
 		}
 		trigger_if = {
-			limit = { title:k_tas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
-			completely_controls = title:k_tas_nattana
-			has_title = title:k_tas_nattana
-		}
-		trigger_if = {
-			limit = { title:k_cas_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
-			completely_controls = title:k_cas_nattana
-			has_title = title:k_cas_nattana
+			limit = { title:k_east_nattana = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+			completely_controls = title:k_east_nattana
+			has_title = title:k_east_nattana
 		}
 	}
 	
@@ -682,9 +669,9 @@ become_thura_myinthein_decision = { # fourth decision (not available for HoF)
 	is_shown = {
 		culture = { has_cultural_pillar = heritage_nattanan }
 		NOT = {
-			has_title = title:d_sepattan_high_priesthood
+			has_title = title:d_the_sepattan
 		}
-		game_start_date >= 6200.1.1
+		game_start_date >= 1200.1.1
 		#highest_held_title_tier < tier_empire
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -697,7 +684,7 @@ become_thura_myinthein_decision = { # fourth decision (not available for HoF)
 	is_valid = {
 		culture = { has_cultural_pillar = heritage_nattanan }
 		NOT = {
-			has_title = title:d_sepattan_high_priesthood
+			has_title = title:d_the_sepattan
 		}
 		has_title = title:e_thura_taw
 		completely_controls = title:e_thura_taw
@@ -796,7 +783,7 @@ reforge_thura_taw_decision = { #5th decision if needed later
 
 	is_shown = {
 		culture = { has_cultural_pillar = heritage_nattanan }
-		game_start_date >= 6200.1.1
+		game_start_date >= 1200.1.1
 		NOT = { exists = title:e_thura_taw }
 	}
 
@@ -846,7 +833,7 @@ request_magi_from_the_grove_decision = {
 	is_shown = {
 		is_ruler = yes
 		NOT = {
-			has_title = title:d_sepattan_high_priesthood
+			has_title = title:d_the_sepattan
 		}
 		culture = { has_cultural_pillar = heritage_nattanan }
 		NOT = {
@@ -862,7 +849,7 @@ request_magi_from_the_grove_decision = {
 			count >= 1
 			tier >= tier_county
 		}
-		title:b_myinthar_kyun = {
+		title:b_spinstersmonastery = {
 			title_province = {
 				has_building = 01_tarfal_garden
 			}
@@ -912,7 +899,7 @@ request_heir_from_the_grove_decision = {
 
 	is_shown = {
 		is_ruler = yes
-		has_title = title:d_sepattan_high_priesthood
+		has_title = title:d_the_sepattan
 		culture = { has_cultural_pillar = heritage_nattanan }
 		NOT = {
 			faith = faith:korlenalmic
@@ -927,7 +914,7 @@ request_heir_from_the_grove_decision = {
 			count >= 1
 			tier >= tier_county
 		}
-		title:b_myinthar_kyun = {
+		title:b_spinstersmonastery = {
 			title_province = {
 				has_building = 01_tarfal_garden
 			}

@@ -34,6 +34,31 @@ on_monthly = {
 	}
 }
 
+on_biannual_fog = {
+	effect = {
+		trigger_event = { id = gh_fog_spread_events.1 }
+		every_ruler = {
+			limit = {
+				OR = {
+					is_fogeater = yes
+					any_sub_realm_county = {
+						OR = {
+							has_county_modifier = fogswept_modifier
+							culture = culture:fog_eaters
+							faith = faith:fogeater
+						}
+					}
+				}
+			}
+			if = {
+				limit = { is_fogeater = yes }
+				trigger_event = gh_fog_spread_events.5
+			}
+			else = { trigger_event = gh_fog_spread_events.6 }
+		}
+	}
+}
+
 biannual_moon_cycle = {
 	effect = {
 		advance_moon_phase = yes
@@ -100,10 +125,31 @@ yearly_gedeora_pulse = {
 	}
 }
 
+on_yearly_legacy_of_elysia_check = {	# Yearly check to give Aversarian counties in Etepezea the Legacy of Elysia modifier. Should self-terminate after 1304 AD
+	effect = {
+		if = {
+			limit = { current_date <= 1304.1.1 }
+			every_county_in_region = {
+				region = world_ga_western_aversaria
+				limit = {
+					has_county_modifier = legacy_of_elysia
+					NOT = { culture = { has_cultural_pillar = heritage_aversarian } }
+					holder.top_liege.primary_title = title:e_migrant_coalition
+				}
+				remove_county_modifier = legacy_of_elysia
+			}
+			trigger_event = {
+				on_action = on_yearly_legacy_of_elysia_check
+				days = 360
+			}
+		}
+	}
+}
+
 on_yearly_mainland_refugees_check = {	# Yearly check to give non-Redlander heritage counties in Redlands the Mainland Refugees modifier. Should self-terminate after 1274 IS
 	effect = {
 		if = {	# If the date is post 1274, remove the modifier everywhere and self-terminate the on_action
-			limit = { current_date <= 6274.1.1 }
+			limit = { current_date <= 1274.1.1 }
 			every_county_in_region = {
 				region = redlands_biozone
 				if = {
@@ -125,6 +171,147 @@ on_yearly_mainland_refugees_check = {	# Yearly check to give non-Redlander herit
 				on_action = on_yearly_mainland_refugees_check
 				days = 360
 			}
+		}
+	}
+}
+
+on_yearly_aftermath_of_the_ash_war_check = {	# Yearly check to give Aversarian counties in the Black Mountains the Ash War modifier. Should self-terminate after 1264
+	effect = {
+		if = {	# If the date is post 1264, remove the modifier everywhere and self-terminate the on_action
+			limit = { current_date <= 1264.1.1 }
+			every_county_in_region = {
+				region = world_ga_mountainheights
+				if = {
+					limit = {
+						has_county_modifier = aftermath_of_the_ash_war
+						NOT = { culture = { has_cultural_pillar = heritage_aversarian } }
+						holder.top_liege.primary_title = title:k_warisnik
+					}
+					remove_county_modifier = aftermath_of_the_ash_war
+
+				}
+			}
+			trigger_event = {
+				on_action = on_yearly_aftermath_of_the_ash_war_check
+				days = 360
+			}
+		}
+	}
+}
+
+on_yearly_legacy_of_icw_check = {	# Yearly check to give Aversarian counties in Opakhasia the Legacy of the Civil War modifier. Should self-terminate after 1286 AD
+	effect = {
+		if = {	# If the date is post 1286, remove the modifier everywhere and self-terminate the on_action
+			limit = { current_date <= 1286.1.1 }
+			every_county_in_region = {
+				region = world_ga_central_aversaria
+				if = {
+					limit = {
+						has_county_modifier = legacy_of_icw
+						NOT = { culture = { has_cultural_pillar = heritage_aversarian } }
+						holder.top_liege.primary_title = title:e_migrant_coalition
+					}
+					remove_county_modifier = legacy_of_icw
+				}
+			}
+			trigger_event = {
+				on_action = on_yearly_legacy_of_icw_check
+				days = 360
+			}
+		}
+	}
+}
+
+
+on_yearly_malcoisiac_anarchy_check = {	# Yearly check to give Aversarian counties in Malcois the Anarchy modifier.
+	effect = {
+		every_county_in_region = {
+			region = world_ga_northern_aversaria
+			if = {
+				limit = {
+					has_county_modifier = malcoisiac_anarchy
+					OR = {
+						NOT = { holder.culture = { has_cultural_pillar = heritage_aversarian } }
+						holder.top_liege.primary_title = { tier = tier_kingdom }
+						holder.top_liege.primary_title = { tier = tier_empire }
+					}
+				}
+				remove_county_modifier = malcoisiac_anarchy
+			}
+			else_if = {
+				limit = {
+					holder.culture = { has_cultural_pillar = heritage_aversarian }
+					NOT = { has_county_modifier = malcoisiac_anarchy }
+					NOT = { holder.top_liege.primary_title = { tier = tier_kingdom } }
+					NOT = { holder.top_liege.primary_title = { tier = tier_empire } }
+				}
+				add_county_modifier = malcoisiac_anarchy
+			}
+		}
+		trigger_event = {
+			on_action = on_yearly_malcoisiac_anarchy_check
+			days = 360
+		}
+	}
+}
+
+on_yearly_ruined_by_ulfirx_check = {	# Yearly check to give Aversarian island counties in Opakhasia the Raided by ulfirx modifier. Should self-terminate after 1284 AD
+	effect = {
+		if = {	# If the date is post 1284, remove the modifier everywhere and self-terminate the on_action
+			limit = { current_date <= 1284.1.1 }
+			every_county_in_region = {
+				region = world_ga_aversarian_isles
+				if = {
+					limit = {
+						has_county_modifier = ruined_by_ulfirx
+						holder.top_liege.primary_title = title:e_migrant_coalition
+					}
+					remove_county_modifier = ruined_by_ulfirx
+				}
+			}
+			trigger_event = {
+				on_action = on_yearly_ruined_by_ulfirx_check
+				days = 360
+			}
+		}
+	}
+}
+
+on_yearly_sarradon_horn_tidal_check = { # Checks the Tide in the Horn of Sarradon to apply the county modifier 
+	effect = {
+		every_county_in_region = {
+			region = world_ga_sarradon_horn
+			if = {
+				limit = {
+					has_county_modifier = high_tide_modifier
+				}
+				remove_county_modifier = high_tide_modifier
+			}
+			if = {
+				limit = {
+					has_county_modifier = low_tide_modifier
+				}
+				remove_county_modifier = low_tide_modifier
+			}
+			if = {
+				limit = {
+					NOT = { has_county_modifier = high_tide_modifier }
+					title_province = { has_building = 01_crab_ranch }
+				}
+				title_province = { remove_building = 01_crab_ranch }
+			}
+			random_list = {
+				50 = {
+					add_county_modifier = high_tide_modifier
+				}
+				50 = {
+					add_county_modifier = low_tide_modifier
+				}
+			}
+		}
+		trigger_event = {
+			on_action  = on_yearly_sarradon_horn_tidal_check
+			days = 780
 		}
 	}
 }
@@ -196,7 +383,15 @@ on_yearly_amsari_blood_check = {	# Yearly check to see if the Amsari empire has 
 			value = 1
 		}
 		if = {
-			limit = { title:e_amsari_hiklahn.holder ?= { NOT = { has_trait = gh_blood_of_prophet } } }
+			limit = { 
+				title:e_amsari = {
+					holder = {
+						NOT = {
+							has_trait = gh_blood_of_prophet
+						}
+					}
+				}
+			}
 			change_global_variable = {
 				name = amsari_blood_length
 				add = 1
@@ -209,7 +404,7 @@ on_yearly_amsari_blood_check = {	# Yearly check to see if the Amsari empire has 
 					has_global_variable = reformed_amsari
 				}
 			}
-			title:e_amsari_hiklahn ?= {
+			title:e_amsari = {
 				holder = {
 					trigger_event = gh_amsari.0013
 					every_vassal = {
@@ -218,7 +413,7 @@ on_yearly_amsari_blood_check = {	# Yearly check to see if the Amsari empire has 
 						}
 						trigger_event = gh_amsari.0013
 					}
-					destroy_title = title:e_amsari_hiklahn
+					destroy_title = title:e_amsari
 				}
 			}
 		}
@@ -262,7 +457,6 @@ vampire_start_check_pulse = {
 	effect = {
 		every_county = {
 			limit = {
-				is_landless_type_title = no 
 				trigger_if = {
 					limit = { exists = empire }
 					OR = {
@@ -296,10 +490,7 @@ vampire_start_check_pulse = {
 vampire_information_check_pulse = {	# Checks county vampire population information, once every 10 years
 	effect = {
 		every_county = {
-			limit = {
-				is_landless_type_title = no 
-				NOT = { has_variable = temporary_vampire_check_block }
-			}
+			limit = { NOT = { has_variable = temporary_vampire_check_block } }
 			save_temporary_scope_as = county_being_checked
 			set_variable = {
 				name = dominant_vampire_faith
@@ -344,11 +535,5 @@ wasteland_maintenance_pulse = { # This is for clearing out wastelands of excess 
 				death_reason = death_vanished
 			}
 		}
-	}
-}
-
-on_wastelander_death_action = {
-	effect = {
-		death = { death_reason = death_disappearance }
 	}
 }

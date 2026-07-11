@@ -28,74 +28,37 @@ sound_foundations_skill_gain_effect = {
 				count > scope:affected_parent.var:current_sound_foundations_value
 			}
 		}
-		if = {
-			limit = { government_has_flag = government_is_mandala }
-			random_list = {
-				1 = {
-					add_character_modifier = {
-						modifier = mandala_sound_foundations_martial_gain
-					}
-				}
-				1 = {
-					add_character_modifier = {
-						modifier = mandala_sound_foundations_diplomacy_gain
-					}
-				}
-				1 = {
-					add_character_modifier = {
-						modifier = mandala_sound_foundations_intrigue_gain
-					}
-				}
-				1 = {
-					add_character_modifier = {
-						modifier = mandala_sound_foundations_stewardship_gain
-					}
-				}
-				1 = {
-					add_character_modifier = {
-						modifier = mandala_sound_foundations_learning_gain
-					}
+		random_list = {
+			1 = {
+				add_character_modifier = {
+					modifier = sound_foundations_martial_gain
 				}
 			}
-			change_variable = {
-				name = current_sound_foundations_value
-				add = 1
+			1 = {
+				add_character_modifier = {
+					modifier = sound_foundations_diplomacy_gain
+				}
+			}
+			1 = {
+				add_character_modifier = {
+					modifier = sound_foundations_intrigue_gain
+				}
+			}
+			1 = {
+				add_character_modifier = {
+					modifier = sound_foundations_stewardship_gain
+				}
+			}
+			1 = {
+				add_character_modifier = {
+					modifier = sound_foundations_learning_gain
+				}
 			}
 		}
-		else = {
-			random_list = {
-				1 = {
-					add_character_modifier = {
-						modifier = sound_foundations_martial_gain
-					}
-				}
-				1 = {
-					add_character_modifier = {
-						modifier = sound_foundations_diplomacy_gain
-					}
-				}
-				1 = {
-					add_character_modifier = {
-						modifier = sound_foundations_intrigue_gain
-					}
-				}
-				1 = {
-					add_character_modifier = {
-						modifier = sound_foundations_stewardship_gain
-					}
-				}
-				1 = {
-					add_character_modifier = {
-						modifier = sound_foundations_learning_gain
-					}
-				}
-			}
-			change_variable = {
-				name = current_sound_foundations_value
-				add = 1
-			}
+		change_variable = {
+			name = current_sound_foundations_value
+			add = 1
 		}
-		
 	}
 }
 
@@ -261,7 +224,6 @@ groomed_to_rule_random_skills_effect = {
 			value = flag:learning
 		}
 	}
-	#GH ADDITION
 	else_if = {
 		limit = {
 			trigger_if = {
@@ -281,7 +243,6 @@ groomed_to_rule_random_skills_effect = {
 			value = flag:arcana
 		}
 	}
-	#GH END
 	else = { # Fallback in case something goes wrong
 		random_list = {
 			1 = {
@@ -314,14 +275,12 @@ groomed_to_rule_random_skills_effect = {
 					value = flag:learning
 				}
 			}
-			#GH ADDITION
 			1 = {
 				save_temporary_scope_value_as = {
 					name = skill_to_increase
 					value = flag:arcana
 				}
 			}
-			#GH END
 		}
 	}
 	if = {
@@ -689,7 +648,6 @@ groomed_to_rule_random_skills_effect = {
 			}
 		}
 	}
-	#GH ADDITION
 	else_if = {
 		limit = {
 			scope:skill_to_increase = flag:arcana
@@ -763,7 +721,6 @@ groomed_to_rule_random_skills_effect = {
 			}
 		}
 	}
-	#GH END
 }
 
 childhood_groomed_to_rule_skill_gain_effect = {

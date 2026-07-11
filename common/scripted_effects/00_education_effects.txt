@@ -47,12 +47,11 @@ education_point_acquisition_effect = {
 		limit = { has_focus = education_learning }
 		education_point_acquisition_support_effect = { SKILL = learning }
 	}
-	## GH ADDITION ##
+	# GH ADDITION
 	else_if = {
 		limit = { has_focus = education_arcana }
 		education_point_acquisition_support_effect = { SKILL = arcana }
 	}
-	## GH END ##
 }
 
 #Effect to award more education points through one-offs like events etc
@@ -155,7 +154,6 @@ education_point_acquisition_additional_points_effect = {
 				add = 6
 			}
 		}
-		## GH ADDITION ##
 		else_if = {
 			limit = { has_focus = education_arcana }
 			#Set variables if they don't exist
@@ -174,7 +172,6 @@ education_point_acquisition_additional_points_effect = {
 				add = 6
 			}
 		}
-		## GH END ##
 	}
 	#Low
 	else_if = {
@@ -269,7 +266,6 @@ education_point_acquisition_additional_points_effect = {
 				add = 4
 			}
 		}
-		## GH ADDITION ##
 		else_if = {
 			limit = { has_focus = education_arcana }
 			#Set variables if they dont exist
@@ -288,14 +284,11 @@ education_point_acquisition_additional_points_effect = {
 				add = 4
 			}
 		}
-		## GH END ##
 	}
 }
 
 education_point_acquisition_support_effect = {
-	## GH ADDITION ##
 	save_scope_value_as = { name = skill_argument value = flag:$SKILL$ } # for Arcana checks
-	## GH END ##
 	#Save educator
 	if = {
 		limit = {
@@ -311,22 +304,12 @@ education_point_acquisition_support_effect = {
 	}
 	else_if = {
 		limit = {
-			court_owner ?= { employs_court_position = court_tutor_court_position }		
+			exists = court_owner
+			court_owner = { employs_court_position = court_tutor_court_position	}		
 		}
 		court_owner = { 
 			random_court_position_holder = {
 				type = court_tutor_court_position
-				save_scope_as = educator
-			}
-		}
-	}
-	else_if = {
-		limit = {
-			court_owner ?= { employs_court_position = court_guru_court_position }		
-		}
-		court_owner = { 
-			random_court_position_holder = {
-				type = court_guru_court_position
 				save_scope_as = educator
 			}
 		}
@@ -367,41 +350,28 @@ education_point_acquisition_support_effect = {
 			modifier = {
 				exists = scope:educator
 				add = {
-					scope:educator = {
-						#Intelligence
-						if = {
-							limit = { has_trait = intellect_good_3 }
-							value = 15
-						}
-						else_if = {
-							limit = { has_trait = intellect_good_2 }
-							value = 10
-						}
-						else_if = {
-							limit = {
+					#Intelligence
+					if = {
+						limit = { scope:educator = { has_trait = intellect_good_3 } }
+						value = 15
+					}
+					else_if = {
+						limit = { scope:educator = { has_trait = intellect_good_2 } }
+						value = 10
+					}
+					else_if = {
+						limit = {
+							scope:educator = {
 								OR = {
 									has_trait = intellect_good_1
 									has_trait = shrewd
 								}
 							}
-							value = 5
 						}
 						value = 5
-						## GH ADDITION ##
-						if = {
-							limit = { NOT = { scope:skill_argument = flag:arcana } }
-							add = {
-								value = $SKILL$
-								multiply = educator_skill_modifier_factor
-							}
-							add = {
-								value = learning
-								multiply = educator_learning_skill_modifier_factor
-							}
-						}
-						## GH END ##
 					}
-					## GH ADDITION ##
+					# GH ADDITION
+					# This is done to make sure Arcana is applied properly
 					if = {
 						limit = { has_focus = education_arcana }
 						add = {
@@ -409,13 +379,32 @@ education_point_acquisition_support_effect = {
 							multiply = educator_skill_modifier_factor
 						}
 					}
-					## GH END ##
+					else_if = {
+						#Specific skill
+						limit = { NOT = { scope:skill_argument = flag:arcana } }
+						add = {
+							value = scope:educator.$SKILL$
+							multiply = educator_skill_modifier_factor
+						}
+					}
+					#Learning skill
+					add = {
+						value = scope:educator.learning
+						multiply = educator_learning_skill_modifier_factor
+					}
 					#Storyteller tradition
 					if = {
-						limit = { culture = { has_cultural_parameter = better_ward_education } }
-						value = 10
+						limit = { scope:educator.culture = { has_cultural_parameter = better_ward_education } }
+						add = 10
 					}
-					## GH ADDITION ##
+					#Steppe Queens tradition
+					if = {
+						limit = {
+							scope:educator.culture = { has_cultural_parameter = better_male_educators }
+							scope:educator = { is_male = yes }
+						}
+						add = 10
+					}
 					# Arcana Erudition Perk
 					if = {
 						limit = {
@@ -424,7 +413,6 @@ education_point_acquisition_support_effect = {
 						}
 						add = 10
 					}
-					## GH END ##
 				}
 			}
 
@@ -438,11 +426,6 @@ education_point_acquisition_support_effect = {
 			modifier = {
 				has_$SKILL$_education_disaffinity_childhood_trait_trigger = yes
 				add = mismatching_childhood_trait_modifier_value
-			}
-
-			modifier = {
-				scope:educator.house ?= { has_house_aspiration_parameter = service_house_improved_educator_outcome_chance }
-				add = 5
 			}
 
 			change_variable = {
@@ -476,26 +459,25 @@ education_point_acquisition_support_effect = {
 			modifier = {
 				exists = scope:educator
 				add = {
-					value = 0
-					scope:educator = {
-						#Intelligence
-						if = {
-							limit = { has_trait = intellect_bad_3 }
-							value = 15
-						}
-						else_if = {
-							limit = { has_trait = intellect_bad_2 }
-							value = 10
-						}
-						else_if = {
-							limit = {
+					#Intelligence
+					if = {
+						limit = { scope:educator = { has_trait = intellect_bad_3 } }
+						value = 15
+					}
+					else_if = {
+						limit = { scope:educator = { has_trait = intellect_bad_2 } }
+						value = 10
+					}
+					else_if = {
+						limit = {
+							scope:educator = {
 								OR = {
 									has_trait = intellect_bad_1
 									has_trait = dull
 								}
 							}
-							value = 5
 						}
+						value = 5
 					}
 				}
 			}
@@ -509,56 +491,13 @@ education_point_acquisition_support_effect = {
 	}
 }
 
-education_point_add_general_effect = {
-	switch = {
-		trigger = has_focus
-		education_diplomacy = {
-			education_point_add_point_effect = { SKILL = diplomacy VALUE = $VALUE$ }
-		}
-		education_martial = {
-			education_point_add_point_effect = { SKILL = martial VALUE = $VALUE$ }
-		}
-		education_stewardship = {
-			education_point_add_point_effect = { SKILL = stewardship VALUE = $VALUE$ }
-		}
-		education_intrigue = {
-			education_point_add_point_effect = { SKILL = intrigue VALUE = $VALUE$ }
-		}
-		education_learning = {
-			education_point_add_point_effect = { SKILL = learning VALUE = $VALUE$ }
-		}
-		#GH ADDITION
-		education_arcana = {
-			education_point_add_point_effect = { SKILL = arcana VALUE = $VALUE$ }
-		}
-		#GH END
-	}
-}
-
-education_point_add_point_effect = {
-	#Set variables if they don't exist
-	if = {
-		limit = {
-			NOT = { has_variable = education_$SKILL$_variable }
-		}
-		set_variable = {
-			name = education_$SKILL$_variable
-			value = 0
-		}
-	}
-	# Change variable
-	change_variable = {
-		name = education_$SKILL$_variable
-		add = $VALUE$
-	}
-}
 
 #Effect to identify characters for the "Education Completed" notification events
 education_complete_notification_effect = {
 	save_scope_as = educated_child
 	if = {
 		limit = {
-			any_relation = { type = guardian }
+			num_of_relation_guardian >= 1
 		}
 		random_relation = {
 			type = guardian
@@ -655,42 +594,11 @@ education_complete_notification_effect = {
 				NOT = { exists = scope:parent_guardian }
 				AND = {
 					exists = scope:parent_guardian
-					this != scope:parent_guardian
+					NOT = { this = scope:parent_guardian }
 				}
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					has_relation_favorite_child = scope:educated_child
-					scope:educated_child = {
-						OR = {
-							is_ruler = yes
-							is_primary_heir_of = prev
-							is_player_heir_of = prev
-							NOT = {
-								any_sibling = {
-									count >= 2
-									is_alive = yes
-									age >= scope:educated_child.age
-								}
-							}
-						}
-					}
-				}
-			}
-			trigger_event = coming_of_age.1002
-		}
-		else = {
-			save_scope_as = relative
-			send_interface_message = {
-				type = msg_child_of_age
-				title = msg_child_of_age_title
-				desc = msg_child_of_age_desc
-				left_icon = scope:educated_child
-				scope:educated_child = { display_correct_education_trait_gain_tooltip_effect = yes }
-			}
-		}
+		trigger_event = coming_of_age.1002
 	}
 	# Inform non-parent dynasty member players they are in the court of
 	if = {
@@ -820,7 +728,8 @@ assign_commander_trait_effect = {
 					}
 					AND = {
 						NOT = { exists = scope:educator }
-						liege ?= {
+						exists = liege
+						liege = {
 							any_directly_owned_province = {
 								GH_any_desert_terrain_trigger = yes
 							}
@@ -851,7 +760,8 @@ assign_commander_trait_effect = {
 					}
 					AND = {
 						NOT = { exists = scope:educator }
-						liege ?= {
+						exists = liege
+						liege = {
 							any_directly_owned_province = {
 								GH_any_jungle_terrain_trigger = yes
 							}
@@ -898,7 +808,8 @@ assign_commander_trait_effect = {
 					}
 					AND = {
 						NOT = { exists = scope:educator }
-						liege ?= {
+						exists = liege
+						liege = {
 							any_directly_owned_province = {
 								OR = {
 									GH_any_taiga_terrain_trigger = yes
@@ -959,7 +870,8 @@ assign_commander_trait_effect = {
 					}
 					AND = {
 						NOT = { exists = scope:educator }
-						liege ?= {
+						exists = liege
+						liege = {
 							any_directly_owned_province = {
 								OR = {
 									GH_any_forest_terrain_trigger = yes
@@ -972,7 +884,7 @@ assign_commander_trait_effect = {
 			}
 			modifier = {
 				culture = {
-					has_cultural_parameter = forest_fighter_trait_more_common
+					has_cultural_parameter = desert_warrior_trait_more_common
 				}
 				factor = 2
 			}
@@ -1258,6 +1170,7 @@ custom_tooltip_diplomacy_coming_of_age_effect = {
 }
 
 ## GH ADDITION ##
+
 custom_tooltip_arcana_coming_of_age_effect = {
 	if = {
 		limit = {
@@ -1302,7 +1215,7 @@ custom_tooltip_arcana_coming_of_age_effect = {
 		custom_tooltip = coming_of_age.0001.tt.9
 	}
 }
-## GH END ##
+
 
 remove_variables_and_trait_coming_of_age_effect = {
 	if = {
@@ -1403,17 +1316,15 @@ remove_variables_and_trait_coming_of_age_effect = {
 		}
 		remove_variable = education_learning_variable
 	}
-	## GH ADDITION ##
 	if = {
 		limit = {
 			exists = var:education_arcana_variable
 		}
 		remove_variable = education_arcana_variable
 	}
-	## GH END ##
 }
 
-remove_childhood_traits_effect = {
+remove_childhoood_traits_effect = {
 	if = {
 		limit = { has_trait = curious }
 		remove_trait = curious
@@ -1825,7 +1736,6 @@ display_correct_education_trait_gain_tooltip_effect = {
 			add_trait_force_tooltip = education_arcana_5
 		}
 	}
-	## GH END ##
 }
 
 
@@ -1843,7 +1753,8 @@ guardian_add_opinion_effect = {
 			if = {
 				limit = {
 					$WARD_LIEGE$ = { player_heir = $WARD$ }
-					liege ?= $WARD_LIEGE$
+					exists = liege
+					liege = $WARD_LIEGE$
 					is_ruler = yes
 					has_vassal_stance = parochial
 				}
@@ -1862,7 +1773,8 @@ guardian_add_opinion_effect = {
 			else_if = {
 				limit = {
 					$WARD_LIEGE$ = { is_close_family_of = $WARD$ }
-					liege ?= $WARD_LIEGE$
+					exists = liege
+					liege = $WARD_LIEGE$
 					is_ruler = yes
 					has_vassal_stance = parochial
 				}
@@ -1882,7 +1794,8 @@ guardian_add_opinion_effect = {
 			#For educator liege, if educator is courtier
 			if = {
 				limit = {
-					liege ?= {
+					exists = liege
+					liege = {
 						is_ai = yes
 						is_alive = yes
 					}
@@ -1893,7 +1806,8 @@ guardian_add_opinion_effect = {
 					if = {
 						limit = {
 							$WARD_LIEGE$ = { player_heir = $WARD$ }
-							liege ?= $WARD_LIEGE$
+							exists = liege
+							liege = $WARD_LIEGE$
 							is_ruler = yes
 							has_vassal_stance = parochial
 						}
@@ -1912,7 +1826,8 @@ guardian_add_opinion_effect = {
 					else_if = {
 						limit = {
 							$WARD_LIEGE$ = { is_close_family_of = $WARD$ }
-							liege ?= $WARD_LIEGE$
+							exists = liege
+							liege = $WARD_LIEGE$
 							is_ruler = yes
 							has_vassal_stance = parochial
 						}
@@ -2193,22 +2108,6 @@ wrap_up_education_effect = {
 			RETURN_WARD = yes
 			HIDE_OPINION = no
 		}
-		if = {
-			limit = {
-				exists = root.house
-				exists = scope:educator.house
-			}
-			root.house = {
-				change_house_relation_effect = {
-					HOUSE = scope:educator.house
-					VALUE = house_relation_improve_minor_value
-					REASON = educated
-					CHAR = root
-					TARGET_CHAR = scope:educator
-					TITLE = scope:dummy_gender
-				}
-			}
-		}
 	}
 	else = { return_ward_travel_effect = yes }
 }
@@ -2259,7 +2158,7 @@ return_ward_travel_effect = {
 		limit = {
 			is_foreign_court_guest = yes
 			exists = liege
-			host != liege
+			NOT = { host = liege }
 		}
 		show_as_tooltip = { return_to_court = yes }
 		location ?= { save_scope_as = starting_location }
@@ -2337,14 +2236,13 @@ rank_up_education_effect = {
 				rank = 1
 			}
 		}
-		## GH END ##
 	}
 }
 
 results_of_university_education_points_effect = {
 	if = {
 		limit = {
-			has_character_modifier = studying_at_university_modifier
+			has_character_flag = studying_at_university
 		}
 		#Adding the points to the current education
 		if = {
@@ -2432,7 +2330,6 @@ results_of_university_education_points_effect = {
 				}
 			}
 		}
-		## GH ADDITION ##
 		else_if = {
 			limit = { has_focus = education_arcana }
 			random_list = {
@@ -2450,8 +2347,7 @@ results_of_university_education_points_effect = {
 				}
 			}
 		}
-		## GH END ##
-		remove_character_modifier = studying_at_university_modifier
+		remove_character_flag = studying_at_university
 		add_character_flag = studied_at_university
 
 		if = {
@@ -2467,129 +2363,7 @@ results_of_university_education_points_effect = {
 				}
 			}
 		}
-		if = {
-			limit = {
-				NOT = { has_character_modifier = studying_confucian_education_modifier }
-				OR = {
-					# GH REMOVED: confucianism religion
-					has_trait = confucian_education
-					culture = {
-						has_cultural_tradition = tradition_scholar_officials
-					}
-					scope:educator = {
-						has_trait = confucian_education
-					}
-				}
-			}
-			#Adding the points to the current education
-			if = {
-				limit = { has_trait = confucian_education }
-				add_trait_xp = {
-					trait = confucian_education
-					value = {
-						value = 20
-						add = {
-							value = "scope:educator.has_trait_xp(confucian_education)"
-							multiply = 0.15
-						}
-						# GH REMOVED: confucianism religion
-						round = yes
-					}
-				}
-			}
-			else = {
-				add_trait = confucian_education
-				add_trait_xp = {
-					trait = confucian_education
-					value = {
-						value = 20
-						add = {
-							value = "scope:educator.has_trait_xp(confucian_education)"
-							multiply = 0.1
-						}
-						# GH REMOVED: confucianism religion modifier
-						round = yes
-					}
-				}
-			}
-		}
 	}
-}
-#Ward learned from a Confucian scholar
-results_of_confucian_education_effect = {
-	if = {
-		limit = {
-			has_character_modifier = studying_confucian_education_modifier
-		}
-		#Adding the points to the current education
-		if = {
-			limit = { has_trait = confucian_education }
-			add_trait_xp = {
-				trait = confucian_education
-				value = {
-					value = 0
-					if = {
-						limit = {
-							exists = scope:educator
-						}
-						add = {
-							value = "scope:educator.has_trait_xp(confucian_education)"
-							multiply = 0.25
-						}
-					}
-					# GH REMOVED: confucianism religion modifier
-					if = {
-						limit = {
-							has_character_flag = studied_at_university
-						}
-						add = 20
-					}
-				}
-			}
-		}
-		else = {
-			add_trait = confucian_education
-			add_trait_xp = {
-				trait = confucian_education
-				value = {
-					value = 0
-					if = {
-						limit = {
-							exists = scope:educator
-						}
-						add = {
-							value = "scope:educator.has_trait_xp(confucian_education)"
-							multiply = 0.1
-						}
-					}
-					# GH REMOVED: confucianism religion modifier
-					if = {
-						limit = {
-							has_character_flag = studied_at_university
-						}
-						add = 20
-					}
-					round = yes
-				}
-			}
-		}
-		if = {
-			limit = {
-				exists = scope:educator
-			}
-			save_scope_as = educated_child
-			random = {
-				chance = 10
-				set_elder_relation_effect = {
-					ELDER = scope:educator
-					DISCIPLE = scope:educated_child
-					MERIT = minor_merit_gain
-				}
-			}
-		}
-		remove_character_modifier = studying_confucian_education_modifier
-		add_character_flag = studied_confucian_education
-	}	
 }
 
 dynasty_legacy_education_boost_effect = {
@@ -2684,7 +2458,6 @@ dynasty_legacy_education_boost_effect = {
 				}
 			}
 		}
-		## GH ADDITION ##
 		else_if = {
 			limit = { has_focus = education_arcana }
 			random_list = {
@@ -2702,7 +2475,6 @@ dynasty_legacy_education_boost_effect = {
 				}
 			}
 		}
-		## GH END ##
 	}
 }
 
@@ -2775,7 +2547,6 @@ cultural_traditions_education_boost_effect = {
 				}
 			}
 		}
-		## GH ADDITION ##
 		else_if = {
 			limit = { exists = var:education_arcana_variable }
 			change_variable = {
@@ -2788,7 +2559,6 @@ cultural_traditions_education_boost_effect = {
 				}
 			}
 		}
-		## GH END ##
 	}
 	if = {
 		limit = {
@@ -2865,65 +2635,32 @@ cultural_traditions_education_boost_effect = {
 			}
 		}
 	}
-	## GH END ##
 }
 
 court_tutor_education_boost_effect = {
 	if = {
 		limit = {
-			court_owner ?= {
-				OR = {
-					AND = {
-						employs_court_position = court_tutor_court_position
-						any_court_position_holder = {
-							type = court_tutor_court_position
-						}
-					}
-					AND = {
-						employs_court_position = court_guru_court_position
-						any_court_position_holder = {
-							type = court_guru_court_position
-						}
-					}
-				}
-			}
-		}
-		# Let's save the court tutor or guru with the highest aptitude
-		# we can use the court tutor aptitude checks for Gurus because they are nearly identical for what matters in these calculations
-		court_owner = {
-			if = {
-				limit = {
-					employs_court_position = court_tutor_court_position
-				}				
-				random_court_position_holder = {
+			exists = court_owner
+			court_owner = {
+				employs_court_position = court_tutor_court_position
+				any_court_position_holder = {
 					type = court_tutor_court_position
-					limit = { 
-						var:booner_target ?= root
-					}
-					alternative_limit = { aptitude:court_tutor_court_position >= 4 }
-					alternative_limit = { aptitude:court_tutor_court_position >= 3 }
-					alternative_limit = { aptitude:court_tutor_court_position >= 2 }
-					alternative_limit = { aptitude:court_tutor_court_position >= 1 }
-					alternative_limit = { always = yes }
-					save_scope_as = court_tutor
-				}
-			}
-			else = {
-				random_court_position_holder = {
-					type = court_guru_court_position
-					limit = { 
-						var:booner_target ?= root
-					}
-					alternative_limit = { aptitude:court_guru_court_position >= 4 }
-					alternative_limit = { aptitude:court_guru_court_position >= 3 }
-					alternative_limit = { aptitude:court_guru_court_position >= 2 }
-					alternative_limit = { aptitude:court_guru_court_position >= 1 }
-					alternative_limit = { always = yes }
-					save_scope_as = court_tutor
 				}
 			}
 		}
-
+		#Let's save the court tutor with the highest aptitude
+		court_owner = {
+			random_court_position_holder = {
+				type = court_tutor_court_position
+				limit = { var:booner_target ?= root }
+				alternative_limit = { aptitude:court_tutor_court_position >= 4 }
+				alternative_limit = { aptitude:court_tutor_court_position >= 3 }
+				alternative_limit = { aptitude:court_tutor_court_position >= 2 }
+				alternative_limit = { aptitude:court_tutor_court_position >= 1 }
+				alternative_limit = { always = yes }
+				save_scope_as = court_tutor
+			}
+		}
 		if = {
 			limit = { has_focus = education_diplomacy }
 			random_list = {
@@ -3027,7 +2764,6 @@ court_tutor_education_boost_effect = {
 					trigger = {
 						scope:court_tutor.aptitude:court_tutor_court_position = 4
 						scope:court_tutor.var:booner_target ?= root
-						scope:court_tutor = { has_trait = confucian_education }
 					}
 					change_variable = {
 						name = education_stewardship_variable
@@ -3035,10 +2771,6 @@ court_tutor_education_boost_effect = {
 					}
 				}
 				40 = {
-					modifier = {
-						add = 20
-						scope:court_tutor = { has_trait = confucian_education }
-					}
 					modifier = {
 						add = 20
 						scope:court_tutor.aptitude:court_tutor_court_position = 4
@@ -3057,11 +2789,6 @@ court_tutor_education_boost_effect = {
 					}
 				}
 				50 = {
-					trigger = {
-						NOT = {
-							scope:court_tutor = { has_trait = confucian_education }
-						}
-					}
 					modifier = {
 						add = 10
 						scope:court_tutor.aptitude:court_tutor_court_position = 2
@@ -3131,7 +2858,6 @@ court_tutor_education_boost_effect = {
 					trigger = {
 						scope:court_tutor.aptitude:court_tutor_court_position = 4
 						scope:court_tutor.var:booner_target ?= root
-						scope:court_tutor = { has_trait = confucian_education }
 					}
 					change_variable = {
 						name = education_learning_variable
@@ -3139,10 +2865,6 @@ court_tutor_education_boost_effect = {
 					}
 				}
 				40 = {
-					modifier = {
-						add = 20
-						scope:court_tutor = { has_trait = confucian_education }
-					}
 					modifier = {
 						add = 20
 						scope:court_tutor.aptitude:court_tutor_court_position = 4
@@ -3161,11 +2883,6 @@ court_tutor_education_boost_effect = {
 					}
 				}
 				50 = {
-					trigger = {
-						NOT = {
-							scope:court_tutor = { has_trait = confucian_education }
-						}
-					}
 					modifier = {
 						add = 10
 						scope:court_tutor.aptitude:court_tutor_court_position = 2
@@ -3181,7 +2898,6 @@ court_tutor_education_boost_effect = {
 				}
 			}
 		}
-		## GH ADDITION ##
 		else_if = {
 			limit = { has_focus = education_arcana }
 			random_list = {
@@ -3224,14 +2940,14 @@ court_tutor_education_boost_effect = {
 				}
 			}
 		}
-		## GH END ##
 	}
 }
 
 huntperson_camp_officer_education_boost_effect = {
 	if = {
 		limit = {
-			court_owner ?= {
+			exists = court_owner
+			court_owner = {
 				employs_court_position = huntperson_camp_officer
 				any_court_position_holder = {
 					type = huntperson_camp_officer
@@ -3473,11 +3189,15 @@ dynasty_perk_secondary_education_trait_effect = {
 	if = {
 		limit = {
 			OR = {
-				dynasty ?= { has_dynasty_perk = fp2_urbanism_legacy_2 }
+				AND = {
+					exists = dynasty
+					dynasty = { has_dynasty_perk = fp2_urbanism_legacy_2 }
+				}
 				AND = {
 					exists = scope:educator
 					scope:educator = {
-						dynasty ?= { has_dynasty_perk = fp2_urbanism_legacy_2 }
+						exists = dynasty
+						dynasty = { has_dynasty_perk = fp2_urbanism_legacy_2 }
 					}
 				}
 			}
@@ -3703,7 +3423,7 @@ ward_depart_effect = {
 					limit = { # Ward heads to landed Guardian
 						is_playable_character = no
 						scope:guardian = { is_playable_character = yes }
-						scope:guardian != host
+						NOT = { scope:guardian = host }
 					}
 					scope:guardian.capital_province = { save_scope_as = destination_province }
 				}
@@ -3791,36 +3511,5 @@ knight_teacher_effect = {
 			name = education_martial_variable
 			add = { integer_range = { min = 1 max = 3 } }
 		}
-	}
-}
-
-downgrade_education_effect = {
-	if = {
-		limit = {
-			has_trait = education_$EDUCATION$_5
-		}
-		remove_trait = education_$EDUCATION$_5
-		add_trait_force_tooltip = education_$EDUCATION$_4
-	}
-	else_if = {
-		limit = {
-			has_trait = education_$EDUCATION$_4
-		}
-		remove_trait = education_$EDUCATION$_4
-		add_trait_force_tooltip = education_$EDUCATION$_3
-	}
-	else_if = {
-		limit = {
-			has_trait = education_$EDUCATION$_3
-		}
-		remove_trait = education_$EDUCATION$_3
-		add_trait_force_tooltip = education_$EDUCATION$_2
-	}
-	else_if = {
-		limit = {
-			has_trait = education_$EDUCATION$_2
-		}
-		remove_trait = education_$EDUCATION$_2
-		add_trait_force_tooltip = education_$EDUCATION$_1
 	}
 }

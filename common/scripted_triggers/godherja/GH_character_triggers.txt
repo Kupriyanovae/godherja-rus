@@ -90,13 +90,6 @@ character_behavior_immune_to_factions_trigger = {
 	}
 }
 
-character_immune_to_harm_events_trigger = { # Makes sure important characters dont randomly die from harm before story conclusions
-	OR = {
-		this = character:undying_angel_1
-		this = character:apparition_otached_1
-	}
-}
-
 #############################
 ## Special Character Triggers
 
@@ -134,14 +127,14 @@ is_familiar = {
 }
 is_fogeater = {
 	OR = {
-		faith.religion ?= religion:fogeater_religion
-		culture ?= { has_cultural_pillar = heritage_fog_eaters }
+		faith.religion = religion:fogeater_religion
+		culture = { has_cultural_pillar = heritage_fog_eaters }
 	}
 }
 is_redlander = {
 	OR = {
-		faith.religion ?= religion:redland_cults_religion
-		culture ?= { has_cultural_pillar = heritage_redlander }
+		faith.religion = religion:redland_cults_religion
+		culture = { has_cultural_pillar = heritage_redlander }
 	}
 }
 is_undead = {
@@ -150,7 +143,7 @@ is_undead = {
 		has_culture = culture:lich_culture
 		has_trait = necromancy_undead_awakened
 		has_trait = necromancy_undead_lich
-		#has_trait = necromancy_undead_thrall
+		has_trait = necromancy_undead_thrall
 	}
 }
 
@@ -166,19 +159,10 @@ is_human = { # Would this creature use most mundane mortal decisions and events?
 } 
 is_nattanan = { #Check to confirm this includes Korlacan characters too; might need to differentiate further now that they have shared heritage.
 	OR = {
-		faith.religion ?= religion:sepattan_religion
-		culture ?= { has_cultural_pillar = heritage_nattanan }
-		culture ?= { has_cultural_pillar = heritage_korlacan }
+		faith.religion = religion:sepattan_religion
+		culture = { has_cultural_pillar = heritage_nattanan }
+		culture = { has_cultural_pillar = heritage_korlacan }
 	}
-}
-
-can_host_non_humans = { # Check to make sure that nonhuman wastelands undead etc without special traits dont wind up in human courts as courtiers 
-	is_ruin = no
-	is_undead = no
-	is_redlander = no
-	$CHARACTER$ = { is_ruin = no }
-	$CHARACTER$ = { is_undead = no }
-	$CHARACTER$ = { is_redlander = no }
 }
 
 # Bilateral Blocks

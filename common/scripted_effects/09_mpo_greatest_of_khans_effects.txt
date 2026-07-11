@@ -39,7 +39,7 @@ form_the_greatest_khan_empire_effect = { #GHify CE2 TODO: Make our own effect
 					tier = empire
 					name = GREATEST_OF_KHANS_TITLE_DOMICILE_NAME
 					adj = GREATEST_OF_KHANS_TITLE_DOMICILE_NAME_ADJ
-					article = article_CONFEDERATION_CULTURE_NAME
+					pre = article_CONFEDERATION_CULTURE_NAME
 				}
 				scope:new_title = {
 					save_scope_as = gok_title
@@ -50,7 +50,7 @@ form_the_greatest_khan_empire_effect = { #GHify CE2 TODO: Make our own effect
 					tier = empire
 					name = GREATEST_OF_KHANS_TITLE_NAME
 					adj = GREATEST_OF_KHANS_TITLE_NAME_ADJ
-					article = article_CONFEDERATION_CULTURE_NAME
+					pre = article_CONFEDERATION_CULTURE_NAME
 				}
 				scope:new_title = {
 					save_scope_as = gok_title
@@ -86,6 +86,8 @@ form_the_greatest_khan_empire_effect = { #GHify CE2 TODO: Make our own effect
 				else = {
 					generate_coa = yes
 				}
+				
+				save_scope_as = gok_title
 			}
 			assert_if = {
 				limit = { NOT = { exists = scope:gok_title } }
@@ -148,7 +150,7 @@ spawn_gok_troops_effect = {
 					limit = {
 						exists = domicile.domicile_culture
 					}
-					domicile.domicile_culture = {
+					domicile.domicile_culture = { 
 						NOR = {
 							#has_cultural_parameter = unlock_maa_mangudai
 							has_cultural_parameter = unlock_maa_cataphract_archers
@@ -239,16 +241,16 @@ spawn_gok_troops_effect = {
 						exists = domicile.domicile_culture
 					}
 					domicile.domicile_culture = {
-						has_innovation = innovation_gunpowder
+						has_innovation = innovation_bombard
 					}
 				}
 				culture = {
-					has_innovation = innovation_gunpowder
+					has_innovation = innovation_bombard
 				}
 				#Any neighbor
 				any_land_neighboring_realm_with_tributaries_owner = {
 					culture = {
-						has_innovation = innovation_gunpowder
+						has_innovation = innovation_bombard
 					}
 				}
 				#Any culture in same empire as realm
@@ -261,7 +263,7 @@ spawn_gok_troops_effect = {
 							}
 						}
 					}
-					has_innovation = innovation_gunpowder
+					has_innovation = innovation_bombard
 				}
 			}
 		}
@@ -703,7 +705,7 @@ mpo_find_powerful_opponent_for_gurkhan_effect = {
 				highest_held_title_tier >= tier_duchy
 				exists = root.capital_county
 				realm_to_title_distance_squared = {
-					target = root.capital_county
+					title = root.capital_county
 					value <= squared_distance_almost_massive
 				}
 				
@@ -718,7 +720,7 @@ mpo_find_powerful_opponent_for_gurkhan_effect = {
 				highest_held_title_tier >= tier_duchy
 				exists = root.capital_county
 				realm_to_title_distance_squared = {
-					target = root.capital_county
+					title = root.capital_county
 					value <= squared_distance_almost_massive
 				}
 				mpo_gok_coalition_member_trigger = yes
@@ -749,7 +751,7 @@ mpo_find_powerful_opponent_for_gurkhan_effect = {
 					highest_held_title_tier >= tier_duchy
 					exists = root.capital_county
 					realm_to_title_distance_squared = {
-						target = root.capital_county
+						title = root.capital_county
 						value <= squared_distance_massive
 					}
 					
@@ -764,7 +766,7 @@ mpo_find_powerful_opponent_for_gurkhan_effect = {
 					highest_held_title_tier >= tier_duchy
 					exists = root.capital_county
 					realm_to_title_distance_squared = {
-						target = root.capital_county
+						title = root.capital_county
 						value <= squared_distance_massive
 					}
 					mpo_gok_coalition_member_trigger = yes
@@ -895,7 +897,7 @@ mpo_gok_offer_submission_effect = {
 							tier = kingdom
 							name = GOK_SUBJECT_TITLE_NAME
 							adj = GOK_SUBJECT_TITLE_NAME_ADJ
-							article = article_CONFEDERATION_CULTURE_NAME
+							pre = article_CONFEDERATION_CULTURE_NAME
 						}
 						scope:new_title = {
 							set_color_from_title = scope:recipient.capital_county
@@ -1237,10 +1239,10 @@ gok_spawn_subjugated_siege_army_effect = {
 			limit = {
 				OR = {
 					$CHARACTER$.culture = {
-						has_innovation = innovation_gunpowder
+						has_innovation = innovation_bombard
 					}
 					$CHARACTER$.capital_county.culture ?= {
-						has_innovation = innovation_gunpowder
+						has_innovation = innovation_bombard
 					}
 				}
 			}
@@ -1350,7 +1352,7 @@ gok_spawn_subjugated_siege_army_effect = {
 					modifier = {
 						$CHARACTER$ = {
 							number_maa_regiments_of_type = {
-								target = crossbowmen
+								type = crossbowmen
 								value > 0
 							}
 						}
@@ -1624,7 +1626,7 @@ gok_spawn_subjugated_siege_army_effect = {
 					modifier = {
 						$CHARACTER$ = {
 							number_maa_regiments_of_type = {
-								target = crossbowmen
+								type = crossbowmen
 								value > 0
 							}
 						}
@@ -1899,7 +1901,7 @@ gok_spawn_subjugated_siege_army_effect = {
 					modifier = {
 						$CHARACTER$ = {
 							number_maa_regiments_of_type = {
-								target = crossbowmen
+								type = crossbowmen
 								value > 0
 							}
 						}
@@ -2163,7 +2165,7 @@ gok_spawn_subjugated_siege_army_effect = {
 					modifier = {
 						$CHARACTER$ = {
 							number_maa_regiments_of_type = {
-								target = crossbowmen
+								type = crossbowmen
 								value > 0
 							}
 						}
@@ -4029,325 +4031,40 @@ mpo_add_golden_lineage_effect = {
 	add_trait = golden_lineage
 	if = {
 		limit = {
-			OR = {
-				has_realm_law = female_only_law
-				has_realm_law = female_preference_law
-			}
+			exists = dynasty
 		}
-		every_child = {
-			custom = descendants_gain_golden_lineage_female
-			limit = {
-				NOT = { has_trait = golden_lineage }
-			}
-			add_trait = golden_lineage
-			if = {
-				limit = {
-					is_female = yes
-				}
-				every_child = {
-					limit = {
-						NOT = { has_trait = golden_lineage }
-					}
-					add_trait = golden_lineage
-					if = {
-						limit = {
-							is_female = yes
-						}
-						every_child = {
-							limit = {
-								NOT = { has_trait = golden_lineage }
-							}
-							add_trait = golden_lineage
-							if = {
-								limit = {
-									is_female = yes
-								}
-								every_child = {
-									limit = {
-										NOT = { has_trait = golden_lineage }
-									}
-									add_trait = golden_lineage
-									if = {
-										limit = {
-											is_female = yes
-										}
-										every_child = {
-											limit = {
-												NOT = { has_trait = golden_lineage }
-											}
-											add_trait = golden_lineage
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	else = {
-		every_child = {
-			custom = descendants_gain_golden_lineage_male
-			limit = {
-				NOT = { has_trait = golden_lineage }
-			}
-			add_trait = golden_lineage
-			if = {
-				limit = {
-					is_male = yes
-				}
-				every_child = {
-					limit = {
-						NOT = { has_trait = golden_lineage }
-					}
-					add_trait = golden_lineage
-					if = {
-						limit = {
-							is_male = yes
-						}
-						every_child = {
-							limit = {
-								NOT = { has_trait = golden_lineage }
-							}
-							add_trait = golden_lineage
-							if = {
-								limit = {
-									is_male = yes
-								}
-								every_child = {
-									limit = {
-										NOT = { has_trait = golden_lineage }
-									}
-									add_trait = golden_lineage
-									if = {
-										limit = {
-											is_male = yes
-										}
-										every_child = {
-											limit = {
-												NOT = { has_trait = golden_lineage }
-											}
-											add_trait = golden_lineage
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-mpo_gok_onslaught_admin_vassal_reorganization = {
-	#Make a list of admin vassals high enough tier to survive
-	every_vassal_or_below = {
-		limit = {
-			is_landed = yes
-			#This should be duke or count based on gov type
-			highest_held_title_tier >= main_administrative_tier
-			government_allows = administrative
-		}
-		add_to_list = protected_admin_vassals
-	}
-	#Make a list of admin vassals that must be moved or purged
-	every_vassal_or_below = {
-		limit = {
-			is_landed = yes
-			highest_held_title_tier < main_administrative_tier
-			government_allows = administrative
-			highest_held_title_tier > tier_barony
-			NOT = {
-				any_liege_or_above = {
-					is_in_list = protected_admin_vassals
-				}
-			}
-		}
-		add_to_list = vulnerable_admin_vassals
-	}
-	#Make a list of the highest surviving admin in their vassalship chain
-	every_in_list = {
-		list = protected_admin_vassals
-		limit = {
-			OR = {
-				liege = scope:defender
-				liege = {
-					NOT = {
-						government_allows = administrative
-					}
-				}
-			}
-		}
-		add_to_list = top_protected_admins
-	}
-	#Find a liege for every vulnerable we can
-	every_in_list = {
-		list = vulnerable_admin_vassals
-		#Move de jure vulnerable vassals to empires
-		if = {
-			limit = {
-				capital_county.empire.holder ?= {
-					is_in_list = top_protected_admins
-				}
-			}
-			capital_county.empire.holder = {
-				save_scope_as = landless_admin_liege
-			}
-			create_title_and_vassal_change = {
-				type = swear_fealty
-				save_scope_as = change
-				add_claim_on_loss = yes
-			}
-			change_liege = {
-				liege = scope:landless_admin_liege
-				change = scope:change
-			}
-			resolve_title_and_vassal_change = scope:change
-			remove_from_list = vulnerable_admin_vassals
-		}
-		#Move de jure vulnerable vassals to kingdoms
-		if = {
-			limit = {
-				capital_county.kingdom.holder ?= {
-					is_in_list = top_protected_admins
-				}
-			}
-			capital_county.kingdom.holder = {
-				save_scope_as = landless_admin_liege
-			}
-			create_title_and_vassal_change = {
-				type = swear_fealty
-				save_scope_as = change
-				add_claim_on_loss = yes
-			}
-			change_liege = {
-				liege = scope:landless_admin_liege
-				change = scope:change
-			}
-			resolve_title_and_vassal_change = scope:change
-			remove_from_list = vulnerable_admin_vassals
-		}
-		#Move de jure vulnerable vassals to duchies
-		if = {
-			limit = {
-				capital_county.duchy.holder ?= {
-					is_in_list = top_protected_admins
-				}
-			}
-			capital_county.duchy.holder = {
-				save_scope_as = landless_admin_liege
-			}
-			create_title_and_vassal_change = {
-				type = swear_fealty
-				save_scope_as = change
-				add_claim_on_loss = yes
-			}
-			change_liege = {
-				liege = scope:landless_admin_liege
-				change = scope:change
-			}
-			resolve_title_and_vassal_change = scope:change
-			remove_from_list = vulnerable_admin_vassals
-		}
-		#Move landed vulnerable neighbors
-		else_if = {
-			limit = {
-				is_landed = yes
-				any_sub_realm_county = {
-					any_neighboring_county = {
-						holder = {
-							OR = {
-								is_in_list = top_protected_admins
-								any_liege_or_above = {
-									is_in_list = top_protected_admins
-								}
-							}
-						}
-					}
-				}
-			}
-			save_scope_as = vulnerable_neighbor
-			ordered_in_list = {
-				order_by = current_military_strength
-				list = top_protected_admins
-				limit = {
-					any_sub_realm_county = {
-						any_neighboring_county = {
-							holder = {
-								OR = {
-									this = scope:vulnerable_neighbor
-									any_liege_or_above = {
-										this = scope:vulnerable_neighbor
-									}
-								}
-							}
-						}
-					}
-				}
-				save_scope_as = landless_admin_liege
-			}
-			create_title_and_vassal_change = {
-				type = swear_fealty
-				save_scope_as = change
-				add_claim_on_loss = yes
-			}
-			change_liege = {
-				liege = scope:landless_admin_liege
-				change = scope:change
-			}
-			resolve_title_and_vassal_change = scope:change
-			remove_from_list = vulnerable_admin_vassals
-		}
-		#Move landless to random top tiers in list
-		else_if = {
-			limit = {
-				is_landless_administrative = yes
-				#Lower tier than potential liege
-				any_in_list = {
-					list = top_protected_admins
-					highest_held_title_tier > prev.highest_held_title_tier
-				}
-			}
-			ordered_in_list = {
-				list = top_protected_admins
-				order_by = highest_held_title_tier
-				save_scope_as = landless_admin_liege
-			}
-			create_title_and_vassal_change = {
-				type = swear_fealty
-				save_scope_as = change
-				add_claim_on_loss = yes
-			}
-			change_liege = {
-				liege = scope:landless_admin_liege
-				change = scope:change
-			}
-			resolve_title_and_vassal_change = scope:change
-			remove_from_list = vulnerable_admin_vassals
-		}
-	}
-}
-
-gok_government_change_story_end_effect = {			
-	if = {
-		limit = {
-			any_owned_story = {
-				story_type = story_greatest_of_khans
-			}
-		}
-		custom_tooltip = gok_ending_warning_offer_sub_or_ruin
-		custom_tooltip = gok_ending_warning_onslaught
-		custom_tooltip = gok_ending_warning_end_decision
+		custom_tooltip = descendants_gain_golden_lineage
 		hidden_effect = {
-			every_owned_story = {
-				limit = { story_type = story_greatest_of_khans }
-				end_story = yes
+			dynasty = {
+				every_dynasty_member = {
+					custom = custom
+					limit = {
+						any_ancestor = {
+							this = $CHARACTER$
+						}
+					}
+					add_trait = golden_lineage
+				}
 			}
-			trigger_event = {
-				id = mpo_greatest_of_khans.0041
-				days = 3
+		}
+	}
+	every_child = {
+		limit = {
+			OR = {
+				has_trait = bastard
+				has_trait = legitimized_bastard
+			}
+			NOT = {
+				has_trait = golden_lineage
+			}
+		}
+		add_trait = golden_lineage
+		if = {
+			limit = {
+				is_male = yes
+			}
+			every_child = {
+				add_trait = golden_lineage
 			}
 		}
 	}

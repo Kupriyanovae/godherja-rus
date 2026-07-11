@@ -495,7 +495,9 @@ types gh_bestiary
 				text = "bestiary_devious"
 			}
 		}
-		blockoverride "bestiary_biozone_availibility_list" {
+		blockoverride "bestiary_biozone_availibility_list" {text_single = {
+				raw_text = "Any Biozone"
+			}
 		}
 	}
 	type gh_bestiary_porcupine_entry = gh_bestiary_entry {
@@ -2465,7 +2467,7 @@ types gh_bestiary
 	type gh_bestiary_dwarf_elephant_entry = gh_bestiary_entry {
 		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_dwarf_elephant_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
 		blockoverride "bestiary_header" { text = "[Localize('animal_type_dwarf_elephant_plural')|U]" }
-		blockoverride "bestiary_subheader" { raw_text = "[Localize('mammal_title')] | [Localize('hunt_animal_safety_4_adjective')] | [Localize('hunt_animal_prestige_4_adjective')]" }
+		blockoverride "bestiary_subheader" { raw_text = "[Localize('mammal_title')] | [Localize('hunt_animal_safety_3_adjective')] | [Localize('hunt_animal_prestige_4_adjective')]" }
 		blockoverride "bestiary_desc" { text = "[Localize('animal_type_dwarf_elephant_encyclopedia_desc')]" }
 		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_dwarf_elephant_item')]" }
 		blockoverride "bestiary_details_button" { 
@@ -3232,29 +3234,29 @@ types gh_bestiary
 			}
 		}
 	}
-	type gh_bestiary_apep_ibizan_entry = gh_bestiary_entry {
-		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_apep_ibizan_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-		blockoverride "bestiary_header" { text = "[Localize('animal_type_apep_ibizan_plural')|U]" }
+	type gh_bestiary_apep-ibizan_entry = gh_bestiary_entry {
+		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_apep-ibizan_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+		blockoverride "bestiary_header" { text = "[Localize('animal_type_apep-ibizan_plural')|U]" }
 		blockoverride "bestiary_subheader" { raw_text = "[Localize('mammal_title')] | [Localize('hunt_animal_safety_8_adjective')] | [Localize('hunt_animal_prestige_8_adjective')]" }
-		blockoverride "bestiary_desc" { text = "[Localize('animal_type_apep_ibizan_encyclopedia_desc')]" }
-		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_apep_ibizan_item')]" }
+		blockoverride "bestiary_desc" { text = "[Localize('animal_type_apep-ibizan_encyclopedia_desc')]" }
+		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_apep-ibizan_item')]" }
 		blockoverride "bestiary_details_button" { 
 			button_expandable_toggle_field = {
 				layoutpolicy_horizontal = expanding
 
 				blockoverride "onclick"
 				{
-					onclick = "[GetVariableSystem.Toggle('bestiary_apep_ibizan_item')]"
+					onclick = "[GetVariableSystem.Toggle('bestiary_apep-ibizan_item')]"
 				}
 
 				blockoverride "button_expand"
 				{
-					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_apep_ibizan_item') )]"
+					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_apep-ibizan_item') )]"
 				}
 
 				blockoverride "text"
 				{
-					raw_text = "[Localize('animal_type_apep_ibizan_no_gloss')|U] Details"
+					raw_text = "[Localize('animal_type_apep-ibizan_no_gloss')|U] Details"
 				}
 				
 				upframe = 3
@@ -4870,29 +4872,29 @@ types gh_bestiary
 		blockoverride "bestiary_biozone_availibility_list" {
 		}
 	}
-	type gh_bestiary_ring_tailed_lemur_entry = gh_bestiary_entry {
-		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_ring_tailed_lemur_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-		blockoverride "bestiary_header" { text = "[Localize('animal_type_ring_tailed_lemur_plural')|U]" }
+	type gh_bestiary_ring-tailed_lemur_entry = gh_bestiary_entry {
+		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_ring-tailed_lemur_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+		blockoverride "bestiary_header" { text = "[Localize('animal_type_ring-tailed_lemur_plural')|U]" }
 		blockoverride "bestiary_subheader" { raw_text = "[Localize('mammal_title')] | [Localize('hunt_animal_safety_1_adjective')] | [Localize('hunt_animal_prestige_3_adjective')]" }
-		blockoverride "bestiary_desc" { text = "[Localize('animal_type_ring_tailed_lemur_encyclopedia_desc')]" }
-		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_ring_tailed_lemur_item')]" }
+		blockoverride "bestiary_desc" { text = "[Localize('animal_type_ring-tailed_lemur_encyclopedia_desc')]" }
+		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_ring-tailed_lemur_item')]" }
 		blockoverride "bestiary_details_button" { 
 			button_expandable_toggle_field = {
 				layoutpolicy_horizontal = expanding
 
 				blockoverride "onclick"
 				{
-					onclick = "[GetVariableSystem.Toggle('bestiary_ring_tailed_lemur_item')]"
+					onclick = "[GetVariableSystem.Toggle('bestiary_ring-tailed_lemur_item')]"
 				}
 
 				blockoverride "button_expand"
 				{
-					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_ring_tailed_lemur_item') )]"
+					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_ring-tailed_lemur_item') )]"
 				}
 
 				blockoverride "text"
 				{
-					raw_text = "[Localize('animal_type_ring_tailed_lemur_no_gloss')|U] Details"
+					raw_text = "[Localize('animal_type_ring-tailed_lemur_no_gloss')|U] Details"
 				}
 				
 				upframe = 3
@@ -5265,29 +5267,29 @@ types gh_bestiary
 			}
 		}
 	}
-	type gh_bestiary_twin_serpent_entry = gh_bestiary_entry {
-		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_twin_serpent_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-		blockoverride "bestiary_header" { text = "[Localize('animal_type_twin_serpent_plural')|U]" }
+	type gh_bestiary_twin-serpent_entry = gh_bestiary_entry {
+		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_twin-serpent_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+		blockoverride "bestiary_header" { text = "[Localize('animal_type_twin-serpent_plural')|U]" }
 		blockoverride "bestiary_subheader" { raw_text = "[Localize('reptile_title')] | [Localize('hunt_animal_safety_4_adjective')] | [Localize('hunt_animal_prestige_4_adjective')]" }
-		blockoverride "bestiary_desc" { text = "[Localize('animal_type_twin_serpent_encyclopedia_desc')]" }
-		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_twin_serpent_item')]" }
+		blockoverride "bestiary_desc" { text = "[Localize('animal_type_twin-serpent_encyclopedia_desc')]" }
+		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_twin-serpent_item')]" }
 		blockoverride "bestiary_details_button" { 
 			button_expandable_toggle_field = {
 				layoutpolicy_horizontal = expanding
 
 				blockoverride "onclick"
 				{
-					onclick = "[GetVariableSystem.Toggle('bestiary_twin_serpent_item')]"
+					onclick = "[GetVariableSystem.Toggle('bestiary_twin-serpent_item')]"
 				}
 
 				blockoverride "button_expand"
 				{
-					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_twin_serpent_item') )]"
+					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_twin-serpent_item') )]"
 				}
 
 				blockoverride "text"
 				{
-					raw_text = "[Localize('animal_type_twin_serpent_no_gloss')|U] Details"
+					raw_text = "[Localize('animal_type_twin-serpent_no_gloss')|U] Details"
 				}
 				
 				upframe = 3
@@ -5732,29 +5734,29 @@ types gh_bestiary
 		blockoverride "bestiary_biozone_availibility_list" {
 		}
 	}
-	type gh_bestiary_duck_fix_entry = gh_bestiary_entry {
-		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_duck_fix_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-		blockoverride "bestiary_header" { text = "[Localize('animal_type_duck_fix_plural')|U]" }
+	type gh_bestiary_duck_entry = gh_bestiary_entry {
+		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_duck_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+		blockoverride "bestiary_header" { text = "[Localize('animal_type_duck_plural')|U]" }
 		blockoverride "bestiary_subheader" { raw_text = "[Localize('bird_title')] | [Localize('hunt_animal_safety_1_adjective')] | [Localize('hunt_animal_prestige_1_adjective')]" }
-		blockoverride "bestiary_desc" { text = "[Localize('animal_type_duck_fix_encyclopedia_desc')]" }
-		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_duck_fix_item')]" }
+		blockoverride "bestiary_desc" { text = "[Localize('animal_type_duck_encyclopedia_desc')]" }
+		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_duck_item')]" }
 		blockoverride "bestiary_details_button" { 
 			button_expandable_toggle_field = {
 				layoutpolicy_horizontal = expanding
 
 				blockoverride "onclick"
 				{
-					onclick = "[GetVariableSystem.Toggle('bestiary_duck_fix_item')]"
+					onclick = "[GetVariableSystem.Toggle('bestiary_duck_item')]"
 				}
 
 				blockoverride "button_expand"
 				{
-					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_duck_fix_item') )]"
+					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_duck_item') )]"
 				}
 
 				blockoverride "text"
 				{
-					raw_text = "[Localize('animal_type_duck_fix_no_gloss')|U] Details"
+					raw_text = "[Localize('animal_type_duck_no_gloss')|U] Details"
 				}
 				
 				upframe = 3
@@ -6510,29 +6512,29 @@ types gh_bestiary
 			}
 		}
 	}
-	type gh_bestiary_long_tailed_duck_entry = gh_bestiary_entry {
-		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_long_tailed_duck_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-		blockoverride "bestiary_header" { text = "[Localize('animal_type_long_tailed_duck_plural')|U]" }
+	type gh_bestiary_long-tailed_duck_entry = gh_bestiary_entry {
+		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_long-tailed_duck_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+		blockoverride "bestiary_header" { text = "[Localize('animal_type_long-tailed_duck_plural')|U]" }
 		blockoverride "bestiary_subheader" { raw_text = "[Localize('bird_title')] | [Localize('hunt_animal_safety_1_adjective')] | [Localize('hunt_animal_prestige_1_adjective')]" }
-		blockoverride "bestiary_desc" { text = "[Localize('animal_type_long_tailed_duck_encyclopedia_desc')]" }
-		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_long_tailed_duck_item')]" }
+		blockoverride "bestiary_desc" { text = "[Localize('animal_type_long-tailed_duck_encyclopedia_desc')]" }
+		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_long-tailed_duck_item')]" }
 		blockoverride "bestiary_details_button" { 
 			button_expandable_toggle_field = {
 				layoutpolicy_horizontal = expanding
 
 				blockoverride "onclick"
 				{
-					onclick = "[GetVariableSystem.Toggle('bestiary_long_tailed_duck_item')]"
+					onclick = "[GetVariableSystem.Toggle('bestiary_long-tailed_duck_item')]"
 				}
 
 				blockoverride "button_expand"
 				{
-					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_long_tailed_duck_item') )]"
+					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_long-tailed_duck_item') )]"
 				}
 
 				blockoverride "text"
 				{
-					raw_text = "[Localize('animal_type_long_tailed_duck_no_gloss')|U] Details"
+					raw_text = "[Localize('animal_type_long-tailed_duck_no_gloss')|U] Details"
 				}
 				
 				upframe = 3
@@ -6956,29 +6958,29 @@ types gh_bestiary
 			}
 		}
 	}
-	type gh_bestiary_kashiryan_spot_billed_duck_entry = gh_bestiary_entry {
-		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_kashiryan_spot_billed_duck_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-		blockoverride "bestiary_header" { text = "[Localize('animal_type_kashiryan_spot_billed_duck_plural')|U]" }
+	type gh_bestiary_kashiryan_spot-billed_duck_entry = gh_bestiary_entry {
+		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_kashiryan_spot-billed_duck_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+		blockoverride "bestiary_header" { text = "[Localize('animal_type_kashiryan_spot-billed_duck_plural')|U]" }
 		blockoverride "bestiary_subheader" { raw_text = "[Localize('bird_title')] | [Localize('hunt_animal_safety_1_adjective')] | [Localize('hunt_animal_prestige_1_adjective')]" }
-		blockoverride "bestiary_desc" { text = "[Localize('animal_type_kashiryan_spot_billed_duck_encyclopedia_desc')]" }
-		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_kashiryan_spot_billed_duck_item')]" }
+		blockoverride "bestiary_desc" { text = "[Localize('animal_type_kashiryan_spot-billed_duck_encyclopedia_desc')]" }
+		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_kashiryan_spot-billed_duck_item')]" }
 		blockoverride "bestiary_details_button" { 
 			button_expandable_toggle_field = {
 				layoutpolicy_horizontal = expanding
 
 				blockoverride "onclick"
 				{
-					onclick = "[GetVariableSystem.Toggle('bestiary_kashiryan_spot_billed_duck_item')]"
+					onclick = "[GetVariableSystem.Toggle('bestiary_kashiryan_spot-billed_duck_item')]"
 				}
 
 				blockoverride "button_expand"
 				{
-					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_kashiryan_spot_billed_duck_item') )]"
+					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_kashiryan_spot-billed_duck_item') )]"
 				}
 
 				blockoverride "text"
 				{
-					raw_text = "[Localize('animal_type_kashiryan_spot_billed_duck_no_gloss')|U] Details"
+					raw_text = "[Localize('animal_type_kashiryan_spot-billed_duck_no_gloss')|U] Details"
 				}
 				
 				upframe = 3
@@ -7047,29 +7049,29 @@ types gh_bestiary
 			}
 		}
 	}
-	type gh_bestiary_red_crested_pochard_entry = gh_bestiary_entry {
-		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_red_crested_pochard_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-		blockoverride "bestiary_header" { text = "[Localize('animal_type_red_crested_pochard_plural')|U]" }
+	type gh_bestiary_red-crested_pochard_entry = gh_bestiary_entry {
+		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_red-crested_pochard_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+		blockoverride "bestiary_header" { text = "[Localize('animal_type_red-crested_pochard_plural')|U]" }
 		blockoverride "bestiary_subheader" { raw_text = "[Localize('bird_title')] | [Localize('hunt_animal_safety_1_adjective')] | [Localize('hunt_animal_prestige_1_adjective')]" }
-		blockoverride "bestiary_desc" { text = "[Localize('animal_type_red_crested_pochard_encyclopedia_desc')]" }
-		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_red_crested_pochard_item')]" }
+		blockoverride "bestiary_desc" { text = "[Localize('animal_type_red-crested_pochard_encyclopedia_desc')]" }
+		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_red-crested_pochard_item')]" }
 		blockoverride "bestiary_details_button" { 
 			button_expandable_toggle_field = {
 				layoutpolicy_horizontal = expanding
 
 				blockoverride "onclick"
 				{
-					onclick = "[GetVariableSystem.Toggle('bestiary_red_crested_pochard_item')]"
+					onclick = "[GetVariableSystem.Toggle('bestiary_red-crested_pochard_item')]"
 				}
 
 				blockoverride "button_expand"
 				{
-					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_red_crested_pochard_item') )]"
+					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_red-crested_pochard_item') )]"
 				}
 
 				blockoverride "text"
 				{
-					raw_text = "[Localize('animal_type_red_crested_pochard_no_gloss')|U] Details"
+					raw_text = "[Localize('animal_type_red-crested_pochard_no_gloss')|U] Details"
 				}
 				
 				upframe = 3
@@ -7367,29 +7369,29 @@ types gh_bestiary
 			}
 		}
 	}
-	type gh_bestiary_red_breasted_goose_entry = gh_bestiary_entry {
-		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_red_breasted_goose_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-		blockoverride "bestiary_header" { text = "[Localize('animal_type_red_breasted_goose_plural')|U]" }
+	type gh_bestiary_red-breasted_goose_entry = gh_bestiary_entry {
+		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_red-breasted_goose_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+		blockoverride "bestiary_header" { text = "[Localize('animal_type_red-breasted_goose_plural')|U]" }
 		blockoverride "bestiary_subheader" { raw_text = "[Localize('bird_title')] | [Localize('hunt_animal_safety_2_adjective')] | [Localize('hunt_animal_prestige_2_adjective')]" }
-		blockoverride "bestiary_desc" { text = "[Localize('animal_type_red_breasted_goose_encyclopedia_desc')]" }
-		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_red_breasted_goose_item')]" }
+		blockoverride "bestiary_desc" { text = "[Localize('animal_type_red-breasted_goose_encyclopedia_desc')]" }
+		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_red-breasted_goose_item')]" }
 		blockoverride "bestiary_details_button" { 
 			button_expandable_toggle_field = {
 				layoutpolicy_horizontal = expanding
 
 				blockoverride "onclick"
 				{
-					onclick = "[GetVariableSystem.Toggle('bestiary_red_breasted_goose_item')]"
+					onclick = "[GetVariableSystem.Toggle('bestiary_red-breasted_goose_item')]"
 				}
 
 				blockoverride "button_expand"
 				{
-					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_red_breasted_goose_item') )]"
+					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_red-breasted_goose_item') )]"
 				}
 
 				blockoverride "text"
 				{
-					raw_text = "[Localize('animal_type_red_breasted_goose_no_gloss')|U] Details"
+					raw_text = "[Localize('animal_type_red-breasted_goose_no_gloss')|U] Details"
 				}
 				
 				upframe = 3
@@ -7499,29 +7501,29 @@ types gh_bestiary
 			}
 		}
 	}
-	type gh_bestiary_spur_winged_goose_entry = gh_bestiary_entry {
-		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_spur_winged_goose_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-		blockoverride "bestiary_header" { text = "[Localize('animal_type_spur_winged_goose_plural')|U]" }
+	type gh_bestiary_spur-winged_goose_entry = gh_bestiary_entry {
+		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_spur-winged_goose_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+		blockoverride "bestiary_header" { text = "[Localize('animal_type_spur-winged_goose_plural')|U]" }
 		blockoverride "bestiary_subheader" { raw_text = "[Localize('bird_title')] | [Localize('hunt_animal_safety_2_adjective')] | [Localize('hunt_animal_prestige_2_adjective')]" }
-		blockoverride "bestiary_desc" { text = "[Localize('animal_type_spur_winged_goose_encyclopedia_desc')]" }
-		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_spur_winged_goose_item')]" }
+		blockoverride "bestiary_desc" { text = "[Localize('animal_type_spur-winged_goose_encyclopedia_desc')]" }
+		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_spur-winged_goose_item')]" }
 		blockoverride "bestiary_details_button" { 
 			button_expandable_toggle_field = {
 				layoutpolicy_horizontal = expanding
 
 				blockoverride "onclick"
 				{
-					onclick = "[GetVariableSystem.Toggle('bestiary_spur_winged_goose_item')]"
+					onclick = "[GetVariableSystem.Toggle('bestiary_spur-winged_goose_item')]"
 				}
 
 				blockoverride "button_expand"
 				{
-					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_spur_winged_goose_item') )]"
+					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_spur-winged_goose_item') )]"
 				}
 
 				blockoverride "text"
 				{
-					raw_text = "[Localize('animal_type_spur_winged_goose_no_gloss')|U] Details"
+					raw_text = "[Localize('animal_type_spur-winged_goose_no_gloss')|U] Details"
 				}
 				
 				upframe = 3
@@ -8039,29 +8041,29 @@ types gh_bestiary
 			}
 		}
 	}
-	type gh_bestiary_red_throated_loon_entry = gh_bestiary_entry {
-		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_red_throated_loon_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-		blockoverride "bestiary_header" { text = "[Localize('animal_type_red_throated_loon_plural')|U]" }
+	type gh_bestiary_red-throated_loon_entry = gh_bestiary_entry {
+		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_red-throated_loon_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+		blockoverride "bestiary_header" { text = "[Localize('animal_type_red-throated_loon_plural')|U]" }
 		blockoverride "bestiary_subheader" { raw_text = "[Localize('bird_title')] | [Localize('hunt_animal_safety_1_adjective')] | [Localize('hunt_animal_prestige_1_adjective')]" }
-		blockoverride "bestiary_desc" { text = "[Localize('animal_type_red_throated_loon_encyclopedia_desc')]" }
-		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_red_throated_loon_item')]" }
+		blockoverride "bestiary_desc" { text = "[Localize('animal_type_red-throated_loon_encyclopedia_desc')]" }
+		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_red-throated_loon_item')]" }
 		blockoverride "bestiary_details_button" { 
 			button_expandable_toggle_field = {
 				layoutpolicy_horizontal = expanding
 
 				blockoverride "onclick"
 				{
-					onclick = "[GetVariableSystem.Toggle('bestiary_red_throated_loon_item')]"
+					onclick = "[GetVariableSystem.Toggle('bestiary_red-throated_loon_item')]"
 				}
 
 				blockoverride "button_expand"
 				{
-					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_red_throated_loon_item') )]"
+					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_red-throated_loon_item') )]"
 				}
 
 				blockoverride "text"
 				{
-					raw_text = "[Localize('animal_type_red_throated_loon_no_gloss')|U] Details"
+					raw_text = "[Localize('animal_type_red-throated_loon_no_gloss')|U] Details"
 				}
 				
 				upframe = 3

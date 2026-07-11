@@ -12,9 +12,9 @@ is_coastal_sjalvolki_tribal = {
 	any_sub_realm_county = { is_coastal_county = yes }
 }
 
-has_opening_event = { # Character has an introductory event
-	trigger_if = { # 1254 Bookmark
-		limit = { current_year = 6254 }
+has_opening_event = {
+	trigger_if = {
+		limit = { current_year = 1254 }
 		OR = {
 			this = character:westernimperial_omitilos_aagiokrata_2
 			this = character:adrakamp_sjalvolki_6
@@ -57,7 +57,7 @@ has_opening_event = { # Character has an introductory event
 			this = character:kardwens_kardawai_1
 			this = character:mastikigni_sjalvolki_2
 			this = character:northernimperial_aversarinas_aagiokrata_1
-			this = character:salisian_lifepath_1
+			this = character:salisians_lifepath_1
 			this = character:sarminians_salacad_1
 			this = character:scusstari_iyrossi_aagiokrata_13
 			this = character:southernimperial_aversarian_axiaotheaism_1
@@ -89,24 +89,10 @@ has_opening_event = { # Character has an introductory event
 			this = character:redrunner_aversarinas_aagiokrata_9
 		}
 	}
-	trigger_else_if = { # 1298 Bookmark
-		limit = { current_year = 6298 }
-		OR = {
-			this = character:sarminians_salacad_14 # Eohar, 1298 Kizengana of Szamazonas
-			this = character:sarminians_salacad_15 # Utena, sister of the above
-			this = character:sarminians_salacad_16 # Arszak, brother of the above
-			this = character:sarminians_salacad_17 # Ioa, sister of the above
-
-			this = character:zelkavani_sarmuyr_1 # Atamaita, the Sarmuyr heresiarch
-			this = character:jarakmar_ertomax_19 # Vahbarz, the Marshal of the above
-		}
-	}
-	trigger_else = { always = no } # Fallback
 }
-
-has_story_content = { # Character has unique gameplay mechanics
-	trigger_if = { # 1254 Bookmark
-		limit = { current_year = 6254 }
+has_story_content = {
+	trigger_if = {
+		limit = { current_year = 1254 }
 		OR = {
 			this = character:easternimperial_aironoian_aagiokrata_1
 			this = character:easternimperial_aironoian_aagiokrata_7
@@ -114,11 +100,6 @@ has_story_content = { # Character has unique gameplay mechanics
 			this = character:westernimperial_omitilos_aagiokrata_2
 		}
 	}
-	trigger_else_if = { # 1298 Bookmark
-		limit = { current_year = 6298 }
-		always = no # GH TODO: Replace when adding the first story content character
-	}
-	trigger_else = { always = no } # Fallback
 }
 
 has_aelvalr_shard = {
@@ -171,7 +152,7 @@ ai_can_convert = { #Checked for if an AI can convert
 
 controls_majority_of_etepezea_formable_trigger = {
 	any_county_in_region = {
-		region = governate_aversarian_etepezea
+		region = world_ga_etepezea_formable
 		percent >= aversarian_formable_percent_decimal_value
 		holder.top_liege = root
 	}
@@ -179,7 +160,7 @@ controls_majority_of_etepezea_formable_trigger = {
 
 controls_majority_of_megos_kalathipsomi_formable_trigger = {
 	any_county_in_region = {
-		region = governate_aversarian_megos_kalathipsomi
+		region = world_ga_megos_kalathipsomi_formable
 		percent >= aversarian_formable_percent_decimal_value
 		holder.top_liege = root
 	}
@@ -187,7 +168,7 @@ controls_majority_of_megos_kalathipsomi_formable_trigger = {
 
 controls_majority_of_mikros_kalathipsomi_formable_trigger = {
 	any_county_in_region = {
-		region = governate_aversarian_mikros_kalathipsomi
+		region = world_ga_mikros_kalathipsomi_formable
 		percent >= aversarian_formable_percent_decimal_value
 		holder.top_liege = root
 	}
@@ -195,7 +176,7 @@ controls_majority_of_mikros_kalathipsomi_formable_trigger = {
 
 controls_majority_of_malcois_formable_trigger = {
 	any_county_in_region = {
-		region = governate_aversarian_malcois
+		region = world_ga_malcois_formable
 		percent >= aversarian_formable_percent_decimal_value
 		holder.top_liege = root
 	}
@@ -203,7 +184,7 @@ controls_majority_of_malcois_formable_trigger = {
 
 controls_majority_of_opakhasia_formable_trigger = {
 	any_county_in_region = {
-		region = governate_aversarian_opakhasia
+		region = world_ga_opakhasia_formable
 		percent >= aversarian_formable_percent_decimal_value
 		holder.top_liege = root
 	}
@@ -211,7 +192,7 @@ controls_majority_of_opakhasia_formable_trigger = {
 
 controls_majority_of_aironoi_formable_trigger = {
 	any_county_in_region = {
-		region = governate_aversarian_aironoi
+		region = world_ga_aironoi_formable
 		percent >= aversarian_formable_percent_decimal_value
 		holder.top_liege = root
 	}
@@ -219,7 +200,7 @@ controls_majority_of_aironoi_formable_trigger = {
 
 controls_majority_of_gurdurbok_formable_trigger = {
 	any_county_in_region = {
-		region = governate_aversarian_black_mountains
+		region = world_ga_gurdurbok_formable
 		percent >= aversarian_formable_percent_decimal_value
 		holder.top_liege = root
 	}
@@ -245,14 +226,6 @@ controls_majority_of_east_wardenites_trigger = {
 	any_county_in_region = {
 		region = world_ws_ayyar
 		percent >= ascendancy_of_east_formable_percent_decimal_value
-		holder.top_liege = root
-	}
-}
-
-controls_majority_of_bronzeport_trigger = {
-	any_county_in_region = {
-		region = trade_confluence_bronzeport_core_area
-		percent >= bronzeport_percent_decimal_value
 		holder.top_liege = root
 	}
 }
@@ -376,27 +349,4 @@ character_can_raid = {
 		}
 		faith = { has_doctrine_parameter = faith_can_raid }
 	}
-}
-
-gh_has_marriage_truce_trigger = {
-	has_truce = $CHARACTER$
-	has_opinion_modifier = {
-		target = $CHARACTER$
-		modifier = marriage_truce_opinion
-	}
-}
-
-dragons_extinct_trigger = {
-	custom_description = {
-		text = dragons_extinct_trigger_desc
-		always = yes
-	}
-}
-
-available_for_personal_inspiration_trigger = { # A Character can start or progress on a Personal Inspiration
-	is_incapable = no # Must be able of hand
-	is_imprisoned = no # Must be able of pursuit
-	NOT = { has_trait = wounded_3 } # Must be able of health
-	NOT = { exists = involved_activity } # Must be able of time
-	is_travelling = no # Must be able of location
 }

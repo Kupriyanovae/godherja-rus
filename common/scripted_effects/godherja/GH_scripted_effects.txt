@@ -1080,6 +1080,368 @@ release_disconnected_counties = {
 	}
 }
 
+initialize_influx_cultures_kalathipsomi = {	# Determines which culture gets what in Kalathipsomi after the Sjalvolki leave
+	title:k_heartwood = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_duchy }
+			random_list = {
+				3 = {
+					every_in_de_jure_hierarchy = {
+						limit = { tier = tier_county }
+						set_variable = {
+							name = influx_culture
+							value = culture:bricotaves
+						}
+						set_variable = {
+							name = influx_faith
+							value = faith:mothers_and_fathers
+						}
+					}
+				}
+				3 = {
+					every_in_de_jure_hierarchy = {
+						limit = { tier = tier_county }
+						set_variable = {
+							name = influx_culture
+							value = culture:corvosnari
+						}
+						set_variable = {
+							name = influx_faith
+							value = faith:mothers_and_fathers
+						}
+					}
+				}
+				3 = {
+					every_in_de_jure_hierarchy = {
+						limit = { tier = tier_county }
+						set_variable = {
+							name = influx_culture
+							value = culture:ardothanes
+						}
+						set_variable = {
+							name = influx_faith
+							value = faith:mothers_and_fathers
+						}
+					}
+				}
+			}
+		}
+	}
+	# Some regions always get settled by predetermined cultures, to make sure they have a place to live
+	title:k_redwald = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:auteonic
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:partic
+			}
+		}
+	}
+	title:k_westhold = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:ordikin
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:wyrdpath
+			}
+		}
+	}
+	title:d_cascadia = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:brigandines
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:partic
+			}
+		}
+	}
+	title:d_oakendale = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:ardothanes
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:wyrdpath
+			}
+		}
+	}
+	title:d_leafsea = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:bricotaves
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:wyrdpath
+			}
+		}
+	}
+	title:d_honeyreach = {
+		random_list = {
+			50 = {
+				every_in_de_jure_hierarchy = {
+					limit = { tier = tier_county }
+					set_variable = {
+						name = influx_culture
+						value = culture:bricotaves
+					}
+					set_variable = {
+						name = influx_faith
+						value = faith:mothers_and_fathers
+					}
+				}
+			}
+			25 = {
+				every_in_de_jure_hierarchy = {
+					limit = { tier = tier_county }
+					set_variable = {
+						name = influx_culture
+						value = culture:bricotaves
+					}
+					set_variable = {
+						name = influx_faith
+						value = faith:wyrdpath
+					}
+				}
+			}
+			50 = {
+				every_in_de_jure_hierarchy = {
+					limit = { tier = tier_county }
+					set_variable = {
+						name = influx_culture
+						value = culture:huegodocs
+					}
+					set_variable = {
+						name = influx_faith
+						value = faith:apti
+					}
+				}
+			}
+		}
+	}
+	title:d_stormhook = {
+		if = {
+			limit = { holder.culture = { has_cultural_pillar = heritage_kardwen } }
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_variable = {
+					name = influx_culture
+					value = culture:kardwens
+				}
+				set_variable = {
+					name = influx_faith
+					value = faith:kardawai
+				}
+			}
+		}
+		else = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_variable = {
+					name = influx_culture
+					value = culture:corvosnari
+				}
+				set_variable = {
+					name = influx_faith
+					value = faith:wyrdpath
+				}
+			}
+		}
+	}
+	title:d_murkwood = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:corvosnari
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:wyrdpath
+			}
+		}
+	}
+	title:d_agaricea = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:karzarads
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:kakarataki
+			}
+		}
+	}
+	title:d_mistwatch = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:karzarads
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:kakarataki
+			}
+		}
+	}
+	title:k_skycrown ={
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:ardothanes
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:mothers_and_fathers
+			}
+		}
+	}
+	title:d_antaphos = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:mondecny
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:portenchant
+			}
+		}
+	}
+	title:d_oedi = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:skorikiakas
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:aversarinas_aagiokrata
+			}
+		}
+	}
+	title:d_oios = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:skorikiakas
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:aversarinas_aagiokrata
+			}
+		}
+	}
+	title:d_knokidbes = {
+		if = {
+			limit = { holder.culture = { has_cultural_pillar = heritage_mondecny } }
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_variable = {
+					name = influx_culture
+					value = culture:mondecny
+				}
+				set_variable = {
+					name = influx_faith
+					value = faith:portenchant
+				}
+			}
+		}
+		else = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_variable = {
+					name = influx_culture
+					value = culture:corvosnari
+				}
+				set_variable = {
+					name = influx_faith
+					value = faith:mothers_and_fathers
+				}
+			}
+		}
+	}
+	title:d_gelale = {
+		if = {
+			limit = { holder.culture = { has_cultural_pillar = heritage_mondecny } }
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_variable = {
+					name = influx_culture
+					value = culture:mondecny
+				}
+				set_variable = {
+					name = influx_faith
+					value = faith:portenchant
+				}
+			}
+		}
+		else = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_variable = {
+					name = influx_culture
+					value = culture:corvosnari
+				}
+				set_variable = {
+					name = influx_faith
+					value = faith:mothers_and_fathers
+				}
+			}
+		}
+	}
+	title:d_moorende = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:bricotaves
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:mothers_and_fathers
+			}
+		}
+	}
+	title:k_cornucopia = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:ordikin
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:wyrdpath
+			}
+		}
+	}
+}
+
 transfer_to_new_de_jure_if_not_controlled_effect = {
 	if = {
 		limit = {
@@ -1223,7 +1585,7 @@ dissolve_etepezea_effect = {
 	title:k_pergicos = {
 		set_de_jure_liege_title = title:e_antyrigos
 	}
-	title:k_wyrmrest = {
+	title:k_assocaea = {
 		set_de_jure_liege_title = title:e_antyrigos
 	}
 }
@@ -1253,16 +1615,16 @@ dissolve_etepezea_effect = {
 #	title:k_skycrown = {
 #		set_de_jure_liege_title = title:e_mohejval
 #	}
-#	title:k_abrasos = {
+#	title:k_easternkatraddia8 = {
 #		set_de_jure_liege_title = title:e_mohejval
 #	}
 #}
 
 dissolve_gurdurbok_effect = {
-	title:k_niodni = {
+	title:k_niidinia = {
 		set_de_jure_liege_title = title:e_dethixos
 	}
-	title:k_nysinia = {
+	title:k_vyshtanka = {
 		set_de_jure_liege_title = title:e_dethixos
 	}
 	#title:k_aldergreen = {
@@ -1313,41 +1675,59 @@ dissolve_opakhasia_effect = {
 }
 
 dissolve_aironoi_effect = {
-	title:k_hyrea = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_asiupoliox }
+	title:k_hyrea = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_asiupoliox }
 	}
-	title:k_kalliados = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_asiupoliox }
+	title:k_kalliados = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_asiupoliox }
 	}
-	title:k_kteumaxa = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_asiupoliox }
+	title:k_kteumaxa = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_asiupoliox }
 	}
-	title:k_arderwan = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_olteneria }
+	title:k_arderwan = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_olteneria }
 	}
-	title:k_muthathk = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_olteneria }
+	title:k_muthathk = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_olteneria }
 	}
-	title:k_ijardigarrn = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_redlands }
+	title:k_ijardigarrn = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_redlands }
 	}
-	title:k_dethskel = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_redlands }
+	title:k_dethskel = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_redlands }
 	}
-	title:k_krehejad = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_krehejad }
+	title:k_krehejad = {
+		transfer_to_new_de_jure_if_not_controlled_cleanup_immunity_effect = { NEW_DE_JURE_LIEGE = title:e_krehejad }
 	}
-	title:k_taykovi = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_anokryosae }
+	title:k_taykovi = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_anokryosae }
 	}
-	title:k_arbaz = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_anokryosae }
+	title:k_arbaz = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_anokryosae }
 	}
-	title:k_aryvann_vos = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_anokryosae }
+	title:k_aryvann_vos = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_anokryosae }
 	}
-	title:k_dartar = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_muwagahn }
+	title:k_dartar = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_muwagahn }
 	}
-	title:k_anthygal = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_kosiros}
+	title:k_anthygal = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_kosiros }
 	}
-	title:k_chvor = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_kosiros}
+	title:k_chvor = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_kosiros }
 	}
-	title:k_svatavego = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_amaghea}
+	title:k_svatavego = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_amaghea }
 	}
-	title:k_coluehis = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_amaghea}
+	title:k_coluehis = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_amaghea }
 	}
-	title:k_svanti = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_amaghea}
+	title:k_svanti = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_amaghea }
 	}
-	title:k_imrezstav = { aironoi_dejure_injector_effect = { NEW_DE_JURE_LIEGE = title:e_amaghea}
+	title:k_imrezstav = {
+		transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = title:e_amaghea }
 	}
 	clear_rump_dissolution_empires_effect = { DEFAULT_DE_JURE_LIEGE = title:e_aironoi }
 }
@@ -1887,7 +2267,7 @@ sear_recipient_effect = { # Sarminian searing banishment method
 			modifier = seared_outcast_modifier
 			years = 10
 		}
-		add_character_flag = gh_no_headgear_strict
+		add_character_flag = no_headgear
 		custom_tooltip = searing_claim_loss_tooltip
 		banish = yes
 		blind_castrated_disfigured_recipient_support_effect = yes # Still applicable
@@ -1939,41 +2319,6 @@ decrease_divine_mission_penalties_effect = {
 	add_piety = medium_piety_gain
 }
 
-gh_setup_otachedian_governor_character_effect = { # Setup the Rishiran Integrity Trait Track for the Governor Trait
-	hidden_effect = {
-		if = {
-			limit = {
-				culture = { has_cultural_parameter = unlocks_otachedian_governor_trait_track }
-				OR = {
-					is_ruler = yes
-					has_trait = governor
-				}
-				is_adult = yes
-				NOT = { has_character_flag = gh_otachedian_governor_xp_set }
-			}
-			add_character_flag = gh_otachedian_governor_xp_set
-			if = {
-				limit = { NOT = { has_trait = governor } }
-				add_trait = governor
-			}
-			if = {
-				limit = {
-					has_trait_xp = {
-						trait = governor
-						track = otachedian_governor
-						value = 0
-					}
-				}
-				add_trait_xp = {
-					trait = governor
-					track = otachedian_governor
-					value = gh_otachedian_governor_xp_setup_value
-				}
-			}
-		}
-	}
-}
-
 fix_variable_error = {
     save_scope_as = $ERROR$ 
     add_to_list = $ERROR$ 
@@ -1984,11 +2329,3 @@ fix_variable_error = {
     if = {limit = {OR = {has_character_flag = $ERROR$ var:$ERROR$ = flag:$ERROR$}} remove_variable = $ERROR$ remove_global_variable = $ERROR$}
 }
 
-aironoi_dejure_injector_effect = {    
-    if = {    
-        limit = {
-            target_is_de_jure_liege_or_above = title:e_aironoi 
-        }
-        transfer_to_new_de_jure_if_not_controlled_effect = { NEW_DE_JURE_LIEGE = $NEW_DE_JURE_LIEGE$ }
-    }
-}

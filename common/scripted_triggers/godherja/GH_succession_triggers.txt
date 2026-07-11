@@ -13,11 +13,11 @@ can_keep_amsari_succession_law_trigger = {
 		limit = {
 			has_realm_law = amsari_succession_law
 		}
-		can_have_amsari_hiklahn_succession_law_trigger = yes
+		can_have_amsari_succession_law_trigger = yes
 	}
 }
 
-can_have_amsari_hiklahn_succession_law_trigger = {
+can_have_amsari_succession_law_trigger = {
 	custom_description = {
 		text = succession_laws_must_have_hereditary_government_tooltip
 		OR = {
@@ -27,7 +27,7 @@ can_have_amsari_hiklahn_succession_law_trigger = {
 		}
 	}
 	custom_description = {
-		text = succession_laws_must_be_amsari_hiklahn_tooltip
+		text = succession_laws_must_be_amsari_tooltip
 		OR = {
 			culture = { has_cultural_pillar = heritage_zarasadari }
 			has_religion = religion:amsari_religion
@@ -69,11 +69,7 @@ can_have_lichdom_succession_law_trigger = {
 }
 
 can_have_wasteland_succession_law_trigger = {
-	OR = {
-		government_has_flag = government_is_wasteland
-		has_culture = culture:wasteland
-		has_faith = faith:wasteland_faith
-	}
+	government_has_flag = government_is_wasteland
 }
 
 can_have_administrative_bureaucracy_succession_law_trigger = {

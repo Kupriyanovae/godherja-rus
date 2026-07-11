@@ -131,12 +131,6 @@ steward_collect_taxes_scale_tooltip_total = {
 		}
 		add = steward_collect_taxes_consulted_house_bonus_scale
 	}
-	if = {
-		limit = {
-			scope:councillor_liege.culture = { has_cultural_parameter = bookkeeping_collect_taxes_bonus }
-		}
-		add = 10
-	}
 }
 
 steward_collect_taxes_total_scale = {
@@ -694,34 +688,6 @@ steward_promote_culture_contextual_bonuses = {
 			desc = STEWARD_PROMOTE_CULTURE_RESTORING_ASTILIK_EMPIRE
 		}
 	}
-	if = { ## GH ADDITION: Great Tarrafent
-		limit = {
-			scope:councillor_liege.culture = { has_cultural_pillar = heritage_marmaladid }
-			exists = scope:county
-			scope:county = {
-				has_county_modifier = reform_great_tarrafent_culture_modifier
-				culture = { NOT = { has_cultural_pillar = heritage_marmaladid } }
-			}
-		}
-		add = {
-			value = 75
-			desc = STEWARD_PROMOTE_CULTURE_RESTORED_GREAT_TARRAFENT
-		}
-	}
-	if = { ## GH ADDITION: Resurgence of the Agadari
-	limit = {
-		scope:councillor_liege.culture = { has_cultural_pillar = heritage_agadari }
-		exists = scope:county
-		scope:county = {
-			has_county_modifier = agadari_resurgence_culture_modifier
-			culture = { NOT = { has_cultural_pillar = heritage_agadari } }
-		}
-	}
-	add = {
-		value = promote_culture_agadari_resurgence_bonus
-		desc = STEWARD_PROMOTE_CULTURE_AGADARI_RESURGENCE
-	}
-}
 	# Events
 	if = {
 		limit = {
@@ -871,11 +837,6 @@ promote_culture_restored_astilik_empire_bonus = { ## GH ADDITION: Restoration of
 	multiply = 0.75
 }
 
-promote_culture_agadari_resurgence_bonus = { ## GH ADDITION: Resurgence of the Agadari
-value = steward_promote_culture_base_total
-multiply = 0.75
-}
-
 steward_promote_culture_erudition_bonus_monthly_increase = {
 	value = steward_promote_culture_base_total
 	multiply = {
@@ -908,12 +869,6 @@ promote_culture_local_traditions_respected_penalty = {
 	value = 0
 	add = steward_promote_culture_base_total
 	multiply = -0.75
-}
-
-promote_culture_defiant_ambushers_penalty = {
-	value = 0
-	add = steward_promote_culture_base_total
-	multiply = -0.5
 }
 
 promote_culture_shuubiyya_penalty = {
@@ -1153,7 +1108,7 @@ steward_accept_culture_yearly_increase_independent_bonus = {
 	if = {
 		limit = {
 			scope:councillor_liege = {
-				top_liege = this
+				is_independent_ruler = yes
 			}
 		}
 		add = {

@@ -15,7 +15,7 @@
 		template = gh_helmet_black_sun_template
 		history = {
 			type = created
-			date = 6251.1.1
+			date = 1251.1.1
 			actor = character:apokiakas_aversarinas_aagiokratia_23
 			recipient = character:apokiakas_aversarinas_aagiokratia_23 # Nicanoneus
 			location = province:3249	# Dethiclos
@@ -53,7 +53,7 @@ create_artifact_gh_armor_black_sun_effect = {
 		template = gh_armor_black_sun_template
 		history = {
 			type = created
-			date = 6251.1.1
+			date = 1251.1.1
 			actor = character:apokiakas_aversarinas_aagiokratia_23
 			recipient = character:apokiakas_aversarinas_aagiokratia_23 # Nicanoneus
 			location = province:3249	# Dethiclos
@@ -91,7 +91,7 @@ create_artifact_gh_helmet_skull_helmet_effect = {
 		template = gh_helmet_skull_helmet_template
 		history = {
 			type = created
-			date = 6245.1.1
+			date = 1245.1.1
 			actor = character:southernimperial_aversarian_gorassos_1
 			recipient = character:southernimperial_aversarian_gorassos_1 # Gorassos
 			location = province:4156 # Tylai
@@ -108,7 +108,6 @@ create_artifact_gh_helmet_skull_helmet_effect = {
 			value = yes
 		}
 		save_scope_as = epic
-		set_variable = artifact_skull # It technically is
 	}
 }
 
@@ -128,7 +127,7 @@ create_artifact_broken_crown_effect_1 = {
 		quality = scope:quality
 		history = {
 			type = created
-			date = 6253.8.12
+			date = 1253.8.12
 			recipient = character:voyagen_lifepath_7
 			location = province:1346
 			actor = character:voyagen_lifepath_1
@@ -159,7 +158,7 @@ create_artifact_broken_crown_effect_2 = {
 		quality = scope:quality
 		history = {
 			type = created
-			date = 6253.8.12
+			date = 1253.8.12
 			recipient = character:voyagen_lifepath_8
 			location = province:1346
 			actor = character:voyagen_lifepath_1
@@ -190,7 +189,7 @@ create_artifact_broken_crown_effect_3 = {
 		quality = scope:quality
 		history = {
 			type = created
-			date = 6253.8.12
+			date = 1253.8.12
 			recipient = character:voyagen_lifepath_9
 			location = province:1346
 			actor = character:voyagen_lifepath_1
@@ -221,8 +220,8 @@ create_artifact_broken_crown_effect_4 = {
 		quality = scope:quality
 		history = {
 			type = created
-			date = 6253.8.12
-			recipient = character:salisian_lifepath_1
+			date = 1253.8.12
+			recipient = character:salisians_lifepath_1
 			location = province:1346
 			actor = character:voyagen_lifepath_1
 		}
@@ -281,7 +280,7 @@ create_artifact_seignon_family_sword_effect = {
 		}
         #history = {
         #	type = created
-        #	date = 6253.8.12
+        #	date = 1253.8.12
         #	recipient = character:voyagen_lifepath_8
         #	location = province:1346
         #	actor = character:voyagen_lifepath_1
@@ -296,74 +295,74 @@ create_artifact_seignon_family_sword_effect = {
     }
 
     scope:newly_created_artifact = {
-		#equip_artifact_to_owner = yes #cause an error
+		equip_artifact_to_owner = yes
     	save_scope_as = seignon_family_sword
     	set_variable = { name = historical_unique_artifact value = yes }
 		add_artifact_history = {
 			type = discovered
-			date = 5900.1.1
+			date = 900.1.1
 			location = province:1346
 			recipient = character:voyagen_lifepath_45
 			actor = character:voyagen_lifepath_45 #Credon
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 5924.12.4
+			date = 924.12.4
 			recipient = character:voyagen_lifepath_39 #Gardfrei (the first)
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 5934.5.6
+			date = 934.5.6
 			recipient = character:voyagen_lifepath_40 #Rodald
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 5962.4.12
+			date = 962.4.12
 			recipient = character:voyagen_lifepath_52 #Jaqaume
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6000.12.23
+			date = 1000.12.23
 			recipient = character:voyagen_lifepath_54 #Budouil
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6060.2.15
+			date = 1060.2.15
 			recipient = character:voyagen_lifepath_55 #Ludoin
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6080.7.20
+			date = 1080.7.20
 			recipient = character:voyagen_lifepath_56 #Leuhard
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6095.2.28
+			date = 1095.2.28
 			recipient = character:voyagen_lifepath_25 #Averd
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6140.3.25
+			date = 1140.3.25
 			recipient = character:voyagen_lifepath_24 #Kierre
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6166.7.21
+			date = 1166.7.21
 			recipient = character:voyagen_lifepath_23 #Chrysé
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6199.9.26
+			date = 1199.9.26
 			recipient = character:voyagen_lifepath_22 #Dendon
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6217.4.12
+			date = 1217.4.12
 			recipient = character:voyagen_lifepath_1 #Gardfrei
 		}
 		add_artifact_history = {
 			type = given
-			date = 6253.11.12
+			date = 1253.11.12
 			recipient = character:voyagen_lifepath_8 #Réné
 		}
     }
@@ -384,7 +383,7 @@ create_artifact_sword_of_eos_effect = {
 		quality = scope:quality
 		history = {
 			type = created
-			date = 6088.8.3
+			date = 1088.8.3
 			recipient = character:centralimperial_aversarinas_aagiokrata_60
 			location = province:877
 		}
@@ -411,45 +410,17 @@ create_artifact_sword_of_eos_effect = {
 		set_artifact_description = artifact_swordofeos_battle_desc
 		#add_artifact_history = {
 		#	type = inherited
-		#	date = 6185.7.13
+		#	date = 1185.7.13
 		#	recipient = character:makryenis_eos_2
 		#}
 		#add_artifact_history = {
 		#	type = inherited
-		#	date = 6253.12.27
+		#	date = 1253.12.27
 		#	recipient = character:makryenis_eos_1
 		#}
 		save_scope_as = epic
 	}
 }
-
-create_artifact_pale_rider_mask_effect = {
-	$OWNER$ = { save_scope_as = owner }
-	set_artifact_rarity_illustrious = yes
-
-	create_artifact = {
-		name = artifact_pale_rider_mask_name
-		description = artifact_pale_rider_mask_desc
-		visuals = gh_jajak_mask_visuals #would love to have a custom looking one but this is the closest for now
-		type = helmet
-		history = {
-			type = created_before_history
-		}
-		wealth = scope:wealth
-		quality = scope:quality
-		decaying = no
-		template = pale_rider_mask_template
-		modifier = artifact_pale_rider_mask_modifier
-		save_scope_as = newly_created_artifact
-	}
-
-	scope:newly_created_artifact = {
-		set_variable = { name = historical_unique_artifact value = yes }
-		set_variable = pale_rider_mask
-		save_scope_as = epic
-	}
-}
-
 
 # Maria Den va Theydia's Blade
 create_artifact_marias_blade_effect = {
@@ -464,7 +435,7 @@ create_artifact_marias_blade_effect = {
 		visuals = sword
 		history = {
 			type = created
-			date = 6160.6.18
+			date = 1160.6.18
 			actor = character:voyagen_lifepath_59
 			recipient = character:voyagen_lifepath_58
 			location = province:1363 # Mirecourt
@@ -573,114 +544,114 @@ create_artifact_sword_of_soter_effect = {
 		add_artifact_aspect_modifier_effect = { NAME = fire VALUE = 2 }
 		add_artifact_history = {
 			type = inherited
-			date = 5253.1.2
+			date = 253.1.2
 			recipient = character:westernimperial_aversarinas_aagiokrata_119 #Maklea
 		}
 		# GH TODO: Fill in history between these two dates
 		add_artifact_history = {
 			type = inherited
-			date = 5347.7.13
+			date = 347.7.13
 			recipient = character:westernimperial_aversarinas_aagiokrata_111 #Pathos
 		}
 		# GH TODO: Fill in history between these two dates
 		add_artifact_history = {
 			type = inherited
-			date = 5439.5.4
+			date = 439.5.4
 			recipient = character:westernimperial_aversarinas_aagiokrata_500 #Aeliadias
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 5599.10.25
+			date = 599.10.25
 			recipient = character:southernimperial_aversarinas_aagiokrata_133 #Aeladaxos 'the Child Aautokratir'
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 5618.4.17
+			date = 618.4.17
 			recipient = character:centralimperial_aversarinas_aagiokrata_33 #Kethemodes
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 5618.4.17
+			date = 618.4.17
 			recipient = character:centralimperial_aversarinas_aagiokrata_33 #Kethemodes
 		}
 		add_artifact_history = {
 			type = taken_in_battle
-			date = 5645.6.26
+			date = 645.6.26
 			actor = character:centralimperial_aversarinas_aagiokrata_33
 			recipient = character:unsorted_48	# Last Imperator
 			location = province:3572
 		}
 		add_artifact_history = {
 			type = discovered
-			date = 5793.1.2
+			date = 793.1.2
 			actor = character:southernimperial_aversarinas_aagiokrata_1
 			recipient = character:southernimperial_aversarinas_aagiokrata_1	# Theyssia
 			location = province:6132
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 5892.3.17
+			date = 892.3.17
 			recipient = character:northernimperial_aversarinas_aagiokrata_2 #Mythix
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 5901.1.12
+			date = 901.1.12
 			recipient = character:westernimperial_aversarinas_aagiokrata_84 #Nothyx
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 5949.7.17
+			date = 949.7.17
 			recipient = character:westernimperial_aversarinas_aagiokrata_116 #Oliatos
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 5952.4.3
+			date = 952.4.3
 			recipient = character:westernimperial_aversarinas_aagiokrata_115 #Clytomedes
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 5954.4.3
+			date = 954.4.3
 			recipient = character:westernimperial_aversarinas_aagiokrata_114 #Alcandrea
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 5987.4.3
+			date = 987.4.3
 			recipient = character:westernimperial_aversarinas_aagiokrata_113 #Isocrates
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6025.5.5
+			date = 1025.5.5
 			recipient = character:northernimperial_aversarinas_aagiokrata_41 #Exaduis
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6076.7.13
+			date = 1076.7.13
 			recipient = character:westernimperial_aversarinas_aagiokrata_82 #Phancis
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6099.3.14
+			date = 1099.3.14
 			recipient = character:westernimperial_aversarinas_aagiokrata_81 #Biton
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6117.2.12
+			date = 1117.2.12
 			recipient = character:westernimperial_aversarinas_aagiokrata_80 #Maeonias
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6120.3.14
+			date = 1120.3.14
 			recipient = character:westernimperial_aversarinas_aagiokrata_79 #Maeonias
 		}
 		# GH TODO: Fill in history between these two dates
 		add_artifact_history = {
 			type = inherited
-			date = 6181.4.14
+			date = 1181.4.14
 			recipient = character:centralimperial_aversarinas_aagiokrata_45 #Anesimasios
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6186.2.14
+			date = 1186.2.14
 			recipient = character:easternimperial_aversarian_axiaotheaism_1 #Axiaothea
 		}
     }
@@ -779,22 +750,22 @@ create_artifact_talavara_effect = {
 		set_variable = talavara
 		add_artifact_history = {
 			type = inherited
-			date = 6194.4.16
+			date = 1194.4.16
 			recipient = character:rahikaya_vidvaookeyatra_1
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6226.6.9
+			date = 1226.6.9
 			recipient = character:rahikaya_vidvaookeyatra_7
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6230.1.9
+			date = 1230.1.9
 			recipient = character:rahikaya_vidvaookeyatra_11
 		}
 		add_artifact_history = {
 			type = stolen
-			date = 6231.4.6
+			date = 1231.4.6
 			recipient = character:xokola_vidvaookeyatra_2
 		}
 
@@ -947,12 +918,12 @@ create_artifact_skull_of_axiaothea_effect = {
 		name = artifact_skullofaxiaothea_name
 		description = artifact_skullofaxiaothea_desc
 		type = skull
-		visuals = human_skull
+		visuals = skull_visuals
 		wealth = scope:wealth
 		quality = scope:quality
 		history = {
 			type = created
-			date = 6204.4.5
+			date = 1204.4.5
 			actor = character:southernimperial_aversarian_gorassos_1
 			recipient = character:southernimperial_aversarian_gorassos_1
 			location = province:4467
@@ -967,11 +938,6 @@ create_artifact_skull_of_axiaothea_effect = {
 		set_variable = { name = historical_unique_artifact value = yes }
 		set_variable = skull_axiaothea
 		save_scope_as = skull_axiaothea
-		set_variable = artifact_skull
-		set_variable = {
-			name = skull_donor
-			value = scope:axiaothea
-		}
 	}
 }
 
@@ -984,12 +950,12 @@ create_artifact_skull_delenel_effect = {
 		name = artifact_karthynskull_name
 		description = artifact_karthynskull_desc
 		type = skull
-		visuals = human_skull
+		visuals = skull_visuals
 		wealth = scope:wealth
 		quality = scope:quality
 		history = {
 			type = created
-			date = 6229.12.12
+			date = 1229.12.12
 			actor = character:centralimperial_aeschraes_aagiokrata_1
 			recipient = character:southernimperial_aversarian_gorassos_1
 			location = province:4467
@@ -1004,11 +970,6 @@ create_artifact_skull_delenel_effect = {
 		set_variable = { name = historical_unique_artifact value = yes }
 		set_variable = skull_delenel
 		save_scope_as = skull_delenel
-		set_variable = artifact_skull
-		set_variable = {
-			name = skull_donor
-			value = scope:delenel
-		}
 	}
 }
 
@@ -1020,7 +981,7 @@ create_artifact_talking_skull_effect = {
 		name = artifact_strangetalkingskull_name
 		description = artifact_strangetalkingskull_desc
 		type = skull
-		visuals = human_skull
+		visuals = skull_visuals
 		wealth = scope:wealth
 		quality = scope:quality
 		history = {
@@ -1035,11 +996,6 @@ create_artifact_talking_skull_effect = {
 		set_variable = { name = historical_unique_artifact value = yes }
 		set_variable = talking_skull
 		save_scope_as = epic
-		set_variable = artifact_skull
-		#set_variable = {
-		#	name = skull_donor
-		#	value = yes
-		#}
 	}
 }
 
@@ -1051,7 +1007,7 @@ create_artifact_whispering_skull_effect = {
 		name = artifact_whisperingskull_name
 		description = artifact_whisperingskull_desc
 		type = skull
-		visuals = human_skull
+		visuals = skull_visuals
 		wealth = scope:wealth
 		quality = scope:quality
 		history = {
@@ -1065,11 +1021,6 @@ create_artifact_whispering_skull_effect = {
 	scope:newly_created_artifact = {
 		set_variable = { name = historical_unique_artifact value = yes }
 		save_scope_as = epic
-		set_variable = artifact_skull
-		#set_variable = {
-		#	name = skull_donor
-		#	value = yes
-		#}
 	}
 }
 
@@ -1081,7 +1032,7 @@ create_artifact_ancient_skull_effect = {
 		name = artifact_skullofanancient_name
 		description = artifact_skullofanancient_desc
 		type = skull
-		visuals = human_skull
+		visuals = skull_visuals
 		wealth = scope:wealth
 		quality = scope:quality
 		history = {
@@ -1095,11 +1046,6 @@ create_artifact_ancient_skull_effect = {
 	scope:newly_created_artifact = {
 		set_variable = { name = historical_unique_artifact value = yes }
 		save_scope_as = epic
-		set_variable = artifact_skull
-		#set_variable = {
-		#	name = skull_donor
-		#	value = yes
-		#}
 	}
 }
 
@@ -1112,12 +1058,12 @@ create_artifact_skullofpridni_effect = {
 		name = artifact_skullofpridni_name
 		description = artifact_skullofpridni_desc
 		type = skull
-		visuals = human_skull
+		visuals = skull_visuals
 		wealth = scope:wealth
 		quality = scope:quality
 		history = {
 			type = created
-			date = 6230.10.27
+			date = 1230.10.27
 			actor = character:southernimperial_aversarian_gorassos_1
 			recipient = character:southernimperial_aversarian_gorassos_1
 			location = province:4053
@@ -1132,11 +1078,6 @@ create_artifact_skullofpridni_effect = {
 		set_variable = { name = historical_unique_artifact value = yes }
 		set_variable = skullofpridni
 		save_scope_as = skullofpridni
-		set_variable = artifact_skull
-		set_variable = {
-			name = skull_donor
-			value = scope:pridni
-		}
 	}
 }
 
@@ -1149,12 +1090,12 @@ create_artifact_skullofduvaken_effect = {
 		name = artifact_skullofduvaken_name
 		description = artifact_skullofduvaken_desc
 		type = skull
-		visuals = human_skull
+		visuals = skull_visuals
 		wealth = scope:wealth
 		quality = scope:quality
 		history = {
 			type = created
-			date = 6230.10.27
+			date = 1230.10.27
 			actor = character:southernimperial_aversarian_gorassos_1
 			recipient = character:southernimperial_aversarian_gorassos_1
 			location = province:4053
@@ -1169,11 +1110,6 @@ create_artifact_skullofduvaken_effect = {
 		set_variable = { name = historical_unique_artifact value = yes }
 		set_variable = skullofduvaken
 		save_scope_as = skullofduvaken
-		set_variable = artifact_skull
-		set_variable = {
-			name = skull_donor
-			value = scope:duvaken
-		}
 	}
 }
 
@@ -1230,7 +1166,7 @@ create_artifact_aversarian_crown_base_effect = {
 	    decaying = no
 	    history = {
 	    	type = created
-	    	date = 5045.1.1
+	    	date = 45.1.1
 	    	actor = character:aelarvisian_aerasodiax_1
 	    	recipient = character:aelarvisian_aerasodiax_1 
 	    	location = province:1791
@@ -1247,165 +1183,170 @@ create_artifact_aversarian_crown_base_effect = {
 		set_variable = aversarian_crown_base
 	    save_scope_as = aversarian_crown_1
 
+	    #add_artifact_history = {
+	    #     type = inherited
+	    #     date = 0.1.1
+	    #     recipient = character:aelarvisian_aerasodiax_1
+	    # }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5064.11.12
+	        date = 64.11.12
 	        recipient = character:aelarvisian_aerasodiax_3
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5086.3.1
+	        date = 86.3.1
 	        recipient = character:aelarvisian_aerasodiax_4
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5093.11.14
+	        date = 93.11.14
 	        recipient = character:aelarvisian_aversarinas_aagiokrata_1
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5132.7.11
+	        date = 132.7.11
 	        recipient = character:aelarvisian_aerasodiax_5
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5151.2.1
+	        date = 151.2.1
 	        recipient = character:aeviaxian_aerasodiax_1
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5170.7.11
+	        date = 170.7.11
 	        recipient = character:aelarvisian_aversarinas_aagiokrata_3
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5188.4.21
+	        date = 188.4.21
 	        recipient = character:westernimperial_aversarinas_aagiokrata_1
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5210.3.14
+	        date = 210.3.14
 	        recipient = character:westernimperial_aversarinas_aagiokrata_118
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5243.3.3
+	        date = 243.3.3
 	        recipient = character:westernimperial_aversarinas_aagiokrata_119
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5348.7.13
+	        date = 348.7.13
 	        recipient = character:westernimperial_aversarinas_aagiokrata_111
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5439.5.4
+	        date = 439.5.4
 	        recipient = character:westernimperial_aversarinas_aagiokrata_500
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5610.12.1
+	        date = 610.12.1
 	        recipient = character:centralimperial_aversarinas_aagiokrata_33
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5725.5.29
+	        date = 725.5.29
 	        recipient = character:centralimperial_aversarinas_aagiokrata_64
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5756.10.3
+	        date = 756.10.3
 	        recipient = character:southernimperial_aversarinas_aagiokrata_1
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5892.3.17
+	        date = 892.3.17
 	        recipient = character:northernimperial_aversarinas_aagiokrata_2
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5901.1.12
+	        date = 901.1.12
 	        recipient = character:westernimperial_aversarinas_aagiokrata_84
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5949.7.17
+	        date = 949.7.17
 	        recipient = character:westernimperial_aversarinas_aagiokrata_116
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5952.4.3
+	        date = 952.4.3
 	        recipient = character:westernimperial_aversarinas_aagiokrata_115
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5954.4.3
+	        date = 954.4.3
 	        recipient = character:westernimperial_aversarinas_aagiokrata_114
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5987.4.3
+	        date = 987.4.3
 	        recipient = character:westernimperial_aversarinas_aagiokrata_113
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6001.4.3
+	        date = 1001.4.3
 	        recipient = character:northernimperial_aversarinas_aagiokrata_41
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6025.5.5
+	        date = 1025.5.5
 	        recipient = character:westernimperial_aversarinas_aagiokrata_82
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6099.3.14
+	        date = 1099.3.14
 	        recipient = character:westernimperial_aversarinas_aagiokrata_81
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6117.2.12
+	        date = 1117.2.12
 	        recipient = character:westernimperial_aversarinas_aagiokrata_80
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6120.3.14
+	        date = 1120.3.14
 	        recipient = character:westernimperial_aversarinas_aagiokrata_79
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6172.3.14
+	        date = 1172.3.14
 	        recipient = character:apokiakas_aversarinas_aagiokratia_22
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6175.11.28
+	        date = 1175.11.28
 	        recipient = character:easternimperial_aversarinas_aagiokrata_89
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6177.7.17
+	        date = 1177.7.17
 	        recipient = character:westernimperial_aversarinas_aagiokrata_78
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6179.1.12
+	        date = 1179.1.12
 	        recipient = character:westernimperial_aversarinas_aagiokrata_77
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6181.4.14
+	        date = 1181.4.14
 	        recipient = character:centralimperial_aversarinas_aagiokrata_45
 	    }
 	    add_artifact_history = {
 	    	type = inherited
-	    	date = 6186.2.14
+	    	date = 1186.2.14
 	    	actor = character:centralimperial_aversarinas_aagiokrata_45
 	    	recipient = character:westernimperial_aeschraes_aagiokrata_1
 	    }
 	    add_artifact_history = {
 	    	type = stolen
-	    	date = 6229.12.12
+	    	date = 1229.12.12
 	    	recipient = character:westernimperial_aversarinas_aagiokrata_250
 	    }
 	}
@@ -1460,7 +1401,7 @@ create_artifact_aversarian_crown_dragonveil_effect = {
 	    wealth = scope:wealth
 	    quality = scope:quality
 	    decaying = no
-	    template = gh_aversarian_crown_dragonveil_template
+	    template = gh_aversarian_crown_dragonveil__template
 	    modifier = artifact_monthly_prestige_5_modifier
 	    modifier = artifact_domain_tax_same_faith_mult_2_modifier
 	    save_scope_as = newly_created_artifact
@@ -1474,117 +1415,117 @@ create_artifact_aversarian_crown_dragonveil_effect = {
 
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5064.11.12
+	        date = 64.11.12
 	        recipient = character:aelarvisian_aerasodiax_3
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5086.3.1
+	        date = 86.3.1
 	        recipient = character:aelarvisian_aerasodiax_4
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5093.11.14
+	        date = 93.11.14
 	        recipient = character:aelarvisian_aversarinas_aagiokrata_1
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5132.7.11
+	        date = 132.7.11
 	        recipient = character:aelarvisian_aerasodiax_5
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5151.2.1
+	        date = 151.2.1
 	        recipient = character:aeviaxian_aerasodiax_1
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5170.7.11
+	        date = 170.7.11
 	        recipient = character:aelarvisian_aversarinas_aagiokrata_3
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5188.4.21
+	        date = 188.4.21
 	        recipient = character:westernimperial_aversarinas_aagiokrata_1
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5210.3.14
+	        date = 210.3.14
 	        recipient = character:westernimperial_aversarinas_aagiokrata_118
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5243.3.3
+	        date = 243.3.3
 	        recipient = character:westernimperial_aversarinas_aagiokrata_119
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5348.7.13
+	        date = 348.7.13
 	        recipient = character:westernimperial_aversarinas_aagiokrata_111
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5439.5.4
+	        date = 439.5.4
 	        recipient = character:westernimperial_aversarinas_aagiokrata_500
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5610.12.1
+	        date = 610.12.1
 	        recipient = character:centralimperial_aversarinas_aagiokrata_33
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5725.5.29
+	        date = 725.5.29
 	        recipient = character:centralimperial_aversarinas_aagiokrata_64
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5756.10.3
+	        date = 756.10.3
 	        recipient = character:southernimperial_aversarinas_aagiokrata_1
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5892.3.17
+	        date = 892.3.17
 	        recipient = character:northernimperial_aversarinas_aagiokrata_2
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5901.1.12
+	        date = 901.1.12
 	        recipient = character:westernimperial_aversarinas_aagiokrata_84
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5949.7.17
+	        date = 949.7.17
 	        recipient = character:westernimperial_aversarinas_aagiokrata_116
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5952.4.3
+	        date = 952.4.3
 	        recipient = character:westernimperial_aversarinas_aagiokrata_115
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5954.4.3
+	        date = 954.4.3
 	        recipient = character:westernimperial_aversarinas_aagiokrata_114
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5987.4.3
+	        date = 987.4.3
 	        recipient = character:westernimperial_aversarinas_aagiokrata_113
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6001.4.3
+	        date = 1001.4.3
 	        recipient = character:northernimperial_aversarinas_aagiokrata_41
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6025.5.5
+	        date = 1025.5.5
 	        recipient = character:westernimperial_aversarinas_aagiokrata_82
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6099.3.14
+	        date = 1099.3.14
 	        recipient = character:westernimperial_aversarinas_aagiokrata_81
 	    } 
 	}
@@ -1654,132 +1595,132 @@ create_artifact_aversarian_crown_diamond_effect = {
 
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5064.11.12
+	        date = 64.11.12
 	        recipient = character:aelarvisian_aerasodiax_3
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5086.3.1
+	        date = 86.3.1
 	        recipient = character:aelarvisian_aerasodiax_4
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5093.11.14
+	        date = 93.11.14
 	        recipient = character:aelarvisian_aversarinas_aagiokrata_1
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5132.7.11
+	        date = 132.7.11
 	        recipient = character:aelarvisian_aerasodiax_5
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5151.2.1
+	        date = 151.2.1
 	        recipient = character:aeviaxian_aerasodiax_1
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5170.7.11
+	        date = 170.7.11
 	        recipient = character:aelarvisian_aversarinas_aagiokrata_3
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5188.4.21
+	        date = 188.4.21
 	        recipient = character:westernimperial_aversarinas_aagiokrata_1
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5210.3.14
+	        date = 210.3.14
 	        recipient = character:westernimperial_aversarinas_aagiokrata_118
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5243.3.3
+	        date = 243.3.3
 	        recipient = character:westernimperial_aversarinas_aagiokrata_119
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5348.7.13
+	        date = 348.7.13
 	        recipient = character:westernimperial_aversarinas_aagiokrata_111
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5439.5.4
+	        date = 439.5.4
 	        recipient = character:westernimperial_aversarinas_aagiokrata_500
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5610.12.1
+	        date = 610.12.1
 	        recipient = character:centralimperial_aversarinas_aagiokrata_33
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5725.5.29
+	        date = 725.5.29
 	        recipient = character:centralimperial_aversarinas_aagiokrata_64
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5756.10.3
+	        date = 756.10.3
 	        recipient = character:southernimperial_aversarinas_aagiokrata_1
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5892.3.17
+	        date = 892.3.17
 	        recipient = character:northernimperial_aversarinas_aagiokrata_2
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5901.1.12
+	        date = 901.1.12
 	        recipient = character:westernimperial_aversarinas_aagiokrata_84
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5949.7.17
+	        date = 949.7.17
 	        recipient = character:westernimperial_aversarinas_aagiokrata_116
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5952.4.3
+	        date = 952.4.3
 	        recipient = character:westernimperial_aversarinas_aagiokrata_115
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5954.4.3
+	        date = 954.4.3
 	        recipient = character:westernimperial_aversarinas_aagiokrata_114
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5987.4.3
+	        date = 987.4.3
 	        recipient = character:westernimperial_aversarinas_aagiokrata_113
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6001.4.3
+	        date = 1001.4.3
 	        recipient = character:northernimperial_aversarinas_aagiokrata_41
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6025.5.5
+	        date = 1025.5.5
 	        recipient = character:westernimperial_aversarinas_aagiokrata_82
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6099.3.14
+	        date = 1099.3.14
 	        recipient = character:westernimperial_aversarinas_aagiokrata_81
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6117.2.12
+	        date = 1117.2.12
 	        recipient = character:westernimperial_aversarinas_aagiokrata_80
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6120.3.14
+	        date = 1120.3.14
 	        recipient = character:westernimperial_aversarinas_aagiokrata_79
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 6172.3.14
+	        date = 1172.3.14
 	        recipient = character:apokiakas_aversarinas_aagiokratia_22
 	    }	    
 	}
@@ -1821,117 +1762,117 @@ create_artifact_aversarian_crown_effect = {
 
         add_artifact_history = {
             type = inherited
-            date = 5064.11.12
+            date = 64.11.12
             recipient = character:aelarvisian_aerasodiax_3
         }
         add_artifact_history = {
             type = inherited
-            date = 5086.3.1
+            date = 86.3.1
             recipient = character:aelarvisian_aerasodiax_4
         }
         add_artifact_history = {
             type = inherited
-            date = 5093.11.14
+            date = 93.11.14
             recipient = character:aelarvisian_aversarinas_aagiokrata_1
         }
         add_artifact_history = {
             type = inherited
-            date = 5132.7.11
+            date = 132.7.11
             recipient = character:aelarvisian_aerasodiax_5
         }
         add_artifact_history = {
             type = inherited
-            date = 5151.2.1
+            date = 151.2.1
             recipient = character:aeviaxian_aerasodiax_1
         }
         add_artifact_history = {
             type = inherited
-            date = 5170.7.11
+            date = 170.7.11
             recipient = character:aelarvisian_aversarinas_aagiokrata_3
         }
         add_artifact_history = {
             type = inherited
-            date = 5188.4.21
+            date = 188.4.21
             recipient = character:westernimperial_aversarinas_aagiokrata_1
         }
         add_artifact_history = {
             type = inherited
-            date = 5210.3.14
+            date = 210.3.14
             recipient = character:westernimperial_aversarinas_aagiokrata_118
         }
         add_artifact_history = {
             type = inherited
-            date = 5243.3.3
+            date = 243.3.3
             recipient = character:westernimperial_aversarinas_aagiokrata_119
         }
         add_artifact_history = {
             type = inherited
-            date = 5348.7.13
+            date = 348.7.13
             recipient = character:westernimperial_aversarinas_aagiokrata_111
         }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5439.5.4
+	        date = 439.5.4
 	        recipient = character:westernimperial_aversarinas_aagiokrata_500
 	    }
 	    add_artifact_history = {
 	        type = inherited
-	        date = 5610.12.1
+	        date = 610.12.1
 	        recipient = character:centralimperial_aversarinas_aagiokrata_33
 	    }
         add_artifact_history = {
             type = inherited
-            date = 5725.5.29
+            date = 725.5.29
             recipient = character:centralimperial_aversarinas_aagiokrata_64
         }
         add_artifact_history = {
             type = inherited
-            date = 5756.10.3
+            date = 756.10.3
             recipient = character:southernimperial_aversarinas_aagiokrata_1
         }
         add_artifact_history = {
             type = inherited
-            date = 5892.3.17
+            date = 892.3.17
             recipient = character:northernimperial_aversarinas_aagiokrata_2
         }
         add_artifact_history = {
             type = inherited
-            date = 5901.1.12
+            date = 901.1.12
             recipient = character:westernimperial_aversarinas_aagiokrata_84
         }
         add_artifact_history = {
             type = inherited
-            date = 5949.7.17
+            date = 949.7.17
             recipient = character:westernimperial_aversarinas_aagiokrata_116
         }
         add_artifact_history = {
             type = inherited
-            date = 5952.4.3
+            date = 952.4.3
             recipient = character:westernimperial_aversarinas_aagiokrata_115
         }
         add_artifact_history = {
             type = inherited
-            date = 5954.4.3
+            date = 954.4.3
             recipient = character:westernimperial_aversarinas_aagiokrata_114
         }
         add_artifact_history = {
             type = inherited
-            date = 5987.4.3
+            date = 987.4.3
             recipient = character:westernimperial_aversarinas_aagiokrata_113
         }
         add_artifact_history = {
             type = inherited
-            date = 6001.4.3
+            date = 1001.4.3
             recipient = character:northernimperial_aversarinas_aagiokrata_41
         }
         add_artifact_history = {
             type = inherited
-            date = 6025.5.5
+            date = 1025.5.5
             recipient = character:westernimperial_aversarinas_aagiokrata_82
         }
         add_artifact_history = {
             type = inherited
-            date = 6099.3.14
+            date = 1099.3.14
             recipient = character:westernimperial_aversarinas_aagiokrata_81
         }
     }
@@ -2302,7 +2243,7 @@ create_artifact_necklace_of_the_baarilka_effect = {
 		save_scope_as = epic
 		add_artifact_history = {
 			type = inherited
-			date = 6251.3.14
+			date = 1251.3.14
 			recipient = character:kawoch_mogowai_9
 		}
 	}
@@ -2348,8 +2289,8 @@ create_artifact_skull_of_kayoba_effect = {
 	create_artifact = {	
 		name = artifact_skull_of_kayoba_name
 		description = artifact_skull_of_kayoba_description
-		visuals = human_skull
-		type = skull
+		visuals = skull_visuals
+		type = pedestal
 		template = general_unique_template
 		wealth = scope:wealth
 		quality = scope:quality
@@ -2365,11 +2306,6 @@ create_artifact_skull_of_kayoba_effect = {
 		set_variable = { name = historical_unique_artifact value = yes }
 		set_variable = skull_of_kayoba
 		save_scope_as = epic
-		set_variable = artifact_skull
-		#set_variable = {
-		#	name = skull_donor
-		#	value = scope:yes
-		#}
 	}
 }
 
@@ -3176,7 +3112,7 @@ create_artifact_spear_thaxaon_spear_effect = {
 		modifier = artifact_placeholder_modifier
 		history = {
 			type = created
-			date = 6067.7.11
+			date = 1067.7.11
 			actor = character:westernimperial_aversarinas_aagiokrata_8
 			recipient = character:westernimperial_aversarinas_aagiokrata_8
 		}
@@ -3201,22 +3137,22 @@ create_artifact_spear_thaxaon_spear_effect = {
 		set_artifact_description = artifact_spear_thaxaon_jaxor_desc
 		add_artifact_history = {
 			type = inherited
-			date = 6183.9.24
+			date = 1183.9.24
 			recipient = character:westernimperial_aversarinas_aagiokrata_14
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6200.3.1
+			date = 1200.3.1
 			recipient = character:westernimperial_aversarinas_aagiokrata_16
 		}
 		add_artifact_history = {
 			type = conquest
-			date = 6211.1.6
+			date = 1211.1.6
 			recipient = character:centralimperial_aeschraes_aagiokrata_1
 		}
 		add_artifact_history = {
 			type = stolen
-			date = 6229.12.12
+			date = 1229.12.12
 			recipient = character:southernimperial_aversarian_gorassos_1
 		}
 		save_scope_as = epic
@@ -3237,7 +3173,7 @@ create_artifact_glass_sword_effect = {
 		type = sword
 		history = {
 			type = created
-			date = 6177.9.30
+			date = 1177.9.30
 			actor = character:zelkavani_sunarwei_aagiokrata_1
 			recipient = character:zelkavani_sunarwei_aagiokrata_1
 			location = province:687
@@ -3266,17 +3202,17 @@ create_artifact_glass_sword_effect = {
 		set_artifact_description = artifact_glass_sword_xipheos_desc
 		add_artifact_history = {
 			type = conquest
-			date = 6199.8.26
+			date = 1199.8.26
 			recipient = character:easternimperial_aironoian_aagiokrata_27
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6200.2.27
+			date = 1200.2.27
 			recipient = character:easternimperial_aironoian_aagiokrata_15
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6244.10.12
+			date = 1244.10.12
 			recipient = character:easternimperial_aironoian_aagiokrata_3
 		}
 		save_scope_as = glass_sword
@@ -3297,7 +3233,7 @@ create_artifact_jajak_mask_effect = {
 		type = helmet
 		history = {
 			type = created
-			date = 6191.10.7
+			date = 1191.10.7
 			actor = character:kuridorig_iek_otached_1
 			recipient = character:kuridorig_iek_otached_1
 			location = province:1310 # Nugovi
@@ -3332,7 +3268,7 @@ create_artifact_dagun_mask_effect = {
 		type = helmet
 		history = {
 			type = created
-			date = 6176.1.1
+			date = 1176.1.1
 			actor = character:kuridorig_iek_otached_5
 			recipient = character:kuridorig_iek_otached_5
 			location = province:3257 # Tahligay
@@ -3355,12 +3291,12 @@ create_artifact_dagun_mask_effect = {
 		set_artifact_description = artifact_dagun_mask_fall_desc
 		add_artifact_history = {
 			type = inherited
-			date = 6199.11.23
+			date = 1199.11.23
 			recipient = character:kuridorig_iek_otached_7
 		}
 		add_artifact_history = {
 			type = conquest
-			date = 6212.7.27
+			date = 1212.7.27
 			recipient = character:easternimperial_aeschraes_aagiokrata_1
 		}
 		save_scope_as = epic
@@ -3404,32 +3340,32 @@ create_artifact_sun_piercer_effect = {
 		set_artifact_description = artifact_sun_piercer_battle_desc
 		add_artifact_history = {
 			type = inherited
-			date = 5339.3.21
+			date = 339.3.21
 			recipient = character:carsavisians_lifepath_11
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6153.9.5
+			date = 1153.9.5
 			recipient = character:carsavisians_lifepath_2
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6200.3.1
+			date = 1200.3.1
 			recipient = character:carsavisians_lifepath_3
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6233.12.25
+			date = 1233.12.25
 			recipient = character:carsavisians_lifepath_4
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6245.12.25
+			date = 1245.12.25
 			recipient = character:carsavisians_lifepath_6
 		}
 		add_artifact_history = {
 			type = conquest
-			date = 6251.10.13
+			date = 1251.10.13
 			recipient = character:voluntic_partic_10
 		}
 		save_scope_as = sun_piercer
@@ -3469,17 +3405,17 @@ create_artifact_skymothers_tear_effect = { # Skymother's Tear
 		set_artifact_description = artifact_skymothers_tear_rezpendia_desc
 		add_artifact_history = { # Rezpendia's mother
 			type = inherited
-			date = 6214.4.16
+			date = 1214.4.16
 			recipient = character:sarminians_salacad_4
 		}
 		add_artifact_history = { # Rezpendia
 			type = inherited
-			date = 6238.11.8
+			date = 1238.11.8
 			recipient = character:sarminians_salacad_3
 		}
 		add_artifact_history = { # Arite
 			type = given
-			date = 6252.2.3
+			date = 1252.2.3
 			recipient = character:sarminians_salacad_2
 		}
 		save_scope_as = skymothers_tear
@@ -3519,7 +3455,7 @@ create_artifact_consopite_effigy_effect = { # Consopite Effigy
 			limit = { scope:owner = { has_character_flag = has_mayikprolollan_loot } }
 			add_artifact_history = {
 				type = taken_in_siege
-				date = 6244.5.28
+				date = 1244.5.28
 				recipient = scope:owner
 				location = province:4322
 			}
@@ -3555,7 +3491,7 @@ create_artifact_achromatic_mirror_effect = { # Achromatic Mirror
 			limit = { scope:owner = { has_character_flag = has_mayikprolollan_loot } }
 			add_artifact_history = {
 				type = taken_in_siege
-				date = 6244.5.28
+				date = 1244.5.28
 				recipient = scope:owner
 				location = province:4322
 			}
@@ -3591,7 +3527,7 @@ create_artifact_vorpal_blade_effect = { # Vorpal Blade
 			limit = { scope:owner = { has_character_flag = has_mayikprolollan_loot } }
 			add_artifact_history = {
 				type = taken_in_siege
-				date = 6244.5.28
+				date = 1244.5.28
 				recipient = scope:owner
 				location = province:4322
 			}
@@ -3613,7 +3549,7 @@ create_artifact_black_legion_standard_effect = {
 		type = wall_big
 		history = {
 			type = created
-			date = 6226.5.15
+			date = 1226.5.15
 			recipient = character:apokiakas_aversarinas_aagiokratia_34
 		}
 		wealth = scope:wealth
@@ -3638,7 +3574,7 @@ create_artifact_black_legion_standard_effect = {
 		set_artifact_description = artifact_black_legion_standard_battle_desc
 		add_artifact_history = {
 			type = inherited
-			date = 6251.10.11
+			date = 1251.10.11
 			recipient = character:apokiakas_aversarinas_aagiokratia_35
 		}
 		save_scope_as = black_legion_standard
@@ -3679,7 +3615,7 @@ create_artifact_staff_of_the_high_seer_effect = {
 
 		add_artifact_history = {
 			type = inherited
-			date = 6225.6.23
+			date = 1225.6.23
 			recipient = character:voluntic_partic_7
 		}
 		save_scope_as = epic
@@ -3703,7 +3639,7 @@ create_artifact_bane_star_ring_effect = {
 		type = regalia
 		history = {
 			type = created
-			date = 6200.3.1
+			date = 1200.3.1
 			recipient = character:sarridians_aversarinas_aagiokrata_2
 		}
 		wealth = scope:wealth
@@ -3724,7 +3660,7 @@ create_artifact_bane_star_ring_effect = {
 		set_artifact_description = artifact_bane_star_ring_battle_desc
 		add_artifact_history = {
 			type = inherited
-			date = 6247.9.3
+			date = 1247.9.3
 			recipient = character:apokiakas_aversarinas_aagiokratia_35
 		}
 		save_scope_as = bane_star_ring
@@ -3747,7 +3683,7 @@ create_artifact_black_gold_standard_effect = {
 		type = wall_big
 		history = {
 			type = created
-			date = 6218.1.11
+			date = 1218.1.11
 			recipient = character:salisians_lifepath_15
 		}
 		wealth = scope:wealth
@@ -3772,12 +3708,12 @@ create_artifact_black_gold_standard_effect = {
 		set_artifact_description = artifact_black_gold_standard_battle_desc
 		add_artifact_history = {
 			type = inherited
-			date = 6221.6.1
+			date = 1221.6.1
 			recipient = character:salisians_lifepath_16
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6227.10.19
+			date = 1227.10.19
 			recipient = character:salisians_lifepath_4
 		}
 		save_scope_as = black_gold_standard
@@ -3798,7 +3734,7 @@ create_artifact_atracorde_effect = {
 		type = sword
 		history = {
 			type = created
-			date = 6218.1.11
+			date = 1218.1.11
 			recipient = character:salisians_lifepath_2
 			location = province:1666 # Deleceu
 		}
@@ -3852,12 +3788,12 @@ create_artifact_abyssal_prism_effect = {
 		set_variable = abyssal_prism
 		add_artifact_history = {
 			type = inherited
-			date = 6240.2.6
+			date = 1240.2.6
 			recipient = character:redlander_flame_eternal_1
 		}
 		add_artifact_history = {
 			type = stolen
-			date = 6253.8.9
+			date = 1253.8.9
 			recipient = character:tretosai_aversarinas_aagiokrata_2
 		}
 
@@ -3902,91 +3838,91 @@ create_artifact_gh_tarfals_staff_effect = {
 		set_variable = staff_of_tarfal
 		add_artifact_history = {
 			type = discovered
-			date = 5034.1.1
+			date = 34.1.1
 			recipient = character:nathanalmic_nattanan_6
 		}
 	
 		add_artifact_history = {
 			type = discovered
-			date = 5534.3.9
+			date = 534.3.9
 			recipient = character:nathanalmic_nattanan_13
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 5588.7.18
+			date = 588.7.18
 			recipient = character:nathanalmic_nattanan_14
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 5642.9.16
+			date = 642.9.16
 			recipient = character:nathanalmic_nattanan_15
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 5694.4.2
+			date = 694.4.2
 			recipient = character:nathanalmic_nattanan_16
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 5746.11.20
+			date = 746.11.20
 			recipient = character:nathanalmic_nattanan_17
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 5799.6.7
+			date = 799.6.7
 			recipient = character:nathanalmic_nattanan_18
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 5851.8.14
+			date = 851.8.14
 			recipient = character:nathanalmic_nattanan_19
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 5904.10.1
+			date = 904.10.1
 			recipient = character:nathanalmic_nattanan_20
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 5958.3.23
+			date = 958.3.23
 			recipient = character:nathanalmic_nattanan_21
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 6011.7.9
+			date = 1011.7.9
 			recipient = character:nathanalmic_nattanan_22
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 6065.12.15
+			date = 1065.12.15
 			recipient = character:nathanalmic_nattanan_23
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 6119.5.30
+			date = 1119.5.30
 			recipient = character:nathanalmic_nattanan_24
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 6172.9.11
+			date = 1172.9.11
 			recipient = character:nathanalmic_nattanan_25
 		}
 			
 		add_artifact_history = {
 			type = inherited
-			date = 6217.10.1
+			date = 1217.10.1
 			recipient = character:nathanalmic_nattanan_3
 			location = province:8406 #Yaza Zin
 		}
@@ -4028,7 +3964,7 @@ create_artifact_gh_jerniems_bow_effect = {
 		set_variable = { name = historical_unique_artifact value = yes }
 		add_artifact_history = {
 			type = inherited
-			date = 6217.10.1
+			date = 1217.10.1
 			recipient = character:katharnalmic_kyawkan_4
 			location = province:6555
 		}
@@ -4063,13 +3999,13 @@ create_artifact_gh_spear_of_korlacu_effect = {
 		set_variable = spear_of_korlacu
 		add_artifact_history = {
 			type = discovered
-			date = 6230.1.1
+			date = 1230.1.1
 			recipient = character:korlenalmic_korlacan_1
 		}
 		
 		add_artifact_history = {
 			type = inherited
-			date = 6252.1.1
+			date = 1252.1.1
 			recipient = character:korlenalmic_korlacan_4
 			location = province:8876
 		}
@@ -4101,7 +4037,7 @@ create_artifact_adekaday_effect = {
 		type = sword
 		history = {
 			type = created
-			date = 6237.5.6
+			date = 1237.5.6
 			actor = character:lihakan_dahala_1 # Dahasay
 			recipient = character:banwagul_dahala_1 # Nalaykan
 			location = province:6650 # Ilanila
@@ -4132,7 +4068,7 @@ create_artifact_adekaday_effect = {
 		set_artifact_description = artifact_adekaday_battle_desc
 		add_artifact_history = {
 			type = inherited
-			date = 6242.12.21
+			date = 1242.12.21
 			recipient = character:banwagul_dahala_16
 		}
 		save_scope_as = adekaday
@@ -4173,7 +4109,7 @@ create_artifact_kenaranek_effect = {
 
 		add_artifact_history = {
 			type = inherited
-			date = 6246.1.6
+			date = 1246.1.6
 			recipient = character:dayarka_dahala_2
 		}
 		save_scope_as = kenaranek
@@ -4194,7 +4130,7 @@ create_artifact_kedatals_talon_effect = {
 		type = miscellaneous
 		history = {
 			type = created
-			date = 6244.12.13
+			date = 1244.12.13
 			actor = character:kedari_saldakas_1 # Habwi
 			recipient = character:kedari_saldakas_1 # Habwi
 			location = province:7378 # Purtam
@@ -4236,7 +4172,7 @@ create_artifact_wave_breaker_effect = {
 		type = sword
 		history = {
 			type = created
-			date = 6036.3.11
+			date = 1036.3.11
 			actor = character:lakoeng_fourteen_heavenly_methods_23
 			recipient = character:lakoeng_fourteen_heavenly_methods_23
 			location = province:6903 # Bronzeport
@@ -4260,42 +4196,42 @@ create_artifact_wave_breaker_effect = {
 
 		add_artifact_history = {
 			type = inherited
-			date = 6054.4.14
+			date = 1054.4.14
 			recipient = character:lakoeng_fourteen_heavenly_methods_22
 		}		
 		add_artifact_history = {
 			type = inherited
-			date = 6091.7.3
+			date = 1091.7.3
 			recipient = character:lakoeng_fourteen_heavenly_methods_20
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6094.5.11
+			date = 1094.5.11
 			recipient = character:lakoeng_fourteen_heavenly_methods_19
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6149.10.21
+			date = 1149.10.21
 			recipient = character:lakoeng_fourteen_heavenly_methods_18
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6162.3.1
+			date = 1162.3.1
 			recipient = character:lakoeng_fourteen_heavenly_methods_17
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6182.7.2
+			date = 1182.7.2
 			recipient = character:lakoeng_fourteen_heavenly_methods_16
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6195.8.27
+			date = 1195.8.27
 			recipient = character:lakoeng_fourteen_heavenly_methods_15
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6245.3.7
+			date = 1245.3.7
 			recipient = character:lakoeng_fourteen_heavenly_methods_2
 		}		
 		save_scope_as = wave_breaker
@@ -4317,7 +4253,7 @@ create_artifact_thunderhoofs_roar_effect = {
 		type = spear
 		history = {
 			type = created
-			date = 6094.5.11 #took from pirate
+			date = 1094.5.11 #took from pirate
 			actor = character:lakoeng_fourteen_heavenly_methods_30
 			recipient = character:lakoeng_fourteen_heavenly_methods_30
 			location = province:6903 # Bronzeport
@@ -4345,27 +4281,27 @@ create_artifact_thunderhoofs_roar_effect = {
 
 		add_artifact_history = {
 			type = inherited
-			date = 6125.5.1
+			date = 1125.5.1
 			recipient = character:lakoeng_fourteen_heavenly_methods_24
 		}		
 		add_artifact_history = {
 			type = inherited
-			date = 6159.1.1
+			date = 1159.1.1
 			recipient = character:lakoeng_fourteen_heavenly_methods_25
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6169.7.13
+			date = 1169.7.13
 			recipient = character:lakoeng_fourteen_heavenly_methods_26
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6185.11.26
+			date = 1185.11.26
 			recipient = character:lakoeng_fourteen_heavenly_methods_27
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6240.3.8
+			date = 1240.3.8
 			recipient = character:lakoeng_fourteen_heavenly_methods_28
 		}	
 		save_scope_as = thunderhoofs_roar
@@ -4388,7 +4324,7 @@ create_artifact_fireclaw_effect = {
 		type = gauntlet
 		history = {
 			type = created
-			date = 6036.3.11
+			date = 1036.3.11
 			actor = character:lakoeng_fourteen_heavenly_methods_23
 			recipient = character:lakoeng_fourteen_heavenly_methods_23
 			location = province:6903 # Bronzeport
@@ -4420,32 +4356,32 @@ create_artifact_fireclaw_effect = {
 
 		add_artifact_history = {
 			type = inherited
-			date = 6054.4.14
+			date = 1054.4.14
 			recipient = character:lakoeng_fourteen_heavenly_methods_22
 		}		
 		add_artifact_history = {
 			type = inherited
-			date = 6090.4.24  # Awarded by High Minister Ziajao Paiyi for his service
+			date = 1090.4.24  # Awarded by High Minister Ziajao Paiyi for his service
 			recipient = character:lakoeng_fourteen_heavenly_methods_13
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6135.4.3
+			date = 1135.4.3
 			recipient = character:lakoeng_fourteen_heavenly_methods_12
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6166.9.6
+			date = 1166.9.6
 			recipient = character:lakoeng_fourteen_heavenly_methods_11
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6177.3.17
+			date = 1177.3.17
 			recipient = character:lakoeng_fourteen_heavenly_methods_10
 		}
 		add_artifact_history = {
 			type = inherited
-			date = 6230.7.28
+			date = 1230.7.28
 			recipient = character:lakoeng_fourteen_heavenly_methods_1
 		}
 		save_scope_as = fireclaw
@@ -4467,7 +4403,7 @@ create_artifact_myrnish_map_effect = {
 		type = miscellaneous
 		history = {
 			type = created
-			date = 6190.6.12
+			date = 1190.6.12
 			recipient = character:talareg_sjalvolki_1
 		}
 		wealth = scope:wealth
@@ -4485,7 +4421,7 @@ create_artifact_myrnish_map_effect = {
 
 		add_artifact_history = {
 			type = inherited
-			date = 6244.3.2
+			date = 1244.3.2
 			recipient = character:talareg_sjalvolki_1
 		}
 		save_scope_as = myrnish_map
@@ -4506,7 +4442,7 @@ create_artifact_acolytes_confidant_effect = {
 		type = regalia
 		history = {
 			type = created
-			date = 6190.6.12
+			date = 1190.6.12
 			actor = scope:owner
 			recipient = scope:owner
 		}
@@ -4528,7 +4464,7 @@ create_artifact_acolytes_confidant_effect = {
 		set_artifact_description = artifact_acolytes_confidant_battle_desc
 		add_artifact_history = {
 			type = inherited
-			date = 6244.3.2
+			date = 1244.3.2
 			recipient = character:talareg_sjalvolki_1
 		}
 		save_scope_as = acolytes_confidant
@@ -4590,7 +4526,7 @@ create_artifact_fidhasil_cabinet_effect = {
 		type = cabinet
 		history = {
 			type = created
-			date = 5642.1.31	# This was when the Fidhasil was destroyed; while the furniture might not have literally been made on that date, it was probably not too long after
+			date = 642.1.31	# This was when the Fidhasil was destroyed; while the furniture might not have literally been made on that date, it was probably not too long after
 			actor = character:northernimperial_aversarinas_aagiokrata_64
 			recipient = character:northernimperial_aversarinas_aagiokrata_64
 			location = province:3256	# Grandbeech location
@@ -4648,7 +4584,7 @@ create_artifact_fidhasil_table_effect = {
 		type = cabinet
 		history = {
 			type = created
-			date = 5642.1.31	# This was when the Fidhasil was destroyed; while the furniture might not have literally been made on that date, it was probably not too long after
+			date = 642.1.31	# This was when the Fidhasil was destroyed; while the furniture might not have literally been made on that date, it was probably not too long after
 			actor = character:northernimperial_aversarinas_aagiokrata_64
 			recipient = character:northernimperial_aversarinas_aagiokrata_64
 			location = province:3256	# Grandbeech location

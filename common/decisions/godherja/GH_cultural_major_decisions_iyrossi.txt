@@ -4,7 +4,6 @@
 # iyrossi_reform_religion_decision
 # reform_iyrossi_homelands_decision
 # new_iyrossi_capital_decision
-# found_kingdom_seloc_decision
 ##################
 
 ##################
@@ -182,70 +181,69 @@ iyrossi_kill_aversarians_decision = {
 }
 
 ##################
-# Go on Adventures # OLD To be removed unless want to leave as player option for future or earlier start date.
+# Go on Adventures
 # by ThePinkPanzer
-#iyrossi_reform_religion_decision = {
-#	ai_check_interval = 120
-#	picture = {
-#		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-#	}
-#	
-#	desc = iyrossi_reform_religion_decision_desc
-#	selection_tooltip = iyrossi_reform_religion_decision_tooltip
-#	
-#	decision_group_type = iyrossi
-#
-#	is_shown = {
-#		culture = { has_cultural_pillar = heritage_iyrossi }
-#		NOT = {
-#			has_global_variable = iyrossi_reformed
-#		}
-#	}
-#
-#	is_valid = {
-#		is_at_war = no
-#		completely_controls = title:c_myrespiae
-#		completely_controls = title:c_cures
-#		##completely_controls = title:c_iopus
-#		##completely_controls = title:c_seuthona
-#		has_trait = theologian
-#		piety_level >= 3
-#		piety >= 1500
-#	}
-#
-#	effect = {
-#		add_piety = -1500
-#		set_character_faith_with_conversion = faith:iyrossi
-#		set_global_variable = {
-#			name = iyrossi_reformed
-#			value = yes
-#		}
-#		every_ruler = {
-#			if = {
-#				limit = {
-#					culture = { has_cultural_pillar = heritage_iyrossi }
-#					is_ai = yes
-#				}
-#				set_character_faith_with_conversion = faith:iyrossi
-#			}
-#		}
-#		every_county = {
-#			limit = {
-#				is_landless_type_title = no 
-#				this.faith = faith:iyrossi_aagiokrata
-#			}
-#			set_county_faith = faith:iyrossi
-#		}
-#	}
-#
-#	ai_potential = {
-#		always = yes
-#	}
-#
-#	ai_will_do = {
-#		base = 100
-#	}
-#}
+iyrossi_reform_religion_decision = {
+	ai_check_interval = 120
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
+	
+	desc = iyrossi_reform_religion_decision_desc
+	selection_tooltip = iyrossi_reform_religion_decision_tooltip
+	
+	decision_group_type = iyrossi
+
+	is_shown = {
+		culture = { has_cultural_pillar = heritage_iyrossi }
+		NOT = {
+			has_global_variable = iyrossi_reformed
+		}
+	}
+
+	is_valid = {
+		is_at_war = no
+		completely_controls = title:c_myrespiae
+		completely_controls = title:c_cures
+		##completely_controls = title:c_iopus
+		##completely_controls = title:c_seuthona
+		has_trait = theologian
+		piety_level >= 3
+		piety >= 1500
+	}
+
+	effect = {
+		add_piety = -1500
+		set_character_faith_with_conversion = faith:iyrossi
+		set_global_variable = {
+			name = iyrossi_reformed
+			value = yes
+		}
+		every_ruler = {
+			if = {
+				limit = {
+					culture = { has_cultural_pillar = heritage_iyrossi }
+					is_ai = yes
+				}
+				set_character_faith_with_conversion = faith:iyrossi
+			}
+		}
+		every_county = {
+			limit = {
+				this.faith = faith:iyrossi_aagiokrata
+			}
+			set_county_faith = faith:iyrossi
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
 
 ##################
 # Go on Adventures
@@ -281,8 +279,6 @@ reform_iyrossi_homelands_decision = {
 		OR = {
 			has_faith = faith:iyrossi
 			has_faith = faith:iyrossi_aagiokrata
-			has_faith = faith:new_iyrossi
-			has_faith = faith:selvarossi_iyrossi 
 		}
 		culture = { has_cultural_pillar = heritage_iyrossi }
 		prestige_level >= 4
@@ -387,124 +383,5 @@ new_iyrossi_capital_decision = {
 		gold = {
 			value = 2000
 		}
-	}
-}
-
-########################################
-# REWORK OF KINGDOM OF TOLEDO decision #
-# Found Kingdom of Seloc
-# by Aidan(eragonragnold)
-#############################################
-gh_found_kingdom_seloc_decision = {
-	title = gh_found_kingdom_seloc_decision
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
-	}
-	desc = gh_found_kingdom_seloc_decision_desc
-	selection_tooltip = gh_found_kingdom_seloc_decision_tooltip
-	sort_order = 80
-
-	decision_group_type = iyrossi
-
-	is_shown = {
-		culture = {
-			OR = {
-				this = culture:kinambrosti
-				any_parent_culture_or_above = { this = culture:kinambrosti }
-			}
-		}
-		faith = {
-			OR = {
-				this = faith:selvarossi_iyrossi
-				this = faith:iyrossi_aagiokrata
-			}
-		}
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:form_seloc_decision
-			}
-		}
-		title:e_malcois = {
-			any_in_de_jure_hierarchy = {
-				any_title_to_title_neighboring_and_across_water_duchy = { this = title:d_eretrona }
-				de_jure_liege = {
-					any_in_de_jure_hierarchy = {
-						count > 2
-						tier = tier_duchy
-					}
-				}
-			}
-		}
-	}
-
-	is_valid = {
-		is_independent_ruler = yes
-		custom_tooltip = {
-			text = gh_found_kingdom_seloc_capital_tt
-			capital_county = title:c_lapithymna
-		}
-		custom_tooltip = {
-			text = gh_found_kingdom_seloc_culture_tt
-			has_culture = culture:kinambrosti
-		}
-		custom_tooltip = {
-			text = gh_found_kingdom_seloc_faith_tt
-			faith = {
-				portrait_religious_faith_or_foundational_trigger = { FAITH = faith:selvarossi_iyrossi }
-			}
-		}
-		completely_controls = title:d_eretrona
-		completely_controls = title:c_myloton
-		completely_controls = title:c_lapithymna
-		completely_controls = title:c_myrespiae
-		completely_controls = title:c_smyca
-		completely_controls = title:c_claydchdia
-		custom_tooltip = {
-			text = gh_found_kingdom_seloc_duchy_tt
-			any_held_title = {
-				tier = tier_duchy
-				is_titular = no
-				NOT = { this = title:d_eretrona }
-				root = { completely_controls = prev }
-				any_title_to_title_neighboring_and_across_water_duchy = { this = title:d_eretrona }
-			}
-		}
-	}
-	
-	is_valid_showing_failures_only = {
-		is_landed = yes
-	}
-
-	cost = {
-		gold = 250
-	}
-
-	effect = {
-		save_scope_as = seloc_former
-		gain_heroic_legend_seed_tooltip_effect = yes
-		fp2_struggle_found_kingdom_seloc_empire_effect = yes
-		save_scope_value_as = {
-			name = has_kingdom_seloc_absorb_list_been_created
-			value = yes
-		}
-		trigger_event = iyrossi_monthly.1100
-		#Can only happen once
-		add_to_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:form_seloc_decision
-		}
-		set_global_variable = {
-			name = form_seloc_decision
-			value = scope:seloc_former
-		}
-	}
-
-	ai_check_interval = 120
-
-	ai_potential = {}
-
-	ai_will_do = {
-		base = 100
 	}
 }

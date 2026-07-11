@@ -126,6 +126,174 @@ dread_from_sacrifice = {
 	}
 }
 
+sacrifice_population_max_dev = {
+	value = development_level
+	subtract = 1
+	min = 0
+}
+
+sacrifice_population_county_min = {
+	value = 1
+	max = sacrifice_population_max_dev
+}
+
+sacrifice_population_county_mid = {
+	value = 0
+	add = development_level
+	multiply = 0.1
+	ceiling = yes
+	max = sacrifice_population_max_dev
+}
+
+sacrifice_population_county_major = {
+	value = sacrifice_population_county_mid
+	multiply = 2
+	max = sacrifice_population_max_dev
+}
+
+sacrifice_population_county_huge = {
+	value = sacrifice_population_county_mid
+	multiply = 3
+	max = sacrifice_population_max_dev
+}
+
+sacrifice_population_county_tyranny_min = {
+	value = sacrifice_population_county_min
+	multiply = 1.5
+}
+
+sacrifice_population_county_tyranny_mid = {
+	value = sacrifice_population_county_mid
+	multiply = 1.5
+}
+
+sacrifice_population_county_tyranny_major = {
+	value = sacrifice_population_county_major
+	multiply = 1.5
+}
+
+sacrifice_population_county_tyranny_huge = {
+	value = sacrifice_population_county_huge
+	multiply = 1.5
+}
+
+sacrifice_population_dev_malus_min = {
+	value = 0
+	subtract = sacrifice_population_county_min
+}
+
+sacrifice_population_dev_malus_mid = {
+	value = 0
+	subtract = sacrifice_population_county_mid
+}
+
+sacrifice_population_dev_malus_major = {
+	value = 0
+	subtract = sacrifice_population_county_major
+}
+
+sacrifice_population_dev_malus_huge = {
+	value = 0
+	subtract = sacrifice_population_county_huge
+}
+
+sacrifice_population_control_malus_min = {
+	value = 0
+	subtract = sacrifice_population_county_min
+	multiply = 2
+}
+
+sacrifice_population_control_malus_mid = {
+	value = 0
+	subtract = sacrifice_population_county_mid
+	multiply = 2
+}
+
+sacrifice_population_control_malus_major = {
+	value = 0
+	subtract = sacrifice_population_county_major
+	multiply = 2
+}
+
+sacrifice_population_control_malus_huge = {
+	value = 0
+	subtract = sacrifice_population_county_huge
+	multiply = 2
+}
+
+sacrifice_population_magic_multiplier = {
+	value = 35
+	if = {
+		limit = {
+			root.faith = {
+				has_doctrine = tenet_aeschraes_legacy
+			}
+		}
+		multiply = 1.2
+	}
+	if = {
+		limit = {
+			root = {
+				any_held_title = {
+					trigger_if = {
+						limit = { tier = tier_county }
+						any_county_province = {
+							OR = {
+								has_building = 01_thebloodyard
+								has_building = 02_thebloodyard
+							}
+						}
+					}
+					trigger_else = { always = no }
+				}
+			}
+		}
+		multiply = 2
+	}
+}
+
+sacrifice_population_magic_min = {
+	value = 1
+	max = sacrifice_population_max_dev
+	multiply = sacrifice_population_magic_multiplier
+}
+
+sacrifice_population_magic_mid = {
+	value = sacrifice_population_county_mid
+	multiply = sacrifice_population_magic_multiplier
+}
+
+sacrifice_population_magic_major = {
+	value = sacrifice_population_county_major
+	multiply = sacrifice_population_magic_multiplier
+}
+
+sacrifice_population_magic_huge = {
+	value = sacrifice_population_county_huge
+	multiply = sacrifice_population_magic_multiplier
+}
+
+sacrifice_population_piety_min = {
+	value = 1
+	max = sacrifice_population_max_dev
+	multiply = 15
+}
+
+sacrifice_population_piety_mid = {
+	value = sacrifice_population_county_mid
+	multiply = 15
+}
+
+sacrifice_population_piety_major = {
+	value = sacrifice_population_county_major
+	multiply = 15
+}
+
+sacrifice_population_piety_huge = {
+	value = sacrifice_population_county_huge
+	multiply = 15
+}
+
 living_magi_trait_progress_threshold = {
 	value = living_magi_trait_progress_threshold_base
 	if = {
@@ -293,101 +461,6 @@ province_max_aspect_specializations_value = {
 	add = province_max_aspect_specializations_modifier_value
 }
 
-province_mana_pool_value = {
-	value = 0
-	add = province_mana_pool_building_value
-	add = province_mana_pool_modifier_value
-}
-
-###############
-# LOCI VALUES #
-###############
-
-loci_limit_value = {
-	value = 1
-	add = arcana_loci_limit_value
-}
-
-arcana_loci_limit_value = {
-	value = 0
-	add = {
-		value = arcana
-		divide = 6
-	}
-	floor = yes
-}
-
-spell_preparation_loci_number_value = {
-	value = 0
-	if = {
-		limit = {
-			OR = {
-				NOT = { exists = var:spell_preparation_story_cycle }
-				NOT = { var:spell_preparation_story_cycle = { has_variable_list = locus_list } }
-			}
-		}
-		add = 1	# Always at least the primary locus
-	}
-	var:spell_preparation_story_cycle ?= {
-		every_in_list = {
-			variable = locus_list
-			add = 1
-		}
-	}
-}
-
-##################
-# CANTRIP VALUES #
-##################
-
-cantrip_limit_value = {
-	value = 0
-	add = arcana_cantrip_limit_value
-}
-
-arcana_cantrip_limit_value = {
-	value = 0
-	add = {
-		value = arcana
-		divide = 3
-	}
-	floor = yes
-}
-
-cantrip_usage_value = {
-	value = 0
-	if = {
-		limit = { has_variable_list = cantrip_list }
-		every_in_list = {
-			variable = cantrip_list
-			var:spell_being_prepared = {
-				add = aspect_total_base_spell_level_value
-			}
-			if = {
-				limit = { exists = var:total_overcharge }
-				add = {
-					value = var:total_overcharge
-					multiply = 2
-				}
-			}
-		}
-	}
-}
-
-cantrip_capacity_usage_value = {
-	value = aspect_total_base_spell_level_value
-	add = {
-		value = aspect_total_spell_level_value
-		subtract = aspect_total_base_spell_level_value
-		multiply = 2
-	}
-}
-
-remaining_cantrip_capacity_value = {
-	value = cantrip_limit_value
-	subtract = cantrip_usage_value
-}
-
 ################
 # CABAL VALUES #
 ################
@@ -427,10 +500,10 @@ huge_magic_cost = -200
 # COMPONENT VALUES #
 ####################
 
-common_ingredient_cost = 50
-uncommon_ingredient_cost = 100
-rare_ingredient_cost = 250
-very_rare_ingredient_cost = 500
+common_ingredient_cost = 25
+uncommon_ingredient_cost = 50
+rare_ingredient_cost = 100
+very_rare_ingredient_cost = 250
 
 ########
 # MISC #

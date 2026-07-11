@@ -41,7 +41,7 @@ reunite_chevalie_decision = {
 			completely_controls = title:k_varrdevet
 			completely_controls = title:k_rohr
 			completely_controls = title:k_marroux
-			completely_controls = title:k_porte_den_la_bastione
+			completely_controls = title:k_de_porte_de_bastione
 			completely_controls = title:k_perignan
 		}
 		NOT = { has_title = title:e_migrant_coalition }
@@ -823,7 +823,7 @@ declare_rivarisian_kingdom_decision = {
 			capital_province = { geographical_region = world_ga_riverlands_formable }
 		}
 		NOR = {
-			exists = title:k_the_riverlands.holder
+			exists = title:k_riverlands.holder
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
 				target = flag:declare_rivarisian_kingdom_decision
@@ -881,7 +881,7 @@ declare_rivarisian_kingdom_decision = {
 				quality = famed
 				chronicle = new_title
 					properties = {
-						title = title:k_the_riverlands
+						title = title:k_riverlands
 						founder = root
 				}
 			}

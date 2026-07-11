@@ -62,7 +62,8 @@
 	valid = {
 		is_incapable = no
 		scope:owner = {
-			liege ?= scope:target
+			exists = liege
+			liege = scope:target
 			NOT = { government_has_flag = government_is_administrative_bureaucracy }
 		}
 		scope:target = {
@@ -160,16 +161,6 @@
 			scope:owner = { has_character_modifier = hostile_schemes_distracted_modifier }
 			desc = hostile_schemes_distracted_modifier
 		}
-		#Confederation throne is easier to claim
-		modifier = {
-			add = 15
-			scope:target = {
-				primary_title ?= {
-					has_title_law = confederation_elective_succession_law
-				}
-			}
-			desc = confederation_elective_claim_throne
-		}
 	}
 	base_secrecy = {
 		add = secrecy_base_value
@@ -222,7 +213,6 @@
 				scheme_owner = { is_ai = yes }
 			}
 			claim_throne_scheme_prep_effect = yes
-			purge_ai_scheme_slots_effect = yes
 		}
 	}
 	on_invalidated = {

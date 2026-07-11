@@ -1,40 +1,8 @@
 ﻿# This is made a 'generic' story cycle instead of Cenware specific for ease of use in pre-1254 startdates
 story_cycle_migration_coalition = {
-	visible = yes
-
-	icon = {
-		trigger = {
-			always = yes
-		}
-		reference = "gfx/interface/icons/traits/bloodline_cenware.dds"
-	}
-
-	background = {
-		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-	}
-
-	visualization = {
-		custom_string_key = "MIGRATION_STORY_PRACTICAL_INFORMATION_STRING"
-		character = { variable_name = "imperrech_ruler" label = "high_king" }
-		decisions = { migrate_holy_sites_decision }
-	}
+	
 	on_setup = {
-		save_scope_as = migration_story
-		set_variable = {
-			name = imperrech_ruler
-			value = story_owner
-		}
-		story_owner = {
-			every_vassal = {
-				limit = { any_held_title = { tribal_title = yes } }
-				scope:migration_story = {
-					add_to_variable_list = {
-						name = clanrech_leaders
-						target = prev
-					}
-				}
-			}
-		}
+		
 	}
 
 	on_end = {
@@ -70,12 +38,12 @@ story_cycle_migration_coalition = {
 			effect = {
 				story_owner = {
 					cenware_conquer_kingdom = { KINGDOM_NAME = k_palitake }		# Should beeline towards Oraispol
-					cenware_conquer_kingdom = { KINGDOM_NAME = k_wyrmrest }		# Finish up Assocaea
+					cenware_conquer_kingdom = { KINGDOM_NAME = k_assocaea }		# Finish up Assocaea
 					cenware_conquer_kingdom = { KINGDOM_NAME = k_pergicos }		# After that, mop up eastern Etepezea
 								
 					
 
-					cenware_conquer_kingdom = { KINGDOM_NAME = k_haven }
+					cenware_conquer_kingdom = { KINGDOM_NAME = k_southeastern_isles }
 					cenware_conquer_kingdom = { KINGDOM_NAME = k_kollos }		# The Kollos archipelago is the obvious next target
 					
 					cenware_conquer_kingdom = { KINGDOM_NAME = k_eve }

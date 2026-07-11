@@ -148,32 +148,22 @@ create_title_drift = {
 	}
 }
 
-title_swap_scripted_effect = {
-	$SWAP_OWNER$ = { save_scope_as = swap_owner }
-	$SWAP_OWNER_TITLE$ = { save_scope_as = swap_owner_title }
-	$SWAP_TARGET$ = { save_scope_as = swap_target }
-	$SWAP_TARGET_TITLE$ = { save_scope_as = swap_target_title }
+setup_title_drift = {
+	#Aversaria
+	create_title_drift = { DRIFTING_TITLE = d_halaca WARRING_TITLE_1 = k_morn WARRING_TITLE_2 = k_day }
+	create_title_drift = { DRIFTING_TITLE = d_lephyalouanata WARRING_TITLE_1 = k_helenai WARRING_TITLE_2 = k_westkatraddia_6 }
 
-	create_title_and_vassal_change = {
-		type = revoked
-		save_scope_as = change
-		add_claim_on_loss = no
-	}
-	scope:swap_target_title = {
-		change_title_holder = {
-			holder = scope:swap_owner
-			change = scope:change
-		}
-	}
-	scope:swap_owner_title = {
-		change_title_holder = {
-			holder = scope:swap_target
-			change = scope:change
-		}
-	}
-	resolve_title_and_vassal_change = scope:change
+	#Chevalie
+	create_title_drift = { DRIFTING_TITLE = d_neufrisa WARRING_TITLE_1 = k_niidinia WARRING_TITLE_2 = k_rohr }
 
-	## Failsafe for single counties - may make optional later for larger realms
-	scope:swap_owner = { set_realm_capital = scope:swap_target_title }
-	scope:swap_target = { set_realm_capital = scope:swap_owner_title }
+	#Aironoi
+	create_title_drift = { DRIFTING_TITLE = d_saigoor WARRING_TITLE_1 = k_dartar WARRING_TITLE_2 = k_arbaz }
+	
+	#Kashirya
+	create_title_drift = { DRIFTING_TITLE = d_vavkebcha WARRING_TITLE_1 = k_kinilam WARRING_TITLE_2 = k_kebnachi }
+	create_title_drift = { DRIFTING_TITLE = d_south_kashirya_1 WARRING_TITLE_1 = k_sheytara WARRING_TITLE_2 = k_peytrelle }
+
+
+	#Sarradon
+	# create_title_drift = { DRIFTING_TITLE = d_issiyyes WARRING_TITLE_1 = k_ghudiyyia WARRING_TITLE_2 = k_eastern_frontier }
 }

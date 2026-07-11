@@ -4,138 +4,220 @@
 			name = custom_map_mode
 			value = flag:none
 		}
+		if = {
+			limit = { game_start_date = 1254.1.1 }
+			set_global_variable = {
+				name = redlands_crisis
+				value = yes
+			}
+		}
 
-		# Province Setters
+		#character_info_setup_effect = yes
+		initialize_unprunable_characters_effect = yes
+
+	## Global Effects ##
+		initialize_historical_terrain_variant_effect = yes
+		initialize_moon_phase_information_effect = yes
+		#initialize_global_hunting_information = yes # Leaving this effect commented for now, it works but feels like a heavy performance hog when activated
 		initialize_historical_development_effect = yes
 		initialize_historical_buildings_effect = yes
-		set_province_features = yes # Any starting effect to add a province modifier should go through here
-
 		initialize_historical_building_construction_dates_effect = yes
-
-		initialize_moon_phase_information_effect = yes
+		initialize_traditional_borders = yes
+		initialize_influx_cultures_kalathipsomi = yes
+		initialize_metropoli_effect = yes
+		setup_title_drift = yes
 		trade_strait_table_effect = { MODE = initialize }
 		initialize_lodge_power_effect = yes
+		initialize_historical_information = yes
 
+		# Any starting effect to add a province modifier should go through here
+		set_province_features = yes
+
+		initialize_fog_paramaters = yes
 		gh_on_start_every_county_effect = yes
-		gh_on_start_every_duchy_and_above_effect = yes
+		gh_on_start_special_county_effect = yes
+
+		initialize_starting_judges_effect = yes
+		intialize_lifepath_relevance_variable = yes
+		initialize_valid_lifepaths_for_faiths = yes
+		initialize_wardenite_high_courts_effect = yes
+
+		initialize_all_study_chains_effect = yes
 
 		gh_on_start_variables_effect = yes
 
 		gh_on_start_titles_effect = yes
-		initialize_valid_lifepaths_for_faiths = yes
 		gh_on_start_every_character_effect = yes
 		gh_worldstate_initialization_effect = yes
 
-		initialize_all_study_chains_effect = yes
+		every_ruler = {
+			limit = {
+				OR = {
+					has_trait = setup_flag_opening_event
+					has_trait = setup_flag_story_content
+				}
+			}
+			save_scope_as = lore_char
+			title:c_oraispol = {
+				add_to_variable_list = {
+					name = lore_character_list
+					target = scope:lore_char
+				}
+			}
+		}
+
 		initialize_global_ingredient_list_effect = yes
 		initialize_preset_magic_schools_effect = yes
 		initialize_preset_spells_effect = yes
 		initialize_preset_magic_school_spells_effect = yes
 		initialize_province_specializations_game_start_effect = yes
 		initialize_global_knowledge_entries_effect = yes
+		initialize_preset_cultural_frame_effect = yes
 
-		# Same as initialize_global_knowledge_entries_effect but from historical books
-		initialize_automated_global_knowledge_entries_effect = yes
-		# Same as initialize_preset_spells_effect but from historical books
-		initialize_automated_preset_spells_effect = yes
-
-		gh_on_start_faith_and_religion_effect = yes
-
-		# kemsar_biozone duchies intentionally excluded — oases never spawn in Kemsar
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_der_vindeon_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_seratossim_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_sellelima_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_alma_fil_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_el_curutin_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_seqaiauqa_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_iaaleida_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_hadirah_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_derjemaa_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_aradsusah_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_miavaz_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_baimar_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_ainjawf_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_kurfsia_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_houmanay_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_al_qauka_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_chhenaye_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_deirallam_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_zhufarrades_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_tisuffar_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_orok_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_brayieret_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_jranu_isa_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_en_naouk_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_yourrez_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_borjmat_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_marborrok_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_kortesh_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_mortekh_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_castbaham_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_jadoalik_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_ubarad_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_halatabiad_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_mezees_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_castelit_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_jaytarkah_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_wad_iston_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_zurayebaa_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_fdammil_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_dayr_ibah_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_diryaherit_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_halyfat_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_kuibyniyah_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_tar_norish_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_tesmorones_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_quhiyrakhs_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_tizzufan_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_marrok_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_mavvuran_region }
-		add_to_global_variable_list = { name = oasis_area_list target = geographical_region:d_damekhirya_region }
-
-		# Conclave Militant Setup
-		if = {
+		every_kingdom = {
 			limit = {
-				game_start_date >= 6298.1.1
+				is_title_created = yes
+				is_agionist_holy_order_trigger = yes
 			}
-			character:konijkmener_lifepath_137 = {
-				save_scope_as = leader
+			holder = {
+				create_alliance_with_title_or_synonym = { TITLE = title:k_saint_sansias_rose   }
+				create_alliance_with_title_or_synonym = { TITLE = title:k_forlorn_guardian     }
+				create_alliance_with_title_or_synonym = { TITLE = title:k_golden_hand          }
+				create_alliance_with_title_or_synonym = { TITLE = title:k_saint_calystos_key   }
+				create_alliance_with_title_or_synonym = { TITLE = title:k_bleeding_martyr      }
+				create_alliance_with_title_or_synonym = { TITLE = title:k_pure_heart           }
+				create_alliance_with_title_or_synonym = { TITLE = title:k_blind_watcher        }
+				create_alliance_with_title_or_synonym = { TITLE = title:k_forgotten_saint      }
 			}
-			character:voyagen_lifepath_107 = {
-				save_scope_as = founder
-			}
-			title:b_orm = {
-				save_scope_as = barony
-			}
-			create_title_and_vassal_change = {
-				type = leased_out
-				save_scope_as = change
-			}
-			scope:barony = {
-				change_title_holder_include_vassals = {
-					holder = scope:barony.holder.top_liege
-					change = scope:change
-				}
-			}
-			resolve_title_and_vassal_change = scope:change
-			create_holy_order = {
-				leader = scope:leader
-				capital = scope:barony
-				save_scope_as = new_holy_order
-			}
-			scope:new_holy_order ?= {
-				title = { set_title_name = holy_order_conclave_militant }
-			}
-			character:voyagen_lifepath_107 = {
-				GH_NOT_ROOT_create_holy_order_effect = yes
-			}
-
-			# Rite Wars fire-off for 1298 (TOG_NOTE: Change this when working on story content)
-			character:daukeni_sjalvolki_106 = { trigger_event = etepezea_opening_event_1298.1 }
 		}
 
-		# Startup errors count cut-off point
-		error_log = GH_STARTUP_COMPLETE
+		title:k_heartwood = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_time_in_migration = {
+					VALUE = 8
+				}
+			}
+		}
+		title:k_everrain = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_time_in_migration = {
+					VALUE = 7
+				}
+			}
+		}
+		title:k_redwald = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_time_in_migration = {
+					VALUE = 7
+				}
+			}
+		}
+		title:k_westhold = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_time_in_migration = {
+					VALUE = 6
+				}
+			}
+		}
+		title:k_cornucopia = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_time_in_migration = {
+					VALUE = 5
+				}
+			}
+		}
+		title:k_pearlcoast = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_time_in_migration = {
+					VALUE = 5
+				}
+			}
+		}
+		title:k_kallios = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_time_in_migration = {
+					VALUE = 3
+				}
+			}
+		}
+		title:k_helenai = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_county }
+				set_time_in_migration = {
+					VALUE = 2
+				}
+			}
+		}
+
+		gh_bordering_fog_dynamic_effect = yes
+		gh_wasteland_and_ruin_check_effect = yes
+		gh_on_start_holy_sites_effect = yes
+		gh_on_start_faith_and_religion_effect = yes
+
+		## Republic Setup ##
+		every_independent_ruler = {
+			limit = {
+				OR ={
+					government_has_flag = government_is_administrative_republic
+					government_has_flag = government_is_judicial_republic
+				}
+				government_allows = administrative
+				government_has_flag = government_has_powerful_families
+			}
+			if = {
+				limit = {
+					highest_held_title_tier >= tier_duchy
+					government_has_flag = government_is_administrative_republic
+				}
+				trigger_event = {
+					id = gh_realm_maintenance.0036
+					days = { 2 5 }
+				}
+			}
+			save_scope_as = ruler
+			every_vassal = { # Makes sure all the vassals have NFs if not defined in history
+				if = {
+					limit = {
+						highest_held_title_tier >= tier_county
+						is_lowborn = no
+						is_house_head = yes
+						NOT = { capital_province = { has_holding_type = church_holding } }
+						government_has_flag = government_has_powerful_families
+						government_allows = administrative
+						OR = {
+							is_married = no
+							AND = {
+								is_married = yes
+								is_female = yes
+								matrilinear_marriage = yes
+							}
+							AND = {
+								is_married = yes
+								is_female = no
+								matrilinear_marriage = no
+							}
+						}
+						NOR = {
+							any_held_title = { is_noble_family_title = yes }
+							house = {
+								any_house_member = {
+									any_held_title = { is_noble_family_title = yes }
+								}
+							}
+						}
+					}
+					create_noble_family_effect = yes
+					domicile ?= { set_up_domicile_estate_effect = yes }
+				}
+			}
+		}
 	}
 
 	on_actions = {
@@ -148,10 +230,14 @@
 	}
 }
 
+
+initialize_magi_on_action = {
+	effect = {
+	}
+}
+
 GH_on_game_start_after_lobby = {
 	effect = {
-		deactivate_holy_sites_on_game_start_effect = yes
-		
 		## Setup Game Rules ##
 		#gh_on_start_game_rules_effect = yes
 
@@ -166,10 +252,6 @@ GH_on_game_start_after_lobby = {
 
 		## Setup History ##
 		#gh_on_start_after_lobby_history_effect = yes
-
-		## Setup 1298 Worldstate ## GH TODO: Come up with a more generalized solution at some point
-		gh_on_start_worldstate_effect = yes
-
 	
 		### GAME RULE: SPECIAL - HAMMARTS WILD RIDE
 		if = {
@@ -220,7 +302,7 @@ GH_on_game_start_after_lobby = {
 				}
 				if = { # Aversarian mercenary leaders are likely to be rogue (or otherwise former) legons after Frokbrokna - GH TODO: Make a more generic timeline system
 					limit = {
-						game_start_date >= 6200.1.1 
+						game_start_date >= 1200.1.1 
 						GH_is_any_mercenary_government_trigger = yes
 						culture = { has_cultural_pillar = heritage_aversarian }
 					}
@@ -284,54 +366,48 @@ GH_on_game_start_after_lobby = {
 		}
 
 		## 1254 Bookmark specific
-		if = {
-			limit = {
-				game_start_date < 6298
-				game_start_date >= 6254
+		every_county_in_region = { ## Applies Legacy of Elysia 
+			region = world_ga_western_aversaria
+			limit = { culture = { has_cultural_pillar = heritage_aversarian } }
+			add_county_modifier = {
+				modifier = legacy_of_elysia 
+				years = 50
 			}
-			every_county_in_region = { ## Applies Legacy of Elysia 
-				region = world_ga_western_aversaria
-				limit = { culture = { has_cultural_pillar = heritage_aversarian } }
-				add_county_modifier = {
-					modifier = legacy_of_elysia 
-					years = 50
-				}
+		}
+		every_county_in_region = { ## Applies Legacy of Ash War
+			region = world_ga_mountainheights
+			limit = { culture = { has_cultural_pillar = heritage_aversarian } }
+			add_county_modifier = {
+				modifier = aftermath_of_the_ash_war 
+				years = 10
 			}
-			every_county_in_region = { ## Applies Legacy of Ash War
-				region = world_ga_mountainheights
-				limit = { culture = { has_cultural_pillar = heritage_aversarian } }
-				add_county_modifier = {
-					modifier = aftermath_of_the_ash_war 
-					years = 10
-				}
+		}
+		every_county_in_region = { ## Applies Redland Collapse modifiers
+			region = redlands_biozone
+			limit = { NOT = { culture = { has_cultural_pillar = heritage_redlander } } }
+			add_county_modifier = {
+				modifier = mainland_refugees_modifier
+				years = 20
 			}
-			every_county_in_region = { ## Applies Redland Collapse modifiers
-				region = redlands_biozone
-				limit = { NOT = { culture = { has_cultural_pillar = heritage_redlander } } }
-				add_county_modifier = {
-					modifier = mainland_refugees_modifier
-					years = 20
-				}
-				add_county_modifier = {
-					modifier = collapsed_administration_modifier
-					years = 20
-				}
+			add_county_modifier = {
+				modifier = collapsed_administration_modifier
+				years = 20
 			}
-			every_county_in_region = { ## Applies Legacy of ICW
-				region = world_ga_central_aversaria
-				limit = { culture = { has_cultural_pillar = heritage_aversarian } }
-				add_county_modifier = {
-					modifier = legacy_of_icw 
-					years = 32
-				}
+		}
+		every_county_in_region = { ## Applies Legacy of ICW
+			region = world_ga_central_aversaria
+			limit = { culture = { has_cultural_pillar = heritage_aversarian } }
+			add_county_modifier = {
+				modifier = legacy_of_icw 
+				years = 32
 			}
-			every_county_in_region = { ## Applies Ruined by Ulfirx 
-				region = world_ga_aversarian_isles
-				limit = { culture = { has_cultural_pillar = heritage_aversarian } }
-				add_county_modifier = {
-					modifier = ruined_by_ulfirx
-					years = 30
-				}
+		}
+		every_county_in_region = { ## Applies Ruined by Ulfirx 
+			region = world_ga_aversarian_isles
+			limit = { culture = { has_cultural_pillar = heritage_aversarian } }
+			add_county_modifier = {
+				modifier = ruined_by_ulfirx
+				years = 30
 			}
 		}
 
@@ -345,48 +421,47 @@ GH_on_game_start_after_lobby = {
 			every_county_province = { apply_saharan_provisions_debuff_effect = yes }
 		}
 
+
 		every_ruler = {
-			if = {
+			limit = {
+				highest_held_title_tier >= tier_duchy
+				is_playable_character = yes
+				can_have_court_magi_trigger = yes
+			}
+			if = { # This makes sure Court Magi are landed rulers where it makes sense
 				limit = {
-					highest_held_title_tier >= tier_duchy
-					is_playable_character = yes
-					can_have_court_magi_trigger = yes
-				}
-				if = { # This makes sure Court Magi are landed rulers where it makes sense
-					limit = {
-						exists = cp:councillor_court_magi
-						cp:councillor_court_magi = {
-							is_ruler = no
-						}
-						faith = { has_doctrine = doctrine_clerical_succession_spiritual_fixed_appointment }
-						any_vassal = {
-							is_physically_able_adult = yes
-							is_councillor = no
-							government_has_flag = government_is_theocracy
-							can_be_court_magi_trigger = { COURT_OWNER = liege }
-							faith = liege.faith
-						}
+					exists = cp:councillor_court_magi
+					cp:councillor_court_magi = {
+						is_ruler = no
 					}
-					random_vassal = {
-						limit = {
-							is_physically_able_adult = yes
-							is_councillor = no
-							government_has_flag = government_is_theocracy
-							can_be_court_magi_trigger = { COURT_OWNER = liege }
-							faith = liege.faith
-						}
-						weight = {
-							base = 1
-							magi_value_modifier = yes
-							modifier = { add = primary_title.tier }
-							modifier = { add = character_arcana_baseline_value }
-						}
-						liege = {
-							assign_councillor_type = {
-								type = councillor_court_magi
-								remove_existing_councillor = yes
-								target = prev
-							}
+					faith = { has_doctrine = doctrine_clerical_succession_spiritual_fixed_appointment }
+					any_vassal = {
+						is_physically_able_adult = yes
+						is_councillor = no
+						government_has_flag = government_is_theocracy
+						can_be_court_magi_trigger = { COURT_OWNER = liege }
+						faith = liege.faith
+					}
+				}
+				random_vassal = {
+					limit = {
+						is_physically_able_adult = yes
+						is_councillor = no
+						government_has_flag = government_is_theocracy
+						can_be_court_magi_trigger = { COURT_OWNER = liege }
+						faith = liege.faith
+					}
+					weight = {
+						base = 1
+						magi_value_modifier = yes
+						modifier = { add = primary_title.tier }
+						modifier = { add = character_arcana_baseline_value }
+					}
+					liege = {
+						assign_councillor_type = {
+							type = councillor_court_magi
+							remove_existing_councillor = yes
+							target = prev
 						}
 					}
 				}
@@ -394,88 +469,11 @@ GH_on_game_start_after_lobby = {
 		}
 
 		## LAAMP FOLLOWERS
-		if = {
-			limit = {
-				character:erimatos_aversarinas_aagiokrata_8 ?= {
-					is_alive = yes	
-				}	
-				character:erimatos_aversarinas_aagiokrata_3 ?= {
-					is_alive = yes
-					is_landless_adventurer = yes	
-				}
-			}
-			character:erimatos_aversarinas_aagiokrata_8 = { set_employer = character:erimatos_aversarinas_aagiokrata_3 } # Heraklios
-		}
-		if = {
-			limit = {
-				character:ardothanes_aversarinas_aagiokrata_3 ?= {
-					is_alive = yes	
-				}	
-				character:ardothanes_mothers_and_fathers_2 ?= {
-					is_alive = yes
-					is_landless_adventurer = yes	
-				}
-			}
-			character:ardothanes_aversarinas_aagiokrata_3 = { set_employer = character:ardothanes_mothers_and_fathers_2 } # Moruen Katronas
-		}
+		character:erimatos_aversarinas_aagiokrata_8 = { set_employer = character:erimatos_aversarinas_aagiokrata_3 } # Heraklios
+		character:ardothanes_aversarinas_aagiokrata_3 = { set_employer = character:ardothanes_mothers_and_fathers_2 } # Moruen Katronas
 		
 		#character:konijkmener_lifepath_81 = { set_employer = character:voyagen_lifepath_8 } # Rene already there both
 		#character:voyagen_lifepath_84 = { set_employer = character:voyagen_lifepath_8 } # Rene
-		if = {
-			limit = { game_start_date >= 954.1.1 }
-			if = {
-				limit = { NOT = { has_global_variable = wih_great_struggle } }
-				title:c_el_qulatha.holder = {
-					create_story = {
-						type = great_struggle_wih_story_cycle
-						save_scope_as = gh_wih_great_struggle_story
-					}
-					set_global_variable = {
-						name = wih_great_struggle
-						value = scope:gh_wih_great_struggle_story
-					}	
-				}
-			}
-			global_var:wih_great_struggle = {
-				add_to_variable_list = {
-					name = gh_regional_struggle_list
-					target = flag:gh_region_western_war_in_heaven_struggle
-				}
-			}
-			character:tasurmad_wardenism_15 = { save_scope_as = struggle_ender_scope }
-			title:c_el_qulatha.holder = {
-				gh_great_struggle_ended_regional_struggle_info_effect = {
-					STRUGGLE_NAME = gh_region_western_war_in_heaven_struggle
-					REASON = gh_wih_ending_wardenite_victory
-					REASON_DESCRIPTION = gh_wih_ending_historical_ayyar_victory
-					STRUGGLE_ENDER = scope:struggle_ender_scope
-				}
-				global_var:gh_region_western_war_in_heaven_struggle ?= {
-					set_variable = {
-						name = gh_wih_struggle_end_date
-						value = 5953
-					}
-				}
-			}
-		}
-		if = {
-			limit = { game_start_date = 6254.1.1 }
-			title:c_oraispol.holder = {
-				create_story = {
-					type = story_aversarian_anarchy
-					save_scope_as = anarchy_story
-				}
-			}
-			add_to_global_variable_list = {
-				name = global_story_cycle_list
-				target = scope:anarchy_story
-			}
-		}
-		
-		gh_set_historical_book_rarity_for_library_effect = yes
-
-		# Launch Amsari Civil War
-		# gh_1298_start_acw_effect = yes ASKIL TODO: Add back when completed
 	}
 
 	events = {
@@ -485,7 +483,14 @@ GH_on_game_start_after_lobby = {
 	}
 	
 	on_actions = {
+		#initialize_magi_on_action
+		on_yearly_legacy_of_elysia_check
 		on_yearly_mainland_refugees_check
+		on_yearly_legacy_of_icw_check
+		on_yearly_malcoisiac_anarchy_check
+		on_yearly_ruined_by_ulfirx_check
+		on_yearly_sarradon_horn_tidal_check
+		on_yearly_aftermath_of_the_ash_war_check
 		delay = { years = 46 }
 		dissolve_aversarian_titles_action
 	}

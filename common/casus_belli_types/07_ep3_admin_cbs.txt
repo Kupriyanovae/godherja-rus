@@ -6,15 +6,13 @@
 	should_show_war_goal_subview = yes
 	mutually_exclusive_titles = { always = yes }
 
-	allowed_for_character_display_regardless = {
-		tgp_japan_offensive_wars_ban_trigger = yes
-	}
-
 	allowed_for_character = {
 		government_allows = administrative
 		NOR = {
 			government_has_flag = government_is_landless_adventurer
-			government_has_flag = government_is_celestial
+			government_has_flag = government_is_judicial_republic
+			government_has_flag = government_is_republic_playable
+			government_has_flag = government_is_administrative_republic
 		}
 	}
 
@@ -70,9 +68,9 @@
 	}
 
 	valid_to_start = {
-		scope:target = {
-			is_landless_type_title = no
-		}
+	}
+
+	allowed_for_character_display_regardless = {
 	}
 
 	should_invalidate = {
@@ -275,15 +273,8 @@
 		# Influence
 		add_influence_attacker_defeat_effect = yes
 
-		scope:defender = { 
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_high_effect = yes
-			# Prestige for Defender
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = medium_prestige_value
-			}
-		}
+		# EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -291,6 +282,13 @@
 				GOLD_VALUE = 2
 			}
 			add_prestige = medium_prestige_loss
+		}
+
+		# Prestige for Defender
+		scope:defender = {
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = medium_prestige_value
+			}
 		}
 
 		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
@@ -350,8 +348,11 @@ duchy_expansion_cb = {
 	allowed_for_character = {
 		government_allows = administrative
 		vassal_contract_has_flag = admin_duchy_expansion_unlocked
-		NOT = {
+		NOR = {
 			government_has_flag = government_is_landless_adventurer
+			government_has_flag = government_is_judicial_republic
+			government_has_flag = government_is_administrative_republic
+			government_has_flag = government_is_republic_playable
 		}
 	}
 
@@ -367,7 +368,6 @@ duchy_expansion_cb = {
 		trigger_else = {
 			prestige_level >= 3
 		}
-		tgp_japan_offensive_wars_ban_trigger = yes
 	}
 
 	allowed_against_character = {
@@ -420,9 +420,6 @@ duchy_expansion_cb = {
 	}
 
 	valid_to_start = {
-		scope:target = {
-			is_landless_type_title = no
-		}
 	}
 
 	should_invalidate = {
@@ -589,7 +586,7 @@ duchy_expansion_cb = {
 				limit = {
 					scope:defender = {
 						any_held_title = {
-							title_tier = county
+							tier = tier_county
 							NOT = { target_is_de_jure_liege_or_above = scope:de_jure_target }
 						}
 					}
@@ -718,15 +715,8 @@ duchy_expansion_cb = {
 		# Influence
 		add_influence_attacker_defeat_effect = yes
 
-		scope:defender = { 
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_high_effect = yes
-			# Prestige for Defender
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = medium_prestige_value
-			}
-		}
+		# EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -736,6 +726,13 @@ duchy_expansion_cb = {
 			add_prestige = {
 				value = major_prestige_value
 				multiply = -1.0
+			}
+		}
+
+		# Prestige for Defender
+		scope:defender = {
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = major_prestige_value
 			}
 		}
 
@@ -789,10 +786,6 @@ naval_expansion_cb = {
 	should_show_war_goal_subview = yes
 	mutually_exclusive_titles = { always = yes }
 
-	allowed_for_character_display_regardless = {
-		tgp_japan_offensive_wars_ban_trigger = yes
-	}
-
 	allowed_for_character = {
 		government_allows = administrative
 		any_sub_realm_county = {
@@ -800,7 +793,8 @@ naval_expansion_cb = {
 		}
 		NOR = {
 			government_has_flag = government_is_landless_adventurer
-			government_has_flag = government_is_celestial
+			government_has_flag = government_is_judicial_republic
+			government_has_flag = government_is_administrative_republic
 		}
 	}
 
@@ -866,6 +860,9 @@ naval_expansion_cb = {
 				any_neighboring_county = { this = scope:target }
 			}
 		}
+	}
+
+	allowed_for_character_display_regardless = {
 	}
 
 	should_invalidate = {
@@ -1068,15 +1065,8 @@ naval_expansion_cb = {
 		# Influence
 		add_influence_attacker_defeat_effect = yes
 
-		scope:defender = { 
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_high_effect = yes
-			# Prestige for Defender
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = medium_prestige_value
-			}
-		}
+		# EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -1084,6 +1074,13 @@ naval_expansion_cb = {
 				GOLD_VALUE = 2
 			}
 			add_prestige = medium_prestige_loss
+		}
+
+		# Prestige for Defender
+		scope:defender = {
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = medium_prestige_value
+			}
 		}
 
 		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
@@ -1147,13 +1144,13 @@ naval_duchy_expansion_cb = {
 		}
 		vassal_contract_has_flag = admin_naval_duchy_expansion_unlocked
 		NOR = {
+			government_has_flag = government_is_judicial_republic
+			government_has_flag = government_is_administrative_republic
 			government_has_flag = government_is_landless_adventurer
-			government_has_flag = government_is_celestial
 		}
 	}
 
 	allowed_for_character_display_regardless = {
-		tgp_japan_offensive_wars_ban_trigger = yes
 		trigger_if = {
 			limit = {
 				culture = {
@@ -1401,7 +1398,7 @@ naval_duchy_expansion_cb = {
 				limit = {
 					scope:defender = {
 						any_held_title = {
-							title_tier = county
+							tier = tier_county
 							NOT = { target_is_de_jure_liege_or_above = scope:de_jure_target }
 						}
 					}
@@ -1530,15 +1527,8 @@ naval_duchy_expansion_cb = {
 		# Influence
 		add_influence_attacker_defeat_effect = yes
 
-		scope:defender = { 
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_high_effect = yes
-			# Prestige for Defender
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = medium_prestige_value
-			}
-		}
+		# EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -1548,6 +1538,13 @@ naval_duchy_expansion_cb = {
 			add_prestige = {
 				value = major_prestige_value
 				multiply = -1.0
+			}
+		}
+
+		# Prestige for Defender
+		scope:defender = {
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = major_prestige_value
 			}
 		}
 
@@ -1787,7 +1784,7 @@ influence_war_cb = {
 				limit = {
 					scope:defender = {
 						any_held_title = {
-							title_tier = county
+							tier = tier_county
 							NOT = { target_is_de_jure_liege_or_above = scope:de_jure_target }
 						}
 					}
@@ -1899,15 +1896,8 @@ influence_war_cb = {
 		# Legitimacy
 		add_legitimacy_attacker_defeat_effect = yes
 
-		scope:defender = { 
-			mandala_peacemaker_perk_serenity_effect = yes
-			#EP2 accolade glory gain for winning against higher ranked enemy
-			accolade_defender_war_end_glory_gain_high_effect = yes
-			# Prestige for Defender
-			add_prestige_war_defender_effect = {
-				PRESTIGE_VALUE = medium_prestige_value
-			}
-		}
+		# EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -1917,6 +1907,13 @@ influence_war_cb = {
 			add_prestige = {
 				value = major_prestige_value
 				multiply = -1.0
+			}
+		}
+
+		# Prestige for Defender
+		scope:defender = {
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = major_prestige_value
 			}
 		}
 

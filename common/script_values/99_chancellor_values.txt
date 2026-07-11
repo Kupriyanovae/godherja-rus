@@ -18,6 +18,20 @@ chancellor_foreign_affairs_opinion_max_perk_bonus_modifier = {
 	}
 }
 
+#chancellor_foreign_affairs_opinion_max_perk_bonus_modifier = {
+#	value = 0
+#	if = {
+#		limit = {
+#			scope:councillor_liege = { has_perk = adaptive_traditions_perk }
+#		}
+#		add = chancellor_foreign_affairs_opinion_base
+#		multiply = {
+#			add = adaptive_traditions_perk_impact_percent
+#			divide = 100
+#		}
+#	}
+#}
+
 # Bonus to opinion from Bureaucrats
 chancellor_foreign_affairs_opinion_max_erudition_modifier = {
 	add = chancellor_foreign_affairs_opinion_base
@@ -85,13 +99,6 @@ chancellor_foreign_affairs_opinion_max = {
 		}
 		add = chancellor_foreign_affairs_opinion_max_consulted_house_modifier
 	}
-	# Add bonus from Astounding Presence
-	if = {
-		limit = {
-			scope:councillor_liege = { has_character_modifier = court_fashion_foreign_modifier }
-		}
-		add = chancellor_foreign_affairs_opinion_max_court_fashion_modifier
-	}
 	# GH Addition: Add bonus from Judicial Council dynasty perk
 	if = {
 		limit = {
@@ -111,7 +118,7 @@ chancellor_foreign_affairs_realm_opinion_scale = {
 	if = {
 		limit = {
 			scope:councillor_liege = {
-				top_liege != this
+				is_independent_ruler = no
 				is_ai = yes
 			}
 		}
@@ -120,7 +127,7 @@ chancellor_foreign_affairs_realm_opinion_scale = {
 	else_if = {
 		limit = {
 			scope:councillor_liege = {
-				top_liege != this
+				is_independent_ruler = no
 				has_variable = chancellor_foreign_affairs_opinion_value
 			}
 		}
@@ -134,7 +141,7 @@ chancellor_foreign_affairs_independent_opinion_scale = {
 		limit = {
 			scope:councillor_liege = {
 				is_ai = yes
-				top_liege = this
+				is_independent_ruler = yes
 			}
 		}
 		add = chancellor_foreign_affairs_opinion_max
@@ -142,7 +149,7 @@ chancellor_foreign_affairs_independent_opinion_scale = {
 	else_if = {
 		limit = {
 			scope:councillor_liege = {
-				top_liege = this
+				is_independent_ruler = yes
 				has_variable = chancellor_foreign_affairs_opinion_value
 			}
 		}
@@ -179,7 +186,9 @@ chancellor_foreign_affairs_prestige_gain_perk_bonus_modifier = {
 # Bureaucrats bonus
 chancellor_foreign_affairs_prestige_gain_erudition_modifier = {
 	if = {
-		limit = { councillor_liege_has_erudition_legacy_5_perk = yes }
+		limit = {
+			councillor_liege_has_erudition_legacy_5_perk = yes
+		}
 		add = chancellor_foreign_affairs_prestige_gain_base
 		multiply = {
 			add = erudition_legacy_5_percentage
@@ -191,7 +200,9 @@ chancellor_foreign_affairs_prestige_gain_erudition_modifier = {
 # Family Business bonus
 chancellor_foreign_affairs_prestige_gain_family_business_modifier = {
 	if = {
-		limit = { councillor_liege_has_family_business_bonus = yes }
+		limit = {
+			councillor_liege_has_family_business_bonus = yes
+		}
 		add = chancellor_foreign_affairs_prestige_gain_base
 		multiply = {
 			add = family_business_councillors_percentage
@@ -222,6 +233,9 @@ chancellor_foreign_affairs_prestige_total = {
 	# GH Addition: Judicial Council Dynasty Perk
 	add = chancellor_foreign_affairs_prestige_gain_judicial_council_modifier
 }
+
+
+
 
 ####################
 # Domestic Affairs
@@ -339,7 +353,7 @@ chancellor_domestic_affairs_opinion_scale = {
 		limit = {
 			scope:councillor_liege = {
 				is_ai = yes
-				top_liege = this
+				is_independent_ruler = yes
 			}
 		}
 		add = chancellor_domestic_affairs_opinion_max
@@ -457,6 +471,7 @@ chancellor_domestic_affairs_tyranny_total = {
 #####################
 # Integrate Title
 #####################
+
 
 chancellor_integrate_title_current_progress = {
 	value = 0
@@ -610,7 +625,7 @@ chancellor_integrate_title_contextual_bonuses = {
 	if = {
 		limit = { # Task instigator is admin top liege
 			scope:councillor_liege = {
-				top_liege = this
+				is_independent_ruler = yes
 				government_allows = administrative
 			}
 		}
@@ -631,7 +646,7 @@ chancellor_integrate_title_contextual_bonuses = {
 			}
 			trigger_else = {
 				scope:county.kingdom.holder ?= {
-					top_liege = this
+					is_independent_ruler = yes
 					government_allows = administrative
 				}
 			}
@@ -641,32 +656,6 @@ chancellor_integrate_title_contextual_bonuses = {
 			desc = chancellor_integrate_title_admin_target_bonus_desc
 		}
 	}
-	# EP4 Hegemon Bonus
-	if = {
-		limit = { # Task instigator is Hegemon or higher
-			scope:councillor_liege.highest_held_title_tier > tier_empire
-		}
-		add = {
-			value = chancellor_integrate_title_admin_top_liege_bonus
-			desc = chancellor_integrate_title_hegemon_bonus_desc
-		}
-	}
-	# EP4 Dynastic Cycle in Advancement phase bonus
-	if = {
-		limit = {
-			has_tgp_dlc_trigger = yes
-			scope:councillor_liege = {
-				top_participant_group:dynastic_cycle ?= {
-					has_participant_group_parameter = dynastic_cycle_faster_title_integration
-				}
-			}
-		}
-		add = {
-			value = 10
-			desc = chancellor_integrate_title_dynastic_cycle_bonus_desc
-		}
-	}
-	
 }
 
 #####################
@@ -846,7 +835,8 @@ chancellor_learn_on_the_job_scale = {
 	value = 0
 	if = {
 		limit = {
-			liege ?= { has_perk = learn_on_the_job_perk }
+			exists = liege
+			liege = { has_perk = learn_on_the_job_perk }
 		}
 		add = diplomacy
 		multiply = {

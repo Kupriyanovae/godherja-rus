@@ -32,6 +32,7 @@
 				is_at_war_with = scope:recipient
 			}
 		}
+		scope:recipient = { is_busy_in_events_localised = yes }
 		custom_description = {
 			text = "gh_has_already_asked_for_loyalists"
 			subject = scope:actor
@@ -702,7 +703,7 @@
 		modifier = {
 			add = -25
 			scope:recipient = {
-				house_has_feud_relation_with_trigger = { TARGET = scope:actor }
+				existing_feud_against_target_trigger = { TARGET = scope:actor }
 			}
 			desc = MARRY_FAMILY_FEUD_REASON
 		}
@@ -804,6 +805,7 @@ gh_acw_request_gold_interaction = {
 				is_at_war_with = scope:recipient
 			}
 		}
+		scope:recipient = { is_busy_in_events_localised = yes }
 		custom_description = {
 			text = "gh_has_already_request_gold"
 			subject = scope:actor
@@ -1376,7 +1378,7 @@ gh_acw_request_gold_interaction = {
 		modifier = {
 			add = -25
 			scope:recipient = {
-				house_has_feud_relation_with_trigger = { TARGET = scope:actor }
+				existing_feud_against_target_trigger = { TARGET = scope:actor }
 			}
 			desc = MARRY_FAMILY_FEUD_REASON
 		}
@@ -1487,6 +1489,7 @@ gh_acw_give_gold_interaction = {
 				is_at_war_with = scope:recipient
 			}
 		}
+		scope:recipient = { is_busy_in_events_localised = yes }
 		custom_description = {
 			text = "gh_has_already_asked_for_loyalists"
 			subject = scope:actor
@@ -1753,6 +1756,7 @@ gh_acw_support_pretender = {
 			is_imprisoned = no
 			NOT = { is_at_war_with = scope:recipient }
 		}
+		scope:recipient = { is_busy_in_events_localised = yes }
 		custom_description = {
 			text = "gh_has_recently_supported_pretender"
 			subject = scope:actor
@@ -1871,8 +1875,8 @@ gh_acw_support_pretender = {
 		base = 100
 
 		modifier = {
-			add = -100
-			NOT = { scope:recipient = { has_title = title:e_amsari_hiklahn } }
+			add = -40
+			NOT = { scope:recipient = { has_title = title:e_amsari } }
 			OR = {
 				NOT = { scope:recipient = { var:gh_amsari_civil_war_info_story ?= { has_variable_list = amsari_civil_war_supporter_list } } }
 				scope:recipient = {
@@ -1889,7 +1893,7 @@ gh_acw_support_pretender = {
 		}
 		modifier = {
 			add = -100
-			scope:recipient = { has_title = title:e_amsari_hiklahn }
+			scope:recipient = { has_title = title:e_amsari }
 			OR = {
 				NOT = { scope:recipient = { var:gh_amsari_civil_war_info_story ?= { has_variable_list = amsari_civil_war_supporter_list } } }
 				scope:recipient = {
@@ -2067,7 +2071,7 @@ gh_acw_support_pretender = {
 		modifier = {
 			add = -25
 			scope:recipient = {
-				house_has_feud_relation_with_trigger = { TARGET = scope:actor }
+				existing_feud_against_target_trigger = { TARGET = scope:actor }
 			}
 			desc = MARRY_FAMILY_FEUD_REASON
 		}
@@ -2206,6 +2210,7 @@ gh_acw_stop_support_pretender = {
 			is_imprisoned = no
 			is_at_war = yes
 		}
+		scope:recipient = { is_busy_in_events_localised = yes }
 		custom_description = {
 			text = "gh_has_recently_supported_pretender"
 			subject = scope:actor

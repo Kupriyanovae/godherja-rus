@@ -499,6 +499,112 @@ gh_select_animal_effect = {
 				}
 				set_variable = { name = $VARIABLE$ value = flag:desert_hare years = 3 }
 			}
+			0 = {	# rodent
+				trigger = {
+					scope:animal_location = {
+						GH_hunt_animal_rodent_trigger = yes
+						# If a more specific regional variant is available, always choose that over the generic version
+						GH_hunt_animal_porcupine_trigger = no
+						GH_hunt_animal_mongoose_trigger = no
+					}
+					NOR = {
+						exists = scope:herbivore
+						exists = scope:managed
+						exists = scope:herding
+						exists = scope:trophy_hide_big
+						exists = scope:dangerous_local_game
+						exists = scope:monstrous_local_game
+						exists = scope:trophy_skull
+						exists = scope:lives_in_caves
+						exists = scope:trophy_hide
+						exists = scope:predator
+						exists = scope:intelligent
+						exists = scope:extremely_dangerous_local_game
+						exists = scope:trophy_toxin
+						exists = scope:falconry_local_game
+						exists = scope:migratory
+						exists = scope:falconry_nonstandard_local_game
+						exists = scope:falconry_big_local_game
+						exists = scope:trophy_feather
+						exists = scope:humanoid_local_game
+						exists = scope:trophy_bone
+						exists = scope:magical_local_game
+						exists = scope:extremely_dangerous_game
+						exists = scope:trophy_generic
+						exists = scope:trophy_gem
+						exists = scope:incorporeal_local_game
+						exists = scope:trophy_essence
+						exists = scope:trophy_crystal
+						exists = scope:trophy_gargoyle
+						exists = scope:extremely_dangerous_local_sea_game
+						exists = scope:dangerous_local_sea_game
+						exists = scope:monstrous_local_sea_game
+						exists = scope:standard_local_sea_game
+						exists = scope:small_local_sea_game
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_plains_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_floodplains_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_farmlands_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_steppe_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_drylands_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_hills_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_mountains_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_forest_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_taiga_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_archipelagic_terrain_trigger = yes
+					}
+				}
+				set_variable = { name = $VARIABLE$ value = flag:rodent years = 3 }
+			}
 			0 = {	# porcupine
 				trigger = {
 					scope:animal_location = {
@@ -683,7 +789,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:red_deer years = 3 }
@@ -771,7 +877,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:reacher_red_deer years = 3 }
@@ -823,7 +929,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:tragoneian_stag years = 3 }
@@ -887,7 +993,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:eastern_deer years = 3 }
@@ -983,7 +1089,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:fallow_deer years = 3 }
@@ -1071,7 +1177,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:sarradonian_royal_deer years = 3 }
@@ -1159,7 +1265,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:roe years = 3 }
@@ -1235,7 +1341,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:chital years = 3 }
@@ -1356,7 +1462,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:blackbuck years = 3 }
@@ -1428,7 +1534,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:gazelle years = 3 }
@@ -1486,7 +1592,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:white_gazelle years = 3 }
@@ -1568,7 +1674,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:oryx years = 3 }
@@ -1644,7 +1750,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:screwhorn_antelope years = 3 }
@@ -1714,7 +1820,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:saiga years = 3 }
@@ -1790,7 +1896,7 @@ gh_select_animal_effect = {
 					}
 				}
 				# Master of Hunt aptitude affects chance of managed game
-				activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+				hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 				# Increase larger deer chance with management buildings
 				hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 				set_variable = { name = $VARIABLE$ value = flag:elk years = 3 }
@@ -3938,7 +4044,7 @@ gh_select_animal_effect = {
 			0 = {	# apep-ibizan
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_apep_ibizan_trigger = yes
+						GH_hunt_animal_apep-ibizan_trigger = yes
 					}
 					NOR = {
 						exists = scope:standard_local_game
@@ -4001,7 +4107,7 @@ gh_select_animal_effect = {
 				}
 				# Beasthunter lifestyle lets you access extra monster hunt activity options
 				GH_hunt_activity_monster_hunt_type_modifier = yes
-				set_variable = { name = $VARIABLE$ value = flag:apep_ibizan years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:apep-ibizan years = 3 }
 			}
 			0 = {	# kursha
 				trigger = {
@@ -6050,7 +6156,7 @@ gh_select_animal_effect = {
 			0 = {	# ring-tailed lemur
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_ring_tailed_lemur_trigger = yes
+						GH_hunt_animal_ring-tailed_lemur_trigger = yes
 					}
 					NOR = {
 						exists = scope:vermin_local_game
@@ -6112,7 +6218,7 @@ gh_select_animal_effect = {
 						GH_any_farmlands_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:ring_tailed_lemur years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:ring-tailed_lemur years = 3 }
 			}
 			0 = {	# brown lemur
 				trigger = {
@@ -6582,7 +6688,7 @@ gh_select_animal_effect = {
 			0 = {	# twin-serpent
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_twin_serpent_trigger = yes
+						GH_hunt_animal_twin-serpent_trigger = yes
 					}
 					NOR = {
 						exists = scope:trophy_hide_small
@@ -6625,7 +6731,7 @@ gh_select_animal_effect = {
 						GH_any_jungle_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:twin_serpent years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:twin-serpent years = 3 }
 			}
 			0 = {	# rovarskan dragon
 				trigger = {
@@ -7880,7 +7986,7 @@ gh_select_animal_effect = {
 			0 = {	# long-tailed duck
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_long_tailed_duck_trigger = yes
+						GH_hunt_animal_long-tailed_duck_trigger = yes
 					}
 					NOR = {
 						exists = scope:standard_local_game
@@ -7925,7 +8031,7 @@ gh_select_animal_effect = {
 						GH_any_wetlands_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:long_tailed_duck years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:long-tailed_duck years = 3 }
 			}
 			0 = {	# goldeneye
 				trigger = {
@@ -8470,7 +8576,7 @@ gh_select_animal_effect = {
 			0 = {	# Kashiryan spot-billed duck
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_kashiryan_spot_billed_duck_trigger = yes
+						GH_hunt_animal_kashiryan_spot-billed_duck_trigger = yes
 					}
 					NOR = {
 						exists = scope:standard_local_game
@@ -8539,7 +8645,7 @@ gh_select_animal_effect = {
 						GH_any_hills_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:kashiryan_spot_billed_duck years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:kashiryan_spot-billed_duck years = 3 }
 			}
 			0 = {	# pochard
 				trigger = {
@@ -8660,7 +8766,7 @@ gh_select_animal_effect = {
 			0 = {	# red-crested pochard
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_red_crested_pochard_trigger = yes
+						GH_hunt_animal_red-crested_pochard_trigger = yes
 					}
 					NOR = {
 						exists = scope:standard_local_game
@@ -8771,7 +8877,7 @@ gh_select_animal_effect = {
 						GH_any_hills_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:red_crested_pochard years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:red-crested_pochard years = 3 }
 			}
 			0 = {	# Kashiryan whistling duck
 				trigger = {
@@ -9144,7 +9250,7 @@ gh_select_animal_effect = {
 			0 = {	# red-breasted goose
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_red_breasted_goose_trigger = yes
+						GH_hunt_animal_red-breasted_goose_trigger = yes
 					}
 					NOR = {
 						exists = scope:standard_local_game
@@ -9207,7 +9313,7 @@ gh_select_animal_effect = {
 						GH_any_farmlands_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:red_breasted_goose years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:red-breasted_goose years = 3 }
 			}
 			0 = {	# Khenemhat goose
 				trigger = {
@@ -9366,7 +9472,7 @@ gh_select_animal_effect = {
 			0 = {	# spur-winged goose
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_spur_winged_goose_trigger = yes
+						GH_hunt_animal_spur-winged_goose_trigger = yes
 					}
 					NOR = {
 						exists = scope:standard_local_game
@@ -9435,7 +9541,7 @@ gh_select_animal_effect = {
 						GH_any_hills_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:spur_winged_goose years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:spur-winged_goose years = 3 }
 			}
 			0 = {	# whooper swan
 				trigger = {
@@ -10300,7 +10406,7 @@ gh_select_animal_effect = {
 			0 = {	# red-throated loon
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_red_throated_loon_trigger = yes
+						GH_hunt_animal_red-throated_loon_trigger = yes
 					}
 					NOR = {
 						exists = scope:standard_local_game
@@ -10351,7 +10457,7 @@ gh_select_animal_effect = {
 						GH_any_wetlands_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:red_throated_loon years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:red-throated_loon years = 3 }
 			}
 			0 = {	# arctic loon
 				trigger = {
@@ -17975,6 +18081,77 @@ GH_hunt_activity_rodent_game_effect = {
 	if = {
 		limit = { scope:animal_location = { GH_hunt_animal_rodent_trigger = yes } }
 		random_list = {
+			0 = {	# rodent
+				trigger = {
+					scope:animal_location = {
+						GH_hunt_animal_rodent_trigger = yes
+						# If a more specific regional variant is available, always choose that over the generic version
+						GH_hunt_animal_porcupine_trigger = no
+						GH_hunt_animal_mongoose_trigger = no
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_plains_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_floodplains_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_farmlands_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_steppe_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_drylands_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_hills_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_mountains_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_forest_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_taiga_terrain_trigger = yes
+					}
+				}
+				modifier = {
+					add = 90
+					scope:animal_location = {
+						GH_any_archipelagic_terrain_trigger = yes
+					}
+				}
+				set_variable = { name = $VARIABLE$ value = flag:rodent years = 3 }
+			}
 			0 = {	# porcupine
 				trigger = {
 					scope:animal_location = {
@@ -19858,7 +20035,7 @@ GH_hunt_activity_canine_game_effect = {
 			0 = {	# apep-ibizan
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_apep_ibizan_trigger = yes
+						GH_hunt_animal_apep-ibizan_trigger = yes
 						# If a more specific regional variant is available, always choose that over the generic version
 					}
 				}
@@ -19886,7 +20063,7 @@ GH_hunt_activity_canine_game_effect = {
 						has_province_modifier = extreme_desert_modifier
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:apep_ibizan years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:apep-ibizan years = 3 }
 			}
 			0 = {	# kursha
 				trigger = {
@@ -20982,7 +21159,7 @@ GH_hunt_activity_primate_game_effect = {
 					scope:animal_location = {
 						GH_hunt_animal_lemur_trigger = yes
 						# If a more specific regional variant is available, always choose that over the generic version
-						GH_hunt_animal_ring_tailed_lemur_trigger = no
+						GH_hunt_animal_ring-tailed_lemur_trigger = no
 						GH_hunt_animal_brown_lemur_trigger = no
 						GH_hunt_animal_black_lemur_trigger = no
 						GH_hunt_animal_indri_trigger = no
@@ -20993,7 +21170,7 @@ GH_hunt_activity_primate_game_effect = {
 			0 = {	# ring-tailed lemur
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_ring_tailed_lemur_trigger = yes
+						GH_hunt_animal_ring-tailed_lemur_trigger = yes
 						# If a more specific regional variant is available, always choose that over the generic version
 					}
 				}
@@ -21021,7 +21198,7 @@ GH_hunt_activity_primate_game_effect = {
 						GH_any_farmlands_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:ring_tailed_lemur years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:ring-tailed_lemur years = 3 }
 			}
 			0 = {	# brown lemur
 				trigger = {
@@ -21268,7 +21445,7 @@ GH_hunt_activity_snake_game_effect = {
 			0 = {	# twin-serpent
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_twin_serpent_trigger = yes
+						GH_hunt_animal_twin-serpent_trigger = yes
 						# If a more specific regional variant is available, always choose that over the generic version
 					}
 				}
@@ -21278,7 +21455,7 @@ GH_hunt_activity_snake_game_effect = {
 						GH_any_jungle_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:twin_serpent years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:twin-serpent years = 3 }
 			}
 		}
 	}
@@ -21466,10 +21643,10 @@ GH_hunt_activity_waterfowl_game_effect = {
 	if = {
 		limit = { scope:animal_location = { GH_hunt_animal_waterfowl_trigger = yes } }
 		random_list = {
-			0 = {	# duck_fix
+			0 = {	# duck
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_duck_fix_trigger = yes
+						GH_hunt_animal_duck_trigger = yes
 						# If a more specific regional variant is available, always choose that over the generic version
 						GH_hunt_animal_mallard_trigger = no
 						GH_hunt_animal_gadwall_trigger = no
@@ -21481,19 +21658,19 @@ GH_hunt_activity_waterfowl_game_effect = {
 						GH_hunt_animal_tufted_duck_trigger = no
 						GH_hunt_animal_scoter_trigger = no
 						GH_hunt_animal_velvet_scoter_trigger = no
-						GH_hunt_animal_long_tailed_duck_trigger = no
+						GH_hunt_animal_long-tailed_duck_trigger = no
 						GH_hunt_animal_goldeneye_trigger = no
 						GH_hunt_animal_smew_trigger = no
 						GH_hunt_animal_merganser_trigger = no
 						GH_hunt_animal_wigeon_trigger = no
 						GH_hunt_animal_black_duck_trigger = no
 						GH_hunt_animal_goldenbill_duck_trigger = no
-						GH_hunt_animal_kashiryan_spot_billed_duck_trigger = no
+						GH_hunt_animal_kashiryan_spot-billed_duck_trigger = no
 						GH_hunt_animal_pochard_trigger = no
-						GH_hunt_animal_red_crested_pochard_trigger = no
+						GH_hunt_animal_red-crested_pochard_trigger = no
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:duck_fix years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:duck years = 3 }
 			}
 			0 = {	# mallard
 				trigger = {
@@ -22074,7 +22251,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 			0 = {	# long-tailed duck
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_long_tailed_duck_trigger = yes
+						GH_hunt_animal_long-tailed_duck_trigger = yes
 						# If a more specific regional variant is available, always choose that over the generic version
 					}
 				}
@@ -22084,7 +22261,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 						GH_any_wetlands_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:long_tailed_duck years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:long-tailed_duck years = 3 }
 			}
 			0 = {	# goldeneye
 				trigger = {
@@ -22419,7 +22596,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 			0 = {	# Kashiryan spot-billed duck
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_kashiryan_spot_billed_duck_trigger = yes
+						GH_hunt_animal_kashiryan_spot-billed_duck_trigger = yes
 						# If a more specific regional variant is available, always choose that over the generic version
 					}
 				}
@@ -22453,7 +22630,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 						GH_any_hills_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:kashiryan_spot_billed_duck years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:kashiryan_spot-billed_duck years = 3 }
 			}
 			0 = {	# pochard
 				trigger = {
@@ -22539,7 +22716,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 			0 = {	# red-crested pochard
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_red_crested_pochard_trigger = yes
+						GH_hunt_animal_red-crested_pochard_trigger = yes
 						# If a more specific regional variant is available, always choose that over the generic version
 					}
 				}
@@ -22615,7 +22792,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 						GH_any_hills_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:red_crested_pochard years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:red-crested_pochard years = 3 }
 			}
 			0 = {	# whistling duck
 				trigger = {
@@ -22686,10 +22863,10 @@ GH_hunt_activity_waterfowl_game_effect = {
 						GH_hunt_animal_greylag_goose_trigger = no
 						GH_hunt_animal_barnacle_goose_trigger = no
 						GH_hunt_animal_brant_trigger = no
-						GH_hunt_animal_red_breasted_goose_trigger = no
+						GH_hunt_animal_red-breasted_goose_trigger = no
 						GH_hunt_animal_khenemhat_goose_trigger = no
 						GH_hunt_animal_cotton_pygmy_goose_trigger = no
-						GH_hunt_animal_spur_winged_goose_trigger = no
+						GH_hunt_animal_spur-winged_goose_trigger = no
 					}
 				}
 				set_variable = { name = $VARIABLE$ value = flag:goose years = 3 }
@@ -22874,7 +23051,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 			0 = {	# red-breasted goose
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_red_breasted_goose_trigger = yes
+						GH_hunt_animal_red-breasted_goose_trigger = yes
 						# If a more specific regional variant is available, always choose that over the generic version
 					}
 				}
@@ -22902,7 +23079,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 						GH_any_farmlands_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:red_breasted_goose years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:red-breasted_goose years = 3 }
 			}
 			0 = {	# Khenemhat goose
 				trigger = {
@@ -22991,7 +23168,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 			0 = {	# spur-winged goose
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_spur_winged_goose_trigger = yes
+						GH_hunt_animal_spur-winged_goose_trigger = yes
 						# If a more specific regional variant is available, always choose that over the generic version
 					}
 				}
@@ -23025,7 +23202,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 						GH_any_hills_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:spur_winged_goose years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:spur-winged_goose years = 3 }
 			}
 			0 = {	# swan
 				trigger = {
@@ -23661,7 +23838,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 						GH_hunt_animal_loon_trigger = yes
 						# If a more specific regional variant is available, always choose that over the generic version
 						GH_hunt_animal_common_loon_trigger = no
-						GH_hunt_animal_red_throated_loon_trigger = no
+						GH_hunt_animal_red-throated_loon_trigger = no
 						GH_hunt_animal_arctic_loon_trigger = no
 					}
 				}
@@ -23691,7 +23868,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 			0 = {	# red-throated loon
 				trigger = {
 					scope:animal_location = {
-						GH_hunt_animal_red_throated_loon_trigger = yes
+						GH_hunt_animal_red-throated_loon_trigger = yes
 						# If a more specific regional variant is available, always choose that over the generic version
 					}
 				}
@@ -23707,7 +23884,7 @@ GH_hunt_activity_waterfowl_game_effect = {
 						GH_any_wetlands_terrain_trigger = yes
 					}
 				}
-				set_variable = { name = $VARIABLE$ value = flag:red_throated_loon years = 3 }
+				set_variable = { name = $VARIABLE$ value = flag:red-throated_loon years = 3 }
 			}
 			0 = {	# arctic loon
 				trigger = {
@@ -26722,8 +26899,8 @@ GH_hunt_animal_from_death_effect = {
 			death_crocotta = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:crocotta } }
 			}
-			death_apep_ibizan = {
-				$TARGET$ = { set_variable = { name = animal_type value = flag:apep_ibizan } }
+			death_apep-ibizan = {
+				$TARGET$ = { set_variable = { name = animal_type value = flag:apep-ibizan } }
 			}
 			death_kursha = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:kursha } }
@@ -26821,8 +26998,8 @@ GH_hunt_animal_from_death_effect = {
 			death_lemur = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:lemur } }
 			}
-			death_ring_tailed_lemur = {
-				$TARGET$ = { set_variable = { name = animal_type value = flag:ring_tailed_lemur } }
+			death_ring-tailed_lemur = {
+				$TARGET$ = { set_variable = { name = animal_type value = flag:ring-tailed_lemur } }
 			}
 			death_brown_lemur = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:brown_lemur } }
@@ -26848,8 +27025,8 @@ GH_hunt_animal_from_death_effect = {
 			death_emperor_cobra = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:emperor_cobra } }
 			}
-			death_twin_serpent = {
-				$TARGET$ = { set_variable = { name = animal_type value = flag:twin_serpent } }
+			death_twin-serpent = {
+				$TARGET$ = { set_variable = { name = animal_type value = flag:twin-serpent } }
 			}
 			death_reptile = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:reptile } }
@@ -26878,8 +27055,8 @@ GH_hunt_animal_from_death_effect = {
 			death_waterfowl = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:waterfowl } }
 			}
-			death_duck_fix = {
-				$TARGET$ = { set_variable = { name = animal_type value = flag:duck_fix } }
+			death_duck = {
+				$TARGET$ = { set_variable = { name = animal_type value = flag:duck } }
 			}
 			death_mallard = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:mallard } }
@@ -26911,8 +27088,8 @@ GH_hunt_animal_from_death_effect = {
 			death_velvet_scoter = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:velvet_scoter } }
 			}
-			death_long_tailed_duck = {
-				$TARGET$ = { set_variable = { name = animal_type value = flag:long_tailed_duck } }
+			death_long-tailed_duck = {
+				$TARGET$ = { set_variable = { name = animal_type value = flag:long-tailed_duck } }
 			}
 			death_goldeneye = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:goldeneye } }
@@ -26932,14 +27109,14 @@ GH_hunt_animal_from_death_effect = {
 			death_goldenbill_duck = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:goldenbill_duck } }
 			}
-			death_kashiryan_spot_billed_duck = {
-				$TARGET$ = { set_variable = { name = animal_type value = flag:kashiryan_spot_billed_duck } }
+			death_kashiryan_spot-billed_duck = {
+				$TARGET$ = { set_variable = { name = animal_type value = flag:kashiryan_spot-billed_duck } }
 			}
 			death_pochard = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:pochard } }
 			}
-			death_red_crested_pochard = {
-				$TARGET$ = { set_variable = { name = animal_type value = flag:red_crested_pochard } }
+			death_red-crested_pochard = {
+				$TARGET$ = { set_variable = { name = animal_type value = flag:red-crested_pochard } }
 			}
 			death_whistling_duck = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:whistling_duck } }
@@ -26959,8 +27136,8 @@ GH_hunt_animal_from_death_effect = {
 			death_brant = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:brant } }
 			}
-			death_red_breasted_goose = {
-				$TARGET$ = { set_variable = { name = animal_type value = flag:red_breasted_goose } }
+			death_red-breasted_goose = {
+				$TARGET$ = { set_variable = { name = animal_type value = flag:red-breasted_goose } }
 			}
 			death_khenemhat_goose = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:khenemhat_goose } }
@@ -26968,8 +27145,8 @@ GH_hunt_animal_from_death_effect = {
 			death_cotton_pygmy_goose = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:cotton_pygmy_goose } }
 			}
-			death_spur_winged_goose = {
-				$TARGET$ = { set_variable = { name = animal_type value = flag:spur_winged_goose } }
+			death_spur-winged_goose = {
+				$TARGET$ = { set_variable = { name = animal_type value = flag:spur-winged_goose } }
 			}
 			death_swan = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:swan } }
@@ -27004,8 +27181,8 @@ GH_hunt_animal_from_death_effect = {
 			death_common_loon = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:common_loon } }
 			}
-			death_red_throated_loon = {
-				$TARGET$ = { set_variable = { name = animal_type value = flag:red_throated_loon } }
+			death_red-throated_loon = {
+				$TARGET$ = { set_variable = { name = animal_type value = flag:red-throated_loon } }
 			}
 			death_arctic_loon = {
 				$TARGET$ = { set_variable = { name = animal_type value = flag:arctic_loon } }
@@ -27656,8 +27833,8 @@ GH_hunt_animal_death_effect = {
 			death = { death_reason = death_crocotta }
 		}
 		else_if = {
-			limit = { $VAR$ = flag:apep_ibizan }
-			death = { death_reason = death_apep_ibizan }
+			limit = { $VAR$ = flag:apep-ibizan }
+			death = { death_reason = death_apep-ibizan }
 		}
 		else_if = {
 			limit = { $VAR$ = flag:kursha }
@@ -27788,8 +27965,8 @@ GH_hunt_animal_death_effect = {
 			death = { death_reason = death_lemur }
 		}
 		else_if = {
-			limit = { $VAR$ = flag:ring_tailed_lemur }
-			death = { death_reason = death_ring_tailed_lemur }
+			limit = { $VAR$ = flag:ring-tailed_lemur }
+			death = { death_reason = death_ring-tailed_lemur }
 		}
 		else_if = {
 			limit = { $VAR$ = flag:brown_lemur }
@@ -27824,8 +28001,8 @@ GH_hunt_animal_death_effect = {
 			death = { death_reason = death_emperor_cobra }
 		}
 		else_if = {
-			limit = { $VAR$ = flag:twin_serpent }
-			death = { death_reason = death_twin_serpent }
+			limit = { $VAR$ = flag:twin-serpent }
+			death = { death_reason = death_twin-serpent }
 		}
 		else_if = {
 			limit = { $VAR$ = flag:reptile }
@@ -27864,8 +28041,8 @@ GH_hunt_animal_death_effect = {
 			death = { death_reason = death_waterfowl }
 		}
 		else_if = {
-			limit = { $VAR$ = flag:duck_fix }
-			death = { death_reason = death_duck_fix }
+			limit = { $VAR$ = flag:duck }
+			death = { death_reason = death_duck }
 		}
 		else_if = {
 			limit = { $VAR$ = flag:mallard }
@@ -27908,8 +28085,8 @@ GH_hunt_animal_death_effect = {
 			death = { death_reason = death_velvet_scoter }
 		}
 		else_if = {
-			limit = { $VAR$ = flag:long_tailed_duck }
-			death = { death_reason = death_long_tailed_duck }
+			limit = { $VAR$ = flag:long-tailed_duck }
+			death = { death_reason = death_long-tailed_duck }
 		}
 		else_if = {
 			limit = { $VAR$ = flag:goldeneye }
@@ -27936,16 +28113,16 @@ GH_hunt_animal_death_effect = {
 			death = { death_reason = death_goldenbill_duck }
 		}
 		else_if = {
-			limit = { $VAR$ = flag:kashiryan_spot_billed_duck }
-			death = { death_reason = death_kashiryan_spot_billed_duck }
+			limit = { $VAR$ = flag:kashiryan_spot-billed_duck }
+			death = { death_reason = death_kashiryan_spot-billed_duck }
 		}
 		else_if = {
 			limit = { $VAR$ = flag:pochard }
 			death = { death_reason = death_pochard }
 		}
 		else_if = {
-			limit = { $VAR$ = flag:red_crested_pochard }
-			death = { death_reason = death_red_crested_pochard }
+			limit = { $VAR$ = flag:red-crested_pochard }
+			death = { death_reason = death_red-crested_pochard }
 		}
 		else_if = {
 			limit = { $VAR$ = flag:whistling_duck }
@@ -27972,8 +28149,8 @@ GH_hunt_animal_death_effect = {
 			death = { death_reason = death_brant }
 		}
 		else_if = {
-			limit = { $VAR$ = flag:red_breasted_goose }
-			death = { death_reason = death_red_breasted_goose }
+			limit = { $VAR$ = flag:red-breasted_goose }
+			death = { death_reason = death_red-breasted_goose }
 		}
 		else_if = {
 			limit = { $VAR$ = flag:khenemhat_goose }
@@ -27984,8 +28161,8 @@ GH_hunt_animal_death_effect = {
 			death = { death_reason = death_cotton_pygmy_goose }
 		}
 		else_if = {
-			limit = { $VAR$ = flag:spur_winged_goose }
-			death = { death_reason = death_spur_winged_goose }
+			limit = { $VAR$ = flag:spur-winged_goose }
+			death = { death_reason = death_spur-winged_goose }
 		}
 		else_if = {
 			limit = { $VAR$ = flag:swan }
@@ -28032,8 +28209,8 @@ GH_hunt_animal_death_effect = {
 			death = { death_reason = death_common_loon }
 		}
 		else_if = {
-			limit = { $VAR$ = flag:red_throated_loon }
-			death = { death_reason = death_red_throated_loon }
+			limit = { $VAR$ = flag:red-throated_loon }
+			death = { death_reason = death_red-throated_loon }
 		}
 		else_if = {
 			limit = { $VAR$ = flag:arctic_loon }
@@ -28585,25 +28762,25 @@ GH_add_artifact_aspects_from_animal_effect = {
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:apep_ibizan
+			$VAR$ = flag:apep-ibizan
 		}
 		add_artifact_aspect_modifier_effect = { NAME = fire VALUE = 2 }
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:apep_ibizan
+			$VAR$ = flag:apep-ibizan
 		}
 		add_artifact_aspect_modifier_effect = { NAME = stone VALUE = 1 }
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:duck_fix
+			$VAR$ = flag:duck
 		}
 		add_artifact_aspect_modifier_effect = { NAME = air VALUE = 1 }
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:duck_fix
+			$VAR$ = flag:duck
 		}
 		add_artifact_aspect_modifier_effect = { NAME = water VALUE = 1 }
 	}
@@ -28729,13 +28906,13 @@ GH_add_artifact_aspects_from_animal_effect = {
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:long_tailed_duck
+			$VAR$ = flag:long-tailed_duck
 		}
 		add_artifact_aspect_modifier_effect = { NAME = air VALUE = 1 }
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:long_tailed_duck
+			$VAR$ = flag:long-tailed_duck
 		}
 		add_artifact_aspect_modifier_effect = { NAME = water VALUE = 1 }
 	}
@@ -28813,13 +28990,13 @@ GH_add_artifact_aspects_from_animal_effect = {
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:kashiryan_spot_billed_duck
+			$VAR$ = flag:kashiryan_spot-billed_duck
 		}
 		add_artifact_aspect_modifier_effect = { NAME = air VALUE = 1 }
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:kashiryan_spot_billed_duck
+			$VAR$ = flag:kashiryan_spot-billed_duck
 		}
 		add_artifact_aspect_modifier_effect = { NAME = water VALUE = 1 }
 	}
@@ -28837,13 +29014,13 @@ GH_add_artifact_aspects_from_animal_effect = {
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:red_crested_pochard
+			$VAR$ = flag:red-crested_pochard
 		}
 		add_artifact_aspect_modifier_effect = { NAME = air VALUE = 1 }
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:red_crested_pochard
+			$VAR$ = flag:red-crested_pochard
 		}
 		add_artifact_aspect_modifier_effect = { NAME = water VALUE = 1 }
 	}
@@ -28921,13 +29098,13 @@ GH_add_artifact_aspects_from_animal_effect = {
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:red_breasted_goose
+			$VAR$ = flag:red-breasted_goose
 		}
 		add_artifact_aspect_modifier_effect = { NAME = air VALUE = 1 }
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:red_breasted_goose
+			$VAR$ = flag:red-breasted_goose
 		}
 		add_artifact_aspect_modifier_effect = { NAME = water VALUE = 1 }
 	}
@@ -28957,13 +29134,13 @@ GH_add_artifact_aspects_from_animal_effect = {
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:spur_winged_goose
+			$VAR$ = flag:spur-winged_goose
 		}
 		add_artifact_aspect_modifier_effect = { NAME = air VALUE = 1 }
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:spur_winged_goose
+			$VAR$ = flag:spur-winged_goose
 		}
 		add_artifact_aspect_modifier_effect = { NAME = water VALUE = 1 }
 	}
@@ -29101,13 +29278,13 @@ GH_add_artifact_aspects_from_animal_effect = {
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:red_throated_loon
+			$VAR$ = flag:red-throated_loon
 		}
 		add_artifact_aspect_modifier_effect = { NAME = air VALUE = 1 }
 	}
 	if = {
 		limit = {
-			$VAR$ = flag:red_throated_loon
+			$VAR$ = flag:red-throated_loon
 		}
 		add_artifact_aspect_modifier_effect = { NAME = water VALUE = 1 }
 	}
@@ -29763,61 +29940,6 @@ GH_animal_artifact_wealth_quality_effect = {
 					}
 					add = 10
 				}	
-			}
-		}
-	}
-}
-
-# Taelwynn: Need effect to grab random type of GH animal to attune to for animal_aspect spell effect.
-select_next_local_animal_to_attune = {
-	random_list = {
-		1 = {
-			select_local_animal_effect = { TYPE = magical_local_game }
-			set_variable = {
-				name = type_selected
-				value = flag:magical_local_game
-			}
-		}
-		1 = {
-			select_local_animal_effect = { TYPE = humanoid_local_game }
-			set_variable = {
-				name = type_selected
-				value = flag:humanoid_local_game
-			}
-		}
-		1 = {
-			select_local_animal_effect = { TYPE = intelligent_local_game }
-			set_variable = {
-				name = type_selected
-				value = flag:intelligent_local_game
-			}
-		}
-		1 = {
-			select_local_animal_effect = { TYPE = inorganic_local_game }
-			set_variable = {
-				name = type_selected
-				value = flag:inorganic_local_game
-			}
-		}
-		1 = {
-			select_local_animal_effect = { TYPE = enormous_local_game }
-			set_variable = {
-				name = type_selected
-				value = flag:enormous_local_game
-			}
-		}
-		1 = {
-			select_local_animal_effect = { TYPE = monstrous_local_game }
-			set_variable = {
-				name = type_selected
-				value = flag:monstrous_local_game
-			}
-		}
-		1 = {
-			select_local_animal_effect = { TYPE = incorporeal_local_game }
-			set_variable = {
-				name = type_selected
-				value = flag:incorporeal_local_game
 			}
 		}
 	}

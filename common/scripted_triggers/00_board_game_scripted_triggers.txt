@@ -37,7 +37,7 @@ bg_game_type_region_tabula_trigger = {
 }
 
 bg_game_type_region_go_trigger = { #GH TODO Give this to somewhere
-	geographical_region = GH_geographic_dahangon
+	always = no
 }
 
 bg_game_type_region_fidchell_trigger = {
@@ -49,7 +49,7 @@ bg_stake_land_valid_neighbouring_county_to_trade_trigger = {
 	# Suppress a false positive error.
 	trigger_if = {
 		limit = { tier = tier_county }
-		this != prev.capital_county
+		NOT = { this = prev.capital_county }
 		any_neighboring_county = {
 			# Ensure that they're swappable.
 			OR = {

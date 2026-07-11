@@ -29,27 +29,8 @@
 				}
 			}
 		}
-		add_to_global_variable_list = {
-			name = active_legends_tally
-			target = root
-		}
 	}
 	
-	on_end = {
-		if = {
-			limit = {
-				is_target_in_global_variable_list = {
-					name = active_legends_tally
-					target = root
-				}
-			}
-			remove_list_global_variable = {
-				name = active_legends_tally
-				target = root
-			}
-		}
-	}
-
 	on_province_spread = {
 		if = {
 			limit = {
@@ -66,7 +47,7 @@
 					}
 				}
 				scope:legend.legend_owner = {
-					this != prev.county.holder
+					NOT = { this = prev.county.holder }
 				}
 			}
 			if = {
@@ -227,15 +208,7 @@
 					legend_ending_achievements_effect = yes
 					# Ending event
 					trigger_event = story_event_legends.0001
-					if = {
-						limit = {
-							legend_property:title ?= title:h_great_tarrafent
-						}
-						custom_tooltip = {
-							text = unlock_great_tarrafent_decision
-							add_character_flag = unlock_great_tarrafent_flag
-						}
-					}
+					
 					#balancing_legend_global_var_effect = yes # Left for testing purposes
 				}
 			}
@@ -339,15 +312,6 @@
 					custom_tooltip = {
 						text = unlock_legendary_adventure_tt
 						add_character_flag = launch_a_legendary_adventure
-					}
-					if = {
-						limit = {
-							legend_property:title ?= title:h_great_tarrafent
-						}
-						custom_tooltip = {
-							text = unlock_great_tarrafent_decision
-							add_character_flag = unlock_great_tarrafent_flag
-						}
 					}
 					give_legendary_building_heroic_tooltip_effect = yes
 					legend_ending_rewards_heroic_effect = yes
@@ -470,15 +434,6 @@
 						text = unlock_legendary_fealty_tt
 						add_character_flag = legend_demand_fealty
 					}
-					if = {
-						limit = {
-							legend_property:title ?= title:h_great_tarrafent
-						}
-						custom_tooltip = {
-							text = unlock_great_tarrafent_decision
-							add_character_flag = unlock_great_tarrafent_flag
-						}
-					}
 					give_legendary_building_mythical_heroic_tooltip_effect = yes
 					legend_ending_rewards_heroic_effect = yes
 					legend_ending_rewards_mythical_heroic_effect = yes
@@ -570,25 +525,6 @@ legitimizing = {
 				}
 			}
 		}
-		add_to_global_variable_list = {
-			name = active_legends_tally
-			target = root
-		}
-	}
-	
-	on_end = {
-		if = {
-			limit = {
-				is_target_in_global_variable_list = {
-					name = active_legends_tally
-					target = root
-				}
-			}
-			remove_list_global_variable = {
-				name = active_legends_tally
-				target = root
-			}
-		}
 	}
 	
 	on_province_spread = {
@@ -607,7 +543,7 @@ legitimizing = {
 					}
 				}
 				scope:legend.legend_owner = {
-					this != prev.county.holder
+					NOT = { this = prev.county.holder }
 				}
 			}
 			if = {
@@ -732,7 +668,6 @@ legitimizing = {
 				owner_modifier = {
 					monthly_dynasty_prestige = 0.1
 					monthly_dynasty_prestige_mult = 0.05
-					herd_gain_mult = 0.1
 				}
 				promoter_modifier = {
 					monthly_dynasty_prestige = 0.01
@@ -745,13 +680,6 @@ legitimizing = {
 					promoted_legend ?= { save_scope_as = promoted_legend } #For the ending event loc
 					scope:protagonist = { save_scope_as = legend_protagonist }
 					remove_legend_notification_variables_effect = yes
-					if = {
-						limit = { highest_held_title_tier = tier_hegemony }
-						custom_tooltip = {
-							text = unlock_legendary_integration_d_tt
-							add_character_flag = legendary_integration_d
-						}
-					}
 					if = {
 						limit = {
 							exists = scope:title
@@ -770,15 +698,7 @@ legitimizing = {
 					legend_ending_rewards_famed_legitimizing_effect = yes
 					legend_ending_achievements_effect = yes
 					trigger_event = story_event_legends.0002
-					if = {
-						limit = {
-							legend_property:title ?= title:h_great_tarrafent
-						}
-						custom_tooltip = {
-							text = unlock_great_tarrafent_decision
-							add_character_flag = unlock_great_tarrafent_flag
-						}
-					}
+					
 					#balancing_legend_global_var_effect = yes # Left for testing purposes
 				}
 			}
@@ -869,7 +789,6 @@ legitimizing = {
 				owner_modifier = {
 					monthly_dynasty_prestige = 0.25
 					monthly_dynasty_prestige_mult = 0.1
-					herd_gain_mult = 0.2
 				}
 				promoter_modifier = {
 					monthly_dynasty_prestige = 0.04
@@ -882,18 +801,9 @@ legitimizing = {
 					promoted_legend ?= { save_scope_as = promoted_legend } #For the ending event loc
 					scope:protagonist = { save_scope_as = legend_protagonist }
 					remove_legend_notification_variables_effect = yes
-					if = {
-						limit = { highest_held_title_tier = tier_hegemony }
-						custom_tooltip = {
-							text = unlock_legendary_integration_k_tt
-							add_character_flag = legendary_integration_k
-						}
-					}
-					else = {
-						custom_tooltip = {
-							text = unlock_legendary_integration_d_tt
-							add_character_flag = legendary_integration_d
-						}
+					custom_tooltip = {
+						text = unlock_legendary_integration_d_tt
+						add_character_flag = legendary_integration_d
 					}
 					if = {
 						limit = {
@@ -913,15 +823,7 @@ legitimizing = {
 					legend_ending_rewards_illustrious_legitimizing_effect = yes
 					legend_ending_achievements_effect = yes
 					trigger_event = story_event_legends.0002
-					if = {
-						limit = {
-							legend_property:title ?= title:h_great_tarrafent
-						}
-						custom_tooltip = {
-							text = unlock_great_tarrafent_decision
-							add_character_flag = unlock_great_tarrafent_flag
-						}
-					}
+					
 					#balancing_legend_global_var_effect = yes # Left for testing purposes
 				}
 			}
@@ -1021,8 +923,6 @@ legitimizing = {
 				owner_modifier = {
 					monthly_dynasty_prestige = 0.5
 					monthly_dynasty_prestige_mult = 0.2
-					herd_gain_mult = 0.2
-					herd_capacity_mult = 0.1
 				}
 				promoter_modifier = {
 					monthly_dynasty_prestige = 0.1
@@ -1034,18 +934,9 @@ legitimizing = {
 					promoted_legend ?= { save_scope_as = promoted_legend } #For the ending event loc
 					scope:protagonist = { save_scope_as = legend_protagonist }
 					remove_legend_notification_variables_effect = yes
-					if = {
-						limit = { highest_held_title_tier = tier_hegemony }
-						custom_tooltip = {
-							text = unlock_legendary_integration_e_tt
-							add_character_flag = legendary_integration_e
-						}
-					}
-					else = {
-						custom_tooltip = {
-							text = unlock_legendary_integration_k_tt
-							add_character_flag = legendary_integration_k
-						}
+					custom_tooltip = {
+						text = unlock_legendary_integration_k_tt
+						add_character_flag = legendary_integration_k
 					}
 					if = {
 						limit = {
@@ -1075,15 +966,7 @@ legitimizing = {
 					legend_ending_rewards_mythical_legitimizing_effect = yes
 					legend_ending_achievements_effect = yes
 					trigger_event = story_event_legends.0002
-					if = {
-						limit = {
-							legend_property:title ?= title:h_great_tarrafent
-						}
-						custom_tooltip = {
-							text = unlock_great_tarrafent_decision
-							add_character_flag = unlock_great_tarrafent_flag
-						}
-					}
+					
 					#balancing_legend_global_var_effect = yes # Left for testing purposes
 				}
 			}
@@ -1175,25 +1058,6 @@ holy = {
 				}
 			}
 		}
-		add_to_global_variable_list = {
-			name = active_legends_tally
-			target = root
-		}
-	}
-	
-	on_end = {
-		if = {
-			limit = {
-				is_target_in_global_variable_list = {
-					name = active_legends_tally
-					target = root
-				}
-			}
-			remove_list_global_variable = {
-				name = active_legends_tally
-				target = root
-			}
-		}
 	}
 	
 	on_province_spread = {
@@ -1212,7 +1076,7 @@ holy = {
 					}
 				}
 				scope:legend.legend_owner = {
-					this != prev.county.holder
+					NOT = { this = prev.county.holder }
 				}
 			}
 			if = {
@@ -1383,7 +1247,7 @@ holy = {
 					value = base_legend_promote_ai
 					if = {
 						limit = {
-							ai_has_pious_builder_personality = yes
+							ai_has_economical_boom_personality = yes
 						}
 						multiply = 1.2
 					}
@@ -1492,7 +1356,7 @@ holy = {
 					value = base_legend_promote_ai
 					if = {
 						limit = {
-							ai_has_pious_builder_personality = yes
+							ai_has_economical_boom_personality = yes
 						}
 						multiply = 1.2
 					}
@@ -1623,7 +1487,7 @@ holy = {
 					value = base_legend_promote_ai
 					if = {
 						limit = {
-							ai_has_pious_builder_personality = yes
+							ai_has_economical_boom_personality = yes
 						}
 						multiply = 1.2
 					}

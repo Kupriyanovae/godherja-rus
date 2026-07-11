@@ -656,16 +656,6 @@ character_arcana_baseline_value = {
 			format = "ARCANA_VALUE_FORMAT"
 		}
 	}
-		
-	if = {
-		limit = { any_directly_owned_province = { has_building = 01_the_folly } }
-		add = {
-			value = 2
-			desc = "[GetBuilding('01_the_folly').GetName]"
-			format = "ARCANA_VALUE_FORMAT"
-		}
-	}
-		
 	## LIFESTYLE BONUSES ##
 	if = {
 		limit = { has_lifestyle = arcana_lifestyle }
@@ -867,10 +857,6 @@ character_arcana_baseline_value = {
 		limit = { has_character_modifier = magic_general_boost }
 		add = {
 			value = 1
-			if = {
-				limit = { exists = var:magic_general_boost_scale }
-				multiply = var:magic_general_boost_scale
-			}
 			desc = magic_general_boost
 			format = "ARCANA_VALUE_FORMAT"
 		}
@@ -936,46 +922,6 @@ character_arcana_baseline_value = {
 		add = {
 			value = 1
 			desc = landless_local_arbitration_wanderers_modifier
-			format = "ARCANA_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = { has_character_modifier = gh_arcana_temporary_book_bonus_modifier }
-		add = {
-			value = 1
-			desc = gh_arcana_temporary_book_bonus_modifier
-			format = "ARCANA_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = { has_character_modifier = talfasomoll_dream_modifier_6 }
-		add = {
-			value = 2
-			desc = talfasomoll_dream_modifier_6
-			format = "ARCANA_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = { has_character_modifier = talfasomoll_dream_modifier_15 }
-		add = {
-			value = 5
-			desc = talfasomoll_dream_modifier_6
-			format = "ARCANA_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = { has_character_modifier = talfasomoll_dream_modifier_17 }
-		add = {
-			value = 3
-			desc = talfasomoll_dream_modifier_6
-			format = "ARCANA_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = { has_character_modifier = lead_glass_master_modifier }
-		add = {
-			value = 1
-			desc = lead_glass_master_modifier
 			format = "ARCANA_VALUE_FORMAT"
 		}
 	}

@@ -78,15 +78,15 @@ gh_form_leviden_kingdom_decision = {
 		title:d_prathatha = { set_de_jure_liege_title = title:k_levan }
 		# Additional DeJures
 		adjust_de_jure_effect = {
-			TITLE = title:d_eloi_sashravun
+			TITLE = title:d_sashravun
 			DE_JURE = title:k_levan
 		}
 		adjust_de_jure_effect = {
-			TITLE = title:d_eloi_vidhan
+			TITLE = title:d_vidhan
 			DE_JURE = title:k_levan
 		}
 		adjust_de_jure_effect = {
-			TITLE = title:d_eloi_myar
+			TITLE = title:d_vabhkrun
 			DE_JURE = title:k_levan
 		}	
 	}
@@ -302,7 +302,7 @@ gh_amsari_migration_initiative_decision = {
 	sort_order = 1000
 	
 	is_shown = {
-		has_title = title:e_amsari_hiklahn
+		has_title = title:e_amsari
 		culture = culture:amsari
 		NAND = {
 			title:c_karamkura = { culture = { has_cultural_pillar =  heritage_zarasadari } }
@@ -312,12 +312,12 @@ gh_amsari_migration_initiative_decision = {
 			title:c_dkran = { culture = { has_cultural_pillar =  heritage_zarasadari } }
 			title:c_pardula = { culture = { has_cultural_pillar =  heritage_zarasadari } }
 			title:c_bherak = { culture = { has_cultural_pillar =  heritage_zarasadari } }
-			title:c_eloi_hikarr = { culture = { has_cultural_pillar =  heritage_zarasadari } }
+			title:c_kirathu = { culture = { has_cultural_pillar =  heritage_zarasadari } }
 		}
 	}
 
 	is_valid = {
-		has_title = title:e_amsari_hiklahn
+		has_title = title:e_amsari
 		culture = culture:amsari
 	}
 
@@ -345,7 +345,7 @@ gh_amsari_migration_initiative_decision = {
 						this = title:c_dkran 
 						this = title:c_pardula 
 						this = title:c_bherak 
-						this = title:c_eloi_hikarr 
+						this = title:c_kirathu 
 					}		
 				}
 			}
@@ -446,7 +446,7 @@ gh_dismantle_ayyar_decision = {
 		}
 		is_ruler = yes
 		is_playable_character = yes
-		has_title = title:e_amsari_hiklahn
+		has_title = title:e_amsari
 
 		NOR = { #Once an Emperor throws the challenge, he has only one chance to dismantle the Empire.
 			has_character_flag = flag_qanamsar_challenging_ayyar #Applied below.

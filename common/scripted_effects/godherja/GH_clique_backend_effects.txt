@@ -611,28 +611,24 @@ transfer_titles_with_clique_successors_effect = {
 				if = { 
 					limit = {
 						exists = scope:previous_clique_authority_0
-						NOT = { has_realm_law = clique_authority_0 }
 					}
 					add_realm_law_skip_effects = clique_authority_0
 				}
 				else_if = { 
 					limit = {
 						exists = scope:previous_clique_authority_1
-						NOT = { has_realm_law = clique_authority_1 }
 					}
 					add_realm_law_skip_effects = clique_authority_1
 				}
 				else_if = { 
 					limit = {
 						exists = scope:previous_clique_authority_2
-						NOT = { has_realm_law = clique_authority_2 }
 					}
 					add_realm_law_skip_effects = clique_authority_2
 				}
 				else_if = { 
 					limit = {
 						exists = scope:previous_clique_authority_3
-						NOT = { has_realm_law = clique_authority_3 }
 					}
 					add_realm_law_skip_effects = clique_authority_3
 				}
@@ -769,10 +765,7 @@ assign_correct_clique_government_law = {
 	}
 	else_if = {
 		limit = {
-			holder = { 
-				can_have_military_unit_succession_law_trigger = yes
-				highest_held_title_tier >= tier_duchy
-			}
+			holder = { government_has_flag = government_is_military_unit }
 			NOT = { has_title_law = clique_military_unit_elective_title_succession_law } 
 		}
 		add_title_law = clique_military_unit_elective_title_succession_law

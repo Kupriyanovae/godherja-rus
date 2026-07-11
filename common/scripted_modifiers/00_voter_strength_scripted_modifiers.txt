@@ -81,7 +81,9 @@ elector_voting_strength_byzantine_elective_modifier = {
 	modifier = { #Prestigious people hold more sway.
 		desc = tooltip_imperial_vote_strength_elector_prestige
 		is_vassal_of = scope:holder
-		scope:holder != root
+		NOT = {
+			scope:holder = root
+		}
 		prestige_level >= 2
 		add = {
 			value = 5
@@ -109,7 +111,9 @@ elector_voting_strength_byzantine_elective_modifier = {
 	modifier = { #People from Prestigious dynasties hold more sway.
 		desc = tooltip_imperial_vote_strength_elector_prestige_dynasty
 		is_vassal_of = scope:holder
-		scope:holder != root
+		NOT = {
+			scope:holder = root
+		}
 		dynasty = { dynasty_prestige_level >= 4 }
 		add = {
 			value = 5
@@ -155,7 +159,7 @@ elector_voting_strength_byzantine_elective_modifier = {
 		add = 5
 		desc = tooltip_imperial_vote_strength_elector_tier
 		is_vassal_of = scope:holder
-		scope:holder != root
+		NOT = { scope:holder = root }
 		highest_held_title_tier > 2
 		add = {
 			value = 5
@@ -172,7 +176,7 @@ elector_voting_strength_byzantine_elective_modifier = {
 		add = 10
 		desc = tooltip_imperial_vote_strength_commander_martial
 		is_vassal_of = scope:holder
-		scope:holder != root
+		NOT = { scope:holder = root }
 		martial >= 8
 		has_council_position = councillor_marshal
 		add = {
@@ -231,7 +235,7 @@ elector_voting_strength_byzantine_elective_modifier = {
 		add = 10
 		desc = tooltip_imperial_vote_strength_chancellor_diplomacy
 		is_vassal_of = scope:holder
-		scope:holder != root
+		NOT = { scope:holder = root }
 		diplomacy >= 8
 		has_council_position = councillor_chancellor
 		add = {
@@ -290,7 +294,7 @@ elector_voting_strength_byzantine_elective_modifier = {
 		add = 10
 		desc = tooltip_imperial_vote_strength_steward_stewardship
 		is_vassal_of = scope:holder
-		scope:holder != root
+		NOT = { scope:holder = root }
 		stewardship >= 8
 		has_council_position = councillor_steward
 		add = {
@@ -349,7 +353,7 @@ elector_voting_strength_byzantine_elective_modifier = {
 		add = 10
 		desc = tooltip_imperial_vote_strength_spymaster_intrigue
 		is_vassal_of = scope:holder
-		scope:holder != root
+		NOT = { scope:holder = root }
 		intrigue >= 8
 		has_council_position = councillor_spymaster
 		add = {
@@ -408,7 +412,7 @@ elector_voting_strength_byzantine_elective_modifier = {
 		add = 10
 		desc = tooltip_imperial_vote_strength_chaplain_learning
 		is_vassal_of = scope:holder
-		scope:holder != root
+		NOT = { scope:holder = root }
 		learning >= 8
 		has_council_position = councillor_court_chaplain
 		add = {

@@ -36,7 +36,7 @@ start_hunt_mystical_animal_story_cycle_effect = {
 		limit = { is_ai = no }
 		hidden_effect = { create_story = story_cycle_hunt_mystical_animal }
 		random_owned_story = {
-			type = story_cycle_hunt_mystical_animal
+			limit = { story_type = story_cycle_hunt_mystical_animal }
 			set_variable = {
 				name = legendary_county
 				value = scope:activity.activity_location.county
@@ -85,15 +85,13 @@ end_hunt_mystical_animal_story_cycle_effect = {
 	add_trait_xp = {
 		trait = lifestyle_hunter
 		track = hunter
-		value = 10 ## GH CHANGE ##
+		value = 10
 	}
-	## GH ADDITION ##
 	add_trait_xp = {
 		trait = lifestyle_hunter
 		track = beasthunter
 		value = 10
 	}
-	## GH END ##
 	add_character_modifier = {
 		modifier = hunt_mystical_animal_modifier
 		years = 20
@@ -116,7 +114,7 @@ end_hunt_mystical_animal_story_cycle_effect = {
 					ANIMAL = scope:activity.var:animal_type
 				}
 			}
-		}
+		}		
 	}
 	create_artifact_animal_hide_effect = {
 		OWNER = root
@@ -168,7 +166,7 @@ hunt_activity_deer_game_effect = {
 					# Increase larger deer chance with management buildings
 					hunt_activity_game_building_modifier = { PROVINCE = $PROVINCE$ }
 					# Master of Hunt aptitude affects chance of managed game
-					activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+					hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 					if = {
 						limit = {
 							$PROVINCE$ = {
@@ -197,7 +195,7 @@ hunt_activity_deer_game_effect = {
 					# Increase larger deer chance with management buildings
 					hunt_activity_game_building_modifier = { PROVINCE = $PROVINCE$ }
 					# Master of Hunt aptitude affects chance of managed game
-					activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+					hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 					if = {
 						limit = {
 							$PROVINCE$ = {
@@ -236,7 +234,7 @@ hunt_activity_deer_game_effect = {
 					# Increase larger deer chance with management buildings
 					hunt_activity_game_building_modifier = { PROVINCE = $PROVINCE$ }
 					# Master of Hunt aptitude affects chance of managed game
-					activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+					hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 					if = {
 						limit = {
 							$PROVINCE$ = { hunt_animal_steppe_trigger = yes }
@@ -257,7 +255,7 @@ hunt_activity_deer_game_effect = {
 					# Increase larger deer chance with management buildings
 					hunt_activity_game_building_modifier = { PROVINCE = $PROVINCE$ }
 					# Master of Hunt aptitude affects chance of managed game
-					activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+					hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 					if = {
 						limit = {
 							$PROVINCE$ = { hunt_animal_zebra_trigger = yes }
@@ -426,7 +424,7 @@ hunt_individual_guest_awards_effect = { # GH TODO: More variable rewards for the
 	# Prestige/piety
 	if = {
 		limit = {
-			this != scope:host
+			NOT = { this = scope:host }
 			is_adult = yes
 			trigger_if = {
 				limit = {
@@ -527,6 +525,7 @@ hunt_individual_guest_awards_effect = { # GH TODO: More variable rewards for the
 			}
 		}
 	}
+	accolades_activity_complete_hunt_glory_effect = yes
 	# LEGITIMACY GAIN FOR ACTIVITY PARTICIPATION - HUNT
 	if = {
 		limit = {
@@ -1258,14 +1257,11 @@ hunt_activity_random_interest_participant_effect = {
 hunt_activity_chose_smaller_game_effect = {
 	save_scope_as = chose_smaller_game
 	if = {
-		limit = {
-			exists = scope:hunt_participant
-			scope:host != scope:hunt_participant
-		}
+		limit = { exists = scope:hunt_participant }
 		scope:hunt_participant = {
 			add_opinion = {
 				modifier = hunt_disappointed_opinion
-				target = scope:host
+				target = root
 				opinion = -10
 			}
 		}
@@ -1275,7 +1271,7 @@ hunt_activity_chose_smaller_game_effect = {
 			limit = {
 				any_attending_character = {
 					NOR = {
-						this = scope:host
+						this = root
 						AND = {
 							exists = scope:hunt_participant
 							this = scope:hunt_participant
@@ -1287,7 +1283,7 @@ hunt_activity_chose_smaller_game_effect = {
 			every_attending_character = {
 				limit = {
 					NOR = {
-						this = scope:host
+						this = root
 						AND = {
 							exists = scope:hunt_participant
 							this = scope:hunt_participant
@@ -1298,7 +1294,7 @@ hunt_activity_chose_smaller_game_effect = {
 				custom = hunt_every_hunter_attendee_tt
 				add_opinion = {
 					modifier = hunt_disappointed_opinion
-					target = scope:host
+					target = root
 					opinion = -10
 				}
 			}
@@ -1350,14 +1346,6 @@ hunt_animal_melee_kill_effect = {
 			desc = hunt_kill_success_melee
 			hunt_kill_melee_modifiers = yes # SPEAR
 			hunt_kill_hunter_modifiers = yes # HUNTER
-			if = { #chance_to_gain_prowess_during_bear_hunts parameter check
-				limit = {
-					faith = { has_doctrine_parameter = chance_to_gain_prowess_during_bear_hunts }
-					scope:activity.var:animal_type = flag:bear
-				}
-				add_prowess_skill = 1
-				add_martial_skill = 1
-			}
 			send_interface_toast = {
 				title = {
 					first_valid = {
@@ -1410,28 +1398,14 @@ hunt_animal_melee_kill_effect = {
 				factor = 0.05
 			}
 			modifier = { add = hunt_melee_danger_value }
-			# Effect
-			hidden_effect = {
-				scope:injury_target = {
-					if = {
-						limit = {
-							hunt_animal_type_dangerous_trigger = { VAR = $VAR$ }
-						}
-						hunt_wound_apply_effect = { SEVERE = yes }
-					}
-					else = {
-						hunt_wound_apply_effect = { SEVERE = no }
-					}
-				}
-			}
 			scope:activity ?= {
 				add_activity_log_entry = {
 					key = hunt_melee_log
 					tags = { kill }
 					score = 100
-
+		
 					character = scope:animal_slayer
-
+		
 					#Effects
 					scope:animal_slayer ?= {
 						add_prestige = hunt_prestige_melee_wound_value
@@ -1472,13 +1446,11 @@ hunt_animal_melee_kill_effect = {
 				}
 			}
 			if = {
-				limit = { scope:severe ?= yes }
-				custom_tooltip = hunt_character_wound_tt
-			}
-			else = {
-				show_as_tooltip = {
-					increase_wounds_no_death_effect = { REASON = fight }
+				limit = {
+					exists = scope:severe
+					scope:severe = yes
 				}
+				custom_tooltip = hunt_character_wound_tt
 			}
 			save_scope_as = melee_failure
 		}
@@ -1527,7 +1499,7 @@ hunt_animal_melee_kill_effect = {
 		}
 	}
 	# GH ADDITIONS: Trigger relevant magic, if it exists
-	execute_every_valid_loitering_magic_effect = yes
+	execute_every_valid_hex_effect = yes
 }
 
 hunt_animal_melee_kill_group_effect = {
@@ -1540,9 +1512,9 @@ hunt_animal_melee_kill_group_effect = {
 				is_alive = yes
 				NOT = { has_character_flag = not_slaying }
 				can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
-				trigger_if = {
+				trigger_if = { 
 					limit = { exists = scope:group_craven }
-					this != scope:host
+					NOT = { this = scope:host }
 				}
 			}
 			custom = hunt_every_hunter_tt
@@ -1703,13 +1675,11 @@ hunt_animal_melee_kill_group_effect = {
 		limit = {
 			NOT = { exists = scope:group_capture }
 		}
-		hidden_effect = {
-			every_in_list = {
-				list = animal_slayers
-				custom = hunt_every_slay_beast_hunter_tt
-				# Complete activity intent if relevant
-				hunt_complete_slay_beast_intent_effect = yes
-			}
+		every_in_list = {
+			list = animal_slayers
+			custom = hunt_every_slay_beast_hunter_tt
+			# Complete activity intent if relevant
+			hunt_complete_slay_beast_intent_effect = yes
 		}
 	}
 	scope:activity ?= {
@@ -1817,16 +1787,6 @@ hunt_animal_bow_kill_effect = {
 								}
 							}
 							hunt_animal_slayer_memory_effect = yes
-							if = { #chance_to_gain_prowess_during_bear_hunts parameter check
-								limit = {
-									faith = { has_doctrine_parameter = chance_to_gain_prowess_during_bear_hunts }
-									scope:activity.var:animal_type = flag:bear
-								}
-								random = {
-									chance = 10
-									add_prowess_skill = 1
-								}
-							}
 						}
 					}
 				}
@@ -1867,9 +1827,11 @@ hunt_animal_bow_kill_effect = {
 										# Complete activity intent if relevant
 										hunt_complete_slay_beast_intent_effect = yes
 									}
-									scope:injury_target ?= {
-										hunt_wound_apply_effect = { SEVERE = yes }
-										hunt_wound_tooltip_effect = yes
+									if = {
+										limit = { exists = scope:injury_target }
+										scope:injury_target = {
+											hunt_wound_apply_effect = { SEVERE = no }
+										}
 									}
 								}
 							}
@@ -1962,7 +1924,6 @@ animal_artifact_wealth_quality_effect = {
 						# Pets
 						scope:owner.var:animal_type ?= flag:cat
 						scope:owner.var:animal_type ?= flag:dog
-						scope:owner.var:animal_type ?= flag:eagle
 					}
 				}
 				add = { 30 60 }
@@ -2012,7 +1973,6 @@ animal_artifact_wealth_quality_effect = {
 				}
 				add = { 90 120 }
 			}
-			## GH ADDITION ##
 			else_if = {
 				limit = {
 					OR = {
@@ -2021,7 +1981,6 @@ animal_artifact_wealth_quality_effect = {
 				}
 				add = { 360 480 }
 			}
-			## GH END ##
 			if = {
 				limit = { scope:legendary ?= yes }
 				multiply = 2
@@ -2034,12 +1993,10 @@ animal_artifact_wealth_quality_effect = {
 				limit = { exists = var:pet_name }
 				multiply = 2
 			}
-			## GH ADDITION ##
 			if = {
 				limit = { scope:owner ?= { has_perk = trophy_collector_perk } }
 				multiply = 2
 			}
-			## GH END ##
 		}
 	}
 	save_scope_value_as = {
@@ -2066,13 +2023,11 @@ animal_artifact_wealth_quality_effect = {
 					limit = { has_trait = lifestyle_hunter }
 					add = 10
 				}
-				## GH ADDITION ##
 				# Trophy Collector Bonus
 				if = {
 					limit = { has_perk = trophy_collector_perk }
 					add = 10
 				}
-				## GH END ##
 			}
 			if = { # Falconry Exp
 				limit = {
@@ -2099,7 +2054,7 @@ animal_artifact_wealth_quality_effect = {
 					add = 10
 				}
 			}
-			## GH ADDITION ##
+			## GH
 			else_if = { # Slayer Exp
 				limit = {
 					exists = scope:activity
@@ -2125,7 +2080,7 @@ animal_artifact_wealth_quality_effect = {
 					add = 10
 				}
 			}
-			## GH END ##
+			##
 			else = { # Hunter Exp
 				if = {
 					limit = {
@@ -2142,7 +2097,7 @@ animal_artifact_wealth_quality_effect = {
 						}
 					}
 					add = 10
-				}
+				}	
 			}
 		}
 	}
@@ -2177,7 +2132,7 @@ hunt_animal_slayer_bow_opinion_effect = {
 					}
 				}
 			}
-			this = scope:host.intent_target
+			this = scope:host.intent_target		
 		}
 		save_scope_as = opinion_target
 		scope:host = {
@@ -2267,7 +2222,7 @@ hunt_animal_slayer_melee_opinion_effect = { # GH TODO Opinions for Magic Fauna, 
 	else_if = {
 		limit = {
 			scope:host = {
-				exists = intent_target
+				exists = intent_target			
 				OR = {
 					has_activity_intent = befriend_attendee_intent
 					has_activity_intent = woo_attendee_intent
@@ -2279,7 +2234,7 @@ hunt_animal_slayer_melee_opinion_effect = { # GH TODO Opinions for Magic Fauna, 
 					}
 				}
 			}
-			this = scope:host.intent_target
+			this = scope:host.intent_target		
 		}
 		save_scope_as = opinion_target
 		scope:host = {
@@ -2350,7 +2305,8 @@ hunt_activity_method_effect = {
 activity_improve_relations_intent_effect = {
 	if = {
 		limit = {
-			intent_target ?= $CHARACTER$
+			exists = intent_target
+			intent_target = $CHARACTER$
 			OR = {
 				has_activity_intent = befriend_attendee_intent
 				has_activity_intent = woo_attendee_intent
@@ -2477,7 +2433,7 @@ hunt_activity_sighting_master_effect = {
 						can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
 					}
 				}
-				## GH ADDITION ##
+				## GH
 				modifier = {
 					factor = 2
 					scope:lifestyle = flag:beasthunter
@@ -2487,7 +2443,7 @@ hunt_activity_sighting_master_effect = {
 						value >= 25
 					}
 				}
-				## GH END ##
+				##
 			}
 			save_scope_as = sighting_character
 		}
@@ -2677,8 +2633,7 @@ hunt_wound_select_effect = {
 					value = flag:one_legged
 				}
 			}
-			## GH ADDITION ##
-			5 = {
+			5 = { #GH CHANGE: added one_handed trait
 				trigger = {
 					NOT = { has_trait = gh_one_handed }
 				}
@@ -2691,7 +2646,6 @@ hunt_wound_select_effect = {
 					value = flag:gh_one_handed
 				}
 			}
-			## GH END ##
 			5 = {
 				trigger = {
 					NOT = { has_trait = disfigured }
@@ -2832,14 +2786,12 @@ hunt_story_tooltip_effect = {
 		}
 		custom_tooltip = hunt_activity_ambush_tt
 	}
-	## GH ADDITION ##
 	else_if = {
 		limit = {
 			hunt_story_trigger = { STORY = lair }
 		}
 		custom_tooltip = hunt_activity_lair_tt
 	}
-	## GH END ##
 }
 
 hunt_save_murder_target_effect = {
@@ -2991,7 +2943,7 @@ hunt_save_murder_target_effect = {
 					}
 				}
 				0 = {}
-			}
+			}		
 		}
 	}
 }
@@ -3024,7 +2976,7 @@ hunt_physician_treatment_effect = {
 				desc = hunt.4014.c.success
 				scope:host = {
 					send_interface_toast = {
-						title = hunt.4014.c.success
+						title = hunt.4014.c.failure
 						left_icon = scope:patient
 						right_icon = scope:physician
 						scope:patient = {
@@ -3035,7 +2987,7 @@ hunt_physician_treatment_effect = {
 							}
 							if = {
 								limit = {
-									this != scope:host
+									NOT = { this = scope:host }
 								}
 								add_opinion = {
 									target = scope:host
@@ -3086,9 +3038,10 @@ hunt_physician_treatment_effect = {
 
 hunt_friendly_intent_effect = {
 	if = {
-		limit = {
+		limit = {			
 			has_activity_intent = woo_attendee_intent
-			intent_target ?= $TARGET$
+			exists = intent_target
+			intent_target = $TARGET$
 		}
 		progress_towards_lover_effect = {
 			REASON = $REASON$
@@ -3099,7 +3052,8 @@ hunt_friendly_intent_effect = {
 	else_if = {
 		limit = {
 			has_activity_intent = befriend_attendee_intent
-			intent_target ?= $TARGET$
+			exists = intent_target
+			intent_target = $TARGET$
 		}
 		progress_towards_friend_effect = {
 			REASON = $REASON$
@@ -3151,7 +3105,7 @@ hunt_all_attendee_xp_effect = {
 			}
 			else = {
 				hunter_progress_point_gain_effect = { CHANGE = $CHANGE$ RANDOM_CHANGE = $RANDOM$ } #Gives points towards ranking up the Hunter Lifestyle
-			}
+			}			
 		}
 	}
 }
@@ -3270,11 +3224,11 @@ hunt_participant_to_blame_effect = {
 }
 
 hunt_murder_confession_opinion_effect = {
-	scope:activity = {
+	scope:activity = { 
 		every_attending_character = { #All honorable participants lose opinion
 			limit = {
-				this != root
-				this != scope:murder_target
+				NOT = { this = root }
+				NOT = { this = scope:murder_target }
 				is_alive = yes
 				ai_honor >= high_positive_honor
 			}
@@ -3286,8 +3240,8 @@ hunt_murder_confession_opinion_effect = {
 		}
 		every_attending_character = { #All evil participants gain opinion
 			limit = {
-				this != root
-				this != scope:murder_target
+				NOT = { this = root }
+				NOT = { this = scope:murder_target }
 				is_alive = yes
 				OR = {
 					has_trait = sadistic
@@ -3320,7 +3274,7 @@ hunt_increment_murder_accident_attempt = {
 			years = 10
 		}
 		custom_tooltip = hunt_attempted_accident_murder_tt
-	}
+	}	
 	else = {
 		set_variable = {
 			name = hunt_murder_accident_attempt
@@ -3374,7 +3328,7 @@ hunt_save_master_or_hunter_courtier_effect = {
 		random_courtier = {
 			limit = {
 				is_adult = yes
-				can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
+				can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root } 
 			}
 			weight = {
 				base = 10
@@ -3407,8 +3361,8 @@ hunt_murder_add_and_reveal_attempted_murder = {
 			}
 		}
 		random_secret = {
-			type = secret_murder_attempt
 			limit = {
+				secret_type = secret_murder_attempt
 				secret_target = root
 			}
 			reveal_to_without_events_effect = { CHARACTER = root }
@@ -3427,63 +3381,79 @@ hunt_murder_add_and_reveal_attempted_murder = {
 hunt_gift_trophy_opinion_effect = {
 	if = {
 		limit = {
-			$RECIPIENT$ != scope:host
+			hunt_dharmic_pacificist_trigger = yes
+			NOT = { this = scope:host }
 		}
-		# GH REMOVED: Dharmic effect
-		if = {
-			limit = {
-				scope:activity = {
-					has_activity_option = { category = special_type option = hunt_type_legendary }
-				}
-			}
-			activity_improve_relations_intent_effect = {
-				CHARACTER = scope:host
-				REASON = friend_gave_hunt_trophy_reason
-				OPINION = 20
-				MODIFIER = hunt_gifted_trophy_opinion
-			}
+		add_opinion = {
+			target = scope:host
+			modifier = hunt_dharmic_mercy_opinion
+			opinion = -10
 		}
-		else_if = {
-			limit = {
-				$RECIPIENT$ = { is_adult = yes }
-				scope:newly_created_artifact = {
-					OR = {
-						artifact_type = animal_trinket
-						artifact_type = bird_feather
-					}
-				}
-				NOT = {
-					hunt_animal_type_predator_trigger = { VAR = scope:activity.var:animal_type }
-				}
-			}
-			activity_improve_relations_intent_effect = {
-				CHARACTER = scope:host
-				REASON = friend_gave_hunt_trophy_reason
-				OPINION = 5
-				MODIFIER = hunt_gifted_trophy_opinion
+	}
+	else_if = {
+		limit = {
+			hunt_dharmic_pacificist_trigger = yes
+			NOT = { $RECIPIENT$ = scope:host }
+		}
+		reverse_add_opinion = {
+			target = scope:host
+			modifier = hunt_dharmic_mercy_opinion
+			opinion = -10
+		}
+	}
+	else_if = {
+		limit = {
+			scope:activity = {
+				has_activity_option = { category = special_type option = hunt_type_legendary }
 			}
 		}
-		else_if = {
-			limit = {
-				$RECIPIENT$ = { is_adult = yes }
-				scope:newly_created_artifact = {
-					hunt_activity_large_game_trigger = { VAR = var:animal_type }
+		activity_improve_relations_intent_effect = {
+			CHARACTER = scope:host
+			REASON = friend_gave_hunt_trophy_reason
+			OPINION = 20
+			MODIFIER = hunt_gifted_trophy_opinion
+		}
+	}
+	else_if = {
+		limit = {
+			$RECIPIENT$ = { is_adult = yes }
+			scope:newly_created_artifact = {
+				OR = {
+					artifact_type = animal_trinket
+					artifact_type = bird_feather
 				}
 			}
-			activity_improve_relations_intent_effect = {
-				CHARACTER = scope:host
-				REASON = friend_gave_hunt_trophy_reason
-				OPINION = 15
-				MODIFIER = hunt_gifted_trophy_opinion
+			NOT = {
+				hunt_animal_type_predator_trigger = { VAR = scope:activity.var:animal_type }
 			}
 		}
-		else = {
-			activity_improve_relations_intent_effect = {
-				CHARACTER = scope:host
-				REASON = friend_gave_hunt_trophy_reason
-				OPINION = 10
-				MODIFIER = hunt_gifted_trophy_opinion
+		activity_improve_relations_intent_effect = {
+			CHARACTER = scope:host
+			REASON = friend_gave_hunt_trophy_reason
+			OPINION = 5
+			MODIFIER = hunt_gifted_trophy_opinion
+		}
+	}
+	else_if = {
+		limit = {
+			$RECIPIENT$ = { is_adult = yes }
+			scope:newly_created_artifact = {
+				hunt_activity_large_game_trigger = { VAR = var:animal_type }
 			}
+		}
+		activity_improve_relations_intent_effect = {
+			CHARACTER = scope:host
+			REASON = friend_gave_hunt_trophy_reason
+			OPINION = 15
+			MODIFIER = hunt_gifted_trophy_opinion
+		}
+	}
+	else = {
+		activity_improve_relations_intent_effect = {
+			CHARACTER = scope:host
+			REASON = friend_gave_hunt_trophy_reason
+			OPINION = 10
+			MODIFIER = hunt_gifted_trophy_opinion
 		}
 	}
 }
@@ -3543,7 +3513,7 @@ hunt_outcome_scope_effect = {
 	if = {
 		limit = {
 			exists = scope:activity.var:accident_target
-			scope:activity.var:accident_target != scope:host
+			NOT = { scope:activity.var:accident_target = scope:host }
 		}
 		scope:activity.var:accident_target = { save_scope_as = wounded_courtier }
 	}
@@ -3561,7 +3531,7 @@ hunt_outcome_scope_effect = {
 	if = {
 		limit = {
 			exists = intent_target
-			this != intent_target
+			NOT = { this = intent_target }
 		}
 		intent_target = {
 			save_scope_as = intentee
@@ -3575,7 +3545,7 @@ hunt_outcome_scope_effect = {
 }
 
 hunt_complete_slay_beast_intent_effect = {
-	## GH ADDITION ##
+	# GH ADDITION
 	if = {
 		limit = {
 			exists = involved_activity
@@ -3611,7 +3581,7 @@ hunt_complete_slay_beast_intent_effect = {
 			add_gold = hunt_commission_gold_value
 		}
 	}
-	## GH END ##
+	# END ADDITION
 	if = {
 		limit = {
 			exists = involved_activity
@@ -3683,7 +3653,7 @@ hunt_animal_slayer_memory_effect = {
 			}
 		}
 		ordered_memory = {
-			memory_type = hunt_animal_slayer_memory
+			limit = { has_memory_type = hunt_animal_slayer_memory }
 			order_by = memory_creation_date
 			save_scope_as = new_memory
 			set_variable = {
@@ -3702,7 +3672,8 @@ hunt_trophy_recipient_scope_effect = {
 	# Save potential gift recipient
 	if = {
 		limit = {
-			intent_target ?= { is_alive = yes }
+			exists = intent_target
+			intent_target = { is_alive = yes }
 			OR = {
 				has_activity_intent = woo_attendee_intent
 				has_activity_intent = befriend_attendee_intent
@@ -3756,11 +3727,11 @@ hunt_trophy_recipient_scope_effect = {
 					scope:animal_slayer ?= this
 					hunt_dharmic_pacificist_trigger = yes
 				}
-				this != root
+				NOT = { this = root }
 			}
 			alternative_limit = {
 				NOT = { scope:animal_slayer ?= this }
-				this != root
+				NOT = { this = root }
 			}
 			weight = {
 				base = 1
@@ -3794,7 +3765,6 @@ hunt_create_trophy_effect = {
 	# Create trophy artifact
 	hidden_effect = {
 		random_list = {
-			## GH ADDITION ##
 			100 = { # Create Animal Toxin
 				trigger = {
 					exists = scope:activity.var:animal_type
@@ -3819,7 +3789,6 @@ hunt_create_trophy_effect = {
 					LEGENDARY = no
 				}
 			}
-			## GH END ##
 			100 = { # Create Skull
 				trigger = {
 					has_royal_court = yes
@@ -3861,13 +3830,11 @@ hunt_create_trophy_effect = {
 							has_activity_option = { category = special_type option = hunt_type_falconry }
 						}
 					}
-					## GH ADDITION ##
 					OR = {
 						GH_animal_type_trophy_hide_small_trigger = { VAR = scope:activity.var:animal_type }
 						GH_animal_type_trophy_hide_trigger = { VAR = scope:activity.var:animal_type }
 						GH_animal_type_trophy_hide_big_trigger = { VAR = scope:activity.var:animal_type }
 					}
-					## GH END ##
 				}
 				modifier = { # Already have one
 					factor = 0.5
@@ -3926,7 +3893,7 @@ hunt_create_trophy_effect = {
 					scope:activity = {
 						has_activity_option = { category = special_type option = hunt_type_falconry }
 					}
-					NOT = { GH_hunt_activity_hare_trigger = { VAR = var:animal_type } } ## GH CHANGE ##
+					NOT = { GH_hunt_activity_hare_trigger = { VAR = var:animal_type } }
 				}
 				create_artifact_bird_feather_effect = {
 					OWNER = root
@@ -3934,7 +3901,6 @@ hunt_create_trophy_effect = {
 					ANIMAL = scope:activity.var:animal_type
 				}
 			}
-			## GH ADDITION ##
 			100 = { # Create Animal Gemstone
 				trigger = {
 					exists = scope:activity.var:animal_type
@@ -3967,7 +3933,6 @@ hunt_create_trophy_effect = {
 			#	}
 			#	manzasiri_heart_artifact_effect = yes
 			#}
-			## GH END ##
 		}
 		if = {
 			limit = { exists = scope:newly_created_artifact }
@@ -4069,9 +4034,9 @@ hunt_invalidation_event_effect = {
 					has_activity_option = { category = special_type option = hunt_type_falconry }
 				}
 			}
-			hunter_lifestyle_rank_up_check_effect = { FALCONRY = yes SLAYER = no } ## GH CHANGE ##
+			hunter_lifestyle_rank_up_check_effect = { FALCONRY = yes SLAYER = no }
 		}
-		## GH ADDITION ##
+		## GH
 		else_if = {
 			limit = {
 				scope:activity = {
@@ -4080,9 +4045,9 @@ hunt_invalidation_event_effect = {
 			}
 			hunter_lifestyle_rank_up_check_effect = { FALCONRY = no SLAYER = yes }
 		}
-		## GH END ##
+		##
 		else = {
-			hunter_lifestyle_rank_up_check_effect = { FALCONRY = no SLAYER = no } ## GH CHANGE ##
+			hunter_lifestyle_rank_up_check_effect = { FALCONRY = no SLAYER = no }
 		}
 	}
 	if = {
@@ -4144,12 +4109,11 @@ hunt_remove_sighting_effect = {
 	# Remove sightings
 	remove_variable = animal_type
 	remove_variable = sighting_owner
-	## GH ADDITION ##
+	## GH
 	if = {
 		limit = { has_county_modifier = hunt_sighting_monster_modifier }
 		remove_county_modifier = hunt_sighting_monster_modifier
 	}
-	## GH END ##
 }
 
 ### Nerge

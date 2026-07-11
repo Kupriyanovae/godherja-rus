@@ -32,34 +32,9 @@ total_aspect_total_spell_level_value = {
 	value = aspect_total_spell_level_value
 }
 
-aspect_total_base_spell_level_value = {
-	value = 0
-	add = fire_aspect_base_spell_level_value
-	add = water_aspect_base_spell_level_value
-	add = ice_aspect_base_spell_level_value
-	add = air_aspect_base_spell_level_value
-	add = stone_aspect_base_spell_level_value
-	add = dream_aspect_base_spell_level_value
-	add = celestial_aspect_base_spell_level_value
-	add = dark_aspect_base_spell_level_value
-	add = light_aspect_base_spell_level_value
-	add = blood_aspect_base_spell_level_value
-	add = nature_aspect_base_spell_level_value
-	add = ethereal_aspect_base_spell_level_value
-	add = hymns_aspect_base_spell_level_value
-	add = death_aspect_base_spell_level_value
-	add = sand_aspect_base_spell_level_value
-	add = metal_aspect_base_spell_level_value
-	add = time_aspect_base_spell_level_value
-	add = dawn_aspect_base_spell_level_value
-}
 spell_tag_scalar_value = {
 	value = 0
 	if = {
-		limit = { exists = var:scalar }
-		value = var:scalar
-	}
-	else_if = {
 		limit = {
 			save_temporary_scope_as = spell_effect_being_checked_scope
 			exists = scope:spell_being_casted 
@@ -69,7 +44,7 @@ spell_tag_scalar_value = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:total_spell_level
 						}
 					}
@@ -89,7 +64,7 @@ spell_tag_scalar_value = {
 					exists = scope:spell_organizer.var:spell_preparation_story_cycle
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:spell_component_suitability
 						}
 						exists = var:spell_component
@@ -141,7 +116,7 @@ spell_tag_scalar_value = {
 					exists = scope:spell_organizer
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:magic_arcane_degeneration_modifier_count
 						}
 					}
@@ -166,7 +141,7 @@ spell_tag_scalar_value = {
 					exists = scope:spell_organizer
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:glassinger_modifier_count
 						}
 					}
@@ -191,7 +166,7 @@ spell_tag_scalar_value = {
 					exists = scope:spell_organizer
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:num_of_known_languages
 						}
 					}
@@ -203,7 +178,7 @@ spell_tag_scalar_value = {
 					exists = scope:spell_organizer
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:development
 						}
 					}
@@ -226,1348 +201,199 @@ spell_tag_scalar_value = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:fire
 						}
 					}
 				}
-				add = {
-					value = fire_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:fire_factor }
-						multiply = prev.var:fire_factor
-					}
-				}
+				add = fire_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:water
 						}
 					}
 				}
-				add = {
-					value = water_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:water_factor }
-						multiply = prev.var:water_factor
-					}
-				}
+				add = water_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:ice
 						}
 					}
 				}
-				add = {
-					value = ice_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:ice_factor }
-						multiply = prev.var:ice_factor
-					}
-				}
+				add = ice_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:air
 						}
 					}
 				}
-				add = {
-					value = air_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:air_factor }
-						multiply = prev.var:air_factor
-					}
-				}
+				add = air_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:stone
 						}
 					}
 				}
-				add = {
-					value = stone_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:stone_factor }
-						multiply = prev.var:stone_factor
-					}
-				}
+				add = stone_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:dream
 						}
 					}
 				}
-				add = {
-					value = dream_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:dream_factor }
-						multiply = prev.var:dream_factor
-					}
-				}
+				add = dream_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:celestial
 						}
 					}
 				}
-				add = {
-					value = celestial_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:celestial_factor }
-						multiply = prev.var:celestial_factor
-					}
-				}
+				add = celestial_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:dark
 						}
 					}
 				}
-				add = {
-					value = dark_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:dark_factor }
-						multiply = prev.var:dark_factor
-					}
-				}
+				add = dark_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:light
 						}
 					}
 				}
-				add = {
-					value = light_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:light_factor }
-						multiply = prev.var:light_factor
-					}
-				}
+				add = light_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:blood
 						}
 					}
 				}
-				add = {
-					value = blood_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:blood_factor }
-						multiply = prev.var:blood_factor
-					}
-				}
+				add = blood_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:nature
 						}
 					}
 				}
-				add = {
-					value = nature_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:nature_factor }
-						multiply = prev.var:nature_factor
-					}
-				}
+				add = nature_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:ethereal
 						}
 					}
 				}
-				add = {
-					value = ethereal_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:ethereal_factor }
-						multiply = prev.var:ethereal_factor
-					}
-				}
+				add = ethereal_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:hymns
 						}
 					}
 				}
-				add = {
-					value = hymns_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:hymns_factor }
-						multiply = prev.var:hymns_factor
-					}
-				}
+				add = hymns_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:death
 						}
 					}
 				}
-				add = {
-					value = death_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:death_factor }
-						multiply = prev.var:death_factor
-					}
-				}
+				add = death_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:sand
 						}
 					}
 				}
-				add = {
-					value = sand_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:sand_factor }
-						multiply = prev.var:sand_factor
-					}
-				}
+				add = sand_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:metal
 						}
 					}
 				}
-				add = {
-					value = metal_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:metal_factor }
-						multiply = prev.var:metal_factor
-					}
-				}
+				add = metal_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:time
 						}
 					}
 				}
-				add = {
-					value = time_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:time_factor }
-						multiply = prev.var:time_factor
-					}
-				}
+				add = time_aspect_total_spell_level_value
 			}
 			if = {
 				limit = {
 					prev = {
 						any_in_list = {
-							variable = scalar_list
+							variable = scaled_by_list
 							this = flag:dawn
 						}
 					}
 				}
-				add = {
-					value = dawn_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:dawn_factor }
-						multiply = prev.var:dawn_factor
-					}
-				}
-			}
-		}
-		if = {
-			limit = { exists = scope:spell_target }
-			if = {
-				limit = {
-					is_target_in_variable_list = {
-						name = scalar_list
-						target = flag:artifact_aspect_total_value
-					}
-				}
-				scope:spell_target = { add = artifact_aspect_total_value  }
-			}
-			#if = {
-			#	limit = {
-			#		is_target_in_variable_list = {
-			#			name = scalar_list
-			#			target = flag:artifact_rarity
-			#		}
-			#	}
-			#	scope:spell_target = { add = artifact_rarity }
-			#}
-		}
-		every_in_list = {
-			variable = spell_scalar_trigger_list
-			if = {
-				limit = { index_and_check_spell_trigger = yes }	# Yes, spell triggers can have their own triggers
-				add = 1
-			}
-		}
-		add = spell_tag_scalar_random_offset_value
-	}
-}
-spell_tag_scalar_threshold_value = {
-	value = 0
-	if = {
-		limit = { exists = var:scalar_threshold }
-		value = var:scalar_threshold
-	}
-	else_if = {
-		limit = {
-			save_temporary_scope_as = spell_effect_being_checked_scope
-			exists = scope:spell_being_casted 
-		}
-		scope:spell_being_casted = {
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:total_spell_level
-						}
-					}
-				}
-				add = total_aspect_total_spell_level_value
-			}
-			if = {	# Hackjob solution that needs improvements in the future but good enough for the moment
-				limit = {
-					exists = scope:spell_organizer.var:cantrip_skill_overcharge
-					scope:spell_organizer.var:event_option_displayed_spell ?= scope:spell_being_casted
-				}
-				add = scope:spell_organizer.var:cantrip_skill_overcharge
-			}
-			if = {
-				limit = {
-					exists = scope:spell_organizer
-					exists = scope:spell_organizer.var:spell_preparation_story_cycle
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:spell_component_suitability
-						}
-						exists = var:spell_component
-					}
-				}
-				scope:spell_organizer.var:spell_preparation_story_cycle ?= {
-					every_in_list = {
-						variable = spell_component_being_prepared_list
-						limit = { var:spell_component_template = scope:spell_effect_being_checked_scope.var:spell_component }
-						add = character_spell_component_suitability_value
-					}
-				}
-			}
-			# Tally up modifiers from spell components that affect specific spell effects
-			if = {
-				limit = {
-					NOT = { exists = prev.var:spell_effect_modifier }
-					exists = scope:spell_organizer
-					exists = scope:spell_organizer.var:spell_preparation_story_cycle
-					scope:spell_organizer.var:spell_preparation_story_cycle ?= { has_variable_list = spell_component_being_prepared_list }
-				}
-				scope:spell_organizer.var:spell_preparation_story_cycle ?= {
-					every_in_list = {
-						variable = spell_component_being_prepared_list
-						limit = {
-							exists = var:spell_component_ingredient_selection
-						}
-						var:spell_component_ingredient_selection = {
-							if = {
-								limit = { has_variable_list = spell_effect_modifier_list }
-								every_in_list = {
-									variable = spell_effect_modifier_list
-									limit = { var:spell_tag_name = scope:spell_effect_being_checked_scope.var:spell_tag_name }
-									if = {
-										limit = { exists = var:negate_spell_effect }
-										subtract = spell_tag_scalar_threshold_diff_value
-									}
-									else = {
-										add = spell_tag_scalar_threshold_diff_value
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			if = {
-				limit = {
-					exists = scope:spell_organizer
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:magic_arcane_degeneration_modifier_count
-						}
-					}
-				}
-				if = {
-					limit = { scope:spell_organizer = { has_variable_list = spell_targets } }
-					scope:spell_organizer = {
-						every_in_list = {
-							variable = spell_targets
-							limit = { exists = var:magic_arcane_degeneration_modifier_scale }
-							add = var:magic_arcane_degeneration_modifier_scale
-						}
-					}
-				}
-				else_if = {
-					limit = { scope:spell_organizer = { exists = var:magic_arcane_degeneration_modifier_scale } }
-					add = scope:spell_organizer.var:magic_arcane_degeneration_modifier_scale
-				}
-			}
-			if = {
-				limit = {
-					exists = scope:spell_organizer
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:glassinger_modifier_count
-						}
-					}
-				}
-				if = {
-					limit = { scope:spell_organizer = { has_variable_list = spell_targets } }
-					scope:spell_organizer = {
-						every_in_list = {
-							variable = spell_targets
-							limit = { exists = var:glassinger_modifier_scale }
-							add = var:glassinger_modifier_scale
-						}
-					}
-				}
-				else_if = {
-					limit = { scope:spell_organizer = { exists = var:glassinger_modifier_scale } }
-					add = scope:spell_organizer.var:glassinger_modifier_scale
-				}
-			}
-			if = {
-				limit = {
-					exists = scope:spell_organizer
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:num_of_known_languages
-						}
-					}
-				}
-				add = scope:spell_organizer.num_of_known_languages
-			}
-			if = {
-				limit = {
-					exists = scope:spell_organizer
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:development
-						}
-					}
-				}
-				if = {
-					limit = { scope:spell_organizer = { has_variable_list = spell_target_titles } }
-					scope:spell_organizer = {
-						every_in_list = {
-							variable = spell_target_titles
-							add = development_level
-						}
-					}
-				}
-				else_if = {
-					limit = { exists = scope:spell_organizer.location.county }
-					add = scope:spell_organizer.location.county.development_level
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:fire
-						}
-					}
-				}
-				add = {
-					value = fire_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:fire_factor }
-						multiply = prev.var:fire_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:water
-						}
-					}
-				}
-				add = {
-					value = water_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:water_factor }
-						multiply = prev.var:water_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:ice
-						}
-					}
-				}
-				add = {
-					value = ice_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:ice_factor }
-						multiply = prev.var:ice_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:air
-						}
-					}
-				}
-				add = {
-					value = air_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:air_factor }
-						multiply = prev.var:air_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:stone
-						}
-					}
-				}
-				add = {
-					value = stone_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:stone_factor }
-						multiply = prev.var:stone_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:dream
-						}
-					}
-				}
-				add = {
-					value = dream_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:dream_factor }
-						multiply = prev.var:dream_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:celestial
-						}
-					}
-				}
-				add = {
-					value = celestial_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:celestial_factor }
-						multiply = prev.var:celestial_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:dark
-						}
-					}
-				}
-				add = {
-					value = dark_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:dark_factor }
-						multiply = prev.var:dark_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:light
-						}
-					}
-				}
-				add = {
-					value = light_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:light_factor }
-						multiply = prev.var:light_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:blood
-						}
-					}
-				}
-				add = {
-					value = blood_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:blood_factor }
-						multiply = prev.var:blood_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:nature
-						}
-					}
-				}
-				add = {
-					value = nature_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:nature_factor }
-						multiply = prev.var:nature_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:ethereal
-						}
-					}
-				}
-				add = {
-					value = ethereal_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:ethereal_factor }
-						multiply = prev.var:ethereal_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:hymns
-						}
-					}
-				}
-				add = {
-					value = hymns_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:hymns_factor }
-						multiply = prev.var:hymns_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:death
-						}
-					}
-				}
-				add = {
-					value = death_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:death_factor }
-						multiply = prev.var:death_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:sand
-						}
-					}
-				}
-				add = {
-					value = sand_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:sand_factor }
-						multiply = prev.var:sand_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:metal
-						}
-					}
-				}
-				add = {
-					value = metal_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:metal_factor }
-						multiply = prev.var:metal_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:time
-						}
-					}
-				}
-				add = {
-					value = time_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:time_factor }
-						multiply = prev.var:time_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_threshold_list
-							this = flag:dawn
-						}
-					}
-				}
-				add = {
-					value = dawn_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:dawn_factor }
-						multiply = prev.var:dawn_factor
-					}
-				}
-			}
-		}
-		if = {
-			limit = { exists = scope:spell_target }
-			if = {
-				limit = {
-					is_target_in_variable_list = {
-						name = scalar_threshold_list
-						target = flag:artifact_aspect_total_value
-					}
-				}
-				scope:spell_target = { add = artifact_aspect_total_value  }
-			}
-			#if = {
-			#	limit = {
-			#		is_target_in_variable_list = {
-			#			name = scalar_threshold_list
-			#			target = flag:artifact_rarity
-			#		}
-			#	}
-			#	scope:spell_target = { add = artifact_rarity }
-			#}
-		}
-		every_in_list = {
-			variable = spell_scalar_trigger_list
-			if = {
-				limit = { index_and_check_spell_trigger = yes }	# Yes, spell triggers can have their own triggers
-				add = 1
-			}
-		}
-	}
-}
-spell_tag_scalar_spell_effect_chance_iteration_value = {
-	value = 0
-	if = {
-		limit = { exists = var:scalar_spell_effect_chance_iteration }
-		value = var:scalar_spell_effect_chance_iteration
-	}
-	else_if = {
-		limit = {
-			save_temporary_scope_as = spell_effect_being_checked_scope
-			exists = scope:spell_being_casted 
-		}
-		scope:spell_being_casted = {
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:total_spell_level
-						}
-					}
-				}
-				add = total_aspect_total_spell_level_value
-			}
-			if = {	# Hackjob solution that needs improvements in the future but good enough for the moment
-				limit = {
-					exists = scope:spell_organizer.var:cantrip_skill_overcharge
-					scope:spell_organizer.var:event_option_displayed_spell ?= scope:spell_being_casted
-				}
-				add = scope:spell_organizer.var:cantrip_skill_overcharge
-			}
-			if = {
-				limit = {
-					exists = scope:spell_organizer
-					exists = scope:spell_organizer.var:spell_preparation_story_cycle
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:spell_component_suitability
-						}
-						exists = var:spell_component
-					}
-				}
-				scope:spell_organizer.var:spell_preparation_story_cycle ?= {
-					every_in_list = {
-						variable = spell_component_being_prepared_list
-						limit = { var:spell_component_template = scope:spell_effect_being_checked_scope.var:spell_component }
-						add = character_spell_component_suitability_value
-					}
-				}
-			}
-			# Tally up modifiers from spell components that affect specific spell effects
-			if = {
-				limit = {
-					NOT = { exists = prev.var:spell_effect_modifier }
-					exists = scope:spell_organizer
-					exists = scope:spell_organizer.var:spell_preparation_story_cycle
-					scope:spell_organizer.var:spell_preparation_story_cycle ?= { has_variable_list = spell_component_being_prepared_list }
-				}
-				scope:spell_organizer.var:spell_preparation_story_cycle ?= {
-					every_in_list = {
-						variable = spell_component_being_prepared_list
-						limit = {
-							exists = var:spell_component_ingredient_selection
-						}
-						var:spell_component_ingredient_selection = {
-							if = {
-								limit = { has_variable_list = spell_effect_modifier_list }
-								every_in_list = {
-									variable = spell_effect_modifier_list
-									limit = { var:spell_tag_name = scope:spell_effect_being_checked_scope.var:spell_tag_name }
-									if = {
-										limit = { exists = var:negate_spell_effect }
-										subtract = spell_tag_scalar_threshold_diff_value
-									}
-									else = {
-										add = spell_tag_scalar_threshold_diff_value
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			if = {
-				limit = {
-					exists = scope:spell_organizer
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:magic_arcane_degeneration_modifier_count
-						}
-					}
-				}
-				if = {
-					limit = { scope:spell_organizer = { has_variable_list = spell_targets } }
-					scope:spell_organizer = {
-						every_in_list = {
-							variable = spell_targets
-							limit = { exists = var:magic_arcane_degeneration_modifier_scale }
-							add = var:magic_arcane_degeneration_modifier_scale
-						}
-					}
-				}
-				else_if = {
-					limit = { scope:spell_organizer = { exists = var:magic_arcane_degeneration_modifier_scale } }
-					add = scope:spell_organizer.var:magic_arcane_degeneration_modifier_scale
-				}
-			}
-			if = {
-				limit = {
-					exists = scope:spell_organizer
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:glassinger_modifier_count
-						}
-					}
-				}
-				if = {
-					limit = { scope:spell_organizer = { has_variable_list = spell_targets } }
-					scope:spell_organizer = {
-						every_in_list = {
-							variable = spell_targets
-							limit = { exists = var:glassinger_modifier_scale }
-							add = var:glassinger_modifier_scale
-						}
-					}
-				}
-				else_if = {
-					limit = { scope:spell_organizer = { exists = var:glassinger_modifier_scale } }
-					add = scope:spell_organizer.var:glassinger_modifier_scale
-				}
-			}
-			if = {
-				limit = {
-					exists = scope:spell_organizer
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:num_of_known_languages
-						}
-					}
-				}
-				add = scope:spell_organizer.num_of_known_languages
-			}
-			if = {
-				limit = {
-					exists = scope:spell_organizer
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:development
-						}
-					}
-				}
-				if = {
-					limit = { scope:spell_organizer = { has_variable_list = spell_target_titles } }
-					scope:spell_organizer = {
-						every_in_list = {
-							variable = spell_target_titles
-							add = development_level
-						}
-					}
-				}
-				else_if = {
-					limit = { exists = scope:spell_organizer.location.county }
-					add = scope:spell_organizer.location.county.development_level
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:fire
-						}
-					}
-				}
-				add = {
-					value = fire_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:fire_factor }
-						multiply = prev.var:fire_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:water
-						}
-					}
-				}
-				add = {
-					value = water_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:water_factor }
-						multiply = prev.var:water_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:ice
-						}
-					}
-				}
-				add = {
-					value = ice_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:ice_factor }
-						multiply = prev.var:ice_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:air
-						}
-					}
-				}
-				add = {
-					value = air_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:air_factor }
-						multiply = prev.var:air_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:stone
-						}
-					}
-				}
-				add = {
-					value = stone_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:stone_factor }
-						multiply = prev.var:stone_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:dream
-						}
-					}
-				}
-				add = {
-					value = dream_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:dream_factor }
-						multiply = prev.var:dream_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:celestial
-						}
-					}
-				}
-				add = {
-					value = celestial_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:celestial_factor }
-						multiply = prev.var:celestial_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:dark
-						}
-					}
-				}
-				add = {
-					value = dark_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:dark_factor }
-						multiply = prev.var:dark_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:light
-						}
-					}
-				}
-				add = {
-					value = light_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:light_factor }
-						multiply = prev.var:light_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:blood
-						}
-					}
-				}
-				add = {
-					value = blood_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:blood_factor }
-						multiply = prev.var:blood_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:nature
-						}
-					}
-				}
-				add = {
-					value = nature_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:nature_factor }
-						multiply = prev.var:nature_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:ethereal
-						}
-					}
-				}
-				add = {
-					value = ethereal_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:ethereal_factor }
-						multiply = prev.var:ethereal_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:hymns
-						}
-					}
-				}
-				add = {
-					value = hymns_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:hymns_factor }
-						multiply = prev.var:hymns_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:death
-						}
-					}
-				}
-				add = {
-					value = death_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:death_factor }
-						multiply = prev.var:death_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:sand
-						}
-					}
-				}
-				add = {
-					value = sand_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:sand_factor }
-						multiply = prev.var:sand_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:metal
-						}
-					}
-				}
-				add = {
-					value = metal_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:metal_factor }
-						multiply = prev.var:metal_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:time
-						}
-					}
-				}
-				add = {
-					value = time_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:time_factor }
-						multiply = prev.var:time_factor
-					}
-				}
-			}
-			if = {
-				limit = {
-					prev = {
-						any_in_list = {
-							variable = scalar_spell_effect_chance_iteration_list
-							this = flag:dawn
-						}
-					}
-				}
-				add = {
-					value = dawn_aspect_total_spell_level_value
-					if = {
-						limit = { exists = prev.var:dawn_factor }
-						multiply = prev.var:dawn_factor
-					}
-				}
-			}
-		}
-		if = {
-			limit = { exists = scope:spell_target }
-			if = {
-				limit = {
-					is_target_in_variable_list = {
-						name = scalar_spell_effect_chance_iteration_list
-						target = flag:artifact_aspect_total_value
-					}
-				}
-				scope:spell_target = { add = artifact_aspect_total_value  }
-			}
-			#if = {
-			#	limit = {
-			#		is_target_in_variable_list = {
-			#			name = scalar_spell_effect_chance_iteration_list
-			#			target = flag:artifact_rarity
-			#		}
-			#	}
-			#	scope:spell_target = { add = artifact_rarity }
-			#}
-		}
-		every_in_list = {
-			variable = spell_scalar_trigger_list
-			if = {
-				limit = { index_and_check_spell_trigger = yes }	# Yes, spell triggers can have their own triggers
-				add = 1
+				add = dawn_aspect_total_spell_level_value
 			}
 		}
 	}
@@ -1575,95 +401,19 @@ spell_tag_scalar_spell_effect_chance_iteration_value = {
 
 spell_tag_scalar_threshold_diff_value = {
 	value = spell_tag_scalar_value
-	subtract = spell_tag_scalar_threshold_value
+	subtract = var:scalar_threshold
 	if = {
-		limit = { exists = var:spell_effect_scalar_function }
-		if = {
-			limit = {
-				save_temporary_scope_value_as = {
-					name = base_spell_tag_scalar_threshold_diff_value
-					value = {
-						value = spell_tag_scalar_value
-						subtract = spell_tag_scalar_threshold_value
-					}
-				}
-			}
-			if = {
-				limit = { var:spell_effect_scalar_function = flag:pow_2 }
-				value = spell_tag_scalar_threshold_diff_pow_2_value
-			}
-			else_if = {
-				limit = { var:spell_effect_scalar_function = flag:fibonacci }
-				value = spell_tag_scalar_threshold_diff_fibonacci_value
-			}
-		}
-	}
-	floor = yes
-}
-
-spell_tag_scalar_threshold_diff_pow_2_value = {
-	value = 1
-	if = {
-		limit = { exists = scope:base_spell_tag_scalar_threshold_diff_value }
-		if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value ?= 0 }
-			value = 1
-		}
-		else_if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value ?= 1 }
-			value = 2
-		}
-		else_if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value ?= 2 }
-			value = 4
-		}
-		else_if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value ?= 3 }
-			value = 8
-		}
-		else_if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value ?= 4 }
-			value = 16
-		}
-		else_if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value ?= 5 }
-			value = 32
-		}
+		limit = { exists = var:cap }
+		max = var:cap
 	}
 }
 
-spell_tag_scalar_threshold_diff_fibonacci_value = {
-	value = 1
+# For GUI/loc
+spell_tag_scalar_threshold_value = {
+	value = 0
 	if = {
-		limit = { exists = scope:base_spell_tag_scalar_threshold_diff_value }
-		if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value <= 1 }
-			value = 1
-		}
-		else_if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value <= 2 }
-			value = 2
-		}
-		else_if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value <= 3 }
-			value = 3
-		}
-		else_if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value <= 4 }
-			value = 5
-		}
-		else_if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value <= 5 }
-			value = 8
-		}
-		else_if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value <= 6 }
-			value = 13
-		}
-		else_if = {
-			limit = { scope:base_spell_tag_scalar_threshold_diff_value <= 7 }
-			value = 21
-		}
+		limit = { exists = var:scalar_threshold }
+		value = var:scalar_threshold
 	}
 }
 
@@ -1675,137 +425,137 @@ fire_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:fire }
-		value = var:fire
+		add = var:fire
 	}
 }
 water_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:water }
-		value = var:water
+		add = var:water
 	}
 }
 ice_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:ice }
-		value = var:ice
+		add = var:ice
 	}
 }
 air_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:air }
-		value = var:air
+		add = var:air
 	}
 }
 stone_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:stone }
-		value = var:stone
+		add = var:stone
 	}
 }
 dream_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:dream }
-		value = var:dream
+		add = var:dream
 	}
 }
 celestial_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:celestial }
-		value = var:celestial
+		add = var:celestial
 	}
 }
 dark_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:dark }
-		value = var:dark
+		add = var:dark
 	}
 }
 light_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:light }
-		value = var:light
+		add = var:light
 	}
 }
 blood_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:blood }
-		value = var:blood
+		add = var:blood
 	}
 }
 nature_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:nature }
-		value = var:nature
+		add = var:nature
 	}
 }
 ethereal_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:ethereal }
-		value = var:ethereal
+		add = var:ethereal
 	}
 }
 hymns_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:hymns }
-		value = var:hymns
+		add = var:hymns
 	}
 }
 death_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:death }
-		value = var:death
+		add = var:death
 	}
 }
 sand_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:sand }
-		value = var:sand
+		add = var:sand
 	}
 }
 metal_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:metal }
-		value = var:metal
+		add = var:metal
 	}
 }
 time_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:time }
-		value = var:time
+		add = var:time
 	}
 }
 dawn_aspect_base_spell_level_value = {
 	value = 0
 	if = {
 		limit = { exists = var:dawn }
-		value = var:dawn
+		add = var:dawn
 	}
 }
 fire_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:fire_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:fire_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:fire_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:fire_overcharge
 	}
 	else_if = {
 		limit = {
@@ -1820,11 +570,11 @@ water_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:water_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:water_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:water_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:water_overcharge
 	}
 	else_if = {
 		limit = {
@@ -1839,11 +589,11 @@ ice_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:ice_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:ice_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:ice_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:ice_overcharge
 	}
 	else_if = {
 		limit = {
@@ -1858,11 +608,11 @@ air_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:air_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:air_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:air_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:air_overcharge
 	}
 	else_if = {
 		limit = {
@@ -1877,11 +627,11 @@ stone_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:stone_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:stone_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:stone_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:stone_overcharge
 	}
 	else_if = {
 		limit = {
@@ -1896,11 +646,11 @@ dream_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:dream_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:dream_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:dream_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:dream_overcharge
 	}
 	else_if = {
 		limit = {
@@ -1915,11 +665,11 @@ celestial_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:celestial_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:celestial_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:celestial_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:celestial_overcharge
 	}
 	else_if = {
 		limit = {
@@ -1934,11 +684,11 @@ dark_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:dark_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:dark_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:dark_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:dark_overcharge
 	}
 	else_if = {
 		limit = {
@@ -1953,11 +703,11 @@ light_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:light_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:light_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:light_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:light_overcharge
 	}
 	else_if = {
 		limit = {
@@ -1972,11 +722,11 @@ blood_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:blood_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:blood_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:blood_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:blood_overcharge
 	}
 	else_if = {
 		limit = {
@@ -1991,11 +741,11 @@ nature_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:nature_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:nature_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:nature_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:nature_overcharge
 	}
 	else_if = {
 		limit = {
@@ -2010,11 +760,11 @@ ethereal_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:ethereal_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:ethereal_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:ethereal_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:ethereal_overcharge
 	}
 	else_if = {
 		limit = {
@@ -2029,11 +779,11 @@ hymns_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:hymns_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:hymns_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:hymns_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:hymns_overcharge
 	}
 	else_if = {
 		limit = {
@@ -2048,11 +798,11 @@ death_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:death_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:death_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:death_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:death_overcharge
 	}
 	else_if = {
 		limit = {
@@ -2067,11 +817,11 @@ sand_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:sand_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:sand_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:sand_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:sand_overcharge
 	}
 	else_if = {
 		limit = {
@@ -2086,11 +836,11 @@ metal_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:metal_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:metal_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:metal_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:metal_overcharge
 	}
 	else_if = {
 		limit = {
@@ -2105,11 +855,11 @@ time_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:time_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:time_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:time_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:time_overcharge
 	}
 	else_if = {
 		limit = {
@@ -2124,11 +874,11 @@ dawn_total_overcharge_value = {
 	value = 0
 	if = {
 		limit = { 
-			exists = scope:spell_preparation_story_cycle
-			#scope:spell_preparation_story_cycle.var:spell_being_prepared = this
-			exists = scope:spell_preparation_story_cycle.var:dawn_overcharge
+			exists = scope:spell_preparation_story_cycle_scope
+			#scope:spell_preparation_story_cycle_scope.var:spell_being_prepared = this
+			exists = scope:spell_preparation_story_cycle_scope.var:dawn_overcharge
 		}
-		add = scope:spell_preparation_story_cycle.var:dawn_overcharge
+		add = scope:spell_preparation_story_cycle_scope.var:dawn_overcharge
 	}
 	else_if = {
 		limit = {
@@ -2778,11 +1528,7 @@ blood_aspect_total_spell_level_value = {
 	}
 	# Moon Phase
 	if = {
-		limit = {
-			blood_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:waxing_crescent_moon_blood_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:waxing_crescent_moon_blood_moon }
 		add = {
 			value = 1
 			desc = waxing_crescent_moon_blood_moon_name
@@ -2790,11 +1536,7 @@ blood_aspect_total_spell_level_value = {
 		}
 	}
 	if = {
-		limit = {
-			blood_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:first_quarter_moon_blood_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:first_quarter_moon_blood_moon }
 		add = {
 			value = 1
 			desc = first_quarter_moon_blood_moon_name
@@ -2802,11 +1544,7 @@ blood_aspect_total_spell_level_value = {
 		}
 	}
 	if = {
-		limit = {
-			blood_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:waxing_gibbous_moon_blood_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:waxing_gibbous_moon_blood_moon }
 		add = {
 			value = 1
 			desc = waxing_gibbous_moon_blood_moon_name
@@ -2814,11 +1552,7 @@ blood_aspect_total_spell_level_value = {
 		}
 	}
 	if = {
-		limit = {
-			blood_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:full_moon_blood_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:full_moon_blood_moon }
 		add = {
 			value = 2
 			desc = full_moon_blood_moon_name
@@ -2826,11 +1560,7 @@ blood_aspect_total_spell_level_value = {
 		}
 	}
 	if = {
-		limit = {
-			blood_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:waning_gibbous_moon_blood_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:waning_gibbous_moon_blood_moon }
 		add = {
 			value = 1
 			desc = waning_gibbous_moon_blood_moon_name
@@ -2838,11 +1568,7 @@ blood_aspect_total_spell_level_value = {
 		}
 	}
 	if = {
-		limit = {
-			blood_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:last_quarter_moon_blood_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:last_quarter_moon_blood_moon }
 		add = {
 			value = 1
 			desc = last_quarter_moon_blood_moon_name
@@ -2850,11 +1576,7 @@ blood_aspect_total_spell_level_value = {
 		}
 	}
 	if = {
-		limit = {
-			blood_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:waning_crescent_moon_blood_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:waning_crescent_moon_blood_moon }
 		add = {
 			value = 1
 			desc = waning_crescent_moon_blood_moon_name
@@ -3118,11 +1840,7 @@ death_aspect_total_spell_level_value = {
 	}
 	# Moon Phase
 	if = {
-		limit = {
-			death_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:new_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:new_moon }
 		add = {
 			value = -2
 			desc = new_moon_name
@@ -3130,11 +1848,7 @@ death_aspect_total_spell_level_value = {
 		}
 	}
 	if = {
-		limit = {
-			death_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:waxing_crescent_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:waxing_crescent_moon }
 		add = {
 			value = -1
 			desc = waxing_crescent_moon_name
@@ -3142,11 +1856,7 @@ death_aspect_total_spell_level_value = {
 		}
 	}
 	if = {
-		limit = {
-			death_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:waxing_gibbous_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:waxing_gibbous_moon }
 		add = {
 			value = 1
 			desc = waxing_gibbous_moon_name
@@ -3154,11 +1864,7 @@ death_aspect_total_spell_level_value = {
 		}
 	}
 	if = {
-		limit = {
-			death_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:full_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:full_moon }
 		add = {
 			value = 2
 			desc = full_moon_name
@@ -3166,11 +1872,7 @@ death_aspect_total_spell_level_value = {
 		}
 	}
 	if = {
-		limit = {
-			death_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:waning_gibbous_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:waning_gibbous_moon }
 		add = {
 			value = 1
 			desc = waning_gibbous_moon_name
@@ -3178,11 +1880,7 @@ death_aspect_total_spell_level_value = {
 		}
 	}
 	if = {
-		limit = {
-			death_aspect_base_spell_level_value > 0
-			global_var:current_moon_phase.var:moon_phase_name ?= flag:waning_crescent_moon
-			NOT = { exists = scope:ignore_temporary_scalar_factors }
-		}
+		limit = { global_var:current_moon_phase.var:moon_phase_name ?= flag:waning_crescent_moon }
 		add = {
 			value = -1
 			desc = waning_crescent_moon_name
@@ -3906,17 +2604,14 @@ fire_aspect_spellcasting_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-		
-		
 	if = {
-		limit = { faith = { has_doctrine = tenet_dragon_cult } }
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
 		add = {
-			value = {
-				value = piety_level
-				multiply = 1
-				floor = yes
-			}
-			desc = "[GetFaithDoctrine('tenet_dragon_cult').GetBaseName]"
+			value = capital_province.fire_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -4160,20 +2855,6 @@ water_aspect_spellcasting_value = {
 		
 		
 	if = {
-		limit = { faith = { has_doctrine = tenet_travelers_of_the_undersea } }
-		add = {
-			value = {
-				value = piety_level
-				multiply = 2
-				floor = yes
-			}
-			desc = "[GetFaithDoctrine('tenet_travelers_of_the_undersea').GetBaseName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
 		limit = { culture = { has_cultural_tradition = tradition_seafaring } }
 		add = {
 			value = {
@@ -4210,6 +2891,17 @@ water_aspect_spellcasting_value = {
 				floor = yes
 			}
 			desc = "[GetCultureTradition('tradition_starbound_sojourners').GetName]"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.water_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -4347,6 +3039,17 @@ ice_aspect_spellcasting_value = {
 				floor = yes
 			}
 			desc = "[GetFaithDoctrine('tenet_ice_worship').GetBaseName]"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.ice_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -4547,6 +3250,17 @@ air_aspect_spellcasting_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.air_aspect_province_value
+			desc = "Capital Province"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
 	add = {
 		value = {
 			value = 0
@@ -4718,6 +3432,17 @@ stone_aspect_spellcasting_value = {
 				floor = yes
 			}
 			desc = "[GetCultureTradition('tradition_runestones').GetName]"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.stone_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -4910,6 +3635,17 @@ dream_aspect_spellcasting_value = {
 				floor = yes
 			}
 			desc = "[GetCultureTradition('tradition_dream_interpreters').GetName]"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.dream_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -5203,6 +3939,17 @@ celestial_aspect_spellcasting_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.celestial_aspect_province_value
+			desc = "Capital Province"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
 	add = {
 		value = {
 			value = 0
@@ -5433,6 +4180,17 @@ dark_aspect_spellcasting_value = {
 				floor = yes
 			}
 			desc = "[GetCultureTradition('tradition_kedari_marked').GetName]"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.dark_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -5721,6 +4479,17 @@ light_aspect_spellcasting_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.light_aspect_province_value
+			desc = "Capital Province"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
 	add = {
 		value = {
 			value = 0
@@ -5894,20 +4663,6 @@ blood_aspect_spellcasting_value = {
 		
 		
 	if = {
-		limit = { faith = { has_doctrine = tenet_skull_mound } }
-		add = {
-			value = {
-				value = piety_level
-				multiply = 2
-				floor = yes
-			}
-			desc = "[GetFaithDoctrine('tenet_skull_mound').GetBaseName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
 		limit = { culture = { has_cultural_tradition = tradition_blood_magi } }
 		add = {
 			value = {
@@ -5958,6 +4713,17 @@ blood_aspect_spellcasting_value = {
 				floor = yes
 			}
 			desc = "[GetCultureTradition('tradition_mystical_midwives').GetName]"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.blood_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -6127,6 +4893,17 @@ nature_aspect_spellcasting_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.nature_aspect_province_value
+			desc = "Capital Province"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
 	add = {
 		value = {
 			value = 0
@@ -6258,20 +5035,6 @@ ethereal_aspect_spellcasting_value = {
 		
 		
 	if = {
-		limit = { faith = { has_doctrine = tenet_akkaradhammic_rituals } }
-		add = {
-			value = {
-				value = piety_level
-				multiply = 1
-				floor = yes
-			}
-			desc = "[GetFaithDoctrine('tenet_akkaradhammic_rituals').GetBaseName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
 		limit = { faith = { has_doctrine = tenet_ancestor_worship } }
 		add = {
 			value = {
@@ -6283,17 +5046,14 @@ ethereal_aspect_spellcasting_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-		
-		
 	if = {
-		limit = { culture = { has_cultural_tradition = tradition_akkarashad } }
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
 		add = {
-			value = {
-				value = character_arcana_baseline_value
-				divide = 3
-				floor = yes
-			}
-			desc = "[GetCultureTradition('tradition_akkarashad').GetName]"
+			value = capital_province.ethereal_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -6377,6 +5137,17 @@ hymns_aspect_spellcasting_value = {
 				floor = yes
 			}
 			desc = "[GetFaithDoctrine('tenet_hymns_worship').GetBaseName]"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.hymns_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -6531,59 +5302,14 @@ death_aspect_spellcasting_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-		
-		
 	if = {
-		limit = { faith = { has_doctrine = tenet_akkaradhammic_rituals } }
-		add = {
-			value = {
-				value = piety_level
-				multiply = 1
-				floor = yes
-			}
-			desc = "[GetFaithDoctrine('tenet_akkaradhammic_rituals').GetBaseName]"
-			format = "ASPECT_VALUE_FORMAT"
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
 		}
-	}
-		
-		
-	if = {
-		limit = { faith = { has_doctrine = tenet_avid_necromancers } }
 		add = {
-			value = {
-				value = piety_level
-				multiply = 3
-				floor = yes
-			}
-			desc = "[GetFaithDoctrine('tenet_avid_necromancers').GetBaseName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { faith = { has_doctrine = tenet_skull_mound } }
-		add = {
-			value = {
-				value = piety_level
-				multiply = 2
-				floor = yes
-			}
-			desc = "[GetFaithDoctrine('tenet_skull_mound').GetBaseName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { culture = { has_cultural_tradition = tradition_akkarashad } }
-		add = {
-			value = {
-				value = character_arcana_baseline_value
-				divide = 3
-				floor = yes
-			}
-			desc = "[GetCultureTradition('tradition_akkarashad').GetName]"
+			value = capital_province.death_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -6667,6 +5393,17 @@ sand_aspect_spellcasting_value = {
 				floor = yes
 			}
 			desc = "[GetFaithDoctrine('tenet_sand_worship').GetBaseName]"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.sand_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -6764,6 +5501,17 @@ metal_aspect_spellcasting_value = {
 				floor = yes
 			}
 			desc = "[GetCultureTradition('tradition_sorcerous_metallurgy').GetName]"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.metal_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -6878,6 +5626,17 @@ time_aspect_spellcasting_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.time_aspect_province_value
+			desc = "Capital Province"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
 	add = {
 		value = {
 			value = 0
@@ -6958,6 +5717,17 @@ dawn_aspect_spellcasting_value = {
 				floor = yes
 			}
 			desc = "[GetFaithDoctrine('tenet_dawn_worship').GetBaseName]"
+			format = "ASPECT_VALUE_FORMAT"
+		}
+	}
+	if = {
+		limit = {
+			exists = capital_province
+			capital_province = { has_building_with_flag = activates_province_aspects }
+		}
+		add = {
+			value = capital_province.dawn_aspect_province_value
+			desc = "Capital Province"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -9274,17 +8044,6 @@ fire_aspect_province_value = {
 	}
 	if = {
 		limit = {
-			terrain = redlands_drylands
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('redlands_drylands').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
 			terrain = desert
 			
 		}
@@ -9302,28 +8061,6 @@ fire_aspect_province_value = {
 		add = {
 			value = 2
 			desc = "[GetTerrain('desert_mountains').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = redlands_desert
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('redlands_desert').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = redlands_mountains
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('redlands_mountains').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -9493,76 +8230,6 @@ fire_aspect_province_value = {
 		}
 	}
 		
-		
-	if = {
-		limit = { has_building = 01_ash_gate }
-		add = {
-			value = 2
-			desc = "[GetBuilding('01_ash_gate').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 02_ash_gate }
-		add = {
-			value = 4
-			desc = "[GetBuilding('02_ash_gate').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_progress_gate }
-		add = {
-			value = 2
-			desc = "[GetBuilding('01_progress_gate').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 02_progress_gate }
-		add = {
-			value = 4
-			desc = "[GetBuilding('02_progress_gate').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_industry_gate }
-		add = {
-			value = 2
-			desc = "[GetBuilding('01_industry_gate').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 02_industry_gate }
-		add = {
-			value = 4
-			desc = "[GetBuilding('02_industry_gate').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_the_folly }
-		add = {
-			value = 4
-			desc = "[GetBuilding('01_the_folly').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
 	if = {
 		limit = { has_building_with_flag = activates_province_aspects }
 		if = {
@@ -9700,14 +8367,6 @@ fire_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 water_aspect_province_value = {
@@ -9755,17 +8414,6 @@ water_aspect_province_value = {
 	}
 	if = {
 		limit = {
-			terrain = marcher_floodplains
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('marcher_floodplains').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
 			terrain = wetlands
 			
 		}
@@ -9777,22 +8425,11 @@ water_aspect_province_value = {
 	}
 	if = {
 		limit = {
-			terrain = marcher_wetlands
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('marcher_wetlands').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
 			terrain = archipelagic
 			
 		}
 		add = {
-			value = 2
+			value = 1
 			desc = "[GetTerrain('archipelagic').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
@@ -10042,15 +8679,6 @@ water_aspect_province_value = {
 				is_coastal = yes
 				is_riverside_province = yes
 			}
-			NOT = {
-				terrain = wetlands
-				terrain = marcher_wetlands
-				terrain = floodplains
-				terrain = marcher_floodplains
-				terrain = archipelagic
-				terrain = jungle
-				terrain = oasis
-			}
 		}
 		add = {
 			value = 1
@@ -10077,14 +8705,6 @@ water_aspect_province_value = {
 		multiply = {
 			value = 2
 			desc = "[GetModifier('wayline_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -10308,14 +8928,6 @@ ice_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 air_aspect_province_value = {
@@ -10341,17 +8953,6 @@ air_aspect_province_value = {
 	}
 	if = {
 		limit = {
-			terrain = marcher_mountains
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('marcher_mountains').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
 			terrain = desert_mountains
 			
 		}
@@ -10363,34 +8964,12 @@ air_aspect_province_value = {
 	}
 	if = {
 		limit = {
-			terrain = redlands_mountains
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('redlands_mountains').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
 			terrain = plains
 			
 		}
 		add = {
 			value = 1
 			desc = "[GetTerrain('plains').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = marcher_plains
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('marcher_plains').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -10632,14 +9211,6 @@ air_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 stone_aspect_province_value = {
@@ -10665,34 +9236,12 @@ stone_aspect_province_value = {
 	}
 	if = {
 		limit = {
-			terrain = marcher_mountains
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('marcher_mountains').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
 			terrain = desert_mountains
 			
 		}
 		add = {
 			value = 2
 			desc = "[GetTerrain('desert_mountains').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = redlands_mountains
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('redlands_mountains').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -10709,78 +9258,12 @@ stone_aspect_province_value = {
 	}
 	if = {
 		limit = {
-			terrain = marcher_hills
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('marcher_hills').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
 			terrain = drylands
 			
 		}
 		add = {
 			value = 1
 			desc = "[GetTerrain('drylands').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = redlands_drylands
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('redlands_drylands').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = underworld_expanse
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('underworld_expanse').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = mayik_caverns
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('mayik_caverns').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = mayik_corridors
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('mayik_corridors').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = mayik_chamber
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('mayik_chamber').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -11051,14 +9534,6 @@ stone_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 dream_aspect_province_value = {
@@ -11189,16 +9664,6 @@ dream_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-		
-	if = {
-		limit = { has_building = 01_imutargit }
-		add = {
-			value = 1
-			desc = "[GetBuilding('01_imutargit').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
 	if = {
 		limit = { has_building_with_flag = activates_province_aspects }
 		if = {
@@ -11333,14 +9798,6 @@ dream_aspect_province_value = {
 		multiply = {
 			value = 2
 			desc = "[GetModifier('wayline_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -11507,26 +9964,6 @@ celestial_aspect_province_value = {
 		}
 	}
 		
-		
-	if = {
-		limit = { has_building = 01_tomb_of_the_starborn }
-		add = {
-			value = 3
-			desc = "[GetBuilding('01_tomb_of_the_starborn').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_whitegoldpalace }
-		add = {
-			value = 1
-			desc = "[GetBuilding('01_whitegoldpalace').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
 	if = {
 		limit = { has_building_with_flag = activates_province_aspects }
 		if = {
@@ -11664,14 +10101,6 @@ celestial_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 dark_aspect_province_value = {
@@ -11692,94 +10121,6 @@ dark_aspect_province_value = {
 		add = {
 			value = 1
 			desc = "[GetGeographicalRegion('konijkmener_biozone').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = underworld_expanse
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('underworld_expanse').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = mayik_caverns
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('mayik_caverns').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = mayik_corridors
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('mayik_corridors').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = mayik_chamber
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('mayik_chamber').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = redlands_chasms
-			
-		}
-		add = {
-			value = 4
-			desc = "[GetTerrain('redlands_chasms').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = redlands_desert
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('redlands_desert').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = redlands_mountains
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('redlands_mountains').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = redlands_drylands
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('redlands_drylands').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -12036,14 +10377,6 @@ dark_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 light_aspect_province_value = {
@@ -12243,14 +10576,6 @@ light_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 blood_aspect_province_value = {
@@ -12299,36 +10624,6 @@ blood_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-		
-	if = {
-		limit = { has_building = 01_umrawet }
-		add = {
-			value = 3
-			desc = "[GetBuilding('01_umrawet').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_thebloodyard }
-		add = {
-			value = 2
-			desc = "[GetBuilding('01_thebloodyard').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 02_thebloodyard }
-		add = {
-			value = 4
-			desc = "[GetBuilding('02_thebloodyard').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
 	if = {
 		limit = { has_building_with_flag = activates_province_aspects }
 		if = {
@@ -12466,14 +10761,6 @@ blood_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 nature_aspect_province_value = {
@@ -12510,17 +10797,6 @@ nature_aspect_province_value = {
 	}
 	if = {
 		limit = {
-			terrain = marcher_forest
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('marcher_forest').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
 			terrain = jungle
 			
 		}
@@ -12543,17 +10819,6 @@ nature_aspect_province_value = {
 	}
 	if = {
 		limit = {
-			terrain = marcher_farmlands
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('marcher_farmlands').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
 			terrain = floodplains
 			
 		}
@@ -12565,34 +10830,12 @@ nature_aspect_province_value = {
 	}
 	if = {
 		limit = {
-			terrain = marcher_floodplains
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('marcher_floodplains').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
 			terrain = plains
 			
 		}
 		add = {
 			value = 1
 			desc = "[GetTerrain('plains').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = marcher_plains
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('marcher_plains').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -12707,16 +10950,6 @@ nature_aspect_province_value = {
 		add = {
 			value = 3
 			desc = "[GetBuilding('01_hanging_gardens').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_jerniems_lodge }
-		add = {
-			value = 3
-			desc = "[GetBuilding('01_jerniems_lodge').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -12927,26 +11160,6 @@ nature_aspect_province_value = {
 		}
 	}
 		
-		
-	if = {
-		limit = { has_building = 01_imutargit }
-		add = {
-			value = 2
-			desc = "[GetBuilding('01_imutargit').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_zokah_forest }
-		add = {
-			value = 2
-			desc = "[GetBuilding('01_zokah_forest').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
 	if = {
 		limit = { has_building_with_flag = activates_province_aspects }
 		if = {
@@ -13084,14 +11297,6 @@ nature_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 ethereal_aspect_province_value = {
@@ -13110,106 +11315,6 @@ ethereal_aspect_province_value = {
 		add = {
 			value = 3
 			desc = "[GetBuilding('00_fog_eternal_grove').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_well_of_souls }
-		add = {
-			value = 5
-			desc = "[GetBuilding('01_well_of_souls').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 00_darksteel_tomb }
-		add = {
-			value = 2
-			desc = "[GetBuilding('00_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_darksteel_tomb }
-		add = {
-			value = 3
-			desc = "[GetBuilding('01_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 02_darksteel_tomb }
-		add = {
-			value = 4
-			desc = "[GetBuilding('02_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 03_darksteel_tomb }
-		add = {
-			value = 5
-			desc = "[GetBuilding('03_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 04_darksteel_tomb }
-		add = {
-			value = 6
-			desc = "[GetBuilding('04_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 05_darksteel_tomb }
-		add = {
-			value = 7
-			desc = "[GetBuilding('05_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 06_darksteel_tomb }
-		add = {
-			value = 8
-			desc = "[GetBuilding('06_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 07_darksteel_tomb }
-		add = {
-			value = 9
-			desc = "[GetBuilding('07_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 08_darksteel_tomb }
-		add = {
-			value = 10
-			desc = "[GetBuilding('08_darksteel_tomb').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -13348,14 +11453,6 @@ ethereal_aspect_province_value = {
 		multiply = {
 			value = 2
 			desc = "[GetModifier('wayline_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -13508,14 +11605,6 @@ hymns_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 death_aspect_province_value = {
@@ -13534,7 +11623,7 @@ death_aspect_province_value = {
 			
 		}
 		add = {
-			value = 2
+			value = 
 			desc = "[GetTerrain('deadlands').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
@@ -13595,106 +11684,6 @@ death_aspect_province_value = {
 		add = {
 			value = 2
 			desc = "[GetBuilding('01_mayikprolollan').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 00_darksteel_tomb }
-		add = {
-			value = 2
-			desc = "[GetBuilding('00_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_darksteel_tomb }
-		add = {
-			value = 3
-			desc = "[GetBuilding('01_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 02_darksteel_tomb }
-		add = {
-			value = 4
-			desc = "[GetBuilding('02_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 03_darksteel_tomb }
-		add = {
-			value = 5
-			desc = "[GetBuilding('03_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 04_darksteel_tomb }
-		add = {
-			value = 6
-			desc = "[GetBuilding('04_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 05_darksteel_tomb }
-		add = {
-			value = 7
-			desc = "[GetBuilding('05_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 06_darksteel_tomb }
-		add = {
-			value = 8
-			desc = "[GetBuilding('06_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 07_darksteel_tomb }
-		add = {
-			value = 9
-			desc = "[GetBuilding('07_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 08_darksteel_tomb }
-		add = {
-			value = 10
-			desc = "[GetBuilding('08_darksteel_tomb').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_culling_ground }
-		add = {
-			value = 5
-			desc = "[GetBuilding('01_culling_ground').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -13836,14 +11825,6 @@ death_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 sand_aspect_province_value = {
@@ -13889,28 +11870,6 @@ sand_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = {
-			terrain = redlands_desert
-			
-		}
-		add = {
-			value = 2
-			desc = "[GetTerrain('redlands_desert').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = {
-			terrain = redlands_mountains
-			
-		}
-		add = {
-			value = 1
-			desc = "[GetTerrain('redlands_mountains').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 		
 	if = {
 		limit = { has_building = 01_halite_temple }
@@ -13927,16 +11886,6 @@ sand_aspect_province_value = {
 		add = {
 			value = 2
 			desc = "[GetBuilding('02_halite_temple').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_tomb_of_the_starborn }
-		add = {
-			value = 2
-			desc = "[GetBuilding('01_tomb_of_the_starborn').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -14078,14 +12027,6 @@ sand_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 metal_aspect_province_value = {
@@ -14114,106 +12055,6 @@ metal_aspect_province_value = {
 		add = {
 			value = 3
 			desc = "[GetBuilding('01_temple_of_wisdom').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_mechanical_city }
-		add = {
-			value = 3
-			desc = "[GetBuilding('01_mechanical_city').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 02_mechanical_city }
-		add = {
-			value = 6
-			desc = "[GetBuilding('02_mechanical_city').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 03_mechanical_city }
-		add = {
-			value = 9
-			desc = "[GetBuilding('03_mechanical_city').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 04_mechanical_city }
-		add = {
-			value = 12
-			desc = "[GetBuilding('04_mechanical_city').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_ash_gate }
-		add = {
-			value = 2
-			desc = "[GetBuilding('01_ash_gate').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 02_ash_gate }
-		add = {
-			value = 4
-			desc = "[GetBuilding('02_ash_gate').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_progress_gate }
-		add = {
-			value = 2
-			desc = "[GetBuilding('01_progress_gate').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 02_progress_gate }
-		add = {
-			value = 4
-			desc = "[GetBuilding('02_progress_gate').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 01_industry_gate }
-		add = {
-			value = 2
-			desc = "[GetBuilding('01_industry_gate').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-		
-		
-	if = {
-		limit = { has_building = 02_industry_gate }
-		add = {
-			value = 4
-			desc = "[GetBuilding('02_industry_gate').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -14368,14 +12209,6 @@ metal_aspect_province_value = {
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
 	floor = yes
 }
 time_aspect_province_value = {
@@ -14522,14 +12355,6 @@ time_aspect_province_value = {
 		multiply = {
 			value = 2
 			desc = "[GetModifier('wayline_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -14705,14 +12530,6 @@ dawn_aspect_province_value = {
 		multiply = {
 			value = 2
 			desc = "[GetModifier('wayline_modifier').GetName]"
-			format = "ASPECT_VALUE_FORMAT"
-		}
-	}
-	if = {
-		limit = { county = { has_county_modifier = wayline_intersection_modifier } }
-		multiply = {
-			value = 3
-			desc = "[GetModifier('wayline_intersection_modifier').GetName]"
 			format = "ASPECT_VALUE_FORMAT"
 		}
 	}
@@ -16119,258 +13936,6 @@ ruler_designer_dawn_skill_value_cost = {
 	}
 }
 
-#################
-# RANDOMIZATION #
-#################
-
-spell_random_factor_a = 16777	# GH NOTE: These values were adjusted for never exceeding 32 bits and assume that the spell effect ID never exceeds 8092. In case it ever does, THIS MUST BE CHANGED
-spell_random_factor_b = 1013
-spell_random_factor_max_seed = 247908
-
-spell_tag_scalar_random_offset_modulo_value = {
-	value = 0
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:fire_random
-				}
-			}
-		}
-		add = fire_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:water_random
-				}
-			}
-		}
-		add = water_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:ice_random
-				}
-			}
-		}
-		add = ice_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:air_random
-				}
-			}
-		}
-		add = air_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:stone_random
-				}
-			}
-		}
-		add = stone_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:dream_random
-				}
-			}
-		}
-		add = dream_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:celestial_random
-				}
-			}
-		}
-		add = celestial_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:dark_random
-				}
-			}
-		}
-		add = dark_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:light_random
-				}
-			}
-		}
-		add = light_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:blood_random
-				}
-			}
-		}
-		add = blood_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:nature_random
-				}
-			}
-		}
-		add = nature_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:ethereal_random
-				}
-			}
-		}
-		add = ethereal_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:hymns_random
-				}
-			}
-		}
-		add = hymns_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:death_random
-				}
-			}
-		}
-		add = death_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:sand_random
-				}
-			}
-		}
-		add = sand_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:metal_random
-				}
-			}
-		}
-		add = metal_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:time_random
-				}
-			}
-		}
-		add = time_aspect_total_spell_level_value
-	}
-	# GH TODO: Generalize this to not just be for aspects
-	if = {
-		limit = {
-			prev = {
-				any_in_list = {
-					variable = scalar_list
-					this = flag:dawn_random
-				}
-			}
-		}
-		add = dawn_aspect_total_spell_level_value
-	}
-}
-
-spell_tag_scalar_random_offset_value = {
-	if = {
-		limit = {
-			exists = scope:spell_random_seed
-			spell_tag_scalar_random_offset_modulo_value > 0
-		}
-		value = spell_random_factor_a
-		multiply = {
-			value = scope:spell_random_seed
-			add = var:spell_tag_id
-		}
-		add = spell_random_factor_b
-		modulo = spell_tag_scalar_random_offset_modulo_value
-		add = 1
-	}
-	else = {
-		value = 0
-	}
-}
-
-########
-# MISC #
-########
-
 strongest_aspect_on_first_glowing_mutation_value = {
 	value = 0
 
@@ -16486,95 +14051,6 @@ strongest_aspect_on_first_glowing_mutation_value = {
 			limit = { var:gh_strongest_aspect_on_first_glowing_mutation = flag:dawn }
 
 			add = dawn_aspect_spellcasting_value
-		}
-	}
-}
-
-artifact_aspect_total_value = {
-	value = 0
-	if = {
-		limit = { exists = var:fire }
-		add = var:fire
-	}
-	if = {
-		limit = { exists = var:water }
-		add = var:water
-	}
-	if = {
-		limit = { exists = var:ice }
-		add = var:ice
-	}
-	if = {
-		limit = { exists = var:air }
-		add = var:air
-	}
-	if = {
-		limit = { exists = var:stone }
-		add = var:stone
-	}
-	if = {
-		limit = { exists = var:dream }
-		add = var:dream
-	}
-	if = {
-		limit = { exists = var:celestial }
-		add = var:celestial
-	}
-	if = {
-		limit = { exists = var:dark }
-		add = var:dark
-	}
-	if = {
-		limit = { exists = var:light }
-		add = var:light
-	}
-	if = {
-		limit = { exists = var:blood }
-		add = var:blood
-	}
-	if = {
-		limit = { exists = var:nature }
-		add = var:nature
-	}
-	if = {
-		limit = { exists = var:ethereal }
-		add = var:ethereal
-	}
-	if = {
-		limit = { exists = var:hymns }
-		add = var:hymns
-	}
-	if = {
-		limit = { exists = var:death }
-		add = var:death
-	}
-	if = {
-		limit = { exists = var:sand }
-		add = var:sand
-	}
-	if = {
-		limit = { exists = var:metal }
-		add = var:metal
-	}
-	if = {
-		limit = { exists = var:time }
-		add = var:time
-	}
-	if = {
-		limit = { exists = var:dawn }
-		add = var:dawn
-	}
-}
-
-
-num_of_hidden_spell_effects_value = {
-	value = 0
-	if = {
-		limit = { has_variable_list = spell_effect_list }
-		every_in_list = {
-			variable = spell_effect_list
-			limit = { exists = var:spell_effect_hidden }
-			add = 1
 		}
 	}
 }

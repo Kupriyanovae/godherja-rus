@@ -7,11 +7,11 @@ on_game_start = {
 	}
 
 	effect = {
-		#Epidemics 10 years grace
+		#Epidemics 3 months grace
 		set_global_variable = {
 			name = start_epidemic_grace
 			value = yes
-			years = 10
+			months = 3
 		}
 		### Every nomad and herder in the Steppe Region becomes tribal if DLC not enabled, pre-lobby history setup ###
 		if = {
@@ -45,20 +45,6 @@ on_game_start = {
 			}
 		}
 
-
-
-		# To prevent the Season Changes event from triggering on game start
-		situation:the_great_steppe ?= {
-			every_participant_group = {
-				every_situation_group_participant = {
-					set_variable = {
-						name = steppe_game_start_var
-						years = 1
-					}
-				}
-			}
-		}
-		
 		setup_tributaries_effect = yes # defined in 00_tributary_setup_effect.txt
 
 		### GRANDEUR ###
@@ -78,7 +64,7 @@ on_game_start = {
 			}
 		}
 		if = {
-			limit = { game_start_date = 6254.1.1 }
+			limit = { game_start_date = 1254.1.1 }
 			# Set up anyone who should be in a regency at start whether we have sources or not.
 			character:westernimperial_omitilos_aagiokrata_2 = { designate_diarch = character:westernimperial_omitilos_aagiokrata_1 } #Cois and Rhesus
 			character:voyagen_lifepath_7 = { designate_diarch = character:voyagen_lifepath_67 } #Benouet and the Tetrarchy
@@ -101,22 +87,6 @@ on_game_start = {
 				LIEGE = character:dathanites_labaqiri_6
 			}
 		}
-		if = {
-			limit = { game_start_date >= 6298.1.1 }
-
-			# Set up regencies for 1298
-			character:caemansi_sjalvolki_15 = { designate_diarch = character:caemansi_sjalvolki_5 } #Skogul and Cestinj
-			character:sceyfig_lighter_aegispact_27 = { designate_diarch = character:sceyfig_lighter_aegispact_7}
-
-			remove_generated_diarch_consequences_effect = {
-				NEW_DIARCH = character:caemansi_sjalvolki_5
-				LIEGE = character:caemansi_sjalvolki_15
-			}
-			remove_generated_diarch_consequences_effect = {
-				NEW_DIARCH = character:sceyfig_lighter_aegispact_7
-				LIEGE = character:sceyfig_lighter_aegispact_7
-			}
-		}
 
 		#gh_on_start_agionist_effect
 		initialize_patron_saint_effect = yes
@@ -133,6 +103,7 @@ on_game_start = {
 						is_adult = no
 						is_incapable = yes
 						is_imprisoned = yes
+						government_has_flag = government_is_clan
 						is_ruin = no # GH ADDITION: Ruin check
 					}
 				}
@@ -173,31 +144,23 @@ on_game_start = {
 		}
 		# Custom Regencies
 		if = {
-			limit = { game_start_date = 6254.1.1 }
-			if = {
-				limit = { exists = character:westernimperial_omitilos_aagiokrata_2 }
-				character:westernimperial_omitilos_aagiokrata_2 = { trigger_event = diarchy.0012 }
-			}
-			if = {
-				limit = { exists = character:voyagen_lifepath_7 }
-				character:voyagen_lifepath_7 = { trigger_event = diarchy.0012 }
-			}
-			if = {
-				limit = { exists = character:voyagen_lifepath_9 }
-				character:voyagen_lifepath_9 = { trigger_event = diarchy.0012 }
-			}
-		}	
-		# Legitmacy
-		if = {
-			limit = { game_start_date = 6254.1.1 }
-			character:daukeni_sjalvolki_1 = {
-				add_legitimacy = 1000
-			}
+			limit = { exists = character:westernimperial_omitilos_aagiokrata_2 }
+			character:westernimperial_omitilos_aagiokrata_2 = { trigger_event = diarchy.0012 }
 		}
 		if = {
-			limit = { game_start_date = 6298.3.13 }
-			character:akhtarfi_wardenism_5 = {
-				add_legitimacy = 400
+			limit = { exists = character:voyagen_lifepath_7 }
+			character:voyagen_lifepath_7 = { trigger_event = diarchy.0012 }
+		}
+		if = {
+			limit = { exists = character:voyagen_lifepath_9 }
+			character:voyagen_lifepath_9 = { trigger_event = diarchy.0012 }
+		}
+
+		# Legitmacy
+		if = {
+			limit = { game_start_date = 1254.1.1 }
+			character:daukeni_sjalvolki_1 = {
+				add_legitimacy = 1000
 			}
 		}
 		
@@ -208,257 +171,17 @@ on_game_start = {
 				limit = {
 					is_governor = yes
 					NOT = { has_trait = governor }
-					OR = {
-						government_allows = administrative
-						government_is_japanese_trigger = yes
-					}
 				}
 				add_trait = governor
 				add_trait_xp = {
 					trait = governor
-					track = governor ## GH ADDITION: Governor trait governor track
 					value = {
 						add = primary_title.title_held_years
 						multiply = 2
-						if = {
-							limit = {
-								age >= 50
-								has_government = japan_administrative_government
-							}
-							add = {
-								value = age
-								divide = 4
-							}
-						}
-					}
-				}
-			}
-			# Clean up TGP governments is the Expansion is not enabled
-			if = {
-				limit = { has_tgp_dlc_trigger = no }
-				# TGP: Clean up maritime tribal govs and revert them to non-dlc tribals
-				if = {
-					limit = {
-						government_has_flag = government_is_wanua
-					}
-					empty_treasury_when_abandoning_landed_life_effect = yes
-					change_government = tribal_government
-				}
-				# TGP: Clean up mandala govs and revert them to non-dlc feudals
-				else_if = {
-					limit = {
-						government_has_flag = government_is_mandala
-					}
-					empty_treasury_when_abandoning_landed_life_effect = yes
-					change_government = feudal_government
-				}
-				### Every Celestial/Meritocratic/Japanese Government becomes feudal if DLC not enabled, pre-lobby history setup ###
-				else_if = {
-					limit = {
-						OR = {
-							has_government = celestial_government
-							has_government = meritocratic_government
-							has_government = steppe_admin_government
-							has_government = japan_administrative_government
-							has_government = japan_feudal_government
-						}
-					}
-					empty_treasury_when_abandoning_landed_life_effect = yes
-					change_government = feudal_government
-				}
-				if = {
-					limit = {
-						any_held_title = {
-							is_noble_family_title = yes
-						}
-					}
-					every_held_title = {
-						limit = {
-							is_noble_family_title = yes
-							title_domicile ?= {
-								OR = {
-									is_domicile_type = japanese_manor
-									is_domicile_type = east_asian_estate
-								}
-							}
-						}
-						save_temporary_scope_as = family_title
-						prev = { destroy_title = scope:family_title }
-					}
-				}
-			}
-			# TGP: Adjust China's starting laws
-			else_if = {
-				limit = {
-					realm_law_use_celestial_bureaucracy = yes
-				}
-				if = {
-					limit = {
-						game_start_date >= 6254.1.1
-					}
-					add_realm_law_skip_effects = celestial_bureaucracy_2
-					if = {
-						limit = {
-							top_liege != this
-						}
-						add_realm_law_skip_effects = celestial_army_vassal_law_2
-					}
-					else = {
-						add_realm_law_skip_effects = celestial_army_liege_law_2 # Let's give them the matching army level as well
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_domicile = yes
-					any_held_title = {
-						is_noble_family_title = yes
-					}
-				}
-				if = {
-					limit = {
-						is_landed = yes
-						domicile.domicile_location != this.capital_province
-					}
-					random_held_title = {
-						limit = {
-							is_noble_family_title = yes
-						}
-						set_capital_county = prev.capital_county
-					}
-					domicile ?= {
-						move_domicile = prev.capital_province
-					}
-				}
-				if = {
-					limit = {
-						tgp_is_any_minister = yes
-					}
-					random_held_title = {
-						limit = {
-							tier = tier_empire
-						}
-						set_capital_county = prev.top_liege.capital_county
-					}
-					random_held_title = {
-						limit = {
-							is_noble_family_title = yes
-						}
-						set_capital_county = prev.top_liege.capital_county
-					}
-					domicile ?= {
-						move_domicile = prev.top_liege.capital_province
 					}
 				}
 			}
 		}
-
-		# Remove Coronation Doctrine if you don't have the DLC
-		if = {
-			limit = {
-				has_ach_dlc_trigger = no
-			}
-			every_religion_global = {
-				every_faith = {
-					switch = {
-						trigger = has_doctrine
-						doctrine_no_anointment = { remove_doctrine = doctrine_no_anointment }
-						doctrine_anointment_permitted = { remove_doctrine = doctrine_anointment_permitted }
-						doctrine_imperial_anointment = { remove_doctrine = doctrine_imperial_anointment }
-					}
-				}
-			}
-		}
-
-		# Set Coronation laws for everyone
-		if = {
-			limit = {
-				has_ach_dlc_trigger = yes
-			}
-			every_ruler = {
-				limit = {
-					coronation_trigger = yes
-					age >= 12
-					highest_held_title_tier >= tier_kingdom
-				}
-				save_temporary_scope_as = ruler
-				if = {
-					limit = {
-						highest_held_title_tier > tier_kingdom
-						NOT = {
-							has_any_shunned_or_criminal_trait_in_faith_trigger = {
-								CHARACTER = scope:ruler
-								FAITH = scope:ruler.faith
-							}
-							faith = { has_doctrine = doctrine_no_anointment }
-						}
-					}
-					if = {
-						limit = {
-							NOT = {
-								has_game_rule = coronation_laws_off
-								has_realm_law = crowned_emperor
-							}
-						}
-						add_realm_law_skip_effects = crowned_emperor
-					}
-					set_variable = crowned_emperor_var
-				}
-				else = {
-					if = {
-						limit = {
-							NOT = {
-								has_game_rule = coronation_laws_off
-								has_realm_law = crowned_king
-							}
-						}
-						add_realm_law_skip_effects = crowned_king
-					}
-					set_variable = crowned_king_var
-				}
-			}
-		}
-		
-		# GH_AUH_TODO: Add Hegemon legitimacy here, Silk Road Innovations setup effect
-		
-		set_global_variable = {
-			name = natural_disaster_initial_grace_period
-			years = natural_disaster_initial_grace_period_years
-		}
-
-		### TGP Earthquake Regions
-		add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:GH_geographic_pirate_coast }
-		add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:GH_geographic_etepezea }
-		add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:GH_geographic_northern_opakhasia }
-		add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:GH_geographic_western_aironoi }
-		add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:GH_geographic_krehejad }
-		add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:GH_geographic_western_opakhasia }
-		add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:GH_geographic_aekershaan_crater }
-		add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:GH_geographic_crater }
-		add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:GH_geographic_western_aironoi }
-		add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:dahangon_lowlands_biozone }
-
-		### TGP FLOOD REGIONS
-		### TGP Flood Regions
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:petroniathis_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:kalingyan_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:nekvasovy_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:khenem_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:buran_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:qawadni_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:loukastha_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:valora_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:kasiryat_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:lahkorini_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:jiirladager_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:drownskull_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:bexidel_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:etiphais_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:chrysanthoscois_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:kosporolos_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:drums_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:pathos_river_region }
-		add_to_global_variable_list = { name = flood_region_list target = geographical_region:tagsan_river_region }
 	}
 
 	on_actions = {
@@ -469,8 +192,6 @@ on_game_start = {
 # Like on_game_start, except it is called once the host (or player, in single player) exits the lobby. Good for anything where you need to know who the players are, or what the game rules are
 on_game_start_after_lobby = {
 	effect = {
-		disable_succession_calculation = yes
-	
 		# To prevent the Season Changes event from triggering on game start
 		situation:the_great_steppe ?= {
 			every_participant_group = {
@@ -482,7 +203,7 @@ on_game_start_after_lobby = {
 				}
 			}
 		}
-
+		
 		# Extra Nomad Regions
 		#Sarradon
 		if = {
@@ -492,25 +213,19 @@ on_game_start_after_lobby = {
 			}
 			start_situation = {
 				type = the_sarradonian_desert
-				start_phase = situation_sand_blessed_bloom_season
+				start_phase = situation_steppe_severe_drought_season
 				save_scope_as = my_situation
 				sub_region = {
 					key = arabia_nomads
-					start_phase = situation_sand_blessed_bloom_season
+					start_phase = situation_steppe_severe_drought_season
 					map_color = { 34 255 76 }
 					geographical_regions = { GH_REPLACE_arab_nomad_area }
 				}
 				sub_region = {
 					key = egypt_nomads
-					start_phase = situation_sand_blessed_bloom_season
+					start_phase = situation_steppe_abundant_grazing_season
 					map_color = { 24 155 76 }
 					geographical_regions = { GH_REPLACE_egypt_nomad_area }
-				}
-				sub_region = {
-					key = boneyard_nomads
-					start_phase = situation_sand_blessed_bloom_season
-					map_color = { 14 135 76 }
-					geographical_regions = { GH_geographic_boneyard }
 				}
 			}
 			scope:my_situation = {
@@ -533,20 +248,15 @@ on_game_start_after_lobby = {
 							if = {
 								limit = {
 									title_province = {
-										OR = {
-											has_holding_type = tribal_holding
-											GH_wasteland_empty_holding_trigger = yes
-											GH_ruin_holding_trigger = yes
-										}
+										has_holding_type = tribal_holding
 									}
 								}
 								title_province = {
 									set_holding_type = nomad_holding
 								}
-								prev = { change_government = nomad_government }
 							}
 						}
-
+						change_government = nomad_government
 					}
 				}
 			}
@@ -558,19 +268,13 @@ on_game_start_after_lobby = {
 			}
 			start_situation = {
 				type = the_sarradonian_horn
-				start_phase = situation_sarradonian_high_tide
+				start_phase = situation_steppe_abundant_grazing_season
 				save_scope_as = my_situation
 				sub_region = {
 					key = horn_nomads
-					start_phase = situation_sarradonian_low_tide
+					start_phase = situation_steppe_abundant_grazing_season
 					map_color = { 34 255 76 }
 					geographical_regions = { GH_REPLACE_horn_of_africa_nomad_area }
-				}
-				sub_region = {
-					key = eastern_horn_nomads
-					start_phase = situation_sarradonian_high_tide
-					map_color = { 44 155 76 }
-					geographical_regions = { GH_REPLACE_nubia_nomad_area }
 				}
 			}
 			scope:my_situation = {
@@ -605,20 +309,74 @@ on_game_start_after_lobby = {
 				}
 			}
 		}
-		### INITIAL BUDGET CALC, ONE MORE AFTER THE EVERY_RULER ASSIGNS PROVINCE TYPES ###
-		if = {
+		# Decrease refill maa gov amount of regiments at start, might need more balancing
+		every_ruler = {
 			limit = {
-				exists = title:h_aversarinas_aautokrata.holder
-				has_tgp_dlc_trigger = yes
+				NOT = { has_character_flag = gh_no_changes_to_maa }
+				OR = { 
+					government_has_flag = government_is_pirate
+					government_has_flag = government_is_lichdom
+				}
 			}
-			title:h_aversarinas_aautokrata.holder ?= {
-				enact_treasury_budgets_init = yes
-			}
+			every_maa_regiment = {
+				while = {
+					count = gh_number_of_regiments_size_half_value
+					change_maa_regiment_size = -1
+				}
+			}				
 		}
-		
-		
-		
-		every_ruler = { # PUT EVERY_RULER TYPE STUFF HERE FOR PERFORMANCE REASONS
+		# Make sure that Realm Priests are landed theocrats where it makes sense
+		every_ruler = {
+			limit = {
+				highest_held_title_tier >= tier_duchy
+			}
+			if = {
+				limit = {
+					exists = cp:councillor_court_chaplain
+					cp:councillor_court_chaplain = {
+						is_ruler = no
+					}
+					faith = { has_doctrine = doctrine_clerical_succession_spiritual_fixed_appointment }
+					any_vassal = {
+						is_physically_able_adult = yes
+						is_councillor = no
+						government_has_flag = government_is_theocracy
+						can_be_court_chaplain_trigger = { COURT_OWNER = liege }
+						faith = liege.faith
+					}
+				}
+				random_vassal = {
+					limit = {
+						is_physically_able_adult = yes
+						is_councillor = no
+						government_has_flag = government_is_theocracy
+						can_be_court_chaplain_trigger = { COURT_OWNER = liege }
+						faith = liege.faith
+					}
+					weight = {
+						base = 1
+						modifier = {
+							add = 1000
+							faith.religious_head ?= this
+						}
+						modifier = {
+							add = learning
+						}
+						modifier = {
+							add = primary_title.tier
+						}
+					}
+					liege = {
+						assign_councillor_type = {
+							type = councillor_court_chaplain
+							remove_existing_councillor = yes
+							target = prev
+						}
+					}
+				}
+			}
+		}	
+		every_ruler = {
 			### Every nomad in the Steppe Region gets their yurt domicile goodies ###
 			if = {
 				limit = {
@@ -646,25 +404,6 @@ on_game_start_after_lobby = {
 						exists = situation:the_great_steppe
 						any_character_situation = {
 							this = situation:the_great_steppe
-						}
-					}
-					add_trait = nomadic_philosophy
-					dynasty ?= {
-						every_dynasty_member = {
-							limit = {
-								top_liege ?= {
-									government_has_flag = government_is_nomadic
-								}
-							}
-							add_trait = nomadic_philosophy
-						}
-					}
-				}
-				if = {
-					limit = {
-						exists = situation:the_sarradonian_desert
-						any_character_situation = {
-							this = situation:the_sarradonian_desert
 						}
 					}
 					add_trait = nomadic_philosophy
@@ -920,28 +659,6 @@ on_game_start_after_lobby = {
 						}
 					}
 				}
-				if = {
-					limit = {
-						exists = situation:the_sarradonian_desert
-						any_character_situation = {
-							this = situation:the_sarradonian_desert
-						}
-						NOT = {
-							has_trait = nomadic_philosophy
-						}
-					}
-					add_trait = nomadic_philosophy
-					dynasty ?= {
-						every_dynasty_member = {
-							limit = {
-								top_liege ?= {
-									government_has_flag = government_is_nomadic
-								}
-							}
-							add_trait = nomadic_philosophy
-						}
-					}
-				}
 			}
 			else_if = {
 				limit = {
@@ -968,7 +685,7 @@ on_game_start_after_lobby = {
 					remove_short_term_gold = 5
 				}
 				# We're fine with them having 10 gold max
-
+				
 				if = {
 					limit = {
 						is_ai = no
@@ -1059,465 +776,14 @@ on_game_start_after_lobby = {
 				}
 				trigger_event = game_rule.1001
 			}
-
-			### CE1 LEGITIMACY SETUP ###
-			if = {
-				limit = {
-					exists = this
-					has_legitimacy = yes
-				}
-				add_legitimacy = base_legitimacy_value
-			}
-
-			### MANDALA SETUP ###
-			if = {
-				limit = { government_has_flag = government_is_mandala }
-
-				#Triple Mandala's Legitimacy to make them not start at a negative expectation at game start
-				add_legitimacy = {
-					value = legitimacy
-					multiply = 2
-					if = {
-						limit = {
-							highest_held_title_tier > tier_duchy
-						}
-						multiply = 3
-					}
-					else = { multiply = 2 }
-				}
-
-				#Yer starter kit
-				change_to_mandala_government_decree_effect = yes
-				#No Succession for this character pls
-				set_variable = {
-					name = not_subject_to_succession_trials
-					value = flag:started_as_mandala
-				}
-				if = {
-					limit = { var:not_subject_to_succession_trials ?= flag:started_as_mandala }
-					#To prevent 'unused except in loc' errors :catto:
-				}
-
-				#Aspect modifiers?
-				house = {
-					#Start counting years of peace
-					if = {
-						limit = { has_house_head_parameter = peaceful_rule_5_year_modifier }
-						house_head = {
-							#Aspect modifier
-							set_variable = {
-								name = mandala_house_power_accumulated_increments_of_peace
-								value = 1
-							}
-							add_character_modifier = { modifier = mandala_increments_of_peace_modifier }
-							trigger_event = {
-								id = tgp_east_asia_mandala_events.0200
-								years = 5
-							}
-							#Aspect trigger
-							set_variable = {
-								name = serenity_mandala_years_of_non_aggression_war
-								value = 0
-							}
-							trigger_event = {
-								id = tgp_east_asia_mandala_events.0205
-								years = 1
-							}
-						}
-					}
-					#Give the initial Creator modifier
-			    	if = {
-						limit = { has_house_head_parameter = creator_10_year_modifier }
-						house_head = {
-							set_variable = {
-								name = mandala_house_power_accumulated_creator
-								value = 1
-								years = 10
-							}
-							hidden_effect = {
-								mandala_apply_10_year_modifier = yes
-							}
-						}
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					title:h_aversarinas_aautokrata.holder ?= top_liege
-					this != top_liege
-				}
-				### TGP MERIT AND TREASURY HANDOUT ON GAME START ###
-				if = {
-					limit = {
-						culture = {
-							has_cultural_pillar = heritage_easterner
-						}
-						NOR = {
-							AND = {
-								has_council_position = councillor_court_chaplain
-								NOT = { has_title = title:e_minister_of_rites }
-							}
-							has_trait = devoted
-						}
-						government_has_flag = government_is_celestial
-						is_faith_dominant_gender = yes
-					}
-					save_temporary_scope_as = exam_contender
-					hidden_effect = {
-						assign_completed_exams_based_on_merit_effect = yes
-					}
-					if = {
-						limit = {
-							any_parent = {
-								OR = {
-									has_trait = ambitious
-									has_trait = scholar
-									has_trait = diligent
-									has_trait = confucian_education
-								}
-							}
-							NOR = {
-								has_trait = lazy
-								has_trait = dull
-								has_trait = intellect_bad
-								location.county ?= {
-									development_level <= bad_development_level
-								}
-							}
-						}
-						add_character_flag = passed_child_exam
-					}
-					if = { # We adjust Merit depending on the dynastic cycle phase
-						limit = {
-							situation:dynastic_cycle ?= {
-								situation_current_phase = situation_dynastic_cycle_phase_stability_advancement
-							}
-						}
-						change_merit = {
-							value = merit
-							multiply = 0.1
-						}
-					}
-					if = {
-						limit = {
-							is_ai = no
-							is_governor_or_admin_count = yes
-						}
-						spawn_celestial_governance_contract_effect = yes
-					}
-					# GH_AUH_TODO: Add vassal contract/laws/etc for specific hegemonic vassals here
-				}
-				### Examination pass status and initial wave of governor candidates done after game start, in order to include generated families ###
-				every_courtier = {
-					limit = {
-						is_lowborn = no
-						culture = { has_cultural_pillar = heritage_easterner }
-						NOR = {
-							has_council_position = councillor_court_chaplain
-							has_trait = devoted
-						}
-						government_has_flag = government_is_celestial # courtiers have governments, too!
-						is_faith_dominant_gender = yes
-						age >= 30
-						static_group_filter = {
-							group = ai_filter
-							match = 0.5
-						}
-					}
-					hidden_effect = {
-						add_character_flag = passed_provincial_exam
-						add_character_modifier = {
-							modifier = tgp_passed_provincial_exam_modifier
-						}
-						add_character_flag = passed_metropolitan_exam
-						add_character_modifier = {
-							modifier = tgp_passed_metropolitan_exam_modifier
-						}
-						change_merit = {
-							value = county_starting_merit_value
-							add = age
-							add = learning
-						}
-					}
-				}
-				save_scope_as = governor
-			}
-
-			if = {
-				limit = {
-					government_has_flag = government_has_merit
-					title:h_aversarinas_aautokrata.holder != top_liege
-				}
-				### TGP MERITOCRATIC/STEPPE ADMIN SETUP ON GAME START ###
-				if = {
-					limit = {
-						NOR = {
-							AND = {
-								has_council_position = councillor_court_chaplain
-								NOT = { has_title = title:e_minister_of_rites }
-							}
-							has_trait = devoted
-						}
-						government_has_flag = government_has_merit
-						is_faith_dominant_gender = yes
-					}
-					hidden_effect = {
-						meritocratic_assign_completed_exams_based_on_merit_effect = yes
-					}
-				}
-			}
-
-			#elder/disciple setup
-			if = {
-				limit = {
-					government_allows = merit
-					top_overlord != title:h_aversarinas_aautokrata.holder
-				}
-				if = {
-					limit = {
-						top_liege = this
-						merit_level >= merit_level_expected_kingdom_value
-					}
-					add_to_list = elders
-				}
-				else_if = {
-					limit = {
-						merit_level >= merit_level_expected_duchy_value
-					}
-					add_to_list = elders
-				}
-				else = {
-					add_to_list = disciple
-				}
-			}
-
-			# Sexualities if game rules are default
-			if = {
-				limit = { has_game_rule = sexuality_distribution_default }
-				if = {
-					limit = {
-						is_adult = no
-						age >= 10
-					}
-					game_rule_sexuality_distribution_reroll_effect = yes
-				}
-
-				every_courtier_or_guest = {
-					if = {
-						limit = {
-							is_adult = no
-							age >= 10
-						}
-						game_rule_sexuality_distribution_reroll_effect = yes
-					}
-				}
-			}
-
-			## GODHERJA ADDITIONS ##
-			# Decrease refill maa gov amount of regiments at start, might need more balancing
-			if = {
-				limit = {
-					NOT = { has_character_flag = gh_no_changes_to_maa }
-					OR = {
-						government_has_flag = government_is_pirate
-						government_has_flag = government_is_lichdom
-					}
-				}
-				every_maa_regiment = {
-					while = {
-						count = gh_number_of_regiments_size_half_value
-						change_maa_regiment_size = -1
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					OR = {
-						GH_is_any_republic_government_trigger = yes
-						government_has_flag = government_is_otachedian
-						government_has_flag = government_is_meritocratic
-					}
-					any_held_title = { is_noble_family_title = no }
-					save_temporary_scope_as = domicile_holder
-					house ?= {
-						any_house_member = {
-							NOT = { this = scope:domicile_holder }
-							any_held_title = { is_noble_family_title = no }
-						}
-					}
-				}
-				if = {
-					limit = {
-						is_house_head = no
-						save_temporary_scope_as = domicile_holder
-						house ?= {
-							any_house_member = {
-								NOT = { this = scope:domicile_holder }
-								is_landed = yes
-							}
-						}
-					}
-					create_cadet_branch = {}
-				}
-				switch = {
-					trigger = has_government
-					republic_playable_government = {
-						give_noble_family_title = {
-							name = noble_family_name
-							tier = county
-							article = DEFAULT_TITLE_NAME_ARTICLE
-							government = republic_playable_government
-							save_scope_as = new_title
-						}
-					}
-					administrative_republic_playable_government = {
-						give_noble_family_title = {
-							name = noble_family_name
-							tier = county
-							article = DEFAULT_TITLE_NAME_ARTICLE
-							government = administrative_republic_playable_government
-							save_scope_as = new_title
-						}
-					}
-					judicial_republic_government = {
-						give_noble_family_title = {
-							name = noble_family_name
-							tier = county
-							article = DEFAULT_TITLE_NAME_ARTICLE
-							government = judicial_republic_government
-							save_scope_as = new_title
-						}
-					}
-					otachedian_government = {
-						give_noble_family_title = {
-							name = noble_family_name
-							tier = county
-							article = DEFAULT_TITLE_NAME_ARTICLE
-							government = otachedian_government
-							save_scope_as = new_title
-						}
-					}
-					meritocratic_government = {
-						give_noble_family_title = {
-							name = noble_family_name
-							tier = county
-							article = DEFAULT_TITLE_NAME_ARTICLE
-							government = meritocratic_government
-							save_scope_as = new_title
-						}
-					}
-				}
-			}
-
-			### Otachedian Bonuses ###
-			if = {
-				limit = { government_has_flag = government_is_otachedian }
-
-				#Similar to Mandala, tripled legitimacy at start due to higher expectations
-				add_legitimacy = {
-					value = legitimacy
-					multiply = 2
-					if = {
-						limit = {
-							highest_held_title_tier > tier_duchy
-						}
-						multiply = 3
-					}
-					else = { multiply = 2 }
-				}
-				gh_setup_otachedian_governor_character_effect = yes
-				#if = {
-				#	limit = { highest_held_title_tier >= tier_duchy }
-				#	create_ayraal_artifact_effect = {
-				#		PATRON = this
-				#		GRANTEE = this
-				#	}
-				#}
-			}
 		}
-
-		if = {
-			limit = { has_game_rule = sexuality_distribution_default }
-			every_duchy = {
-				limit = {
-					exists = title_capital_county.title_province
-				}
-				title_capital_county.title_province = { save_scope_as = pool_province }
-				# Sexualities for Pool Characters if game rules are default
-				every_pool_character = {
-					limit = {
-						NOT = { is_in_list = pool_characters }
-					}
-					province = scope:pool_province
-					add_to_list = pool_characters
-				}
-			}
-			every_in_list = {
-				list = pool_characters
-				if = {
-					limit = {
-						is_adult = no
-						age >= 10
-					}
-					game_rule_sexuality_distribution_reroll_effect = yes
-				}
-			}
-		}
-
-		#elder/disciple setup (continued from above)
-		every_in_list = {
-			list = disciple
-			save_scope_as = disciple
-			random_in_list = {
-				list = elders
-				limit = {
-					top_liege = scope:disciple.top_liege
-					eligible_for_elder_trigger = {
-						DISCIPLE = scope:disciple
-					}
-				}
-				save_scope_as = elder
-			}
-			if = {
-				limit = {
-					exists = scope:elder
-				}
-				random = {
-					chance = 65
-					set_relation_elder = scope:elder
-				}
-			}
-		}
-
-		if = {
-			limit = {
-				has_mpo_dlc_trigger = yes
-			}
-			#Fully Landlocked Nomad Cultures Setup
-			every_culture_global = {
-				limit = {
-					OR = {
-						has_cultural_tradition = tradition_lords_of_aironoi
-						has_cultural_tradition = tradition_kolrgii_tamers
-						has_cultural_tradition = tradition_desert_nomads
-					}
-				}
-				add_to_global_variable_list = {
-					name = fully_landlocked_nomad_cultures
-					target = this
-				}
-			}
-			recalculate_cultural_heads_of_type = herd
-		}
-
+		
 		### GAME RULE: EASTEREGG CHARACTER PROMOTION
 		if = {
 			limit = { has_game_rule = easteregg_characters_promoted }
 			game_rule_easteregg_character_promotion_effect = yes
 		}
-
+	
 		### GAME RULE: VIEW ON SAME-SEX RELATIONS
 		if = {
 			limit = { has_game_rule = accepted_same_sex_relations }
@@ -1557,10 +823,6 @@ on_game_start_after_lobby = {
 			limit = { has_game_rule = inversed_gender_equality }
 			game_rule_inversed_gender_equality_effect = yes
 		}
-		else_if = {
-			limit = { has_game_rule = lenient_gender_equality }
-			game_rule_lenient_gender_equality_effect = yes
-		}
 
 		### GAME RULE: SEXUALITY DISTRIBUTION ###
 		if = {
@@ -1596,16 +858,6 @@ on_game_start_after_lobby = {
 		if = {
 			limit = { has_multiple_players = no }
 			every_player = {
-				# TGP
-				#if = {
-				#	limit = {
-				#		government_has_flag = government_is_wanua
-				#	}
-				#	add_achievement_global_variable_effect = {
-				#		VARIABLE = started_ep4_15_humble_beginnings_achievement
-				#		VALUE = yes
-				#	}
-				#}
 				# Back to the Steppe
 				if = {
 					limit = {
@@ -1645,7 +897,7 @@ on_game_start_after_lobby = {
 						exists = character:easternimperial_aironoian_aagiokrata_1
 						this = character:easternimperial_aironoian_aagiokrata_1
 					}
-					add_achievement_global_variable_effect = {
+					add_achievement_global_variable_effect = { 
 						VARIABLE = started_mynameishecaedaanoteris_achievement
 						VALUE = yes
 					}
@@ -1722,9 +974,9 @@ on_game_start_after_lobby = {
 				if = {
 					limit = {
 						OR = {
-							has_title = title:e_amsari_hiklahn
-							has_title = title:d_marcher_amsari_republic
-							top_liege = { has_title = title:e_amsari_hiklahn }
+							has_title = title:e_amsari
+							has_title = title:d_marcher_amsari_republic 
+							top_liege = { has_title = title:e_amsari }
 						}
 					}
 					add_achievement_global_variable_effect = {
@@ -1803,11 +1055,11 @@ on_game_start_after_lobby = {
 						OR = {
 							AND = {
 								exists = character:katharnalmic_kyawkan_3
-								this = character:katharnalmic_kyawkan_3
+								this = character:katharnalmic_kyawkan_3 
 							}
 							AND = {
 								exists = character:katharnalmic_kyawkan_4
-								this = character:katharnalmic_kyawkan_4
+								this = character:katharnalmic_kyawkan_4 
 							}
 						}
 					}
@@ -2058,7 +1310,7 @@ on_game_start_after_lobby = {
 			}
 		}
 
-		### ACHIEVEMENT: FROM RAGS TO RICHES TO RAGS TO RICHES
+		### ACHIEVEMENT: FROM RAGS TO RICHES TO RAGS TO RICHES 
 		every_player = {
 			limit = { highest_held_title_tier = tier_county }
 			add_achievement_global_variable_effect = {
@@ -2075,9 +1327,8 @@ on_game_start_after_lobby = {
 	 		}
 		}
 		### CE1 LEGITIMACY SETUP ###
-		if = {
+		every_ruler = {
 			limit = {
-				exists = this
 				has_legitimacy = yes
 			}
 			add_legitimacy = base_legitimacy_value
@@ -2088,7 +1339,7 @@ on_game_start_after_lobby = {
 			### EP3 LAAMP SETUP ###
 			# Resources.
 			every_independent_ruler = {
-				limit = { has_government = landless_adventurer_government }
+				limit = { is_landless_adventurer = yes }
 				# Cash.
 				add_gold = {
 					value = {
@@ -2276,80 +1527,6 @@ on_game_start_after_lobby = {
 						name = laamps_tally
 						target = this.primary_title
 					}
-
-					### GH ADDITION ###
-					# Migration LAAMPs handled separately, as they are not independent rulers/laamps
-					if = {
-						limit = { has_realm_law = camp_purpose_migration_band }
-						# Cash.
-						add_gold = {
-							value = {
-								value = 0
-								add = prestige
-								add = piety
-								divide = 10
-							}
-						}
-						save_temporary_scope_as = adventurer_scope
-						# Set CoA
-						primary_title = { set_coa = scope:adventurer_scope.house }
-						every_councillor = {
-							if = {
-								limit = {
-									NOR = {
-										has_council_position = councillor_court_chaplain
-										has_council_position = councillor_spouse
-									}
-								}
-								scope:adventurer_scope = {
-									fire_councillor = prev
-								}
-								remove_opinion = {
-									modifier = fired_from_council_opinion
-									target = scope:adventurer_scope
-								}
-							}
-							else_if = {
-								limit = {
-									NOR = {
-										is_close_or_extended_family_of = prev
-										has_relation_lover = prev
-										has_relation_friend = prev
-										is_consort_of = prev
-										has_council_position = councillor_spouse
-									}
-								}
-								death = {
-									death_reason = death_vanished
-								}
-							}
-						}
-						# Courtiers.
-						trigger_event = ep3_laamps.1001
-
-						domicile ?= { change_provisions = starting_provisions_value }
-						# Contracts
-						if = {
-							limit = { is_ai = no }
-							# Set up additional firing contracts.
-							player_adventurer_contract_generation_on_wait_in_place_effect = yes
-							#generate contracts if you are far away from your previous location
-							player_adventurer_contract_generation_on_domicile_moved_effect = yes
-						}
-						else = {
-							create_story = { type = story_adventurer_ai }
-							trigger_event = {
-								on_action = on_adventurer_ai_new_employer_arrival
-								days = { 10 30 }
-							}
-						}
-						set_variable = flavourise_camp_purpose_migration_band
-						# And tally our numbers for performance purposes.
-						add_to_global_variable_list = {
-							name = laamps_tally
-							target = this.primary_title
-						}
-					}
 				}
 				### EP3 ADMIN SETUP ###
 				if = {
@@ -2381,193 +1558,80 @@ on_game_start_after_lobby = {
 					}
 				}
 			}
-
-		}
-		### TGP SETUP ###
-		if = {
-			limit = { has_tgp_dlc_trigger = yes }
-			### JAPAN
-
-			# Special variable that UI uses to display correct title
-			#title:e_japan = {
-			#	# More starting house relations
-			#	holder = {
-			#		every_noble_family = {
-			#			holder.house ?= {
-			#				save_temporary_scope_as = house_temp
-			#				every_house_member = {
-			#					limit = {
-			#						is_married = yes
-			#						exists = primary_spouse.house
-			#						NOT = {
-			#							primary_spouse.house = { has_house_relation_with = scope:house_temp }
-			#						}
-			#					}
-			#					save_temporary_scope_as = member_temp
-			#					primary_spouse = { save_temporary_scope_as = spouse_temp }
-			#					house = {
-			#						change_house_relation_effect = {
-			#							HOUSE = scope:member_temp.primary_spouse.house
-			#							VALUE = house_relation_improve_minor_value
-			#							REASON = preexisting_marriage
-			#							CHAR = scope:member_temp
-			#							TARGET_CHAR = scope:spouse_temp
-			#							TITLE = scope:dummy_gender
-			#						}
-			#					}
-			#				}
-			#			}
-			#		}
-			#	}
-			#}
-
-			### IMPERIAL FAMILY
-			#title:k_chrysanthemum_throne.holder ?= {
-			#	save_scope_as = japanese_emperor
-			#	# Give him some cash
-			#	add_gold = monumental_gold_value
-			#	house = {
-			#		# ENSURE MEMBERS REMAIN IN COURT OF EMPEROR
-			#		every_house_member = {
-			#			limit = {
-			#				is_ruler = no
-			#				is_married = no
-			#				NOT = { liege = scope:japanese_emperor }
-			#			}
-			#			save_scope_as = imperial_family_member
-			#			scope:japanese_emperor = { add_courtier = scope:imperial_family_member }
-			#		}
-			#	}
-			#	# GET THOSE ROOKIE NUMBERS UP
-			#	dynasty = {
-			#		while = {
-			#			limit = { dynasty_prestige_level < high_dynasty_prestige_level }
-			#			add_dynasty_prestige_level = 1
-			#		}
-			#	}
-			#}
-
-			### DYNASTY TRACKING SETUP
-			#japan_dynasty_tracker_setup_effect = yes
-
-
-			### TGP NOBLE FAMILIES & DOMICILE SETUP ###
-			# Required due to landless top liege
-			#title:e_japan.holder ?= {
-			#	add_realm_law_skip_effects = japanese_bureaucracy_1
-			#	noble_family_title_realm_setup_effect = yes
-			#	every_vassal_or_below = { # Move Soryo domiciles to their own realm
-			#		limit = {
-			#			government_has_flag = government_is_japan_feudal
-			#		}
-			#		domicile ?= { move_domicile = owner.capital_province }
-			#	}
-			#	every_vassal_or_below = { # Move Ritsuryo domiciles to the capital
-			#		limit = {
-			#			government_has_flag = government_is_japan_administrative
-			#		}
-			#		domicile ?= { move_domicile = title:e_japan.holder.capital_province }
-			#	}
-			#}
-
-
-			### MANDALA
-
-			#Starting Mandala Temple Complexes
-			# Kebnachi
-			province:521 = {
-				add_great_building = mandala_capital_01
-				add_to_global_variable_list = {
-					name = mandala_poi_list
-					target = this
-				}
-			}
-			province:565 = {
-				add_great_building = mandala_capital_01
-				if = {
-					limit = {
-						game_start_date >= 6010.12.7
+			### GH ADDITION ###
+			# Migration LAAMPs handled separately, as they are not independent rulers/laamps
+			every_ruler = {
+				limit = { has_realm_law = camp_purpose_migration_band }
+				# Cash.
+				add_gold = {
+					value = {
+						value = 0
+						add = prestige
+						add = piety
+						divide = 10
 					}
-					ruin_great_building = yes
 				}
-				add_to_global_variable_list = {
-					name = mandala_poi_list
-					target = this
-				}
-			}
-			province:353 = {
-				add_great_building = mandala_capital_01
-				add_to_global_variable_list = {
-					name = mandala_poi_list
-					target = this
-				}
-			}
-			province:486 = {
-				add_great_building = mandala_capital_02
-				add_to_global_variable_list = {
-					name = mandala_poi_list
-					target = this
-				}
-			}
-			#Apply the Godking AI story to Maharajas with a temple
-			every_independent_ruler = {
-				limit = { government_has_flag = government_is_mandala }
-				if = {
-					limit = {
-						is_ai = yes
-						highest_held_title_tier >= tier_kingdom
-						has_mandala_capital_trigger = yes
-						trigger_if = {
-							limit = { has_ruined_mandala_capital_trigger = yes }
-							less_than_max_amount_of_mandala_capitals_trigger = yes
-						}
-					}
-					create_story = story_mandala
-				}
-			}
-		}
-		### TGP MERIT AND TREASURY HANDOUT ON GAME START ###
-		if = {
-			limit = {
-				has_tgp_dlc_trigger = yes
-			}
-			title:h_aversarinas_aautokrata.holder ?= {
-				# If the hegemon is from the ruler designer, let's ensure we got decent starting values
-				if = {
-					limit = {
-						is_from_ruler_designer = yes
-					}
+				save_temporary_scope_as = adventurer_scope
+				# Set CoA
+				primary_title = { set_coa = scope:adventurer_scope.house }
+				every_councillor = {
 					if = {
-						limit = { # If we don't have enough legitimacy, let's increase it
-							legitimacy < legitimacy_level_3
+						limit = {
+							NOR = {
+								has_council_position = councillor_court_chaplain
+								has_council_position = councillor_spouse
+							}
 						}
-						add_legitimacy = {
-							value = legitimacy_level_3
-							add = 100 # To provide a margin and not drop down a level too quickly
-							subtract = legitimacy
+						scope:adventurer_scope = {
+							fire_councillor = prev
+						}
+						remove_opinion = {
+							modifier = fired_from_council_opinion
+							target = scope:adventurer_scope
 						}
 					}
-					if = {
-						limit = { # If the royal court is enabled, set it to a decent default
-							has_royal_court = yes
+					else_if = {
+						limit = {
+							NOR = {
+								is_close_or_extended_family_of = prev
+								has_relation_lover = prev
+								has_relation_friend = prev
+								is_consort_of = prev
+								has_council_position = councillor_spouse
+							}
 						}
-						set_current_court_grandeur = court_grandeur_minimum_expected
+						death = {
+							death_reason = death_vanished
+						}
 					}
-					# Let's add some starting currencies
-					add_prestige = 1000
-					add_piety = 500
-					change_influence = 1000
-					dynasty ?= { add_dynasty_prestige = 500 }
 				}
-				# Set Grand Chancellor as Chinese diarchy
-				try_start_diarchy = grand_secretariat
+				# Courtiers.
+				trigger_event = ep3_laamps.1001
+
+				domicile ?= { change_provisions = starting_provisions_value }
+				# Contracts
+				if = {
+					limit = { is_ai = no }
+					# Set up additional firing contracts.
+					player_adventurer_contract_generation_on_wait_in_place_effect = yes
+					#generate contracts if you are far away from your previous location
+					player_adventurer_contract_generation_on_domicile_moved_effect = yes
+				}
+				else = {
+					create_story = { type = story_adventurer_ai }
+					trigger_event = {
+						on_action = on_adventurer_ai_new_employer_arrival
+						days = { 10 30 }
+					}
+				}
+				set_variable = flavourise_camp_purpose_migration_band
+				# And tally our numbers for performance purposes.
+				add_to_global_variable_list = {
+					name = laamps_tally
+					target = this.primary_title
+				}
 			}
 		}
-		### TGP KOREA SETUP
-		# REMOVED KOREA REFERENCES
-		### TGP JAPAN SETUP
-		# REMOVED JAPAN REFERENCES
-
 		# Purge family titles if Admin isn't enabled
 		if = {
 			limit = {
@@ -2577,10 +1641,7 @@ on_game_start_after_lobby = {
 				save_temporary_scope_as = this_ruler
 				every_held_title = {
 					limit = {
-						is_noble_family_title = yes
-						title_domicile ?= {
-							is_domicile_type = estate
-						}
+						has_title_law = noble_family_succession_law
 					}
 					scope:this_ruler = {
 						destroy_title = prev
@@ -2629,88 +1690,6 @@ on_game_start_after_lobby = {
  			}
 		}
 
-		every_player = {
-			limit = {
-				is_landed = yes
-			}
-			while = {
-				count = 7
-				limit = {
-					any_courtier = {
-						count < 7
-						is_adult = yes
-					}
-				}
-				save_scope_as = player_scope
-				random_list = {
-					1 = {
-						create_character = {
-							employer = scope:player_scope
-							age = { 20 30 }
-							random_traits = yes
-							gender_female_chance = scope:player_scope.marriage_gender_adjusted_female_chance
-							culture = scope:player_scope.culture
-							faith = scope:player_scope.faith
-							after_creation = {
-								random_list = {
-									200 = {
-										# Character is of average weight, nothing happens
-									}
-									25 = {
-										change_current_weight = -25
-									}
-									25 = {
-										change_current_weight = -75
-									}
-									25 = {
-										change_current_weight = 25
-									}
-									25 = {
-										change_current_weight = 75
-									}
-									5 = {
-										change_current_weight = 150
-									}
-								}
-							}
-						}
-					}
-					4 = {
-						create_character = {
-							employer = scope:player_scope
-							age = { 20 40 }
-							random_traits = yes
-							gender_female_chance = 15
-							culture = scope:player_scope.culture
-							faith = scope:player_scope.faith
-							after_creation = {
-								random_list = {
-									200 = {
-										# Character is of average weight, nothing happens
-									}
-									25 = {
-										change_current_weight = -25
-									}
-									25 = {
-										change_current_weight = -75
-									}
-									25 = {
-										change_current_weight = 25
-									}
-									25 = {
-										change_current_weight = 75
-									}
-									5 = {
-										change_current_weight = 150
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
 
 		# Conquerors - THERE ALWAYS MUST BE AT LEAST ONE IN ANY BOOKMARK OR EVERYTHING WILL BREAK
 		character:daukeni_sjalvolki_1 ?= {
@@ -2740,77 +1719,14 @@ on_game_start_after_lobby = {
 		# Give them a small boost to health so they can live a little longer than their father and historical setting can exists in certain cases
 		character:amsari_mahndayana_4 ?= { add_character_modifier = ep3_well_rested_modifier }
 		character:siralagi_mahndayana_5 ?= { add_character_modifier = ep3_well_rested_modifier }
-
-		# Sanity check the setup if in debug mode
-		#if = {
-        #	limit = {
-        #		debug_only = yes
-        #	}
-	    #    run_setup_tests_effect = yes
-    	#}
-		set_global_variable = game_has_started
-
-		every_independent_ruler = {
-			# Treasury setup for any government using treasury
-			tgp_treasury_setup_effect = yes
-		}
-
-		# TGP China education track switch
-
-		if = {
-			limit = {
-				exists = title:h_kathun_kai.holder
-			}
-			title:h_kathun_kai.holder = {
-				add_to_list = realm_potential_education_flip_list
-			}
-		}
-
-		every_in_list = {
-			list = realm_potential_education_flip_list
-			every_vassal_or_below = {
-				limit = {
-					is_ai = yes
-					OR = {
-						is_governor = yes
-						tgp_is_any_minister = yes
-					}
-					trigger_if = {
-						limit = { has_trait_with_flag = civilian_province }
-						OR = {
-							vassal_contract_has_flag = celestial_military_appointment
-							vassal_contract_has_flag = meritocratic_military_appointment
-						}
-					}
-					trigger_else = {
-						OR = {
-							vassal_contract_has_flag = celestial_civil_appointment
-							vassal_contract_has_flag = meritocratic_civil_appointment
-						}
-					}
-				}
-				if = {
-					limit = { has_trait_with_flag = civilian_province }
-					set_variable = {
-						name = appointment_trait_override
-						value = trait:education_martial_1
-					}
-				}
-				else = {
-					set_variable = {
-						name = appointment_trait_override
-						value = trait:education_stewardship_1
-					}
-				}
-			}
-		}
 	}
 
 	events = {
+		game_rule.1000							#Autopopulate families.
 		historical_artifacts.0023				# Historical Artifacts Generator
-		coronation_events.0302 # ACH crown giveaway
+		mpo_misc.0002 # Have the AI release herders if over domain limit
 	}
-
+	
 	on_actions = {
 		GH_on_game_start_after_lobby
 	}

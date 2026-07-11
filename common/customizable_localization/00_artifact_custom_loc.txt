@@ -785,7 +785,7 @@ ArtifactType = {
 	}
 
 	text = {
-		trigger = { artifact_slot_type = miscellaneous }
+		trigger = { artifact_type = miscellaneous }
 		localization_key = artifact_type_trinket
 	}
 
@@ -800,7 +800,7 @@ ArtifactType = {
 	}
 
 	text = {
-		trigger = { artifact_slot_type = throne }
+		trigger = { artifact_type = throne }
 		localization_key = artifact_type_throne
 	}
 
@@ -810,7 +810,7 @@ ArtifactType = {
 	}
 
 	text = {
-		trigger = { artifact_slot_type = book }
+		trigger = { artifact_type = book }
 		localization_key = artifact_type_book
 	}
 
@@ -867,7 +867,7 @@ ThisArtifactType = {
 	text = {
 		trigger = {
 			scope:this_artifact = {
-				artifact_slot_type = miscellaneous
+				artifact_type = miscellaneous
 			}
 		}
 		localization_key = artifact_type_trinket
@@ -894,7 +894,7 @@ ThisArtifactType = {
 	text = {
 		trigger = {
 			scope:this_artifact = {
-				artifact_slot_type = throne
+				artifact_type = throne
 			}
 		}
 		localization_key = artifact_type_throne
@@ -912,7 +912,7 @@ ThisArtifactType = {
 	text = {
 		trigger = {
 			scope:this_artifact = {
-				artifact_slot_type = book
+				artifact_type = book
 			}
 		}
 		localization_key = artifact_type_book
@@ -2057,45 +2057,6 @@ InspiredPersonQuality  = {
 		}
 		localization_key = decent_inspiration_skill
 	}
-
-	text = {
-		trigger = {
-			NOT = {
-				has_character_flag = local_artisan
-			}
-			inspiration = {
-				has_inspiration_type = alchemy_inspiration
-			}
-			alchemy_inspiration_average_skill_value >= high_inspiration_skill
-		}
-		localization_key = legendary_inspiration_skill
-	}
-	text = { ## GH ADDITION: Glassmaking
-		trigger = { NOT = { has_character_flag = local_artisan }
-			inspiration = { has_inspiration_type = glassware_inspiration }
-			glassware_inspiration_average_skill_value >= medium_inspiration_skill
-			glassware_inspiration_average_skill_value < high_inspiration_skill
-		}
-		localization_key = masterful_inspiration_skill
-	}
-	text = { ## GH ADDITION: Glassmaking
-		trigger = {
-			NOT = { has_character_flag = local_artisan }
-			inspiration = { has_inspiration_type = glassware_inspiration }
-			glassware_inspiration_average_skill_value >= low_inspiration_skill
-			glassware_inspiration_average_skill_value < medium_inspiration_skill
-		}
-		localization_key = competent_inspiration_skill
-	}
-	text = { ## GH ADDITION: Glassmaking
-		trigger = {
-			NOT = { has_character_flag = local_artisan }
-			inspiration = { has_inspiration_type = glassware_inspiration }
-			glassware_inspiration_average_skill_value < low_inspiration_skill
-		}
-		localization_key = decent_inspiration_skill
-	}
-
 	text = {
 		trigger = {
 			always = no
@@ -2741,27 +2702,5 @@ ArtifactMarcoPoloEnd = {
 	}
 	text = {
 		localization_key = marco_polo_quote_end_2
-	}
-}
-
-ArtifactBowType = {
-	type = character
-
-	text = { #
-		trigger = { scope:bow_type ?= flag:artifact_bow_type_longbow }
-		localization_key = bow_longbow_inspiration_description
-	}
-	text = { #
-		trigger = { scope:bow_type ?= flag:artifact_bow_type_composite }
-		localization_key = bow_composite_inspiration_description
-	}
-	text = { #
-		trigger = { scope:bow_type ?= flag:artifact_bow_type_crossbow }
-		localization_key = bow_crossbow_inspiration_description
-	}
-	text = { #
-		trigger = { scope:bow_type ?= flag:artifact_bow_type_bow }
-		localization_key = bow_bow_inspiration_description
-		fallback = yes
 	}
 }

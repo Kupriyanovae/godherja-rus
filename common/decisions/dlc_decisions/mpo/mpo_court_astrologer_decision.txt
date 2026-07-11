@@ -15,7 +15,6 @@ mpo_divination_decision = {
 	is_shown = {
 		has_mpo_dlc_trigger = yes
 		government_has_flag = government_is_nomadic
-		NOT = { culture = { has_cultural_tradition = tradition_desert_nomads } }
 	}
 
 	is_valid_showing_failures_only = {
@@ -51,14 +50,7 @@ mpo_divination_decision = {
     	}	
     }
 	
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 120
-		duchy = 120
-		kingdom = 60
-		empire = 60
-		hegemony = 60
-	}
+    ai_check_interval = 60
 	
     ai_potential = {
         is_at_war = no

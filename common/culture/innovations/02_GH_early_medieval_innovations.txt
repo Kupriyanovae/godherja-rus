@@ -1,34 +1,23 @@
 ﻿#### Local Types ####
 @civil_construction_1 = "gfx/interface/icons/culture_innovations/innovation_civil_construction_01.dds"
-@civil_construction_2 = "gfx/interface/icons/culture_innovations/innovation_civil_construction_02.dds"
 @hird = "gfx/interface/icons/culture_innovations/innovation_hird.dds"
 @early_medieval_magic = "gfx/interface/icons/culture_innovations/magic_03.dds"
 @maa_01 = "gfx/interface/icons/culture_innovations/innovation_maa_01.dds"
-@nobility_01 = "gfx/interface/icons/culture_innovations/innovation_nobility_01.dds"
 @nobility_02 = "gfx/interface/icons/culture_innovations/innovation_nobility_02.dds"
-@weapons_and_armor_02 = "gfx/interface/icons/culture_innovations/innovation_weapons_and_armor_02.dds"
-@longboats = "gfx/interface/icons/culture_innovations/innovation_longboats.dds"
-@fortifications = "gfx/interface/icons/culture_innovations/innovation_fortifications.dds"
-@double_entry_bookkeeping = "gfx/interface/icons/culture_innovations/innovation_double_entry_bookkeeping.dds"
-@bulkheads = "gfx/interface/icons/culture_innovations/innovation_bulkheads.dds"
-@underground_husbandry = "gfx/interface/icons/culture_innovations/innovation_civil_construction_01.dds"
+
 
 innovation_early_medieval_magic = {
-	culture_era = culture_era_early_medieval
-	group =  culture_group_civic
-	icon = @early_medieval_magic
+    culture_era = culture_era_early_medieval
+    group =  culture_group_civic
+    icon = @early_medieval_magic
 	potential = { culture_does_not_have_standard_innovations = no }
 
 	custom = unlock_early_medieval_magical_buildings
 
-	maa_upgrade = {
+    maa_upgrade = {
 		type = magi
 		damage = 10
 	}
-	
-	custom = unlock_maa_magi_regular
-	custom = eligible_accolade_magi_attribute
-	custom = block_recruitment_of_shamans
 
 	flag = global_regular
 	flag = early_medieval_era_regular
@@ -36,8 +25,7 @@ innovation_early_medieval_magic = {
 
 # Region-Specific Innovations
 innovation_reefmining = {
-	skill = stewardship
-	group = culture_group_civic
+	group = culture_group_regional
 	culture_era = culture_era_early_medieval
 	region = world_innovation_reefmine
 	icon = @civil_construction_1
@@ -53,8 +41,7 @@ innovation_reefmining = {
 
 # Culture-Specific Innovations
 innovation_marcher_adventurers = {
-	skill = martial
-	group = culture_group_civic
+	group = culture_group_regional
 	culture_era = culture_era_early_medieval
 	icon = @maa_01
 	potential = {
@@ -76,8 +63,7 @@ innovation_marcher_adventurers = {
 }
 
 innovation_kashiryan_court_system = {
-	skill = diplomacy
-	group = culture_group_civic
+	group = culture_group_regional
 	culture_era = culture_era_early_medieval
 	icon = @nobility_02
 	region = GH_geographic_kashirya
@@ -86,145 +72,16 @@ innovation_kashiryan_court_system = {
 	}
 
 	character_modifier = {
+		cultural_head_fascination_mult = -0.10
+		men_at_arms_recruitment_cost = 0.3
+		men_at_arms_limit = -2
+		men_at_arms_cap = -1
 		title_creation_cost_mult = 0.3
+		monthly_income_mult = -0.3
 		monthly_prestige_gain_per_dread_mult = -0.01
 		tyranny_gain_mult = 0.25
-		monthly_influence_mult = 0.1
-		influence_level_impact_mult = 0.2
 	}
 
 	flag = global_regional
-	flag = early_medieval_era_regional
-}
-
-innovation_fireworks = {
-	group = culture_group_regional
-	culture_era = culture_era_early_medieval
-	icon = @nobility_01
-
-	character_modifier = {
-		stress_loss_mult = 0.05
-		county_opinion_add = 2
-	}
-	
-	potential = {
-		OR = {
-			has_cultural_tradition = tradition_kathunkai_cultural_circle
-			this = culture:averkathuni
-			any_parent_culture_or_above = { this = culture:averkathuni }
-		}
-	}
-
-	flag = global_regional
-	flag = early_medieval_era_regional
-}
-
-innovation_wuizu = {
-	group = culture_group_regional
-	culture_era = culture_era_early_medieval
-	icon = @weapons_and_armor_02
-
-	character_modifier = {
-		hostile_county_attrition = -0.15
-		prowess = 2
-	}
-
-	maa_upgrade = {
-		type = heavy_infantry
-		toughness = 4
-		screen = 2
-	}
-	
-	potential = {
-		OR = {
-			this = culture:lanonan
-			any_parent_culture_or_above = { this = culture:lanonan }
-		}
-	}
-
-	flag = global_regional
-	flag = early_medieval_era_regional
-}
-
-innovation_waterbending = {
-	group = culture_group_regional
-	culture_era = culture_era_early_medieval
-	icon = @bulkheads
-
-	character_modifier = {
-		naval_movement_speed_mult = 0.25
-		embarkation_cost_mult = -0.1
-	}
-
-	potential = {
-		OR = {
-			has_cultural_pillar = heritage_easterner
-			has_cultural_tradition = tradition_kathunkai_cultural_circle
-		}
-	}
-}
-
-innovation_cave_dwelling = {
-	group = culture_group_regional
-	culture_era = culture_era_early_medieval
-	icon = @civil_construction_1
-	potential = {
-		OR = {
-			this = culture:yingsa
-			any_parent_culture_or_above = { this = culture:yingsa }
-		}
-	}
-
-	character_modifier = {
-		hills_construction_gold_cost = -0.1
-		mountains_construction_gold_cost = -0.1
-	}
-}
-
-innovation_sifang_boulevard = {
-	group = culture_group_regional
-	culture_era = culture_era_early_medieval
-	icon = @fortifications
-	potential = {
-		has_cultural_pillar = heritage_easterner
-	}
-
-	character_modifier = {
-		movement_speed = 0.1
-		supply_limit_mult = 0.1
-	}
-}
-
-innovation_xuegong = {
-	group = culture_group_regional
-	culture_era = culture_era_early_medieval
-	icon = @double_entry_bookkeeping
-	potential = {
-		has_cultural_pillar = heritage_easterner
-	}
-
-	parameters = {
-		unlock_xuegong = yes
-	}
-
-	character_modifier = {
-		learning = 3
-		stewardship = 1
-		ai_rationality = 30
-	}
-}
-
-innovation_mayik_underground_husbandry = {
-	skill = stewardship
-	group = culture_group_civic
-	culture_era = culture_era_early_medieval
-	icon = @underground_husbandry
-	region = world_ga_mayikprolollan_mayikprolollan_depths
-	potential = {
-		culture_does_not_have_standard_innovations = no
-	}
-
-	custom = mayik_underground_husbandry_colonization_bonus
-
 	flag = early_medieval_era_regional
 }

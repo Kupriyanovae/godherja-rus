@@ -80,7 +80,7 @@ fp3_is_valid_madrasa_pupil = {
 	is_ai = yes
 	age > 8
 	age < 16
-	NOT = { has_character_modifier = studying_at_university_modifier }
+	NOT = { has_character_flag = studying_at_university }
 	#Gender rules
 	OR = {
 		$SPONSOR$ = { has_realm_law = equal_law }
@@ -293,7 +293,7 @@ favour_skilled_outsiders_decision_valid_county_to_generate_trigger = {
 		}
 		trigger_if = {
 			limit = {
-				root = { top_liege != this }
+				root = { is_independent_ruler = no }
 			}
 			custom_tooltip = {
 				text = favour_skilled_outsiders_decision.tt.not_share_liege_heritage

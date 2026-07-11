@@ -25,7 +25,7 @@
 
 		100 = epidemic_events.5000 # Church officials want to cull an animal
 		100 = epidemic_events.5001 # A minor epidemic is causing massive panic
-		#100 = epidemic_events.5002 # You can pile the dead into a boat and set it adrift #Vanilla Removed the event for some reason
+		100 = epidemic_events.5002 # You can pile the dead into a boat and set it adrift
 		100 = epidemic_events.5003 # A peasant asks for your healing touch
 		100 = epidemic_events.5004 # People are trying to get into your castle!
 		100 = epidemic_events.5005 # The plague is spreading in from the coast
@@ -53,7 +53,7 @@
 				limit = {
 					any_province_epidemic = { this = scope:epidemic }
 					province_infection_rate = {
-						target = scope:epidemic
+						epidemic = scope:epidemic
 						value >= 100
 					}
 					NOT = { has_variable = recent_infection_capital_var }
@@ -68,11 +68,11 @@
 
 		# Trigger Black Death splash screen
 		if = {
-			limit = {
+			limit = {	
 				any_realm_province = {
 					any_province_epidemic = {
-						intensity = apocalyptic
 						epidemic_type.epidemic_trait = trait:bubonic_plague
+						outbreak_intensity = apocalyptic
 					}
 				}
 				NOT = {

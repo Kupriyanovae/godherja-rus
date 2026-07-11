@@ -130,7 +130,6 @@ raze_intent = {
 		OR = {
 			government_has_flag = government_is_nomadic
 			government_has_flag = government_is_tribal
-			faith = { has_doctrine_parameter = unlock_raze_intent }
 		}
 		OR = {
 			has_mpo_dlc_trigger = yes
@@ -144,32 +143,23 @@ raze_intent = {
 				has_mpo_dlc_trigger = yes
 				has_fp1_dlc_trigger = no
 			}
-			OR = {
-				dynasty = { has_dynasty_perk = mpo_nomad_legacy_2 }
-				faith = { has_doctrine_parameter = unlock_raze_intent }
-			}
+			dynasty = { has_dynasty_perk = mpo_nomad_legacy_2 }
 		}
 		trigger_else_if = {
 			limit = {
 				has_mpo_dlc_trigger = no
 				has_fp1_dlc_trigger = yes
 			}
-			OR = {
-				dynasty = { has_dynasty_perk = fp1_pillage_legacy_5 }
-				faith = { has_doctrine_parameter = unlock_raze_intent }
-			}
+			dynasty = { has_dynasty_perk = fp1_pillage_legacy_5 }
 		}
 		trigger_else = {
 			custom_tooltip = {
 				text = raze_intent_tt
-				OR = {
-					dynasty = {
-						OR = {
-							has_dynasty_perk = mpo_nomad_legacy_2
-							has_dynasty_perk = fp1_pillage_legacy_5
-						}
+				dynasty = {
+					OR = {
+						has_dynasty_perk = mpo_nomad_legacy_2
+						has_dynasty_perk = fp1_pillage_legacy_5
 					}
-					faith = { has_doctrine_parameter = unlock_raze_intent }
 				}
 			}
 		}

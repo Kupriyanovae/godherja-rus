@@ -11,11 +11,6 @@ realm_law_use_clique_authority = {
 	has_clique_government_trigger = yes
 }
 
-realm_law_use_otachedian_bureaucracy = {
-	government_has_flag = government_is_otachedian
-}
-
-
 crimes_allow_any_punishment_trigger = {
 	legal_tradition_has_flag_trigger = { FLAG = crimes_allow_any_punishment }
 }
@@ -35,7 +30,7 @@ has_any_crime_trigger = {
 check_bailate_aptitude = {
 	$CHARACTER$ = {
 		tax_collector_aptitude = {
-			target = republic_playable_tax_slot
+			tax_slot_type = republic_playable_tax_slot
 			value = $VALUE$
 		}
 	}
@@ -44,7 +39,7 @@ check_bailate_aptitude = {
 check_magistrate_aptitude = {
 	$CHARACTER$ = {
 		tax_collector_aptitude = {
-			target = landed_order_tax_slot
+			tax_slot_type = landed_order_tax_slot
 			value = $VALUE$
 		}
 	}
@@ -53,7 +48,7 @@ check_magistrate_aptitude = {
 check_boatswain_aptitude = {
 	$CHARACTER$ = {
 		tax_collector_aptitude = {
-			target = pirate_tax_slot
+			tax_slot_type = pirate_tax_slot
 			value = $VALUE$
 		}
 	}

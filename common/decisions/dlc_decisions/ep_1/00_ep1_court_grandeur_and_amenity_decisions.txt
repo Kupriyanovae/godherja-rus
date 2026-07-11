@@ -36,7 +36,7 @@ order_mass_eviction_decision = {
 		has_dlc_feature = royal_court
 		# Has a suitable lack of rooms.
 		amenity_level = {
-			target = court_lodging_standards
+			type = court_lodging_standards
 			value <= medium_amenity_level
 		}
 	}
@@ -44,14 +44,14 @@ order_mass_eviction_decision = {
 	is_valid = {
 		# Restate the amenity level requirement so it's visible.
 		amenity_level = {
-			target = court_lodging_standards
+			type = court_lodging_standards
 			value <= medium_amenity_level
 		}
 		# At least one guest if you have more than the minimum amenities.
 		trigger_if = {
 			limit = {
 				amenity_level = {
-					target = court_lodging_standards
+					type = court_lodging_standards
 					value > low_amenity_level
 				}
 			}
@@ -90,7 +90,7 @@ order_mass_eviction_decision = {
 		if = {
 			limit = {
 				amenity_level = {
-					target = court_lodging_standards
+					type = court_lodging_standards
 					value > low_amenity_level
 				}
 			}
@@ -161,7 +161,7 @@ exoticise_a_grand_hall_decision = {
 		has_dlc_feature = royal_court
 		# Has suitably amazing rooms.
 		amenity_level = {
-			target = court_lodging_standards
+			type = court_lodging_standards
 			value >= very_high_amenity_level
 		}
 		# Grandeur requirements.

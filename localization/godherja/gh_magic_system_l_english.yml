@@ -72,14 +72,6 @@
  stoneskin_name:0 "Stoneflesh"
  #stoneskin_name:0 "Stoneskin"
  ironskin_name:0 "Ironflesh"
- bronzeskin_name: "Bronzeflesh"
- bestow_bronze_armaments_name:0 "Bestow Bronze Armaments"
- bronze_fists_name: "Bronze Fists"
- dragons_roar_name: "Dragon's Roar"
- arcane_foundries_name: "Arcane Foundries"
- imbued_armor_name: "Imbued Armor"
- spawn_entropic_host_name: "Form Entropic Host"
- erase_mental_trauma_name: "Erase Mental Trauma"
  boneshaping_name:0 "Boneshaping"
  necrotic_boon_name:0 "Necromantic Vitality"
  crush_armor_name:0 "Crush Armor"
@@ -128,7 +120,6 @@
  domination_name:0 "Dominate"
  thinning_name:0 "Thinning"
  sundeath_name:0 "Sundeath"
- dark_raid_name:0 "Dark Raid"
  spawn_army_lesser_voidspawns_name:0 "Entropic Host"
  weavers_descent_name:0 "Weaver's Descent"
  awaken_fleshmaw_name:0 "Awaken Fleshmaw"
@@ -387,8 +378,6 @@
  chasm_terrors_summoned_troops:0 "Chasm Terrors"
  enfleshed_grotesquerie_summoned_troops:0 "Enfleshed Grotesqueries"
  undead_skirmishers_summoned_troops:0 "Undead Skirmishers"
- undead_bowmen_summoned_troops:0 "Undead Bowmen"
- undead_light_horsemen_summoned_troops:0 "Undead Light Horsemen"
  elite_undead_summoned_troops:0 "Elite Undead"
  siege_golems_summoned_troops:0 "Siege Golems"
  stone_golems_summoned_troops:0 "Stone Golems"
@@ -404,9 +393,6 @@
  war_chariots_summoned_troops:0 "War Chariots"
  adventurers_summoned_troops:0 "Adventurers"
  leshens_summoned_troops:0 "Leshens"
- cultists_maa_summoned_troops: "Cultists"
- shamans_summoned_troops: "Shamans"
- raving_zealots_summoned_troops: "Raving Zealots"
 
 
  #toasts
@@ -518,7 +504,7 @@
  defiled_nadir_setup_effect_extant_mask_tooltip:0 "[extant_mask_artifact.GetName] will become your Bound Mask"
  defiled_nadir_warning_tt:0 "Separating oneself from the Bound Mask will have #N severe#! consequences"
  aspect_increased_tt:90 "Aspect Increased"
- does_not_know_selected_spell_tt:90 "[caster.GetName] does not know the spell."
+ #does_not_know_selected_spell_tt:90 "[caster.GetName] does not know [spell_name_spell.Custom('SpellName')]"
  
  #########
  # HOOKS #
@@ -629,11 +615,6 @@
  GLOBAL_GOT_A_FAMILIAR:0 "Got [TARGET_CHARACTER.GetShortUIName] as a Familiar"
 
  ## ARCANA
-
- TRAIT_FLAG_DESC_arcana_add:0 "[SelectLocalization(GetPlayer.IsValid, 'PLAYER_TRAIT_FLAG_DESC_arcana_add','')]#!"
- PLAYER_TRAIT_FLAG_DESC_arcana_add:0 "[arcana|E]: [arcana_i][SelectLocalization(GreaterThan_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(Concatenate(Trait.GetKey, '_character_arcana_value')),'(CFixedPoint)0'),'#positive_value +','#negative_value ')][GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(Concatenate(Trait.GetKey, '_character_arcana_value'))]#!"
+ TRAIT_FLAG_DESC_arcana_add:0 "[arcana|E]: [arcana_i][SelectLocalization(GreaterThan_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(Concatenate(Trait.GetKey, '_character_arcana_value')),'(CFixedPoint)0'),'#positive_value +','#negative_value ')][GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(Concatenate(Trait.GetKey, '_character_arcana_value'))]#!"
  arcana_base_value_desc:0 "Base"
  
- GH_HEX_FIRED: "Hex Fired"
- GH_ARMY_DAMAGED_SPELL_CAST_BY_TITLE: "Army Damaged"
- GH_ARMY_DAMAGED_SPELL_CAST_BY: "Your army was damaged by a spell cast by [spell_organizer.GetShortUIName]"

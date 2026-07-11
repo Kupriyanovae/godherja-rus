@@ -105,7 +105,7 @@
 #						exists = scope:huntable_local_game
 #					}
 #					# Master of Hunt aptitude affects chance of managed game
-#					activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+#					hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 #					# Increase larger deer chance with management buildings
 #					hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 #					hunt_activity_deer_game_effect = { PROVINCE = scope:animal_location }
@@ -556,7 +556,7 @@
 #						exists = scope:huntable_local_game
 #					}
 #					# Master of Hunt aptitude affects chance of managed game
-#					activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+#					hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 #					# Increase larger boar chance with management buildings
 #					hunt_activity_game_building_modifier = { PROVINCE = scope:animal_location }
 #					modifier = { # Shunned by some groups, but that only matters if you're actually on a hunt
@@ -4845,14 +4845,14 @@
 #			# Increase larger auroch chance with management buildings
 #			hunt_activity_game_building_modifier = { PROVINCE = $PROVINCE$ }
 #			# Master of Hunt aptitude affects chance of managed game
-#			activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+#			hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 #			set_variable = { name = animal_type value = flag:bubalus }
 #		}
 #		5 = {
 #			# Increase larger auroch chance with management buildings
 #			hunt_activity_game_building_modifier = { PROVINCE = $PROVINCE$ }
 #			# Master of Hunt aptitude affects chance of managed game
-#			activity_court_position_aptitude_positive_modifier = { LIEGE = root POS = master_of_hunt }
+#			hunt_activity_master_aptitude_positive_modifier = { LIEGE = root }
 #			if = {
 #				limit = {
 #					$PROVINCE$ = {

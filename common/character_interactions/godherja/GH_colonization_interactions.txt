@@ -109,11 +109,8 @@
 		trigger_if = {
 			limit = {
 				scope:actor = {
-					OR = {
-						culture = { has_cultural_tradition = tradition_wasteland_reclaimers }
-						GH_is_any_tribal_government_trigger = yes
-						government_has_flag = government_is_nomadic
-					}
+					culture = { has_cultural_tradition = tradition_wasteland_reclaimers }
+					GH_is_any_tribal_government_trigger = yes
 				}
 			}
 			scope:actor.prestige >= scope:target.colonization_cost_value
@@ -126,28 +123,14 @@
 		prestige = {
 			value = scope:target.colonization_cost_value
 			if = {
-				limit = { 
-					scope:actor = { # keep these two separate
-						NOR = {
-							GH_is_any_tribal_government_trigger = yes 
-							government_has_flag = government_is_nomadic
-						}
-					}
-				}
+				limit = { scope:actor = { GH_is_any_tribal_government_trigger = no } }
 				multiply = 0
 			}
 		}
 		gold = {
 			value = scope:target.colonization_cost_value
 			if = {
-				limit = { 
-					scope:actor = { # keep these two separate
-						OR = {
-							GH_is_any_tribal_government_trigger = yes 
-							government_has_flag = government_is_nomadic
-						}
-					}
-				}
+				limit = { scope:actor = { GH_is_any_tribal_government_trigger = yes } }
 				multiply = 0
 			}
 		}
@@ -296,28 +279,14 @@ ai_colonize_wasteland_interaction = {
 		prestige = {
 			value = scope:target.colonization_cost_value
 			if = {
-				limit = { 
-					scope:actor = {
-						NOR = {
-							GH_is_any_tribal_government_trigger = yes
-							government_has_flag = government_is_nomadic 
-						}
-					} 
-				}
+				limit = { scope:actor = { GH_is_any_tribal_government_trigger = no } }
 				multiply = 0
 			}
 		}
 		gold = {
 			value = scope:target.colonization_cost_value
 			if = {
-				limit = { 
-					scope:actor = { 
-						OR = {
-							GH_is_any_tribal_government_trigger = yes 
-							government_has_flag = government_is_nomadic
-						}
-					}
-				}
+				limit = { scope:actor = { GH_is_any_tribal_government_trigger = yes } }
 				multiply = 0
 			}
 		}

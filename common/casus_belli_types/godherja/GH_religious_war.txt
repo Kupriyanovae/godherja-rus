@@ -389,36 +389,6 @@
 
 		# Truce
 		add_truce_white_peace_effect = yes
-
-		#GH ADDITION
-		# Struggle Catalysts
-		hidden_effect = {
-			scope:attacker = {
-				if = {
-					limit = {
-						any_character_struggle = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-					}
-					every_character_struggle = {
-						limit = {
-							activate_struggle_catalyst_secondary_character_involvement_involved_or_aligned_trigger = {
-								CATALYST = catalyst_war_white_peace
-								CHAR = scope:defender
-							}
-						}
-						activate_struggle_catalyst = {
-							catalyst = catalyst_war_white_peace
-							character = scope:attacker
-						}
-					}
-				}
-			}
-		}
-		#GH END
 	}
 
 	on_defeat_desc = {

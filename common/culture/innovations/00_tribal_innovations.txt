@@ -24,16 +24,7 @@
 @nobility_02 = "gfx/interface/icons/culture_innovations/innovation_nobility_02.dds"
 @nobility_03 = "gfx/interface/icons/culture_innovations/innovation_nobility_03.dds"
 @nobility_04 = "gfx/interface/icons/culture_innovations/innovation_nobility_04.dds"
-@gunpowder = "gfx/interface/icons/culture_innovations/innovation_gunpowder.dds"
-@innovation_farm = "gfx/interface/icons/culture_innovations/innovation_farm.dds"
-@coins = "gfx/interface/icons/culture_innovations/innovation_welfare_01.dds"
 @misc_inventions = "gfx/interface/icons/culture_innovations/innovation_misc_inventions.dds"
-@quilted_armor = "gfx/interface/icons/culture_innovations/innovation_quilted_armor.dds"
-@currency = "gfx/interface/icons/culture_innovations/innovation_currency.dds"
-@farm = "gfx/interface/icons/culture_innovations/innovation_farm.dds"
-@plenary_assemblies = "gfx/interface/icons/culture_innovations/innovation_plenary_assemblies.dds"
-@siege_crossbow = "gfx/interface/icons/culture_innovations/innovation_auh_ballista.dds"
-
 
 @camel = "gfx/interface/icons/culture_innovations/innovation_camel.dds"
 @elephant = "gfx/interface/icons/culture_innovations/innovation_elephant.dds"
@@ -42,8 +33,7 @@
 
 
 #culture_group_military
-innovation_motte = { # Earthworks in-game
-	skill = stewardship
+innovation_motte = {
 	group = culture_group_military
 	culture_era = culture_era_tribal
 	icon = @fortifications
@@ -54,16 +44,11 @@ innovation_motte = { # Earthworks in-game
 
 	custom = unlock_tribal_fortification_buildings
 
-	parameters = {
-		nomad_motte_innovation_bonus = yes
-	}
-
 	flag = global_regular
 	flag = tribal_era_regular
 }
 
 innovation_catapult = {
-	skill = learning
 	group = culture_group_military
 	culture_era = culture_era_tribal
 	icon = @siege_weapons
@@ -72,26 +57,13 @@ innovation_catapult = {
 		culture_does_not_have_standard_maa = no
 	}
 
-	custom = unlock_siege_maa_first_level
-
-	asset = {
-		trigger = {
-			OR = {
-				has_cultural_pillar = heritage_easterner
-				has_cultural_pillar = heritage_shanxi
-				has_cultural_pillar = heritage_jureon
-			}
-		}
-		icon = @siege_crossbow
-		name = innovation_catapult_chinese
-	}
+	custom = unlock_maa_onager
 
 	flag = global_regular
 	flag = tribal_era_regular
 }
 
 innovation_barracks = {
-	skill = martial
 	group = culture_group_military
 	culture_era = culture_era_tribal
 	icon = @levy_building
@@ -102,16 +74,11 @@ innovation_barracks = {
 
 	custom = unlock_tribal_military_buildings
 
-	character_modifier = {
-		herd_capacity_mult = 0.05
-	}
-
 	flag = global_regular
 	flag = tribal_era_regular
 }
 
 innovation_mustering_grounds = {
-	skill = martial
 	group = culture_group_military
 	culture_era = culture_era_tribal
 	icon = @leadership_2
@@ -130,7 +97,6 @@ innovation_mustering_grounds = {
 }
 
 innovation_bannus = {
-	skill = martial
 	group = culture_group_military
 	culture_era = culture_era_tribal
 	icon = @raised_banner
@@ -141,8 +107,7 @@ innovation_bannus = {
 
 	character_modifier = {
 		levy_reinforcement_rate = 0.15
-		accolades = 1
-		herd_conversion = 0.005
+		active_accolades = 1
 	}
 
 	flag = global_regular
@@ -150,10 +115,9 @@ innovation_bannus = {
 }
 
 innovation_quilted_armor = {
-	skill = martial
 	group = culture_group_military
 	culture_era = culture_era_tribal
-	icon = @quilted_armor
+	icon = @weapons_and_armor_02
 	potential = {
 		culture_does_not_have_standard_innovations = no
 		culture_does_not_have_standard_maa = no
@@ -162,16 +126,11 @@ innovation_quilted_armor = {
 	custom = unlock_maa_armored_footmen
 	custom = eligible_accolade_vanguard_attribute
 
-	character_modifier = {
-		nomadic_horde_toughness_mult = 0.02
-	}
-
 	flag = global_regular
 	flag = tribal_era_regular
 }
 
 innovation_development_01 = {
-	skill = stewardship
 	group = culture_group_civic
 	culture_era = culture_era_tribal
 	icon = @civil_construction_1
@@ -179,24 +138,18 @@ innovation_development_01 = {
 
 	custom = reduce_develop_county_penalty_01
 
-	character_modifier = {
-		county_fertility_growth_mult = 0.05
-	}
-
 	flag = global_regular
 	flag = tribal_era_regular
 }
 
 innovation_currency_01 = {
-	skill = stewardship
 	group = culture_group_civic
 	culture_era = culture_era_tribal
-	icon = @currency
+	icon = @majesty_02
 	potential = { culture_does_not_have_standard_innovations = no }
 
 	character_modifier = {
 		development_growth_factor = 0.1
-		monthly_income_from_herd_mult = 0.05
 	}
 
 	flag = global_regular
@@ -205,7 +158,6 @@ innovation_currency_01 = {
 
 #culture_group_civic
 innovation_gavelkind = {
-	skill = diplomacy
 	group = culture_group_civic
 	culture_era = culture_era_tribal
 	icon = @administration_3
@@ -222,10 +174,9 @@ innovation_gavelkind = {
 }
 
 innovation_crop_rotation = {
-	skill = stewardship
 	group = culture_group_civic
 	culture_era = culture_era_tribal
-	icon = @farm
+	icon = @levy_building
 	potential = {
 		culture_does_not_have_standard_innovations = no
 		culture_does_not_have_standard_buildings = no
@@ -233,16 +184,11 @@ innovation_crop_rotation = {
 
 	custom = unlock_tribal_economic_buildings
 
-	character_modifier = {
-		county_fertility_growth_mult = 0.05
-	}
-
 	flag = global_regular
 	flag = tribal_era_regular
 }
 
 innovation_city_planning = {
-	skill = stewardship
 	group = culture_group_civic
 	culture_era = culture_era_tribal
 	icon = @civil_construction_2
@@ -257,17 +203,12 @@ innovation_city_planning = {
 	unlock_building = megalith_01
 	unlock_building = market_villages_01
 	custom = city_planning_colonization_bonus ## GH ADDITION: Colonization Threshold Bonus
-	
-	character_modifier = {
-		herd_capacity_mult = 0.05
-	}
 
 	flag = global_regular
 	flag = tribal_era_regular
 }
 
 innovation_casus_belli = {
-	skill = diplomacy
 	group = culture_group_civic
 	culture_era = culture_era_tribal
 	icon = @administration_1
@@ -281,10 +222,9 @@ innovation_casus_belli = {
 }
 
 innovation_plenary_assemblies = {
-	skill = diplomacy
 	group = culture_group_civic
 	culture_era = culture_era_tribal
-	icon = @plenary_assemblies
+	icon = @leadership_1
 	potential = {
 		culture_does_not_have_standard_innovations = no
 		culture_does_not_have_standard_buildings = no
@@ -294,16 +234,11 @@ innovation_plenary_assemblies = {
 
 	unlock_building = tribe_02
 
-	character_modifier = {
-		vassal_herd_contribution_mult = 0.02
-	}
-
 	flag = global_regular
 	flag = tribal_era_regular
 }
 
 innovation_ledger = {
-	skill = stewardship
 	group = culture_group_civic
 	culture_era = culture_era_tribal
 	icon = @administration_2
@@ -315,9 +250,6 @@ innovation_ledger = {
 	county_modifier = {
 		building_slot_add = 1
 	}
-	character_modifier = {
-		monthly_income_from_herd_mult = 0.05
-	}
 	
 	unlock_building = gh_university_01
 
@@ -326,8 +258,7 @@ innovation_ledger = {
 }
 
 innovation_longboats = {
-	skill = martial
-	group = culture_group_military
+	group = culture_group_regional
 	culture_era = culture_era_tribal
 	region = world_ga_clanlands
 	icon = @longboats
@@ -348,8 +279,7 @@ innovation_longboats = {
 }
 
 innovation_elephantry = {
-	skill = stewardship
-	group = culture_group_military
+	group = culture_group_regional
 	culture_era = culture_era_tribal
 	region = world_innovation_elephants
 	icon = @elephant
@@ -368,8 +298,7 @@ innovation_elephantry = {
 }
 
 innovation_war_camels = {
-	skill = stewardship
-	group = culture_group_military
+	group = culture_group_regional
 	culture_era = culture_era_tribal
 	region = world_innovation_camels
 	icon = @camel
@@ -389,8 +318,7 @@ innovation_war_camels = {
 }
 
 innovation_kapmatans = {
-	skill = learning
-	group = culture_group_civic
+	group = culture_group_regional
 	culture_era = culture_era_tribal
 	region = world_ga_pirate_coast
 	icon = @misc_inventions
