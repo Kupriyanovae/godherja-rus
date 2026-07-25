@@ -36,7 +36,6 @@
  single_combat.0001.injury.epic:0 "#difficulty_hard ЭПИЧЕСКОЕ#! увеличение ваших [Concept( 'single_combat_injury_chance', 'шансов получить ранение' )|E]"
  single_combat.0001.injury.legendary:0 "#difficulty_hard ЛЕГЕНДАРНОЕ#! увеличение ваших [Concept( 'single_combat_injury_chance', 'шансов получить ранение' )|E]"
 
-
  ## Opponent Duel Success Increase Tooltips
  single_combat.0001.duel_success.none.has_happened: "#difficulty_hard НЕТ#! увеличения [my_foe.GetHerHis] [Concept( 'single_combat_success_chance', 'шансов на победу' )|E]"
  single_combat.0001.duel_success.low.has_happened: "#difficulty_hard НЕБОЛЬШОЕ#! увеличение [my_foe.GetHerHis] [Concept( 'single_combat_success_chance', 'шансов на победу' )|E]"
@@ -46,7 +45,6 @@
  # GH ADDITIONS: Additional Success Increase Level Tooltips
  single_combat.0001.duel_success.epic.has_happened:0 "#difficulty_easy ЭПИЧЕСКОЕ#! увеличение [my_foe.GetHerHis] [Concept( 'single_combat_success_chance', 'шансов на победу' )|E]"
  single_combat.0001.duel_success.legendary.has_happened:0 "#difficulty_easy ЛЕГЕНДАРНОЕ#! увеличение [my_foe.GetHerHis] [Concept( 'single_combat_success_chance', 'шансов на победу' )|E]"
-
 
  ## Opponent Injury Risk Increase Tooltips
  single_combat.0001.injury.none.has_happened: "#difficulty_easy НЕТ#! увеличения [my_foe.GetHerHis] [Concept( 'single_combat_injury_chance', 'шансов получить ранение' )|E]"
@@ -153,7 +151,6 @@
  single_combat.0001.stoic_veteran.general: "В гвардии мы встречались с врагами посильнее #EMP вас#!!"
  single_combat.0001.stoic_veteran.other_varangian: "Жаль [my_foe.Custom('SignatureWeaponKillType')] верного члена гвардии, [my_foe.Custom('SisterBrother')]."
  single_combat.0001.blade_dance: "[myself.GetPrimaryTitle.GetNameNoTierNoTooltip] не знает клинка быстрее, чем мой!"
-
  single_combat.0001.blade_dance_unlanded: "[myself.GetCulture.GetNameNoTooltip|U] не видели клинка быстрее, чем мой!"
  single_combat.0001.wrath_of_highgod: "[myself.GetFaith.HighGodNameAlternate] и [myself.GetFaith.WarGodName], заставят тебя страдать, [Select_CString(my_foe.IsFemale, 'неверная', 'неверный' )]!"
  single_combat.0001.hurt_me_better: "#EMP Ммммм#!, вы что, думаете, что #EMP это#! больно? Я покажу вам, что такое боль!"
@@ -207,8 +204,6 @@
  single_combat.0001.tt.something_to_hide: "#BOL Есть что скрывать:#! вы напоминаете противнику, что [my_foe.GetSheHe] у вас [Concept( 'hook', 'на крючке' )|E]"
  ## GH ADDITIONS: GH-combat moves
  single_combat.0001.tt.magic:90 "#BOL Заклинание:#! вы создаете заклинание #underline [myself.MakeScope.Var('event_option_displayed_spell').Story.Custom('SpellName')]#! на [myself.Custom('CantripOvercharge')] уровне навыка!"
-
-
 
  ##################################################
  #Combat Descs
@@ -312,7 +307,6 @@
  single_combat.0001.desc.opponent_response.magic.combat_pyromantics.novice:90 "[my_foe.GetFirstNameNoTooltip] бросает в меня огненный шар, но [my_foe.GetHerHis] магия небрежна и поспешна, и мне не составляет труда уклониться."
  single_combat.0001.desc.opponent_response.magic.combat_pyromantics.skilled:90 "[my_foe.GetFirstNameNoTooltip] ловко запускает в мою сторону серию огненных шаров, порой оставляя мне лишь мгновения, чтобы избежать гибели в пламени."
  single_combat.0001.desc.opponent_response.magic.combat_pyromantics.expert:90 "[my_foe.GetFirstNameNoTooltip] обрушивает на меня неудержимый шквал пиромантии — массивные болиды летят в мою сторону с невероятной скоростью и силой."
-
 
  ##################################################
  #Outcome Event: Loser
@@ -953,6 +947,7 @@
 
  ##################################################
  #Debug Copy
+
  single_combat.1004.t: "Время п-п-п-поединка!"
  single_combat.1004.desc: "Хреново живет [recipient.GetFirstName]. Да и ты не лучше."
  single_combat.1004.a: "Вы нападаете (по умолчанию)"
@@ -972,4 +967,5 @@
 cantrip_overcharge_epic:0 "#BOL Эпический#!"  
 cantrip_overcharge_expert:0 "#BOL Экспертный#!"  
 cantrip_overcharge_competent:0 "#BOL Умелый#!"  
-cantrip_overcharge_none:0 "#BOL Любительский#!"  
+cantrip_overcharge_none:0 "#BOL Любительский#!"
+single_combat.0041.gh.a: "Now, for my spoils..."  

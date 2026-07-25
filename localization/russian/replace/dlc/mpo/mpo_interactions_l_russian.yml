@@ -66,6 +66,7 @@
  mpo_interactions_events.0002.desc_joining: "И вот я присоединяюсь к [confederation.GetName]. Мои клятвы принадлежат каждому волку этой стаи." 
  mpo_interactions_events.0002.a: "Жить или умереть — плечом к плечу!"
 
+ msg_broken_confederation_migration: "Переселение участника конфедерации: [actor.GetShortUINameNoTooltip]"
  msg_broken_confederation_migration_desc: "[actor.GetUIName] [Select_CString(actor.IsFemale, 'покинула', 'покинул' )] эти земли и [Select_CString(actor.IsFemale, 'вышла', 'вышел' )] из вашей [Concept('confederation', 'конфедерации')|E]"
  msg_broken_confederation_migration_root: "Миграция прочь от конфедерации"
  msg_broken_confederation_migration_root_desc: "Из-за вашей [Concept('migration', 'миграции')|E] вы больше не состоите в конфедерации [confederation_left.GetName]"
@@ -121,18 +122,18 @@
  tributary_subjugated_desc: "Покорённый [Concept('tributary', 'данник')|E] регулярно выплачивает своему [Concept('suzerain', 'сюзерену')|E] [Concept('gold', 'золото')|E] и [Concept('prestige', 'престиж')|E]. [Concept('tributary_contract', 'Договор дани')|E] прекращается со смертью [Concept('suzerain', 'сюзерена')|E].\n\n$tributary_common_desc$"
  tributary_common_desc: "В обмен на это их [Concept('suzerain', 'сюзерен')|E] воздерживается от [Concept('raiding', 'грабежей')|E] или [Concept('war', 'войны')|E] против них. Если на данника нападут, сюзерен может даже прийти ему на помощь."
 
- mpo_interaction_grant_paiza: "Даровать пайцзу" 
- mpo_interaction_grant_paiza_desc: "Даровать [recipient.GetShortUIName] пайцзу ([Concept('artifact', 'артефакт')|E]) и сделать [Select_CString(recipient.IsFemale, 'её', 'его')] [Concept('obedient', 'послушным')|E], если это возможно" 
- mpo_character_interaction_gurkhan: "Вы #bold не#! [Concept('gurkhan', 'гурхан')|E]" 
+ mpo_interaction_grant_paiza: "Даровать айраал" 
+ mpo_interaction_grant_paiza_desc: "Даровать [recipient.GetShortUIName] [Concept('paiza', 'пайцзу')|E] ([Concept('artifact', 'артефакт')|E]) и сделать [Select_CString(recipient.IsFemale, 'её', 'его')] [Concept('obedient', 'послушным')|E], если это возможно" 
+ mpo_character_interaction_gurkhan: "Вы #bold не#! занимаете верховный престол"
  mpo_character_interaction_obedient: "[recipient.GetShortUIName] уже [Concept('obedient', 'послушен')|E] вам" 
  mpo_character_interaction_established_paiza_system: "Вы #bold не#! приняли [Concept('decision', 'решение')|E] «$mpo_establish_paiza_system_decision$»"
 
- mpo_interaction_ask_for_paiza: "Попросить пайцзу" 
- mpo_interaction_ask_for_paiza_desc: "Делает вас [Concept('obedient', 'послушным')|E] и дарует вам артефакт пайцзы"
+ mpo_interaction_ask_for_paiza: "Попросить айраал" 
+ mpo_interaction_ask_for_paiza_desc: "Делает вас [Concept('obedient', 'послушным')|E] и дарует вам артефакт [Concept('paiza', 'пайцзы')|E]"
 
- mpo_interaction_leverage_khan_authority: "Воспользоваться властью хана" 
- mpo_interaction_leverage_khan_authority_desc: "Забрать [Concept('herd', 'стадо')|E] и [Concept('gold', 'золото')|E] у [recipient.GetShortUIName], а также сделать [Select_CString(recipient.IsFemale, 'её', 'его')] [Concept('obedient', 'послушным')|E], если это возможно.\n@alert_icon! [Concept('gurkhan', 'Гурхан')|E] может отреагировать на такой произвол." 
- mpo_decisions_events.paiza_granted: "Пайцза дарована"
+ mpo_interaction_leverage_khan_authority: "Leverage the Sovereign's Authority"
+ mpo_interaction_leverage_khan_authority_desc: "Extract [gold|E] and tribute from [recipient.GetShortUIName], and make [recipient.GetHerHim] [obedient|E], if possible.\n@alert_icon! The sovereign might react to this abuse of the warrant."
+ mpo_decisions_events.paiza_granted: "[paiza|E] granted"
 
  REMOVE_COST_BEFRIEND_SCHEME: "Убирает стоимость @prestige_icon![Concept('prestige', 'престижа')|E] для [Concept('scheme', 'махинации')|E] [GetScheme('befriend').GetTypeName]" 
  I_HAVE_FREE_BEFRIEND_SCHEME: "Убирает стоимость @prestige_icon![Concept('prestige', 'престижа')|E] для [Concept('scheme', 'махинации')|E] [GetScheme('befriend').GetTypeName]" 

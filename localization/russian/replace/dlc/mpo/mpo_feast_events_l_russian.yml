@@ -5,7 +5,7 @@
  feast_type_tsagaan_sar_valid_tt_time: "[Glossary('$feast_type_tsagaan_sar$','GH_DAAJ_OLIKNII_GLOSS')] можно устраивать только с Велде (1) по Уреде (3)"
 
  feast_tsagaan_sar_events.0001.t: "День Олика" 
- feast_tsagaan_sar_events.0001.desc: "\nЛошади собираются у [SelectLocalization(GetPlayer.GetGovernment.HasGovernmentFlag('government_is_nomadic'),'gh_feast_tsagaan_sar_events.0001.desc.nomadic','gh_feast_tsagaan_sar_events.0001.desc.settled')], их всадники ласково гладят их напоследок и идут смешиваться с остальными. Молодёжь резвится, играя в салки и подшучивая над старшими. Вся вражда забыта, ведь сегодня [Glossary('$feast_type_tsagaan_sar$','GH_DAAJ_OLIKNII_GLOSS')] — священный день, когда [Glossary('Олик','GH_OLIK_GLOSS')] восходит, чтобы воссоединиться с [Glossary('Кайган','GH_KAIGAN_GLOSS')], а злая Йеру-май на время прекращает свою охоту за человеческими душами, чтобы оплакать сына, которого сама и убила.\n\nПока [ROOT.Char.Custom('GetWomenOrMenBasedOnFaith')] борются и валяются в траве, в воздухе царит мир: их мелкие ссоры и азарт только укрепляют братство. [ROOT.Char.Custom('GetWomenOrMenBasedOnFaithOpposite')] готовят праздничный стол, а до меня доносится запах баранины.\n\nЭтот пир будет памятным — если только я не упущу из виду..." 
+ feast_tsagaan_sar_events.0001.desc: "\nЛошади собираются у [SelectLocalization(GetPlayer.GetGovernment.HasGovernmentFlag('government_is_nomadic'),'gh_feast_tsagaan_sar_events.0001.desc.nomadic','gh_feast_tsagaan_sar_events.0001.desc.settled')], их всадники ласково гладят их напоследок и идут смешиваться с остальными. Молодёжь резвится, играя в салки и подшучивая над старшими. Вся вражда забыта, ведь сегодня [Glossary('$feast_type_tsagaan_sar|q$','GH_DAAJ_OLIKNII_GLOSS')] — священный день, когда [Glossary('Олик','GH_OLIK_GLOSS')] восходит, чтобы воссоединиться с [Glossary('Кайган','GH_KAIGAN_GLOSS')], а злая Йеру-май на время прекращает свою охоту за человеческими душами, чтобы оплакать сына, которого сама и убила.\n\nПока [ROOT.Char.Custom('GetWomenOrMenBasedOnFaith')] борются и валяются в траве, в воздухе царит мир: их мелкие ссоры и азарт только укрепляют братство. [ROOT.Char.Custom('GetWomenOrMenBasedOnFaithOpposite')] готовят праздничный стол, а до меня доносится запах баранины.\n\nЭтот пир будет памятным — если только я не упущу из виду..." 
  gh_feast_tsagaan_sar_events.0001.desc.nomadic: "юрты лагеря" 
  gh_feast_tsagaan_sar_events.0001.desc.settled: "ворота [GetPlayer.Custom('ResidenceBuilding')]"
 
@@ -14,7 +14,7 @@
 
  feast_tsagaan_sar_events.0101.desc: "\nС другого конца поля я замечаю великолепную лошадь — её масть черна, как ночное небо. Она прекрасна, может соперничать с самыми красивыми девушками: длинная, шелковистая грива и глаза, сверкающие как звёзды.\n\nВсадник, [horse_haver.GetName], замечает мой восхищённый взгляд. «Вижу, у тебя хороший глаз, — говорит [horse_haver.GetFirstNameNoTooltip]. — Можешь прокатиться на ней, если хочешь, но будь осторожен. Она дикая!»"
 
- feast_tsagaan_sar_events.0200.desc: "\n«Приветствую, [ROOT.Char.GetFirstNameNoTooltip]!» — окликает меня [gambler.GetName]. — «Вижу, у тебя есть свободная минутка. Не хочешь сыграть со мной в [Glossary('$GH_SHAGAI_GLOSS_REPLACE$', 'SHAGAI_GLOSS')]?» — спрашивает [gambler.GetSheHe], высыпая несколько щиколоточных косточек в [gambler.GetHerHis] ладонь.\n\n[gambler.GetSheHe|U] садится [SelectLocalization(GetPlayer.GetGovernment.HasGovernmentFlag('government_is_nomadic'),'gh_feast_tsagaan_sar_events.0200.desc.nomadic','gh_feast_tsagaan_sar_events.0200.desc.settled')], жестом приглашая меня присоединиться. [gambler.GetFirstNameNoTooltip] напоминает мне правила, и мы по очереди бросаем кости." 
+ feast_tsagaan_sar_events.0200.desc: "\n«Приветствую, [ROOT.Char.GetFirstNameNoTooltip]!» — окликает меня [gambler.GetName]. — «Вижу, у тебя есть свободная минутка. Не хочешь сыграть со мной в [Glossary('$GH_SHAGAI_GLOSS_REPLACE|q$', 'SHAGAI_GLOSS')]?» — спрашивает [gambler.GetSheHe], высыпая несколько щиколоточных косточек в [gambler.GetHerHis] ладонь.\n\n[gambler.GetSheHe|U] садится [SelectLocalization(GetPlayer.GetGovernment.HasGovernmentFlag('government_is_nomadic'),'gh_feast_tsagaan_sar_events.0200.desc.nomadic','gh_feast_tsagaan_sar_events.0200.desc.settled')], жестом приглашая меня присоединиться. [gambler.GetFirstNameNoTooltip] напоминает мне правила, и мы по очереди бросаем кости." 
  gh_feast_tsagaan_sar_events.0200.desc.nomadic: "скрестив ноги на земле" 
  gh_feast_tsagaan_sar_events.0200.desc.settled: "за ближайшим столом" 
  GH_SHAGAI_GLOSS_REPLACE: "Ошук" 
@@ -22,16 +22,16 @@
 
  feast_tsagaan_sar_events.0220.desc: "\nЯ сталкиваюсь лицом к лицу с [old_rival.GetName], [old_rival.Custom('InsultAdjectiveArticle')] тварью. «Ах... вижу, ты тоже здесь, [ROOT.Char.GetFirstNameNoTooltip]. Надеюсь, ты не забыл о нашем прошлом и обидах, что причинил мне», — насмешливо говорит [old_rival.GetFirstNameNoTooltip].\n\nЯ чувствую напряжение в [old_rival.GetHerHis] словах, но [old_rival.GetSheHe] продолжает спокойно: «В честь этого священного праздника прошу оставить прошлые обиды позади»."
 
- friend_feast_rivalry: "[CHARACTER.GetShortUIName|U] и [TARGET_CHARACTER.GetShortUIName] стали друзьями, оставив соперничество позади во время праздника [Glossary('$feast_type_tsagaan_sar$','GH_DAAJ_OLIKNII_GLOSS')]."
+ friend_feast_rivalry: "[CHARACTER.GetShortUIName|U] и [TARGET_CHARACTER.GetShortUIName] стали друзьями, оставив соперничество позади во время праздника [Glossary('$feast_type_tsagaan_sar|q$','GH_DAAJ_OLIKNII_GLOSS')]."
 
  feast_tsagaan_sar_events.0230.t: "Голос неба"
  feast_tsagaan_sar_events.0230.desc_intro: "\nТолпа гостей стекается к [SelectLocalization(GetPlayer.GetGovernment.HasGovernmentFlag('government_is_nomadic'),'gh_feast_tsagaan_sar_events.0230.desc.nomadic','gh_feast_tsagaan_sar_events.0230.desc.settled')], обсуждая предстоящее выступление. Я следую за шумом и вижу, как все взгляды обращаются к [throat_singer.GetName]. [throat_singer.GetSheHe|U] начинает петь, воспевая [throat_singer.Custom('GetRandomThroatSingingTheme')].\n\nЗвук напоминает" 
  gh_feast_tsagaan_sar_events.0230.desc.nomadic: "юрту вдалеке" 
  gh_feast_tsagaan_sar_events.0230.desc.settled: "великолепный зал [GetPlayer.Custom('ResidenceBuilding')]"
 
- feast_tsagaan_sar_events.0240.sygyt: "Я давно хотел попробовать спеть в стиле [Glossary('$GH_SYGYT_GLOSS_REPLACE$', 'SYGYT_GLOSS')]..." 
- feast_tsagaan_sar_events.0240.hoomei: "А что если исполнить мелодию в [Glossary('$GH_HOOMEI_GLOSS_REPLACE$', 'HOOMEI_GLOSS')]?" 
- feast_tsagaan_sar_events.0240.kargyraa: "На самом деле, я бы хотел спеть в стиле [Glossary('$GH_KARGYRAA_GLOSS_REPLACE$', 'KARGYRAA_GLOSS')]." 
+ feast_tsagaan_sar_events.0240.sygyt: "Я давно хотел попробовать спеть в стиле [Glossary('$GH_SYGYT_GLOSS_REPLACE|q$', 'SYGYT_GLOSS')]..." 
+ feast_tsagaan_sar_events.0240.hoomei: "А что если исполнить мелодию в [Glossary('$GH_HOOMEI_GLOSS_REPLACE|q$', 'HOOMEI_GLOSS')]?" 
+ feast_tsagaan_sar_events.0240.kargyraa: "На самом деле, я бы хотел спеть в стиле [Glossary('$GH_KARGYRAA_GLOSS_REPLACE|q$', 'KARGYRAA_GLOSS')]." 
  feast_tsagaan_sar_events.0240.success_sygyt_tt: "$GH_SYGYT_GLOSS_REPLACE$ становится вашим основным стилем горлового пения" 
  feast_tsagaan_sar_events.0240.success_hoomei_tt: "$GH_HOOMEI_GLOSS_REPLACE$ становится вашим основным стилем горлового пения" 
  feast_tsagaan_sar_events.0240.success_kargyraa_tt: "$GH_KARGYRAA_GLOSS_REPLACE$ становится вашим основным стилем горлового пения" 
@@ -65,6 +65,6 @@
  throat_singing_theme_nature: "красоту неба, гор и рек" 
  throat_singing_theme_spiritual: "Олгон-тэна и его сыновей, [Glossary('Олика','GH_OLIK_GLOSS')] и [Glossary('Кайгана','GH_KAIGAN_GLOSS')]"
 
- throat_singing_style_sygyt: "[Glossary( '$GH_SYGYT_GLOSS_REPLACE$', 'SYGYT_GLOSS' )]"
- throat_singing_style_hoomei: "[Glossary( '$GH_HOOMEI_GLOSS_REPLACE$', 'HOOMEI_GLOSS' )]"
- throat_singing_style_kargyraa: "[Glossary( '$GH_KARGYRAA_GLOSS_REPLACE$', 'KARGYRAA_GLOSS' )]"
+ throat_singing_style_sygyt: "[Glossary( '$GH_SYGYT_GLOSS_REPLACE|q$', 'SYGYT_GLOSS' )]"
+ throat_singing_style_hoomei: "[Glossary( '$GH_HOOMEI_GLOSS_REPLACE|q$', 'HOOMEI_GLOSS' )]"
+ throat_singing_style_kargyraa: "[Glossary( '$GH_KARGYRAA_GLOSS_REPLACE|q$', 'KARGYRAA_GLOSS' )]"

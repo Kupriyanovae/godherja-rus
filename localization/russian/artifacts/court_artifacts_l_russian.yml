@@ -2,6 +2,7 @@
  ##############################
  #Procedural court artifacts #
  ##############################
+
  #Wall Decorations - Large
  artifact_wall_tapestry_name:0 "Гобелен $artifact_name_prefix$"
  artifact_wall_tapestry_description:1 "Большой гобелен из [newly_created_artifact.GetFeatureText( 'generic_material_cloth' )] [SCOPE.Custom('ArtifactQuality')] качества. [newly_created_artifact.GetFeatureText( 'tapestry_scene' )]"
@@ -107,13 +108,25 @@
  artifact_wall_sword_attila_description:0 "Легендарный меч гуннского вождя Аттилы, Бича Божьего. Также известен как Меч Марса."
 
  # Animals (used in ArtifactAnimalType)
+ # GH CHANGE: Removed duplicat loc from Ecology.yml
+ # GH CHANGE: Temporarily added back until it is properly added in
  animal_type_cat:0 "кошка"
  animal_type_dog:0 "собака"
+ #animal_type_fox:0 "fox"
+ #animal_type_hare:0 "hare"
+ #animal_type_wolf:0 "wolf"
  animal_type_stag:0 "благородный олень"
  animal_type_hart:0 "олень"
  animal_type_horse:0 "лошадь"
+ #animal_type_rabbit:0 "rabbit"
+ #animal_type_boar:0 "boar"
+ #animal_type_lion:0 "lion"
+ #animal_type_tiger:0 "tiger"
+ #animal_type_bear:0 "bear"
+ #animal_type_aurochs:0 "aurochs"
  animal_type_unicorn:0 "единорог"
  animal_type_dragon:0 "дракон"
+ #animal_type_lynx:0 "lynx"
 
  animal_type_lions: "львы"
  animal_type_tigers: "тигры"
@@ -242,6 +255,8 @@
  # Horn
  artifact_wall_narwhal_horn_name:0 "Рог единорога"
  artifact_wall_narwhal_horn:1 "Крупный прямой рог, сияющий белизной. По слухам, он был снят с тела убитого единорога. Рог [SCOPE.Custom('ArtifactAdverbQuality')] обработан и прикреплен к [SCOPE.Custom('ArtifactAdverbWealth')] украшенной подставке из [newly_created_artifact.GetFeatureText( 'generic_material_wood' )]."
+ #artifact_wall_rhino_horn_name: "Dragon's Tooth"
+ #artifact_wall_rhino_horn: "A large, curved horn or tooth. If it is a tooth, the large size means it must have come from a fearsome beast, most likely a dragon."
 
  # Sculptures
  artifact_sculpture_name:0 "Статуя $artifact_name_prefix$"
@@ -265,6 +280,7 @@
  artifact_sculpture_animal_description:0 "[SCOPE.Custom('ArtifactArticleWealth')] статуя животного, раскрашенная и [SCOPE.Custom('ArtifactAdverbQuality')] вырезанная. Мифические качества этого существа истолкованы как аллегория на титул [owner.GetTitleAsNameNoTooltip] и [owner.GetHerHis] [owner.Custom('RulerSkill')]. [newly_created_artifact.GetFeatureText( 'sculpture_material' )|U] скульптуры [SCOPE.Custom('ArtifactAdverbQuality')] обработан."
  feature_sculpture_material_stone:0 "камень"
  feature_sculpture_material_wood:0 "[Artifact.GetFeatureText( 'generic_material_wood' )]"
+
 
  artifact_sculpture_ark_of_covenant_name:1 "Ковчег Завета"
  artifact_sculpture_ark_of_covenant_description:0 "Большой каменный сундук, считающийся подлинным Ковчегом Завета, в котором хранятся каменные скрижали, данные Моисею Богом."
@@ -381,6 +397,7 @@
  #artifact_pedestal_mosque_lamp: "Великолепная лампада для мечети — драгоценная масляная лампа из эмалированного стекла с позолотой."
  artifact_tree_automa_name: "Механическое древо"
  artifact_tree_automa: "Искусно сработанное позолоченное дерево с неотличимыми от живых птицами на ветвях. Только грекам ведомы секреты его скрытого гидравлического насоса, который заставляет птиц двигаться и приятно петь."
+
 
  # Books
  artifact_book_title:0 "[newly_created_artifact.GetFeatureText( 'book_title' )]"
@@ -538,7 +555,7 @@
  feature_book_topic_medicine_science:0 "[Artifact.GetOwner.Custom('ArtifactArticleWealth')|U] травник, собирающий воедино все мировые знания о травах и их целебных свойствах."
  feature_book_topic_medicine_science_big:0 "Монументальный травник с подробными рисунками каждого растения и описанием его целебных свойств."
  feature_book_title_medicine_galen:0 "Гален $artifact_name_prefix_artifact_scope$"
- feature_book_topic_medicine_galen:0 "[Artifact.GetOwner.Custom('ArtifactArticleWealth')|U] рукопись, содержащая всю медицинскую мудрость древнего философа и врачевателя Галена."
+ feature_book_topic_medicine_galen:0 "[Artifact.GetOwner.Custom('ArtifactArticleWealth')|U] рукопись, содержащая всю медицинскую мудрость древнего философа и врачевателя Итринакс из Враксполи."
 
  # alchemy
  feature_book_title_alchemy_the_great_book_of_mercy:0 "Большая книга милосердия"
@@ -628,6 +645,10 @@
  feature_book_subject_lunatic:0 "искажения реальности"
  feature_book_subject_family_epic:0 "династические деяния"
  feature_book_subject_family_epic_great:0 "слава предков"
+ feature_book_subject_poetry:0 "poetry"
+ feature_book_subject_cuisine:0 "cuisine"
+ feature_book_subject_myth:0 "mythical tales"
+
 
  feature_book_topic_martial_troop_compositions:0 "состав войск"
  feature_book_topic_martial_military_strategies:0 "военные стратегии"
@@ -695,6 +716,8 @@
  artifact_book_topic_travels_africa:0 "Судан, что за пустыней Сахара"
  artifact_book_topic_travels_india:0 "Индия"
  artifact_book_topic_travels_steppe:0 "степи"
+
+
 
  # Reliquary
  artifact_pedestal_reliquary_christian_name:0 "[SCOPE.Custom('ChristianRelicName')|U]"
