@@ -1,0 +1,38 @@
+﻿l_english:
+
+ ##############################
+ # STORY CYCLE UI
+ ##############################
+
+ story_soa_wih_conversions: "The Wandering Blade"
+ story_soa_wih_conversions_desc: "The Sword of Angels moves through [sarradon|E], turning the lost toward Ritualism's cause, and agitating the populace against their rulers."
+ SOA_CONVERSIONS_LABEL: "Counties Converted: [Story.GetOwner.Var('soa_wih_conversions').GetValue|0]"
+
+ ##############################
+ # EVENTS — CONVERSION (0001)
+ ##############################
+
+ ##############################
+ # DECISIONS
+ ##############################
+
+ soa_evangelize_the_faith: "Evangelize the Truth"
+ soa_evangelize_the_faith_desc: "The weight of ancient purpose presses around me. There is a town here, a village there, whose people still hold to the old ways that good enough for the world they knew, yet insufficient. They can be pushed. One settlement, one conversation, one person at a time."
+ soa_evangelize_the_faith_tooltip:0 "Convert a nearby [county|E] to a Ritualist faith, most likely Tarriaq al-Dhaat."
+ soa_evangelize_the_faith_confirm:0 "Begin Evangelizing"
+
+ soa_agitate_the_populace:0 "Stir the Discontent"
+ soa_agitate_the_populace_desc:0 "A rumor or well-placed word and the people of this county will express the doubts they do not speak aloud. We can give those doubts a sharper edge."
+ soa_agitate_the_populace_tooltip:0 "Apply the agitated populace modifier to a nearby unconverted [county|E]."
+ soa_agitate_the_populace_confirm:0 "Stir the Discontent"
+
+ gh_or_a_neigbouring_county_tt:0 "Or a neighboring county qualifies."
+
+ ##############################
+ # EVENTS — CONVERSION (0001)
+ ##############################
+
+ gh_soa.0001.t:0 "A Soul Turned Toward the Eternal"
+ gh_soa.0001.desc:0 "Our passage through [scope:soa_converted_county.GetName] has left its mark. The old ways that held this land find their grip loosened. Whispers of something new have taken root among the people. One among them has cast off the faith of their rulers entirely.\n\n[scope:soa_new_follower.GetFirstName] presents themselves before us, kneeling in the desert dust with the calm certainty of a convert who has seen something they cannot unsee. They ask to follow where I walk.\n\nThey have faith. Whether they survive is another matter."
+ gh_soa.0001.a:0 "Walk with me, then."
+ gh_soa.0001.b:0 "Tend to your people here. There is work enough."

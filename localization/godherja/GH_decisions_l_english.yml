@@ -5,9 +5,13 @@
  commission_artifact_decision_option_thumb_ring: "Thumb Ring\n#low Owned: [ROOT.Char.GetInventory.GetNumberOfArtifactsForSlotTypeString('miscellaneous')]#!"
  commission_thumb_ring_tooltip: "#T Thumb Ring#! \n$DESC$"
  commission_artifact_decision_option_oltenic_mask_desc: "[AddTextIf(Not(ROOT.Char.GetInventory.GetSlot('helmet').IsEmpty ), Concatenate('Currently Equipped:\n', ROOT.Char.GetInventory.GetEquippedArtifactsInSlotTypeString('helmet', 'NEWLINE', 'NEWLINE', 'NEWLINE')))]"
- commission_artifact_decision_option_oltenic_mask: "Mask\n#low Owned: [ROOT.Char.GetInventory.GetNumberOfArtifactsForSlotTypeString('helmet')]#!"
+ commission_artifact_decision_option_oltenic_mask: "Mask"
  commission_oltenic_mask_tooltip: "#T Mask#! \n$DESC$"
- 
+ commission_artifact_decision_option_glassware_desc: "[AddTextIf(Not(ROOT.Char.GetInventory.GetSlot('helmet').IsEmpty ), Concatenate('Currently Equipped:\n', ROOT.Char.GetInventory.GetEquippedArtifactsInSlotTypeString('helmet', 'NEWLINE', 'NEWLINE', 'NEWLINE')))]"
+ commission_artifact_decision_option_glassware: "Glassware\n#low (Various)#!"
+ commission_glassware_tooltip: "#T Glassware#! \n$DESC$"
+ commission_artifact_decision.glassware_requirements: "Local artisans in [Scope.Char.GetCapitalLocation.GetCounty.GetTitle.GetNameNoTier|V] are not proficient in glassmithing\n([Scope.Char.GetCapitalLocation.GetCounty.GetCulture.GetName|V] [culture|E] does #BOL not#! have the [GetCultureTradition('tradition_adept_glassworkers').GetName|V] [culture_tradition|E])"
+
  at_least_7_rivarisians_counties_of_your_faith_tt: "You must hold at least 7 Rivarisians [counties|E] of your [faith|E]"
  the_new_capital_must_be_controlled_and_developed_tt: "Your [capital|E] [county|E] is in [GetGeographicalRegion('world_ga_riverlands_formable').GetName] and must have at least 22 [development|E] and 100 [control|E]"
 
@@ -22,3 +26,115 @@
 
  adventurer_gh_human_tt:0 "Is human"
  claim_on_chevalie_tt:0 "Has a claim to the [GetTitleByKey('e_chevalie').GetName]"
+ 
+ #Vanilla end_the_struggle_oath_decision Decision
+ end_the_struggle_oath_decision_title_ritewars: "I have sworn to end the [GetStruggle('ritewars_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_ritewars_ended: "I have sworn to end the #V Rite Wars#!. $end_the_struggle_oath_decision_title_extra$"
+ 
+ end_the_struggle_oath_decision_title_rite_wars_south: "I have sworn to end the [GetStruggle('rite_wars_south_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_rite_wars_south_ended: "I have sworn to end the #V Southern Rite Wars#!. $end_the_struggle_oath_decision_title_extra$"
+ 
+ end_the_struggle_oath_decision_title_gh_war_in_heaven: "I have sworn to end the [GetStruggle('gh_war_in_heaven_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_gh_war_in_heaven_ended: "I have sworn to end the #V Central War in Heaven#!. $end_the_struggle_oath_decision_title_extra$"
+ 
+ end_the_struggle_oath_decision_title_gh_eastern_war_in_heaven: "I have sworn to end the [GetStruggle('gh_eastern_war_in_heaven_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_gh_eastern_war_in_heaven_ended: "I have sworn to end the #V Eastern War in Heaven#!. $end_the_struggle_oath_decision_title_extra$"
+
+ ##############################
+ # FORMATION DECISIONS
+ ##############################
+
+ form_isles_aautokrata_decision_confirm:0 "Proclaim the Akrapyrgos Aautokrata"
+ form_isles_aautokrata_title_effect_tt:0 "Creates the Akrapyrgos Aautokrata, incorporating all fully controlled kingdoms as de jure subjects."
+
+
+
+ form_kasiryat_kingdom_decision_confirm:0 "Proclaim a new Kingdom on the Kasiryat"
+
+ end_the_struggle_oath_decision_title_gh_far_eastern_war_in_heaven: "I have sworn to end the [GetStruggle('gh_far_eastern_war_in_heaven_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_gh_far_eastern_war_in_heaven_ended: "I have sworn to end the #V Far Eastern War in Heaven#!. $end_the_struggle_oath_decision_title_extra$"
+ 
+ end_the_struggle_oath_decision_title_gh_western_war_in_heaven: "I have sworn to end the [GetStruggle('gh_western_war_in_heaven_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_gh_western_war_in_heaven_ended: "I have sworn to end the #V Western War in Heaven#!. $end_the_struggle_oath_decision_title_extra$"
+ 
+ end_the_struggle_oath_decision_title_gh_far_western_war_in_heaven: "I have sworn to end the [GetStruggle('gh_far_western_war_in_heaven_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_gh_far_western_war_in_heaven_ended: "I have sworn to end the #V Far Western War in Heaven#!. $end_the_struggle_oath_decision_title_extra$"
+
+ end_the_struggle_oath_decision_desc_ritewars: "You have finished the [GetStruggle('ritewars_struggle').GetName] via any ending [decision|E]."
+ end_the_struggle_oath_decision_desc_ritewars_ended: "You have finished the #V Rite Wars#! via any ending [decision|E]."
+
+ end_the_struggle_oath_decision_desc_rite_wars_south: "You have finished the [GetStruggle('rite_wars_south_struggle').GetName] via any ending [decision|E]."
+ end_the_struggle_oath_decision_desc_rite_wars_south_ended: "You have finished the #V Southern Rite Wars#! via any ending [decision|E]."
+
+ end_the_struggle_oath_decision_desc_gh_war_in_heaven: "You have finished the [GetStruggle('gh_war_in_heaven_struggle').GetName] via any ending [decision|E]."
+ end_the_struggle_oath_decision_desc_gh_war_in_heaven_ended: "You have finished the #V Central War in Heaven#! via any ending [decision|E]."
+
+ end_the_struggle_oath_decision_desc_gh_eastern_war_in_heaven: "You have finished the [GetStruggle('gh_eastern_war_in_heaven_struggle').GetName] via any ending [decision|E]."
+ end_the_struggle_oath_decision_desc_gh_eastern_war_in_heaven_ended: "You have finished the #V Eastern War in Heaven#! via any ending [decision|E]."
+
+ end_the_struggle_oath_decision_desc_gh_far_eastern_war_in_heaven: "You have finished the [GetStruggle('gh_far_eastern_war_in_heaven_struggle').GetName] via any ending [decision|E]."
+ end_the_struggle_oath_decision_desc_gh_far_eastern_war_in_heaven_ended: "You have finished the #V Far Eastern War in Heaven#! via any ending [decision|E]."
+
+ end_the_struggle_oath_decision_desc_gh_western_war_in_heaven: "You have finished the [GetStruggle('gh_western_war_in_heaven_struggle').GetName] via any ending [decision|E]."
+ end_the_struggle_oath_decision_desc_gh_western_war_in_heaven_ended: "You have finished the #V Western War in Heaven#! via any ending [decision|E]."
+
+ end_the_struggle_oath_decision_desc_gh_far_western_war_in_heaven: "You have finished the [GetStruggle('gh_far_western_war_in_heaven_struggle').GetName] via any ending [decision|E]."
+ end_the_struggle_oath_decision_desc_gh_far_western_war_in_heaven_ended: "You have finished the #V Far Western War in Heaven#! via any ending [decision|E]."
+
+ create_glass_artifact_decision: "Create a Glass Artifact"
+ create_glass_artifact_decision_tooltip: "Start a [personal_inspiration|E] to create a #V Glassware#! [artifact|E]"
+ create_glass_artifact_decision_desc: "We the [Scope.Char.GetCulture.GetName] have a long, proud history of glassmaking and are famous for it. Perhaps the time has come for me to contribute to this legacy."
+ create_glass_artifact_decision_effect: "You will start a #V Glassware#! [personal_inspiration|E]"
+ create_glass_artifact_decision_inspiration_tt: "\n#weak $glassware_inspiration_cost_tt$#!"
+ create_glass_artifact_decision_confirm: "Light the Furnace"
+
+ already_has_a_personal_inspiration: "You are already working on a [personal_inspiration|E]"
+
+
+ ####################################
+ ## Kingdom of the Kasiryat (Eastern Settlers)
+ ####################################
+ form_kasiryat_kingdom_decision: "Found a New Kingdom on the Kasiryat"
+ form_kasiryat_kingdom_decision_desc:0 "#flavor They came from distant lands; the Theugombrian sword-brothers who found the road, the Balauri serpent-warriors who carry the old ways, the Izikalek folk who read the sky for omens. Each arrived along the [Glossary('Kasiryat River','kasiryat_encyclopedia_desc')] and found a world of prosperity.#!\n\nThe city of Aterispol and the lands surrounding it are our home now, paid for in blood and sweat. Let it be said in law and title what is already true in deed: that the Kasiryat belongs to those who made it their own."
+ form_kasiryat_kingdom_decision_tooltip:0 "Claim Aterispol and the Kasiryat, and formally establish a new realm."
+
+ # Effect tooltips
+ form_kasiryat_kingdom_title_effect_tt:0 "Establish the Kingdom of the Kasiryat; Aterispol is fortified to serve as the capital of the new settler realm.\n\n#flavor the kingdom's name will be reflected by your cultural origins.#!"
+ kasiryat_kingdom_formed_fervor_desc:0 "A kingdom proclaimed in the Kasiryat; the settlers' faith is strengthened by the new homeland."
+
+ # Modifier
+ kasiryat_settler_capital_modifier: "Settler Stronghold"
+ kasiryat_settler_capital_modifier_desc: "Aterispol has been fortified by the settler peoples, its building potential expanded in recognition of its new role as the frontier capital of the Kasiryat."
+
+ # Titles
+ k_kasiryat_adj: "Kasiryat"
+
+ ####################################
+ ## Insular Aautokrata (Tower Isles)
+ ####################################
+ form_isles_aautokrata_decision: "Form the Akrapyrgos Aautokrata"
+ form_isles_aautokrata_decision_desc:0 "The sea does not belong to those who gaze upon it from shore. It belongs to those who sail it. The [Glossary('Akrapyrgos','tower_isles_encyclopedia_desc')] form a world unto themselves; a realm of wind, salt, and ambition. Any who hold dominion here do so with the power of an Aautokratir, as [aversaria|E] did. A dominion above mortal kingdoms, blessed by divine humanity."
+ form_isles_aautokrata_decision_tooltip:0 "Forge the Akrapyrgos Aautokrata from the tower island kingdoms."
+
+ # Requirement tooltips
+ form_isles_aautokrata_kingdoms_tt:0 "Must hold at least three kingdom-tier titles"
+ form_isles_aautokrata_no_continental_tt:0 "Must hold no provinces outside the [GetGeographicalRegion('tower_isles_biozone').GetName], [GetGeographicalRegion('central_isles_biozone').GetName], [GetGeographicalRegion('guillate_rocks_biozone').GetName], or [GetGeographicalRegion('the_isles_biozone').GetName] regions"
+
+ # Modifier
+ isles_aautokrata_founder_modifier: "Master of the Akrapyrgos"
+ isles_aautokrata_founder_modifier_desc: "This character has earned their place in history by securing their dominion over the [shatteredisles|E]."
+
+ # Titles
+ e_isles_aautokrata_adj: "Akrapyrgos"
+
+ # Legend
+ legend_chronicle_new_title_e_isles_aautokrata: "Founding of the Akrapyrgos Aautokrata"
+
+ ####################################
+ ## Formation notification events
+ ####################################
+
+ gh_formation_decisions.0002.t: "The Akrapyrgos Aautokrata Proclaimed"
+ gh_formation_decisions.0002.opening: "Word has reached us from the islands..."
+ gh_formation_decisions.0002.desc: "[scope:aautokrator.GetTitledFirstName], [scope:aautokrator.GetTitledName], has proclaimed the [title:e_insular_aautokrata.GetFullName], asserting dominion over the Tower Isles and the surrounding sea. The Sea of Empires is now an Empire of the Sea."
+ gh_formation_decisions.0002.a: "The islands rise above the mainland."

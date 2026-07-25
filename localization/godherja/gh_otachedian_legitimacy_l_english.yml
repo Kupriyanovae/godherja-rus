@@ -1,0 +1,68 @@
+﻿l_english:
+ # Otachedian legitimacy economy — the Grand Weighing ritual activity
+ gh_activity_grand_weighing: "Grand Weighing Ceremony"
+ gh_activity_grand_weighing_desc: "In the manner set down by Otached's law, the sovereign is weighed before the assembled realm against coin, grain, and precious things — and the balance is given out as alms. The ceremony proclaims that the ruler's authority is measured, lawful, and owed to the realm it governs, restoring [legitimacy|E] spent on acts of state."
+ activity_gh_activity_grand_weighing_name_hosted: "[activity.GetHost.GetTitledFirstNamePossessiveNoTooltip] Grand Weighing"
+ gh_weighing_phase_ceremony: "The Weighing"
+ gh_weighing_phase_ceremony_desc: "The sovereign is weighed before the realm, and the balance distributed as alms."
+
+ # Scale options
+ gh_weighing_modest: "Modest Weighing"
+ gh_weighing_modest_desc: "A restrained ceremony: the forms of the law observed, the alms real but measured. #weak Reduced Legitimacy restoration.#!"
+ gh_weighing_standard: "Full Weighing"
+ gh_weighing_standard_desc: "The ceremony as Otached's law intends it, the sovereign's full weight given out in alms. #weak Full Legitimacy restoration.#!"
+ gh_weighing_lavish: "Lavish Weighing"
+ gh_weighing_lavish_desc: "A weighing of legend: gold, grain, and silks beyond the sovereign's weight, scattered to the realm entire. #weak Full Legitimacy restoration, and your vassals remember the alms.#!"
+
+ # Events
+ otachedian_legitimacy.0001.t: "An Unsanctioned War"
+ otachedian_legitimacy.0001.desc: "The banners are called for a war that no claim sanctions and no law of Otached blesses. The realm will follow — the realm always follows — but the ledger of my authority has been debited, and every magistrate and Ayraal-holder knows it.\n\nThe law does not forbid conquest. It merely writes down its price."
+ otachedian_legitimacy.0001.a: "The price is paid."
+ otachedian_legitimacy.0002.t: "The Even Hand of the Law"
+ otachedian_legitimacy.0002.desc: "Under Otached's law the temple and the shrine stand in the same street, taxed by the same assessor, judged in the same court. Word reaches me that my subjects of other faiths praise the evenness of my hand — and in their contentment, the law itself is honored."
+ otachedian_legitimacy.0002.a: "Equality beneath the throne."
+
+ # Opinion
+ otachedian_weighing_alms_opinion: "Weighed in Alms"
+ otachedian_reforged_ayraal_opinion: "Rank Reforged"
+ otachedian_demoted_ayraal_opinion: "Rank Stripped"
+
+ # Ayraal tier system (Phase 2)
+ otachedian_reforge_ayraal_interaction: "Reforge Ayraal"
+ otachedian_reforge_ayraal_interaction_desc: "Summon [recipient.GetShortUIName] to the mint and reforge [recipient.GetHerHis] Ayraal at the next grade of the ladder — Common, Masterwork, Famed, Illustrious — raising [recipient.GetHerHis] authority under Otached's law. Consumes a minting blank from the appropriate mint."
+ otachedian_demote_ayraal_interaction: "Strip Ayraal Rank"
+ otachedian_demote_ayraal_interaction_desc: "Reforge [recipient.GetShortUIName]'s Ayraal one grade down the ladder — or, if it is already Common, melt it entirely. A sovereign act: the realm watches, and [legitimacy|E] is spent."
+ otachedian_reforge_needs_mint_and_blank: "You hold a #bold minting blank#! of the next grade up the ladder\n#weak Blanks accrue each year from the unoccupied mints you control: the duchy Ayraal Office strikes Masterwork blanks, Ayar's Mint Famed, Otached's Mint Illustrious. A higher mint also strikes every lower grade.#!"
+ otachedian_demote_needs_legitimacy: "You have enough [legitimacy|E] for this sovereign act"
+
+ # Tier modifier names
+ otachedian_ayraal_common_modifier: "Common Ayraal"
+ otachedian_ayraal_masterwork_modifier: "Masterwork Ayraal"
+ otachedian_ayraal_famed_modifier: "Famed Ayraal"
+ otachedian_ayraal_illustrious_modifier: "Illustrious Ayraal"
+
+ # Defunct Ayraal (revoke a vassal's rank outright)
+ otachedian_already_holds_ayraal_tt: "Does #bold not#! already hold an Ayraal #weak (reforge the existing one to raise its grade instead)#!"
+ otachedian_defunct_ayraal_interaction: "Defunct Ayraal"
+ otachedian_defunct_ayraal_interaction_desc: "Strip [recipient.GetShortUIName]'s Ayraal entirely, dissolving [recipient.GetHerHis] rank under Otached's law. The tablet is melted down. A sovereign act — [legitimacy|E] is spent, and neither [recipient.GetSheHe] nor the other officers of the realm will forget it."
+ otachedian_defunct_needs_legitimacy: "You have enough [legitimacy|E] for this sovereign act #weak (dissolving an officer's rank)#!"
+ otachedian_defunct_ayraal_opinion: "Rank Dissolved"
+
+ # Rotation queue (celestial-style voluntary rotation)
+ otachedian_enter_rotation_queue_decision: "Surrender Governorship"
+ otachedian_enter_rotation_queue_decision_desc: "Under Otached's law no posting is a possession. I may return my governorship — county, duchy, or kingdom — whole to the sovereign, and take my place among the officials of the court awaiting assignment. When the next governorship opens, those who wait in the queue stand first in line."
+ otachedian_enter_rotation_queue_decision_tooltip: "Return #bold all#! your [titles|E] to your [top_liege|E] and join the realm's #bold rotation queue#!: you remain a landless official of the court, strongly preferred by [appointment_succession|E] when the next governorship opens."
+ otachedian_enter_rotation_queue_decision_confirm: "I return what the law lent me."
+ otachedian_enter_rotation_queue_effect_tt: "All your titles are returned to your liege; you join their court and enter the #bold rotation queue#!"
+ otachedian_rotation_queue_not_already_queued: "You are #bold not#! already in the rotation queue"
+ otachedian_rotation_queue_desc: "Awaiting assignment in the rotation queue"
+
+ # Religious Law (tolerance posture)
+ otachedian_religious_law: "Religious Law"
+ otachedian_universal_peace_law: "Universal Peace"
+ otachedian_universal_peace_law_effects: "The way of Otached: every faith and culture stands equal beneath the throne, taxed by the same assessor and judged in the same court."
+ otachedian_orthodoxy_law: "Orthodoxy"
+ otachedian_orthodoxy_law_effects: "The sovereign's own faith stands first: the clergy are favored, and the rest of the realm reminded of its place."
+ otachedian_posture_change_needs_legitimacy: "You have enough [legitimacy|E] for this sovereign act #weak (changing the realm's religious posture)#!"
+
+ grant_ayraal_benefits_tt: "As a commission of the state, the bearer draws a larger #bold salary#! from the [treasury|E], may muster the crown's regiments (#P +1#! [men_at_arms|E] title cap), and becomes #bold Obedient#! to you."

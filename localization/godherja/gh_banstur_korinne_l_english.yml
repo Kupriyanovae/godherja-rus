@@ -1,0 +1,174 @@
+﻿l_english:
+
+ ##############################
+ # STORY CYCLE UI
+ ##############################
+
+ story_banstur_korinne:0 "The Wandering Bard"
+ story_banstur_korinne_desc:0 "Korinne travels across the lands, spreading the Banstur Rite and working to found more Bardic Colleges to keep the old stories alive."
+ BANSTUR_KORINNE_STORY_STRING:0 "Conversions to the Banstur Rite: [Story.GetOwner.Var('banstur_conversions').GetValue|0]"
+
+ ##############################
+ # EVENTS — INTRODUCTION
+ ##############################
+
+ banstur_korinne.0001.t:0 "The Road Ahead"
+ banstur_korinne.0001.desc:0 "My steps have been guided from the [Glossary( 'Old North', 'OLD_NORTH_GLOSS' )] towards discovery. To uncover and cherish all that this life may afford us. The stories of our peoples were very nearly lost to the [fog|E], yet so many seek to leave them behind entirely. Yet we must carry them where they are needed, until the traditions are strong enough to build anew.\n\nSome will listen. Others will not."
+ banstur_korinne.0001.a:0 "To understand is to live."
+
+ ##############################
+ # EVENTS — CONVERSION APPROACH (0100)
+ ##############################
+
+ banstur_korinne.0100.t:0 "An Audience with the Local Ruler"
+ banstur_korinne.0100.desc_baron:0 "[Root.Var('banstur_last_target_ruler').GetFirstName], has agreed to hear me speak. Whether they listen is another matter."
+ banstur_korinne.0100.desc_count:0 "[Root.Var('banstur_last_target_ruler').GetFirstName], has agreed to receive me in their hall. This could be a great opportunity."
+ banstur_korinne.0100.desc_default:0 "[Root.Var('banstur_last_target_ruler').GetFirstName] is willing to hear me out. My words must be chosen carefully."
+ banstur_korinne.0100.a:0 "Argue the Banstur Rite with reason."
+ banstur_korinne.0100.a.tt:0 "Higher [learning|E] improves the odds of success."
+ banstur_korinne.0100.b:0 "Share a bardic tale or song."
+ banstur_korinne.0100.b.tt:0 "More effective with [diplomacy|E] or gregarious rulers."
+ banstur_korinne.0100.c:0 "The time is not right. Move on."
+
+ banstur_korinne.0110.t:0 "A Moment of Persuasion"
+ banstur_korinne.0110.desc_success:0 "The argument landed. [Root.Var('banstur_last_target_ruler').GetFirstName] sat with it long enough that something shifted. The old songs have found another voice."
+ banstur_korinne.0110.desc_failure:0 "[Root.Var('banstur_last_target_ruler').GetFirstName] listened with patience and then shook their head. The words were not enough this time."
+ banstur_korinne.0110.a:0 "We shall see what comes of it."
+
+ banstur_korinne.0111.t:0 "A New Voice for the Rite"
+ banstur_korinne.0111.desc:0 "A conversion. Small, perhaps, in the grand scope of things, but the Banstur grows not through armies but those who choose it freely."
+ banstur_korinne.0111.a:0 "May their faith hold true."
+
+ banstur_korinne.0112.t:0 "Unconvinced"
+ banstur_korinne.0112.desc:0 "[Root.Var('banstur_last_target_ruler').GetFirstName] was polite enough, but ultimately unmoved. Their convictions held. I should pack my things and considers what might have been done differently."
+ banstur_korinne.0112.a:0 "There will be others."
+ banstur_korinne.0112.b:0 "I can learn from this."
+
+ banstur_korinne.0120.t:0 "The Bard's Craft"
+ banstur_korinne.0120.desc:0 "I perform an old composition, from before [sjalvolki_migrations|E], carefully reconstructed for our new world. The ruler listens with more attention than I expected."
+ banstur_korinne.0120.a:0 "Let the music speak."
+
+ ##############################
+ # EVENTS — FLAVOR (0200)
+ ##############################
+
+ banstur_korinne.0200.t:0 "Songs Among the People"
+ banstur_korinne.0200.desc:0 "This county has little knowledge of the Banstur Rite, but its people are curious. I could spend time here, not trying to convert lords, but planting seeds among the common folk."
+ banstur_korinne.0200.a:0 "Perform in the marketplace."
+ banstur_korinne.0200.a.tt:0 "More effective in developed counties. Spreads the Banstur Rite's message subtly."
+ banstur_korinne.0200.b:0 "Teach the children old songs."
+ banstur_korinne.0200.c:0 "Record their local traditions for the new College's archive."
+
+ banstur_korinne.0201.t:0 "On the Road"
+ banstur_korinne.0201.desc_progress:0 "The road stretches long behind me, and longer still ahead. But I can see the shape of what the Banstur Rite could become. Not merely a survivor of the old, but something new and living."
+ banstur_korinne.0201.desc_early:0 "It has not been easy. But the first steps are taken. The tradition lives where it did not before."
+ banstur_korinne.0201.desc_start:0 "I walk a long road. The stories I carry are fragile. One voice, one set of words. But stories survive better than voices."
+ banstur_korinne.0201.a:0 "Keep moving."
+ banstur_korinne.0201.b:0 "Rest, and let doubt pass."
+
+ banstur_korinne.0202.t:0 "Hostility on the Road"
+ banstur_korinne.0202.desc:0 "Word of my activities has spread, and not everyone is pleased. I am confronted by someone who sees the Banstur Rite as a heresy worth stamping out, and me as its living embodiment."
+ banstur_korinne.0202.a:0 "Stand firm and argue the faith publicly."
+ banstur_korinne.0202.b:0 "Retreat, and let the tradition outlast the argument."
+
+ ##############################
+ # TASK CONTRACTS
+ ##############################
+
+ gh_banstur_korinne_archive_0001:0 "Chronicle of the Migrations"
+ gh_banstur_korinne_archive_0001_desc:0 "A local lord wants their pre-migration histories recorded properly; songs, accounts, genealogies from their travel and settling. The pay is real. The stories, once written, will outlast the patron."
+
+ gh_banstur_korinne_court_0001:0 "A Bard's Evening"
+ gh_banstur_korinne_court_0001_desc:0 "A lord has heard of my performances and wants something for their court; a bardic evening weaving old tradition with new composition. The audience will be educated and critical."
+
+ ##############################
+ # EVENTS — ARCHIVE CONTRACT (1000)
+ ##############################
+
+ banstur_korinne.1000.t:0 "A Commission for the Past"
+ banstur_korinne.1000.desc:0 "[Root.Var('banstur_archive_patron_char').GetFirstName] has a proposition. Their family, like so many in these lands, carries threads of [sjalvolki_migrations|E]; names that echo, traditions half-remembered, and bloodlines that crossed forgotten distances. They want it recorded as best it can be."
+ banstur_korinne.1000.a:0 "Understood."
+
+ ##############################
+ # EVENTS — COURT PERFORMANCE (1010-1013)
+ ##############################
+
+ banstur_korinne.1010.t:0 "An Invitation to Perform"
+ banstur_korinne.1010.desc:0 "[Root.Var('banstur_court_patron_char').GetFirstName] has heard rumours of my performances and wants something for their court — a bardic evening, perhaps, weaving old Banstur tradition into new composition. The audience will be educated and critical."
+ banstur_korinne.1010.a:0 "Prepare the performance."
+
+ banstur_korinne.1011.t:0 "A Good Evening"
+ banstur_korinne.1011.desc:0 "The performance went well. The audience listened. Not every piece landed as intended, but the room was with me, and [Root.Var('banstur_court_patron_char').GetFirstName] seemed satisfied. A professional evening's work, and the pay reflects it."
+ banstur_korinne.1011.a:0 "Bow, collect the fee, and move on."
+
+ banstur_korinne.1012.t:0 "The Hall Fell Silent"
+ banstur_korinne.1012.desc:0 "The performance was everything it needed to be. [Root.Var('banstur_court_patron_char').GetFirstName] said nothing for a long moment after the last note faded. That silence was enough."
+ banstur_korinne.1012.a:0 "Bow, collect the fee, and move on."
+
+ banstur_korinne.1013.t:0 "A Difficult Evening"
+ banstur_korinne.1013.desc:0 "The performance did not go as hoped. The audience was polite, but disengaged; the wrong selection, or the wrong room. [Root.Var('banstur_court_patron_char').GetFirstName] paid anyway, but the amount reflected the evening."
+ banstur_korinne.1013.a:0 "Accept the token payment and learn from it."
+
+ ##############################
+ # EVENTS — CONCLUSION (0400)
+ ##############################
+
+ banstur_korinne.0400.t:0 "The Colleges Are Not Dead"
+ banstur_korinne.0400.desc:0 "Across the lands, a handful of voices now sing the old songs. I did not rebuild the old Greyport College, that work belongs to others, perhaps in another generation, but the Banstur Rite has roots now, carefully planted."
+ banstur_korinne.0400.a:0 "The work goes on."
+ fervor_gain_banstur_founder_nickname:0 "Korinne named the Founder of the Banstur Rite"
+
+ ##############################
+ # EVENTS — KORINNE'S GRAVE (0500)
+ ##############################
+
+ banstur_korinne.0500.t:0 "Korinne's Grave"
+ banstur_korinne.0500.desc_banstur:0 "A simple marker of stone stands at the roadside here. The inscription reads: `Korinne, Who Carried the Song.` A leader of the Banstur Rite and renowned writer, she would be remembered in the tradition she spent her life spreading."
+ banstur_korinne.0500.desc_sjalvolki:0 "An unmarked grave, if it were not for the stone. Someone carved a short phrase into it: `She Carried the Old Songs.` Beneath, a few staves of musical notation, the marks of the Banstur Rite tradition."
+ banstur_korinne.0500.desc_default:0 "A roadside grave marks the resting place of Korinne, a wandering bard who devoted her life to spreading the Banstur Rite. The stone is modest. The sentiment is not."
+ banstur_korinne.0500.a:0 "Pay respects."
+ banstur_korinne.0500.b:0 "Offer a song in the Bardic tradition."
+ banstur_korinne.0500.c:0 "Observe, and carry on."
+
+ ##############################
+ # GREAT PROJECT
+ ##############################
+
+ great_project_type_banstur_college:0 "Found a Bardic College"
+ great_project_type_banstur_college_01:0 "Found a Bardic College"
+ great_project_type_tooltip_banstur_college:0 "Establish a new Bardic College, a centre of bardic learning and Banstur Rite traditions. Open to all who seek knowledge, and especially welcoming to wandering adventurers."
+
+ great_project_name_banstur_college:0 "Bardic College"
+ great_project_name_possessive_banstur_college:0 "Bardic College's"
+
+ building_banstur_college_building:0 "Bardic College"
+ building_banstur_college_building_desc:0 "A centre of bardic learning and the Banstur Rite's traditions. It welcomes scholars, wanderers, and those seeking arcane knowledge."
+ banstur_college_building_effect_desc:0 "Provides enhanced bonuses to arcana study and extended hospitality to wandering adventurers."
+
+ ##############################
+ # MODIFIERS
+ ##############################
+
+ banstur_wanderer_modifier:0 "Wandering Bard"
+ banstur_wanderer_modifier_desc:0 "Travelling in service of the Banstur Rite, spreading the bardic tradition."
+
+ banstur_wanderer_patience_modifier:0 "Patient Faith"
+ banstur_wanderer_patience_modifier_desc:0 "Not every heart is ready. The work continues."
+
+ banstur_cultural_record_modifier:0 "Cultural Archivist"
+ banstur_cultural_record_modifier_desc:0 "Recording local traditions for the Banstur College's future archive."
+
+ banstur_seeds_of_faith_modifier:0 "Seeds of the Banstur Rite"
+ banstur_seeds_of_faith_modifier_desc:0 "The bardic tradition has taken root here. The people hum the old songs."
+
+ banstur_patron_contract_modifier:0 "Under Patron's Commission"
+ banstur_patron_contract_modifier_desc:0 "Working under a formal commission from a local lord. The terms are clear; the faith does the rest."
+
+ korinne_grave_visited_modifier:0 "Visited Korinne's Grave"
+ korinne_grave_visited_modifier_desc:0 "Standing at the grave of the Wandering Bard — the woman who kept the Banstur tradition alive through decades of travel — is a sobering and inspiring experience."
+
+ ##############################
+ # NICKNAME
+ ##############################
+
+ nick_the_banstur_founder:0 "the Bardic Founder"
