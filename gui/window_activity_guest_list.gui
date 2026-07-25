@@ -124,7 +124,7 @@ window = {
 					name = "too_many_guests_warning"
 
 					text = "ACTIVITY_GUEST_LIST_INVITING_OVER_MAX"
-					visible = "[GreaterThan_int32( CharacterSelectionList.NumberOfShownCharacters, ActivityType.GetMaxNumGuests )]"
+					visible = "[GreaterThan_int32( CharacterSelectionList.NumberOfShownCharacters, ActivityGuestListWindow.GetMaxNumGuests )]"
 
 					align = center|nobaseline
 					autoresize = yes

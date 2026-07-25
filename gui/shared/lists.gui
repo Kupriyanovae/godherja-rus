@@ -340,7 +340,7 @@ types Lists
 
 								# Traits
 								fixedgridbox = {
-									name = "traits_grid"
+									name = "traits_grid_non_ht"
 									datamodel = "[CharacterListItem.GetTraits]"
 									visible = "[Character.IsDeadAndValid]"
 									flipdirection = yes
@@ -381,7 +381,7 @@ types Lists
 								}
 
 								fixedgridbox = {
-									name = "traits_grid"
+									name = "traits_grid_ht"
 									datamodel = "[Character.MakeScope.GetList('HT_shown_traits_all')]"
 									visible = "[Character.IsAlive]"
 									flipdirection = yes
@@ -523,34 +523,65 @@ types Lists
 			}
 		}
 	}
+	
+	type fixedgrid_traits_list = fixedgridbox {
+		datamodel = "[CharacterListItem.GetTraits]"
+		flipdirection = yes
+		size = { 150 35 }
+		addcolumn = 30
+		addrow = 35
+		block "horizontal_slots"
+		{
+			maxhorizontalslots = 8
+		}
+		maxverticalslots = 1
+		
+		item = {
+			widget = {
+				visible = "[Trait.IsValid]"
+				size = { 35 35 }
+				
+				icon_trait = {
+					parentanchor = center
+					
+					blockoverride "icon_size"
+					{
+						size = { 30 30 }
+					}
+					
+					blockoverride "tooltip_placement"
+					{
+						using = tooltip_se
+					}
+					
+					blockoverride "glow_radius"
+					{
+						glow_radius = 3
+					}
+				}
+			}
+		}
+	}
 
 
 	type widget_character_list_item_finder = widget {
 		datacontext = "[CharacterListItem.GetCharacter]"
 		size = { 200 94 }
 
-		state = {
-			name = _show
-			trigger_on_create = yes
-			on_finish = "[GetScriptedGui('HT_set_character_traits').Execute(GuiScope.SetRoot(Character.MakeScope).End)]"
-		}
-
-		#background = {
-		#	visible = "[CharacterListItem.HasEvenOrderIndex]"
-		#	using = Background_Area_Dark
-		#	margin_top = -4
-		#	margin_bottom = 200
-		#	alpha = 0.5
-		#}
-
 		block "divider" {}
 
 		block "widget" {}
 
 		hbox = {
-			margin_right = 15
 			vbox = {
+				layoutpolicy_vertical = expanding
+				margin_top = 4
+
 				portrait_head_small = {}
+
+				block "portrait_head_margin"
+				{
+				}
 
 				expand = {}
 			}
@@ -678,7 +709,7 @@ types Lists
 											layoutpolicy_horizontal = expanding
 
 											fixedgridbox = {
-												name = "traits_grid"
+												name = "traits_grid_non_ht"
 												datamodel = "[CharacterListItem.GetTraits]"
 												visible = "[Character.IsDeadAndValid]"
 												datamodel_reuse_widgets = yes
@@ -719,7 +750,7 @@ types Lists
 
 											#GH ADDITION: Hidden Traits version for Alive characters (dead can't hold)
 											fixedgridbox = {
-												name = "traits_grid"
+												name = "traits_grid_ht"
 												datamodel = "[Character.MakeScope.GetList('HT_shown_traits_all')]"
 												visible = "[Character.IsAlive]"
 												datamodel_reuse_widgets = yes
@@ -845,7 +876,7 @@ types Lists
 						}
 						
 						hbox = {
-							visible = "[Or(DataModelHasItems(Character.MakeScope.GetList('known_magic_school_list')), DataModelHasItems(Character.MakeScope.GetList('known_spell_list')))]"
+							visible = "[Or(DataModelHasItems(Character.MakeScope.GetList('known_magic_school_list')), DataModelHasItems(Character.MakeScope.GetList('known_spell_gui_list')))]"
 							layoutpolicy_horizontal = expanding
 							
 							expand = {}
@@ -1212,6 +1243,8 @@ types Lists
 			margin_top = 5
 			spacing = 5
 		}
+		
+		block "pre_filters" {}
 
 		button_standard = {
 			name = "filters"
@@ -1237,6 +1270,8 @@ types Lists
 			size = { 3 20 }
 			block "filters_visible" {}
 		}
+
+		block "sort_prefix" {}
 
 		text_single = {
 			text = "SORT_BY"
@@ -1271,6 +1306,8 @@ types Lists
 				}
 			}
 		}
+		
+		block "post_sort" {}
 
 		expand = {}
 
@@ -1592,7 +1629,7 @@ types Lists
 						}
 
 						debug_square = {
-							visible = "[InDebugMode]"
+							visible = "[AIWatchWindowsEnabled]"
 							size = { 20 20 }
 							raw_tooltip = "#D [Character.GetDebugCourtierLeaveReasons]#!"
 						}
@@ -1697,12 +1734,12 @@ types Lists
 								layoutpolicy_horizontal = expanding
 
 								fixedgridbox = {
-									name = "traits_grid_four"
+									name = "traits_grid_four_non_ht"
 									datamodel = "[CharacterListItem.GetTraits]"
-									visible = "[And(Character.IsDeadAndValid, Not( IsDataModelEmpty( CharacterListItem.GetTitleItems ) ))]"
 									flipdirection = yes
 									addcolumn = 30
 									addrow = 28
+									visible = "[And(Character.IsDeadAndValid, Not( IsDataModelEmpty( CharacterListItem.GetTitleItems ) ))]"
 
 									block "gridbox_items"   ### for characterview
 									{
@@ -1733,7 +1770,7 @@ types Lists
 								}
 								#GH ADDITION: Trait hiding
 								fixedgridbox = {
-									name = "traits_grid_four"
+									name = "traits_grid_four_ht"
 									datamodel = "[Character.MakeScope.GetList('HT_shown_traits_all')]"
 									visible = "[And(Character.IsAlive, Not( IsDataModelEmpty( CharacterListItem.GetTitleItems ) ))]"
 									flipdirection = yes
@@ -1769,7 +1806,7 @@ types Lists
 									}
 								}
 								fixedgridbox = {
-									name = "traits_grid_five"
+									name = "traits_grid_five_non_ht"
 									datamodel = "[CharacterListItem.GetTraits]"
 									visible = "[And(Character.IsDeadAndValid, IsDataModelEmpty( CharacterListItem.GetTitleItems ))]"
 									flipdirection = yes
@@ -1805,7 +1842,7 @@ types Lists
 								}
 								#GH ADDITION: Trait Hiding
 								fixedgridbox = {
-									name = "traits_grid_five"
+									name = "traits_grid_five_ht"
 									datamodel = "[Character.MakeScope.GetList('HT_shown_traits_all')]"
 									visible = "[And(Character.IsAlive, IsDataModelEmpty( CharacterListItem.GetTitleItems ))]"
 									flipdirection = yes
@@ -1919,7 +1956,7 @@ types Lists
 
 				text_single = {
 					layoutpolicy_horizontal = expanding
-					text = "[Character.GetUINameNoTooltip]"
+					text = "[Character.GetUINameNoTooltip|U]"
 					using = Font_Size_Medium
 					autoresize = no
 					fontsize_min = 13
@@ -2009,7 +2046,7 @@ types Lists
 									layoutpolicy_vertical = expanding
 								}
 
-								vassal_expected_legitimacy_icon = {
+								vassal_expected_legitimacy_widget = {
 									name = "legitimacy_expectation"
 									size = { 30 30 }
 								}
@@ -2065,7 +2102,7 @@ types Lists
 											text = "[Character.Custom('vassal_directive_icon')]"
 											align = nobaseline
 
-											tooltip = "[Character.Custom('vassal_directive_text')]"
+											tooltip = "VASSAL_DIRECTIVE_ICON_TOOLTIP"
 											using = tooltip_se
 										}
 									}
@@ -2094,13 +2131,13 @@ types Lists
 								visible = "[Character.GetLiege.IsLocalPlayer]"
 								layoutpolicy_vertical = expanding
 								margin_left = 10
-								
+
 								hbox = {
 									coa_title_tiny_crown = {
 										name = "allegiance_flag"
 										datacontext = "[SubjectContract.GetTitleAllegiance]"
 										visible = "[Title.IsValid]"
-										
+
 										tooltip = "MRW_TITLE_ALLEGIANCE"
 										blockoverride "coa_tooltip" {}
 									}
@@ -2109,47 +2146,26 @@ types Lists
 						}
 					}
 
-					hbox = {
-						visible = "[Character.HasSuzerain]"
-						layoutpolicy_horizontal = expanding
-						datacontext = "[Character.GetSubjectContract]"
-						spacing = 5
-
-						tooltip = "MY_REALM_WINDOW_CEASE_PAYING_TRIBUTE_CHANCE_TT"
-
-						icon_flat_standard = {
-							size = { 30 30 }
-							texture = "gfx/interface/icons/flat_icons/cease_paying_tributary.dds"
+					hbox_tributary_information = {
+						visible = "[And(Character.HasSuzerain,GreaterThanOrEqualTo_CFixedPoint(Character.GetSubjectContract.GetSubjectStanding,'(CFixedPoint)0'))]"
+						blockoverride "tooltip"
+						{
+							tooltip = "MY_REALM_WINDOW_SUBJECT_STANDING_TT"
 						}
 
-						text_single = {
-							layoutpolicy_horizontal = expanding
-							text = "MY_REALM_WINDOW_CEASE_PAYING_TRIBUTE_CHANCE"
-							align = left|nobaseline
-							max_width = 300
-						}
-
-						expand = {}
-
-						block "release_tributary_button" {
-							button_round = {
-								visible = "[Character.IsPlayerInteractionShown('release_tributary_interaction')]"
-								enabled = "[Character.IsPlayerInteractionValid('release_tributary_interaction')]"
-								onclick = "[Character.OpenPlayerInteraction('release_tributary_interaction')]"
-								tooltip = "[Character.GetPlayerInteractionTooltip('release_tributary_interaction')]"
-
-								button_icon = {
-									alwaystransparent = yes
-									parentanchor = center
-									position = { 1 1 }
-									size = { 28 28 }
-									texture = "gfx/interface/icons/flat_icons/release_tributary.dds"
-								}
+						blockoverride "text"
+						{
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								text = "MY_REALM_WINDOW_SUBJECT_STANDING"
+								align = left|nobaseline
 							}
 						}
 					}
 
-					expand = {}
+					hbox_tributary_information = {
+						visible = "[And(Character.HasSuzerain,Not(GreaterThanOrEqualTo_CFixedPoint(Character.GetSubjectContract.GetSubjectStanding,'(CFixedPoint)0')))]"
+					}
 				}
 			}
 
@@ -2163,12 +2179,104 @@ types Lists
 			expand = {}
 		}
 	}
+	
+	type widget_compact_vassal_list_item = widget {
+		size = { 80 118 }
+		datacontext = "[CharacterListItem.GetCharacter]"
+		
+		widget = {
+			size = { 85 100% }
+			parentanchor = hcenter
+			
+			background = {
+				using = Background_Area_Border_Solid
+			}
+			background = {
+				using = Background_Frame
+			}
+		}
+		
+		widget = {
+			parentanchor = bottom|hcenter
+			size = { 100% 30 }
+			
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				margin = { 5 0 }
+				margin_bottom = 5
+				visible = "[Character.HasLandedTitles]"
+				
+				text_single = {
+					raw_text = "@soldier_icon!"
+					align = nobaseline
+					using = Font_Size_Tiny
+				}
+				
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					align = nobaseline|center
+					autoresize = no
+					text = "[Character.GetCurrentMilitaryStrength]"
+					tooltip = "[CharacterListItem.GetMilitaryStrengthTooltip]"
+					default_format = "#low"
+				}
+			}
+		}
+		
+		portrait_head_small = {
+			parentanchor = hcenter
+		}
+	}
+
+	type hbox_tributary_information = hbox {
+		visible = "[Character.HasSuzerain]"
+
+		layoutpolicy_horizontal = expanding
+		datacontext = "[Character.GetSubjectContract]"
+		spacing = 5
+
+		block "tooltip" {
+			tooltip = "MY_REALM_WINDOW_CEASE_PAYING_TRIBUTE_CHANCE_TT"
+		}
+
+		block "text" {
+			icon_flat_standard = {
+				size = { 30 30 }
+				texture = "gfx/interface/icons/flat_icons/cease_paying_tributary.dds"
+			}
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				text = "MY_REALM_WINDOW_CEASE_PAYING_TRIBUTE_CHANCE"
+				align = left|nobaseline
+				max_width = 300
+			}
+		}
+
+		expand = {}
+
+		block "release_tributary_button" {
+			button_round = {
+				visible = "[Character.IsPlayerInteractionShown('release_tributary_interaction')]"
+				enabled = "[Character.IsPlayerInteractionValid('release_tributary_interaction')]"
+				onclick = "[Character.OpenPlayerInteraction('release_tributary_interaction')]"
+				tooltip = "[Character.GetPlayerInteractionTooltip('release_tributary_interaction')]"
+
+				button_icon = {
+					alwaystransparent = yes
+					parentanchor = center
+					position = { 1 1 }
+					size = { 28 28 }
+					texture = "gfx/interface/icons/flat_icons/release_tributary.dds"
+				}
+			}
+		}
+	}
 
 	type hbox_vassal_contract_button = hbox {
 		spacing = 5
 
 		widget = {
-			visible = "[SubjectContractGroup.IsType('feudal_vassal')]"
+			visible = "[Or( SubjectContractGroup.IsType('feudal_vassal'), SubjectContractGroup.IsType('mandala_vassal') )]"
 			size = { 40 40 }
 
 			button_round = {
@@ -2290,10 +2398,66 @@ types Lists
 			icon_vassal_contract_warning_default = {}
 		}
 
-		text_single = {
-			text = "[SubjectContractGroup.GetName]"
-			align = nobaseline
-			max_width = 130
+		button_round = {
+			visible = "[SubjectContractGroup.IsType('tributary_celestial')]"
+			enabled = "[Character.IsPlayerInteractionValid('suzerain_modify_tributary_contract_interaction')]"
+			onclick = "[Character.OpenPlayerInteraction('suzerain_modify_tributary_contract_interaction')]"
+			tooltip = "[Character.GetPlayerInteractionTooltip('suzerain_modify_tributary_contract_interaction')]"
+
+			block "celestial_contract_button_round" {}
+
+			button_add_laws = {
+				alwaystransparent = yes
+				parentanchor = center
+			}
+
+			icon_vassal_contract_warning_blocked = {}
+			icon_vassal_contract_warning_default = {}
+		}
+
+		button_round = {
+			visible = "[SubjectContractGroup.IsType('tributary_steppe')]"
+			enabled = "[Character.IsPlayerInteractionValid('suzerain_modify_tributary_contract_interaction')]"
+			onclick = "[Character.OpenPlayerInteraction('suzerain_modify_tributary_contract_interaction')]"
+			tooltip = "[Character.GetPlayerInteractionTooltip('suzerain_modify_tributary_contract_interaction')]"
+
+			block "celestial_contract_button_round" {}
+
+			button_add_laws = {
+				alwaystransparent = yes
+				parentanchor = center
+			}
+
+			icon_vassal_contract_warning_blocked = {}
+			icon_vassal_contract_warning_default = {}
+		}
+
+		button_round = {
+			visible = "[Or( Or( SubjectContractGroup.IsType('celestial_vassal'), SubjectContractGroup.IsType('meritocratic_vassal') ), SubjectContractGroup.IsType('japan_administrative_vassal') )]"
+			enabled = "[Character.IsPlayerInteractionValid('admin_liege_modify_vassal_contract_interaction')]"
+			onclick = "[Character.OpenPlayerInteraction('admin_liege_modify_vassal_contract_interaction')]"
+			tooltip = "[Character.GetPlayerInteractionTooltip('admin_liege_modify_vassal_contract_interaction')]"
+			datacontext = "[Character.GetPrimaryTitle]"
+			tooltip_when_disabled = "ADMIN_WINDOW_NON_ADMIN_THEME_FAIL_DEMAND_INTERACTION"
+
+			block "celestial_contract_button_round" {}
+
+			button_add_laws = {
+				alwaystransparent = yes
+				parentanchor = center
+			}
+
+			icon_vassal_contract_warning_blocked = {}
+			icon_vassal_contract_warning_default = {}
+		}
+
+		block "vassal_contract_type_name"
+		{
+			text_single = {
+				text = "[SubjectContractGroup.GetName]"
+				align = nobaseline
+				max_width = 130
+			}
 		}
 	}
 
@@ -2325,25 +2489,15 @@ types Lists
 				}
 
 				tooltipwidget = {
-					my_realm_window_contribution_tooltip = {
+					container_my_realm_window_contribution_tooltip = {
 						block "tax_breakdown"
 						{
 							datacontext = "[MyRealmWindowVassalItem.GetTaxBreakdown]"
 
 						}
-						blockoverride "levy_info_visible" { visible = no }
 						blockoverride "contribution_tooltip_header"
 						{
 							text = "MRW_TT_TAXES_TO_ME"
-						}
-
-						blockoverride "levy_info"
-						{
-							text_single = {
-								multiline = yes
-								maximumsize = { 250 -1 }
-								text = "[MyRealmWindowVassalItem.GetTaxTooltip]"
-							}
 						}
 					}
 				}
@@ -2373,23 +2527,14 @@ types Lists
 				}
 
 				tooltipwidget = {
-					my_realm_window_contribution_tooltip = {
+					container_my_realm_window_contribution_tooltip = {
 						block "levy_breakdown"
 						{
 							datacontext = "[MyRealmWindowVassalItem.GetLeviesBreakdown]"
 						}
-						blockoverride "tax_info_visible" { visible = no }
 						blockoverride "contribution_tooltip_header"
 						{
 							text = "MRW_TT_LEVIES_TO_ME"
-						}
-						blockoverride "tax_info"
-						{
-							text_single = {
-								multiline = yes
-								maximumsize = { 250 -1 }
-								text = "[MyRealmWindowVassalItem.GetLevyTooltip]"
-							}
 						}
 					}
 				}
@@ -2404,9 +2549,18 @@ types Lists
 
 			### VASSAL GOLD
 			hbox = {
+				# Treasury Vassals don't pay in gold
+				visible = "[GreaterThan_CFixedPoint( MyRealmWindowVassalItem.GetContract.GetTaxRatioForLiege, '(CFixedPoint)0' )]"
+
 				icon = {
 					size = { 25 25 }
 					texture = "gfx/interface/icons/icon_gold.dds"
+					visible = "[Not( SubjectContract.GetLiege.GetGovernment.HasGovernmentFlag( 'government_has_treasury' ) )]"
+				}
+				icon = {
+					size = { 25 25 }
+					texture = "gfx/interface/icons/icon_imperial_treasury.dds"
+					visible = "[SubjectContract.GetLiege.GetGovernment.HasGovernmentFlag( 'government_has_treasury' )]"
 				}
 
 				text_single = {
@@ -2415,30 +2569,14 @@ types Lists
 				}
 
 				tooltipwidget = {
-					my_realm_window_contribution_tooltip = {
+					container_my_realm_window_contribution_tooltip = {
 						block "tax_breakdown"
 						{
 							datacontext = "[MyRealmWindowVassalItem.GetTaxBreakdown]"
-
 						}
-
-						blockoverride "levy_info_visible"
-						{
-							visible = no
-						}
-
 						blockoverride "contribution_tooltip_header"
 						{
 							text = "MRW_TT_TAXES_TO_ME"
-						}
-
-						blockoverride "levy_info"
-						{
-							text_single = {
-								multiline = yes
-								maximumsize = { 250 -1 }
-								text = "[MyRealmWindowVassalItem.GetTaxTooltip]"
-							}
 						}
 					}
 				}
@@ -2461,23 +2599,44 @@ types Lists
 				}
 
 				tooltipwidget = {
-					my_realm_window_contribution_tooltip = {
+					container_my_realm_window_contribution_tooltip = {
 						block "levy_breakdown"
 						{
 							datacontext = "[MyRealmWindowVassalItem.GetLeviesBreakdown]"
 						}
-						blockoverride "tax_info_visible" { visible = no }
 						blockoverride "contribution_tooltip_header"
 						{
 							text = "MRW_TT_LEVIES_TO_ME"
 						}
-						blockoverride "tax_info"
+					}
+				}
+				using = tooltip_sw
+			}
+
+			### VASSAL PIETY
+			hbox = {
+				visible = "[GreaterThan_CFixedPoint( MyRealmWindowVassalItem.GetContract.GetPietyRatioForLiege, '(CFixedPoint)0' )]"
+
+				icon = {
+					size = { 30 30 }
+					texture = "[GetPlayer.GetPietyLevelTexture]"
+				}
+
+				text_single = {
+					text = "[MyRealmWindowVassalItem.GetCachedPiety|=1]"
+					align = nobaseline
+				}
+
+				tooltipwidget = {
+					container_my_realm_window_contribution_tooltip = {
+						block "tax_breakdown"
 						{
-							text_single = {
-								multiline = yes
-								maximumsize = { 250 -1 }
-								text = "[MyRealmWindowVassalItem.GetLevyTooltip]"
-							}
+							datacontext = "[MyRealmWindowVassalItem.GetPietyBreakdown]"
+
+						}
+						blockoverride "contribution_tooltip_header"
+						{
+							text = "MRW_TT_PIETY_TO_ME"
 						}
 					}
 				}
@@ -2499,25 +2658,45 @@ types Lists
 				}
 
 				tooltipwidget = {
-					my_realm_window_contribution_tooltip = {
+					container_my_realm_window_contribution_tooltip = {
 						block "tax_breakdown"
 						{
 							datacontext = "[MyRealmWindowVassalItem.GetHerdBreakdown]"
 
 						}
-						blockoverride "herd_info_visible" { visible = no }
 						blockoverride "contribution_tooltip_header"
 						{
 							text = "MRW_TT_HERD_TO_ME"
 						}
+					}
+				}
+				using = tooltip_sw
+			}
 
-						blockoverride "herd_info"
+			### VASSAL BARTER GOODS
+			hbox = {
+				visible = "[GreaterThan_CFixedPoint( MyRealmWindowVassalItem.GetContract.GetBarterGoodsRatioForLiege, '(CFixedPoint)0' )]"
+
+				icon = {
+					size = { 30 30 }
+					texture = "gfx/interface/icons/icon_barter.dds"
+				}
+
+				text_single = {
+					text = "[MyRealmWindowVassalItem.GetCachedBarterGoods|=1]"
+					align = nobaseline
+				}
+
+				tooltipwidget = {
+					container_my_realm_window_contribution_tooltip = {
+						block "tax_breakdown"
 						{
-							text_single = {
-								multiline = yes
-								maximumsize = { 250 -1 }
-								text = "[MyRealmWindowVassalItem.GetHerdTooltip]"
-							}
+							datacontext = "[MyRealmWindowVassalItem.GetBarterGoodsBreakdown]"
+
+						}
+						blockoverride "contribution_tooltip_header"
+						{
+							text = "MRW_TT_BARTER_GOODS_TO_ME"
 						}
 					}
 				}
@@ -2572,14 +2751,16 @@ types Lists
 			}
 
 			icon = {
-				visible = "[Not( SubjectContract.UsesObligationLevels )]"
+				visible = "[Not( SubjectContract.UsesObligationLevels )]" #GH CHANGE
 				size = { 42 42 }
 				texture = "gfx/interface/icons/symbols/icon_cross.dds"
-				tooltip = MY_REALM_WINDOW_NO_FEUDAL_CONTRACT_TT
+				tooltip = "MY_REALM_WINDOW_NO_FEUDAL_CONTRACT_TT"
 				enabled = no
 			}
 
-			hbox_vassal_contract_button = {}
+			hbox_vassal_contract_button = {
+				visible = "[Not( SubjectContract.UsesObligationLevels )]" #GH CHANGE
+			}
 
 			hbox_vassal_list_icons = {}
 
@@ -2614,18 +2795,6 @@ types Lists
 					size = { 300 36 }
 
 					onclick = "[ToggleGameViewData( 'tax_slot_assign_vassal', Character.Self )]"
-
-					background = {
-						#TODO:this should only be visible if this character is not being taxed
-						visible = no
-						texture = "gfx/interface/colors/red.dds"
-						alpha = 0.3
-
-						modify_texture = {
-							texture = "gfx/interface/component_masks/mask_dlc.dds"
-							blend_mode = alphaMultiply
-						}
-					}
 
 					text_single = {
 						parentanchor = vcenter|left
@@ -3698,14 +3867,34 @@ types Vassals
 		}
 	}
 
-	type vassal_expected_legitimacy_icon = icon {
-		visible = "[And( Character.IsVassalOf( GetPlayer ), Not( Character.IsPlayer ) )]"
-
-		texture = "[GetPlayer.GetLegitimacyType.GetLevelsIcon]"
-		framesize = { 70 70 }
-		frame = "[IntToFrameIndex( Character.GetLegitimacyExpectationsOfLiege )]"
-
+	type vassal_expected_legitimacy_widget = widget {
+		visible = "[And(And( Character.IsVassalOf( GetPlayer ), Not( Character.IsPlayer ) ), And( GetPlayer.GetGovernment.HasRule( 'legitimacy' ), GetPlayer.GetLegitimacyType.IsValid ) )]"
 		tooltip = "VASSAL_EXPECTED_LEGITIMACY_TT"
+
+		# A glow if you are below their expectations. Needs to be its own icon since glow generation does not work on frame-based icons
+		icon = {
+			name = "below_glow"
+			size = { 100% 100% }
+			texture = "[GetPlayer.GetLegitimacyType.GetFlatIcon]"
+
+			visible = "[GreaterThan_int32( Character.GetLegitimacyExpectationsOfLiege, Character.GetLiege.GetLegitimacyLevel.GetIndex )]"
+			using = Animation_Glow_Pulse
+
+			glow = {
+				glow_radius = 3
+				using = Glow_Standard
+				using = Color_Red
+			}
+		}
+
+		icon = {
+			name = "tiered_icon"
+			size = { 100% 100% }
+
+			texture = "[GetPlayer.GetLegitimacyType.GetLevelsIcon]"
+			framesize = { 70 70 }
+			frame = "[IntToFrameIndex( Character.GetLegitimacyExpectationsOfLiege )]"
+		}
 	}
 }
 
@@ -3814,6 +4003,7 @@ template Scrollbar_Vertical
 				spriteborder = { 0 3 }
 				framesize = { 12 40 }
 				minimumsize = { -1 40 }
+				block "vertical_scrollbar_size" {}
 
 				upframe = 1
 				overframe = 2

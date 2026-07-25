@@ -52,11 +52,11 @@ window = {
 				visible = "[Not( CharacterSelectionList.HasItems )]"
 				text = "CHARACTER_FINDER_NO_MATCH"
 			}
-			
+
 			blockoverride "container_implementation" {
 				fixedgridbox = {
 					addcolumn = 630
-					addrow = 107
+					addrow = 92
 
 					name = "characters_grid"
 					datamodel_reuse_widgets = yes
@@ -66,6 +66,33 @@ window = {
 					item = {
 						widget_character_list_item_finder = {
 							size = { 630 94 }
+
+							blockoverride "character_name_relationship" {
+								hbox = {
+									margin_left = 3
+									layoutpolicy_horizontal = expanding
+
+									text_single = {
+										visible = "[And(Character.HasRelationTo( GetPlayer ), Not(Character.IsPlayer))]"
+										using = Font_Size_Medium
+										align = nobaseline
+										text = "CHARACTER_FINDER_NAME_RELATION"
+										fontsize_min = 14
+										max_width = 300
+									}
+
+									text_single = {
+										visible = "[Not(And(Character.HasRelationTo( GetPlayer ), Not(Character.IsPlayer)))]"
+										using = Font_Size_Medium
+										align = nobaseline
+										text = "CHARACTER_FINDER_NAME"
+										fontsize_min = 14
+										max_width = 300
+									}
+
+									expand = {}
+								}
+							}
 						}
 					}
 				}
@@ -126,7 +153,7 @@ window = {
 						layoutpolicy_horizontal = expanding
 						datacontext = "[CharacterSelectionList.GetFilter('ruler_filter')]"
 					}
-					
+
 					filter_item = {
 						layoutpolicy_horizontal = expanding
 						datacontext = "[CharacterSelectionList.GetFilter('government_filter')]"
@@ -137,8 +164,8 @@ window = {
 						datacontext = "[CharacterSelectionList.GetFilter('vassal_stance_filter')]"
 					}
 
-					
-					
+
+
 					divider = {
 						layoutpolicy_horizontal = expanding
 					}
@@ -189,7 +216,7 @@ window = {
 						datacontext = "[CharacterSelectionList.GetFilter('inspiration_filter')]"
 					}
 
-					
+
 
 					filter_item = {
 						layoutpolicy_horizontal = expanding

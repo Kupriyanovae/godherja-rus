@@ -100,6 +100,7 @@
 							blockoverride "editbox_properties"
 							{
 								text = "[HouseCustomizationWindow.GetHouseNameText]"
+								focus_on_visible = yes
 								ontextedited = "[HouseCustomizationWindow.OnEditHouseNameText]"
 							}
 						}
@@ -129,8 +130,9 @@
 					layoutpolicy_vertical = expanding
 				}
 
-				vbox_coa_designer_house = {
+				vbox_coa_designer = {
 					datacontext = "[HouseCustomizationWindow.GetCoatOfArmsDesigner]"
+					datacontext = "[HouseCustomizationWindow.GetHouse.GetHeadOfHouse]"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
 				}

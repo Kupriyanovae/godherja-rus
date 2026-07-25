@@ -22,9 +22,14 @@ window = {
 			using = Animation_FadeOut_Quick
 			using = Sound_WindowHide_Standard
 			position_x = 1100
-			on_finish = "[GetScriptedGui('gh_view_acw_allies_window_clear_sgui').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('pretender', Character.MakeScope ).End )]"
+			next = "_hide_player_exist"
 		}
 
+		state = {
+			name = _hide_player_exist
+			trigger_when = "[GetPlayer.IsValid]"
+			on_finish = "[GetScriptedGui('gh_view_acw_allies_window_clear_sgui').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('pretender', Character.MakeScope ).End )]"
+		}
 		
 		vbox = {
 			layoutpolicy_horizontal = expanding

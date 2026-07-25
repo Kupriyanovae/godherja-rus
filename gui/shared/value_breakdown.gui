@@ -447,6 +447,7 @@ types Breakdowns
 				}
 				
 				text_single = {
+					visible = [GetPlayer.IsValid]
 					name = "regeneration_value"
 					layoutpolicy_horizontal = expanding
 					raw_text = "#V [GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('character_magic_baseline_income_value')|1]#!(#underline;V [GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('character_magic_regeneration_ratio_percentage_value')|1]%#!)"
@@ -679,7 +680,7 @@ types Breakdowns
 				text_single = {
 					name = "exposure_spell_label"
 					layoutpolicy_horizontal = expanding
-					raw_text = "[magic_exposure|E] from [Concept('ritual','Rituals')|E]: "
+					raw_text = "[magic_exposure|E] from [Concept('gh_ritual','Rituals')|E]: "
 					align = left
 					
 					using = tooltip_ws
@@ -779,7 +780,7 @@ types Breakdowns
 
 				text_single = {
 					layoutpolicy_horizontal = expanding
-					raw_text = "[merit|E]: [GuiScope.SetRoot( Character.MakeScope ).ScriptValue('character_merit_value')|0]"
+					raw_text = "[gh_merit|E]: [GuiScope.SetRoot( Character.MakeScope ).ScriptValue('character_merit_value')|0]"
 					default_format = "#high;bold"
 					using = Font_Size_Medium
 					fonttintcolor = "[TooltipInfo.GetTintColor]"
@@ -1622,7 +1623,32 @@ types Breakdowns
 					using = tooltip_ws
 				}
 			}
-			
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 15
+
+				visible = "[GetGlobalVariable('wih_great_struggle').Var('agionists_arrived_in_sarradon').IsSet]"
+				
+				text_single = {
+					name = "patron_label"
+					layoutpolicy_horizontal = expanding
+					raw_text = "Struggle Ended:"
+					align = left
+					
+					using = tooltip_ws
+				}
+				
+				text_single = {
+					name = "trait_magic_add"
+					layoutpolicy_horizontal = expanding
+					raw_text = "#underline [FixedPointToFloat(GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('relevant_patron_saint',Scope.GetProvince.MakeScope).ScriptValue('patron_saint_ending_struggle_value'))]#!"
+					align = right
+					
+					using = tooltip_ws
+				}
+			}
+
 			hbox = {
 				layoutpolicy_horizontal = expanding
 				spacing = 15

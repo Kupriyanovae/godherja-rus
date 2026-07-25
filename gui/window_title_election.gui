@@ -6,7 +6,7 @@ window = {
 	name = "title_election"
 	movable = no
 	allow_outside = yes
-	layer = windows_layer
+	layer = middle
 
 	using = Window_Size_Sidebar
 	using = Window_Background_Sidebar
@@ -62,8 +62,8 @@ window = {
 			hbox = {
 				name = "header_area"
 				minimumsize = { 0 130 }
-				margin = { 10 0 }
-				margin_top = 10
+				margin = { 10 10 }
+
 
 				coa_title_medium_crown = {
 					datacontext = "[SuccessionElectionWindow.GetTitle]"
@@ -71,7 +71,11 @@ window = {
 				}
 
 				background = {
-					using = Background_Header_Tall
+					using = Background_Header
+				}
+
+				background = {
+					using = Background_Header_Pattern
 				}
 
 				vbox = {
@@ -343,6 +347,7 @@ window = {
 			button_tab = {
 				name = "show_candidate_button"
 				layoutpolicy_horizontal = expanding
+				shortcut = "tab_1"
 				onclick = "[GetVariableSystem.Toggle('election_view_candidates')]"
 				down = "[Not(GetVariableSystem.Exists('election_view_candidates'))]"
 
@@ -358,6 +363,7 @@ window = {
 			button_tab = {
 				name = "show_electors_button"
 				layoutpolicy_horizontal = expanding
+				shortcut = "tab_2"
 				onclick = "[GetVariableSystem.Toggle('election_view_candidates')]"
 				down = "[GetVariableSystem.Exists('election_view_candidates')]"
 
@@ -449,7 +455,8 @@ window = {
 												spriteType = Corneredtiled
 												using = Color_Blue
 												alpha = 0.6
-												texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+												texture = "gfx/interface/skinned/mask_pattern.dds"
+												texture_density = 3
 
 												margin = { 0 4 }
 												margin_left = 10
@@ -639,12 +646,7 @@ window = {
 
 														fixedgridbox = {
 															name = "traits_grid_5"
-															datamodel = "[Character.MakeScope.GetList('HT_shown_traits_all')]"
-															state = {
-																name = HT_trait
-																trigger_on_create = yes
-																on_finish = "[GetScriptedGui('HT_set_character_traits').Execute(GuiScope.SetRoot(Character.MakeScope).End)]"
-															}
+															datamodel = "[CharacterListItem.GetTraits]"
 															flipdirection = yes
 															addcolumn = 30
 															addrow = 28
@@ -657,7 +659,6 @@ window = {
 
 															item = {
 																icon_trait = {
-																	datacontext = "[Scope.Trait]"
 																	visible = "[Trait.IsValid]"
 
 																	blockoverride "icon_size"

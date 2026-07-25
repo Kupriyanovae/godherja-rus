@@ -31,19 +31,15 @@ types gh_main
 			vbox = {
 				layoutpolicy_horizontal = expanding
 				layoutpolicy_vertical = expanding
-
-				scrollarea = {
+				
+				scrollbox = {
 					name = "changelog_scrollbox"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
 
-					scrollbarpolicy_horizontal = always_off
-
-					scrollbar_vertical = {
-						using = editor_vertical_scrollbar
-					}
-
-					scrollwidget = {
+					blockoverride "scrollbox_margins" {}
+					blockoverride "scrollbox_content"
+					{
 						vbox = {
 							ignoreinvisible = yes
 							layoutpolicy_horizontal = expanding
@@ -52,62 +48,38 @@ types gh_main
 							gh_patch_highlight_card = {
 								blockoverride "patch_highlight_title"
 								{
-									raw_text = "Roads to Power and 1.15 Compatibility"
+									raw_text = "All Under Heaven and 1.19 Compatibility"
 								}
 								blockoverride "patch_highlight_subtitle"
 								{
 									raw_text = "Compatch"
 								}
 								blockoverride "patch_highlight_header_background_color" {
+									using = Color_Purple #Color_Orange
+								}
+								blockoverride "patch_highlight_header_icon" {
+									icon = {
+										size = { 32 32 }
+										texture = "gfx/interface/icons/dlc/dlc_022.dds"
+									}
+								}
+								blockoverride "patch_highlight_description"
+								{
+									raw_text = "Godherja has been updated to support the free 1.19 'Scribe' update and the #EMP All Under Heaven#! DLC, incorporating many of its mechanics across [aeras|E]. Kashirya and the Pirate Coast now use the [mandala|E] and [wanua|E] [governments|E], while Dahangon adopts its new clothing and headwear. Godherja also incorporates the new terrain textures."
+								}
+							}
+
+							gh_patch_highlight_card = {
+								blockoverride "patch_highlight_title"
+								{
+									raw_text = "New 1298 Start Date"
+								}
+								blockoverride "patch_highlight_subtitle"
+								{
+									raw_text = "Start Date"
+								}
+								blockoverride "patch_highlight_header_background_color" {
 									using = Color_Orange
-								}
-								blockoverride "patch_highlight_header_icon" {
-									icon = {
-										size = { 32 32 }
-										texture = "gfx/interface/icons/GH_main_menu/rtp_icon.dds"
-									}
-								}
-								blockoverride "patch_highlight_description"
-								{
-									raw_text = "Godherja has been patched to support the the free 1.15 'Crown' update, the #EMP Roads to Power#! DLC, and has applied its mechanics in several places already. Kashirya makes use of the [administrative|E] [government|E], while a litany of [adventurers|E] now wander [aeras|E], among a whole host of other integrations."
-								}
-							}
-							
-							gh_patch_highlight_card = {
-								blockoverride "patch_highlight_title"
-								{
-									raw_text = "Living Magic Expansion"
-								}
-								blockoverride "patch_highlight_subtitle"
-								{
-									raw_text = "Magic"
-								}
-								blockoverride "patch_highlight_header_background_color" {
-									using = Color_Red
-								}
-								blockoverride "patch_highlight_header_icon" {
-									icon = {
-										size = { 32 32 }
-										texture = "gfx/interface/icons/GH_main_menu/living_magic_icon.dds"
-									}
-								}
-								blockoverride "patch_highlight_description"
-								{
-									raw_text = "Over a thousand years of Aversarian scholarship have made [living_magic|E] perhaps the richest arcanological tradition on all of [aeras|E], which is now suitably represented by #V 52#! new [Concept('ritual','Rituals')|E]."
-								}
-							}
-							
-							gh_patch_highlight_card = {
-								blockoverride "patch_highlight_title"
-								{
-									raw_text = "World Mapping"
-								}
-								blockoverride "patch_highlight_subtitle"
-								{
-									raw_text = "Mapping"
-								}
-								blockoverride "patch_highlight_header_background_color" {
-									using = Color_Green
 								}
 								blockoverride "patch_highlight_header_icon" {
 									icon = {
@@ -117,14 +89,110 @@ types gh_main
 								}
 								blockoverride "patch_highlight_description"
 								{
-									raw_text = "From the idyllic forests and plains of Chevalie, to the ecologically vast and varied Kalathipsomi, through the marshes of the Knokidbes Valley, and far and away in the bioluminescent shores of the Night Coast. Aeras has recieved significant aesthetical improvements"
+									raw_text = "Set forty-four years after the first start date, #high A New World#! introduces six new bookmarks, thousands of new [characters|E], the complete character and title history between 1254 and 1298 IS, along with new opening events and lore."
+								}
+							}
+
+							gh_patch_highlight_card = {
+								blockoverride "patch_highlight_title"
+								{
+									raw_text = "Magic Update"
+								}
+								blockoverride "patch_highlight_subtitle"
+								{
+									raw_text = "Magic"
+								}
+								blockoverride "patch_highlight_header_background_color" {
+									color = { 0.1 0.7 0.8 1 }
+								}
+								blockoverride "patch_highlight_header_icon" {
+									icon = {
+										size = { 32 32 }
+										texture = "gfx/interface/icons/character_interactions/icon_magic.dds"
+									}
+								}
+								blockoverride "patch_highlight_description"
+								{
+									raw_text = "Magic has been reworked once more. Magi can now equip [cantrip|E], bind permanent power into artifacts through #EMP Enchantment#!, and pool mana within [Concept('locus','Loci')|E] to perform great [Concept('gh_ritual','Rituals')|E]. A new tutorial accompanies the fully overhauled Magic UI, to provide greater clarity."
+								}
+							}
+
+							gh_patch_highlight_card = {
+								blockoverride "patch_highlight_title"
+								{
+									raw_text = "Mayikrata Rework"
+								}
+								blockoverride "patch_highlight_subtitle"
+								{
+									raw_text = "Mapping"
+								}
+								blockoverride "patch_highlight_header_background_color" {
+									color = { 0.2 0 0 0.8 }
+								}
+								blockoverride "patch_highlight_header_icon" {
+									icon = {
+										size = { 32 32 }
+										texture = "gfx/interface/icons/faith/fogeater_fogeater_icon.dds"
+									}
+								}
+								blockoverride "patch_highlight_description"
+								{
+									raw_text = "The subterranean realms of the [Glossary('Mayikrata','mayikprolollan_encyclopedia_desc')] have been remade from the caverns up. A wholly overhauled map, peopled by new [cultures|E], [faiths|E], and [decisions|E], breathes new life into the subterranean world of [aeras|E]."
+								}
+							}
+
+							gh_patch_highlight_card = {
+								blockoverride "patch_highlight_title"
+								{
+									raw_text = "Dead Magic"
+								}
+								blockoverride "patch_highlight_subtitle"
+								{
+									raw_text = "Magic"
+								}
+								blockoverride "patch_highlight_header_background_color" {
+									color = { 0.05 0.71 0.47 1 }
+								}
+								blockoverride "patch_highlight_header_icon" {
+									icon = {
+										size = { 32 32 }
+										texture = "gfx/interface/icons/GH_main_menu/dead_magic_icon.dds"
+									}
+								}
+								blockoverride "patch_highlight_description"
+								{
+									raw_text = "Overshadowed by [living_magic|E] since the [war_of_the_thousand_dragons|E] in Aversaria, [dead_magic|E] has nevertheless retained many adherents and remains popular across various regions of Sarradon. And is now represented with over #V 40#! new and reworked [Concept('gh_ritual','Rituals')|E]."
 								}
 							}
 							
 							gh_patch_highlight_card = {
 								blockoverride "patch_highlight_title"
 								{
-									raw_text = "Hunting Rework"
+									raw_text = "War in Heaven"
+								}
+								blockoverride "patch_highlight_subtitle"
+								{
+									raw_text = "Game Mechanic"
+								}
+								blockoverride "patch_highlight_header_background_color" {
+									using = Color_Red
+								}
+								blockoverride "patch_highlight_header_icon" {
+									icon = {
+										size = { 32 32 }
+										texture = "gfx/interface/icons/GH_main_menu/war_in_heaven_icon.dds"
+									}
+								}
+								blockoverride "patch_highlight_description"
+								{
+									raw_text = "The conflict between the [Concept('ritualism','Ritualists')|E] and the [Concept('wardenism','Wardenites')|E], which has endured for a thousand years, is now represented by the new [great_struggle|E] mechanic, interconnected [Concept('struggle_region_regions','Regional')|E] [Concept('struggle','Struggles')|E] spanning much of Sarradon, accompanied by new [decisions|E] and events."
+								}
+							}
+
+							gh_patch_highlight_card = {
+								blockoverride "patch_highlight_title"
+								{
+									raw_text = "Sarradonian Desert"
 								}
 								blockoverride "patch_highlight_subtitle"
 								{
@@ -136,36 +204,12 @@ types gh_main
 								blockoverride "patch_highlight_header_icon" {
 									icon = {
 										size = { 32 32 }
-										texture = "gfx/interface/icons/GH_main_menu/hunt_icon.dds"
+										texture = "gfx/interface/icons/situation_types/the_sarradonian_desert.dds"
 									}
 								}
 								blockoverride "patch_highlight_description"
 								{
-									raw_text = "The hunt system has been completely overhauled, featuring Monster Hunts, tooltips to see the biological diversity of baronies, an updated Bestiary with filters, and Slayer Contracts for [adventurers|E]."
-								}
-							}
-
-							gh_patch_highlight_card = {
-								blockoverride "patch_highlight_title"
-								{
-									raw_text = "Amsari Flavor"
-								}
-								blockoverride "patch_highlight_subtitle"
-								{
-									raw_text = "Game Mechanic"
-								}
-								blockoverride "patch_highlight_header_background_color" {
-									using = Color_Bright_Yellow
-								}
-								blockoverride "patch_highlight_header_icon" {
-									icon = {
-										size = { 32 32 }
-										texture = "gfx/interface/icons/GH_main_menu/amsar_icon.dds"
-									}
-								}
-								blockoverride "patch_highlight_description"
-								{
-									raw_text = "Amsar now has a multitude of new decisions, events, faiths, cultural traditions, and a completely reworked Civil War. Featuring mechanics to support pretenders in different ways, and rally others to your cause!"
+									raw_text = "The nomads of the [Glossary('Great Desert','sarradonian_desert_encyclopedia_desc')] are now fully playable and take part in the new Sarradonian Desert [situation|E]. Alongside a host of new [cultures|E], [faiths|E], [traditions|E], and [decisions|E] to discover, adapted content from #high RICE#!'s Tuareg expansion by Cybrxkhan further enriches the Marmaladids."
 								}
 							}
 							
@@ -182,12 +226,20 @@ types gh_main
 				
 				vbox = {
 					layoutpolicy_horizontal = expanding
-					
+					spacer = {
+						size = { 10 5 }
+					}
+					divider_light = {
+						layoutpolicy_horizontal = expanding
+					}	
+					spacer = {
+						size = { 10 15 }
+					}				
 					text_single = {
-						raw_text = "Join us at our #BOL;color:{0.05,0.71,0.47} Discord Server#! to interact with the dev team directly and receive teasers for upcoming content:"
+						raw_text = "Join us at our #BOL;color:{0.05,0.71,0.47} Discord Server#! to interact with the community and the dev team directly and receive teasers for upcoming content:"
 						layoutpolicy_horizontal = expanding
 						default_format = "#high"
-						max_width = 380
+						max_width = 400
 								
 						multiline = yes
 						using = Font_Size_Small
@@ -196,7 +248,7 @@ types gh_main
 					
 					editbox_standard = {
 						layoutpolicy_horizontal = expanding
-						max_width = 375
+						max_width = 400
 						blockoverride "editbox_properties" { raw_text = "https://discord.com/invite/ABNh7Yd4eB" }
 					}
 					
@@ -208,7 +260,7 @@ types gh_main
 						raw_text = "The full changelog for this patch can be found below:"
 						layoutpolicy_horizontal = expanding
 						default_format = "#high"
-						max_width = 380
+						max_width = 400
 								
 						using = Font_Size_Small
 						align = nobaseline
@@ -216,8 +268,8 @@ types gh_main
 					
 					editbox_standard = {
 						layoutpolicy_horizontal = expanding
-						max_width = 375
-						blockoverride "editbox_properties" { raw_text = "https://docs.google.com/document/d/1zVF1CAzpkt3ekg41GF6tvSl2OJCqNrZSpkuRt0WNI6M/edit?usp=sharing" }
+						max_width = 400
+						blockoverride "editbox_properties" { raw_text = "https://docs.google.com/document/d/14w3tCx1h4mok9it7mDvqKE7QhPLEYH5KC0XxCBOHPBA/edit?usp=sharing" }
 					}
 				}
 			}

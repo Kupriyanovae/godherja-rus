@@ -2,6 +2,7 @@ types gh_hud
 {
 	type gh_aervalr_phase_widget = widget
 	{
+		visible = [GetPlayer.IsValid]
 		icon = {
 			texture = "gfx/interface/skinned/aervalr_frame.dds"
 			size = { 54 54 }
@@ -249,6 +250,7 @@ types gh_hud
 
 						container = {
 							text_single = {
+								visible = [GetPlayer.IsValid]
 								name = "magic_income"
 								raw_text = "#F +[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('character_magic_baseline_income_value')|1]#!"
 					
@@ -940,7 +942,7 @@ types gh_hud
 			position = { 40 0 }
 			name = "magic_button"
 
-			tooltip = "Click to open Spellcasting Menu"
+			tooltip = "OPEN_SPELLCASTING_MENU_TT"
 			using = tooltip_ne
 
 			onclick = "[GetVariableSystem.Toggle( 'show_spells')]"
@@ -981,5 +983,276 @@ types gh_hud
 			tooltip = "[GetPlayer.MakeScope.Var('magic_counter').GetValue] | [GetPlayer.MakeScope.ScriptValue('character_magic_baseline_value')]"
 			using = tooltip_ne
 		}
+	}
+
+	type gh_personal_inspiration = flowcontainer
+	{
+		parentanchor = vcenter
+		visible = "[And(GetPlayer.MakeScope.Var('personal_inspiration_story').IsSet, GetPlayer.MakeScope.Var('artifact_glassware_type').IsSet)]"
+		margin_left = 6
+		button_normal = {
+			name = "gh_personal_inspiration_button"
+			onclick = "[GetVariableSystem.Toggle('show_personal_inspiration')]"
+			onclick = "[InGameBottomBar.ClearSelectedInspiration]"
+			parentanchor = vcenter
+			size = { 60 60 }
+
+			icon = { # Halo
+				texture = "gfx/particles/halo.dds"
+				parentanchor = center
+				size = { 80 80 }
+				color = { 1 0.85 0.6 1 }
+			}
+
+			icon_round_button_base = { color = { 1 0.85 0.6 1 } }
+			
+			icon = { # Selection color change
+				visible = "[GetVariableSystem.Exists('show_personal_inspiration')]"
+				texture = "gfx/interface/buttons/button_lifestyles_active_frame.dds"
+				size = { 100% 100% }
+			}
+			icon = {
+				name = "progress_frame"
+				texture = "gfx/interface/progressbars/action_progress_frame.dds"
+				size = { 100% 100% }
+				parentanchor = center
+				alpha = 0.5
+			}
+			progresspie = { # Starting progress pie
+				name = "personal_inspiration_progress_start"
+				visible = "[And(GetPlayer.IsValid,EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('personal_inspiration_story').Var('personal_inspiration_progress').GetValue,'(CFixedPoint)0'))]"
+
+				size = { 52 52  }
+				texture = "gfx/interface/progressbars/action_progress_thin.dds"
+				framesize = { 128 128 }
+				frame = 2
+
+				widgetanchor = center
+				parentanchor = center
+
+				min = 0
+				max = 100
+
+				value = 2
+			}
+			progresspie = { # Progress pie
+				name = "personal_inspiration_progress"
+				visible = "[And(GetPlayer.IsValid,Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('personal_inspiration_story').Var('personal_inspiration_progress').GetValue,'(CFixedPoint)0')))]"
+
+				size = { 52 52  }
+				texture = "gfx/interface/progressbars/action_progress_thin.dds"
+				framesize = { 128 128 }
+				frame = 2
+
+				widgetanchor = center
+				parentanchor = center
+
+				min = 0
+				max = 10
+
+				value = "[FixedPointToFloat(GetPlayer.MakeScope.Var('personal_inspiration_story').Var('personal_inspiration_progress').GetValue)]"
+			}
+			highlight_icon = {
+				texture = "gfx/interface/icons/inspirations/glassware_inspiration.dds"
+				alwaystransparent = yes
+				size = { 40 40 }
+				position = { 1 1 }
+				parentanchor = center
+			}
+
+			enabled = [GetPlayer.IsValid]
+			
+			tooltip = "OPEN_PERSONAL_INSPIRATION"
+			using = tooltip_above
+			
+			state = {
+				name = _show
+				using = Animation_FadeIn_Quick
+				using = Sound_WindowShow_Standard
+			}
+
+			state = {
+				name = _hide
+				using = Animation_FadeOut_Quick
+				using = Sound_WindowHide_Standard
+			}
+		}
+	}
+
+	type gh_personal_inspiration_details_widget = widget
+	{
+		name = "personal_inspiration_details"
+		visible = "[And(GetVariableSystem.Exists('show_personal_inspiration'),GetPlayer.MakeScope.Var('personal_inspiration_story').IsSet)]"
+		visible_at_creation = no
+
+		parentanchor = bottom|right
+		position = { -200 -160 }
+		using = Window_Background_Subwindow
+
+		alwaystransparent = no
+		filter_mouse = all
+
+		state = {
+			name = _show
+			using = Animation_FadeIn_Quick
+			using = Sound_WindowShow_Standard
+		}
+
+		state = {
+			name = _hide
+			using = Animation_FadeOut_Quick
+			using = Sound_WindowHide_Standard
+		}
+
+		vbox = {
+			name = "selected_personal_inspiration"
+			set_parent_size_to_minimum = yes
+			margin = { 4 4 }
+			margin_bottom = 20
+			spacing = 5
+			vbox = { # Header
+				layoutpolicy_horizontal = expanding
+				header_pattern = {
+					layoutpolicy_horizontal = expanding
+					blockoverride "header_text" { text = "PERSONAL_INSPIRATION_DETAILS_HEADER" }
+					blockoverride "button_close" { onclick = "[GetVariableSystem.Clear('show_personal_inspiration')]" }
+					blockoverride "button_back" { visible = no }
+				}
+			}
+			hbox = { # Body
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				margin_left = 15
+				margin_right = 15
+				margin_bottom = 25
+				background = {
+					using = Background_Area
+					layoutpolicy_horizontal = expanding
+					margin_top = 14
+				}
+				vbox = { # Inspiration Actions (left side)
+					layoutpolicy_vertical = expanding
+					margin_right = 15
+					hbox = {
+						text_single = {
+							name = "inspiration actions"
+							text = PERSONAL_INSPIRATION_ACTIONS
+						}
+					}
+					hbox = {
+						dynamicgridbox = {
+							name = "inspiration actions_grid"
+							datamodel = "[GetPlayer.MakeScope.Var('personal_inspiration_story').GetList('possible_personal_inspiration_actions')]"
+							datamodel_wrap = 3
+							flipdirection = yes
+							item = {
+								button_round = {
+									datacontext = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_scripted_gui'))]"
+									visible = "[ScriptedGui.IsShown(GetPlayer.MakeScope)]"
+									size = { 50 50 }
+									onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									tooltip = "[Localize(Concatenate(Scope.GetFlagName,'_tooltip'))]"
+									using = tooltip_above
+									button_icon = {
+										size = { 40 40 }
+										datacontext = "[GetDecision(Concatenate(Scope.GetFlagName,'_decision'))]"
+										parentanchor = center
+										alwaystransparent = yes
+										texture = "[Decision.GetPicture(Character.Self)]"
+									}
+								}
+							}
+						}
+					}
+				}
+				divider_light = { layoutpolicy_vertical = expanding }
+				vbox = { # Inspiration Details (right side)
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					margin_left = 15
+					margin_top = 5
+					vbox = { # Artifact Stats
+						layoutpolicy_horizontal = expanding
+						min_width = 242
+						hbox = { # Quality
+							layoutpolicy_horizontal = expanding
+							margin_right = 10
+							text_single = { text = PERSONAL_INSPIRATION_QUALITY }
+							expand = {}
+							progressbar_standard = {
+								tooltip = "PERSONAL_INSPIRATION_ITEM_PROGRESS_QUALITY_TOOLTIP"
+								size = { 135 16 }
+								value = "[GetPlayer.MakeScope.Var('personal_inspiration_story').ScriptValue('personal_inspiration_quality_value')]"
+							}
+						}
+						hbox = { # Wealth
+							layoutpolicy_horizontal = expanding
+							margin_right = 10
+							text_single = { text = PERSONAL_INSPIRATION_WEALTH }
+							expand = {}
+							progressbar_standard = {
+								tooltip = "PERSONAL_INSPIRATION_ITEM_PROGRESS_WEALTH_TOOLTIP"
+								size = { 135 16 }
+								value = "[GetPlayer.MakeScope.Var('personal_inspiration_story').ScriptValue('personal_inspiration_wealth_value')]"
+							}
+						}
+						text_single = {
+							layoutpolicy_horizontal = expanding
+							text = PERSONAL_INSPIRATION_DETAILS_RARITY
+						}
+					}
+					spacer = {
+						size = { 0 11.3 }
+					}
+					text_single = {
+						layoutpolicy_horizontal = expanding
+						margin_top = 8.8
+						margin_bottom = 8.9
+						text = PERSONAL_INSPIRATION_DETAILS_TYPE_DESCRIPTION
+					}
+					text_single = {
+						layoutpolicy_horizontal = expanding
+						text = PERSONAL_INSPIRATION_DETAILS_DESCRIPTION
+					}
+				}
+			}
+			vbox = {
+				name = "personal_inspiration_progress"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				margin_bottom = -8
+				spacing = 5
+				text_single = { text = PERSONAL_INSPIRATION_IN_PROGRESS }
+				progressbar_segmented_chance = {
+					name = "progress_bar"
+					tooltip = "PERSONAL_INSPIRATION_ITEM_PROGRESS_TOOLTIP"
+					datamodel = "[GetSegmentedProgressChanceBar('(int32)10','(int32)4',FixedPointToInt(GetPlayer.MakeScope.Var('personal_inspiration_story').Var('personal_inspiration_progress').GetValue),'(int32)75')]"
+				}
+				text_single = {
+					text = PERSONAL_INSPIRATION_ESTIMATED_REMAINING
+					tooltip = PERSONAL_INSPIRATION_ESTIMATED_TIME_TOOLTIP
+				}
+				expand = { layoutpolicy_vertical = expanding }
+			}
+		}
+	}
+
+	type has_personal_inspiration_status_icon = icon
+	{
+		name = "has_personal_inspiration"
+		datacontext = "[Character.MakeScope]"
+		visible = "[And(Character.MakeScope.Var('personal_inspiration_story').IsSet, Character.MakeScope.Var('artifact_glassware_type').IsSet)]"
+		texture = "gfx/interface/icons/portraits/inspiration.dds"
+		tooltip = "CHARACTER_HAS_PERSONAL_INSPIRATION_TOOLTIP"
+	}
+
+	type has_completed_personal_inspiration_status_icon = icon
+	{
+		name = "has_completed_inspiration"
+		datacontext = "[Character.MakeScope]"
+		visible = "[And(Character.MakeScope.Var('personal_inspiration_tracker').IsSet,Not(And(Character.MakeScope.Var('personal_inspiration_story').IsSet, Character.MakeScope.Var('artifact_glassware_type').IsSet)))]"
+		texture = "gfx/interface/icons/portraits/inspiration_complete.dds"
+		tooltip = "CHARACTER_HAS_COMPLETED_A_PERSONAL_INSPIRATION_TOOLTIP"
 	}
 }

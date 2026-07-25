@@ -33,17 +33,13 @@ window = {
 				blockoverride "container_implementation" {
 					#GH CHANGE: Change to vbox so hidden wastelands are ignored
 					vbox = {
-						addcolumn = 470
-						addrow = 160
 						name = "characters_grid"
 
 						datamodel = "[TitleHistoryWindow.GetHistory]"
 
 						item = {
 							widget_title_history_item = {}
-
 						}
-
 					}
 				}
 
@@ -123,10 +119,11 @@ types TitleHistory
 						text = "[Character.GetUINameNotMeNoTooltip]"
 					}
 
+					### APPOINTED / DESTROYED
 					text_single = {
-						name = "type"
+						name = "title_state"
 						layoutpolicy_horizontal = expanding
-						text = "[TitleHistory.GetName]"
+						text = "[TitleHistory.GetTitleTransferName]"
 					}
 
 					expand = {}
