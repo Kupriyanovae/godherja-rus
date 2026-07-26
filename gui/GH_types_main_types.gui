@@ -23,7 +23,7 @@ types gh_main
 				margin = { 160 5 }
 				parentanchor = top
 				layoutpolicy_horizontal = expanding
-				raw_text = "Что нового?"
+				raw_text = "What's New?"
 				using = Font_Size_Big
 				default_format = "#high;bold;glow_color:{0,0,0,1}"
 			}
@@ -31,19 +31,15 @@ types gh_main
 			vbox = {
 				layoutpolicy_horizontal = expanding
 				layoutpolicy_vertical = expanding
-
-				scrollarea = {
+				
+				scrollbox = {
 					name = "changelog_scrollbox"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
 
-					scrollbarpolicy_horizontal = always_off
-
-					scrollbar_vertical = {
-						using = editor_vertical_scrollbar
-					}
-
-					scrollwidget = {
+					blockoverride "scrollbox_margins" {}
+					blockoverride "scrollbox_content"
+					{
 						vbox = {
 							ignoreinvisible = yes
 							layoutpolicy_horizontal = expanding
@@ -52,62 +48,38 @@ types gh_main
 							gh_patch_highlight_card = {
 								blockoverride "patch_highlight_title"
 								{
-									raw_text = "Roads to Power и совместимость с 1.15 Compatibility"
+									raw_text = "Обновление к версии 1.19 и All Under Heaven"
 								}
 								blockoverride "patch_highlight_subtitle"
 								{
-									raw_text = "Compatch"
+									raw_text = "Компатч"
+								}
+								blockoverride "patch_highlight_header_background_color" {
+									using = Color_Purple #Color_Orange
+								}
+								blockoverride "patch_highlight_header_icon" {
+									icon = {
+										size = { 32 32 }
+										texture = "gfx/interface/icons/dlc/dlc_022.dds"
+									}
+								}
+								blockoverride "patch_highlight_description"
+								{
+									raw_text = "Godherja была обновлена и теперь поддерживает к бесплатный патч 1.19 'Scribe'  и ДЛС #EMP All Under Heaven#!, влючив в себя множество механик из него по всему [Concept('aeras','Эрасу')|E]. Каширия и Пиратское побережье теерь использую [governments|E] [mandala|E] и [wanua|E], а Дахангон получил новые одеяния и головные уборы. Godherja теперь также включает новые текстуры ландшафта."
+								}
+							}
+
+							gh_patch_highlight_card = {
+								blockoverride "patch_highlight_title"
+								{
+									raw_text = "Новая стартовая дата в 1298"
+								}
+								blockoverride "patch_highlight_subtitle"
+								{
+									raw_text = "Стартовая дата"
 								}
 								blockoverride "patch_highlight_header_background_color" {
 									using = Color_Orange
-								}
-								blockoverride "patch_highlight_header_icon" {
-									icon = {
-										size = { 32 32 }
-										texture = "gfx/interface/icons/GH_main_menu/rtp_icon.dds"
-									}
-								}
-								blockoverride "patch_highlight_description"
-								{
-									raw_text = "Godherja был внесен патч для поддержки бесплатного обновления 1.15 "Корона", дополнения #EMP "Дороги к власти"! , и его механика уже применялась в нескольких местах. Кашира использует [administrative|E] [government|E], в то время как множество [adventurers|E] сейчас бродят по [aeras|E] среди целого ряда других интеграций."
-								}
-							}
-							
-							gh_patch_highlight_card = {
-								blockoverride "patch_highlight_title"
-								{
-									raw_text = "Расширение Живой магии"
-								}
-								blockoverride "patch_highlight_subtitle"
-								{
-									raw_text = "Магия"
-								}
-								blockoverride "patch_highlight_header_background_color" {
-									using = Color_Red
-								}
-								blockoverride "patch_highlight_header_icon" {
-									icon = {
-										size = { 32 32 }
-										texture = "gfx/interface/icons/GH_main_menu/living_magic_icon.dds"
-									}
-								}
-								blockoverride "patch_highlight_description"
-								{
-									raw_text = "Более тысячи лет аверианской науки сделали [living_magic|E], пожалуй, самой богатой арканологической традицией на всем [aeras|E], которая теперь достойно представлена #V 52#! новыми [Concept ('ритуал', 'ритуалами')|E]."
-								}
-							}
-							
-							gh_patch_highlight_card = {
-								blockoverride "patch_highlight_title"
-								{
-									raw_text = "Карта мира"
-								}
-								blockoverride "patch_highlight_subtitle"
-								{
-									raw_text = "Карта"
-								}
-								blockoverride "patch_highlight_header_background_color" {
-									using = Color_Green
 								}
 								blockoverride "patch_highlight_header_icon" {
 									icon = {
@@ -117,14 +89,110 @@ types gh_main
 								}
 								blockoverride "patch_highlight_description"
 								{
-									raw_text = "От идиллических лесов и равнин Шевалье до экологически обширного и разнообразного Калатипсоми, через болота долины Нокидбес и до самых отдаленных биолюминесцентных берегов Ночного побережья. Аэрас получил значительные эстетические улучшения"
+									raw_text = "Действие начинается спустя сорок четыре года после первой стартовой даты., #high Новый мир#! вводит шесть новых закладок, тысячи новых [characters|E], полную историю персонажей и титулов между 1254 и 1298 И.С. , а также новые стартовые события и лор."
+								}
+							}
+
+							gh_patch_highlight_card = {
+								blockoverride "patch_highlight_title"
+								{
+									raw_text = "Обновление магии"
+								}
+								blockoverride "patch_highlight_subtitle"
+								{
+									raw_text = "Магия"
+								}
+								blockoverride "patch_highlight_header_background_color" {
+									color = { 0.1 0.7 0.8 1 }
+								}
+								blockoverride "patch_highlight_header_icon" {
+									icon = {
+										size = { 32 32 }
+										texture = "gfx/interface/icons/character_interactions/icon_magic.dds"
+									}
+								}
+								blockoverride "patch_highlight_description"
+								{
+									raw_text = "Магия была переработана еще раз. Маги теперь могут использовать [Concept('cantrip','заговоры')|E], заключать постоянную силу в артефакты с помощью #EMP зачарования#!, и накапливать ману в [Concept('locus','локусах')|E] чтобы проводить великие [Concept('gh_ritual','ритуалы')|E]. Полностью обновлённый интерфейс магии сопровождается новым обучением, для лучшего введения."
+								}
+							}
+
+							gh_patch_highlight_card = {
+								blockoverride "patch_highlight_title"
+								{
+									raw_text = "Переработка Майикраты"
+								}
+								blockoverride "patch_highlight_subtitle"
+								{
+									raw_text = "Маппинг"
+								}
+								blockoverride "patch_highlight_header_background_color" {
+									color = { 0.2 0 0 0.8 }
+								}
+								blockoverride "patch_highlight_header_icon" {
+									icon = {
+										size = { 32 32 }
+										texture = "gfx/interface/icons/faith/fogeater_fogeater_icon.dds"
+									}
+								}
+								blockoverride "patch_highlight_description"
+								{
+									raw_text = "Подземное царство [Glossary('Mayikrata','mayikprolollan_encyclopedia_desc')] было переделано от самых пещер. Полностью переработанная карта, населённая новыми [Concept('cultures','культурами')|E], [Concept('faiths','конфессиями')|E] и [Concept('decisions','решениями')|E], вдыхает новую жизнь в подземный мир [Concept('aeras','Эраса')|E]."
+								}
+							}
+
+							gh_patch_highlight_card = {
+								blockoverride "patch_highlight_title"
+								{
+									raw_text = "Мёртвая магия"
+								}
+								blockoverride "patch_highlight_subtitle"
+								{
+									raw_text = "Магия"
+								}
+								blockoverride "patch_highlight_header_background_color" {
+									color = { 0.05 0.71 0.47 1 }
+								}
+								blockoverride "patch_highlight_header_icon" {
+									icon = {
+										size = { 32 32 }
+										texture = "gfx/interface/icons/GH_main_menu/dead_magic_icon.dds"
+									}
+								}
+								blockoverride "patch_highlight_description"
+								{
+									raw_text = "Остававшаяся в тени [Concept('living_magic','живой магии')|E] со времен [Concept('war_of_the_thousand_dragons','Войны тысячи драконов')|E] в Аверсарии, [Concept('dead_magic','мёртвая магия')|E] тем не менее сохранила множество приверженцев и остаётся распространённой в различных регионах Саррадона. И теперь она представлена более чем #V 40#! новыми и переработанными [Concept('gh_ritual','ритуалами')|E]."
 								}
 							}
 							
 							gh_patch_highlight_card = {
 								blockoverride "patch_highlight_title"
 								{
-									raw_text = "Переработка охоты"
+									raw_text = "Война в Небесах"
+								}
+								blockoverride "patch_highlight_subtitle"
+								{
+									raw_text = "Игровая механика"
+								}
+								blockoverride "patch_highlight_header_background_color" {
+									using = Color_Red
+								}
+								blockoverride "patch_highlight_header_icon" {
+									icon = {
+										size = { 32 32 }
+										texture = "gfx/interface/icons/GH_main_menu/war_in_heaven_icon.dds"
+									}
+								}
+								blockoverride "patch_highlight_description"
+								{
+									raw_text = "Конфликт между [Концепт('ritualism','ритуалистами')|E] и [Концепт('wardenism','варденитами')|E], длящийся уже тысячу лет, теперь представлен новой механикой [Concept('great_struggle','великой борьбы')|E], взаимосвязанными [Concept('struggle_region_regions','региональными')|E] [Concept('struggle','борьбами')|E] охватывающими бóльшую часть Саррадона, в сопровождении новых [Concept('decisions','решений')|E] и событий."
+								}
+							}
+
+							gh_patch_highlight_card = {
+								blockoverride "patch_highlight_title"
+								{
+									raw_text = "Саррадонская пустыня"
 								}
 								blockoverride "patch_highlight_subtitle"
 								{
@@ -136,36 +204,12 @@ types gh_main
 								blockoverride "patch_highlight_header_icon" {
 									icon = {
 										size = { 32 32 }
-										texture = "gfx/interface/icons/GH_main_menu/hunt_icon.dds"
+										texture = "gfx/interface/icons/situation_types/the_sarradonian_desert.dds"
 									}
 								}
 								blockoverride "patch_highlight_description"
 								{
-									raw_text = "Система охоты была полностью переработана, появились охоты на монстров, всплывающие подсказки для ознакомления с биологическим разнообразием баронств, обновленный бестиарий с фильтрами и контракты на убийство для  [adventurers|E]."
-								}
-							}
-
-							gh_patch_highlight_card = {
-								blockoverride "patch_highlight_title"
-								{
-									raw_text = "Контент для амсари"
-								}
-								blockoverride "patch_highlight_subtitle"
-								{
-									raw_text = "Игровая механика"
-								}
-								blockoverride "patch_highlight_header_background_color" {
-									using = Color_Bright_Yellow
-								}
-								blockoverride "patch_highlight_header_icon" {
-									icon = {
-										size = { 32 32 }
-										texture = "gfx/interface/icons/GH_main_menu/amsar_icon.dds"
-									}
-								}
-								blockoverride "patch_highlight_description"
-								{
-									raw_text = "В Амсар появилось множество новых решений, событий, религий, культурных традиций и полностью переработанная гражданская война. В игре есть механика, позволяющая по-разному поддерживать претендентов и сплачивать других на вашу сторону!"
+									raw_text = "Кочевники [Glossary('Great Desert','sarradonian_desert_encyclopedia_desc')] еперь полностью играбельны и принимают участие в новой [Concept('situation','ситуации')|E] Саррадонской пустыни. Наряду с множеством новых [Concept('cultures','культур')|E], [Concept('faiths','конфессий')|E], [Concept('traditions','традиций')|E] и [Concept('decisions','решений')|E] ждущих своего открытия, адаптированный контент из туарегского дополнения Cybrxkhan #high RICE#! ещё больше обогащает мармаладидов."
 								}
 							}
 							
@@ -182,12 +226,20 @@ types gh_main
 				
 				vbox = {
 					layoutpolicy_horizontal = expanding
-					
+					spacer = {
+						size = { 10 5 }
+					}
+					divider_light = {
+						layoutpolicy_horizontal = expanding
+					}	
+					spacer = {
+						size = { 10 15 }
+					}				
 					text_single = {
-						raw_text = "Join us at our #BOL;color:{0.05,0.71,0.47} Discord Server#! to interact with the dev team directly and receive teasers for upcoming content:"
+						raw_text = "Присоединяйтесь к нам на нашем #BOL;color:{0.05,0.71,0.47} Discord сервере#! чтобы учавстовать в сообществе и взаимодействовать с разработчиками напрями и получать тизеры для будущего контента: "
 						layoutpolicy_horizontal = expanding
 						default_format = "#high"
-						max_width = 380
+						max_width = 400
 								
 						multiline = yes
 						using = Font_Size_Small
@@ -196,7 +248,7 @@ types gh_main
 					
 					editbox_standard = {
 						layoutpolicy_horizontal = expanding
-						max_width = 375
+						max_width = 400
 						blockoverride "editbox_properties" { raw_text = "https://discord.com/invite/ABNh7Yd4eB" }
 					}
 					
@@ -205,10 +257,10 @@ types gh_main
 					}
 					
 					text_single = {
-						raw_text = "The full changelog for this patch can be found below:"
+						raw_text = "Полный список изменения можно найти ниже:"
 						layoutpolicy_horizontal = expanding
 						default_format = "#high"
-						max_width = 380
+						max_width = 400
 								
 						using = Font_Size_Small
 						align = nobaseline
@@ -216,8 +268,8 @@ types gh_main
 					
 					editbox_standard = {
 						layoutpolicy_horizontal = expanding
-						max_width = 375
-						blockoverride "editbox_properties" { raw_text = "https://docs.google.com/document/d/1zVF1CAzpkt3ekg41GF6tvSl2OJCqNrZSpkuRt0WNI6M/edit?usp=sharing" }
+						max_width = 400
+						blockoverride "editbox_properties" { raw_text = "https://docs.google.com/document/d/14w3tCx1h4mok9it7mDvqKE7QhPLEYH5KC0XxCBOHPBA/edit?usp=sharing" }
 					}
 				}
 			}
@@ -276,7 +328,7 @@ types gh_main
 		{
 			text_single = {
 				block "patch_highlight_subtitle" {
-					raw_text = "Mapping"
+					raw_text = "Маппинг"
 				}
 				default_format = "#weak"
 				margin_top = 10

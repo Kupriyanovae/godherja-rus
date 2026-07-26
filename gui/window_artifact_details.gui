@@ -1,6 +1,6 @@
 ﻿window = {
 	name = "artifact_details_view"
-	size = { 1050 60% }
+	size = { 1000 60% }
 	layer = middle
 
 	position = { 500 200 }
@@ -125,8 +125,18 @@
 										tooltip = "OPEN_ARTIFACT_KILL_LIST_TOOLTIP"
 										size = { 25 25 }
 									}
+									container = {
+										button_icon = {
+											visible = "[And(GetScriptedGui('gh_transfer_book_to_collection_sgui').IsShown( GuiScope.SetRoot( Artifact.MakeScope ).End), Artifact.GetOwner.IsLocalPlayer)]"
+											onclick = "[GetScriptedGui('gh_transfer_book_to_collection_sgui').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('transfered_book_name', Artifact.MakeScope).End)]"
+											onclick = "[ArtifactDetailsView.Close]"
+											size = { 32 32 }
+											texture = "gfx/interface/icons/book_topics/gh_transfer_book_to_library_icon.dds"
+											position = { 0 5 }
+											raw_tooltip = "GH_TRANSFER_ARTIFACT_TO_COLLECTION"
+										}
+									}
 								}
-
 								expand = {}
 							}
 
@@ -273,7 +283,6 @@
 							expand = {}
 						}
 
-						
 						hbox = {
 							layoutpolicy_horizontal = expanding
 							visible = "[Not(GetScriptedGui('magic_gui_artifact_is_selected_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('target', Artifact.MakeScope).End))]"
@@ -456,6 +465,29 @@
 
 						expand = {}
 					}
+					
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { 20 0 }
+						
+						vbox = {
+							name = "aspects"
+							datamodel = "[Artifact.MakeScope.GetList('artifact_aspect_modifier_list')]"
+							margin_bottom = 10
+							margin_top = 5
+							
+							item = {
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									max_width = 410
+									autoresize = yes
+									raw_text = "• [Localize(Concatenate('aspect_',Scope.GetFlagName))]:[Localize(Concatenate(Scope.GetFlagName, '_i'))]#positive_value +[Artifact.MakeScope.Var(Scope.GetFlagName).GetValue|0]#!"
+								}
+							}
+						}
+						
+						expand = {}
+					}
 
 					vbox = {
 						layoutpolicy_horizontal = expanding
@@ -509,6 +541,7 @@
 
 					button_tab = {
 						layoutpolicy_horizontal = expanding
+						shortcut = "tab_1"
 						text = "DETAILS_TAB_CLAIMS"
 						onclick = "[VariableSystem.Set( 'details_right_side_tab', 'claims' )]"
 						down = "[VariableSystem.HasValue( 'details_right_side_tab', 'claims' )]"
@@ -516,6 +549,7 @@
 
 					button_tab = {
 						layoutpolicy_horizontal = expanding
+						shortcut = "tab_2"
 						text = "DETAILS_TAB_HISTORY"
 						onclick = "[VariableSystem.Set( 'details_right_side_tab', 'history' )]"
 						down = "[VariableSystem.HasValue( 'details_right_side_tab', 'history' )]"
@@ -523,10 +557,18 @@
 					
 					button_tab = {
 						layoutpolicy_horizontal = expanding
-						raw_text = "Knowledge"
+						raw_text = "Знания"
 						visible = "[DataModelHasItems(Artifact.MakeScope.GetList('knowledge_entry_list'))]"
 						onclick = "[VariableSystem.Set( 'details_right_side_tab', 'knowledge' )]"
 						down = "[VariableSystem.HasValue( 'details_right_side_tab', 'knowledge' )]"
+					}
+										
+					button_tab = {
+						layoutpolicy_horizontal = expanding
+						raw_text = "Магия"
+						visible = "[DataModelHasItems(Artifact.MakeScope.GetList('enchantment_list'))]"
+						onclick = "[VariableSystem.Set( 'details_right_side_tab', 'magic' )]"
+						down = "[VariableSystem.HasValue( 'details_right_side_tab', 'magic' )]"
 					}
 				}
 
@@ -581,7 +623,7 @@
 										
 										text_single = {
 											margin_bottom = 10
-											margin_right = 30
+											margin_right = 40
 											
 											visible = "[And(Not(GetScriptedGui('knowledge_entry_is_learned_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('knowledge_entry_scope', Scope.Story.MakeScope).End)), GreaterThan_CFixedPoint(GuiScope.SetRoot(Scope.Story.MakeScope).AddScope('researcher', GetPlayer.MakeScope).AddScope('knowledge_entry', Scope.Story.MakeScope).ScriptValue('knowledge_entry_success_chance_value'), '(CFixedPoint)0'))]"
 											raw_text = "~6 месяцев"
@@ -592,7 +634,7 @@
 											size = { 40 40 }
 											
 											text_single = {
-												position = { -16 8 }
+												position = { -29 8 }
 												visible = "[Not(GetScriptedGui('knowledge_entry_is_learned_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('knowledge_entry_scope', Scope.Story.MakeScope).End))]"
 												raw_text = "[GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('knowledge_entry', Scope.Story.MakeScope).AddScope('researcher', GetPlayer.MakeScope).ScriptValue('knowledge_entry_success_chance_value')|0]%"
 												min_width = 24
@@ -673,16 +715,30 @@
 										visible = "[GetScriptedGui('knowledge_entry_is_readable_scripted_gui').IsShown(GuiScope.SetRoot(Artifact.MakeScope).AddScope('knowledge_entry_scope', Scope.Story.MakeScope).End)]"
 										layoutpolicy_horizontal = expanding
 										layoutpolicy_vertical = expanding
-										margin = { 10 0 }
-									
-										text_multi = {
-											visible = "[Scope.Var('knowledge_entry_name').IsSet]"
-											text = "[Localize(Concatenate(Scope.Var('knowledge_entry_name').GetFlagName, '_desc'))]"
-											maximumsize = { 270 480 }
-											min_width = 270
-											autoresize = yes
-											fontsize_min = 12
-										}
+										margin_right = 5
+										margin_left = -10
+										margin_top = -10
+										scrollbox = {
+											layoutpolicy_horizontal = expanding
+											size = { 300 50 }
+											maximumsize = { 300 300 }
+											autoresizescrollarea = yes
+											margin_top = -10
+											
+											blockoverride "scrollbox_background" { }
+											blockoverride "scrollbox_background_fade" { }
+											
+											blockoverride "scrollbox_content" {
+												text_multi = {
+													visible = "[Scope.Var('knowledge_entry_name').IsSet]"
+													text = "[Localize(Concatenate(Scope.Var('knowledge_entry_name').GetFlagName, '_desc'))]"
+													maximumsize = { 270 3080 }
+													min_width = 270
+													autoresize = yes
+													fontsize_min = 12
+												}
+											}
+										}			
 									
 										expand = {}
 										
@@ -766,6 +822,58 @@
 												}
 											}
 										}
+									}
+								}
+							}
+						}
+					}
+				}
+								
+				scrollbox = {
+					name = "magic"
+					visible = "[VariableSystem.HasValue( 'details_right_side_tab', 'magic' )]"
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+
+					blockoverride "scrollbox_content" {
+						vbox = {
+							vbox = {
+								layoutpolicy_horizontal = expanding
+								name = "enchantment_list"
+								datamodel = "[Artifact.MakeScope.GetList('enchantment_list')]"
+								spacing = 10
+								
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									raw_text = "Зачарования (#V [GetDataModelSize(Artifact.MakeScope.GetList('enchantment_list'))]#!/#V [Artifact.MakeScope.ScriptValue('enchantment_limit_value')|0]#!)"
+								}
+								
+								item = {
+									widget_spell_entry = {
+										datacontext = "[Scope.Story]"
+									}
+								}
+							}
+							
+							vbox = {
+								layoutpolicy_horizontal = expanding
+								name = "loitering_magic_list"
+								datamodel = "[Artifact.MakeScope.GetList('loitering_magic_list')]"
+
+								spacing = 10
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									raw_text = "Блуждающая магия"
+								}
+
+								item = {
+									widget_spell_entry = {
+										datacontext = "[Scope.Story]"
+										blockoverride "aspect_level_source" {
+											raw_text = "[Localize(Concatenate('@gh_',Concatenate(Scope.GetFlagName, '_icon!')))]#BOL [Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [ConvertToRomanNumeral(GuiScope.SetRoot(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope).AddScope('spell_preparation_story_cycle', Story.MakeScope).ScriptValue(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value')))]#!#!"
+										}
+										blockoverride "button_effects" {}
 									}
 								}
 							}
@@ -1043,28 +1151,6 @@
 											}
 										}
 									}
-								}
-							}
-						}
-					}
-				}
-
-				scrollbox = {
-					name = "spells"
-					visible = "[VariableSystem.HasValue( 'details_right_side_tab', 'spells' )]"
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-
-					blockoverride "scrollbox_content" {
-						vbox = {
-							name = "spell_list"
-							datamodel = "[Artifact.MakeScope.GetList('artifact_spell_list')]"
-							layoutpolicy_horizontal = expanding
-							spacing = 8
-
-							item = {
-								widget_spell_entry = {
-									datacontext = "[Scope.Story]"
 								}
 							}
 						}

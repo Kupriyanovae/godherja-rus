@@ -1,4 +1,4 @@
-######################################################
+﻿######################################################
 ################## CULTURE DIVERGENCE ################
 ######################################################
 
@@ -13,6 +13,7 @@ window = {
 	using = Window_Background
 	using = Window_Decoration
 
+	movable = no #GH Addition
 	state = {
 		name = _show
 		using = Animation_FadeIn_Quick
@@ -26,6 +27,7 @@ window = {
 	state = {
 		name = _hide
 		using = Animation_FadeOut_Quick
+		on_start = "[GetVariableSystem.Clear( 'culture_creation_right_view' )]" #GH Addition
 	}
 
 	vbox = {
@@ -42,11 +44,7 @@ window = {
 			blockoverride "button_close"
 			{
 				onclick = "[DivergenceWindow.Close]"
-			}
-
-			blockoverride "size"
-			{
-				maximumsize = { 800 -1 }
+				onclick = "[GetVariableSystem.Clear( 'culture_creation_right_view' )]" #GH Addition
 			}
 		}
 
@@ -76,6 +74,9 @@ window = {
 						name = "culture_name"
 						size = { 530 60 }
 						onclick = "[GetVariableSystem.Set( 'culture_creation_right_view', 'name_selection' )]"
+						#GH Addition
+						onclick = "[GetScriptedGui('gh_custom_culture_tooltip').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						#GH End
 
 						tooltip = CULTURE_CREATION_NAME_TOOLTIP
 
@@ -121,6 +122,7 @@ window = {
 						layoutpolicy_horizontal = expanding
 						onclick = "[GetVariableSystem.Set( 'culture_creation_tab', 'pillars' )]"
 						down = "[GetVariableSystem.HasValue( 'culture_creation_tab', 'pillars' )]"
+						shortcut = "tab_1"
 
 						text_single = {
 							text = "CULTURE_VIEW_PILLARS"
@@ -135,6 +137,7 @@ window = {
 						layoutpolicy_horizontal = expanding
 						onclick = "[GetVariableSystem.Set( 'culture_creation_tab', 'traditions' )]"
 						down = "[GetVariableSystem.HasValue( 'culture_creation_tab', 'traditions' )]"
+						shortcut = "tab_2"
 
 						text_single = {
 							text = "CULTURE_VIEW_TRADITIONS"
@@ -225,37 +228,8 @@ window = {
 													tooltip = "[DivergenceWindow.GetPickPillarBlockers( CulturePillar.Self )]"
 												}
 
-												icon = {
-													name = "selection_glow"
+												selection_glow = {
 													visible = "[DivergenceWindow.HasPillar( CulturePillar.Self )]"
-													parentanchor = center
-													size = { 100% 100% }
-
-													state = {
-														trigger_on_create = yes
-
-														name = max_glow
-														next = min_glow
-														duration = 1
-														using = Animation_Curve_Default
-														alpha = 0.5
-													}
-
-													state = {
-														name = min_glow
-														next = max_glow
-														duration = 1.6
-														using = Animation_Curve_Default
-														alpha = 0.3
-													}
-
-													background = {
-														texture = "gfx/interface/component_effects/innovation_glow.dds"
-														margin = { 15 12 }
-														spriteType = Corneredstretched
-														spriteborder = { 30 30 }
-														tintcolor = { 1 0.8 0.6 1 }
-													}
 												}
 											}
 										}
@@ -369,7 +343,7 @@ window = {
 							
 							text_label_center = {
 								layoutpolicy_horizontal = expanding
-								raw_text = " Школ магии ([GetDataModelSize(GetPlayer.MakeScope.GetList('culture_creation_selected_magic_school_list'))|0]/[GuiScope.SetRoot(GetPlayer.GetCulture.MakeScope).ScriptValue('hybrid_culture_max_magic_schools_value')])"
+								raw_text = "[Concept('magic_type','Школ магии')|E] ([GetDataModelSize(GetPlayer.MakeScope.GetList('culture_creation_selected_magic_school_list'))|0]/[GuiScope.SetRoot(GetPlayer.GetCulture.MakeScope).ScriptValue('hybrid_culture_max_magic_schools_value')])"
 								default_format = "#low"
 							}
 		
@@ -392,32 +366,8 @@ window = {
 											position = { 4 0 }
 											size = { 26 26 }
 											alwaystransparent = yes
-											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'fire')]"
-											texture = "gfx/interface/icons/rituals/icon_aspect_fire_flat.dds"
-										}
-										button_icon = {
-											parentanchor = vcenter
-											position = { 4 0 }
-											size = { 26 26 }
-											alwaystransparent = yes
-											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'fire')]"
-											texture = "gfx/interface/icons/rituals/icon_aspect_fire_flat.dds"
-										}
-										button_icon = {
-											parentanchor = vcenter
-											position = { 4 0 }
-											size = { 26 26 }
-											alwaystransparent = yes
-											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'stone')]"
-											texture = "gfx/interface/icons/rituals/icon_aspect_stone_flat.dds"
-										}
-										button_icon = {
-											parentanchor = vcenter
-											position = { 4 0 }
-											size = { 26 26 }
-											alwaystransparent = yes
-											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'celestial')]"
-											texture = "gfx/interface/icons/rituals/icon_aspect_celestial_flat.dds"
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'air')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_air_flat.dds"
 										}
 										button_icon = {
 											parentanchor = vcenter
@@ -432,8 +382,40 @@ window = {
 											position = { 4 0 }
 											size = { 26 26 }
 											alwaystransparent = yes
-											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'nature')]"
-											texture = "gfx/interface/icons/rituals/icon_aspect_nature_flat.dds"
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'celestial')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_celestial_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'dark')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_dark_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'dawn')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_dawn_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'death')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_death_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'dream')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_dream_flat.dds"
 										}
 										button_icon = {
 											parentanchor = vcenter
@@ -443,10 +425,91 @@ window = {
 											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'ethereal')]"
 											texture = "gfx/interface/icons/rituals/icon_aspect_ethereal_flat.dds"
 										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'fire')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_fire_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'hymns')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_hymns_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'ice')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_ice_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'light')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_light_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'metal')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_metal_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'nature')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_nature_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'sand')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_sand_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'stone')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_stone_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'time')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_time_flat.dds"
+										}
+										button_icon = {
+											parentanchor = vcenter
+											position = { 4 0 }
+											size = { 26 26 }
+											alwaystransparent = yes
+											visible = "[EqualTo_string(Scope.Var('magic_school').Var('primary_aspect').GetFlagName, 'water')]"
+											texture = "gfx/interface/icons/rituals/icon_aspect_water_flat.dds"
+										}
 								
 										text_multi = {
 											size = { 100% 100% }
-											margin = { 10 0 }
+											margin_left = 20
+											margin_right = 10
 											text = "[Localize(Concatenate(Scope.Var('unique_magic_school_identifier').GetFlagName, '_name'))]"
 											align = center|nobaseline
 											default_format = "#clickable"
@@ -720,10 +783,15 @@ window = {
 					button_primary = {
 						name = "create_culture"
 						size = { 400 60 }
+						#GH Addition
+						onclick = "[GetScriptedGui('gh_created_from_culture_window_sgui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"						
+						#GH End
 						onclick = "[DivergenceWindow.DivergeCulture]"
 						onclick = "[DivergenceWindow.Close]"
 						enabled = "[DivergenceWindow.CanDiverge]"
-
+						#GH Addition
+						onclick = "[GetScriptedGui('gh_culture_save_custom_description_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						#GH End
 						text = "DIVERGE_CULTURE_EXECUTE_LABEL"
 						using = Font_Size_Medium
 						tooltip = "DIVERGE_CULTURE_EXECUTE_TOOLTIP"
@@ -872,14 +940,17 @@ window = {
 
 							# The parameter for GetTraditionGrouping should match the categories in the traditions script
 							button_tabs_replace_tradition_category = {
+								shortcut = "sub_tab_1"
 								datacontext = "[DivergenceWindow.GetTraditionGrouping( 'realm' )]"
 							}
 
 							button_tabs_replace_tradition_category = {
+								shortcut = "sub_tab_2"
 								datacontext = "[DivergenceWindow.GetTraditionGrouping( 'combat' )]"
 							}
 
 							button_tabs_replace_tradition_category = {
+								shortcut = "sub_tab_3"
 								datacontext = "[DivergenceWindow.GetTraditionGrouping( 'societal' )]"
 							}
 						}
@@ -889,10 +960,12 @@ window = {
 							margin_bottom = -2
 
 							button_tabs_replace_tradition_category = {
+								shortcut = "sub_tab_4"
 								datacontext = "[DivergenceWindow.GetTraditionGrouping( 'ritual' )]"
 							}
 
 							button_tabs_replace_tradition_category = {
+								shortcut = "sub_tab_5"
 								datacontext = "[DivergenceWindow.GetTraditionGrouping( 'regional' )]"
 							}
 						}
@@ -995,37 +1068,8 @@ types DivergenceTypes
 					}
 				}
 
-				icon = {
-					name = "selection_glow"
+				selection_glow = {
 					visible = "[ObjectsEqual( CultureTradition.Self, DivergenceWindow.GetSelectedTradition )]"
-					parentanchor = center
-					size = { 100% 100% }
-
-					state = {
-						trigger_on_create = yes
-
-						name = max_glow
-						next = min_glow
-						duration = 1
-						using = Animation_Curve_Default
-						alpha = 0.5
-					}
-
-					state = {
-						name = min_glow
-						next = max_glow
-						duration = 1.6
-						using = Animation_Curve_Default
-						alpha = 0.3
-					}
-
-					background = {
-						texture = "gfx/interface/component_effects/innovation_glow.dds"
-						margin = { 14 12 }
-						spriteType = Corneredstretched
-						spriteborder = { 30 30 }
-						tintcolor = { 1 0.8 0.6 1 }
-					}
 				}
 			}
 
@@ -1145,5 +1189,5 @@ types DivergenceTypes
 }
 
 types GHCompTypes { # Make the gui warning disappear
-	type gh_overwrite_window_barbershop = vbox {}
+	type gh_overwrite_window_diverge_culture = vbox {}
 }

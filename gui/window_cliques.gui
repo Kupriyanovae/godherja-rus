@@ -24,14 +24,16 @@ window = {
 		trigger_when = "[IsGameViewOpen('factions_window')]"
 		trigger_when = "[IsGameViewOpen('decisions')]"
 		trigger_when = "[IsGameViewOpen('activity_list_window')]"
+		trigger_when = "[IsGameViewOpen('situations')]"
+		trigger_when = "[IsGameViewOpen('manage_tax_slots')]"
 		trigger_when = "[GetVariableSystem.Exists('artifact_window_open')]"
-
+		
 		on_start = "[GetVariableSystem.Clear('cliques_window_open')]"
 		on_start = "[GetVariableSystem.Clear('show_allied_cliques')]"
 	}
 	state = {
 		name = _show
-		trigger_when = "[GetVariableSystem.Exists('artifact_window_open')]"
+		trigger_when = "[GetVariableSystem.Exists('cliques_window_open')]"
 		using = Animation_FadeIn_Quick
 		using = Sound_WindowShow_Standard
 		using = Window_Position_MainTab
@@ -42,7 +44,10 @@ window = {
 		on_start = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('intrigue_window'), 'if_intrigue_open', 'else_do_nothing' ) )]"
 		on_start = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('factions_window'), 'if_factions_open', 'else_do_nothing' ) )]"
 		on_start = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('decisions'), 'if_decisions_open', 'else_do_nothing' ) )]"
+		on_start = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('situations'), 'if_situations_open', 'else_do_nothing' ) )]"
+		on_start = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('manage_tax_slots'), 'if_manage_tax_slots_open', 'else_do_nothing' ) )]"
 		on_start = "[GetScriptedGui('get_character_cliques_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+		on_start = "[GetVariableSystem.Clear('show_personal_inspiration')]" ## GH ADDITION: Personal Inspirations
 	}
 	state = {
 		name = if_my_realm_open
@@ -71,6 +76,14 @@ window = {
 	state = {
 		name = if_decisions_open
 		on_start = "[ToggleGameView('decisions')]"
+	}
+	state = {
+		name = if_situations_open
+		on_start = "[ToggleGameView('situations')]"
+	}
+	state = {
+		name = if_situations_open
+		on_start = "[ToggleGameView('manage_tax_slots')]"
 	}
 
 	state = {

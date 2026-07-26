@@ -7,19 +7,20 @@ types MagicViewTypes
 
 		block "spell_entry_visibility"
 		{
-			visible = "[And(Or(Not(GetVariableSystem.Exists('magic_tab_aspect')), Story.MakeScope.Var(GetVariableSystem.Get('magic_tab_aspect')).IsSet), Or(Not(And(GetVariableSystem.Exists('magic_tab'), EqualTo_string(GetVariableSystem.Get('magic_tab'), 'generation'))), LessThanOrEqualTo_CFixedPoint(Story.MakeScope.Var('spell_cost').GetValue, '(CFixedPoint)0')))]"
+			visible = "[And(Or(Not(GetVariableSystem.Exists('magic_tab_aspect')), Story.MakeScope.Var('spell_being_prepared').Var(GetVariableSystem.Get('magic_tab_aspect')).IsSet), Or(Not(And(GetVariableSystem.Exists('magic_tab'), EqualTo_string(GetVariableSystem.Get('magic_tab'), 'generation'))), LessThanOrEqualTo_CFixedPoint(Story.MakeScope.Var('spell_being_prepared').Var('spell_cost').GetValue, '(CFixedPoint)0')))]"
 		}
 
-		size = { 485 110 }
+		size = { 485 130 }
 		
 
 		button_standard = {
 			size = { 100% 100% }
+			texture = "gfx/interface/buttons/button_standard.dds"
 			
 			block "button_effects"
 			{
-				onclick = "[GetScriptedGui('reset_spell_preparation_story_cycle_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_to_start_preparation_for_scope', Story.MakeScope).End)]"
-				onclick = "[GetScriptedGui('select_spell_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('selected_spell_scope', Story.MakeScope).End)]"
+				onclick = "[GetScriptedGui('reset_spell_preparation_story_cycle_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_to_start_preparation_for_scope', Story.MakeScope.Var('spell_being_prepared').Story.MakeScope).End)]"
+				onclick = "[GetScriptedGui('select_spell_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('selected_spell_scope', Story.MakeScope.Var('spell_being_prepared').Story.MakeScope).End)]"
 			}
 
 			block "button"
@@ -30,111 +31,126 @@ types MagicViewTypes
 			block "overlay"
 			{
 				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'fire'))]"
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'fire'))]"
 					spriteType = Corneredstretched
 					spriteborder = { 3 3 }
 					blend_mode = overlay
 					color = { 0.88 0.34 0.13 }
 				}
-				
 				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'water'))]"
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'water'))]"
 					spriteType = Corneredstretched
 					spriteborder = { 3 3 }
 					blend_mode = overlay
-					color = { 0.11 0.58 0.85 }
+					color = { 0.11 0.24 0.42 }
 				}
-				
 				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'stone'))]"
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'ice'))]"
 					spriteType = Corneredstretched
 					spriteborder = { 3 3 }
 					blend_mode = overlay
-					color = { 0.1 0.04 0 }
+					color = { 0.72 0.9 0.92 }
 				}
-				
 				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'blood'))]"
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'air'))]"
 					spriteType = Corneredstretched
 					spriteborder = { 3 3 }
 					blend_mode = overlay
-					color = { 0.4 0.01 0.01 }
+					color = { 0.62 0.83 0.86 }
 				}
-				
 				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'abyss'))]"
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'stone'))]"
 					spriteType = Corneredstretched
 					spriteborder = { 3 3 }
 					blend_mode = overlay
-					color = { 0 0.2 0.15 }
+					color = { 0.47 0.30 0.18 }
 				}
-				
 				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'ice'))]"
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'dream'))]"
 					spriteType = Corneredstretched
 					spriteborder = { 3 3 }
 					blend_mode = overlay
-					color = { 0.36 0.45 0.56 }
+					color = { 0.65 0.65 1 }
 				}
-				
 				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'air'))]"
-					spriteType = Corneredstretched
-					spriteborder = { 3 3 }
-					blend_mode = overlay
-					color = { 0.42 0.63 0.66 }
-				}
-				
-				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'nature'))]"
-					spriteType = Corneredstretched
-					spriteborder = { 3 3 }
-					blend_mode = overlay
-					color = { 0.18 0.33 0 }
-				}
-
-				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'celestial'))]"
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'celestial'))]"
 					spriteType = Corneredstretched
 					spriteborder = { 3 3 }
 					blend_mode = overlay
 					color = { 0.65 0.15 0.86 }
 				}
-
 				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'ethereal'))]"
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'dark'))]"
 					spriteType = Corneredstretched
 					spriteborder = { 3 3 }
 					blend_mode = overlay
-					color = { 0.85 0.65 0.55 }
+					color = { 0.25 0.3 0.2 }
 				}
-
 				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'death'))]"
-					spriteType = Corneredstretched
-					spriteborder = { 3 3 }
-					blend_mode = overlay
-					color = { 0.38 0.55 0.60 }
-				}
-				
-				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'light'))]"
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'light'))]"
 					spriteType = Corneredstretched
 					spriteborder = { 3 3 }
 					blend_mode = overlay
 					color = { 0.90 0.75 0.30 }
 				}
-				
 				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'dawn'))]"
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'blood'))]"
+					spriteType = Corneredstretched
+					spriteborder = { 3 3 }
+					blend_mode = overlay
+					color = { 0.95 0.01 0.01 }
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'nature'))]"
+					spriteType = Corneredstretched
+					spriteborder = { 3 3 }
+					blend_mode = overlay
+					color = { 0.10 0.25 0.01 }
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'ethereal'))]"
+					spriteType = Corneredstretched
+					spriteborder = { 3 3 }
+					blend_mode = overlay
+					color = { 0.55 0.55 0.65 }
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'hymns'))]"
+					spriteType = Corneredstretched
+					spriteborder = { 3 3 }
+					blend_mode = overlay
+					color = { 0.56 0.00 1.00 }
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'death'))]"
+					spriteType = Corneredstretched
+					spriteborder = { 3 3 }
+					blend_mode = overlay
+					color = { 0.05 0.71 0.47 }
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'sand'))]"
 					spriteType = Corneredstretched
 					spriteborder = { 3 3 }
 					blend_mode = overlay
 					color = { 0.90 0.75 0.30 }
 				}
-				
 				modify_texture = {
-					visible = "[And(Story.MakeScope.Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('primary_aspect').GetFlagName, 'sand'))]"
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'metal'))]"
+					spriteType = Corneredstretched
+					spriteborder = { 3 3 }
+					blend_mode = overlay
+					color = { 0.90 0.75 0.30 }
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'time'))]"
+					spriteType = Corneredstretched
+					spriteborder = { 3 3 }
+					blend_mode = overlay
+					color = { 0.90 0.75 0.30 }
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName, 'dawn'))]"
 					spriteType = Corneredstretched
 					spriteborder = { 3 3 }
 					blend_mode = overlay
@@ -212,7 +228,6 @@ types MagicViewTypes
 			}
 
 			spell_icon = {
-				datacontext = "[Story.MakeScope]"
 				block "spell_icon_size" {
 					
 				}
@@ -224,37 +239,71 @@ types MagicViewTypes
 			#}
 
 			vbox = {
+				layoutpolicy_horizontal = expanding
 				layoutpolicy_vertical = expanding
 				margin_top = 4
 				margin_left = 5
 
 				expand = {}
 
-				text_multi = {
+				hbox = {
 					layoutpolicy_horizontal = expanding
-					text = "[Story.Custom('SpellName')]"
-					autoresize = yes
-					max_width = 400
-					fontsize = 16
-					using = Font_Size_Medium
-					using = Font_Type_Flavor
-					default_format = "#high"
-					alwaystransparent = yes
+					margin_right = 10
+					text_multi = {
+						layoutpolicy_horizontal = expanding
+						raw_text = "[Story.MakeScope.Var('spell_being_prepared').Var('parent_spell').Story.Custom('SpellName')]"
+						autoresize = yes
+						max_width = 400
+						fontsize = 16
+						using = Font_Size_Medium
+						using = Font_Type_Flavor
+						default_format = "#high"
+						alwaystransparent = yes
+					}
+					
+					### Aspects
+					hbox = {
+						datamodel = "[Story.MakeScope.Var('spell_being_prepared').GetList('spell_aspect_list')]"
+						spacing = 2
+						margin_top = -5
+					
+						item = {
+							text_single = {
+								# Overriden for loitering magic (to represent its true power level, not its base power level)
+								block "aspect_level_source" {
+									raw_text = "[Localize(Concatenate('@gh_',Concatenate(Scope.GetFlagName, '_icon!')))]#BOL [Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Var(Scope.GetFlagName).GetValue)][AddLocalizationIf(And(Story.MakeScope.Var(Concatenate(Scope.GetFlagName,'_overcharge')).IsSet, GreaterThan_CFixedPoint(Story.MakeScope.Var(Concatenate(Scope.GetFlagName,'_overcharge')).GetValue, '(CFixedPoint)0')),'+')][AddLocalizationIf(And(Story.MakeScope.Var(Concatenate(Scope.GetFlagName,'_overcharge')).IsSet, GreaterThan_CFixedPoint(Story.MakeScope.Var(Concatenate(Scope.GetFlagName,'_overcharge')).GetValue, '(CFixedPoint)0')), ConvertToRomanNumeral(Story.MakeScope.Var(Concatenate(Scope.GetFlagName,'_overcharge')).GetValue))]#!#!"
+								}
+							}
+						}
+					}
 				}
 				
 				vbox = {
 					block "spell_effects_visibility" {
 						visible = yes
 					}
+					layoutpolicy_horizontal = expanding
+					margin_right = 10
+					margin_left = -30
 					divider_light = {
 						layoutpolicy_horizontal = expanding
 						size = { 0 4.5 }
 					}
 					
-					flowcontainer = {
-						direction = vertical
-						datamodel = "[Story.MakeScope.GetList('first_spell_tags_list')]"
-						layoutpolicy_vertical = expanding
+					text_multi = {
+						visible = "[And(Story.MakeScope.Var('unique_spell_identifier').IsSet, Not(EqualTo_string( Concatenate(Story.MakeScope.Var('unique_spell_identifier').GetFlagName, '_short_desc'), Localize(Concatenate(Story.MakeScope.Var('unique_spell_identifier').GetFlagName, '_short_desc')) )))]"
+						layoutpolicy_horizontal = expanding
+						raw_text = "#weak [Localize(Concatenate(Story.MakeScope.Var('unique_spell_identifier').GetFlagName, '_short_desc'))]#!"
+						autoresize = yes
+						max_width = 350
+						using = Font_Size_Small
+						alwaystransparent = yes
+					}
+					
+					vbox = {
+						datamodel = "[Story.MakeScope.Var('spell_being_prepared').GetList('first_spell_tags_list')]"
+						visible = "[Not(And(Story.MakeScope.Var('unique_spell_identifier').IsSet, Not(EqualTo_string( Concatenate(Story.MakeScope.Var('unique_spell_identifier').GetFlagName, '_short_desc'), Localize(Concatenate(Story.MakeScope.Var('unique_spell_identifier').GetFlagName, '_short_desc')) ))))]"
+						layoutpolicy_horizontal = expanding
 						item = {
 							text_multi = {
 								layoutpolicy_horizontal = expanding
@@ -268,15 +317,15 @@ types MagicViewTypes
 					}
 					
 					divider_light = {
-						visible = "[Story.MakeScope.Var('spell_tag_list_overflow').IsSet]"
+						visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('spell_tag_list_overflow').IsSet, Not(And(Story.MakeScope.Var('unique_spell_identifier').IsSet, Not(EqualTo_string( Concatenate(Story.MakeScope.Var('unique_spell_identifier').GetFlagName, '_short_desc'), Localize(Concatenate(Story.MakeScope.Var('unique_spell_identifier').GetFlagName, '_short_desc')) )))))]"
 						layoutpolicy_horizontal = expanding
 						size = { 0 1 }
 					}
 					
 					text_multi = {
-						visible = "[Story.MakeScope.Var('spell_tag_list_overflow').IsSet]"
+						visible = "[And(Story.MakeScope.Var('spell_being_prepared').Var('spell_tag_list_overflow').IsSet, Not(And(Story.MakeScope.Var('unique_spell_identifier').IsSet, Not(EqualTo_string( Concatenate(Story.MakeScope.Var('unique_spell_identifier').GetFlagName, '_short_desc'), Localize(Concatenate(Story.MakeScope.Var('unique_spell_identifier').GetFlagName, '_short_desc')) )))))]"
 						layoutpolicy_horizontal = expanding
-						raw_text = "#weak Наведите, чтобы увидеть#! [Story.MakeScope.Var('spell_tag_list_overflow').GetValue|0] #weak больше эффектов#!"
+						raw_text = "#weak Наведите чтобы увидеть #! [Story.MakeScope.Var('spell_being_prepared').Var('spell_tag_list_overflow').GetValue|0] #weak больше эффектов#!"
 						autoresize = yes
 						max_width = 350
 						using = Font_Size_Small
@@ -286,7 +335,7 @@ types MagicViewTypes
 					#text_multi = {
 					#	margin_top = 0
 					#	layoutpolicy_horizontal = expanding
-					#	text = "[SelectLocalization(Not(EqualTo_string(Concatenate(Concatenate(Concatenate(Story.MakeScope.Var('primary_spell_effect').Var('spell_effect_name').GetFlagName, '_'),Story.MakeScope.Var('primary_aspect').GetFlagName),'_desc'), Localize(Concatenate(Concatenate(Concatenate(Story.MakeScope.Var('primary_spell_effect').Var('spell_effect_name').GetFlagName, '_'),Story.MakeScope.Var('primary_aspect').GetFlagName),'_desc')))), Localize(Concatenate(Concatenate(Concatenate(Story.MakeScope.Var('primary_spell_effect').Var('spell_effect_name').GetFlagName, '_'),Story.MakeScope.Var('primary_aspect').GetFlagName),'_desc')), Localize(Concatenate(Story.MakeScope.Var('primary_spell_effect').Var('spell_effect_name').GetFlagName, '_default_desc')))]"
+					#	text = "[SelectLocalization(Not(EqualTo_string(Concatenate(Concatenate(Concatenate(Story.MakeScope.Var('spell_being_prepared').Var('primary_spell_effect').Var('spell_effect_name').GetFlagName, '_'),Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName),'_desc'), Localize(Concatenate(Concatenate(Concatenate(Story.MakeScope.Var('spell_being_prepared').Var('primary_spell_effect').Var('spell_effect_name').GetFlagName, '_'),Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName),'_desc')))), Localize(Concatenate(Concatenate(Concatenate(Story.MakeScope.Var('spell_being_prepared').Var('primary_spell_effect').Var('spell_effect_name').GetFlagName, '_'),Story.MakeScope.Var('spell_being_prepared').Var('primary_aspect').GetFlagName),'_desc')), Localize(Concatenate(Story.MakeScope.Var('spell_being_prepared').Var('primary_spell_effect').Var('spell_effect_name').GetFlagName, '_default_desc')))]"
 					#
 					#	autoresize = yes
 					#	max_width = 400
@@ -468,7 +517,7 @@ types MagicViewTypes
 			text_single = {
 				name = "spell_component_name"
 				parentanchor = left
-				text = "[Localize(Concatenate(Story.MakeScope.Var('spell_component_template').Var('spell_component_name').GetFlagName,'_name'))]"
+				raw_text = "[Localize(Concatenate(Story.MakeScope.Var('spell_component_template').Var('spell_component_name').GetFlagName,'_name'))]"
 				default_format = "#high"
 				using = Font_Size_Medium
 				align = nobaseline
@@ -487,7 +536,7 @@ types MagicViewTypes
 						align = right
 						parentanchor = bottom
 						default_format = "#high"
-						text = "[SelectLocalization(GreaterThan_CFixedPoint(Story.MakeScope.Var('spell_component_template').Var(Scope.GetFlagName).GetValue,'(CFixedPoint)0'),Concatenate(Scope.GetFlagName, '_spell_component_prefix_positive'),Concatenate(Scope.GetFlagName, '_spell_component_prefix_negative'))][Abs_CFixedPoint(Story.MakeScope.Var('spell_component_template').Var(Scope.GetFlagName).GetValue)|0][Localize(Concatenate(Scope.GetFlagName, '_spell_component_suffix'))]"
+						raw_text = "[SelectLocalization(GreaterThan_CFixedPoint(Story.MakeScope.Var('spell_component_template').Var(Scope.GetFlagName).GetValue,'(CFixedPoint)0'),Concatenate(Scope.GetFlagName, '_spell_component_prefix_positive'),Concatenate(Scope.GetFlagName, '_spell_component_prefix_negative'))][Abs_CFixedPoint(Story.MakeScope.Var('spell_component_template').Var(Scope.GetFlagName).GetValue)|0][Localize(Concatenate(Scope.GetFlagName, '_spell_component_suffix'))]"
 						margin_top = 5
 						margin_right = 10
 					}
@@ -644,7 +693,7 @@ types MagicViewTypes
 						vbox = {
 							text_single = {
 								using = Font_Size_Small
-								text = "[Story.MakeScope.Var('spell_component_template').Var('age_ideal').GetValue|0]"
+								raw_text = "[Story.MakeScope.Var('spell_component_template').Var('age_ideal').GetValue|0]"
 								default_format = "#high"
 							}
 							
@@ -712,7 +761,7 @@ types MagicViewTypes
 				}
 				
 				text_single = {
-					raw_text = "[SelectLocalization(EqualTo_string(Story.MakeScope.Var('spell_component_template').Var('spell_component_type').GetFlagName, 'character_prisoner'), 'Prisoner', 'Character')]"
+					raw_text = "[SelectLocalization(EqualTo_string(Story.MakeScope.Var('spell_component_template').Var('spell_component_type').GetFlagName, 'character_prisoner'), 'Заключенный', 'Персонаж')]"
 				}
 				
 				text_single = {
@@ -743,7 +792,7 @@ types MagicViewTypes
 						text_single = {
 							layoutpolicy_horizontal = expanding
 							align = left
-							raw_text = "Обладает свойством: [Localize(Concatenate('feature_',Scope.GetFlagName))|U] (#positive_value [Story.MakeScope.Var('spell_component_template').Var(Scope.GetFlagName).GetValue]#!)"
+							raw_text = "Имею черту: [Localize(Concatenate('feature_',Scope.GetFlagName))|U] (#positive_value [Story.MakeScope.Var('spell_component_template').Var(Scope.GetFlagName).GetValue]#!)"
 						}
 					}
 				}
@@ -818,17 +867,87 @@ types MagicViewTypes
 					datamodel = "[Story.MakeScope.Var('spell_component_template').GetList('spell_component_input_modifier_artifact_type_list')]"
 					item = {
 						text_single = {
-							text = "[Localize(Concatenate('artifact_', Scope.GetFlagName))|U]"
+							raw_text = "[Localize(Concatenate('artifact_', Scope.GetFlagName))|U]"
 						}
 					}
 				}
 			}
 		}
 
-		
+		hbox = {
+			name = "bonecrafting_type_selection_box"
+			visible = "[And(Story.MakeScope.Var('spell_component_template').Var('bone_for_crafting').IsSet, Story.MakeScope.Var('spell_component_artifact_selection').IsSet)]"
+			layoutpolicy_horizontal = expanding
+			margin = { 10 10 }
+			margin_bottom = 20
+			spacing = 15
+
+			hbox = {
+				visible = "[GetScriptedGui('bonecrafting_type_crown_available_scripted_gui').IsShown(GuiScope.SetRoot(Story.MakeScope).End)]"
+				spacing = 5
+				text_single = {
+					raw_text = "[Localize('bonecrafting_type_choice_crown')]"
+					default_format = "#high"
+				}
+				button_checkbox = {
+					checked = "[GetScriptedGui('bonecrafting_type_crown_selected_scripted_gui').IsShown(GuiScope.SetRoot(Story.MakeScope).End)]"
+					onclick = "[GetScriptedGui('reset_spell_preparation_story_cycle_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_to_start_preparation_for_scope', Story.MakeScope.Var('spell_component_template').Var('spell_component_parent_spell').Story.MakeScope).End)]"
+					onclick = "[GetScriptedGui('set_bonecrafting_selected_type_crown_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_component_to_be_prepared', Story.MakeScope.Var('spell_component_template').Story.MakeScope).End)]"
+					size = { 20 20 }
+				}
+			}
+
+			hbox = {
+				visible = "[GetScriptedGui('bonecrafting_type_regalia_available_scripted_gui').IsShown(GuiScope.SetRoot(Story.MakeScope).End)]"
+				spacing = 5
+				text_single = {
+					raw_text = "[Localize('bonecrafting_type_choice_regalia')]"
+					default_format = "#high"
+				}
+				button_checkbox = {
+					checked = "[GetScriptedGui('bonecrafting_type_regalia_selected_scripted_gui').IsShown(GuiScope.SetRoot(Story.MakeScope).End)]"
+					onclick = "[GetScriptedGui('reset_spell_preparation_story_cycle_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_to_start_preparation_for_scope', Story.MakeScope.Var('spell_component_template').Var('spell_component_parent_spell').Story.MakeScope).End)]"
+					onclick = "[GetScriptedGui('set_bonecrafting_selected_type_regalia_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_component_to_be_prepared', Story.MakeScope.Var('spell_component_template').Story.MakeScope).End)]"
+					size = { 20 20 }
+				}
+			}
+
+			hbox = {
+				visible = "[GetScriptedGui('bonecrafting_type_staff_available_scripted_gui').IsShown(GuiScope.SetRoot(Story.MakeScope).End)]"
+				spacing = 5
+				text_single = {
+					raw_text = "[Localize('bonecrafting_type_choice_staff')]"
+					default_format = "#high"
+				}
+				button_checkbox = {
+					checked = "[GetScriptedGui('bonecrafting_type_staff_selected_scripted_gui').IsShown(GuiScope.SetRoot(Story.MakeScope).End)]"
+					onclick = "[GetScriptedGui('reset_spell_preparation_story_cycle_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_to_start_preparation_for_scope', Story.MakeScope.Var('spell_component_template').Var('spell_component_parent_spell').Story.MakeScope).End)]"
+					onclick = "[GetScriptedGui('set_bonecrafting_selected_type_staff_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_component_to_be_prepared', Story.MakeScope.Var('spell_component_template').Story.MakeScope).End)]"
+					size = { 20 20 }
+				}
+			}
+
+			hbox = {
+				visible = "[GetScriptedGui('bonecrafting_type_spear_available_scripted_gui').IsShown(GuiScope.SetRoot(Story.MakeScope).End)]"
+				spacing = 5
+				text_single = {
+					raw_text = "[Localize('bonecrafting_type_choice_spear')]"
+					default_format = "#high"
+				}
+				button_checkbox = {
+					checked = "[GetScriptedGui('bonecrafting_type_spear_selected_scripted_gui').IsShown(GuiScope.SetRoot(Story.MakeScope).End)]"
+					onclick = "[GetScriptedGui('reset_spell_preparation_story_cycle_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_to_start_preparation_for_scope', Story.MakeScope.Var('spell_component_template').Var('spell_component_parent_spell').Story.MakeScope).End)]"
+					onclick = "[GetScriptedGui('set_bonecrafting_selected_type_spear_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_component_to_be_prepared', Story.MakeScope.Var('spell_component_template').Story.MakeScope).End)]"
+					size = { 20 20 }
+				}
+			}
+
+			expand = {}
+		}
+
 		text_multi = {
 			visible = "[Not(EqualTo_string(Concatenate(Story.MakeScope.Var('spell_component_template').Var('spell_component_name').GetFlagName,'_desc'),Localize(Concatenate(Story.MakeScope.Var('spell_component_template').Var('spell_component_name').GetFlagName,'_desc'))))]"
-			text = "[Localize(Concatenate(Story.MakeScope.Var('spell_component_template').Var('spell_component_name').GetFlagName,'_desc'))]"
+			raw_text = "[Localize(Concatenate(Story.MakeScope.Var('spell_component_template').Var('spell_component_name').GetFlagName,'_desc'))]"
 			default_format = "#weak"
 			using = Font_Size_Small
 			autoresize = yes
@@ -936,7 +1055,7 @@ types MagicViewTypes
 						}
 						
 						text_single = {
-							text = "[Localize(Concatenate(Scope.Var('ingredient_name').GetFlagName, '_name'))]"
+							raw_text = "[Localize(Concatenate(Scope.Var('ingredient_name').GetFlagName, '_name'))]"
 							default_format = "#V"
 							margin_left = 10
 						}
@@ -967,7 +1086,7 @@ types MagicViewTypes
 						layoutpolicy_horizontal = expanding
 						datacontext = "[Scope.Story]"
 						text_multi = {
-							text = "[Localize(Concatenate(Scope.Var('ingredient_name').GetFlagName,'_desc'))]"
+							raw_text = "[Localize(Concatenate(Scope.Var('ingredient_name').GetFlagName,'_desc'))]"
 							default_format = "#weak"
 							using = Font_Size_Small
 							autoresize = yes
@@ -1019,7 +1138,7 @@ types MagicViewTypes
 								text_single = {
 									layoutpolicy_horizontal = expanding
 									default_format = "#S"
-									raw_text = "Модификаторы Аспекта"
+									raw_text = "Модификаторы аспекта"
 									margin_left = 10
 								}
 								
@@ -1264,7 +1383,7 @@ types MagicViewTypes
 		
 				text_single = {
 					using = Font_Size_Small
-					text = "[Abs_CFixedPoint(Story.MakeScope.Var('spell_component_template').Var(Scope.GetFlagName).GetValue)|0]"
+					raw_text = "[Abs_CFixedPoint(Story.MakeScope.Var('spell_component_template').Var(Scope.GetFlagName).GetValue)|0]"
 					default_format = "#high"
 					align = nobaseline
 					parentanchor = center
@@ -1306,7 +1425,7 @@ types MagicViewTypes
 		widget = {
 			name = "answer_chance"
 			size = { 330 60 }
-			tooltip = "[GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('caster', GetPlayer.GetCouncillor( 'councillor_court_magi' ).MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).GetScriptValueDesc('court_magi_spellcasting_acceptance_value')]"
+			tooltip = "[GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('caster', GetPlayer.GetCouncillor( 'councillor_court_magi' ).MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).GetScriptValueDesc('court_magi_spellcasting_acceptance_value')]"
 
 			background = {
 				using = Background_Area_Dark
@@ -1317,7 +1436,7 @@ types MagicViewTypes
 				size = { 30 30 }
 				position = { 50 0 }
 				parentanchor = vcenter
-				visible = "[LessThanOrEqualTo_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('caster', GetPlayer.GetCouncillor( 'councillor_court_magi' ).MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('court_magi_spellcasting_acceptance_value'),'(CFixedPoint)0')]"
+				visible = "[LessThanOrEqualTo_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('caster', GetPlayer.GetCouncillor( 'councillor_court_magi' ).MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('court_magi_spellcasting_acceptance_value'),'(CFixedPoint)0')]"
 			}
 
 			icon = {
@@ -1325,7 +1444,7 @@ types MagicViewTypes
 				size = { 30 30 }
 				position = { 50 0 }
 				parentanchor = vcenter
-				visible = "[GreaterThan_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('caster', GetPlayer.GetCouncillor( 'councillor_court_magi' ).MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('court_magi_spellcasting_acceptance_value'),'(CFixedPoint)0')]"
+				visible = "[GreaterThan_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('caster', GetPlayer.GetCouncillor( 'councillor_court_magi' ).MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('court_magi_spellcasting_acceptance_value'),'(CFixedPoint)0')]"
 			}
 
 			vbox = {
@@ -1335,7 +1454,7 @@ types MagicViewTypes
 				text_single = {
 					layoutpolicy_horizontal = expanding
 					name = "answer"
-					raw_text = "[SelectLocalization(LessThanOrEqualTo_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('caster', GetPlayer.GetCouncillor( 'councillor_court_magi' ).MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('court_magi_spellcasting_acceptance_value'),'(CFixedPoint)0'), '#negative_value Не примет#!', '#positive_value Примет#!')]"
+					raw_text = "[SelectLocalization(LessThanOrEqualTo_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('caster', GetPlayer.GetCouncillor( 'councillor_court_magi' ).MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('court_magi_spellcasting_acceptance_value'),'(CFixedPoint)0'), '#negative_value Will not accept#!', '#positive_value Will accept#!')]"
 					default_format = "#high"
 					using = Font_Size_Medium
 					align = nobaseline
@@ -1345,122 +1464,1318 @@ types MagicViewTypes
 					layoutpolicy_horizontal = expanding
 					#visible = "[And( Not( CharacterInteractionConfirmationWindow.IsAiMaybe ), Not( CharacterInteractionConfirmationWindow.GetRecipient.IsPlayer ) )]"
 					name = "answer_score"
-					raw_text = "[SelectLocalization(LessThanOrEqualTo_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('caster', GetPlayer.GetCouncillor( 'councillor_court_magi' ).MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('court_magi_spellcasting_acceptance_value'),'(CFixedPoint)0'), '#negative_value', '#positive_value')] [GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('caster', GetPlayer.GetCouncillor( 'councillor_court_magi' ).MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('court_magi_spellcasting_acceptance_value')|0]#!"
+					raw_text = "[SelectLocalization(LessThanOrEqualTo_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('caster', GetPlayer.GetCouncillor( 'councillor_court_magi' ).MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('court_magi_spellcasting_acceptance_value'),'(CFixedPoint)0'), '#negative_value', '#positive_value')] [GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('caster', GetPlayer.GetCouncillor( 'councillor_court_magi' ).MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).ScriptValue('court_magi_spellcasting_acceptance_value')|0]#!"
 					align = nobaseline
 				}
 			}
 		}
 	}
 	
-	type container_spell_effects_tooltip = object_tooltip_pop_out {
-	
-		blockoverride "title_text" {
-			margin = { -6 8 }
-			text = "[Story.Custom('SpellName')]"
-		}
+	type container_spell_effects_tooltip = widget {
+		using = GeneralTooltipSetup
+		alwaystransparent = no
 
-		blockoverride "concept_link" {
-			raw_text = "[ritual|E] [Story.MakeScope.ScriptValue('spell_level_value')|V0] Уровня"
-		}
+		using = DefaultTooltipBackground
 		
-		blockoverride "extra_data" {
+		vbox = {
+			set_parent_size_to_minimum = yes
+			margin = { 20 5 }
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'fire'))]"
+					spriteType = Corneredtiled
+					color = { 0.88 0.34 0.13 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'water'))]"
+					spriteType = Corneredtiled
+					color = { 0.11 0.24 0.42 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'ice'))]"
+					spriteType = Corneredtiled
+					color = { 0.72 0.9 0.92 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'air'))]"
+					spriteType = Corneredtiled
+					color = { 0.62 0.83 0.86 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'stone'))]"
+					spriteType = Corneredtiled
+					color = { 0.47 0.30 0.18 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dream'))]"
+					spriteType = Corneredtiled
+					color = { 0.65 0.65 1 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'celestial'))]"
+					spriteType = Corneredtiled
+					color = { 0.65 0.15 0.86 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dark'))]"
+					spriteType = Corneredtiled
+					color = { 0.25 0.3 0.2 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'light'))]"
+					spriteType = Corneredtiled
+					color = { 0.90 0.75 0.30 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'blood'))]"
+					spriteType = Corneredtiled
+					color = { 0.95 0.01 0.01 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'nature'))]"
+					spriteType = Corneredtiled
+					color = { 0.10 0.25 0.01 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'ethereal'))]"
+					spriteType = Corneredtiled
+					color = { 0.55 0.55 0.65 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'hymns'))]"
+					spriteType = Corneredtiled
+					color = { 0.56 0.00 1.00 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'death'))]"
+					spriteType = Corneredtiled
+					color = { 0.05 0.71 0.47 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'sand'))]"
+					spriteType = Corneredtiled
+					color = { 0.90 0.75 0.30 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'metal'))]"
+					spriteType = Corneredtiled
+					color = { 0.90 0.75 0.30 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'time'))]"
+					spriteType = Corneredtiled
+					color = { 0.90 0.75 0.30 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dawn'))]"
+					spriteType = Corneredtiled
+					color = { 0.90 0.75 0.30 1 }
+					alpha = 0.4
+					texture = "gfx/interface/colors/white.dds"
+			
+					margin_left = 15
+					margin_right = 15
+			
+					using = Mask_Rough_Edges
+			
+					modify_texture = {
+						texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+						spriteType = Corneredtiled
+						blend_mode = alphamultiply
+						alpha = 0.2
+					}
+				}
+
+				text_single = {
+					autoresize = yes
+					name = "title"
+
+					fontsize_min = 14
+					using = Font_Size_Medium
+
+					margin = { 0 8 }
+					raw_text = "[Story.MakeScope.Var('spell_being_prepared').Story.Custom('SpellName')]"
+					default_format = "#V"
+				}
+				
+				## Mana & Gold Cost
+				text_single = {
+					raw_text = "#V [gold_i][Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_gold_cost').GetValue|0]@magic_icon![Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_cost').GetValue|0]#!"
+					using = Font_Size_Small
+					align = left|bottom
+					fontsize = 12
+				}
+
+				expand = {}
+
+				vbox = {
+					layoutpolicy_vertical = expanding
+
+					#text_single = {
+					#	name = "concept_link"
+					#	layoutpolicy_horizontal = expanding
+					#	raw_text = "Уровень [Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.ScriptValue('spell_level_value')|V0] [gh_ritual|E]"
+					#
+					#	fonttintcolor = "[TooltipInfo.GetTintColor]"
+					#}
+					
+					### Aspects
+					hbox = {
+						datamodel = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('spell_aspect_list')]"
+						spacing = 2
+						margin_top = -5
+					
+						item = {
+							text_single = {
+								raw_text = "[Localize(Concatenate('@gh_',Concatenate(Scope.GetFlagName, '_icon!')))]#BOL [Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [Localize(Concatenate(Scope.GetFlagName, '_coloring'))] [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Var(Scope.GetFlagName).GetValue)][AddLocalizationIf(Story.MakeScope.Var(Concatenate(Scope.GetFlagName,'_overcharge')).IsSet,'+')][AddLocalizationIf(Story.MakeScope.Var(Concatenate(Scope.GetFlagName,'_overcharge')).IsSet, ConvertToRomanNumeral(Story.MakeScope.Var(Concatenate(Scope.GetFlagName,'_overcharge')).GetValue))]#!#!"
+							}
+						}
+					}
+				}
+			}
+			
 			vbox = {
 				layoutpolicy_horizontal = expanding
 				layoutpolicy_vertical = expanding
-				
-				spacing = 10
-				
-				### Mana & Gold Cost
-				hbox = {
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'fire'))]"
 					layoutpolicy_horizontal = expanding
-					spacing = 2
-					margin_top = -5
-
-					text_single = {
-						layoutpolicy_horizontal = expanding
-						raw_text = "Базовая цена: [gold_i][Story.MakeScope.Var('spell_gold_cost').GetValue|0],@magic_icon![Story.MakeScope.Var('spell_cost').GetValue|0]"
-					}
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.22 0.09 0.03 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'water'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.03 0.06 0.10 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'ice'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.18 0.23 0.23 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'air'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.15 0.21 0.21 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'stone'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.12 0.07 0.04 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'dream'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.16 0.16 0.25 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'celestial'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.16 0.04 0.21 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'dark'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.06 0.07 0.05 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'light'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.23 0.19 0.07 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'blood'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.24 0.00 0.00 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'nature'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.03 0.06 0.00 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'ethereal'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.14 0.14 0.16 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'hymns'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.14 0.00 0.25 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'death'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.01 0.18 0.12 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'sand'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.23 0.19 0.07 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'metal'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.23 0.19 0.07 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'time'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.23 0.19 0.07 0.2 }
+					texture_density = 2
+				}
+				background = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_bg_color').GetFlagName, 'dawn'))]"
+					layoutpolicy_horizontal = expanding
+					margin = { 15 0 }
+					margin_top = 5
+					texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+					spriteType = Corneredtiled
+					spriteborder = { 20 20 }
+					color = { 0.23 0.19 0.07 0.2 }
+					texture_density = 2
+				}
+				
+				spell_effect_list_vbox = {
+					visible = "[DataModelHasItems(Scope.Var('spell_being_prepared').GetList('spell_effect_list'))]"
 				}
 				
 				vbox = {
-					datamodel = "[Story.MakeScope.GetList('spell_casting_trigger_list')]"
-					visible = "[DataModelHasItems(Story.MakeScope.GetList('spell_casting_trigger_list'))]"
-					layoutpolicy_vertical = expanding
+					visible = "[DataModelHasItems(Story.MakeScope.Var('spell_being_prepared').GetList('linked_spell_list'))]"
+					datamodel = "[Story.MakeScope.Var('spell_being_prepared').GetList('linked_spell_list')]"
 					layoutpolicy_horizontal = expanding
+					spacing = 5
 					margin_bottom = 10
-
-					background = {
-						layoutpolicy_horizontal = expanding
-						using = Background_Area
-						margin = { 15 0 }
-						margin_top = 5
-					}
 					
-					text_single = {
+					hbox = {
 						layoutpolicy_horizontal = expanding
-						default_format = "#S"
-						raw_text = "Требования к заклинанию"
-					}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'fire'))]"
+							spriteType = Corneredtiled
+							color = { 0.88 0.34 0.13 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
 					
-					spacer = {
-						size = { 0 5 }
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'water'))]"
+							spriteType = Corneredtiled
+							color = { 0.11 0.24 0.42 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'ice'))]"
+							spriteType = Corneredtiled
+							color = { 0.72 0.9 0.92 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'air'))]"
+							spriteType = Corneredtiled
+							color = { 0.62 0.83 0.86 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'stone'))]"
+							spriteType = Corneredtiled
+							color = { 0.47 0.30 0.18 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dream'))]"
+							spriteType = Corneredtiled
+							color = { 0.65 0.65 1 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'celestial'))]"
+							spriteType = Corneredtiled
+							color = { 0.65 0.15 0.86 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dark'))]"
+							spriteType = Corneredtiled
+							color = { 0.25 0.3 0.2 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'light'))]"
+							spriteType = Corneredtiled
+							color = { 0.90 0.75 0.30 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'blood'))]"
+							spriteType = Corneredtiled
+							color = { 0.95 0.01 0.01 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'nature'))]"
+							spriteType = Corneredtiled
+							color = { 0.10 0.25 0.01 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'ethereal'))]"
+							spriteType = Corneredtiled
+							color = { 0.55 0.55 0.65 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'hymns'))]"
+							spriteType = Corneredtiled
+							color = { 0.56 0.00 1.00 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'death'))]"
+							spriteType = Corneredtiled
+							color = { 0.05 0.71 0.47 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'sand'))]"
+							spriteType = Corneredtiled
+							color = { 0.90 0.75 0.30 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'metal'))]"
+							spriteType = Corneredtiled
+							color = { 0.90 0.75 0.30 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'time'))]"
+							spriteType = Corneredtiled
+							color = { 0.90 0.75 0.30 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						background = {
+							visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dawn'))]"
+							spriteType = Corneredtiled
+							color = { 0.90 0.75 0.30 1 }
+							alpha = 0.4
+							texture = "gfx/interface/colors/white.dds"
+					
+							margin_left = 15
+							margin_right = 10
+							margin_top = 6
+					
+							using = Mask_Rough_Edges
+					
+							modify_texture = {
+								name = "mask"
+								texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+								spriteType = corneredtiled
+								spriteborder_top = 20
+								texture_density = 4
+								blend_mode = alphamultiply
+								mirror = vertical
+							}
+					
+							modify_texture = {
+								texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+								spriteType = Corneredtiled
+								blend_mode = alphamultiply
+								alpha = 0.2
+							}
+						}
+						
+						text_single = {
+							raw_text = "Связанная магия"
+							using = Font_Size_Medium
+							default_format = "#V"
+						}
+						
+						expand = {}
+						
+						icon = {
+							texture = "gfx/interface/icons/rituals/icon_magic_cabal.dds"
+							framesize = { 140 140 }
+						
+							frame = 2
+							size = { 45 45 }
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'fire'))]"
+								color = { 0.44 0.17 0.07 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'water'))]"
+								color = { 0.06 0.12 0.21 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'ice'))]"
+								color = { 0.36 0.45 0.46 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'air'))]"
+								color = { 0.31 0.41 0.43 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'stone'))]"
+								color = { 0.23 0.15 0.09 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dream'))]"
+								color = { 0.33 0.33 0.50 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'celestial'))]"
+								color = { 0.33 0.07 0.43 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dark'))]"
+								color = { 0.12 0.15 0.10 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'light'))]"
+								color = { 0.45 0.38 0.15 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'blood'))]"
+								color = { 0.47 0.01 0.01 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'nature'))]"
+								color = { 0.05 0.12 0.01 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'ethereal'))]"
+								color = { 0.28 0.28 0.33 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'hymns'))]"
+								color = { 0.28 0.00 0.50 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'death'))]"
+								color = { 0.03 0.35 0.23 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'sand'))]"
+								color = { 0.45 0.38 0.15 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'metal'))]"
+								color = { 0.45 0.38 0.15 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'time'))]"
+								color = { 0.45 0.38 0.15 1 }
+								blend_mode = overlay
+							}
+							modify_texture = {
+								visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dawn'))]"
+								color = { 0.45 0.38 0.15 1 }
+								blend_mode = overlay
+							}
+						}
 					}
 					
 					item = {
-						text_multi = {
+						text_single = {
 							layoutpolicy_horizontal = expanding
-							text = SPELL_EFFECT_EFFECT_BULLETPOINT
-							autoresize = yes
-							max_width = 350
-							using = Font_Size_Small
-							alwaystransparent = yes
+							align = left
+							raw_text = "#underline [Scope.Story.Custom('SpellName')]#!"
+							
+							tooltipwidget = {
+								container_spell_effects_tooltip = {}
+							}
 						}
 					}
 				}
 				
 				vbox = {
-					datamodel = "[Story.MakeScope.GetList('spell_activation_trigger_list')]"
-					visible = "[DataModelHasItems(Story.MakeScope.GetList('spell_activation_trigger_list'))]"
-					layoutpolicy_vertical = expanding
+					datamodel = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('sub_spell_list')]"
 					layoutpolicy_horizontal = expanding
-					margin_bottom = 10
-
-					background = {
-						layoutpolicy_horizontal = expanding
-						using = Background_Area
-						margin = { 15 0 }
-						margin_top = 5
-					}
-					
-					text_single = {
-						layoutpolicy_horizontal = expanding
-						default_format = "#S"
-						raw_text = "Условия активации"
-					}
-					
-					spacer = {
-						size = { 0 5 }
-					}
 					
 					item = {
-						text_multi = {
+						spell_effect_list_vbox = {
 							layoutpolicy_horizontal = expanding
-							text = SPELL_EFFECT_EFFECT_BULLETPOINT
-							autoresize = yes
-							max_width = 350
-							using = Font_Size_Small
-							alwaystransparent = yes
+
+							blockoverride "header_content" {
+								text_single = {
+									raw_text = "[Localize(Concatenate(Story.MakeScope.Var('unique_spell_identifier').GetFlagName, '_name'))]"
+									using = Font_Size_Medium
+									default_format = "#V"
+								}
+							}
 						}
 					}
 				}
 				
 				vbox = {
-					datamodel = "[Story.MakeScope.GetList('spell_cost_tag_list')]"
-					visible = "[DataModelHasItems(Story.MakeScope.GetList('spell_cost_tag_list'))]"
+					datamodel = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('spell_cost_tag_list')]"
+					visible = "[DataModelHasItems(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('spell_cost_tag_list'))]"
 					layoutpolicy_vertical = expanding
 					layoutpolicy_horizontal = expanding
 					margin_bottom = 10
-
+	
 					background = {
 						layoutpolicy_horizontal = expanding
 						using = Background_Area
@@ -1472,6 +2787,7 @@ types MagicViewTypes
 						layoutpolicy_horizontal = expanding
 						default_format = "#S"
 						raw_text = "Факторы цены [Concept('mana','маны')|E]"
+						align = left
 					}
 					
 					spacer = {
@@ -1483,79 +2799,7 @@ types MagicViewTypes
 							layoutpolicy_horizontal = expanding
 							text = SPELL_COST_TAG_BULLETPOINT
 							autoresize = yes
-							max_width = 350
-							using = Font_Size_Small
-							alwaystransparent = yes
-						}
-					}
-				}
-				
-				vbox = {
-					datamodel = "[Story.MakeScope.GetList('standard_spell_effect_list')]"
-					visible = "[DataModelHasItems(Story.MakeScope.GetList('standard_spell_effect_list'))]"
-					layoutpolicy_vertical = expanding
-					layoutpolicy_horizontal = expanding
-					margin_bottom = 10
-
-					background = {
-						layoutpolicy_horizontal = expanding
-						using = Background_Area
-						margin = { 15 0 }
-						margin_top = 5
-					}
-					
-					text_single = {
-						layoutpolicy_horizontal = expanding
-						default_format = "#S"
-						raw_text = "Стандартные эффекты"
-					}
-					
-					spacer = {
-						size = { 0 5 }
-					}
-					
-					item = {
-						text_multi = {
-							layoutpolicy_horizontal = expanding
-							text = SPELL_EFFECT_EFFECT_BULLETPOINT
-							autoresize = yes
-							max_width = 350
-							using = Font_Size_Small
-							alwaystransparent = yes
-						}
-					}
-				}
-				
-				vbox = {
-					datamodel = "[Story.MakeScope.GetList('nonstandard_spell_effect_list')]"
-					visible = "[DataModelHasItems(Story.MakeScope.GetList('nonstandard_spell_effect_list'))]"
-					layoutpolicy_vertical = expanding
-					layoutpolicy_horizontal = expanding
-					margin_bottom = 10
-
-					background = {
-						layoutpolicy_horizontal = expanding
-						using = Background_Area
-						margin = { 15 0 }
-						margin_top = 5
-					}
-					
-					text_single = {
-						layoutpolicy_horizontal = expanding
-						default_format = "#S"
-						raw_text = "Нестандартные эффекты"
-					}
-					
-					spacer = {
-						size = { 0 5 }
-					}
-					
-					item = {
-						text_multi = {
-							layoutpolicy_horizontal = expanding
-							text = NONSTANDARD_SPELL_EFFECT_EFFECT_BULLETPOINT
-							autoresize = yes
-							max_width = 350
+							max_width = 550
 							using = Font_Size_Small
 							alwaystransparent = yes
 						}
@@ -1563,6 +2807,845 @@ types MagicViewTypes
 				}
 			}
 		}
+	}
+	
+	type spell_effect_list_vbox = vbox {
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = expanding
+		
+		margin_bottom = 10
+		
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'fire'))]"
+				spriteType = Corneredtiled
+				color = { 0.88 0.34 0.13 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'water'))]"
+				spriteType = Corneredtiled
+				color = { 0.11 0.24 0.42 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'ice'))]"
+				spriteType = Corneredtiled
+				color = { 0.72 0.9 0.92 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'air'))]"
+				spriteType = Corneredtiled
+				color = { 0.62 0.83 0.86 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'stone'))]"
+				spriteType = Corneredtiled
+				color = { 0.47 0.30 0.18 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dream'))]"
+				spriteType = Corneredtiled
+				color = { 0.65 0.65 1 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'celestial'))]"
+				spriteType = Corneredtiled
+				color = { 0.65 0.15 0.86 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dark'))]"
+				spriteType = Corneredtiled
+				color = { 0.25 0.3 0.2 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'light'))]"
+				spriteType = Corneredtiled
+				color = { 0.90 0.75 0.30 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'blood'))]"
+				spriteType = Corneredtiled
+				color = { 0.95 0.01 0.01 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'nature'))]"
+				spriteType = Corneredtiled
+				color = { 0.10 0.25 0.01 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'ethereal'))]"
+				spriteType = Corneredtiled
+				color = { 0.55 0.55 0.65 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'hymns'))]"
+				spriteType = Corneredtiled
+				color = { 0.56 0.00 1.00 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'death'))]"
+				spriteType = Corneredtiled
+				color = { 0.05 0.71 0.47 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'sand'))]"
+				spriteType = Corneredtiled
+				color = { 0.90 0.75 0.30 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'metal'))]"
+				spriteType = Corneredtiled
+				color = { 0.90 0.75 0.30 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'time'))]"
+				spriteType = Corneredtiled
+				color = { 0.90 0.75 0.30 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			background = {
+				visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dawn'))]"
+				spriteType = Corneredtiled
+				color = { 0.90 0.75 0.30 1 }
+				alpha = 0.4
+				texture = "gfx/interface/colors/white.dds"
+		
+				margin_left = 15
+				margin_right = 10
+				margin_top = 6
+		
+				using = Mask_Rough_Edges
+		
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_textured_vertical_down.dds"
+					spriteType = corneredtiled
+					spriteborder_top = 20
+					texture_density = 4
+					blend_mode = alphamultiply
+					mirror = vertical
+				}
+		
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+			
+			## Mana & Gold Cost
+			block "header_content" {
+				text_single = {
+					raw_text = "Стандартная"
+					using = Font_Size_Medium
+					default_format = "#V"
+				}
+			}
+			
+			text_single = {
+				raw_text = "#V [gold_i][Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_gold_cost').GetValue|0]@magic_icon![Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_cost').GetValue|0]#!"
+				using = Font_Size_Small
+				align = left|bottom
+				fontsize = 12
+			}
+			
+			## Aspect Changes
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('fire').IsSet]"
+				raw_text = "@gh_fire_icon! #BOL #color:{0.88,0.34,0.13} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('fire').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('water').IsSet]"
+				raw_text = "@gh_water_icon! #BOL #color:{0.11,0.24,0.42} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('water').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('ice').IsSet]"
+				raw_text = "@gh_ice_icon! #BOL #color:{0.72,0.9,0.92} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('ice').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('air').IsSet]"
+				raw_text = "@gh_air_icon! #BOL #color:{0.62,0.83,0.86} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('air').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('stone').IsSet]"
+				raw_text = "@gh_stone_icon! #BOL #color:{0.47,0.30,0.18} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('stone').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('dream').IsSet]"
+				raw_text = "@gh_dream_icon! #BOL #color:{0.65,0.65,1.0} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('dream').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('celestial').IsSet]"
+				raw_text = "@gh_celestial_icon! #BOL #color:{0.65,0.15,0.86} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('celestial').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('dark').IsSet]"
+				raw_text = "@gh_dark_icon! #BOL #color:{0.25,0.3,0.2} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('dark').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('light').IsSet]"
+				raw_text = "@gh_light_icon! #BOL #color:{0.90,0.75,0.30} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('light').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('blood').IsSet]"
+				raw_text = "@gh_blood_icon! #BOL #color:{0.64,0.01,0.01} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('blood').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('nature').IsSet]"
+				raw_text = "@gh_nature_icon! #BOL #color:{0.36,0.66,0.01} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('nature').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('ethereal').IsSet]"
+				raw_text = "@gh_ethereal_icon! #BOL #color:{0.55,0.55,0.65} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('ethereal').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('hymns').IsSet]"
+				raw_text = "@gh_hymns_icon! #BOL #color:{0.56,0.00,1.00} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('hymns').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('death').IsSet]"
+				raw_text = "@gh_death_icon! #BOL #color:{0.05,0.71,0.47} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('death').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('sand').IsSet]"
+				raw_text = "@gh_sand_icon! #BOL #color:{0.90,0.75,0.30} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('sand').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('metal').IsSet]"
+				raw_text = "@gh_metal_icon! #BOL #color:{0.90,0.75,0.30} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('metal').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('time').IsSet]"
+				raw_text = "@gh_time_icon! #BOL #color:{0.90,0.75,0.30} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('time').GetValue)]#!#!"
+			}
+			text_single = {
+				visible = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('dawn').IsSet]"
+				raw_text = "@gh_dawn_icon! #BOL #color:{0.90,0.75,0.30} [ConvertToRomanNumeral(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('dawn').GetValue)]#!#!"
+			}
+			
+			expand = {}
+			
+			icon = {
+				texture = "gfx/interface/icons/rituals/icon_magic_cabal.dds"
+				framesize = { 140 140 }
+			
+				frame = 2
+				size = { 45 45 }
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'fire'))]"
+					color = { 0.44 0.17 0.07 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'water'))]"
+					color = { 0.06 0.12 0.21 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'ice'))]"
+					color = { 0.36 0.45 0.46 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'air'))]"
+					color = { 0.31 0.41 0.43 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'stone'))]"
+					color = { 0.23 0.15 0.09 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dream'))]"
+					color = { 0.33 0.33 0.50 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'celestial'))]"
+					color = { 0.33 0.07 0.43 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dark'))]"
+					color = { 0.12 0.15 0.10 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'light'))]"
+					color = { 0.45 0.38 0.15 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'blood'))]"
+					color = { 0.47 0.01 0.01 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'nature'))]"
+					color = { 0.05 0.12 0.01 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'ethereal'))]"
+					color = { 0.28 0.28 0.33 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'hymns'))]"
+					color = { 0.28 0.00 0.50 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'death'))]"
+					color = { 0.03 0.35 0.23 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'sand'))]"
+					color = { 0.45 0.38 0.15 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'metal'))]"
+					color = { 0.45 0.38 0.15 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'time'))]"
+					color = { 0.45 0.38 0.15 1 }
+					blend_mode = overlay
+				}
+				modify_texture = {
+					visible = "[And(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').IsSet, EqualTo_string(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.Var('spell_icon_centerpiece_color').GetFlagName, 'dawn'))]"
+					color = { 0.45 0.38 0.15 1 }
+					blend_mode = overlay
+				}
+			}
+		}
+		
+		vbox = {
+			datamodel = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('spell_casting_trigger_list')]"
+			visible = "[DataModelHasItems(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('spell_casting_trigger_list'))]"
+			layoutpolicy_horizontal = expanding
+			
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				default_format = "#S"
+				raw_text = "Требования сотворения"
+			}
+			
+			item = {
+				text_multi = {
+					layoutpolicy_horizontal = expanding
+					text = SPELL_EFFECT_EFFECT_BULLETPOINT
+					autoresize = yes
+					max_width = 600
+					using = Font_Size_Small
+					alwaystransparent = yes
+				}
+			}
+		}
+		
+		vbox = {
+			datamodel = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('spell_activation_trigger_list')]"
+			visible = "[DataModelHasItems(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('spell_activation_trigger_list'))]"
+			layoutpolicy_horizontal = expanding
+			
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				default_format = "#S"
+				raw_text = "Условия активации"
+			}
+			
+			item = {
+				text_multi = {
+					layoutpolicy_horizontal = expanding
+					text = SPELL_EFFECT_EFFECT_BULLETPOINT
+					autoresize = yes
+					max_width = 600
+					using = Font_Size_Small
+					alwaystransparent = yes
+				}
+			}
+		}
+	
+		text_single = {
+			layoutpolicy_horizontal = expanding
+			visible = "[Or(DataModelHasItems(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('standard_spell_effect_list')), DataModelHasItems(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('nonstandard_spell_effect_list')))]"
+			default_format = "#S"
+			raw_text = "Эффекты"
+		}
+
+		vbox = {
+			datamodel = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('standard_spell_effect_list')]"
+			visible = "[DataModelHasItems(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('standard_spell_effect_list'))]"
+			layoutpolicy_horizontal = expanding
+			
+			item = {
+				text_multi = {
+					visible = "[Not(Scope.Var('spell_effect_hidden').IsSet)]"
+					layoutpolicy_horizontal = expanding
+					text = SPELL_EFFECT_EFFECT_BULLETPOINT
+					autoresize = yes
+					max_width = 600
+					using = Font_Size_Small
+					alwaystransparent = yes
+				}
+			}
+		}
+		
+		vbox = {
+			datamodel = "[Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('nonstandard_spell_effect_list')]"
+			visible = "[DataModelHasItems(Story.MakeScope.Var('spell_being_prepared').Story.MakeScope.GetList('nonstandard_spell_effect_list'))]"
+			layoutpolicy_horizontal = expanding
+			
+			item = {
+				text_multi = {
+					visible = "[Not(Scope.Var('spell_effect_hidden').IsSet)]"
+					layoutpolicy_horizontal = expanding
+					text = NONSTANDARD_SPELL_EFFECT_EFFECT_BULLETPOINT
+					autoresize = yes
+					max_width = 600
+					using = Font_Size_Small
+					alwaystransparent = yes
+				}
+			}
+		}
+		
+		text_single = {
+			layoutpolicy_horizontal = expanding
+			visible = "[GreaterThan_CFixedPoint(Story.MakeScope.Var('spell_being_prepared').ScriptValue('num_of_hidden_spell_effects_value'), '(CFixedPoint)0')]"
+			raw_text = "#V [Story.MakeScope.Var('spell_being_prepared').ScriptValue('num_of_hidden_spell_effects_value')]#! #weak неизвестыне эффекты#!"
+			margin_bottom = 10
+		}
+		
+		expand = {}
 	}
 	
 	type widget_bound_entity = vbox
@@ -1620,7 +3703,7 @@ types MagicViewTypes
 			text_single = {
 				name = "bound_entity_creature"
 				parentanchor = left
-				text = "[Localize(Concatenate(Story.MakeScope.Var('bound_entity_creature').GetFlagName,'_bound_entity_name'))]"
+				raw_text = "[Localize(Concatenate(Story.MakeScope.Var('bound_entity_creature').GetFlagName,'_bound_entity_name'))]"
 				default_format = "#high"
 				using = Font_Size_Medium
 				align = nobaseline
@@ -1632,7 +3715,7 @@ types MagicViewTypes
 			text_single = {
 				name = "bound_entity_type"
 				parentanchor = right
-				text = "[Localize(Concatenate(Story.MakeScope.Var('bound_entity_type').GetFlagName,'_bound_entity_type'))]"
+				raw_text = "[Localize(Concatenate(Story.MakeScope.Var('bound_entity_type').GetFlagName,'_bound_entity_type'))]"
 				default_format = "#high"
 				using = Font_Size_Small
 				align = nobaseline
@@ -1642,7 +3725,7 @@ types MagicViewTypes
 		}
 		
 		text_multi = {
-			text = "[Localize(Concatenate(Story.MakeScope.Var('bound_entity_creature').GetFlagName,'_bound_entity_desc'))]"
+			raw_text = "[Localize(Concatenate(Story.MakeScope.Var('bound_entity_creature').GetFlagName,'_bound_entity_desc'))]"
 			default_format = "#weak"
 			using = Font_Size_Small
 			autoresize = yes
@@ -1689,7 +3772,7 @@ types MagicViewTypes
 			expand = {}
 			
 			text_single = {
-				raw_text = "Прочность связи: #V [Story.MakeScope.Var('bond_strength').GetValue|0]#! (#negative_value -4/year#!)"
+				raw_text = "Сила связи: #V [Story.MakeScope.Var('bond_strength').GetValue|0]#! (#negative_value -4/год#!)"
 				
 				margin_right = 10
 				margin_bottom = 10
