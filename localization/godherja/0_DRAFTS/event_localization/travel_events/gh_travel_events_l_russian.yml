@@ -108,7 +108,7 @@
  gh_travel_event.1021.d:0 "Какой увлекательный способ умереть..."
  gh_travel_event.1021.e:0 "Может, оно заживёт само?"
  gh_travel_event.1021.f:0 "Им поможет немного магии."
- gh_travel_event.1022.t:0 "Заброшенный Листикраксос"
+ gh_travel_event.1022.t:0 "Заброшенный [Glossary('Листикраксос','LISTIKRAXOS_GLOSS')]"
  gh_travel_event.1022.desc:0 "Среди скалистых выступов, возвышающихся над порогами, стоят руины давно забытой крепости [Concept('marchers','марчеров')|E]. Снизу я вижу осыпавшуюся стену — мощные ворота, где барон крепости мог наблюдать за рекой, теперь в руинах.\n\nМосты, соединявшие крепость с окружающими возвышенностями, давно обрушились в воды внизу, поэтому, если мы хотим попасть внутрь, нам придётся карабкаться по скалам. Хотя на это может уйти время, кто знает, какие сокровища всё ещё могут покоиться за стенами крепости."
  gh_travel_event.1022.a:0 "Я сам[Select_CString(ROOT.Char.IsFemale, 'а', '')] заберусь наверх!"
  gh_travel_event.1022.b:0 "Я думаю, [tough_climber.GetName] должен[Select_CString(tough_climber.IsFemale, 'а', '')] попробовать."
@@ -199,6 +199,7 @@
  gh_travel_event.1031.t:90 "Обожжённый странник"
  gh_travel_event.1031.desc:90 "Солнце опускается за горизонт, как раз в тот момент, когда мы находим, кажется, единственное подходящее место для лагеря в округе. В чистом поле уже горит одинокий костёр — мы здесь не одни.\n\nОдинокая фигура приветствует нас, когда мы подходим, положив руку на рукоять клинка. После короткого обмена осторожными любезностями [seared_exile.GetWomanMan] представляется как [seared_exile.GetFullName], странствующий наёмник и искатель приключений, и предлагает путешествовать вместе ради безопасности.\n\n"
  gh_travel_event.1031.sarminian:90 "«Мой [ROOT.Char.GetLadyLord|U], прошу, передумайте!» — вмешивается [offended_sarminian.GetTitledFirstName]. «Эта [Select_CString(seared_exile.IsFemale, 'женщина', 'мужчина')] — [Concept('anohelis_outcasts','изгнанник, преступник и отверженный')|E],» — заявляет [Select_CString(offended_sarminian.IsFemale, 'она', 'он')]. «Ничего хорошего не выйдет из общения с такими, как [Select_CString(seared_exile.IsFemale, 'её', 'его')].»"
+ gh_travel_event.1031.mystery:90 ""
  gh_travel_event.1031.a:90 "[seared_exile.GetSheHe|U] может присоединиться к нам."
  gh_travel_event.1031.b:90 "Пусть [seared_exile.GetHerHim] сначала докажет [seared_exile.GetHerselfHimself]."
  gh_sarminian_events_0031_b_exile_loss:90 "[offended_sarminian.GetTitledFirstNameNoTooltip] побеждает"
@@ -310,6 +311,7 @@
 
  gh_travel_event.2071.t: "Наблюдение за звёздами"
  gh_travel_event.2071.desc: "В течение нашего путешествия ночные облака часто мешали любоваться небом, но теперь, лёжа у огня, я могу увидеть великолепное, ясное ночное небо с абсолютной чёткостью. Каждое созвездие, от Короны до Ворона, и даже чёрная Пустота, кажется яснее предыдущего. Я мог бы провести всю ночь, изучая их мерцание и вспышки на ночном небе."
+ gh_travel_event.2071.a: "What a sight, we should rest here"
  gh_travel_event.2071.b: "Какое зрелище, нам стоит отдохнуть здесь"
  gh_travel_event.2071.b.minorwin: "Я [Select_CString(ROOT.Char.IsFemale, 'должна', 'должен')] изучить созвездия этой ночью"
  gh_travel_event.2071.b.win: "Вы узнали немного, глядя на звёзды."
@@ -359,6 +361,13 @@
  gh_travel_event.3031.a: "Какое зрелище!"
  gh_travel_event.3031.b: "Интересно, каково было бы охотиться на это!"
  gh_travel_event.3031.c: "Да какая разница?"
+
+ gh_travel_event.3041.t: "Secret Waters of the Desert"
+ gh_travel_event.3041.desc: "Our journey through the [Glossary('Sarradonian Desert','sarradonian_desert_encyclopedia_desc')] has been drier and hotter than any of us expected. For days now, we have rationed our water to better make it through these arduous dunes.\n\nBut today, something changed.\n\nWe could see several miles ahead a rock formation in the desert, and once we climbed into it, a veritable paradise in the desert. A great canyon stretches before us, with pockets of water, flora, and fauna passing leisurely at its bottom. The water shines like a cerulean gem under the sun as several camels drink from its shore. Everything here seems at peace, in comparison to the violent sands beyond."
+ gh_travel_event.3041.a: "Ah, this is a great place to rest."
+ gh_travel_event.3041.b: "Maybe we can catch something tasty to eat!"
+ gh_travel_event.3041.c: "We should move on, quickly."
+ gh_travel_event.3041.d: "I should write down all that we see here."
 
  gh_travel_event.9001.t: "На пороге Лабиринта"
  gh_travel_event.9001.desc.intro: "Когда мой отряд путешествовал через [province.GetName], нам пришлось сделать значительный обход из-за крупного оползня впереди, что вынудило нас углубиться под вершины [Concept('hyratan_biozone','Хирата')|E] дальше, чем мы ожидали. Пробираясь через дикие земли, едва заметные звериные тропы служили нам проводником. Мы пересекли длинную, изрезанную расщелину — скорее рану в скале, чем природное образование — и вдруг оказались перед огромной, зияющей дверью, высеченной в нетронутом массиве камня."

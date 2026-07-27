@@ -37,12 +37,29 @@
  friend_died_known_killer_desc_third_perspective_3:3 "[dead_relation.GetName], [Select_CString(dead_relation.IsFemale, 'подруга', 'друг' )] [owner.GetNamePossessive], [dead_relation.GetDeathReason]"
 
  personality_altered_depravity_gedeora_desc:0 "Этот персонаж был поражён гедеорой, что привело его к падению в разврат, чему, как он засвидетельствовал бы, он был только рад."
+ personality_altered_depravity_gedeora_desc_second_perspective:0 ""
+ personality_altered_depravity_gedeora_desc_third_perspective:0 ""
  personality_altered_zeal_gedeora_desc:0 "Этот персонаж был поражён гедеорой, что вызвало у него глубокое религиозное переживание, после которого он уже никогда не будет прежним."
+ personality_altered_zeal_gedeora_desc_second_perspective:0 ""
+ personality_altered_zeal_gedeora_desc_third_perspective:0 ""
  personality_altered_bloodlust_gedeora_desc:0 "Этот персонаж был поражён гедеорой, что пробудило в нём жажду проливать кровь."
+ personality_altered_bloodlust_gedeora_desc_second_perspective:0 ""
+ personality_altered_bloodlust_gedeora_desc_third_perspective:0 ""
  personality_altered_ambition_gedeora_desc:0 "Этот персонаж был поражён гедеорой, что внезапно пробудило в нём великие планы и амбиции."
- personality_altered_generic_evil_gedeora_desc:0 ""
+ personality_altered_ambition_gedeora_desc_second_perspective:0 ""
+ personality_altered_ambition_gedeora_desc_third_perspective:0 ""
+ personality_altered_generic_evil_gedeora_desc:0 "Этот персонаж был поражён гедеорой, отчего внезапно переменился — вероятно, к худшему."
+ personality_altered_generic_evil_gedeora_desc_second_perspective:0 ""
+ personality_altered_generic_evil_gedeora_desc_third_perspective:0 ""
+ personality_altered_generic_good_gedeora_desc:0 "Этот персонаж был поражён гедеорой, отчего внезапно переменился — будем надеяться, к лучшему."
+ personality_altered_generic_good_gedeora_desc_second_perspective:0 ""
+ personality_altered_generic_good_gedeora_desc_third_perspective:0 ""
+
+ resisted_gedeora_desc:0 "Этот персонаж был поражён гедеорой, но проявил силу духа, чтобы противостоять мощной магии, пытавшейся изменить его личность."
+ resisted_gedeora_desc_second_perspective:0 ""
+ resisted_gedeora_desc_third_perspective:0 ""
+ 
  personality_altered_apostasy_gedeora_desc:0 "Этот персонаж был поражён гедеорой, что заставило его заявить о смерти [ROOT.Char.GetFaith.HighGodName] и потерять всякую веру в ценность жизни."
- resisted_gederoa_desc:0 "Этот персонаж был поражён гедеорой, но проявил силу духа, чтобы противостоять мощной магии, пытавшейся изменить его личность."
 
  fell_into_coma_desc:0 "Я [Select_CString(owner.IsFemale, 'впала', 'впал' )] в глубокий сон"
  fell_into_coma_desc_second_perspective:0 "вы впали в глубокий сон"
@@ -64,9 +81,9 @@
  fought_in_elysian_pass_sjalvolki_desc_second_perspective:0 "вы сражались в Битве у Элизийского перевала на стороне сьялволки"
  fought_in_elysian_pass_sjalvolki_desc_third_perspective:0 "[owner.GetName] [Select_CString(owner.IsFemale, 'сражалась', 'сражался' )] в Битве у Элизийского перевала на стороне сьялволки"
 
- fought_in_elysian_pass_aversarian_desc:0 "Я [Select_CString(owner.IsFemale, 'сражалась', 'сражался' )] в Битве у Элизийского перевала на стороне аверсарианцев"
- fought_in_elysian_pass_aversarian_desc_second_perspective:0 "вы сражались в Битве у Элизийского перевала на стороне аверсарианцев"
- fought_in_elysian_pass_aversarian_desc_third_perspective:0 "[owner.GetName] [Select_CString(owner.IsFemale, 'сражалась', 'сражался' )] в Битве у Элизийского перевала на стороне аверсарианцев"
+ fought_in_elysian_pass_aversarian_desc:0 "Я [Select_CString(owner.IsFemale, 'сражалась', 'сражался' )] в Битве у Элизийского перевала на стороне [Concept('aversaria','аверсарианцев')|E]"
+ fought_in_elysian_pass_aversarian_desc_second_perspective:0 "вы сражались в Битве у Элизийского перевала на стороне [Concept('aversaria','аверсарианцев')|E]"
+ fought_in_elysian_pass_aversarian_desc_third_perspective:0 "[owner.GetName] [Select_CString(owner.IsFemale, 'сражалась', 'сражался' )] в Битве у Элизийского перевала на стороне [Concept('aversaria','аверсарианцев')|E]"
 
  fought_in_elysian_pass_marcher_desc:0 "Я [Select_CString(owner.IsFemale, 'сражалась', 'сражался' )] в Битве у Элизийского перевала как независимый марочникский наёмник"
  fought_in_elysian_pass_marcher_desc_second_perspective:0 "вы сражались в в Битве у Элизийского перевала как независимый марочникский наёмник"
@@ -88,6 +105,14 @@
  saw_ratarakaw_desc_second_perspective:0 "вы стали свидетелем катастрофического падения [Concept('ratarakaw','великой чёрной скалы')|E]"
  saw_ratarakaw_desc_third_perspective:0 "[owner.GetName] [Select_CString(owner.IsFemale, 'стала', 'стал' )] свидетелем катастрофического падения [Concept('ratarakaw','великой чёрной скалы')|E]"
 
+ purchased_damota_land_for_settlement_desc:0 "Я [Select_CString(owner.IsFemale, 'купила', 'купил' )] регион Кушрел в качестве племенной земли"
+ purchased_damota_land_for_settlement_desc_second_perspective:0 "вы купили регион Кушрел в качестве племенной земли"
+ purchased_damota_land_for_settlement_desc_third_perspective:0 "[owner.GetName] [Select_CString(owner.IsFemale, 'купила', 'купил' )] регион Кушрел в качестве племенной земли"
+
+ elected_as_the_protector_general_desc:0 "После более чем десятилетия политических потрясений, народ избрал меня правителем Протектората, надеясь, что я сумею восстановить стабильность."
+ elected_as_the_protector_general_desc_second_perspective:0 "После более чем десятилетия политических потрясений, народ избрал вас правителем Протектората, надеясь, что вы сумеете восстановить стабильность."
+ elected_as_the_protector_general_desc_third_perspective:0 "После более чем десятилетия политических потрясений, народ избрал [owner.GetName] правителем Протектората, надеясь, что [owner.GetName] сумеет восстановить стабильность."
+ 
  #Titles
  enrolled_at_mayikprolollan:0 "начало обучения в [ROOT.Var('landed_title').Title.GetNameNoTier]"
  joined_legion:0 "вступление в [ROOT.Var('landed_title').Title.GetNameNoTier]"
@@ -104,8 +129,9 @@
  personality_altered_bloodlust_gedeora:0 "поражение гедеорой"
  personality_altered_ambition_gedeora:0 "поражение гедеорой"
  personality_altered_generic_evil_gedeora:0 "поражение гедеорой"
+ personality_altered_generic_good_gedeora:0 "поражение гедеорой"
  personality_altered_apostasy_gedeora:0 "поражение гедеорой"
- personality_resisted_gederoa:0 "успешное сопротивление гедеоре"
+ personality_resisted_gedeora:0 "успешное сопротивление гедеоре"
  fought_in_ten_trees:0 "сражение в [Concept('battle_of_ten_trees','Битве у десяти деревьев')|E]"
  fought_in_elysian_pass_sjalvolki:0 "cражение в Битве у Элизийского перевала"
  fought_in_elysian_pass_aversarian:0 "cражение в Битве у Элизийского перевала"
@@ -116,3 +142,5 @@
  became_lovers_public:0 "становление любовниками"
  lover_died_public:0 "смерть возлюбленного"
  saw_ratarakaw:0 "свидетельство [Concept('ratarakaw','Ратаракава')|E]"
+ purchased_damota_land_for_settlement:0 "приобрёл регион Кушрел в качестве племенной земли"
+ elected_as_the_protector_general:0 "был избран как генерал-защитник"

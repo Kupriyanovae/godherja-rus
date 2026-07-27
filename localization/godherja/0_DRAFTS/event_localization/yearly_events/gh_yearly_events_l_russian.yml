@@ -1,4 +1,292 @@
 l_russian:
+
+ gh_venture_company: "[Localize(Concatenate(GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope.Var('gh_venture_region_name_variable').GetFlagName,'_name'))]"
+
+ gh_venture_events.0001.t: "The Patrons' Answer"
+ gh_venture_events.0001.desc_unchallenged_break_away: "The patrons have sent back word, they have accepted with little resistance, no price asked and no even a quarrel made of it. Whether the venture was too small a thing to fight me over, or whether they had no stomach for it, none of them has seen fit to tell me. \n\nWhatever the reason, the venture is ended."
+ gh_venture_events.0001.desc_gh_require_pay_to_end_venture: "The patrons have apparently weighed the cost and decided the end of the venture could be settled for a price...\n\nLet each portion be bought out for a fair sum, and they will sign the whole of it over to me and trouble it no further. It would cost me dearly all at once, but there would be nothing left for anyone to argue over.\n\nThe implication, should I refuse, is clear enough: they are prepared to retake [realm.GetName] by force. Whether they would truly make good on their threat is another matter..."
+ gh_venture_events.0001.desc_gh_refuse_ending_venture: "The patrons make no secret of what they intend. The charter on [realm.GetName] is theirs, they say, and they will have the venture back out of my hands by force if necessary.\n\nThey are not content to come at me alone. The word has gone out to my own vassals that portions of the venture wait for any of them who ride against me.\n\nI do not yet know how many of my own will stand on the other side of it."
+ gh_create_character_company_army_effect_tt: "[marcher_company_merchant.GetFirstName] will gain an [army|E] of unknown size"
+ gh_venture_events.0001.a: "Good. The matter is closed."
+ gh_venture_events.0001.b: "Pay what they ask."
+ gh_venture_events.0001.c: "I will not pay."
+ gh_venture_events.0001.d: "Then let there be war."
+ gh_venture_events.0001.e: "I will reconsider."
+ end_story_cycle_gh_company_venture_tt: "The [Localize(Concatenate(GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope.Var('gh_venture_region_name_variable').GetFlagName,'_name'))] ends"
+
+ gh_venture_events.0002.t: "A Merchant at My Door"
+ gh_venture_events.0002.desc: "A merchant by the name of [merchant.GetFirstName] has found [merchant.GetHerselfHimself] in poor standing after a disastrous journey through [target_county.GetName]. Stripped of goods, coin, and dignity by a combination of bad roads and worse luck, [merchant.GetSheHe] is requesting assistance.\n\nI have no particular obligation to this [merchant.GetWomanMan]. But merchants talk, and how I receive one in misfortune has a way of reaching the ears of others still in a position to be useful to me."
+ gh_venture_events.0002.a: "Help [merchant.GetFirstNameNoTooltip] back onto [merchant.GetHerHis] feet."
+ gh_venture_events.0002.b: "I will offer shelter, but nothing more."
+ gh_venture_events.0002.c: "Misfortune is no business of mine."
+ gh_venture_events.0002.c.tt: "Send [merchant.GetFirstNameNoTooltip] away empty-handed"
+ #gh_venture_events.0002.d: "What goods remain? Perhaps we can come to an arrangement." #ASKIL NOTE: Will add when trade DLC drop if I don't forget
+
+ gh_venture_events.0003.t: "A Long Way from Anywhere"
+ gh_venture_events.0003.desc: "A merchant has arrived at my court in a state of considerable confusion. [merchant.GetFirstName] set out some months ago for [merchant_destination.GetName], provisioned for a modest journey and apparently possessed of a map that was, at best, aspirational.\n\n[merchant.GetSheHe|U] is, by any reasonable accounting, about as far from [merchant_destination.GetName] as it is possible. [merchant.GetFirstNameNoTooltip] does not appear to have fully grasped this yet, and has asked me for light provisions and directions, expecting to arrive within the week."
+ gh_venture_events.0003.a: "Help [merchant.GetFirstNameNoTooltip] and tell [merchant.GetHerHim] the truth."
+ gh_venture_events.0003.b: "This is not my concern. Point [merchant.GetHerHim] toward the road."
+ gh_venture_events.0003.b.tt: "What [merchant.GetFirstNameNoTooltip] does not know cannot hurt [merchant.GetHerHim]"
+ gh_venture_events.0003.c: "Maybe I can find use for [merchant.GetHerHim] here."
+
+ gh_venture_events.0004.t: "Faces from Home"
+ gh_venture_events.0004.desc: "A group of [ROOT.Char.GetCulture.GetNameNoTooltip] men and women have made their way to [ROOT.Char.GetCapitalLocation.GetTitle.GetNameNoTierNoTooltip], carrying little beyond the clothes on their backs and an apparent conviction that I would be pleased to see them.\n\nThey are not wrong, exactly. It is something, to hear the old tongue spoken without effort, to see familiar faces among the crowds of [ROOT.Char.GetPrimaryTitle.GetNameNoTier]. They ask only for land to settle and permission to stay. Whether I owe them that on account of shared blood is a question I find myself unexpectedly uncertain about."
+ gh_venture_events.0004.a: "My people are always welcome here."
+ gh_venture_events.0004.b: "They may settle, but they should compensate me for it."
+ gh_venture_events.0004.c: "There is no place for them here."
+
+ gh_venture_events.0005.t: "A [merchant.GetWomanMan] of the $gh_venture_company$"
+ gh_venture_events.0005.desc: "A merchant by the name of [merchant.GetFirstName] has presented [merchant.GetHerselfHimself] at my gates bearing the sigil of the $gh_venture_company$ and a story to match. [merchant.GetSheHe|U] speaks with the easy confidence of a [merchant.GetWomanMan] who knows the $gh_venture_company$'s business intimately and has come requesting an advance on funds [merchant.GetSheHe] claims are owed [merchant.GetHerHim] by a man of the $gh_venture_company$ who has since become unreachable.\n\nEverything [merchant.GetSheHe] says is plausible. Yet something in [merchant.GetHerHis] manner doesn't feel right."
+ gh_venture_events.0005.a: "The $gh_venture_company$ honors its debts. Pay [merchant.GetHerHim]."
+ gh_venture_events.0005.a.success: "The merchant departs satisfied"
+ gh_venture_events.0005.a.failure: "The coin is gone. So is [merchant.GetSheHe]."
+ gh_venture_events.0005.b: "The $gh_venture_company$ has no outstanding debts. Get out."
+ gh_venture_events.0005.b.success: "The fraud is exposed before [merchant.GetSheHe] can flee"
+ gh_venture_events.0005.b.failure: "[merchant.GetSheHe|U] is who [merchant.GetSheHe] claims to be"
+
+ gh_venture_events.0007.t: "Letters Left Undelivered"
+ gh_venture_events.0007.desc: "A man sent by the venture's patrons has arrived at my court.\n\nSeveral letters sent by the patrons regarding outstanding matters of trade and obligation have gone unanswered. My [steward.GetCouncilTitle] [steward.GetFirstNameNoTooltip] has now admitted to me that the correspondence was never brought to my attention. The patrons have been waiting on replies I did not know I owed them, and they have grown tired of waiting."
+ gh_venture_events.0007.a: "Dismiss my [steward.GetFirstNameNoTooltip]. This cannot go unpunished."
+ gh_venture_events.0007.a.tt: "Remove [steward.GetFirstNameNoTooltip] from office and placate the patrons"
+ gh_venture_events.0007.b: "Compensate the patrons and dismiss [steward.GetFirstNameNoTooltip]."
+ gh_venture_events.0007.c: "My [steward.GetCouncilTitle] will answer to me privately. That is all."
+ gh_venture_events.0007.c.tt: "The patrons will have to be satisfied with an apology"
+ gh_venture_events.0007.d: "This was misfortune, not negligence. I will vouch for [steward.GetFirstNameNoTooltip]."
+
+ gh_venture_events.0008.t: "Word from the Patrons"
+ gh_venture_events.0008.desc: "A man sent by the venture's patrons has made the journey to [ROOT.Char.GetCapitalLocation.GetTitle.GetNameNoTierNoTooltip], bearing a letter.\n\nThe patrons have interests in [target_county.GetName] that they cannot adequately protect while [target_county.GetHolder.GetTitledFirstName] remains its ruler. They have set their eyes on [target_county.GetName] and see my position as the natural instrument for acquiring it."
+ gh_venture_events.0008.a: "I will see it done."
+ gh_venture_events.0008.a.tt: "Commit to the campaign on the patrons' behalf"
+ gh_venture_events.0008.b: "I govern here. They can wait."
+ gh_venture_events.0008.b.tt: "Dismiss their man, this will not go unnoticed by the patrons"
+
+ gh_venture_events.0009.t: "In Good Standing"
+ gh_venture_events.0009.desc: "Word has reached me that my name is spoken favorably among the venture's patrons. How exactly this reputation has taken shape I cannot say with certainty, but their opinion of my stewardship has risen, and that is not nothing.\n\nFor now, at least, their letters will arrive without an edge to them."
+ gh_venture_events.0009.a: "Good."
+
+ gh_venture_events.0010.t: "Out of Favor"
+ gh_venture_events.0010.desc: "Word has reached me that my name is not spoken kindly among the venture's patrons. The particulars of their displeasure have not been made explicit, but their opinion of my stewardship has fallen, and they have made certain I would hear about it.\n\nThe next letter from them will have an edge to it. Of that I am fairly certain."
+ gh_venture_events.0010.a: "I had better get ahead of this."
+ gh_venture_events.0010.a.tt: "Take steps to repair the patrons' opinion before it worsens"
+ gh_venture_events.0010.a.success: "You are successful in improving their opinion"
+ gh_venture_events.0010.a.failure: "Your effort does not sway them"
+ gh_venture_events.0010.a.critical_failure: "You worsen their opinion of you"
+ gh_venture_events.0010.b: "Let them grumble. I govern here."
+
+ gh_venture_events.0011.t: "Better in His Estimation"
+ gh_venture_events.0011.desc: "It has come to my attention that [vassal.GetTitledFirstName] has been sharing opinions about my rule with anyone willing to listen. The substance of these opinions is not flattering. [vassal.GetSheHe|U] has apparently given the matter considerable thought and arrived at the conclusion that [vassal.GetSheHe] would govern better in my place, and, more pointedly, that the venture's patrons would be better served under [vassal.GetHerHis] stewardship than mine.\n\nI find myself less interested in whether [vassal.GetFirstNameNoTooltip] believes this than in how many others are beginning to, and whether any of them have the patrons' ear."
+ gh_venture_events.0011.a: "Have [vassal.GetFirstNameNoTooltip] brought before me."
+ gh_venture_events.0011.a.tt: "Confront [vassal.GetFirstNameNoTooltip] directly"
+ gh_venture_events.0011.a.success: "[vassal.GetFirstNameNoTooltip] thinks better of speaking so openly"
+ gh_venture_events.0011.a.failure: "The confrontation emboldens [vassal.GetFirstNameNoTooltip] further"
+ gh_venture_events.0011.c: "Let [vassal.GetFirstNameNoTooltip] talk."
+ gh_venture_events.0011.d: "Write to the patrons before [vassal.GetFirstNameNoTooltip] does."
+
+ gh_venture_events.0012.t: "An Eye on the Books"
+ gh_venture_events.0012.desc: "A man sent by the venture's patrons has arrived with a specific and unwelcome purpose. The venture's recent returns have not satisfied them, and they have sent someone to understand why. What they are asking for, with the thinly veiled courtesy of an official request, is access to my ledger.\n\nIt is not an unreasonable thing for the patrons to ask of the ruler they appointed. That does not make it a comfortable one."
+ gh_venture_events.0012.a: "Let [auditor.GetFirstNameNoTooltip] see what [auditor.GetSheHe] came for."
+ gh_venture_events.0012.a.tt: "Grant access to the ledger and submit to the patrons' scrutiny"
+ gh_venture_events.0012.a.success: "The patrons are satisfied with what the ledger shows"
+ gh_venture_events.0012.a.failure: "The ledger raises more questions than it answers"
+ gh_venture_events.0012.b: "I will present a summary. The ledger itself stays with me."
+ gh_venture_events.0012.b.success: "The patrons are satisfied with what the ledger shows"
+ gh_venture_events.0012.b.failure: "The ledger raises more questions than it answers"
+ gh_venture_events.0012.c: "My accounts are my own business. Send [auditor.GetHerHim] away."
+
+ gh_venture_events.0013.t: "A Satisfactory Account"
+ gh_venture_events.0013.desc: "The man sent by the venture's patrons has concluded their review of my accounts and, it seems, found nothing to trouble them. [auditor.GetFirstNameNoTooltip] departs with the measured satisfaction of someone who came expecting a problem and was denied one.\n\nA brief note follows, confirming that the patrons are content with the state of the venture for now. I do not expect this scrutiny to be the last of its kind, but for the moment it has passed."
+ gh_venture_events.0013.a: "Good. Back to work."
+
+ gh_venture_events.0014.t: "The Patrons Want More"
+ gh_venture_events.0014.desc: "The man sent by the venture's patrons has concluded their review, and they have not come away satisfied. [auditor.GetFirstNameNoTooltip] presents their findings without ceremony: the venture's returns are insufficient, and the patrons expect a greater share of what profits there are until the numbers improve to their liking.\n\nThe figure [auditor.GetFirstNameNoTooltip] names is not a suggestion."
+ gh_venture_events.0014.a: "I will meet their demands."
+ gh_venture_events.0014.a.tt: "Agree to raise the patrons' profit share"
+ gh_venture_events.0014.b: "These terms are unacceptable. Tell the patrons I said so."
+ gh_venture_events.0014.b.tt: "Refuse outright, this will not go unnoticed"
+ gh_venture_events_0012_increase_profit_share_tt: "The patrons' [Concept('gh_company_profits','Profit Share')|E] is increased"
+
+ gh_venture_events.0015.t: "Trade Driven Away"
+ gh_venture_events.0015.desc: "Several merchants operating within my venture have requested an audience, and their grievance is a familiar one. The share of profits owed to the venture's patrons has grown too burdensome to bear, they tell me, and the more nimble among their peers have already begun taking their business elsewhere.\n\nIf this continues, the venture's returns will only fall further."
+ gh_venture_events.0015.a: "The merchants are right."
+ gh_venture_events.0015.a.tt: "Push back on the patrons' share, they will not receive this well"
+ gh_venture_events.0015.b: "I'm sure the merchants will adapt."
+ gh_venture_events.0015.b.tt: "Dismiss the complaint, trade will suffer for it"
+
+ gh_venture_events.0016.t: "An Authority Undermined"
+ gh_venture_events.0016.desc: "[noble.GetTitledFirstName] has written to me in protest. The $gh_venture_company$'s men operating in [target_county.GetName] have been negotiating contracts and settling obligations without [noble.GetHerHis] knowledge, and the locals have taken notice.\n\n[noble.GetFirstNameNoTooltip] wants the practice stopped."
+ gh_venture_events.0016.a: "I will rein them in."
+ gh_venture_events.0016.b: "Acknowledge the grievance and nothing more."
+
+ gh_venture_events.0017.t: "A Prize Brought to Port"
+ gh_venture_events.0017.desc: "A merchant captain in the employ of the $gh_venture_company$ has arrived at [ROOT.Char.GetCapitalLocation.GetTitle.GetNameNoTierNoTooltip] with an unexpected prize in tow. [captain.GetFirstNameNoTooltip] intercepted a pirate vessel, and has brought it, its cargo, and what remains of its crew before me to decide their fate."
+ gh_venture_events.0017.a: "The ship and cargo belong to [captain.GetFirstNameNoTooltip]. A reward well earned."
+ gh_venture_events.0017.b: "Sell the cargo and hang the crew."
+ gh_venture_events.0017.c: "Sell the cargo and leave them be."
+
+ gh_venture_events.0018.t: "A Grievance from Abroad"
+ gh_venture_events.0018.desc: "A delegation of foreign merchants has arrived at [ROOT.Char.GetCapitalLocation.GetTitle.GetNameNoTierNoTooltip] bearing documents and a grievance. The $gh_venture_company$ has, in their account, violated terms agreed upon in [foreign_realm.GetName], and they have come to me, as the venture's appointed head, to answer for it.\n\nWhether the patrons know this delegation has been sent to my door is another matter entirely."
+ gh_venture_events.0018.a: "The compact was the patrons' doing. Take it up with them."
+ gh_venture_events.0018.b: "Compensate them and put this to rest."
+ gh_venture_events.0018.c: "Their quarrel is with the men who wronged them, not with me."
+
+ gh_venture_events.0019.t: "Discontent in [target_county.GetName]"
+ gh_venture_events.0019.desc: "The people of [target_county.GetName] have made their unhappiness known. The $gh_venture_company$'s practices in the county have bred resentment among the local population, and what began as muttering has grown loud enough to reach my ears.\n\nThey are not asking. They are complaining in the hope that someone with authority over the $gh_venture_company$'s men will listen."
+ gh_venture_events.0019.a: "Rein in the $gh_venture_company$'s men in [target_county.GetNameNoTier]."
+ gh_venture_events.0019.a.tt: "Intervene directly on the population's behalf"
+ gh_venture_events.0019.b: "Have the ringleaders of this discontent identified."
+
+ gh_venture_events.0020.t: "Prosperity in [target_county.GetName]"
+ gh_venture_events.0020.desc: "Reports from [target_county.GetName] have been unusually encouraging of late. The $gh_venture_company$'s men have conducted their business well there, and the region has grown notably wealthier for it."
+ gh_venture_events.0020.a: "Good. Let them continue."
+
+
+ gh_venture_events.0021.t: "The Company's War"
+ gh_venture_events.0021.desc: "[defiant_ruler.GetTitledFirstName] has refused to relinquish the $gh_venture_company$. In response, the venture's backers have raised a mercenary army, led by [company_merchant.GetTitledFirstName]. Supporting one or the other would surely benefit me, though backing the wrong side could cost me greatly.\n\nBoth parties have written asking for my support, and I cannot delay them much longer."
+ gh_venture_events.0021.a: "I stand with the Company."
+ gh_venture_events.0021.b: "[defiant_ruler.GetFirstNameNoTooltip] is right to refuse."
+ gh_venture_events.0021.c: "This is not my quarrel."
+
+ gh_venture_events.0022.t: "Dissatisfied Patrons"
+ gh_venture_events.0022.desc: "The patrons are not content with my handling of the $gh_venture_company$. What has soured them I have only guesses at, but they have been talking among themselves, and the talk has turned to whether another man might hold the charter better than I have held it.\n\nNothing has been settled yet or nothing they have troubled to tell me of. The charter gives them the naming of their representative and his unmaking as well, and it obliges them to hear no argument from me before they do either."
+ gh_venture_events.0022.a: "I will not be so easily replaced!"
+ gh_venture_events.0022.b: "Perhaps it is time to step aside..."
+
+ gh_venture_events.0023.t: "An Ultimatum"
+ gh_venture_events.0023.desc: "The venture's patrons have sent me their terms. Relinquish the $gh_venture_company$ before the season is out, or they will march on me with hired soldiers. They have already begun writing to my vassals.\n\nSome of those vassals, I suspect, will not need much convincing."
+ gh_venture_events.0023.a: "Let them come."
+ gh_venture_events.0023.b: "The venture is not worth it."
+
+ # --- CB / War names ---
+ gh_company_venture_seizure_cb: "Retake the $gh_venture_company$"
+ GH_COMPANY_VENTURE_SEIZURE_CB_NAME: "Seizure of [DEFENDER.GetShortUINamePossessive] Venture"
+ GH_COMPANY_VENTURE_SEIZURE_WAR_NAME: "[ConcatIfNeitherEmpty('$ORDER|q$', ' ')] Seizure of [DEFENDER.GetShortUINameNotMe]"
+ GH_COMPANY_VENTURE_SEIZURE_WAR_NAME_BASE: "[ATTACKER.GetPrimaryTitle.GetAdjective][DEFENDER.GetPrimaryTitle.GetName]"
+
+ # --- Effect tooltip on the war goal ---
+ gh_company_venture_seizure_every_defender: "[This.GetShortUIName|U] loses every [title|E] to [attacker.GetShortUIName]"
+
+ # --- Victory (defender loses) ---
+ gh_company_venture_seizure_victory_desc: "[attacker.GetShortUIName|U] takes every [title|E] held by [defender.GetShortUINameNotMe] and by every [vassal|E] who stood with [defender.GetHerHim] in the war."
+ gh_company_venture_seizure_victory_desc_attacker: "You take every [title|E] held by [defender.GetShortUINameNotMe] and by every [vassal|E] who stood with [defender.GetHerHim] in the war."
+ gh_company_venture_seizure_victory_desc_defender: "[attacker.GetShortUIName|U] takes every one of your [titles|E] and those of every [vassal|E] who stood with you."
+
+ # --- Defeat (defender wins) ---
+ gh_company_venture_seizure_defeat_desc: "[defender.GetShortUIName|U] keeps [defender.GetHerHis] [realm|E], and the patrons abandon the venture."
+ gh_company_venture_seizure_defeat_desc_attacker: "[defender.GetShortUIName|U] keeps [defender.GetHerHis] [realm|E], and the patrons abandon the venture."
+ gh_company_venture_seizure_defeat_desc_defender: "You keep your [realm|E], and the patrons abandon the venture."
+
+ # --- White peace (fallback) ---
+ gh_company_venture_seizure_white_peace_desc: "The patrons withdraw their claim and abandon the venture."
+
+ # Opinion Values
+ gh_venture_merchant_aided_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +5#!"
+ gh_venture_merchant_aided_opinion_value_desc: "Aided Merchant (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_merchant_aided_opinion') )])"
+
+ gh_venture_merchant_thrown_out_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -5#!"
+ gh_venture_merchant_thrown_out_opinion_value_desc: "Turned Merchant Away (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_merchant_thrown_out_opinion') )])"
+
+ gh_venture_lost_merchant_aided_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +5#!"
+ gh_venture_lost_merchant_aided_opinion_value_desc: "Aided Lost Merchant (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_lost_merchant_aided_opinion') )])"
+
+ gh_venture_debt_honored_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +10#!"
+ gh_venture_debt_honored_opinion_value_desc: "Honored Company Debt (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_debt_honored_opinion') )])"
+
+ gh_venture_swindled_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -5#!"
+ gh_venture_swindled_opinion_value_desc: "Swindled by Fraudster (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_swindled_opinion') )])"
+
+ gh_venture_wrongful_denial_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -10#!"
+ gh_venture_wrongful_denial_opinion_value_desc: "Wrongfully Denied Debt (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_wrongful_denial_opinion') )])"
+
+ gh_venture_steward_dismissed_public_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +15#!"
+ gh_venture_steward_dismissed_public_opinion_value_desc: "Publicly Dismissed Errant Steward (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_steward_dismissed_public_opinion') )])"
+
+ gh_venture_steward_dismissed_compensated_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +10#!"
+ gh_venture_steward_dismissed_compensated_opinion_value_desc: "Dismissed Steward with Compensation (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_steward_dismissed_compensated_opinion') )])"
+
+ gh_venture_apology_only_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -5#!"
+ gh_venture_apology_only_opinion_value_desc: "Handled Steward's Failure Privately (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_apology_only_opinion') )])"
+
+ gh_venture_vouched_for_negligence_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -15#!"
+ gh_venture_vouched_for_negligence_opinion_value_desc: "Vouched for Negligent Steward (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_vouched_for_negligence_opinion') )])"
+
+ gh_venture_campaign_committed_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +20#!"
+ gh_venture_campaign_committed_opinion_value_desc: "Committed to Company Campaign (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_campaign_committed_opinion') )])"
+
+ gh_venture_dismissed_campaign_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -10#!"
+ gh_venture_dismissed_campaign_opinion_value_desc: "Dismissed Company Campaign (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_dismissed_campaign_opinion') )])"
+
+ gh_venture_repair_succeeded_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +10#!"
+ gh_venture_repair_succeeded_opinion_value_desc: "Successfully Repaired Relations (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_repair_succeeded_opinion') )])"
+
+ gh_venture_heard_negative_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -10#!"
+ gh_venture_heard_negative_opinion_value_desc: "Repair Attempt Poorly Received (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_heard_negative_opinion') )])"
+
+ gh_venture_repair_worsened_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -10#!"
+ gh_venture_repair_worsened_opinion_value_desc: "Repair Attempt Backfired (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_repair_worsened_opinion') )])"
+
+ gh_venture_vassal_emboldened_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -5#!"
+ gh_venture_vassal_emboldened_opinion_value_desc: "Vassal Emboldened Against You (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_vassal_emboldened_opinion') )])"
+
+ gh_venture_preemptive_letter_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +10#!"
+ gh_venture_preemptive_letter_opinion_value_desc: "Preemptive Letter to Company (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_preemptive_letter_opinion') )])"
+
+ gh_venture_audit_refused_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -15#!"
+ gh_venture_audit_refused_opinion_value_desc: "Refused Company Audit (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_audit_refused_opinion') )])"
+
+ gh_venture_audit_passed_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +10#!"
+ gh_venture_audit_passed_opinion_value_desc: "Passed Company Audit (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_audit_passed_opinion') )])"
+
+ gh_venture_audit_failed_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -10#!"
+ gh_venture_audit_failed_opinion_value_desc: "Failed Company Audit (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_audit_failed_opinion') )])"
+
+ gh_venture_demands_met_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +10#!"
+ gh_venture_demands_met_opinion_value_desc: "Met Company Demands (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_demands_met_opinion') )])"
+
+ gh_venture_promise_only_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -5#!"
+ gh_venture_promise_only_opinion_value_desc: "Promised Better Returns (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_promise_only_opinion') )])"
+
+ gh_venture_demands_refused_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -15#!"
+ gh_venture_demands_refused_opinion_value_desc: "Refused Company Demands (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_demands_refused_opinion') )])"
+
+ gh_venture_share_pushed_back_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -10#!"
+ gh_venture_share_pushed_back_opinion_value_desc: "Contested Company Profit Share (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_share_pushed_back_opinion') )])"
+
+ gh_venture_reined_in_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -10#!"
+ gh_venture_reined_in_opinion_value_desc: "Sided with Noble Against Company (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_reined_in_opinion') )])"
+
+ gh_venture_captain_rewarded_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +5#!"
+ gh_venture_captain_rewarded_opinion_value_desc: "Rewarded Merchant Captain (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_captain_rewarded_opinion') )])"
+
+ gh_venture_grievance_redirected_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -5#!"
+ gh_venture_grievance_redirected_opinion_value_desc: "Redirected Foreign Grievance (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_grievance_redirected_opinion') )])"
+
+ gh_venture_grievance_settled_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +10#!"
+ gh_venture_grievance_settled_opinion_value_desc: "Settled Foreign Grievance (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_grievance_settled_opinion') )])"
+
+ gh_venture_men_reined_in_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #negative_value; -10#!"
+ gh_venture_men_reined_in_opinion_value_desc: "Reined in Company's Men (last until: [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope, 'gh_venture_men_reined_in_opinion') )])"
+
+ gh_increase_opinion_of_patrons_for_right_granted_opinion_tt: "Patrons of the $gh_venture_company$ [opinion|E] of you: #positive_value; +10#! #weak (Maximum #positive_value; +60#!)#!"
+ gh_increase_opinion_of_patrons_for_right_granted_opinion_value_desc: "Granted Trading Rights in [counties|E]"
+
+ gh_cultural_settlers_modifier: "Cultural Settlers"
+ gh_cultural_settlers_modifier_desc: "New settlers have arrived in this county, bringing their customs, labor, and knowledge with them."
+
+ gh_trade_driven_away_modifier: "Trade Driven Away"
+ gh_trade_driven_away_modifier_desc: "Merchants have abandoned this county, leaving markets quieter and revenues diminished."
+
+ gh_company_reined_in_modifier: "Company Reined In"
+ gh_company_reined_in_modifier_desc: "The influence of a powerful company has been curtailed, restoring confidence among the local population."
+
+ gh_discontent_suppressed_modifier: "Discontent Suppressed"
+ gh_discontent_suppressed_modifier_desc: "Public unrest has been forcefully contained, though resentment continues to simmer beneath the surface."
+
+ gh_venture_disrupting_county_modifier: "Disruptive Venture"
+ gh_venture_disrupting_county_modifier_desc: "An ongoing venture has disrupted local trade and daily life throughout the county."
+
+ gh_story_venture_opinion_less_than_half_share_culture: "Fewer than half of your [vassals|E] of [count|E] [title_rank|E] or higher are of the [GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope.Var('gh_venture_company_origin_city').Title.GetProvince.GetCounty.GetCulture.GetName] [culture|E] #weak (Current: [GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gh_character_company_scope', GetPlayer.MakeScope).ScriptValue('gh_venture_origin_culture_vassal_count_value')|0]/[GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gh_character_company_scope', GetPlayer.MakeScope).ScriptValue('half_of_all_vassal_value')|0]) (Venture Origin: [GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope.Var('gh_venture_company_origin_city').Title.GetProvince.GetName])#!"
+ gh_story_venture_opinion_half_share_culture: "More than half of your [vassals|E] of [count|E] [title_rank|E] or higher are of the [GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope.Var('gh_venture_company_origin_city').Title.GetProvince.GetCounty.GetCulture.GetName] [culture|E] #weak (Venture Origin: [GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope.Var('gh_venture_company_origin_city').Title.GetProvince.GetName])#!"
+
  yearly_2000_add_courtier_effect.tt:0 "Становится вашим [Concept('courtier','придворным')|E]"
  yearly.5020.court_magi.desc:0 "о тонкостях [Concept('magic','магии')|E] и магического искусства."
  yearly.5020.quartermaster.desc:0 "о распределении добычи и долей."
@@ -115,6 +403,8 @@ l_russian:
 
  gh_sarminian_events.0008.t:90 "Торговец щелоком"
  gh_sarminian_events.0008.desc:90 "Прогуливаясь по улицам местного рынка в [market_location.GetName] с моей свитой, я замечаю особенную лавку. Из любопытства я подхожу ближе, и торговец за прилавком улыбается, начиная свою речь:\n\n\«Приветствую вас, [Select_CString(ROOT.Char.IsFemale, 'госпожа', 'господин')]! Прошу, взгляните — у меня лучший щелок во всем [market_kingdom.GetNameNoTier] и за его пределами! Он творит чудеса с кожей и волосами; честно говоря, у меня еще не было ни одного недовольного покупателя.»"
+ gh_sarminian_events.0008.a:90 "Wonderful, I'll buy a whole batch!"
+ gh_sarminian_events.0008.a.tt:90 "You purchase several tinctures and oils for your hair"
  gh_sarminian_events.0008.b:90 "Мне интересно, но не за такую цену."
  gh_sarminian_events.0008.b.tt:90 "Вы торгуетесь с торговцем, чтобы сбить цену."
  gh_sarminian_events_0008_b_tt_free:90 "Вы получаете бесплатный образец."
@@ -139,6 +429,26 @@ l_russian:
  gh_sarminian_events.0009.b:90 "Какое чудо!"
  gh_sarminian_events.0009.c:90 "Что за обман."
  gh_sarminian_events.0009.d:90 "Что происходит!?"
+
+ gh_sarminian_events.0010.t: "Stranger at the Fire"
+ gh_sarminian_events.0010.desc: "Sounds of a small commotion draw me towards the entrance to our camp, where I see [knight_antagonist.Custom2('MyCharacterIntroduction', ROOT.Char)] staring down a frantically speaking [prospective_orzopaja.GetCulture.GetName] [prospective_orzopaja.GetWomanMan].\n\n\"Please, let me join you! I will do what you do; I want to ride like you ride!\" [prospective_orzopaja.GetSheHe] hastily explains, making vague gestures in the air towards my utterly unimpressed $knight_culture_player_no_tooltip_lowercase$.\n\nWhen they spot my approach, the [prospective_orzopaja.GetWomanMan] quickly turns [prospective_orzopaja.GetHerHis] pleas towards me while [knight_antagonist.GetFirstNameNoTooltip] simply raises an eyebrow, awaiting my decision."
+ gh_sarminian_events.0010.a: "I will give you a chance, but no more."
+ gh_sarminian_events.0010.a.flavor: "Who is to say where this arrow will land, after all?"
+ gh_sarminian_events.0010.b: "[knight_antagonist.GetFirstNameNoTooltip] will test you. Thoroughly."
+ gh_sarminian_events.0010.b.flavor: "Let [prospective_orzopaja.GetFirstNamePossessiveNoTooltip] actions speak, not [prospective_orzopaja.GetHerHis] words."
+ gh_sarminian_events.0010.b.win: "[prospective_orzopaja.GetFirstNameNoTooltip] holds her own against [knight_antagonist.GetFirstNameNoTooltip]"
+ gh_sarminian_events.0010.b.win.toast: "[prospective_orzopaja.GetFirstNameNoTooltip] proves her mettle"
+ gh_sarminian_events.0010.b.loss: "[prospective_orzopaja.GetFirstNameNoTooltip] is hopelessly outmatched"
+ gh_sarminian_events.0010.b.loss.toast: "[knight_antagonist.GetFirstNameNoTooltip] defeats [prospective_orzopaja.GetFirstNameNoTooltip] with ease"
+ gh_sarminian_events.0010.b.tt: "[prospective_orzopaja.GetShortUIName] and [knight_antagonist.GetShortUIName] may become wounded, or form a [relation|E] with each other"
+ gh_sarminian_events.0010.c: "Easy. #EMP Kill each other#!."
+ gh_sarminian_events.0010.c.flavor: "Finally, some #EMP entertainment#!."
+ gh_sarminian_events.0010.c.win: "[prospective_orzopaja.GetFirstNameNoTooltip] slays [knight_antagonist.GetFirstNameNoTooltip]"
+ gh_sarminian_events.0010.c.win.toast: "[prospective_orzopaja.GetFirstNameNoTooltip] has slain [knight_antagonist.GetFirstNameNoTooltip]"
+ gh_sarminian_events.0010.c.loss: "[knight_antagonist.GetFirstNameNoTooltip] slays [prospective_orzopaja.GetFirstNameNoTooltip]"
+ gh_sarminian_events.0010.c.loss.toast: "[knight_antagonist.GetFirstNameNoTooltip] has slain [prospective_orzopaja.GetFirstNameNoTooltip]"
+ gh_sarminian_events.0010.d: "A [Glossary('black','GH_SARMINIAN_CARDINAL_COLORS')] waif like you? Ha! Never."
+ gh_sarminian_events.0010.d.flavor: "A vagrant has no place among the warriors."
 
  # Sarminian Archer Competition
  gh_sarminian_events.0101.t:0 "Дружеское соревнование по стрельбе из лука"
@@ -245,8 +555,8 @@ l_russian:
  gh_sarminian_events.0204.b.tt:0 "[legendary_steppe_queen.GetFirstName] уходит"
  gh_sarminian_events.0204.c:0 "Как жаль."
  gh_sarminian_events.0205.t:0 "Ограблен самозванцем"
- gh_sarminian_events.0205.desc:0 "Раннее утро, и меня будит странный шум снаружи. Как только я заканчиваю приводить себя в порядок и готовлюсь покинуть свою комнату, чтобы разобраться, раздаётся осторожный стук, за которым следует один из моих слуг, нервно переминаясь на пороге.\n\n«Мой [ROOT.Char.GetTitleTierName], это [legendary_steppe_queen.GetFirstName]; [Select_CString(legendary_steppe_queen.IsFemale, 'она', 'он')]… [Select_CString(legendary_steppe_queen.IsFemale, 'взяла', 'взял')] немного вашего золота и скрыла[Select_CString(legendary_steppe_queen.IsFemale, 'ась', 'ся')] на украденной лошади!» – запинаясь, говорит слуга.\n\n«Ваши $knight_culture_player_plural_no_tooltip_lowercase$ уже пустились за [Select_CString(legendary_steppe_queen.IsFemale, 'ней', 'ним')] в погоню – но, мой [ROOT.Char.GetTitleTierName], прошло уже несколько часов с момента кражи. Я слышал, как они сказали, что шансы догнать [legendary_steppe_queen.GetFirstNameNoTooltip] очень малы», – добавляет слуга с явным сомнением.\n\nМеня? Ограбили? [legendary_steppe_queen.GetFirstNameNoTooltip]? Разве [Select_CString(legendary_steppe_queen.IsFemale, 'она', 'он')] не должна была быть ветераном-воином, горящей желанием служить мне?"
- gh_sarminian_events.0205.a:0 "Мне… Мне нужно присесть."
+ gh_sarminian_events.0205.desc:0 "Раннее утро, и меня будит странный шум снаружи. Как только я заканчиваю приводить себя в порядок и готовлюсь покинуть свою комнату, чтобы разобраться, раздаётся осторожный стук, за которым следует один из моих слуг, нервно переминаясь на пороге.\n\n«Мой [ROOT.Char.GetTitleTierName], это [legendary_steppe_queen.GetFirstName]; [Select_CString(legendary_steppe_queen.IsFemale, 'она', 'он')]... [Select_CString(legendary_steppe_queen.IsFemale, 'взяла', 'взял')] немного вашего золота и скрыла[Select_CString(legendary_steppe_queen.IsFemale, 'ась', 'ся')] на украденной лошади!» – запинаясь, говорит слуга.\n\n«Ваши $knight_culture_player_plural_no_tooltip_lowercase$ уже пустились за [Select_CString(legendary_steppe_queen.IsFemale, 'ней', 'ним')] в погоню – но, мой [ROOT.Char.GetTitleTierName], прошло уже несколько часов с момента кражи. Я слышал, как они сказали, что шансы догнать [legendary_steppe_queen.GetFirstNameNoTooltip] очень малы», – добавляет слуга с явным сомнением.\n\nМеня? Ограбили? [legendary_steppe_queen.GetFirstNameNoTooltip]? Разве [Select_CString(legendary_steppe_queen.IsFemale, 'она', 'он')] не должна была быть ветераном-воином, горящей желанием служить мне?"
+ gh_sarminian_events.0205.a:0 "Мне... Мне нужно присесть."
  gh_sarminian_events.0205.robbed:0 "[legendary_steppe_queen.GetFirstNameNoTooltip] раскрыла[Select_CString(legendary_steppe_queen.IsFemale, 'а', '')] своё истинное лицо и скрыла[Select_CString(legendary_steppe_queen.IsFemale, 'ась', 'ся')] с вашим золотом!"
  gh_sarminian_events.0206.t:0 "Слухи о дерзком ограблении"
  gh_sarminian_events.0206.desc:0 "Когда я прохожу по улицам местного городка, я невольно слышу местные сплетни: неверные мужья, тайные магические кабалы, мелкие землевладельцы, ограбленные злодеями, выдающими себя за ветеранов-воинов...\n\nУслышав последнее, я резко останавливаюсь, вспоминая, как несколько месяцев назад ко мне тоже подошёл такой человек. Тогда я отказал[Select_CString(ROOT.Char.IsFemale, 'а', '')], но никогда не мог представить, что это был вор, пытающийся втереться в доверие к знати, чтобы их обчистить."
