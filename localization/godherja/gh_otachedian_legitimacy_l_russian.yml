@@ -1,0 +1,68 @@
+﻿l_russian:
+ # Otachedian legitimacy economy — the Grand Weighing ritual activity
+ gh_activity_grand_weighing: "Церемония великого взвешивания"
+ gh_activity_grand_weighing_desc: "Согласно закону Отачеда, правитель взвешивается перед собравшейся державой против монет, зерна и драгоценностей, после чего разница раздается в качестве милостыни. Эта церемония провозглашает, что власть правителя взвешена, законна и принадлежит управляемому им государству, что восстанавливает [Concept('legitimacy','легитимность')|E], потраченную на государственные дела."
+ activity_gh_activity_grand_weighing_name_hosted: "Великое взвешивание [activity.GetHost.GetTitledFirstNamePossessiveNoTooltip]"
+ gh_weighing_phase_ceremony: "Взвешивание"
+ gh_weighing_phase_ceremony_desc: "Правителя взвешивают перед всем царством, а разницу раздают в качестве милостыни."
+
+ # Scale options
+ gh_weighing_modest: "Скромное взвешивание"
+ gh_weighing_modest_desc: "Сдержанная церемония: бумага закона соблюдена, а милостыня ощутима, но умеренна. #weak Незначительное восстановление легитимности.#!"
+ gh_weighing_standard: "Полное взвешивание"
+ gh_weighing_standard_desc: "Церемония согласно задумке закона Отачеда: полный вес правителя раздается в виде милостыни. #weak Полное восстановление легитимности.#!"
+ gh_weighing_lavish: "Пышное взвешивание"
+ gh_weighing_lavish_desc: "Легендарное взвешивание: золото, зерно и шелка сверх веса правителя щедро раздаются всей державе. #weak Полное восстановление легитимности, а вассалы запомнят вашу щедрость.#!"
+ # Events
+ otachedian_legitimacy.0001.t: "Неутвержденная война"
+ otachedian_legitimacy.0001.desc: "Знамена созваны на войну, которую не оправдывают притязания и не благословляет ни один закон Отачеда. Держава последует за мной — она всегда следует, — но с книги моего авторитета списан долг, и каждый магистрат вместе с держателем айрала знают об этом.\n\nЗакон не запрещает завоевания. Он лишь устанавливает их цену."
+ otachedian_legitimacy.0001.a: "Цена уплачена."
+ otachedian_legitimacy.0002.t: "Беспристрастная рука закона"
+ otachedian_legitimacy.0002.desc: "По закону Отачеда и великий храм, и скромное святилище стоят на одной улице, облагаются налогом одним и тем же оценщиком и суждаются в одном суде. До меня доходят вести, что подданные иных вероисповеданий восхваляют беспристрастность моей руки, а через их довольствие почитается и сам закон."
+ otachedian_legitimacy.0002.a: "Равенство перед престолом."
+
+ # Opinion
+ otachedian_weighing_alms_opinion: "Одарены милостыней при взвешивании"
+ otachedian_reforged_ayraal_opinion: "Ранг перекован"
+ otachedian_demoted_ayraal_opinion: "Ранг изъят"
+
+ # Ayraal tier system (Phase 2)
+ otachedian_reforge_ayraal_interaction: "Перековать айрал"
+ otachedian_reforge_ayraal_interaction_desc: "Вызвать [recipient.GetShortUIName] на монетный двор и перековать [recipient.GetHerHis] айрал на следующий уровень иерархии — обычный, мастерский, прославленный, великолепный, — тем самым повысив [recipient.GetHerHis] авторитет по закону Отачеда. Для этого расходуется заготовка соответствующего монетного двора."
+ otachedian_demote_ayraal_interaction: "Понизить ранг айрала"
+ otachedian_demote_ayraal_interaction_desc: "Перековать айрал [recipient.GetShortUIName] на один уровень ниже — или, если он уже обычный, полностью переплавить его. Государственный акт: держава наблюдает, а [Concept('legitimacy','легитимность')|E] расходуется."
+ otachedian_reforge_needs_mint_and_blank: "Вы владеете #bold заготовкой#! следующего ранга иерархии\n#weak Заготовки каждый год поступают с подконтрольных вам незанятых монетных дворов: ведомство айрала в герцогстве чеканит мастерские заготовки, монетный двор Аяра — прославленные, а монетный двор Отачеда — великолепные. Монетный двор более высокого уровня также чеканит заготовки всех нижних уровней.#!"
+ otachedian_demote_needs_legitimacy: "У вас достаточно [Concept('legitimacy','легитимность')|E] для этого государственного акта"
+
+ # Tier modifier names
+ otachedian_ayraal_common_modifier: "Обычный айрал"
+ otachedian_ayraal_masterwork_modifier: "Мастерский айрал"
+ otachedian_ayraal_famed_modifier: "Прославленный айрал"
+ otachedian_ayraal_illustrious_modifier: "Великолепный айрал"
+
+ # Defunct Ayraal (revoke a vassal's rank outright)
+ otachedian_already_holds_ayraal_tt: "#bold Не#! имеет айрала #weak (вместо этого перекуйте существующий, чтобы повысить его ранг)#!"
+ otachedian_defunct_ayraal_interaction: "Упразднить айрал"
+ otachedian_defunct_ayraal_interaction_desc: "Полностью изъять айрал [recipient.GetShortUIName], упразднив [recipient.GetHerHis] ранг по закону Отачеда. Табличка переплавляется. Государственный акт — расходуется [Concept('legitimacy','легитимность')|E], и ни [recipient.GetSheHe] ни другие чиновники державы этого не забудут."
+ otachedian_defunct_needs_legitimacy: "У вас достаточно [Concept('legitimacy','легитимности')|E] для этого государственного акта #weak (упразднение ранга чиновника)#!"
+ otachedian_defunct_ayraal_opinion: "Ранг упразднен"
+
+ # Rotation queue (celestial-style voluntary rotation)
+ otachedian_enter_rotation_queue_decision: "Сложить полномочия губернатора"
+ otachedian_enter_rotation_queue_decision_desc: "По закону Отачеда ни одна должность не является собственностью. Я могу вернуть свое губернаторство — графство, герцогство или королевство — целиком правителю и занять свое место среди придворных чиновников, ожидающих назначения. Когда откроется следующее губернаторство, те, кто ждет в очереди, будут первыми на череду."
+ otachedian_enter_rotation_queue_decision_tooltip: "Вернуть #bold все#! свои [Concept('titles','титулы')|E] вашему [Concept('top_liege', 'верховному сюзерену')|E] и встать #bold очередь ротации#! державы: вы останетесь безземельным придворным чиновником с высоким приоритетом [Concept('appointment_succession', 'назначения')|E] когда откроется следующее губернаторство."
+ otachedian_enter_rotation_queue_decision_confirm: "Я возвращаю то, что даровал мне закон."
+ otachedian_enter_rotation_queue_effect_tt: "Все ваши титулы возвращаются сюзерену; вы переходите к его двору и встаете в #bold очередь ротации#!"
+ otachedian_rotation_queue_not_already_queued: "Вы #bold не#! состоите в очереди ротации"
+ otachedian_rotation_queue_desc: "Ожидает назначения в очереди ротации"
+
+ # Religious Law (tolerance posture)
+ otachedian_religious_law: "Религиозный закон"
+ otachedian_universal_peace_law: "Всеобщий мир"
+ otachedian_universal_peace_law_effects: "Путь Отачеда: каждая конфессия и культура равны перед престолом, облагаются налогом одним и тем же оценщиком и суждаются в одном суде."
+ otachedian_orthodoxy_law: "Ортодоксия"
+ otachedian_orthodoxy_law_effects: "Собственная вера правителя превыше всего: духовенство пользуется покровительством, а остальной державе напоминают своё место"
+ otachedian_posture_change_needs_legitimacy: "У вас достаточно [Concept('legitimacy','легитимности')|E] для этого государственного акта #weak (изменение религиозной политики державы)#!"
+
+ grant_ayraal_benefits_tt: "Будучи государственным поручением, носитель получает повышенное #bold жалование#! из [Concept('treasury', 'государственной казны')|E], может созывать полки короны (#P +1#! к пределу титульных [Concept('men_at_arms', 'профессионалов')|E]), и становится #bold покорным#! вам."
+
