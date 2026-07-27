@@ -3,7 +3,6 @@
  #############################################
  ##### GUI
  ############################################# 
- AMSARI_CIVIL_WAR_TITLE:89 "Амсарская гражданская война"
  
  GLOBAL_EFFECT_ACW_HOUSE_UNITY_TITLE:89 "Глобальные эффекты от [Concept('house_unity','единство дома')|E]"
  gh_acw_ruling_dynasty_progress_all:89 "#N Пока гражданская война продолжается, [Concept('house_unity','единство дома')|E] #bold [GetGlobalVariable('gh_hiklahn_ruling_dynasty_var').House.GetBaseNameNoTooltip]#! [Concept('dynasty','династии')|E] с большей вероятностью продвигается @dynasty_house_unity_antagonistic! #bold Антагонизм.#!"
@@ -35,13 +34,13 @@
  GH_ACW_APPEAL_FOR_FUNDS:89 "Обратиться за финансированием"
  GH_ACW_CONTRIBUTE_TO_CAMPAIGN:89 "Внести вклад в кампанию"
  GH_ACW_CALL_FOR_LOYAL_BANNERS:89 "Призвать верные знамена"
- GH_ACW_CLAIM_THE_HIKLAHN_DECISION:89 "Заявить права на [GetTitleByKey('e_amsari').GetNameNoTooltip]"
+ GH_ACW_CLAIM_THE_HIKLAHN_DECISION:89 "Заявить права на [GetTitleByKey('e_amsari_hiklahn').GetNameNoTooltip]"
  GH_ACW_LIST_OF_POSSIBLE_CLAIMANTS:89 "Список возможных претендентов"
  GH_ACW_ACTIVE_PRETENDER:89 "Активный претендент"
  GH_ACW_POTENTIAL_PRETENDER:89 "Потенциальный претендент"
  GH_ACW_SUPPORT_PRETENDER:89 "Поддержать претендента"
  GH_ACW_VIEW_ALLIES:89 "Просмотреть союзников: [Character.MakeScope.Var('gh_amsari_number_of_allies_value_var').GetValue]"
- GH_ACW_DECISION_DESC:89 "Только я могу принести мир в [GetTitleByKey('e_amsari').GetNameNoTooltip]. Я заявлю права на это для себя."
+ GH_ACW_DECISION_DESC:89 "Только я могу принести мир в [GetTitleByKey('e_amsari_hiklahn').GetNameNoTooltip]. Я заявлю права на это для себя."
  GH_ACW_DECISION_RULING_DYNASTY_IS_ANTAGONISTIC:89 "#N [Concept('house_unity','Единство')|E] династии Амоннидов не является @dynasty_house_unity_antagonistic! #bold Антагонистичной#!#!"
  
  #############################################
@@ -51,10 +50,10 @@
  gh_acw_enforce_pretender_cb:89 "Принудительная поддержка претендента"
  gh_acw_pretender_cb:89 "Принудительная поддержка претендента"
  gh_acw_claim_cb:89 "Заявить права"
- GH_ACW_ENFORCE_SUPPORT_PRETENDER_WAR_NAME:89 "Война за наследование [GetTitleByKey('e_amsari').GetName]"
- GH_ACW_ENFORCE_SUPPORT_PRETENDER_WAR_NAME_BASE:89 "Война за наследование [GetTitleByKey('e_amsari').GetName]"
- gh_acw_pretender_cb_victory_desc_attacker:89 "[defender.GetName] вынужден признать [attacker.MakeScope.Var('gh_amsari_civil_war_info_story').Story.MakeScope.Var('amsari_civil_war_supporting').GetCharacter.GetName] законным претендентом на [GetTitleByKey('e_amsari').GetName]" 
- gh_acw_pretender_cb_victory_desc_defender:89 "Вы вынуждены признать [attacker.MakeScope.Var('gh_amsari_civil_war_info_story').Story.MakeScope.Var('amsari_civil_war_supporting').GetCharacter.GetName] законным претендентом на [GetTitleByKey('e_amsari').GetName]"
+ GH_ACW_ENFORCE_SUPPORT_PRETENDER_WAR_NAME:89 "Война за наследование [GetTitleByKey('e_amsari_hiklahn').GetName]"
+ GH_ACW_ENFORCE_SUPPORT_PRETENDER_WAR_NAME_BASE:89 "Война за наследование [GetTitleByKey('e_amsari_hiklahn').GetName]"
+ gh_acw_pretender_cb_victory_desc_attacker:89 "[defender.GetName] вынужден признать [attacker.MakeScope.Var('gh_amsari_civil_war_info_story').Story.MakeScope.Var('amsari_civil_war_supporting').GetCharacter.GetName] законным претендентом на [GetTitleByKey('e_amsari_hiklahn').GetName]" 
+ gh_acw_pretender_cb_victory_desc_defender:89 "Вы вынуждены признать [attacker.MakeScope.Var('gh_amsari_civil_war_info_story').Story.MakeScope.Var('amsari_civil_war_supporting').GetCharacter.GetName] законным претендентом на [GetTitleByKey('e_amsari_hiklahn').GetName]"
  #gh_acw_pretender_cb_victory_desc:89 ""
  gh_acw_pretender_cb_white_peace_desc_defender:89 "Вы сохраняете свободу выбирать любого претендента в гражданской войне."
  #gh_acw_pretender_cb_white_peace_desc:89 ""
@@ -117,8 +116,8 @@
  gh_acw_give_gold_value_monumental:89 "Дать [gold_i|E] [GetPlayer.MakeScope.ScriptValue('monumental_gold_value')]"
  
  gh_acw_support_pretender:89 "Поддержать претендента"
- gh_acw_support_pretender_desc:89 "Поддержать притязания [recipient.GetTitledFirstName] на трон [GetTitleByKey('e_amsari').GetName]."
- gh_has_become_pretender.desc:89 "стал претендентом на трон [GetTitleByKey('e_amsari').GetName]"
+ gh_acw_support_pretender_desc:89 "Поддержать притязания [recipient.GetTitledFirstName] на трон [GetTitleByKey('e_amsari_hiklahn').GetName]."
+ gh_has_become_pretender.desc:89 "стал претендентом на трон [GetTitleByKey('e_amsari_hiklahn').GetName]"
  gh_acw_demand_strong_hook:89 "Потребовать [Concept('strong_hooks','сильное влияние')|E]" 
  gh_acw_give_gold_support_pretender:89 "Дать [gold_i|E] [GetPlayer.MakeScope.ScriptValue('major_gold_value')]"
  GH_ASKING_FOR_STRONG_HOOK:89 "#high Вы#! запросили [Concept('strong_hook','сильное влияние')|E]: $VALUE|=+0$"
@@ -126,9 +125,9 @@
  gh_will_receive_strong_hook_on_throne_taken:89 "#high Вы#! получите [Concept('strong_hook','сильное влияние')|E] на #high [recipient.GetTitledFirstNameNoTooltip]#!, после [recipient.GetHerHis] победы и окончания гражданской войны."
  
  gh_acw_stop_support_pretender:89 "Прекратить поддержку претендента"
- gh_acw_stop_support_pretender_desc:89 "Вы прекратите поддержку притязаний [recipient.GetTitledFirstName] на трон [GetTitleByKey('e_amsari').GetName]."
- gh_has_recently_supported_pretender:89 "Недавно начал поддерживать претендента на трон [GetTitleByKey('e_amsari').GetName] и не может изменить решение до [GetCurrentDateWithDiff( GetVarTimeRemaining( CHARACTER.MakeScope, 'gh_has_recently_supported_pretender') )]"
- gh_acw_stop_support_pretender.actor_tooltip:89 "Вы прекращаете поддержку притязаний [recipient.GetTitledFirstName] на трон [GetTitleByKey('e_amsari').GetName]."
+ gh_acw_stop_support_pretender_desc:89 "Вы прекратите поддержку притязаний [recipient.GetTitledFirstName] на трон [GetTitleByKey('e_amsari_hiklahn').GetName]."
+ gh_has_recently_supported_pretender:89 "Недавно начал поддерживать претендента на трон [GetTitleByKey('e_amsari_hiklahn').GetName] и не может изменить решение до [GetCurrentDateWithDiff( GetVarTimeRemaining( CHARACTER.MakeScope, 'gh_has_recently_supported_pretender') )]"
+ gh_acw_stop_support_pretender.actor_tooltip:89 "Вы прекращаете поддержку притязаний [recipient.GetTitledFirstName] на трон [GetTitleByKey('e_amsari_hiklahn').GetName]."
  gh_acw_stop_support_pretender.recipient_tooltip:89 "[recipient.GetTitledFirstName] покидает двор [actor.GetTitledFirstName] и будет искать других сторонников."
  gh_acw_support_amsari_pretender_first_time_tooltip:89 "Вы вовлечены в амсарской гражданскую войну, поддерживая притязания [pretender.GetTitledFirstName]."
  gh_acw_support_amsari_pretender_change_tooltip:89 "Вы меняете сторону и поддерживаете притязания [pretender.GetTitledFirstName]."
@@ -144,7 +143,7 @@
  gh_acw_claim_hiklahn_decision:89 "Претендовать на Амсари Хиклахн"
  gh_acw_claim_hiklahn_decision_desc.has_blood:89 "На протяжении веков Амсари Хиклахн формировал судьбу всего региона, его трон предназначался истинным наследникам Пророка. Однако Заоран знает, что не все, кто несёт его священную кровь, достойны её. Я больше не могу бездействовать, пока его наследие оскверняется амбициями недостойных претендентов. Пришло время вернуть Хиклахн к его законной славе."
  gh_acw_claim_hiklahn_decision_desc.no_blood:89 "На протяжении веков Амсари Хиклахн формировал судьбу всего региона, его трон занимали те, кто почивал на лаврах наследия. Но одна лишь кровь не делает правителя — это делают сила, видение и решимость. Я не позволю цепям традиций привязать королевство к упадку. Пришло время претендовать на Хиклахн и привести его в новую эпоху величия."
- gh_acw_claim_hiklahn_decision_tooltip:89 "Я претендую на [GetTitleByKey('e_amsari').GetName]." 
+ gh_acw_claim_hiklahn_decision_tooltip:89 "Я претендую на [GetTitleByKey('e_amsari_hiklahn').GetName]." 
  gh_acw_claim_hiklahn_decision_confirm:89 "Хиклахн будет моим!"
 
  gh_acw_renounce_claims_decision:89 "Отказаться от моих притязаний"
@@ -161,7 +160,7 @@
  gh_acw_reunite_amsar_decision_confirm:89 "Пусть государство станет единым снова!"
  gh_acw_every_ruler_support_amsari_pretender:89 "Каждый [Concept('independent','независимый')|E] [Concept('rulers','правитель')|E] в [GetGeographicalRegion('world_ws_amsari').GetName] [Concept('region','регионе')|E] поддерживает вашего избранного претендента (Current: [SCOPE.ScriptValue('gh_current_number_of_pretender_supporter_value')|0]/[SCOPE.ScriptValue('gh_acw_total_amount_of_valid_rulers_value')|0])."
  gh_acw_current_non_amsari_counties_count_value_tt:89 "Культуры [GetCulturePillar('heritage_zarasadari').GetName] или [GetCulturePillar('heritage_thyssae').GetName] наследия и [GetReligionByKey('amsari_religion').GetName] [Concept('faith','конфесии')|E] контролируют меньше [SCOPE.ScriptValue('gh_acw_target_non_amsari_counties_percent_value')|0]% [Concept('counties','графтсв')|E] в [GetGeographicalRegion('world_ws_amsari').GetName] [Concept('region','регионе')|E] (Current: [SCOPE.ScriptValue('gh_acw_current_non_amsari_counties_percent_value')|0]%)\n"
- gh_acw_reunite_amsar_decision.vassals.tt:89 "Каждый [Concept('independent','независимый')|E] [Concept('rulers','правитель')|E] в [GetGeographicalRegion('world_ws_amsari').GetName] [Concept('region','регионе')|E] становится [Concept('vassalized','вассалом')|E] под [GetTitleByKey('e_amsari').GetName] [Concept('holder','владельцем')|E]"
+ gh_acw_reunite_amsar_decision.vassals.tt:89 "Каждый [Concept('independent','независимый')|E] [Concept('rulers','правитель')|E] в [GetGeographicalRegion('world_ws_amsari').GetName] [Concept('region','регионе')|E] становится [Concept('vassalized','вассалом')|E] под [GetTitleByKey('e_amsari_hiklahn').GetName] [Concept('holder','владельцем')|E]"
 
  gh_reform_the_shattered_empire_decision_title:89 "Восстановить расколотую Империю"
  gh_reform_the_obliterated_empire_decision_title:89 "Реформировать уничтоженную Империю"
@@ -189,7 +188,7 @@
  ############################################# 
  action_gh_acw_no_supported_pretender:89 "Вы не поддерживаете претендента в гражданской войне"
  action_gh_acw_no_supported_pretender_label:89 "Вы не поддерживаете претендента в гражданской войне"
- action_gh_acw_no_supported_pretender_desc:89 "#help Вы не объявили о своей поддержке ни одному из претендентов. [Concept('independent','Независимые')|E] [Concept('rulers','правители')|E] могут поддерживать [Concept('claim','притязания')|E] претендента на [GetTitleByKey('e_amsari').GetName] в гражданской войне.\n\nПосле завершения гражданской войны и объединения Хиклахна активные сторонники получат [gold_i] [Concept('gold','золото')|E], [prestige_i] [Concept('prestige','престиж')|E], [piety_i] [Concept('piety','благочестие')|E] и, возможно, [Concept('strong_hook','сильное влияние')|E], если он был согласован.#!"
+ action_gh_acw_no_supported_pretender_desc:89 "#help Вы не объявили о своей поддержке ни одному из претендентов. [Concept('independent','Независимые')|E] [Concept('rulers','правители')|E] могут поддерживать [Concept('claim','притязания')|E] претендента на [GetTitleByKey('e_amsari_hiklahn').GetName] в гражданской войне.\n\nПосле завершения гражданской войны и объединения Хиклахна активные сторонники получат [gold_i] [Concept('gold','золото')|E], [prestige_i] [Concept('prestige','престиж')|E], [piety_i] [Concept('piety','благочестие')|E] и, возможно, [Concept('strong_hook','сильное влияние')|E], если он был согласован.#!"
  action_gh_acw_no_supported_pretender_click:89 "#Нажмите, чтобы просмотреть амсарскую гражданскую войну#!"
  
  action_gh_acw_can_call_for_banners:89 "Вы можете призвать верные знамена"
@@ -199,11 +198,5 @@
  
  action_gh_acw_has_started:89 "Амсарская гражданская война началась"
  action_gh_acw_has_started_label:89 "Амсарская гражданская война началась"
- action_gh_acw_has_started_desc:89 "#help "[GetTitleByKey('e_amsari').GetName] погрузился в гражданскую войну. Каждый [Concept('independent','независимый')|E] [Concept('rulers','правитель')|E] поддерживает своего претендента, все борются за трон.#!"
+ action_gh_acw_has_started_desc:89 "#help "[GetTitleByKey('e_amsari_hiklahn').GetName] погрузился в гражданскую войну. Каждый [Concept('independent','независимый')|E] [Concept('rulers','правитель')|E] поддерживает своего претендента, все борются за трон.#!"
  action_gh_acw_has_started_click:89 "#I Нажмите, чтобы просмотреть амсарскую гражданскую войну#!"
-
- #############################################
- ##### Global Situation
- ############################################# 
- story_gh_amsari_civil_war_story_name:0 "Амсарская гражданская война"
- story_gh_amsari_civil_war_story_desc:0 "Хиклахн дрожит, пока соперничающие претенденты борются за трон, погружая некогда единое Амсарское государство в хаос. Пока Канамсар изо всех сил пытается сохранить хоть какое-то подобие контроля, ожесточённые конфликты бушуют по всей империи, угрожая разрушить остатки стабильности."
