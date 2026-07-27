@@ -72,6 +72,14 @@
  stoneskin_name:0 "Каменная плоть"
  #stoneskin_name:0 "Каменная кожа"
  ironskin_name:0 "Железная плоть"
+ bronzeskin_name: "Бронзовая плоть"
+ bestow_bronze_armaments_name:0 "Даровать бронзовое вооружение"
+ bronze_fists_name: "Бронзовые кулаки"
+ dragons_roar_name: "Драконий рык"
+ arcane_foundries_name: "Магические кузни"
+ imbued_armor_name: "Усиленная броня"
+ spawn_entropic_host_name: "Сформировать энтропический сомн"
+ erase_mental_trauma_name: "Стереть меентальную травму"
  boneshaping_name:0 "Формирование костей"
  necrotic_boon_name:0 "Некромантическая жизненная сила"
  crush_armor_name:0 "Сокрушение доспехов"
@@ -120,6 +128,7 @@
  domination_name:0 "Подчинение"
  thinning_name:0 "Истощение"
  sundeath_name:0 "Смерть Солнца"
+ dark_raid_name:0 "Тёмный налёт"
  spawn_army_lesser_voidspawns_name:0 "Энтропийный сомн"
  weavers_descent_name:0 "Нисшествие Ткача"
  awaken_fleshmaw_name:0 "Пробуждение Пасти"
@@ -145,7 +154,7 @@
  #natural_power_maximum_insight_tt:0 "Уже изучил все возможные [GetPerk('livingmagic_perk3_tree2').GetName(GetPlayer)]"
  hex_succesfully_created_tt: "Сглаз, поражающий [THIS.Char.GetFirstName], успешно создан"
  hexes_can_only_be_cast_on_a_specific_char_tt: "Сглазы можно применять только к конкретному [Concept('character','персонажу')|E]"
- ritual_effect_will_only_activate_tt: "Эффекты [Concept('ritual','ритуала')|E] активируются только после выполнения соответствующих условий"
+ ritual_effect_will_only_activate_tt: "Эффекты [Concept('gh_ritual','ритуала')|E] активируются только после выполнения соответствующих условий"
  summon_fogbeast.tt:0 "[GetPlayer.GetFirstName] призывает Туманную тварь"
  summon_fogbeast2.tt:0 "Цель получает Туманную тварь"
  # craft_greater_golem.tt:0 "[GetPlayer.GetFirstName] создаёт Великого голема"
@@ -164,10 +173,10 @@
  magic_cannibalism_1.tt:0 "Вы поглотите тело [cannibalism_victim.GetName|E], чтобы вобрать в себя часть их генетического или магического потенциала, если он превосходит ваш.\n За каждого поглощённого персонажа вы должны сотворить это заклинание на более высоком уровне, чтобы вобрать силу из другого."
  magic_cannibalism_2.tt:0 "#N Вы поглотили слишком много персонажей, чтобы иметь возможность сотворить Пожирание силы.\n Вы должны сотворить заклинание на более высоком уровне, чтобы вобрать какую-либо силу из [cannibalism_victim.GetName|E]. #!"
  magic_cannibalism_3.tt:0 "#N Вы поглотили слишком много персонажей, чтобы получить дальнейшую силу через заклинание Пожирание Силы. #!"
-#enchant_arms0.tt:0 "All Knights of the target receive [GetModifier('enhanced_arms_mod_minor').GetNameWithTooltip|L] for 1 year"
-#enchant_arms1.tt:0 "Все рыцари цели получают [GetModifier('enhanced_arms_mod_mid').GetNameWithTooltip|L] на 1 год"  
-#enchant_arms2.tt:0 "Все рыцари цели получают [GetModifier('enhanced_arms_mod_major').GetNameWithTooltip|L] на 1 год"  
-#enchant_arms3.tt:0 "Все рыцари цели получают [GetModifier('enhanced_arms_mod_huge').GetNameWithTooltip|L] на 1 год"  
+ #enchant_arms0.tt:0 "All Knights of the target receive [GetModifier('enhanced_arms_mod_minor').GetNameWithTooltip|L] for 1 year"
+ #enchant_arms1.tt:0 "Все рыцари цели получают [GetModifier('enhanced_arms_mod_mid').GetNameWithTooltip|L] на 1 год"  
+ #enchant_arms2.tt:0 "Все рыцари цели получают [GetModifier('enhanced_arms_mod_major').GetNameWithTooltip|L] на 1 год"  
+ #enchant_arms3.tt:0 "Все рыцари цели получают [GetModifier('enhanced_arms_mod_huge').GetNameWithTooltip|L] на 1 год"  
  earthquake.tt:0 "Все соседние с целью графства получат первичные эффекты заклинания Землетрясение на один уровень ниже."
  sorrow.tt:0 "Высосать саму жизненную силу из земли и её народа."
  
@@ -178,10 +187,10 @@
  vampirism_health_pool_transfer_tt:0 "[ROOT.Var('vampiric_drain_amount_show').GetValue|0] очков вампирического запаса здоровья были преобразованы в [ROOT.Var('vampiric_drain_amount_show').GetValue|0] единиц здоровья в виде модификаторов [GetModifier('vampirism_mod')]."
  vampirism_health_pool_transfer_dying_tt:0 "[ROOT.Var('vampiric_drain_amount_show').GetValue|0] очков вампирического запаса здоровья преобразованы в [ROOT.Var('vampiric_drain_amount_show').GetValue|0] единиц здоровья в виде модификаторов [GetModifier('vampirism_mod')]. Поскольку вашего вампирического запаса здоровья было недостаточно, чтобы довести вас до состояния  \"Хорошее\" здоровье, вы утратили возможность далее поддерживать свою жизнь через вампиризм."
  
-#necrotic_vitality_0.tt:0 "#N Оживление себя с помощью тёмной некромантии скажется на вашем теле, что приведёт к 1 постоянному уровню [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nТаким образом, вы получите чистые +0.75 к Здоровью на время действия, и -0.25 к Здоровью после."
-#necrotic_vitality_1.tt:0 "#N Оживление себя с помощью тёмной некромантии скажется на вашем теле, что приведёт к 2 постоянным уровням [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nТаким образом, вы получите чистые +1.5 к Здоровью на время действия, и -0.5 к Здоровью после."
-#necrotic_vitality_2.tt:0 "#N Оживление себя с помощью тёмной некромантии скажется на вашем теле, что приведёт к 4 постоянным уровням [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nТаким образом, вы получите чистые +3 к Здоровью на время действия, и -1 к Здоровью после."
-#necrotic_vitality_3.tt:0 "#N Оживление себя с помощью тёмной некромантии скажется на вашем теле, что приведёт к 6 постоянным уровням [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nТаким образом, вы получите чистые +6.5 к Здоровью на время действия, и -1.5 к Здоровью после."
+ #necrotic_vitality_0.tt:0 "#N Оживление себя с помощью тёмной некромантии скажется на вашем теле, что приведёт к 1 постоянному уровню [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nТаким образом, вы получите чистые +0.75 к Здоровью на время действия, и -0.25 к Здоровью после."
+ #necrotic_vitality_1.tt:0 "#N Оживление себя с помощью тёмной некромантии скажется на вашем теле, что приведёт к 2 постоянным уровням [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nТаким образом, вы получите чистые +1.5 к Здоровью на время действия, и -0.5 к Здоровью после."
+ #necrotic_vitality_2.tt:0 "#N Оживление себя с помощью тёмной некромантии скажется на вашем теле, что приведёт к 4 постоянным уровням [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nТаким образом, вы получите чистые +3 к Здоровью на время действия, и -1 к Здоровью после."
+ #necrotic_vitality_3.tt:0 "#N Оживление себя с помощью тёмной некромантии скажется на вашем теле, что приведёт к 6 постоянным уровням [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nТаким образом, вы получите чистые +6.5 к Здоровью на время действия, и -1.5 к Здоровью после."
  
  lead_to_gold_0.tt:0 "Обесценит монеты, что приведёт к снижению налогов и роста развития во всех графствах владения на #N -3% #! на 5 лет, а в соседних графствах на #N -1% #! на 5 лет."
  lead_to_gold_1.tt:0 "Обесценит монеты, что приведёт к снижению налогов и роста развития во всех графствах владения на #N -6% #! на 5 лет, а в соседних графствах на #N -3% #! на 5 лет."
@@ -266,7 +275,8 @@
  dm_perk5.tt:0 "Получить заклинание Формирование костей\nФормирование костей — благотворное заклинание, направленное на персонажа, которое позволяет вам (или цели) удалять физические деформации или слабости и изменять себя, чтобы стать сильнее, выше или красивее за счёт здоровья"
  dm_perk6.tt:0 "Получить заклинание Создание големов\nСоздание големов позволяет вам создавать големов-солдат, которые существуют до вашей смерти."
  dm_perk7.tt:0 "Получить заклинание Некромантическая энергия\nНекромантическая энергия — заклинание, направленное на себя, которое значительно увеличивает ваше здоровье на 10 лет, оживляя его с помощью магии, за счёт постоянного уменьшения вашего здоровья после окончания действия заклинания"
- 
+ #dm_perk9.tt:0 "Gain 25% additional [magic_power|E] from Skeletal Crafting"
+
  dm2_perk1.tt:0 "Получить заклинание Чтение луны\nЧтение луны — благотворное заклинание, влияющее на персонажа, которое позволяет вам предсказывать будущее, чтобы выбрать один из трёх случайно выбранных бонусов на 5 лет."
  dm2_perk2.tt:0 "Получить заклинание Сокрушение доспехов\nСокрушение доспехов — враждебное заклинание, влияющее на персонажа, которое имеет шанс ранить или убить цель в зависимости от их здоровья или мастерства."
  dm2_perk3.tt:0 "Генерировать [Concept('magic_power','магическую силу')|E], черпая магическую энергию от луны"
@@ -309,7 +319,7 @@
  mm3_perk7.tt:0 "Получить заклинание Снятие тягот"
  mm3_perk9.tt:0 "Получить заклинание Стирание воспоминаний"
 
- magic_court_bonus_value_desc:0 "Магическая способность (изменяется [GetCourtType('court_magic').GetName] заклинателя)"
+ magic_court_bonus_value_desc:0 "Способность к колдовству (изменяется [GetCourtType('court_magic').GetName] заклинателя)"
 
  arcana_actuation_focus_value_desc:0 "[GetFocus('arcana_actuation_focus').GetName]"
  arcana_actuation_perk3_value_desc:0 "[GetPerk('arcana_actuation_perk3_tree1').GetName(GetPlayer)] [Concept('perk','достоинство')|E]"
@@ -377,7 +387,9 @@
  chasm_terrors_summoned_troops:0 "Ужасы пропасти"
  enfleshed_grotesquerie_summoned_troops:0 "Воплощенные гротескности"
  undead_skirmishers_summoned_troops:0 "Нежить-застрельщики"
- elite_undead_summoned_troops:0 "Элита нежити"
+ undead_bowmen_summoned_troops:0 "Нежить-лучники"
+ undead_light_horsemen_summoned_troops:0 "Легкие всадники-нежить"
+ elite_undead_summoned_troops:0 "Элита нежити" 
  siege_golems_summoned_troops:0 "Осадные големы"
  stone_golems_summoned_troops:0 "Каменные големы"
  magma_golems_summoned_troops:0 "Магматические големы"
@@ -392,7 +404,9 @@
  war_chariots_summoned_troops:0 "Боевые колесницы"
  adventurers_summoned_troops:0 "Авантюристы"
  leshens_summoned_troops:0 "Лешие"
-
+ cultists_maa_summoned_troops: "Культисты"
+ shamans_summoned_troops: "Шаманы"
+ raving_zealots_summoned_troops: "Безумные фанатики"
 
 
  #toasts
@@ -448,6 +462,7 @@
  unraveling_toast:0 "Сотворить «Расплетание»"
   
  magic_prowess_duel_tt:0 "[magic_prowess_i][Concept('magic_prowess_skill','Магическое мастерство')|E] против [opponent.GetTitledFirstName]" 
+ 
  ###########
  # POTIONS #
  ###########
@@ -463,7 +478,6 @@
  # TOOLTIPS #
  ############
  
-
  spell_fails_tt:0 "#N Заклинание проваливается!#!"
  spell_backfires_tt:0 "#N Заклинание даёт обратный эффект!#!"
  spell_redirected_tt:0 "#N Заклинание перенаправляется на вас!#!"
@@ -497,14 +511,20 @@
  rift_walk_army_valid_10000_tt:0 "Ничего не происходит! (Вы должны командовать армией не более 50000 человек и иметь выбранный титул)."
  rift_walk_army_valid_50000_tt:0 "Ничего не происходит! (Вы должны командовать армией более 50000 человек и иметь выбранный титул)."
  rift_walk_army_invalid_tt:0 "Ничего не происходит! (Вы должны сотворить это заклинание на более высоком уровне)."
+
  defiled_nadir_setup_effect_broken_bond:0 "Ваша связь с [old_defiled_nadir_bound_mask.GetName] будет разорвана, и вы получите [Concept('modifier','модификатор')|E] [GetModifier('magic_defiled_nadir_broken_bond_modifier').GetNameWithTooltip] на 5 лет"
  defiled_nadir_setup_effect_tt:0 "Если у вас не надетa ольтенская [Concept('artefact,'маска')|E], вы получите одну среднего качества"
  defiled_nadir_setup_effect_new_mask_tooltip:0 "Поскольку у вас не надетa  ольтенская [Concept('artefact,'маска')|E], новый артефакт среднего качества станет вашей Связанной маской"
  defiled_nadir_setup_effect_equip_tooltip:0 "Вы автоматически наденете новый [Concept('artefact,'артефакт')|E]"
  defiled_nadir_setup_effect_extant_mask_tooltip:0 "[extant_mask_artifact.GetName] станет вашей Связанной маской"
+ defiled_nadir_setup_effect_story_tooltip: "Начинает [Concept('story_cycle','цикл')|E] «Маской Скованный»"
  defiled_nadir_warning_tt:0 "Отделение от Связанной маски будет иметь #N серьёзные#! последствия"
+ defiled_nadir_setup_effect_toast: "Связь с новой маской"
+ defiled_nadir_setup_effect_toast_tt: "[defiled_nadir_caster.GetTitledFirstName] привязал [extant_mask_artifact.GetName] к [defiled_nadir_caster.GetHerselfHimself]!"
+ defiled_nadir_character_side_story_broken_bond_tt: "[dead_boundee.GetTitledFirstName] больше не привязан[Select_CString(dead_boundee.IsFemale, 'а', '')] к маске"
+
  aspect_increased_tt:90 "Аспект усилен"
- #does_not_know_selected_spell_tt:90 "[caster.GetName] не знает [spell_name_spell.Custom('SpellName')]"
+ does_not_know_selected_spell_tt:90 "[caster.GetName] не знают заклинание."
  
  #########
  # HOOKS #
@@ -615,6 +635,11 @@
  GLOBAL_GOT_A_FAMILIAR:0 "Получил [TARGET_CHARACTER.GetShortUIName] как фамильяра"
 
  ## ARCANA
- TRAIT_FLAG_DESC_arcana_add:0 "[Concept('arcana','аркана')|E]: [arcana_i][SelectLocalization(GreaterThan_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(Concatenate(Trait.GetKey, '_character_arcana_value')),'(CFixedPoint)0'),'#positive_value +','#negative_value ')][GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(Concatenate(Trait.GetKey, '_character_arcana_value'))]#!"
+ 
+ TRAIT_FLAG_DESC_arcana_add:0 "[SelectLocalization(GetPlayer.IsValid, 'PLAYER_TRAIT_FLAG_DESC_arcana_add','')]#!"
+ PLAYER_TRAIT_FLAG_DESC_arcana_add:0 "[Concept('arcana','Аркана')|E]: [arcana_i][SelectLocalization(GreaterThan_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(Concatenate(Trait.GetKey, '_character_arcana_value')),'(CFixedPoint)0'),'#positive_value +','#negative_value ')][GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(Concatenate(Trait.GetKey, '_character_arcana_value'))]#!"
  arcana_base_value_desc:0 "Базовая"
  
+ GH_HEX_FIRED: "Сглаз запущен"
+ GH_ARMY_DAMAGED_SPELL_CAST_BY_TITLE: "Армии нанесен урон"
+ GH_ARMY_DAMAGED_SPELL_CAST_BY: "Ваша армия понесла потери от заклятия, что сотворил [spell_organizer.GetShortUIName]"
