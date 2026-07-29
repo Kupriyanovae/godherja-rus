@@ -1,7 +1,20 @@
 ﻿l_russian:
 
- #NOT_CAPITAL_COUNTY_METROPOLIS_BUILDING:0 "[PROVINCE.GetName] должен быть [Concept('holding','владением')|E] типа [Concept('metro_holding','метрополис')|E]"
- NOT_CAPITAL_COUNTY_METROPOLIS_BUILDING:0 "Это здание можно построить (и оно будет функционировать) только в столичном графстве его владельца."
+#NOT_CAPITAL_COUNTY_METROPOLIS_BUILDING:0 "В владении [PROVINCE.GetName] должно быть сооружено [Concept('metro_holding','владении типа «Метрополия»')|E]"
+ NOT_CAPITAL_COUNTY_METROPOLIS_BUILDING:0 "Это здание можно построить (и оно будет функционировать) только в столичном графстве владельца."
 
- HAS_BUILDING_TRIGGER:0 "В [PROVINCE.GetName] есть [Concept('building','здание')|E] $BUILDING|V$" #GH: Исправлена опечатка из оригинальной игры (HAS_BULDING_TRIGGER) и добавлена локализация для "HAS_BUILDING_TRIGGER_THIRD"
- HAS_BUILDING_TRIGGER_THIRD:0 "В [PROVINCE.GetName] есть [Concept('building','здание')|E] $BUILDING|V$"
+ HAS_BUILDING_TRIGGER:0 "В провинции [PROVINCE.GetName] имеется [Concept('building','здание')|E] «$BUILDING|V$»" #GH: Fixed a vanilla typo (HAS_BULDING_TRIGGER) and added the loc for HAS_BUILDING_TRIGGER_THIRD
+ HAS_BUILDING_TRIGGER_THIRD:0 "В провинции [PROVINCE.GetName] имеется [Concept('building','здание')|E] «$BUILDING|V$»"
+
+ must_have_magocratic_capital_flag_trigger: "Столичная [Concept('province','провинция')|E] имеет [Concept('building','здание')|E], открывающее доступ к типу[Concept( 'government', 'правительства' )|E] «[Concept(magocracy','Магократия')|E]»."
+
+ GAME_START_DATE_LESS_THAN_TRIGGER: "Игра должна начаться ранее [DATE.GetString|V]"
+ NOT_GAME_START_DATE_LESS_THAN_TRIGGER: "Игра не должна начаться ранее [DATE.GetString|V]"
+ GAME_START_DATE_LESS_OR_EQUAL_TRIGGER: "Игра должна начаться [DATE.GetString|V] или ранее"
+ NOT_GAME_START_DATE_LESS_OR_EQUAL_TRIGGER: "Игра не должна начаться в [DATE.GetString|V] или ранее"
+ GAME_START_DATE_GREATER_THAN_TRIGGER: "Игра должна начаться позже [DATE.GetString|V]"
+ NOT_GAME_START_DATE_GREATER_THAN_TRIGGER: "Игра не должна начаться позже [DATE.GetString|V]"
+ GAME_START_DATE_GREATER_OR_EQUAL_TRIGGER: "Игра должна начаться в [DATE.GetString|V] или позже"
+ NOT_GAME_START_DATE_GREATER_OR_EQUAL_TRIGGER: "Игра не должна начаться в [DATE.GetString|V] или позже"
+ GAME_START_DATE_EQUAL_TRIGGER: "Игра должна начаться в [DATE.GetString|V]"
+ NOT_GAME_START_DATE_EQUAL_TRIGGER: "Игра не должна начаться в [DATE.GetString|V]"
