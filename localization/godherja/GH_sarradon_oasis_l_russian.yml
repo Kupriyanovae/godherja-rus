@@ -1,0 +1,404 @@
+﻿l_russian:
+
+ # Oasis Situation
+ sarradonian_oasis: "Оазис в [Situation.MakeScope.Var('oasis_county').Title.GetNameNoTierNoTooltip]"
+ sarradonian_oasis_desc: "[SITUATION.GetType.GetDesc]"
+ situation_type_sarradonian_oasis: "$sarradonian_oasis_situation$"
+ situation_type_sarradonian_oasis_desc: "$game_concept_sarradon_oasis_desc$"
+ situation_sarradonian_oasis: "$sarradonian_oasis_situation$"
+ situation_sarradonian_oasis_desc: "$game_concept_sarradon_oasis_desc$"
+ sarradonian_oasis_situation: "Оазис в [Situation.MakeScope.Var('oasis_county').Title.GetNameNoTierNoTooltip]"
+ SITUATION_OASIS_EFFECTS: "$BULLET$#weak Будут происходить события, вызывающие #N негативные $game_concept_county_opinion$#!, #P $game_concept_development_growth$#!, $game_concept_epidemic_resistance$, и улучшение #P $game_concept_taxes$#!#!\nБудут происходить события, приводящие к нашествиям #N [Concept('monsters','монстров')|E]#!!\nБудут происходить события с разным выбором для улучшения оазиса!"
+ sarradonian_oasis_situation_desc: "$situation_type_sarradonian_oasis_desc$"
+
+ # Phases
+ situation_oasis_flooding: "Затопление"
+ situation_oasis_flooding_desc: "Во время фазы затопления, [Concept('sarradon_oasis','саррадонский оазис')|E] начинает пробиваться наружу, давая небольшие бонусы пораженной области и давая понять правителям региона, что скоро здесь появится изобилие плодородных земель."
+ sarradonian_oasis_situation_oasis_flooding_situation_phase: "Затопление"
+ sarradonian_oasis_situation_oasis_flooding_situation_phase_desc: "Во время фазы затопления, [Concept('sarradon_oasis','саррадонский оазис')|E] начинает пробиваться наружу, давая небольшие бонусы пораженной области и давая понять правителям региона, что скоро здесь появится изобилие плодородных земель."
+ sarradonian_oasis_situation_oasis_flooding_situation_phase_effects: "Затопление"
+ sarradonian_oasis_situation_oasis_flooding_situation_phase_effects_concept: "[Concept('sarradon_oasis','Саррадонский оазис')|E]"
+ situation_situation_oasis_flooding_description: "Во время фазы затопления, [Concept('sarradon_oasis','саррадонский оазис')|E] начинает пробиваться наружу, давая небольшие бонусы пораженной области и давая понять правителям региона, что скоро здесь появится изобилие плодородных земель."
+ situation_situation_oasis_flooding_recommendations: ""
+ situation_situation_oasis_oasis_recommendations: ""
+ councillor_assigned_to_manage_oasis_project:  "Ваш [GetPlayer.Custom('GetCouncillorForDisasterRecovery')] назначен руководить ликвидацией последствий [Concept('sarradon_oasis','саррадонского оазиса')|E]. Он будет недоступен для других задач, пока [Concept('great_project', 'грандиозный проект')|E] оазиса не будет завершен."
+ situation_in_oasis: "[Concept('sarradon_oasis','Саррадонский оазис')|E] досутиг фазы #bold «Оазис»#!"
+
+ situation_oasis_oasis: "Оазис"
+ situation_oasis_oasis_desc: "Во время фазы оазиса, [Concept('sarradon_oasis','саррадонский оазис')|E] полностью расцветает, предоставляя наивысшие преимущества на ограниченное время и становясь все более ценным для правителей региона."
+ sarradonian_oasis_situation_oasis_oasis_situation_phase: "Оазис"
+ sarradonian_oasis_situation_oasis_oasis_situation_phase_desc: "Во время фазы оазиса, [Concept('sarradon_oasis','саррадонский оазис')|E] полностью расцветает, предоставляя наивысшие преимущества на ограниченное время и становясь все более ценным для правителей региона."
+ sarradonian_oasis_situation_oasis_oasis_situation_phase_effects: "Оазис"
+ sarradonian_oasis_situation_oasis_oasis_situation_phase_effects_concept: "[Concept('sarradon_oasis','Саррадонский оазис')|E]"
+ situation_situation_oasis_oasis_description: "Во время фазы оазиса, [Concept('sarradon_oasis','саррадонский оазис')|E] полностью расцветает, предоставляя наивысшие преимущества на ограниченное время и становясь все более ценным для правителей региона."
+ 
+
+ situation_oasis_receding: "Отступление"
+ situation_oasis_receding_desc: "Во время фазы отступления, [Concept('sarradon_oasis','саррадонский оазис')|E] начинает сохнуть и быстро превращаться обратно в пустыню. Плодородие стремительно падает, и люди уходят."
+ sarradonian_oasis_situation_oasis_receding_situation_phase: "Отступление"
+ sarradonian_oasis_situation_oasis_receding_situation_phase_desc: "Во время фазы отступления, [Concept('sarradon_oasis','саррадонский оазис')|E] начинает сохнуть и быстро превращаться обратно в пустыню. "
+ sarradonian_oasis_situation_oasis_receding_situation_phase_effects: "Отступление"
+ sarradonian_oasis_situation_oasis_receding_situation_phase_effects_concept: "[Concept('sarradon_oasis','Саррадонский оазис')|E]"
+ situation_situation_oasis_receding_description: "Во время фазы отступления, [Concept('sarradon_oasis','саррадонский оазис')|E] начинает сохнуть и быстро превращаться обратно в пустыню. "
+
+ incomplete: "Незавершенность"
+ sarradonian_oasis_situation_oasis_incomplete_situation_phase: "Незавершенность"
+ sarradonian_oasis_situation_oasis_incomplete_situation_phase_desc: "Во время фазы незавершенности, [Concept('sarradon_oasis','саррадонский оазис')|E] не смог должным образом разлиться, и потребуется рабочая сила, чтобы он смог заполниться водой, иначе на его развитие уйдут годы."
+ sarradonian_oasis_situation_oasis_incomplete_situation_phase_effects: "Незавершенность"
+ sarradonian_oasis_situation_oasis_incomplete_situation_phase_effects_concept:"[Concept('sarradon_oasis','Саррадонский оазис')|E]" 
+
+ OASIS_PARTICIPANT_HEADER: "Участники"
+ sarradonian_oasis_severity_type: "Изобилие воды"
+ # Effects
+ situation_oasis_county_effects: "Эффекты для графств оазиса"
+ situation_oasis_county_effects_concept: "[Concept('county','Графство')|E]"
+ situation_oasis_movement_effects: "Эффекты для перемещения в оазисе"
+ situation_oasis_movement_effects_concept: "[Concept( 'travel', 'Путешествие' )|E]"
+ situation_oasis_herd_effects: "Эффекты для стада"
+ situation_oasis_herd_effects_concept: "[Concept('herd','Стадо')|E]"
+ situation_oasis_personal_effects: "Личные эффекты"
+ situation_oasis_personal_effects_concept: "[Concept('character','Персонаж')|E]"
+ situation_oasis_subject_effects: "Эффекты для подданных"
+ situation_oasis_subject_effects_concept: "[Concept('subject','Субъект')|E]"
+
+
+ sarradonian_oasis_oasis_abundance_type: "Изобилие водыr:"
+ sarradonian_oasis_growth_tooltip: "[Concept('sarradon_oasis','Саррадонский оазис')|E] возник из пустыни в [situation.MakeScope.Var('oasis_county').Title.GetNameNoTier]"
+ sarradonian_oasis_sub_region_oasis_area: "Зона оазиса"
+ # Participant Groups
+ sarradonian_oasis_participant_group_oasis_ruler_capital: "Правители в оазисе"
+ sarradonian_oasis_participant_group_oasis_ruler_capital_desc: "Все [Concept('rulers','правители')|E], чья [Concept('capital','столица')|E] находится в оазисе"
+ sarradonian_oasis_participant_group_oasis_ruler_realm: "Правители частично в оазисе"
+ sarradonian_oasis_participant_group_oasis_ruler_realm_desc: "Все [Concept('rulers','правители')|E], чья [Concept('capital','столица')|E] находится за пределами оазиса"
+ sarradonian_oasis_participant_group_oasis_subject: "Вассалы оазиса"
+ sarradonian_oasis_participant_group_oasis_subject_desc: "[Concept('vassals','Вассалы')|E], чья [Concept('realm','держава')|E] находится в оазисе"
+ sarradonian_oasis_participant_group_oasis_herders: "Пастухи"
+ sarradonian_oasis_participant_group_oasis_herders_desc: "Пастухи, кочующие в оазисе"
+ sarradonian_oasis_participant_group_wasteland: "Пустошь"
+ sarradonian_oasis_participant_group_wasteland_desc: "Любые [Concept('counties','графства')|E] [Concept('uncolonized_wasteland','пустоши')|E] расположенные в оазисе"
+ sarradonian_oasis_oasis_ruler_capital: "[oasis_phase|E] #weak (Правители в регионе)#!"
+ sarradonian_oasis_oasis_ruler_realm: "[oasis_phase|E] #weak (Частично в регионе)#!"
+ sarradonian_oasis_oasis_subject: "[oasis_phase|E] #weak (Подданные оазиса)#!"
+ sarradonian_oasis_herders: "[oasis_phase|E] #weak (Пастухи оазиса)#!"
+ sarradonian_oasis_wasteland: "[oasis_phase|E] #weak (Пустоши оазиса)#!"
+
+ #GUI DETAILS
+ OASIS_MAP_TOOLTIP: "Режим карты «Оазисы»"
+
+
+ # GREAT PROJECTS #
+ great_project_type_great_project_oasis: "Освоение оазиса"
+ great_project_type_great_project_oasis_desc: "Этот недавно обнаруженный [Concept('sarradon_oasis','саррадонский оазис')|E] представляет собой редкую возможность для процветания в засушливых землях. Чтобы максимально использовать его потенциал, правители должны финансировать [Concept('great_project_contributions', 'вклады')|E] и координировать свои действия с другими [Concept('situation_participant_groups','группами участников')|E] для развития оазиса."
+ great_project_type_great_project_oasis_contribution_irrigation_expansion: "Сеть каналов"
+ great_project_type_great_project_oasis_contribution_trade_hub: "Караван-сарай"
+ great_project_type_great_project_oasis_contribution_garden_palace: "Райский сад"
+
+ great_project_type_great_project_oasis_contribution_irrigation_expansion_desc: "Расширьте водные каналы оазиса, чтобы принести плодородие окружающим землям."
+ great_project_type_great_project_oasis_contribution_trade_hub_desc: "Основать торговый пост, чтобы использовать оазис как стояночный пункт для караванов."
+ great_project_type_great_project_oasis_contribution_garden_palace_desc: "Построить роскошный дворец с садами, чтобы продемонстрировать красоту оазиса и привлечь знать." 
+ great_project_contribution_cost_innovation_seigneurialism: "#weak Улучшено благодаря $innovation_seigneurialism$:#!"
+ tgp_oasis_irrigation_agricultural_boom_desc: "Расширение ирригации оазиса значительно увеличило урожайность и налоговые поступления."   
+ tgp_oasis_irrigation_moderate_growth: "Рост ирригации оазиса"
+ tgp_oasis_irrigation_moderate_growth_desc: "Развитие ирригационных каналов оазиса умеренно повысило производительность сельского хозяйства."   
+ tgp_oasis_irrigation_popular_support: "Благодетель оазиса"
+ tgp_oasis_irrigation_popular_support_desc: "Инвестиции этого персонажа в ирригацию оазиса снискали ему широкую благодарность местного населения."   
+ tgp_oasis_trade_hub_entrepreneur: "Торговый магнат оазиса"
+ tgp_oasis_trade_hub_entrepreneur_desc: "Создание торгового узла в оазисе принесло этому персонажу значительное богатство и престиж."   
+ tgp_oasis_trade_hub_investment_returns: "Инвестиции в торговлю оазиса"
+ tgp_oasis_trade_hub_investment_returns_desc: "Стратегические инвестиции в торговый узел оазиса приносят отличную прибыль и снижают затраты на строительство в других местах."   
+ tgp_oasis_garden_prestige_development: "Строительство дворца-сада"
+ tgp_oasis_garden_prestige_development_desc: "Строительство великолепного дворца с садом в оазисе способствует росту престижа и развитию региона."   
+ tgp_oasis_garden_continuing_development: "Культурное развитие оазиса"
+ tgp_oasis_garden_continuing_development_desc: "Завершенный дворец-сад продолжает привлекать ученых, художников и зодчих, ускоряя развитие региона."   
+ tgp_oasis_garden_patron_of_arts: "Покровитель искусств в оазисе"
+ tgp_oasis_garden_patron_of_arts_desc: "Покровительство этого персонажа искусствам в его дворце-саде оазиса повысило его культурный престиж и духовный авторитет."   
+ # County Modifiers
+ tgp_oasis_irrigation_county_modifier: "Ирригационная сеть оазиса"
+ tgp_oasis_irrigation_county_modifier_desc: "Разветвленная ирригационная сеть направляет драгоценную воду оазиса на прилегающие земли, значительно повышая плодородие и развитие."   
+ tgp_oasis_trade_county_modifier: "Торговый центр оазиса"
+ tgp_oasis_trade_county_modifier_desc: "Этот оазис стал крупным торговым узлом, привлекающим купцов из дальних стран и укрепляющим местную экономику."   
+ tgp_oasis_garden_county_modifier: "Райский сад"
+ tgp_oasis_garden_county_modifier_desc: "Великолепный дворец-сад в оазисе стал центром культуры, просвещения и престижа для всего региона."   
+ # Oasis Discovery Tiers
+ tgp_oasis_discovery_fertility_1_county_modifier: "Малый оазис плодородия"
+ tgp_oasis_discovery_fertility_1_county_modifier_desc: "Открытие небольшого оазиса принесло скромное, но долгожданное плодородие в этот засушливый край."   
+ tgp_oasis_discovery_fertility_2_county_modifier: "Значительный оазис плодородия"
+ tgp_oasis_discovery_fertility_2_county_modifier_desc: "рупный оазис обеспечивает надежный источник воды, существенно улучшая сельское хозяйство и условия для поселений."   
+ tgp_oasis_discovery_fertility_3_county_modifier: "Великий оазис плодородия"
+ tgp_oasis_discovery_fertility_3_county_modifier_desc: "Открытие великого оазиса преобразило регион, принеся изобилие воды, плодородие и процветание."   
+ # Trade-off Modifiers
+ tgp_oasis_development_labor_strain: "Нехватка рабочих рук из-за оазиса"
+ tgp_oasis_development_labor_strain_desc: "Перенаправление рабочей силы на проекты освоения оазиса временно сократило доступные военные силы."   
+ tgp_oasis_garden_construction_cost: "Расходы на постройку дворца-сада"
+ tgp_oasis_garden_construction_cost_desc: "Пышное строительство дворца с садом в оазисе создает значительную нагрузку на казну."   
+ # Innovation Synergies
+ tgp_oasis_qanat_synergy: "Мастерство сооружения кяризов"
+ tgp_oasis_qanat_synergy_desc: "Традиционные технологии строительства кяризов были мастерски применены при обустройстве оазиса, что значительно снизило затраты на строительство."   
+ tgp_oasis_caravanserai_synergy: "Сеть караван-сараев"
+ tgp_oasis_caravanserai_synergy_desc: "Интеграция с существующими сетями караван-сараев максимально раскрыла потенциал оазиса как торгового центра, принеся исключительное богатство."   
+ tgp_oasis_persian_garden_synergy: "Традиция персидских садов"
+ tgp_oasis_persian_garden_synergy_desc: "Применение древних принципов проектирования персидских садов позволило создать райский оазис исключительной красоты и духовного величия."   
+ # Additional useful modifiers (if needed in scripts)
+ tgp_oasis_irrigation_county_modifier_short: "$tgp_oasis_irrigation_county_modifier$"
+ tgp_oasis_irrigation_county_modifier_short_desc: "$tgp_oasis_irrigation_county_modifier_desc$"   
+ tgp_oasis_trade_county_modifier_short: "$tgp_oasis_trade_county_modifier$"
+ tgp_oasis_trade_county_modifier_short_desc: "$tgp_oasis_trade_county_modifier_desc$"   
+ tgp_oasis_garden_county_modifier_short: "$tgp_oasis_garden_county_modifier$"
+ tgp_oasis_garden_county_modifier_short_desc: "$tgp_oasis_garden_county_modifier_desc$"
+  
+ ## EVENTS ##
+ gh_oasis_event.0001.t: "Воды из глубин"
+  gh_oasis_event.0001.desc: "Доходят известия, что пески пришли в движение. С каждым днем появляется все больше свежей грязи и молодой зелени. В наших землях почти наверняка формируется новый оазис."
+  gh_oasis_event.0001.a: "Хвала богам, вода поднимается!"
+  gh_oasis_event.0002.t: "Эфемерный оазис"
+  gh_oasis_event.0002.desc: "Прошло достаточно времени, чтобы оазис расцвел. Пресная вода доступна в изобилии, и с каждым рассветом появляется все больше флоры и фауны. Вскоре вести разлетятся повсюду, и мы должны быть готовы к наплыву желающих."
+  gh_oasis_event.0002.a: "Насладимся этим благословением, пока оно длится."
+  gh_oasis_event.0003.t: "Возвращение к пескам"
+  gh_oasis_event.0003.desc: "Красота оазиса не вечна.\n\nПески уже начали поглощать наш когда-то изобильный рай обратно в дюны. Дикие звери давно ушли, и скоро здесь не останется ничего, кроме сухой пустыни."
+  gh_oasis_event.0003.a: "Со временем все возвращается в прах пустыни."
+  gh_oasis_event.1001.t: "Побег скарабеев!"
+  gh_oasis_event.1001.desc: "С тем, насколько разрослось наше стадо жуков, что-то подобное было лишь вопросом времени.\n\nЯ просто не ожидал[SelectCString(ROOT.Char.IsFemale, 'а', '' )], что это произойдет так скоро.\n\nЕдва рассвело, жуки умудрились пробить загоны и устроить хаос в нашем лагере. Если мы ничего не предпримем в ближайшее время, то рискуем потерять все стадо."
+  gh_oasis_event.1001.a: "К оружию! Не дайте ни одному сбежать!"
+  gh_oasis_event.1001.a.success: "Вам удается остановить панический побег"
+  gh_oasis_event.1001.a.failure: "Вам не удается остановить панический побег"
+  gh_oasis_event.1001.c.success: "Нанятым наемникам удается остановить побег"
+  gh_oasis_event.1001.c.failure: "Нанятые наемники бросают попытки остановить побег"
+  gh_oasis_event.1001.d.success: "Вам удается успокоить стадо с помощью [Concept('magic','магии')|E]"
+  gh_oasis_event.1001.b: "Эх, пускай бегут, я слишком устал[SelectCString(ROOT.Char.IsFemale, 'а', '' )]."
+  gh_oasis_event.1001.c: "Нам следует нанять несколько наемников, чтобы они вернули их."
+  gh_oasis_event.1001.d: "Я знаю подходящее заклинание для этого!"
+  gh_oasis_event.1011.t: "Скифы-реликвии под песком"
+  gh_oasis_event.1011.desc: "Наши знатоки скифов доложили, что совсем рядом с нашим аханом глубоко под песками зарыты многочисленные древние реликвии, которые могут сослужить большую службу нашим [Concept('sand_skiffs','песчаным скифам')|E]. Потребуются огромные усилия, чтобы поднять их на поверхность, но выгода может стоить того."
+  gh_oasis_event.1011.a: "Хорошо, наймите столько рабочих, сколько нужно."
+  gh_oasis_event.1011.a.success: "Нанятые рабочие успешно извлекают детали скифа"
+  gh_oasis_event.1011.a.failure: "Нанятые рабочие не справляются с извлечением деталей скифа"
+  gh_oasis_event.1011.b.success: "Вам удается полностью восстановить скиф"
+  gh_oasis_event.1011.b.partial: "Вам удается достать лишь часть деталей скифа"
+  gh_oasis_event.1011.b.catastrophe: "Вам не удается спасти абсолютно ничего"
+  gh_oasis_event.1011.b: "Мы должны вернуть все, что сможем!"
+  gh_oasis_event.1011.c: "Нет, это обойдется слишком дорого."
+  gh_oasis_event.1011.d: "Возможно, здесь поможет магия?"
+  gh_oasis_event.1021.t: "Усовершенствование скифов"
+  gh_oasis_event.1021.desc: "Наши знатоки скифов пришли ко мне с несколькими проектами, которые, по их мнению, помогут расширить и улучшить наши песчаные [Concept('sand_skiffs','песчаные скифы')|E]. Хотя каждый из них требует трат, полученные преимущества дадут нам шанс на нечто большее, чем просто выживание в этой [Glossary('суровой пустыне','sarradonian_desert_encyclopedia_desc')]."
+  gh_oasis_event.1021.a: "Экономический подход предпочтительнее."
+  gh_oasis_event.1021.b: "Военный подход подходят лучше всего."
+  gh_oasis_event.1021.c: "Может быть, в другой раз."
+  gh_oasis_event.1021.d: "Возможно, есть способ получше?"
+  gh_oasis_event.1021.d.success: "Вы умело улучшаете скифы"
+  gh_oasis_event.1021.d.failure: "Вам удается только испортить скифы"
+  gh_oasis_event.1041.t: "Переполненные воды"
+  gh_oasis_event.1041.desc: "Регион [Concept('sarradon_oasis','саррадонского оазиса')|E] неизменно привлекает людей со всех уголков пустыни, ищущих воду, свежую еду и отдых от беспощадных песков. На этот раз все так же, но наш участок оазиса слишком быстро заполнился путниками и чужаками. Припасы не вечны, воды иссякают быстрее обычного, и если ничего не предпринять, между укрывшимися в тени группами может вспыхнуть насилие."
+  gh_oasis_event.1041.a: "Нам следует брать плату за вход."
+  gh_oasis_event.1041.b: "Пусть приходят! Места хватит всем."
+  gh_oasis_event.1041.c: "Больше никому нельзя входить. Убивайте каждого, кто ослушается приказа."
+  gh_oasis_event.1041.d: "Неужели мы не сможем найти компромисс?"
+  gh_oasis_event.1041.e: "Должна быть магия, способная поднять уровень воды."
+  gh_oasis_event.1041.d.success: "#weak Вам удается поднять уровень воды в оазисе выше нормы#!"
+  gh_oasis_event.1041.d.failure: "#weak Вам не удается поднять уровень воды, и эти земли погружаются в хаос#!"
+  gh_oasis_event.1051.t: "Оазисный [attacked_county.Custom('GetAnimalType')|U]"
+  gh_oasis_event.1051.desc: "Путники в [attacked_county.GetNameNoTierNoTooltip] за последние дни не раз замечали чудовищного [attacked_county.Custom('GetAnimalType')|U] у оазиса. Хотя [Concept('sarradon_oasis','саррадонский оазис')|E] привлекает много созданий, подобное чуловище наверняка отпугнет и людей, и более привычную дичь, способную прокормить наши лагеря."
+  gh_oasis_event.1051.a: "Подобные тревоги не имеют значения."
+  gh_oasis_event.1051.b: "Мы выставим дополнительную охрану у водопоев."
+  gh_oasis_event.1061.t: "Продается: святая вода"
+  gh_oasis_event.1061.desc: "Поступили сведения, что [SelectCString(good_merchant_template.IsFemale, 'одна торговка', 'один торговец' )] в [Concept('sarradon_oasis','оазисе')|E] продает «святую воду», которая якобы исцеляет от любых недугов и даже продлевает жизнь. [SelectCString(good_merchant_template.IsFemale, 'Торговка', 'Торговец' )] ([good_merchant_template.GetName]) предстал[SelectCString(good_merchant_template.IsFemale, 'а', '' )] передо мной по обвинению во лжи, но все еще заявляет о своей невиновности."
+  gh_oasis_event.1061.a: "[good_merchant_template.GetSheHe|U] заплатит штраф."
+  gh_oasis_event.1061.b: "За воровство [good_merchant_template.GetSheHe] расплатится своей рукой."
+  gh_oasis_event.1061.c: "[good_merchant_template.GetSheHe|U] будет служить мне, пока я не решу иначе."
+  gh_oasis_event.1061.d: "[good_merchant_template.GetSheHe|U] заплатит своей жизнью!"
+  gh_oasis_event.1061.e: "Я покажу [good_merchant_template.GetHerHim] всю ошибочность [good_merchant_template.GetHerHis] пути."
+  gh_oasis_event.1061.e.success: "#weak Вам удается убедить торговца в совершении преступления#!"
+  gh_oasis_event.1061.e.failure: "#weak Торговцу удается выторговать себе свободу#!"
+  gh_oasis_event.1061.f: "...Могу я купить один флакон?"
+
+
+ ###############################################################################
+ ####################### SARRADONIAN DESERT & HORN #############################
+ ###############################################################################
+ situation_the_sarradonian_desert: "[Glossary('Саррадонская пустыня','sarradonian_desert_encyclopedia_desc')]"
+ situation_the_sarradonian_desert_desc: "[SITUATION.GetType.GetDesc]"
+ situation_type_the_sarradonian_desert: "Саррадонская пустыня"
+ situation_type_the_sarradonian_desert_desc: "$sarradonian_desert_encyclopedia_desc$"
+
+ the_sarradonian_desert_sub_region_arabia_nomads: "Великая пустыня"
+ the_sarradonian_desert_sub_region_egypt_nomads: "Кемсар"
+ the_sarradonian_desert_sub_region_boneyard_nomads: "Костяной погост"
+
+ # Season Names
+ the_sarradonian_desert_situation_sand_blessed_bloom_season_situation_phase:0 "Пробуждение песков"
+ the_sarradonian_desert_situation_sand_blessed_bloom_season_situation_phase_desc:0 "Пустынные пески охватывает цветение. Выносливая флора бурно разрастается, создавая мимолетные оазисы, поддерживающие как обычную, так и [Concept('magic','магическую')|E] жизнь."
+  
+ the_sarradonian_desert_situation_sand_scorching_zenith_season_situation_phase:0 "Ярость солнца"
+ the_sarradonian_desert_situation_sand_scorching_zenith_season_situation_phase_desc:0 "Солнце палит с нечеловеческим, гнетущим зноем. Над песками колышутся миражи, а к металлу невозможно прикоснуться."
+  
+ the_sarradonian_desert_situation_sand_sand_scribe_season_situation_phase:0 "Шепчущие ветры"
+ the_sarradonian_desert_situation_sand_sand_scribe_season_situation_phase_desc:0 "Неутихающие ветры изо дня в день меняют облик пустыни, обнажая древние тайны лишь для того, чтобы снова их погрести, и доносят шепот забытых знаний до тех, кто умеет слушать."
+  
+ the_sarradonian_desert_situation_sand_veil_thin_nights_season_situation_phase:0 "Эфирные ночи"
+ the_sarradonian_desert_situation_sand_veil_thin_nights_season__situation_phasedesc:0 "Завеса между мирами истончается под холодной пустынной луной. Говорят, что [Glossary('духи','animal_type_spirit_encyclopedia_desc')] скитаются по пустыне во множестве, хотя кто знает, с чем можно столкнуться в глубоких песках."
+  
+ the_sarradonian_desert_situation_sand_sand_devil_season_situation_phase:0 "Вой"
+ the_sarradonian_desert_situation_sand_sand_devil_season_situation_phase_desc:0 "Свирепые [Concept('magic','магические')|E] песчаные бури ревут над пустыней — проявление гнева великих [Glossary('духов','animal_type_spirit_encyclopedia_desc')] или дыхание спящих [Glossary('элементалей','animal_type_elemental_encyclopedia_desc')]. Путешествия смертельно опасны, и даже укрепленные поселения оказываются в осаде бурь."
+  
+ the_sarradonian_desert_situation_sand_celestial_stillness_season_situation_phase:0 "Звездный оазис"
+ the_sarradonian_desert_situation_sand_celestial_stillness_season_situation_phase_desc:0 "Пустыня погружается в тишину, а ночное небо пылает созвездиями столь яркими, что они отбрасывают тени. Эта безмолвная тишь благоприятствует медитации, астрономии и могущественным ритуалам."
+
+ situation_sand_blessed_bloom_season:0 "Пробуждение песков"
+ situation_sand_blessed_bloom_season_desc:0 "Пустынные пески охватывает цветение. Выносливая флора бурно разрастается, создавая мимолетные оазисы, поддерживающие как обычную, так и [Concept('magic','магическую')|E] жизнь."
+  
+ situation_sand_scorching_zenith_season:0 "Ярость солнца"
+ situation_sand_scorching_zenith_season_desc:0 "Солнце палит с нечеловеческим, гнетущим зноем. Над песками колышутся миражи, а к металлу невозможно прикоснуться."
+  
+ situation_sand_sand_scribe_season:0 "Шепчущие ветры"
+ situation_sand_sand_scribe_season_desc:0 "Неутихающие ветры изо дня в день меняют облик пустыни, обнажая древние тайны лишь для того, чтобы снова их погрести, и доносят шепот забытых знаний до тех, кто умеет слушать."
+  
+ situation_sand_veil_thin_nights_season:0 "Эфирные ночи"
+ situation_sand_veil_thin_nights_season_desc:0 "Завеса между мирами истончается под холодной пустынной луной. Говорят, что [Glossary('духи','animal_type_spirit_encyclopedia_desc')] скитаются по пустыне во множестве, хотя кто знает, с чем можно столкнуться в глубоких песках."
+  
+ situation_sand_sand_devil_season:0 "Вой"
+ situation_sand_sand_devil_season_desc:0 "Свирепые [Concept('magic','магические')|E] песчаные бури ревут над пустыней — проявление гнева великих [Glossary('духов','animal_type_spirit_encyclopedia_desc')] или дыхание спящих [Glossary('элементалей','animal_type_elemental_encyclopedia_desc')]. Путешествия смертельно опасны, и даже укрепленные поселения оказываются в осаде бурь."
+  
+ situation_sand_celestial_stillness_season:0 "Звездный оазис"
+ situation_sand_celestial_stillness_season_desc:0 "Пустыня погружается в тишину, а ночное небо пылает созвездиями столь яркими, что они отбрасывают тени. Эта безмолвная тишь благоприятствует медитации, астрономии и могущественным ритуалам."
+
+ the_sarradonian_desert_participant_group_nomad_rulers_capital: "Кочевые правители в регионе"
+ the_sarradonian_desert_participant_group_nomad_rulers_capital_desc: "Все [Concept('rulers','правители')|E] с формой правления «[GetGovernment( 'nomad_government' ).GetName]» и со [Concept('capital','столицей')|E] в этой [Concept('situation_sub_region','области')|E]."
+ the_sarradonian_desert_participant_group_nomad_rulers_realm: "Кочевые правители частично в регионе"
+ the_sarradonian_desert_participant_group_nomad_rulers_realm_desc: "Все [Concept('rulers','правители')|E] с формой правления «[GetGovernment( 'nomad_government' ).GetName]» и со [Concept('capital','столицей')|E] в другой [Concept('situation_sub_region','области')|E], но с частью их [Concept('realm','державы')|E] в этой."
+ the_sarradonian_desert_participant_group_herders: "Пастухи"
+ the_sarradonian_desert_participant_group_herders_desc: "[Concept('herders','Пастухи')|E] в этой [Concept('situation', 'ситуации')|E]"
+ the_sarradonian_desert_nomad_rulers_capital: "[Concept('steppe_season','Пустынный сезон')|E] #weak (Правители в регионе)#!"
+ the_sarradonian_desert_nomad_rulers_realm: "[Concept('steppe_season','Пустынный сезон')|E] #weak (Частично в регионе)#!"
+ the_sarradonian_desert_participant_group_settled_rulers: "Оседлые правители"
+ the_sarradonian_desert_participant_group_settled_rulers_desc: "Все оседлые [Concept('rulers','правители')|E] в этой [Concept('situation_sub_region','области')|E]."
+ the_sarradonian_desert_settled_rulers: "[Concept('steppe_season','Пустынный сезон')|E] #weak (Оседлые правители)#!"
+ the_sarradonian_desert_herders: "[Concept('steppe_season','Пустынный сезон')|E] #weak (Пастухи)#!"
+ the_sarradonian_desert_participant_group_desert_wasteland: "Пустоши пустыни"
+ the_sarradonian_desert_participant_group_desert_wasteland_desc: "Все [Concept('rulers','правители')|E] с формой правления «[GetGovernment( 'wasteland_government' ).GetName]» с землями в этой [Concept('situation_sub_region','области')|E]"
+ 
+ situation_parameter_access_dream_interepting_activity: "Доступно [Concept('activity', 'занятие')|E] #EMP «Инкубация грёз»#!"
+
+ catalyst_situation_passing_of_time_sand_devil: "Ежемесячное смещение [Concept('situation_catalyst', 'катализатором ситуации')|E]"
+ catalyst_situation_passing_of_time_sand_devil_desc: "Ежемесячное смещение: естественный переход к этой [Concept('situation_phase', 'фазе ситуации')|E]"
+ catalyst_situation_passing_of_time_lucky_chance_sand_devil: "Необычное смещение [Concept('situation_catalyst', 'катализатором ситуации')|E]"
+ catalyst_situation_passing_of_time_lucky_chance_sand_devil_desc: "Необычное смещение: аномальные климатические условия подталкивают переход к этой [Concept('situation_phase', 'фазе ситуации')|E]"
+ catalyst_situation_passing_of_time_celestial_stillness: "Ежемесячное смещение [Concept('situation_catalyst', 'катализатором ситуации')|E]"
+ catalyst_situation_passing_of_time_celestial_stillness_desc: "Ежемесячное смещение: естественный переход к этой [Concept('situation_phase', 'фазе ситуации')|E]"
+ catalyst_situation_passing_of_time_lucky_chance_celestial_stillness: "Необычное смещение [Concept('situation_catalyst', 'катализатором ситуации')|E]"
+ catalyst_situation_passing_of_time_lucky_chance_celestial_stillness_desc: "Необычное смещение: аномальные климатические условия подталкивают переход к этой [Concept('situation_phase', 'фазе ситуации')|E]"
+
+ situation_the_sarradonian_horn: "Рог Саррадона" # TOG TODO: Add GC
+ situation_the_sarradonian_horn_desc: "[SITUATION.GetType.GetDesc]"
+ situation_type_the_sarradonian_horn: "Рог Саррадона"
+ situation_type_the_sarradonian_horn_desc: "$game_concept_the_sarradonian_horn_desc$"
+
+ the_sarradonian_horn_sub_region_horn_nomads: "Западное Иловое море"
+ the_sarradonian_horn_sub_region_eastern_horn_nomads: "Восточное Иловое море"
+
+ situation_sarradonian_low_tide: "Отлив"
+ situation_sarradonian_low_tide_desc: "$game_concept_low_tide_desc$"
+ situation_sarradonian_high_tide: "Прилив"
+ situation_sarradonian_high_tide_desc: "$game_concept_high_tide_desc$"
+ the_sarradonian_horn_situation_sarradonian_low_tide_situation_phase: "$situation_sarradonian_low_tide$"
+ the_sarradonian_horn_situation_sarradonian_high_tide_situation_phase: "$situation_sarradonian_high_tide$"
+
+ the_sarradonian_horn_participant_group_nomad_rulers_capital: "Кочевые правители в регионе"
+ the_sarradonian_horn_participant_group_nomad_rulers_capital_desc: "Все [Concept('rulers','правители')|E] с формой правления «[GetGovernment( 'nomad_government' ).GetName]» и со [Concept('capital','столицей')|E] в этой [Concept('situation_sub_region','области')|E]."
+ the_sarradonian_horn_participant_group_nomad_rulers_realm: "Кочевые правители частично в регионе"
+ the_sarradonian_horn_participant_group_nomad_rulers_realm_desc: "Все [Concept('rulers','правители')|E] с формой правления «[GetGovernment( 'nomad_government' ).GetName]» и со [Concept('capital','столицей')|E] в другой [Concept('situation_sub_region','области')|E], но с частью их [Concept('realm','державы')|E] в этой."
+ the_sarradonian_horn_participant_group_herders: "Пастухи"
+ the_sarradonian_horn_participant_group_herders_desc: "[Concept('herders','Пастухи')|E] в этой [Concept('situation', 'ситуации')|E]"
+ the_sarradonian_horn_nomad_rulers_capital: "[Concept('steppe_season','Сезон')|E] #weak (Правители в регионе)#!"
+ the_sarradonian_horn_nomad_rulers_realm: "[Concept('steppe_season','Сезон')|E] #weak (Частично в регионе)#!"
+ the_sarradonian_horn_participant_group_settled_rulers: "Оседлые правители"
+ the_sarradonian_horn_participant_group_settled_rulers_desc: "Все оседлые [Concept('rulers','правители')|E] в этой [Concept('situation_sub_region','области')|E]."
+ the_sarradonian_horn_settled_rulers: "[Concept('steppe_season','Сезон')|E] #weak (Оседлые правители)#!"
+ the_sarradonian_horn_herders: "[Concept('steppe_season','Сезон')|E] #weak (Пастухи)#!"
+
+ situation_sarradonian_movement_effects: "Эффекты перемещения"
+ situation_sarradonian_movement_effects_concept: "[Concept( 'travel_speed', 'Скорость путешествия' )|E]"
+ situation_sarradonian_herd_effects: "Эффекты для стада"
+ situation_sarradonian_herd_effects_concept: "[Concept('herd','Стадо')|E]"
+ situation_sarradonian_military_effects: "Эффекты на войну"
+ situation_sarradonian_military_effects_concept: "[Concept('war','Война')|E]"
+ situation_sarradonian_fertility_effects: "Эффектры на плодородности графства"
+ situation_sarradonian_fertility_effects_concept: "[Concept('county_fertility', 'Тучности пастбищ в графстве')|E]"
+ situation_sarradonian_subject_effects: "Эффекты на субъектах"
+ situation_sarradonian_subject_effects_concept: "[Concept('subject','Субъект')|E]"
+
+ gh_oasis_2_county_modifier: "Временный оазис"
+ gh_oasis_3_county_modifier: "Временный оазис"
+ gh_oasis_4_county_modifier: "Временный оазис"
+ gh_oasis_county_modifier: "Временный оазис"
+ gh_oasis_2_county_modifier_desc: "В этом [Concept('county','графстве')|E] временно возник [Concept('sarradon_oasis','саррадонский оазис')|E]
+ gh_oasis_3_county_modifier_desc: "В этом [Concept('county','графстве')|E] временно возник [Concept('sarradon_oasis','саррадонский оазис')|E]"
+ gh_oasis_4_county_modifier_desc: "В этом [Concept('county','графстве')|E] временно возник [Concept('sarradon_oasis','саррадонский оазис')|E]"
+ gh_oasis_county_modifier_desc: "В этом [Concept('county','графстве')|E] временно возник [Concept('sarradon_oasis','саррадонский оазис')|E]"
+ gh_oasis_permanent_county_modifier: "Исторический оазис"
+ gh_oasis_permanent_county_modifier_desc: "В этом [Concept('county','графстве')|E] существовал оазис на протяжении всей известной истории"
+
+ beetle_burrow_modifier: "Норы скарабеев"
+ beetle_burrow_modifier_desc: "Это [Concept('county','графство')|E] расположено в регионе, где доминируют скарабеи, и изрыто глубокими туннелями и норами, что облегчает поиск гигантских жуков."
+
+ owns_beetle_burrow_modifier: "Норы скарабеев"  
+ owns_beetle_burrow_modifier_desc: "Этот правитель владеет территорией среди Нор скарабеев, где веками выращивались гигантские жуки, используемые кемсарийскими военными отрядами."
+
+ thriving_beetle_burrow_modifier: "Процветающие норы скарабеев"
+ thriving_beetle_burrow_modifier_desc: "С возвращением кемсарийской мощи в этот регион, Норы скарабеев были расширены за счет крупных инвестиций в их развитие и распространение нор."
+
+ gifted_beetle_modifier: "Недавно подаренные жуки-скарабеи"
+ gifted_beetle_modifier_desc: "тому персонажу недавно подарили крупных скарабеев для его кавалерии."
+
+ 
+ ignored_murder_modifier: "Громкое убийство проигнорировано"
+ ignored_murder_modifier_desc: "Проигнорировано убийство видной фигуры среди простолюдинов со стороны  было проигнорировано [Concept('ruler','правителем')|E]."
+
+ enabled_mob_justice_modifier: "Позволе самосуд"
+ enabled_mob_justice_modifier_desc: "Простолюдины были призваны их [Concept('ruler','правителем')|E] использовать самосуд для наказания убийцы."
+
+ recovered_skiff_parts_modifier: "Извлеченные детали скифа"
+ recovered_skiff_parts_modifier_desc: "Детали разрушенных [Concept('sand_skiffs','песчаные скифов')|E] были успешно подняты из песков пустыни."
+
+ economic_sandskiff_upgrade_modifier: "Торговая модификация песчаного скифа"
+ economic_sandskiff_upgrade_modifier_desc: "[Concept('sand_skiffs','Песчаные скифов')|E] этого персонажа были модифицированы для более эффективной торговли и перемещения по пустыне."
+
+ war_sandskiff_upgrade_modifier: "War Sand-Skiff Upgrade"
+ war_sandskiff_upgrade_modifier_desc: "[Concept('sand_skiffs','Песчаные скифов')|E] этого персонажа были модифицированы для более эффективного ведения войны и набегов в пустыне."
+
+ improved_sandskiff_upgrade_modifier: "Improved Sand-Skiff Upgrade"
+ improved_sandskiff_upgrade_modifier_desc: "[Concept('sand_skiffs','Песчаные скифов')|E] этого персонажа были всесторонне улучшены и считаются одними из лучших в [Concept('sarradon','Саррадоне')|E]"
+
+ worsened_sandskiff_modifier: "Испорченные скифы"
+ worsened_sandskiff_modifier_desc: "[Concept('sand_skiffs','Песчаные скифов')|E] этого персонажа пострадали из-за топорной работы и неудачной попытки «улучшения»."
+
+ taxing_oasis_visitors_modifier: "Налог с посетителей оазиса"
+ taxing_oasis_visitors_modifier_desc: "В этом [Concept('county','графстве')|E] начали взимать налог с тех, кто посещает местный [Concept('sarradon_oasis','оазис')|E]."
+
+ overcrowded_oasis_visitors_modifier: "Переполненный оазис"
+ overcrowded_oasis_visitors_modifier_desc: "Это [Concept('county','графство')|E] оказалось переполнено странниками, пришедшими к местному [Concept('sarradon_oasis','оазису')|E]."
+
+ no_entry_oasis_modifier: "Вход в оазис воспрещен"
+ no_entry_oasis_modifier_desc: "В этом [Concept('county','графстве')|E] чужакам запретили доступ к местному [Concept('sarradon_oasis','оазису')|E]."
+
+ compromised_oasis_modifier: "Компромиссный доступ к оазису"
+ compromised_oasis_modifier_desc: "В этом [Concept('county','графстве')|E] удалось достичь компромисса между местными жителями и странниками относительно доступа к [Concept('sarradon_oasis','оазису')|E]."
+
+ oasis_chaos_modifier: "Хаос у оазиса"
+ oasis_chaos_modifier_desc: "Это [Concept('county','графство')|E] погрузилось в хаос из-за провалившихся попыток регулировать доступ к [Concept('sarradon_oasis','оазису')|E]."
+
+ magically_raised_oasis_waters_modifier: "Магически усиленные воды оазиса"
+ magically_raised_oasis_waters_modifier_desc: "В этом [Concept('county','графстве')|E], [Concept('sarradon_oasis','оазис')|E] был усилен с помощью [Concept('magic','магии')|E]."
+
+ disgruntled_caravans_modifier: "Недовольные пустынные караваны"
+ disgruntled_caravans_modifier_desc: "Торговым караванам здесь было отказано в их просьбах [Concept('rulers','правителем')|E]."
+
+ placated_caravans_modifier: "Задобренные пустынные караваны"
+ placated_caravans_modifier_desc: "[Concept('rulers','Правитель')|E] удовлетворил просьбы прибывающих сюда торговых караванов."
+
+ oasis_monster_infestation_ignored_modifier: "Нашествие в оазисе проигнорировано"
+ oasis_monster_infestation_ignored_modifier_desc: "[Concept('monsters','Монстры')|E] заполонили [Concept('sarradon_oasis','оазис')|E] в этом [Concept('county','графстве')|E] и игнорируются  [Concept('rulers','правителем')|E]."
+
+ oasis_monster_infestation_aid_modifier: "Угроза нашествия в оазисе снижена"
+ oasis_monster_infestation_aid_modifier_desc: "[Concept('monsters','Монстры')|E] в этом [Concept('sarradon_oasis','оазисе')|E] были оттеснены благодаря усиленному присутствия стражи в этом [Concept('county','графстве')|E]."
+
+ oasis_holy_water_modifier: "Святая вода из оазиса"
+ oasis_holy_water_modifier_desc: "Поговаривают, что эти воды обладают волшебными свойствами, способными продлить жизнь."
