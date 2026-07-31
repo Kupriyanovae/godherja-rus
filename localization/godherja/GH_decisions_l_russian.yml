@@ -1,22 +1,135 @@
 ﻿l_russian:
- amsari_vassals_will_convert: "Так как я  амсари, мои [Concept('tribal','племенные')|E] вассалы перейдут на [Concept('clan','клановую')|E] форму правления"
+ amsari_vassals_will_convert: "Поскольку я амсар, мои [Concept('tribal','племенные')|E] вассалы перейдут на [Concept('clan','клановую')|E] форму правления"
 
- commission_artifact_decision_option_thumb_ring_desc: "[AddTextIf(ROOT.Char.GetInventory.HasEquippedArtifactsInSlotType('miscellaneous'), Concatenate('Сейчас экипировано:\n', ROOT.Char.GetInventory.GetEquippedArtifactsInSlotTypeString('miscellaneous', 'NEWLINE', 'NEWLINE', 'NEWLINE')))]"
- commission_artifact_decision_option_thumb_ring: "Кольцо на палец\n#low В наличии: [ROOT.Char.GetInventory.GetNumberOfArtifactsForSlotTypeString('miscellaneous')]#!"
- commission_thumb_ring_tooltip: "#T Кольцо на палец#! \n$DESC$"
- commission_artifact_decision_option_oltenic_mask_desc: "[AddTextIf(Not(ROOT.Char.GetInventory.GetSlot('helmet').IsEmpty), Concatenate('Сейчас экипировано:\n', ROOT.Char.GetInventory.GetEquippedArtifactsInSlotTypeString('helmet', 'NEWLINE', 'NEWLINE', 'NEWLINE')))]"
- commission_artifact_decision_option_oltenic_mask: "Маска\n#low В наличии: [ROOT.Char.GetInventory.GetNumberOfArtifactsForSlotTypeString('helmet')]#!"
+ commission_artifact_decision_option_thumb_ring_desc: "[AddTextIf(ROOT.Char.GetInventory.HasEquippedArtifactsInSlotType('miscellaneous'), Concatenate('Используется:\n', ROOT.Char.GetInventory.GetEquippedArtifactsInSlotTypeString('miscellaneous', 'NEWLINE', 'NEWLINE', 'NEWLINE')))]"
+ commission_artifact_decision_option_thumb_ring: "Кольцо на большой палец\n#low Принадлежит: [ROOT.Char.GetInventory.GetNumberOfArtifactsForSlotTypeString('miscellaneous')]#!"
+ commission_thumb_ring_tooltip: "#T Кольцо на большой палец#! \n$DESC$"
+ commission_artifact_decision_option_oltenic_mask_desc: "[AddTextIf(Not(ROOT.Char.GetInventory.GetSlot('helmet').IsEmpty ), Concatenate('Используется:\n', ROOT.Char.GetInventory.GetEquippedArtifactsInSlotTypeString('helmet', 'NEWLINE', 'NEWLINE', 'NEWLINE')))]"
+ commission_artifact_decision_option_oltenic_mask: "Маска"
  commission_oltenic_mask_tooltip: "#T Маска#! \n$DESC$"
+ commission_artifact_decision_option_glassware_desc: "[AddTextIf(Not(ROOT.Char.GetInventory.GetSlot('helmet').IsEmpty ), Concatenate('Используется:\n', ROOT.Char.GetInventory.GetEquippedArtifactsInSlotTypeString('helmet', 'NEWLINE', 'NEWLINE', 'NEWLINE')))]"
+ commission_artifact_decision_option_glassware: "Изделия из стекла\n#low (Разные)#!"
+ commission_glassware_tooltip: "#T Изделия из стекла#! \n$DESC$"
+ commission_artifact_decision.glassware_requirements: "Местные ремесленники в [Scope.Char.GetCapitalLocation.GetCounty.GetTitle.GetNameNoTier|V] не владеют стеклоделием\n([Scope.Char.GetCapitalLocation.GetCounty.GetCulture.GetName|V] [culture|E] #BOL не#! имеет традиции «[GetCultureTradition('tradition_adept_glassworkers').GetName|V]» [culture_tradition|E])"
 
- at_least_7_rivarisians_counties_of_your_faith_tt: "Вы должны владеть как минимум 7 ривазианскими [Concept('counties','графствами')|E] вашей [Concept('faith','конфесии')|E]"
- the_new_capital_must_be_controlled_and_developed_tt: "Ваш [Concept('capital','столичное')|E] [Concept('county','графство')|E] должно находиться в [GetGeographicalRegion('world_ga_riverlands_formable').GetName] и иметь не менее 22 [Concept('development','развития')|E] и 100 [Concept('control','контроля')|E]"
+ at_least_7_rivarisians_counties_of_your_faith_tt: "Вы должны удерживать как минимум 7 риваризианских [Concept('counties','графств')|E] вашей [Concept('faith','конфессии')|E]"
+ the_new_capital_must_be_controlled_and_developed_tt: "Ваше [Concept('capital','столичное')|E] [Concept('county','графство')|E] находится в регионе [GetGeographicalRegion('world_ga_riverlands_formable').GetName] и должно иметь как минимум 22 [development|E] и 100 [control|E]"
 
- select_great_calling_decision_name:0 "Определить [Concept('great_callings','Великое призвание')|E]"
- select_great_calling_decision_tooltip:0 "Выберите своё Великое призвание"
- select_great_calling_decision_tt:0 "Вы получите модификатор, связанный с выбранным [Concept('great_callings','Великим призванием')|E]"
- select_great_calling_decision_confirm:0 "Время выбирать"
- select_great_calling_decision:0 "Определить Великое призвание"
- select_great_calling_decision_desc:0 "В возрасте 16 лет каждый прапатар должен выбрать своё призвание. Вы готовы сделать выбор?"
+ select_great_calling_decision_name:0 "Выбрать [Concept('great_callings','великое призвание')|E]"
+ select_great_calling_decision_tooltip:0 "Выберите свое великое призвание"
+ select_great_calling_decision_tt:0 "Вы получите модификатор, связанный с выбранным [Concept('great_callings','великим призванием')|E]"
+ select_great_calling_decision_confirm:0 "Время делать выбор"
+ select_great_calling_decision:0 "Выбрать великое призвание"
+ select_great_calling_decision_desc:0 "В возрасте 16 лет каждый прапатаро должен выбрать свое призвание. Готовы ли вы сделать выбор?"
 
  adventurer_gh_human_tt:0 "Является человеком"
- claim_on_chevalie_tt:0 "Имеет притязания на [GetTitleByKey('e_chevalie').GetName]"
+ claim_on_chevalie_tt:0 "Имеет претензию на [GetTitleByKey('e_chevalie').GetName]"
+ 
+ #Vanilla end_the_struggle_oath_decision Decision
+ end_the_struggle_oath_decision_title_ritewars: "Я поклялся окончить [GetStruggle('ritewars_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_ritewars_ended: "Я поклялся окончить #V Войны ритуалов#!. $end_the_struggle_oath_decision_title_extra$"
+ 
+ end_the_struggle_oath_decision_title_rite_wars_south: "Я поклялся окончить [GetStruggle('rite_wars_south_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_rite_wars_south_ended: "Я поклялся окончить #V Южные войны ритуалов#!. $end_the_struggle_oath_decision_title_extra$"
+ 
+ end_the_struggle_oath_decision_title_gh_war_in_heaven: "Я поклялся окончить [GetStruggle('gh_war_in_heaven_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_gh_war_in_heaven_ended: "Я поклялся окончить #V Центральную Войну в Небесах#!. $end_the_struggle_oath_decision_title_extra$"
+ 
+ end_the_struggle_oath_decision_title_gh_eastern_war_in_heaven: "Я поклялся окончить [GetStruggle('gh_eastern_war_in_heaven_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_gh_eastern_war_in_heaven_ended: "Я поклялся окончить #V Восточную Войну в Небесах#!. $end_the_struggle_oath_decision_title_extra$"
+
+ ##############################
+ # FORMATION DECISIONS
+ ##############################
+
+ form_isles_aautokrata_decision_confirm:0 "Провозгласить автократию Акрапиргос"
+ form_isles_aautokrata_title_effect_tt:0 "Создает автократию Акрапиргос, включив все полностью контролируемые королевства в качестве де-юре подданных."
+
+ form_kasiryat_kingdom_decision_confirm:0 "Провозгласить новое королевство на Касиряте"
+
+ end_the_struggle_oath_decision_title_gh_far_eastern_war_in_heaven: "Я поклялся окончить [GetStruggle('gh_far_eastern_war_in_heaven_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_gh_far_eastern_war_in_heaven_ended: "Я поклялся окончить #V Дальневосточную Войну в Небесах#!. $end_the_struggle_oath_decision_title_extra$"
+ 
+ end_the_struggle_oath_decision_title_gh_western_war_in_heaven: "Я поклялся окончить [GetStruggle('gh_western_war_in_heaven_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_gh_western_war_in_heaven_ended: "Я поклялся окончить #V Западную Войну в Небесах#!. $end_the_struggle_oath_decision_title_extra$"
+ 
+ end_the_struggle_oath_decision_title_gh_far_western_war_in_heaven: "Я поклялся окончить [GetStruggle('gh_far_western_war_in_heaven_struggle').GetName]. $end_the_struggle_oath_decision_title_extra$"
+ end_the_struggle_oath_decision_title_gh_far_western_war_in_heaven_ended: "Я поклялся окончить #V Дальнезападную Войну в Небесах#!. $end_the_struggle_oath_decision_title_extra$"
+
+ end_the_struggle_oath_decision_desc_ritewars: "Вы завершили [GetStruggle('ritewars_struggle').GetName] с помощью любого финального [decision|El]."
+ end_the_struggle_oath_decision_desc_ritewars_ended: "Вы завершили #V Войны ритуалов#! с помощью любого финального [decision|El]."
+
+ end_the_struggle_oath_decision_desc_rite_wars_south: "Вы завершили [GetStruggle('rite_wars_south_struggle').GetName] с помощью любого финального [decision|El]."
+ end_the_struggle_oath_decision_desc_rite_wars_south_ended: "Вы завершили #V Южные войны ритуалов#! с помощью любого финального [decision|El]."
+
+ end_the_struggle_oath_decision_desc_gh_war_in_heaven: "Вы завершили [GetStruggle('gh_war_in_heaven_struggle').GetName] с помощью любого финального [decision|El]."
+ end_the_struggle_oath_decision_desc_gh_war_in_heaven_ended: "Вы завершили #V Центральную Войну в Небесах#! с помощью любого финального [decision|El]."
+
+ end_the_struggle_oath_decision_desc_gh_eastern_war_in_heaven: "Вы завершили [GetStruggle('gh_eastern_war_in_heaven_struggle').GetName] с помощью любого финального [decision|El]."
+ end_the_struggle_oath_decision_desc_gh_eastern_war_in_heaven_ended: "Вы завершили #V Восточную Войну в Небесах#! с помощью любого финального [decision|El]."
+
+ end_the_struggle_oath_decision_desc_gh_far_eastern_war_in_heaven: "Вы завершили [GetStruggle('gh_far_eastern_war_in_heaven_struggle').GetName] с помощью любого финального [decision|El]."
+ end_the_struggle_oath_decision_desc_gh_far_eastern_war_in_heaven_ended: "Вы завершили #V Дальневосточную Войну в Небесах#! с помощью любого финального [decision|El]."
+
+ end_the_struggle_oath_decision_desc_gh_western_war_in_heaven: "Вы завершили [GetStruggle('gh_western_war_in_heaven_struggle').GetName] с помощью любого финального [decision|El]."
+ end_the_struggle_oath_decision_desc_gh_western_war_in_heaven_ended: "Вы завершили #V Западную Войну в Небесах#! с помощью любого финального [decision|El]."
+
+ end_the_struggle_oath_decision_desc_gh_far_western_war_in_heaven: "Вы завершили [GetStruggle('gh_far_western_war_in_heaven_struggle').GetName] с помощью любого финального [decision|El]."
+ end_the_struggle_oath_decision_desc_gh_far_western_war_in_heaven_ended: "Вы завершили #V Дальнезападную Войну в Небесах#! с помощью любого финального [decision|El]."
+
+ create_glass_artifact_decision: "Создать стеклянный артефакт"
+ create_glass_artifact_decision_tooltip: "Начать [personal_inspiration|E], чтобы создать #V стеклянный#! [artifact|E]"
+ create_glass_artifact_decision_desc: "Наш народ, [Scope.Char.GetCulture.GetName|l], славится давней и гордой историей стеклоделия. Возможно, пришло время и мне внести свой вклад в это наследие."
+ create_glass_artifact_decision_effect: "Вы начнете #V стеклодувное#! [personal_inspiration|E]"
+ create_glass_artifact_decision_inspiration_tt: "\n#weak $glassware_inspiration_cost_tt$#!"
+ create_glass_artifact_decision_confirm: "Зажечь горн"
+
+ already_has_a_personal_inspiration: "Вы уже работаете над [personal_inspiration|El]"
+
+ ####################################
+ ## Kingdom of the Kasiryat (Eastern Settlers)
+ ####################################
+ form_kasiryat_kingdom_decision: "Основать новое королевство на Касиряте"
+ form_kasiryat_kingdom_decision_desc:0 "#flavor Они пришли из далеких земель: тевгомбрийские братья по мечу, проложившие путь; воины-змеи из рода Балаури, хранящие древние обычаи; народ Изикалек, читающий знамения по небесам. Каждый из них прибыл вдоль [Glossary('реки Касирят','kasiryat_encyclopedia_desc')] и обрел мир процветания.#!\n\nГород Атерисполь и окружающие его земли теперь стали нашим домом, купленным кровью и потом. Пусть законы и титулы утвердят то, что уже совершено на деле: Касирят принадлежит тем, кто сделал его своим."
+ form_kasiryat_kingdom_decision_tooltip:0 "Заявить права на Атерисполь и Касирят и официально основать новое государство."
+
+ # Effect tooltips
+ form_kasiryat_kingdom_title_effect_tt:0 "Основать Королевство Касирят; Атерисполь будет укреплен, чтобы стать столицей нового государства поселенцев.\n\n#flavor Название королевства будет отражать ваше культурное происхождение.#!"
+ kasiryat_kingdom_formed_fervor_desc:0 "В Касиряте провозглашено королевство; вера поселенцев окрепла благодаря новой родине."
+
+ # Modifier
+ kasiryat_settler_capital_modifier: "Оплот поселенцев"
+ kasiryat_settler_capital_modifier_desc: "Атерисполь был укреплен поселенцами, а его строительный потенциал расширился в знак новой роли как пограничной столицы Касирята."
+
+ # Titles
+ k_kasiryat_adj: "Касирятский"
+
+ ####################################
+ ## Insular Aautokrata (Tower Isles)
+ ####################################
+ form_isles_aautokrata_decision: "Создать автократию Акрапиргос"
+ form_isles_aautokrata_decision_desc:0 "Море не принадлежит тем, кто лишь смотрит на него с берега. Оно принадлежит тем, кто бороздит его волны. [Glossary('Акрапиргос','tower_isles_encyclopedia_desc')] образует отдельный мир — владение ветра, соли и амбиций. Любой, кто правит здесь, делает это с властью автократора, подобно тому как правила [aversaria|E]. Держава, возвышающаяся над смертными королевствами, благословенная божественным человечеством."
+ form_isles_aautokrata_decision_tooltip:0 "Выковать автократию Акрапиргос из островных королевств Башен."
+
+ # Requirement tooltips
+ form_isles_aautokrata_kingdoms_tt:0 "У вас должно быть не менее трех титулов ранга королевства"
+ form_isles_aautokrata_no_continental_tt:0 "Вы не должны владеть провинциями за пределами регионов [GetGeographicalRegion('tower_isles_biozone').GetName], [GetGeographicalRegion('central_isles_biozone').GetName], [GetGeographicalRegion('guillate_rocks_biozone').GetName] или [GetGeographicalRegion('the_isles_biozone').GetName]"
+
+ # Modifier
+ isles_aautokrata_founder_modifier: "Владыка Акрапиргоса"
+ isles_aautokrata_founder_modifier_desc: "Этот персонаж вписал свое имя в историю, закрепив за собой владычество над [shatteredisles|E]."
+
+ # Titles
+ e_isles_aautokrata_adj: "Акрапиргосский"
+
+ # Legend
+ legend_chronicle_new_title_e_isles_aautokrata: "Основание автократии Акрапиргос"
+
+ ####################################
+ ## Formation notification events
+ ####################################
+
+ gh_formation_decisions.0002.t: "Провозглашена автократия Акрапиргос"
+ gh_formation_decisions.0002.opening: "До нас дошли вести с островов..."
+ gh_formation_decisions.0002.desc: "[scope:aautokrator.GetTitledFirstName], [scope:aautokrator.GetTitledName], провозгласил державу [title:e_insular_aautokrata.GetFullName], утвердив свое владычество над Башенными островами и окружающими морями. Море Империй стало Империей Моря."
+ gh_formation_decisions.0002.a: "Острова возвышаются над материком."
