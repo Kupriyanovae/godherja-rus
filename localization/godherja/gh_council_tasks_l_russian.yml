@@ -4,19 +4,21 @@
  # General #
  ###########
  
- SMALL_FAITH_CONVERSION_PENALTY:1 "У целевой веры менее 6 графств"
- TRIBAL_SETTLEMENT_BONUS:0 "Цель племенного заселения"
+ SMALL_FAITH_CONVERSION_PENALTY:1 "Целевая конфессия насчитывает менее 6 графств"
+ TRIBAL_SETTLEMENT_BONUS:0 "Цель племенного поселения"
  COURT_CHAPLAIN_CONVERSION_SPREAD_THE_LIGHT_MODIFIER:2 "[councillor.GetFaith.GetName] — [GetFaithDoctrine('tenet_spread_the_light').GetBaseName]"
- STEWARD_PROMOTE_CULTURE_RESTORING_ASTILIK_EMPIRE: "Возрождающаяся [Concept('astilik_empire','Астиликийская Империя')|E]"
+ STEWARD_PROMOTE_CULTURE_RESTORING_ASTILIK_EMPIRE: "Возрождающаяся [Concept('astilik_empire','Астиликская Империя')|E]"
+ STEWARD_PROMOTE_CULTURE_RESTORED_GREAT_TARRAFENT: "Восстановленный [Concept('marmaladid_invasions', 'Великий Таррафент')|E]"
+ STEWARD_PROMOTE_CULTURE_AGADARI_RESURGENCE:90 "Агадарийское возрождение"
 
  #################
  # Quartermaster #
  #################
 
- QUARTERMASTER_PROGRESS_BASE:0 "Базовое"
+ QUARTERMASTER_PROGRESS_BASE:0 "Базовое значение"
  ESTABLISH_SHADOW_PORT_DYNASTY_PERK_BONUS_VALUE:1 "[GetDynastyPerk('erudition_legacy_5').GetName]"
- CULTURE_CONVERSION_COUNTY_FAITH_TRIGGER:0 "Можно обратить культуру только в графствах вашей [Concept('faith','конфесии')|E]"
- CULTURE_CONVERSATION_COUNTY_CONDITIONS_TRIGGER:0 "Можно обратить культуру только в графствах, которые либо являются столицей независимого правителя, либо граничат с другим графством вашей культуры или являются прибрежными и находятся рядом с прибрежным графством вашей культуры."
+ CULTURE_CONVERSION_COUNTY_FAITH_TRIGGER:0 "Можно обращать культуру только в графствах вашей [faith|El]"
+ CULTURE_CONVERSATION_COUNTY_CONDITIONS_TRIGGER:0 "Можно обращать культуру только в графствах, которые являются столицей независимого правителя, либо граничат с другим графством вашей культуры, либо являются прибрежными и находятся рядом с прибрежным графством вашей культуры."
 
  ###################
  # Wardenism Perks #
@@ -35,3 +37,6 @@
  task_domestic_affairs_judicial_council_bonus_desc:1 "\n$TAB$[GetDynastyPerk('wardenite_legacy_3').GetName]: #P +[SCOPE.ScriptValue('chancellor_domestic_affairs_opinion_judicial_council_bonus')|2]#!"
  task_foreign_affairs_effect_desc_judicial_council_bonus_opinion:0 "\n$TAB$[GetDynastyPerk('wardenite_legacy_3').GetName]: #P +#![SCOPE.ScriptValue('chancellor_foreign_affairs_opinion_max_judicial_council_modifier')|P]"
  task_foreign_affairs_effect_desc_judicial_council_bonus_prestige:0 "\n$TAB$[GetDynastyPerk('wardenite_legacy_3').GetName]:  #P +#![SCOPE.ScriptValue('chancellor_foreign_affairs_prestige_gain_judicial_council_modifier')|P]"
+ 
+ task_arcanistics:0 "Арканистика"
+ task_arcanistics_effect_desc:0 "[councillor.GetShortUINameNoTooltip] изучает тонкие течения [Concept('arcana','магии')|E], пронизывающие ваши владения\n\n[Select_CString(councillor.IsFemale, 'Её', 'Его' )] поддержка дает вам:\n[councillor.GetModifierDescForTask('task_arcanistics')]"
