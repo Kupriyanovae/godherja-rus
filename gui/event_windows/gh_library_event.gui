@@ -448,7 +448,7 @@
 
 									item = {
 										gh_button_eventoption_smaller = { 
-											visible = "[Or(Or(And(GetPlayer.MakeScope.Var('gh_stealing_book').IsSet, EventOption.HasFlag('hidden_at_start')),EventOption.HasFlag('option_always_available')),And(EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue, '(CFixedPoint)5' ), EventOption.HasFlag('gh_can_push_through')))]" 
+											visible = "[Or(Or(And(GetPlayer.MakeScope.Var('gh_stealing_book').IsSet, EventOption.HasFlag('hidden_at_start')),EventOption.HasFlag('option_always_available')),And(EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue, GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue ), EventOption.HasFlag('gh_can_push_through')))]" 
 										}
 									}
 								}

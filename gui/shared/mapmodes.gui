@@ -811,6 +811,38 @@
 						tooltip = "JARA_TRADE_ROUTE_MAP_TOOLTIP"
 					}
 				}
+
+				icon_button_mapmode = {
+					name = "jara_collections_of_knowledge_map"
+					visible = "[CanChangeMapMode]"
+					parentanchor = vcenter
+					size = { 32 32 }
+
+					blockoverride 'mm_datacontext'
+					{
+						datacontext = "[GetMapMode( 'jara_collections_of_knowledge_mapmode' )]"
+					}
+
+					blockoverride "mm_icon"
+					{
+						texture = "gfx/interface/icons/flat_icons/encyclopedia_small.dds"
+						size = { 26 26 }
+					}
+
+					blockoverride "mm_glow"
+					{
+						visible = "[And( GetScriptedGui('jara_collections_of_knowledge_map').IsShown(GuiScope.End), IsMapMode('jara_collections_of_knowledge_mapmode'))]"
+					}
+
+					blockoverride "mm_button"
+					{
+						onclick = "[SetMapMode('jara_collections_of_knowledge_mapmode')]"
+						onclick = "[GetScriptedGui('jara_collections_of_knowledge_map').Execute(GuiScope.End)]"
+						down = "[And( GetScriptedGui('jara_collections_of_knowledge_map').IsShown(GuiScope.End), IsMapMode('jara_collections_of_knowledge_mapmode'))]"
+						enabled = "[And(Not(IsObserver), GetScriptedGui('jara_collections_of_knowledge_map').IsValid(GuiScope.End))]"
+						tooltip = "JARA_COLLECTIONS_OF_KNOWLEDGE_MAP_TOOLTIP"
+					}
+				}
 			}
 
 			flowcontainer = {

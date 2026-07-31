@@ -149,7 +149,7 @@ types gh_county_view_changes
 			}
 
 			text_single = {
-				raw_text = "[Concept('habitability','@habitability_icon!')] [HoldingView.GetCountyTitle.MakeScope.ScriptValue('county_habitability_value')|0]"
+				raw_text = "@habitability_icon! [HoldingView.GetCountyTitle.MakeScope.ScriptValue('county_habitability_value')|0]"
 				default_format = "#high"
 
 				background = {
@@ -157,13 +157,13 @@ types gh_county_view_changes
 					margin = { 5 0 }
 					using = Status_Bad
 				}
+				tooltip = "COUNTY_HABITABILITY_TOOLTIP"
 			}
 		}
 
 		hbox = {
 			layoutpolicy_horizontal = expanding
 			visible = "[Not(GetPlayer.IsValid)]"
-			tooltip = "COUNTY_HABITABILITY_TOOLTIP_OBSERVER"
 			datacontext = "[HoldingView.GetProvince.GetCountyCapitalProvince.GetHolding]"
 
 			text_single = {
@@ -172,8 +172,9 @@ types gh_county_view_changes
 			}
 
 			text_single = {
-				raw_text = "[Concept('habitability','@habitability_icon!')] [HoldingView.GetCountyTitle.MakeScope.ScriptValue('county_habitability_value')|0]"
+				raw_text = "@habitability_icon! [HoldingView.GetCountyTitle.MakeScope.ScriptValue('county_habitability_value')|0]"
 				default_format = "#high"
+				tooltip = "COUNTY_HABITABILITY_TOOLTIP_OBSERVER"
 			}
 		}
 

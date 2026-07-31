@@ -22,19 +22,13 @@ types CoatOfArmsDesignerTypes
 				widget = {
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
+					
 					vbox_coa_designer_previews = {}
 
 					vbox = {
 						name = "coa_designer_center"
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
-
-
-						hbox = {
-							margin_top = 40
-							layoutpolicy_horizontal = expanding
-
-						}
 
 						expand = { }
 
@@ -52,7 +46,6 @@ types CoatOfArmsDesignerTypes
 							vbox_coa_designer_quartering_options = { }
 						}
 					}
-
 				}
 
 				vbox = {
@@ -71,12 +64,12 @@ types CoatOfArmsDesignerTypes
 					margin_top = -6
 					margin_bottom = -10
 					max_width = 480
-					# using = Window_Background_No_Edge
+
 					background = {
 						using = Background_Area_Light margin = { 10 0 }
 						margin_right = 20
 						margin_top = 20
-						margin_bottom = 40
+						margin_bottom = 10
 					}
 
 					vbox_coa_designer_tabs = { }
@@ -93,10 +86,6 @@ types CoatOfArmsDesignerTypes
 	type vbox_coa_designer_previews = vbox
 	{
 		name = "coa_designer_previews"
-
-		# expand = { }
-
-		# background = { using = Background_Area_Dark }
 
 		layoutpolicy_horizontal = expanding
 		layoutpolicy_vertical = expanding
@@ -116,180 +105,10 @@ types CoatOfArmsDesignerTypes
 					margin_top = -3
 					vbox_coa_designer_top_left_buttons = {
 						layoutpolicy_vertical = expanding
-						# layoutpolicy_horizontal = expanding
 					}
-
-					button_checkbox_label = {
-						size = { 35 35 }
-
-						onclick = "[GetVariableSystem.Toggle('grid')]"
-
-						blockoverride "checkbox"
-						{
-							checked = "[GetVariableSystem.Exists('grid')]"
-						}
-						blockoverride "text"
-						{
-							text = "grid_symbol"
-							align = nobaseline
-							default_format = "#medium"
-							margin_top = 2
-						}
-					}
-
-					button_checkbox_label = {
-						size = { 35 35 }
-						tooltip = "guide_v"
-
-						onclick = "[GetVariableSystem.Toggle('guide_v')]"
-
-						blockoverride "checkbox"
-						{
-							checked = "[GetVariableSystem.Exists('guide_v')]"
-						}
-						blockoverride "text"
-						{
-							raw_text = "#high  |"
-						}
-					}
-
-					button_checkbox_label = {
-						size = { 35 35 }
-						tooltip = "guide_h"
-
-						onclick = "[GetVariableSystem.Toggle('guide_h')]"
-
-						blockoverride "checkbox"
-						{
-							checked = "[GetVariableSystem.Exists('guide_h')]"
-						}
-						blockoverride "text"
-						{
-							raw_text = "#medium —"
-						}
-					}
-
-					hbox = {
-						spacing = 10
-						visible = "[Or(GetVariableSystem.Exists('guide_v'), GetVariableSystem.Exists('guide_h'))]"
-						button_color_selection_tab = {
-							tooltip = "guide_color"
-							using = tooltip_se
-							size = { 35 30 }
-							blockoverride "color_size" {
-								size = { 25 25 }
-							}
-
-							onclick = "[GetVariableSystem.Toggle('blue_guideline')]"
-							visible = "[Not(GetVariableSystem.Exists('blue_guideline'))]"
-
-							blockoverride "button_color"
-							{
-								tintcolor = { 1 1 1 0.6 }
-							}
-						}
-
-						button_color_selection_tab = {
-							tooltip = "guide_color"
-							size = { 35 30 }
-							blockoverride "color_size" {
-								size = { 25 25 }
-							}
-							using = tooltip_se
-
-							onclick = "[GetVariableSystem.Toggle('blue_guideline')]"
-							visible = "[GetVariableSystem.Exists('blue_guideline')]"
-
-							blockoverride "button_color"
-							{
-								tintcolor = { 0 0.3 1 0.6 }
-							}
-						}
-
-						button_revert = {
-							onclick = "[PdxGuiTriggerAllAnimations('reset_guides')]"
-							visible = "[Or(GetVariableSystem.Exists('guide_v'), GetVariableSystem.Exists('guide_h'))]"
-							tooltip = "reset_guides"
-							using = tooltip_se
-						}
-					}
-
-					widget = {
-						size = { 0 0 }
-					}
-					datacontext = "[CoatOfArmsDesigner.GetEmblemInstancesPanel]"
-
-					button_checkbox_label = {
-
-						visible = "[GreaterThanOrEqualTo_int32( CoatOfArmsDesignerEmblemInstancesPanel.GetDetailEditIndex, '(int32)0' )]"
-						# tooltip = "big_scrollbars"
-						size = { 25 25 }
-
-						# using = tooltip_se
-
-						onclick = "[GetVariableSystem.Toggle('coa_edit_markers')]"
-
-						blockoverride "checkbox"
-						{
-							checked = "[Not(GetVariableSystem.Exists('coa_edit_markers'))]"
-						}
-
-						blockoverride "text"
-						{
-							text = "markers"
-						}
-					}
-
-					button_checkbox_label = {
-						# tooltip = "big_scrollbars"
-						size = { 25 25 }
-						visible = "[GreaterThanOrEqualTo_int32( CoatOfArmsDesignerEmblemInstancesPanel.GetDetailEditIndex, '(int32)0' )]"
-
-						# using = tooltip_se
-
-						onclick = "[GetVariableSystem.Toggle('big_coa_scrollbars')]"
-
-						blockoverride "checkbox"
-						{
-							checked = "[GetVariableSystem.Exists('big_coa_scrollbars')]"
-						}
-
-						blockoverride "text"
-						{
-							text = "sliders"
-						}
-					}
-
-					button_checkbox_label = {
-						# tooltip = "big_scrollbars"
-						size = { 25 25 }
-						visible = "[GreaterThanOrEqualTo_int32( CoatOfArmsDesignerEmblemInstancesPanel.GetDetailEditIndex, '(int32)0' )]"
-						raw_tooltip = "Click on the coat of arms to move emblems"
-						using = tooltip_se
-
-						# using = tooltip_se
-
-						onclick = "[GetVariableSystem.Toggle('move_buttons')]"
-
-						blockoverride "checkbox"
-						{
-							checked = "[Not(GetVariableSystem.Exists('move_buttons'))]"
-						}
-
-						blockoverride "text"
-						{
-							raw_text = "Click to move"
-						}
-					}
-
+					
 					expand = { }
 				}
-
-				# text_single = {
-				# 	text = "COA_DESIGNER_HEADER"
-				# 	using = Font_Size_Medium
-				# 	parentanchor = center
-				# }
 
 				button_standard = {
 					raw_text = "Errors: [NumberOrErrors]"
@@ -299,34 +118,9 @@ types CoatOfArmsDesignerTypes
 					shortcut = action_list
 				}
 
-				background = {
-					margin_left = 15
-					margin_right = 5
-					margin_top = 0
-					margin_bottom = 5
-					# alpha = 0.5
-
-					texture = "gfx/interface/component_tiles/tile_title_bg_01.dds"
-					spriteType = Corneredtiled
-					spriteborder = { 40 8 }
-					texture_density = 2
-
-					modify_texture = {
-						name = "mask"
-						texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
-						mirror = horizontal
-						spriteType = Corneredstretched
-						spriteborder = { 0 0 }
-						blend_mode = alphamultiply
-					}
-				}
-
 				expand = { }
 			}
 
-			divider_light = {
-				layoutpolicy_horizontal = expanding
-			}
 			margin_right = 10
 			margin_top = -3
 		}
@@ -339,9 +133,6 @@ types CoatOfArmsDesignerTypes
 			size = { 0 170 }
 			layoutpolicy_horizontal = expanding
 			alwaystransparent = yes
-			# background = { using = Background_Area_Border_Solid }
-			# margin_left = -70
-			# margin_right = 300
 
 			onmousehierarchyenter = "[PdxGuiTriggerAllAnimations('select_coa_preview')]"
 			onmousehierarchyleave = "[PdxGuiTriggerAllAnimations('hide_coa_preview')]"
@@ -456,8 +247,6 @@ types CoatOfArmsDesignerTypes
 				}
 			}
 		}
-
-		# spacer = { size = { 0 30 } }
 
 		widget = {
 			layoutpolicy_horizontal = expanding
@@ -1009,6 +798,7 @@ types CoatOfArmsDesignerTypes
 								#size y
 								big_coa_slider_y = {
 									enabled = "[Not( CoatOfArmsDesignerEmblemInstancesPanel.ShouldMatchEmblemDetailScale )]"
+									alpha = "[Select_float( CoatOfArmsDesignerEmblemInstancesPanel.ShouldMatchEmblemDetailScale, '(float)0.2', '(float)1.0' )]"
 									parentanchor = vcenter|right
 									position = { 20 0 }
 									min = 0
@@ -1133,6 +923,7 @@ types CoatOfArmsDesignerTypes
 			}
 
 			button_replace = {
+				position = { 5 5 }
 				raw_tooltip = "Reset zoom and position"
 				visible = "[Not(GetVariableSystem.HasValue('select_coa_preview', 'model'))]"
 				onclick = "[PdxGuiWidget.AccessParent.FindChild('zoom').TriggerAnimation('reset_zoom')]"
@@ -1256,8 +1047,6 @@ types CoatOfArmsDesignerTypes
 		using = Animation_Tab_Switch
 
 		hbox = {
-			# layoutpolicy_horizontal = expanding
-
 			button_undo = {
 				name = "undo_edit"
 				size = { 40 40 }
@@ -1310,11 +1099,7 @@ types CoatOfArmsDesignerTypes
 					using = tooltip_se
 				}
 			}
-
-			expand = { }
 		}
-
-		expand = { }
 	}
 
 	type vbox_coa_designer_tabs = vbox
@@ -1375,16 +1160,200 @@ types CoatOfArmsDesignerTypes
 	{
 		name = "coa_designer_mode_and_back"
 		visible = "[Not(VariableSystem.HasValue('coa_designer_page', 'start'))]"
+		
+		margin_left = 10
+		margin_bottom = 10
 
 		spacing = 5
 
 		text_single = {
+			layoutpolicy_horizontal = expanding
 			text = "[SelectLocalization(CoatOfArmsDesigner.IsCustomMode, 'COA_DESIGNER_MODE_CUSTOM', 'COA_DESIGNER_MODE_ADJUSTED')]"
+			alwaystransparent = yes
+		}
+		
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			spacing = 10
+			
+			background = {
+				using = Background_Area_Light
+				alpha = 0.7
+				margin = { 15 5 }
+				using = Mask_Rough_Edges
+			}
+		
+			button_standard_back = {
+				onclick = "[VariableSystem.Set('coa_designer_page', 'start')]"
+			}
+			
+			button_checkbox_label = {
+				size = { 35 35 }
+				
+				onclick = "[GetVariableSystem.Toggle('grid')]"
+				
+				blockoverride "checkbox"
+				{
+					checked = "[GetVariableSystem.Exists('grid')]"
+				}
+				blockoverride "text"
+				{
+					text = "grid_symbol"
+					align = nobaseline
+					default_format = "#medium"
+					margin_top = 2
+				}
+			}
+			
+			button_checkbox_label = {
+				size = { 35 35 }
+				tooltip = "guide_v"
+				
+				onclick = "[GetVariableSystem.Toggle('guide_v')]"
+				
+				blockoverride "checkbox"
+				{
+					checked = "[GetVariableSystem.Exists('guide_v')]"
+				}
+				blockoverride "text"
+				{
+					raw_text = "#high  |"
+				}
+			}
+			
+			button_checkbox_label = {
+				size = { 35 35 }
+				tooltip = "guide_h"
+				
+				onclick = "[GetVariableSystem.Toggle('guide_h')]"
+				
+				blockoverride "checkbox"
+				{
+					checked = "[GetVariableSystem.Exists('guide_h')]"
+				}
+				blockoverride "text"
+				{
+					raw_text = "#medium —"
+				}
+			}
+			
+			hbox = {
+				spacing = 10
+				visible = "[Or(GetVariableSystem.Exists('guide_v'), GetVariableSystem.Exists('guide_h'))]"
+				button_color_selection_tab = {
+					tooltip = "guide_color"
+					using = tooltip_se
+					size = { 35 30 }
+					blockoverride "color_size" {
+						size = { 25 25 }
+					}
+					
+					onclick = "[GetVariableSystem.Toggle('blue_guideline')]"
+					visible = "[Not(GetVariableSystem.Exists('blue_guideline'))]"
+					
+					blockoverride "button_color"
+					{
+						tintcolor = { 1 1 1 0.6 }
+					}
+				}
+				
+				button_color_selection_tab = {
+					tooltip = "guide_color"
+					size = { 35 30 }
+					blockoverride "color_size" {
+						size = { 25 25 }
+					}
+					using = tooltip_se
+					
+					onclick = "[GetVariableSystem.Toggle('blue_guideline')]"
+					visible = "[GetVariableSystem.Exists('blue_guideline')]"
+					
+					blockoverride "button_color"
+					{
+						tintcolor = { 0 0.3 1 0.6 }
+					}
+				}
+				
+				button_revert = {
+					onclick = "[PdxGuiTriggerAllAnimations('reset_guides')]"
+					visible = "[Or(GetVariableSystem.Exists('guide_v'), GetVariableSystem.Exists('guide_h'))]"
+					tooltip = "reset_guides"
+					using = tooltip_se
+				}
+			}
+			
+			widget = {
+				size = { 0 0 }
+			}
+			datacontext = "[CoatOfArmsDesigner.GetEmblemInstancesPanel]"
+			
+			button_checkbox_label = {
+				
+				visible = "[GreaterThanOrEqualTo_int32( CoatOfArmsDesignerEmblemInstancesPanel.GetDetailEditIndex, '(int32)0' )]"
+				# tooltip = "big_scrollbars"
+				size = { 25 25 }
+				
+				# using = tooltip_se
+				
+				onclick = "[GetVariableSystem.Toggle('coa_edit_markers')]"
+				
+				blockoverride "checkbox"
+				{
+					checked = "[Not(GetVariableSystem.Exists('coa_edit_markers'))]"
+				}
+				
+				blockoverride "text"
+				{
+					text = "markers"
+				}
+			}
+			
+			button_checkbox_label = {
+				# tooltip = "big_scrollbars"
+				size = { 25 25 }
+				visible = "[GreaterThanOrEqualTo_int32( CoatOfArmsDesignerEmblemInstancesPanel.GetDetailEditIndex, '(int32)0' )]"
+				
+				# using = tooltip_se
+				
+				onclick = "[GetVariableSystem.Toggle('big_coa_scrollbars')]"
+				
+				blockoverride "checkbox"
+				{
+					checked = "[GetVariableSystem.Exists('big_coa_scrollbars')]"
+				}
+				
+				blockoverride "text"
+				{
+					text = "sliders"
+				}
+			}
+			
+			button_checkbox_label = {
+				# tooltip = "big_scrollbars"
+				size = { 25 25 }
+				visible = "[GreaterThanOrEqualTo_int32( CoatOfArmsDesignerEmblemInstancesPanel.GetDetailEditIndex, '(int32)0' )]"
+				raw_tooltip = "Click on the coat of arms to move emblems"
+				using = tooltip_se
+				
+				# using = tooltip_se
+				
+				onclick = "[GetVariableSystem.Toggle('move_buttons')]"
+				
+				blockoverride "checkbox"
+				{
+					checked = "[Not(GetVariableSystem.Exists('move_buttons'))]"
+				}
+				
+				blockoverride "text"
+				{
+					raw_text = "Click to move"
+				}
+			}
+			
+
+			
 		}
 
-		button_standard_back = {
-			onclick = "[VariableSystem.Set('coa_designer_page', 'start')]"
-		}
 	}
 
 	type vbox_coa_designer_quartering_options = vbox
@@ -3565,11 +3534,11 @@ types CoatOfArmsDesignerTypes
 			size = { 7 0 }
 		}
 
+		# this is just decrement/increment buttons
 		scrollbar = {
 			direction = horizontal
 			size = { 40 20 }
 			wheelstep = 0
-
 			track = {
 				using = SettingsValueTrack
 			}
@@ -3611,11 +3580,6 @@ types CoatOfArmsDesignerTypes
 
 		#slider and markers
 		widget = {
-			using = tooltip_se
-			block "precise" {
-				tooltip = "precise_editing"
-			}
-			tooltip_offset = { 0 5 }
 			block "size" {
 				size = { 270 20 }
 			}
@@ -3687,9 +3651,25 @@ types CoatOfArmsDesignerTypes
 				position = { 0 0 }
 				size = { 100% 20 }
 				wheelstep = 0.001
+				alwaystransparent = no
+				
+				tracknavigation = direct
 
 				track = {
-					using = SettingsValueTrack
+					button = {
+						texture ="gfx/interface/progressbars/progress_black.dds"
+						effectname = "NoHighlight"
+						size = { 20 14 }
+						spriteType = Corneredtiled
+						spriteborder = { 6 6 }
+						alwaystransparent = no
+						
+						using = tooltip_se
+						block "precise" {
+							tooltip = "precise_editing"
+						}
+						tooltip_offset = { 0 5 }
+					}
 				}
 
 				slider = {
@@ -3732,9 +3712,18 @@ types CoatOfArmsDesignerTypes
 		size = { 25 540 }
 		parentanchor = vcenter
 		wheelstep = 0.001
+		
+		tracknavigation = direct
 
 		track = {
-			using = SettingsValueTrack
+			button = {
+				texture ="gfx/interface/progressbars/progress_black.dds"
+				effectname = "NoHighlight"
+				size = { 20 14 }
+				spriteType = Corneredtiled
+				spriteborder = { 6 6 }
+				alwaystransparent = no
+			}
 		}
 
 		slider = {
@@ -3779,9 +3768,18 @@ types CoatOfArmsDesignerTypes
 		direction = horizontal
 		size = { 540 25 }
 		wheelstep = 0.001
+		
+		tracknavigation = direct
 
 		track = {
-			using = SettingsValueTrack
+			button = {
+				texture ="gfx/interface/progressbars/progress_black.dds"
+				effectname = "NoHighlight"
+				size = { 20 14 }
+				spriteType = Corneredtiled
+				spriteborder = { 6 6 }
+				alwaystransparent = no
+			}
 		}
 
 		slider = {

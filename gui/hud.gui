@@ -1,4 +1,4 @@
-######################################################
+﻿######################################################
 #################### BOTTOM #######################
 ######################################################
 
@@ -1056,6 +1056,14 @@ icon = {
 				onclick = "[GetVariableSystem.Toggle( 'extra_buttons_expand' )]"
 				tooltip = "IM_TT_FIND_CHARACTER"
 				shortcut = "character_finder"
+			}
+
+			button_standard = {
+				name = "mf_find_mage"
+				text = "mf_FIND_MAGE"
+				onclick = "[GetScriptedGui('mf_toggle_my_window').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+				onclick = "[GetVariableSystem.Toggle( 'extra_buttons_expand' )]"
+				tooltip = "mf_TT_OPEN_MAGI_TAB"
 			}
 
 			button_standard = {

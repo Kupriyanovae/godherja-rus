@@ -98,38 +98,6 @@ window = {
 				}
 			}
 		}
-		
-		#vbox_character_list = {
-		#	visible = "[GetPlayer.MakeScope.Var('character_finder_select_magic_school').IsSet]"
-		#	layoutpolicy_horizontal = expanding
-		#	layoutpolicy_vertical = expanding
-		#
-		#	blockoverride "scrollbox_empty_visibility"
-		#	{
-		#		layoutpolicy_vertical = expanding
-		#		visible = "[Not( CharacterSelectionList.HasItems )]"
-		#		text = "CHARACTER_FINDER_NO_MATCH"
-		#	}
-		#	
-		#	blockoverride "container_implementation" {
-		#		vbox = {
-		#			layoutpolicy_horizontal = expanding
-		#
-		#			name = "characters_grid"
-		#			datamodel_reuse_widgets = yes
-		#			datamodel = "[CharacterSelectionList.GetList]"
-		#			visible = "[Not(CharacterSelectionList.IsBuildingList)]"
-		#
-		#			item = {
-		#				widget_character_list_item_finder = {
-		#					visible = no
-		#					#visible = "[GetScriptedGui('character_finder_has_magic_school_scripted_gui').IsShown(GuiScope.SetRoot(CharacterListItem.GetCharacter.MakeScope).AddScope('character_finder_select_magic_school_scope', GetPlayer.MakeScope.Var('character_finder_select_magic_school')).End)]"
-		#					size = { 630 94 }
-		#				}
-		#			}
-		#		}
-		#	}
-		#}
 	}
 
 	window_character_filter = {
@@ -257,41 +225,6 @@ window = {
 					}
 				}
 			}
-			
-			# GH_TODO: Readd this whenever PDox decides to give us decent filtering tools
-			#vbox = {
-			#	layoutpolicy_horizontal = expanding
-			#	hbox = {
-			#		layoutpolicy_horizontal = expanding
-			#		margin_top = 4
-			#
-			#		text_label_center = {
-			#			name = "label"
-			#			layoutpolicy_horizontal = expanding
-			#			margin_right = 36
-			#			text = "[magic|E]"
-			#			align = center
-			#		}
-			#	}
-			#	
-			#	fixedgridbox = {
-			#		addcolumn = 60
-			#		addrow = 96
-			#		datamodel_wrap = 8
-			#		flipdirection = yes
-			#		datamodel = "[GetGlobalList('global_magic_school_list')]"
-			#		
-			#		item = {
-			#			button_standard_hover = {
-			#				size = { 60 60 }
-			#				datacontext = "[Scope.Story]"
-			#				down = "[And(GetPlayer.MakeScope.Var('character_finder_select_magic_school').IsSet, ObjectsEqual(GetPlayer.MakeScope.Var('character_finder_select_magic_school').Story, Scope.Story))]"
-			#				onclick = "[GetScriptedGui('character_finder_select_magic_school_filter_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('character_finder_select_magic_school_scope', Scope.Story.MakeScope).End)]"
-			#				magic_school_icon = { }
-			#			}
-			#		}
-			#	}
-			#}
 		}
 	}
 }

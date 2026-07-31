@@ -11,6 +11,9 @@ window = {
 		using = Animation_FadeIn_Quick
 		using = Sound_WindowShow_Standard
 		using = Window_Position_MainTab
+
+		on_start = "[GetVariableSystem.Set( 'decision', 'true'  )]"
+		on_start = "[GetVariableSystem.Clear( 'great_projects' )]"
 	}
 
 	state = {
@@ -18,8 +21,6 @@ window = {
 		trigger_on_create = yes
 
 		on_start = "[GetVariableSystem.Clear('show_personal_inspiration')]" ## GH ADDITION: Personal Inspirations
-		on_start = "[GetVariableSystem.Set( 'decision', 'true'  )]"
-		on_start = "[GetVariableSystem.Clear( 'great_projects' )]"
 	}
 
 	state = {
