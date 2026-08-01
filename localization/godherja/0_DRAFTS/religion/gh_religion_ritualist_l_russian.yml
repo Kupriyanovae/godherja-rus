@@ -1,6 +1,4 @@
 ﻿l_russian:
-
-#ritualist Loc
  
 #ritualist Loc
  ritualist_religion:0 "Ритуалистск"
@@ -245,7 +243,7 @@
  monolith_devil_name_possessive:0 "Нисияна"
  monolith_devil_name_alternate_possessive:0 "$monolith_devil_name_possessive$"
 
- 
+
  #suleimania localization, Suleimani'a
  suleimania:0 "Сулейманитск"
  suleimania_adj:0 "Сулеймания"
@@ -333,6 +331,8 @@
  #sabiat evil god
  sabiat_al_malaikiya_devil_name:0 "Малаик аль-Фавхада"
  sabiat_al_malaikiya_devil_name_possessive:0 "Малаика аль-Фавхады"
+ #sabiat_al_malaikiya_witch_god_name:0 "$sabiat_al_malaikiya_devil_name$"
+ #sabiat_al_malaikiya_witch_god_name_possessive:0 "$sabiat_al_malaikiya_devil_name_possessive$"
 
  #zamitilaat_karim localization, Zamitilaat Karim
  zamitilaat_karim:0 "Каримитск"
@@ -340,6 +340,7 @@
  zamitilaat_karim_adherent:0 "Каримит"
  zamitilaat_karim_adherent_plural:0 "Каримиты"
  zamitilaat_karim_desc:0 "Братство Карима, или Замиталаат Карим, было основано пророком Каримом ибн Софокос — неграмотным и необразованным человеком, жившим неподалеку от [Concept('the_towers','Башни')|E]. Карим утверждал, что организованное жречество является анафемой для откровений [GetBuilding('01_sophocos').GetName], и что вовсе не обязательно быть образованным, знатным или даже умным, чтобы стать пророком Башни. Само понятие жреца-царя, верховного жреца или бога-царя является мерзостью для каримитов, заявляющих, что любое организованное духовенство служит лишь для подавления истин, переданных на ступенях Софокоса. Таким образом, жречество должно полностью состоять из мирян, а любые попытки навязать структуру или кодифицировать веру должны встречать жестокое сопротивление. Восхождение на [GetBuilding('01_sophocos').GetName] считается первостепенным делом для любого истинного последователя, и от каждого члена секты и потенциального жреца ожидается совершение этого паломничества хотя бы раз в жизни."
+
 
  #eabuyad_ilah_al_atilaam localization, Eabuyad Ilah al-Atilaam
  eabuyad_ilah_al_atilaam:0 "Эабудск"
@@ -419,6 +420,7 @@
  eirbaadit_al_hukadir_devil_name_alternate:0 "$eirbaadit_al_hukadir_devil_name$"
  eirbaadit_al_hukadir_devil_name_possessive:0 "Эбурхуда"
  eirbaadit_al_hukadir_devil_name_alternate_possessive:0 "$eirbaadit_al_hukadir_devil_name_possessive$"
+
 
  #akhawwat localization, Akhawwat al-Iiraahadat al-Mutajaaluyah
  akhawwat:0 "Ахавватск"
@@ -527,3 +529,51 @@
  corkkattirkana_adherent:0 "Чорккаттирканец"
  corkkattirkana_adherent_plural:0 "Чорккаттирканцы"
  corkkattirkana_desc:0 "Ритуалистская секта, зародившаяся на [Concept('pirate_coast','Пиратском побережье')|E]. Сторонники Чорккаттирканы верят, что восхождение по ступеням [GetBuilding('01_sophocos').GetName] под силу завершить лишь величайшим из верующих. Каждый последователь стремится превзойти остальных, словно соревнуясь за право стать тем единственным, кто пройдет этот путь до самого конца."
+
+ # 1298 Ritualist Sect
+
+ #tarriaq_al_dhaat localization, Tarriaq al-Dhaat
+  tarriaq_al_dhaat:0 "Tarriaq al-Dhaat" #Road of the Self
+  tarriaq_al_dhaat_adj:0 "Dhaati'a"
+  tarriaq_al_dhaat_adherent:0 "Dhaati'a"
+  tarriaq_al_dhaat_adherent_plural:0 "Dhaatii"
+  tarriaq_al_dhaat_desc:0 "The Road of the Self teaches that the Thousand-and-One Steps [GetBuilding('01_sophocos').GetName] cannot be climbed unless ones soul has been freed from oppression. Gods, angels, and false prophets alike are but chains on the living, and each step taken is a chain cast off. To walk the Tarriaq al-Dhaat is to need nothing but what is within you.\n\nThis was the revelation of the [Glossary('Saayf al-Malaiki al-Khalidh','UNDYING_SWORD_GLOSS')], who turned the blade of heaven against heaven itself. "
+
+  #dhaati'a exalted concepts — they venerate no gods, only aspects of the liberated self
+  tarriaq_al_dhaat_high_god_name:0 "al-Dhaat" #The Self
+  tarriaq_al_dhaat_high_god_name_possessive:0 "al-Dhaat's"
+  tarriaq_al_dhaat_high_god_name_alternate:0 "Saayf al-Malaiki al-Khalidh" #The Undying Sword of Angels, exemplar rather than god
+  tarriaq_al_dhaat_high_god_name_alternate_possessive:0 "Saayf al-Malaiki al-Khalidh's"
+  tarriaq_al_dhaat_creator_god_name:0 "al-Iradah" #The Will
+  tarriaq_al_dhaat_creator_god_name_possessive:0 "al-Iradah's"
+  tarriaq_al_dhaat_knowledge_god_name:0 "Ma'arifat al-Dhaat" #Knowledge of the Self
+  tarriaq_al_dhaat_knowledge_god_name_possessive:0 "Ma'arifat al-Dhaat's"
+  tarriaq_al_dhaat_war_god_name:0 "al-Saayf" #The Sword
+  tarriaq_al_dhaat_war_god_name_possessive:0 "al-Saayf's"
+  tarriaq_al_dhaat_health_god_name:0 "al-Jassad" #The Body, the vessel that must carry you up the Steps
+  tarriaq_al_dhaat_health_god_name_possessive:0 "al-Jassad's"
+  tarriaq_al_dhaat_fertility_god_name:0 "Hayaal al-Dhaat" #Life of the Self
+  tarriaq_al_dhaat_fertility_god_name_possessive:0 "Hayaal al-Dhaat's"
+  tarriaq_al_dhaat_wealth_god_name:0 "al-Kifaayah" #Sufficiency
+  tarriaq_al_dhaat_wealth_god_name_possessive:0 "al-Kifaayah's"
+  tarriaq_al_dhaat_household_god_name:0 "al-Sukun" #Stillness, the self at rest
+  tarriaq_al_dhaat_household_god_name_possessive:0 "al-Sukun's"
+  tarriaq_al_dhaat_night_god_name:0 "al-Wahdah" #Solitude
+  tarriaq_al_dhaat_night_god_name_possessive:0 "al-Wahdah's"
+  tarriaq_al_dhaat_water_god_name:0 "al-Safaa" #Clarity, the still water that reflects only yourself
+  tarriaq_al_dhaat_water_god_name_possessive:0 "al-Safaa's"
+  tarriaq_al_dhaat_trickster_god_name:0 "al-Shakk" #Doubt
+  tarriaq_al_dhaat_trickster_god_name_possessive:0 "al-Shakk's"
+  tarriaq_al_dhaat_death_deity_name:0 "al-Ittiqal" #The Unburdening
+  tarriaq_al_dhaat_death_deity_name_possessive:0 "al-Ittiqal's"
+
+  #dhaati'a chains — the "evil gods" are the shackles of dependence on higher powers
+  tarriaq_al_dhaat_devil_name:0 "al-Qayuud" #The Chains, divinity itself as adversary
+  tarriaq_al_dhaat_devil_name_alternate:0 "$tarriaq_al_dhaat_devil_name$"
+  tarriaq_al_dhaat_devil_name_possessive:0 "al-Qayuud's"
+  tarriaq_al_dhaat_devil_name_alternate_possessive:0 "$tarriaq_al_dhaat_devil_name_possessive$"
+  tarriaq_al_dhaat_fate_god_name:0 "Qayd al-Qadmisir" #The Chain of Fate
+  tarriaq_al_dhaat_fate_god_name_possessive:0 "Qayd al-Qadmisir's"
+  tarriaq_al_dhaat_witch_god_name:0 "Qayd al-Majus" #The Chain of Magic
+  tarriaq_al_dhaat_witch_god_name_possessive:0 "Qayd al-Majus'"
+  UNDYING_SWORD_GLOSS: "Undying Sword of the Angels"
