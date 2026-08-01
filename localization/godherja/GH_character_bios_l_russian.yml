@@ -42,6 +42,11 @@ l_russian:
  harthah_true_link: "#underline;V;ONCLICK:CHARACTER,[GetScriptedCharacterByHistoryID('tasurmad_harthahi_1').GetID];TOOLTIP:CHARACTER,[GetScriptedCharacterByHistoryID('tasurmad_harthahi_1').GetID]"
  harthah_blank_link: "#V"
 
+ # hecaeda - easternimperial_aironoian_aagiokrata_1
+ hecaeda_link: "[SelectLocalization(HasGameStartedForTheFirstTime, 'hecaeda_true_link', 'hecaeda_blank_link')]"
+ hecaeda_true_link: "#underline;V;ONCLICK:CHARACTER,[GetScriptedCharacterByHistoryID('easternimperial_aironoian_aagiokrata_1').GetID];TOOLTIP:CHARACTER,[GetScriptedCharacterByHistoryID('easternimperial_aironoian_aagiokrata_1').GetID]"
+ hecaeda_blank_link: "#V"
+
  # nicanoneus - apokiakas_aversarinas_aagiokratia_23
  nicanoneus_link: "[SelectLocalization(HasGameStartedForTheFirstTime, 'nicanoneus_true_link', 'nicanoneus_blank_link')]"
  nicanoneus_true_link: "#underline;V;ONCLICK:CHARACTER,[GetScriptedCharacterByHistoryID('apokiakas_aversarinas_aagiokratia_23').GetID];TOOLTIP:CHARACTER,[GetScriptedCharacterByHistoryID('apokiakas_aversarinas_aagiokratia_23').GetID]"
@@ -61,7 +66,6 @@ l_russian:
  salisian_lifepath_1_desc: "Родившись у $gardfrei_link$ верховного короля Гардфрея#! из [Concept('chevalie', 'Шевалье')|E], #BOL Ансфрей ден ва Сеньон#! был младшим (а после рождения $cliement_link$ Клиемана#! — средним) из законных братьев Сеньон. В отличие от старших братьев, Ансфрей так и не унаследовал отцовской жажды славы и не питал интереса к делам правления. Приняв [GetTrait('way_of_knowledge_follower').GetName( GetNullCharacter )|V], Ансфрей полностью погрузился в философию и историю, став преданным ценителем книжной мудрости.\n\nВслед за исчезновением Гардфрея Ансфрей, видя множество изъянов в порочном круге войн, из-за которого Верховное Королевство то и дело сходило в прах, решил заявить собственные права на престол. Как бы сильно он ни любил братьев, ни один из них не был способен разорвать этот круг, а потому он сплотил знать $marroux_link$ Марру#! и даже заручился поддержкой $teryn_blackclaw_link$ Терина «Черного Когтя»#!."
  ansfrei_true_link: "#underline;clickable;ONCLICK:CHARACTER,[GetScriptedCharacterByHistoryID('salisian_lifepath_1').GetID];TOOLTIP:CHARACTER,[GetScriptedCharacterByHistoryID('salisian_lifepath_1').GetID]"
  ansfrei_blank_link: "#V"
- ansfrei_true_link: "#underline;clickable;ONCLICK:CHARACTER,[GetScriptedCharacterByHistoryID('salisian_lifepath_1').GetID];TOOLTIP:CHARACTER,[GetScriptedCharacterByHistoryID('salisian_lifepath_1').GetID]"
  salisian_lifepath_1_mini: "Самый ученый из сыновей Гардфрея..."
 
  # benouet - voyagen_lifepath_7
@@ -77,7 +81,6 @@ l_russian:
  cliement_link: "[SelectLocalization(HasGameStartedForTheFirstTime, 'cliement_true_link', 'cliement_blank_link')]"
  voyagen_lifepath_9_desc: "Младший из братьев Сеньон, #BOL Клиеман ден ва Сеньон#! был брошен в водоворот политики, превосходившей его детское разумение, когда его отец $gardfrei_link$ верховный король Гардфрей#! отправился в таинственный поход на север. В ходе начавшегося распада [Concept('chevalie', 'Верховного Королевства')|E] мать Клиемана $genevieve_link$ Женевьева#! увезла его из столицы, опасаясь за его жизнь. С помощью наемника $spencer_link$ Энгельмара ден ва Спенсера#! она выставила его полноценным претендентом на престол при поддержке верной знати в $varrdevet_link$ Варрдевете#!."
  cliement_true_link: "#underline;clickable;ONCLICK:CHARACTER,[GetScriptedCharacterByHistoryID('voyagen_lifepath_9').GetID];TOOLTIP:CHARACTER,[GetScriptedCharacterByHistoryID('voyagen_lifepath_9').GetID]"
- cliement_blank_link: "#V"
  cliement_blank_link: "#V"
  voyagen_lifepath_9_mini: "Дитя-король Варрдевета..."
 

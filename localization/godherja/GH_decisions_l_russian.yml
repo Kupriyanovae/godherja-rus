@@ -4,7 +4,7 @@
  commission_artifact_decision_option_thumb_ring_desc: "[AddTextIf(ROOT.Char.GetInventory.HasEquippedArtifactsInSlotType('miscellaneous'), Concatenate('Используется:\n', ROOT.Char.GetInventory.GetEquippedArtifactsInSlotTypeString('miscellaneous', 'NEWLINE', 'NEWLINE', 'NEWLINE')))]"
  commission_artifact_decision_option_thumb_ring: "Кольцо на большой палец\n#low Принадлежит: [ROOT.Char.GetInventory.GetNumberOfArtifactsForSlotTypeString('miscellaneous')]#!"
  commission_thumb_ring_tooltip: "#T Кольцо на большой палец#! \n$DESC$"
- commission_artifact_decision_option_oltenic_mask_desc: "[AddTextIf(Not(ROOT.Char.GetInventory.GetSlot('helmet').IsEmpty ), Concatenate('Используется:\n', ROOT.Char.GetInventory.GetEquippedArtifactsInSlotTypeString('helmet', 'NEWLINE', 'NEWLINE', 'NEWLINE')))]"
+ commission_artifact_decision_option_oltenic_mask_desc: "Маска"
  commission_artifact_decision_option_oltenic_mask: "Маска"
  commission_oltenic_mask_tooltip: "#T Маска#! \n$DESC$"
  commission_artifact_decision_option_glassware_desc: "[AddTextIf(Not(ROOT.Char.GetInventory.GetSlot('helmet').IsEmpty ), Concatenate('Используется:\n', ROOT.Char.GetInventory.GetEquippedArtifactsInSlotTypeString('helmet', 'NEWLINE', 'NEWLINE', 'NEWLINE')))]"
@@ -14,6 +14,8 @@
 
  at_least_7_rivarisians_counties_of_your_faith_tt: "Вы должны удерживать как минимум 7 риваризианских [Concept('counties','графств')|E] вашей [Concept('faith','конфессии')|E]"
  the_new_capital_must_be_controlled_and_developed_tt: "Ваше [Concept('capital','столичное')|E] [Concept('county','графство')|E] находится в регионе [GetGeographicalRegion('world_ga_riverlands_formable').GetName] и должно иметь как минимум 22 [development|E] и 100 [control|E]"
+
+
 
  select_great_calling_decision_name:0 "Выбрать [Concept('great_callings','великое призвание')|E]"
  select_great_calling_decision_tooltip:0 "Выберите свое великое призвание"
@@ -44,6 +46,8 @@
 
  form_isles_aautokrata_decision_confirm:0 "Провозгласить автократию Акрапиргос"
  form_isles_aautokrata_title_effect_tt:0 "Создает автократию Акрапиргос, включив все полностью контролируемые королевства в качестве де-юре подданных."
+
+
 
  form_kasiryat_kingdom_decision_confirm:0 "Провозгласить новое королевство на Касиряте"
 
@@ -85,6 +89,7 @@
  create_glass_artifact_decision_confirm: "Зажечь горн"
 
  already_has_a_personal_inspiration: "Вы уже работаете над [personal_inspiration|El]"
+
 
  ####################################
  ## Kingdom of the Kasiryat (Eastern Settlers)
