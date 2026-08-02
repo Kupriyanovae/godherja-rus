@@ -3176,11 +3176,13 @@ types FaithTooltips
 					expand = {
 						layoutpolicy_horizontal = growing
 					}
-					icon = {
-						size = { 50 50 }
-						texture = "gfx/interface/icons/court_position_task_types/high_almoner_court_position_task_appease_zealots.dds"
-						tooltipwidget = { gh_deity_text_tooltip = {} }
-					}
+					
+					# GH ADDITION: DISABLED UNTIL FEATURE COMPLETE
+					#icon = {
+					#	size = { 50 50 }
+					#	texture = "gfx/interface/icons/court_position_task_types/high_almoner_court_position_task_appease_zealots.dds"
+					#	tooltipwidget = { gh_deity_text_tooltip = {} }
+					#}
 				}
 			}
 
@@ -4923,8 +4925,8 @@ types CultureTooltips
 				}
 
 				divider_light = {
-					visible = "[Or(GetScriptedGui('culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End), GetScriptedGui('gh_custom_culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End))]"
 					layoutpolicy_horizontal = growing
+					visible = "[Or(GetScriptedGui('culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End), GetScriptedGui('gh_custom_culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End))]"
 				}
 				
 				text_multi = { # GH ADDITION: Desc
@@ -5212,6 +5214,7 @@ types CultureTooltips
 
 				divider_light = {
 					layoutpolicy_horizontal = expanding
+					visible = "[Or(GetScriptedGui('culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End), GetScriptedGui('gh_custom_culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End))]"
 				}
 
 				text_multi = { # GH ADDITION: Desc
