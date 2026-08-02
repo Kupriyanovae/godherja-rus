@@ -1,30 +1,4 @@
-﻿# if this needs to destroy a title (e.g. a 1-county duke with no vassals), it reads the destroying character from scope:destroyer
-gh_on_start_special_county_effect = {
-	every_county = {
-		if = {
-			limit = {
-				gh_special_province_lichdom_trigger = yes
-			}
-			random_list = {
-				100 = {
-				    modifier = {
-				    	add = {
-			    			subtract = necropolis_spawn_chance
-			    		}
-				    }
-				}
-				0 = {
-				    modifier = {
-				    	add = necropolis_spawn_chance
-				    }
-					spawn_special_province_necropolis = yes
-				}
-			}
-		}
-	}
-}
-
-spawn_special_province_necropolis = {
+﻿spawn_special_province_necropolis = {
 	save_scope_as = special_county
 	create_character = {
 		#template = ruin_template
@@ -373,7 +347,7 @@ set_liches_court = {
 		limit = {
 			NOT = {
 				has_faith = faith:rejection
-				has_culture = culture:lich_culture
+				culture = { has_cultural_pillar = heritage_lich }
 				has_trait = necromancy_undead_awakened
 			}
 		}
