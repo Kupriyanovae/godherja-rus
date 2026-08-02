@@ -1,0 +1,1546 @@
+﻿window = {
+	name = "mf_magi_finder_window"
+	parentanchor = center
+	size = { 1300 800 }
+	position = { 200 0 }
+	layer = middle
+	allow_outside = yes
+	filter_mouse = all
+	alwaystransparent = no
+
+	using = Window_Background
+	using = Window_Decoration
+	using = Window_Movable
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+		on_finish = "[GetScriptedGui('mf_clear_filters_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	}
+	
+	visible = "[GetPlayer.MakeScope.Var('mf_show_my_window').IsSet]"
+
+	vbox = {
+		using = Window_Margins
+
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+
+			blockoverride "header_text"
+			{
+				raw_text = "[Localize('mf_find_magi_window_name')]"
+			}
+
+			blockoverride "button_close"
+			{
+				onclick = "[GetScriptedGui('mf_toggle_my_window').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+			}
+		}
+
+		hbox = {
+		
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			datacontext = "[GetPlayer.MakeScope.Var('mf_selected_character').GetCharacter]"
+
+			vbox = {
+				layoutpolicy_vertical = expanding
+                layoutpolicy_horizontal = expanding		
+                max_width = 660
+				min_width = 660
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					
+					name = "sort_buttons"
+
+					margin_left = 20
+					margin_right = 23
+					margin_top = 5
+					spacing = 5
+					
+
+					button_standard = {
+						name = "filters"
+						size = { 25 25 }
+
+						down = "[GetPlayer.MakeScope.Var( 'mf_show_filter_window' ).IsSet]"
+						frame = "[BoolTo1And2(GetPlayer.MakeScope.Var( 'mf_show_filter_window' ).IsSet)]"
+						onclick = "[GetScriptedGui('mf_show_filter_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+						tooltip = "TOGGLE_FILTERS"
+						using = tooltip_nw
+
+						button_search = {
+							alwaystransparent = yes
+							parentanchor = center
+							size = { 20 20 }
+						}
+
+					}
+
+					divider_light = {
+						size = { 3 20 }
+						block "filters_visible" {}
+					}
+
+					text_single = {
+						text = "SORT_BY"
+						align = nobaseline
+						max_width = 90
+					}
+
+					#SORT BY
+					dropdown_menu_standard = { 
+
+						# Size of the button itself and the max list height
+						blockoverride "dropdown_size" { size = { 220 32 } }
+						blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+						# Feed it the list + tell it what to do when a choice is picked
+						blockoverride "dropdown_properties" {
+							datamodel = "[GetPlayer.MakeScope.GetList('mf_sort_by')]"
+							onselectionchanged = "[PdxGuiWidget.FindChild('gender_dropdown_active').TriggerAnimation('apply_filter_choice')]"
+						}
+
+						# What the closed button shows (pick static or dynamic)
+						blockoverride "dropdown_active_item_properties" {
+							name = "gender_dropdown_active"
+							text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'_loc'))]"
+
+							state = {
+								name = apply_filter_choice
+								# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+								on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sort_by', MakeScopeFlag(Scope.GetFlagName)).End)]"
+							}
+						}
+
+						# How each row is labeled
+						blockoverride "dropdown_item_properties" {
+							text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+						}
+					}
+
+					button_standard = {
+						name = "sort_order"
+						size = { 25 25 }
+						onclick = "[GetScriptedGui('mf_change_sort_order').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+						tooltip = "CHARACTER_SORT_BY"
+						using = tooltip_nw
+
+						button_icon = {
+							alwaystransparent = yes
+							parentanchor = center
+							size = { 25 25 }
+							texture = "gfx/interface/icons/flat_icons/sort_icon.dds"
+							framesize = { 66 66 }
+							frame = "[BoolTo1And2( GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )]"
+
+							blockoverride "button_frames"
+							{
+								effectname = "NoHighlight"
+							}
+						}
+					}
+					expand = {}
+					hbox = {
+						spacing = 1
+						button_standard_hover = {
+							name = "mf_skill_diplomacy"
+							size = { 32 32 }
+
+							icon = {
+								texture = "gfx/interface/icons/icon_skills.dds"
+								size = { 32 32 }
+								framesize = { 60 60 }
+								frame = 1
+							}
+
+							onclick = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sort_by', MakeScopeFlag('mf_skill_diplomacy')).End)]"
+
+							tooltip = "SORT_BY_DIPLOMACY"
+							using = tooltip_ne
+
+							skillitem_sort_icon = {
+								visible = "[EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_diplomacy')]"
+								frame = "[BoolTo1And2( GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )]"
+							}
+						}
+
+						button_standard_hover = {
+							name = "mf_skill_martial"
+							size = { 32 32 }
+
+							icon = {
+								texture = "gfx/interface/icons/icon_skills.dds"
+								size = { 32 32 }
+								framesize = { 60 60 }
+								frame = 2
+							}
+
+							onclick = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sort_by', MakeScopeFlag('mf_skill_martial')).End)]"
+
+							tooltip = "SORT_BY_MARTIAL"
+							using = tooltip_ne
+
+							skillitem_sort_icon = {
+								visible = "[EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_martial')]"
+								frame = "[BoolTo1And2( GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )]"
+							}
+						}
+
+						button_standard_hover = {
+							name = "mf_skill_stewardship"
+							size = { 32 32 }
+
+							icon = {
+								texture = "gfx/interface/icons/icon_skills.dds"
+								size = { 32 32 }
+								framesize = { 60 60 }
+								frame = 3
+							}
+
+							onclick = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sort_by', MakeScopeFlag('mf_skill_stewardship')).End)]"
+							tooltip = "SORT_BY_STEWARDSHIP"
+							using = tooltip_ne
+
+							skillitem_sort_icon = {
+								visible = "[EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_stewardship')]"
+								frame = "[BoolTo1And2( GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )]"
+							}
+						}
+
+						button_standard_hover = {
+							name = "mf_skill_intrigue"
+							size = { 32 32 }
+
+							icon = {
+								texture = "gfx/interface/icons/icon_skills.dds"
+								size = { 32 32 }
+								framesize = { 60 60 }
+								frame = 4
+							}
+
+							onclick = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sort_by', MakeScopeFlag('mf_skill_intrigue')).End)]"
+							tooltip = "SORT_BY_INTRIGUE"
+							using = tooltip_ne
+
+							skillitem_sort_icon = {
+								visible = "[EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_intrigue')]"
+								frame = "[BoolTo1And2( GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )]"
+							}
+						}
+
+						button_standard_hover = {
+							name = "mf_skill_learning"
+							size = { 32 32 }
+
+							icon = {
+								texture = "gfx/interface/icons/icon_skills.dds"
+								size = { 32 32 }
+								framesize = { 60 60 }
+								frame = 5
+							}
+
+							onclick = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sort_by', MakeScopeFlag('mf_skill_learning')).End)]"
+							tooltip = "SORT_BY_LEARNING"
+							using = tooltip_ne
+
+							skillitem_sort_icon = {
+								visible = "[EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_learning')]"
+								frame = "[BoolTo1And2( GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )]"
+							}
+						}
+					}
+				}
+
+				vbox_character_list = {
+					#visible = "[Not(GetPlayer.MakeScope.Var('character_finder_select_magic_school').IsSet)]"
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					max_width = 660
+
+					blockoverride "sort_buttons"
+					{
+					}
+
+					blockoverride "scrollbox_empty_visibility"
+					{	
+						layoutpolicy_vertical = expanding
+						visible = "[Not(DataModelHasItems(GetPlayer.MakeScope.GetList('mf_secret_society_sorted')))]"
+						text = "CHARACTER_FINDER_NO_MATCH"
+					}
+					
+					blockoverride "container_implementation" {
+						fixedgridbox = {
+							addcolumn = 650
+							addrow = 125
+							max_width = 660
+							name = "characters_grid"
+							datamodel_reuse_widgets = yes
+							datamodel = "[GetPlayer.MakeScope.GetList('mf_secret_society_sorted')]"
+							item = {
+								button_standard = {
+									texture = "gfx/interface/buttons/button_standard_clean_weak.dds"
+									onclick = "[GetScriptedGui('mf_subject_selected_character').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('target', Scope.GetCharacter.MakeScope).End )]"
+									size = { 632 118 }
+									widget_character_list_item_finder = {
+										size = { 630 110 }
+										max_height = 110
+										max_width = 660
+										datacontext = "[Scope.GetCharacter]"
+										blockoverride "button_content"
+										{	
+											hbox = {
+												max_width = 660
+												layoutpolicy_horizontal = expanding
+												layoutpolicy_vertical = expanding
+												max_height = 110
+												margin_top = 5
+
+												vbox = {
+													layoutpolicy_horizontal = expanding
+													layoutpolicy_vertical = expanding
+													max_height = 110
+
+													# Name and age
+													hbox = {
+														layoutpolicy_horizontal = expanding
+														margin = { 0 3 }
+														margin_left = 5
+														margin_right = 10
+
+														background = {
+															using = Background_Area_Characterlist
+														}
+
+														background = {
+															using = Background_Area_Dark
+
+															modify_texture = {
+																texture = "gfx/interface/component_masks/mask_fade_vertical.dds"
+																blend_mode = alphamultiply
+																alpha = 1
+																rotate_uv = 90
+																mirror = vertical
+															}
+														}
+
+														hbox = {
+															margin_left = 3
+															layoutpolicy_horizontal = expanding
+															maximumsize = { 338 -1 }
+
+															text_single = {
+																using = Font_Size_Medium
+																layoutpolicy_horizontal = expanding
+																align = nobaseline
+																text = "[Character.GetUINameNoTooltip|U]"
+																autoresize = no
+																fontsize_min = 14
+															}
+
+															blockoverride "character_relation"
+															{
+																hbox = {
+																	visible = "[And(Character.HasRelationTo( GetPlayer ), Not(Character.IsPlayer))]"
+																	text_single = {
+																		raw_text = "•"
+																		align = nobaseline
+																		margin = { 5 0 }
+																	}
+
+																	text_single = {
+																		name = "character_relation"
+																		text = "[Character.GetRelationToString( GetPlayer )]"
+																		tooltip = "EXTENDED_RELATIONS_TOOLTIP"
+																		default_format = "#low"
+																		align = nobaseline
+																		fontsize_min = 14
+																		max_width = 180
+																	}
+																}
+															}
+
+															expand = {}
+														}
+
+														hbox = {
+															using = character_age_or_death_text
+														}
+
+														# Skills
+														hbox_skills_grid_character_model = {}
+													}
+
+													### BOTTOM ROW ###
+													hbox = {
+														layoutpolicy_horizontal = expanding
+														layoutpolicy_vertical = expanding
+														min_height = 60
+														max_height = 60
+
+														vbox = {
+															layoutpolicy_horizontal = expanding
+															layoutpolicy_vertical = expanding
+
+															blockoverride "additional_info_kill_list" {}
+
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																layoutpolicy_vertical = expanding
+
+																# Dynasty
+																widget = {
+																	size = { 45 40 }
+
+																	coa_house_small = {
+																		datacontext = "[Character.GetHouse]"
+																		parentanchor = center
+																		scale = 0.7
+																	}
+																}
+
+																# Traits
+																hbox = {
+																	layoutpolicy_vertical = expanding
+																	margin = { 10 0 }
+																	minimumsize = { 150 0 } #### needed for prison view
+
+																	background = {
+																		using = Background_Area_Dark
+																		alpha = 0.5
+																		margin = { 0 2 }
+																	}
+
+																	hbox = {
+																		layoutpolicy_horizontal = expanding
+																		layoutpolicy_vertical = expanding
+																		fixedgridbox = { 
+																			datamodel = "[Character.GetTraitIndices]"
+																			flipdirection = yes
+																			layoutpolicy_horizontal = expanding
+																			layoutpolicy_vertical = expanding
+																			addcolumn = 30
+																			addrow = 28
+
+																			min_width = 210
+																			datamodel_wrap = 7
+																			maxverticalslots = 2
+
+																			item = {
+																				icon_trait = {
+																					datacontext = "[GetTraitForIndex(int32.GetInt)]"
+
+																					blockoverride "icon_size"
+																					{
+																						size = { 30 30 }
+																					}
+
+																					blockoverride "tooltip_placement"
+																					{
+																						using = tooltip_se
+																					}
+
+																					blockoverride "glow_radius"
+																					{
+																						glow_radius = 3
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+
+																expand = {}
+															}
+														}
+
+														vbox = {
+															datacontext = "[CharacterListItem.GetCharacter]"
+															layoutpolicy_horizontal = expanding
+															layoutpolicy_vertical = expanding
+
+															block "bottom_right_box"
+															{
+																hbox = {
+																	layoutpolicy_horizontal = expanding
+																	layoutpolicy_vertical = expanding
+
+																	
+
+																	# Religion and culture
+																	hbox = {
+																		layoutpolicy_horizontal = expanding
+																		layoutpolicy_vertical = expanding
+																		margin_left = 8
+																		margin_right = 4
+																		spacing = 5
+																		minimumsize = { 200 0 }
+
+																		background = {
+																			using = Background_Area_Dark
+																			alpha = 0.5
+																			margin = { 0 2 }
+																		}
+
+																		icon = {
+																			name = "faith_button"
+																			size = { 38 38 }
+																			datacontext = "[Character.GetFaith]"
+																			tooltipwidget = { faith_tooltip = {} }
+																			using = tooltip_se
+
+																			texture = "[Faith.GetIcon]"
+																		}
+																		
+																		#GH ADDITION: Show what magic school they are
+																		magic_school_icon = {
+																			visible = "[Character.MakeScope.Var('primary_magic_school').IsSet]"
+																			datacontext = "[Character.MakeScope.Var('primary_magic_school').Story]"
+																			tooltip = "[Localize(Concatenate(Character.MakeScope.Var('primary_magic_school').Var('unique_magic_school_identifier').GetFlagName, '_desc'))]"
+																			blockoverride "size" {
+																				size = { 38 38 }
+																			}
+																		}
+
+																		hbox = {
+																			datacontext = "[Character.GetCulture]"
+																			layoutpolicy_horizontal = expanding
+																			spacing = 3
+
+																			tooltipwidget = {
+																				culture_tooltip = {}
+																			}
+																			using = tooltip_se
+
+																			icon = {
+																				name = "culture"
+																				texture = "gfx/interface/icons/icon_culture.dds"
+																				size = { 24 24 }
+																			}
+
+																			text_single = {
+																				layoutpolicy_horizontal = expanding
+																				text = "CULTURE_LISTS_WINDOW"
+																				autoresize = no
+																				align = nobaseline
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+													
+													hbox = {
+														visible = "[Or(DataModelHasItems(Character.MakeScope.GetList('known_magic_school_list')), DataModelHasItems(Character.MakeScope.GetList('known_spell_list')))]"
+														layoutpolicy_horizontal = expanding
+														margin_right = 10
+														
+														expand = {}
+														
+														aspect_skill_display_no_icon = {}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					blockoverride "character_count"
+					{
+						hbox = {
+							layoutpolicy_horizontal = growing
+							margin = { 25 5 }
+							margin_bottom = 8
+							spacing = 5
+
+							blockoverride "bottom_bar" {}
+
+							expand = {}
+
+							text_single = {
+								name = "character_count"
+								text = "[GetDataModelSize(GetPlayer.MakeScope.GetList('mf_secret_society_sorted'))] [Localize('spell_name_of_article')] [GetDataModelSize(GetPlayer.MakeScope.GetList('mf_secret_society'))] [Localize('game_concept_characters')]"
+								align = center|nobaseline
+								default_format = "#low"
+							}
+						}
+					}
+				}
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				widget = {
+						name = "main_characters"
+						datacontext = "[GetIllustration( 'character_view_bg' )]"
+						layoutpolicy_horizontal = expanding
+						size = { 0 305 }
+
+					widget = {
+						size = { 100% 100% }
+						using = Animation_Character_Window_Refresh
+
+						background = {
+							texture = "[Illustration.GetTexture( Character.MakeScope )]"
+							fittype = centercrop
+							margin_bottom = 5
+							margin_left = 1
+
+							modify_texture = {
+								texture = "gfx/interface/component_masks/mask_fade_horizontal_middle.dds"
+								blend_mode = alphamultiply
+								alpha = 0.8
+							}
+
+							modify_texture = {
+								texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick_vertical.dds"
+								blend_mode = alphamultiply
+								alpha = 1
+							}
+						}
+					}
+					hbox = {
+						layoutpolicy_vertical = expanding
+						portrait_body = {
+
+							blockoverride "portrait_button"
+							{
+								portrait_texture = "[Character.GetAnimatedPortrait('environment_body', 'camera_body', 'idle', PdxGetWidgetScreenSize(PdxGuiWidget.Self))]"
+							}
+						}
+						vbox = {
+							layoutpolicy_vertical = expanding
+							layoutpolicy_horizontal = expanding
+							expand = {}
+							vbox = {
+								margin_left = 10
+								margin_top = 5
+								layoutpolicy_horizontal = expanding
+								background = {
+									using = Background_Area_Dark
+									alpha = 1
+									modify_texture = {
+										name = "mask"
+										texture = "gfx/interface/component_masks/mask_rough_edges_down_right.dds"
+										spriteType = Corneredstretched
+										spriteborder = { -20 0 }
+										blend_mode = normal
+									}
+								}
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									text_single = {
+										using = Font_Size_Medium
+										layoutpolicy_horizontal = expanding
+										align = nobaseline
+										text = "[Character.GetUINameNoTooltip|U]"
+										autoresize = no
+										fontsize_min = 14
+										
+									}
+									expand = {}
+								}
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									vbox = {
+										datamodel = "[Character.GetTraitIndices]"
+										item = {
+											icon_trait = {
+												visible = "[GetTraitForIndex(int32.GetInt).IsTraitGroup( GetTraitGroup( 'magic_good' ) )]"
+												datacontext = "[GetTraitForIndex(int32.GetInt)]"
+												blockoverride "icon_size"
+												{
+													size = { 70 70 }
+												}
+											}
+										}
+									}
+									hbox = {
+										name = "magic"
+										visible = "[Or(DataModelHasItems(Character.MakeScope.GetList('known_magic_school_list')), DataModelHasItems(Character.MakeScope.GetList('known_spell_list')))]"
+										layoutpolicy_horizontal = growing 
+										margin_right = 40
+										min_width = 220
+										hbox = {
+											margin_left = 5
+											name = "mf_magic_school"
+											layoutpolicy_horizontal = growing 
+
+											using = Animation_Character_Window_Refresh
+											
+											overlappingitembox = {
+												size = { 70 45 }
+							
+												visible = "[GreaterThanOrEqualTo_int32(GetDataModelSize(Character.MakeScope.GetList('known_magic_school_list')), '(int32)2')]"
+												datamodel = "[Character.MakeScope.GetList('known_magic_school_list')]"
+							
+												item = {
+													magic_school_icon = {
+														blockoverride "size" {
+															size = { 45 45 }
+														}
+														datacontext = "[Scope.Story]"
+														
+														tooltipwidget = {
+															magic_school_tooltip = {}
+														}
+													}
+												}
+											}
+											
+											overlappingitembox = {
+												size = { 45 45 }
+							
+												visible = "[LessThan_int32(GetDataModelSize(Character.MakeScope.GetList('known_magic_school_list')), '(int32)2')]"
+												datamodel = "[Character.MakeScope.GetList('known_magic_school_list')]"
+							
+												item = {
+													magic_school_icon = {
+														blockoverride "size" {
+															size = { 45 45 }
+														}
+														datacontext = "[Scope.Story]"
+														
+														tooltipwidget = {
+															magic_school_tooltip = {}
+														}
+													}
+												}
+											}
+
+											vbox = {
+												layoutpolicy_horizontal = expanding
+
+												button_tertiary = {
+													visible = "[LessThan_int32(GetDataModelSize(Character.MakeScope.GetList('known_magic_school_list')), '(int32)2')]"
+													datacontext = "[Character.GetCulture]"
+													layoutpolicy_horizontal = expanding
+													size = { 0 25 }
+													onclick = "[OpenGameViewData( 'culture_window', Culture.GetID )]"
+													raw_text = "[Localize(Concatenate(Character.MakeScope.Var('primary_magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))]"
+													default_format = "#clickable"
+													align = left|nobaseline
+													margin_left = 5
+
+													tooltipwidget = {
+														magic_school_tooltip_click = {
+															datacontext = "[Character.MakeScope.Var('primary_magic_school').Story]"
+														}
+													}
+												}
+												
+												text_single = {
+													visible = "[GreaterThanOrEqualTo_int32(GetDataModelSize(Character.MakeScope.GetList('known_magic_school_list')), '(int32)2')]"
+													layoutpolicy_horizontal = expanding
+													size = { 0 25 }
+													raw_text = "Школы магии [GetDataModelSize(Character.MakeScope.GetList('known_magic_school_list'))|V0]"
+													default_format = "#clickable"
+													align = left|nobaseline
+													margin_left = 5
+												}
+
+												button_tertiary = {
+													layoutpolicy_horizontal = expanding
+													visible = "[DataModelHasItems(Character.MakeScope.GetList('known_spell_list'))]"
+													size = { 0 25 }
+													onclick = "[GetScriptedGui('select_character_spells_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('selected_character_scope', Character.MakeScope).End)]"
+													raw_text = "Заклинания [GetDataModelSize(Character.MakeScope.GetList('known_spell_list'))|V0]"
+													default_format = "#clickable"
+													align = left|nobaseline
+													margin_left = 5
+												}
+											}
+										}
+									}
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										expand = {}
+										visible = "[Not(Or(DataModelHasItems(Character.MakeScope.GetList('known_magic_school_list')), DataModelHasItems(Character.MakeScope.GetList('known_spell_list'))))]"
+									}
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										expand = {}
+										visible = "[Not(Character.HasTraitFromGroup('magic_good'))]"
+									}
+								}
+							}
+						}
+					}
+				}
+				vbox = {
+					datacontext = "[GetPlayer.MakeScope.Var('mf_selected_character').GetCharacter]"
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					margin_top = 5
+					scrollbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+			
+						blockoverride "scrollbox_content" {
+							vbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								visible = "[Not(Or(DataModelHasItems(Character.MakeScope.GetList('known_magic_school_list')), DataModelHasItems(Character.MakeScope.GetList('known_spell_list'))))]"
+								text_single = {text = "mf_no_spells"}
+							}
+							vbox = {
+								name = "spell_list"
+								datamodel = "[Character.MakeScope.GetList('known_spell_gui_list')]"
+								layoutpolicy_horizontal = expanding
+								spacing = 6
+								min_width = 560
+								max_width = 560
+								margin_left = -40
+								margin_top = -10
+			
+								item = {
+									widget_spell_entry = {
+										datacontext = "[Scope.Story]"
+
+										size = {520 130}
+										
+										blockoverride "button_effects" {
+											
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+			}
+		}
+    }
+
+	window = {
+		name = "mf_character_filter_window"
+		visible_at_creation = no
+		visible = "[GetPlayer.MakeScope.Var( 'mf_show_filter_window' ).IsSet]"
+		parentanchor = top|right
+		position = { -1270 0 }
+		size = { 510 800 }
+		focuspolicy = click
+		layer = top
+
+		allow_outside = yes
+
+		using = Window_Movable
+		using = Window_Background_Subwindow
+
+		state = {
+			name = _show
+			using = Animation_FadeIn_Quick
+		}
+
+		state = {
+			name = _hide
+			using = Animation_FadeOut_Quick
+		}
+
+		vbox = {
+			margin = { 4 4 }
+
+			spacing = 10
+
+			header_pattern = {
+				layoutpolicy_horizontal = expanding
+
+				blockoverride "header_text"
+				{
+					text = "CHARACTER_LIST_FILTERS"
+				}
+				blockoverride "button_close"
+				{
+					onclick = "[GetScriptedGui('mf_show_filter_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+
+			scrollbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+
+				blockoverride "scrollbox_content" {
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						margin_right = -10
+
+						oncreate = "[BindFoldOutContext]"
+						oncreate = "[PdxGuiFoldOut.Fold]"
+
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							margin_top = 4
+					
+							text_label_center = {
+								name = "label"
+								layoutpolicy_horizontal = expanding
+								margin_right = 36
+								text = "[magic|E]"
+								align = center
+							}
+						}
+
+						button_expandable_toggle_field = {
+							text = "mf_magic_schools_icon_list"
+							onclick = "[GetVariableSystem.Toggle( 'mf_show_magic_school_icon_list' )]"
+						}
+
+						fixedgridbox = {
+							visible = "[GetVariableSystem.Exists('mf_show_magic_school_icon_list')]"
+							addcolumn = 60
+							addrow = 60
+							datamodel_wrap = 8
+							flipdirection = yes
+							datamodel = "[GetGlobalList('global_magic_school_list')]"
+							
+							item = {
+								button_standard_hover = {
+									size = { 60 60 }
+									datacontext = "[Scope.Story]"
+									down = "[And(GetPlayer.MakeScope.Var('mf_filters_search_magi_magic_school').IsSet, EqualTo_string( Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_magic_school').GetFlagName,'_name')), Localize(Concatenate(Scope.Var('unique_magic_school_identifier').GetFlagName,'_name')) ))]"
+									onclick = "[GetScriptedGui('mf_select_magic_school_filter_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('character_finder_select_magic_school_scope', Scope.Story.MakeScope).End)]"
+									onclick = "[PdxGuiWidget.TriggerAnimation('apply_filter_choice')]"
+									magic_school_icon = {}
+									tooltipwidget = {
+										magic_school_tooltip = {}
+									}
+
+									state = {
+										name = apply_filter_choice
+										# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+										on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_magic_school', MakeScopeFlag(Scope.GetFlagName)).End)]"
+									}
+								}
+							}
+						}
+					}
+
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						margin_top = 3
+
+						hbox_filter_label_and_dropdown = {
+							blockoverride "text"
+							{
+								text = "[Localize('mf_known_magic_school_filter')]"
+							}
+							blockoverride "dropd"
+							{
+								#MAGIC SCHOOL
+								dropdown_menu_standard = {
+
+									# Size of the button itself and the max list height
+									blockoverride "dropdown_size" { size = { 220 32 } }
+									blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+									# Feed it the list + tell it what to do when a choice is picked
+									blockoverride "dropdown_properties" {
+										datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_magic_school')]"
+										onselectionchanged = "[PdxGuiWidget.FindChild('dropdown_active').TriggerAnimation('apply_filter_choice')]"
+									}
+
+									# What the closed button shows (pick static or dynamic)
+									blockoverride "dropdown_active_item_properties" {
+										name = "dropdown_active"
+										text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_magic_school').GetFlagName,'_name'))]"
+
+										state = {
+											name = apply_filter_choice
+											# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+											on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_magic_school', MakeScopeFlag(Scope.GetFlagName)).End)]"
+										}
+									}
+
+									# How each row is labeled
+									blockoverride "dropdown_item_properties" {
+										text = "[Localize(Concatenate(Scope.GetFlagName,'_name'))]"
+									}
+								}
+							}
+						}
+						divider = {
+							layoutpolicy_horizontal = expanding
+						}
+						hbox_filter_label_and_dropdown = {
+							blockoverride "text"
+							{
+								text = "[Localize('relation_filter')]"
+							}
+							blockoverride "dropd"
+							{
+								#RELATION
+								dropdown_menu_standard = {
+
+									# Size of the button itself and the max list height
+									blockoverride "dropdown_size" { size = { 220 32 } }
+									blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+									# Feed it the list + tell it what to do when a choice is picked
+									blockoverride "dropdown_properties" {
+										datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_relation')]"
+										onselectionchanged = "[PdxGuiWidget.FindChild('dropdown_active').TriggerAnimation('apply_filter_choice')]"
+									}
+
+									# What the closed button shows (pick static or dynamic)
+									blockoverride "dropdown_active_item_properties" {
+										name = "dropdown_active"
+										text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_relation').GetFlagName,'_loc'))]"
+
+										state = {
+											name = apply_filter_choice
+											# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+											on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_relation', MakeScopeFlag(Scope.GetFlagName)).End)]"
+										}
+									}
+
+									# How each row is labeled
+									blockoverride "dropdown_item_properties" {
+										text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+									}
+								}
+							}
+						}
+						hbox_filter_label_and_dropdown = {
+							blockoverride "text"
+							{
+								text = "[Localize('range_filter')]"
+							}
+							blockoverride "dropd"
+							{
+								#DIPLO FILTER
+								dropdown_menu_standard = { 
+
+									# Size of the button itself and the max list height
+									blockoverride "dropdown_size" { size = { 220 32 } }
+									blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+									# Feed it the list + tell it what to do when a choice is picked
+									blockoverride "dropdown_properties" {
+										datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_diplo_range')]"
+										onselectionchanged = "[PdxGuiWidget.FindChild('diplo_dropdown_active').TriggerAnimation('apply_filter_choice')]"
+									}
+
+									# What the closed button shows (pick static or dynamic)
+									blockoverride "dropdown_active_item_properties" {
+										name = "diplo_dropdown_active"
+										text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_diplo_range').GetFlagName,'_loc'))]"
+
+										state = {
+											name = apply_filter_choice
+											# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+											on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_diplo', MakeScopeFlag(Scope.GetFlagName)).End)]"
+										}
+									}
+
+									# How each row is labeled
+									blockoverride "dropdown_item_properties" {
+										text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+									}
+								}
+							}
+						}
+					}
+
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						margin_top = 3
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							margin_top = 4
+
+							button_expand = {
+								name = "show"
+								frame = "[Select_int32( GetVariableSystem.Exists('mf_expand_personal_filter_list'), '(int32)1', '(int32)2' )]"
+								onclick = "[GetVariableSystem.Toggle('mf_expand_personal_filter_list')]"
+								using = tooltip_ws
+								tooltip = "EXPAND_FILTER"
+								oversound = "event:/SFX/UI/Generic/sfx_ui_generic_icon_pointer_over"
+								clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_icon_select"
+							}
+
+							text_label_center = {
+								name = "label"
+								layoutpolicy_horizontal = expanding
+								margin_right = 36
+								text = "personal_filter_category"
+								align = center
+							}
+						}
+
+						vbox = {
+							visible = "[Not(GetVariableSystem.Exists('mf_expand_personal_filter_list'))]"
+							layoutpolicy_horizontal = expanding
+							spacing = 5
+							margin_top = 5
+
+							### LIST OF FILTERS ###
+							hbox_filter_label_and_dropdown = {
+								blockoverride "text"
+								{
+									text = "[Localize('ruler_filter')]"
+								}
+								blockoverride "dropd"
+								{
+									#RULER FILTER
+									dropdown_menu_standard = {
+
+										# Size of the button itself and the max list height
+										blockoverride "dropdown_size" { size = { 220 32 } }
+										blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+										# Feed it the list + tell it what to do when a choice is picked
+										blockoverride "dropdown_properties" {
+											datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_ruler')]"
+											onselectionchanged = "[PdxGuiWidget.FindChild('dropdown_active').TriggerAnimation('apply_filter_choice')]"
+										}
+
+										# What the closed button shows (pick static or dynamic)
+										blockoverride "dropdown_active_item_properties" {
+											name = "dropdown_active"
+											text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_ruler').GetFlagName,'_loc'))]"
+
+											state = {
+												name = apply_filter_choice
+												# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+												on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_ruler_filter', MakeScopeFlag(Scope.GetFlagName)).End)]"
+											}
+										}
+
+										# How each row is labeled
+										blockoverride "dropdown_item_properties" {
+											text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+										}
+									}
+								}
+							}
+							hbox_filter_label_and_dropdown = {
+								blockoverride "text"
+								{
+									text = "[Localize('type_filter')]"
+								}
+								blockoverride "dropd"
+								{
+									#RULER FILTER
+									dropdown_menu_standard = {
+
+										# Size of the button itself and the max list height
+										blockoverride "dropdown_size" { size = { 220 32 } }
+										blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+										# Feed it the list + tell it what to do when a choice is picked
+										blockoverride "dropdown_properties" {
+											datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_type')]"
+											onselectionchanged = "[PdxGuiWidget.FindChild('dropdown_active').TriggerAnimation('apply_filter_choice')]"
+										}
+
+										# What the closed button shows (pick static or dynamic)
+										blockoverride "dropdown_active_item_properties" {
+											name = "dropdown_active"
+											text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_type').GetFlagName,'_loc'))]"
+
+											state = {
+												name = apply_filter_choice
+												# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+												on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_type', MakeScopeFlag(Scope.GetFlagName)).End)]"
+											}
+										}
+
+										# How each row is labeled
+										blockoverride "dropdown_item_properties" {
+											text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+										}
+									}
+								}
+							}
+							hbox_filter_label_and_dropdown = {
+								blockoverride "text"
+								{
+									text = "[Localize('adult_filter')]"
+								}
+								blockoverride "dropd"
+								{
+									dropdown_menu_standard = { 
+
+										# Size of the button itself and the max list height
+										blockoverride "dropdown_size" { size = { 220 32 } }
+										blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+										# Feed it the list + tell it what to do when a choice is picked
+										blockoverride "dropdown_properties" {
+											datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_adult')]"
+											onselectionchanged = "[PdxGuiWidget.FindChild('gender_dropdown_active').TriggerAnimation('apply_filter_choice')]"
+										}
+
+										# What the closed button shows (pick static or dynamic)
+										blockoverride "dropdown_active_item_properties" {
+											name = "gender_dropdown_active"
+											text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_adult').GetFlagName,'_loc'))]"
+
+											state = {
+												name = apply_filter_choice
+												# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+												on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_adult', MakeScopeFlag(Scope.GetFlagName)).End)]"
+											}
+										}
+
+										# How each row is labeled
+										blockoverride "dropdown_item_properties" {
+											text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+										}
+									}
+								}
+							}
+							hbox_filter_label_and_dropdown = {
+								blockoverride "text"
+								{
+									text = "[Localize('gender_filter')]"
+								}
+								blockoverride "dropd"
+								{
+									#GENDER FILTER
+									dropdown_menu_standard = { 
+
+										# Size of the button itself and the max list height
+										blockoverride "dropdown_size" { size = { 220 32 } }
+										blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+										# Feed it the list + tell it what to do when a choice is picked
+										blockoverride "dropdown_properties" {
+											datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_gender')]"
+											onselectionchanged = "[PdxGuiWidget.FindChild('gender_dropdown_active').TriggerAnimation('apply_filter_choice')]"
+										}
+
+										# What the closed button shows (pick static or dynamic)
+										blockoverride "dropdown_active_item_properties" {
+											name = "gender_dropdown_active"
+											text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_gender').GetFlagName,'_loc'))]"
+
+											state = {
+												name = apply_filter_choice
+												# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+												on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_gender', MakeScopeFlag(Scope.GetFlagName)).End)]"
+											}
+										}
+
+										# How each row is labeled
+										blockoverride "dropdown_item_properties" {
+											text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+										}
+									}
+								}
+							}
+							hbox_filter_label_and_dropdown = {
+								blockoverride "text"
+								{
+									text = "[Localize('married_filter')]"
+								}
+								blockoverride "dropd"
+								{
+									#MARITAL FILTER
+									dropdown_menu_standard = {
+
+										# Size of the button itself and the max list height
+										blockoverride "dropdown_size" { size = { 220 32 } }
+										blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+										# Feed it the list + tell it what to do when a choice is picked
+										blockoverride "dropdown_properties" {
+											datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_married')]"
+											onselectionchanged = "[PdxGuiWidget.FindChild('dropdown_active').TriggerAnimation('apply_filter_choice')]"
+										}
+
+										# What the closed button shows (pick static or dynamic)
+										blockoverride "dropdown_active_item_properties" {
+											name = "dropdown_active"
+											text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_married').GetFlagName,'_loc'))]"
+
+											state = {
+												name = apply_filter_choice
+												# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+												on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_married', MakeScopeFlag(Scope.GetFlagName)).End)]"
+											}
+										}
+
+										# How each row is labeled
+										blockoverride "dropdown_item_properties" {
+											text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+										}
+									}
+								}
+							}
+							hbox_filter_label_and_dropdown = {
+								blockoverride "text"
+								{
+									text = "[Localize('sexuality_filter')]"
+								}
+								blockoverride "dropd"
+								{
+									#SEXUALITY FILTER
+									dropdown_menu_standard = {
+
+										# Size of the button itself and the max list height
+										blockoverride "dropdown_size" { size = { 220 32 } }
+										blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+										# Feed it the list + tell it what to do when a choice is picked
+										blockoverride "dropdown_properties" {
+											datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_sexuality')]"
+											onselectionchanged = "[PdxGuiWidget.FindChild('dropdown_active').TriggerAnimation('apply_filter_choice')]"
+										}
+
+										# What the closed button shows (pick static or dynamic)
+										blockoverride "dropdown_active_item_properties" {
+											name = "dropdown_active"
+											text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_sexuality').GetFlagName,'_loc'))]"
+
+											state = {
+												name = apply_filter_choice
+												# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+												on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sexuality', MakeScopeFlag(Scope.GetFlagName)).End)]"
+											}
+										}
+
+										# How each row is labeled
+										blockoverride "dropdown_item_properties" {
+											text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+										}
+									}
+								}
+							}
+							hbox_filter_label_and_dropdown = {
+								blockoverride "text"
+								{
+									text = "[Localize('hook_filter')]"
+								}
+								blockoverride "dropd"
+								{
+									#HOOKS FILTER
+									dropdown_menu_standard = {
+
+										# Size of the button itself and the max list height
+										blockoverride "dropdown_size" { size = { 220 32 } }
+										blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+										# Feed it the list + tell it what to do when a choice is picked
+										blockoverride "dropdown_properties" {
+											datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_hook')]"
+											onselectionchanged = "[PdxGuiWidget.FindChild('dropdown_active').TriggerAnimation('apply_filter_choice')]"
+										}
+
+										# What the closed button shows (pick static or dynamic)
+										blockoverride "dropdown_active_item_properties" {
+											name = "dropdown_active"
+											text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_hook').GetFlagName,'_loc'))]"
+
+											state = {
+												name = apply_filter_choice
+												# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+												on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_hook', MakeScopeFlag(Scope.GetFlagName)).End)]"
+											}
+										}
+
+										# How each row is labeled
+										blockoverride "dropdown_item_properties" {
+											text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+										}
+									}
+								}
+							}
+						}
+					}
+
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						margin_top = 3
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							margin_top = 4
+
+							button_expand = {
+								name = "show"
+								frame = "[Select_int32( GetVariableSystem.Exists('mf_expand_group_filter_list'), '(int32)1', '(int32)2' )]"
+								onclick = "[GetVariableSystem.Toggle('mf_expand_group_filter_list')]"
+								using = tooltip_ws
+								tooltip = "EXPAND_FILTER"
+								oversound = "event:/SFX/UI/Generic/sfx_ui_generic_icon_pointer_over"
+								clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_icon_select"
+							}
+
+							text_label_center = {
+								name = "label"
+								layoutpolicy_horizontal = expanding
+								margin_right = 36
+								text = "membership_filter_category"
+								align = center
+							}
+						}
+
+						vbox = {
+							visible = "[Not(GetVariableSystem.Exists('mf_expand_group_filter_list'))]"
+							layoutpolicy_horizontal = expanding
+							spacing = 5
+							margin_top = 5
+
+							### LIST OF FILTERS ###
+							hbox_filter_label_and_dropdown = {
+								blockoverride "text"
+								{
+									text = "[Localize('religion_filter')]"
+								}
+								blockoverride "dropd"
+								{
+									#RELIGION FILTER
+									dropdown_menu_standard = {
+
+										# Size of the button itself and the max list height
+										blockoverride "dropdown_size" { size = { 220 32 } }
+										blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+										# Feed it the list + tell it what to do when a choice is picked
+										blockoverride "dropdown_properties" {
+											datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_religion')]"
+											onselectionchanged = "[PdxGuiWidget.FindChild('dropdown_active').TriggerAnimation('apply_filter_choice')]"
+										}
+
+										# What the closed button shows (pick static or dynamic)
+										blockoverride "dropdown_active_item_properties" {
+											name = "dropdown_active"
+											text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_religion').GetFlagName,'_loc'))]"
+
+											state = {
+												name = apply_filter_choice
+												# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+												on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_religion', MakeScopeFlag(Scope.GetFlagName)).End)]"
+											}
+										}
+
+										# How each row is labeled
+										blockoverride "dropdown_item_properties" {
+											text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+										}
+									}
+								}
+							}
+							hbox_filter_label_and_dropdown = {
+								blockoverride "text"
+								{
+									text = "[Localize('culture_filter')]"
+								}
+								blockoverride "dropd"
+								{
+									#CULTURE FILTER
+									dropdown_menu_standard = {
+
+										# Size of the button itself and the max list height
+										blockoverride "dropdown_size" { size = { 220 32 } }
+										blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+										# Feed it the list + tell it what to do when a choice is picked
+										blockoverride "dropdown_properties" {
+											datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_culture')]"
+											onselectionchanged = "[PdxGuiWidget.FindChild('dropdown_active').TriggerAnimation('apply_filter_choice')]"
+										}
+
+										# What the closed button shows (pick static or dynamic)
+										blockoverride "dropdown_active_item_properties" {
+											name = "dropdown_active"
+											text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_culture').GetFlagName,'_loc'))]"
+
+											state = {
+												name = apply_filter_choice
+												# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+												on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_culture', MakeScopeFlag(Scope.GetFlagName)).End)]"
+											}
+										}
+
+										# How each row is labeled
+										blockoverride "dropdown_item_properties" {
+											text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+										}
+									}
+								}
+							}
+							hbox_filter_label_and_dropdown = {
+								blockoverride "text"
+								{
+									text = "[Localize('dynasty_filter')]"
+								}
+								blockoverride "dropd"
+								{
+									#DYNASTY FILTER
+									dropdown_menu_standard = {
+
+										# Size of the button itself and the max list height
+										blockoverride "dropdown_size" { size = { 220 32 } }
+										blockoverride "dropdown_list_maxsize" { maximumsize = { 260 260 } }
+
+										# Feed it the list + tell it what to do when a choice is picked
+										blockoverride "dropdown_properties" {
+											datamodel = "[GetPlayer.MakeScope.GetList('mf_filter_list_dynasty')]"
+											onselectionchanged = "[PdxGuiWidget.FindChild('dropdown_active').TriggerAnimation('apply_filter_choice')]"
+										}
+
+										# What the closed button shows (pick static or dynamic)
+										blockoverride "dropdown_active_item_properties" {
+											name = "dropdown_active"
+											text = "[Localize(Concatenate(GetPlayer.MakeScope.Var('mf_filters_search_magi_dynasty').GetFlagName,'_loc'))]"
+
+											state = {
+												name = apply_filter_choice
+												# Dispatch by the selected flag name; easiest is to call a tiny SGUI
+												on_finish = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_dynasty', MakeScopeFlag(Scope.GetFlagName)).End)]"
+											}
+										}
+
+										# How each row is labeled
+										blockoverride "dropdown_item_properties" {
+											text = "[Localize(Concatenate(Scope.GetFlagName,'_loc'))]"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			hbox = {
+				layoutpolicy_horizontal = growing
+				margin_bottom = 10
+
+				button_standard = {
+					name = "drop_filters"
+					text = "CHARACTER_RESET_FILTERS"
+					focuspolicy = click
+					onclick = "[GetScriptedGui('mf_reload_to_basics').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+				}
+			}
+		}
+	}
+}
+
+Types Window_Magi_Search {
+	type hbox_filter_label_and_dropdown = hbox {
+		margin_top = 3
+		margin_bottom = 10
+		layoutpolicy_horizontal = expanding
+		text_single = {
+			block "text" {}
+		}
+		expand = {}
+		block "dropd" {}
+	}
+}
