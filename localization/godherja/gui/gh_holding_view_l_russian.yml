@@ -1,4 +1,5 @@
 ﻿l_russian:
+ HOLDING_VIEW_WASTELAND_COUNTY: "Uninhabited [county|E]"
  HOLDING_VIEW_TITLE_INFORMATION:90 "#T [Title.GetBaseNameNoTooltip]#!\n[Localize(Concatenate(Title.GetKey, '_desc'))]"
  COUNTY_HABITABILITY_TOOLTIP:90 "$holding_view_habitability_header$$holding_view_habitability_effects$$holding_view_habitability_warning$$holding_view_habitability_breakdown$$holding_view_habitability_flavour$"
  count_test_tooltip:90 "[HoldingView.GetCountyTitle.MakeScope.ScriptValue('fast_habitability_penalty_value')|N%0]"
@@ -19,11 +20,15 @@
  holding_view_habitability_warning:90 "[AddTextIf(LessThan_CFixedPoint(HoldingView.GetCountyTitle.MakeScope.ScriptValue('county_habitability_value'),GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('target',HoldingView.GetCountyTitle.MakeScope).ScriptValue('colonization_threshold_value')),Concatenate('@warning_icon! #X Обитаемость этого ',Concatenate(Concept('county','#E графства#!'),Concatenate(' ниже вашего #!',Concept('habitability_threshold','#E Порога Обитаемости#!\n')))))]"
  holding_view_habitability_breakdown:90 "\nБазовая обитаемость: #V 100#!#indent_newline:3 \n[HoldingView.GetCountyTitle.MakeScope.GetScriptValueDesc('county_habitability_value')|0]#!\n\n[habitability_threshold|E]: #V [GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('target',HoldingView.GetCountyTitle.MakeScope).ScriptValue('colonization_threshold_value')|0]#!#indent_newline:3 \nБаза: [Concept('habitability_threshold','@habitability_threshold_icon!')]#V 50#!\n[GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('target',HoldingView.GetCountyTitle.MakeScope).GetScriptValueDesc('colonization_threshold_value')|0]#!"
  holding_view_habitability_flavour:90 "\n\n#low Земли [Concept('aeras','Аэраса')|E] были разрушены множество раз за века, оставив многие уголки мира слишком [Concept('habitability','#E опасными#!')] для жизни и цивилизации.#!"
+ holding_view_habitability_flavor: "\n\n#low The lands of [aeras|E] have been brought to ruin many times over the ages, leaving many corners of the world too [Concept('habitability','#E hazardous#!')] for human life and civilization.#!"
 
  COLONIZE_COUNTY_TOOLTIP:90 "[Character.GetPlayerInteractionWithTargetTitleTooltip('colonize_wasteland_interaction', HoldingView.GetCountyTitle)]\n\n#indent_newline:3 Стоимость: [GuiScope.SetRoot(GetPlayer.MakeScope).Custom('colonization_cost_currency')]#V [GuiScope.SetRoot(HoldingView.GetCountyTitle.MakeScope).AddScope('actor',GetPlayer.MakeScope).ScriptValue('colonization_cost_value')|0]#!\n[GuiScope.SetRoot(HoldingView.GetCountyTitle.MakeScope).AddScope('actor',GetPlayer.MakeScope).GetScriptValueDesc('colonization_cost_value')|0]#!"
+ COLONIZE_COUNTY_TOOLTIP_HERD_ADDENDUM: ", #V [Concept('herd','@herd_icon!')][GuiScope.SetRoot(HoldingView.GetCountyTitle.MakeScope).AddScope('actor',GetPlayer.MakeScope).ScriptValue('colonization_herd_cost_value')|0]#!"
  colonization_cost_currency_prestige:90 "[Concept('prestige','@prestige_icon!')]"
  colonization_cost_currency_gold:90 "[Concept('gold','@gold_icon!')]"
  colonization_cost_currency_piety:90 "[Concept('piety','@piety_icon!')]"
+
+ COASTAL_WASTELAND_TOOLTIP: "This [county|E] is coastal and can be [Concept('colonization','Colonized')|E] from overseas"
 
  HOLDING_TT_EMPTY_WASTELAND:90 "Нет владения"
  CREATE_NEW_HOLDING_RUIN_BUTTON:90 "Заселить разрушенное владение"
@@ -43,7 +48,6 @@
  SETTLE_RUIN_HOLDING_TOOLTIP_MISSING_GOLD:90 "@warning_icon! #X Недостаточно [Concept('gold','@gold_icon!')] [Add_CFixedPoint(Abs_CFixedPoint(GetPlayer.GetGold), '(CFixedPoint)250')|0]#!"
  SETTLE_RUIN_HOLDING_TOOLTIP_COST:90 "[Concept('gold','@gold_icon!')]#V 250#!"
  colonization_cost_value_base_desc:90 "Базовая стоимость"
- colonization_cost_value_tribal_colonization:90 "Племенная колонизация"
  colonization_cost_value_habitability_penalty_desc:90 "Обитаемость"
  colonization_cost_value_overseas_desc:90 "Заморские территории"
  colonization_cost_value_land_grants_perk_desc:90 "[GetPerk('land_grants_perk').GetName(GetPlayer)]"

@@ -87,9 +87,9 @@
  radicalism_gives_judicial_power_tooltip:0 "Каждое очко @radicalism_icon! #E радикализма#! увеличивает #E судебную власть#! на #positive_value 0.2#!, вплоть до максимума в 20"
  
  can_justify_claims_tooltip:0 "Открывает взаимодействие «#E Обосновать#! [Concept('claim','претензию')|E]»"
- can_censure_sinful_characters_tooltip:0 "Позволяет подвергнуть #E порицанию#! [Concept( 'sinful', 'греховных' )|E] персонажей"
+ can_censure_sinful_characters_tooltip:0 "Позволяет подвергнуть [Concept('censure_interaction','порицанию')|E] [Concept( 'sinful', 'греховных' )|E] персонажей"
  can_disinherit_sinful_characters_with_piety_tooltip:0 "Позволяет [Concept( 'disinheriting', 'лишать наследства' )|E] [Concept( 'sinful', 'греховны' )|E] персонажей за [Concept('piety','благочестие')|E] вместо [dynasty_prestige|El]"
- can_censure_less_virtuous_characters_tooltip:0 "Позволяет подвергнуть #E порицанию#! персонажей, у которых меньше [Concept( 'virtues', 'добродетели' )|E], чем у вас"
+ can_censure_less_virtuous_characters_tooltip:0 "Позволяет подвергнуть [Concept('censure_interaction','порицанию')|E] персонажей, у которых меньше [Concept( 'virtues', 'добродетели' )|E], чем у вас"
  can_designate_heir_tooltip:0 "Открывает взаимодействие «#E Назначить#! [Concept('heir','наследника')|E]»"
  
  learning_boosts_piety_gain_from_trials_tooltip:0 "Каждый уровень навыка @skill_learning_icon![learning|E] увеличивает получаемое за суды [Concept('piety','благочестие')|E] на #positive_value 1%#!"
@@ -103,7 +103,7 @@
  can_exchange_imprisonment_reasons_for_prestige_tooltip:0 "Позволяет обменивать причины для заключения под стражу на [Concept('prestige','престиж')|E] #X (не реализовано)#!"
  crimes_allow_any_punishment_tooltip:0 "[Concept( 'crimes', 'Преступления' )|E] позволяют применять любое наказание, включая [execution|El], независимо от степени тяжести"
  apolitical_suits_give_better_rewards_tooltip:0 "#E Внеполитические иски#! приносят больше наград"
- censured_characters_can_be_imprisoned_tooltip:0 "Персонажей, подвергшихся #E порицанию#!, можно заключить под стражу"
+ censured_characters_can_be_imprisoned_tooltip:0 "Персонажей, подвергшихся [Concept('censure_interaction','порицанию')|E], можно заключить под стражу"
  can_depose_vassals_tooltip:0 "Открывает взаимодействие «Низложить вассала»"
  each_level_increases_difficulty_and_rewards_tooltip:0 "Каждый ранг этого правового свойства увеличивает как сложность, так и награды в виде [Concept('piety','благочестия')|E] за судебные тяжбы"
  each_level_decreases_difficulty_tooltip:0 "Каждый ранг этого правового свойства снижает сложность судебных тяжб"
@@ -221,7 +221,8 @@
  martial_per_piety_from_tradition_modifier:0 "$martial_per_piety_from_tradition_modifier_name$"
  martial_per_piety_from_tradition_modifier_name:0 "Правовая традиция"
  martial_per_piety_from_tradition_modifier_desc:0 ""
- 
+
+ FAITH_HIGH_COURT:0 "High Court"
  high_court_legitimacy_very_low_mamur_modifier:0 "$wardenite_high_court_legitimacy_very_low_doctrine_name$"
  high_court_legitimacy_low_mamur_modifier:0 "$wardenite_high_court_legitimacy_low_doctrine_name$"
  high_court_legitimacy_high_mamur_modifier:0 "$wardenite_high_court_legitimacy_high_doctrine_name$"
@@ -396,7 +397,7 @@
  the_great_uprising_legal_tradition_founding_name:0 "[Concept('the_great_uprising_legal_tradition','Великое восстание')|E]"
  the_establishment_legal_tradition_founding_name:0 "[Concept('the_establishment_legal_tradition','Становление')|E]"
  traditional_golden_age_legal_tradition_founding_name:0 "[Concept('the_traditional_golden_age_legal_tradition','Традиционный золотой век')|E]"
- age_of_ink_and_gold_legal_tradition_founding_name:0 "[Concept('the_age_of_ink_and_gold_legal_tradition','Эпоха чернил и золота')|E]"
+ age_of_ink_and_gold_legal_tradition_founding_name:0 "[Concept('the_age_of_ink_and_gold_legal_tradition_fix','Эпоха чернил и золота')|E]"
  age_of_tathtali_legal_tradition_founding_name:0 "[Concept('the_age_of_tathtali_legal_tradition','Эпоха Татхтали')|E]"
  abajjarmia_golden_age_legal_tradition_founding_name:0 "[Concept('the_abajjarmia_golden_age_legal_tradition','Золотой век Абаджармии')|E]"
  era_of_dissent_legal_tradition_founding_name:0 "[Concept('the_era_of_dissent_legal_tradition','Эпоха раскола')|E]"
@@ -428,19 +429,19 @@
  #######################
  # MAMURIAL PRIVILEGES #
  #######################
- can_appoint_high_judges_desc:0 "#positive_value Может назначать [high_judge|E]ей#!"
- can_appoint_high_judges_negative_desc:0 "#negative_value Не может назначать [high_judge|E]ей#!"
- can_use_legal_manipulation_on_high_judges_desc:0 "#positive_value Может использовать взаимодействие «Правовое манипулирование» против [high_judge|E]ей#!"
- can_use_legal_manipulation_on_high_judges_negative_desc:0 "#negative_value Не может использовать взаимодействие «Правовое манипулирование» против [high_judge|E]ей#!"
- can_dismiss_high_judges_unanimously_desc:0 "#positive_value Может единогласно увольнять [high_judge|E]ей#!"
- can_dismiss_high_judges_unanimously_negative_desc:0 "#negative_value Не может единогласно увольнять [high_judge|E]ей#!"
+ can_appoint_high_judges_desc:0 "#positive_value Может назначать [high_judge_fix|E]ей#!"
+ can_appoint_high_judges_negative_desc:0 "#negative_value Не может назначать [high_judge_fix|E]ей#!"
+ can_use_legal_manipulation_on_high_judges_desc:0 "#positive_value Может использовать взаимодействие «Правовое манипулирование» против [high_judge_fix|E]ей#!"
+ can_use_legal_manipulation_on_high_judges_negative_desc:0 "#negative_value Не может использовать взаимодействие «Правовое манипулирование» против [high_judge_fix|E]ей#!"
+ can_dismiss_high_judges_unanimously_desc:0 "#positive_value Может единогласно увольнять [high_judge_fix|E]ей#!"
+ can_dismiss_high_judges_unanimously_negative_desc:0 "#negative_value Не может единогласно увольнять [high_judge_fix|E]ей#!"
  
  ###############
  # TRIGGER LOC #
  ###############
  HAS_LEGAL_TRADITION_COOLDOWN:0 "Нельзя совершить это действие повторно до [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope, 'legal_tradition_change_cooldown') )]"
  NO_LEGAL_TRADITION_COOLDOWN:0 "У вас нет восстановления после изменения #E правовой традиции#!"
- INSUFFICIENT_MAMURIAL_AUTHORITY_HIGH_JUDGE:0 "Персонаж является [high_judge|E]ем, а соответствующий верховный суд не обладает достаточным авторитетом Мамура"
+ INSUFFICIENT_MAMURIAL_AUTHORITY_HIGH_JUDGE:0 "Персонаж является [high_judge_fix|E]ем, а соответствующий верховный суд не обладает достаточным авторитетом Мамура"
  
  
  ############

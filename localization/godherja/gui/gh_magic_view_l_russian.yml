@@ -3,12 +3,22 @@
 # SPELL NAMES #
 ###############
  
- spell_name_format_unique: "[Localize(Concatenate(ROOT.Story.MakeScope.Var('unique_spell_identifier').GetFlagName, '_name'))]"
+ spell_name_format_unique: "[Localize(Concatenate(ROOT.Story.MakeScope.Var('parent_spell').Var('unique_spell_identifier').GetFlagName, '_name'))]"
 
  ######################
  # UNIQUE SPELL NAMES #
  ######################
- 
+
+# Subspell Names
+ cantrip_subspell_name: "Cantrip"
+ ritual_subspell_name: "Ritual"
+ grand_ritual_subspell_name: "Grand Ritual"
+ battle_ritual_subspell_name: "Battle Ritual"
+ siege_ritual_subspell_name: "Siege Ritual"
+ enchantment_subspell_name: "Enchantment"
+ crafting_subspell_name: "Crafting"
+ tattoo_subspell_name: "Tattoo"
+
  # Lifestyle cantrips 
  ritual_sacrifice_desc: "Каждая смерть вызывает небольшой выброс магической энергии, поэтому даже самое примитивное убийство человека теоретически может служить ритуальной жертвой. Однако на практике это крайне неэффективно само по себе, хотя некоторые методы повышения эффективности этого процесса известны почти во всех культурах с древнейших времен."
  fire_magick_desc: "Скромный огненный шар, пожалуй, самое распространенное заклинание во всем [Concept('aeras','Аэрасе')|E]. Хотя для его применения требуется минимум подготовки, существует множество методов, позволяющих [Concept('magi','магам')|E] заранее заряжать более мощные снаряды."
@@ -24,6 +34,17 @@
  skeletalcraft_desc: "Говорят, что кости содержат саму магическую субстанцию, связывающую душу с телом, и многие маги используют их для усиления своих способностей."
  skeletalartifact_name: "Создание Скелета"
  skeletalartifact_desc: "Силу костей можно изменить, усилить и преобразовать в новые формы."
+ bonecrafting_type_choice_crown: "Crown"
+ bonecrafting_type_choice_regalia: "Regalia"
+ bonecrafting_type_choice_staff: "Staff"
+ bonecrafting_type_choice_spear: "Spear"
+ bonecrafting_preview_prefix: "Will create: "
+ bonecrafting_preview_dagger: "Dagger"
+ bonecrafting_preview_crown: "Crown"
+ bonecrafting_preview_regalia: "Regalia"
+ bonecrafting_preview_staff: "Staff"
+ bonecrafting_preview_spear: "Spear"
+ bonecrafting_preview_undecided: "to be randomly determined"
  siphon_rift_power_name: "Откачка Силы Разлома"
  siphon_rift_power_desc: "Заклинание, позволяющее заклинателю черпать силу, исходящую из [Concept('the_rift','Разлома')|E]"
  # Артефакты Жемчужин и Ям Золота
@@ -33,16 +54,12 @@
  ancestral_betrayal_desc: "Злобное заклинание, которое связывает почти всегда невольного призрака в убийственной ярости, направленной конкретно на их собственных детей. Духовные муки внутри бедного духа обычно разрывают его на части, оставляя его разум бесчувственным и постоянно кататоническим, но не раньше, чем он убьет, ранит или эмоционально покалечит одного или нескольких своих ужаснувшихся потомков."
  
  # Other
- summon_precious_meteor_name: "Призыв Драгоценного Метеора"
- summon_precious_meteor_desc: ""
- precious_metal_transmutation_name: "Трансмутация Драгоценных Металлов"
- precious_metal_transmutation_desc: ""
  cloud_mind_name: "Затуманивание Разума"
- cloud_mind_desc: ""
+ cloud_mind_desc: "Among the many known ways of thinning the barrier between sleep and wakefulness, magical or otherwise, only a few can be used on someone other than oneself. Such combinations of incense, sigils, and thaumaturgical instruments can forcibly strip away a person's mental defences, making it difficult to distinguish [aspect_dream] from reality — if any such distinction ever existed in the first place."
  defiled_nadir_name: "Оскверненный Надир"
  defiled_nadir_desc: ""
  extract_lucrative_secrets_name: "Извлечение Выгодных Тайн"
- extract_lucrative_secrets_desc: "Поверхностное погружение в сны нескольких состоятельных людей, возможно, раскрывающее способы эксплуатации их для получения [gold|E] и других наград."
+ extract_lucrative_secrets_desc: "What holds for a secret in the waking world and the [aspect_dream] are oft polar opposites, and few guard their thoughts as strongly as they do their words. Frequently, a shallow dive is all it takes for one's mortal secrets to be revealed, and peddled for power or profit."
  spoils_of_the_dead_name: "Трофеи Мертвых"
  spoils_of_the_dead_desc: ""
  haunting_power_desc: "Заклинатель призывает мстительных духов на свою цель."
@@ -63,10 +80,10 @@
  auspex_of_diplomacy_desc: "Заклинатель использует магию [Concept('aspect_water','воды')|E], чтобы лучше справляться с постоянно меняющимся миром дипломатии, становясь более инициативными. Однако на более высоких уровнях заклинание может сделать заклинателя более подверженным стрессу от внешних событий."
  auspex_of_learning_name: "Ауспекс Универсального Разума"
  auspex_of_learning_desc: "Заклинатель использует магию [Concept('aspect_light','света')|E], чтобы лучше понять хитросплетения вселенной. Однако на более высоких уровнях заклинание может сделать заклинателя более подверженным стрессу от внешних событий."
- favorable_winds_name: "Благоприятные Ветра"
- favorable_winds_desc: "Магия [Concept('aspect_air','воздуха')|E] создает благоприятный ветер для флота и лучников в армии"
- fair_weather_name: "Улучшение Погоды"
- fair_weather_desc: "Используя магию [Concept('aspect_air','воздуха')|E], перенаправляются воздушные потоки, чтобы принести влагу и дождь к урожаю"
+ compel_favorable_winds_name: "Compel Favorable Winds"
+ compel_favorable_winds_desc: "Many debates have been held over the sapience of wind spirits, or even the existence thereof; yet practically every form of non-destructive [aspect_air] manipulation requires the [magi|E] to adopt a conciliatory approach, synchronizing their intent with what might clinically be described as the pseudo-[waylines|E] of the wind."
+ invoke_fair_weather_name: "Invoke Fair Weather"
+ invoke_fair_weather_desc: "Weather [Concept(''gh_ritual'','Rituals')|E] are perhaps the most widespread form of [Concept('magic','Magical')|E] phenomena. Seemingly every magically sophisticated culture on [aeras|E] has come to extensively rely on them at one point or another, and [magi|E] (usually acolytes) may spend months (sometimes years) continuously renewing them over the lands of their benevolent (typically not) sponsors."
  fleet_footed_name: "Быстрые как Ветер"
  fleet_footed_desc: "Заклинатель использует [Concept('aspect_air','ветер')|E] и [Concept('aspect_water','воду')|E], чтобы путешествовать дальше и быстрее, чем они могли бы в обычных условиях."
  drought_name: "Отгон Дождя"
@@ -119,7 +136,7 @@
  bloodblight_magic_name: "Кровопустошение"
  bloodblight_magic_desc: "Это заклинание имеет шанс вызвать Кровопустошение у получателя"
  pox_magic_name: "Чумная Магия"
- pox_magic_desc: "Это заклинание имеет шанс вызвать Чуму у получателя"
+ pox_magic_desc: "This spell has a chance to inflict the Great Pox on the recipient (manifests initially as Lover's Pox, which progresses to the full Great Pox over time)"
  
  erode_armor_name: "Разъедание Брони"
  erode_armor_desc: "Песчаная магия разрушает доспехи и оружие этого лидера, а на более высоких уровнях — и армии, которой он командует."
@@ -341,11 +358,11 @@
  woodland_inferno_name: "Лесное Инферно"
  woodland_inferno_desc: "Используя силу [Concept('aspect_nature','природы')|E] как топливо для [Concept('aspect_fire','огненного')|E] инферно, заклинатель испепеляет своих врагов."
 
- tornado_name: "Мощный Торнадо"
- tornado_desc: "Используя силу [Concept('aspect_air','воздуха')|E] как источник, ветры этого региона скручиваются в торнадо, опустошая графство."
+ conjure_tornado_name: "Conjure Tornado"
+ conjure_tornado_desc: "Skilled [aspect_air] [magi|E] are known for their ability to violently twist wind currents, calling down massive air vortices and tornadoes with some homing capabilities. In extreme cases, resultant natural disasters can devastate whole regions by sheer force, destroying structures and giving people (alongside other terrestrial or #EMP marine#! fauna) the first and last flight of their lives."
 
- lightning_blades_name: "Молниевые Клинки"
- lightning_blades_desc: ""
+ tempests_teeth_name: "Tempest's Teeth"
+ tempests_teeth_desc: "While heavy armor can ward off a blow of a blade or an arrow's strike well enough, it yet proves a perfect conductor for the coiled lightning held within. Whole crates of weapons can be charged at once with diminished efficiency, at the cost of rapidly disintegrating holsters and sheaths that they touch."
 
  birdseye_oracle_name: "Оракул Соколиного Глаза"
  birdseye_oracle_desc: ""
@@ -366,14 +383,21 @@
  # Living Magic Spells
  ## Sarradonian Period (??? - 6th century BI)
  rite_of_the_scarlet_kings_feast_name: "Обряд Пира Багрового Короля"
+ scarlet_kings_hunger_name: "The Scarlet King's Hunger"
+ invocation_of_the_leashed_flame_name: "Invocation of the Leashed Flame"
  invocation_of_the_wise_mother_name: "Призыв Мудрой Матери"
  invocation_of_the_red_frenzy_name: "Призыв Красного Бешенства"
+ invocation_of_the_red_frenzy_short_desc: "Michros of Ditida famously chanted this invocation in a maddening crescendo while holding off an entire Kartharaddi legion at Kameiricea Pass. In the end, it would be the blade of his own companions that would grant his frayed mind the mercy of death."
  hex_of_the_black_vein_name: "Проклятие Черной Жилы"
+ hex_of_the_black_vein_short_desc: "At first, a gnawing itch. Then, a bruise — blue at first, then black. Finally, necrosis sets in, and if death is merciful, it comes quickly. But sometimes, it can take a while."
+ hex_of_the_rotting_womb_name: "Hex of the Rotting Womb"
  seal_of_the_red_madness_name: "Печать Красного Безумия"
+ seal_of_the_red_madness_short_desc: "Zenobiosarax met its end in a mad orgy of violence when this seal found itself at the bottom of the town's well. It was never determined how it ended up there."
  ## Gortillian Period (6th century BI - 2nd century IS)
  humorsurge_syngos_name: "Прилив Гуморов: Сингос"
  humorsurge_elemochis_name: "Прилив Гуморов: Элемочис"
  humorsurge_pyrax_name: "Прилив Гуморов: Пиракс"
+ mark_of_the_gortillian_acolyte_name: "Mark of the Gortillian Acolyte"
  cupbearers_ward_name: "Оберег Виночерпия"
  rite_of_the_red_chain_name: "Обряд Красной Цепи"
  rite_of_the_violet_chalice_name: "Обряд Фиолетового Кубка"
@@ -391,6 +415,7 @@
  makleanic_hex_name: "Маклеанское Проклятие"
  xenophoric_mark_of_hatred_name: "Ксенофорический Знак Ненависти"
  eramos_call_to_sword_and_hammer_name: "Зов Эрамоса к Мечу и Молоту"
+ amulet_of_the_withered_rose_name: "Amulet of the Withered Rose"
  invocation_of_the_quickened_vitae_name: "Призыв Ускоренной Виты"
  invocation_of_the_five_words_of_passion_name: "Призыв Пяти Слов Страсти"
  kydelan_procedure_name: "Киделанская Процедура"
@@ -403,6 +428,7 @@
  rite_of_the_vortex_of_imperial_wrath_name: "Обряд Вихря Имперского Гнева"
  rite_of_the_healers_radiance_name: "Обряд Сияния Целителя"
  oath_of_the_unwavering_legionnaire_name: "Клятва Непоколебимого Легионера"
+ invocation_of_the_fire_phalanx_name: "Invocation of the Fire Phalanx"
  rite_of_the_pooled_blood_name: "Обряд Собранной Крови"
  heartsong_of_ietros_name: "Песнь Сердца Иетроса"
  ## Mayikprolollan Golden Age (8th century IS - 11th century IS)
@@ -414,6 +440,7 @@
  phylactery_of_the_trolls_blood_name: "Филактерия Крови Тролля"
  phylactery_of_the_foolsblood_ashes_name: "Филактерия Пепла Глупой Крови"
  phylactery_of_the_hyacinth_wine_name: "Филактерия Гиацинтового Вина"
+ phylactery_of_the_alikarchexian_vitae_name: "Phylactery of the Alikarchexian Vitae"
  magic_child_opinion_modifier_name: "Филактерия Гиацинтового Вина"
  humor_transfusion_syngos_name: "Переливание Гуморов: Сингос"
  humor_transfusion_elemochis_name: "Переливание Гуморов: Элемочис"
@@ -427,6 +454,7 @@
  formula_tetrita_aima_name: "Формула Тетрита Айма"
  procedure_of_the_heart_unvanquished_name: "Процедура Непобежденного Сердца"
  pelinosian_procedure_name: "Пелиносская Процедура"
+ procedure_of_the_grafted_flesh_name: "Procedure of the Grafted Flesh"
  ## Uncategorized
  opakhasian_cup_of_delightful_fumes_name: "Опахасийский Кубок Восхитительных Паров"
 
@@ -456,34 +484,33 @@
  tabela_oejeynicaise_name: "Табела Оежёуникайзе"
  
  sacrifice_rare_herbs_name: "Жертва Редких Трав"
- sacrifice_rare_herbs_desc: "Проверенный метод на протяжении тысячелетий, сжигание редких благовоний и экзотических трав долгое время было основным [Concept('ritual','ритуалом')|E] для вызова магии среди многих [Concept('magi','магов')|E]. Хотя и не такой мощный, как некоторые более #EMP спорные#! обряды, наполняющие магией, он требует лишь глубокого кошелька и доступа к достаточно большому рынку."
+ sacrifice_rare_herbs_desc: "Проверенный метод на протяжении тысячелетий, сжигание редких благовоний и экзотических трав долгое время было основным [Concept('gh_ritual','ритуалом')|E] для вызова магии среди многих [Concept('magi','магов')|E]. Хотя и не такой мощный, как некоторые более #EMP спорные#! обряды, наполняющие магией, он требует лишь глубокого кошелька и доступа к достаточно большому рынку."
  
  purms_mirthful_beginning_name: "Радостное Начало Пурма"
- purms_mirthful_beginning_desc: "Бродячий поэт-воин Пурм — известная фигура в [Concept('western_aironoi_biozone', 'Западно-айронойском')|E] фольклоре, часто изображаемая как туповатый и невыносимый всезнайка, чьи злоключения вращаются вокруг его попыток — и неудач — делать вещи, далеко выходящие за пределы его таланта или знаний. Как функционирующий [Concept('ritual','ритуал')|E] получил имя Пурма, остается неясным, но это нисколько не умаляет эффективности заклинания в помощи изучения навыков, далеких от области его знаний."
+ purms_mirthful_beginning_desc: "Бродячий поэт-воин Пурм — известная фигура в [Concept('western_aironoi_biozone', 'Западно-айронойском')|E] фольклоре, часто изображаемая как туповатый и невыносимый всезнайка, чьи злоключения вращаются вокруг его попыток — и неудач — делать вещи, далеко выходящие за пределы его таланта или знаний. Как функционирующий [Concept('gh_ritual','ритуал')|E] получил имя Пурма, остается неясным, но это нисколько не умаляет эффективности заклинания в помощи изучения навыков, далеких от области его знаний."
  
  hand_spear_and_crown_name: "Рука, Копье и Корона"
- hand_spear_and_crown_desc: "[Concept('ritual','Ритуал')|E] #EMP Рука, Копье и Корона#! — инструмент основателей, первых в своих линиях и решительных восстановителей. Сметая преграды к величию, он широко открывает пути к власти — будь то через бронзу, сталь или монету."
+ hand_spear_and_crown_desc: "[Concept('gh_ritual','Ритуал')|E] #EMP Рука, Копье и Корона#! — инструмент основателей, первых в своих линиях и решительных восстановителей. Сметая преграды к величию, он широко открывает пути к власти — будь то через бронзу, сталь или монету."
  
  animal_aspect_name: "Звериный Аспект"
- animal_aspect_desc: ""
  
  imperial_ascension_name: "Имперское Вознесение"
- imperial_ascension_desc: "Шелковые одеяния, драгоценности, кинжал в спину — у тех, кто у власти, много забот. [Concept('ritual','Ритуал')|E] #EMP Имперское Вознесение#! стремится облегчить трудности бурных начал, укрепляя изящество и авторитет своего субъекта."
+ imperial_ascension_desc: "Шелковые одеяния, драгоценности, кинжал в спину — у тех, кто у власти, много забот. [Concept('gh_ritual','Ритуал')|E] #EMP Имперское Вознесение#! стремится облегчить трудности бурных начал, укрепляя изящество и авторитет своего субъекта."
  
  borrowed_time_march_name: "Марш Взятого Времени"
- borrowed_time_march_desc: "Разве это вина солдата, что он не может маршировать дольше, чем есть часов в сутках? [Concept('ritual','Ритуал')|E] #EMP Марш Взятого Времени#! позволяет [Concept('magi','магу')|E] снять бремя позора и неадекватности с тех, кто готов отдать жизнь за достойное дело — даруя им больше часов в сутках, больше дней в неделе. Странно непопулярный среди призванных юнцов и стариков, что возвращаются спустя лишь недели, заклинание остается ценным инструментом в любом магическом арсенале."
+ borrowed_time_march_desc: "Разве это вина солдата, что он не может маршировать дольше, чем есть часов в сутках? [Concept('gh_ritual','Ритуал')|E] #EMP Марш Взятого Времени#! позволяет [Concept('magi','магу')|E] снять бремя позора и неадекватности с тех, кто готов отдать жизнь за достойное дело — даруя им больше часов в сутках, больше дней в неделе. Странно непопулярный среди призванных юнцов и стариков, что возвращаются спустя лишь недели, заклинание остается ценным инструментом в любом магическом арсенале."
  
  sundering_impetus_name: "Раскалывающий Импульс"
- sundering_impetus_desc: "Желать изменить мир — значит принять [Concept('aspect','аспект')|E] [Concept('aspect_dawn','Расвета')]; обладать решимостью осуществить это — значит общаться с [Concept('aspect_fire','Пламенем')].[Concept('ritual','Ритуал')|E] #EMP Раскалывающий Импульс#! дарует тому, на кого оно наложено, силу формировать историю — шанс переделать смертный мир по своему замыслу."
+ sundering_impetus_desc: "Желать изменить мир — значит принять [Concept('gh_aspect','аспект')|E] [Concept('aspect_dawn','Расвета')]; обладать решимостью осуществить это — значит общаться с [Concept('aspect_fire','Пламенем')].[Concept('gh_ritual','Ритуал')|E] #EMP Раскалывающий Импульс#! дарует тому, на кого оно наложено, силу формировать историю — шанс переделать смертный мир по своему замыслу."
  
  surrender_to_the_wild_name: "Сдача Дикой Природе"
- surrender_to_the_wild_desc: "Подобно тому, как лесные пожары обновляют самые леса, которые они пожирают, природа может отвоевать землю у людей, восстанавливая естественный прилив и отлив магических энергий и [Concept('waylines','лей-линий')|E]. С помощью надлежащего [Concept('ritual','ритуала')|E] предприимчивый [Concept('magi','маг')|E] может собрать и впитать высвобожденную [Concept('magic','магию')|E] в свое существо, значительно усилив свои запасы для заклинаний."
+ surrender_to_the_wild_desc: "Подобно тому, как лесные пожары обновляют самые леса, которые они пожирают, природа может отвоевать землю у людей, восстанавливая естественный прилив и отлив магических энергий и [Concept('waylines','лей-линий')|E]. С помощью надлежащего [Concept('gh_ritual','ритуала')|E] предприимчивый [Concept('magi','маг')|E] может собрать и впитать высвобожденную [Concept('magic','магию')|E] в свое существо, значительно усилив свои запасы для заклинаний."
  
  bestirring_of_the_demesne_eternal_name: "Пробуждение Вечного Владения"
  bestirring_of_the_demesne_eternal_desc: "[Concept('aeras','Аэрас')|E] спит, усыпленный жадностью и страхом людей, порождениеми гибели и бедствия. Вечно умирая, но никогда не умирая; великий труд может пробудить его вновь. #EMP Пробуждение Вечного Владения#!, одна из шести великих магий [Concept('astilik_empire', 'астиликов')|E], пробуждает землю и дарует ей дар изобилия, чтобы она могла цвести и процветать под новым началом — и с новой жизнью."
  
  concordat_of_dawn_and_stars_name: "Согласие Рассвета и Звезд"
- concordat_of_dawn_and_stars_desc: "Одна из шести великих магий астиликов, #EMP Согласие Рассвета и Звезд#! — это [Concept('ritual','ритуал')|E], которое стремится залечить раны, нанесенные земле конфликтами людей, и восстановить ее здоровье и красоту. Хотя [Concept('astilik_empire', 'Астиликийская Империя')|E] никогда не славилась милосердием или мягкостью — особенно по отношению к некоторым своим ранним противникам — сама земля никогда не считалась запятнанной действиями тех, кто ходит по ней, будь то враг, зверь или иное. Часто считаемая посторонними ошибочной или расточительной, такая магия тем не менее остается одним из немногих способов обуздать бушующие магические энергии, сеющие хаос по [Concept('aeras','Аэрасу')|E]."
+ concordat_of_dawn_and_stars_desc: "Одна из шести великих магий астиликов, #EMP Согласие Рассвета и Звезд#! — это [Concept('gh_ritual','ритуал')|E], которое стремится залечить раны, нанесенные земле конфликтами людей, и восстановить ее здоровье и красоту. Хотя [Concept('astilik_empire', 'Астиликийская Империя')|E] никогда не славилась милосердием или мягкостью — особенно по отношению к некоторым своим ранним противникам — сама земля никогда не считалась запятнанной действиями тех, кто ходит по ней, будь то враг, зверь или иное. Часто считаемая посторонними ошибочной или расточительной, такая магия тем не менее остается одним из немногих способов обуздать бушующие магические энергии, сеющие хаос по [Concept('aeras','Аэрасу')|E]."
  
  devouring_curse_name: "Пожирающее Проклятие"
  devouring_curse_desc: ""
@@ -491,15 +518,79 @@
  blood_conduit_spell_desc: ""
 
  # Dead Magic Spells
+ mithorxas_embrace_name: "Mithorxa's Embrace"
+ #mithorxas_embrace_short_desc: ""
+ rite_of_dragonbone_divination_name: "Rite of Dragonbone Divination"
+ rite_of_dragonbone_divination_short_desc: "See the cracks spread like spilled ink upon parchment. Read their wisdom."
+ drakotekna_mikra_name: "Drakotekna Mikra"
  sigil_soters_shield_name: "Сигил Щита Сотера"
  sigil_naupyrnan_octagram_name: "Наупирнанская Октаграмма"
  sigil_three_lobed_walnut_name: "Сигил Трёхдольного Ореха"
  sigil_sundered_three_lobed_walnut_name: "Сигил Расколотого Трёхдольного Ореха"
- ward_of_the_ashen_key_name: "Оберег Пепельного Ключа"
+ ward_of_the_ashen_key_name: "Печать Пепельного Ключа"
  technique_of_the_twelve_folds_name: "Техника Двенадцати Складок"
  sigil_of_the_widows_iron_name: "Сигил Вдовьего Железа"
+ sigil_of_kimiox_pseudo_petrification_name: "Sigil of Kimiox' Pseudo-Petrification"
+ ward_of_the_calcinated_heart_name: "Ward of the Calcinated Heart"
+ eye_of_the_stone_serpent_name: "Eye of the Stone Serpent"
+ paean_of_the_kannystine_kings_name: "Paean of the Kannystine Kings"
+ rune_of_the_worm_ouroboros_name: "Rune of the Worm Ouroboros"
+ rune_of_the_worm_ouroboros_short_desc: "Megaliths bearing this ancient sigil are scattered all around Pergicos, generally assumed to of Seychescian origin — but considered by some to be even older. Though most locals are wont to keep a respectful distance, the surrounding chernozem often proves to be too much of a temptation."
+ thronactian_rite_name: "Thronactian Rite"
+ rite_of_the_crescent_aervalr_guard_name: "Rite of the Crescent-Aervalr Guard"
+ rite_of_the_emerald_rhabdos_name: "Rite of the Emerald Rhabdos"
+ amulet_of_the_beggar_prince_name: "Amulet of the Beggar Prince"
+ ring_of_the_oidos_fingerbone_name: "Ring of the Oidos' Fingerbone"
  rite_of_the_aspomnoxian_earthshakers_name: "Обряд Аспомноских Сотрясателей Земли"
  rite_of_the_diminished_aervalrshard_name: "Обряд Уменьшенного Аэрвалрского Осколка"
+ rite_of_the_black_omphalos_name: "Rite of the Black Omphalos"
+ karyx_talisman_name: "Karyx Talisman"
+ karyx_talisman_short_desc: "\"LXXXVII: If any man strikes a bearer of the office of Karyx: he shall be put to death by lashing, his blood shall be drained and sent to the offended polis, and his remains shall be thrown into the sea.\"\n~Law Code of Thaelexia of Gortillax"
+ pollididaic_talisman_name: "Pollididaic Talisman"
+ neroth_invocation_name: "NE'roth Invocation"
+ neroth_invocation_short_desc: "\"Though I have revealed to you [aspect_death]'s true name, do not call upon it unless in straits most dire; and if you are ever in great temptation, remember the folly of Laxathios.\"\n~NOMATA Maikhixiana"
+ aervalrea_invocation_name: "AER'val'REA Invocation"
+ aervalrea_invocation_short_desc: "[aervalr|E]'s NOMA, nearly cyclical yet ever-slightly flawed, had portended its calamitous fate long ago."
+ xarax_anina_invocation_name: "XARAX AN'i'NA Invocation"
+ xarax_anina_invocation_short_desc: "\"#EMP Neither man nor [Concept('dragons','dragon')|E] was spared by the terrible mountain of flying cobble and boulders that fell upon the Androxi, and so horrible was the carnage that the meadow would come to be known as the Field of the Broken.#!\"\n~The Tale of Two Cities"
+ #xarax_anina_invocation_desc: "An invocation that allows the user to lift heaps of pebbles, rocks and even entire boulders into the air, generally for combat purposes. Its use was particularly widespread during the late pre-Imperial and early Imperial eras of [aversaria|E], when it proved particularly deadly against the [Concept('dragons','dragon')|E]-centered armies of the period, though it would see a significant decline in use after the [war_of_the_thousand_dragons|E]."
+ # Wizard King Staff Cantrips
+ cetos_temellos_name: "Cetos Temellos"
+ cetos_temellos_short_desc: "#F Shadow that clings to the wood's edge.#!"
+ metela_isarni_name: "Metela Isarni"
+ metela_isarni_short_desc: "#F Your harvest is mine, your fields are mine, your village is mine, your blood is mine.#!"
+ lissos_vergoton_name: "Lissos Vergoton"
+ lissos_vergoton_short_desc: "#F Fealty through fear.#!"
+ vlatis_scataca_name: "Vlatis Scataca"
+ vlatis_scataca_short_desc: "#F The living keep secrets, and will always seek to betray you.#!"
+ # Tarfal Staff Cantrips
+ twin_gods_endurance_name: "Twin Gods' Endurance"
+ twin_gods_endurance_short_desc: "What the earth holds, it holds forever. What grows in it outlasts what is built upon it."
+ # Beekeeper's Wand Cantrips
+ swarms_rally_name: "Swarm's Rally"
+ swarms_rally_short_desc: "Alone, a bee is nothing. Together, they have turned armies."
+ sililis_kalprithon_invocation_name: "SILILIS KAL'prithon Invocation"
+ eraxare_invocation_name: "ERAXARE Invocation"
+ lariral_invocation_name: "LARIRAL invocation"
+ aroteretora_alxargan_katadesmos_name: "AROTERETORA AL'xargan Katadesmos"
+ aroteretora_alxargan_katadesmos_short_desc: "\"The last laugh was mine! The last laugh was mine!\"\n~Stythis and Achrythea"
+ nanunan_dalrioneth_katadesmos_name: "NANUNAN DAL'rioneth Katadesmos"
+ katadesmos_krysos_name: "Katadesmos Krysos"
+ erudain_katadesmos_name: "ERU'dain Katadesmos"
+ tirit_onerit_katadesmos_name: "TIRIT ON'erit Katadesmos"
+ kalixtine_lapidary_name: "Kalixtine Lapidary"
+ ## Harmonic Nomata
+ black_kithara_resonance_name: "Black Kithara Resonance"
+ white_kithara_resonance_name: "White Kithara Resonance"
+ neroth_nomacousta_name: "NE'roth Nomacousta"
+ lariral_nomacousta_name: "LARIRAL Nomacousta"
+ ## Theyssianic Alchemy
+ first_theyssianic_logos_name: "First Theyssianic Logos"
+ second_theyssianic_logos_name: "Second Theyssianic Logos"
+ third_theyssianic_logos_name: "Third Theyssianic Logos"
+ tharsanic_elaboration_name: "Tharsanic Elaboration"
+ tornil_fermentation_name: "TOR'nil Fermentation"
+ tarchaesian_alembroth_formula_name: "Tarchaesian Alembroth Formula"
 
  # School of Rejection Spells
  ## Pre-Sorrowing Period (??? - 3rd century IS)
@@ -523,6 +614,10 @@
  blood_rage_spell_name: "Кровавая Ярость"
  blood_rage_spell_desc: "Заклинатель использует магию [Concept('aspect_blood','крови')], чтобы увеличить свирепость своих войск."
 
+ # Auroral Cycle
+ animal_aspect_short_desc: "Bind your spirit to a creature of the wild. What answers your call depends on where you stand and who you are."
+
+
  # Greenwender of Sarradon Spells
  justice_of_the_primeval_garden_name: "Правосудие Первобытного Сада"
  justice_of_the_primeval_garden_desc: "Мифический лес, некогда покрывавший северный [Concept('sarradon','Саррадона')|E], был суровым и беззаконным местом, где единственным правосудием было то, что вершилось грубой силой. В те времена участь поражения от рук другого существа была не просто смертью, но и потерей самой души в пользу победителя. Наиболее известным образом именно так легендарные Дишали и Авгали достигли своей почти божественной силы, убив левиафанов, Лесных Королей и полубогов без счета.\n\nПо крайней мере, так гласят мифы.\n\nВ наши дни немногие верят, что эта идея — что-то большее, чем причудливый литературный прием. Некоторые, однако, утверждают, что этот закон давно ушедшего мира не просто реален, но все еще обладает некоторой силой — и его нужно лишь правильно призвать, чтобы он снова заработал."
@@ -543,35 +638,35 @@
 
  # Temple of the Vitreous Precept Spells
  shattercurse_name: "Сокрушающее проклятье"
- shattercurse_desc: "Часто упоминаемый любимый инструмент среди энтузиастов стеклянных [Concept('magi','магов')|E], Проклятие Сокрушения Мира — обычно сокращаемое как #EMP Сокрушающее проклятье#! — является основным элементом многих магических арсеналов. Гранича между [Concept('ritual','ритуалом')|E] и заговором, оно ценится за простоту своей симпатической связи, #EMP относительную#! эффективность и еще более относительную скорость произнесения."
+ shattercurse_desc: "Часто упоминаемый любимый инструмент среди энтузиастов стеклянных [Concept('magi','магов')|E], Проклятие Сокрушения Мира — обычно сокращаемое как #EMP Сокрушающее проклятье#! — является основным элементом многих магических арсеналов. Гранича между [Concept('gh_ritual','ритуалом')|E] и заговором, оно ценится за простоту своей симпатической связи, #EMP относительную#! эффективность и еще более относительную скорость произнесения."
  conduit_of_a_clear_mind_name: "Проводник Ясного Ума"
  conduit_of_a_clear_mind_desc: "Подобно тому, как разбитое стекло можно переплавить и придать новую форму, страдающий разум можно вновь наполнить энергией и дать новую цель. Также известное как Заклинание Ученых, #EMP Проводник Ясного Ума#! позволяет психике заклинателя вновь утвердиться среди моря неопределенности, возвращая его внимание к тому, что действительно важно."
  shard_of_imbued_knowledge_name: "Осколок Вложенного Знания"
  shard_of_imbued_knowledge_desc: "Стеклянные осколки — один из менее распространенных методов передачи знаний, обычных или иных, в умы готовых получателей — как из-за интимности процесса, так и из-за нагрузки, которую он оказывает на разум. Пораженные воспоминания временно путаются, и опыт одинаково [Concept('stress','стрессовый')|E] как для учителя, так и для ученика."
  kumhants_veil_name: "Покров Кумханта"
- kumhants_veil_desc: "Происходящее из доктрин традиционно пацифистского [GetReligionByKey('sunarwei_religion').GetAdjective] вероучения, #EMP Покров Кумханта#! — это благословение авангардов и защитников, оберегающее от смертельных ударов и дарующее воинам неестественную грацию и плавность. Исторически этот [Concept('ritual','ритуал')|E] часто совместно произносился [Concept('magi','магами')|E] армий, участвующих в высоко регулируемых [GetCulturePillar('heritage_kherkeloi').GetName] войнах, чтобы уменьшить потери и облегчить обмен пленными после битв."
+ kumhants_veil_desc: "Происходящее из доктрин традиционно пацифистского [GetReligionByKey('sunarwei_religion').GetAdjective] вероучения, #EMP Покров Кумханта#! — это благословение авангардов и защитников, оберегающее от смертельных ударов и дарующее воинам неестественную грацию и плавность. Исторически этот [Concept('gh_ritual','ритуал')|E] часто совместно произносился [Concept('magi','магами')|E] армий, участвующих в высоко регулируемых [GetCulturePillar('heritage_kherkeloi').GetName] войнах, чтобы уменьшить потери и облегчить обмен пленными после битв."
  mellifluent_vessel_name: "Мелодичный Сосуд"
  mellifluent_vessel_desc: "Почтенная профессия стеклянного певца родилась, когда [Concept('magi','маги')|E] обнаружили способ зачаровать голосовые связки стеклоподобными свойствами, придав голосу уникальное и мелодичное качество. Менее чем за столетие заклинание и его пользователи распространились по Морю Империй, некоторые даже решили сделать превращение постоянным."
  ururras_augury_name: "Авгура Урурры"
- ururras_augury_desc: "Урурра была верховной жрицей и, после одного успешного переворота, правительницей дворцового города Сунакари [Glossary('Gishvosk','GH_GISHVOSK_GLOSS')]. Разработав особенно мощный [Concept('ritual','ритуал')|E] гадания, который включал бросание стеклянных бусин в неглубокую миску с кипящим можжевеловым маслом, она вела кампанию террора против будущих угроз, как реальных, так и предполагаемых, в конечном итоге погибнув в огненном бунте, который поглотил город. Последующие поколения [Concept('magi','магов')|E] пришли к выводу, что заклинание действительно раскрывает будущее — просто худшую его версию; современные итерации предлагают внедрение корректирующего критерия, чтобы компенсировать его предвзятость предсказаний."
+ ururras_augury_desc: "Урурра была верховной жрицей и, после одного успешного переворота, правительницей дворцового города Сунакари [Glossary('Gishvosk','GH_GISHVOSK_GLOSS')]. Разработав особенно мощный [Concept('gh_ritual','ритуал')|E] гадания, который включал бросание стеклянных бусин в неглубокую миску с кипящим можжевеловым маслом, она вела кампанию террора против будущих угроз, как реальных, так и предполагаемых, в конечном итоге погибнув в огненном бунте, который поглотил город. Последующие поколения [Concept('magi','магов')|E] пришли к выводу, что заклинание действительно раскрывает будущее — просто худшую его версию; современные итерации предлагают внедрение корректирующего критерия, чтобы компенсировать его предвзятость предсказаний."
  forge_of_the_solemn_visionary_name: "Кузня Торжественного Провидца"
- forge_of_the_solemn_visionary_desc: "До возвышения [GetCulturePillar('heritage_kherkeloi').GetName] дворцовых городов, до разрушения [Concept('wars_of_dominion','Войны за господство')|E], до [Concept('ertomax','Эртомакса')|E] и [Concept('astilik_empire','астиликов')|E] были [Glossary('Нагаторы','GH_NUGATORS_GLOSS')] — просвещенные тираны-правители моря. Управляя с шелковой перчаткой, обернутой вокруг цепи работорговца, им часто приписывают основание  [Concept('aironoian_bronze_age','первых цивилизаций Айроноя')|E], создание царств, которые переживут их самих. Хотя в значительной степени забытые под тяжестью истории, некоторые из [Concept('ritual','ритуалов')|E] Нагаторов выдержали испытание временем, в конечном итоге став инструментами прогресса для самых народов, которыми они когда-то правили."
+ forge_of_the_solemn_visionary_desc: "До возвышения [GetCulturePillar('heritage_kherkeloi').GetName] дворцовых городов, до разрушения [Concept('wars_of_dominion','Войны за господство')|E], до [Concept('ertomax','Эртомакса')|E] и [Concept('astilik_empire','астиликов')|E] были [Glossary('Нагаторы','GH_NUGATORS_GLOSS')] — просвещенные тираны-правители моря. Управляя с шелковой перчаткой, обернутой вокруг цепи работорговца, им часто приписывают основание  [Concept('aironoian_bronze_age','первых цивилизаций Айроноя')|E], создание царств, которые переживут их самих. Хотя в значительной степени забытые под тяжестью истории, некоторые из [Concept('gh_ritual','ритуалов')|E] Нагаторов выдержали испытание временем, в конечном итоге став инструментами прогресса для самых народов, которыми они когда-то правили."
  supplication_to_the_unfettered_muse_name: "Мольба к Нескованной Музе"
  supplication_to_the_unfettered_muse_desc: "Чтобы получить благословение [Glossary('Нашанар','GH_NASHANAR_GLOSS')], проситель должен пройти трехдневный пост, потребляя ничего, кроме зачарованной смеси молока и макового масла, чтобы войти в продолжительное состояние индуцированной мании. Оказавшись в нем, человек обычно начинает избегать всего, что он считает тривиальным по сравнению с задачей, над которой он одержим — такой как еда, сон и общее телесное благополучие. Хотя субъекты демонстрируют замечательную психическую стабильность, несмотря на пренебрежение своими физическими потребностями, ритуал не предлагает реальной защиты от недугов или недоедания."
  lacerating_glasswinds_name: "Режущие Стеклянные Ветра"
- lacerating_glasswinds_desc: "Где один порез болезнен, десять могут быть смертельны — а сотня свалят любого воина. Стеклянных [Concept('magi','магов')|E] знают, боятся, и некоторыми презираемы за их способность вызывать огромные бури их тезки, иногда покрывая целые города калейдоскопическими циклонами сверкающих стеклянных осколков. Используемый либо как последнее средство перед наступающей силой, либо как само нападение, [Concept('ritual','ритуал')|E] всегда берет смертельную дань с тех, кто достаточно несчастлив, чтобы оказаться на линии огня."
+ lacerating_glasswinds_desc: "Где один порез болезнен, десять могут быть смертельны — а сотня свалят любого воина. Стеклянных [Concept('magi','магов')|E] знают, боятся, и некоторыми презираемы за их способность вызывать огромные бури их тезки, иногда покрывая целые города калейдоскопическими циклонами сверкающих стеклянных осколков. Используемый либо как последнее средство перед наступающей силой, либо как само нападение, [Concept('gh_ritual','ритуал')|E] всегда берет смертельную дань с тех, кто достаточно несчастлив, чтобы оказаться на линии огня."
  interminable_nexus_name: "Нескончаемый Нексус"
- interminable_nexus_desc: "Среди множества мелких сунакарских военачальников, захвативших власть после [Concept('wars_of_dominion','Войны за господство')|E], универсально повсеместны были только две вещи — безудержная паранойя по отношению к своим сверстникам и непреклонная решимость отбросить все, что могло препятствовать прогрессу. Законное дитя их амбиций, [Concept('ritual','ритуал')|E] #EMP Нескончаемый Нексус#! искажает восприятие цели, легко revealing все неэффективности в их окружении ценой сильного побуждения исправить их — не смотря на цену."
+ interminable_nexus_desc: "Среди множества мелких сунакарских военачальников, захвативших власть после [Concept('wars_of_dominion','Войны за господство')|E], универсально повсеместны были только две вещи — безудержная паранойя по отношению к своим сверстникам и непреклонная решимость отбросить все, что могло препятствовать прогрессу. Законное дитя их амбиций, [Concept('gh_ritual','ритуал')|E] #EMP Нескончаемый Нексус#! искажает восприятие цели, легко revealing все неэффективности в их окружении ценой сильного побуждения исправить их — не смотря на цену."
  pane_of_passage_name: "Панель Перехода"
  pane_of_passage_desc: "Использование стеклянных панелей для пространственных передвежений издавна было частью [GetCulturePillar('heritage_kherkeloi').GetName] фольклора, с точноым началом такого ремесла, безвозвратно утеряным в истории. Тем не менее, с точной смесью материалов, продвинутыми знаниями и навыками мастера-стеклодува, телепортация становится реальностью — пусть и мимолетной, поскольку стеклянный портал темнеет и трескается всего лишь несколько дней после того, как он был зачарован."
 
  # Wane-Tender Harmoniarchy
 
  searing_cleansing_name: "Опаляющее Очищение"
- searing_cleansing_desc: "Пути Хранителей Увядания никогда не отличались мягкостью — но никто не посмеет оспорить эффективность их обрядов и [Concept('ritual','ритуалов')|E]. Будь то скальпель или гримуар, болезнь должна быть выжжена из тела любыми необходимыми средствами — средствами, не терпящими ни колебаний, ни полумер."
+ searing_cleansing_desc: "Пути Хранителей Увядания никогда не отличались мягкостью — но никто не посмеет оспорить эффективность их обрядов и [Concept('gh_ritual','ритуалов')|E]. Будь то скальпель или гримуар, болезнь должна быть выжжена из тела любыми необходимыми средствами — средствами, не терпящими ни колебаний, ни полумер."
  
  lustrous_banner_name: "Сияющее Знамя"
- lustrous_banner_desc: "Слава, богатство, страх, гнев — много причин может заставить человека взять меч и отвергнуть мирную жизнь. Каковы бы ни были их мотивы, [Concept('ritual','ритуал')|E] #EMP Сияющее Знамя#! приведёт их туда, где они нужнее всего, сражаясь за то, что #EMP без сомнения#! является праведным делом."
+ lustrous_banner_desc: "Слава, богатство, страх, гнев — много причин может заставить человека взять меч и отвергнуть мирную жизнь. Каковы бы ни были их мотивы, [Concept('gh_ritual','ритуал')|E] #EMP Сияющее Знамя#! приведёт их туда, где они нужнее всего, сражаясь за то, что #EMP без сомнения#! является праведным делом."
  
  conjure_salt_name: "Призыв Соли"
  conjure_salt_desc: "#EMP Пусть поля пустуют, реки мелеют,\nОна пребудет, сквозь времён гнет,\nВ котле нищего и на пиру владык,\nДар и моря, и камня щедрот.#!\n~Ходомская дворцовая поэзия, ок. 100 ИС"
@@ -583,14 +678,17 @@
  weapons_of_perdition_desc: "В древности халитовый храм охраняли четыреста священных стражников, несущих вечный дозор у реликвариев и наблюдавших за бесконечным потоком паломников. Хотя их орден распался во времена [Concept('otachedian_empire','Отачеда')|E], их искусство распространилось далеко за первоначальные пределы, и некогда эксклюзивные [Concept('perdition_armaments','Орудия Погибели')|E] стали основным вооружением элитных воинов многих армий [Concept('kashirya','Каширьи')|E] и Айроноя."
  
  kingsfall_name: "Падение Королей"
- kingsfall_desc: "Нет вечных королевств, нет несокрушимых монархов. Любимый инструмент смутьянов и кукловодов, [Concept('ritual','ритуал')|E] #EMP Падение Королей#! раздувает малейшие трещины в любой власти, превращая их в пропасти, где соратник идёт против соратника, а брат — против брата."
+ kingsfall_desc: "Нет вечных королевств, нет несокрушимых монархов. Любимый инструмент смутьянов и кукловодов, [Concept('gh_ritual','ритуал')|E] #EMP Падение Королей#! раздувает малейшие трещины в любой власти, превращая их в пропасти, где соратник идёт против соратника, а брат — против брата."
  
  koshmers_dreaming_archive_name: "Сновидческий Архив Кошмера"
- koshmers_dreaming_archive_desc: "Кошмер, прославленный кходомиский учёный и Хранитель Увядания III века, известный своими почти чудесными методами лечения и еретическими взглядами, исчез на пике славы. Его единственным наследием стал [Concept('ritual','ритуал')|E], записанный на вырванной странице гримуара — заклинание, переносящее сознание спящего в тускло освещённую библиотеку, переполненную знаниями как медицинскими, так и мирскими. Ритуал безопасен — если не тревожить других посетителей и не попасть в сети Библиотекаря."
+ koshmers_dreaming_archive_desc: "Кошмер, прославленный кходомиский учёный и Хранитель Увядания III века, известный своими почти чудесными методами лечения и еретическими взглядами, исчез на пике славы. Его единственным наследием стал [Concept('gh_ritual','ритуал')|E], записанный на вырванной странице гримуара — заклинание, переносящее сознание спящего в тускло освещённую библиотеку, переполненную знаниями как медицинскими, так и мирскими. Ритуал безопасен — если не тревожить других посетителей и не попасть в сети Библиотекаря."
  
  final_emissary_of_peace_name: "Последний Посланник Мира"
  final_emissary_of_peace_desc: "Сегодня вновь пришли посланники Храма с тем же предложением. [GetFaithByKey('sunarwei').HighGodName] ведает, моя семья всегда щедро жертвовала в их казну, но требования жрецов стали невыносимы. Они жаждут не дани, не податей — а полного подчинения под видом вассалитета. Может, они и утратили свою реликвию в [Concept('desiccation_of_kazvosk','Казвоске')|E], но кто знает, что ещё скрыто в их сокровищницах?\n~Из дневника Аломора Хорддима VII Меррумского"
- 
+
+ conjure_oasis_name: "Waters Rising"
+ conjure_oasis_desc: "Seek beneath the shifting sands for streams once lost and rivers long dried, and bring forth a new spring, for a time."
+
  #grimoire Spells
  calming_of_the_sea_queen_name: "Успокоение Морской Королевы"
  calming_of_the_sea_queen_desc: "Говорят, что это заклинание успокаивает Королеву глубин, оно действительно успокаивает моря и увеличивает скорость и безопасность путешествий."
@@ -651,8 +749,6 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
 
  #negate_enemy_advantage_magic_modifier: "Магия формирования местности"
  negate_enemy_advantage_magic_modifier_desc: "Заклинания этого персонажа позволяют изменять различные формы материи, давая возможность с лёгкостью преодолевать даже самую сложную местность."
- #knight_effectiveness_magic_modifier: "Зачарованные рыцари"
- knight_effectiveness_magic_modifier_desc: "Воины этого персонажа движутся с неестественной грацией, которую можно было получить только магическим путём."
  army_damage_magic_modifier: "Магическое Оружие"
  army_damage_magic_modifier_desc: "Оружие воинов этого персонажа мерцает странным светом - верный признак магического вмешательства."
  #army_damage_negative_magic_modifier: "Ослабленные Воины"
@@ -662,8 +758,6 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  
  #magic_omen_diplomacy_modifier: "Видения Речей"
  magic_omen_diplomacy_modifier_desc: "Этот персонаж получил видения, раскрывающие тайные способы влияния на других с помощью слов."
- #magic_omen_intrigue_modifier: "Видения Интриг"
- magic_omen_intrigue_modifier_desc: "Этот персонаж получил видения, раскрывающие секретные методы создания планов, невидимых для врагов."
  #magic_omen_martial_modifier: "Видения Войны"
  magic_omen_martial_modifier_desc: "Этот персонаж получил видения, раскрывающие секретные стратегии для перелома хода войны."
  #magic_omen_stewardship_modifier: "Видения Управления"
@@ -700,9 +794,6 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  
  magic_levy_reinforcement_rate_gain_modifier_desc: "Воинам этого персонажа магически обеспечено пребывание в пике здоровья и боевой готовности."
   
- #magic_hostile_scheme_discovery_gain_modifier: "Бдительные глаза"
- magic_hostile_scheme_discovery_gain_modifier_desc: "Этот персонаж сверхъестественно осведомлен о каждой детали своего окружения."
-  
  #backfire_county_debuff_modifier: "Магическая оплошность"
  backfire_county_debuff_modifier_desc: "Эти земли неблагоприятно затронуты магическим миазмом."
  #backfire_county_debuff_earth_modifier: "Буйные обломки"
@@ -736,28 +827,17 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
   
  magic_fallout_modifier: "Магические последствия"
  magic_fallout_modifier_desc: "Какое-то прошлое бедствие оставило эту область с высоким уровнем окружающей [Concept('magic','магии')|E], вызывая пагубные эффекты для местной обычной жизни (если она еще осталась)."
-  
- # magic_shattered_defenses_modifier: "Разрушенные укрепления"
- magic_shattered_defenses_modifier_desc: "Защита этого владения разрушена мощным заклинанием."
  #magic_ruined_agriculture_modifier: "Уничтоженные урожаи"
  magic_ruined_agriculture_modifier_desc: "Магия отравила эти земли, уничтожив урожаи и препятствуя росту новой жизни."
  #magic_destroyed_buildings_modifier: "Городское опустошение"
  magic_destroyed_buildings_modifier_desc: "Сама земля была разорвана на части катастрофой, рожденной магией. Жители этих земель практически уничтожены, а немногие выжившие лишь ждут сладкого освобождения смерти."
-  
- # magic_stress_gain_mult_modifier: "Ослабленная психика" (дубликат)
- magic_stress_gain_mult_modifier_desc: "Этот персонаж стал более восприимчив к стрессу магическими средствами."
- 
+
+
  #magic_cultural_head_fascination_add_modifier: "Усиленные инновации"
  magic_cultural_head_fascination_add_modifier_desc: "Добавляет аддитивный бонус к  [Concept('cultural_fascination','культурному')|E] прогрессу персонажа."
  
- #magic_cultural_head_fascination_mult_modifier: "Магическая изобретательность"
- magic_cultural_head_fascination_mult_modifier_desc: "Добавляет мультипликативный бонус к  [Concept('cultural_fascination','культурному')|E] прогрессу персонажа."
- 
  add_magic_cultural_head_fascination_add_name: "Усиленные инновации"
  add_magic_cultural_head_fascination_add_desc: "Добавляет аддитивный бонус к  [Concept('cultural_fascination','культурному')|E] прогрессу персонажа."
- 
- add_magic_cultural_head_fascination_mult_name: "Магическая изобретательность"
- add_magic_cultural_head_fascination_mult_desc: "Добавляет мультипликативный бонус к  [Concept('cultural_fascination','культурному')|E] прогрессу персонажа."
  
  add_magic_scheme_discovery_chance_mult_negative_name: "Ослабленное проницательность"
  add_magic_scheme_discovery_chance_mult_negative_desc: "Уменьшает шанс обнаружения враждебных заговоров у цели."
@@ -772,22 +852,10 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  #add_character_modifier_diplomacy_magic_modifier_vassal_opinion_positive_desc: "[ROOT.Story.Custom('SpellEffectTarget')|U] получает до максимума #positive_value [GuiScope.SetRoot(ROOT.Story.MakeScope).AddScope('spell_being_casted', ROOT.Story.MakeScope.Var('parent_spell').Story.MakeScope).ScriptValue('spell_tag_scalar_threshold_diff_value')|0]#! уровней [GetModifier('diplomacy_magic_modifier_vassal_opinion_positive').GetNameWithTooltip] (#positive_value +1#! за [ROOT.Story.Custom('SpellEffectScalar1')])"
  
  add_character_modifier_prowess_resistance_positive_name: "Колдовская устойчивость"
- add_character_modifier_prowess_resistance_positive_desc: "Усиливает сопротивление доблести у цели"
+ add_character_modifier_prowess_resistance_positive_desc: "Усиливает сопротивление доблести у цели."
  
  add_character_modifier_diplomacy_negative_name: "Ослабленная дипломатия"
  add_character_modifier_diplomacy_negative_desc: "Уменьшает [Concept('diplomacy','дипломатию')|E] цели" 
- 
- # magic_stress_loss_mult_modifier: "Успокоенная психика" (дубликат)
- magic_stress_loss_mult_modifier_desc: "Способность этого персонажа избавляться от стресса усилена магическими средствами."
- 
- # magic_stress_positive: "Укрепленная психика" (дубликат)
- magic_stress_positive_desc: "Этот персонаж стал менее восприимчив к стрессу магическими средствами."
- 
- # diplomacy_magic_modifier_seduction_negative: "Неумелое соблазнение" (дубликат)
- diplomacy_magic_modifier_seduction_negative_desc: "Дает временное уменьшение [Concept('scheme_success_chance','шансов на успех')|E] соблазнения и [Concept('attraction','привлекательности')|E] с [Concept('opinion','мнением')|E]."
- 
- #magic_defiled_nadir_modifier: "Оскверненный надир"
- magic_defiled_nadir_modifier_desc: "Этот персонаж связал значительную часть себя со своей маской, чтобы избежать недостатков плоти."
  
   magic_spirithost_modifier: "Носитель Духа"
   magic_spirithost_modifier_desc: "Сосуд - это плоть, и многие суть одно."
@@ -800,9 +868,20 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  
   magic_defiled_nadir_broken_bond_modifier: "Разорванная связь"
   magic_defiled_nadir_broken_bond_modifier_desc: "Этот персонаж был искалечен отдачей разорванной магической связи."
-  
-  religous_fanaticism: "Религиозный фанатизм"
-  religous_fanaticism_desc: "Этот персонаж не терпит того, что отклоняется от его веры."
+
+ male_magi_liked_modifier: "Properly Gendered"
+ male_magi_liked_modifier_desc: "Male [magi|E] are celebrated by this character's peers."
+
+ female_magi_liked_modifier: "Properly Gendered"
+ female_magi_liked_modifier_desc: "Female [magi|E] are celebrated by this character's peers."
+
+ male_magi_disliked_modifier: "Improperly Gendered"
+ male_magi_disliked_modifier_desc: "Male [magi|E] are shunned by this character's peers."
+
+ female_magi_disliked_modifier: "Improperly Gendered"
+ female_magi_disliked_modifier_desc: "Female [magi|E] are shunned by this character's peers."
+
+ religous_fanaticism_desc: "Этот персонаж не терпит того, что отклоняется от его веры."
 # MAA improvements
  
  magic_undead_improvement_modifier: "Улучшенные нежить"
@@ -811,25 +890,7 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  
  magic_monsters_improvement_modifier: "Улучшенные монстры"
 
- # Resource Modifiers (Move this elsewhere later)
- #resource_exotic_metals_modifier: "Экзотические металлы"
- resource_exotic_metals_modifier_desc: "Будь то из-за [Concept('magic','магии')|E] или природы, в этой области есть значительные залежи экзотических металлов."
- 
- #resource_abundant_stone_modifier: "Обильный камень"
- resource_abundant_stone_modifier_desc: "Будь то из-за [Concept('magic','магии')|E] или природы, в этой области есть изобилие высококачественного камня."
- 
- #resource_excellent_soil_modifier: "Отличная почва"
- resource_excellent_soil_modifier_desc: "Будь то из-за [Concept('magic','магии')|E] или природы, почва в этой области действительно отлично подходит для сельского хозяйства."
- 
- #resource_verdant_plant_growth_modifier: "Буйный рост растений"
- resource_verdant_plant_growth_modifier_desc: "Будь то из-за [Concept('magic','магии')|E] или природы, флора в этой области растет с поистине необычайной скоростью."
- 
- # Travel-Related Modifiers
- # travel_advantage_magic_modifier: "Быстроногий" (дубликат)
- travel_advantage_magic_modifier_desc: "Этот персонаж способен преодолевать огромные расстояния в рекордное время."
- 
- # travel_disadvantage_magic_modifier: "Замедленный" (дубликат)
- travel_disadvantage_magic_modifier_desc: "Этот персонаж замедлен в своих путешествиях магическими средствами."
+
 
 ############
 # TOOLTIPS #
@@ -850,7 +911,6 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  requires_dead_parent_tooltip: "#X Цель должна иметь хотя бы одного умершего родителя#!"
  
  inter_in_ice_tooltip: "[inter_in_ice_prisoner_scope.GetFirstName] превращается в [Concept('court_artifact','ледяную скульптуру')|E]."
- animal_aspect_spell_effect_tooltip: "[THIS.Char.GetName] настраивает [THIS.Char.GetHerselfHimself] на местное животное #n (Скоро)#!"
  county_increase_magic_wounds_tooltip:90 "Может ранить или убить персонажей в целевом [Concept('county','графстве')|E]."
   
  generated_magic_from_current_moon_phase.tooltip: "#X Вы уже извлекли магическую силу из этой #! #E Фазы Луны#!"
@@ -874,38 +934,44 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  NOT_I_HAVE_MAGIC_COUNTER_TRIGGER:1 "У вас #bold нет#! достаточно @magic_icon!Магии"
  THEY_HAVE_MAGIC_COUNTER_TRIGGER: "[CHARACTER.GetShortUIName|V] имеет достаточно @magic_icon!Магии"
  NOT_THEY_HAVE_MAGIC_COUNTER_TRIGGER: "[CHARACTER.GetShortUIName|V] #bold не#! имеет достаточно @magic_icon!Магии"
+ NOT_EXCEEDS_CANTRIP_LIMIT: "Must not exceed [cantrip|E] limit ([CHARACTER.MakeScope.ScriptValue('cantrip_limit_value')|V0])"
   
 ################
 # MISC EFFECTS #
 ################
  
  MODIFIER_DEFINITION_VALUE_BASED_ON_MAGIC_PROWESS: " \t#weak Увеличение за [magic_prowess_i][Concept('magic_prowess_skill','магическое мастерство')|E]#!"
- MODIFIER_DEFINITION_VALUE_BASED_ON_RITUAL_LEVEL: " \t#weak Увеличение за силу [Concept('ritual','ритуала')|E]#!"
- set_stacking_modifier_to_level_character_effect_tooltip: "[THIS.Char.GetName] получает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] до [SCOPE.GetValue('level')] уровня на [SCOPE.GetValue('years')] лет"
+ MODIFIER_DEFINITION_VALUE_BASED_ON_RITUAL_LEVEL: " \t#weak Увеличение за силу [Concept('gh_ritual','ритуала')|E]#!"
+ set_stacking_modifier_to_level_character_effect_tooltip: "[THIS.Char.GetName] получает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] до [SCOPE.GetValue('level')] уровня на [SCOPE.GetValue('months')] месяцев"
  set_stacking_modifier_to_level_permanently_character_effect_tooltip: "[THIS.Char.GetName] получает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] до [SCOPE.GetValue('level')] уровня навсегда"
- set_stacking_modifier_to_level_county_effect_tooltip: "[THIS.GetLandedTitle.GetName] получает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] до [SCOPE.GetValue('level')] уровня на [SCOPE.GetValue('years')] лет"
+ set_stacking_modifier_to_level_county_effect_tooltip: "[THIS.GetLandedTitle.GetName] получает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] до [SCOPE.GetValue('level')] уровня на [SCOPE.GetValue('months')] месяцев"
  set_stacking_modifier_to_level_permanently_county_effect_tooltip: "[THIS.GetLandedTitle.GetName] получает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] до [SCOPE.GetValue('level')] уровня навсегда"
- set_stacking_modifier_to_level_province_effect_tooltip: "[THIS.Province.GetName] получает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] до [SCOPE.GetValue('level')] уровня на [SCOPE.GetValue('years')] лет"
+ set_stacking_modifier_to_level_province_effect_tooltip: "[THIS.Province.GetName] получает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] до [SCOPE.GetValue('level')] уровня на [SCOPE.GetValue('months')] месяцев"
  set_stacking_modifier_to_level_permanently_province_effect_tooltip: "[THIS.Province.GetName] получает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] до [SCOPE.GetValue('level')] уровня навсегда"
- upgrade_stacking_modifier_by_level_character_effect_tooltip: "[THIS.Char.GetName] увеличивает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] на [SCOPE.GetValue('level')] уровней на [SCOPE.GetValue('years')] лет"
+ upgrade_stacking_modifier_by_level_character_effect_tooltip: "[THIS.Char.GetName] увеличивает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] на [SCOPE.GetValue('level')] уровней на [SCOPE.GetValue('months')] месяцев"
  upgrade_stacking_modifier_by_level_permanently_character_effect_tooltip: "[THIS.Char.GetName] увеличивает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] на [SCOPE.GetValue('level')] уровней навсегда"
- upgrade_stacking_modifier_by_level_county_effect_tooltip: "[THIS.GetLandedTitle.GetName] увеличивает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] на [SCOPE.GetValue('level')] уровней на [SCOPE.GetValue('years')] лет"
+ upgrade_stacking_modifier_by_level_county_effect_tooltip: "[THIS.GetLandedTitle.GetName] увеличивает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] на [SCOPE.GetValue('level')] уровней на [SCOPE.GetValue('months')] месяцев"
  upgrade_stacking_modifier_by_level_permanently_county_effect_tooltip: "[THIS.GetLandedTitle.GetName] увеличивает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] на [SCOPE.GetValue('level')] уровней навсегда"
- upgrade_stacking_modifier_by_level_province_effect_tooltip: "[THIS.Province.GetName] увеличивает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] на [SCOPE.GetValue('level')] уровней на [SCOPE.GetValue('years')] лет"
+ upgrade_stacking_modifier_by_level_province_effect_tooltip: "[THIS.Province.GetName] увеличивает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] на [SCOPE.GetValue('level')] уровней на [SCOPE.GetValue('months')] месяцев"
  upgrade_stacking_modifier_by_level_permanently_province_effect_tooltip: "[THIS.Province.GetName] увеличивает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] на [SCOPE.GetValue('level')] уровней навсегда"
  upgrade_stacking_modifier_by_level_permanently_artifact_effect_tooltip: "[THIS.Artifact.GetName] увеличивает [GetModifier(SCOPE.GetFlagName('modifier')).GetNameWithTooltip] на [SCOPE.GetValue('level')] уровней навсегда" 
  spawn_army_with_maa_tooltip: "Получает армию #V размера [SCOPE.GetValue('stacks')]#!, состоящую из [GetMaA(SCOPE.GetFlagName('maa')).GetName]"
- learn_spell_effect_tooltip: "[THIS.Char.GetName] изучает #underline [spell_to_learn_scope.Custom('SpellName')]#! [Concept('ritual','ритуал')|E]."
+ learn_spell_effect_tooltip: "[THIS.Char.GetName] изучает #underline [spell_to_learn_scope.Custom('SpellName')]#! [Concept('gh_ritual','ритуал')|E]."
  cast_spell_effect_tooltip: "[THIS.Char.GetName] произносит #underline [spell_being_casted.Custom('SpellName')]#!"
  aspect_display_bulletpoint_tooltip: "[Localize(Concatenate('$',Concatenate(SCOPE.GetFlagName('aspect_name'), '_coloring|q$')))] [Localize(Concatenate('$',Concatenate(SCOPE.GetFlagName('aspect_name'), '_name|q$')))]: [THIS.ScriptValue(Concatenate(SCOPE.GetFlagName('aspect_name'), '_aspect_spellcasting_value'))|0]#!"
- successful_magic_resistance_tooltip: "Успешно сопротивляется [Concept('ritual','ритуалу')|E]" 
+ successful_magic_resistance_tooltip: "Успешно сопротивляется [Concept('gh_ritual','ритуалу')|E]" 
+ affected_by_loitering_magic: "Affected by Loitering Magic"
 
- I_LEARNED_SPELL_EFFECT: "Я [Select_CString(CHARACTER.IsFemale, 'изучила', 'изучил')] [Concept('ritual','ритуал')|E] #underline [spell_to_learn_scope.Custom('SpellName')]#!."
- THEY_LEARNED_SPELL_EFFECT: "Они изучили [Concept('ritual','ритуал')|E] #underline [spell_to_learn_scope.Custom('SpellName')]#! [ритуал|E]."
- LEARNED_SPELL_EFFECT: "Изучен [Concept('ritual','ритуал')|E] #underline [spell_to_learn_scope.Custom('SpellName')]#!."
- I_LEARN_SPELL_EFFECT: "Я изучаю [Concept('ritual','ритуал')|E] #underline [spell_to_learn_scope.Custom('SpellName')]#!."
- THEY_LEARN_SPELL_EFFECT: "Они изучают [Concept('ritual','ритуал')|E] #underline [spell_to_learn_scope.Custom('SpellName')]#! [ритуал|E]."
+ resist_poison_spell_effect_tooltip: "[ROOT.Story.Custom('SpellEffectTarget')|U] resists the effects of poison"
+
+ I_LEARNED_SPELL_EFFECT: "Я [Select_CString(CHARACTER.IsFemale, 'изучила', 'изучил')] [Concept('gh_ritual','ритуал')|E] #underline [spell_to_learn_scope.Custom('SpellName')]#!."
+ THEY_LEARNED_SPELL_EFFECT: "Они изучили [Concept('gh_ritual','ритуал')|E] #underline [spell_to_learn_scope.Custom('SpellName')]#! [ритуал|E]."
+ LEARNED_SPELL_EFFECT: "Изучен [Concept('gh_ritual','ритуал')|E] #underline [spell_to_learn_scope.Custom('SpellName')]#!."
+ I_LEARN_SPELL_EFFECT: "Я изучаю [Concept('gh_ritual','ритуал')|E] #underline [spell_to_learn_scope.Custom('SpellName')]#!."
+ THEY_LEARN_SPELL_EFFECT: "Они изучают [Concept('gh_ritual','ритуал')|E] #underline [spell_to_learn_scope.Custom('SpellName')]#! [ритуал|E]."
  LEARN_SPELL_EFFECT: "Изучает #underline [spell_to_learn_scope.Custom('SpellName')]#!."
+
+ learns_random_school_ritual_tooltip: "[THIS.Char.GetName|U] learns [learn_arcane_knowledge_spell_scope.C]"
 
  I_GAINED_MAGIC_BASELINE_EFFECT: "Ваш [Concept('magic_baseline','базовый уровень магии')|E] увеличился на $VALUE|+0$"
  I_LOST_MAGIC_BASELINE_EFFECT: "Ваш [Concept('magic_baseline','базовый уровень магии')|E] уменьшился на $VALUE|-0$"
@@ -920,11 +986,13 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  GAIN_MAGIC_BASELINE_EFFECT: "Получает $VALUE|+0$ к [Concept('magic_baseline','базовому уровню магии')|E]"
  LOSE_MAGIC_BASELINE_EFFECT: "Теряет $VALUE|-0$ от [Concept('magic_baseline','базового уровня магии')|E]"
 
+
+
  #################
  # NOTIFICATIONS #
  #################
   
- learned_spell_notification.title: "[Concept('ritual','Ритуал')|E] Изучен"
+ learned_spell_notification.title: "[Concept('gh_ritual','Ритуал')|E] Изучен"
  learned_spell_notification.desc: "Я научился создавать #underline [spell_to_learn_scope.Custom('SpellName')]#!"
  learned_spell_notification_relation.desc: "[spell_learner.GetFirstName] научился создавать #underline [spell_to_learn_scope.Custom('SpellName')]#!"
  learned_magic_school_notification.title: "[concept('magic_type','Школа Магии')|E] Изучена"
@@ -956,6 +1024,8 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  choose_spell: "Выбрать заклинание"
  magic: "Магия"
  arcana: "Аркана"
+ arcana_name: "[arcana|E]"
+ prowess_var_name: "[prowess|E]"
  aspects: "Аспекты"
  death: "смерть"
  MAGIC_SCHOOLS: "Школы магии"
@@ -965,11 +1035,11 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  add_magic_interaction: "#T Добавить [Concept('magic','магию')|E]#!"
   
  SPELL_COST_TAG_BULLETPOINT: "$EFFECT_LIST_BULLET$ #negative_value +[Scope.Var('cost_change_value').GetValue|0]#![Concept('magic_power','@magic_icon!')]за [Scope.Story.Custom('SpellEffectScalar1')]"
- SPELL_EFFECT_EFFECT_BULLETPOINT: "$EFFECT_LIST_BULLET$ [Scope.Story.Custom('SpellEffectDesc')][AddLocalizationIf(DataModelHasItems(Scope.Story.MakeScope.GetList('activation_condition_list')), 'SPELL_EFFECT_ACTIVATION_CONDITION')] [AddLocalizationIf(And(Scope.Story.MakeScope.Var('spell_effect_chance').IsSet, Or(Not(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').IsSet), Not(EqualTo_CFixedPoint(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').GetValue, '(CFixedPoint)0')))), 'SPELL_EFFECT_CHANCE_NONZERO_ITERATION')][AddLocalizationIf(And(Scope.Story.MakeScope.Var('spell_effect_chance').IsSet, And(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').IsSet, EqualTo_CFixedPoint(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').GetValue, '(CFixedPoint)0'))), 'SPELL_EFFECT_CHANCE_ZERO_ITERATION')]"
- NONSTANDARD_SPELL_EFFECT_EFFECT_BULLETPOINT: "$EFFECT_LIST_BULLET$ #V [Scope.ScriptValue('spell_tag_scalar_threshold_plus_one_value')|0]+#![Scope.Story.Custom('SpellEffectScalar1')]: [Scope.Story.Custom('SpellEffectDesc')][AddLocalizationIf(DataModelHasItems(Scope.Story.MakeScope.GetList('activation_condition_list')), 'SPELL_EFFECT_ACTIVATION_CONDITION')] [AddLocalizationIf(And(Scope.Story.MakeScope.Var('spell_effect_chance').IsSet, Or(Not(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').IsSet), Not(EqualTo_CFixedPoint(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').GetValue, '(CFixedPoint)0')))), 'SPELL_EFFECT_CHANCE_NONZERO_ITERATION')][AddLocalizationIf(And(Scope.Story.MakeScope.Var('spell_effect_chance').IsSet, And(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').IsSet, EqualTo_CFixedPoint(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').GetValue, '(CFixedPoint)0'))), 'SPELL_EFFECT_CHANCE_ZERO_ITERATION')]"
+ SPELL_EFFECT_EFFECT_BULLETPOINT: "$EFFECT_LIST_BULLET$ [Scope.Story.Custom('SpellEffectDesc')][AddLocalizationIf(DataModelHasItems(Scope.Story.MakeScope.GetList('spell_activation_trigger_list')), 'SPELL_EFFECT_ACTIVATION_CONDITION')] [AddLocalizationIf(And(Scope.Story.MakeScope.Var('spell_effect_chance').IsSet, Or(Not(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').IsSet), Not(EqualTo_CFixedPoint(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').GetValue, '(CFixedPoint)0')))), 'SPELL_EFFECT_CHANCE_NONZERO_ITERATION')][AddLocalizationIf(And(Scope.Story.MakeScope.Var('spell_effect_chance').IsSet, And(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').IsSet, EqualTo_CFixedPoint(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').GetValue, '(CFixedPoint)0'))), 'SPELL_EFFECT_CHANCE_ZERO_ITERATION')]"
+ NONSTANDARD_SPELL_EFFECT_EFFECT_BULLETPOINT: "$EFFECT_LIST_BULLET$ #V [Scope.ScriptValue('spell_tag_scalar_threshold_plus_one_value')|0]+#![Scope.Story.Custom('SpellEffectScalar1')]: [Scope.Story.Custom('SpellEffectDesc')] [AddLocalizationIf(DataModelHasItems(Scope.Story.MakeScope.GetList('spell_activation_trigger_list')), 'SPELL_EFFECT_ACTIVATION_CONDITION')] [AddLocalizationIf(And(Scope.Story.MakeScope.Var('spell_effect_chance').IsSet, Or(Not(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').IsSet), Not(EqualTo_CFixedPoint(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').GetValue, '(CFixedPoint)0')))), 'SPELL_EFFECT_CHANCE_NONZERO_ITERATION')][AddLocalizationIf(And(Scope.Story.MakeScope.Var('spell_effect_chance').IsSet, And(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').IsSet, EqualTo_CFixedPoint(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').GetValue, '(CFixedPoint)0'))), 'SPELL_EFFECT_CHANCE_ZERO_ITERATION')]"
  SPELL_EFFECT_MODIFIER_BULLETPOINT: "$EFFECT_LIST_BULLET$ [Scope.Story.Custom('SpellEffectModifierDesc')]"
  SPELL_EFFECT_ITERATION: "#V +[Scope.Story.MakeScope.Var('spell_effect_chance_iteration').GetValue|0]%#!"
- SPELL_EFFECT_CHANCE_NONZERO_ITERATION: "(#V [Scope.Story.MakeScope.Var('spell_effect_chance').GetValue|0]%#! [AddLocalizationIf(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').IsSet, 'SPELL_EFFECT_ITERATION')] шанс за [Scope.Story.Custom('SpellEffectScalar1')] выше #V [Scope.ScriptValue('spell_tag_scalar_threshold_value')|0]#!)"
+ SPELL_EFFECT_CHANCE_NONZERO_ITERATION: "(#V [Scope.Story.MakeScope.Var('spell_effect_chance').GetValue|0]%#! [AddLocalizationIf(Scope.Story.MakeScope.Var('spell_effect_chance_iteration').IsSet, 'SPELL_EFFECT_ITERATION')] шанс за [Scope.Story.Custom('SpellEffectScalarSpellEffectChanceIterationList')] выше #V [Scope.ScriptValue('spell_tag_scalar_threshold_value')|0]#!)"
  SPELL_EFFECT_CHANCE_ZERO_ITERATION: "(#V [Scope.Story.MakeScope.Var('spell_effect_chance').GetValue|0]%#! шанс)"
  SPELL_EFFECT_ACTIVATION_CONDITION: " [Scope.Story.Custom('SpellEffectActivationCondition')]"
  ASSIGN_SPELL_COMPONENT: "Назначить компонент заклинания"
@@ -999,7 +1069,7 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  HOSTILE_SPELL_RESISTANCE_TOOLTIP: "#T Шанс сопротивления#!\n[GuiScope.SetRoot(GetPlayer.MakeScope.Var('selected_spell').Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle', Character.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_defender', Character.MakeScope).GetScriptValueDesc('magic_resistance_chance')]"
  SPELL_GOLD_COST_TOOLTIP: "#Денежная стоимость#!\n[GuiScope.SetRoot(Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).GetScriptValueDesc('total_spell_gold_cost')|V0]\n\n#help Большинство ритуалов нуждаюстя в разных ингредиентах, которые стоят [Concept('gold','денег'|)E]. Вы можете разблокировать [Concept('perks','достоинства')|E] и получить [Concept('modifier','модификаторs')|E], чтобы уменьшить стоимость.#!\n\n#weak Ритуальные ножи, сверкающие драгоценности и всевидящие амулеты; большинство сказок не рассказывают, насколько дорого может быть бытие [Concept('magi','магом')|E].#!"
  SPELL_MANA_COST_TOOLTIP: "#T Стоимость [Concept('mana','маны')|E]#!\n[GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).GetScriptValueDesc('total_spell_cost')]"
- SPELL_SUCCESS_CHANCE_TOOLTIP: "#T Шанс успеха#!\n[GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).GetScriptValueDesc('spell_success_chance')]"
+ SPELL_SUCCESS_CHANCE_TOOLTIP: "#T Шанс успеха#!\n[GuiScope.SetRoot(Story.MakeScope).AddScope('caster', GetPlayer.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).AddScope('spell_preparation_story_cycle', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).GetScriptValueDesc('spell_success_chance')]"
  SPELL_FAITH_TOOLTIP: "#T Связанная [вера|E]#!\n\n#weak Многие ритуалы тесно связаны с конкретной [Concept('faith','конфесии')|E], чьи последователи получают #positive_value +10%#! бонус к шансу успеха заклинаний за [Concept('piety_level','уровень набожности')|E]. Те, кто не следует соответствующей вере, получают #negative_value -50%#! к шансу успеха и могут, в зависимости от [Concept('faith_hostility', 'враждебности конфессии')|E], получить штраф к [Concept('piety','благочестию')|E] при произнесении заклинания.#!"
 
 # Value Breakdown
@@ -1009,9 +1079,9 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  CHARACTER_EXPOSURE_TOOLTIP: "#T [magic_exposure|E]: #V [GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('exposure_total_value')]#!#!\n[GetPlayer.MakeScope.GetScriptValueDesc('exposure_total_value')|0]"
  CHARACTER_UNCAP_MAGIC_TOOLTIP: "#T Снять ограничение генерации магии#!\n#flavor Снятие ограничения [Concept('magic','магии')|E] позволит персонажу накапливать магию выше своего [Concept('magic_baseline','базового уровня магии')|E], как через пассивному росту к [Concept('extended_magic_baseline','расширенному магическому порогу')|E], так и активные меры, такие как некоторые #E Ритуалы#!. Однако это также означает, что они будут получать все больше [Concept('exposure_sickness','болезни облучения')|E] по мере превышения своих естественных пределов."
  SPELLCASTING_ABILITY_TOOLTIP: "#T [Concept('spellcasting_ability','Магическая способность')|E] #!\n[Character.MakeScope.GetScriptValueDesc('spellcasting_value')|0]"
- ASPECT_CASTING_GRID_TOOLTIP: "#T [Concept('aspect','Аспекты')|E]#!\n[GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).GetScriptValueDesc(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value'))]\n\n#help Увеличьте или уменьшите свою потенциальную силу с [Concept('aspect', 'аспектами')|E] выбранного [Concept('ritual','ритуала')|E].#!"
+ ASPECT_CASTING_GRID_TOOLTIP: "#T [Concept('gh_aspect','Аспекты')|E]#!\n[GuiScope.SetRoot(Story.MakeScope).AddScope('spell_preparation_story_cycle_scope', GetPlayer.MakeScope.Var('spell_preparation_story_cycle').Story.MakeScope).AddScope('spell_organizer', GetPlayer.MakeScope).GetScriptValueDesc(Concatenate(Scope.GetFlagName, '_aspect_total_spell_level_value'))]\n\n#help Увеличьте или уменьшите свою потенциальную силу с [Concept('gh_aspect', 'аспектами')|E] выбранного [Concept('gh_ritual','ритуала')|E].#!"
 
- ARCANA_SKILL_TOOLTIP: "#T [Concept('arcana','Аркана')|E]: $ARCANA_SKILL_AND_LEVEL_VALUE$#!\n$ARCANA_VALUE_BREAKDOWN$\n\n#S Эффекты:#!\nСтоимость [Concept('ritual','ритуала')|E] в [Concept('gold','золоте')|E]: [gold_i][SelectLocalization(GreaterThan_CFixedPoint(Character.MakeScope.ScriptValue('arcana_spell_gold_cost_discount_value'), '(CFixedPoint)0'), '#negative_value +', '#positive_value ')][Character.MakeScope.ScriptValue('arcana_spell_gold_cost_discount_value')|0]%#!\n[Concept('magic_resistance','Сопротивления магии')|E]: #positive_value +[Character.MakeScope.ScriptValue('magic_resistance_from_arcana_value')|0]#!\nУвеличенное качество и богатство [Concept('artifact','артефактов')|E]\nУвеличенный шанс, что [Concept('artifact','артефакты')|E] будут #E Магически-Наполненными#!"
+ ARCANA_SKILL_TOOLTIP: "#T [Concept('arcana','Аркана')|E]: $ARCANA_SKILL_AND_LEVEL_VALUE$#!\n$ARCANA_VALUE_BREAKDOWN$\n\n#S Эффекты:#!\nСтоимость [Concept('gh_ritual','ритуала')|E] в [Concept('gold','золоте')|E]: [gold_i][SelectLocalization(GreaterThan_CFixedPoint(Character.MakeScope.ScriptValue('arcana_spell_gold_cost_discount_value'), '(CFixedPoint)0'), '#negative_value +', '#positive_value ')][Character.MakeScope.ScriptValue('arcana_spell_gold_cost_discount_value')|0]%#!\n[Concept('magic_resistance','Сопротивления магии')|E]: #positive_value +[Character.MakeScope.ScriptValue('magic_resistance_from_arcana_value')|0]#!\nУвеличенное качество и богатство [Concept('artifact','артефактов')|E]\nУвеличенный шанс, что [Concept('artifact','артефакты')|E] будут #E Магически-Наполненными#!"
 
  ARCANA_SKILL_AND_LEVEL_VALUE: "$ARCANA_SKILL$ $ARCANA_LEVEL$"
  ARCANA_SKILL: "#V [Character.MakeScope.ScriptValue('character_arcana_baseline_value')|0] #!"
@@ -1027,6 +1097,7 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  MAGIC_SCHOOL_DESCRIPTION_NO_HEADER: "[Localize(Concatenate(Story.MakeScope.Var('unique_magic_school_identifier').GetFlagName, '_desc'))]"
 
  ARCANA_VALUE_FORMAT: "$KEY$: [arcana_i]$VALUE|=+0$"
+ ARCANA_MULT_VALUE_FORMAT: "$KEY$: [arcana_i]$VALUE|=+0%$"
  SPELL_GOLD_COST_VALUE_FORMAT: "$KEY$: @gold_icon!$VALUE|=+0$"
  ASPECT_VALUE_FORMAT: "$KEY$: $VALUE|=+0$"
 
@@ -1038,9 +1109,6 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  MAGIC_PROWESS_BREAKDOWN: "[Character.MakeScope.GetScriptValueDesc('magic_prowess_value')|0]"
  MAGIC_PROWESS_SKILL: "#V [Character.MakeScope.ScriptValue('magic_prowess_value')|0] #!"
  MAGIC_PROWESS_VALUE_FORMAT: "$KEY$: [magic_prowess_i]$VALUE|=+0$"
-
- SPELLCASTING_ABILITY_VALUE_FORMAT_POS: "$KEY$: @spell_success_icon!$VALUE|=+0$#P % #!"
- SPELLCASTING_ABILITY_VALUE_FORMAT_NEG: "$KEY$: @spell_success_icon!$VALUE|=-0$#X % #!"
 
  SPELL_MAGIC_COST_VALUE_FORMAT: "$KEY$:@magic_icon!$VALUE|=+0$"
 
@@ -1181,4 +1249,9 @@ glassinger_modifier_desc: "Этот персонаж навсегда зачар
  # MISC #
  ########
  
- MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING: "\n\n#X Для начала в этой провинции необходимо построить активирующее [Concept('aspect','аспект')] [Concept('building','здание')], например [GetBuilding('magi_tower_01').GetName]#!"
+ MUST_BUILD_ASPECT_ACTIVATING_BUILDING_WARNING: "\n\n#X Для начала в этой провинции необходимо построить активирующее [Concept('gh_aspect','аспект')] [Concept('building','здание')], например [GetBuilding('magi_tower_01').GetName]#!"
+
+ # Spell effect-derived artifact descriptions (move elsewhere?)
+ GH_artifact_enchantment_generic: "[enchanted_artifact_scope.GetDesc]\n\nIt has been enchanted with the power of the [spell_being_casted.Custom('SpellName')]."
+ GH_artifact_enchantment_inscription: "[enchanted_artifact_scope.GetDesc]\n\nIt has been inscribed with the runic form of the [spell_being_casted.Custom('SpellName')]."
+ GH_artifact_enchantment_gemstone: "[enchanted_artifact_scope.GetDesc]\n\nIt has been inlaid with a gemstone bearing the power of the [spell_being_casted.Custom('SpellName')]."

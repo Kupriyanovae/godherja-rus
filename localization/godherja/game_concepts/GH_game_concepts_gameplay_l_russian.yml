@@ -32,7 +32,7 @@
  game_concept_ruin:90 "Руины"
  game_concept_ruins:90 "Руины"
  game_concept_ruin_holdings:90 "Руины"
- game_concept_ruin_holding_desc:90 "Руины — это особый [Concept('holding_type','тип владений')|E], представляющий собой заброшенные бесхозные строения в определенном [Concept('county','графстве')|E]. Руины не приносят [Concept('taxes','налогов')|E] или [Concept('levies','ополчения')|E], но их можно заселить с меньшими затратами по сравнению с обычным строительством [Concept('holding','владений')|E]."
+ game_concept_ruin_holding_desc:90 "Руины — это особый [Concept('holding_type','тип владений')|E], представляющий собой заброшенные бесхозные строения в определенном [Concept('barony','баронстве')|E]. Руины не приносят [Concept('taxes','налогов')|E] или [Concept('levies','ополчения')|E], но их можно заселить с меньшими затратами по сравнению с обычным строительством [Concept('holding','владений')|E]."
  
  #game_concept_opening_events:90 "Вводные события"
  #game_concept_opening_event:90 "Вводное событие"
@@ -55,3 +55,12 @@
  PF_favor_desc:0 "Милость отражает преданность персонажа его темным владыкам."
  PF_level_of_devotion:0 "Уровень преданности"
  PF_level_of_submission:0 "Уровень подчинения"
+
+ game_concept_collection_of_knowledge: "Collection of Knowledge"
+ game_concept_collection_of_knowledge_desc: "A $game_concept_collection_of_knowledge$ is an organized body of books, scrolls, and manuscripts gathered in a [location|E] that is not owned by a specific [character|E]. Book [artifacts|E] can be bought from or deposited into a $game_concept_collection_of_knowledge$.\n\nWorks within the $game_concept_collection_of_knowledge$ are categorized by topic, such as theology, warfare, law, or philosophy. The size and diversity of topics and books are determined by the [development|E] of the [province|E], bonuses from [special_buildings|E], and whether the [county|E] is the [capital|E] of a [realm|E].\n\nSome books contain [knowledge_entries|E] and may include [Concept('gh_ritual','Spells')|E]. Reading books can grant temporary or permanent [modifiers|E]."
+ 
+ game_concept_gh_reading_capacity: "Reading Capacity"
+ game_concept_gh_reading_capacity_desc:1 "A [character|E] can only comfortably process a limited number of works from a [collection_of_knowledge|E] before requiring time to rest. Each additional work beyond this limit risks [stress|E] or reduced effectiveness of study.\n\nThe maximum limit is determined primarily by the [learning|E] [skill|E], and can be increased by the [GetPerk('pedagogy_perk').GetName(GetNullCharacter)] [perk|E] and the [GetTrait('scholar').GetName( GetNullCharacter )] [trait|E].\n\nOnce the limit is reached, the character must wait before studying additional works."
+ 
+ game_concept_gedeora_gameplay:0 "Gedeora Gameplay"
+ game_concept_gedeora_gameplay_desc:0 "Depending on your game rules [gedeora|E]'s can either only occur rarely and in small locations, or frequently with world encompassing reach. Periodically you should see a notification informing you where a Gedeora has hit and the change the world has experienced in the region. If the province you are in is hit by a Gedeora and you are in the target parameter a series of affects can occur. It can attempt to change your personality, which you will have a chance to resist with a cost of a lot of stress. The Gedeora can also have secondary affects impacting those targeted with a secondary trait that can be beneficial or harmful."

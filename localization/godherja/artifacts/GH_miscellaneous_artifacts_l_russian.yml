@@ -35,7 +35,7 @@
  feature_votive_carving_nothyx:0 "резное изображение Автократа Нотикса с могучим мечом"
  feature_votive_carving_mythix:0 "резное изображение Автократа Мификса, пишущего на свитке"
  feature_votive_carving_theyssia:0 "резное изображение Автократа Тессии, объятого драконьим пламенем"
- feature_votive_carving_eramos:0 "резное изображение Автократа Эрамо, держащего шлем Картарадди"
+ feature_votive_carving_eramos:0 "резное изображение Автократа $aauto_eramos_link$ Эрамо#!, держащего шлем Картарадди"
  feature_votive_carving_aeliadas:0 "резное изображение Автократа Аелиадиаса со звездой"
  feature_votive_carving_dikaynos:0 "резное изображение Агионистского Святого Дикайноса, читающего книгу"
  feature_votive_carving_sansia:0 "резное изображение Агионистской Святой Сансии, израненной и повреждённой"
@@ -45,15 +45,15 @@
  feature_votive_carving_philantros:0 "резное изображение Агионистского Святого Филантроса, раздающего милостыню"
  feature_votive_carving_calystos:0 "резное изображение Агионистского Святого Калистоса с цепью в руках"
  feature_votive_carving_pathos:0 "резное изображение Автократа Патоса, наблюдающего за игрой в войну"
- feature_votive_carving_maklea:0 "резное изображение Автократии Маклеи, залитой кровью"
+ feature_votive_carving_maklea:0 "резное изображение Автократии $aauto_maklea_link$ Маклеи#!, залитой кровью"
  feature_votive_carving_akalionixos:0 "резное изображение Автократа Акалиониксоса, слишком повреждённое, чтобы разглядеть детали"
  feature_votive_carving_aessocianix:0 "резное изображение Автократа Эссокианикса, слишком повреждённое, чтобы разглядеть детали"
  feature_votive_carving_aexionarax:0 "резное изображение Автократа Эксионарекса, слишком повреждённое, чтобы разглядеть детали"
  feature_votive_carving_dhacixen:0 "резное изображение Автократа Фанагоракса, слишком повреждённое, чтобы разглядеть детали"
 
  artifact_votive_figure_name:0 "Аверсарианская вотивная фигурка $artifact_name_prefix$"
- artifact_votive_figure_description:1 "Аверсарианская скульптура [SCOPE.Custom('ArtifactQuality')] качества. Она сделана из [newly_created_artifact.GetFeatureText( 'votive_material' )] и изображает [newly_created_artifact.GetFeatureText( 'votive_carving' )].\n\n$artifact_votive_figure_explanation$ $artifact_votive_figure_age$"
- artifact_votive_figure_explanation:0 "Аверсарианцы издавна создавали вотивные фигурки, которые подносились в священные места по всей [Concept('aversaria','Аверсарии')|E]. Многие изображают Автократов, но также встречаются и другие известные или могущественные аверсарианцы."
+ artifact_votive_figure_description:1 "[Concept('aversaria','Аверсарианская')|E] скульптура [SCOPE.Custom('ArtifactQuality')] качества. Она сделана из [newly_created_artifact.GetFeatureText( 'votive_material' )] и изображает [newly_created_artifact.GetFeatureText( 'votive_carving' )].\n\n$artifact_votive_figure_explanation$ $artifact_votive_figure_age$"
+ artifact_votive_figure_explanation:0 "[Concept('aversaria','Аверсарианцы')|E] издавна создавали вотивные фигурки, которые подносились в священные места по всей [Concept('aversaria','Аверсарии')|E]. Многие изображают Автократов, но также встречаются и другие известные или могущественные аверсарианцы."
  artifact_votive_figure_age:0 "Этот [newly_created_artifact.GetFeatureText( 'votive_characteristic' )]экземпляр, вероятно, был создан около [owner.MakeScope.Var('votive_age').GetValue|0] года."
 
 ## Coins ##
@@ -61,7 +61,6 @@
  artifact_commemorative_coin_description:1 "Памятная монета [SCOPE.Custom('ArtifactQuality')] качества. Она была [newly_created_artifact.GetFeatureText( 'coin_issue' )], а также [newly_created_artifact.GetFeatureText( 'coin_decoration' )].\n\n$artifact_commemorative_coin_explanation$ $artifact_commemorative_coin_age$"
  artifact_commemorative_coin_explanation:0 "Памятные монеты выпускались по всей [Concept('aversaria','Аверсарии')|E] и [Concept('chevalie','Шевалье')|E] в честь особых событий или моментов истории."
  artifact_commemorative_coin_age:0 "Этот [newly_created_artifact.GetFeatureText( 'coin_characteristic' )] экземпляр, вероятно, был создан около [owner.MakeScope.Var('coin_age').GetValue|0] года."
-
 
  feature_coin_issue_karthraddi:0 "выпущена в память о войнах с [Concept('kartharadd','картарадди')|E]"
  feature_coin_issue_jan:0 "выпущена в память о Яне ва Гисредде, окружённом скотом"
@@ -72,7 +71,7 @@
  feature_coin_issue_schism3:0 "выпущена в память о Конклаве Гисредда, защищающем выбор Отцов Пути"
  feature_coin_issue_schism4:0 "выпущена в память о Живом Святом Пути Исаие"
  feature_coin_issue_schism5:0 "выпущена в память о Конклаве Гисредд, защищающем честь Мастера Пути Айне"
- feature_coin_issue_schism6:0 "выпущена в честь решимости Конклава Гисредда во время Войны Еретических Принцев"
+ feature_coin_issue_schism6:0 "выпущена в честь решимости Конклава Гисредда во время [Concept('war_of_the_heretic_princes','Войны Еретических Принцев')|E]"
  feature_coin_issue_schism7:0 "выпущена в память о схизматиках Конклава Гисредда"
 
  feature_coin_decoration_plain:0 "простая и без украшений"
@@ -127,7 +126,7 @@
  feature_animal_toxin_infusion_bloody:0 "Тёмный ихор пахнет железом и свёртыванием крови."
  feature_animal_toxin_infusion_powder:0 "После извлечения токсин быстро превратился в порошок, пахнущий землёй."
 
-## Gems ##
+ ## Gems ##
  artifact_animal_gem_name:3 "Кристалл [newly_created_artifact.Custom('ArtifactAnimalAdjective')|U] [newly_created_artifact.Custom('ArtifactAnimalType')|U] из [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]"
  artifact_animal_gem_description:89 "Драгоценный камень, добытый из [newly_created_artifact.Custom('ArtifactAnimalAdjective')|U] [newly_created_artifact.Custom('ArtifactAnimalType')|U] из [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]. [newly_created_artifact.GetFeatureText( 'animal_gem_infusion' )]"
 

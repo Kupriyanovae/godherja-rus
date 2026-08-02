@@ -2,14 +2,117 @@
  ###########
  # ETHOSES #
  ###########
- ethos_magical_name:0 "Магическая направленность"
- ethos_magical_desc:0 "Эта культура решила возложить всё своё доверие на силу [Concept('magic', 'магии')|E] и её практикующих, и организована так, чтобы способствовать максимальному росту тайных знаний и магических родословных."
+
+ ## Sorcerous
+ ethos_sorcerous_name: "Sorcerous"
+ ethos_sorcerous_desc: "[magic|E] and its [Concept('magi','practitioners')|E] are as integral to the fabric of this culture as they are the universe itself."
+
+ # Single line triggers
+ not_sorcerous_desc: "The [culture|E] does not have the $ethos_sorcerous_name$ [ethos|E]"
+
+ # Double line triggers
+ not_sorcerous_or_bellicose_desc: "The [culture|E] does not have the $ethos_sorcerous_name$ or $ethos_bellicose_name$ [ethos|E]"
+ not_sorcerous_or_communal_desc: "The [culture|E] does not have the $ethos_sorcerous_name$ or $ethos_communal_name$ [ethos|E]"
+ not_sorcerous_or_stoic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$ or $ethos_stoic_name$ [ethos|E]"
+ not_sorcerous_or_bureucratic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$ or $ethos_bureaucratic_name$ [ethos|E]"
+ not_sorcerous_or_spiritual_desc: "The [culture|E] does not have the $ethos_sorcerous_name$ or $ethos_spiritual_name$ [ethos|E]"
+ not_sorcerous_or_courtly_desc: "The [culture|E] does not have the $ethos_sorcerous_name$ or $ethos_courtly_name$ [ethos|E]"
+ not_sorcerous_or_egalitarian_desc: "The [culture|E] does not have the $ethos_sorcerous_name$ or $ethos_egalitarian_name$ [ethos|E]"
+
+ # Triple line triggers
+ not_sorcerous_bellicose_or_bureaucratic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bellicose_name$ or $ethos_bureaucratic_name$ [ethos|E]"
+ not_sorcerous_bellicose_or_communal_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bellicose_name$ or $ethos_communal_name$ [ethos|E]"
+ not_sorcerous_bellicose_or_courtly_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bellicose_name$ or $ethos_courtly_name$ [ethos|E]"
+ not_sorcerous_bellicose_or_egalitarian_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bellicose_name$ or $ethos_egalitarian_name$ [ethos|E]"
+ not_sorcerous_bellicose_or_spiritual_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bellicose_name$ or $ethos_spiritual_name$ [ethos|E]"
+ not_sorcerous_bellicose_or_stoic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bellicose_name$ or $ethos_stoic_name$ [ethos|E]"
+ not_sorcerous_bureaucratic_or_bellicose_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bureaucratic_name$ or $ethos_bellicose_name$ [ethos|E]"
+ not_sorcerous_bureaucratic_or_communal_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bureaucratic_name$ or $ethos_communal_name$ [ethos|E]"
+ not_sorcerous_bureaucratic_or_courtly_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bureaucratic_name$ or $ethos_courtly_name$ [ethos|E]"
+ not_sorcerous_bureaucratic_or_egalitarian_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bureaucratic_name$ or $ethos_egalitarian_name$ [ethos|E]"
+ not_sorcerous_bureaucratic_or_spiritual_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bureaucratic_name$ or $ethos_spiritual_name$ [ethos|E]"
+ not_sorcerous_bureaucratic_or_stoic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bureaucratic_name$ or $ethos_stoic_name$ [ethos|E]"
+ not_sorcerous_communal_or_bellicose_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_communal_name$ or $ethos_bellicose_name$ [ethos|E]"
+ not_sorcerous_communal_or_bureaucratic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_communal_name$ or $ethos_bureaucratic_name$ [ethos|E]"
+ not_sorcerous_communal_or_courtly_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_communal_name$ or $ethos_courtly_name$ [ethos|E]"
+ not_sorcerous_communal_or_egalitarian_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_communal_name$ or $ethos_egalitarian_name$ [ethos|E]"
+ not_sorcerous_communal_or_spiritual_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_communal_name$ or $ethos_spiritual_name$ [ethos|E]"
+ not_sorcerous_communal_or_stoic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_communal_name$ or $ethos_stoic_name$ [ethos|E]"
+ not_sorcerous_courtly_or_bellicose_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_courtly_name$ or $ethos_bellicose_name$ [ethos|E]"
+ not_sorcerous_courtly_or_bureaucratic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_courtly_name$ or $ethos_bureaucratic_name$ [ethos|E]"
+ not_sorcerous_courtly_or_communal_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_courtly_name$ or $ethos_communal_name$ [ethos|E]"
+ not_sorcerous_courtly_or_egalitarian_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_courtly_name$ or $ethos_egalitarian_name$ [ethos|E]"
+ not_sorcerous_courtly_or_spiritual_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_courtly_name$ or $ethos_spiritual_name$ [ethos|E]"
+ not_sorcerous_courtly_or_stoic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_courtly_name$ or $ethos_stoic_name$ [ethos|E]"
+ not_sorcerous_egalitarian_or_bellicose_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_egalitarian_name$ or $ethos_bellicose_name$ [ethos|E]"
+ not_sorcerous_egalitarian_or_bureaucratic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_egalitarian_name$ or $ethos_bureaucratic_name$ [ethos|E]"
+ not_sorcerous_egalitarian_or_communal_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_egalitarian_name$ or $ethos_communal_name$ [ethos|E]"
+ not_sorcerous_egalitarian_or_courtly_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_egalitarian_name$ or $ethos_courtly_name$ [ethos|E]"
+ not_sorcerous_egalitarian_or_spiritual_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_egalitarian_name$ or $ethos_spiritual_name$ [ethos|E]"
+ not_sorcerous_egalitarian_or_stoic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_egalitarian_name$ or $ethos_stoic_name$ [ethos|E]"
+ not_sorcerous_spiritual_or_bellicose_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_spiritual_name$ or $ethos_bellicose_name$ [ethos|E]"
+ not_sorcerous_spiritual_or_bureaucratic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_spiritual_name$ or $ethos_bureaucratic_name$ [ethos|E]"
+ not_sorcerous_spiritual_or_communal_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_spiritual_name$ or $ethos_communal_name$ [ethos|E]"
+ not_sorcerous_spiritual_or_courtly_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_spiritual_name$ or $ethos_courtly_name$ [ethos|E]"
+ not_sorcerous_spiritual_or_egalitarian_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_spiritual_name$ or $ethos_egalitarian_name$ [ethos|E]"
+ not_sorcerous_spiritual_or_stoic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_spiritual_name$ or $ethos_stoic_name$ [ethos|E]"
+ not_sorcerous_stoic_or_bellicose_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_stoic_name$ or $ethos_bellicose_name$ [ethos|E]"
+ not_sorcerous_stoic_or_bureaucratic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_stoic_name$ or $ethos_bureaucratic_name$ [ethos|E]"
+ not_sorcerous_stoic_or_communal_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_stoic_name$ or $ethos_communal_name$ [ethos|E]"
+ not_sorcerous_stoic_or_courtly_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_stoic_name$ or $ethos_courtly_name$ [ethos|E]"
+ not_sorcerous_stoic_or_egalitarian_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_stoic_name$ or $ethos_egalitarian_name$ [ethos|E]"
+ not_sorcerous_stoic_or_spiritual_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_stoic_name$ or $ethos_spiritual_name$ [ethos|E]"
+
+ # Quadruple line triggers
+ not_sorcerous_bellicose_bureaucratic_or_spiritual_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bellicose_name$, $ethos_bureaucratic_name$ or $ethos_spiritual_name$ [ethos|E]"
+ not_sorcerous_bellicose_egalitarian_or_spiritual_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bellicose_name$, $ethos_egalitarian_name$ or $ethos_spiritual_name$ [ethos|E]"
+ not_sorcerous_bellicose_stoic_or_courtly_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bellicose_name$, $ethos_stoic_name$ or $ethos_courtly_name$ [ethos|E]"
+ not_sorcerous_bellicose_stoic_or_communal_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bellicose_name$, $ethos_stoic_name$ or $ethos_communal_name$ [ethos|E]"
+ not_sorcerous_bureaucratic_courtly_or_spiritual_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bureaucratic_name$, $ethos_courtly_name$ or $ethos_spiritual_name$ [ethos|E]"
+ not_sorcerous_bureaucratic_spiritual_or_egalitarian_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_bureaucratic_name$, $ethos_spiritual_name$ or $ethos_egalitarian_name$ [ethos|E]"
+ not_sorcerous_communal_egalitarian_or_courtly_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_communal_name$, $ethos_egalitarian_name$ or $ethos_courtly_name$ [ethos|E]"
+ not_sorcerous_communal_spiritual_or_stoic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_communal_name$, $ethos_spiritual_name$ or $ethos_stoic_name$ [ethos|E]"
+ not_sorcerous_courtly_communal_or_spiritual_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_courtly_name$, $ethos_communal_name$ or $ethos_spiritual_name$ [ethos|E]"
+ not_sorcerous_courtly_communal_or_stoic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_courtly_name$, $ethos_communal_name$ or $ethos_stoic_name$ [ethos|E]"
+ not_sorcerous_spiritual_communal_or_stoic_desc: "The [culture|E] does not have the $ethos_sorcerous_name$, $ethos_spiritual_name$, $ethos_communal_name$ or $ethos_stoic_name$ [ethos|E]"
+
+ # Misc ethos localization
+
+ mpo_yearly_sorcerous: "are known for their unique proclivity towards magics dark and foul."
+
+ bp2_yearly.6000.desc.fault.sorcerous: "\n\n"The child knows less of the arcane arts than the hounds! [hosted_child.GetSheHe|U] has no respect for the greater forces beyond and no idea of the dangers [hosted_child.GetSheHe] fumbles about with!""
+ bp2_yearly.6000.desc.value.sorcerous: "hint of real power"
+ defender_of_sorcerous_ways_modifier: "Defender of Sorcerous Ways"
+ defender_of_sorcerous_ways_modifier_desc: "$defender_of_bellicose_ways_modifier_desc$"
+ bp2_yearly.6001.desc.insult.sorcerous: "hexers"
+ rejecting_sorcerous_ways_modifier: "Rejecting Sorcerous Ways"
+ rejecting_sorcerous_ways_modifier_desc: "$rejecting_bellicose_ways_modifier_desc$"
+
+ journey_events.60.desc_sorcerous: "I come across the cloister of [journey_county.GetNamePossessiveNoTooltip] more established [magi|E] cabals. High walls and an intimidating gate hides the Magi's secrets from me, but a courtyard garden welcomes travelers, and a group of huddled [host.Custom('GetLocalCommonerTermPlural')|U] from a nearby village have assembled here. I watch as the [host.Custom('GetLocalCommonerTermPlural')|U] bring forth a half-dead [dummy_gender_soldier.GetWomanMan] covered in tumorous growths. The Magi allows me to watch as [dummy_gender.GetSheHe] performs a complex ritual involving a heap of newt's shavings. a whispering flower and a sentence spoken in a language that puts my hairs on end to hear. A moment after the words are spoken there is a bright flash and the strange sound of distant chimes and, to my amazement, the [host.Custom('GetLocalCommonerTermPlural')|U] springs off of the ritual table appearing free of their malady and several years younger."
+ journey_sorcerous_modifier: "Arcane Witness"
+ journey_sorcerous_modifier_desc: "This character has seen things nothing short of miraculous"
+
+ hold_court_8190_sorcerous: "obsessed with foul [Concept('magic','magics')|E] of which they have no control!"
+
+ culture_notification.1111.ethos.sorcerous: "The [new_culture.GetCollectiveNounNoTooltip] have increasingly dedicated themselves to the [magic|E] arts, their answers to challenges both within and without increasingly laying with the arcane."
+
+ ep3_laamp_flavour_ewan.9521.tt.primary_skill.arcana: "Gained [skill_1.GetValue|V0] [arcana|E] [skill|E] from learning to adopt the [new_culture.GetName] [ethos|E]"
+
+ ACTIVITY_GUEST_SORCEROUS_REASON: "[ROOT.Char.GetSheHe|U] has a $ethos_sorcerous_name$ [culture|e]: $VALUE|=+0$"
+
+ bp2_yearly.6090.a.power: "All the world should witness our power."
+
+ bp2_yearly.6214_notification_4_tooltip_high: "[affected_county.GetName]'s [magi|E] have begun to practice more reasonable [advanced_culture.GetName] styles of magic and the local practitioners, ensuring good practice and castwork."
+ bp2_yearly.6215_notification_4_tooltip_high: "The arcane mastery of the [ROOT.Char.GetCulture.GetName] of [ROOT.Char.GetPrimaryTitle.GetNameNoTier] has become well known, and [magi|E] far and wide speak of the expertise of [ROOT.Char.GetCulture.GetNameNoTooltip] practitioners."
 
  ##############
  # TRADITIONS #
  ##############
  incompatible_tradition_legacy_of_aversaria:0 "Несовместимо с традицией «$tradition_legacy_of_aversaria_name$»"
- 
+
+ tradition_akkarashad_name: "Akkarashad Olshabar"
+ tradition_akkarashad_desc: "The Öltirakhai are a nomadic warrior culture of the desolate steppes, bound by their fanatical devotion to Akkaradhamma. Known as the Akkarashad Olshabar 'Death's Horde', they ride swift warhorses, wield bone-forged blades imbued with ethereal magic, and perform blood rites to honor their lich king, believing death in battle ensures their souls join his eternal spectral legion."
+
  tradition_lodge_dominance_name:0 "Господство лож"
  tradition_lodge_dominance_desc:0 "Могущественные ложи пронизывают все аспекты жизни этой культуры, и членство в одной из них практически неотъемлемая часть повседневности."
  tradition_traders_name:0 "Торговцы"
@@ -102,10 +205,11 @@
  tradition_skalds_of_zamistra_desc:0 "#italic Хотя наши боги могли сражаться как воины, они пели как могучие скальды! Некоторые говорят, что их великие легенды были выкованы из крови войн против демонов древности или из бесконечных интриг и драматизма высочайших дворов Велоса и его сородичей, но мы знаем истину лучше любого, кто претендует на нашу кровь! Легенды богов были выкованы не мечом, а словом, пересказывались от героя к герою, от скальда к скальду, и каждым искателем приключений или путешественником, у которого в холодные ночи не было ничего, кроме костра и товарищей для развлечения.#!"
  tradition_visvasavrak_guardians_name:0 "Стражи Вишвасаврака"
  tradition_visvasavrak_guardians_desc:0 "Благородные правители Маракье долгое время даровали знатный титул Вишвасаврака выдающимся воинам, которые посвятили себя борьбе за своего сюзерена до самой смерти. Во времена великих раздоров ожидается, что Вишвасавраки неохотно возьмут власть в свои руки и будут мудро направлять свой народ."
- tradition_glass_smiths_name:0 "Стекольное дело"
- tradition_glass_smiths_desc:0 "#N Скоро будет#!\n\nИскусство изготовления стекла является краеугольным камнем зелкавани. Скульптуры из стекла можно найти повсюду, от изящных ваз и горшков в домах зелкавани до самых изысканно выполненных скульптур, найденных в художественных галереях или поместьях дворян."
+
  tradition_elephant_racers_name:0 "Слоновьи гонки"
  tradition_elephant_racers_desc:0 "Эта культура считает использование слонов в войне глупостью. Вместо этого они предпочитают гоняться на этих величественных существах в экстравагантной манере."
+ culture_parameter_unlock_elephant_pens_building_in_forest: "Can construct the #V $building_type_elephant_pens_01$#! line of [buildings|E] in [holdings|E] of this [culture|E] with [GetTerrain('forest').GetName] [terrain|E]"
+
  tradition_redlanders_name:0 "Жители Красных земель"
  tradition_redlanders_desc:0 "Эта культура адаптировалась к суровым Красным землям, научившись выживать в их жестких условиях и сражаться среди лабиринтоподобных структур."
  tradition_nhudabyad_name:89 "Нхудабьяд"
@@ -178,12 +282,16 @@
  tradition_painted_burghers_desc:0 "Татуированные представители этой культуры искусны в любых купеческих делах и в искусстве манипулирования потоками золота."
  tradition_starbound_sojourners_name:0 "Звездные странники"
  tradition_starbound_sojourners_desc:0 "В этой культуре есть татуированные штурманы, которые прекрасно умеют читать океан звезд, чтобы безопасно пересекать океаны под небесами."
+ tradition_scourge_of_the_seas_name: "Scourge of the Seas"
+ tradition_scourge_of_the_seas_desc: "The [warrior_women_ehatm|E] are storied raiders, known for their terrifying pirate fleets that have plagued the Sea of Empires since before recorded history." 
  tradition_inscribed_triumphs_name:0 "Запечатленные триумфы"
  tradition_inscribed_triumphs_desc:0 "Эта культура празднует каждое убийство, совершенное в бою, татуировкой, знаменующей этот подвиг."
  tradition_branded_battlemasters_name:0 "Клейменые мастера войны"
  tradition_branded_battlemasters_desc:0 "Выдающиеся воины в этой культуре именуются Дха'гераями и покрываются обильными татуировками из охряной боевой краски."
  tradition_great_calling_name:0 "Великое призвание"
  tradition_great_calling_desc:0 "Эта культура разделяет свое общество на три [Concept('great_callings','великих призвания')|E], как только их детям исполняется 16 лет."
+ culture_parameter_select_great_calling_active: "Allows the [GetDecisionWithKey('select_great_calling_decision').GetName] [decision|E]"
+
  tradition_frontier_warriors_name:0 "Воины порубежья"
  tradition_frontier_warriors_desc:0 "Эта культура находится в постоянной борьбе за укрощение дикого северного рубежа, используя взрывоопасную смесь из элитных солдат, племенных наемников и фанатичных добровольцев."
  tradition_snowbound_resilience_name:0 "Снежная стойкость"
@@ -201,9 +309,145 @@
  tradition_kherkeloi_war_codes_desc: "Эта культура придерживается [Glossary('Иур вол Ранну','GH_IUR_VOL_RANNU_GLOSS')] — обширного свода военных законов и обычаев, который регулирует порядок боевых столкновений, защищает военнопленных и даже диктует допустимую длину солдатских сарис."
  culture_parameter_building_barracks_spearmen_bonuses: "Цепочка [Concept('buildings','зданий')|E] #V $building_type_barracks_01$#! предоставляет бонусы [Concept('spearmen','копейщикам')|E]"
 
+ tradition_adept_glassworkers_name: "Adept Glassworkers"
+ tradition_adept_glassworkers_desc: "The art of glassmaking is a cornerstone of this culture's identity. Fine glassware can be found everywhere, from the beakers and ewers of a common household to exquisitely crafted glass sculptures in a noble's mansion."
+ culture_parameter_unlock_glassmith_trait: "[characters|E] can gain the [GetTrait('gh_lifestyle_glassmith').GetName( GetNullCharacter )] [trait|E]"
+ culture_parameter_glassmith_traits_more_valued: "The [GetTrait('gh_lifestyle_glassmith').GetName( GetNullCharacter )] [trait|E] is seen as [prestige_i][prestigious|E]"
+ culture_parameter_can_make_glass_artifacts: "Allows the [GetDecisionWithKey('create_glass_artifact_decision').GetName] [decision|E]"
+ culture_parameter_improved_glassware_inspiration: "[characters|E] of this [culture|E] produce higher-quality [artifacts|E] when completing a #high Glassware#! [inspiration|E]"
+ culture_parameter_can_appoint_court_gaffer: "Can appoint the #high [GetCourtPositionType('court_gaffer_court_position').GetName]#! [court_position|E]"
+ culture_parameter_enable_glassworks_building: "Rulers can construct the [GetBuilding('gh_glassworks_01').GetName] [duchy_building|E]"
+
  tradition_feudal_legacy_name: "Манориальное наследие"
  tradition_feudal_legacy_desc: "Эта культура имеет долгую историю аристократических ценностей, где сельские землевладельцы были важнее бургеров."
  requires_non_feudal_government_trigger: "Вы #EMP не#! должны иметь [Concept('feudal','аристократическую')|E] [Concept('government','форму правления')|E]"
+
+ tradition_whistling_wilds_name: "Whistling Wilds"
+ tradition_whistling_wilds_desc: "Deep forests and dark taiga are the ancestral home of this culture. Hunters and trackers communicate in low whistles, and none can dare to trespass in their domain."
+ culture_parameter_culture_language_is_hard_to_learn: "The [GetScheme('learn_language').GetTypeName] [scheme|E] [success_chance|E] is massively decreased against [characters|E] of this [culture|E]"
+ SCHEME_HARD_LANGUAGE_MODIFIER: "[target.GetCulture.GetName] [language|E] is very hard to learn: [success_chance_i]$VALUE|+=0$"
+
+ tradition_wo_ashanan_name: "Wo-Ashanan"
+ tradition_wo_ashanan_desc: "[wo_ashanan|E] is an integral part of this culture's identity."
+ culture_parameter_burial_site_dread_bonuses: "[SelectLocalization( HasDlcFeature( 'legends' ), 'culture_parameter_burial_site_dread_bonuses_HAS_LEGENDS_DLC', 'culture_parameter_burial_site_dread_bonuses_NO_LEGENDS_DLC' )]"
+ culture_parameter_burial_site_dread_bonuses_NO_LEGENDS_DLC: ""
+ culture_parameter_burial_site_dread_bonuses_HAS_LEGENDS_DLC: "The #V $building_type_burial_site_01$#! line of [duchy_buildings|E] provides [dread|E] bonuses and can be constructed by [tribal|E] [rulers|E]"
+ culture_parameter_can_take_skulls_in_battle: "Can take the skulls of fallen foes in [battles|E] as [artifacts|E]"
+ culture_parameter_can_extract_skulls: "[rulers|E] have access to the #V Cranial Extraction#! [execution|E] Method"
+ culture_parameter_destroying_skulls_is_pious: "Can destroy Skull [artifacts|E] for [piety|E]"
+ culture_parameter_skull_artifact_claims: "[characters|E] gain [artifact_claims|E] on Skull [artifacts|E] of their [house|E] members"
+
+ tradition_enigmatic_stalkers_name: "Enigmatic Stalkers"
+ tradition_enigmatic_stalkers_desc: "TODO"
+
+ tradition_skull_meisters_name: "Skull Meisters"
+ tradition_skull_meisters_desc: "TODO"
+
+ tradition_beetle_riders_name: "Scarab Riders"
+ tradition_beetle_riders_desc: "Scarabs were long ago domesticated for work and warfare in the harsh deserts of [Glossary('Kemsar','kemsar_encyclopedia_desc')], providing ample labor for the desolate sands."
+ culture_parameter_beetle_training_internal_yurt_unlock: "[SelectLocalization( HasDlcFeature( 'khans_of_the_steppe' ), 'cultrad_beetle_riders_nomadic_desc', 'blank_line' )]"
+ cultrad_beetle_riders_nomadic_desc: "Unlocks the [GetDomicileBuilding('beetle_yurt_01').GetName] [domicile_building_upgrade|E] for [GetGovernment( 'nomad_government').GetName] [domiciles|E]"
+ domicile_building_parameter_ahan_unlocks_beetle_knights: "Can recruit [GetMaA('beetle_knight').GetName] [men_at_arms|E]"
+
+
+
+ tradition_sandsingers_name: "Desert Choir"
+ tradition_sandsingers_desc: "This culture has long cultivated a warrior culture that seeks to become one with the sands. Powerful magics guide them through song and ritual to better understand the dunes."
+
+ tradition_sand_skiffs_name: "Sand-Skiffs"
+ tradition_sand_skiffs_desc: "This culture has long held the secrets to wondrous technology known as [sand_skiffs|E] that are capable of navigating the [Glossary('Sarradonian Desert','sarradonian_desert_encyclopedia_desc')] as if it were a great sea."
+ culture_parameter_sand_skiff_internal_yurt_unlock: "[SelectLocalization( HasDlcFeature( 'khans_of_the_steppe' ), 'cultrad_sand_skiff_nomadic_desc', 'blank_line' )]"
+ cultrad_sand_skiff_nomadic_desc: "Unlocks the [GetDomicileBuilding('sand_skiff_yurt_01').GetName] [domicile_building_upgrade|E] for [GetGovernment('nomad_government').GetName] [domiciles|E]"
+
+ tradition_blood_of_giants_name: "Blood of Giants"
+ tradition_blood_of_giants_desc: "This culture is said to descend from a warrior demigod of immense size whose blood still courses through their veins to this day."
+
+ tradition_children_of_the_heights_name: "Children of the Heights"
+ tradition_children_of_the_heights_desc: "This culture has dwelt atop the roof of the world in cliff-carved homes older than the tribes that live in them. The thin air that chokes lowlanders is mother's breath to them, but the flat, heavy earth of the plains sits ill in their lungs."
+ tradition_heights_left_behind_desc: "The heights have been left behind"
+
+ tradition_pasture_feuds_name: "Pasture Feuds"
+ tradition_pasture_feuds_desc: "The productive pastures of the heights are few, and this culture has warred over them since before memory. Blood spilled between neighbors over grazing rights is not crime but custom. Every herder is half a warrior, and every warrior nurses a grudge."
+
+ tradition_heartwoods_name: "Denizens of the Clanlands"
+ tradition_heartwoods_desc: "From the deep mystical forests of the Heartwood, to the awe inspiring geysers and waterfalls of the Dreaming Hills, these people have made Kalathipsomi their home."
+ tradition_owl_masks_name: "Owl Masks"
+ tradition_owl_masks_desc: "The Ordikin are famed as accomplished mercenaries, bandits, and hunters, but by far their most distinctive and well known facet is their famous Owl Masks."
+ ##############################
+ # RICE TRADITIONS INTEGRATED #
+ ##############################
+ 
+ tradition_RICE_agdud_iqadib_name: "Agdud Iqadib"
+ tradition_RICE_agdud_iqadib_desc: "This culture descends from a rich history of nomadic life in the [Glossary('Sarradonian Desert','sarradonian_desert_encyclopedia_desc')] as part of the [marmaladid_great_tribes|E], and organizes their clans under both male and female leaders."
+ culture_parameter_unlock_rice_cheaper_dream_divination: "The $activity_RICE_tuareg_dream_incubation$ [activity|E] is cheaper"
+
+ tradition_RICE_oral_poetry_name: "Oral Histories"
+ tradition_RICE_oral_poetry_desc: "This culture considers the memorization and retention of spoken poetry to be a noble art. It exists as one of the few forms of entertainment in the desert. Children grow up listening for many hours about cultural heroes and values."
+
+ tradition_RICE_settled_nomads_name: "Settled Nomads"
+ tradition_RICE_settled_nomads_desc: "This culture once lived a brutal, harsh existence amongst the dunes of the [Glossary('Sarradonian Desert','sarradonian_desert_encyclopedia_desc')], but have since settled into a sedentary lifestyle. They still, at times, maintain a wariness of centralized authority."
+
+
+ tradition_kathunkai_cultural_circle_name:0 "People of the First Dragon"
+ tradition_kathunkai_cultural_circle_desc:0 "We write the same characters, inherit the same history. The teachings of Dragon Empress Yao Ren Cai-Tiayang resonate within our minds. We are all part of Kathun-Kai, bound to one another as brothers."
+ culture_parameter_kathuni_tolerance: "[cultural_acceptance_baseline|E] with [cultures|E] sharing the [GetCulturePillar('heritage_easterner').GetName] [heritage|E]: #P +40%#!
+ culture_parameter_kathuni_and_dahangon_tolerance: "[cultural_acceptance_baseline|E] with [cultures|E] sharing the [GetCulturePillar('heritage_tanarka').GetName] [heritage|E] or the same [tradition|E]: #P +30%#!"
+ culture_parameter_tanarka_heritage_easier_to_hybdrize: "Creating a Hybrid [culture|E] with the [GetCulturePillar('heritage_tanarka').GetName] [heritage|E] requires #V 50%#! less [cultural_acceptance|E]"
+ culture_parameter_tradition_mubaaizun_tolerance: "[cultural_acceptance_baseline|E] with [cultures|E] with the same [tradition|E]: #P +10%#!"
+ culture_parameter_gh_art_of_diplomacy: "[alliance|E] Negotiation Acceptance: #P +20#!"
+ culture_parameter_gh_easier_to_convert_county_of_this_culture: "Easier to [promote_culture|E] in [counties|E] of this [culture|E]"
+ culture_parameter_gh_can_always_use_legitimize_bastard: "Can use the Legitimize Bastard [interaction|E] regardless of your [faith|E] [doctrine|E]"
+ culture_parameter_more_frequent_tournament: "Delay between [GetActivityType('activity_tournament').GetName] [activities|E]: #P -50% #!"
+ culture_parameter_gh_cheaper_tournament: "[GetActivityType('activity_tournament').GetName] [activities|E] Cost: #P -20% #!"
+ CB_GH_CHEAPER_TOURNAMENT_PARAMETER_DISCOUNT: "[tradition|E]: $VALUE|=+0$"
+ culture_parameter_can_host_elephant_race_contests: "Can hold an Elephant Race [contest|E] in a [GetActivityType( 'activity_tournament' ).GetName]"
+
+ tradition_lanonan_frontier_name: "Lanonan Frontier"
+ tradition_lanonan_frontier_desc: "The Lanonan hold that any hand able to bear a weapon must raise one. Settled far from the Kathuni heartland, they have long wrested their living from a wild land and the beasts that hunt across it, leaning on their blades and on the companions at their side."
+
+ tradition_conquered_name: "Cuichon"
+ tradition_conquered_desc: "This culture has been subjugated so often, and has risen and failed so often, that submission has hardened into habit, a state the Kathuni call [Glossary('Cuichon','GH_CUICHON_GLOSS')]. To bow before a new master is simply what is expected of them, and the very idea of resistance has all but died out."
+
+ tradition_southern_nomads_name: "Southern Nomads"
+ tradition_southern_nomads_desc: "Long removed from the open grasslands where their way of life was born, this culture has carried its wandering into the warm south. Among wooded hills, deep forests, and flooded wetlands, they have found new ways to keep to the old rhythms, and their nomadic customs have taken on a distinctly tropical cast."
+
+ tradition_bloody_butcher_name: "Bloody Butcher"
+ tradition_bloody_butcher_desc: "This culture puts down revolt with the knife and the rack, and sees to it that whoever survives remembers the lesson. Its taste for bloodshed is enough to give even the magi of [aversaria|E] pause."
+
+ tradition_agricultural_community_name: "Charoeng Community"
+ tradition_agricultural_community_desc: "In this culture the land is worked in common. Villages hold their fields together, share out the harvest, and settle their own troubles without recourse to any lord. No lord's taxes are paid here, and a hand raised against the arrangement finds the whole commune raised against it in turn."
+
+ tradition_road_to_resistance_name: "Road to Resistance"
+ tradition_road_to_resistance_desc: "The invaders have occupied our homeland. Their crushing oppression has left our people wasting away day by day. Everything we hold dear has been defiled by those despicable villains! Fellow countrymen with a conscience still left within you—awake! Rise up! Swear to drive the invaders completely out of our land! With their blood, we shall feed our tormented children!"
+
+ tradition_generational_maintenance_name: "Generational Maintenance"
+ tradition_generational_maintenance_desc: "This culture treats a warrior's arms and armour as extensions of the body, tended without fail from one day to the next. Blades and mail pass down through a family for centuries and are kept in fighting trim the whole while, so that a piece carried by some distant ancestor shows no more wear than one fresh from the forge."
+
+ tradition_southsea_sovereign_name: "Southsea Sovereign"
+ tradition_southsea_sovereign_desc: "The people of Bronzeport are born to the counting-house and the quay. Trade runs in their blood the way war runs in others', and a Bronzeporter will wring profit from a bargain that would leave another merchant empty-handed. Passing from one port to the next, they seem only ever to grow richer."
+
+ tradition_art_of_diplomacy_name: "Art of Hoyak"
+ tradition_art_of_diplomacy_desc: "This culture holds war to be a poor bargain — a great spending of blood and treasure for what a well-drawn treaty, or [Glossary('Hoyak','GH_HOYAK_GLOSS')],  might secure at a fraction of the price."
+
+ tradition_shooting_specialization_name: "Shaizu Archers"
+ tradition_shooting_specialization_desc: "This culture prizes the bow above all other arms and sets its children to it young, so that its armies never want for skilled archers. Close combat it holds for a brutish business."
+
+ tradition_yuankang_identity_name: "Yuankang Identity"
+ tradition_yuankang_identity_desc: "Though this culture springs from settlers out of Kathun-Kai, the generations since have made it land of its own. Its people no longer count themselves Kathuni; they are of Yuan-kang, and hold that distinction close."
+
+ tradition_sarradon_legalistic_mercantilism_name: "Sarradon Legalistic Mercantilism"
+ tradition_sarradon_legalistic_mercantilism_desc: "The merchants of this culture bind their trade to a body of law drawn from Sarradon, so that a contract is as much a matter of legal form as of coin."
+
+ tradition_dahangon_national_integration_name: "Kin of the Tanarka"
+ tradition_dahangon_national_integration_desc: "This culture has grown deeply into the Tanarka among whom it settled, its ways coloured over the generations by the manners of Dahangon."
+
+ tradition_southsea_islander_name: "South-Sea Islander"
+ tradition_southsea_islander_desc: "This culture is at home on the restless waters of the South Sea, its settlements scattered across the islands from lone hamlets to crowded ports."
+
+ tradition_dragonrider_cliques_name: "Dragonrider Cliques"
+ tradition_dragonrider_cliques_desc: "The armies of this culture revolve around the machinations of many disparate cliques of feuding [Concept('dragons','dragonriders')|E]. While their armies may be disorganized and fall into the occasional [Concept('war_of_the_thousand_dragons','internal conflict')], when they reunite, the world shakes."
+ tradition_outland_guest_name: "Outland Guest"
+ tradition_outland_guest_desc: ""
 
  ###############
  # MAA UNLOCKS #
@@ -231,6 +475,12 @@
  culture_parameter_unlock_maa_oltenic_light_horsemen:89 "Доступны [men_at_arms|El] — [GetMaA('oltenic_light_horsemen').GetName]"
  culture_parameter_unlock_maa_thorn_maidens:89 "Доступны [men_at_arms|El] — [GetMaA('thorn_maidens').GetName]"
  culture_parameter_unlock_maa_azmaram: "Доступны [men_at_arms|El] — [GetMaA('azmaram').GetName]"
+ culture_parameter_unlocks_beetle_riders: "Can recruit [GetMaA('beetle_rider').GetName] as [men_at_arms|E]"
+ culture_parameter_unlock_maa_sandsingers: "Can recruit [GetMaA('sandsingers').GetName] as [men_at_arms|E]"
+ culture_parameter_unlock_maa_dragonriders: "Can recruit [GetMaA('dragonriders').GetName] as [men_at_arms|E] if [dragons|E] are not extinct"
+ culture_parameter_unlock_maa_owl_men: "Can recruit [GetMaA('owl_men').GetName] as [men_at_arms|E]"
+ unlock_maa_shamans: "Can recruit [GetMaA('shamans').GetName] as [men_at_arms|E]"
+ unlock_maa_magi_regular: "Can recruit [GetMaA('magi_regular').GetName] as [men_at_arms|E]"
   
  #############
  # TRAIT LOC #
@@ -272,9 +522,12 @@
  culture_parameter_ai_doesnt_marry_impure_cultures:89 "ИИ крайне неохотно устраивает [Concept('marriages','браки')|E] с [Concept( 'character', 'персонажами' )|E] нечистых [Concept('culture','культур')|E]"
  culture_parameter_blood_senate_succession_enabled:89 "Можно ввести #high $aversarian_succession_law$#! [Concept('succession_law','закон наследования')|E]"
  culture_parameter_magocracy_government_enabled:89 "При определенных условиях можно принять форму правления #high $magocratic_government$#! [Concept('government','магократия')|E]"
+ culture_parameter_can_adopt_magocratic_government_as_duchy_tier: "Rulers can adopt the [magocracy|E] or [magocratic_republic|E] [governments|E] as a [duke|E] as well when they are [kings|E] or [emperors|E]"
+ culture_parameter_early_magocracies_unlocked: "Rulers can adopt [magocracy|E] or [magocratic_republic|E] [governments|E] without the #V $innovation_early_medieval_magic$#! [innovation|E]"
+ culture_parameter_cheaper_magical_buildings: "[magical] [building|E] Cost: [gold_i]#P -20%#!"
  TRADITION_PENALTY_BLOODPURIST:89 "Чистокровная [Concept('culture','культура')|E]: $VALUE|+=0$"
  culture_parameter_legon_titles_enabled:89 "Можно назначать совершеннолетних на [Concept('court_position','придворную должность')|E] «Легон», что увеличивает их [Concept('martial','военное дело')|E] и дает [Concept('trait','свойство')|E] «[GetTrait('gh_legon').GetName( GetNullCharacter )]»"
- 
+
  culture_parameter_northern_pragmatism_positive_trait_modifiers:89 "[Concept('trait','Свойство')|E] «[GetTrait('cynical').GetName( GetNullCharacter )]» считается [Concept('prestigious','престижным')|E] [prestige_i] и дает дополнительные бонусы к [Concept('intrigue','интригам')|E] [intrigue_i], [Concept('diplomacy','дипломатии')|E] [diplomacy_i] и [Concept('tax','налогам')|E] [gold_i]"
  culture_parameter_intrigue_education_prestige_and_tax_modifiers:89 "[Concept('traits','Свойства')|E] [Concept('education','образования')|E] в сфере [Concept('intrigue','интриг')|E] считаются [Concept('prestigious','престижными')|E] [prestige_i] и дают бонусы к [Concept('tax','налогам')|E] [gold_i]"
  culture_parameter_cynical_trait_more_common:89 "[Concept('trait','Свойство')|E] «[GetTrait('cynical').GetName( GetNullCharacter )]» встречается чаще"
@@ -328,10 +581,16 @@
  culture_parameter_gardener_traits_more_valued:89 "[Concept('trait','Свойство')|E] «[GetTrait('lifestyle_gardener').GetName( GetNullCharacter )]» считается [Concept('prestigious','престижным')|E] [prestige_i]."
  
  culture_parameter_krehejad_tolerance:89 "Дает #P 30%#! к [Concept('cultural_acceptance','культурному одобрению')|E] с другими [Concept('culture','культурами')|E], у которых есть эта же [Concept('tradition','традиция')|E]."
- 
+
+ culture_parameter_otachedian_legitimacy: "Rulers have much higher [expected_legitimacy|E] regardless of their [rank|E]"
  culture_parameter_otachedian_tolerance:89 "Дает #P 15%#! к [Concept('cultural_acceptance','культурному одобрению')|E] с другими [Concept('culture','культурами')|E], у которых есть эта [Concept('tradition','традиция')|E]."
+ culture_parameter_ayraal_system: "Rulers have access to the [Concept('paiza','Ayraal System')|E] and can construct the [GetBuilding('ayraal_office_01').GetName] [duchy_building|E]"
+ culture_parameter_can_adopt_otachedian_government: "Rulers are able to centralize under an [GetGovernment('otachedian_government').GetName] [government|E]"
+ culture_parameter_unlocks_otachedian_governor_trait_track: "[adult|E] Rulers gain the [GetTrait('governor').GetName( GetNullCharacter )] [trait|E] and have access to the #V $trait_track_otachedian_governor$#! [trait_level_track|E]"
  culture_parameter_otachedian_hybridization:89 "Создание гибридной [Concept('culture','культуры')|E] требует на #P 25%#! меньше [Concept('cultural_acceptance','культурного одобрения')|E] и на [prestige_i]#P -25%#! меньше престижа с другими культурами, у которых есть эта [Concept('tradition','традиция')|E]."
  culture_parameter_administrative_is_expected:0 "Переход на [Concept('administrative_government','административную форму правления')|E] в качестве [Concept('liege','сюзерена')|E] или [Concept('vassal','вассала')|E] становится проще (и ожидается обществом)."
+ has_ayraal_law: "Practices [paiza|E] Law" # Only used in gui scripted loc trigger
+ no_ayraal_law: "No [paiza|E] Law" # Only used in gui scripted loc trigger
 
  culture_parameter_mutually_beneficial_acceptance:89 "Дает #P 50%#! к согласию на заключение [Concept('alliance','союза')|E] со стороны других [Concept('culture','культур')|E], у которых есть эта [Concept('tradition','традиция')|E]."
  culture_parameter_mutually_beneficial_tolerance:89 "Дает #P 20%#! к [Concept('cultural_acceptance','культурному одобрению')|E] с другими [Concept('culture','культурами')|E], у которых есть эта [Concept('tradition','традиция')|E]."
@@ -370,6 +629,7 @@
  culture_parameter_enable_dahangon_terraces_building:89 "Позволяет строить террасы на холмах, повышая [Concept('income','доход')|E] и [Concept('development','развитие')|E] этих земель."
  culture_parameter_hill_dwellers_colonization_bonus:90 "[Concept('habitability_threshold','Порог обитаемости')|E]  на [Concept('terrain','типе местности')|E] «[GetTerrain('hills').GetName]»: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -10#!"
  culture_parameter_forest_folk_colonization_bonus:90 "[Concept('habitability_threshold','Порог обитаемости')|E]  на [Concept('terrain','типе местности')|E] «[GetTerrain('forest').GetName]» и «[GetTerrain('taiga').GetName]»: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -10#!"
+ culture_parameter_whistling_wilds_colonization_bonus: "[habitability_threshold|E] in [GetTerrain('forest').GetName] and [GetTerrain('taiga').GetName] [terrain|E]: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -25#!"
  culture_parameter_mountain_homes_colonization_bonus:90 "[Concept('habitability_threshold','Порог обитаемости')|E]  на [Concept('terrain','типе местности')|E] «[GetTerrain('mountains').GetName]» и «[GetTerrain('desert_mountains').GetName]»: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -20#!"
  culture_parameter_dryland_dwellers_colonization_bonus:90 "[Concept('habitability_threshold','Порог обитаемости')|E]  на [Concept('terrain','типе местности')|E] «[GetTerrain('drylands').GetName]»: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -10#!"
  culture_parameter_jungle_dwellers_colonization_bonus:90 "[Concept('habitability_threshold','Порог обитаемости')|E]  на [Concept('terrain','типе местности')|E] «[GetTerrain('jungle').GetName]»: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -20#!"
@@ -378,6 +638,7 @@
  culture_parameter_seafaring_colonization_bonus:90 "[Concept('habitability_threshold','Порог обитаемости')|E]  в прибрежных [Concept('counties','графствах')|E]: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -10#!"
  culture_parameter_iron_spines_settlers_colonization_bonus:90 "[Concept('habitability_threshold','Порог обитаемости')|E]  на [Concept('terrain','типах местности')|E] «[GetTerrain('mountains').GetName]» и «[GetTerrain('desert_mountains').GetName]»: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -30#!"
  culture_parameter_lightshy_colonization_bonus:90 "[Concept('habitability_threshold','Порог обитаемости')|E]  на [Concept('terrain','типах местности')|E] «[GetTerrain('mayik_chamber').GetName]», «[GetTerrain('mayik_corridors').GetName]» и «[GetTerrain('mayik_caverns').GetName]»: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -30#!"
+ culture_parameter_subterranean_fighters: "#P +10%#! [levy|E] size and #P +10#! [advantage|E] in underground [terrain|E]; penalties to [advantage|E] in all above-ground [terrain|E]"
  culture_parameter_lords_of_aironoi_colonization_bonus:90 "[habitability_threshold|E]  на [Concept('terrain','типах местности')|E] «[GetTerrain('steppe').GetName]»: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -15#!"
  culture_parameter_islander_colonization_bonus:90 "[habitability_threshold|E]  на Concept('terrain','типе местности')|E] «[GetTerrain('archipelagic').GetName]»: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -10#!"
  culture_parameter_armazli_sanctuaries_colonization_bonus:90 "[habitability_threshold|E]  на [Concept('terrain','типе местности')|E] «[GetTerrain('mountains').GetName]»: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -15#!"
@@ -387,14 +648,24 @@
  culture_parameter_wasteland_reclaimers_colonization_bonus:90 "[habitability_threshold|E]  на любом [Concept('terrain','типе местности')|E]: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -10#!"
  culture_parameter_wasteland_reclaimers_colonization_speed_bonus:90 "Скорость [Concept('colonization_progress','колонизации')|E]: @colonization_progress_icon!#P +0.5#!/мес."
  culture_parameter_mutant_outcasts_colonization_bonus:90 "Половина [Concept('ambient_magic','окружающей магии')|E] от магических осадков превращается в [Concept('habitability_threshold','@habitability_threshold_icon!')] [Concept('habitability_threshold','порог обитаемости')|E]"
+ culture_parameter_mutation_much_more_likely: "Children are far likelier to be born with [mutations|E]"
  culture_parameter_can_appoint_dream_interpreter:89 "Позволяет назначать совершеннолетних на [Concept('court_position','придворную должность')|E] Толковователя снов, что ускоряет потерю [Concept('stress','стресса')|E] и повышает сопротивление [Concept('hostile_schemes','враждебным проискам')|E]."
  can_appoint_dream_interpreter_name:89 "Толкователь снов"
-
+ culture_parameter_giant_trait_more_common: "The [GetTrait('giant').GetName( GetNullCharacter )] [trait|E] is more common"
  culture_parameter_members_have_tattoos:90 "Представители этой культуры носят на теле татуировки"
+
+ culture_parameter_increased_capture_tradition: "Increases chances of taking [prisoners|E] during a [raid|E] or [siege|E]"
+ 
+ culture_parameter_lessen_requirements_found_great_polis: "Less restrictive requirements for the [GetDecisionWithKey('found_metro_in_kingdom_cap').GetName] [decision|E]"
+ culture_parameter_increase_cost_found_great_polis: "Increase Cost of the [GetDecisionWithKey('found_metro_in_kingdom_cap').GetName] [decision|E]"
+
+
  #############
  # MODIFIERS #
  #############
- 
+ flame_children_CULTURE_HARD_TO_CONVERT_REASON: "$tradition_flame_children_name$ [culture_tradition|E]: $VALUE|=+0$"
+ gh_road_to_resistance_CULTURE_HARD_TO_CONVERT_REASON: "$tradition_road_to_resistance_name$ [culture_tradition|E]: $VALUE|=+0$"
+
  not_tribal_desc:89 "Не принадлежит к [Concept('tribal','племенному строю')|E]"
  otached_lawbreaker_desc:89 "[Concept('culture','Культурные')|E] [counties|E] в вашем [Concept('realm','державе')|E] не должны граничить с культурами, уровень [Concept('cultural_acceptance','культурного одобрения')|E] с которыми составляет менее #V 50%#! или более"
  rulers_with_chortosan_desc:89 "В этой [Concept('culture','культуре')|E] нет по меньшей мере #V 4#! [Concept('rulers','правителей')|E] со [Concept('traits','свойством')|E] «[GetTrait('hashishiyah').GetName( GetNullCharacter )]»"
@@ -411,7 +682,10 @@
  TRADITION_PENALTY_PURIST:89 "Чистая [Concept('culture','культура')|E]: $VALUE|+=0$"
  ACCEPTANCE_BASELINE_KREHEJAD_TOLERANCE:89 "[tradition|E] «[GetCultureTradition('tradition_krehejad_tolerance').GetName]»" # Примечание: добавлена функция вызова имени традиции для красоты, если это допустимо кодом, иначе: "Поселенцы Крехеяда"
  ACCEPTANCE_BASELINE_OTACHEDIAN_TOLERANCE:89 "[tradition|E] «Отачедский порядок»"
+ ACCEPTANCE_BASELINE_KATHUNI_TOLERANCE:89 "[GetCultureTradition('tradition_kathunkai_cultural_circle').GetName]"
+ ACCEPTANCE_BASELINE_KATHUNI_AND_DAHANGON_TOLERANCE:89 "[GetCultureTradition('tradition_dahangon_national_integration').GetName]"
  ACCEPTANCE_BASELINE_MUTUALLY_BENEFICIAL_TOLERANCE:89 "[tradition|E] «Взаимовыгодность»"
+ ACCEPTANCE_BASELINE_MUBAAIZUN_TOLERANCE:89 "[GetCultureTradition('tradition_mubaaizun').GetName]"
  ########
  # MISC #
  ########
@@ -419,17 +693,21 @@
  cannot_have_tradition_ardara:89 "$cannot_combine_tradition_trigger_desc$ #high $tradition_ardara_name$#!"
  not_bureaucratic_or_courtly_desc:89 "[culture|E] не обладает [Concept('ethos', 'моральными принципами')|E] «$ethos_bureaucratic_name$» или «$ethos_courtly_name$»"
  not_bureaucratic_communal_courtly_or_egalitarian_desc:89 "[culture|E] не обладает [Concept('ethos', 'моральными принципами')|E] «$ethos_bureaucratic_name$», «$ethos_communal_name$, «$ethos_courtly_name$» или «$ethos_egalitarian_name$»"
- culture_parameter_glass_house_duchy_building:89 "Предоставляет доступ к [Concept('duchy_building','герцогской постройке')|E] «Стеклянный дом»"
- culture_parameter_characters_glass_traits_can_make_glass_artifacts:89 "Персонажи теперь могут ковать стеклянные [Concept('artifacts','артефакты')|E]"
  lack_pirate_government_penalty_desc:89 "Отсутствует #E Пиратская#! форма правления"
  culture_underground_desc:89 "Должна быть расположена в [Concept('region','регионе')|E] «[GetGeographicalRegion('world_ga_mayikprolollan_mayikprolollan_depths').GetName]»"
 
  cannot_have_tradition_female_only_inheritance: "$cannot_combine_tradition_trigger_desc$ #high $tradition_female_only_inheritance_name$#!"
  cannot_have_tradition_ep2_avid_falconers: "$cannot_combine_tradition_trigger_desc$ #high $tradition_ep2_avid_falconers_name$#!"
+
  cannot_have_tradition_steppe_queens: "$cannot_combine_tradition_trigger_desc$ #high $tradition_steppe_queens_name$#!"
  cannot_have_tradition_sisters_of_iron: "$cannot_combine_tradition_trigger_desc$ #high $tradition_sisters_of_iron_name$#!"
  cannot_have_tradition_mercenary_queens: "$cannot_combine_tradition_trigger_desc$ #high $tradition_mercenary_queens_name$#!"
  cannot_have_tradition_braided_oaths: "$cannot_combine_tradition_trigger_desc$ #high $tradition_braided_oaths_name$#!"
+
+ cannot_have_tradition_forest_folk: "$cannot_combine_tradition_trigger_desc$ #high $tradition_forest_folk_name$#!"
+ cannot_have_tradition_forest_fighters: "$cannot_combine_tradition_trigger_desc$ #high $tradition_forest_fighters_name$#!"
+ cannot_have_tradition_forest_wardens: "$cannot_combine_tradition_trigger_desc$ #high $tradition_forest_wardens_name$#!"
+ cannot_have_tradition_isolationist: "$cannot_combine_tradition_trigger_desc$ #high $tradition_isolationist_name$#!"
 
  culture_ironspines_desc:89 "Должна быть расположена в [Concept('region','регионе')|E] «[GetGeographicalRegion('world_ga_mayikprolollan_mayikprolollan_surface').GetName]»"
  culture_parameter_can_always_isolate_capital:89 "Всегда позволяет принять [Concept('decision','решение')|E] «$isolate_capital_decision$»"
@@ -451,9 +729,17 @@
  culture_parameter_much_more_likely_to_be_beast_hunter_laamps: "[SelectLocalization( HasDlcFeature( 'landless_playable' ), 'culture_parameter_much_more_likely_to_be_beast_hunter_laamps_DLC', 'culture_parameter_much_more_likely_to_be_beast_hunter_laamps_NO_DLC' )]"
  culture_parameter_much_more_likely_to_be_beast_hunter_laamps_DLC: "[Concept('characters','Персонажи')|E] с гораздо большей вероятностью становятся [Concept('adventurers','авантюристами')|E] с целью лагеря «[GetLaw('camp_purpose_beast_hunters').GetName]»"
  culture_parameter_much_more_likely_to_be_beast_hunter_laamps_NO_DLC: ""
- 
+
  culture_in_taiga_desc:0 "Культура отсутствует в графствах с [Concept('terrain', 'типом местности')|E] «Тайга»"
  culture_in_taiga_count_desc:0 "Культура отсутствует по меньшей мере в #V 3#! [Concept('counties','графствах')|E] с [Concept('terrain', 'типом местности')|E] «Тайга»"
  culture_parameter_piety_gain_on_building_complete_in_taiga:0 "Приносит [piety_i][Concept('piety','благочестие')|E] при завершении строительства [Concept('buildings','построек')|E] во [Concept('holdings','владениях')|E] с [Concept('terrain', 'типом местности')|E] #V Тайга#!"
  culture_parameter_taiga_hunt_success_chance:0 "Повышает [Concept( 'hunt_success_chance', 'шанс успеха охоты' )|E] в местностях типа «[GetTerrain( 'taiga' ).GetName]»"
- 
+
+ culture_head_lacks_dragon_maa_desc: "The [culture_head|E] does not have at least [EmptyScope.ScriptValue('dragonrider_cliques_minimum_dragon_maa_value')|0] [Concept('monsters','monster')|E] [men_at_arms|E]" # replace Monsters with Dragons when implemented
+ culture_parameter_dragonrider_trait_bonuses: "The [GetTrait('dragonrider').GetName( GetNullCharacter )] [trait|E] has additional bonuses"
+ culture_parameter_dragonrider_traits_give_dread: "The [GetTrait('dragonrider').GetName(GetNullCharacter)] [trait|E] gives [dread|E]"
+
+ culture_parameter_flame_children_harder_to_convert_character_faith:0 "[characters|E] are less likely to accept conversion"
+ culture_parameter_gh_road_to_resistance_harder_to_convert_character_faith:0 "[characters|E] are less likely to accept conversion"
+ culture_parameter_culture_dislikes_archers_maa:0 "Archer [men_at_arms|E] are disfavoured by this [culture|E]"
+ culture_parameter_children_of_the_heights_colonization_bonus: "[habitability_threshold|E] in [GetTerrain('mountains').GetName] and [GetTerrain('desert_mountains').GetName] [terrain|E]: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -20#!"
