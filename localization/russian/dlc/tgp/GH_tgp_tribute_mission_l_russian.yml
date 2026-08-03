@@ -1,22 +1,22 @@
 ﻿l_russian:
  #The Decision
- tribute_mission_decision_kathun_kai: "$tribute_mission_decision$ to [GetTitleByKey('h_kathun_kai').GetNameNoTierNoTooltip]"
- tribute_mission_decision_aversarinas_aautokrata: "$tribute_mission_decision$ to [GetTitleByKey('h_aversarinas_aautokrata').GetNameNoTierNoTooltip]"
- tribute_mission_decision_sarradon: "$tribute_mission_decision$ to [GetTitleByKey('h_sarradon').GetNameNoTierNoTooltip]"
+ tribute_mission_decision_kathun_kai: "$tribute_mission_decision$: [GetTitleByKey('h_kathun_kai').GetNameNoTierNoTooltip]"
+ tribute_mission_decision_aversarinas_aautokrata: "$tribute_mission_decision$: [GetTitleByKey('h_aversarinas_aautokrata').GetNameNoTierNoTooltip]"
+ tribute_mission_decision_sarradon: "$tribute_mission_decision$: [GetTitleByKey('h_sarradon').GetNameNoTierNoTooltip]"
 
 
- neighbor_is_kathun_kai: "[ROOT.Char.GetShortUIName|U] [CharAreIs(ROOT.Char)] an [independent|E] [ruler|E] neighboring [GetTitleByKey('h_kathun_kai').GetDefinitiveName]"
- neighbor_is_aversaria: "[ROOT.Char.GetShortUIName|U] [CharAreIs(ROOT.Char)] an [independent|E] [ruler|E] neighboring [GetTitleByKey('h_aversarinas_aautokrata').GetDefinitiveName]"
+ neighbor_is_kathun_kai: "[ROOT.Char.GetShortUIName|U] — [Concept('independent', 'независимый')|E] [Concept('ruler', 'правитель')|E], [Select_CString(ROOT.Char.IsFemale, 'граничащая', 'граничащий')] с державой [GetTitleByKey('h_kathun_kai').GetDefinitiveName]"
+ neighbor_is_aversaria: "[ROOT.Char.GetShortUIName|U] — [Concept('independent', 'независимый')|E] [Concept('ruler', 'правитель')|E], [Select_CString(ROOT.Char.IsFemale, 'граничащая', 'граничащий')] с державой [GetTitleByKey('h_aversarinas_aautokrata').GetDefinitiveName]"
  
- tribute_mission_decision_effects_kathun_kai_tt: "You [travel|E] to [GetTitleByKey('h_kathun_kai').GetHolder.GetTitledFirstNamePossessive] [court|E] to deliver your [tribute|E]"
- tribute_mission_decision_effects_aversaria_tt: "You [travel|E] to [GetTitleByKey('h_aversarinas_aautokrata').GetHolder.GetTitledFirstNamePossessive] [court|E] to deliver your [tribute|E]"
- tribute_mission_decision_effects_sarradon_tt: "You [travel|E] to [GetTitleByKey('h_sarradon').GetHolder.GetTitledFirstNamePossessive] [court|E] to deliver your [tribute|E]"
+ tribute_mission_decision_effects_kathun_kai_tt: "Вы [Concept('travel', 'отправляетесь')|E] ко [Concept('court', 'двору')|E], где правит [GetTitleByKey('h_kathun_kai').GetHolder.GetTitledFirstName], чтобы доставить [Concept('tribute', 'дань')|E]"
+ tribute_mission_decision_effects_aversaria_tt: "Вы [Concept('travel', 'отправляетесь')|E] ко [Concept('court', 'двору')|E], где правит [GetTitleByKey('h_aversarinas_aautokrata').GetHolder.GetTitledFirstName], чтобы доставить [Concept('tribute', 'дань')|E]"
+ tribute_mission_decision_effects_sarradon_tt: "Вы [Concept('travel', 'отправляетесь')|E] ко [Concept('court', 'двору')|E], где правит [GetTitleByKey('h_sarradon').GetHolder.GetTitledFirstName], чтобы доставить [Concept('tribute', 'дань')|E]"
  
  
  
- tribute_mission_decision_desc_kathun_kai: "The [GetTitleByKey('h_kathun_kai').GetHolder.GetTitleAsName] of [GetTitleByKey('h_kathun_kai').GetDefinitiveName] $tribute_mission_decision_hegemony_common$"
- tribute_mission_decision_desc_aversarinas_aautokrata: "The [GetTitleByKey('h_aversarinas_aautokrata').GetHolder.GetTitleAsName] of [GetTitleByKey('h_aversarinas_aautokrata').GetDefinitiveName] $tribute_mission_decision_hegemony_common$"
- tribute_mission_decision_desc_sarradon: "The [GetTitleByKey('h_sarradon').GetHolder.GetTitleAsName] of [GetTitleByKey('h_sarradon').GetDefinitiveName] $tribute_mission_decision_hegemony_common$"
+ tribute_mission_decision_desc_kathun_kai: "[GetTitleByKey('h_kathun_kai').GetHolder.GetTitleAsName|U] державы «[GetTitleByKey('h_kathun_kai').GetDefinitiveName]» $tribute_mission_decision_hegemony_common$"
+ tribute_mission_decision_desc_aversarinas_aautokrata: "[GetTitleByKey('h_aversarinas_aautokrata').GetHolder.GetTitleAsName|U] державы «[GetTitleByKey('h_aversarinas_aautokrata').GetDefinitiveName]» $tribute_mission_decision_hegemony_common$"
+ tribute_mission_decision_desc_sarradon: "[GetTitleByKey('h_sarradon').GetHolder.GetTitleAsName|U] державы «[GetTitleByKey('h_sarradon').GetDefinitiveName]» $tribute_mission_decision_hegemony_common$"
  
  
  tribute_mission_decision_kathun_kai_tooltip: "$tribute_mission_decision_tooltip$"

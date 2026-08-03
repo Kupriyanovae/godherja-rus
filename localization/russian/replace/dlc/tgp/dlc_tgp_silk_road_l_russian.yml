@@ -1,75 +1,75 @@
 ﻿l_russian: 
  # the Imperial Sea Road
  #GH_TODO_AUH Adapt locs for ISR
- silk_road_situation: "The Imperial Sea Road"
+ silk_road_situation: "Имперский морской путь"
 
- game_concept_silk_road_situation: "Imperial Sea Road"
- game_concept_silk_road_situation_desc: "The $game_concept_silk_road_situation$ is not one road, but a whole network of routes that connect the furthest corners of civilization to exchange gold, goods, and ideas. To have access to the Imperial Sea Road is to have access to all the riches of the world.\n\nDifferent levels of access to the Imperial Sea Road grant varying gold bonuses, and may provide unique opportunities to unlock exotic [innovations|E]. The amount of gold and knowledge traveling on the Imperial Sea Road will change depending on its prosperity, which is influenced by many factors, including wars, events, and China's [dynastic_cycle|E]."
+ game_concept_silk_road_situation: "Имперский морской путь"
+ game_concept_silk_road_situation_desc: "$game_concept_silk_road_situation$ — не одна дорога, а целая сеть маршрутов, связывающих самые отдалённые уголки цивилизации ради обмена золотом, товарами и идеями. Иметь доступ к Имперскому морскому пути — значит иметь доступ ко всем богатствам мира.\n\nРазные уровни доступа к Имперскому морскому пути дают различные бонусы к золоту и могут открывать уникальные возможности для получения экзотических [Concept('innovations', 'инноваций')|E]. Количество золота и знаний, перемещающихся по Имперскому морскому пути, зависит от его процветания, на которое влияют многие факторы, в том числе войны, события и китайский [Concept('dynastic_cycle', 'династический цикл')|E]."
 
  situation_silk_road_phase_exceptional_bounty: "Исключительное богатство"
- situation_silk_road_phase_exceptional_bounty_desc: "Astounding treasures can be gained, the greatest profits can be made, and ideas and innovations spread the widest when times are good on the Imperial Sea Road."
+ situation_silk_road_phase_exceptional_bounty_desc: "Когда на Имперском морском пути наступают благоприятные времена, здесь можно обрести несметные сокровища, получить величайшую прибыль, а идеи и новшества распространяются особенно широко."
  situation_silk_road_phase_steady_trading: "Стабильная торговля"
- situation_silk_road_phase_steady_trading_desc: "Profits are made, deals are haggled over, and business continues as usual. There might be some more lucrative options elsewhere, but the Imperial Sea Road is more reliable."
+ situation_silk_road_phase_steady_trading_desc: "Торговцы получают прибыль, стороны торгуются об условиях, а дела идут своим чередом. Где-то ещё могут встретиться более выгодные возможности, но Имперский морской путь надёжнее."
  situation_silk_road_phase_hardship: "Невзгоды"
- situation_silk_road_phase_hardship_desc: "From war, calamity, and unpredictable twists and turns of fate, the Imperial Sea Road is at an absolute standstill. Neither money nor ideas are moving, and the only thing gained from following the Imperial Sea Road's routes is misery and poverty."
+ situation_silk_road_phase_hardship_desc: "Войны, бедствия и непредсказуемые повороты судьбы полностью парализовали Имперский морской путь. Ни деньги, ни идеи больше не движутся, и следование его маршрутами приносит лишь горе и нищету."
 
  silk_road_situation_participant_group_china_realm: "Земли Поднебесной"
  silk_road_situation_participant_group_china_realm_desc: "Персонаж — [Concept('ruler', 'правитель')|E] не [Concept('nomadic', 'кочевник')|E] в ситуации «[GetSituation('silk_road_situation').GetSubRegionByKey('region_silk_road_proper_china').GetName]»."
- silk_road_situation_participant_group_silk_road_domain: "Imperial Sea Road Domains"
+ silk_road_situation_participant_group_silk_road_domain: "Домены Имперского морского пути"
  silk_road_situation_participant_group_silk_road_domain_desc: "Персонаж — [Concept('independent_ruler', 'независимый правитель')|E] не [Concept('nomadic', 'кочевник')|E], не участвующий в ситуации «[GetSituation('silk_road_situation').GetSubRegionByKey('region_silk_road_proper_china').GetName]», чей [Concept('domain', 'домен')|E] располагается в регионе [GetGeographicalRegion('dlc_tgp_silk_road_route_region').GetName]."
- silk_road_situation_participant_group_silk_road_realm: "Imperial Sea Road Realms"
+ silk_road_situation_participant_group_silk_road_realm: "Державы Имперского морского пути"
  silk_road_situation_participant_group_silk_road_realm_desc: "Персонаж — [Concept('independent_ruler', 'независимый правитель')|E] не [Concept('nomadic', 'кочевник')|E], не участвующий в ситуации «[GetSituation('silk_road_situation').GetSubRegionByKey('region_silk_road_proper_china').GetName]», чья [Concept('realm', 'держава')|E] располагается в регионе [GetGeographicalRegion('dlc_tgp_silk_road_route_region').GetName]."
  silk_road_situation_participant_group_silk_road_periphery: "Периферийные державы"
  silk_road_situation_participant_group_silk_road_periphery_desc: "Персонаж — [Concept('independent_ruler', 'независимый правитель')|E] не [Concept('nomadic', 'кочевник')|E], не участвующий в ситуации «[GetSituation('silk_road_situation').GetSubRegionByKey('region_silk_road_proper_china').GetName]», чья [Concept('realm', 'держава')|E] располагается в регионе [GetGeographicalRegion('tgp_silk_road_region').GetName]."
  silk_road_situation_participant_group_silk_road_nomad: "Степные кочевники"
- silk_road_situation_participant_group_silk_road_nomad_desc: "Персонаж — [Concept('independent_ruler', 'независимый правитель')|E]-[Concept('nomadic', 'кочевник')|E], который разбил лагерь на [Concept('silk_road_situation', 'Шелковом пути')|E]"
- silk_road_situation_all: "Текущая [Concept('situation_phase', 'фаза ситуации')|E] на [Concept('silk_road', 'Шелковом пути')|E]"
+ silk_road_situation_participant_group_silk_road_nomad_desc: "Персонаж — [Concept('independent_ruler', 'независимый правитель')|E]-[Concept('nomadic', 'кочевник')|E], который разбил лагерь на [Concept('silk_road_situation', 'Имперском морском пути')|E]"
+ silk_road_situation_all: "Текущая [Concept('situation_phase', 'фаза ситуации')|E] на [Concept('silk_road', 'Имперском морском пути')|E]"
 
- silk_road_phase_effects: "Imperial Sea Road [SITUATION_PHASE_TYPE.GetNameNoTooltip]"
+ silk_road_phase_effects: "Имперский морской путь: [SITUATION_PHASE_TYPE.GetNameNoTooltip]"
 
- debug_change_silk_road_cycle: "Change Imperial Sea Road Phase"
+ debug_change_silk_road_cycle: "Изменить фазу Имперского морского пути"
 
 
 
- visit_silk_road_market_decision: "Visit a Imperial Sea Road Market"
- visit_silk_road_market_decision_desc: "The riches of the Imperial Sea Road aren't all stored in coins. Sometimes there's new... #italic thoughts#! that travel on camelback from bazaar to bazaar. Visit the right market, talk to the right people, and learn of secrets unknown to the wider world."
- visit_silk_road_market_decision_tooltip: "Travel to a market on the Imperial Sea Road to unlock unique [innovations|E]"
- THE_SILK_ROAD_AWAITS: "The Imperial Sea Road Awaits!"
+ visit_silk_road_market_decision: "Посетить рынок Имперского морского пути"
+ visit_silk_road_market_decision_desc: "Богатства Имперского морского пути хранятся не только в монетах. Порой от базара к базару на верблюжьих спинах странствуют новые... #italic мысли#!. Стоит посетить подходящий рынок, поговорить с нужными людьми — и можно узнать тайны, неведомые остальному миру."
+ visit_silk_road_market_decision_tooltip: "Отправиться на рынок Имперского морского пути, чтобы открыть уникальные [Concept('innovations', 'инновации')|E]"
+ THE_SILK_ROAD_AWAITS: "Имперский морской путь ждёт!"
 
- no_building_at_silk_road_market_desc: "This [location|E] does #bold not#! have a Imperial Sea Road [special_building|E]"
+ no_building_at_silk_road_market_desc: "В этом [Concept('location', 'месте')|E] #bold нет#! [Concept('special_building', 'особой постройки')|E] Имперского морского пути"
 
- SILK_ROAD_WINDOW_CATALYSTS_LIST: "Imperial Sea Road Catalysts"
+ SILK_ROAD_WINDOW_CATALYSTS_LIST: "Катализаторы Имперского морского пути"
  
- SILK_ROAD_HEADER_DESC: "A network of markets, waystations, and worn paths in lonely landscapes, the Imperial Sea Road provides opportunities to build fortunes and unlock new ideas for those bold enough to cross its legendary routes."
+ SILK_ROAD_HEADER_DESC: "Сеть рынков, путевых станций и истоптанных троп в безлюдных землях — Имперский морской путь даёт возможность сколотить состояние и открыть новые идеи тем, кому хватит смелости пройти его легендарными маршрутами."
 
 
 
- gh_imperial_sea_road_region: "Imperial Sea Road"
+ gh_imperial_sea_road_region: "Имперский морской путь"
 
- dlc_tgp_silk_road_route_region: "Imperial Sea Road"
- tgp_silk_road_region: "Imperial Sea Road"
+ dlc_tgp_silk_road_route_region: "Имперский морской путь"
+ tgp_silk_road_region: "Имперский морской путь"
 
- msg_silk_road_prosperity_upstream_peace: "Peace Bolsters Imperial Sea Road"
- msg_silk_road_prosperity_upstream_war: "War Disrupts Imperial Sea Road"
+ msg_silk_road_prosperity_upstream_peace: "Мир укрепляет Имперский морской путь"
+ msg_silk_road_prosperity_upstream_war: "Война нарушает торговлю на Имперском морском пути"
  tgp_silk_road_move_sub_region_peace_desc: "В регионе [origin_sub_region_temp.GetName] царит мир"
 
- msg_silk_road_innovation_movement_stream_title: "Imperial Sea Road Innovation Movement"
+ msg_silk_road_innovation_movement_stream_title: "Движение инноваций по Имперскому морскому пути"
  msg_silk_road_innovation_movement_stream_desc: "Торговцы постоянно курсируют во все концы и приносят с Востока свежие идеи"
- msg_silk_road_innovation_movement_china_title: "Imperial Sea Road Innovation Movement"
+ msg_silk_road_innovation_movement_china_title: "Движение инноваций по Имперскому морскому пути"
  msg_silk_road_innovation_movement_china_desc: "Западные торговцы проявляют живейший интерес к нашим открытиям"
- msg_silk_road_innovation_movement_tt: "[new_innovation_temp.GetName|V] — новая [Concept('silk_road_innovation', 'инновация шелкового пути')|E] в регионе [sub_region_temp.GetName]"
+ msg_silk_road_innovation_movement_tt: "[new_innovation_temp.GetName|V] — новая [Concept('silk_road_innovation', 'инновация Имперского морского пути')|E] в регионе [sub_region_temp.GetName]"
 
- msg_silk_road_innovation_spread_title: "Imperial Sea Road Innovation Insights"
+ msg_silk_road_innovation_spread_title: "Знания Имперского морского пути об инновациях"
 
 
  msg_silk_road_innovation_visit_desc: "[new_trinket.GetShortUIName|U] [Select_CString(new_trinket.IsLocalPlayer, 'впитали', Select_CString(new_trinket.IsFemale, 'впитала', 'впитал' ))] свежие идеи с Востока благодаря контролю над знаменитым рынком в провинции [market_temp.GetNameNoTier]"
 
- msg_silk_road_phase_change_title: "Imperial Sea Road: [situation_sub_region.GetCurrentPhase.GetName] in [situation_sub_region.GetNameNoTooltip]"
+ msg_silk_road_phase_change_title: "Имперский морской путь: [situation_sub_region.GetCurrentPhase.GetName] в регионе [situation_sub_region.GetNameNoTooltip]"
 
 
  silk_road_crossbow_trigger_tt: "Необходимы [Concept('innovation', 'инновации')|E] #V $innovation_repeating_crossbow$#! или #V $innovation_advanced_bowmaking$#!"
- silk_road_sericulture_trigger_tt: "Requires the [GetCulturePillar('heritage_easterner').GetName] [heritage|E]"
+ silk_road_sericulture_trigger_tt: "Требуется [Concept('heritage', 'наследие')|E] «[GetCulturePillar('heritage_easterner').GetName]»"
 
- silk_road_hardship_province_modifier: "Imperial Sea Road: Hardship"
- silk_road_steady_trading_province_modifier: "Imperial Sea Road: Steady Trading"
- silk_road_exceptional_bounty_province_modifier: "Imperial Sea Road: Exceptional Bounty"
+ silk_road_hardship_province_modifier: "Имперский морской путь: невзгоды"
+ silk_road_steady_trading_province_modifier: "Имперский морской путь: стабильная торговля"
+ silk_road_exceptional_bounty_province_modifier: "Имперский морской путь: исключительное богатство"

@@ -1,18 +1,18 @@
 ﻿l_russian: 
  # Shanxi Manors
- game_concept_japanese_manor: "Shanxi Manor"
- game_concept_japanese_manors: "Shanxi Manors"
+ game_concept_japanese_manor: "Шаньсийская усадьба"
+ game_concept_japanese_manors: "Шаньсийские усадьбы"
  game_concept_manor: "Усадьба"
  game_concept_manors: "Усадьбы"
  game_concept_shoen: "Сёэн" # 荘園/庄園
  game_concept_family_manor: "Семейная усадьба"
  game_concept_family_manors: "Семейные усадьбы"
- game_concept_japanese_manor_desc: "$game_concept_manor$, или [Glossary( 'Сёэн', 'SHOEN_GLOSS')], — один из типов [Concept('domicile', 'имения')|E], принадлежащий [Concept('house_head', 'главам')|E] [Concept('noble_families', 'благородных семейств')|E] внутри [Concept('realms', 'держав')|E] с формой правления «[GetGovernment('japan_administrative_government').GetName]» или «[GetGovernment('japan_feudal_government').GetName]». Усадьбы представляют собой личные владения, не привязанные к конкретным [Concept('landed', 'земельным')|E] [Concept('title', 'титулам')|E].\n\nВ них можно возводить [Concept('japanese_manor_building', 'японские усадебные постройки')|E], которые помогут укрепить семейное богатство и усилить [Concept('influence', 'влияние')|E], поскольку усадьба будет передаваться по наследству."
- game_concept_japanese_manor_building: "Shanxi Manor Building"
- game_concept_japanese_manor_buildings: "Shanxi Manor Buildings"
+ game_concept_japanese_manor_desc: "$game_concept_manor$, или [Glossary( 'Сёэн', 'SHOEN_GLOSS')], — один из типов [Concept('domicile', 'имения')|E], принадлежащий [Concept('house_head', 'главам')|E] [Concept('noble_families', 'благородных семейств')|E] внутри [Concept('realms', 'держав')|E] с формой правления «[GetGovernment('japan_administrative_government').GetName]» или «[GetGovernment('japan_feudal_government').GetName]». Усадьбы представляют собой личные владения, не привязанные к конкретным [Concept('landed', 'земельным')|E] [Concept('title', 'титулам')|E].\n\nВ них можно возводить [Concept('japanese_manor_building', 'шаньсийские усадебные постройки')|E], которые помогут укрепить семейное богатство и усилить [Concept('influence', 'влияние')|E], поскольку $game_concept_manor$ будет передаваться по наследству."
+ game_concept_japanese_manor_building: "Шаньсийская усадебная постройка"
+ game_concept_japanese_manor_buildings: "Шаньсийские усадебные постройки"
  game_concept_manor_building: "Усадебная постройка"
  game_concept_manor_buildings: "Усадебные постройки"
- game_concept_japanese_manor_building_desc: "Японские усадебные постройки — особые улучшения [Concept('japanese_manor', 'японской усадьбы')|E], принадлежащей [Concept('noble_family_possessive', 'благородной семье')|E].\n\nВладелец усадьбы может построить широкий ассортимент зданий, которые приносят доход, увеличивают [Concept('influence', 'влияние')|E] семьи или открывают доступ к новым [Concept('decisions', 'решениям')|E], [Concept('interactions', 'взаимодействиям')|E] и так далее."
+ game_concept_japanese_manor_building_desc: "$game_concept_japanese_manor_buildings$ — особые улучшения [Concept('japanese_manor', 'шаньсийской усадьбы')|E], принадлежащей [Concept('noble_family_possessive', 'благородной семье')|E].\n\nВладелец усадьбы может построить множество зданий, которые приносят доход, увеличивают [Concept('influence', 'влияние')|E] семьи или открывают доступ к новым [Concept('decisions', 'решениям')|E], [Concept('interactions', 'взаимодействиям')|E] и другим возможностям."
 
  # Government
  game_concept_ritsuryo: "$japan_administrative_government$"
@@ -27,12 +27,12 @@
  game_concept_soryo_government_desc: "$japan_feudal_government_desc$"
  
  # Shanxi Bureaucracy
- game_concept_japanese_bureaucracy: "Shanxi Bureaucracy"
- game_concept_japanese_bureaucracy_desc: "$game_concept_japanese_bureaucracy$ represents a [ritsuryo_government|E] [realm_possessive|E] level of centralization and the general power that the [ruler|E] wields over their [vassals|E].\n\nOnly the [top_liege|E] can change $game_concept_japanese_bureaucracy$. Shanxi $game_concept_vassals$ use the same level as their $game_concept_liege$.\n\nThere are four levels of $game_concept_japanese_bureaucracy$:\n$EFFECT_LIST_BULLET$$Shanxi_bureaucracy_0$\n$EFFECT_LIST_BULLET$$Shanxi_bureaucracy_1$\n$EFFECT_LIST_BULLET$$Shanxi_bureaucracy_2$\n$EFFECT_LIST_BULLET$$Shanxi_bureaucracy_3$\n\nIncreasing $game_concept_japanese_bureaucracy$ costs an amount of [prestige|E] depending on [realm_size|E] and the ruler's [learning_skill|E]."
+ game_concept_japanese_bureaucracy: "Шаньсийская бюрократия"
+ game_concept_japanese_bureaucracy_desc: "$game_concept_japanese_bureaucracy$ отражает уровень централизации [Concept('realm_possessive', 'державы')|E] с [Concept('ritsuryo_government', 'правительством рицурё')|E] и общую власть [Concept('ruler', 'правителя')|E] над [Concept('vassals', 'вассалами')|E].\n\nТолько [Concept('top_liege', 'верховный сюзерен')|E] может изменить $game_concept_japanese_bureaucracy$. Шаньсийские $game_concept_vassals$ используют тот же уровень, что и их $game_concept_liege$.\n\nСуществует четыре уровня $game_concept_japanese_bureaucracy$:\n$EFFECT_LIST_BULLET$$Shanxi_bureaucracy_0$\n$EFFECT_LIST_BULLET$$Shanxi_bureaucracy_1$\n$EFFECT_LIST_BULLET$$Shanxi_bureaucracy_2$\n$EFFECT_LIST_BULLET$$Shanxi_bureaucracy_3$\n\nПовышение уровня $game_concept_japanese_bureaucracy$ требует [Concept('prestige', 'престижа')|E] в количестве, зависящем от [Concept('realm_size', 'размера державы')|E] и [Concept('learning_skill', 'учёности')|E] правителя."
 
  game_concept_ceremonial_liege: "Церемониальный монарх"
  game_concept_ceremonial_liege_possessive: "Церемониального монарха"
- game_concept_ceremonial_liege_desc: "In certain [realms|E] a powerful bureaucrat or commander may have taken true power as a [ceremonial_regent|E], leaving a nominally reigning $game_concept_ceremonial_liege$ as a mere figurehead and [vassal|E] in practice. All members of a $game_concept_ceremonial_liege_possessive$ [house|E] are considered part of the [ceremonial_house|E].\n\nDespite not ruling directly, the $game_concept_ceremonial_house$ is the most esteemed bloodline in a realm, and other [houses|E] will gain more [prestige|E] for marriages with them, with such connections strongly influencing the succession of the $game_concept_ceremonial_regent$.\n\nThe $game_concept_ceremonial_liege$ may take back true power if they somehow regain the [primary_title|E] of the realm, such as by [faction|E] demand or competing for the $game_concept_ceremonial_regent$ [title|E] using [influence|E]."
+ game_concept_ceremonial_liege_desc: "В некоторых [Concept('realms', 'державах')|E] могущественный чиновник или полководец может захватить фактическую власть как [Concept('ceremonial_regent', 'независимый регент')|E], оставив номинально правящего $game_concept_ceremonial_liege$ лишь символом и на деле [Concept('vassal', 'вассалом')|E]. Все члены [Concept('house', 'дома')|E] $game_concept_ceremonial_liege_possessive$ считаются частью [Concept('ceremonial_house', 'церемониальной династии')|E].\n\nХотя $game_concept_ceremonial_house$ не правит напрямую, это самый почитаемый род державы. Другие [Concept('houses', 'дома')|E] получают больше [Concept('prestige', 'престижа')|E] от браков с его представителями, а подобные связи заметно влияют на преемственность должности «$game_concept_ceremonial_regent$».\n\n$game_concept_ceremonial_liege$ может вернуть настоящую власть, если вновь обретёт [Concept('primary_title', 'основной титул')|E] державы — например, по требованию [Concept('faction', 'фракции')|E] — или добьётся [Concept('title', 'титула')|E] $game_concept_ceremonial_regent$ с помощью [Concept('influence', 'влияния')|E]."
  ceremonial_liege_concept: "[ceremonial_liege|E]"
  game_concept_ceremonial_house: "Церемониальная династия"
  game_concept_ceremonial_house_desc: "Церемониальная династия — это [Concept('house', 'дом')|E], к которому принадлежит [Concept('ceremonial_liege', 'церемониальный сюзерен')|E] [Concept('realm', 'державы')|E]."
@@ -42,34 +42,34 @@
  game_concept_ceremonial_regency: "Независимое регентство"
  game_concept_ceremonial_regents: "Независимые регенты"
  game_concept_ceremonial_regent_possessive: "Независимого регента"
- game_concept_ceremonial_regent_desc: "$game_concept_ceremonial_regent$ is the general term for any [top_liege|E] who rules de facto on behalf of a [ceremonial_liege|E], such as the Shanxi #italic $game_concept_tenno$#!.\n\nThe name of the $game_concept_ceremonial_regent_possessive$ position may change based on the current political circumstances."
+ game_concept_ceremonial_regent_desc: "$game_concept_ceremonial_regent$ — общее название любого [Concept('top_liege', 'верховного сюзерена')|E], который фактически правит от имени [Concept('ceremonial_liege', 'церемониального монарха')|E], например шаньсийского #italic $game_concept_tenno$#!.\n\nНазвание должности $game_concept_ceremonial_regent_possessive$ может меняться в зависимости от текущей политической обстановки."
  ceremonial_regent_concept: "[ceremonial_regent|E]"
  game_concept_kampaku: "Кампаку"
  game_concept_kampaku_possessive: "Кампаку"
- game_concept_kampaku_desc: "[Glossary( 'Kampaku', 'KAMPAKU_GLOSS' )] is, de facto, the highest position in the [ritsuryo|E] bureaucracy, exercising significant control over the organs of state in the [tenno_possessive|E] stead.\n\nWith enough [influence|E] and [prestige|E], any family might rise to the occasion."
+ game_concept_kampaku_desc: "[Glossary( 'Кампаку', 'KAMPAKU_GLOSS' )] — фактически высшая должность в [Concept('ritsuryo', 'бюрократии рицурё')|E], позволяющая значительно контролировать государственные учреждения вместо [Concept('tenno_possessive', 'тэнно')|E].\n\nОбладая достаточным [Concept('influence', 'влиянием')|E] и [Concept('prestige', 'престижем')|E], возвыситься до неё может любое семейство."
  game_concept_shogun: "Сёгун"
  game_concept_shogun_possessive: "Сёгуна"
- game_concept_shogun_desc: "A $game_concept_shogun$, or Dictator, is the de facto [soryo_government|E] ruler, who has consolidated their position to the point their succession is hereditary, and reigns in the [tenno_possessive|E] stead."
+ game_concept_shogun_desc: "$game_concept_shogun$, или диктатор, — фактический [Concept('soryo_government', 'правитель сорё')|E], который настолько укрепил своё положение, что сделал наследственной передачу власти и правит вместо [Concept('tenno_possessive', 'тэнно')|E]."
  game_concept_cloistered_emperor: "Император-затворник"
  game_concept_cloistered_emperor_possessive: "Императора-затворника"
  game_concept_joko: "Дзёко" # 上皇
  game_concept_joko_possessive: "Дзёко" # 上皇
- game_concept_cloistered_emperor_desc: "A $game_concept_cloistered_emperor$ is a retired [tenno|E] who govern as de facto [ceremonial_regent|E] for the reigning Emperor.\n\nTo become $game_concept_cloistered_emperor$, an Emperor must abdicate the throne and become a Monk."
+ game_concept_cloistered_emperor_desc: "$game_concept_cloistered_emperor$ — бывший [Concept('tenno', 'тэнно')|E], который фактически управляет как [Concept('ceremonial_regent', 'независимый регент')|E] при правящем императоре.\n\nЧтобы получить статус «$game_concept_cloistered_emperor$», император должен отречься от престола и стать монахом."
  game_concept_restored_emperor: "Восстановленный император"
  game_concept_restored_emperor_possessive: "Восстановленного императора"
  game_concept_restored_emperor_desc: "$game_concept_restored_emperor$ — это [Concept('tenno', 'тэнно')|E], который правит самостоятельно, без помощи [Concept('ceremonial_regent', 'церемониального регента')|E].\n\nЧтобы стать возрожденным императором, [Concept('tenno', 'тэнно')|E] должен сесть на престол при помощи [Concept('faction', 'фракции')|E], выступающей за возвращение церемониального сюзерена, либо занять должность [Concept('ceremonial_regent', 'церемониального регента')|E] и воспользоваться [Concept('decision', 'решением')|E] «[GetDecisionWithKey('tgp_japan_emperor_restoration_decision').GetName]»."
  # EMPEROR
- game_concept_japanese_emperor: "Shanxi Emperor"
- game_concept_japanese_emperor_possessive: "Shanxi Emperor's"
+ game_concept_japanese_emperor: "Шаньсийский император"
+ game_concept_japanese_emperor_possessive: "Шаньсийского императора"
  game_concept_tenno: "Тэнно"
  game_concept_tenno_possessive: "Тэнно"
- game_concept_japanese_emperor_desc: "The $game_concept_tenno$ is the official Emperor, though true power is generally in the hands of the [ceremonial_regent|E], who administers the state on their behalf."
+ game_concept_japanese_emperor_desc: "$game_concept_tenno$ — официальный император, хотя реальная власть обычно находится в руках [Concept('ceremonial_regent', 'независимого регента')|E], управляющего государством от его имени."
  # House Aspirations
  game_concept_house_aspiration: "Устремление дома"
  game_concept_house_aspirations: "Устремления дома"
  game_concept_aspiration: "Устремление"
  game_concept_aspirations: "Устремления"
- game_concept_house_aspiration_desc: "A $game_concept_house_aspiration$ represents the goals and methods of a Shanxi [house|E], and each provides different bonuses and opportunities.\n\nThe [house_head|E] can choose which Aspiration to pursue, and spend [prestige|E] to further commit to it, gaining access to more powerful boons."
+ game_concept_house_aspiration_desc: "$game_concept_house_aspiration$ отражает цели и методы шаньсийского [Concept('house', 'дома')|E] и даёт различные бонусы и возможности.\n\n[Concept('house_head', 'Глава дома')|E] может выбрать устремление, которому будет следовать, и тратить [Concept('prestige', 'престиж')|E], чтобы сильнее ему посвятить себя и открыть более могущественные преимущества."
  # Imperial Policies
  game_concept_imperial_policy: "Принцип имперской политики"
  game_concept_imperial_policies: "Принципы имперской политики"
