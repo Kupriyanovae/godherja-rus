@@ -379,7 +379,7 @@
  BLOOD_BROTHER_CLEVER_REASON: "$blood_brother_clever_modifier$: $VALUE|=+0$"
  BLOOD_BROTHER_LOVING_REASON: "$blood_brother_loving_modifier$: $VALUE|=+0$"
  BROKE_BLOOD_BROTHERHOOD_REASON: "Вы отреклись от побратима: $VALUE|=+0$"
- blood_brother_interaction_aibehavior_power_tt: "Разница в военной силе: $VALUE|=+0$ #weak (макс. +50)#!"
+ blood_brother_interaction_aibehavior_power_tt:1 "Разница в военной силе: $VALUE|=+0$ #weak (макс. +50)#!"
  BLOOD_BROTHER_RECIPIENT_MUCH_WEAKER_REASON: "[recipient.GetShortUIName|U] заметно слабее, чем [actor.GetShortUINameNoTooltip]: $VALUE|=+0$"
  BLOOD_BROTHER_RECIPIENT_SOMEWHAT_WEAKER_REASON: "[recipient.GetShortUIName|U] немного слабее, чем [actor.GetShortUINameNoTooltip]: $VALUE|=+0$"
  BLOOD_BROTHER_RECIPIENT_SLIGHTLY_WEAKER_REASON: "[recipient.GetShortUIName|U] и [actor.GetShortUINameNoTooltip] примерно равны по силе: $VALUE|=+0$"
@@ -387,6 +387,12 @@
  BLOOD_BROTHER_ACTOR_SOMEWHAT_WEAKER_REASON: "[actor.GetShortUIName|U] немного слабее, чем [recipient.GetShortUINameNoTooltip]: $VALUE|=+0$"
  BLOOD_BROTHER_ACTOR_MUCH_WEAKER_REASON: "[actor.GetShortUIName|U] заметно слабее, чем [recipient.GetShortUINameNoTooltip]: $VALUE|=+0$"
  
+ blood_brother_alliance_actor_alliance_tt: "Becomes [recipient.GetShortUINamePossessive] [ally|E]"
+ blood_brother_actor_gains_hook_tt: "Gets a [strong_hook|E] #EMP (Blood Brother)#! on [recipient.GetShortUIName]"
+ blood_brother_alliance_recipient_alliance_tt: "Becomes [actor.GetShortUINamePossessive] [ally|E]"
+ blood_brother_recipient_gains_hook_tt: "Gets a [strong_hook|E] #EMP (Blood Brother)#! on [actor.GetShortUIName]"
+ blood_brother_alliance_actor_alliance_past_tt: "[recipient.GetShortUINamePossessive] became your [ally|E]"
+ blood_brother_actor_gains_hook_past_tt: "You got a [strong_hook|E] #EMP (Blood Brother)#! on [recipient.GetShortUIName]"
  blood_brother_alliance_recipient_alliance_past_tt: "[actor.GetShortUIName] теперь ваш [Concept('ally', 'союзник')|E]"
  blood_brother_recipient_gains_hook_past_tt: "Вы получили [Concept('strong_hook', 'сильное влияние')|E] #EMP (побратим)#! на персонажа [actor.GetShortUIName]"
  blood_brother_actor_recipient_hook_past_tt: "[recipient.GetShortUIName] [Select_CString(recipient.IsFemale, 'получила', 'получил' )] [Concept('strong_hook', 'сильное влияние')|E] #EMP (побратим)#! на вас"
@@ -401,7 +407,7 @@
 
  make_blood_brother_interaction.decline.actor.tt: "[recipient.GetTitledFirstNameNoTooltip] отвергает вашу клятву"
  make_blood_brother_interaction.decline.recipient.tt: "[actor.GetTitledFirstNameNoTooltip] [Select_CString(actor.IsFemale, 'была отвергнута', 'был отвергнут' )]"
- MAKE_BLOOD_BROTHER_NOTIFICATION: "[recipient.Custom('RegionalFerociousAnimal')|U] #L [recipient.GetCulture.GetCollectiveNoun|l]ого#! народа — я клянусь быть тебе [Select_CString(actor.IsFemale, 'сестрой', 'братом' )], кровью от крови твоей.\n\nИ через бурю, и через мрак ночи, всегда, [Select_CString(recipient.IsFemale, 'сестра моя', 'брат мой' )], я прибуду тебе на подмогу #EMP и никогда тебя не оставлю!#! Прольешь ли ты свою кровь, принесешь ли ту же клятву?"
+ MAKE_BLOOD_BROTHER_NOTIFICATION:0 "[recipient.Custom('RegionalFerociousAnimal')|U] #L [recipient.GetCulture.GetCollectiveNoun|l]ого#! народа — я клянусь быть тебе [Select_CString(actor.IsFemale, 'сестрой', 'братом' )], кровью от крови твоей.\n\nИ через бурю, и через мрак ночи, всегда, [Select_CString(recipient.IsFemale, 'сестра моя', 'брат мой' )], я прибуду тебе на подмогу #EMP и никогда тебя не оставлю!#! Прольешь ли ты свою кровь, принесешь ли ту же клятву?"
 
  blood_brother_modifier_lasts_tt: "#EMP Этот [Concept('modifier', 'модификатор')|E] действует, пока вы остаетесь [Concept('blood_brothers', 'побратимами')|E]"
 

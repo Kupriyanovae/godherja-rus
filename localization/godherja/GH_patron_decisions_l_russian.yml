@@ -13,18 +13,17 @@
  heal_the_sick_decision_desc:0 "Явите свою преданность [ROOT.GetCharacter.GetFaith.HealthGodName], облегчив участь больных и раненых."
  heal_the_sick_decision_tooltip:0 "Помочь больным"
  heal_the_sick_decision_confirm:0 "[ROOT.GetCharacter.GetFaith.HealthGodName] повелевает это."
- 
- gh_search_in_library_decision:0 "Совершенствовать познания в: [ROOT.Char.GetCurrentLocation.GetTitle.GetNameNoTierNoTooltip]" #ASKIL NOTE: If collections should be county-based, change value here
- gh_search_in_library_decision_desc:0 "Среди хранящихся здесь томов и свитков вполне могут найтись ответы, стоящие затраченных усилий. Если я выделю время на изучение этих трудов, то смогу почерпнуть полезные знания."
- gh_search_in_library_decision_confirm:0 "Начать изучение"
- gh_search_in_library_decision_tooltip:0 "Изучить тексты, доступные в местной [Concept('collection_of_knowledge','коллекции знаний')|E]."
- search_within_location_library_tt:0 "Вы будете способны изучить любые знания доступные в [Concept('collection_of_knowledge','коллекции')|E] в [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier]." #ASKIL NOTE: If collections should be county-based, change value here
- search_within_location_library_effect_tt:0 "#P Учёба может даровать временные или постоянные бонусы#!"
- gh_ruler_is_not_tribal:0 "Требуется, чтобы ваш тип [Concept('government','правительства')|E] не был [Concept('tribal','племенным')|E]."
- gh_is_banned_from_studying_in_collection:0 "В прошлом вы уже пытались украсть кое-что из местной коллекции."
 
- not_reached_limit_read_book_recently_tt:0 "Лимит чтения еще не достигнут (#high [GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue]/7#!)/[GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue]#!). Сброс лимита: #high [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope, 'gh_number_of_recently_read_book') )]#!"
+ gh_search_in_library_decision: "Совершенствовать познания в: [ROOT.Char.GetCurrentLocation.GetTitle.GetNameNoTierNoTooltip]" #ASKIL NOTE: If collections should be county-based, change value here
+ gh_search_in_library_decision_desc: "Среди хранящихся здесь томов и свитков вполне могут найтись ответы, стоящие затраченных усилий. Если я выделю время на изучение этих трудов, то смогу почерпнуть полезные знания."
+ gh_search_in_library_decision_confirm: "Начать изучение"
+ gh_search_in_library_decision_tooltip: "Изучить тексты, доступные в местной [Concept('collection_of_knowledge','коллекции знаний')|E]."
+ search_within_location_library_tt: "Вы будете способны изучить любые знания доступные в [Concept('collection_of_knowledge','коллекции')|E] в [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier]." #ASKIL NOTE: If collections should be county-based, change value here
+ search_within_location_library_effect_tt: "#P Учёба может даровать временные или постоянные бонусы#!"
+ gh_ruler_is_not_tribal: "Требуется, чтобы ваш тип [Concept('government','правительства')|E] не был [Concept('tribal','племенным')|E]."
+ gh_is_banned_from_studying_in_collection: "В прошлом вы уже пытались украсть кое-что из местной коллекции."
+
+ not_reached_limit_read_book_recently_tt: "Лимит чтения еще не достигнут (#high [GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue]/7#!)/[GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue]#!). Сброс лимита: #high [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope, 'gh_number_of_recently_read_book') )]#!"
 
  already_reached_limit_read_book_recently_tt: "@warning_icon! #N You have already reached you reading limit (#bold [GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue]/[GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue]#!). Limit resets on #bold [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope, 'gh_number_of_recently_read_book') )]#!#!"
- not_read_any_book_recently_tt:0 "Вы давно не читали ни одной книги"
- 
+ not_read_any_book_recently_tt: "Вы давно не читали ни одной книги"

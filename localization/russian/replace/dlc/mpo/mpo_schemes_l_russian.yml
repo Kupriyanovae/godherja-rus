@@ -5,7 +5,7 @@
  SCHEME_STEAL_HERD_IS_HERDER: "$scheme_odds.misc_is_herder$: $VALUE|=+0$"
  SCHEME_STEAL_HERD_GALLOWSBAIT: "[GetTrait('gallowsbait').GetName( GetNullCharacter )]: $VALUE|=+0$"
  SCHEME_STEAL_HERD_AMOUNT: "Количество [Concept('herd', 'стад')|E]: $VALUE|=+0$"
- HAS_ATTEMPTED_TO_STEAL_HERD_BEFORE: "[target.GetShortUIName|U] знает, что вы когда-то пытались украсть [Select_CString(target.IsFemale, 'ее', 'его' )] стада: $VALUE|+0=$"
+ HAS_ATTEMPTED_TO_STEAL_HERD_BEFORE:0 "[target.GetShortUIName|U] знает, что вы когда-то пытались украсть [Select_CString(target.IsFemale, 'ее', 'его' )] стада: $VALUE|+0=$"
  stole_my_herd: "Похититель моих стад"
  stole_my_herd_crime: "Похититель моих стад"
  stole_lieges_herd: "Похититель стад моего сюзерена"
@@ -37,6 +37,7 @@
  steal_herd_outcome.1001.t: "$steal_herd_event_title$ успех!"
  steal_herd_outcome.1001.desc: "[Select_CString(courtier.IsFemale, 'Моя', 'Мой' )] [ROOT.Char.Custom2('RelationToMeShort', SCOPE.sC('courtier'))] [courtier.GetName] горделивой походкой входит в лагерь. За [Select_CString(courtier.IsFemale, 'ней', 'ним' )] следует незнакомый пастух, который подводит ко мне несколько голов скота.\n\n«[target.GetTitledFirstName] шлет „подарок“!» — восклицает [courtier.GetName]. И пока я указываю пастуху, куда отвести новых животных, я невольно ухмыляюсь. Стадо растет, а мне для этого не пришлось и пальцем о палец ударить."
  steal_herd_outcome.1001.a: "Спасибо за «щедрость», [target.GetFirstNameNoTooltip]!"
+
  steal_herd_outcome.1003.desc: "[Select_CString(courtier.IsFemale, 'Она', 'Он' )] в подробностях рассказывает о краже, смакуя моменты, когда становилось особенно ясно, насколько [Select_CString(target.IsFemale, 'беззащитна', 'беззащитен' )] перед нами [target.GetFirstNameNoTooltip]. А если мы так легко проникли к [Select_CString(target.IsFemale, 'ней', 'нему' )] в лагерь, интересно, что еще можно у [Select_CString(target.IsFemale, 'нее', 'него' )] прихватить..."
  steal_herd_outcome.1003.a: "[courtier.GetFirstNameNoTooltip], давай-ка вот об этом поподробнее."
  steal_herd_outcome.1003.a_desc: "Вы пробуете угнать больше [Concept('herd', 'скота')|E] у персонажа [target.GetFirstNameNoTooltip]"
@@ -51,18 +52,23 @@
  steal_herd_outcome.1003.d: "А может, [Select_CString(target.IsFemale, 'ее', 'его' )] жизнь?"
  steal_herd_outcome.1003.d_tt: "Я начинаю [Concept('scheme', 'происки')|E] «[GetScheme('murder').GetTypeName]». Их цель — [target.GetFirstName]. #V Шанс на успех#! #p повышен#!"
  steal_herd_outcome.1003.e: "Пока что с меня хватит."
+
  steal_herd_outcome.1002.t: "$steal_herd_event_title$ угнанный скот!"
  steal_herd_outcome.1002.desc: "[spymaster.GetName] приносит дурные вести: «[ROOT.Char.GetFirstName], пропало несколько животных, которых мы держали во дворе».\n\n[Select_CString(spymaster.IsFemale, 'Она', 'Он' )] прокашливается: «Мы тщательно всё обыскали, и, похоже, это [owner.GetName] [Select_CString(owner.IsFemale, 'послала', 'послал' )] своих прихвостней за скотом и [Select_CString(owner.IsFemale, 'убедила', 'убедил' )] пастуха, что это ваш собственный приказ»."
  steal_herd_outcome.1002.desc_monies: "\n\nЯ выслушиваю эти откровения и вдруг замечаю сундук, который еще недавно был до половины забит драгоценностями, а сейчас в нем едва покрыто дно. Понимая, что здесь наверняка поработал один и тот же преступник, я вздыхаю."
  steal_herd_outcome.1002.a: "Тебя ждет [ROOT.Char.GetFaith.NegativeAfterLife], [owner.GetFirstNameNoTooltip]!"
+
  steal_herd_outcome.2001.t: "$steal_herd_event_title$ провал"
  steal_herd_outcome.2001.desc: "Все получилось, и [target.GetTitledFirstName] [Select_CString(target.IsFemale, 'была ограблена', 'был ограблен' )], как планировалось, вот только [Select_CString(courtier.IsFemale, 'моя', 'мой' )] [ROOT.Char.Custom2('RelationToMeShort', SCOPE.sC('courtier'))] [courtier.GetTitledFirstName] возвращается с пустыми руками. Победа не принесла нам ни шерстинки.\n\n«Прости, [owner.GetFirstNameNoTooltip], но [target.GetFirstNameNoTooltip] [Select_CString(target.IsFemale, 'напала', 'напал' )] на наш след, — вздыхает [courtier.GetFirstNameNoTooltip]. — Хорошо еще, что нам удалось сбежать до прибытия [Select_CString(target.IsFemale, 'ее', 'его' )] всадников."
  steal_herd_outcome.2001.a: "Наверное, [target.GetFirstNameNoTooltip] под защитой самих небес..."
+
  steal_herd_outcome.2002.desc: "[courtier.GetName] ведет меня наружу, и, к моему величайшему огорчению, табуна нет!\n\n[courtier.GetFirstNameNoTooltip] объясняет, что украсть табун не вышло. При этом [target.GetTitledFirstName] [Select_CString(target.IsFemale, 'решила', 'решил' )] не оставлять наших всадников без возмездия. [Select_CString(target.IsFemale, 'Ее', 'Его' )] отряд поскакал за нашим, и так [courtier.GetFirstNameNoTooltip] с соучастниками вывели их к моим пастбищам. «Гости» забрали овец и прочий скот и стремительно ускакали."
  steal_herd_outcome.2002.a: "Как можно быть такими раззявами?!"
+
  steal_herd_outcome.2003.t: "[owner.GetTitledFirstName] и [Select_CString(owner.IsFemale, 'ее', 'его' )] стада"
  steal_herd_outcome.2003.desc: "Я слышу какой-то шум и вижу, как приближается [courtier.GetName]. [Select_CString(courtier.IsFemale, 'Она', 'Он' )] улыбается и жестом приглашает меня выйти наружу.\n\nВо дворе один из моих всадников ведет стадо овец и лошадей. [courtier.GetFirstNameNoTooltip] пристально смотрит на меня. «[Select_CString(owner.IsFemale, 'Эта нахалка', 'Этот нахал' )] [owner.GetFirstNameNoTooltip]! — говорит [Select_CString(courtier.IsFemale, 'она', 'он' )]. — [Select_CString(owner.IsFemale, 'Она думала', 'Он думал' )], что сумеет тайком навредить #italic вам#! и забрать ваш табун! К счастью, [courtier.GetFaith.HighGodName] благоволит нам. Этими прекрасными животными прежде [Select_CString(owner.IsFemale, 'владела сама', 'владел сам' )] [owner.GetFirstNameNoTooltip]»."
  steal_herd_outcome.2003.a: "Что ж, твои невзгоды идут мне на пользу, [owner.GetFirstNameNoTooltip]!"
+ 
  steal_herd_ongoing.1001.t: "$steal_herd_event_title$ охрана"
  steal_herd_ongoing.1001.desc: "Чтобы украсть стада, которыми пока что владеет [target.GetTitledFirstName], нужно изучить [Select_CString(target.IsFemale, 'ее', 'его' )] земли и их жителей. Я отправляюсь на разведку, чтобы понять, какие пастбища ближе к [Select_CString(target.IsFemale, 'ее', 'его' )] дому, а какие дальше и слабее охраняются.\n\nПока я осматриваю возвышенность, за которой начинается [target.GetCapitalLocation.GetTitle.GetName], сзади подходит отряд воинов с [Select_CString(target_knight.IsFemale, 'всадницей', 'всадником' )] во главе. «Что вам здесь нужно?» — спрашивает [Select_CString(target_knight.IsFemale, 'предводительница', 'предводитель' )]."
  steal_herd_ongoing.1001.a: "Помериться с кем-нибудь силами!"
@@ -75,6 +81,7 @@
  steal_herd_ongoing.1001.c_win: "Вы и [target_knight.GetFirstNameNoTooltip] пьете всю ночь напролет"
  steal_herd_ongoing.1001.c_win_big: "[Select_CString(target_knight.IsFemale, 'Хмельная', 'Хмельной' )] [target_knight.GetFirstNameNoTooltip] поддается уговорам и решает присоединиться к вам"
  steal_herd_ongoing.1001.d: "Да ничего, я просто пойду."
+
  steal_herd_ongoing.1002.t: "$steal_herd_event_title$ затаившийся пастух"
  steal_herd_ongoing.1002.desc: "[chosen_agent.GetName] говорит, что [target.GetTitledFirstName] держит пастухов, которые зачастую не могут справиться с одной-единственной овцой в стаде.\n\n«Почему бы тебе не одеться пастухом? Может, [target.GetFirstNameNoTooltip] примет твое предложение „помочь“ нерадивым пастухам?» — предлагаю я. [chosen_agent.GetFirstNameNoTooltip] обеспокоенно смотрит на меня и вздыхает."
  steal_herd_ongoing.1002.a: "Ну же, [chosen_agent.GetFirstNameNoTooltip], выручи [Select_CString(target.IsFemale, 'ее', 'его' )]!"
@@ -84,6 +91,7 @@
  steal_herd_ongoing.1002.win: "[Select_CString(chosen_agent.IsFemale, 'Ее', 'Его' )] маскировка выглядит убедительно"
  steal_herd_ongoing.1002.b_tt: "[chosen_agent.GetFirstName] маскируется с вашей помощью"
  steal_herd_ongoing.1002.lose: "У [Select_CString(chosen_agent.IsFemale, 'нее', 'него' )] не получается убедительно притвориться"
+
  random_negative_scheme_modifier_tt: "Происки «Угнать стадо персонажа [target.GetNameNoTooltip]» получают #n отрицательный#! модификатор"
  mpo_steal_herd_observation_modifier: "Изучение территорий"
  mpo_steal_herd_almost_caught_modifier: "Любопытные глаза"

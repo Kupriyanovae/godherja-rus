@@ -1089,7 +1089,7 @@ l_russian:
  ########################
  # SPELL EFFECT SCALING #
  ########################
-
+ 
 
  spell_effect_scalar_list_1: "[ROOT.Story.Custom('SpellEffectScalar1')]"
  spell_effect_scalar_list_2: "[ROOT.Story.Custom('SpellEffectScalar1')] #V +#![ROOT.Story.Custom('SpellEffectScalar2')]"
@@ -1204,7 +1204,7 @@ l_russian:
  magic_stress_gain_mult_modifier: "Ослабленная психика"
  magic_stress_gain_mult_modifier_desc: "This character's mind is weak and fractured by aetheric disturbances"
  magic_stress_loss_mult_modifier: "Умиротворённая психика"
- magic_stress_gain_mult_modifier_desc: "This character's mind is weak and fractured by aetheric disturbances" 
+ magic_stress_loss_mult_modifier_desc: "This character's capacity to lose stress has been enhanced through arcane means"
  magic_virility_opinion_modifier: "Притягательная аура"  
  magic_viagra_modifier: "Магическая плодовитость"
  magic_fertility_negative_modifier: "Arcane Impotence"
@@ -1429,16 +1429,16 @@ l_russian:
  resource_exotic_metals_modifier_desc: "Whether due to [magic|E] or nature, this area has significant deposits of exotic metals"
  resource_abundant_stone_modifier: "Изобилие камня"
  resource_abundant_stone_modifier_desc: "Whether due to [magic|E] or nature, this area has an abundance of high-quality stone" 
- resource_excellent_soil_modifier: "Плодородная почва"
+ resource_magical_soil_fertility_modifier: "Magical Soil Fertility"
  resource_magical_soil_fertility_modifier_desc: "This county's soils have been magically made more fertile and suitable for herding and agriculture"
  resource_verdant_plant_growth_modifier: "Буйная растительность"
  resource_verdant_plant_growth_modifier_desc: "Whether due to [magic|E] or nature, the plantlife in this area grows at a truly extraordinary speed"
  magic_character_monthly_county_control_growth_add_modifier: "Магический надзор"
  magic_character_monthly_county_control_growth_loss_modifier: "Arcane Anarchy"
+ magic_character_capital_county_monthly_control_add_modifier: "Arcane Authority"
+ magic_character_capital_county_monthly_control_add_modifier_desc: "This character's capital has been enchanted through magical means, bringing order and stability"
  magic_character_capital_county_monthly_development_growth_add_modifier: "Магическое процветание"  
  magic_character_capital_county_monthly_development_growth_add_modifier_desc: "Столица этого персонажа зачарована магией, привлекая людей и торговлю."
- magic_character_capital_county_monthly_development_growth_add_modifier: "Arcane Prosperity"
- magic_character_capital_county_monthly_development_growth_add_modifier_desc: "This character's capital has been enchanted through magical means, drawing in people and commerce"
  magic_character_build_speed_modifier: "Развивающееся строительство"  
  magic_character_build_speed_modifier_desc: "Земли этого персонажа меняются и развиваются буквально за ночь."  
  backfire_province_debuff_fire_modifier: "Выжженные поля"  
@@ -1547,7 +1547,7 @@ l_russian:
  magic_penetration_magic_modifier_9_desc: "\n\n[magic_resistance|E]: #negative_value  -90#!\n"
  magic_penetration_magic_modifier_10: "Магическое пробитие"
  magic_penetration_magic_modifier_10_desc: "\n\n[magic_resistance|E]: #negative_value  -100#!\n"
- 		# 'Base' modifier of the effect, unused apart from loc
+		# 'Base' modifier of the effect, unused apart from loc
  magic_battle_death_chance_modifier: "Магическая уязвимость в бою"
  magic_battle_death_chance_modifier_desc: "\n\nВероятность гибели в [Concept('battle','битве')|E]: #negative_value  25#!\n"
  magic_battle_death_chance_modifier_1: "Магическая уязвимость в бою"
@@ -1593,7 +1593,7 @@ l_russian:
  enemy_knight_kill_chance_magic_modifier_9_desc: "\n\nШанс убийства вражеского [Concept('knight','рыцаря')|E]: #positive_value + 90#!\n"
  enemy_knight_kill_chance_magic_modifier_10: "Магия убийства рыцарей"
  enemy_knight_kill_chance_magic_modifier_10_desc: "\n\nШанс убийства вражеского [Concept('knight','рыцаря')|E]: #positive_value + 100#!\n"
- 		# 'Base' modifier of the effect, unused apart from loc
+		# 'Base' modifier of the effect, unused apart from loc
  magic_vassalization_acceptance_modifier: "Магическое подчинение"
  magic_vassalization_acceptance_modifier_desc: "\n\nПринятие [Concept('offer_vassalization', 'предложения вассализации')|E]: #positive_value + 10#!\n"
  magic_vassalization_acceptance_modifier_1: "Магическое подчинение"
@@ -1636,7 +1636,7 @@ l_russian:
  magic_vassalization_acceptance_modifier_19_desc: "\n\nПринятие [Concept('offer_vassalization', 'предложения вассализации')|E]: #positive_value + 190#!\n"
  magic_vassalization_acceptance_modifier_20: "Магическое подчинение"
  magic_vassalization_acceptance_modifier_20_desc: "\n\nПринятие [Concept('offer_vassalization', 'предложения вассализации')|E]: #positive_value + 200#!\n"
- 		# 'Base' modifier of the effect, unused apart from loc
+		# 'Base' modifier of the effect, unused apart from loc
  magic_arcane_fallout_reduction_modifier: "Магическое обновление"
  magic_arcane_fallout_reduction_modifier_desc: "\n\nДесятилетняя [Concept('ambient_magic','окружающая магия')|E]: #negative_value  -5#!\n"
  magic_arcane_fallout_reduction_modifier_1: "Магическое обновление"
@@ -1702,7 +1702,7 @@ l_russian:
  magic_habitability_add_modifier_9_desc: "\n\n[habitability|E]: #positive_value + 45#!\n"
  magic_habitability_add_modifier_10: "Повышенная обитаемость"
  magic_habitability_add_modifier_10_desc: "\n\n[habitability|E]: #positive_value + 50#!\n"
- 	# 'Base' modifier of the effect, unused apart from loc
+		# 'Base' modifier of the effect, unused apart from loc
  raid_capture_improvement_modifier: "Шёпот во Тьме"
  raid_capture_improvement_modifier_desc: "\n\nДополнительный шанс захвата при набеге: #positive_value + 3#!\n"
  raid_capture_improvement_modifier_1: "Шёпот во Тьме"
@@ -1977,8 +1977,8 @@ l_russian:
  court_grandeur_baseline_add_positive_modifier_permanent: "Мистический двор"
  court_grandeur_baseline_add_positive_modifier_permanent_desc: "Двор этого персонажа был украшен магическими чудесами."
  magic_character_travel_safety_modifier_permanent: "Магическая безопасность в пути"
- magic_character_travel_safety_mult_modifier_permanent: "Магическая безопасность в пути (умножающая)"
  magic_character_travel_safety_disadvantage_modifier_permanent: "Arcane Travel Danger (Permanent)"
+ magic_character_travel_safety_mult_modifier_permanent: "Магическая безопасность в пути (умножающая)"
  magic_character_travel_speed_mult_modifier_permanent: "Магическая скорость передвижения"
  magic_character_travel_speed_mult_modifier_permanent_desc: "Magic has made this character travel speedily"
  travel_advantage_magic_modifier_permanent: "Быстроногость"
@@ -1991,8 +1991,8 @@ l_russian:
  magic_murder_scheme_power_add_modifier_permanent: "Кровавое прозрение"
  magic_seduce_scheme_power_add_modifier_permanent: "Потустороннее искушение"
  magic_hostile_scheme_discovery_gain_modifier_permanent: "Бдительные очи"
- magic_vengeance_modifier_permanent: "Магическая месть"
  magic_hostile_scheme_discovery_gain_modifier_permanent_desc: "This character is preternaturally aware of every detail in their surroundings"
+ magic_vengeance_modifier_permanent: "Магическая месть"
  haunting_power_modifier_permanent: "Жуткая сила"
  magic_trait_synergy_brave_permanent: "Синергия свойства (Отвага)"
  magic_trait_synergy_craven_permanent: "Синергия свойства (Малодушие)"
