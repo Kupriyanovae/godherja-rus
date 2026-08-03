@@ -529,7 +529,7 @@
  feature_book_topic_intrigue_punishment_not_torturer:0 "Устрашающий компендиум всех видов пыток, известных в наш век, описанных во всех подробностях и [Artifact.GetOwner.Custom('ArtifactAdverbWealth')] иллюстрированных."
 
  # learning
- feature_book_title_learning_religious:1 "$artifact_name_prefix_artifact_scope$ [Artifact.GetOwner.GetFaith.ReligiousText|U]"
+ feature_book_title_learning_religious:1 "«[Artifact.GetOwner.GetFaith.ReligiousText|U]» $artifact_name_prefix_artifact_scope$"
  feature_book_topic_learning_religious:0 "[Artifact.GetOwner.Custom('ArtifactAdverbWealth')] украшенная миниатюрами копия священного текста «[Artifact.GetOwner.GetFaith.ReligiousText]», написанная изящной рукой."
  feature_book_topic_learning_religious_big:0 "Монументальная копия священного текста «[Artifact.GetOwner.GetFaith.ReligiousText]», [Artifact.GetOwner.Custom('ArtifactAdverbWealth')] украшенная миниатюрами и написанная изящным слогом."
  feature_book_title_learning_aristotle:0 "Органон $artifact_name_prefix_artifact_scope$"
@@ -586,8 +586,8 @@
  feature_book_topic_cannibal_recipes:0 "Сборник [Artifact.GetOwner.Custom('ArtifactBookContentQuality')] и нетрадиционных рецептов приготовления человеческой плоти, наполненный [Artifact.GetOwner.Custom('ArtifactWealth')] — и подробными — иллюстрациями и маргиналиями."
 
  # animals
- feature_book_title_animals_your_cat:0 "$artifact_name_prefix_artifact_scope$ [Artifact.GetOwner.Custom('CatStoryName')|U]"
- feature_book_title_animals_your_dog:0 "$artifact_name_prefix_artifact_scope$ [Artifact.GetOwner.Custom('DogStoryName')|U]"
+ feature_book_title_animals_your_cat:0 "Книга «[Artifact.GetOwner.Custom('CatStoryName')|U]» $artifact_name_prefix_artifact_scope$"
+ feature_book_title_animals_your_dog:0 "Книга «[Artifact.GetOwner.Custom('DogStoryName')|U]» $artifact_name_prefix_artifact_scope$"
  feature_book_title_animals:0 "Приглашение дикой природы"
  feature_book_title_animals_no_name:0 "Домашние питомцы $artifact_name_prefix_artifact_scope$"
 
@@ -785,7 +785,7 @@
  artifact_panacea_name:0 "Панацея $artifact_name_prefix$"
  artifact_panacea_description:0 "Лекарство от всех известных болезней и недугов. Шкатулка из материала ([newly_created_artifact.GetFeatureText( 'box_material' )]) выполнена на уровне мастерства «[SCOPE.Custom('ArtifactQuality')]». [newly_created_artifact.GetFeatureText( 'box_decoration' )]."
 
- artifact_elixir_name:0 "$artifact_name_prefix$ [newly_created_artifact.GetFeatureText( 'elixir_type' )|U]"
+ artifact_elixir_name:0 "[newly_created_artifact.GetFeatureText( 'elixir_type' )|U] $artifact_name_prefix$"
  artifact_elixir_description:0 "Флакон ([SCOPE.Custom('ArtifactArticleWealth')]), который якобы содержит [newly_created_artifact.Custom('ArtifactElixirTypeDesc')]. [newly_created_artifact.GetFeatureText( 'glass_decoration' )]."
 
  create_artifact_banner_tooltip:0 "[inspiration_owner.GetShortUIName] [Select_CString(inspiration_owner.IsFemale, 'создала', 'создал' )] большое знамя уровня мастерства «[SCOPE.Custom('ArtifactQuality')]»"
