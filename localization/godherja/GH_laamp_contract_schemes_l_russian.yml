@@ -74,8 +74,8 @@
  gh_laamp_base_1041_contract_scheme: "Изгнание призрака"
  gh_laamp_base_1041_contract_scheme_action: "Изгнать призрака по поручению"
  gh_laamp_base_1041_contract_scheme_desc: "Подданные [contractor_possessive|E] сообщали о пропавших детях, повторяющихся ночных кошмарах и перепуганных зверях, которые были напуганы достаточно долго, чтобы быть неестественными. Обычные армии и солдаты [Concept('aeras','Эраса')|E] либо слишком напуганы, либо слишком заняты, чтобы справляться с такими вещами, но предприимчивый [Concept('adventurer','искатель приключений')|E] может найти [task_contract|E] на устранение потусторонней угрозы.$laamp_contract_scheme_desc_general_boilerplate$"
- gh_laamp_base_1041_contract_scheme_general: "$gh_laamp_base_1041_contract_scheme_desc$"
  gh_laamp_base_1041_contract_scheme_desc_general: "$laamp_contract_scheme_desc_success_boilerplate$"
+ gh_laamp_base_1041_contract_scheme_success: "$laamp_contract_scheme_desc_success_boilerplate$"
  gh_laamp_base_1041_desc_title: "Достойные искатели приключений и храбрые охотники,"
  gh_laamp_base_1041_desc: "Жители [TaskContract.GetEmployer.GetPrimaryTitle.GetNameNoTier] боятся, что их земли преследует [SelectLocalization(TaskContract.MakeScope.Var('animal_type').IsSet, Localize(Concatenate(TaskContract.MakeScope.Var('animal_type').GetFlagName,'_name')), 'дух')]. [TaskContract.GetEmployer.GetTitleAsNameNoTooltip] призывает всех магов и охотников с нужными навыками помочь за золото и славу."
 
@@ -163,7 +163,7 @@
  gh_laamp_base_contract_schemes.9003.a: "$laamp_base_contract_schemes.0000.generic_option.proceed.negative.light$"
  laamp_migration_9001_success_employer_modifier: "Обустроенные беженцы"
  laamp_migration_9001_success_employer_modifier_desc: "Беженцы были успешно расселены в этой провинции благодаря помощи отряда переселенцев."
- 
+
  laamp_migration_9001_failure_employer_modifier: "Конфликты с беженцами"
  laamp_migration_9001_failure_employer_modifier_desc: "Попытка расселения беженцев в этой провинции вызвала волну гнева и насилия среди местного населения."
 
@@ -181,11 +181,11 @@
  gh_laamp_base_contract_schemes.9011.a: "Сосредоточимся на цели"
  gh_laamp_base_contract_schemes.9011.b: "Нужно ускорить процесс"
  gh_laamp_base_contract_schemes.9011.c: "Лучше выбрать смешанный подход"
- 
+
  gh_laamp_base_contract_schemes.9012.t: "Договор скреплён"
  gh_laamp_base_contract_schemes.9012.desc: "После долгих напряжённых переговоров старейшины наконец кивают в знак согласия. Они приняли наши условия, хотя и не без своей выгоды. Войско получит право пройти через их земли, но взамен мы пообещали им долю зерна и гарантии безопасности для их народа.\n\nСтарейшины сжимают мою руку в жесте уважения, прежняя враждебность сменяется неохотным признанием. \«Ты жёстко торгуешься,\» — говорит один из них, и в его голосе слышны как досада, так и одобрение.\n\nПокидая совет, я чувствую облегчение. Войско пройдёт беспрепятственно, но аверсарианцы не забудут этого соглашения — и вам тоже не стоит."
  gh_laamp_base_contract_schemes.9012.a: "Работа выполнена на отлично!"
- 
+
  gh_laamp_base_contract_schemes.9013.t: "Переговоры сорваны"
  gh_laamp_base_contract_schemes.9013.desc: "Переговоры провалились. Несмотря на все наши усилия, старейшины [Concept('aversaria', 'Аверсарии')|E] остались непреклонны. Их требования были слишком велики, а недоверие — слишком глубоким. Когда обсуждения зашли в тупик, атмосфера накалилась. Старейшины поднялись со своих мест, сжимая оружие.\n\n\«Вы зря потратили наше время,\» — прошипел один из них. — \«Уходите сейчас, или не уйдёте вообще.\»\n\nВы поспешно отступаете, понимая, что войско не обрадуется этим новостям. Деревня закрыла свои земли, и любая попытка пройти через их территорию теперь встретит жестокий отпор.\n\nВозвращаясь в лагерь, я не могу отделаться от мысли — можно ли было поступить иначе? Но сейчас ясно одно: кровопролития не избежать, а мне предстоит нести груз этой неудачи."
  gh_laamp_base_contract_schemes.9013.a: "Ещё одно поражение..."

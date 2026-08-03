@@ -1,7 +1,7 @@
 ﻿l_russian:
- gh_major_decisions.0002.t:0 "Конец Легиону"
- gh_major_decisions.0002.desc:0 "Хотя мы начинали как Имперский Легион, те дни давно прошли. С исчезновением памяти о империи, мое государство всё больше становится похожим на любое другое. С формальным роспуском военного правления над моими землями, теперь я правлю как аристократ, по образцу старых времен."
- gh_major_decisions.0002.a:0 "И теперь, в будущее."
+ gh_major_decisions.0002.t: "Конец Легиону"
+ gh_major_decisions.0002.desc: "Хотя мы начинали как Имперский Легион, те дни давно прошли. С исчезновением памяти о империи, мое государство всё больше становится похожим на любое другое. С формальным роспуском военного правления над моими землями, теперь я правлю как аристократ, по образцу старых времен."
+ gh_major_decisions.0002.a: "И теперь, в будущее."
  goan_decisions.0001.t: "The Gates Stand Open"
  goan_decisions.0001.desc: "It is done. The elders have burned effigies of the old cliff-homes, and now sing of pastures without end rather than peaks without number. Yet one question remains unanswered: for time beyond memory, the sheer walls of our homeland kept the world out. and us in. Now no walls remain but those we choose to keep.\n\nWhat shall we be to this unfamiliar world?"
  goan_decisions.0001.a: "The old feuds shall find new prey."
@@ -15,3 +15,82 @@
  gh_encourage_marcher_colonization_in_realm_decision: "Encourage Marcher Settlement"
  gh_encourage_marcher_colonization_in_realm_decision_confirm: "Send word to Chevalie"
  gh_encourage_marcher_colonization_in_realm_decision_desc: "Land settled by my own people is land I need not watch so closely, and there is still enough here waiting for capable hands, awaiting any willing to make the journey and claim it for themselves."
+ gh_encourage_marcher_colonization_in_realm_decision_tooltip: "Marcher settlers may found a colony in a county of your [realm|E], converting it to their [culture|E] and [faith|E]"
+ marchers_are_not_interested_in_colonization_tt: "No settlers is interested"
+ amsar_is_considered_very_attractive_to_settle_tt: "Tales of Amsar's riches keep a steady stream of settlers flowing"
+ region_is_considered_very_attractive_to_settle_tt: "Word of this region's riches keeps a steady stream of settlers flowing"
+ gh_random_county_in_settlers_depart_tt: "[marchers|E] in a random [county|E] in [chevalie|E] will settle in your [realm|E]"
+ gh_marchers_wave_of_settlers_notification: "Marchers Settlers Arrive"
+ gh_random_county_marchers_settlers_arrive_tt: "[chevalie_target_county.GetCounty.GetCulture.GetCollectiveNounNoTooltip] from [chevalie_target_county.GetCounty.GetName] settles in [gh_marcher_settled_county_scope.GetCounty.GetName]"
+ gh_marchers_wave_of_settlers_refuse_notification: "No Settlers Came"
+
+ gh_high_king_of_chevalie_not_forbidden_colonization_tt: "High King of [chevalie|E] has not enacted any [law|E] preventing his subjects from settling in foreign territory"
+
+ settlers_reccently_departed_from_county_modifier: "Recent Emigration"
+ settlers_reccently_departed_from_county_modifier_desc: "Many left this land not long ago to make a new home elsewhere. It will be some years before the population grows back to what it was."
+ settlers_reccently_arrived_to_county_modifier: "Recent Immigration"
+ settlers_reccently_arrived_to_county_modifier_desc: "Many have recently settled in this county to make a new home."
+ gh_prevent_emigration_from_county_modifier: "Discouraged Emigration"
+ gh_prevent_emigration_from_county_modifier_desc: "The ruler of this county has taken steps to discourage migration outside the region, forcing many to remain and seek their fortunes at home."
+
+ gh_strip_khanhe_peashmbra_decision:0 "Strip the White-Gold Palace"
+ gh_strip_khanhe_peashmbra_decision_intro_tebouin:0 "My men took what they could during the sack of Tchouran in 1288 IS"
+ gh_strip_khanhe_peashmbra_decision_intro_tebouin_father:0 "My father's army took what they could during the sack of Tchouran in 1288 IS"
+ gh_strip_khanhe_peashmbra_decision_intro_normal:0 "Tebouin's Marchers took what they could during the sack of Tchouran in 1288 IS"
+ gh_strip_khanhe_peashmbra_decision_desc:0 "and what they left behind was only what could not be easily pried loose. Yet the Khanhe Peashmbra is a jewel itself. Every column, every archway, every fountain basin in that complex is covered with gold, silver and precious stone bound into the masonry itself. There is wealth beyond imagination poured into its very walls.\n\nThere is no reason for that wealth to sit idle any longer."
+ gh_strip_khanhe_peashmbra_decision_desc_pre_1288:0 "The Khanhe Peashmbra is a jewel in and of itself. Every column, every archway, every fountain basin in that complex is covered with gold, silver and precious stone bound into the masonry itself. There is wealth beyond imagination poured into its very walls.\n\nThere is no reason for that wealth to sit idle any longer."
+ gh_strip_khanhe_peashmbra_decision_confirm:0 "Strip it bare"
+ gh_strip_khanhe_peashmbra_decision_tooltip:0 "The [GetBuilding('01_whitegoldpalace').GetName] will be stripped of its gold and precious stone."
+ gh_sacked_holy_site_opinion: "Sacked Holy Site"
+ gh_every_ruler_opinion_strip_khanhe_peashmbra_decision_tt: "Every [ruler|E] in [sarradon|E] who considers [GetTitleByKey('b_tchouran').GetNameNoTier] a [holy_site|E] will lose #N -40#! [opinion|E] of you"
+
+ marcher_decision.1001.t:0 "Bare Stone"
+ marcher_decision.1001.desc:0 "The last gemstone has finally been taken, and much of the Khanhe Peashmbra has been turned to ruin, so much taken that it could not bear its own weight anymore.\n\nA shame to lose a building of that size, but the gold is worth more to us melted down than it ever was bolted to a wall."
+ marcher_decision.1001.a:0 "It is mine now."
+ marcher_decision.1001.a.tt:0 "You keep all of the wealth to yourself."
+ marcher_decision.1001.b:0 "Split it between my own coffers and those who earned it."
+ marcher_decision.1001.b.tt:0 "You distribute some of the wealth with your people and vassals."
+ marcher_decision.1001.c:0 "Give them to the people."
+ marcher_decision.1001.c.tt:0 "You distribute all of the wealth with your people and vassals."
+
+ marcher_decision.1002.t:0 "Bare Stone"
+ marcher_decision.1002.desc.amsari:0 "Word has reached me of [tchouran_holder.GetTitledFirstName]'s latest cruelty. The Khanhe Peashmbra, the White-Gold Palace, jewel of Tchouran and pride of our people, is no more.\n\nThe wealth that held it together was torn out and melted down, and the palace fell in on itself once that wealth was gone. Almost nothing of it remains standing."
+ marcher_decision.1002.desc.others:0 "Word has reached me that [tchouran_holder.GetTitledFirstName] stripped the famed Khanhe Peashmbra of Tchouran for its riches, turning the once jewel of the region to rubble now. A costly way to fill a treasury, but it has been filled."
+ marcher_decision.1002.a:0 "A wound that will not heal."
+ marcher_decision.1002.b:0 "Gold is gold, wherever it is found."
+ marcher_decision.1002.c:0 "I see..."
+
+ gh_medium_disdtrbution_of_tchouran_loot_modifier: "Wealth Distribution"
+ gh_medium_disdtrbution_of_tchouran_loot_modifier_desc: "The ruler of this county has distrbuted part of the wealth taken from the Khanhe Peashmbra to the people of this county."
+
+ gh_large_disdtrbution_of_tchouran_loot_modifier: "Large Wealth Distribution"
+ gh_large_disdtrbution_of_tchouran_loot_modifier_desc: "The ruler of this county has distrbuted large part of the wealth taken from the Khanhe Peashmbra to the people of this county."
+
+ gh_move_capital_to_siuni_decision:0 "Move the Capital to [GetTitleByKey('c_siuni').GetNameNoTierNoTooltip]"
+ gh_move_capital_to_siuni_decision_desc:0 "Since the early 9th century IS, [GetTitleByKey('c_siuni').GetNameNoTier] has been a major trade hub, one of the most prosperous city on the Alghurb Bay, growing at times faster than its older sister [GetTitleByKey('c_tchouran').GetNameNoTierNoTooltip]. Yet it has always lived in the shadow of the so called 'City of the Prophet'.\n\nIf we are to have a lasting foothold in these lands, it might more preferable to rule from a less... religiously burdened city."
+ gh_move_capital_to_siuni_decision_confirm:0 "Move the Capital"
+ gh_move_capital_to_siuni_decision_tooltip:0 "Your [capital|E] will be moved to Siuni."
+ gh_swap_capital_siuni_decision_tooltip: "You will swap your [capital|E] with that of [GetTitleByKey('c_siuni').GetHolder.GetName]"
+
+ new_capital_of_amsar_modifier: "New Capital"
+ new_capital_of_amsar_modifier_desc: "This county has been designated has the new capital of a great realm."
+
+ replaced_capital_of_amsar_modifier: "Capital Replaced"
+ replaced_capital_of_amsar_modifier_desc: "This county had been home to a greate capital but has been replaced in favor of Siuni"
+
+
+
+ gh_every_vassal: "Every [vassal|E]"
+ gh_every_same_culture_county_in_realm: "Every [county|E] in your [realm|E] of your [culture|E]"
+
+ gh_tebouin_reclaim_amsar_decision: "Raise a New Army"
+ gh_tebouin_reclaim_amsar_decision_desc: "Amsar is lost for now but it can be taken again. Chevalie is where I started and apparently where I have to start again. If I call in debts owed to me and trade on my previous exploits, I am sure to find strong men who will follow me for promises of riches and land in Amsar."
+ gh_tebouin_reclaim_amsar_decision_confirm: "Call in old debts"
+ gh_tebouin_reclaim_amsar_decision_tooltip: "Recruit [men_at_arms|E] and raise funds in [chevalie|E] to attempt to retake Amsar."
+ gh_character_is_currently_in_chevalie_tt: "You are currently in mainland [chevalie|E]"
+ gh_tebouin_reconquer_amsar_tt: "You start a [war|E] to launch your reconquest of [amsar|E]"
+
+ marcher_decision.1003.t: "Retaking Amsar"
+ marcher_decision.1003.desc: "I have amassed more than I had originally hoped for and my men are now ready to make the crossing back to Amsar. My task, however, is much harder than that of [GetScriptedCharacterByHistoryID('voyagen_lifepath_46').GetFirstName]. Having no foothold in Amsar, first I have to consider the best approach for my initial reconquest. I could attempt to gain a foothold directly on the mainland, which would make any future conquest easier, or do as [GetScriptedCharacterByHistoryID('voyagen_lifepath_46').GetFirstName] did during the Amsari civil war and secure the Laman Islands first as an easier position to defend."
+ marcher_decision.1003.a: "Take the Laman Islands first."
+ marcher_decision.1003.b: "Land directly on the mainland."

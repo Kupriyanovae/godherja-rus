@@ -70,7 +70,7 @@
  stone_fortress_name:0 "Возведение каменной крепости"
  stone_building_construction_name:0 "Камнеформировочное строительство"
  stoneskin_name:0 "Каменная плоть"
- #stoneskin_name:0 "Каменная кожа"
+ #stoneskin_name:0 "Stoneskin"
  ironskin_name:0 "Железная плоть"
  bronzeskin_name: "Бронзовая плоть"
  bestow_bronze_armaments_name:0 "Даровать бронзовое вооружение"
@@ -85,7 +85,7 @@
  crush_armor_name:0 "Сокрушение доспехов"
  petrify_name:0 "Окаменение"
  stone_serpent_name:0 "Оживление каменного змея"
- #stone_serpent_name:0 "Создать каменного змея"
+ #stone_serpent_name:0 "Create Stone Serpent"
  pull_meteor_name:0 "Притяжение метеорита"
  earthquake_name:0 "Землетрясение"
  strengthen_soil_name:0 "Укрепление почвы"
@@ -150,15 +150,15 @@
 
  level_0_warning.tt:0 "Требуется сотворение на 1-м уровне или выше"
 
- #natural_power_gain_stats_tt:0 "Может получить немного [GetPerk('livingmagic_perk3_tree2').GetName(GetPlayer)]"
- #natural_power_maximum_insight_tt:0 "Уже изучил все возможные [GetPerk('livingmagic_perk3_tree2').GetName(GetPlayer)]"
+ #natural_power_gain_stats_tt:0 "Might gain some [GetPerk('livingmagic_perk3_tree2').GetName(GetPlayer)]"
+ #natural_power_maximum_insight_tt:0 "Has already learned all possible [GetPerk('livingmagic_perk3_tree2').GetName(GetPlayer)]"
  hex_succesfully_created_tt: "Сглаз, поражающий [THIS.Char.GetFirstName], успешно создан"
  hexes_can_only_be_cast_on_a_specific_char_tt: "Сглазы можно применять только к конкретному [Concept('character','персонажу')|E]"
  ritual_effect_will_only_activate_tt: "Эффекты [Concept('gh_ritual','ритуала')|E] активируются только после выполнения соответствующих условий"
  summon_fogbeast.tt:0 "[GetPlayer.GetFirstName] призывает Туманную тварь"
  summon_fogbeast2.tt:0 "Цель получает Туманную тварь"
- # craft_greater_golem.tt:0 "[GetPlayer.GetFirstName] создаёт Великого голема"
- # craft_greater_golem2.tt:0 "Цель создаёт Великого голема"
+ # craft_greater_golem.tt:0 "[GetPlayer.GetFirstName] crafts a Greater Golem"
+ # craft_greater_golem2.tt:0 "Target crafts a Greater Golem"
  moon_pull_1.tt:0 "Включает/выключает черпание силы от луны во время убывающей/полной луны"
  moon_pull_2.tt:0 "Уменьшает стоимость магии на 10/20% во время убывающей/полной луны, но увеличивает воздействие и получений мутаций на 20/40%"
  moon_read.tt:0 "Предскажите будущее цели через наблюдение за [Concept('aervalr','Эрвалом')|E]."
@@ -174,9 +174,9 @@
  magic_cannibalism_2.tt:0 "#N Вы поглотили слишком много персонажей, чтобы иметь возможность сотворить Пожирание силы.\n Вы должны сотворить заклинание на более высоком уровне, чтобы вобрать какую-либо силу из [cannibalism_victim.GetName|E]. #!"
  magic_cannibalism_3.tt:0 "#N Вы поглотили слишком много персонажей, чтобы получить дальнейшую силу через заклинание Пожирание Силы. #!"
  #enchant_arms0.tt:0 "All Knights of the target receive [GetModifier('enhanced_arms_mod_minor').GetNameWithTooltip|L] for 1 year"
- #enchant_arms1.tt:0 "Все рыцари цели получают [GetModifier('enhanced_arms_mod_mid').GetNameWithTooltip|L] на 1 год"  
- #enchant_arms2.tt:0 "Все рыцари цели получают [GetModifier('enhanced_arms_mod_major').GetNameWithTooltip|L] на 1 год"  
- #enchant_arms3.tt:0 "Все рыцари цели получают [GetModifier('enhanced_arms_mod_huge').GetNameWithTooltip|L] на 1 год"  
+ #enchant_arms1.tt:0 "All Knights of the target receive [GetModifier('enhanced_arms_mod_mid').GetNameWithTooltip|L] for 1 year"
+ #enchant_arms2.tt:0 "All Knights of the target receive [GetModifier('enhanced_arms_mod_major').GetNameWithTooltip|L] for 1 year"
+ #enchant_arms3.tt:0 "All Knights of the target receive [GetModifier('enhanced_arms_mod_huge').GetNameWithTooltip|L] for 1 year"
  earthquake.tt:0 "Все соседние с целью графства получат первичные эффекты заклинания Землетрясение на один уровень ниже."
  sorrow.tt:0 "Высосать саму жизненную силу из земли и её народа."
  
@@ -187,10 +187,10 @@
  vampirism_health_pool_transfer_tt:0 "[ROOT.Var('vampiric_drain_amount_show').GetValue|0] очков вампирического запаса здоровья были преобразованы в [ROOT.Var('vampiric_drain_amount_show').GetValue|0] единиц здоровья в виде модификаторов [GetModifier('vampirism_mod')]."
  vampirism_health_pool_transfer_dying_tt:0 "[ROOT.Var('vampiric_drain_amount_show').GetValue|0] очков вампирического запаса здоровья преобразованы в [ROOT.Var('vampiric_drain_amount_show').GetValue|0] единиц здоровья в виде модификаторов [GetModifier('vampirism_mod')]. Поскольку вашего вампирического запаса здоровья было недостаточно, чтобы довести вас до состояния  \"Хорошее\" здоровье, вы утратили возможность далее поддерживать свою жизнь через вампиризм."
  
- #necrotic_vitality_0.tt:0 "#N Оживление себя с помощью тёмной некромантии скажется на вашем теле, что приведёт к 1 постоянному уровню [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nТаким образом, вы получите чистые +0.75 к Здоровью на время действия, и -0.25 к Здоровью после."
- #necrotic_vitality_1.tt:0 "#N Оживление себя с помощью тёмной некромантии скажется на вашем теле, что приведёт к 2 постоянным уровням [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nТаким образом, вы получите чистые +1.5 к Здоровью на время действия, и -0.5 к Здоровью после."
- #necrotic_vitality_2.tt:0 "#N Оживление себя с помощью тёмной некромантии скажется на вашем теле, что приведёт к 4 постоянным уровням [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nТаким образом, вы получите чистые +3 к Здоровью на время действия, и -1 к Здоровью после."
- #necrotic_vitality_3.tt:0 "#N Оживление себя с помощью тёмной некромантии скажется на вашем теле, что приведёт к 6 постоянным уровням [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nТаким образом, вы получите чистые +6.5 к Здоровью на время действия, и -1.5 к Здоровью после."
+ #necrotic_vitality_0.tt:0 "#N Animating yourself through the use of Dark Necromancy will take a toll on your body, resuting in 1 permanent stack of [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nThus, you will receive a net 0.75 Health for the duration, and -0.25 Health Afterwards."
+ #necrotic_vitality_1.tt:0 "#N Animating yourself through the use of Dark Necromancy will take a toll on your body, resuting in 2 permanent stacks of [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nThus, you will receive a net 1.5 Health for the duration, and -0.5 Health Afterwards."
+ #necrotic_vitality_2.tt:0 "#N Animating yourself through the use of Dark Necromancy will take a toll on your body, resuting in 4 permanent stacks of [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nThus, you will receive a net 3 Health for the duration, and -1 Health Afterwards."
+ #necrotic_vitality_3.tt:0 "#N Animating yourself through the use of Dark Necromancy will take a toll on your body, resuting in 6 permanent stacks of [GetModifier('necrotic_vitality_negative_stack').GetNameWithTooltip|L] #! \nThus, you will receive a net 6.5 Health for the duration, and -1.5 Health Afterwards."
  
  lead_to_gold_0.tt:0 "Обесценит монеты, что приведёт к снижению налогов и роста развития во всех графствах владения на #N -3% #! на 5 лет, а в соседних графствах на #N -1% #! на 5 лет."
  lead_to_gold_1.tt:0 "Обесценит монеты, что приведёт к снижению налогов и роста развития во всех графствах владения на #N -6% #! на 5 лет, а в соседних графствах на #N -3% #! на 5 лет."
@@ -245,13 +245,13 @@
  sacrifice_population_stack.tt:0 "Из-за беспорядков [sacrifice_population_county.GetName|E] получит стеки [GetModifier('sacrificed_population_stack_mod').GetNameWithTooltip|L], равные потерянному развитию, на 10 лет"
  
 
- #t1_magic_gen_tt:0 "Вы получаете @magic_icon!#P [EmptyScope.ScriptValue('tier_1_gen')|0]#! [Concept('magic','магии')|E]"
- #t2_magic_gen_tt:0 "Вы получаете @magic_icon!#P [EmptyScope.ScriptValue('tier_2_gen')|0]#! [Concept('magic','магии')|E]"
- #t3_magic_gen_tt:0 "Вы получаете @magic_icon!#P [EmptyScope.ScriptValue('tier_3_gen')|0]#! [Concept('magic','магии')|E]"
- #t4_magic_gen_tt:0 "Вы получаете @magic_icon!#P [EmptyScope.ScriptValue('tier_4_gen')|0]#! [Concept('magic','магии')|E]"
+ #t1_magic_gen_tt:0 "You gain @magic_icon!#P [EmptyScope.ScriptValue('tier_1_gen')|0]#! [magic|E]"
+ #t2_magic_gen_tt:0 "You gain @magic_icon!#P [EmptyScope.ScriptValue('tier_2_gen')|0]#! [magic|E]"
+ #t3_magic_gen_tt:0 "You gain @magic_icon!#P [EmptyScope.ScriptValue('tier_3_gen')|0]#! [magic|E]"
+ #t4_magic_gen_tt:0 "You gain @magic_icon!#P [EmptyScope.ScriptValue('tier_4_gen')|0]#! [magic|E]"
 
  lm_perk8.tt:0 "#P +2#! [Concept('aspect_blood','Крови')|E]" 
- #lm2_perk8.tt:0 "#P +2#! [Concept('aspect_fire','Огня')|E]" # GH TODO: Uncomment/rename/delete depending on how the living magic tree is revised
+ #lm2_perk8.tt:0 "#P +2#! [aspect_fire]" # GH TODO: Uncomment/rename/delete depending on how the living magic tree is revised
  lm2_perk1.tt:0 "Получить заклинание Магия огня\n Магия огня — благотворное заклинание, влияющее на персонажа, которое даёт цели преимущество и другие бонусы в бою на 2 года"
  lm2_perk2.tt:0 "Получить заклинание Истощение"
  lm2_perk4.tt:0 "Получить заклинание Ускорение\n Ускорение — благотворное заклинание, влияющее на персонажа, которое значительно увеличивает скорость передвижения цели на 2 года"
@@ -276,7 +276,7 @@
  dm_perk6.tt:0 "Получить заклинание Создание големов\nСоздание големов позволяет вам создавать големов-солдат, которые существуют до вашей смерти."
  dm_perk7.tt:0 "Получить заклинание Некромантическая энергия\nНекромантическая энергия — заклинание, направленное на себя, которое значительно увеличивает ваше здоровье на 10 лет, оживляя его с помощью магии, за счёт постоянного уменьшения вашего здоровья после окончания действия заклинания"
  #dm_perk9.tt:0 "Gain 25% additional [magic_power|E] from Skeletal Crafting"
-
+ 
  dm2_perk1.tt:0 "Получить заклинание Чтение луны\nЧтение луны — благотворное заклинание, влияющее на персонажа, которое позволяет вам предсказывать будущее, чтобы выбрать один из трёх случайно выбранных бонусов на 5 лет."
  dm2_perk2.tt:0 "Получить заклинание Сокрушение доспехов\nСокрушение доспехов — враждебное заклинание, влияющее на персонажа, которое имеет шанс ранить или убить цель в зависимости от их здоровья или мастерства."
  dm2_perk3.tt:0 "Генерировать [Concept('magic_power','магическую силу')|E], черпая магическую энергию от луны"
@@ -460,7 +460,7 @@
  crush_armor_toast_rejection:0 "Нельзя накладывать на себя"
  kemsar_water_spell_toast:0 "Провести «Создание воды»"
  unraveling_toast:0 "Сотворить «Расплетание»"
-  
+ 
  magic_prowess_duel_tt:0 "[magic_prowess_i][Concept('magic_prowess_skill','Магическое мастерство')|E] против [opponent.GetTitledFirstName]" 
  
  ###########
@@ -512,13 +512,13 @@
  rift_walk_army_valid_50000_tt:0 "Ничего не происходит! (Вы должны командовать армией более 50000 человек и иметь выбранный титул)."
  rift_walk_army_invalid_tt:0 "Ничего не происходит! (Вы должны сотворить это заклинание на более высоком уровне)."
 
- defiled_nadir_setup_effect_broken_bond:0 "Ваша связь с [old_defiled_nadir_bound_mask.GetName] будет разорвана, и вы получите [Concept('modifier','модификатор')|E] [GetModifier('magic_defiled_nadir_broken_bond_modifier').GetNameWithTooltip] на 5 лет"
- defiled_nadir_setup_effect_tt:0 "Если у вас не надетa ольтенская [Concept('artefact,'маска')|E], вы получите одну среднего качества"
- defiled_nadir_setup_effect_new_mask_tooltip:0 "Поскольку у вас не надетa  ольтенская [Concept('artefact,'маска')|E], новый артефакт среднего качества станет вашей Связанной маской"
- defiled_nadir_setup_effect_equip_tooltip:0 "Вы автоматически наденете новый [Concept('artefact,'артефакт')|E]"
- defiled_nadir_setup_effect_extant_mask_tooltip:0 "[extant_mask_artifact.GetName] станет вашей Связанной маской"
+ defiled_nadir_setup_effect_broken_bond: "Ваша связь с [old_defiled_nadir_bound_mask.GetName] будет разорвана, и вы получите [Concept('modifier','модификатор')|E] [GetModifier('magic_defiled_nadir_broken_bond_modifier').GetNameWithTooltip] на 5 лет"
+ defiled_nadir_setup_effect_tt: "Если у вас не надетa ольтенская [Concept('artefact,'маска')|E], вы получите одну среднего качества"
+ defiled_nadir_setup_effect_new_mask_tooltip: "Поскольку у вас не надетa  ольтенская [Concept('artefact,'маска')|E], новый артефакт среднего качества станет вашей Связанной маской"
+ defiled_nadir_setup_effect_equip_tooltip: "Вы автоматически наденете новый [Concept('artefact,'артефакт')|E]"
+ defiled_nadir_setup_effect_extant_mask_tooltip: "[extant_mask_artifact.GetName] станет вашей Связанной маской"
  defiled_nadir_setup_effect_story_tooltip: "Начинает [Concept('story_cycle','цикл')|E] «Маской Скованный»"
- defiled_nadir_warning_tt:0 "Отделение от Связанной маски будет иметь #N серьёзные#! последствия"
+ defiled_nadir_warning_tt: "Отделение от Связанной маски будет иметь #N серьёзные#! последствия"
  defiled_nadir_setup_effect_toast: "Связь с новой маской"
  defiled_nadir_setup_effect_toast_tt: "[defiled_nadir_caster.GetTitledFirstName] привязал [extant_mask_artifact.GetName] к [defiled_nadir_caster.GetHerselfHimself]!"
  defiled_nadir_character_side_story_broken_bond_tt: "[dead_boundee.GetTitledFirstName] больше не привязан[Select_CString(dead_boundee.IsFemale, 'а', '')] к маске"
@@ -550,7 +550,7 @@
  #########################
  
  education_any_magic_gte_1_tt:0 "У вас есть [Concept('magic','магическое')|E] образование."
- 
+
  magi_potency_gte_1_tt:0 "Вы [GetTrait('magic_good_1').GetName(GetNullCharacter)] или лучше."
  magi_potency_gte_2_tt:0 "Вы [GetTrait('magic_good_2').GetName(GetNullCharacter)] или лучше."
  magi_potency_gte_3_tt:0 "Вы [GetTrait('magic_good_3').GetName(GetNullCharacter)] или лучше."
@@ -585,48 +585,48 @@
  # CABAL #
  #########
 
-#cabal_invitation_pre_answer_key:0 "Вы усилите свой [Concept('cabal','кабал')|E]"
-#cabal_invitation_interaction:0 "Пригласить в [Concept('cabal','кабал')|E]"
-#cabal_invitation_interaction_desc:0 "Попытаться пригласить этого человека в ваш [Concept('cabal','кабал')|E]"
-#cabal_invitation_reply_key:0 "#T Приглашение в Кабал#! \n[CHARACTER.GetUIName] хочет предложить вам место в своем [Concept('cabal','кабале')|E]. \n"
-#cabal_invitation_notification_text:0 "Я считаю, вы подойдёте для моей [Concept('cabal','кабал')|E]. Если вы согласитесь, я хотел бы вовлечь вас в круг наших ритуалов."
-#remove_cabal_member_interaction:0 "Изгнать из [Concept('cabal','кабала')|E]"
-#cabal_removal_interaction_desc:0 "Изгнать этого человека из вашего [Concept('cabal','кабала')|E]"
-#cabal_removal_notification_text:0 "Я считаю, что вам лучше покинуть наш [Concept('cabal','кабал')|E]."
-#removed_from_cabal_notification:0 "Изгнан из [Concept('cabal','кабала')|E]"
+ #cabal_invitation_pre_answer_key:0 "You will strengthen your [cabal|E]"
+ #cabal_invitation_interaction:0 "Invite to [cabal|E]"
+ #cabal_invitation_interaction_desc:0 "Attempt to invite this person into your [cabal|E]"
+ #cabal_invitation_reply_key:0 "#T Cabal Invitation#! \n[CHARACTER.GetUIName] would like to offer you a position in their [cabal|E]. \n"
+ #cabal_invitation_notification_text:0 "I believe you would be a good fit for my [cabal|E]. If you would accept, I would like to bring you into the fold of our rituals."
+ #remove_cabal_member_interaction:0 "Expel from [cabal|E]"
+ #cabal_removal_interaction_desc:0 "Expel this person from your [cabal|E]"
+ #cabal_removal_notification_text:0 "I believe it for the best that you leave our [cabal|E]."
+ #removed_from_cabal_notification:0 "Expelled from [cabal|E]"
 
-#THEY_GET_A_CABAL_MASTER:0 "[CHARACTER.GetShortUIName|U] становится Членом [Concept('cabal','кабала')|E] [TARGET_CHARACTER.GetShortUINamePossessive]"
-#THEY_GOT_A_CABAL_MASTER:0 "[CHARACTER.GetShortUIName|U] стал Членом [Concept('cabal','кабала')|E] [TARGET_CHARACTER.GetShortUINamePossessive]"
-#THEY_LOSE_A_CABAL_MASTER:0 "[CHARACTER.GetShortUIName|U] больше не Член [Concept('cabal','кабала')|E] [TARGET_CHARACTER.GetShortUINamePossessive]"
-#GLOBAL_GET_A_CABAL_MASTER:0 "Получает [TARGET_CHARACTER.GetShortUIName] в качестве своего [Concept('cabal_master','Мастера кабала')|E]"
-#GLOBAL_LOSE_A_CABAL_MASTER:0 "Теряет [TARGET_CHARACTER.GetShortUIName] в качестве своего [Concept('cabal_master','Мастера кабала')|E]"
-#GLOBAL_GOT_A_CABAL_MASTER:0 "Получил [TARGET_CHARACTER.GetShortUIName] в качестве своего [Concept('cabal_master','Мастера кабала')|E]"
-#GLOBAL_LOST_A_CABAL_MASTER:0 "Потерял [TARGET_CHARACTER.GetShortUIName] в качестве своего [Concept('cabal_master','Мастера кабала')|E]"
-#I_GET_A_CABAL_MASTER:0 "Вы получаете [TARGET_CHARACTER.GetShortUIName] в качестве своего [Concept('cabal_master','Мастера кабала')|E]"
-#I_GOT_A_CABAL_MASTER:0 "Вы потеряли [TARGET_CHARACTER.GetShortUIName] в качестве своего [Concept('cabal_master','Мастера кабала')|E]"
-#I_LOSE_A_CABAL_MASTER:0 "Вы получаете [TARGET_CHARACTER.GetShortUIName] в качестве своего [Concept('cabal_master','Мастера кабала')|E]"
-#I_LOST_A_CABAL_MASTER:0 "Вы потеряли [TARGET_CHARACTER.GetShortUIName] в качестве своего [Concept('cabal_master','Мастера кабала')|E]"
-#remove_relation_cabal_member_first:0 "Вы исключаете [TARGET_CHARACTER.GetShortUIName] из свонго [Concept('cabal','кабала')|E]"
-#remove_relation_cabal_member:0 "[CHARACTER.GetTitledFirstName] исключает [TARGET_CHARACTER.GetShortUIName] из своего [Concept('cabal','кабала')|E]"
-#remove_relation_cabal_member_global:0 "[TARGET_CHARACTER.GetShortUIName] изгнан"
-#remove_relation_cabal_master_first:0 "Вы покидаете [Concept('cabal','кабал')|E] [TARGET_CHARACTER.GetTitledFirstNamePosessessive]"
-#remove_relation_cabal_master:0 "[CHARACTER.GetTitledFirstName] покидает [Concept('cabal','кабал')|E] [TARGET_CHARACTER.GetTitledFirstNamePosessessive]"
-#remove_relation_cabal_master_global:0 "Покидает [Concept('cabal','кабал')|E] [TARGET_CHARACTER.GetTitledFirstNamePosessessive]"
-#has_cabal_room_limit_yes:0 "Лимит кабала: $colored_scoped_cabal_ratio$"
-#has_cabal_limit_not:0 "Лимит кабала: #N $scoped_current_cabal_count$/$scoped_cabal_limit$#!"
-#scoped_cabal_limit:0 "[Character.MakeScope.ScriptValue('cabal_limit')|0]"
-#colored_scoped_cabal_ratio:0 "[Select_CString(LessThanOrEqualTo_CFixedPoint(Character.MakeScope.ScriptValue('cabal_limit'),Character.MakeScope.ScriptValue('current_cabal_count')),'#N','#P')] $scoped_cabal_ratio$#!"
-#scoped_current_cabal_count:0 "[Character.MakeScope.ScriptValue('current_cabal_count')|0]"
-#scoped_cabal_ratio:0 "$scoped_current_cabal_count$/$scoped_cabal_limit$#!"
-#cabal_member:0 "[Concept('cabal_member','Член кабала')|E]"
-#cabal_master:0 "[Concept('cabal_master','Мастер кабала')|E]"
+ #THEY_GET_A_CABAL_MASTER:0 "[CHARACTER.GetShortUIName|U] becomes [TARGET_CHARACTER.GetShortUINamePossessive] Cabal Member"
+ #THEY_GOT_A_CABAL_MASTER:0 "[CHARACTER.GetShortUIName|U] became [TARGET_CHARACTER.GetShortUINamePossessive] Cabal Member"
+ #THEY_LOSE_A_CABAL_MASTER:0 "[CHARACTER.GetShortUIName|U] is no longer [TARGET_CHARACTER.GetShortUINamePossessive] Cabal Member"
+ #GLOBAL_GET_A_CABAL_MASTER:0 "Gains [TARGET_CHARACTER.GetShortUIName] as their [cabal|_master|E]"
+ #GLOBAL_LOSE_A_CABAL_MASTER:0 "Loses [TARGET_CHARACTER.GetShortUIName] as their [cabal|_master|E]"
+ #GLOBAL_GOT_A_CABAL_MASTER:0 "Gained [TARGET_CHARACTER.GetShortUIName] as their [cabal|_master|E]"
+ #GLOBAL_LOST_A_CABAL_MASTER:0 "Lost [TARGET_CHARACTER.GetShortUIName] as their [cabal|_master|E]"
+ #I_GET_A_CABAL_MASTER:0 "You got [TARGET_CHARACTER.GetShortUIName] as your [cabal|_master|E]"
+ #I_GOT_A_CABAL_MASTER:0 "You lost [TARGET_CHARACTER.GetShortUIName] as your [cabal|_master|E]"
+ #I_LOSE_A_CABAL_MASTER:0 "You got [TARGET_CHARACTER.GetShortUIName] as your [cabal|_master|E]"
+ #I_LOST_A_CABAL_MASTER:0 "You lost [TARGET_CHARACTER.GetShortUIName] as your [cabal|_master|E]"
+ #remove_relation_cabal_member_first:0 "You remove [TARGET_CHARACTER.GetShortUIName] from your [cabal|E]"
+ #remove_relation_cabal_member:0 "[CHARACTER.GetTitledFirstName] removes [TARGET_CHARACTER.GetShortUIName] from their [cabal|E]"
+ #remove_relation_cabal_member_global:0 "[TARGET_CHARACTER.GetShortUIName] Expelled"
+ #remove_relation_cabal_master_first:0 "You leave [TARGET_CHARACTER.GetTitledFirstNamePosessessive] [cabal|E]"
+ #remove_relation_cabal_master:0 "[CHARACTER.GetTitledFirstName] leaves [TARGET_CHARACTER.GetTitledFirstNamePosessessive] [cabal|E]"
+ #remove_relation_cabal_master_global:0 "Leaves [TARGET_CHARACTER.GetTitledFirstNamePosessessive] [cabal|E]"
+ #has_cabal_room_limit_yes:0 "Cabal Limit: $colored_scoped_cabal_ratio$"
+ #has_cabal_limit_not:0 "Cabal Limit: #N $scoped_current_cabal_count$/$scoped_cabal_limit$#!"
+ #scoped_cabal_limit:0 "[Character.MakeScope.ScriptValue('cabal_limit')|0]"
+ #colored_scoped_cabal_ratio:0 "[Select_CString(LessThanOrEqualTo_CFixedPoint(Character.MakeScope.ScriptValue('cabal_limit'),Character.MakeScope.ScriptValue('current_cabal_count')),'#N','#P')] $scoped_cabal_ratio$#!"
+ #scoped_current_cabal_count:0 "[Character.MakeScope.ScriptValue('current_cabal_count')|0]"
+ #scoped_cabal_ratio:0 "$scoped_current_cabal_count$/$scoped_cabal_limit$#!"
+ #cabal_member:0 "[cabal_member|E]"
+ #cabal_master:0 "[cabal_master|E]"
  
  familiar:0 "Фамильяр"
  familiar_master:0 "Хозяин"
 
  FAMILIARS_LABEL: "Фамильяры"
  FAMILIAR_MASTER_LABEL: "Мастер"
-  
+ 
  I_GET_A_FAMILIAR:0 "Вы получили [TARGET_CHARACTER.GetShortUIName] как фамильяра"
  I_GOT_A_FAMILIAR:0 "Вы получили [TARGET_CHARACTER.GetShortUIName] как фамильяра"
  THEY_GET_A_FAMILIAR:0 "Они получают [TARGET_CHARACTER.GetShortUIName] как фамильяра"
@@ -635,7 +635,7 @@
  GLOBAL_GOT_A_FAMILIAR:0 "Получил [TARGET_CHARACTER.GetShortUIName] как фамильяра"
 
  ## ARCANA
- 
+
  TRAIT_FLAG_DESC_arcana_add:0 "[SelectLocalization(GetPlayer.IsValid, 'PLAYER_TRAIT_FLAG_DESC_arcana_add','')]#!"
  PLAYER_TRAIT_FLAG_DESC_arcana_add:0 "[Concept('arcana','Аркана')|E]: [arcana_i][SelectLocalization(GreaterThan_CFixedPoint(GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(Concatenate(Trait.GetKey, '_character_arcana_value')),'(CFixedPoint)0'),'#positive_value +','#negative_value ')][GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(Concatenate(Trait.GetKey, '_character_arcana_value'))]#!"
  arcana_base_value_desc:0 "Базовая"

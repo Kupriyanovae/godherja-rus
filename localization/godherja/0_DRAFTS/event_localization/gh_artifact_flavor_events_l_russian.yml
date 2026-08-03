@@ -84,7 +84,6 @@
  artifacts_flavor.1016.c.tt:0 "#N Один входит, а другой выходит#!"
  artifacts_flavor.1016.c.step:0 "Всё, что отдано миру."
 
-
  # Consopite Effigy Murder Events
  artifacts_flavor.1017.t:0 "Агент пропал без вести"
  artifacts_flavor.1017.desc:0 "[[agent.GetTitledFirstName], мой агент в дворе [target.GetTitledFirstNamePossessive], перестал выходить на связь. Никто из моих информаторов не может связаться с [agent.GetHerHim], словно [agent.GetSheHe] исчез[Select_CString(agent.IsFemale, 'ла', '')] в воздухе. Если этого было недостаточно, [target.GetFirstNameNoTooltip] [target.GetHerselfHimself] каким-то образом заполучил[Select_CString(target.IsFemale, 'а', '')] часть моей переписки и теперь прекрасно знает, что кто-то планирует [target.GetHerHis] гибель.\n\nМестные слухи, которые доходят до меня, указывают на то, что в исчезновении [agent.GetFirstNamePossessiveNoTooltip] замешан амулет [consopite_effigy.GetName], принадлежащий [target.GetSheHe]. Однако вряд ли я смогу узнать что-либо большее."
@@ -180,9 +179,9 @@
  artifacts_flavor.1026.t:0 "Разорванная связь"
  artifacts_flavor.1026.desc:0 "Связь разорвана.\n\nЯ чувствую это в тот же момент, как нить, соединяющая две части моей души, обрывается. В одно мгновение всё моё тело вспыхивает фантомным огнём, а воздух в лёгких превращается в серу, обжигая меня изнутри и снаружи. Эта боль превосходит физические страдания, превосходит ментальные мучения — последние искры моего быстро угасающего сознания понимают, что кричащая агония, обрушившаяся на меня, берёт своё начало в ране, нанесённой самой моей сущности.\n\nЛишь спустя несколько часов я наконец прихожу в сознание, чувствуя себя так, будто меня разорвали на части и кое-как собрали обратно."
  artifacts_flavor.1026.destroyed.desc:0 "Маска, в которой содержалась часть моей души, была уничтожена, и теперь эта часть потеряна навсегда."
+ artifacts_flavor.1026.separated.desc:0 "Я был[Select_CString(ROOT.Char.IsFemale, 'а', '')] слишком долго отделён[Select_CString(ROOT.Char.IsFemale, 'а', '')] от своей маски, и теперь часть моей души, связанная с ней, потеряна навсегда."
  artifacts_flavor.1026.toast: "Broken Mask Bond"
  artifacts_flavor.1026.toast.tt: "[ROOT.Char.GetTitledFirstName] is no longer bound to the mask"
- artifacts_flavor.1026.separated.desc:0 "Я был[Select_CString(ROOT.Char.IsFemale, 'а', '')] слишком долго отделён[Select_CString(ROOT.Char.IsFemale, 'а', '')] от своей маски, и теперь часть моей души, связанная с ней, потеряна навсегда."
  artifacts_flavor.1026.a:0 "Как до этого дошло?"
  artifacts_flavor.1026.a.exists.tt:0 "Вы больше не связаны с [defiled_nadir_mask.GetName]"
  artifacts_flavor.1026.a.lost.tt:0 "Вы больше не связаны с маской"
