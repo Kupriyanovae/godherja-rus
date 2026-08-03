@@ -23,6 +23,8 @@
  gh_ruler_is_not_tribal:0 "Требуется, чтобы ваш тип [Concept('government','правительства')|E] не был [Concept('tribal','племенным')|E]."
  gh_is_banned_from_studying_in_collection:0 "В прошлом вы уже пытались украсть кое-что из местной коллекции."
 
- not_reached_limit_read_book_recently_tt:0 "Лимит чтения еще не достигнут (#high [GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue]/7#!). Сброс лимита: #high [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope, 'gh_number_of_recently_read_book') )]#!"
+ not_reached_limit_read_book_recently_tt:0 "Лимит чтения еще не достигнут (#high [GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue]/7#!)/[GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue]#!). Сброс лимита: #high [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope, 'gh_number_of_recently_read_book') )]#!"
+
+ already_reached_limit_read_book_recently_tt: "@warning_icon! #N You have already reached you reading limit (#bold [GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue]/[GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue]#!). Limit resets on #bold [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope, 'gh_number_of_recently_read_book') )]#!#!"
  not_read_any_book_recently_tt:0 "Вы давно не читали ни одной книги"
  
