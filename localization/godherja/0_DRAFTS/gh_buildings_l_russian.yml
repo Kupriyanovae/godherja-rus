@@ -349,32 +349,32 @@
  building_artisan_quarters_08_desc: "Добавление магических кранов и других чар к фабрикам мегаполиса делает качество и объёмы производимых товаров непревзойдёнными."
 
  #Craftsmen District - Waterworks
- #building_type_waterworks_01: "Waterworks" #DEPRECIATED
- #building_type_waterworks_01_desc: "A system of infrastructure through major settlements devised to ensure the fresh delivery of water throughout the city."
+ building_type_metro_waterworks_01: "Civic Waterworks"
+ building_type_metro_waterworks_01_desc: "A system of infrastructure through major settlements devised to ensure the fresh delivery of water throughout the city."
 
- #building_waterworks_01: "Aqueducts"
- #building_waterworks_01_desc: "A winding system of aqueducts delivers fresh water to several points in the city for all to use."
+ building_metro_waterworks_01: "Aqueducts"
+ building_metro_waterworks_01_desc: "A winding system of aqueducts delivers fresh water to several points in the city for all to use."
 
- #building_waterworks_02: "Emerging Baths"
- #building_waterworks_02_desc: "Though not widespread, a few public baths have been opened in this city, where citizens are free to relax and clean themselves."
+ building_metro_waterworks_02: "Emerging Baths"
+ building_metro_waterworks_02_desc: "Though not widespread, a few public baths have been opened in this city, where citizens are free to relax and clean themselves."
 
- #building_waterworks_03: "Basic Sewers"
- #building_waterworks_03_desc: "An unfortunate effect of massive numbers of people concentrated in a single place is the human waste produced and left to accumulate in the streets if not properly disposed of. With a sewage system, this disagreeable state of affairs is, if not entirely eliminated, reduced substantially."
+ building_metro_waterworks_03: "Basic Sewers"
+ building_metro_waterworks_03_desc: "An unfortunate effect of massive numbers of people concentrated in a single place is the human waste produced and left to accumulate in the streets if not properly disposed of. With a sewage system, this disagreeable state of affairs is, if not entirely eliminated, reduced substantially."
 
- #building_waterworks_04: "Limited Running Water"
- #building_waterworks_04_desc: "Most of this city's important buildings have access to fresh, running water, including some public locations."
+ building_metro_waterworks_04: "Limited Running Water"
+ building_metro_waterworks_04_desc: "Most of this city's important buildings have access to fresh, running water, including some public locations."
 
- #building_waterworks_05: "Extensive Sewers"
- #building_waterworks_05_desc: "With an extensive network of drainage channels and even underground tunnels, the waste of this city's inhabitants is disposed of relatively sanitarily."
+ building_metro_waterworks_05: "Extensive Sewers"
+ building_metro_waterworks_05_desc: "With an extensive network of drainage channels and even underground tunnels, the waste of this city's inhabitants is disposed of relatively sanitarily."
 
- #building_waterworks_06: "Public Baths"
- #building_waterworks_06_desc: "A number of large, public bath houses operate in this city, allowing nearly all citizens the ability to access fresh, clean water, in addition to their social importance.."
+ building_metro_waterworks_06: "Public Baths"
+ building_metro_waterworks_06_desc: "A number of large, public bath houses operate in this city, allowing nearly all citizens the ability to access fresh, clean water, in addition to their social importance.."
 
- #building_waterworks_07: "Expanded Running Water"
- #building_waterworks_07_desc: "Though still not universally accessible, many buildings in this city, in addition to a number of public locations, have a reliable source of running water."
+ building_metro_waterworks_07: "Expanded Running Water"
+ building_metro_waterworks_07_desc: "Though still not universally accessible, many buildings in this city, in addition to a number of public locations, have a reliable source of running water."
 
- #building_waterworks_08: "Widespread Running Water"
- #building_waterworks_08_desc: "The waterworks of the city have finally grown sophisticated enough to allow almost all homes to have access to fresh, running water."
+ building_metro_waterworks_08: "Widespread Running Water"
+ building_metro_waterworks_08_desc: "The waterworks of the city have finally grown sophisticated enough to allow almost all homes to have access to fresh, running water."
 
  #Martial District - Arena
  building_type_arena_01: "Арена"
@@ -4087,6 +4087,7 @@
  building_xapanta_plantations_08: "Сады ксапанты"
  building_xapanta_plantations_08_desc: "Вокруг этих гигантских плантаций появилось множество поместий — такого масштаба никогда раньше не было, и теперь регион с лёгкостью обеспечивается всем необходимым, а излишки идут за его пределы."
 
+ building_mammoth_pens_requirement_terrain_loc: "[GetBuilding('mammoth_pens_01').GetName] can only be built in [GetTerrain('taiga').GetName] or [GetTerrain('forest').GetName] [terrain|E]"
  building_type_mammoth_pens_01: "Мамонтерий"
  building_type_mammoth_pens_01_desc: "Здесь содержат и обучают мамонтов. Они превосходные тягловые животные, пригодные как для работы, так и для войны."
  building_mammoth_pens_01: "Загон для мамонтов"
@@ -4871,10 +4872,13 @@
 
  building_01_yannden_prefectural_city: "Yannden Fortress"
  building_01_yannden_prefectural_city_desc: "Nestled along the banks of the Cang River, the Yannden Fortress was raised during the [age_of_strife|E] by the ascendant Dolokan Kingdom as both a formidable stronghold and the palace of its ruling dynasty.\n\nThough much of the complex was destroyed during the [renshen_calamity|E], it would later be rebuilt as the capital of the newly established [military_protectorate_of_the_silangur_highlands|E] and become into the largest monastic seat of the Bynjar order in Nanmay Bon."
- building_03_yannden_prefectural_city: "$building_01_yannden_prefectural_city$"
- building_03_yannden_prefectural_city_desc: "$building_01_yannden_prefectural_city_desc$"
+ building_type_01_yannden_prefectural_city: "$building_01_yannden_prefectural_city$"
+ building_type_01_yannden_prefectural_city_desc: "$building_01_yannden_prefectural_city_desc$"
  building_02_yannden_prefectural_city: "$building_01_yannden_prefectural_city$"
  building_02_yannden_prefectural_city_desc: "$building_01_yannden_prefectural_city_desc$"
+ building_03_yannden_prefectural_city: "$building_01_yannden_prefectural_city$"
+ building_03_yannden_prefectural_city_desc: "$building_01_yannden_prefectural_city_desc$"
+
 
 
  building_type_01_angkaontara_ruin: "Ruins of Angkaontara"
@@ -4997,7 +5001,9 @@
  building_03_greyport_college_rebuilt: "Rebuilt Greyport College"
  building_03_greyport_college_rebuilt_desc: "A full restoration of the original college. The Banstur Rite's teachings are preserved and taught here, drawing those who value the bardic arts, learning, and the practice of adaptive faith."
 
-
+ building_type_01_kykopleia_ruins: "Kýklōpeian Ruins"
+ building_01_kykopleia_ruins: "Kýklōpeian Ruins"
+ building_01_kykopleia_ruins_desc: "These ancient ruins have longe towered over this portion of Krehejad, long enough that whatever their origin or who their makers were is forever lost to time. The ruins themselves are massive, featuring structures built for people or creatures far larger than humans.\n\nWhile it's original builders are unknown, it has known many new occupants. The native Agadari of Krehejad have long made it their home, building over top of and repurposing the structure for their own uses. With the arrival of [Concept('aversaria', 'Aversarians')|E] following the [war_of_all_islands|E], this repurposing was only furthered, the ruins becoming a hotspot for migration thanks to many relating the ruins back to that of the [Concept('aelfir','First Men')|E]."
 
 
 
