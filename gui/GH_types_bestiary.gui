@@ -9805,29 +9805,29 @@ types gh_bestiary
 			}
 		}
 	}
-	type gh_bestiary_giant_entry = gh_bestiary_entry {
-		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_giant_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-		blockoverride "bestiary_header" { text = "[Localize('animal_type_giant_plural')|U]" }
+	type gh_bestiary_gh_giant_entry = gh_bestiary_entry {
+		blockoverride "bestiary_visible" { visible = "[GetScriptedGui('GH_bestiary_gh_giant_item_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+		blockoverride "bestiary_header" { text = "[Localize('animal_type_gh_giant_plural')|U]" }
 		blockoverride "bestiary_subheader" { raw_text = "[Localize('humanoid_title')] | [Localize('hunt_animal_safety_7_adjective')] | [Localize('hunt_animal_prestige_7_adjective')]" }
-		blockoverride "bestiary_desc" { text = "[Localize('animal_type_giant_encyclopedia_desc')]" }
-		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_giant_item')]" }
+		blockoverride "bestiary_desc" { text = "[Localize('animal_type_gh_giant_encyclopedia_desc')]" }
+		blockoverride "bestiary_details_visible" { visible = "[GetVariableSystem.Exists('bestiary_gh_giant_item')]" }
 		blockoverride "bestiary_details_button" { 
 			button_expandable_toggle_field = {
 				layoutpolicy_horizontal = expanding
 
 				blockoverride "onclick"
 				{
-					onclick = "[GetVariableSystem.Toggle('bestiary_giant_item')]"
+					onclick = "[GetVariableSystem.Toggle('bestiary_gh_giant_item')]"
 				}
 
 				blockoverride "button_expand"
 				{
-					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_giant_item') )]"
+					frame = "[BoolTo1And2( GetVariableSystem.Exists('bestiary_gh_giant_item') )]"
 				}
 
 				blockoverride "text"
 				{
-					raw_text = "[Localize('animal_type_giant_no_gloss')|U] - детали"
+					raw_text = "[Localize('animal_type_gh_giant_no_gloss')|U] - детали"
 				}
 				
 				upframe = 3

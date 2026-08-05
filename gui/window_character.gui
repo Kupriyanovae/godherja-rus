@@ -1117,10 +1117,34 @@ window = {
 					}
 
 					## Traits
-					hbox_traits_list = {
-						name = "tutorial_highlight_traits"
-						datacontext = "[CharacterWindow.GetTraitArrays]"
-						margin_bottom = 2
+					hbox = {
+						layoutpolicy_horizontal = expanding
+
+						hbox_traits_list = {
+							name = "tutorial_highlight_traits"
+							datacontext = "[CharacterWindow.GetTraitArrays]"
+							margin_bottom = 2
+						}
+
+						expand = {}
+
+						button_tertiary = {
+							size = { 22 45 }
+
+							onclick = "[CharacterWindow.ToggleExpandedTraits]"
+							down = "[CharacterWindow.AreTraitsExpanded]"
+
+							tooltip = "[SelectLocalization( CharacterWindow.AreTraitsExpanded, 'CV_TRAITS_HIDE_TT', 'CV_TRAITS_SHOW_TT' )]"
+
+							vbox = {
+								layoutpolicy_horizontal = expanding
+
+								icon = {
+									size = { 20 20 }
+									texture = "gfx/interface/icons/message_feed/trait.dds"
+								}
+							}
+						}
 					}
 				}
 
@@ -3704,7 +3728,39 @@ window = {
 			blockoverride "scrollbox_content"
 			{
 				spacing = 10
-				#GH CHANGE: Removed Modifiers in Trait expanded tab and Hidden Traits for alive characters
+
+				# Modifiers have their own expand list
+				#vbox = {
+				#	spacing = 5
+				#
+				#	text_label_center = {
+				#		text = "MODIFIERS"
+				#	}
+				#
+				#	text_single = {
+				#		visible = "[IsDataModelEmpty(CharacterWindow.GetTimedModifiers)]"
+				#		text = "CV_NO_MODIFIERS"
+				#		default_format = "#low;italic"
+				#	}
+				#
+				#	dynamicgridbox = {
+				#		name = "modifiers_grid"
+				#		datamodel = "[CharacterWindow.GetTimedModifiers]"
+				#		datamodel_wrap = 8
+				#		flipdirection = yes
+				#
+				#		item = {
+				#			modifier_item_icon = {
+				#				size = { 35 35 }
+				#			}
+				#		}
+				#	}
+				#}
+
+				#divider_light = {
+				#	layoutpolicy_horizontal = expanding
+				#}
+
 				vbox = {
 					spacing = 5
 					datacontext = "[CharacterWindow.GetTraitArrays]"
@@ -4045,6 +4101,7 @@ window = {
 								hbox = {
 									vbox = {
 										margin_top = 20
+										# GH ADDITION: Alliance modifications
 										widget = {
 											visible = "[GetPlayer.IsValid]"
 											button = {
