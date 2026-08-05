@@ -91,4 +91,15 @@
  mf_skill_intrigue_loc:0 "$intrigue$"
  mf_skill_learning_loc:0 "$learning$"
  mf_sort_by_prowess_loc:0 "$prowess$"
+ mf_skill_arcana_loc:0 "$arcana$"
  mf_sort_by_sum_of_skills_loc:0 "$CHARACTER_SORT_ALL_SKILLS$"
+
+ mf_CHARACTER_SORT_BY:0 "#T Sort Order: [Select_CString( GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet , 'Ascending', 'Descending' )]\n#!#I Click to toggle#!"
+ mf_SORT_BY_DIPLOMACY:0 "Sort by [diplomacy|E] Skill: [Select_CString( And( EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_diplomacy'), Not(GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )), 'Ascending', 'Descending' )|V]"
+ mf_SORT_BY_MARTIAL:0 "Sort by [martial|E] Skill: [Select_CString( And( EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_martial'), Not(GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )), 'Ascending', 'Descending' )|V]"
+ mf_SORT_BY_STEWARDSHIP:0 "Sort by [stewardship|E] Skill: [Select_CString( And( EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_stewardship'), Not(GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )), 'Ascending', 'Descending' )|V]"
+ mf_SORT_BY_INTRIGUE:0 "Sort by [intrigue|E] Skill: [Select_CString( And( EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_intrigue'), Not(GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )), 'Ascending', 'Descending' )|V]"
+ mf_SORT_BY_LEARNING:0 "Sort by [learning|E] Skill: [Select_CString( And( EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_learning'), Not(GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )), 'Ascending', 'Descending' )|V]"
+ mf_SORT_BY_ARCANA:0 "Sort by [arcana|E] Skill: [Select_CString( And( EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_arcana'), Not(GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )), 'Ascending', 'Descending' )|V]"
+
+ mf_CHARACTER_RESET_FILTERS_tooltip:0 "Reload the window"
