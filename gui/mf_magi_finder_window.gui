@@ -18,11 +18,16 @@
 	}
 
 	state = {
+		name = on_create
+		trigger_on_create = yes
+		on_start = "[GetScriptedGui('mf_clear_filters_oncreate').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+	}
+
+	state = {
 		name = _hide
 		using = Animation_FadeOut_Quick
-		on_finish = "[GetScriptedGui('mf_clear_filters_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+		on_finish = "[GetScriptedGui('mf_clear_lists_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 	}
-	
 	visible = "[GetPlayer.MakeScope.Var('mf_show_my_window').IsSet]"
 
 	vbox = {
@@ -131,7 +136,7 @@
 						size = { 25 25 }
 						onclick = "[GetScriptedGui('mf_change_sort_order').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 
-						tooltip = "CHARACTER_SORT_BY"
+						tooltip = "mf_CHARACTER_SORT_BY"
 						using = tooltip_nw
 
 						button_icon = {
@@ -164,7 +169,7 @@
 
 							onclick = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sort_by', MakeScopeFlag('mf_skill_diplomacy')).End)]"
 
-							tooltip = "SORT_BY_DIPLOMACY"
+							tooltip = "mf_SORT_BY_DIPLOMACY"
 							using = tooltip_ne
 
 							skillitem_sort_icon = {
@@ -186,7 +191,7 @@
 
 							onclick = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sort_by', MakeScopeFlag('mf_skill_martial')).End)]"
 
-							tooltip = "SORT_BY_MARTIAL"
+							tooltip = "mf_SORT_BY_MARTIAL"
 							using = tooltip_ne
 
 							skillitem_sort_icon = {
@@ -207,7 +212,7 @@
 							}
 
 							onclick = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sort_by', MakeScopeFlag('mf_skill_stewardship')).End)]"
-							tooltip = "SORT_BY_STEWARDSHIP"
+							tooltip = "mf_SORT_BY_STEWARDSHIP"
 							using = tooltip_ne
 
 							skillitem_sort_icon = {
@@ -228,7 +233,7 @@
 							}
 
 							onclick = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sort_by', MakeScopeFlag('mf_skill_intrigue')).End)]"
-							tooltip = "SORT_BY_INTRIGUE"
+							tooltip = "mf_SORT_BY_INTRIGUE"
 							using = tooltip_ne
 
 							skillitem_sort_icon = {
@@ -249,11 +254,32 @@
 							}
 
 							onclick = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sort_by', MakeScopeFlag('mf_skill_learning')).End)]"
-							tooltip = "SORT_BY_LEARNING"
+							tooltip = "mf_SORT_BY_LEARNING"
 							using = tooltip_ne
 
 							skillitem_sort_icon = {
 								visible = "[EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_learning')]"
+								frame = "[BoolTo1And2( GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )]"
+							}
+						}
+
+						button_standard_hover = {
+							name = "mf_skill_arcana"
+							size = { 32 32 }
+
+							icon = {
+								texture = "gfx/interface/icons/icon_skills.dds"
+								size = { 32 32 }
+								framesize = { 60 60 }
+								frame = 7
+							}
+
+							onclick = "[GetScriptedGui('mf_dropdown_selection').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('mf_sort_by', MakeScopeFlag('mf_skill_arcana')).End)]"
+							tooltip = "mf_SORT_BY_ARCANA"
+							using = tooltip_ne
+
+							skillitem_sort_icon = {
+								visible = "[EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_arcana')]"
 								frame = "[BoolTo1And2( GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )]"
 							}
 						}
@@ -882,7 +908,7 @@
 
 						hbox = {
 							layoutpolicy_horizontal = expanding
-							margin_top = 4
+							margin_top = -10
 					
 							text_label_center = {
 								name = "label"
@@ -896,6 +922,11 @@
 						button_expandable_toggle_field = {
 							text = "mf_magic_schools_icon_list"
 							onclick = "[GetVariableSystem.Toggle( 'mf_show_magic_school_icon_list' )]"
+							blockoverride "foldout_button"
+							{
+								frame = "[BoolTo1And2( GetVariableSystem.Exists('mf_show_magic_school_icon_list') )]"
+								onclick = "[GetVariableSystem.Toggle( 'mf_show_magic_school_icon_list' )]"
+							}
 						}
 
 						fixedgridbox = {
@@ -1522,8 +1553,9 @@
 				margin_bottom = 10
 
 				button_standard = {
-					name = "drop_filters"
 					text = "CHARACTER_RESET_FILTERS"
+					tooltip = "mf_CHARACTER_RESET_FILTERS_tooltip"
+					using = tooltip_nw
 					focuspolicy = click
 					onclick = "[GetScriptedGui('mf_reload_to_basics').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 				}

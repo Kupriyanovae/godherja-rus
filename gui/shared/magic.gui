@@ -2078,6 +2078,7 @@ types MagicViewTypes
 				
 				spell_effect_list_vbox = {
 					visible = "[DataModelHasItems(Scope.Var('spell_being_prepared').GetList('spell_effect_list'))]"
+					datacontext = "[Scope.Story]"
 				}
 				
 				vbox = {
@@ -2744,7 +2745,9 @@ types MagicViewTypes
 							raw_text = "#underline [Scope.Story.Custom('SpellName')]#!"
 							
 							tooltipwidget = {
-								container_spell_effects_tooltip = {}
+								container_spell_effects_tooltip = {
+									datacontext = "[Scope.Story]"
+								}
 							}
 						}
 					}
@@ -2756,6 +2759,7 @@ types MagicViewTypes
 					
 					item = {
 						spell_effect_list_vbox = {
+							datacontext = "[Scope.Story]"
 							layoutpolicy_horizontal = expanding
 
 							blockoverride "header_content" {

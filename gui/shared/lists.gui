@@ -1105,6 +1105,27 @@ types Lists
 				frame = 5
 			}
 		}
+		widget = {
+			size = { 32 25 }
+
+			text_single = {
+				name = "value"
+				parentanchor = center
+				margin_bottom = 4
+				align = center
+				text = "[GuiScope.SetRoot(Character.MakeScope).ScriptValue('character_arcana_baseline_value')|0]"
+				tooltip = "arcana_concept"
+			}
+
+			background = {
+				name = "skill_icon_bg"
+				texture = "gfx/interface/window_character/character_view_skills_bg.dds"
+				framesize = { 70 26 }
+				margin = { 5 0 }
+
+				frame = 6
+			}
+		}
 	}
 
 	type hbox_skills_grid = hbox {
@@ -2645,15 +2666,9 @@ types Lists
 	{
 		layoutpolicy_horizontal = expanding
 
-		button_standard_hover = { #GH CHANGE: Made expandable
+		widget = {
 			layoutpolicy_horizontal = expanding
-			size = { 1 55 }
-			layoutpolicy_vertical = expanding
-
-
-			onclick = "[CharacterWindow.ToggleExpandedTraits]"
-			down = "[CharacterWindow.AreTraitsExpanded]"
-			tooltip = "[SelectLocalization( CharacterWindow.AreTraitsExpanded, 'CV_TRAITS_HIDE_TT', 'CV_TRAITS_SHOW_TT' )]"
+			size = { 0 55 }
 
 			hbox = {
 				name = "3_personality_traits"
@@ -2760,7 +2775,7 @@ types Lists
 				fixedgridbox = {
 					name = "traits_tiny"
 					datamodel = "[TraitArrays.GetTraits]"
-					visible = "[GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)10')]"
+					visible = "[GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)9')]"
 					flipdirection = yes
 					addcolumn = 24
 					addrow = 25
@@ -2870,7 +2885,7 @@ types Lists
 					flipdirection = yes
 					addcolumn = 26
 					addrow = 29
-					maxhorizontalslots = 10
+					maxhorizontalslots = 8
 					maxverticalslots = 1
 
 					item = {

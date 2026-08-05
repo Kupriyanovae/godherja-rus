@@ -2074,15 +2074,22 @@ flowcontainer = {
 	tooltip = "MAP_ICON_UNIQUE_BUILDING"
 
 	icon_building = {
-		name = "possible_building"
-		#visible = "[Not( UniqueBuildingIcon.IsBuilt )]"
+		name = "possible_temple_building"
+		visible = "[And(And(Not(UniqueBuildingIcon.IsBuilt), Or(Or(Or(Or(EqualTo_string(Building.GetKey,'01_holy_site_marcher_cathedral'), EqualTo_string(Building.GetKey,'01_holy_site_grand_courthouse')), Or(EqualTo_string(Building.GetKey,'holy_site_cathedral_01'), EqualTo_string(Building.GetKey,'holy_site_mosque_01'))), Or(Or(EqualTo_string(Building.GetKey,'holy_site_fire_temple_01'), EqualTo_string(Building.GetKey,'holy_site_pagan_grand_temple_01')), Or(EqualTo_string(Building.GetKey,'holy_site_indian_grand_temple_01'), EqualTo_string(Building.GetKey,'holy_site_other_grand_temple_01')))), Or(EqualTo_string(Building.GetKey,'01_holy_site_saintly_cathedral'), EqualTo_string(Building.GetKey,'01_holy_site_hallowed_naon')))), GetVariableSystem.Exists( 'show_generic_holy_buildings' ))]"
+
+		size = { 50 50 }
+		texture = "[Building.GetTypeIcon]"
+
+		alpha = "[Select_float( UniqueBuildingIcon.CanConstruct, '(float)1.0', '(float)0.5' )]"
+	}
+
+	icon_building = {
+		name = "possible_building_not_temples"
 		visible = "[And(Not(UniqueBuildingIcon.IsBuilt),Not(Or(EqualTo_string(Building.GetKey,'holy_site_cathedral_01'),Or(EqualTo_string(Building.GetKey,'holy_site_mosque_01'),Or(EqualTo_string(Building.GetKey,'holy_site_fire_temple_01'),Or(EqualTo_string(Building.GetKey,'holy_site_pagan_grand_temple_01'),Or(EqualTo_string(Building.GetKey,'holy_site_indian_grand_temple_01'),Or(EqualTo_string(Building.GetKey,'holy_site_other_grand_temple_01'),Or(EqualTo_string(Building.GetKey,'01_holy_site_marcher_cathedral'),Or(EqualTo_string(Building.GetKey,'01_holy_site_saintly_cathedral'),Or(EqualTo_string(Building.GetKey,'01_holy_site_grand_courthouse'),EqualTo_string(Building.GetKey,'01_holy_site_hallowed_naon'))))))))))))]"
 		size = { 50 50 }
 		texture = "[Building.GetTypeIcon]"
 
 		alpha = "[Select_float( UniqueBuildingIcon.CanConstruct, '(float)1.0', '(float)0.5' )]"
-
-
 	}
 
 	highlight_icon_building = {
