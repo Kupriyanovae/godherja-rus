@@ -12,13 +12,13 @@
  
  feature_book_ink_blood: "кровьи"
  feature_book_ink_stardew_ink: "чернилами из звёздной росы"
- feature_book_ink_azalea_ink: "azalea ink"
+ feature_book_ink_azalea_ink: "азалиевые чернила"
 
  #################
  # BOOK SUBJECTS #
  #################
  feature_book_subject_arcana: "Аркана"
- feature_book_subject_blood: "[Concept('magic','Магия')|E] [Concept('magic','Магия')|E] [Concept('aspect_blood','Крови')|E]"
+ feature_book_subject_blood: "[Concept('magic','Магия')|E] [Concept('aspect_blood','Крови')|E]"
  feature_book_subject_celestial: "[Concept('magic','Магия')|E] [Concept('aspect_celestial','Небес')|E] "
  feature_book_subject_light: "[Concept('magic','Магия')|E] [Concept('aspect_light','Света')|E]"
  feature_book_subject_fire: "[Concept('magic','Магия')|E] [Concept('aspect_fire','Огня')|E]"
@@ -131,14 +131,14 @@
  feature_book_topic_secret_histories_corrupted_holy_text: "то, что сначала кажется обычным священным текстом FAITH, но при ближайшем рассмотрении обнаруживает несколько несоответствий и серьёзных отклонений от ортодоксии. Текст нельзя связать ни с одной известной ересью этой веры."
  feature_book_topic_secret_histories_cultural_legends: "различные малоизвестные и странные [ROOT.Artifact.MakeScope.Var('book_topic_culture').Culture.GetNameNoTooltip] народные сказания и их предполагаемая основа в реальной истории"
  feature_book_topic_secret_histories_disappearances: "список различных странных исчезновений, которые происходили в COUNTY между XXXX и YYYY"
- feature_book_topic_secret_histories_mysterious_heresy: "странная, obscure и исключительно неортодоксальная секта FAITH, действовавшая между X и Y веками"
+ feature_book_topic_secret_histories_mysterious_heresy: "странная, малоизвестная и исключительно неортодоксальная секта FAITH, действовавшая между X и Y веками"
  feature_book_topic_secret_histories_mysterious_individual: "деятельность нескольких личностей, живших между X и Y веками, которых автор утверждает, что это на самом деле один человек или сущность"
  feature_book_topic_secret_histories_primordial_architecture: "остатки древних структур, служащие основанием для многих современных крепостей и городов, и их смутное происхождение"
  feature_book_topic_secret_histories_prophecy: "тщательно продуманное, PROPHECY_TONE пророчество"
- feature_book_topic_secret_histories_redlander_cults: "каталог различных культов, active в Красных Землях, и их верований, или по крайней мере тех, что были известны автору на момент написания"
+ feature_book_topic_secret_histories_redlander_cults: "каталог различных культов, действовавших в Красных Землях, и их верований, или по крайней мере тех, что были известны автору на момент написания"
  feature_book_topic_secret_histories_secret_society: "история тайного общества, которое предположительно действовало в районе [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] между [Artifact.GetOwner.MakeScope.Var('date_range_lower_year').GetValue|0] и [Artifact.GetOwner.MakeScope.Var('date_range_upper_year').GetValue|0]"
  feature_book_topic_secret_histories_strange_artifacts: "ряд странных магических артефактов, никакой из которых нельзя легко объяснить традиционными знаниями о [Concept('magic','магии')|E], известными автору"
- feature_book_topic_secret_histories_undeciphered_book: "таинственная, undeciphered CULTURE TEXT_TYPE, и попытки взломать её код"
+ feature_book_topic_secret_histories_undeciphered_book: "таинственная, нерасшифрованная CULTURE TEXT_TYPE и попытки взломать её код"
  feature_book_topic_secret_histories_unknown_language: "странная TEXT_TYPE, найденная в COUNTY, написанная на неизвестном языке, не имеющего четких параллелей с письменностью любой известной культуры"
 
  feature_book_topic_soul_magic_death: "теории о механике души в связи со смертью"
@@ -232,8 +232,8 @@
  poetry_title_format_2: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] [ROOT.Artifact.Custom('RandomEmotion')|U]"
  poetry_title_format_3: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('RandomEmotion')|U]"
  poetry_title_format_4: "[ROOT.Artifact.Custom('PoemPluralSynonyms')|U] [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('RandomEmotion')|U]"
- poetry_title_format_5: "The [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] [ROOT.Artifact.Custom('RandomEmotion')|U]"
- poetry_title_format_6: "The [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] от [ROOT.Artifact.GetCreator.GetName]"
+ poetry_title_format_5: "[ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] [ROOT.Artifact.Custom('RandomEmotion')|U]"
+ poetry_title_format_6: "[ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] от [ROOT.Artifact.GetCreator.GetName]"
  
  feature_book_title_arcana_general: "[Artifact.Custom('ArcanaGeneralBookTitleFormat')]"
  arcana_general_book_title_format_1: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] о [ROOT.Artifact.Custom('MagicSynonyms')|U] от [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
@@ -243,7 +243,7 @@
 
  feature_book_title_arcana_magic_school: "[Artifact.Custom('ArcanaMagicSchoolBookTitleFormat')]"
  arcana_general_magic_school_book_title_format_1: "[Localize(Concatenate(ROOT.Artifact.MakeScope.Var('magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))]: [ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] от [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
- arcana_general_magic_school_book_title_format_2: "The [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('BookSynonyms')|U] [Localize(Concatenate(ROOT.Artifact.MakeScope.Var('magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))|U]"
+ arcana_general_magic_school_book_title_format_2: "[ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('BookSynonyms')|U] [Localize(Concatenate(ROOT.Artifact.MakeScope.Var('magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))|U]"
  
  feature_book_title_nature_folklore: "Природный фольклор" # GH URGENT: Сделать это правильно рандомизированным
  feature_book_title_water_folklore: "Водный фольклор" # GH URGENT: Сделать это правильно рандомизированным
@@ -254,7 +254,7 @@
  medical_book_title_format_1: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] о [ROOT.Artifact.Custom('FunctioningSynonyms')|U] человеческого тела"
  medical_book_title_format_2: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] о [ROOT.Artifact.Custom('MedicineSynonyms')|U]"
  medical_book_title_format_3: "[ROOT.Artifact.GetCreator.GetNamePossessive] [ROOT.Artifact.Custom('BookSynonyms')|U] о [ROOT.Artifact.Custom('MedicineSynonyms')|U]"
- medical_book_title_format_4: "The [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('PhysicianSynonyms')|U]'s [ROOT.Artifact.Custom('GuidebookSynonyms')|U]"
+ medical_book_title_format_4: "[ROOT.Artifact.Custom('GuidebookSynonyms')|U] «[ROOT.Artifact.Custom('FloweryAdjective')] [ROOT.Artifact.Custom('PhysicianSynonyms')]»"
  medical_book_title_format_5: "[Artifact.Custom('MysteryNounPluralSynonyms')] [Artifact.Custom('RandomOrgan')|U]"
  medical_book_title_format_6: "[ROOT.Artifact.Custom('FloweryAdjective')|U] [Artifact.Custom('MysteryNounPluralSynonyms')] [Artifact.Custom('RandomOrgan')|U]"
  medical_book_title_format_7: "[ROOT.Artifact.Custom('GuidebookSynonyms')|U] о [Artifact.Custom('MysteryNounPluralSynonyms')] [Artifact.Custom('RandomOrgan')|U]"
@@ -368,7 +368,7 @@
 
  artifact_book_no_preface_decoration: "[ROOT.Artifact.GetFeatureText( 'book_topic' )|U] [newly_created_artifact.GetFeatureText( 'book_decoration' )]."
  artifact_book_historical_description: "[Localize(Concatenate(newly_created_artifact.MakeScope.Var( 'historical_book' ).GetFlagName, '_desc'))] [newly_created_artifact.GetFeatureText( 'book_decoration' )]."
- artifact_book_historical_description_fallback: "A [ROOT.Artifact.GetFeatureText( 'book_topic' )|U] [tome|E], [newly_created_artifact.GetFeatureText( 'book_decoration' )], its pages holding rituals known only to those who study it closely."
+ artifact_book_historical_description_fallback: "[tome|E], посвящённые теме «[ROOT.Artifact.GetFeatureText( 'book_topic' )|U]». [newly_created_artifact.GetFeatureText( 'book_decoration' )]. На их страницах записаны ритуалы, известные лишь тем, кто тщательно их изучает."
  artifact_book_historical_title: "[SelectLocalization(And(newly_created_artifact.MakeScope.Var('writing_culture').IsSet, Not(EqualTo_string(Concatenate(Concatenate(Concatenate(newly_created_artifact.MakeScope.Var('historical_book').GetFlagName, '_title'), '_'), newly_created_artifact.MakeScope.Var('writing_culture').Culture.GetLanguage.GetNameNoTooltip), Localize(Concatenate(Concatenate(Concatenate(newly_created_artifact.MakeScope.Var('historical_book').GetFlagName, '_title'), '_'), newly_created_artifact.MakeScope.Var('writing_culture').Culture.GetLanguage.GetNameNoTooltip))))), Glossary(Localize(Concatenate(Concatenate(Concatenate(newly_created_artifact.MakeScope.Var('historical_book').GetFlagName, '_title'), '_'), newly_created_artifact.MakeScope.Var('writing_culture').Culture.GetLanguage.GetNameNoTooltip)), Concatenate(newly_created_artifact.MakeScope.Var( 'historical_book' ).GetFlagName, '_title')), Concatenate(newly_created_artifact.MakeScope.Var( 'historical_book' ).GetFlagName, '_title'))]"
  artifact_book_mayikprolollan_desc_1: "[ROOT.Artifact.GetOwner.Custom('ArtifactArticleWealth')|U] [ROOT.Artifact.MakeScope.Var('book_original_culture').Culture.GetLanguage.GetNameNoTooltip] книга о [ROOT.Artifact.GetFeatureText( 'book_subject' )], которая детализирует [ROOT.Artifact.GetFeatureText( 'book_topic' )]. [ROOT.Artifact.Custom('RandomBookFlaw')]\n\nТекст был написан в [ROOT.Artifact.MakeScope.Var('book_original_age').GetValue|0] году [ROOT.Artifact.Custom('BookAuthorship')].\n\nТом несёт [ROOT.Artifact.Custom('BookSealDescriptor')] печать [Concept('mayikprolollans','Майикпрололлана')|E]. [ROOT.Artifact.Custom('BookMayikprolollanCommentary')]"
  artifact_book_mayikprolollan_desc_2: "Книга X века на [ROOT.Artifact.MakeScope.Var('book_original_culture').Culture.GetLanguage.GetNameNoTooltip] о [ROOT.Artifact.GetFeatureText( 'book_subject' )], написанная [ROOT.Artifact.Custom('BookAuthorship')], которая детализирует [ROOT.Artifact.GetFeatureText( 'book_topic' )]. [ROOT.Artifact.Custom('RandomBookFlaw')]\n\nТом несёт [ROOT.Artifact.Custom('BookSealDescriptor')] печать [Concept('mayikprolollans','Майикпрололлана')|E]. [ROOT.Artifact.Custom('BookMayikprolollanCommentary')]"
@@ -453,8 +453,8 @@
 
  feature_book_title_secret_histories_chronicle_1: "[Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] [Artifact.Custom('ChronicleSynonyms')|U]"
  feature_book_title_secret_histories_chronicle_2: "[Artifact.Custom('MysteriousSynonyms')] [Artifact.Custom('ChronicleSynonyms')|U] [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip]"
- feature_book_title_secret_histories_chronicle_3: "AUTHOR's [Artifact.Custom('MysteriousSynonyms')] [Artifact.Custom('ChronicleSynonyms')|U]"
- feature_book_title_secret_histories_chronicle_4: "AUTHOR's Chronicle/Histories/Tome/Manuscript/Annals of the DARKNESS_ALLEGORY"
+ feature_book_title_secret_histories_chronicle_3: "[Artifact.Custom('MysteriousSynonyms')|U] [Artifact.Custom('ChronicleSynonyms')] автора AUTHOR"
+ feature_book_title_secret_histories_chronicle_4: "Хроника/История/Фолиант/Рукопись/Анналы автора AUTHOR о DARKNESS_ALLEGORY"
  feature_book_title_secret_histories_chronicle: "[Artifact.Custom('SecretHistoriesChronicleTitleFormat')]"
  feature_book_title_secret_histories_cultural_legends_1: "[Artifact.Custom('BookSynonyms')|U] [Artifact.Custom('MysteriousSynonyms')] [ROOT.Artifact.MakeScope.Var('book_topic_culture').Culture.GetNameNoTooltip] [Artifact.Custom('MythologySynonyms')]"
  feature_book_title_secret_histories_cultural_legends_2: "[Artifact.Custom('MysteriousSynonyms')] [Artifact.Custom('MythologySynonyms')] [ROOT.Artifact.MakeScope.Var('book_topic_culture').Culture.GetNameNoTooltip]"
@@ -470,4 +470,4 @@
  feature_book_title_blood_magic_anatomy_2: "[Artifact.Custom('StructureSynonyms')|U] [Artifact.Custom('BodySynonyms')|U]"
  feature_book_title_blood_magic_anatomy_3: "[Artifact.Custom('MysteriousSynonyms')] вскрытия [Artifact.Custom('BodySynonyms')|U]"
  feature_book_title_blood_magic_anatomy_4: "[Artifact.Custom('CollectedSynonyms')] вскрытия [Artifact.Custom('BodySynonyms')|U]"
- feature_book_title_blood_magic_anatomy_5: "AUTHOR's анатомия [Artifact.Custom('BodySynonyms')|U]"
+ feature_book_title_blood_magic_anatomy_5: "Анатомия [Artifact.Custom('BodySynonyms')] автора AUTHOR"
