@@ -2,7 +2,7 @@
  gh_korlacan_events.0001.t:90 "Ученики Священного пламени"
  gh_korlacan_events.0001.desc:90 "Священный Огненный храм Корлаку восстановлен, и теперь мне предстоит выбрать ученика, которого я обучу и воспитаю по своему образу. Подойдёт лишь сильнейший из кандидатов."
  gh_korlacan_events.0001.a:90 "[first.GetNameNoTooltip] подаёт надежды." 
- gh_korlacan_events.0001.b:90 "[second.GetNameNoTooltip] будет избран[Select_CString(second.IsFemale, 'а', '')]." 
+ gh_korlacan_events.0001.b:90 "[second.GetNameNoTooltip] будет [Select_CString(second.IsFemale, 'выбрана', 'выбран')]."
  gh_korlacan_events.0001.c:90 "Кто будет служить мне, решит смертельный поединок."
  gh_korlacan_events.0001.c.duel.firstwins:0 "Побеждает [first.GetName]."
  gh_korlacan_events.0001.c.duel.secondwins:0 "Побеждает [second.GetName]."
@@ -28,7 +28,7 @@
  gh_korlacan_events.0005.start.desc:0 "Одно за другим некогда могучие корлаканские королевства пали под власть [korlacan_conqueror.GetPrimaryTitle.GetNameNoTier]."
  gh_korlacan_events.0005.relation_former.desc:0 "[Select_CString(korlacan_conqueror.IsFemale, 'Моя', 'Мой')] [ROOT.Char.Custom2('RelationToMe', korlacan_conqueror)] [korlacan_conqueror.GetTitledFirstName]"
  gh_korlacan_events.0005.former.desc:0 "[korlacan_conqueror.GetTitledFirstName]"
- gh_korlacan_events.0005.end.desc:0 "провозгласил[Select_CString(korlacan_conqueror.IsFemale, 'а', '')] себя «[korlacan_conqueror.GetMotherFather|U] корлаканцев».\n\n[korlacan_conqueror.GetHerHis|U] имя наверняка переживёт века, но войдёт ли [korlacan_conqueror.GetSheHe] в память героем или тираном? Это знает лишь [ROOT.Char.GetFaith.FateGodName]."
+ gh_korlacan_events.0005.end.desc:0 "[Select_CString(korlacan_conqueror.IsFemale, 'провозгласила', 'провозгласил')] себя «[korlacan_conqueror.GetMotherFather|U] корлаканцев».\n\n[korlacan_conqueror.GetHerHis|U] имя наверняка переживёт века, но войдёт ли [korlacan_conqueror.GetSheHe] в память [Select_CString(korlacan_conqueror.IsFemale, 'героиней или тиранкой', 'героем или тираном')]? Это знает лишь [ROOT.Char.GetFaith.FateGodName]."
 
  gh_korlacan_events.0006.t:0 "Пламя разожжено вновь"
  gh_korlacan_events.0006.desc:0 "После долгих лет труда и служения священные кузницы Корлаку вновь пылают, разгоняя светом тени упадка и забвения. Вечное пламя разожжено, Кузница и рудники Корлаку снова гремят, возвещая начало новой эпохи промышленности и прогресса. Отныне корлаканцы сами будут вершить свою судьбу, доказывая, что цивилизация и изобретательность сильнее хаоса дикой природы."
@@ -41,11 +41,11 @@
 
 
  gh_korlacan_events.0008.t:90 "Выбор достойного наследника"
- gh_korlacan_events.0008.desc.intro:90 "Сотни лет священная должность верховного жреца переходит из поколения в поколение после тщательного отбора. Если собственный ребёнок верховного жреца недостоин стать следующим духовным главой, следует призвать кандидатов из Огненного храма. Как поступали поколения моих предшественников, так поступлю и я: призову из дворца двух сильнейших молодых [Concept('magi','магов')|E] и выберу одного наследником. Обеспечив преемственность, я смогу сосредоточиться на защите земли от внутренних распрей, еретиков и чужеземцев."
+ gh_korlacan_events.0008.desc.intro:90 "Сотни лет священная должность верховного жреца переходит из поколения в поколение после тщательного отбора. Если собственный ребёнок верховного жреца не заслуживает права унаследовать должность духовного главы, следует призвать кандидатов из Огненного храма. Как поступали поколения моих предшественников, так поступлю и я: призову из дворца двух сильнейших молодых [Concept('magi','магов')|E] и определю, кому наследовать мою должность. Обеспечив преемственность, я смогу сосредоточиться на защите земли от внутренних распрей, еретиков и чужеземцев."
  gh_korlacan_events.0008.desc.heir:90 "Я могу не выбрать никого или отдать предпочтение одному из них. Впрочем, едва ли [old_heir.GetFirstName] обрадуется, если лишится того, что, как [old_heir.GetSheHe] считает, является [old_heir.GetHerHis] законным местом."
  gh_korlacan_events.0008.desc.no_heir:90 "Я могу выбрать одного или другого — но не обоих." 
  gh_korlacan_events.0008.a:90 "[first.GetNameNoTooltip] подаёт надежды." 
- gh_korlacan_events.0008.b:90 "[second.GetNameNoTooltip] будет избран[Select_CString(second.IsFemale, 'а', '')]." 
+ gh_korlacan_events.0008.b:90 "[second.GetNameNoTooltip] будет [Select_CString(second.IsFemale, 'выбрана', 'выбран')]."
  gh_korlacan_events.0008.claim_tt:90 "Получает [Concept('pressed_claims','обоснованные претензии')|E] на все ваши [Concept('titles','титулы')|E]" 
  gh_korlacan_events.0008.c:90 "Никто из них меня не устраивает." 
  gh_korlacan_events.0008.c.tt:90 "Вы отвергаете [first.GetName] и [second.GetName]"

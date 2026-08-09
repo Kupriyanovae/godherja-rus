@@ -1,17 +1,17 @@
 ﻿l_russian:
  gh_nattanan_events.0001.t:90 "Выбор достойного наследника"
- gh_nattanan_events.0001.desc.intro:90 "Сотни лет священная должность сепаттана переходит из поколения в поколение после тщательного отбора. Если собственный ребёнок сепаттана недостоин стать следующим духовным главой, следует призвать кандидатов из Священной рощи. Как поступали поколения моих предшественников, так поступлю и я: призову из рощи двух сильнейших молодых [Concept('magi','магов')|E] и выберу одного наследником. Обеспечив преемственность, я смогу сосредоточиться на защите земли от внутренних распрей, еретиков и чужеземцев."
+ gh_nattanan_events.0001.desc.intro:90 "Сотни лет священная должность сепаттана переходит из поколения в поколение после тщательного отбора. Если собственный ребёнок сепаттана не заслуживает права унаследовать должность духовного главы, следует призвать кандидатов из Священной рощи. Как поступали поколения моих предшественников, так поступлю и я: призову из рощи двух сильнейших молодых [Concept('magi','магов')|E] и определю, кому наследовать мою должность. Обеспечив преемственность, я смогу сосредоточиться на защите земли от внутренних распрей, еретиков и чужеземцев."
  gh_nattanan_events.0001.desc.heir:90 "Я могу не выбрать никого или отдать предпочтение одному из них. Впрочем, едва ли [old_heir.GetFirstName] обрадуется, если лишится того, что, как [old_heir.GetSheHe] считает, является [old_heir.GetHerHis] законным местом."
  gh_nattanan_events.0001.desc.no_heir:90 "Я могу выбрать одного или другого — но не обоих."
  gh_nattanan_events.0001.a:90 "[first.GetNameNoTooltip] подаёт надежды." 
- gh_nattanan_events.0001.b:90 "[second.GetNameNoTooltip] будет выбран[Select_CString(second.IsFemale, 'а', '')]." 
+ gh_nattanan_events.0001.b:90 "[second.GetNameNoTooltip] будет [Select_CString(second.IsFemale, 'выбрана', 'выбран')]."
  gh_nattanan_events.0001.claim_tt:90 "Получает [Concept('pressed_claims','обоснованные претензии')|E] на все ваши [Concept('titles','титулы')|E]"
  gh_nattanan_events.0001.c:90 "Никто из них меня не устраивает." 
  gh_nattanan_events.0001.c.tt:90 "Вы отвергаете [first.GetName] и [second.GetName]"
  gh_nattanan_events.0002.t:90 "Ученики Священной рощи"
  gh_nattanan_events.0002.desc:90 "Я обращусь за советом к почтенным магам Священной рощи и приглашу одного из них ко двору. Наверняка среди них найдётся тот, кто знает нужные мне ответы."
  gh_nattanan_events.0002.a:90 "[first.GetNameNoTooltip] подаёт надежды." 
- gh_nattanan_events.0002.b:90 "[second.GetNameNoTooltip] будет выбран[Select_CString(second.IsFemale, 'а', '')]." 
+ gh_nattanan_events.0002.b:90 "[second.GetNameNoTooltip] будет [Select_CString(second.IsFemale, 'выбрана', 'выбран')]."
  gh_nattanan_events.0002.c:90 "Никто из них меня не устраивает." 
  gh_nattanan_events.0002.c.tt:90 "Вы отвергаете [first.GetName] и [second.GetName]."
 
@@ -24,7 +24,7 @@
  gh_nattanan_events.0004.start.desc:0 "Одно за другим королевства Наттанана пали под власть [nattanan_uniter.GetPrimaryTitle.GetNameNoTier]."
  gh_nattanan_events.0004.relation_former.desc:0 "[Select_CString(nattanan_uniter.IsFemale, 'Моя', 'Мой')] [ROOT.Char.Custom2('RelationToMe', nattanan_uniter)] [nattanan_uniter.GetTitledFirstName]"
  gh_nattanan_events.0004.former.desc:0 "[nattanan_uniter.GetTitledFirstName]"
- gh_nattanan_events.0004.end.desc:0 "провозгласил[Select_CString(nattanan_uniter.IsFemale, 'а', '')] себя «[nattanan_uniter.GetMotherFather|U] наттананов».\n\n[nattanan_uniter.GetHerHis|U] имя наверняка переживёт века, но войдёт ли [nattanan_uniter.GetSheHe] в память героем или тираном? Это знает лишь [ROOT.Char.GetFaith.FateGodName]."
+ gh_nattanan_events.0004.end.desc:0 "[Select_CString(nattanan_uniter.IsFemale, 'провозгласила', 'провозгласил')] себя «[nattanan_uniter.GetMotherFather|U] наттананов».\n\n[nattanan_uniter.GetHerHis|U] имя наверняка переживёт века, но войдёт ли [nattanan_uniter.GetSheHe] в память [Select_CString(nattanan_uniter.IsFemale, 'героиней или тиранкой', 'героем или тираном')]? Это знает лишь [ROOT.Char.GetFaith.FateGodName]."
 
  gh_nattanan_events.0005.t:0 "Очищение земель"
  gh_nattanan_events.0005.desc:0 "Земля очищена от гнусных еретиков, посмевших отвергнуть Священный путь богов-близнецов. Их зло вырвано с корнем, скверна выжжена, а верные отныне едины. Пусть это станет свидетельством силы и правоты нашего святого дела."
@@ -38,7 +38,7 @@
 
  gh_nattanan_events.0007.t:0 "Избранный сосуд богов-близнецов"
  gh_nattanan_events.0007.desc:0 "Боги-близнецы открыли свою волю и избрали меня сосудом, который поведёт верных. Через меня их свет озарит мир, рассеет тьму и принесёт спасение праведным. Ноша велика, но их благословение даст мне силу принести гармонию и процветание всем, кто идёт по Священному пути."
- gh_nattanan_events.0007.a:0 "Я принесу пользу всем."
+ gh_nattanan_events.0007.a:0 "Я всем принесу процветание."
 
  #gh_nattanan_events.0008 is hidden
 
@@ -55,4 +55,4 @@
  gh_nattanan_events.0011.start.desc:0 "Одно за другим королевства Наттанана пали под власть [nattanan_uniter.GetPrimaryTitle.GetNameNoTier]."
  gh_nattanan_events.0011.relation_former.desc:0 "[Select_CString(nattanan_uniter.IsFemale, 'Моя', 'Мой')] [ROOT.Char.Custom2('RelationToMe', nattanan_uniter)] [nattanan_uniter.GetTitledFirstName]"
  gh_nattanan_events.0011.former.desc:0 "[nattanan_uniter.GetTitledFirstName]"
- gh_nattanan_events.0011.end.desc:0 "провозгласил[Select_CString(nattanan_uniter.IsFemale, 'а', '')] себя «[Select_CString(nattanan_uniter.IsFemale, 'Укротительницей', 'Укротителем')] Наттанана».\n\n[nattanan_uniter.GetHerHis|U] имя наверняка переживёт века, но войдёт ли [nattanan_uniter.GetSheHe] в память героем или тираном? Это знает лишь [ROOT.Char.GetFaith.FateGodName]."
+ gh_nattanan_events.0011.end.desc:0 "[Select_CString(nattanan_uniter.IsFemale, 'провозгласила', 'провозгласил')] себя «[Select_CString(nattanan_uniter.IsFemale, 'Укротительницей', 'Укротителем')] Наттанана».\n\n[nattanan_uniter.GetHerHis|U] имя наверняка переживёт века, но войдёт ли [nattanan_uniter.GetSheHe] в память [Select_CString(nattanan_uniter.IsFemale, 'героиней или тиранкой', 'героем или тираном')]? Это знает лишь [ROOT.Char.GetFaith.FateGodName]."

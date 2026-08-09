@@ -6,18 +6,18 @@
  sjalvolki_conquest.0001.c: "Меня устраивает то, что у меня есть. Песни в мою честь мне ни к чему."
  
  sjalvolki_conquest.0003.t: "Имперрех приближается"
- sjalvolki_conquest.0003.desc: "Пусть [attacker.GetTitledFirstName] и доказал[Select_CString(attacker.IsFemale, 'а', '')], что может вести наш народ, я всегда считал[Select_CString(ROOT.Char.IsFemale, 'а', '')], что вернее всего к славе ведёт непроторённый путь. Я отправил[Select_CString(ROOT.Char.IsFemale, 'ась', 'ся')] в самое сердце вражеских земель, чтобы без помощи огромного войска Имперреха добыть себе славное имя и собственное владение. Поход удался на славу и наверняка войдёт в песни, но теперь он близится к концу.\n\nДозорные [attacker.GetFirstName] уже стали привычным зрелищем в округе, а сегодня к моему двору прибыл посланник. Он привёз дары, любезные речи и весьма выгодные условия официального вступления в коалицию. Все земли, которые мне удалось захватить собственной хитростью, останутся за мной и не будут поделены между десятком мелких вождей.\n\nНо что будет, если я откажусь?.."
+ sjalvolki_conquest.0003.desc: "Пусть [attacker.GetTitledFirstName] и [Select_CString(attacker.IsFemale, 'доказала', 'доказал')], что может вести наш народ, я всегда [Select_CString(ROOT.Char.IsFemale, 'считала', 'считал')], что вернее всего к славе ведёт непроторённый путь. Я [Select_CString(ROOT.Char.IsFemale, 'отправилась', 'отправился')] в самое сердце вражеских земель, чтобы без помощи огромного войска Имперреха добыть себе славное имя и собственное владение. Поход удался на славу и наверняка войдёт в песни, но теперь он близится к концу.\n\nДозорные [attacker.GetFirstName] уже стали привычным зрелищем в округе, а сегодня к моему двору прибыл посланник. Он привёз дары, любезные речи и весьма выгодные условия официального вступления в коалицию. Все земли, которые мне удалось захватить собственной хитростью, останутся за мной и не будут поделены между десятком мелких вождей.\n\nНо что будет, если я откажусь?.."
  sjalvolki_conquest.0003.a: "Скоро я присоединюсь к главному войску."
  sjalvolki_conquest.0003.b: "Я уже не стану подчиняться прихотям шаткой коалиции [attacker.GetFirstName]!"
  
  sjalvolki_conquest.0004.t: "Имперрех приближается"
- sjalvolki_conquest.0004.desc: "Беды далёкой Калатипсоми дошли и до нашего порога. Теперь [attacker.GetFirstName] натравил[Select_CString(attacker.IsFemale, 'а', '')] на наши земли [attacker.GetHerHis] псов, и вскоре я рискую остаться без владений, а при худшем исходе — и без головы.\n\nМестные военачальники уже собирают сопротивление, но прежний опыт подсказывает, что всё напрасно. Можно пасть к ногам варварского правителя и вымолить право сохранить хотя бы клочок своих земель... но стоит ли так унижаться?"
+ sjalvolki_conquest.0004.desc: "Беды далёкой Калатипсоми дошли и до нашего порога. Теперь [attacker.GetFirstName] [Select_CString(attacker.IsFemale, 'натравила', 'натравил')] на наши земли [attacker.GetHerHis] псов, и вскоре я рискую остаться без владений, а при худшем исходе — и без головы.\n\nМестные военачальники уже собирают сопротивление, но прежний опыт подсказывает, что всё напрасно. Можно пасть к ногам [Select_CString(attacker.IsFemale, 'варварской правительницы', 'варварского правителя')] и вымолить право сохранить хотя бы клочок своих земель... но стоит ли так унижаться?"
  sjalvolki_conquest.0004.a: "Придётся торговаться с варваром."
  sjalvolki_conquest.0004.b: "Пусть меня съедят черви, если я паду так низко!"
  sjalvolki_conquest.0004.c: "Возможно, у нас ещё есть время бежать!"
  
  sjalvolki_conquest.0005.t: "Предложение мира"
- sjalvolki_conquest.0005.desc: "Ко мне прибыл посланник от [aversarian_mercy_requester.GetTitledFirstName], довольно влиятельного местного [Concept('aversaria','аверсарианского')|E] землевладельца. Ещё не успев объяснить цель визита, он пал передо мной ниц и принялся превозносить моё имя — насколько искренни эти речи, большой вопрос.\n\nРазумеется, вслед за похвалами прозвучала просьба позволить землевладельцу «присоединиться» к Имперреху и сохранить хотя бы часть [aversarian_mercy_requester.GetHerHis] земель."
+ sjalvolki_conquest.0005.desc: "Ко мне прибыл посланник от [aversarian_mercy_requester.GetTitledFirstName], [Select_CString(aversarian_mercy_requester.IsFemale, 'одной из наиболее влиятельных местных', 'одного из наиболее влиятельных местных')] [Concept('aversaria','аверсарианских')|E] [Select_CString(aversarian_mercy_requester.IsFemale, 'землевладелиц', 'землевладельцев')]. Ещё не успев объяснить цель визита, он пал передо мной ниц и принялся превозносить моё имя — насколько искренни эти речи, большой вопрос.\n\nРазумеется, вслед за похвалами прозвучала просьба позволить [aversarian_mercy_requester.GetFirstNameNoTooltip] «присоединиться» к Имперреху и сохранить хотя бы часть [aversarian_mercy_requester.GetHerHis] земель."
  sjalvolki_conquest.0005.a: "Говорят, [aversarian_mercy_requester.GetTitledFirstName] славится справедливостью и честностью; [aversarian_mercy_requester.GetSheHe] может сохранить [aversarian_mercy_requester.GetHerHis] главный титул."
  sjalvolki_conquest.0005.b: "Пусть [aversarian_mercy_requester.GetSheHe] сохранит одно владение, но не более."
  sjalvolki_conquest.0005.c: "[aversarian_mercy_requester.GetFirstName] — двуличная и вероломная змея. Слово [aversarian_mercy_requester.GetHerHis] ничего не стоит."
@@ -28,7 +28,7 @@
  sjalvolki_conquest.0006.b: "Эти условия смехотворны!"
  
  sjalvolki_conquest.0007.t: "Предложение отвергнуто"
- sjalvolki_conquest.0007.desc: "[attacker.GetTitledFirstName] вернул[Select_CString(attacker.IsFemale, 'а', '')] моего посланника с пустыми руками. Вот же варварское отродье! Ведь [attacker.GetSheHe] совершенно не желает принимать мою присягу и намерен[Select_CString(attacker.IsFemale, 'а', '')] силой смести любое сопротивление, что бы я ни делал[Select_CString(ROOT.Char.IsFemale, 'а', '')].\n\nЯ не нахожу себе места. Мало того что пришлось унижаться и молить варвара о милости, так мои унижения лишь заставили [attacker.GetHerHim] плюнуть мне в лицо!"
+ sjalvolki_conquest.0007.desc: "[attacker.GetTitledFirstName] [Select_CString(attacker.IsFemale, 'вернула', 'вернул')] моего посланника с пустыми руками. Вот же варварское отродье! Ведь [attacker.GetSheHe] совершенно не желает принимать мою присягу и [Select_CString(attacker.IsFemale, 'намерена', 'намерен')] силой смести любое сопротивление, что бы я ни [Select_CString(ROOT.Char.IsFemale, 'делала', 'делал')].\n\nЯ не нахожу себе места. Мало того что пришлось унижаться и молить о милости, так мои унижения лишь заставили [attacker.GetHerHis] плюнуть мне в лицо!"
  sjalvolki_conquest.0007.a: "Будь что будет, я утащу за собой как можно больше сьялвольской мрази!" 
  
  sjalvolki_conquest.0010.t: "Место под солнцем"
@@ -102,14 +102,14 @@
  
  sjalvolki_conquest.0121.t: "Сломленная надменность"
  sjalvolki_conquest.0121.intro: "Некоторое время назад мне довелось испытать [SelectLocalization(GetPlayer.HasTrait(GetTrait('zealous').Self),'великую честь', 'великое несчастье')]: меня отправили в [arrogant_aversarian_county.GetNameNoTier] договариваться с местным аверсарианским дворянином. Всё это время мой [SelectLocalization(GetPlayer.HasTrait(GetTrait('cynical').Self),'любезный собеседник', 'собеседник')] не прекращал задевать меня и моих людей, "
- sjalvolki_conquest.0121.desc_calm_or_patient: "но я почти не обращал[Select_CString(ROOT.Char.IsFemale, 'а', '')] внимания на [arrogant_aversarian.GetHerHis] мелкие провокации."
+ sjalvolki_conquest.0121.desc_calm_or_patient: "но я почти не [Select_CString(ROOT.Char.IsFemale, 'обращала', 'обращал')] внимания на [arrogant_aversarian.GetHerHis] мелкие провокации."
  sjalvolki_conquest.0121.desc_wrathful: "и мне не раз хотелось [SelectLocalization(Or(GetPlayer.HasTrait(GetTrait('craven').Self),GetPlayer.HasTrait(GetTrait('lazy').Self)),'приказать своим людям проломить', 'собственноручно проломить')] [arrogant_aversarian.GetHerHis] череп."
- sjalvolki_conquest.0121.desc_sadistic: "и мне уже не раз хотелось приказать замучить [arrogant_aversarian.GetHerHim] до смерти."
- sjalvolki_conquest.0121.desc_generic: "и было бы ложью утверждать, будто [arrogant_aversarian.GetSheHe] не сумел[Select_CString(arrogant_aversarian.IsFemale, 'а', '')] меня задеть."
+ sjalvolki_conquest.0121.desc_sadistic: "и мне уже не раз хотелось приказать замучить [arrogant_aversarian.GetHerHis] до смерти."
+ sjalvolki_conquest.0121.desc_generic: "и было бы ложью утверждать, будто [arrogant_aversarian.GetSheHe] не [Select_CString(arrogant_aversarian.IsFemale, 'сумела', 'сумел')] меня задеть."
  sjalvolki_conquest.0121.outro: "\n\nСегодня нас ждала очередная бесконечная череда скрытых угроз и колких оскорблений. Мои подчинённые вот-вот сорвутся: весь день они бросают на меня взгляды, ожидая хотя бы намёка на одобрение."
  sjalvolki_conquest.0121.a: "А теперь я скажу всё, что думаю, [arrogant_aversarian.GetFirstName]!"
- sjalvolki_conquest.0121.a_sadistic: "[SelectLocalization(GetPlayer.HasTrait(GetTrait('calm').Self), 'Довольно.', '#BOL ДОВОЛЬНО#!!')] Приведите [arrogant_aversarian.GetHerHim] ко мне, а остальных убейте[SelectLocalization(GetPlayer.HasTrait(GetTrait('calm').Self), '.', '!')]"
- sjalvolki_conquest.0121.a_wrathful_murderous: "#BOL ДОВОЛЬНО#!! Я забью [arrogant_aversarian.GetHerHim] до смерти!"
+ sjalvolki_conquest.0121.a_sadistic: "[SelectLocalization(GetPlayer.HasTrait(GetTrait('calm').Self), 'Довольно.', '#BOL ДОВОЛЬНО#!!')] Приведите [arrogant_aversarian.GetHerHis] ко мне, а остальных убейте[SelectLocalization(GetPlayer.HasTrait(GetTrait('calm').Self), '.', '!')]"
+ sjalvolki_conquest.0121.a_wrathful_murderous: "#BOL ДОВОЛЬНО#!! Я забью [arrogant_aversarian.GetHerHis] до смерти!"
  sjalvolki_conquest.0121.a_wrathful_nonmurderous: "Пора преподать [arrogant_aversarian.GetHerHim] урок!"
  sjalvolki_conquest.0121.b: "Спокойно..."
  sjalvolki_conquest.0121.b_calm: "Твои насмешки уже приелись, [arrogant_aversarian.GetFirstName]."
@@ -218,7 +218,7 @@
  sjalvolki_conquest.0125.b: "Это твоё открытие, и оно должно остаться с тобой."
  
  sjalvolki_conquest.0126.t: "Берсерк"
- sjalvolki_conquest.0126.desc: "Засада заканчивается так же быстро, как началась: [Concept('aversaria','аверсарианский')|E] патруль за считаные минуты перебит или обращён в бегство. Осматривая поле боя, я замечаю воина, на которого остальные смотрят с благоговением. Он один стоит на груде свежих трупов, залитый кровью и тяжело дышащий, а в огромных руках свободно держит два устрашающе изогнутых топора. Месяц назад он присоединился к нашему отряду вместе с небольшой ватагой присягнувших сьялволков, но лишь теперь мне довелось увидеть его свирепое мастерство. Настоящий сьялвольский берсерк среди нас — не думал[Select_CString(ROOT.Char.IsFemale, 'а', '')], что когда-нибудь увижу такое."
+ sjalvolki_conquest.0126.desc: "Засада заканчивается так же быстро, как началась: [Concept('aversaria','аверсарианский')|E] патруль за считаные минуты перебит или обращён в бегство. Осматривая поле боя, я замечаю воина, на которого остальные смотрят с благоговением. Он один стоит на груде свежих трупов, залитый кровью и тяжело дышащий, а в огромных руках свободно держит два устрашающе изогнутых топора. Месяц назад он присоединился к нашему отряду вместе с небольшой ватагой присягнувших сьялволков, но лишь теперь мне довелось увидеть его свирепое мастерство. Настоящий сьялвольский берсерк среди нас — не [Select_CString(ROOT.Char.IsFemale, 'думала', 'думал')], что когда-нибудь увижу такое."
  sjalvolki_conquest.0126.a: "Нам нужны такие воины!"
  sjalvolki_conquest.0126.b: "Да он безумец!"
  
@@ -232,7 +232,7 @@
  sjalvolki_conquest.0128.a: "Вы нужны нам здесь."
  sjalvolki_conquest.0128.b: "Нам нужны воины, а не лесники."
  
- sjalvolki_conquest.0129.t: "Налётчик"
+ sjalvolki_conquest.0129.t: "Разбойник"
  sjalvolki_conquest.0129.desc: "Вечером в наш лагерь в одиночку входит громадный сьялволк, от которого несёт потом и кровью. Мои люди напрягаются, руки сами тянутся к топорам и щитам: от воина почти ощутимо веет жаждой крови и наживы. Напряжение спадает, когда он бросает к моим ногам тяжёлый мешок, из которого высыпаются серебряные кубки и украшения, а затем неожиданно красноречиво излагает своё предложение. Он поможет нам грабить [Concept('aversaria','аверсарианские')|E] земли — дело, в котором отлично разбирается, — если получит долю добычи. До недавнего времени его собственная шайка занималась тем же, пока не столкнулась с превосходящими силами местных. Он оказался единственным, кто пережил тот бой."
  sjalvolki_conquest.0129.a: "Выгодную сделку я узнаю сразу!"
  sjalvolki_conquest.0129.b: "Именем [ROOT.Char.GetFaith.HighGodNamePossessive], мы завоеватели, а не разбойники!"
@@ -291,7 +291,7 @@
  sjalvolki_conquest.0138.c: "Мне не до сказок. Несите эль!"
  
  sjalvolki_conquest.0139.t: "За что мы сражаемся"
- sjalvolki_conquest.0139.desc: "[realm_priest.GetName] начинает рассказ.\n\n«Наш народ в бегах уже почти два поколения. Когда-то дед поведал мне о дне, когда раскололся [Concept('aervalr','Аэрвалр')|E], а небесные боги выпустили в мир [Concept('the_fog','Туман')|E], карая высокомерие [Concept('aversaria','аверсарианцев')|E] и гордыню Убийцы Миров.\n\nОн говорил, что Туман подкрался незаметно. Люди укрылись в овраге от огненного дождя, испепелившего Аккенстад с его сотней святилищ и рощ. Утро казалось прекрасным, почти утешением после ужасов минувшей ночи, но затем начался шёпот. Вскоре серое море хлынуло в овраг, и люди закричали. Семьи, укрывшиеся глубже остальных и потому пережившие огонь, оказались погребены в собственном убежище. За беглецами гнались бледные кошмары, уродовавшие плоть.\n\nВаши предки пережили то же, что и мои. Месяцы сменялись годами, страшный Туман из ручейка превратился в потоп и поглотил нашу прекрасную родину. Вот почему мы сражаемся: чтобы выжить и отомстить за павших тем, чья гордыня едва не погубила мир»."
+ sjalvolki_conquest.0139.desc: "[realm_priest.GetName] начинает рассказ.\n\n«Наш народ в бегах уже почти два поколения. Когда-то дед поведал мне о дне, когда раскололся [Concept('aervalr','Эрвал')|E], а небесные боги выпустили в мир [Concept('the_fog','Туман')|E], карая высокомерие [Concept('aversaria','аверсарианцев')|E] и гордыню Убийцы Миров.\n\nОн говорил, что Туман подкрался незаметно. Люди укрылись в овраге от огненного дождя, испепелившего Аккенстад с его сотней святилищ и рощ. Утро казалось прекрасным, почти утешением после ужасов минувшей ночи, но затем начался шёпот. Вскоре серое море хлынуло в овраг, и люди закричали. Семьи, укрывшиеся глубже остальных и потому пережившие огонь, оказались погребены в собственном убежище. За беглецами гнались бледные кошмары, уродовавшие плоть.\n\nВаши предки пережили то же, что и мои. Месяцы сменялись годами, страшный Туман из ручейка превратился в потоп и поглотил нашу прекрасную родину. Вот почему мы сражаемся: чтобы выжить и отомстить за павших тем, чья гордыня едва не погубила мир»."
  sjalvolki_conquest.0139.a: "Мы проделали долгий путь."
  sjalvolki_conquest.0139.b: "И впереди ещё столько же."
  
@@ -314,7 +314,7 @@
  sjalvolki_conquest.0143.t: "Смертельные тайны партиков"
  sjalvolki_conquest.0143.desc: "Я пытаюсь пройти мимо стражей, и дело быстро доходит до открытой схватки. Один из воинов внезапно теряет терпение и отталкивает меня древком копья. Тут на меня бросаются ещё двое: ножи обнажены, в глазах горит негодование. Друиды даже не думают прерывать обряд. В одно мгновение я понимаю: дело куда серьёзнее, чем казалось. Придётся защищаться!"
  sjalvolki_conquest.0143.a: "Постойте... прекратите!"
- sjalvolki_conquest.0143.a.failure: "Вам едва удаётся спастись"
+ sjalvolki_conquest.0143.a.failure: "Вам едва удается спастись"
  sjalvolki_conquest.0143.a.critical_failure: "Партики убивают вас"
  
  sjalvolki_conquest.0144.t: "Враждующие кланы"
@@ -323,10 +323,10 @@
  sjalvolki_conquest.0144.b: "Лучше показать ценность сотрудничества. Переплавить и разделить."
  sjalvolki_conquest.0144.c: "Пусть докажут своё право на добычу!"
 
- sjalvolki_conquest.0145.t: "Пленный маг"
- sjalvolki_conquest.0145.desc: "Мои воины приводят ко мне [Concept('aversaria','аверсарианского')|E] [Concept('magi','мага')|E], захватив [aversarian_magi.GetHerHim] в разгар битвы. Пока [aversarian_magi.GetSheHe] осыпал[Select_CString(aversarian_magi.IsFemale, 'а', '')] моё войско заклинаниями, небольшой отряд подкрался к [aversarian_magi.GetHerHim] сзади и оглушил [aversarian_magi.GetHerHim]. Теперь пленник стоит передо мной на коленях со связанными руками и говорит на ломаном [ROOT.Char.GetCulture.GetName]. «П-пожалуйста, пощадите меня. Я [aversarian_magi.GetName]. Я могу служить вам, великий господин. У меня огромная сила». Слёзы текут по [aversarian_magi.GetHerHis] лицу, когда [aversarian_magi.GetSheHe] поднимает на меня взгляд. [aversarian_magi.GetHerHis|U] предложение сначала кажется заманчивым: аверсарианские маги славятся могуществом. Но [aversarian_magi.GetSheHe] попал[Select_CString(aversarian_magi.IsFemale, 'ась', '')] в плен, сражаясь против моих воинов, и, возможно, заслуживает смерти. Можно также пощадить [aversarian_magi.GetHerHim], но оставить [aversarian_magi.GetHerHim] без силы — от такого наказания заплачет любой аверсарианец."
+ sjalvolki_conquest.0145.t: "Маг в плену"
+ sjalvolki_conquest.0145.desc: "Мои воины приводят ко мне [Select_CString(aversarian_magi.IsFemale, 'пленницу', 'пленника')] из числа [Concept('aversaria','аверсарианских')|E] [Concept('magi','магов')|E], захватив [aversarian_magi.GetHerHis] в разгар битвы. Пока [aversarian_magi.GetSheHe] [Select_CString(aversarian_magi.IsFemale, 'осыпала', 'осыпал')] моё войско заклинаниями, небольшой отряд подкрался к [Select_CString(aversarian_magi.IsFemale, 'ней', 'нему')] сзади и оглушил [aversarian_magi.GetHerHis]. Теперь [Select_CString(aversarian_magi.IsFemale, 'пленница', 'пленник')] стоит передо мной на коленях со связанными руками и говорит на ломаном языке, известном как «[ROOT.Char.GetCulture.GetName]». «П-пожалуйста, пощадите меня. Я [aversarian_magi.GetName]. Я могу служить вам, [Select_CString(ROOT.Char.IsFemale, 'великая госпожа', 'великий господин')]. У меня огромная сила». Слёзы текут по [aversarian_magi.GetHerHis] лицу, когда [aversarian_magi.GetSheHe] поднимает на меня взгляд. [aversarian_magi.GetHerHis|U] предложение сначала кажется заманчивым: аверсарианские маги славятся могуществом. Но [aversarian_magi.GetSheHe] [Select_CString(aversarian_magi.IsFemale, 'попала', 'попал')] в плен, сражаясь против моих воинов, и, возможно, заслуживает смерти. Можно также пощадить [aversarian_magi.GetHerHis], но оставить [aversarian_magi.GetHerHis] без силы — от такого наказания заплачет любой аверсарианец."
  sjalvolki_conquest.0145.a: "Никакой пощады. Подайте мне меч!"
- sjalvolki_conquest.0145.b: "Отрубить [aversarian_magi.GetHerHis] руки и изгнать [aversarian_magi.GetHerHim]."
+ sjalvolki_conquest.0145.b: "Отрубить [aversarian_magi.GetHerHis] руки и изгнать [aversarian_magi.GetHerHis]."
  sjalvolki_conquest.0145.c: "[aversarian_magi.GetSheHe|U] ещё пригодится. Предложить [aversarian_magi.GetHerHim] помилование за пожизненную службу."
 
  sjalvolki_conquest.0146.t: "Разграбление города"
@@ -386,4 +386,4 @@
 
  DEFAULT_GENERATED_KINGDOM_NAME: "[capital_county_scope.GetBaseNameNoTierNoTooltip]"
 
- loot_villa_effect_artifact.tt: "Вы можете получить [Concept('artifact','артефакт')|E]"
+ loot_villa_effect_artifact.tt: "Вы можете получить [Concept( 'artifact', 'артефакт' )|E]"
