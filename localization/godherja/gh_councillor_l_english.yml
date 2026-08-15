@@ -10,8 +10,8 @@
  game_concept_quartermaster_desc:0 "The Quartermaster is in charge of managing all logistical parts of your fleet, such as organizing raids, keeping crew in line, and selling your stolen goods."
 
  task_court_magi_boost_magic_power:0 "Boost Magic Power"
- task_court_magi_boost_magic_power_desc:0 "Will transfer #positive_value [SCOPE.ScriptValue('task_court_magi_boost_power_value')|1]#!@magic_icon!from their monthly #E Magic#! to your own pool."
- task_court_magi_boost_magic_power_effect_desc:0 "Will transfer #positive_value [SCOPE.ScriptValue('task_court_magi_boost_power_value')|1]#!@magic_icon!from their monthly #E Magic#! to your own pool."
+ task_court_magi_boost_magic_power_desc:0 "Will increase your [extended_magic_baseline|E] by #positive_value [SCOPE.ScriptValue('task_court_magi_boost_power_value')|1]#!@magic_icon!."
+ task_court_magi_boost_magic_power_effect_desc:0 "Will increase your [extended_magic_baseline|E] by #positive_value [SCOPE.ScriptValue('task_court_magi_boost_power_value')|1]#!@magic_icon!."
  task_court_magi_boost_magic_power_modifier:0 "Magic Power from [court_magi|E]"
  
  task_court_magi_tutor_magic:0 "Tutor Child"
@@ -25,7 +25,7 @@
  
  task_court_magi_research_magic:0 "Research Magic"
  task_court_magi_research_magic_desc:0 "Will research spells known to their [cultures|E] [Concept('magic_type','Schools of Magic')|E]"
- task_court_magi_research_magic_effect_desc:0 "Will learn new spells based on their [arcana|E] [skill|E]"
+ task_court_magi_research_magic_effect_desc:0 "Will learn new spells based on their and your [arcana|E] [skill|E]"
 
  IS_A_MAGI:0 "Is a [magi|E]"
  IS_NOT_A_MAGI:0 "Is not a [magi]"
