@@ -538,7 +538,7 @@
  GH_GREAT_STRUGGLE_CANNOT_END: "Вы не можете завершить [great_struggle|E]"
  GH_GREAT_STRUGGLE_REGIONS_HEADER: "[Concept('struggle_region_regions','Регионы Великой борьбы')|E]"
  GH_GREAT_STRUGGLE_GOTO_BUTTON: "Перейти к борьбе"
- GH_GREAT_STRUGGLE_LEADING_PHASE: "#bold Лидирующая [struggle_phase_phase|E]#!: [Scope.Struggle.GetCurrentLeadingPhase.GetNameNoTooltip]"
+ GH_GREAT_STRUGGLE_LEADING_PHASE: "#bold Лидирующая [Concept('struggle_phase_phase','фаза')|E]#!: [Scope.Struggle.GetCurrentLeadingPhase.GetNameNoTooltip]"
  GH_GREAT_STRUGGLE_ENDING_SUMMARY: "[Concept('struggle_region_regions','Региональная')|E] [struggle|E] завершилась исходом «[GetGlobalVariable(Scope.GetFlagName).Var('struggle_ending_reason').GetFlagName]» в [Subtract_CFixedPoint( GetGlobalVariable(Scope.GetFlagName).Var('gh_wih_struggle_end_date').GetValue, '(CFixedPoint)5000' )] [Select_CString( GreaterThan_CFixedPoint( GetGlobalVariable(Scope.GetFlagName).Var('gh_wih_struggle_end_date').GetValue, '(CFixedPoint)5000'), 'От З.О.', 'До З.О.' )]"
  GH_GREAT_STRUGGLE_ENDING_DECISION_HEADER: "Все решения о завершении Великой борьбы"
  
