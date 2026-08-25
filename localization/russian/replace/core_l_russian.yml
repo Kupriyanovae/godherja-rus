@@ -11,7 +11,7 @@
  HOUSE_FOUND_ERA:0 "[Select_CString( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)5000'), И.С.', 'Д.С.' )]"
  BOOKMARK_ERA:0 "[Select_CString( GreaterThan_int32( GameSetup.GetSelectedBookmark.GetDate.GetYear, '(int32)5000'), И.С.', 'Д.С.' )]"
  RD_ERA:0 "[Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)5000'), И.С.', 'Д.С.' )]"
- CULTURE_BIRTH_ERA:0 "[Select_CString( GreaterThan_int32( DATE.GetYear, '(int32)5000'), И.С.', 'Д.С.' )]"
+ CULTURE_BIRTH_ERA:0 "[Select_CString( GreaterThan_int32( DATE.GetYear, '(int32)5000'), 'И.С.', 'Д.С.' )]"
  GENERAL_YEAR:0 "[Select_int32( GreaterThan_int32('(int32)$YEAR|q$', '(int32)5000'), Subtract_int32('(int32)$YEAR|q$', '(int32)5000'), Subtract_int32('(int32)5000', '(int32)$YEAR|q$'))]"
  HOUSE_YEAR:0 "[Select_int32( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)5000'), Subtract_int32( DynastyHouse.GetFoundYear, '(int32)5000'), Subtract_int32( '(int32)5000', DynastyHouse.GetFoundYear) )]"
  BOOKMARK_YEAR:0 "[Select_int32( GreaterThan_int32( GameSetup.GetSelectedBookmark.GetDate.GetYear, '(int32)5000'), Subtract_int32( GameSetup.GetSelectedBookmark.GetDate.GetYear, '(int32)5000'), Subtract_int32( '(int32)5000', GameSetup.GetSelectedBookmark.GetDate.GetYear) )]"
