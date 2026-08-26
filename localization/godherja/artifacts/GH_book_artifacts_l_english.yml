@@ -31,6 +31,11 @@
  feature_book_subject_ethereal: "[aspect_ethereal] [magic|E]"
  feature_book_subject_ice: "[aspect_ice] [magic|E]"
  feature_book_subject_dark: "[aspect_dark] [magic|E]"
+ feature_book_subject_hymns: "[aspect_hymns] [magic|E]"
+ feature_book_subject_sand: "[aspect_sand] [magic|E]"
+ feature_book_subject_time: "[aspect_time] [magic|E]"
+ feature_book_subject_dawn: "[aspect_dawn] [magic|E]"
+ feature_book_subject_metal: "[aspect_metal] [magic|E]"
 
  ###############
  # BOOK TOPICS #
@@ -240,6 +245,11 @@
  arcana_general_book_title_format_2: "[ROOT.Artifact.Custom('MagicSynonyms')|U]: [ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] by [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
  arcana_general_book_title_format_3: "[ROOT.Artifact.Custom('GrimoireSynonyms')|U] of [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
  arcana_general_book_title_format_4: "[ROOT.Artifact.Custom('NotePluralSynonyms')|U] On [ROOT.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')] And Other [ROOT.Artifact.Custom('SpellsSynonyms')|U]"
+ 
+ feature_book_title_arcana_ethics: "[Artifact.Custom('ArcanaEthicsBookTitleFormat')]"
+ arcana_ethics_book_title_format_1: "The Morality of [ROOT.Artifact.Custom('MagicSynonyms')|U] by [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
+ arcana_ethics_book_title_format_2: "Arcane Ethics by [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
+ arcana_ethics_book_title_format_3: "The Ethical Conundrums of [ROOT.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')] And Other [ROOT.Artifact.Custom('SpellsSynonyms')|U]"
 
  feature_book_title_arcana_magic_school: "[Artifact.Custom('ArcanaMagicSchoolBookTitleFormat')]"
  arcana_general_magic_school_book_title_format_1: "[Localize(Concatenate(ROOT.Artifact.MakeScope.Var('magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))]: [ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] of [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
