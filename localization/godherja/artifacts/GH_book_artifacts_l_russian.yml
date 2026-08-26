@@ -245,6 +245,11 @@
  arcana_general_magic_school_book_title_format_1: "[Localize(Concatenate(ROOT.Artifact.MakeScope.Var('magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))]: [ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] от [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
  arcana_general_magic_school_book_title_format_2: "[ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('BookSynonyms')|U] [Localize(Concatenate(ROOT.Artifact.MakeScope.Var('magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))|U]"
  
+ feature_book_title_arcana_ethics: "[Artifact.Custom('ArcanaEthicsBookTitleFormat')]"
+ arcana_ethics_book_title_format_1: "Мораль [ROOT.Artifact.Custom('MagicSynonyms')|U] от [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
+ arcana_ethics_book_title_format_2: "Магическая этика от [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
+ arcana_ethics_book_title_format_3: "Этические дилеммы [ROOT.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')] и иные [ROOT.Artifact.Custom('SpellsSynonyms')|U]"
+ 
  feature_book_title_nature_folklore: "Природный фольклор" # GH URGENT: Сделать это правильно рандомизированным
  feature_book_title_water_folklore: "Водный фольклор" # GH URGENT: Сделать это правильно рандомизированным
  
