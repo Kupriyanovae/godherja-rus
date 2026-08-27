@@ -81,45 +81,45 @@
 
 ##### Intro #####
  rite_wars_south_struggle.0501.t:1 "$rite_wars_south_struggle$"
- rite_wars_south_struggle.0501.desc:1 "Мир сьяволки разорван на части. На всём [Concept('aversaria', 'Расколотом побережье')|E] [GetTitleByKey('c_oraispol').GetNameNoTier] Ритуал трещит по швам — Велокупский и Кронский Ритуалы оспаривают право представлять верующих. Армии недавно покоривших мёртвую империю народов снова в походе, но теперь сражаются друг против друга во имя своих богов. Многие считают, что это лишь начало, и в будущем сьяволки ждёт ещё больший раскол.\n\n"
- rite_wars_south_struggle.0501.desc.involved:0 "Я не отступлю от своего видения новой родины. Клянусь [ROOT.Char.GetFaith.HighGodName], дом [ROOT.Char.GetHouse.GetNameNoTooltip] выстоит в этой буре и исполнит мою волю.\n\n"
- rite_wars_south_struggle.0501.desc.interloper:0 "Пришло время взять контроль над ситуацией и собственной судьбой. Все фигуры расставлены. Я вижу путь вперёд, и ничто не остановит дом [ROOT.Char.GetHouse.GetNameNoTooltip].\n\n"
+ rite_wars_south_struggle.0501.desc:1 "Мир сьялволков разорван на части. По всему [Concept('aversaria','Расколотому побережью')|E] Орайспольский обряд сталкивается с расколом и междоусобицей, при этом Кронский обряд и обряд Могилы Велоса объявили о своем лидерстве над его верующими. Армии народов, лишь недавно поселившегося поверх мертвой империи, снова маршируют — на этот раз обратившись друг против друга во имя своих богов. И некоторые даже считают вероятным, что это только начало и в будущем сьялволков ждет еще большее дробление.\n\n"
+ rite_wars_south_struggle.0501.desc.involved:0 "Я не упущу свое видение нашей новой родины. Именем [ROOT.Char.GetFaith.HighGodName], дом [ROOT.Char.GetHouse.GetFullNamePossessiveNoTooltip] выстоит в этой буре и увидит исполнение моей воли.\n\n"
+ rite_wars_south_struggle.0501.desc.interloper:0 "Пришло время взять ситуацию и свою судьбу в свои руки. Я вижу все фигуры, расставленные на доске. Я знаю путь вперед, и ничто не остановит дом [ROOT.Char.GetHouse.GetFullNamePossessiveNoTooltip].\n\n"
  rite_wars_south_struggle.0501.desc.mottocall:0 "[ROOT.Char.GetHouse.GetMotto]!"
- rite_wars_south_struggle.0501.a:0 "Взять судьбу в свои руки!"
+ rite_wars_south_struggle.0501.a:0 "Возьми судьбу в свои руки!"
 
 ##### Hostility #####
 # Struggle Ender
  rite_wars_south_struggle.0900.t:0 "$struggle_rite_wars_south_ending_hostility_decision$"
-rite_wars_south_struggle.0900.opening:0 "Хаос, который обрушился на Расколотом побережье в предыдущие столетия, оставил след в сердцах всех его жителей. Сегодня начинается новая глава этой полуостровной истории..."
- rite_wars_south_struggle.0900.desc:0 "\n\nТеперь нет ни одного другого государства, которое могло бы по-настоящему оспорить [ROOT.Char.GetPrimaryTitle.GetAdjectiveNoTooltip] господство на Расколотом побережье, или священников и поселенцев, которые несут слово [ROOT.Char.GetFaith.HighGodName] и цивилизацию [ROOT.Char.GetCulture.GetName] в его деревни.\n\nОстаётся лишь объявить эту победу, решив, как действовать дальше с нашим правлением."
+ rite_wars_south_struggle.0900.opening:0 "Хаос, который Расколотое побережье терпело в предшествующие века, оставил след в сердцах всех его жителей. Сегодня начинается следующая глава этого побережья..."
+ rite_wars_south_struggle.0900.desc:0 "\n\nТеперь нет другого государства, которое могло бы по-настоящему оспорить [ROOT.Char.GetPrimaryTitle.GetAdjectiveNoTooltip] господство на Расколотом побережье или воспротивиться жрецам и поселенцам, несущим слово [ROOT.Char.GetFaith.HighGodName] и [ROOT.Char.GetCulture.GetName]ую цивилизацию в его деревни.\n\nВсе, что остается — объявить об этой победе, решив, как продолжать наше правление."
  rite_wars_south_struggle.0900.a:0 "Это будет земля [ROOT.Char.GetFaith.HighGodNameAlternate]!"
- rite_wars_south_struggle.0900.b:0 "Поселение на этой земле станет нашим приоритетом."
- rite_wars_south_struggle.0900.c:1 "[ROOT.Char.GetFaith.HighGodName] даровал Расколотом побережье [ROOT.Char.GetCulture.GetCollectiveNounNoTooltip]!"
+ rite_wars_south_struggle.0900.b:0 "Заселение этой земли станет нашей главной целью."
+ rite_wars_south_struggle.0900.c:1 "[ROOT.Char.GetFaith.HighGodName] отдал Расколотое побережье [ROOT.Char.GetCulture.GetNameNoTooltip]ому народу!"
 # Other Players
- rite_wars_south_struggle.0910.opening.involved:0 "Хотя помощь исходит из другого государства, избавление от неуверенности, охватившей регион на протяжении веков, теперь может быть близко..."
- rite_wars_south_struggle.0910.opening:0 "WВесть о последних событиях на Расколотом побережье достигла нашего двора, обещая конец конфликтам, которые терзали регион."
- rite_wars_south_struggle.0910.desc:0 "\n\n[struggle_ender.GetName], который[Select_CString(struggle_ender.IsFemale, 'ая', '')] теперь контролирует большую часть земель, объявил[Select_CString(struggle_ender.IsFemale, 'а', '')] себя окончательным победителем борьбы, начатой давным-давно переселением сьяволки.\n\n"
- rite_wars_south_struggle.0910.closing.faith:0 "[struggle_ender.GetSheHe|U] провозгласил[Select_CString(struggle_ender.IsFemale, 'а', '')], что Расколотом побережье станет землёй [struggle_ender.GetFaith.GetAdjective], и, если на то будет воля [struggle_ender.GetFaith.HighGodName], все еретики и неверные будут изгнаны из владений [struggle_ender.GetHerHis]."
- rite_wars_south_struggle.0910.closing.culture:0 "[struggle_ender.GetSheHe|U] провозгласил[Select_CString(struggle_ender.IsFemale, 'а', '')], что Расколотом побережье принадлежит [struggle_ender.GetCulture.GetName], и что всем иностранным захватчикам и порабощённым народам предстоит принять эту реальность."
- rite_wars_south_struggle.0910.closing.combined:0 "[struggle_ender.GetSheHe|U] провозгласил[Select_CString(struggle_ender.IsFemale, 'а', '')], что Расколотом побережье и [struggle_ender.GetPrimaryTitle.GetNameNoTier] теперь едины, переданные в руки [struggle_ender.GetFaith.GetAdjective] [struggle_ender.GetCulture.GetName] волей [struggle_ender.GetFaith.HighGodName]..."
- rite_wars_south_struggle.0910.a:0 "Это ещё не конец."
- rite_wars_south_struggle.0910.b:0 "Весьма интересно."
+ rite_wars_south_struggle.0910.opening.involved:0 "Хотя вести приходят из другого королевства, избавление от неопределенности, поглощавшей регион веками, теперь может быть близко..."
+ rite_wars_south_struggle.0910.opening:0 "Вести о недавних событиях на Расколотом побережье достигли нашего двора, обещая конец конфликтам, терзавшим регион."
+ rite_wars_south_struggle.0910.desc:0 "\n\n[struggle_ender.GetName], [Select_CString(struggle_ender.IsFemale, 'контролирующая', 'контролирующий' )] ныне большую часть земель, [Select_CString(struggle_ender.IsFemale, 'объявила', 'объявил' )] [struggle_ender.GetHerselfHimself] окончательным победителем в борьбе, начатой давным-давно Великим переселением сьялволков.\n\n"
+ rite_wars_south_struggle.0910.closing.faith:0 "[struggle_ender.GetSheHe|U] [Select_CString(struggle_ender.IsFemale, 'провозгласила', 'провозгласил' )] Расколотое побережье [struggle_ender.GetFaith.GetName]ой землей и [Select_CString(struggle_ender.IsFemale, 'заявила', 'заявил' )], что, если на то будет воля [struggle_ender.GetFaith.HighGodName], все еретики и иноверцы будут изгнаны из [struggle_ender.GetHerHis] владений."
+ rite_wars_south_struggle.0910.closing.culture:0 "[struggle_ender.GetSheHe|U] [Select_CString(struggle_ender.IsFemale, 'провозгласила', 'провозгласил' )], что Расколотое побережье принадлежит [struggle_ender.GetCulture.GetName]ому народу, и потребовал, чтобы все чужеземные захватчики и покроенные народы приняли эту реальность."
+ rite_wars_south_struggle.0910.closing.combined:0 "[struggle_ender.GetSheHe|U] [Select_CString(struggle_ender.IsFemale, 'провозгласила', 'провозгласил' )], что Расколотое побережье и [struggle_ender.GetPrimaryTitle.GetNameNoTier] — одно и то же, преданное ныне в руки, дабы теперь его вели [struggle_ender.GetFaith.GetName]ие [struggle_ender.GetCulture.GetName] волей [struggle_ender.GetFaith.HighGodName]..."
+ rite_wars_south_struggle.0910.a:0 "Это еще не конец."
+ rite_wars_south_struggle.0910.b:0 "Очень интересно."
 ##### Compromise #####
 # Struggle Ender
  rite_wars_south_struggle.0901.t:0 "$struggle_rite_wars_south_ending_compromise_decision$"
- rite_wars_south_struggle.0901.desc:1 "\n\nТеперь ясно, что этот цикл кровопролития не прекратится, если всё будет продолжаться в том же духе; этот полуостров не сможет вынести объединения.\n\nНам придётся довольствоваться [ROOT.Char.GetPrimaryTitle.GetNameNoTierNoTooltip] и оставить других правителей Расколотого Побережья на их усмотрение — пока что..."
+ rite_wars_south_struggle.0901.desc:1 "\n\nТеперь ясно, что этому циклу кровопролития не будет конца, если всё продолжится в том же духе; это побережье не выдержит объединения.\n\nМы должны довольствоваться [ROOT.Char.GetPrimaryTitle.GetNameNoTierNoTooltip] и оставить других владык Расколотого побережья на произвол судьбы — пока что..."
  rite_wars_south_struggle.0901.a:0 "Это к лучшему."
- rite_wars_south_struggle.0901.tt:0 "[THIS.Char.GetPrimaryTitle.GetDeJureLiege.GetNameNoTier] стал [Concept('de_jure','де-юре')|E] [Concept('empire','империей')|E]"
+ rite_wars_south_struggle.0901.tt:0 "[THIS.Char.GetPrimaryTitle.GetDeJureLiege.GetNameNoTier] становится [Concept('de_jure','де-юре')|E] [Concept('empire','империей')|E]"
 # Other Players
- rite_wars_south_struggle.0911.desc:0 "\n\n[struggle_ender.GetTitledFirstName] официально отказался от любых намерений объединить полуостров под общей короной и объявил титул любого, кто попытается это сделать, незаконным.\n\nРазрозненные царства, которые сформировались за века вторжений и отвоеваний, теперь слишком укоренились, чтобы их можно было объединить."
- rite_wars_south_struggle.0911.a:0 "Мы не забудем мечту об Испании..."
+ rite_wars_south_struggle.0911.desc:0 "\n\n[struggle_ender.GetTitledFirstName] официально [Select_CString(struggle_ender.IsFemale, 'отказалась', 'отказался' )] от каких-либо намерений объединить побережье под общей короной и объявил любого претендента на этот титул нелегитимным.\n\nРазрозненные королевства, сформированные веками вторжений и отвоеваний, теперь слишком глубоко укоренились, чтобы их можно было объединить."
+ rite_wars_south_struggle.0911.a:0 "Мы не забудем мечту об объединении..."
 ##### Conciliation #####
 # Struggle Ender
  rite_wars_south_struggle.0902.t:0 "$struggle_rite_wars_south_ending_conciliation_decision$"
- rite_wars_south_struggle.0902.desc:0 "\n\nКлятвенная гарантия защиты, которую могу обеспечить только я, позволит разнообразным народам региона жить и поклоняться свободно.\n\nЕсли на то будет воля [ROOT.Char.GetFaith.HighGodName], войны прошлого останутся в прошлом, а другие князья Ритуала увидят преимущества сосуществования."
- rite_wars_south_struggle.0902.a:0 "Отправьте вестников."
+ rite_wars_south_struggle.0902.desc:0 "\n\nКлятвенная гарантия защиты, обеспечить которую сейчас могу только я, гарантирует, что разные народы региона смогут жить и молиться свободно.\n\nЕсли на то будет воля [ROOT.Char.GetFaith.HighGodName], войны прошлого останутся в прошлом, а другие князья Обряда увидят преимущества сосуществования."
+ rite_wars_south_struggle.0902.a:0 "Отправить глашатаев."
 # Other Players
- rite_wars_south_struggle.0912.desc:0 "\\n\n[Глашатаи [struggle_ender.GetPrimaryTitle.GetAdjectiveNoTooltip]] провозгласили гарантии свободного передвижения и поклонения для всех, которые будут обеспечены [struggle_ender.GetTitledFirstName], что вызвало широкое одобрение среди простого народа.\n\nМногие давно жаждали конца кровопролития на Расколотом Побережье; возможно, этот мир будет долгим."
- rite_wars_south_struggle.0912.a:0 "Неожиданно, но приятно."
+ rite_wars_south_struggle.0912.desc:0 "\n\nГлашатаи [struggle_ender.GetPrimaryTitle.GetAdjectiveNoTooltip] провозгласили гарантии свободного прохода и вероисповедания для всех под защитой [struggle_ender.GetTitledFirstName], вызвав широкое одобрение простого народа.\n\nМногие жаждали конца кровопролития на Расколотом побережье; возможно, #EMP этот#! мир будет долгим."
+ rite_wars_south_struggle.0912.a:0 "Удивляет, это несомненно."
 
  
