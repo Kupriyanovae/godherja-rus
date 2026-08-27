@@ -1267,7 +1267,7 @@ widget = {
 				button_tab = {
 					name = "tab_challenge"
 					layoutpolicy_horizontal = expanding
-					size = { 160 35 }
+					size = { 155 35 }
 					
 					background = {
 						using = Background_Area_Light
@@ -1276,14 +1276,14 @@ widget = {
 
 					raw_text = "Интересный персонаж"
 					default_format = "#clickable"
-					fontsize = 16
+					fontsize = 15
 					onclick = "[GetVariableSystem.Set('main_menu_tab', 'challenge_ruler')]"
 					down = "[GetVariableSystem.HasValue('main_menu_tab', 'challenge_ruler')]"
 				}
 				button_tab = {
 					name = "tab_patch_highlights"
 					layoutpolicy_horizontal = expanding
-					size = { 160 35 }
+					size = { 155 35 }
 					background = {
 						using = Background_Area_Light
 						using = Mask_Rough_Edges
@@ -1295,9 +1295,9 @@ widget = {
 						}
 					}
 
-					raw_text = "Основные моменты патча"
+					raw_text = "Новости патча"
 					default_format = "#clickable"
-					fontsize = 16
+					fontsize = 15
 					onclick = "[GetVariableSystem.Set('main_menu_tab', 'patch_highlights')]"
 					down = "[GetVariableSystem.HasValue('main_menu_tab', 'patch_highlights')]"
 				}
