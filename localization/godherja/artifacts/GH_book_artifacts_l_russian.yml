@@ -3,156 +3,155 @@
  # BOOK COVER MATERIALS #
  ########################
  
- ARTIFACT_HAS_KNOWLEDGE_ENTRY: "У этого [Concept('artifact', 'артефакта')|E] есть доступные для чтения [Concept('knowledge_entries', 'записи знаний')|E]"
- book_cover_material_skin: "человеческой кожи"
+ ARTIFACT_HAS_KNOWLEDGE_ENTRY: "Этот [artifact|E] содержит читаемые [knowledge_entries|E]"
+ book_cover_material_skin: "человеческая кожа"
  
  ############
  # BOOK INK #
  ############
  
- feature_book_ink_blood: "кровьи"
- feature_book_ink_stardew_ink: "чернилами из звёздной росы"
+ feature_book_ink_blood: "кровь"
+ feature_book_ink_stardew_ink: "звёздные чернила"
  feature_book_ink_azalea_ink: "азалиевые чернила"
 
  #################
  # BOOK SUBJECTS #
  #################
- feature_book_subject_arcana: "Аркана"
- feature_book_subject_blood: "[Concept('magic','Магия')|E] [Concept('aspect_blood','Крови')|E]"
- feature_book_subject_celestial: "[Concept('magic','Магия')|E] [Concept('aspect_celestial','Небес')|E] "
- feature_book_subject_light: "[Concept('magic','Магия')|E] [Concept('aspect_light','Света')|E]"
- feature_book_subject_fire: "[Concept('magic','Магия')|E] [Concept('aspect_fire','Огня')|E]"
- feature_book_subject_nature: "[Concept('magic','Магия')|E] [Concept('aspect_nature','Природы')|E]"
- feature_book_subject_water: "[Concept('magic','Магия')|E] [Concept('aspect_water','Воды')|E]"
- feature_book_subject_air: "[Concept('magic','Магия')|E] [Concept('aspect_air','Воздуха')|E]"
- feature_book_subject_stone: "[Concept('magic','Магия')|E] [Concept('aspect_stone','Камня')|E]"
- feature_book_subject_dream: "[Concept('magic','Магия')|E] [Concept('aspect_dream','Грез')|E]"
- feature_book_subject_death: "[Concept('magic','Магия')|E] [Concept('aspect_death','Смерти')|E]"
- feature_book_subject_ethereal: "[Concept('magic','Магия')|E] [Concept('aspect_ethereal','Эфира')|E]"
- feature_book_subject_ice: "[Concept('magic','Магия')|E] [Concept('aspect_ice','Льда')|E]"
- feature_book_subject_dark: "[Concept('magic','Магия')|E] [Concept('aspect_dark','Тьмы')|E]"
- feature_book_subject_hymns: "[Concept('magic','Магия')|E] [Concept('aspect_hymns','Гимнов')|E]"
- feature_book_subject_sand: "[Concept('magic','Магия')|E] [Concept('aspect_sand','Песка')|E]"
- feature_book_subject_time: "[Concept('magic','Магия')|E] [Concept('aspect_time','Времени')|E]"
- feature_book_subject_dawn: "[Concept('magic','Магия')|E] [Concept('aspect_dawn','Рассвета')|E]"
- feature_book_subject_metal: "[Concept('magic','Магия')|E] [Concept('aspect_metal','Металла')|E]"
- 
+ feature_book_subject_arcana: "аркана"
+ feature_book_subject_blood: "[Concept('magic','Магия')|E] [Concept('aspect_blood','крови')|E]"
+ feature_book_subject_celestial: "[Concept('magic','Магия')|E] [Concept('aspect_celestial','небес'|E]"
+ feature_book_subject_light: "[Concept('magic','Магия')|E] [Concept('aspect_light','света'|E]"
+ feature_book_subject_fire: "[Concept('magic','Магия')|E] [Concept('aspect_fire','огня'|E]"
+ feature_book_subject_nature: "[Concept('magic','Магия')|E] [Concept('aspect_nature','природы'|E]"
+ feature_book_subject_water: "[Concept('magic','Магия')|E] [Concept('aspect_water','воды'|E]
+ feature_book_subject_air: "[Concept('aspect_air','Воздушная'|E] [Concept('magic','магия')|E]"
+ feature_book_subject_stone: "[Concept('aspect_stone','Каменная'|E] [Concept('magic','магия')|E]"
+ feature_book_subject_dream: "[Concept('magic','Магия')|E] [Concept('aspect_dream','грёз'|E]"
+ feature_book_subject_death: "[Concept('magic','Магия')|E] [Concept('aspect_death','смерти')|E]"
+ feature_book_subject_ethereal: "[Concept('magic','Магия')|E] [Concept('aspect_ethereal','эфира')|E]"
+ feature_book_subject_ice: "[Concept('magic','Магия')|E] [Concept('aspect_ice','льда')|E]"
+ feature_book_subject_dark: "[Concept('magic','Магия')|E] [Concept('aspect_dark','тьмы')|E]"
+ feature_book_subject_hymns: "[Concept('magic','Магия')|E] [Concept('aspect_hymns','гимнов')|E]"
+ feature_book_subject_sand: "[Concept('magic','Магия')|E] [Concept('aspect_sand','песка']"
+ feature_book_subject_time: "[Concept('magic','Магия')|E] [Concept('aspect_time','времени')|E]"
+ feature_book_subject_dawn: "[Concept('magic','Магия')|E] [Concept('aspect_dawn','рассвета')|E]"
+ feature_book_subject_metal: "[Concept('magic','Магия')|E] [Concept('aspect_metal','металла')|E]"
+
  ###############
  # BOOK TOPICS #
  ###############
 
  # Arcana
- feature_book_topic_arcana_general: "[Artifact.GetOwner.Custom('ArtifactArticleWealth')|U] гримуар, содержащий [Artifact.GetOwner.Custom('ArtifactBookContentQuality')] размышления на самые разные темы, связанные с [Concept('magic','магией')|E]."
- feature_book_topic_arcana_magic_school: "[Artifact.GetOwner.Custom('ArtifactArticleWealth')|U] гримуар [Artifact.GetOwner.Custom('ArtifactAdverbBookContentQuality')], охватывающий различные темы и ритуалы, связанные с арканной дисциплиной [Localize(Concatenate(Artifact.MakeScope.Var('magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))|U]."
+ eature_book_topic_arcana_general: "Гримуар, содержащий [Artifact.GetOwner.Custom('ArtifactBookContentQuality')] размышления на разнообразные темы, связанные с [magic|E]."
+ = feature_book_topic_arcana_magic_school: "Гримуар, [Artifact.GetOwner.Custom('ArtifactAdverbBookContentQuality')] охватывающий различные темы и ритуалы, относящиеся к арканной дисциплине [Localize(Concatenate(Artifact.MakeScope.Var('magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))|U]."
  feature_book_topic_arcana_ethics: "этика [Concept('magic','магии')|E]"
  feature_book_topic_arcana_tools: "инструменты, используемые для [Concept('magic','магических')|E] целей"
  
  # Celestial
- feature_book_topic_celestial_star_lore: "различные сказания и фольклор о ночном небе"
+ feature_book_topic_celestial_star_lore: "различные сказания и фольклор, связанные с ночным небом"
 
  # Light
  feature_book_topic_light_optics: "арканная оптика"
- 
+
  # Blood
- feature_book_topic_blood_medicine: "анатомия человека, особенно в том, что касается [Concept('blood_magic','магии крови')|E]"
+ feature_book_topic_blood_medicine: "человеческая анатомия, особенно в связи с [Concept('blood_magic','магией крови')|E]"
  feature_book_topic_blood_play: "пьеса с оттенками [Concept('blood_magic','магии крови')|E]"
- feature_book_topic_blood_poetry: "сборник поэзии, где общие темы вращаются вокруг [Concept('blood_magic','магии крови')|E]"
- 
+ feature_book_topic_blood_poetry: "сборник стихов на темы, связанные с [Concept('blood_magic','магией крови')|E]"
+
  # Fire
- feature_book_topic_fire_sacrifice: "методы ритуального жертвоприношения с особым акцентом на применение [Concept('aspect_fire','огня')|E]"
+ feature_book_topic_fire_sacrifice: "методы ритуальных жертвоприношений с особым акцентом на применение [Concept('aspect_fire','огня')|E]"
 
  # Nature
- feature_book_topic_nature_folklore: "фольклор с темами, связанными с [Concept('aspect_nature','природой')|E]"
+ feature_book_topic_nature_folklore: "фольклор на темы, связанные с [Concept('aspect_nature','природой')|E]"
 
  # Water
- feature_book_topic_water_folklore: "фольклор с темами, связанными с [Concept('aspect_water','водой')|E]"
+ feature_book_topic_water_folklore: "фольклор на темы, связанные с [Concept('aspect_water','водой')|E]"
 
  # Air
  feature_book_topic_air_ornithology: "орнитология"
- feature_book_topic_air_poetry: "сборник поэзии, где общие темы вращаются вокруг [Concept('magic','магии')|E] [Concept('aspect_air','воздуха')|E]"
+ feature_book_topic_air_poetry: "сборник стихов на темы, связанные с [Concept('magic','магией')|E] [Concept('aspect_air','воздуха')|E]"
 
  # Stone
- feature_book_topic_stone_play: "пьеса с оттенками [Concept('magic','магии')|E] [Concept('aspect_stone','камня')|E]"
- 
+ feature_book_topic_stone_play: "пьеса с оттенками [Concept('magic','магии')|E] [Concept('aspect_stone','каменя')|E]"
+
  # Dream
- feature_book_topic_dream_journal: "журнал различных снов"
- feature_book_topic_dream_architecture: "попытки создать всеобъемлющую структуру предполагаемого вселенского царства снов"
- feature_book_topic_dream_wakeless: "исследования о Неспящих"
+ feature_book_topic_dream_journal: "дневник сновидений"
+ feature_book_topic_dream_architecture: "попытки составить всеобъемлющую структуру предполагаемого вселенского мира грёз"
+ feature_book_topic_dream_wakeless: "исследования Беспробудных"
 
  # Death
- feature_book_topic_death_funerary_rites: "похоронные обряды"
+ feature_book_topic_death_funerary_rites: "погребальные обряды"
 
  # Ethereal
  feature_book_topic_ethereal_soul_theory: "теория души"
  feature_book_topic_ethereal_fog: "теории и сказания о [Concept('the_fog','Тумане')|E]"
 
  # Ice
- feature_book_topic_ice_wards: "[Concept('aspect_ice','Ледяные')|E] защитные барьеры"
- 
+ feature_book_topic_ice_wards: "ледяные стражи"
+
  # Dark
  feature_book_topic_dark_shades: "природа теней"
- feature_book_topic_dark_entities: "сущности, связанные с [Concept('aspect_dark','Тьмой')|E], чья природа неизвестна"
+ feature_book_topic_dark_entities: "сущности, связанные с [Concept('aspect_dark','тьмой')|E], неизвестной природы"
 
  # Grimoire materials
- feature_material_woods_yew: "тиса"
+ feature_material_woods_yew: "Тис"
  feature_material_woods_yew_desc: "Сделано из тиса"
 
- # GH TODO: Gradually implement and reformat entries below
- feature_book_topic_blood_bizarre_mutations: "странные наследственные дефекты, поразившие население изолированной деревни в COUNTY, и рассуждения о том, как они могут быть связаны с [Concept('blood_magic','магией крови')|E]"
- feature_book_topic_blood_black_practitioners: "деятельность и обряды секты Чёрных Практиков, действовавшей в COUNTY между XXX и YYY"
- feature_book_topic_blood_catastrophic_miscast: "катастрофический провал экспериментального ритуала [Concept('blood_magic','магии крови')|E] в XXX и уроки, которые можно извлечь из этого"
- feature_book_topic_blood_dangerous_rituals: "каталог ритуалов [Concept('blood_magic','магии крови')|E], которые автор предостерегает читателя от попыток выполнить, с историческими примерами катастрофических последствий"
- feature_book_topic_blood_debaucheries: "различные развратные и гедонистические деяния с оттенками [Concept('blood_magic','магии крови')|E]"
- feature_book_topic_blood_divination: "методы гадания с использованием [Concept('blood_magic','магии крови')|E]"
- feature_book_topic_blood_domination: "кровавые ритуалы подчинения"
- feature_book_topic_blood_gruesome_ritual: "события особенно жестокого ритуала [Concept('blood_magic','магии крови')|E] в XXXX"
+ feature_book_topic_blood_bizarre_mutations: "странные наследственные пороки, поразившие население изолированной деревни в ГРАФСТВЕ, и рассуждения о том, как они могут быть связаны с [Concept('blood_magic','магией крови')|E]"
+ feature_book_topic_blood_black_practitioners: "деятельность и обряды секты Чёрных Практиков, действовавшей в ГРАФСТВЕ между ХХХ и YYY"
+ feature_book_topic_blood_catastrophic_miscast: "катастрофическая ошибка при проведении экспериментального ритуала [Concept('blood_magic','магии крови')|E] в ХХХ и уроки, которые можно извлечь из этого"
+ feature_book_topic_blood_dangerous_rituals: "каталог ритуалов [Concept('blood_magic','магии крови')|E], от которых автор предостерегает читателя, с примерами катастрофических провалов по каждому из них"
+ feature_book_topic_blood_debaucheries: "различные развратные и гедонистические действия с оттенками [Concept('blood_magic','магии крови')|E]"
+ feature_book_topic_blood_divination: "методы гадания с помощью [Concept('blood_magic','магии крови')|E]"
+ feature_book_topic_blood_domination: "ритуалы доминирования, основанные на крови"
+ feature_book_topic_blood_gruesome_ritual: "события особенно жестокого ритуала [Concept('blood_magic','магии крови')|E] в ХХХХ"
  feature_book_topic_blood_life_extension: "практика продления жизни с помощью [Concept('blood_magic','магии крови')|E], более известная как вампиризм"
  feature_book_topic_blood_metallurgy: "применение [Concept('blood_magic','магии крови')|E] в металлургии и кузнечном деле"
  feature_book_topic_blood_necromancy: "некромантия, основанная на [Concept('blood_magic','магии крови')|E]"
- feature_book_topic_blood_sacrifice: "методы ритуального жертвоприношения с особым акцентом на правильное кровопускание"
- feature_book_topic_blood_sacrifice_sites: "каталог жертвенных мест в REGION, как действующих, так и заброшенных на момент написания"
- feature_book_topic_dream_magic_dangerous_dreams: "типы снов, которые автор считает признаками опасности"
- feature_book_topic_dream_magic_lucid_dreaming: "руководство по практике осознанных сновидений и их использованию в [magic|E]"
- feature_book_topic_dream_magic_meta_dream_entity: "странная сущность, иногда встречающаяся в снах, которую автор утверждает, имеет [Concept('magic','магическое')|E], а не мирское происхождение"
- feature_book_topic_dream_magic_nightmare: "серия неестественно ужасных кошмаров, преследовавших автора в XXXX, и их предполагаемое [Concept('magic','магическое')|E] происхождение"
- feature_book_topic_empyrean_archtecture: "принципы архитектуры — чрезвычайно странные, потусторонние принципы. Многие из предложенных проектов не только физически невозможны, но даже не соответствуют обычной геометрии"
- feature_book_topic_empyrean_curse_catalogue: "каталог различных исторических проклятий разной достоверности"
- feature_book_topic_empyrean_gedeora_catalogue: "каталог ряда [Concept('gedeora','гедеор')|E] между XXXX и YYYY"
+ feature_book_topic_blood_sacrifice: "методы ритуальных жертвоприношений с особым вниманием к правильному сливу крови"
+ feature_book_topic_blood_sacrifice_sites: "каталог мест жертвоприношений в РЕГИОНЕ, как действующих, так и заброшенных на момент написания"
+ feature_book_topic_dream_magic_dangerous_dreams: "типы снов, которые автор считает признаком опасности"
+ feature_book_topic_dream_magic_lucid_dreaming: "руководство по правильной практике осознанных сновидений и их использованию в [Concept('magic','магии')|E]"
+ feature_book_topic_dream_magic_meta_dream_entity: "странная сущность, иногда появляющаяся во снах, которую автор считает имеющей [Concept('magic','магическое')|E], а не обычное происхождение"
+ feature_book_topic_dream_magic_nightmare: "серия неестественно ужасных кошмаров, мучивших автора в ХХХХ, и их предполагаемое [Concept('magic','магическое')|E] происхождение"
+ feature_book_topic_empyrean_archtecture: "принципы архитектуры — чрезвычайно странные, потусторонние принципы. Многие из предложенных проектов не только физически невозможны, но и не соответствуют обычной геометрии"
+ feature_book_topic_empyrean_curse_catalogue: "каталог различных исторических проклятий различной достоверности"
+ feature_book_topic_empyrean_gedeora_catalogue: "каталог ряда [Concept('gedeora','гедеор')|E] между ХХХХ и YYYY"
  feature_book_topic_empyrean_magic_theory: "фундаментальная природа магии и теории о её сущности"
- feature_book_topic_empyrean_mathematics: "странные математические теории автора, многие из которых противоречат даже базовой логике, но, по-видимому, имеют метафизические подтексты"
- feature_book_topic_empyrean_utopia: "видение автора об идеальном обществе. Хотя по замыслу утопическое, изложенное видение почти бессвязно и трудно для понимания, что заставляет некоторых комментаторов полагать, что книга предназначена быть метафизической аллегорией"
- feature_book_topic_fire_magic_magical_fires: "различные виды магически насыщенных огней, способы их создания и практическое применение"
- feature_book_topic_fire_magic_mysterious_fire: "таинственный пожар, охвативший место в COUNTY в XXXX, и предполагаемые причины и ритуал, приведший к нему"
- feature_book_topic_astronomy_comet_catalogue: "каталог различных исторических комет и их социальных и магических эффектов"
+ feature_book_topic_empyrean_mathematics: "странные математические теории автора, многие из которых противоречат даже элементарной логике, но, по-видимому, имеют метафизический подтекст"
+ feature_book_topic_empyrean_utopia: "видение автором идеального общества. Хотя внешне оно кажется утопическим, изложенное видение почти бессвязно и его трудно постичь, что заставляет некоторых комментаторов полагать, что книга задумана как метафизическая аллегория"
+ feature_book_topic_fire_magic_magical_fires: "различные типы магически заряженных огней, способы их создания и практическое применение"
+ feature_book_topic_fire_magic_mysterious_fire: "таинственный пожар, охвативший местность в ГРАФСТВЕ в ХХХХ, и предполагаемые обстоятельства и ритуал, которые к нему привели"
+ feature_book_topic_astronomy_comet_catalogue: "каталог различных исторических комет и их общественных и магических последствий"
  feature_book_topic_astronomy_comet_theory: "природа комет"
- feature_book_topic_astronomy_magical_resonances: "магические резонансы, возникающие от созвездий ночного неба"
- feature_book_topic_astronomy_specific_constellation: "конкретное созвездие ночного неба — его трактовка в различных культурах мира и его магическая природа"
+ feature_book_topic_astronomy_magical_resonances: "магические резонансы, возникающие из-за созвездий ночного неба"
+ feature_book_topic_astronomy_specific_constellation: "определённое созвездие ночного неба — его трактовка в различных культурах мира и его магическая природа"
  feature_book_topic_astronomy_star_charts: "сборник различных звёздных карт"
  feature_book_topic_astronomy_sun: "природа солнца Эраса"
-  
- feature_book_topic_secret_histories_art: "различные произведения странного искусства со всего мира — скульптуры, фрески, картины и даже архитектура — с неясным происхождением, аномальными свойствами или тем и другим"
- feature_book_topic_secret_histories_bizarre_locals: "странные обряды изолированного населения в сельской местности COUNTY"
- feature_book_topic_secret_histories_chronicle: "хроника различных малоизвестных, казалось бы, не связанных между собой исторических событий, с намёками на то, что за ними может стоять более масштабная история"
- feature_book_topic_secret_histories_corrupted_holy_text: "то, что сначала кажется обычным священным текстом FAITH, но при ближайшем рассмотрении обнаруживает несколько несоответствий и серьёзных отклонений от ортодоксии. Текст нельзя связать ни с одной известной ересью этой веры."
- feature_book_topic_secret_histories_cultural_legends: "различные малоизвестные и странные [ROOT.Artifact.MakeScope.Var('book_topic_culture').Culture.GetNameNoTooltip] народные сказания и их предполагаемая основа в реальной истории"
- feature_book_topic_secret_histories_disappearances: "список различных странных исчезновений, которые происходили в COUNTY между XXXX и YYYY"
- feature_book_topic_secret_histories_mysterious_heresy: "странная, малоизвестная и исключительно неортодоксальная секта FAITH, действовавшая между X и Y веками"
- feature_book_topic_secret_histories_mysterious_individual: "деятельность нескольких личностей, живших между X и Y веками, которых автор утверждает, что это на самом деле один человек или сущность"
- feature_book_topic_secret_histories_primordial_architecture: "остатки древних структур, служащие основанием для многих современных крепостей и городов, и их смутное происхождение"
- feature_book_topic_secret_histories_prophecy: "тщательно продуманное, PROPHECY_TONE пророчество"
- feature_book_topic_secret_histories_redlander_cults: "каталог различных культов, действовавших в Красных Землях, и их верований, или по крайней мере тех, что были известны автору на момент написания"
- feature_book_topic_secret_histories_secret_society: "история тайного общества, которое предположительно действовало в районе [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] между [Artifact.GetOwner.MakeScope.Var('date_range_lower_year').GetValue|0] и [Artifact.GetOwner.MakeScope.Var('date_range_upper_year').GetValue|0]"
- feature_book_topic_secret_histories_strange_artifacts: "ряд странных магических артефактов, никакой из которых нельзя легко объяснить традиционными знаниями о [Concept('magic','магии')|E], известными автору"
- feature_book_topic_secret_histories_undeciphered_book: "таинственная, нерасшифрованная CULTURE TEXT_TYPE и попытки взломать её код"
- feature_book_topic_secret_histories_unknown_language: "странная TEXT_TYPE, найденная в COUNTY, написанная на неизвестном языке, не имеющего четких параллелей с письменностью любой известной культуры"
+
+ feature_book_topic_secret_histories_art: "различные странные произведения искусства со всего мира — скульптуры, фрески, картины и даже архитектура — с неясным происхождением, аномальными свойствами или и тем, и другим"
+ feature_book_topic_secret_histories_bizarre_locals: "странные обряды изолированного населения в сельской местности ГРАФСТВА"
+ feature_book_topic_secret_histories_chronicle: "хроника различных малоизвестных, казалось бы, не связанных между собой исторических событий с намёками на то, что за ними стоит более масштабная история"
+ feature_book_topic_secret_histories_corrupted_holy_text: "то, что сначала кажется обычным священным текстом ВЕРЫ, но при ближайшем рассмотрении обнаруживает несколько расхождений и серьёзных отклонений от ортодоксии. Текст невозможно связать ни с одной известной ересью этой веры"
+ feature_book_topic_secret_histories_cultural_legends: "различные малоизвестные и странные народные сказания [ROOT.Artifact.MakeScope.Var('book_topic_culture').Culture.GetNameNoTooltip] и их предполагаемая связь с реальной историей"
+ feature_book_topic_secret_histories_disappearances: "список различных странных исчезновений, которые преследовали ГРАФСТВО между ХХХХ и YYYY"
+ feature_book_topic_secret_histories_mysterious_heresy: "странная, малоизвестная и исключительно гетеродоксальная секта ВЕРЫ, действовавшая между Х и Y веками"
+ feature_book_topic_secret_histories_mysterious_individual: "деятельность нескольких лиц, живших между Х и Y веками, которых, по мнению автора, на самом деле является одним человеком или сущностью"
+ feature_book_topic_secret_histories_primordial_architecture: "останки древних сооружений, служащих основанием для многих современных крепостей и городов, и их туманное происхождение"
+ feature_book_topic_secret_histories_prophecy: "сложное, [PROPHECY_TONE] пророчество"
+ feature_book_topic_secret_histories_redlander_cults: "каталог различных культов, действующих в Красных землях, и их верований, по крайней мере известных автору и действующих на момент написания"
+ feature_book_topic_secret_histories_secret_society: "история тайного общества, которое, как утверждается, действовало в районе [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] между [Artifact.GetOwner.MakeScope.Var('date_range_lower_year').GetValue|0] и [Artifact.GetOwner.MakeScope.Var('date_range_upper_year').GetValue|0]"
+ feature_book_topic_secret_histories_strange_artifacts: "ряд странных магических артефактов, ни один из которых нельзя легко объяснить с помощью обычных знаний о [magic|E], известных автору"
+ feature_book_topic_secret_histories_undeciphered_book: "таинственная, нерасшифрованная КУЛЬТУРА ТИП_ТЕКСТА и попытки взломать её код"
+ feature_book_topic_secret_histories_unknown_language: "странный ТИП_ТЕКСТА, найденный в ГРАФСТВЕ, написанный неизвестным письмом, не имеющим явных параллелей с письменностью какой-либо известной культуры"
 
  feature_book_topic_soul_magic_death: "теории о механике души в связи со смертью"
- feature_book_topic_soul_magic_haunting: "компендиум различных призраков, которые преследовали COUNTY на момент написания"
+ feature_book_topic_soul_magic_haunting: "сборник различных случаев одержимости, которые преследовали ГРАФСТВО на момент написания"
  feature_book_topic_soul_magic_metallurgy: "методы привязки душ к металлам и создания зачарований"
- feature_book_topic_soul_magic_oracle: "несколько сообщений от якобы мёртвых в COUNTY между годами XXXX и YYYY, и PROPHECY_TYPE сообщение, извлечённое из них"
- feature_book_topic_soul_magic_possession: "природа одержимости духами и другими подобными сущностями, а также методы как защиты от них, так и их вызова"
- feature_book_topic_soul_magic_shades: "теории о природе теней и схожих с ними сущностей"
- feature_book_topic_soul_magic_soul_fusion: "теории о механике слияния душ, скрытого и табуированного искусства"
+ feature_book_topic_soul_magic_oracle: "несколько предполагаемых контактов с мёртвыми в ГРАФСТВЕ между годами ХХХХ и YYYY, и полученное из них сообщение ТИП_ПРОРОЧЕСТВА"
+ feature_book_topic_soul_magic_possession: "природа одержимости духами и другими подобными сущностями, а также методы защиты от них и их вызывания"
+ feature_book_topic_soul_magic_shades: "теории о природе теней и сущностей, подобных теням"
+ feature_book_topic_soul_magic_soul_fusion: "теории о механике слияния душ — малоизвестном и часто табуированном искусстве"
 
  ############
  # UNSORTED #
@@ -169,119 +168,110 @@
  #############################################
  # HISTORICAL BOOKS - NON (AND SEMI) FICTION #
  #############################################
- 
 
- dragon_tale_title_Aversarian: "Драканьяд"
- dragon_tale_title_Marcher: "Ле Драканьяд"
- dragon_tale_title_Thalite: "Дракония"
+ dragon_tale_title_Aversarian: "Дракониада"
+ dragon_tale_title_Marcher: "Ле Драканиад"
+ dragon_tale_title_Thalite: "Драконийя"
 
- womanknights_title_Marcher: "Гибиск Шевалье"
+ womanknights_title_Marcher: "Рыцари-женщины"
 
  pocket_guide_to_aversaria_title_Aversarian: "Микроавтократиада"
  pocket_guide_to_aversaria_title_Marcher: "Микроавтократик"
 
- manswelbestiarium_title_Marcher: "Зооложик де Рагамбальд Мансвел"
- manswelbestiarium_title_Aversarian: "Зоологика Рагампала"
+ manswelbestiarium_title_Marcher: "Зоология Рагамбальда Мансвела"
+ manswelbestiarium_title_Aversarian: "Зоология Рагамбала"
 
- contents_of_silver_title_Marcher: "Эшепес д'Селубра"
+ contents_of_silver_title_Marcher: "Серебряные сокровища"
 
- wisemans_friend_title_Marcher: "Льют д'Саж"
+ wisemans_friend_title_Marcher: "Друг мудреца"
 
- aeltheniax_anatomy_vol_1_title_Aversarian: "Анатомия Элфениаксана, Том I"
- aeltheniax_anatomy_vol_1_title_Marcher: "Анатоми дэ Элфенэ, Том I"
- aeltheniax_anatomy_vol_1_title_Thalite: "Гиша аль-Альдаайюн, Том I"
+ aeltheniax_anatomy_vol_1_title_Aversarian: "Анатомия Эльтениаксана, Том I"
+ aeltheniax_anatomy_vol_1_title_Marcher: "Анатомия де Эльтене, Том I"
+ aeltheniax_anatomy_vol_1_title_Thalite: "Гиша аль-Альдайюн, Том I"
 
- aeltheniax_anatomy_vol_2_title_Aversarian: "Анатомия Элфениаксана, Том II"
- aeltheniax_anatomy_vol_2_title_Marcher: "Анатоми дэ Элфенэ, Том II"
- aeltheniax_anatomy_vol_2_title_Thalite: "Гиша аль-Альдаайюн, Том II"
+ aeltheniax_anatomy_vol_2_title_Aversarian: "Анатомия Эльтениаксана, Том II"
+ aeltheniax_anatomy_vol_2_title_Marcher: "Анатомия де Эльтене, Том II"
+ aeltheniax_anatomy_vol_2_title_Thalite: "Гиша аль-Альдайюн, Том II"
 
- azure_tablet_title_Aversarian: "Ураноу Таблета"
- azure_tablet_title_Marcher: "Таблета д'Азур"
+ azure_tablet_title_Aversarian: "Лазурная табличка"
+ azure_tablet_title_Marcher: "Таблица д'Азур"
  azure_tablet_title_Thalite: "Азрак Таппа"
 
+ on_the_triune_blood_of_man_title_Aversarian: "О тройственной крови человека"
+ on_the_triune_blood_of_man_title_Marcher: "Треблотерон"
+ on_the_triune_blood_of_man_title_Thalite: "Аль-Ма аль-Тлат ли'ль-Миша"
 
- on_the_triune_blood_of_man_title_Aversarian: "Триадико Аайма Аверсарис"
- on_the_triune_blood_of_man_title_Marcher: "Трэблотайрон"
- on_the_triune_blood_of_man_title_Thalite: "Аль-Ма аль-Тла́т ли-ль-Мишаа"
+ songwood_title_Marcher: "Лесные песни"
 
- songwood_title_Marcher: "Canchons d'Busque"
- 
- lessons_on_oejeynican_burials_title_Marcher: "Ин Лердэн сюр Делаторэс э Си́тас Греванаис д’ва Лар Тэ́йс Оежёйу нисье́нн"
-
- 
-
+ lessons_on_oejeynican_burials_title_Marcher: "Уроки ойейницких погребений"
 
  # Ice
 
  # Dark
- 
- # Sand
 
- 
+ # Sand
 
  ######################################
  # HISTORICAL BOOKS - MINOR GRIMOIRES #
  ######################################
- 
- # These books are meant to imitate (and should be indistinguishable from) those that are fully procedurally generated. The names here exists solely to 'lock in' otherwise random custom loc
- 
+
  feature_grimoire_material_plants: "Растения"
  feature_grimoire_material_plants_desc: "Сделано из растений"
 
  ###############
  # BOOK TITLES #
  ###############
- 
+
  feature_book_title_poetry: "[Artifact.Custom('PoetryTitleFormat')]"
- poetry_title_format_1: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] от [ROOT.Artifact.GetCreator.GetName]"
- poetry_title_format_2: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] [ROOT.Artifact.Custom('RandomEmotion')|U]"
- poetry_title_format_3: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('RandomEmotion')|U]"
- poetry_title_format_4: "[ROOT.Artifact.Custom('PoemPluralSynonyms')|U] [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('RandomEmotion')|U]"
- poetry_title_format_5: "[ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] [ROOT.Artifact.Custom('RandomEmotion')|U]"
- poetry_title_format_6: "[ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] от [ROOT.Artifact.GetCreator.GetName]"
- 
+ poetry_title_format_1: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] of [ROOT.Artifact.GetCreator.GetName]"
+ poetry_title_format_2: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] of [ROOT.Artifact.Custom('RandomEmotion')|U]"
+ poetry_title_format_3: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] of [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('RandomEmotion')|U]"
+ poetry_title_format_4: "[ROOT.Artifact.Custom('PoemPluralSynonyms')|U] of [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('RandomEmotion')|U]"
+ poetry_title_format_5: "The [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] of [ROOT.Artifact.Custom('RandomEmotion')|U]"
+ poetry_title_format_6: "The [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('PoemPluralSynonyms')|U] of [ROOT.Artifact.GetCreator.GetName]"
+
  feature_book_title_arcana_general: "[Artifact.Custom('ArcanaGeneralBookTitleFormat')]"
- arcana_general_book_title_format_1: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] о [ROOT.Artifact.Custom('MagicSynonyms')|U] от [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
- arcana_general_book_title_format_2: "[ROOT.Artifact.Custom('MagicSynonyms')|U]: [ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] от [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
- arcana_general_book_title_format_3: "[ROOT.Artifact.Custom('GrimoireSynonyms')|U] от [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
- arcana_general_book_title_format_4: "[ROOT.Artifact.Custom('NotePluralSynonyms')|U] О [ROOT.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')] и других [ROOT.Artifact.Custom('SpellsSynonyms')|U]"
+ arcana_general_book_title_format_1: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] on [ROOT.Artifact.Custom('MagicSynonyms')|U] by [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
+ arcana_general_book_title_format_2: "[ROOT.Artifact.Custom('MagicSynonyms')|U]: [ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] by [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
+ arcana_general_book_title_format_3: "[ROOT.Artifact.Custom('GrimoireSynonyms')|U] of [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
+ arcana_general_book_title_format_4: "[ROOT.Artifact.Custom('NotePluralSynonyms')|U] On [ROOT.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')] And Other [ROOT.Artifact.Custom('SpellsSynonyms')|U]"
+
+ feature_book_title_arcana_ethics: "[Artifact.Custom('ArcanaEthicsBookTitleFormat')]"
+ arcana_ethics_book_title_format_1: "The Morality of [ROOT.Artifact.Custom('MagicSynonyms')|U] by [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
+ arcana_ethics_book_title_format_2: "Arcane Ethics by [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
+ arcana_ethics_book_title_format_3: "The Ethical Conundrums of [ROOT.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')] And Other [ROOT.Artifact.Custom('SpellsSynonyms')|U]"
 
  feature_book_title_arcana_magic_school: "[Artifact.Custom('ArcanaMagicSchoolBookTitleFormat')]"
- arcana_general_magic_school_book_title_format_1: "[Localize(Concatenate(ROOT.Artifact.MakeScope.Var('magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))]: [ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] от [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
- arcana_general_magic_school_book_title_format_2: "[ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('BookSynonyms')|U] [Localize(Concatenate(ROOT.Artifact.MakeScope.Var('magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))|U]"
- 
- feature_book_title_arcana_ethics: "[Artifact.Custom('ArcanaEthicsBookTitleFormat')]"
- arcana_ethics_book_title_format_1: "Мораль [ROOT.Artifact.Custom('MagicSynonyms')|U] от [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
- arcana_ethics_book_title_format_2: "Магическая этика от [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
- arcana_ethics_book_title_format_3: "Этические дилеммы [ROOT.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')] и иные [ROOT.Artifact.Custom('SpellsSynonyms')|U]"
- 
- feature_book_title_nature_folklore: "Природный фольклор" # GH URGENT: Сделать это правильно рандомизированным
- feature_book_title_water_folklore: "Водный фольклор" # GH URGENT: Сделать это правильно рандомизированным
- 
- feature_book_title_dream_journal: "Дневник снов" # GH URGENT: Сделать это правильно рандомизированным
- 
+ arcana_general_magic_school_book_title_format_1: "[Localize(Concatenate(ROOT.Artifact.MakeScope.Var('magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))]: [ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] of [ROOT.Artifact.MakeScope.Var('author').Char.GetNameNoTooltip]"
+ arcana_general_magic_school_book_title_format_2: "The [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('BookSynonyms')|U] of [Localize(Concatenate(ROOT.Artifact.MakeScope.Var('magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))|U]"
+
+ feature_book_title_nature_folklore: "Природный фольклор"
+ feature_book_title_water_folklore: "Водный фольклор"
+
+ feature_book_title_dream_journal: "Дневник сновидений"
+
  feature_book_title_medical: "[Artifact.Custom('MedicalBookTitleFormat')]"
- medical_book_title_format_1: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] о [ROOT.Artifact.Custom('FunctioningSynonyms')|U] человеческого тела"
- medical_book_title_format_2: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] о [ROOT.Artifact.Custom('MedicineSynonyms')|U]"
- medical_book_title_format_3: "[ROOT.Artifact.GetCreator.GetNamePossessive] [ROOT.Artifact.Custom('BookSynonyms')|U] о [ROOT.Artifact.Custom('MedicineSynonyms')|U]"
- medical_book_title_format_4: "[ROOT.Artifact.Custom('GuidebookSynonyms')|U] «[ROOT.Artifact.Custom('FloweryAdjective')] [ROOT.Artifact.Custom('PhysicianSynonyms')]»"
- medical_book_title_format_5: "[Artifact.Custom('MysteryNounPluralSynonyms')] [Artifact.Custom('RandomOrgan')|U]"
- medical_book_title_format_6: "[ROOT.Artifact.Custom('FloweryAdjective')|U] [Artifact.Custom('MysteryNounPluralSynonyms')] [Artifact.Custom('RandomOrgan')|U]"
- medical_book_title_format_7: "[ROOT.Artifact.Custom('GuidebookSynonyms')|U] о [Artifact.Custom('MysteryNounPluralSynonyms')] [Artifact.Custom('RandomOrgan')|U]"
- medical_book_title_format_8: "[ROOT.Artifact.Custom('PrinciplePluralSynonyms')|U] [ROOT.Artifact.Custom('MedicineSynonyms')|U]"
+ medical_book_title_format_1: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] on the [ROOT.Artifact.Custom('FunctioningSynonyms')|U] of the Human Body"
+ medical_book_title_format_2: "[ROOT.Artifact.Custom('CollectedSynonyms')|U] [ROOT.Artifact.Custom('NotePluralSynonyms')|U] on [ROOT.Artifact.Custom('MedicineSynonyms')|U]"
+ medical_book_title_format_3: "[ROOT.Artifact.GetCreator.GetNamePossessive] [ROOT.Artifact.Custom('BookSynonyms')|U] on [ROOT.Artifact.Custom('MedicineSynonyms')|U]"
+ medical_book_title_format_4: "The [ROOT.Artifact.Custom('FloweryAdjective')|U] [ROOT.Artifact.Custom('PhysicianSynonyms')|U]'s [ROOT.Artifact.Custom('GuidebookSynonyms')|U]"
+ medical_book_title_format_5: "[Artifact.Custom('MysteryNounPluralSynonyms')] of the [Artifact.Custom('RandomOrgan')|U]"
+ medical_book_title_format_6: "[ROOT.Artifact.Custom('FloweryAdjective')|U] [Artifact.Custom('MysteryNounPluralSynonyms')] of the [Artifact.Custom('RandomOrgan')|U]"
+ medical_book_title_format_7: "[ROOT.Artifact.Custom('GuidebookSynonyms')|U] on the [Artifact.Custom('MysteryNounPluralSynonyms')] of the [Artifact.Custom('RandomOrgan')|U]"
+ medical_book_title_format_8: "[ROOT.Artifact.Custom('PrinciplePluralSynonyms')|U] of [ROOT.Artifact.Custom('MedicineSynonyms')|U]"
 
  # Work type terms
  book_annals: "анналы"
  book_author_known: "[ROOT.Var('author').GetCharacter.GetNameNoTooltip]"
- book_author_pseudo: "автор, утверждающий, что он '[ROOT.Var('author').GetCharacter.GetNameNoTooltip]' — или же известный писатель на тему того периода, но учёные полагают, что текст, скорее всего, псевдоэпиграфический"
+ book_author_pseudo: "автор, утверждающий, что он '[ROOT.Var('author').GetCharacter.GetNameNoTooltip]' — в остальном известный писатель по данной теме, но учёные полагают, что текст, вероятно, псевдоэпиграфичен"
  book_author_pseudonym: "некий '[ROOT.Var('author').GetCharacter.GetFirstNameNoTooltip]' — почти наверняка псевдоним"
  book_author_pseudonym_2: "псевдонимный '[ROOT.Var('author').GetCharacter.GetFirstNameNoTooltip]'"
- book_author_pseudonym_3: "возможно псевдонимный '[ROOT.Var('author').GetCharacter.GetFirstNameNoTooltip]'"
+ book_author_pseudonym_3: "возможно, псевдонимный '[ROOT.Var('author').GetCharacter.GetFirstNameNoTooltip]'"
  book_author_pseudonym_4: "'[ROOT.Var('author').GetCharacter.GetFirstNameNoTooltip]' — почти наверняка псевдоним"
  book_author_unknown: "неизвестный автор"
  book_histories: "истории"
  book_historiography: "историография"
- book_manuscript: "манускрипт"
+ book_manuscript: "рукопись"
  book_compendium: "компендиум"
  book_codex: "кодекс"
  book_grimoire: "гримуар"
@@ -295,10 +285,10 @@
  book_rhymes: "рифмы"
  book_notes: "заметки"
  book_remarks: "замечания"
- book_debates: "дебаты"
+ book_debates: "диспуты"
  book_discussions: "обсуждения"
  book_guidebook: "путеводитель"
- book_guide: "гид"
+ book_guide: "руководство"
  book_companion: "спутник"
  book_manual: "руководство"
  book_instructions: "инструкции"
@@ -311,58 +301,69 @@
  book_darkness_allegory_night_possessive: "ночи"
  book_darkness_allegory_void: "пустота"
  book_darkness_allegory_void_possessive: "пустоты"
- book_flaw_biased_author: "Автор книги явно писал с исключительной предвзятостью, что ставит под сомнение достоверность большей части информации и выводов в книге." 
- book_flaw_burned: "Книга обгорела по краям, и десятки страниц отсутствуют (либо вырваны, либо сгорели)." 
- book_flaw_faded: "Чернила в книге в целом выцвели, и её трудно читать, но в некоторых местах текст исчез полностью." 
- book_flaw_incomplete: "Работа, по-видимому, так и не была завершена. Несмотря на многообещающее начало, содержание книги просто резко обрывается по неизвестным причинам." 
- book_flaw_ink_damaged: "Разлитые чернила повредили значительные части книги, сделав большие участки нечитаемыми." 
- book_flaw_missing_pages: "Несколько страниц книги отсутствуют, возможно, были намеренно удалены." 
+
+ book_flaw_biased_author: "Автор книги, очевидно, писал с исключительной предвзятостью, что ставит под сомнение достоверность большей части информации и выводов в книге."
+ book_flaw_burned: "На протяжении всей книги видны следы обугливания, и несколько групп страниц повреждены до нечитаемого состояния."
+ book_flaw_faded: "Чернила в книге в целом выцвели и их трудно читать, но в некоторых местах текст полностью исчез."
+ book_flaw_incomplete: "Работа, по-видимому, никогда не была завершена. Несмотря на многообещающее начало, содержание книги внезапно обрывается по неизвестным причинам."
+ book_flaw_ink_damaged: "Разлив чернил повредил значительные части книги, сделав большие разделы нечитаемыми."
+ book_flaw_missing_pages: "Несколько страниц книги отсутствуют, возможно, были намеренно удалены."
  book_flaw_none: ""
- book_flaw_redacted: "Многие из самых важных страниц книги были зачеркнуты Майикпрололланом с помощью Косейронского шифра, исказив их текст и сделав его нечитаемым без правильного ритуала. К сожалению, поскольку ритуал утерян, главы, о которых идёт речь, скорее всего, утрачены безвозвратно." 
- book_flaw_superficial: "В работе практически нет оригинальных исследований, большая часть — это просто пересказанная и поверхностная информация из более старых источников." 
- book_flaw_water_damaged: "Вода повредила значительные части книги, сделав большие участки нечитаемыми." 
- book_mayikprolollan_commentary_corroborated: "Стандартные заметки Майикпрололлана разбросаны по всему тому, в основном подтверждая утверждения, сделанные в работе. Академия, по-видимому, верила в достоверность большей части тома."
- book_mayikprolollan_commentary_debunked: "Стандартные заметки Майикпрололлана разбросаны по всему тому, в основном пытаясь опровергнуть различные утверждения, сделанные в работе. Похоже, академия не совсем согласилась с посланием оригинального автора."
- book_mayikprolollan_commentary_enigmatic: "Стандартные заметки Майикпрололлана разбросаны по всему тому, но большинству не хватает критического контекста и они ссылаются на концепции и события, которые невозможно понять из самой работы. Академия, кажется, знала, что книга является частью какой-то более масштабной истории, но, к сожалению, невозможно вывести её детали отсюда."
+ book_flaw_redacted: "Многие из наиболее важных страниц книги были зацензурированы Майикпрололланом с помощью шифра Косейрона, искажающего текст и делающего его нечитаемым без соответствующего ритуала. К сожалению, поскольку ритуал утерян, соответствующие главы, вероятно, безвозвратно утеряны."
+ book_flaw_superficial: "В работе практически нет оригинальных исследований, большая часть её — просто пересказанная и поверхностная информация из более старых источников."
+ book_flaw_water_damaged: "Вода повредила значительные части книги, сделав большие разделы нечитаемыми."
+
+ book_mayikprolollan_commentary_corroborated: "По всему тому разбросаны стандартные пометки Майикпрололлана, в основном подтверждающие утверждения, сделанные в работе. Академия, по-видимому, считала большую часть тома достоверной."
+ book_mayikprolollan_commentary_debunked: "По всему тому разбросаны стандартные пометки Майикпрололлана, в основном пытающиеся опровергнуть различные утверждения, сделанные в работе. По-видимому, академия не совсем соглашалась с посланием автора."
+ book_mayikprolollan_commentary_enigmatic: "По всему тому разбросаны стандартные пометки Майикпрололлана, но большинству из них не хватает критического контекста, и они ссылаются на концепции и события, которые невозможно понять из самой работы. Академия, по-видимому, знала, что книга является частью какой-то более масштабной истории, но, к сожалению, из этого невозможно вывести её детали."
  book_mayikprolollan_commentary_none: ""
- book_mayikprolollan_commentary_partly_corroborated: "Стандартные заметки Майикпрололлана разбросаны по всему тому, с смесью как подтверждений, так и опровержений утверждений работы."
- book_mayikprolollan_relevant_artifact_note_destroyed_accident: "Хотя артефакт некоторое время находился во владении академии, он был, по-видимому, уничтожен в 'несчастном случае' в XXXX. Дальнейшие детали не приводятся."
- book_mayikprolollan_relevant_artifact_note_missing: "Хотя артефакт в какой-то момент находился во владении академии, сообщается, что он был утерян по неизвестным причинам"
- book_mayikprolollan_relevant_artifact_note_not_found: "Несмотря на попытки академии найти его, артефакт не был обнаружен"
- book_mayikprolollan_relevant_artifact_note_present: "Артефакт также находился во владении академии, по крайней мере на момент подачи заметки, и номер каталога любезно предоставлен"
- book_mayikprolollan_relevant_artifact_note_stolen: "Хотя артефакт какое-то время находился в владении академии, он был похищен в XXXX году."  
- book_mayikprolollan_seal_type_easy: "Магическая печать слаба и проста — достаточна, чтобы отпугнуть не-[Concept('magi','магов')|E], но легко разрушима для тех, кто обладает базовым пониманием соответствующих магических искусств."  
- book_mayikprolollan_seal_type_hard: "Магическая печать, скрепляющая этот том, мощна и, вероятно, требует сложного ритуала для открытия — и ещё более сильной магии для принудительного разрушения."  
- book_mayikprolollan_seal_type_medium: "Магическая печать достаточно крепка, и для её разрушения, скорее всего, потребуется [Concept('magi','маг')|E], достаточно опытный в соответствующих искусствах."  
- book_mayikprolollan_seal_type_very_hard: "Магическая печать, скрепляющая этот том, невероятно мощна — при её создании не пожалели ни усилий, ни затрат, сделав её неприступной, как крепость. Что бы ни содержалось в этой книге, академия очень не хотела, чтобы это попало не в те руки."
+ book_mayikprolollan_commentary_partly_corroborated: "По всему тому разбросаны стандартные пометки Майикпрололлана, содержащие как подтверждения, так и опровержения утверждений работы."
+
+ book_mayikprolollan_relevant_artifact_note_destroyed_accident: "Хотя рассматриваемый артефакт некоторое время находился во владении академии, он был уничтожен в результате «несчастного случая» в ХХХХ. Дополнительные сведения не приводятся."
+ book_mayikprolollan_relevant_artifact_note_missing: "Хотя рассматриваемый артефакт в какой-то момент находился во владении академии, сообщается, что он был утерян в какой-то момент по неизвестным причинам."
+ book_mayikprolollan_relevant_artifact_note_not_found: "Несмотря на попытки академии найти его, рассматриваемый артефакт не был обнаружен."
+ book_mayikprolollan_relevant_artifact_note_present: "Рассматриваемый артефакт также находился во владении академии, по крайней мере на момент подачи заметки, и предоставлен полезный каталожный номер."
+ book_mayikprolollan_relevant_artifact_note_stolen: "Хотя рассматриваемый артефакт некоторое время находился во владении академии, он был украден в ХХХХ."
+
+ book_mayikprolollan_seal_type_easy: "Магическая печать слабая и простая — достаточная, чтобы отпугнуть не-[Concept('magi','мага')|E], но легко взламываемая теми, кто имеет базовое понимание соответствующих магических искусств."
+ book_mayikprolollan_seal_type_hard: "Магическая печать, скрепляющая этот том, мощная и, вероятно, требует сложного ритуала для открытия — и ещё более мощной магии для взлома."
+ book_mayikprolollan_seal_type_medium: "Магическая печать достаточно сильна, и для её взлома, вероятно, потребуется [Concept('magi','маг')|E] с достаточным опытом в соответствующих искусствах."
+ book_mayikprolollan_seal_type_very_hard: "Магическая печать, скрепляющая этот том, исключительно мощна, и не было пощажено ни усилий, ни средств, чтобы сделать её неприступной, как крепость. Что бы ни было в этой книге, академия очень хотела, чтобы она не попала в чужие руки."
+
  book_peculiarities_desc: "Книга известна"
  book_peculiarity_illustration_1: "своими X иллюстрациями"
- book_peculiarity_illustration_2: "X природой своих иллюстраций"
+ book_peculiarity_illustration_2: "X-природой своих иллюстраций"
  book_peculiarity_reading_effect_1: "ощущением X, которое она вызывает при чтении"
+
  book_play_type_comedy_adjective: "комедийный"
  book_play_type_drama_adjective: "драматический"
  book_play_type_history_adjective: "исторический"
  book_play_type_romance_adjective: "романтический"
  book_play_type_satire_adjective: "сатирический"
  book_play_type_tragedy_adjective: "трагический"
- book_postscript_compendum: "Большая часть материала этой работы была собрана в XXXX из нескольких более старых источников, оригиналы которых, вероятно, относятся к X веку"
- book_postscript_compendum_translated: "Большая часть материала этой работы была переведена и собрана в XXXX из нескольких более старых источников на OLD_LANGUAGE, оригиналы которых, вероятно, относятся к X веку"
- book_postscript_translated: "Это перевод XXXX более старой работы на OLD_LANGUAGE, оригинал которой был написан в XXXX"
+
+ book_postscript_compendum: "Большая часть материала этой работы была составлена в ХХХХ из нескольких более старых источников, оригиналы которых, вероятно, относятся к Х веку."
+ book_postscript_compendum_translated: "Большая часть материала этой работы была переведена и составлена в ХХХХ из нескольких более старых источников на СТАРОМ ЯЗЫКЕ, оригиналы которых, вероятно, относятся к Х веку."
+ book_postscript_translated: "Это перевод ХХХХ более старой работы на СТАРОМ ЯЗЫКЕ, оригинал которой был написан в ХХХХ."
+
  book_prophecy_tone_apocalyptic: "апокалиптический"
  book_prophecy_tone_bizarre: "странный"
  book_prophecy_tone_cryptic: "загадочный"
- book_prophecy_tone_hopeful: "надеющийся"
+ book_prophecy_tone_hopeful: "обнадёживающий"
  book_prophecy_tone_sinister: "зловещий"
- book_prophecy_tone_straightforward: "прямолинейный"
- book_seal_descriptor_faded: "потускневшая"
+ book_prophecy_tone_straightforward: "прямой"
+
+ book_seal_descriptor_faded: "выцветшая"
  book_seal_descriptor_large: "большая"
- book_seal_descriptor_ornate: "украшенная"
+ book_seal_descriptor_ornate: "орнаментированная"
  book_seal_descriptor_pristine: "нетронутая"
- book_seal_descriptor_weathered: "потрёпанная"
+ book_seal_descriptor_weathered: "выветренная"
+
  book_tome: "том"
- book_tone_crazed: "едва связный и безумный, автор явно не в здравом уме"
+ book_tone_crazed: "едва связный и безумный, автор, очевидно, был не совсем в здравом уме"
  book_tone_detached: "отстранённый, без эмоций или предвзятости со стороны автора"
- book_tone_enthusiastic: "энтузиастичный, автор явно очень увлечён обсуждаемым вопросом"
+ book_tone_enthusiastic: "восторженный, автор явно был весьма заинтересован в рассматриваемом вопросе"
+
  book_untranslated_writing_medium_type_cave_inscription: "надписи на стене пещеры"
  book_untranslated_writing_medium_type_clay_tablet: "глиняная табличка"
  book_untranslated_writing_medium_type_clay_tablet_plural: "серия глиняных табличек"
@@ -375,26 +376,25 @@
  book_untranslated_writing_medium_type_stela: "стела"
  book_untranslated_writing_medium_type_stela_unknown_material: "стела из неизвестного материала"
 
-
  artifact_book_no_preface_decoration: "[ROOT.Artifact.GetFeatureText( 'book_topic' )|U] [newly_created_artifact.GetFeatureText( 'book_decoration' )]."
  artifact_book_historical_description: "[Localize(Concatenate(newly_created_artifact.MakeScope.Var( 'historical_book' ).GetFlagName, '_desc'))] [newly_created_artifact.GetFeatureText( 'book_decoration' )]."
- artifact_book_historical_description_fallback: "[tome|E], посвящённые теме «[ROOT.Artifact.GetFeatureText( 'book_topic' )|U]». [newly_created_artifact.GetFeatureText( 'book_decoration' )]. На их страницах записаны ритуалы, известные лишь тем, кто тщательно их изучает."
+ artifact_book_historical_description_fallback: "[ROOT.Artifact.GetFeatureText( 'book_topic' )|U] [tome|E], [newly_created_artifact.GetFeatureText( 'book_decoration' )], на страницах которого содержатся ритуалы, известные только тем, кто внимательно его изучает."
  artifact_book_historical_title: "[SelectLocalization(And(newly_created_artifact.MakeScope.Var('writing_culture').IsSet, Not(EqualTo_string(Concatenate(Concatenate(Concatenate(newly_created_artifact.MakeScope.Var('historical_book').GetFlagName, '_title'), '_'), newly_created_artifact.MakeScope.Var('writing_culture').Culture.GetLanguage.GetNameNoTooltip), Localize(Concatenate(Concatenate(Concatenate(newly_created_artifact.MakeScope.Var('historical_book').GetFlagName, '_title'), '_'), newly_created_artifact.MakeScope.Var('writing_culture').Culture.GetLanguage.GetNameNoTooltip))))), Glossary(Localize(Concatenate(Concatenate(Concatenate(newly_created_artifact.MakeScope.Var('historical_book').GetFlagName, '_title'), '_'), newly_created_artifact.MakeScope.Var('writing_culture').Culture.GetLanguage.GetNameNoTooltip)), Concatenate(newly_created_artifact.MakeScope.Var( 'historical_book' ).GetFlagName, '_title')), Concatenate(newly_created_artifact.MakeScope.Var( 'historical_book' ).GetFlagName, '_title'))]"
- artifact_book_mayikprolollan_desc_1: "[ROOT.Artifact.GetOwner.Custom('ArtifactArticleWealth')|U] [ROOT.Artifact.MakeScope.Var('book_original_culture').Culture.GetLanguage.GetNameNoTooltip] книга о [ROOT.Artifact.GetFeatureText( 'book_subject' )], которая детализирует [ROOT.Artifact.GetFeatureText( 'book_topic' )]. [ROOT.Artifact.Custom('RandomBookFlaw')]\n\nТекст был написан в [ROOT.Artifact.MakeScope.Var('book_original_age').GetValue|0] году [ROOT.Artifact.Custom('BookAuthorship')].\n\nТом несёт [ROOT.Artifact.Custom('BookSealDescriptor')] печать [Concept('mayikprolollans','Майикпрололлана')|E]. [ROOT.Artifact.Custom('BookMayikprolollanCommentary')]"
- artifact_book_mayikprolollan_desc_2: "Книга X века на [ROOT.Artifact.MakeScope.Var('book_original_culture').Culture.GetLanguage.GetNameNoTooltip] о [ROOT.Artifact.GetFeatureText( 'book_subject' )], написанная [ROOT.Artifact.Custom('BookAuthorship')], которая детализирует [ROOT.Artifact.GetFeatureText( 'book_topic' )]. [ROOT.Artifact.Custom('RandomBookFlaw')]\n\nТом несёт [ROOT.Artifact.Custom('BookSealDescriptor')] печать [Concept('mayikprolollans','Майикпрололлана')|E]. [ROOT.Artifact.Custom('BookMayikprolollanCommentary')]"
- artifact_book_mayikprolollan_desc_3: "Текст о [ROOT.Artifact.GetFeatureText( 'book_topic' )]. [ROOT.Artifact.Custom('RandomBookFlaw')]\n\nТом несёт [ROOT.Artifact.Custom('BookSealDescriptor')] печать [Concept('mayikprolollans','Майикпрололлана')|E]. [ROOT.Artifact.Custom('BookMayikprolollanCommentary')]"
- artifact_book_mayikprolollan_desc_4: "X век CULTURE/PROFESSION AUTHOR описывает"
- artifact_book_mayikprolollan_desc_5: "AUTHOR, X века PROFESSION, написал эту работу о TOPIC в YEAR"
- artifact_book_mayikprolollan_desc_6: "X века транскрипция/копия/компиляция AUTHOR гораздо более старой работы"
- artifact_book_mayikprolollan_desc_relevant_artifact_1: "[ROOT.Artifact.GetOwner.Custom('ArtifactArticleWealth')|U] книга, которая показывает [ROOT.Artifact.GetOwner.Custom('ArtifactArticleBookContentQuality')] понимание [ROOT.Artifact.GetFeatureText( 'book_subject' )], так как она детализирует [ROOT.Artifact.GetFeatureText( 'book_topic' )].\n\nТом несёт [ROOT.Artifact.Custom('BookSealDescriptor')|U] печать [Concept('mayikprolollans','Майикпрололлана')|E], а также вставленную стандартную заметку об артефакте, упомянутом в книге."
 
+ artifact_book_mayikprolollan_desc_1: "[ROOT.Artifact.GetOwner.Custom('ArtifactArticleWealth')|U] [ROOT.Artifact.MakeScope.Var('book_original_culture').Culture.GetLanguage.GetNameNoTooltip] книга по [ROOT.Artifact.GetFeatureText( 'book_subject' )], в которой подробно описывается [ROOT.Artifact.GetFeatureText( 'book_topic' )]. [ROOT.Artifact.Custom('RandomBookFlaw')]\n\nТекст был написан в [ROOT.Artifact.MakeScope.Var('book_original_age').GetValue|0] году [ROOT.Artifact.Custom('BookAuthorship')].\n\nТом несёт [ROOT.Artifact.Custom('BookSealDescriptor')] печать [Concept('mayikprolollans','Майикпрололлана')|E]. [ROOT.Artifact.Custom('BookMayikprolollanCommentary')]"
+ artifact_book_mayikprolollan_desc_2: "Книга [ROOT.Artifact.MakeScope.Var('book_original_culture').Culture.GetLanguage.GetNameNoTooltip] века по [ROOT.Artifact.GetFeatureText( 'book_subject' )], написанная [ROOT.Artifact.Custom('BookAuthorship')], в которой подробно описывается [ROOT.Artifact.GetFeatureText( 'book_topic' )]. [ROOT.Artifact.Custom('RandomBookFlaw')]\n\nТом несёт [ROOT.Artifact.Custom('BookSealDescriptor')] печать [Concept('mayikprolollans','Майикпрололлана')|E]. [ROOT.Artifact.Custom('BookMayikprolollanCommentary')]"
+ artifact_book_mayikprolollan_desc_3: "Текст о [ROOT.Artifact.GetFeatureText( 'book_topic' )]. [ROOT.Artifact.Custom('RandomBookFlaw')]\n\nТом несёт [ROOT.Artifact.Custom('BookSealDescriptor')] печать [Concept('mayikprolollans','Майикпрололлана')|E]. [ROOT.Artifact.Custom('BookMayikprolollanCommentary')]"
+ artifact_book_mayikprolollan_desc_4: "Автор [КУЛЬТУРА/ПРОФЕССИЯ] X века описывает"
+ artifact_book_mayikprolollan_desc_5: "[АВТОР], [ПРОФЕССИЯ] X века, написал эту работу о [ТЕМЕ] в [ГОД]"
+ artifact_book_mayikprolollan_desc_6: "Транскрипция/копия/компиляция X века [АВТОР] гораздо более старой работы"
+ artifact_book_mayikprolollan_desc_relevant_artifact_1: "Книга, демонстрирующая [ROOT.Artifact.GetOwner.Custom('ArtifactArticleBookContentQuality')] понимание [ROOT.Artifact.GetFeatureText( 'book_subject' )], поскольку в ней подробно описывается [ROOT.Artifact.GetFeatureText( 'book_topic' )].\n\nТом несёт [ROOT.Artifact.Custom('BookSealDescriptor')] печать [Concept('mayikprolollans','Майикпрололлана')|E] и вложенную стандартную заметку об артефакте, упоминаемом в книге."
 
  feature_book_peculiarity_blood_ink: ""
- feature_book_peculiarity_causes_decay_nearby: "Книга, кажется, вызывает ауру разложения вокруг себя"
+ feature_book_peculiarity_causes_decay_nearby: "Книга, по-видимому, создаёт вокруг себя ауру разложения"
  feature_book_peculiarity_causes_time_loss: ""
- feature_book_peculiarity_dims_lights: "Свет тускнеет, а тени углубляются вблизи книги"
+ feature_book_peculiarity_dims_lights: "Свет тускнеет, а тени сгущаются вблизи книги"
  feature_book_peculiarity_glow_in_the_dark_ink: ""
- feature_book_peculiarity_illustrations_alluring: "привлекательные"
+ feature_book_peculiarity_illustrations_alluring: "притягательные"
  feature_book_peculiarity_illustrations_disturbing: "крайне тревожные"
  feature_book_peculiarity_illustrations_glowing: "светящиеся"
  feature_book_peculiarity_illustrations_hypnotic: "гипнотические"
@@ -407,77 +407,72 @@
  feature_book_peculiarity_reading_effect_migratine: "мигрень"
  feature_book_peculiarity_reading_effect_watched: "ощущение наблюдения"
 
- feature_book_topic_flora_and_fauna_bestiary: "фауна COUNTY и его окрестностей"
+ feature_book_topic_flora_and_fauna_bestiary: "фауна ГРАФСТВА и его окрестностей"
  feature_book_topic_geology_magical_minerals: "различные минералы и драгоценные камни с известными магическими свойствами"
 
-
  # Stone Tablets
-
  feature_tablet_characteristic_large: "довольно большая"
  feature_tablet_characteristic_huge: "огромная и тяжёлая"
  feature_tablet_characteristic_small: "довольно маленькая"
  feature_tablet_characteristic_tiny: "исключительно маленькая"
- feature_tablet_characteristic_detailed: "тщательно детализированная"
+ feature_tablet_characteristic_detailed: "искусно детализированная"
  feature_tablet_characteristic_unremarkable: "довольно непримечательная"
 
- feature_tablet_engraving_inelligible: "её гравировки неразборчивы"
- feature_tablet_engraving_undecipherable: "её гравировки не поддаются расшифровке"
- feature_tablet_engraving_ritual: "её гравировки, как считается, связаны с традицией или ритуалом"
- feature_tablet_engraving_bill: "её гравировки, как считается, связаны с купчей"
- feature_tablet_engraving_law: "её гравировки, как считается, относятся к древнему своду законов"
- feature_tablet_engraving_kemsar: "её гравировки, как считается, содержат детали древней империи кемсарцев"
- feature_tablet_engraving_ruler: "её гравировки показывают сцену правителя перед подданными"
- feature_tablet_engraving_magi: "её гравировки показывают сцену [Concept('magi','мага')|E], выполняющего какой-то ритуал"
- feature_tablet_engraving_conqueror: "её гравировки показывают всадника на лошади"
- feature_tablet_engraving_ancient: "её гравировки показывают то, что некоторые считают картой Саррадона до [Concept('the_decimation_of_sarradon','Халакдуна')|E]"
- feature_tablet_engraving_river: "её гравировки, как считается, говорят о речной ирригации кемсарцев"
+ feature_tablet_engraving_inelligible: "её гравировка неразборчива"
+ feature_tablet_engraving_undecipherable: "её гравировка не поддаётся расшифровке"
+ feature_tablet_engraving_ritual: "считается, что её гравировка связана с традицией или ритуалом"
+ feature_tablet_engraving_bill: "считается, что её гравировка связана с купчей"
+ feature_tablet_engraving_law: "считается, что её гравировка относится к древнему своду законов"
+ feature_tablet_engraving_kemsar: "считается, что её гравировка содержит сведения о древней империи Кемсар"
+ feature_tablet_engraving_ruler: "на её гравировке изображена сцена с правителем перед подданными"
+ feature_tablet_engraving_magi: "на её гравировке изображена сцена, где [Concept('magi','маг')|E] выполняет некий ритуал"
+ feature_tablet_engraving_conqueror: "на её гравировке изображён всадник на коне"
+ feature_tablet_engraving_ancient: "на её гравировке изображено то, что некоторые считают картой Саррадона до [Concept('the_decimation_of_sarradon','Халакдуна')|E]"
+ feature_tablet_engraving_river: "считается, что её гравировка рассказывает об ирригации реки Кемсар"
 
  feature_tablet_condition_mint: "находится в почти идеальном состоянии"
- feature_tablet_condition_degraded: "деградировала с возрастом"
- feature_tablet_condition_cracked: "имеет огромную трещину, проходящую по лицевой стороне"
- feature_tablet_condition_crumbling: "рассыпается при малейшем прикосновении"
- feature_tablet_condition_broken: "разломана на две половины"
- feature_tablet_condition_missing: "не хватает частей гравировки из-за повреждений"
+ feature_tablet_condition_degraded: "испортилась от времени"
+ feature_tablet_condition_cracked: "имеет огромную трещину, проходящую по её лицевой стороне"
+ feature_tablet_condition_crumbling: "рассыпается от малейшего прикосновения"
+ feature_tablet_condition_broken: "разбита на две половины"
+ feature_tablet_condition_missing: "часть её гравировки отсутствует из-за повреждений"
 
  artifact_stone_tablet_name: "Древняя саррадонская табличка $artifact_name_prefix$"
- artifact_stone_tablet_description: "Каменная табличка, найденная в [sarradon|E], [SCOPE.Custom('ArtifactQuality')] качества изготовления. Она [newly_created_artifact.GetFeatureText( 'tablet_condition' )], и [newly_created_artifact.GetFeatureText( 'tablet_engraving' )].\n\n$artifact_stone_tablet_explanation$ $artifact_stone_tablet_age$"
- artifact_stone_tablet_explanation: "Каменные таблички широко использовались в Древнем Саррадоне для письма, и многие найденные по всему континенту высоко ценятся учёными и коллекционерами."
- artifact_stone_tablet_age: "Этот [newly_created_artifact.GetFeatureText( 'tablet_characteristic' )] образец, скорее всего, был создан около [owner.MakeScope.Var('tablet_age').GetValue|0]00 года ДИ."
- 
+ artifact_stone_tablet_description: "Каменная табличка, найденная в [sarradon|E], [SCOPE.Custom('ArtifactQuality')] качества. Она [newly_created_artifact.GetFeatureText( 'tablet_condition' )] и [newly_created_artifact.GetFeatureText( 'tablet_engraving' )].\n\n$artifact_stone_tablet_explanation$ $artifact_stone_tablet_age$"
+ artifact_stone_tablet_explanation: "Каменные таблички обычно использовались в Древнем Саррадоне для письма, и многие из найденных по всему континенту высоко ценятся учёными и коллекционерами."
+ artifact_stone_tablet_age: "Этот [newly_created_artifact.GetFeatureText( 'tablet_characteristic' )] образец, вероятно, был изготовлен около [owner.MakeScope.Var('tablet_age').GetValue|0] года до И.С."
 
  gh_artifact_mayikprolollan_trove_book_description: "[newly_created_artifact.Custom('MayikprolollanBookDescriptionFormat')|U]\n\n$artifact_grimoire_explanation$"
 
-
  artifact_grimoire_name: "[newly_created_artifact.GetFeatureText( 'book_title' )]"
  artifact_grimoire: "Гримуар"
- artifact_grimoire_explanation: "#positive_value Этот [artifact|E] можно изучить с помощью решения «Изучить Гримуар».#!"
- artifact_runic_scroll: "Рунический Свиток"
+ artifact_grimoire_explanation: "#positive_value Этот [artifact|E] можно изучить с помощью решения «Изучить гримуар».#!"
 
- runic_scroll: "Рунический Свиток"
- artifact_runic_scroll_description: "[newly_created_artifact.GetOwner.Custom('ArtifactArticleWealth')|U] свиток с рунической кодификацией [Concept('gh_ritual','ритуала')|E] #V;underline [newly_created_artifact.MakeScope.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')]#!, [newly_created_artifact.GetOwner.Custom('ArtifactAdverbQuality')] написанный [newly_created_artifact.GetFeatureText('book_ink')]."
- artifact_runic_scroll_name: "Рунический свиток «[newly_created_artifact.MakeScope.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')]»"
+ artifact_runic_scroll: "Рунический свиток"
+ runic_scroll: "Рунический свиток"
+ artifact_runic_scroll_description: "[newly_created_artifact.GetOwner.Custom('ArtifactArticleWealth')|U] свиток с рунической кодификацией ритуала #V;underline [newly_created_artifact.MakeScope.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')]#! [gh_ritual|E], [newly_created_artifact.GetOwner.Custom('ArtifactAdverbQuality')] написанный на нём [newly_created_artifact.GetFeatureText('book_ink')]."
+ artifact_runic_scroll_name: "Рунический свиток [newly_created_artifact.MakeScope.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')]"
 
- artifact_magical_scroll: "Магический Свиток"
- artifact_magical_scroll_description: "[newly_created_artifact.GetOwner.Custom('ArtifactArticleWealth')|U] свиток с письменным описанием [Concept('gh_ritual','ритуала')|E] #V;underline [newly_created_artifact.MakeScope.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')]#!, [newly_created_artifact.GetOwner.Custom('ArtifactAdverbQuality')] написанный [newly_created_artifact.GetFeatureText('book_ink')]."
- artifact_magical_scroll_name: "Магический свиток заклинания [newly_created_artifact.MakeScope.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')]" 
+ artifact_magical_scroll: "Магический свиток"
+ artifact_magical_scroll_description: "[newly_created_artifact.GetOwner.Custom('ArtifactArticleWealth')|U] свиток с письменной записью ритуала #V;underline [newly_created_artifact.MakeScope.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')]#! [gh_ritual|E], [newly_created_artifact.GetOwner.Custom('ArtifactAdverbQuality')] написанной на нём [newly_created_artifact.GetFeatureText('book_ink')]."
+ artifact_magical_scroll_name: "Магический свиток [newly_created_artifact.MakeScope.Var('namesake_knowledge_entry').Story.Custom('KnowledgeEntryName')]"
 
- feature_book_title_secret_histories_chronicle_1: "[Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] [Artifact.Custom('ChronicleSynonyms')|U]"
- feature_book_title_secret_histories_chronicle_2: "[Artifact.Custom('MysteriousSynonyms')] [Artifact.Custom('ChronicleSynonyms')|U] [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip]"
- feature_book_title_secret_histories_chronicle_3: "[Artifact.Custom('MysteriousSynonyms')|U] [Artifact.Custom('ChronicleSynonyms')] автора AUTHOR"
- feature_book_title_secret_histories_chronicle_4: "Хроника/История/Фолиант/Рукопись/Анналы автора AUTHOR о DARKNESS_ALLEGORY"
+ feature_book_title_secret_histories_chronicle_1: "Хроника [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip]"
+ feature_book_title_secret_histories_chronicle_2: "Таинственная хроника [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip]"
+ feature_book_title_secret_histories_chronicle_3: "Таинственная хроника [АВТОРА]"
+ feature_book_title_secret_histories_chronicle_4: "Хроника/Истории/Том/Рукопись/Анналы [АВТОРА] о [ТЕМНОТА_АЛЛЕГОРИЯ]"
  feature_book_title_secret_histories_chronicle: "[Artifact.Custom('SecretHistoriesChronicleTitleFormat')]"
- feature_book_title_secret_histories_cultural_legends_1: "[Artifact.Custom('BookSynonyms')|U] [Artifact.Custom('MysteriousSynonyms')] [ROOT.Artifact.MakeScope.Var('book_topic_culture').Culture.GetNameNoTooltip] [Artifact.Custom('MythologySynonyms')]"
- feature_book_title_secret_histories_cultural_legends_2: "[Artifact.Custom('MysteriousSynonyms')] [Artifact.Custom('MythologySynonyms')] [ROOT.Artifact.MakeScope.Var('book_topic_culture').Culture.GetNameNoTooltip]"
- feature_book_title_secret_histories_cultural_legends_3: "[Artifact.Custom('BookSynonyms')|U] [Artifact.Custom('CollectedSynonyms')] [ROOT.Artifact.MakeScope.Var('book_topic_culture').Culture.GetNameNoTooltip] [Artifact.Custom('MythologySynonyms')]"
+ feature_book_title_secret_histories_cultural_legends_1: "Книга таинственных [ROOT.Artifact.MakeScope.Var('book_topic_culture').Culture.GetNameNoTooltip] мифов"
+ feature_book_title_secret_histories_cultural_legends_2: "Таинственные мифы [ROOT.Artifact.MakeScope.Var('book_topic_culture').Culture.GetNameNoTooltip]"
+ feature_book_title_secret_histories_cultural_legends_3: "Книга собранных [ROOT.Artifact.MakeScope.Var('book_topic_culture').Culture.GetNameNoTooltip] мифов"
  feature_book_title_secret_histories_secret_society_1: "[Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] [Artifact.Custom('OrganizationSynonyms')]"
- feature_book_title_secret_histories_secret_society_2: "[Artifact.Custom('MysteriousSynonyms')] [Artifact.Custom('RitesSynonyms')|U] [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] [Artifact.Custom('OrganizationSynonyms')]"
- feature_book_title_secret_histories_secret_society_3: "[Artifact.Custom('CollectedSynonyms')] [Artifact.Custom('RitesSynonyms')|U] [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] [Artifact.Custom('OrganizationSynonyms')]"
- feature_book_title_secret_histories_secret_society_4: "[Artifact.Custom('CollectedSynonyms')] [Artifact.Custom('RitesSynonyms')|U] [Artifact.Custom('MysteriousSynonyms')] [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] [Artifact.Custom('OrganizationSynonyms')]"
- feature_book_title_secret_histories_secret_society_5: "[Artifact.Custom('BookSynonyms')|U] [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] [Artifact.Custom('OrganizationSynonyms')]"
+ feature_book_title_secret_histories_secret_society_2: "Таинственные обряды [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] [Artifact.Custom('OrganizationSynonyms')]"
+ feature_book_title_secret_histories_secret_society_3: "Собранные обряды [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] [Artifact.Custom('OrganizationSynonyms')]"
+ feature_book_title_secret_histories_secret_society_4: "Собранные обряды таинственного [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] [Artifact.Custom('OrganizationSynonyms')]"
+ feature_book_title_secret_histories_secret_society_5: "Книга [Artifact.MakeScope.Var('book_origin_county').Title.GetNameNoTierNoTooltip] [Artifact.Custom('OrganizationSynonyms')]"
  feature_book_title_secret_histories_secret_society: "[Artifact.Custom('SecretHistoriesSecretSocietyTitleFormat')]"
 
-
- feature_book_title_blood_magic_anatomy_2: "[Artifact.Custom('StructureSynonyms')|U] [Artifact.Custom('BodySynonyms')|U]"
- feature_book_title_blood_magic_anatomy_3: "[Artifact.Custom('MysteriousSynonyms')] вскрытия [Artifact.Custom('BodySynonyms')|U]"
- feature_book_title_blood_magic_anatomy_4: "[Artifact.Custom('CollectedSynonyms')] вскрытия [Artifact.Custom('BodySynonyms')|U]"
- feature_book_title_blood_magic_anatomy_5: "Анатомия [Artifact.Custom('BodySynonyms')] автора AUTHOR"
+ feature_book_title_blood_magic_anatomy_2: "Строение тела"
+ feature_book_title_blood_magic_anatomy_3: "Таинственные рассечения тела"
+ feature_book_title_blood_magic_anatomy_4: "Собранные рассечения тела"
+ feature_book_title_blood_magic_anatomy_5: "Анатомия тела по [АВТОРУ]"
