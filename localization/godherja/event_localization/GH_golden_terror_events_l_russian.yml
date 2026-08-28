@@ -1,79 +1,72 @@
 ﻿l_russian:
 
-golden_terror_tt: "Golden Terror"
-golden_terror_tt_desc: "The Heijrdwang Conspiracy represented the greatest threat to the Kanzelerij since the [bitter_war|E]. The discovery of letters between Raadilists and Marcher lords seeking military intervention to restore the [GetTitleByKey('d_konijkmener_monarchy').GetNameNoTier] outraged the Chancellery, leading to a bloody civil war in vain effort to restore the monarchy.\n\n At its end, the Kanzeler seized upon the conspiracy and civil war to justify what would become known as the 'Golden Terror;' a near fifteen-year period of revolutionary justice that would claim thousands of lives across the Granmaer Peninsula, and send many fleeing beyond its shores."
+golden_terror_tt: "Золотой террор"
+golden_terror_tt_desc: "Заговор Хейрдванга стал величайшей угрозой для Канцелярии со времён [Concept('bitter_war','Горькой войны')|E]. Обнаружение писем между раадилистами и марочникскими лордами, искавшими военного вмешательства для восстановления [GetTitleByKey('d_konijkmener_monarchy').GetNameNoTier], привело Канцелярию в ярость и вылилось в кровавую гражданскую войну в тщетной попытке вернуть монархию.\n\nПо её окончании канцлер использовал заговор и гражданскую войну как оправдание для того, что позже стало известно как «Золотой террор» — почти пятнадцатилетний период революционного правосудия, унёсший тысячи жизней на полуострове Гранмаар и заставивший многих бежать за его пределы."
 
-gh_golden_terror.0001.t:0 "The Heijrdwang Conspiracy"
-gh_golden_terror.0001.desc:0 "For years, the Heijrdwang's supporters have whispered in the shadows of the Kanzelerij. For years, they have plotted to restore the [GetTitleByKey('d_konijkmener_monarchy').GetNameNoTier] to its former glory.\n\nBut now, it's all over.\n\nThe failed attempt to seize power with support from a number of noble and merchant families has ended in disaster. The "crown" is under lock and key, their supporters dead or scattered, and the Kanzelerij remains. But not all is right on the Granmaer. If the republic is to survive, we must end this farce of a lordship once and for all, and all those who followed with it."
+gh_golden_terror.0001.t: "Заговор Хейрдванга"
+gh_golden_terror.0001.desc: "Годами сторонники Хейрдванга шептались в тени Канцелярии. Годами они плели заговоры, чтобы вернуть [GetTitleByKey('d_konijkmener_monarchy').GetNameNoTier] былое величие.\n\nНо теперь всё кончено.\n\nНеудачная попытка захватить власть при поддержке ряда дворянских и купеческих семей обернулась катастрофой. «Корона» под замком, их сторонники мертвы или рассеяны, а Канцелярия устояла. Но не всё спокойно на Гранмааре. Если республика должна выжить, мы должны покончить с этим фарсом лордства раз и навсегда — и со всеми, кто последовал за ним."
 
-gh_golden_terror.0001.a:0 "Death to the traitors! Let this be a lesson to all enemies of the Republic."
-gh_golden_terror.0001.a.tt:0 "Execute [attacker.GetName] and destroy the [GetTitleByKey('d_konijkmener_monarchy').GetNameNoTier]\nMark all known monarchists as enemies of the Kanzelerij\nBegin the Golden Terror"
+gh_golden_terror.0001.a: "Смерть предателям! Пусть это станет уроком для всех врагов Республики."
+gh_golden_terror.0001.a.tt: "Казнить [attacker.GetName] и уничтожить [GetTitleByKey('d_konijkmener_monarchy').GetNameNoTier]\nОбъявить всех известных монархистов врагами Канцелярии\nНачать Золотой террор"
 
+gh_golden_terror.0101.t: "Революционный трибунал"
+gh_golden_terror.0101.desc: "Перед трибуналом Канцелярии [Select_CString(accused.IsFemale, 'предстала', 'предстал')] [accused.GetName] — [Select_CString(accused.IsFemale, 'обвинённая', 'обвинённый')] в заговоре против Коникменера. Толпа за стенами Хоэн вер 'дт Гростфордре скандирует, требуя крови."
 
-gh_golden_terror.0101.t:0 "The Revolutionary Tribunal"
-gh_golden_terror.0101.desc:0 "A monarchist has been denounced before the Kanzelerij Tribunal. [accused.GetName] stands accused of conspiring against the Konijkmener, and the crowd outside the Hoen ver 'dt Grostvordre chants for blood."
+gh_golden_terror.0101.a: "Смерть врагу народа!"
+gh_golden_terror.0101.b: "Бросить [Select_CString(accused.IsFemale, 'её', 'его')] в темницу. Мы не дикари."
 
-gh_golden_terror.0101.a:0 "Death to the enemy of the people!"
-gh_golden_terror.0101.b:0 "Imprison them. We are not savages."
+gh_golden_terror.0102.t: "Закон о подозреваемых"
+gh_golden_terror.0102.desc: "[Select_CString(suspect.IsFemale, 'Донос поступил на', 'Донос поступил на')] [suspect.GetName] как на врага Канцелярии. Согласно предлагаемому Закону о подозреваемых, любой, кто «своим поведением, связями или высказываниями проявляет себя сторонником тирании», может быть арестован. Тысячи могут оказаться в темницах."
 
-gh_golden_terror.0102.t:0 "The Law of Suspects"
-gh_golden_terror.0102.desc:0 "[suspect.GetName] has been denounced as an enemy of the Kanzelerij. Under the proposed Law of Suspects, anyone who 'by their conduct, relations, or remarks, shows themselves to be partisans of tyranny' can be arrested. Thousands could be imprisoned."
+gh_golden_terror.0102.a: "Пощады предателям не будет."
+gh_golden_terror.0102.b: "Мы не можем сами стать тиранами."
 
-gh_golden_terror.0102.a:0 "No mercy for traitors."
-gh_golden_terror.0102.b:0 "We cannot become tyrants ourselves."
+gh_golden_terror.0103.t: "Не всё то золото..."
+gh_golden_terror.0103.desc: "Террор поглотил всё. Даже умеренные, которые когда-то поддерживали меня, теперь шепчутся о заговоре. Канцелярия гудит от страха и недовольства, некоторые даже подумывают объявить меня предателем."
 
-gh_golden_terror.0103.t:0 "All That Glitters..."
-gh_golden_terror.0103.desc:0 "The Terror has consumed everything. Even the moderates who once supported me now whisper of conspiracy. The Chancellery murmurs with fear and resentment, with some even thinking of declaring me a traitor."
+gh_golden_terror.0103.a: "Очистить всех! Террор должен продолжаться!"
+gh_golden_terror.0103.b: "Всё кончено. Я отрекаюсь."
 
-gh_golden_terror.0103.a:0 "Purge them all! The Terror must continue!"
-gh_golden_terror.0103.b:0 "It is over. I abdicate."
+gh_golden_terror.0020.t: "Не всё то золото..."
+gh_golden_terror.0020.desc: "Канцелярия погружается в хаос. [Select_CString(betrayer.IsFemale, 'Восстала', 'Восстал')] [betrayer.GetName], [Select_CString(betrayer.IsFemale, 'обвинившая', 'обвинивший')] меня в тирании и вражде к Канцелярии. «Террор стал орудием честолюбия!» — восклицают они. Депутаты требуют ареста. Снаружи толпа, некогда рукоплескавшая, теперь требует крови."
 
-gh_golden_terror.0020.t:0 "All that Glitters..."
-gh_golden_terror.0020.desc:0 "The Chancellery erupts in chaos. [betrayer.GetName] has risen to denounce me as a tyrant and enemy of the Kanzelerij. 'Terror has become the tool of one's ambition!' they cry. The deputies shout for arrest. Outside, the crowd that once cheered now calls for blood."
+gh_golden_terror.0020.a: "Что мне остаётся, кроме как сдаться..."
+gh_golden_terror.0020.b: "Арестовать их всех! Я не потерплю участи, которую уготовил другим."
 
-gh_golden_terror.0020.a:0 "What can I do but surrender..."
-gh_golden_terror.0020.b:0 "Arrest them all! I will not suffer the fate I gave others."
+gh_golden_terror.0021.t: "Падение тирана"
+gh_golden_terror.0021.desc: "[golden_terror_leader.GetName] [Select_CString(golden_terror_leader.IsFemale, 'казнена', 'казнён')]. Тот, кто принёс нам Террор, теперь [Select_CString(golden_terror_leader.IsFemale, 'встретила', 'встретил')] тот же клинок. Одни говорят, что справедливость восторжествовала. Другие шепчут, что Золотое правило просто обрело нового хозяина."
 
-gh_golden_terror.0021.t:0 "The Tyrant Falls"
-gh_golden_terror.0021.desc:0 "[golden_terror_leader.GetName] has been executed. The one who brought us Terror now faces the same blade. Some say justice has been done, Others whisper that the Golden Rule has merely found a new master."
+gh_golden_terror.0021.a: "Золотые годы продолжаются..."
 
-gh_golden_terror.0021.a:0 "The Golden Years continue..."
+gh_golden_terror.0015.t: "Конец Золотого террора"
+gh_golden_terror.0015.desc: "Пятнадцать лет. Пятнадцать лет крови и страха из-за попыток раадилистов вернуть утерянный трон. Теперь судебные комитеты распущены, оставшимся узникам дарована амнистия. Золотое правило безраздельно господствует на всём полуострове."
 
-# End of Terror
-gh_golden_terror.0015.t:0 "The Golden Terror Ends"
-gh_golden_terror.0015.desc:0 "Fifteen years. Fifteen years of blood and fear due to the Raadilists attempts to reclaim their lost throne. Now, the judiciary committees disband, and the remaining prisoners granted amnesty. The Golden Rule is supreme across the peninsula."
+gh_golden_terror.0015.a: "Республика выстояла. Этого достаточно."
 
-gh_golden_terror.0015.a:0 "The Republic endures. That is enough."
+gh_golden_terror.0016.t: "Падение тирана"
+gh_golden_terror.0016.desc: "[fallen_tyrant.GetName] [Select_CString(fallen_tyrant.IsFemale, 'мертва', 'мертв')]. Тот, кто правил страхом, теперь покоится в безымянной могиле, [Select_CString(fallen_tyrant.IsFemale, 'её', 'его')] сторонники рассеяны по болотам. История запомнит [Select_CString(fallen_tyrant.IsFemale, 'её', 'его')] не как освободителя, а как мясника."
 
-gh_golden_terror.0016.t:0 "The Tyrant Falls"
-gh_golden_terror.0016.desc:0 "[fallen_tyrant.GetName] is dead. The one who ruled through fear now lies in an unmarked grave, their followers scattered across the marsh. History will remember them not as a liberator, but as a butcher."
+gh_golden_terror.0016.a: "Так падают все тираны."
 
-gh_golden_terror.0016.a:0 "Thus falls all tyrants."
+gh_golden_terror_character_modifier: "Жертва террора"
+gh_golden_republic_modifier: "Основатель Золотой республики"
+gh_golden_terror_leader_modifier: "Архитектор террора"
+gh_golden_terror_legacy_tyrant_modifier: "Наследие крови"
+gh_golden_terror_legacy_moderate_modifier: "Наследие сдержанности"
+gh_golden_terror_survivor_modifier: "Переживший террор"
 
-## Modifiers ##
-# Character Modifier Names
-gh_golden_terror_character_modifier:0 "Target of the Terror"
-gh_golden_republic_modifier:0 "Founder of the Golden Republic"
-gh_golden_terror_leader_modifier:0 "Architect of the Terror"
-gh_golden_terror_legacy_tyrant_modifier:0 "Legacy of Blood"
-gh_golden_terror_legacy_moderate_modifier:0 "Legacy of Restraint"
-gh_golden_terror_survivor_modifier:0 "Survivor of the Terror"
+gh_golden_terror_modifier: "Золотой террор"
+reconstruction_modifier: "Восстановление"
 
-# County Modifier Names
-gh_golden_terror_modifier:0 "The Golden Terror"
-reconstruction_modifier:0 "Reconstruction"
+opinion_feared_leader: "Страшится лидера"
+opinion_grateful_mercy: "Благодарен за милость"
 
-# Opinion Modifier Descriptions
-opinion_feared_leader:0 "Fears the Leader"
-opinion_grateful_mercy:0 "Grateful for Mercy"
+gh_golden_terror_character_modifier_desc: "Этот персонаж отмечен как враг Золотого правила."
+gh_golden_republic_modifier_desc: "Этот персонаж основал Золотую республику и развязал Террор."
+gh_golden_terror_leader_modifier_desc: "Этот персонаж лично отправлял врагов на виселицу."
+gh_golden_terror_legacy_tyrant_modifier_desc: "Правление этого персонажа запомнилось как кровавое царство."
+gh_golden_terror_legacy_moderate_modifier_desc: "Правление этого персонажа запомнилось как необходимое, но сдержанное."
+gh_golden_terror_survivor_modifier_desc: "Этот персонаж пережил Террор и дожил до его конца."
 
-# Modifier Descriptions
-gh_golden_terror_character_modifier_desc:0 "This character has been marked as an enemy of the Golden Rule."
-gh_golden_republic_modifier_desc:0 "This character founded the Golden Republic and unleashed the Terror."
-gh_golden_terror_leader_modifier_desc:0 "This character has personally sent enemies to be hanged."
-gh_golden_terror_legacy_tyrant_modifier_desc:0 "This character's rule is remembered as a reign of blood."
-gh_golden_terror_legacy_moderate_modifier_desc:0 "This character's rule is remembered as necessary but restrained."
-gh_golden_terror_survivor_modifier_desc:0 "This character endured the Terror and lived to see its end."
-
-gh_golden_terror_modifier_desc:0 "The Hanging Tree is in full bloom. Neighbor denounces neighbor. Fear rules the streets."
-reconstruction_modifier_desc:0 "The long work of rebuilding has begun. Fields are replanted, courts reopened."
+gh_golden_terror_modifier_desc: "Висельное дерево в полном цвету. Сосед доносит на соседа. Страх правит улицами."
+reconstruction_modifier_desc: "Долгая работа по восстановлению началась. Поля засеяны заново, суды открыты."
