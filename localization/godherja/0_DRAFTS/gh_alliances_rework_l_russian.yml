@@ -12,7 +12,6 @@
  gh_not_close_family_member_alliance_tt: "Один или оба персонажа не являются [Concept('close_family_members', 'близкими родственниками')|E] своих правителей"
  culture_parameter_less_likely_to_accept_alliances: "[Concept('rulers', 'Правители')|E] этой [Concept('culture', 'культуры')|E] менее склонны соглашаться на любые [Concept('alliances', 'союзы')|E]."
  culture_parameter_more_likely_to_accept_defensive_alliances: "[Concept('rulers', 'Правители')|E] этой [Concept('culture', 'культуры')|E] более склонны соглашаться на любые [Concept('gh_defensive_alliances', 'оборонительные союзы')|E]."
-
  already_has_defensive_alliance_tt: "У вас уже есть [Concept('gh_defensive_alliance', 'оборонительный союз')|E] с персонажем [recipient.GetTitledFirstName]"
 
  GH_DIRECT_RULERS_NEED_ALLIANCE: "Брак между двумя [Concept('rulers', 'правителями')|E] требует выбора: либо [Concept('gh_defensive_alliances', 'Оборонительный союз')|E], либо [Concept('alliance', 'Полный союз')|E]"
@@ -24,11 +23,11 @@
  remove_marriage_truce_effect.toast: "Перемирие с персонажем [character_truce.GetTitledFirstName] отменено"
  
  # Interactions Modifiers Desc
- GH_BASE_RELUCTANCE_DEFENSIVE_ALLIANCE: "Базовое нежелание ([Concept('gh_defensive_alliance', 'оборонительный союз')|E]): $VALUE\vert{}+=0$"
- GH_BASE_RELUCTANCE_ALLIANCE: "Базовое нежелание ([Concept('alliance', 'союз')|E]): $VALUE\vert{}+=0$"
- GH_ALREADY_HAVE_MANY_ALLIANCES: "[recipient.GetShortUIName|U] уже имеет несколько [Concept('alliance', 'союзов')|E]: $VALUE\vert{}+=0$"
- GH_ACCEPT_ALLIANCES_ACCEPTANCE_MODIFIER: "[recipient.GetCulture.GetName]ая ([Concept('culture', 'культура')|E]): $VALUE\vert{}=+0$"
- TRADITION_ART_OF_DIPLOMACY_ACCEPTANCE_MODIFIER: "$tradition_art_of_diplomacy_name$ ([Concept('tradition', 'традиция')|E]): $VALUE\vert{}=+0$"
+ GH_BASE_RELUCTANCE_DEFENSIVE_ALLIANCE: "Базовое нежелание ([Concept('gh_defensive_alliance', 'оборонительный союз')|E]): $VALUE|+=0$"
+ GH_BASE_RELUCTANCE_ALLIANCE: "Базовое нежелание ([Concept('alliance', 'союз')|E]): $VALUE|+=0$"
+ GH_ALREADY_HAVE_MANY_ALLIANCES: "[recipient.GetShortUIName|U] уже имеет несколько [Concept('alliance', 'союзов')|E]: $VALUE|+=0$"
+ GH_ACCEPT_ALLIANCES_ACCEPTANCE_MODIFIER: "[recipient.GetCulture.GetName]ая ([Concept('culture', 'культура')|E]): $VALUE|=+0$"
+ TRADITION_ART_OF_DIPLOMACY_ACCEPTANCE_MODIFIER: "$tradition_art_of_diplomacy_name$ ([Concept('tradition', 'традиция')|E]): $VALUE|=+0$"
  
  #GUI
  REALM_WINDOW_DIPLOMACY_TOOLTIP_DEFENSIVE_ALLY_REASON_DIPLOMACY_MARRIAGE: "Оборонительный союз через "
