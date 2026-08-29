@@ -2,7 +2,7 @@
  
  GH_AMSARI_CIVIL_WAR_TITLE: "Гражданская война в Амсаре"
  story_gh_amsari_civil_war: "Гражданская война в Амсаре"
- story_gh_amsari_civil_war_desc: "Хиклан содрогается, когда соперничающие претенденты борются за трон, ввергая некогда единое царство Амсара в хаос. Пока Канамсар пытается сохранить хотя бы видимость контроля, по всей империи бушуют ожесточённые конфликты, грозящие раздробить и ту малость стабильности, что ещё осталась."
+ story_gh_amsari_civil_war_desc: "Хиклахн содрогается, когда соперничающие претенденты борются за трон, ввергая некогда единое царство Амсара в хаос. Пока Канамсар пытается сохранить хотя бы видимость контроля, по всей империи бушуют ожесточённые конфликты, грозящие раздробить и ту малость стабильности, что ещё осталась."
  AMSARI_CIVIL_WAR_INFORMATION_STRING: "[Concept('rulers','Правители')|E] в Амсаре могут поддерживать [Concept('claimant','претендентов')|E] на трон [GetTitleByKey('e_amsari_hiklahn').GetNameNoTier], или при определённых условиях заявить права на него сами. Они также получают доступ к уникальным [Concept('decisions','решениям')|E] и [Concept('interactions','взаимодействиям')|E].\n\n$BULLET_WITH_TAB$#indent_newline:7 Началась в #high [Subtract_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000' )] [Select_CString( GreaterThan_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000'), 'И.С.', 'Д.С.' )]#!#!\n$BULLET_WITH_TAB$#indent_newline:7 Правящая [Concept('dynasty','династия')|E]: #high [GetGlobalVariable('gh_hiklahn_ruling_dynasty_var').House.GetBaseNameNoTooltip]#!#!"
 
  story_redlands_crisis: "Кризис Красных земель"
