@@ -417,6 +417,7 @@
  woodland_hydra_flavor: "Многоголовое чудовище из лесной чащи. На месте каждой отрубленной шеи вырастают две новые. Бывали случаи, когда одна такая тварь поглощала целые военные отряды."
  
  war_hounds: "Боевые псы"
+ war_hounds_flavor:""
  
  maples_marauders: "Мародеры Мэйпл"
  
@@ -644,19 +645,19 @@
  gh_adventurers_type_screen_add:0 "[screen|E] [gh_adventurers_type|E]"
  gh_adventurers_type_screen_mult:0 "$gh_adventurers_type_screen_add$"
  gh_adventurers_type_siege_value_add:0 "[siege_progress|E] [gh_adventurers_type|E]"
- gh_adventurers_type_siege_value_mult:0 "Эффективность [Concept( 'siege_progress', 'прогресса осады' )|E] [gh_adventurers_type|E]"
- gh_adventurers_type_toughness_add:0 "[toughness|E] [gh_adventurers_type|E]"
+ gh_adventurers_type_siege_value_mult:0 "Эффективность [Concept( 'siege_progress', 'прогресса осады' )|E] [Concept('gh_adventurers_type','искателей приключений')|E]"
+ gh_adventurers_type_toughness_add:0 "[toughness|E] [Concept('gh_adventurers_type','искателей приключений')|E]"
  gh_adventurers_type_toughness_mult:0 "$gh_adventurers_type_toughness_add$"
  
- stationed_gh_adventurers_type_damage_add:0 "[damage|E] [Concept( 'stationed', 'расположенных' )|E] здесь [gh_adventurers_type|E]"
+ stationed_gh_adventurers_type_damage_add:0 "[damage|E] [Concept( 'stationed', 'расположенных' )|E] здесь [Concept('gh_adventurers_type','искателей приключений')|E]"
  stationed_gh_adventurers_type_damage_mult:0 "$stationed_gh_adventurers_type_damage_add$"
- stationed_gh_adventurers_type_pursuit_add:0 "[pursuit|E] [Concept( 'stationed', 'расположенных' )|E] здесь [gh_adventurers_type|E]"
+ stationed_gh_adventurers_type_pursuit_add:0 "[pursuit|E] [Concept( 'stationed', 'расположенных' )|E] здесь [Concept('gh_adventurers_type','искателей приключений')|E]"
  stationed_gh_adventurers_type_pursuit_mult:0 "$stationed_gh_adventurers_type_pursuit_add$"
- stationed_gh_adventurers_type_screen_add:0 "[screen|E] [Concept( 'stationed', 'расположенных' )|E] здесь [gh_adventurers_type|E]"
+ stationed_gh_adventurers_type_screen_add:0 "[screen|E] [Concept( 'stationed', 'расположенных' )|E] здесь [Concept('gh_adventurers_type','искателей приключений')|E]"
  stationed_gh_adventurers_type_screen_mult:0 "$stationed_gh_adventurers_type_screen_add$"
- stationed_gh_adventurers_type_siege_value_add:0 "[siege_progress|E] [Concept( 'stationed', 'расположенных' )|E] здесь [gh_adventurers_type|E]"
- stationed_gh_adventurers_type_siege_value_mult:0 "Эффективность [Concept( 'siege_progress', 'прогресса осады' )|E] [Concept( 'stationed', 'расположенных' )|E] здесь [gh_adventurers_type|E]"
- stationed_gh_adventurers_type_toughness_add:0 "[toughness|E] [Concept( 'stationed', 'расположенных' )|E] здесь [gh_adventurers_type|E]"
+ stationed_gh_adventurers_type_siege_value_add:0 "[siege_progress|E] [Concept( 'stationed', 'расположенных' )|E] здесь [Concept('gh_adventurers_type','искателей приключений')|E]"
+ stationed_gh_adventurers_type_siege_value_mult:0 "Эффективность [Concept( 'siege_progress', 'прогресса осады' )|E] [Concept( 'stationed', 'расположенных' )|E] здесь [Concept('gh_adventurers_type','искателей приключений')|E]"
+ stationed_gh_adventurers_type_toughness_add:0 "[toughness|E] [Concept( 'stationed', 'расположенных' )|E] здесь [Concept('gh_adventurers_type','искателей приключений')|E]"
  stationed_gh_adventurers_type_toughness_mult:0 "$stationed_gh_adventurers_type_toughness_add$"
  
  magical_damage_add:0 "[damage|E] [Concept('magic','магических существ')|E]"
