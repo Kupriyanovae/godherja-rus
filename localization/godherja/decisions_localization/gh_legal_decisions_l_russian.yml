@@ -1,9 +1,9 @@
 ﻿l_russian:
  begin_practicing_law_decision_name:0 "Начать изучение права"
  continue_practicing_law_decision_name:0 "Продолжить изучение права"
- begin_practicing_law_decision_desc:0 "Постичь все тонкости [GetPlayer.GetFaith.GetReligion.GetAdjectiveNoTooltip] права — дело всей жизни. Даже базовые основы требуют немалых усилий. [SelectLocalization(GetPlayer.HasTrait(GetTrait('arrogant').Self),'Хотя блестящему правителю вроде меня это не составит труда,',SelectLocalization(GetPlayer.HasTrait(GetTrait('zealous').Self),'Хотя моя набожность требует изучать догматы веры,','Но'))] если проявлю упорство, награды будут весомыми."
- continue_practicing_law_decision_desc:0 "Я слишком долго пренебрегал юридическими штудиями. Пора стряхнуть пыль с фолиантов."
- begin_practicing_law_decision_tooltip:0 "Я изучу сложный мир [GetPlayer.GetFaith.GetReligion.GetAdjectiveNoTooltip] права."
+ begin_practicing_law_decision_desc:0 "Постичь все тонкости [GetPlayer.GetFaith.GetReligion.GetNameNoTooltip]ого права — дело всей жизни. Даже базовые основы требуют немалых усилий. [SelectLocalization(GetPlayer.HasTrait(GetTrait('arrogant').Self),'Хотя блестящему правителю вроде меня это не составит труда,',SelectLocalization(GetPlayer.HasTrait(GetTrait('zealous').Self),'Хотя моя набожность требует изучать догматы веры,','Но'))] если я проявлю упорство, награды будут весомыми."
+ continue_practicing_law_decision_desc:0 "Я слишком долго пренебрегал[Select_CString(ROOT.Char.IsFemale, 'а', '')] юридическими знаниями. Пора стряхнуть пыль с фолиантов."
+ begin_practicing_law_decision_tooltip:0 "Я изучу сложный мир [GetPlayer.GetFaith.GetReligion.GetNameNoTooltip]ого права."
  begin_practicing_law_decision_confirm:0 "Начать обучение"
  begin_practicing_law_decision_effect_tt:0 "Вы будете получать события, дающие шанс повысить #E Судебный навык#! ценой [Concept('stress', 'стресса')|E]."
  promote_law_clerk_decision:0 "Взять на службу судебного клерка"
