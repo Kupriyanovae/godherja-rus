@@ -7,12 +7,12 @@
 
  convert_realm_feudalism_rite:0 "Учредить аристократию через обряд"
  convert_realm_feudalism_rite_desc:0 "Старые обычаи хорошо служили нам, и мы всегда будем чтить их. Однако как [ROOT.Char.GetTitleAsNameNoTooltip] [ROOT.Char.GetPrimaryTitle.GetNameNoTierNoTooltip] я [Select_CString(ROOT.Char.IsFemale, 'постановила', 'постановил')]: чтобы процветать дальше, мы должны править от имени семей, а не племён. Это следующий важный шаг на пути к величию!"
- convert_realm_feudalism_rite_tooltip:0 "Ваше государство станет [Concept('feudal', 'феодальным')|E]!"
+ convert_realm_feudalism_rite_tooltip:0 "Ваше государство станет [Concept('feudal', 'аристократическим')|E]!"
  convert_realm_feudalism_rite_confirm:0 "Да здравствует [ROOT.Char.GetPrimaryTitle.GetNameNoTierNoTooltip]!"
 
  form_waymakers_of_velos_decision:0 "Основать Отцов Пути Велоса"
  form_waymakers_of_velos_decision_desc:0 "Некогда наш род вёл войско Верховного короля через просторы [Concept('aeras', 'Эраса')|E], указывая путь к новой жизни на Расколотом побережье. Теперь мы вновь примем эту миссию — вести верных Обряда по стезе Велоса."
- form_waymakers_of_velos_decision_tooltip:0 "Вы создадите Священный Орден, посвящённый Велосу!"
+ form_waymakers_of_velos_decision_tooltip:0 "Вы создадите священный орден, посвящённый Велосу!"
  form_waymakers_of_velos_decision_confirm:0 "Мы проложим путь вперёд!"
  waymakers_of_velos_formed_tooltip:0 "Сменит [Concept('government', 'форму правления')|E] на [Concept('landed', 'землевладельческий')|E] [Concept('holy_order', 'священный орден')|E]"
  waymakers_of_velos_county_trigger:0 "Ваши владения должны находиться на [Concept('the_continent', 'Континенте')|E]"
@@ -42,7 +42,7 @@
   ### Создание итникавингской культуры ###
   establish_itnicavingi_culture_decision:0 "Утвердить итникавингскую идентичность"
   establish_itnicavingi_culture_decision_desc:0 "Наши поселенцы на Элизийских равнинах поколениями смешивались с мондекнами, и со временем здесь сложились новые обычаи."
-  establish_itnicavingi_culture_decision_tooltip:0 "Создать культуру итникавингов, объединив традиции барки и мондекнами"
+  establish_itnicavingi_culture_decision_tooltip:0 "Создать культуру итникавингов, объединив традиции барков и мондекнов"
   establish_itnicavingi_culture_decision_confirm:0 "Объединить поселенцев"
   establish_itnicavingi_culture_decision_effect.tt:0 "Будет создана #Y итникавингская#! культура, сочетающая наследие обеих родительских культур и перенимающая их новшества."
   
@@ -56,20 +56,20 @@
   ### Создание пактоземской культуры ###
   establish_pactlander_culture_decision:0 "Утвердить пактоземскую идентичность"
   establish_pactlander_culture_decision_desc:0 "За поколения взаимовыгодных договоров в [Glossary('Долине Кнокидбес','knokidbes_encyclopedia_desc')] разрозненные народы стали единым целым, и из этих уз сотрудничества родилась новая идентичность."
-  establish_pactlander_culture_decision_tooltip:0 "Создать культуру пактоземцев, объединив традиции трибоцикайцев и мондекнами"
+  establish_pactlander_culture_decision_tooltip:0 "Создать культуру пактоземцев, объединив традиции трибоцикайцев и мондекнов"
   establish_pactlander_culture_decision_confirm:0 "Скрепить пакт"
   establish_pactlander_culture_decision_effect.tt:0 "Будет создана #Y пактоземская#! культура, сочетающая наследие обеих родительских культур и перенимающая их новшества."
   
   ### Создание сонтрвентской культуры ###
   establish_southlander_culture_decision:0 "Утвердить сонтрвентскую идентичность"
-  establish_southlander_culture_decision_desc:0 "Наши адракампские поселенцы полюбили красоту [Glossary('Западной Опахасии','western_opakhasia_encyclopedia_desc')]. Наша гостеприимность смешалась с жизнелюбивым духом других поселенцев, и родился новый народ."
+  establish_southlander_culture_decision_desc:0 "Наши адракампские поселенцы полюбили красоту [Glossary('Западной Опакасии','western_opakhasia_encyclopedia_desc')]. Наша гостеприимность смешалась с жизнелюбивым духом других поселенцев, и так родился новый народ."
   establish_southlander_culture_decision_tooltip:0 "Создать культуру сонтрвентов, объединив традиции адракампов и вродкинов"
   establish_southlander_culture_decision_confirm:0 "Принять побережье"
   establish_southlander_culture_decision_effect.tt:0 "Будет создана #Y сонтрвентская#! культура, сочетающая наследие обеих родительских культур и перенимающая их новшества."
   
   ### Создание циверекской культуры ###
   establish_northlander_culture_decision:0 "Утвердить циверекскую идентичность"
-  establish_northlander_culture_decision_desc:0 "Наши сьялволькские поселенцы восстановили земли [Glossary('Северной Опахасии','northern_opakhasia_encyclopedia_desc')]. К югу от Парфийского моря возник новый выносливый народ, преданный развитию и пастушескому укладу."
+  establish_northlander_culture_decision_desc:0 "Наши сьялволькские поселенцы восстановили земли [Glossary('Северной Опакасии','northern_opakhasia_encyclopedia_desc')]. К югу от Парфийского моря возник новый выносливый народ, преданный развитию и пастушескому укладу."
   establish_northlander_culture_decision_tooltip:0 "Создать культуру цивереков, объединив традиции грейлокинов и фенвиров"
   establish_northlander_culture_decision_confirm:0 "Возделывать северную землю"
   establish_northlander_culture_decision_effect.tt:0 "Будет создана #Y циверекская#! культура, сочетающая наследие обеих родительских культур и перенимающая их новшества."
@@ -102,16 +102,16 @@
   establish_drogvingi_culture_decision_confirm:0 "Старые пути выживут"
   establish_drogvingi_culture_decision_effect.tt:0 "Будет создана #Y дрогвингская#! культура, сочетающая наследие обеих родительских культур и перенимающая их новшества."
   
-  ### Создание опахасийской культуры ###
-  establish_opakasijan_culture_decision:0 "Утвердить опахасийскую идентичность"
-  establish_opakasijan_culture_decision_desc:0 "Мы первыми высадились в Опахасии, и дух этой земли придал нам новый облик. Кто мы такие, чтобы не признать её своим новым домом?"
-  establish_opakasijan_culture_decision_tooltip:0 "Создать опахасийскую культуру на основе сьялволькских традиций"
+  ### Создание опакасиянской культуры ###
+  establish_opakasijan_culture_decision:0 "Утвердить опакасиянскую идентичность"
+  establish_opakasijan_culture_decision_desc:0 "Мы первыми высадились в Опакасии, и дух этой земли придал нам новый облик. Кто мы такие, чтобы не признать её своим новым домом?"
+  establish_opakasijan_culture_decision_tooltip:0 "Создать опакасиянскую культуру на основе сьялволькских традиций"
   establish_opakasijan_culture_decision_confirm:0 "Почтить первых поселенцев"
-  establish_opakasijan_culture_decision_effect.tt:0 "Будет создана #Y опахасийская#! культура, перенимающая новшества грейлокинов."
+  establish_opakasijan_culture_decision_effect.tt:0 "Будет создана #Y опакасиянская#! культура, перенимающая новшества грейлокинов."
   
   ### Создание дерещикайской культуры ###
   establish_derescicai_culture_decision:0 "Утвердить дерещикайскую идентичность"
-  establish_derescicai_culture_decision_desc:0 "На побережье [Glossary('Малькои','malcois_encyclopedia_desc')] дересстайцы и сьялволки поколениями заключали браки друг с другом. Из этих союзов на берегах поднимается новая культура."
+  establish_derescicai_culture_decision_desc:0 "На побережье [Glossary('Малькои','malcois_encyclopedia_desc')] дересстайцы и сьялволки поколениями заключали браки друг с другом. Из этих союзов на этих берегах поднимается новая культура."
   establish_derescicai_culture_decision_tooltip:0 "Создать культуру дерещикайцев, объединив традиции трибоцикайцев и дересстайцев"
   establish_derescicai_culture_decision_confirm:0 "Подняться с берегов"
   establish_derescicai_culture_decision_effect.tt:0 "Будет создана #Y дерещикайская#! культура, сочетающая наследие обеих родительских культур и перенимающая их новшества."
