@@ -505,7 +505,7 @@
 												down = "[EqualTo_string(Scope.GetFlagName, GetPlayer.MakeScope.Var('gh_chosen_topic').GetFlagName)]"
 												size = { 210 45 }
 												onclick = "[GetScriptedGui('gh_set_selected_topic_sgui').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('gh_topic_name_flag', MakeScopeFlag(Scope.GetFlagName)).End)]"
-												raw_tooltip = "You will search knowledge on the topic of [Localize(Concatenate(Scope.GetFlagName, '_title'))]"
+												tooltip = "GH_SEARCH_KNOWLEDGE_TOOLTIP"
 												hbox = {
 													expand = { }
 													widget = {

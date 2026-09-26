@@ -118,7 +118,7 @@
 								
 									## GH ADDITIONS ##
 									vbox = {
-										visible = "[PdxGuiFoldOut.IsUnfolded]"
+										visible = "[Not( PdxGuiTabs.IsTabSet( 'other' ) )]"
 										layoutpolicy_horizontal = expanding
 										button_expandable_toggle_field = {
 											layoutpolicy_horizontal = expanding
@@ -146,7 +146,7 @@
 											item = {
 												vbox_story_cycle_entry = {
 													datacontext = "[Scope.Story]"
-													visible = "[And( GetVariableSystem.Exists('global_story_cycle_list_var'),Not( PdxGuiTabs.IsTabSet( 'other' ) ))]"
+													visible = "[And(Not(ObjectsEqual( Scope.Story.GetOwner.MakeScope, GetPlayer.MakeScope )), And( GetVariableSystem.Exists('global_story_cycle_list_var'),Not( PdxGuiTabs.IsTabSet( 'other' ) )))]"
 												}
 											}
 										}
@@ -1416,7 +1416,6 @@ types SituationList
 			visible = "[Story.HasTitleLists]"
 			datamodel = "[Story.GetTitleLists]"
 			layoutpolicy_horizontal = expanding
-			margin_top = -10
 
 			item = {
 				vbox = {
@@ -1431,21 +1430,21 @@ types SituationList
 						layoutpolicy_horizontal = expanding
 						text = "[StoryCycleVariableVisualization.GetLabel]"
 						using = Font_Size_Medium
-						margin_top = 2
+						margin_top = 5
 						margin_left = 20
 					}
 
-					spacer = { size = { 0 10 } }
+					spacer = { size = { 0 15 } }
 
 					fixedgridbox = {
 						datamodel = "[Story.MakeScope.GetList( StoryCycleVariableVisualization.GetVariableName )]"
-						addcolumn = 85
-						addrow = 90
+						addcolumn = 60
+						addrow = 60
 						flipdirection = yes
-						datamodel_wrap = 5
+						datamodel_wrap = 8
 
 						item = {
-							coa_title_medium = {
+							coa_title_small  = {
 								datacontext = "[Scope.Title]"
 							}
 						}
