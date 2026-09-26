@@ -3,6 +3,15 @@ EVENT_WINDOW_OPTION_PURPOSE_BRIGANDS_AND_MERCENARIES_AND_BEAST_HUNTERS:0 "Это
  EVENT_WINDOW_OPTION_PURPOSE_BEAST_HUNTERS:0 "Этот вариант доступен, так как ваша [Concept('camp_purpose','цель лагеря')|E] — [GetLaw('camp_purpose_beast_hunters').GetName]"
  EVENT_WINDOW_OPTION_PURPOSE_MIGRANT_BAND:0 "Этот вариант доступен, так как ваша [Concept('camp_purpose','цель лагеря')|E] — [GetLaw('camp_purpose_migrant_band').GetName]"
  EVENT_WINDOW_OPTION_AVAILABLE_ARCANA_SKILL:0 "Этот вариант доступен благодаря вашему [Concept('skill','навыку')|E] [Concept('arcana','арканы')|E]"
-
+ EVENT_WINDOW_OPTION_AVAILABLE_FEROCIOUS_MOUNTS: "Этот вариант доступен благодаря вашему [Concept('travel_option','способу путешествия')|E] [GetTravelOption('ferocious_mounts_option').GetName]"
+ 
  event_window_widget_migration: "Текущий [Concept('migration_contribution','вклад в переселение')|E]: #P [GetPlayer.MakeScope.Var('sjalvolki_conquest_contribution').GetValue|1] #!"
  event_window_widget_migration_tooltip_widget: "[migration_widget_i][Concept('migration_contribution','Вклад в переселение')|E] определяет ваше место в [Concept('sjalvolki_migration','переселение сьялволков')|E] при распределении новых земель.Значение зависит от ваших @skill_martial_icon![Concept('martial','военных навыков')|E],@skill_prowess_icon![Concept('prowess','доблести')|E] и @skill_diplomacy_icon![Concept('diplomacy','дипломатии')|E]."
+ 
+ 
+ # Arcana lifestyle option reasons - why this option is open to you
+ EVENT_WINDOW_OPTION_AVAILABLE_MAGIC_POWER: "Этот вариант доступен, из-за имеющейся у вас @magic_icon![Concept('magic','магии')|E]"
+ EVENT_WINDOW_OPTION_AVAILABLE_MAGIC_SCHOOL: "Этот вариант доступен, из-за вашей [Concept('magic_type','школы магии')|E]"
+ EVENT_WINDOW_OPTION_AVAILABLE_MAGIC_ASPECT: "Этот вариант доступен, из-за вашего глубоко погружения в [Concept('gh_aspect','аспект')|E]"
+ EVENT_WINDOW_OPTION_AVAILABLE_COURT_MAGI: "Этот вариант доступен, так как вы имеете [Concept('court_magi','придворного мага')|E], [GetPlayer.GetCouncillorPosition( 'councillor_court_magi' ).GetCouncillor.GetName]"
+ EVENT_WINDOW_OPTION_AVAILABLE_COURT_POSITION: Этот вариант доступен, из-за [Concept('court_position','придворной должности')|E] у вас при дворе"

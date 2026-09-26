@@ -95,10 +95,10 @@
  magic_skirmishers_improvement_modifier: "Улучшение боя застрельщиков"
  magic_skirmishers_improvement_modifier_desc: ""
  #sailing_magic_advantage_magic_modifier: "Improved Sailing"
- sailing_magic_advantage_magic_modifier_desc: "Попутные ветра"
+ #sailing_magic_advantage_magic_modifier_desc: "Попутные ветра"
 
  #sailing_magic_disadvantage_magic_modifier: "Worsened Sailing"
- sailing_magic_disadvantage_magic_modifier_desc: "Неблагоприятные ветра"
+ #sailing_magic_disadvantage_magic_modifier_desc: "Неблагоприятные ветра"
 
  water_strider_name: "Хождение по воде"
  water_strider_desc: "Улучшенная боевая способность вблизи воды"
@@ -231,8 +231,6 @@
 
  add_character_modifier_magical_nature_improvement_name: "Усиление магией природы"  
  add_character_modifier_magical_nature_improvement_desc: "Повышает общие способности всех [Concept('aspect_nature','природных')|E] магических существ в бою."  
-
-
 
  add_character_modifier_magical_hymns_enhancement_name: "Усиление магией гимнов"  
  add_character_modifier_magical_hymns_enhancement_desc: "Повышает общие способности всех магических существ [Concept('aspect_hymns','Гимна')|E] в бою."  
@@ -369,12 +367,6 @@
 
  key_of_the_obsidian_gate_name: "Ключ от Обсидиановых врат"
  key_of_the_obsidian_gate_desc: ""
-# Sungazer Spells
- eternal_day_name: "Вечный день"
- eternal_day_desc: ""
-
- ohrasiks_fervor_name: "Рвение Охрасика"
- ohrasiks_fervor_desc: ""
 
  ##########################
  # SCHOOL-SPECIFIC SPELLS #
@@ -491,8 +483,6 @@
 
  hand_spear_and_crown_name: "Рука, копье и корона"
  hand_spear_and_crown_desc: "[Concept('gh_ritual','Ритуал')|E] #EMP Рука, копье и корона#! — инструмент основателей, первых в своих линиях и решительных восстановителей. Сметая преграды на пути к величию,, он широко открывает распахивает врата к власти — будь то с помощью бронзы, стали или звонкой монеты."
-
- animal_aspect_name: "Звериный аспект"
 
  imperial_ascension_name: "Имперское возвышение"
  imperial_ascension_desc: "Шелковые одеяния, драгоценности, кинжал в спину — у тех, кто облечен властью, немало забот. [Concept('gh_ritual','Ритуал')|E] #EMP Имперское возвышение#! призван облегчить тяготы бурного начала правления, укрепляя величие и авторитет своего адресата."
@@ -615,8 +605,139 @@
  blood_rage_spell_desc: "Заклинатель использует магию [Concept('aspect_blood','крови')], чтобы разжечь свирепость своих войск."
 
  # Auroral Cycle
+ animal_aspect_name: "Звериный аспект" 
  animal_aspect_short_desc: "Свяжите свой дух с диким зверем. Кто откликнется на ваш призыв — зависит от того, где вы стоите и кто вы такой."
+ spawn_dawn_elementals_army_name: "Элементали рассвета"
+ spawn_time_elementals_army_name: "Элементали времени"
+ tales_of_the_changing_era_name: "Сказания о меняющейся эпохе"
+ tales_of_the_changing_era_desc: ""
+ 
+ 
+ # Songs of Service and Sight
+ spawn_hymns_elementals_army_name: "Элементали гимнов"
 
+ # School of Esoterics
+ blessing_of_old_songs_name: "Благословение старых песен"
+ blessing_of_old_songs_desc: ""
+ the_nine_folds_of_space_name: "Девять слоёв пространства"
+ the_nine_folds_of_space_desc: ""
+ augury_of_providence_name: "Предзнаменование провидения"
+ augury_of_providence_desc: ""
+ rite_of_astral_revelations_name: "Обряд астральных откровений"
+ rite_of_astral_revelations_desc: ""
+ taram_rite_of_prayers_name: "Ритуал молитв Тар'ама"
+ taram_rite_of_prayers_desc: ""
+ 
+ sigil_of_the_absolute_name: "Сигил Абсолюта"
+ sigil_of_the_absolute_desc: ""
+ infusion_of_the_warden_wisdom_name: "Наполнение мудростью Вардена"
+ infusion_of_the_warden_wisdom_desc: ""
+ oath_of_service_name: "Клятва служения"
+ oath_of_service_desc: ""
+ rite_of_mending_hearts_name: "Обряд исцеления сердец"
+ rite_of_mending_hearts_desc: ""
+ mysteries_of_the_northern_star_name: "Тайны Северной звезды"
+ mysteries_of_the_northern_star_desc: ""
+ 
+ ritual_of_moonfire_name: "Ритуал лунного огня"
+ ritual_of_moonfire_desc: ""
+ divine_pillars_of_judgment_name: "Божественные столпы суда"
+ divine_pillars_of_judgment_desc: ""
+ angels_wrath_name: "Гнев ангелов"
+ angels_wrath_desc: ""
+
+ # School of Manifestations
+ invocation_of_the_living_city_name: "Воззвание к Живому городу"
+ invocation_of_the_living_city_desc: ""
+ emberstone_formula_name: "Формула Углекамня"
+ emberstone_formula_desc: ""
+ fadil_war_invocation_name: "Воззвание войны Фадила"
+ fadil_war_invocation_desc: ""
+ talisman_of_golden_grace_name: "Талисман золотой благодати"
+ talisman_of_golden_grace_desc: ""
+ formula_of_eternal_roads_name: "Формула вечных дорог"
+ formula_of_eternal_roads_desc: ""
+ 
+ the_five_pillars_name: "Пять столпов"
+ the_five_pillars_desc: ""
+ ancient_lustration_of_warding_name: "Древнее очищение защиты"
+ ancient_lustration_of_warding_desc: ""
+ wrath_of_sarradon_name: "Гнев Саррадона"
+ wrath_of_sarradon_desc: ""
+ flowing_grace_charm_name: "Оберег струящейся благодати"
+ flowing_grace_charm_desc: ""
+ wuhayb_and_rhemnon_boon_name: "Дар Вухайба и Ремнона"
+ wuhayb_and_rhemnon_boon_desc: ""
+ 
+ raqiya_supreme_equation_name: "Высшее уравнение Ракии"
+ raqiya_supreme_equation_desc: ""
+ boon_of_silvery_arms_name: "Дар серебристых рук"
+ boon_of_silvery_arms_desc: ""
+ muqsidi_arcane_foundations_name: "Арканные основы Муксиди"
+ muqsidi_arcane_foundations_desc: "" 
+ 
+ 
+  # School of Malignancies
+  freezing_night_name: "Ледяная ночь"
+ freezing_night_desc: ""
+ scarification_of_lasting_agony_name: "Шрамофикация непреходящей агонии"
+ scarification_of_lasting_agony_desc: ""
+ forbidden_feast_of_mind_hunger_name: "Запретный пир голода разума"
+ forbidden_feast_of_mind_hunger_desc: ""
+ thysian_lobotomy_name: "Тисийская лоботомия"
+ thysian_lobotomy_desc: ""
+ the_seven_deadly_songs_name: "Семь смертельных песен"
+ the_seven_deadly_songs_desc: ""
+ 
+ rite_of_the_red_river_name: "Обряд Красной реки"
+ rite_of_the_red_river_desc: ""
+ uncover_the_buried_name: "Раскрыть погребённое"
+ uncover_the_buried_desc: ""
+ curse_of_erasure_name: "#font:RedactedScriptFont ______#! проклятие стирания"
+ curse_of_erasure_desc: ""
+ rite_of_pestilence_name: "Ритуал чумы"
+ rite_of_pestilence_name_desc: ""
+ transmutation_of_deadly_steel_name: "Трансмутация смертоносной стали"
+ transmutation_of_deadly_steel_desc: ""
+ 
+ heart_freeze_name: "Заморозка сердца"
+ heart_freeze_desc: ""
+ ovarshik_necromantic_ritual_name: "Некромантический ритуал [Glossary('Оваршика','GH_OVARSHIK_SARRADON_GLOSS')]"
+ ovarshik_necromantic_ritual_desc: ""
+ hex_of_festering_wounds_name: "Порча гноящихся ран"
+ hex_of_festering_wounds_desc: ""
+ life_leeching_fangs_name: "Клыки, высасывающие жизнь"
+ life_leeching_fangs_desc: ""
+ frozen_abyss_name: "Мёрзлая бездна"
+ frozen_abyss_desc: ""
+ 
+ 
+ # Obsidian Mirror Oneiroscopy
+ curse_of_sinister_travels_name: "Проклятие зловещих странствий"
+ curse_of_sinister_travels_desc: ""
+ hex_of_the_black_sky_name: "Порча чёрного неба"
+ hex_of_the_black_sky_desc: ""
+ whisper_of_demise_name: "Шёпот кончины"
+ whisper_of_demise_desc: ""
+ panoptic_shadow_name: "Всевидящая тень"
+ panoptic_shadow_desc: ""
+ mirror_of_contradictions_name: "Зеркало противоречий"
+ mirror_of_contradiction_desc: ""
+ 
+ sirhad_forbidden_arcana_xvii_name: " XVII запретная аркана Сирхада"
+ sirhad_forbidden_arcana_xvii_desc: ""
+ dark_conduit_name: "Тёмный проводник"
+ dark_conduit_desc: ""
+ mistveil_name: "Туманная вуаль"
+ mistveil_desc: ""
+ void_prison_name: "Тюрьма Пустоты"
+ void_prison_desc: ""
+ nightmare_of_the_beast_name: "Кошмар Зверя"
+ nightmare_of_the_beast_desc: ""
+ 
+ ominous_presence_name: "Зловещее присутствие"
+ ominous_presence_desc: ""
+ 
  
  # Greenwender of Sarradon Spells
  justice_of_the_primeval_garden_name:89 "Правосудие Первозданного Сада"
@@ -628,14 +749,205 @@
  tu_nihanas_fork_tongued_speak_name:89 "Двоедушная речь Ту-Ниханы"
  tu_nihanas_fork_tongued_speak_desc:89 ""
 
+ # Luminous Discipline
+ 
+ magi_judge_thaumaturgy_name: "Тауматургия Мага-cудьи"
+ magi_judge_thaumaturgy_desc: "Величие [aspect_light] исцеляет изъяны тела и врачует его недуги."
+ radiant_emissaries_name: "Сияющие посланники"
+ radiant_emissaries_desc: ""
+ form_of_radiance_name: "Форма сияния"
+ form_of_radiance_desc: ""
+ mark_of_the_eternal_order_name: "Печать Вечного ордена"
+ mark_of_the_eternal_order_desc: "Реликвия из времён задолго до нынешней эпохи, Вечный орден — могущественнейшая печать Мага-Судьи. Лишь сильнейший ткач [aspect_light] и [aspect_fire] способен раскрыть её полный потенциал."
+ lasiyahul_flawless_runes_name: "Безупречные руны Ласияхула"
+ lasiyahul_flawless_runes_desc: ""
+ 
+ 
+ goldbound_laws_name: "Законы, скреплённые золотом"
+ goldbound_laws_desc: ""
+ mending_of_kingdoms_name: "Исцеление королевств"
+ mending_of_kingdoms_desc: ""
+ luminous_sight_name: "Светозарное зрение"
+ luminous_sight_desc: ""
+ blazing_sword_of_verdict_name: "Пылающий меч приговора"
+ blazing_sword_of_verdict_short_desc: "Меч Мага-cудьи рассекает ложь человека столь же остро, как и воздух. Его клинок ярко сияет, когда произносят лишь правду."
+ purifying_prism_of_day_name: "Очищающая призма дня"
+ purifying_prism_of_day_desc: ""
+ 
+ 
+ hubarin_last_benevolence_name: "Последняя благосклонность Хубарина"
+ hubarin_last_benevolence_desc: ""
  
 # Path of the Twin Gods
+# Way of the Ancestors (??? - 1st century IS)
+ tongue_of_spirits_divination_name:89 "[Glossary('Чихва Кон Натн','GH_CHIWHA_KON_NATN_GLOSS')]"
+ shield_against_death_name:89 "[Glossary('Лох Тотаан Акхар','GH_LOH_TOTAAN_AKKHAR_GLOSS')]"
+ #Way of the Hunt (1st century IS - 4th century IS)
+ jerniem_fortitude_name:89 "Стойкость Джерниема"
+ mantle_jerniem_name:89 "Мантия Джерниема"
+ jerniems_curse_name:89 "Проклятие Джерниема"
+ jerniems_ears_name:89 "Уши Джерниема"
+ prayers_for_jerniems_guidance_name:89 "Молитвы о наставлении Джерниема"
+ path_of_leopard_name:89 "[Glossary('Налмик Конве Судеу','GH_NALMIC_KONVE_SUDEU_GLOSS')]"
+ #Way of the Caretaker (1st century IS - 4th century IS)
+ path_of_stone_sloth_name:89 "[Glossary('Налмик Конве Бин Налмикаа','GH_NALMIC_KONVE_BIN_NALMICAA_GLOSS')]"
+ call_of_the_dekakyanat_name:89 "Зов [Glossary('декакьянатов','GH_DEKAKYANAT_GLOSS')]"
+ call_of_the_dekakyanat_desc:89 "С незапамятных времён великие мужи Наттанана высекали свои лица в каменных головах, установленных близ их поселений. Некоторые — замаскированные [Glossary('декакьянаты','GH_DEKAKYANAT_GLOSS')], ожидающие любого, кто пожелает навредить народу Богов-Близнецов. Разгневанные, они вырываются из земли, поражая врагов крепкими руками из лиан, и безжалостно преследуют их."
+ tarfal_shield_against_death_name:89 "[Glossary('Чан Тарфал Лох Тотаан Акхар','GH_CHAN_TARFAL_LOH_TOTAAN_AKKHAR_GLOSS')]"
+ plaing_kon_ve_hullo_name:89 "[Glossary('Плаинг Кон Ве Хулло','GH_PLAING_KON_VE_HULLO_GLOSS')]"
+ prayers_for_tarfals_guidance_name:89 "Молитвы о наставлении Тарфала"
+ blessing_of_garden_name:89 "Благословение Сада"
+ tarfal_garden_remedy_name:89 "Садовое снадобье Тарфала"
+ #Way of the Protector (3rd century IS - 4th century IS)
+ shape_mountain_and_jungle_name:89 "Соунг Кья Лаэй Хулло"
+ taeha_neimkyanat_of_tarfal_name:89 "Размещение [Glossary('Таэха Неймкьянат','GH_TAEHA_NEIMKYANAT_GLOSS')]"
+ jerniems_protection_name:89 "Ритуал защиты Джерниема"
+#Way of the Destroyer (3rd century IS - 4th century IS)
 
  twin_gods_hex_of_wrath_name:89 "[Glossary('Чан Фэй Тэйб Тансит Кон Крод','GH_CHAN_FEI_TEIB_TANSIT_KON_CROD_GLOSS')]"
  twin_gods_hex_of_wrath_desc:89 "Когда Боги-Близнецы сошлись с Корлаку в Войне Раскола, Они вознамерились покарать последователей Корлаку, которые все еще мнили себя в безопасности на охоте в священных джунглях. И научили Они своих самых верных учеников языку своего происхождения и тому, как воспевать заклятие гнева, обращенное к самим джунглям. Те, кто дерзал сопротивляться Богам-Близнецам после этого, порой оказывались разорваны лесом на части. С тех пор путники в джунглях время от времени находят тела, рассеченные пополам: одна половина уходит в землю, а другая свисает с крон деревьев."
+ twin_gods_power_name:89 "Сила Богов-Близнецов"
+ reposed_armillaria_name:89 "Яд раны"
+ march_of_the_taeha_neimkyanat_of_tarfal_name:89 "Марш [Glossary('Таэха Неймкьяната','GH_TAEHA_NEIMKYANAT_GLOSS')]"
+ #Way of the Sepattan
+ mark_of_jerniem_name:89 "Печать Джерниема"
+ mark_of_jerniem_desc:89 "Одно из глубочайших решений, которое может принять последователь Богов-Близнецов, — навсегда уподобиться одному из них в характере; носящие эту татуировку отражают Джерниема."
+ mark_of_tarfal_name:89 "Печать Тарфала"
+ mark_of_tarfal_desc:89 "Одно из глубочайших решений, которое может принять последователь Богов-Близнецов, — навсегда уподобиться одному из них в характере; носящие эту татуировку отражают Тарфала."
 
 
 
+ # Sungazers 
+ ohrasik_divine_absolution_name: "Божественное отпущение Охрасика"
+ ohrasik_divine_absolution_desc: ""
+ the_malaak_will_name: "Воля Малаака"
+ the_malaak_will_desc: ""
+ soul_purification_name: "Очищение души"
+ soul_purification_desc: ""
+ culling_the_wicked_name: "Отсечение нечестивых"
+ culling_the_wicked_desc: ""
+ ritual_of_blinding_faith_name: "Обряд слепой веры"
+ ritual_of_blinding_faith_desc: ""
+ 
+ eternal_day_name: "Вечный день"
+ eternal_day_desc: ""
+ ohrasiks_fervor_name: "Рвение Охрасика"
+ ohrasiks_fervor_desc: ""
+ incantantion_of_divine_growth_name: "Воззвание божественного роста"
+ incantantion_of_divine_growth_desc: ""
+ bloodflame_divine_fortification_name: "Божественное укрепление Кровавого пламени"
+ bloodflame_divine_fortification_desc: ""
+ pentaur_zealous_carthasis_name: "Ревностный катарсис Пентаура"
+ pentaur_zealous_carthasis_desc: ""
+ 
+ sanctification_of_boiling_blood_name: "Освящение кипящей крови"
+ sanctification_of_boiling_blood_desc: ""
+ crater_bounties_name: "Дары кратера"
+ crater_bounties_desc: ""
+ incantation_of_ohrasik_wrath_name: "Заклинание гнева Охрасика"
+ incantation_of_ohrasik_wrath_desc: ""
+
+ # Minstrels' Teachings
+ legions_of_our_late_queen_name: "Легионы нашей покойной королевы"
+ legions_of_our_late_queen_desc: "Звуки надкрыльев насекомых Кратемезина — ближайшее из существующего к тем, что издаёт Определённость. Их ярость доступна тем, кто способен говорить теми же нотами."
+ singing_cartography_name: "Поющая картография"
+ singing_cartography_desc: "В Кратемезине поющие сады используются для поиска пути. Словно когда-то они были связаны в единый больший узор..."
+ dances_of_the_muddy_depths_name: "Танцы илистых глубин"
+ dances_of_the_muddy_depths_desc: "Обитатели Кратемезина знают, что их почва улучшается от музыки, ибо все танцуют под её звук, включая червей, что перестраивают её отложения."
+ gifted_bodies_from_the_minstrels_name: "Одарённые тела от Менестрелей"
+ gifted_bodies_from_the_minstrels_desc: "Абаду Кулак, знаменитый иккар IV века И.С., понял, как управлять божественными песнями, чтобы даровать себе регалии истинного монарха: жвалы, фасеточные глаза..."
+ speed_of_the_masked_moth_name: "Скорость Маскированного мотылька"
+ speed_of_the_masked_moth_desc: "Среди менестрелей, легенда гласит, что Маскированный мотылёк был известен своим неистовым танцем, столь быстрым, что за Ним не мог уследить невооружённый глаз."
+ 
+ boneless_spalm_name: "Бескостный спалм"
+ boneless_spalm_desc: "Кости. Слишком много костей. Они им не нужны."
+ vanishing_of_the_invisible_cicada_name: "Исчезновение Невидимой Цикады"
+ vanishing_of_the_invisible_cicada_desc: "Среди менестрелей легенда гласит, что Невидимая цикада стала мастером проникновения и скрытности и всегда имела в запасе несколько ходов вперёд."
+ kaleidoscope_of_the_ever_changing_dragonfly_name: "Калейдоскоп Вечно меняющейся стрекозы"
+ kaleidoscope_of_the_ever_changing_dragonfly_desc: "Среди менестрелей Вечно меняющаяся стрекоза умела показать Истину, как никто другой, — и безумие, что исходит от неё."
+ wooden_oudh_razor_name: "Бритва из древесного уда"
+ wooden_oudh_razor_short_desc: "Поток былых мелодий отдаётся эхом в лесах [Glossary('#G_light Кратемезина#!','crater_encyclopedia_desc')] с мелодией столь пронзительной, что оружие из его древесины рассекает кость и металл."
+ echoes_of_the_fossilized_conch_name: "Отголоски окаменелой раковины"
+ echoes_of_the_fossilized_conch_desc: "Именно в 480 И.С. первая община а'фтал фелудов была основана в раковине огромной окаменелой аммониты."
+ 
+ memories_of_the_great_massacre_name: "Воспоминания о Великой резне"
+ memories_of_the_great_massacre_desc: ""
+ vibrations_of_levitation_name: "Вибрации левитации"
+ vibrations_of_levitation_desc: ""
+ illuminations_of_bayas_abdun_name: "Озарения Баяса'Абдуна"
+ illuminations_of_bayas_abdun_desc: "Баяс'Абдун, иккар II века И.С., знал, что идея угасает прежде формы. Тогда все преклонили колени, и плакали, и пели, ибо убеждённость для них стала бесполезна, когда Истина Песен обрела форму."
+ awakening_of_the_sleeping_melody_name: "Пробуждение спящей мелодии"
+ awakening_of_the_sleeping_melody_desc: ""
+ monstrous_jaws_of_the_void_name: "Чудовищные челюсти Пустоты"
+ monstrous_jaws_of_the_void_desc: ""
+ 
+ birth_of_a_new_minstrel_name: "Рождение нового Менестреля"
+ birth_of_a_new_minstrel_desc: ""
+ molting_of_boneless_ones_formula_name: "Формула линьки Бескостного"
+ molting_of_boneless_ones_formula_desc: ""
+ revelations_of_turab_al_lila_name: "Откровения Тураба'Аль'Лилы"
+ revelations_of_turab_al_lila_desc: "Тураб'Аль'Лила была сложной песней, практикуемой шпионами Назы Великой, чтобы узнать секреты своих врагов ещё до того, как те узнавали, что им придётся иметь с ней дело."
+ creeping_lingering_shadow_name: "Ползучая затаившаяся тень"
+ creeping_lingering_shadow_desc: "Тени в моём доме. Они говорят об утраченных аннулисах, о Тех, кто бил в Барабаны. Я вижу Их форму, вписанную в Песнопения. Мы должны быть Там. Где Барабаны!? СКАЖИ МНЕ! ГДЕ ДАРБУКИ!?"
+ symposium_of_the_throne_of_primordial_revelation_name: "Симпозиум Трона Изначального Откровения"
+ symposium_of_the_throne_of_primordial_revelation_desc: "Абальхоссан Тельмудж, самопровозглашённый менестрель Мухладжи'а Либадаай, высвободил заклинание, вновь обретённое на древней медной пластине в Зур'Истам'Ле. Но он потерял над ним контроль, и вскоре все жители города начали убивать или любить друг друга. Или и то, и другое."
+ 
+ chorus_of_spectral_melodies_name: "Хор призрачных мелодий"
+ chorus_of_spectral_melodies_desc: ""
+ wild_orchestra_name: "Дикий оркестр"
+ wild_orchestra_desc: ""
+
+ # Permutations of the Bored God
+ 
+ arias_of_the_whipped_flesh_name: "Арии иссечённой плоти"
+ arias_of_the_whipped_flesh_desc: ""
+ alabaster_prison_name: "Алебастровая тюрьма"
+ alabaster_prison_desc: ""
+ scarlet_guard_of_the_solitary_lord_name: "Багровая стража Одинокого Владыки"
+ scarlet_guard_of_the_solitary_lord_desc: ""
+ canonical_chants_of_the_impaled_name: "Канонические песнопения Насаженного на кол"
+ canonical_chants_of_the_impaled_desc: ""
+ gurgling_of_necrotic_milk_name: "Клокотание некротического молока"
+ gurgling_of_necrotic_milk_desc: ""
+ 
+ the_seer_lullaby_name: "Колыбельная Провидицы"
+ the_seer_lullaby_desc: ""
+ masterpieces_of_the_tendon_weaver_name: "Шедевры Ткача сухожилий"
+ masterpieces_of_the_tendon_weaver_desc: ""
+ amplification_of_spontaneous_combustion_name: "Усиление самовозгорания"
+ amplification_of_spontaneous_combustion_desc: ""
+ judge_bahir_ez_zhara_art_of_confession_name: "Искусство исповеди судьи Бахира Эз Зары"
+ judge_bahir_ez_zhara_art_of_confession_desc: ""
+ puppet_master_baladin_name: "Кукольник Баладин"
+ puppet_master_baladin_desc: ""
+ 
+ reaper_maieutics_name: "Майевтика Жнеца"
+ reaper_maieutics_desc: ""
+ initiation_to_the_mysteries_of_sweetness_name: "Посвящение в таинства сладости"
+ initiation_to_the_mysteries_of_sweetness_desc: ""
+ cacophony_of_popular_ambiance_name: "Какофония народной атмосферы"
+ cacophony_of_popular_ambiance_desc: ""
+ foundations_of_divine_dialogue_name: "Основы божественного диалога"
+ foundations_of_divine_dialogue_desc: ""
+ first_notes_of_the_clogged_pipe_name: "Первые ноты засорённой трубы"
+ first_notes_of_the_clogged_pipe_desc: ""
+ 
+ aura_of_convulsive_generosity_name: "Аура конвульсивной щедрости"
+ aura_of_convulsive_generosity_desc: ""
+ grand_carnival_of_the_butchery_name: "Великий карнавал бойни"
+ grand_carnival_of_the_butchery_desc: ""
+ surge_of_abysmal_plectrums_name: "Всплеск бездонных плектров"
+ surge_of_abysmal_plectrums_desc: ""
+ resonant_scream_name: "Резонирующий крик"
+ resonant_scream_desc: ""
+ litany_of_the_flayed_name: "Литания освежёванных"
+ litany_of_the_flayed_desc: ""
+ 
+ mistral_euphony_name: "Эвфония мистраля"
+ mistral_euphony_desc: ""
+ 
+ 
+ 
  # Temple of the Vitreous Precept Spells
  shattercurse_name: "Проклятие разлома"
  shattercurse_desc: "Часто упоминаемое излюбленное заклинание среди энтузиастов стеклянных [Concept('magi','магов')|E], Проклятие Мирского Разрушения — обычно сокращаемое как #EMP Проклятие разлома#! — является основой многих магических арсеналов. Балансируя на грани между [Concept('gh_ritual','ритуалом')|E] и заговором, оно ценится за простоту своей симпатической связи, #EMP относительную#! эффективность и еще более относительную скорость сотворения."
@@ -695,6 +1007,55 @@
  anger_of_the_sea_queen_name: "Гнев Владычицы морей"
  anger_of_the_sea_queen_desc: "Считается, что это заклинание обрушивает на цель гнев Владычицы морей, повышая как скорость, так и опасность плавания."
 
+ # Night-Scrying Spells
+ ## Marks - Iafarana-related
+ mark_of_the_celestial_navigator_name: "Метка Небесного навигатора"
+ mark_of_the_daring_seafarer_name: "Метка Отважного морехода"
+ mark_of_the_wise_starcharter_name: "Метка Мудрого звездочёта"
+ mark_of_the_farseeking_explorer_name: "Метка Дальнеищущего исследователя" 
+ 
+ ## Marks - Arolyan-related
+ mark_of_the_swift_stalker_name: "Метка Быстрого преследователя"
+ mark_of_the_fierce_pursuer_name: "Метка Свирепого преследователя"
+ mark_of_the_daring_raider_name: "Метка Дерзкого налётчика"
+ mark_of_the_stalwart_defender_name: "Метка Стойкого защитника"
+ 
+ ## General spells
+ winds_of_promised_plunder_name: "Ветры обещанной добычи"
+ winds_of_the_swift_wanderer_name: "Ветры Стремительного странника"
+ storm_of_the_seas_wrath_name: "Шторм гнева моря"
+ oracle_of_the_watchful_skies_name: "Оракул бдительных небес"
+ blessing_of_the_starguided_arrows_name: "Благословение стрел, ведомых звёздами"
+ curse_of_buffeting_headwinds_name: "Проклятие хлещущих встречных ветров"
+ hex_of_the_shipwrecking_squall_name: "Порча кораблекрушительного шквала"
+ sanyuktas_heavenly_lighthouse_name: "Небесный маяк Саньюкты"
+ rite_of_the_star_blessed_birth_name: "Обряд благословлённого звёздами рождения"
+ rite_of_the_celestial_union_name: "Обряд небесного союза"
+ omen_of_the_unwary_traveler_name: "Знамение неосторожного путника"
+ winds_of_the_distant_shores_name: "Ветры далёких берегов"
+ 
+ soothing_of_sonpalas_gentle_star_name: "Умиротворение кроткой звезды Сонпалы"
+ wrath_of_akals_red_star_name: "Гнев красной звезды Акала"
+ protection_of_narpals_cold_star_name: "Защита холодной звезды Нарпала"
+ omen_of_vihangpals_wicked_star_name: "Знамение злой звезды Вихангпала"
+ 
+ communion_with_the_sages_of_the_astral_sea_name: "Общение с мудрецами Астрального моря"
+ invocation_of_the_children_of_the_storm_name: "Воззвание к Детям Бури"
+ 
+  ## Compass Spells
+ compass_of_the_hearts_desire_name: "Компас желания сердца"
+ compass_of_the_worlds_treasures_name: "Компас сокровищ мира"
+ compass_of_mankinds_progress_name: "Компас прогресса человечества"
+ compass_of_safe_passages_name: "Компас безопасных путей"
+
+ ## Astral Invocation Spells
+ astral_invocation_starry_serpent_name: "Астральное воззвание: Звёздный Змей"
+ astral_invocation_stellar_turtle_name: "Астральное воззвание: Звёздная Черепаха"
+ astral_invocation_owl_name: "Астральное воззвание: Мудрая Сова"
+ astral_invocation_tiger_name: "Астральное воззвание: Тигр"
+ astral_invocation_crown_name: "Астральное воззвание: Венец Паэрнирматра"
+ astral_invocation_eagle_name: "Астральное воззвание: Орёл"
+
  ###############
  # DARK SPELLS #
  ###############
@@ -718,7 +1079,9 @@
  mark_of_blinding_desc: ""
  mark_of_control_name: "Метка контроля"
  mark_of_control_desc: ""
-
+ mark_of_stealth_name: "Метка скрытности"
+ mark_of_stealth_desc: ""
+ 
 ####################
 # SPELL COMPONENTS #
 #################### 
@@ -1236,6 +1599,9 @@
  spawn_blood_elementals_desc:0 "Призвать элементалей крови"
  spawn_death_elementals_desc:0 "Призвать элементалей смерти"
  spawn_dark_elementals_desc:0 "Призвать элементалей тьмы"
+ spawn_dawn_elementals_army_desc:0 "Призвать элементалей рассвета"
+ spawn_time_elementals_army_desc:0 "Призвать элементалей времени"
+ spawn_hymns_elementals_army_desc:0 "Призвать элементалей гимнов" 
  spawn_ethereal_elementals_desc:0 "Призвать эфирных элементалей"
  spawn_celestial_elementals_desc:0 "Призвать элементалей небес"
  spawn_dream_elementals_desc:0 "Призвать элементалей грёз"

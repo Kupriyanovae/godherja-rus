@@ -3,11 +3,15 @@
  agent_arcanist: "Арканист"
  agent_arcanist_i: "[success_chance_max_i]"
  agent_arcanist_desc: "#WEAK На [Concept('aeras','Эрасе')|E] скрыто множество потерянных и секретных вещей, иногда вам просто нужен кто-то, кто сможет их раскрыть.#!"
-
+ agent_arcanist_desc.requirements: "$EFFECT_LIST_BULLET$ Требуется [Concept('arcana','аркана')|E]\n$EFFECT_LIST_BULLET$ #P Улучшается#! от [Concept('traits','свойств')|E] вроде [GetTrait('gh_arcanist').GetName( GetNullCharacter )] и [GetTrait('gh_sage').GetName( GetNullCharacter )]\n$EFFECT_LIST_BULLET$ #N Ухудшается#! от [Concept('traits','свойств')|E] подобных [GetTrait('drunkard').GetName( GetNullCharacter )] и [GetTrait('blind').GetName( GetNullCharacter )]"
+ agent_arcanist_desc: "$agent_arcanist_desc.flavour$\n$EFFECT_LIST_BULLET$ Предоставляет [success_chance_max_i] [scheme_potential|E]\n$agent_arcanist_desc.requirements$"
+ 
  agent_monster_hunter: "Истребитель чудовищ"
  agent_monster_hunter_i: "[success_chance_max_i]"
  agent_monster_hunter_desc: "#WEAK Любой крестьянин с хорошей реакцией и метким глазом может прозвать себя охотником, но лишь храбрецы — и безумцы — осмеливаются охотиться на [Concept('monsters','монстров')|E].#!"
-  
+ agent_monster_hunter_desc.requirements: "$EFFECT_LIST_BULLET$ Требуется [Concept('prowess','доблесть')|E] и [Concept('arcana','аркана')|E]\n$EFFECT_LIST_BULLET$ #P Улучшается#! от [Concept('traits','свойств')|E] вроде [GetTrait('brave').GetName( GetNullCharacter )] и [GetTrait('patient').GetName( GetNullCharacter )]\n$EFFECT_LIST_BULLET$ #N Ухудшается#! от [Concept('traits','свойств')|E] подобных [GetTrait('craven').GetName( GetNullCharacter )] и [GetTrait('callous').GetName( GetNullCharacter )]"
+ agent_monster_hunter_desc: "$agent_monster_hunter_desc.flavour$\n$EFFECT_LIST_BULLET$ Предоставляет [success_chance_max_i] [scheme_potential|E]\n$agent_monster_hunter_desc.requirements$"
+ 
  scheme_agent_aptitude.skill.arcana: "[arcana|E]"
 
  scheme_agent_aptitude.trait.sage: "[GetTrait('gh_sage').GetName( GetNullCharacter )]"

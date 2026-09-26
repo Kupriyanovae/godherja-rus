@@ -87,6 +87,10 @@
  death_esterax: "[Select_CString(CHARACTER.IsFemale, 'умерла', 'умер' )], устраивая фальшивый [Concept('blood_senate','Кровавый сенат')|E]"
  death_esterax_killer: "[Select_CString(CHARACTER.IsFemale, 'была убита', 'был убит' )] персонажем [TARGET_CHARACTER.GetUIName] во время проведения фальшивого [Concept('blood_senate','Кровавого сената')|E"
  death_cessation_of_life: "[Select_CString(CHARACTER.IsFemale, 'перестала', 'перестал' )] жить"
+ death_eaten_by_monsters: "[Select_CString(CHARACTER.IsFemale, 'была сожрана', 'был сожран' )] [Concept('monsters','монстрами')|E]"
+ death_eaten_by_monsters_killer: "[Select_CString(CHARACTER.IsFemale, 'была сожрана', 'был сожран' )] [Concept('monsters','монстрами')|E] [TARGET_CHARACTER.GetUINamePossessive] "
+ death_accidentally_eaten_by_frenzied_monsters: "[Select_CString(CHARACTER.IsFemale, 'была сожрана', 'был сожран' )] разъяренными [Concept('monsters','монстрами')|E] в несчастном случае"
+ death_accidentally_eaten_by_frenzied_monsters_killer: "[Select_CString(CHARACTER.IsFemale, 'была сожрана', 'был сожран' )] разъяренными [Concept('monsters','монстрами')|E] [TARGET_CHARACTER.GetUINamePossessive] в несчастном случае"
  # Historical
  death_agionists: "[Select_CString(CHARACTER.IsFemale, 'была жестоко убита', 'был жестоко убит' )] боевиками-агионистами"
  death_agionists_killer: "[Select_CString(CHARACTER.IsFemale, 'была жестоко убита', 'был жестоко убит' )] боевиком-агионистом по имени [TARGET_CHARACTER.GetUIName]"

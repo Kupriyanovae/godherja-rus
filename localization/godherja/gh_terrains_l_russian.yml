@@ -160,6 +160,7 @@
  redlands_mountains_attrition_mult:0 "Получаемых [command_modifier_i|E][Concept('attrition', 'потерь')|E] в горах Красных земель"
 
  archipelagic:0 "Архипелаги"
+ saratan:0 "Саратан"
  archipelagic_advantage:1 "[command_modifier_i|E][advantage|E] на архипелагах"
  archipelagic_attrition_mult:1 "Получаемых [command_modifier_i|E][Concept('attrition', 'потерь')|E] на архипелагах"
  archipelagic_cancel_negative_supply:1 "[command_modifier_i|E]Игнорирует штраф к [supply_limit|E] на архипелагах"
@@ -174,7 +175,21 @@
  archipelagic_levy_size:0 "$MOD_LEVY_SIZE$ на архипелагах"
  archipelagic_supply_limit_mult:0 "$MOD_SUPPLY_LIMIT_MULT$ на архипелагах"
  archipelagic_travel_danger:0 "[GetTerrain( 'archipelagic' ).GetName] [travel_danger|E]"
-
+ saratan_advantage:1 "[command_modifier_i|E][advantage|E] на саратанах"
+ saratan_attrition_mult:1 "[command_modifier_i|E][attrition|E] [Concept('attrition', 'потерь')|E] на саратанах"
+ saratan_cancel_negative_supply:1 "[command_modifier_i|E]Игнорирует штраф к [supply_limit|E] на саратанах"
+ saratan_max_combat_roll:1 "[command_modifier_i|E]Максимальный [combat_roll|E] на саратанах"
+ saratan_min_combat_roll:1 "[command_modifier_i|E]Минимальный [combat_roll|E] на саратанах"
+ saratan_construction_gold_cost:0 "$MOD_CONSTRUCTION_GOLD_COST$ на саратанах"
+ saratan_construction_prestige_cost:0 "$saratan_construction_gold_cost$"
+ saratan_development_growth_factor:1 "$MOD_MONTHLY_DEVELOPMENT_GROWTH_FACTOR$ на саратанах ([terrain|E])"
+ saratan_holding_construction_gold_cost:0 "$MOD_HOLDING_CONSTRUCTION_GOLD_COST$ на саратанах"
+ saratan_holding_construction_prestige_cost:0 "$saratan_holding_construction_gold_cost$"
+ saratan_tax_mult:0 "$MOD_TAX_MULT$ на саратанах"
+ saratan_levy_size:0 "$MOD_LEVY_SIZE$ на саратанах"
+ saratan_supply_limit_mult:0 "$MOD_SUPPLY_LIMIT_MULT$ на саратанах"
+ saratan_travel_danger:0 "[GetTerrain( 'saratan' ).GetName] [travel_danger|E]"
+ 
  # Combat Localization #
  combat_marcher_farmlands:1 "Оборона на антимагической пашне"
  combat_marcher_forest:1 "Оборона в антимагическом лесу"
@@ -194,5 +209,6 @@
  combat_redlands_desert:0 "Оборона в пустыне Красных земель"
  combat_redlands_mountains:0 "Оборона в горах Красных земель"
  combat_archipelagic:1 "Оборона на архипелагах"
+ combat_saratan:1 "Оборона на саратанах"
  
  TERRAIN_SPELLCASTING_MODIFIER:0 "\n#S Эффекты сотворения заклинаний:#!"
