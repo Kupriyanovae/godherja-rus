@@ -7,7 +7,7 @@
 
  story_redlands_crisis: "Кризис Красных земель"
  story_redlands_crisis_desc: "Хаос охватил странные и таинственные [Concept('redlands_biozone','Красные земли')|E], когда из глубоких песков просачиваются могущественные магии и зловещие культы."
- STORY_REDLANDS_CRISIS_INFORMATION_STRING: "$BULLET_WITH_TAB$#indent_newline:7 Начался в #high [Subtract_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000' )] [Select_CString( GreaterThan_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000'), 'И.С.', 'Д.С.' )]#!#!"
+ STORY_REDLANDS_CRISIS_INFORMATION_STRING: "$BULLET_WITH_TAB$#indent_newline:7 Начался в #high [Subtract_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000' )] [Select_CString( GreaterThan_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000'), 'И.С.', 'Д.С.' )]#!#!" # Ended up removing this, feels cleaner without it and redlander situation feels more mysterious
  REDLANDS_CRISIS_ARTIFACT: "Бездонная призма"
 
  story_cycle_migration_coalition: "Великое переселение сьялволков"
@@ -121,3 +121,9 @@
  BOUNDEES_CHARACTER_STORY: "[Concept('characters','Персонажи')|E], привязанные к Маске\n#weak (Живые и те, кто умер, нося [Concept('artifact','артефакт')|E])#!"
  BOUNDED_MASK_CHARACTER_STORY: "Привязанная Маска [Concept('artifact','артефакт')|E]"
  defiled_nadir_character_side_story_tt: "[dead_boundee.GetFirstName] больше не привязан к маске"
+
+ story_cycle_familiar: "Фамильяр"
+ story_cycle_familiar_desc: "Связанное существо хранит свои собственные тайны и живёт по своему распорядку, и отвечает тебе лишь потому, что нечто велит ему это."
+ story_cycle_griffon: "Грифон"
+ story_cycle_griffon_desc: "[Concept('griffons','Грифон')|E], привязанный к тебе обучением и усердием. Он более верный спутник, чем любая гончая или скакун."
+ GH_FAMILIAR_STORY_PRACTICAL_INFORMATION_STRING: "Твой фамильяр привязан к [Concept('artifact','артефатка')|E]-[Concept('mount','скакуна')|E] в твоём инвентаре. Потеря этого [Concept('artifact','артефатка')|E] разрывает связь, и существо не проживёт дольше одного трудового века, прежде чем тебе придётся искать другого."

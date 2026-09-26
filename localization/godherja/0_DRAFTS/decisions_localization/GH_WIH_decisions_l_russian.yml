@@ -11,27 +11,31 @@
  gh_align_in_war_in_heaven_decision_desc: "Долгая вражда ритуалистов и варденитов по-прежнему определяет судьбу Саррадона. Ни один правитель не может вечно оставаться в стороне: нейтралитет столь же опасен, как и твёрдая убеждённость."
  gh_align_in_war_in_heaven_decision_confirm: "Заявить о своей позиции"
  gh_align_in_war_in_heaven_decision_effect_tooltip: "Вы примкнёте либо к делу [Concept('wardenism','варденитов')|E], либо к делу [Concept('ritualism','ритуалистов')|E]\n\n@warning_icon! Ваше решение повлияет на отношение других [Concept('rulers','правителей')|E] к вам"
- align_with_wardenite_item: "Единственный разумный путь — поддержать варденитов."
- align_with_ritualist_item: "Открытая поддержка ритуалистов сулит больше выгоды."
- align_with_agionist_item: "Лишь агионисты достойны поддержки."
- align_with_wardenite_item_tooltip: "Вы выступите на стороне варденитов, и они с меньшей вероятностью выступят против вас."
+
+
+ align_with_wardenite_item: "Примкнуть к варденитам"
+ align_with_ritualist_item: "Примкнуть к ритуалистам"
+ align_with_agionist_item: "Примкнуть к агионистам"
+ align_with_wardenite_item_tooltip: "Вы выступите на стороне [Concept('wardenism','варденитов')|E], и они с меньшей вероятностью выступят против вас."
  align_with_wardenite_item_enemy_tooltip: "[characters|E] [Concept('ritualism','ритуалистской')|E] [Concept('religion','религии')|E] будут считать вас [Concept('struggle_involved','участником')|E] [Concept('struggle','борьбы')|E]."
- align_with_ritualist_item_tooltip: "Вы выступите на стороне ритуалистов, и они с меньшей вероятностью выступят против вас."
+ align_with_ritualist_item_tooltip: "Вы выступите на стороне [Concept('ritualism','ритуалистов')|E], и они с меньшей вероятностью выступят против вас."
  align_with_ritualist_item_enemy_tooltip: "[characters|E] [Concept('wardenism','варденитской')|E] [Concept('religion','религии')|E] будут считать вас [Concept('struggle_involved','участником')|E] [Concept('struggle','борьбы')|E]."
  align_with_agionist_item_tooltip: "Вы выступите на стороне агионистов, и они с меньшей вероятностью выступят против вас."
  align_with_agionist_item_enemy_tooltip: "[characters|E] [Concept('wardenism','варденитских')|E] и [Concept('ritualism','ритуалистских')|E] [Concept('faiths','конфессий')|E] могут счесть вас [Concept('struggle_involved','участником')|E] [Concept('struggle','борьбы')|E]."
- recently_left_side_in_war_in_heaven_tt: "Вы недавно покинули одну из сторон Войны на небесах — вновь присоединиться можно после [GetCurrentDateWithDiff( GetVarTimeRemaining( CHARACTER.MakeScope, 'recently_left_side_in_war_in_heaven') )|V]"
+ recently_left_side_in_war_in_heaven_tt: "Вы недавно покинули одну из сторон Войны на небесах — вновь присоединиться можно после [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope, 'recently_left_side_in_war_in_heaven') )|V]"
  align_with_wardenite_item_desc: "Примкнуть к варденитам"
  align_with_ritualist_item_desc: "Примкнуть к ритуалистам"
  align_with_agionist_item_desc: "Примкнуть к агионистам"
+ is_interloper_in_wih_great_struggle_tt: "Вы — [Concept('struggle_interloper', 'вмешиваетесь')|E] в [Concept('great_struggle','великую борьбу')|E] Война на небесах."
  
  gh_unalign_in_war_in_heaven_decision: "Покинуть сторону в Войне на небесах"
  gh_unalign_wardenite_decision_desc: "Какой бы смысл я некогда ни [Select_CString(ROOT.Char.IsFemale, 'видела', 'видел' )] в поддержке варденитов, отныне их дело меня не связывает. Борьба продолжится, но я больше не стану нести их бремя."
  gh_unalign_ritualist_decision_desc: "Ритуалисты обойдутся без меня. Некогда мой меч служил им, но участвовать в их деле я более не желаю. Пусть спорят и добиваются желаемого — я за ними не последую." 
+ gh_unalign_agionist_decision_desc: "Я [Select_CString(ROOT.Char.IsFemale, 'следовала', 'следовал' )] за агионистами достаточно долго. Какую бы истину я когда-то ни надеялся обрести в их деле, я более не желаю добиваться её в этой борьбе. Отныне я найду свой собственный путь."
  gh_unalign_in_war_in_heaven_decision_tooltip: "Вы перестанете принимать активное участие в Войне на небесах"
  gh_unalign_in_war_in_heaven_decision_confirm: "Отстраниться от конфликта"
  gh_unalign_in_war_in_heaven_decision_effect_tooltip: "Вы перестанете активно поддерживать какую-либо сторону в [Concept('struggle','борьбе')|E]\n\n@warning_icon! И [Concept('ritualism','ритуалисты')|E], и [Concept('wardenism','вардениты')|E] могут усомниться в ваших намерениях"
- recently_joined_side_in_war_in_heaven_tt: "Вы недавно примкнули к одной из сторон Войны на небесах — вновь присоединиться можно после [GetCurrentDateWithDiff( GetVarTimeRemaining( CHARACTER.MakeScope, 'recently_joined_side_in_war_in_heaven') )|V]"
+ recently_joined_side_in_war_in_heaven_tt: "Вы недавно примкнули к одной из сторон Войны на небесах — вновь присоединиться можно после [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope, 'recently_joined_side_in_war_in_heaven') )|V]"
  
  
  ################################################

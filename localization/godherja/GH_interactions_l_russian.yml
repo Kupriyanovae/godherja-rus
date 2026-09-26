@@ -1,6 +1,6 @@
 ﻿l_russian:
- gh_duelist_faith_tt:0 "[recipient.GetHerHis|U] [Concept('faith','конфесия')|E] поощряет [Concept('single_combat_duel_plural','поединки')|E]: $VALUE|=+0$"
- gh_bloodlusted_faith_tt:0 "[recipient.GetHerHis|U] [Concept('faith','конфесия')|E] активно поощряет [Concept('single_combat_duel_plural','поединки')|E]: $VALUE|=+0$"
+ gh_duelist_faith_tt:0 "[recipient.GetHerHis|U] [Concept('faith','конфессия')|E] поощряет [Concept('single_combat_duel_plural','поединки')|E]: $VALUE|=+0$"
+ gh_bloodlusted_faith_tt:0 "[recipient.GetHerHis|U] [Concept('faith','конфессия')|E] активно поощряет [Concept('single_combat_duel_plural','поединки')|E]: $VALUE|=+0$"
 
  IS_ALLOWED_TO_IMPRISON_ANY_CRIMINAL_DESC:0 "#weak Поскольку [Select_CString( imprisoner.IsLocalPlayer, 'я', imprisoner.GetShortUIName )] [Select_CString( imprisoner.IsLocalPlayer, 'могу', 'может' )] наказывать преступников как [Select_CString( imprisoner.IsLocalPlayer, 'мне', 'ему' )] угодно, никто не сочтет [Select_CString( imprisoner.IsLocalPlayer, 'меня', 'его' )] [Concept('tyrant','тираном')|E]#!"
  IS_ALLOWED_TO_EXECUTE_ANY_CRIMINAL_DESC:0 "#weak Поскольку вы можете наказывать преступников как вам угодно, никто не сочтет вас [Concept('tyrant','тираном')|E]#!"
@@ -31,48 +31,54 @@
 
  # Purchase Book
  gh_buy_book_from_library_interaction: "[SelectLocalization(GetPlayer.MakeScope.Var('character_text_holder_var').IsSet,'gh_buy_book_from_library_interaction_alt', 'gh_buy_book_from_library_interaction_normal' )]"
- gh_buy_book_from_library_interaction_desc: "You will purchase [Localize(Concatenate(actor.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))] and add it to your personal [artifact|E] collection."
- gh_buy_book_from_library_interaction_normal: "Purchase [Localize(Concatenate(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))]"
- gh_buy_book_from_library_interaction_alt: "Purchase [GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )]" #ASKIL NOTE: If collections should be county-based, change value here
- gh_buy_book_from_library_interaction_desc_alt: "You will purchase [GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )] and add it to your personal [artifact|E] collection." #ASKIL NOTE: If collections should be county-based, change value here 
+ gh_buy_book_from_library_interaction_desc: "Вы приобретёте [Localize(Concatenate(actor.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))] и добавите её в свою личную коллекцию [Concept('artifact','артефактов')|E]."
+ gh_buy_book_from_library_interaction_normal: "Купить [Localize(Concatenate(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))]"
+ gh_buy_book_from_library_interaction_alt: "Купить [GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )]" #ASKIL NOTE: If collections should be county-based, change value here
+ gh_buy_book_from_library_interaction_desc_alt: "Вы приобретёте [GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )] и добавите её в свою личную коллекцию [Concept('artifact','артефактов')|E]." #ASKIL NOTE: If collections should be county-based, change value here 
  # Options 
- gh_purchase_book_directly_name: "Purchase Immediately"
- gh_purchase_book_directly: "The book is added directly to your [artifact|E] collection."
- gh_commission_book_copy_name: "Commission"
- gh_is_already_buying_book_tt: "You are already commissioning a book." 
- gh_commission_book_copy: "The book will be copied and, in 6 months' time, added to your [artifact|E] collection, while remaining available in the collection of [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier]." #ASKIL NOTE: If collections should be county-based, change value here  
+ gh_purchase_book_directly_name: "Купить немедленно"
+ gh_purchase_book_directly: "Книга добавляется напрямую в вашу коллекцию [Concept('artifact','артефактов')|E]."
+ gh_commission_book_copy_name: "Заказать копию"
+ gh_is_already_buying_book_tt: "Вы уже заказали копию книги." 
+ gh_commission_book_copy: "Книга будет скопирована и через 6 месяцев добавлена в вашу коллекцию [Concept('artifact','артефактов')|E], при этом останется доступной в собрании [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier]." #ASKIL NOTE: If collections should be county-based, change value here  
  # Effects
- gh_purchase_book_directly_tooltip: "#N #N [Localize(Concatenate(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))] will be removed from the collection of [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier].#!#!" #ASKIL NOTE: If collections should be county-based, change value here
- gh_commission_book_copy_tooltip: "[Localize(Concatenate(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))] will remain available in the collection of [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier]." #ASKIL NOTE: If collections should be county-based, change value here
- gh_purchase_book_artifact_tooltip: "You gain #high [Localize(Concatenate(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))]#! [artifact|E]"
- gh_purchase_book_directly_tooltip_alt: "#N [GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )] will be removed from the collection of [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier].#!" #ASKIL NOTE: If collections should be county-based, change value here
- gh_purchase_book_artifact_tooltip_alt: "You gain #high [GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )]" #ASKIL NOTE: If collections should be county-based, change value here
- gh_commission_book_copy_tooltip_alt: "[GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )] will remain available in the collection of [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier]." #ASKIL NOTE: If collections should be county-based, change value here
+ gh_purchase_book_directly_tooltip: "#N #N [Localize(Concatenate(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))] будет изъята из собрания [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier].#!#!" #ASKIL NOTE: If collections should be county-based, change value here
+ gh_commission_book_copy_tooltip: "[Localize(Concatenate(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))] останется доступной в собрании [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier]." #ASKIL NOTE: If collections should be county-based, change value here
+ gh_purchase_book_artifact_tooltip: "Вы получаете [artifact|E1] #high [Localize(Concatenate(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))]#!"
+ gh_purchase_book_directly_tooltip_alt: "#N [GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )] будет изъята из собрания [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier].#!" #ASKIL NOTE: If collections should be county-based, change value here
+ gh_purchase_book_artifact_tooltip_alt: "Вы получаете #high [GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )]" #ASKIL NOTE: If collections should be county-based, change value here
+ gh_commission_book_copy_tooltip_alt: "[GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )] останется доступной в собрании [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier]." #ASKIL NOTE: If collections should be county-based, change value here
  
  # Retrieve Book
  gh_retrieve_book_from_library_interaction: "[SelectLocalization(GetPlayer.MakeScope.Var('character_text_holder_var').IsSet,'gh_retrieve_book_from_library_interaction_alt', 'gh_retrieve_book_from_library_interaction_normal' )]"
- gh_retrieve_book_from_library_interaction_normal: "Retrieve [Localize(Concatenate(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))]"
- gh_retrieve_book_from_library_interaction_alt: "Retrieve [GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )]" #ASKIL NOTE: If collections should be county-based, change value here
- gh_retrieve_book_from_library_interaction_desc: "You will retrieve [Localize(Concatenate(actor.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))] and add it to your personal [artifact|E] collection."
- gh_retrieve_book_from_library_interaction_desc_alt: "You will retrieve [GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )] and add it to your personal [artifact|E] collection." #ASKIL NOTE: If collections should be county-based, change value here
+ gh_retrieve_book_from_library_interaction_normal: "Забрать [Localize(Concatenate(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))]"
+ gh_retrieve_book_from_library_interaction_alt: "Забрать [GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )]" #ASKIL NOTE: If collections should be county-based, change value here
+ gh_retrieve_book_from_library_interaction_desc: "Вы заберёте [Localize(Concatenate(actor.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName, '_title'))] и добавите её в свою личную коллекцию [Concept('artifact','артефактов')|E]."
+ gh_retrieve_book_from_library_interaction_desc_alt: "Вы заберёте [GetPlayer.GetCurrentLocation.MakeScope.Var('gh_search_library_story').Story.MakeScope.Var(GetPlayer.MakeScope.Var('gh_attempt_to_buy_book_in_collection').GetFlagName).Story.MakeScope.Var('gh_book_text_holder').GetCharacter.GetLocalizedText( 'gh_book_title' )] и добавите её в свою личную коллекцию [Concept('artifact','артефактов')|E]." #ASKIL NOTE: If collections should be county-based, change value here
  # Options 
- gh_retrieve_book_directly_name: "Retrieve Immediately"
+ gh_retrieve_book_directly_name: "Забрать немедленно"
  
  # Deposit Book
- gh_transfer_book_to_collection_interaction: "Transfer Book to Collection"
- gh_transfer_book_to_collection_interaction_desc: "You will deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] into the [collection_of_knowledge|E] in [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier]." #ASKIL NOTE: If collections should be county-based, change value here
- gh_transfer_book_to_collection_tooltip: "You deposit #high [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName]#! [artifact|E] in [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier]" #ASKIL NOTE: If collections should be county-based, change value here
- gh_theology_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Theology."
- gh_law_and_governance_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Law and Governance."
- gh_warfare_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Warfare."
- gh_philosophy_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Philosophy."
- gh_language_and_letters_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Language and Letters."
- gh_history_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in History."
- gh_mathematics_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Mathematics."
- gh_cosmology_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Cosmology."
- gh_natural_sciences_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Natural Sciences."
- gh_medicine_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Medicine."
- gh_practical_arts_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Practical Arts."
- gh_commerce_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Commerce."
- gh_literature_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Literature."
- gh_magic_topic_option_desc: "Deposit [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] in Magic."
+ gh_transfer_book_to_collection_interaction: "Передать книгу в собрание"
+ gh_transfer_book_to_collection_interaction_desc: "Вы поместите [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в [Concept('collection_of_knowledge','собрание знаний')|E] в [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier]." #ASKIL NOTE: If collections should be county-based, change value here
+ gh_transfer_book_to_collection_tooltip: "Вы помещаете [artifact|E1] #high [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName]#! в [GetPlayer.GetCurrentLocation.GetTitle.GetNameNoTier]" #ASKIL NOTE: If collections should be county-based, change value here
+ gh_theology_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Богословие»."
+ gh_law_and_governance_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Право и управление»."
+ gh_warfare_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Военное дело»."
+ gh_philosophy_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Философия»."
+ gh_language_and_letters_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Язык и словесность»."
+ gh_history_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «История»."
+ gh_mathematics_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Математика»."
+ gh_cosmology_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Космология»."
+ gh_natural_sciences_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Естественные науки»."
+ gh_medicine_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Медицина»."
+ gh_practical_arts_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Прикладные искусства»."
+ gh_commerce_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Торговля»."
+ gh_literature_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Литература»."
+ gh_magic_topic_option_desc: "Поместить [actor.MakeScope.Var('gh_transfer_book_to_collection').Artifact.GetName] в раздел «Магия»."
+
+ subrealm_has_convertible_county_gh: "У [recipient.GetFullName] #bold нет#! [Concept('county','графства')|E], которое они действительно могли бы обратить — оно должно быть иной [Concept('culture','культуры')|E], разделять их [COncept('faith','конфессию')|E] и граничить (или лежать близко за водой) с их собственной [culture|E]"
+
+ # Single breakdown line for all magic-derived offer_vassalization acceptance;
+ # the amount comes from gh_magic_vassalization_acceptance_value
+ offer_vassalization_gh_magic_acceptance_tt:0 "Влияние арканы: $VALUE|=+0$"

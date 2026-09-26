@@ -384,7 +384,7 @@
  #has_major_proficiency_tooltip:0 "You have #difficulty_medium EXPERT PROFICIENCY#! against this beast"
  gain_expert_proficiency_select_tooltip:0 "Вы получаете #difficulty_medium ЭКСПЕРТНОЕ МАСТЕРСТВО#! против [SelectLocalization(GetPlayer.MakeScope.Var('chosen_hunt_game_var').IsSet,Concatenate(GetPlayer.MakeScope.Var('chosen_hunt_game_var').GetFlagName,'_name'),Concatenate(GetPlayer.MakeScope.Var('game_gain_expert_proficiency_var').GetFlagName,'_name'))]"   all_major_proficiencies_will_be_downgraded_tooltip:0 "Вы не сможете иметь других #positive_value высоких мастерств#!, а существующие будут понижены до #positive_value среднего мастерства#!"
  all_major_proficiencies_will_be_downgraded_tooltip:0 "You will not be able to have any other #positive_value Major Proficiency#!, and any existing ones will be downgraded to #positive_value Medium Proficiency#!"
- can_continue_advancing_sjalvolki_tooltip:0 "Так как ваша [Concept('faith','конфесия')|E] [GetPlayer.GetFaith.GetName] имеет [Concept('doctrine','доктрину')|E] [GetFaithDoctrine('tenet_sjalvolki_hunt').GetBaseName], вы сможете прогрессировать по линии [Concept('trait','черт')|E] #E Охотника#!"
+ can_continue_advancing_sjalvolki_tooltip:0 "Так как ваша [Concept('faith','конфессия')|E] [GetPlayer.GetFaith.GetName] имеет [Concept('doctrine','доктрину')|E] [GetFaithDoctrine('tenet_sjalvolki_hunt').GetBaseName], вы сможете прогрессировать по линии [Concept('trait','черт')|E] #E Охотника#!"
  can_continue_advancing_beasthunter_tooltip:0 "Так как у вас есть достоинство [GetPerk('beasthunter_perk').GetName(GetPlayer)], вы сможете прогрессировать по линии [Concept('trait','черт')|E] #E Убийцы чудовищ#!"
  cannot_continue_advancing_tooltip:0 "У вас нет достоинства [GetPerk('beasthunter_perk').GetName(GetPlayer)], поэтому вы не сможете прогрессировать дальше [GetTrait('lifestyle_hunter').GetName( THIS.Char )]"
  will_ask_around_for_rumours_tooltip:0 "Вы расспросите местных о слухах про опасных [Concept('monsters','монстрах')|E]. Это может выявить необычную добычу, такую как #E вампиры#!"
@@ -577,7 +577,7 @@
  ############
  # TRIGGERS #
  ############
- I_MUST_HAVE_HUNT_TRAVEL_ENABLED:0 "Я должен быть [Concept('monster_hunt','Убийцей монстров')|E] или моя [Concept('faith','конфесия')|E] должна исповедовать доктрину Охоты сьяволки"
+ I_MUST_HAVE_HUNT_TRAVEL_ENABLED:0 "Я должен быть [Concept('monster_hunt','Убийцей монстров')|E] или моя [Concept('faith','конфессия')|E] должна исповедовать доктрину Охоты сьяволки"
  I_DO_NOT_HAVE_HUNT_TRAVEL_ENABLED:0 "Я не являюсь [Concept('monster_hunt','Убийцей монстров')|E] нужного уровня или сьяволки"
  GAME_MUST_NOT_HAVE_SIXTH_SENSE:0 "#underline [Localize(Concatenate(GetPlayer.MakeScope.Var('chosen_hunt_game_var').GetFlagName,'_name'))]#! не должен обладать Шестым Чувством"
  GAME_HAS_SIXTH_SENSE:0 "#underline [Localize(Concatenate(GetPlayer.MakeScope.Var('chosen_hunt_game_var').GetFlagName,'_name'))]#! обладает Шестым Чувством"
