@@ -1,0 +1,253 @@
+﻿############### THE SARATAN ##################
+
+window = {
+	name = "GH_window_saratan"
+	widgetid = "GH_window_saratan"
+	datacontext = "[SituationWindow.GetSituation]"
+	datacontext = "[Situation.GetTopSubRegion]"
+	datacontext = "[GetVariableSystem]"
+	datacontext = "[GetPlayer]"
+	parentanchor = top|right
+	layer = windows_layer
+	movable = no
+	allow_outside = yes
+
+	using = Window_Size_MainTab
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+		using = Sound_WindowShow_Standard
+		using = Window_Position_MainTab
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+		using = Sound_WindowHide_Standard
+		using = Window_Position_MainTab_Hide
+	}
+
+	margin_widget = {
+		size = { 100% 100% }
+		margin = { 0 26 }
+		margin_right = 13
+
+		widget = {
+			size = { 100% 100% }
+			datacontext = "[SituationSubRegion.GetCurrentPhase]"
+
+			vbox = {
+				using = Window_Margins
+
+				layoutpolicy_vertical = expanding
+				layoutpolicy_horizontal = expanding
+
+				# Header
+				vbox = {
+					layoutpolicy_horizontal = expanding
+
+					header_pattern = {
+						layoutpolicy_horizontal = expanding
+
+						blockoverride "header_text"
+						{
+							text = "[Situation.GetNameNoTooltip]"
+						}
+
+						blockoverride "button_back"
+						{
+							onclick = "[OpenGameView( 'situations' )]"
+						}
+
+						blockoverride "button_close"
+						{
+							onclick = "[SituationWindow.Close]"
+						}
+
+						blockoverride "extra_buttons"
+						{
+							button_go_to_my_location = {
+								visible = "[Situation.GetCenterProvince.IsValid]"
+								datacontext = "[Situation.GetCenterProvince]"
+								onclick = "[DefaultOnCoatOfArmsRightClick(Province.GetTitle.GetID)]"
+								tooltip = "GOTO_PROVINCE_TT"
+							}
+						}
+					}
+
+					# Current phase illustration
+					proportional_icon = {
+						name = "illustration_saratan"
+						size = { 550 180 }
+						texture = "[SituationPhase.GetType.GetIllustration]"
+					}
+				}
+
+				# Where the herd is now. Current phase only - no forecast.
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					margin = { 10 8 }
+
+					text_label_center = {
+						layoutpolicy_horizontal = expanding
+						text = "SARATAN_CURRENT_PHASE_HEADER"
+					}
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin_top = 4
+
+						icon = {
+							size = { 40 40 }
+							texture = "[SituationPhase.GetType.GetIcon]"
+
+							background = {
+								texture = "gfx/interface/icons/struggle_banners/icon_background_dark.dds"
+								margin = { 5 5 }
+							}
+						}
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							margin_left = 8
+
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								text = "[SituationPhase.GetType.GetName]"
+								using = Font_Size_Medium
+							}
+
+							text_multi = {
+								layoutpolicy_horizontal = expanding
+								autoresize = yes
+								max_width = 460
+								text = "[SituationPhase.GetType.GetDesc]"
+							}
+						}
+					}
+				}
+
+				divider_light = {
+					layoutpolicy_horizontal = expanding
+					margin = { 10 4 }
+				}
+
+				# What a ruler can actually do about it.
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					margin = { 10 5 }
+
+					text_label_center = {
+						layoutpolicy_horizontal = expanding
+						text = "SARATAN_ACTIONS_HEADER"
+					}
+					vbox = {
+						name = "saratan_actions"
+						layoutpolicy_horizontal = expanding
+						margin_top = 4
+						spacing = 3
+
+						button_saratan_action = {
+							datacontext = "[GetScriptedGui( 'gh_saratan_sound_the_deeps_sgui' )]"
+							visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							enabled = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							text = "saratan_sound_the_deeps_decision"
+							tooltip = "[ScriptedGui.BuildTooltip( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+						}
+
+						button_saratan_action = {
+							datacontext = "[GetScriptedGui( 'gh_saratan_scour_the_saratan_sgui' )]"
+							visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							enabled = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							text = "saratan_scour_the_saratan_decision"
+							tooltip = "[ScriptedGui.BuildTooltip( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+						}
+
+						button_saratan_action = {
+							datacontext = "[GetScriptedGui( 'gh_saratan_salvage_the_dead_sgui' )]"
+							visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							enabled = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							text = "saratan_salvage_the_dead_decision"
+							tooltip = "[ScriptedGui.BuildTooltip( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+						}
+
+					}
+				}
+
+				divider_light = {
+					layoutpolicy_horizontal = expanding
+					margin = { 10 4 }
+				}
+
+				# Participant group
+				vbox = {
+					datacontext = "[Situation.GetTopCharacterParticipantGroup( GetPlayer )]"
+					datacontext = "[SituationWindow.AccessParticipantCharacterList]"
+
+					layoutpolicy_horizontal = expanding
+					margin = { 10 5 }
+
+					text_label_center = {
+						layoutpolicy_horizontal = expanding
+						text = "SARATAN_PARTICIPANT_HEADER"
+					}
+
+					hbox = {
+						margin_top = 4
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+
+						icon = {
+							visible = "[SituationParticipantGroup.IsValid]"
+
+							size = { 40 40 }
+							texture = "[SituationParticipantGroup.GetType.GetIcon]"
+
+							modify_texture = {
+								texture = "gfx/interface/colors/colors_textured.dds"
+								framesize = { 96 96 }
+								frame = 7
+								alpha = 1
+							}
+
+							background = {
+								texture = "gfx/interface/icons/struggle_banners/icon_background_dark.dds"
+								margin = { 5 5 }
+							}
+						}
+
+						vbox_participant_group_summary = { }
+
+						expand = {}
+
+						button_standard = {
+							size = { 180 32 }
+							onclick = "[SituationParticipantCharacterList.Toggle]"
+							down = "[SituationParticipantCharacterList.IsVisible]"
+							text = "SITUATION_PARTICIPANT_GROUP_VIEW_ALL"
+						}
+					}
+				}
+
+				expand = {}
+
+				vbox_actionable_section = {
+					margin = { 0 12 }
+				}
+			}
+		}
+	}
+}
+
+types gh_saratan_types
+{
+	type button_saratan_action = button_standard {
+		layoutpolicy_horizontal = expanding
+		size = { 0 34 }
+		using = tooltip_ws
+	}
+}

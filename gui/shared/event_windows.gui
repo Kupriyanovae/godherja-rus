@@ -148,13 +148,19 @@ types Events
 
 		animation_glow_event = {
 			name = "special_option"
-			visible = "[And(EventOption.HasFlag('special'), Not(EventOption.HasFlag('dangerous')))]"
+			visible = "[And(EventOption.HasFlag('special'), And(Not(EventOption.HasFlag('dangerous')), Not(EventOption.HasFlag('spell'))))]"
 		}
 
 		animation_glow_event = {
 			name = "dangerous_option"
 			visible = "[EventOption.HasFlag('dangerous')]"
 			using = Color_Red
+		}
+
+		animation_glow_event = {
+			name = "spell_option"
+			visible = "[And(EventOption.HasFlag('spell'), Not(EventOption.HasFlag('dangerous')))]"
+			using = Color_Blue
 		}
 
 		### BUTTON CONTENT ####
@@ -1355,7 +1361,9 @@ types Events
 								texture = "gfx/interface/icons/court_position_types/travel_leader_court_position.dds"
 								tooltip = "EVENT_WINDOW_OPTION_AVAILABLE_CARAVAN_MASTER"
 							}
-							## GH ADDITIONS
+
+							## GH ADDITIONS ##
+
 							icon = {
 								name = "purpose_brigands_and_mercenaries_and_beast_hunters_icon"
 								visible = "[ReasonItem.IsFlag( 'purpose_brigands_and_mercenaries_and_beast_hunters' )]"
@@ -1377,8 +1385,58 @@ types Events
 								visible = "[ReasonItem.IsFlag( 'arcana' )]"
 								size = { 34 34 }
 								texture = "gfx/interface/icons/icon_skills_arcana.dds"
-								tooltip = "EVENT_WINDOW_OPTION_AVAILABLE_SKILL"
+								tooltip = "EVENT_WINDOW_OPTION_AVAILABLE_ARCANA_SKILL"
 							}
+
+							icon = {
+								name = "magic_power_icon"
+								visible = "[ReasonItem.IsFlag( 'magic_power' )]"
+								size = { 34 34 }
+								texture = "gfx/interface/icons/icon_skills_magic.dds"
+								tooltip = "EVENT_WINDOW_OPTION_AVAILABLE_MAGIC_POWER"
+							}
+
+							icon = {
+								name = "magic_school_icon"
+								visible = "[ReasonItem.IsFlag( 'magic_school' )]"
+								size = { 34 34 }
+								texture = "gfx/interface/icons/spell_menu/arcana_magic.dds"
+								tooltip = "EVENT_WINDOW_OPTION_AVAILABLE_MAGIC_SCHOOL"
+							}
+
+							icon = {
+								name = "magic_aspect_icon"
+								visible = "[ReasonItem.IsFlag( 'magic_aspect' )]"
+								size = { 34 34 }
+								texture = "gfx/interface/icons/icon_skills_magic.dds"
+								tooltip = "EVENT_WINDOW_OPTION_AVAILABLE_MAGIC_ASPECT"
+							}
+
+							icon = {
+								name = "court_magi_icon"
+								visible = "[ReasonItem.IsFlag( 'court_magi' )]"
+								size = { 34 34 }
+								texture = "gfx/interface/icons/council_task_types/task_court_magi_cast_spells.dds"
+								tooltip = "EVENT_WINDOW_OPTION_AVAILABLE_COURT_MAGI"
+							}
+
+							icon = {
+								name = "court_position_icon"
+								visible = "[ReasonItem.IsFlag( 'court_position' )]"
+								size = { 34 34 }
+								texture = "gfx/interface/icons/character_interactions/seneschal_court_position.dds"
+								tooltip = "EVENT_WINDOW_OPTION_AVAILABLE_COURT_POSITION"
+							}
+
+							icon = {
+								name = "travel_option_ferocious_mounts_icon"
+								visible = "[ReasonItem.IsFlag( 'ferocious_mounts' )]"
+								size = { 34 34 }
+								texture = "gfx/interface/icons/trait_level_tracks/beasthunter.dds"
+								tooltip = "EVENT_WINDOW_OPTION_AVAILABLE_FEROCIOUS_MOUNTS"
+							}
+
+							## END GH ADDITIONS ##
 						}
 					}
 				}
@@ -1943,13 +2001,19 @@ template Event_Window_Debug_OptionTooltips
 										
 										animation_glow_event = {
 											name = "special_option"
-											visible = "[And(EventOption.HasFlag('special'), Not(EventOption.HasFlag('dangerous')))]"
+											visible = "[And(EventOption.HasFlag('special'), And(Not(EventOption.HasFlag('dangerous')), Not(EventOption.HasFlag('spell'))))]"
 										}
 										
 										animation_glow_event = {
 											name = "dangerous_option"
 											visible = "[EventOption.HasFlag('dangerous')]"
 											using = Color_Red
+										}
+
+										animation_glow_event = {
+											name = "spell_option"
+											visible = "[And(EventOption.HasFlag('spell'), Not(EventOption.HasFlag('dangerous')))]"
+											using = Color_Blue
 										}
 									}
 									

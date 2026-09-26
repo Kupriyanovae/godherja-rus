@@ -136,6 +136,15 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
+			visible = "[And(EqualTo_string(Localize('saratan'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('saratan_water_value_add'), '(CFixedPoint)0'))]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[water_i][aspect_water] Spellcasting Success Chance: [EmptyScope.ScriptValue('saratan_water_value_add')|+0]"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
 			visible = "[And(EqualTo_string(Localize('forest'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('forest_water_value_add'), '(CFixedPoint)0'))]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
