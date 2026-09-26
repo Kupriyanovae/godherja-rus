@@ -8,7 +8,7 @@
  
  story_redlands_crisis: "The Redlands Crisis"
  story_redlands_crisis_desc: "Chaos has taken hold in the strange and mysterious [Concept('redlands_biozone','Redlands')|E] as powerful magics and foreboding cults seep out from the deep sands."
- STORY_REDLANDS_CRISIS_INFORMATION_STRING: "$BULLET_WITH_TAB$#indent_newline:7 Began in #high [Subtract_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000' )] [Select_CString( GreaterThan_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000'), 'IS', 'BI' )]#!#!"
+ STORY_REDLANDS_CRISIS_INFORMATION_STRING: "$BULLET_WITH_TAB$#indent_newline:7 Began in #high [Subtract_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000' )] [Select_CString( GreaterThan_CFixedPoint( Story.MakeScope.Var('story_start_year').GetValue, '(CFixedPoint)5000'), 'IS', 'BI' )]#!#!" # Ended up removing this, feels cleaner without it and redlander situation feels more mysterious
  REDLANDS_CRISIS_ARTIFACT: "Abyssal Prism"
 
  story_cycle_migration_coalition: "The Sjalvolki Migration"
@@ -122,3 +122,9 @@
  BOUNDEES_CHARACTER_STORY: "[characters|E] Bound to the Mask\n#weak (Living and those who died while wearing the [artifact|E])#!"
  BOUNDED_MASK_CHARACTER_STORY: "Bound Mask [artifact|E]"
  defiled_nadir_character_side_story_tt: "[dead_boundee.GetFirstName] is no longer bound to the mask"
+
+ story_cycle_familiar: "A Familiar"
+ story_cycle_familiar_desc: "A bound creature keeps its own counsel and its own hours, and answers to you only because something says it must."
+ story_cycle_griffon: "A Griffon"
+ story_cycle_griffon_desc: "A [Concept('griffons','Griffon')|E] bound to you through training and diligence. It is more loyal a companion than any hound or steed."
+ GH_FAMILIAR_STORY_PRACTICAL_INFORMATION_STRING: "Your familiar is bound to a [mount|E] [artifact|E] in your inventory. Losing that [artifact|E] severs the bond, and the creature will not see out more than a working lifetime before you must seek another."

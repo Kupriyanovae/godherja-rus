@@ -1,3 +1,24 @@
 ﻿l_english:
+ magic_focused: "Magic Focused"
+ magic_focused_desc: "$magic_focused$ [vassals|E] care about deepening and flaunting their knowledge of the [Concept('arcana','arcane')|El] and [Concept('magic','magical')|El]. Rational and curious Vassals often adopt this [vassal_stance|E] and they are more likely to study and horde magic.\n\n#low $magic_focused$ Vassals like when their Liege:#!\n$EFFECT_LIST_BULLET$Has low [crown_authority|E]\n$EFFECT_LIST_BULLET$Gives [titles|E] to [magi|E] characters\n$EFFECT_LIST_BULLET$Succeeds with the [crown_authority|E] [scheme|E]\n$EFFECT_LIST_BULLET$Is a [magi|E]\n\n#low $magic_focused$ Vassals dislike when their Liege:#!\n$EFFECT_LIST_BULLET$Has high [crown_authority|E]\n\nThey prefer powerful [magi|E] [heirs|E] with a high [arcana_i][arcana|E] skill."
+ magic_focused_filter_option: "$magic_focused$"
+ magic_focused_option_desc: "Only show Characters with the [GetVassalStance( 'magic_focused').GetName] [vassal_stance|E]"
+ magic_focused_vassal: "[GetVassalStance( 'magic_focused' ).GetTextIcon][GetVassalStance( 'magic_focused' ).GetName] [vassal|E]"
+ magic_focused_vassals: "[GetVassalStance( 'magic_focused' ).GetTextIcon][GetVassalStance( 'magic_focused' ).GetName] [vassals|E]"
+ magic_focused_opinion: "$magic_focused_vassal$ Opinion"
+ magic_focused_same_faith_opinion: "$magic_focused_opinion$ #weak (Same [faith|E])#!"
+ magic_focused_different_faith_opinion: "$magic_focused_opinion$ #weak (Different [faith|E])#!"
+ magic_focused_same_culture_opinion: "$magic_focused_opinion$ #weak (Same [culture|E])#!"
+ magic_focused_different_culture_opinion: "$magic_focused_opinion$ #weak (Different [culture|E])#!"
+ magic_focused_tax_contribution_add: "$magic_focused_vassal$ [tax|E] [modifier_base_contribution|E]"
+ magic_focused_tax_contribution_mult: "$magic_focused_vassal$ [tax|E] [modifier_contribution|E]"
+ magic_focused_levy_contribution_add: "$magic_focused_vassal$ [levy|E] [modifier_base_contribution|E]"
+ magic_focused_levy_contribution_mult: "$magic_focused_vassal$ [levy|E] [modifier_contribution|E]"
+
+ every_magic_focused_vassal_actor: "Every $magic_focused_vassal$ ([actor.MakeScope.ScriptValue('number_of_magic_focused_vassals')|V0])"
  every_magic_focused_vassal: "Every $magic_focused_vassal$ ([root_scope.MakeScope.ScriptValue('number_of_magic_focused_vassals')|V0])"
  every_participating_magic_focused_vassal: "Every participating $magic_focused_vassal$ ([THIS.Char.MakeScope.ScriptValue('number_of_participating_magic_focused_vassals')|V0])"
+
+ no_stance: "No Stance"
+ no_stance_desc: ""
+ 

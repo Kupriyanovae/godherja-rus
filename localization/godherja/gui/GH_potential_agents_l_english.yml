@@ -2,11 +2,15 @@
 
  agent_arcanist: "Arcanist"
  agent_arcanist_i: "[success_chance_max_i]"
- agent_arcanist_desc: "#WEAK There are many lost and secret things hidden on [aeras|E], sometimes you just need someone who can uncover them.#!"
+ agent_arcanist_desc.flavour: "#WEAK There are many lost and secret things hidden on [aeras|E], sometimes you just need someone who can uncover them.#!"
+ agent_arcanist_desc.requirements: "$EFFECT_LIST_BULLET$ Requires [arcana|E]\n$EFFECT_LIST_BULLET$ #P Benefits#! from [traits|E] like [GetTrait('gh_arcanist').GetName( GetNullCharacter )] and [GetTrait('gh_sage').GetName( GetNullCharacter )]\n$EFFECT_LIST_BULLET$ #N Suffers#! from [traits|E] like [GetTrait('drunkard').GetName( GetNullCharacter )] and [GetTrait('blind').GetName( GetNullCharacter )]"
+ agent_arcanist_desc: "$agent_arcanist_desc.flavour$\n$EFFECT_LIST_BULLET$ Provides [success_chance_max_i] [scheme_potential|E]\n$agent_arcanist_desc.requirements$"
 
  agent_monster_hunter: "Monster Hunter"
  agent_monster_hunter_i: "[success_chance_max_i]"
- agent_monster_hunter_desc: "#WEAK Any old farmer who's lightfooted and keen with a bow can claim to be a hunter, but only the brave, and foolhearty, can claim to hunt [monsters|E].#!"
+ agent_monster_hunter_desc.flavour: "#WEAK Any old farmer who's lightfooted and keen with a bow can claim to be a hunter, but only the brave, and foolhearty, can claim to hunt [monsters|E].#!"
+ agent_monster_hunter_desc.requirements: "$EFFECT_LIST_BULLET$ Requires [prowess|E] & [arcana|E]\n$EFFECT_LIST_BULLET$ #P Benefits#! from [traits|E] like [GetTrait('brave').GetName( GetNullCharacter )] and [GetTrait('patient').GetName( GetNullCharacter )]\n$EFFECT_LIST_BULLET$ #N Suffers#! from [traits|E] like [GetTrait('craven').GetName( GetNullCharacter )] and [GetTrait('callous').GetName( GetNullCharacter )]"
+ agent_monster_hunter_desc: "$agent_monster_hunter_desc.flavour$\n$EFFECT_LIST_BULLET$ Provides [success_chance_max_i] [scheme_potential|E]\n$agent_monster_hunter_desc.requirements$"
   
  scheme_agent_aptitude.skill.arcana: "[arcana|E]"
 

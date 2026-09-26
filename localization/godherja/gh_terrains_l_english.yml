@@ -160,6 +160,7 @@
  redlands_mountains_attrition_mult:0 "[command_modifier_i|E][attrition|E] Taken in Redlands Mountains"
 
  archipelagic:0 "Archipelagic"
+ saratan:0 "Saratan"
  archipelagic_advantage:1 "[command_modifier_i|E][advantage|E] in Archipelagos"
  archipelagic_attrition_mult:1 "[command_modifier_i|E][attrition|E] Taken in Archipelagos"
  archipelagic_cancel_negative_supply:1 "[command_modifier_i|E]Negate [supply_limit|E] Penalty in Archipelagos"
@@ -174,6 +175,20 @@
  archipelagic_levy_size:0 "$MOD_LEVY_SIZE$ in Archipelagos"
  archipelagic_supply_limit_mult:0 "$MOD_SUPPLY_LIMIT_MULT$ in Archipelagos"
  archipelagic_travel_danger:0 "[GetTerrain( 'archipelagic' ).GetName] [travel_danger|E]"
+ saratan_advantage:1 "[command_modifier_i|E][advantage|E] on Saratans"
+ saratan_attrition_mult:1 "[command_modifier_i|E][attrition|E] Taken on Saratans"
+ saratan_cancel_negative_supply:1 "[command_modifier_i|E]Negate [supply_limit|E] Penalty on Saratans"
+ saratan_max_combat_roll:1 "[command_modifier_i|E]Maximum [combat_roll|E] on Saratans"
+ saratan_min_combat_roll:1 "[command_modifier_i|E]Minimum [combat_roll|E] on Saratans"
+ saratan_construction_gold_cost:0 "$MOD_CONSTRUCTION_GOLD_COST$ on Saratans"
+ saratan_construction_prestige_cost:0 "$saratan_construction_gold_cost$"
+ saratan_development_growth_factor:1 "$MOD_MONTHLY_DEVELOPMENT_GROWTH_FACTOR$ on Saratans ([terrain|E])"
+ saratan_holding_construction_gold_cost:0 "$MOD_HOLDING_CONSTRUCTION_GOLD_COST$ on Saratans"
+ saratan_holding_construction_prestige_cost:0 "$saratan_holding_construction_gold_cost$"
+ saratan_tax_mult:0 "$MOD_TAX_MULT$ on Saratans"
+ saratan_levy_size:0 "$MOD_LEVY_SIZE$ on Saratans"
+ saratan_supply_limit_mult:0 "$MOD_SUPPLY_LIMIT_MULT$ on Saratans"
+ saratan_travel_danger:0 "[GetTerrain( 'saratan' ).GetName] [travel_danger|E]"
 
  # Combat Localization #
  combat_marcher_farmlands:1 "Defending in Anti-Magic Farmlands"
@@ -194,5 +209,6 @@
  combat_redlands_desert:0 "Defending in Redland Desert"
  combat_redlands_mountains:0 "Defeending in Redland Mountains"
  combat_archipelagic:1 "Defending in Archipelagos"
+ combat_saratan:1 "Defending on a Saratan"
  
  TERRAIN_SPELLCASTING_MODIFIER:0 "\n#S Spellcasting Effects:#!"

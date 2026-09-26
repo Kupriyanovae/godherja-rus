@@ -4938,7 +4938,8 @@
 
  building_type_01_maharatna_mahal: "Maharatna Mahal"
  building_01_maharatna_mahal: "Maharatna Mahal Ruin"
- building_01_maharatna_mahal_desc: "[Glossary('Maharatna Mahal', 'MAHARATNA_MAHAL_GLOSS')] was once the residence of the [taryaad_saramsaasan|E]. This resplendent palace began construction after $asojiva_link$ Asojiva#! was crowned the sole ruler of [kashirya|E], and required sixteen years to complete before being expanded further. At its peak, the palace held over one thousand rooms and thousands of servants bustled day and night. The interior and exterior walls were studded with gems from the [GetBuilding('01_vilunnak_mines').GetName] in the south, each the size of a human head, engraved with delicate patterns of precious metals and continuously maintained by [magi|E] channeling magic to preserve their luster, as well as their anti-magic properties. According to visitors who toured Maharatna Mahal, one could almost see the very concept of wealth flowing slowly across the palace walls.\n\nAfter [Concept('vaarash','the collapse of Taryaad Saramsaasan')|E], Maharatna Mahal fell into disrepair, and its servants scattered. When successive warlords occupied [GetTitleByKey('c_asojivas_concourse').GetNameNoTooltip], they plundered the palace's riches, leaving the once-glittering structure in ruins."
+ building_01_maharatna_mahal_desc: "[SelectLocalization( GetPlayer.IsValid, 'building_01_maharatna_mahal_desc_player','None')]" #Use GetPlayer.IsValid to avoid Data error loc
+ building_01_maharatna_mahal_desc_player: "[Glossary('Maharatna Mahal', 'MAHARATNA_MAHAL_GLOSS')] was once the residence of the [taryaad_saramsaasan|E]. This resplendent palace began construction after $asojiva_link$ Asojiva#! was crowned the sole ruler of [kashirya|E], and required sixteen years to complete before being expanded further. At its peak, the palace held over one thousand rooms and thousands of servants bustled day and night. The interior and exterior walls were studded with gems from the [GetBuilding('01_vilunnak_mines').GetName] in the south, each the size of a human head, engraved with delicate patterns of precious metals and continuously maintained by [magi|E] channeling magic to preserve their luster, as well as their anti-magic properties. According to visitors who toured Maharatna Mahal, one could almost see the very concept of wealth flowing slowly across the palace walls.\n\nAfter [Concept('vaarash','the collapse of Taryaad Saramsaasan')|E], Maharatna Mahal fell into disrepair, and its servants scattered. When successive warlords occupied [GetTitleByKey('c_asojivas_concourse').GetNameNoTooltip], they plundered the palace's riches, leaving the once-glittering structure in ruins."
  building_02_maharatna_mahal: "Bleak Maharatna Mahal"
  building_02_maharatna_mahal_desc: "[Glossary('Maharatna Mahal', 'MAHARATNA_MAHAL_GLOSS')] was once the residence of the [taryaad_saramsaasan|E]. This resplendent palace began construction after $asojiva_link$ Asojiva#! was crowned the sole ruler of [kashirya|E], and required sixteen years to complete before being expanded further. At its peak, the palace held over one thousand rooms and thousands of servants bustbustledling day and night. The interior and exterior walls were studded with gems from the [GetBuilding('01_vilunnak_mines').GetName] in the south, each the size of a human head, engraved with delicate patterns of precious metals and continuously maintained by countless [magi|E] channeling magic to preserve their luster—as well as their anti-magic properties. According to visitors who toured Maharatna Mahal, one could almost see the very concept of wealth flowing slowly across the palace walls."
  building_03_maharatna_mahal: "Maharatna Mahal"
@@ -5010,10 +5011,58 @@
  building_01_kykopleia_ruins: "Kýklōpeian Ruins"
  building_01_kykopleia_ruins_desc: "These ancient ruins have longe towered over this portion of Krehejad, long enough that whatever their origin or who their makers were is forever lost to time. The ruins themselves are massive, featuring structures built for people or creatures far larger than humans.\n\nWhile it's original builders are unknown, it has known many new occupants. The native Agadari of Krehejad have long made it their home, building over top of and repurposing the structure for their own uses. With the arrival of [Concept('aversaria', 'Aversarians')|E] following the [war_of_all_islands|E], this repurposing was only furthered, the ruins becoming a hotspot for migration thanks to many relating the ruins back to that of the [Concept('aelfir','First Men')|E]."
 
+ # Tribal - Beast Pens
+ building_type_beast_pens_01: "Beast Pens"
+ building_type_beast_pens_01_desc: "Tribal hunters and warriors prove their might in the slaying of great beasts, but an even greater show of worth is to capture one of the deadly [monsters|El] of [aeras|E] for displays of power or use in war and ceremony."
+ building_beast_pens_01: "Pen Pits"
+ building_beast_pens_01_desc: "Pits have been dug to contain the tribe's captured [monsters|El]. Warriors will sometimes descend to test their mettle, and prisoners to judge their innocence."
+ building_beast_pens_02: "Great Cages"
+ building_beast_pens_02_desc: "The materials required to build cages strong enough to contain the most dangerous of [monsters|El] are great for any tribe, but the glory is worth any cost."
+ beast_pens_desc: "$unlocks_building_desc$Increased [hunt_success_chance|E] for $hunt_type_monster_hunt$ [activities|E] Hosted in this [holding|E]"
 
+ # Standard Military - Menageries
+ building_type_menageries_01: "Menageries"
+ building_type_menageries_01_desc: "The [monsters|El] of [aeras|E] have inspired fear and awe in equal measure, but like any force of [magic|El] or nature they have been tamed and twisted to the will of man. Whether it be the noble hound, the groveling vikii, or even the dreaded [Concept('dragons','dragon')|E], all manners of beast have been bent to human use across a variety of labors and climates."
+ building_menageries_01: "Cages"
+ building_menageries_01_desc: "$building_type_menageries_01_desc$"
+ building_menageries_02: "Kennelry"
+ building_menageries_02_desc: "No good aristocrat lives without a pack of hounds. Most facilities built to contain [monsters|El] have historically been inspired by the kennel and they are frequently used to hold many types of beasts until more specialized devices can be devised. The hounds are also helpful in the handling and coralling of many beasts, and are not uncommon even in purpose-built menageries."
+ building_menageries_03: "Enclosures"
+ building_menageries_03_desc: "Simply capturing a beast to exhibit is often far cheaper than paying a specialized trainer — if one is possible to find at all — and capture for exhibition in specialized enclosures is thus far more common than taming."
+ building_menageries_04: "Riding Pits"
+ building_menageries_04_desc: "Training [monsters|El] can carry a dizzying array of dangers, trying to ride most of them is practically suicidal. Specialized pits for training riders can ensure that the beasts will at least not escape and wreak havoc after making a would-be rider into a meal."
+ building_menageries_05: "Beastmasters"
+ building_menageries_05_desc: "[Concept('monsters','Monster trainers')|E] are an eclectic bunch with a variety of backgrounds and levels of experience depending on their homeland and their specific specialization, ranging from masters of the arcane to unlucky slaves."
+ building_menageries_06: "Vivariums"
+ building_menageries_06_desc: "It is simple enough to drop a [Concept('monsters','monster')|El] in a pit, but the greatest beastmasters know that beasts must be raised in specialized environments if they are to thrive in work and war."
+ building_menageries_07: "Releaseways"
+ building_menageries_07_desc: "The most advanced menageries often incorporate specialized trap tunnels in the enclosures of their most dangerous and predatory monsters, so that they can be released upon their owner's unsuspecting foes in times of war or civil unrest."
+ building_menageries_08: "Bestiarium"
+ building_menageries_08_desc: "The greatest of menageries on [aeras|E] incorporate specialized scriptoriums so that bestiaries can be created, both for future study and use in training, and to intertwine dazzling tales of exotic beasts with the prestige of their owners."
+ ferocious_mounts_option_effect_desc: "From Level 4, enables the [GetTravelOption('ferocious_mounts_option').GetName] [travel_option|E]"
+ menageries_effect_desc: "$unlocks_building_desc$Increased [hunt_success_chance|E] for $hunt_type_monster_hunt$ [activities|E] Hosted in this [holding|E]\n$ferocious_mounts_option_effect_desc$"
 
-
-
+ # Standard Military - Covensteads
+ building_type_covensteads_01: "Covensteads"
+ building_type_covensteads_01_desc: "[magi|E] across most societies on [aeras|E] tend to congregate in their own communities — often called covensteads — in the countryside or within cities; this is not just for the sake of pooling power and ensuring privacy, but also to keep their surroundings safe from the inevitable catastrophe that can come from improper use of their [Concept('magic', 'magics')|El]."
+ building_covensteads_01: "Communal Circle"
+ building_covensteads_01_desc: "$building_type_menageries_01_desc$"
+ building_covensteads_02: "Magi's Gardens"
+ building_covensteads_02_desc: "Any gathering of [magi|E] will consume alchemical and ritual ingredients at a dizzying rate. Specially tended gardens can save fortunes that would otherwise need to be spent on purchaing and transporting these dangerous ingredients."
+ building_covensteads_03: "Servant's Quarters"
+ building_covensteads_03_desc: "A covenstead requires servants of all forms: guards to keep out the riff-raff, ingredient-runners to keep the circles stocked, acolytes to risk their lives in their master's menial experiments. The great dangers that can come with working beneath the [magi|E] is often offset by the promise of free (or discounted) services of a [Concept('magic', 'magical')|El] nature or the simple prestige of working with the arcane."
+ building_covensteads_04: "Reliquaries"
+ building_covensteads_04_desc: "Hallowed bones, captive [Glossary('spirits','animal_type_spirit_encyclopedia_desc')] and the potentially useful dead need very specific storage as to ensure their quality during ritual use. A 'reliquary' is the term given for the enchanted suite of chambers and crypts that these items are normally dropped into, sealed to ensure protection from [Concept( 'undead', 'within' )|E] and [Concept( 'necromancy', 'without' )|E]."
+ building_covensteads_05: "Observatory"
+ building_covensteads_05_desc: "The use and safety of [magic|El], even in rituals that do not otherwise align with lunar or [aspect_celestial] [Concept('gh_aspect', 'aspects')|El], is pushed and pulled by the whims of the stars and [aervalr|E] like waves on a cosmic shore. Observing the skies and charting the course of the heavens is thus of the upmost import to any secrious practitioners of the arcane."
+ building_covensteads_06: "Wardwalls"
+ building_covensteads_06_desc: "'Wardwalls' in the modern sense were first designed by the [Concept('aversaria','Aversaro')|E]-$verogii_culture_key_link_switch$ [magi|E] Kezaa 'the Bane' in the 4th century to assist $aauto_pathos_link$ Aautokratir Pathos#! in his colonization of the [GetGeographicalRegion('GH_geographic_clanlands').GetNameNoTooltip] during the [marcher_aversarian_wars|E]. The runic inscriptions on the circular wardwalls activate with a spark of magic, materializing a thin barrier which removes all oxygen from within. Originally devised to eliminate Clanlander tribes and capture errant fae, the walls would become popular around sites of [Concept('magic', 'magical')|El] experimentation as a method of quickly erasing the mistakes of Imperial Magi (or the Magi themselves)."
+ building_covensteads_07: "Celestarium"
+ building_covensteads_07_desc: "It is not good enough to simply observe the stars. Within specially made chambers within the most developed of covensteads, mechanical gears and arcane forces allow [magi|E] to chart out all 22 of the traditional major stars and the 56 minor ones, as well as the 14 divine planets. The most advanced celestariums project the results upon great domed roofs or show the turning of the heavens around [aeras|E] on thousands of intricate metal recreations of these stellar bodies. Even greater ones, such as the gargantuan 30 meter-across celestarium built in the [Glossary('Magisterium of Oraispol','GH_THE_MAGISTERIUM_GLOSS')], could chart out various astrological symbols and even the paths of consistently occuring [gedeora|E] and other [Concept('magic', 'magical')|El] events with an accompanying show of light and a chorus of booming voices to announce them to the city below."
+ building_covensteads_08: "Divineries"
+ building_covensteads_08_desc: "Divination is perhaps an older [Concept('magic', 'magical')|El] art than any other. While hedge-[Concept('magi', 'diviners')|El], village soothsayers and other charlatans and charm-peddlers are as numerous across the villages of [the_continent|El] as fleas, the aristocracy have traditionally preferred to learn the dates of their death and whether their spouse is unfaithful in more reputable and established institutions willing to demand excessive amounts of their wealth for the service."
+ verogii_culture_key_link_switch: "[SelectLocalization(HasGameStartedForTheFirstTime, 'verogii_switch_true', 'verogii')]"
+ verogii_switch_true: "[GetCultureByKey('verogii').GetName|V]"
 
 
 

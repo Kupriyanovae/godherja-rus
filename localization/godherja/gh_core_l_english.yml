@@ -1,6 +1,8 @@
 ﻿l_english:
  TRAIT_FLAG_DESC_character_magic_baseline_add:0 "[SelectLocalization(GetPlayer.IsValid, 'PLAYER_TRAIT_FLAG_DESC_character_magic_baseline_add','')]#!"
  PLAYER_TRAIT_FLAG_DESC_character_magic_baseline_add:0 "[magic_baseline|E]:[magic_baseline_i][SelectLocalization(GreaterThan_CFixedPoint(GuiScope.ScriptValue(Concatenate(Trait.GetKey, '_magic_baseline_add')),'(CFixedPoint)0'),'#positive_value +','#negative_value ')][GuiScope.ScriptValue(Concatenate(Trait.GetKey, '_magic_baseline_add'))]#!"
+ TRAIT_FLAG_DESC_character_magic_regeneration_add:0 "[SelectLocalization(GetPlayer.IsValid, 'PLAYER_TRAIT_FLAG_DESC_character_magic_regeneration_add','')]#!"
+ PLAYER_TRAIT_FLAG_DESC_character_magic_regeneration_add:0 "[mana_regeneration|E]:@magic_icon![SelectLocalization(GreaterThan_CFixedPoint(GuiScope.ScriptValue(Concatenate(Trait.GetKey, '_magic_regeneration_add')),'(CFixedPoint)0'),'#positive_value +','#negative_value ')][GuiScope.ScriptValue(Concatenate(Trait.GetKey, '_magic_regeneration_add'))] %#!"
  TRAIT_FLAG_DESC_character_magic_prowess_add:0 "[SelectLocalization(GetPlayer.IsValid, 'PLAYER_TRAIT_FLAG_DESC_character_magic_prowess_add','')]#!"
  PLAYER_TRAIT_FLAG_DESC_character_magic_prowess_add:0 "[Concept('magic_prowess_skill','Magic Prowess')|E]:[magic_prowess_i][SelectLocalization(GreaterThan_CFixedPoint(GuiScope.ScriptValue(Concatenate(Trait.GetKey, '_magic_prowess_add')),'(CFixedPoint)0'),'#positive_value +','#negative_value ')][GuiScope.ScriptValue(Concatenate(Trait.GetKey, '_magic_prowess_add'))]#!"
  
