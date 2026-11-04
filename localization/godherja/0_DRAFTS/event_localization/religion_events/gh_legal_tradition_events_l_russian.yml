@@ -8,7 +8,7 @@
  
  legal_tradition.0011.t:0 "Ложное заявление"
  legal_tradition.0011.desc:0 "Похоже, двое из моих вассалов снова не в ладах друг с другом. Хотя до открытого конфликта ещё не дошло, их враждебные манёвры в судах выглядят как прелюдия к насилию. Естественно, учитывая огромное значение правильного решения в этом деле, мои судьи мудро передали дело мне в надежде на окончательное постановление.\n\n[actor.GetTitledFirstName] выдвигает иск на [target.GetName], утверждая, что [recipient.GetTitledFirstName] [Select_CString(recipient.IsFemale, 'продемонстрировала', 'продемонстрировал')] неадекватное управление землями и их народом. [actor.GetSheHe|Она/Он] также [Select_CString(actor.IsFemale, 'приложила', 'приложил')] дополнительные доказательства, утверждая, что дальний родственник когда-то владел этим территорием, и, по сути, просит пересмотреть раздел наследства, состоявшийся более века назад. Должен[Select_CString(ROOT.Char.IsFemale, 'а', '')] сказать, что я немного впечатлён[Select_CString(ROOT.Char.IsFemale, 'а', '')] дерзостью их манёвров."
- legal_tradition.0011.a:0 "[actor.GetFirstName] has the more convincing arguments."
+ legal_tradition.0011.a:0 "Доводы персонажа [actor.GetFirstName] убедительнее."
  legal_tradition.0011.b:0 "На самом деле, в деле [recipient.GetFirstNamePossessive] есть смысл."
  legal_tradition.0011.c:0 "Я позволю судье вынести решение вместо меня."
  legal_tradition.0011.d:0 "Не беспокойте меня этой мелкой ерундой!"
@@ -62,10 +62,10 @@
  legal_tradition.0541.b:0 "Эти скряги не выше Первых Законов!"
  legal_tradition.0541.c:0 "Гильдия права."
  legal_tradition.0541.d:0 "Посмотрим, сколько стоят эти «лазейки»."
- legal_tradition.0541.e:0 "IУ меня есть дела поважнее."
+ legal_tradition.0541.e:0 "У меня есть дела поважнее."
  
  legal_tradition.0551.t:0 "Радикальные идеи" 
- legal_tradition.0551.desc:0 "Я сверлю взглядом кожаную сумку, лежащую на моём столе, будучи прекрасно [Select_CString(ROOT.Char.IsFemale, 'осведомлена', 'осведомлён')] о её содержимом благодаря новостям, которые предшествовали её прибытии. Кажется, по мнению моих судей, местный магистрат по имени [heterodox_judge.GetFirstName] потерял [heterodox_judge.GetHerHis] рассудок. [heterodox_judge.GetSheHe|U] теперь проповедует всякого рода безумства, которые, судя по всему, граничат с полной беззаконной ересью.\n\nС тяжёлым вздохом я подтягиваю конверт к себе и ножом вскрываю восковую печать, извлекая тонкую стопку пергамента с показаниями. Среди них находится прямое обращение от предполагаемого еретика [heterodox_judge.GetHerHim]а. С приподнятой бровью я начинаю читать..."
+ legal_tradition.0551.desc:0 "Я сверлю взглядом кожаную сумку, лежащую на моём столе, будучи прекрасно [Select_CString(ROOT.Char.IsFemale, 'осведомлена', 'осведомлён')] о её содержимом благодаря новостям, которые предшествовали её прибытии. Кажется, по мнению моих судей, местный магистрат по имени [heterodox_judge.GetFirstName] [Select_CString(heterodox_judge.IsFemale, 'потеряла', 'потерял' )] [heterodox_judge.GetHerHis] рассудок. [heterodox_judge.GetSheHe|U] теперь проповедует всякого рода безумства, которые, судя по всему, граничат с полной беззаконной ересью.\n\nС тяжёлым вздохом я подтягиваю конверт к себе и ножом вскрываю восковую печать, извлекая тонкую стопку пергамента с показаниями. Среди них находится прямое обращение от предполагаемого еретика [heterodox_judge.GetHerHim]а. С приподнятой бровью я начинаю читать..."
  legal_tradition.0551.a:0 "Глупец, но не более того. Сделать выговор [Select_CString(heterodox_judge.IsFemale, 'ей', 'ему')]."
  legal_tradition.0551.b:0 "Похоже, опасный радикал. Привлечь [Select_CString(heterodox_judge.IsFemale, 'её', 'его')] к ответственности."
  legal_tradition.0551.c:0 "Полная трата ресурсов. Закрыть дело."
@@ -99,7 +99,7 @@
  legal_tradition.1002.d:0 "Никто из них не достоин этой должности."
  
  legal_tradition.1003.t:0 "Достойный выбор"
- legal_tradition.1003.desc:0 ""После некоторых размышлений я составил[Select_CString(ROOT.Char.IsFemale, 'а', '')] список кандидатов на вакантное место в Верховном суде. Все это хорошие и мудрые люди, как я заверил[Select_CString(ROOT.Char.IsFemale, 'а', '')] магистратов, и, несмотря на обеспокоенные взгляды, которыми они обмениваются, думая, что я не вижу, они оказались достаточно умны, чтобы держать своё мнение при себе.  \n\nКаждое из имён в списке, конечно же, было выбрано либо за их надёжность и лояльность ко мне, за очевидную политическую выгоду, которую их назначение представляет, за щедрую плату, которую они пообещали мне после своего восхождения, либо за сочетание всех трёх! А как ещё я должен[Select_CString(ROOT.Char.IsFemale, 'а', '')] управлять варденистским миром?"
+ legal_tradition.1003.desc:0 "После некоторых размышлений я составил[Select_CString(ROOT.Char.IsFemale, 'а', '')] список кандидатов на вакантное место в Верховном суде. Все это хорошие и мудрые люди, как я заверил[Select_CString(ROOT.Char.IsFemale, 'а', '')] магистратов, и, несмотря на обеспокоенные взгляды, которыми они обмениваются, думая, что я не вижу, они оказались достаточно умны, чтобы держать своё мнение при себе.  \n\nКаждое из имён в списке, конечно же, было выбрано либо за их надёжность и лояльность ко мне, за очевидную политическую выгоду, которую их назначение представляет, за щедрую плату, которую они пообещали мне после своего восхождения, либо за сочетание всех трёх! А как ещё я должен[Select_CString(ROOT.Char.IsFemale, 'а', '')] управлять варденистским миром?"
  legal_tradition.1003.a:0 "К слову, некоторые из них, наверное, и правда неплохие судьи!"
  legal_tradition.1003.b:0 "Риск не оправдан."
  
@@ -179,13 +179,13 @@
  certainly_guilty_intuition:0 "Я уверен[Select_CString(ROOT.Char.IsFemale, 'а', '')] в виновности подсудимого, и это будет однозначный вердикт, если таковые вообще бывают."
  
  certainly_not_guilty_intuition_tooltip:0 "#difficulty_hard определённо невиновен#!"
- probably_not_guilty_intuition_tooltip:0 "#difficulty_hard вероятно невиновен!"
+ probably_not_guilty_intuition_tooltip:0 "#difficulty_hard вероятно невиновен#!"
  uncertain_guilty_intuition_tooltip:0 "#difficulty_medium неопределённо#!"
  probably_guilty_intuition_tooltip:0 "#difficulty_easy вероятно виновен#!"
  certainly_guilty_intuition_tooltip:0 "#difficulty_easy определённо виновен#!"
  
  certainly_not_guilty_intuition_inverted_tooltip:0 "#difficulty_easy определённо невиновен#!"
- probably_not_guilty_intuition_inverted_tooltip:0 "#difficulty_easy вероятно невиновен!"
+ probably_not_guilty_intuition_inverted_tooltip:0 "#difficulty_easy вероятно невиновен#!"
  uncertain_guilty_intuition_inverted_tooltip:0 "#difficulty_medium неопределённо#!"
  probably_guilty_intuition_inverted_tooltip:0 "#difficulty_hard вероятно виновен#!"
  certainly_guilty_intuition_inverted_tooltip:0 "#difficulty_hard определённо виновен#!"

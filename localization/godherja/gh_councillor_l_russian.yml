@@ -12,14 +12,14 @@
  task_court_magi_boost_magic_power:0 "Увеличить магическую силу"
  task_court_magi_boost_magic_power_desc:0 "Передает #positive_value [SCOPE.ScriptValue('task_court_magi_boost_power_value')|1]#!@magic_icon!из своей ежемесячной #E магии#! в ваш личный запас."
  task_court_magi_boost_magic_power_effect_desc:0 "Передает #positive_value [SCOPE.ScriptValue('task_court_magi_boost_power_value')|1]#!@magic_icon!из своей ежемесячной #E магии#! в ваш личный запас."
- task_court_magi_boost_magic_power_modifier:0 "Магическая сила от [court_magi|El]"
+ task_court_magi_boost_magic_power_modifier:0 "Магическая сила от [Concept('court_magi','придворного мага')|E]"
  
  task_court_magi_tutor_magic:0 "Обучать ребенка"
  task_court_magi_tutor_magic_desc:0 "Обучает детей тайным искусствам, постепенно повышая уровень их магического образования."
  task_court_magi_tutor_magic_effect_desc:0 "Обучает детей тайным искусствам, постепенно повышая уровень их магического образования."
  
  task_court_magi_defend_against_hostile_magic:0 "Противодействовать вражеской магии"
- task_court_magi_defend_against_hostile_magic_desc:0 "Снижает шанс успеха вражеских заклинаний в зависимости от [spellcasting_ability|El] и [intrigue|El].\n [magic_resistance|E]: #positive_value +[SCOPE.ScriptValue('task_court_magi_defend_against_hostile_magic_resistance_value')|1]#!"
+ task_court_magi_defend_against_hostile_magic_desc:0 "Снижает шанс успеха вражеских заклинаний в зависимости от [Concept('spellcasting_ability','способности к колдовству')|E] и [intrigue|El].\n [magic_resistance|E]: #positive_value +[SCOPE.ScriptValue('task_court_magi_defend_against_hostile_magic_resistance_value')|1]#!"
  task_court_magi_defend_against_hostile_magic_effect_desc:0 "[magic_resistance|E]: + #positive_value [SCOPE.ScriptValue('task_court_magi_defend_against_hostile_magic_resistance_value')|1]#!"
  task_court_magi_defend_against_hostile_magic_resistance_bonus_value_desc:0 "Противодействие вражеской магии"
  
@@ -29,7 +29,7 @@
 
  IS_A_MAGI:0 "Является [magi|El]"
  IS_NOT_A_MAGI:0 "Не является [magi|El]"
- I_MUST_BE_A_MAGI:0 "Я должен быть [magi|El]"
+ I_MUST_BE_A_MAGI:0 "Я [Select_CString(ROOT.Char.IsFemale, 'должна', 'должен' )] быть [magi|El]"
  I_AM_NOT_A_MAGI:0 "Я не [magi|El]"
  THEY_MUST_BE_A_MAGI:0 "Они должны быть [magi|El]"
  THEY_ARE_NOT_A_MAGI:0 "Они не [magi|El]"

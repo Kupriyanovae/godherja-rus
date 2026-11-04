@@ -9,7 +9,7 @@
  gh_feast_tsagaan_sar_events.0001.desc.nomadic: "юрты лагеря" 
  gh_feast_tsagaan_sar_events.0001.desc.settled: "ворота [GetPlayer.Custom('ResidenceBuilding')]"
 
- feast_tsagaan_sar_events.0002.desc: "\nПразднество началось, и я благодар[Select_CString(ROOT.Char.IsFemale, 'на', 'ен')] [host.GetName] — а через [host.GetHerHis], и самим [Glossary('Олик','GH_OLIK_GLOSS')] и [Glossary('Кайган','GH_KAIGAN_GLOSS')] — но размышляю о подарке, который я должен преподнести. Это не просто обычай, это вопрос чести.\n\nЯ вижу, как другие знатные гости приносят сундуки с заморскими монетами, а крестьяне — небольшие мешки с ценностями. Кто-то приводит лошадей и заботится о них, готовя к встрече с новым хозяином. Некоторые дарят нечто нематериальное — произносят драгоценные клятвы верности.\n\nНо возникает вопрос: чем я могу пожертвовать ради моего [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('host'))], [host.GetFirstNameNoTooltip]?" 
+ feast_tsagaan_sar_events.0002.desc: "\nПразднество началось, и я благодар[Select_CString(ROOT.Char.IsFemale, 'на', 'ен')] [host.GetName] — а через [host.GetHerHis], и самим [Glossary('Олик','GH_OLIK_GLOSS')] и [Glossary('Кайган','GH_KAIGAN_GLOSS')] — но размышляю о подарке, который я [Select_CString(ROOT.Char.IsFemale, 'должна', 'должен' )] преподнести. Это не просто обычай, это вопрос чести.\n\nЯ вижу, как другие знатные гости приносят сундуки с заморскими монетами, а крестьяне — небольшие мешки с ценностями. Кто-то приводит лошадей и заботится о них, готовя к встрече с новым хозяином. Некоторые дарят нечто нематериальное — произносят драгоценные клятвы верности.\n\nНо возникает вопрос: чем я могу пожертвовать ради моего [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('host'))], [host.GetFirstNameNoTooltip]?" 
  feast_tsagaan_sar_events.0002.desc_again: "\nВновь мне нужно подумать, как выразить уважение [Glossary('Олик','GH_OLIK_GLOSS')], [Glossary('Кайган','GH_KAIGAN_GLOSS')] и, что важнее всего, хозяину, [host.GetName]. Я могу и отказаться, надеясь, что [host.GetSheHe] не обратит на это внимания — или хотя бы не заметит.\n\nНо времени мало: возможно, это последний шанс подготовить что-то для [host.GetHerHim]."
 
  feast_tsagaan_sar_events.0101.desc: "\nС другого конца поля я замечаю великолепную лошадь — её масть черна, как ночное небо. Она прекрасна, может соперничать с самыми красивыми девушками: длинная, шелковистая грива и глаза, сверкающие как звёзды.\n\nВсадник, [horse_haver.GetName], замечает мой восхищённый взгляд. «Вижу, у тебя хороший глаз, — говорит [horse_haver.GetFirstNameNoTooltip]. — Можешь прокатиться на ней, если хочешь, но будь осторожен. Она дикая!»"
@@ -29,9 +29,9 @@
  gh_feast_tsagaan_sar_events.0230.desc.nomadic: "юрту вдалеке" 
  gh_feast_tsagaan_sar_events.0230.desc.settled: "великолепный зал [GetPlayer.Custom('ResidenceBuilding')]"
 
- feast_tsagaan_sar_events.0240.sygyt: "Я давно хотел попробовать спеть в стиле [Glossary('$GH_SYGYT_GLOSS_REPLACE|q$', 'SYGYT_GLOSS')]..." 
+ feast_tsagaan_sar_events.0240.sygyt: "Я давно [Select_CString(ROOT.Char.IsFemale, 'хотела', 'хотел' )] попробовать спеть в стиле [Glossary('$GH_SYGYT_GLOSS_REPLACE|q$', 'SYGYT_GLOSS')]..." 
  feast_tsagaan_sar_events.0240.hoomei: "А что если исполнить мелодию в [Glossary('$GH_HOOMEI_GLOSS_REPLACE|q$', 'HOOMEI_GLOSS')]?" 
- feast_tsagaan_sar_events.0240.kargyraa: "На самом деле, я бы хотел спеть в стиле [Glossary('$GH_KARGYRAA_GLOSS_REPLACE|q$', 'KARGYRAA_GLOSS')]." 
+ feast_tsagaan_sar_events.0240.kargyraa: "На самом деле, я бы [Select_CString(ROOT.Char.IsFemale, 'хотела', 'хотел' )] спеть в стиле [Glossary('$GH_KARGYRAA_GLOSS_REPLACE|q$', 'KARGYRAA_GLOSS')]." 
  feast_tsagaan_sar_events.0240.success_sygyt_tt: "$GH_SYGYT_GLOSS_REPLACE$ становится вашим основным стилем горлового пения" 
  feast_tsagaan_sar_events.0240.success_hoomei_tt: "$GH_HOOMEI_GLOSS_REPLACE$ становится вашим основным стилем горлового пения" 
  feast_tsagaan_sar_events.0240.success_kargyraa_tt: "$GH_KARGYRAA_GLOSS_REPLACE$ становится вашим основным стилем горлового пения" 

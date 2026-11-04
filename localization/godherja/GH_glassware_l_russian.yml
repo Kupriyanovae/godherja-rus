@@ -4,7 +4,7 @@
  debug_inspiration_glassware: "Стеклодувное ремесло"
 
  glassware_inspiration: "Вдохновение стеклодува"
- glassware_inspiration_desc: "Персонаж, коего постигло вдохновение стеклодува, желает сотворить [Concept('artifact','артефакт')|E] из стекла. Сие может обернуться созданием множества изделий — от бус и склянок до кувшинов и изваяний."
+ glassware_inspiration_desc: "Персонаж, коего постигло [Concept('inspired','вдохновение')|E] стеклодува, желает сотворить [Concept('artifact','артефакт')|E] из стекла. Сие может обернуться созданием множества изделий — от бус и склянок до кувшинов и изваяний."
 
  inspiration_desc_blow_present: "выдувает"
  inspiration_desc_blow_future: "выдуть"
@@ -20,7 +20,7 @@
 
  glassware_inspiration_description: "[ROOT.Char.Custom('InspirationBlowPresentFuture')] нечто дивное из стекла"
  glassware_set_type_inspiration_description: "[ROOT.Char.Custom('InspirationBlowPresentFuture')] [ROOT.Char.Custom('ArtifactGlasswareType')]"
- glassware_inspiration_description_past: "[Select_CString(Character.IsFemale, 'создала', 'создал' )] нечто великолепное из стекла для [ROOT.Var('created_artifact_for').Char.GetUIName]"
+ glassware_inspiration_description_past: "[Select_CString(ROOT.Char.IsFemale, 'создала', 'создал' )] нечто великолепное из стекла для [ROOT.Var('created_artifact_for').Char.GetUIName]"
 
  glassware_beads_inspiration_description: "стеклянные бусы"
  glassware_beaker_inspiration_description: "стеклянная колба"

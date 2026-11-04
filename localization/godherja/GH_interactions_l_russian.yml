@@ -6,19 +6,19 @@
  IS_ALLOWED_TO_EXECUTE_ANY_CRIMINAL_DESC:0 "#weak Поскольку вы можете наказывать преступников как вам угодно, никто не сочтет вас [Concept('tyrant','тираном')|E]#!"
  IS_ALLOWED_TO_REVOKE_VASSAL_ANY_CRIMINAL_DESC:0 "#weak Поскольку вы можете наказывать преступников как вам угодно, никто не сочтет вас [Concept('tyrant','тираном')|E]#!"
  IS_ALLOWED_TO_REVOKE_TITLE_ANY_CRIMINAL_DESC:0 "#weak Поскольку [Select_CString( recipient.IsLocalPlayer, 'я', recipient.GetShortUIName )] [Select_CString( recipient.IsLocalPlayer, 'могу', 'может' )] наказывать преступников как [Select_CString( recipient.IsLocalPlayer, 'мне', 'ему' )] угодно, никто не сочтет [Select_CString( recipient.IsLocalPlayer, 'меня', 'его' )] [Concept('tyrant','тираном')|E]#!"
- EXECUTION_CRANIAL_EXTRACTION: "Cranial Extraction"
- execution_cranial_extraction_artifact_tooltip: "Gains a Skull [artifact|E]"
- execution_cranial_extraction_lowborn_tooltip: "Will #bold not#! gain a Skull [artifact|E] because [recipient.GetName] is [lowborn|E]"
+ EXECUTION_CRANIAL_EXTRACTION: "Извлечение черепа"
+ execution_cranial_extraction_artifact_tooltip: "Получает [Concept('artifact','артефакт')|E] «Череп»"
+ execution_cranial_extraction_lowborn_tooltip: "#bold Не#! получит [Concept('artifact','артефакт')|E] «Череп», так как [recipient.GetName] — [Concept('lowborn','низкорождённый')|E]"
  EXECUTION_TOWER:0 "Воздействие Башни"
  execution_tower_tt:0 "Получает [Concept('trait','свойство')|E] «[GetTrait('gh_magicsickness_5').GetName( GetNullCharacter )]»"
  EXECUTION_RAKARONG:0 "Скормить Ракаронгу"
 
- destroy_skull_artifact_house_opinion_tooltip: "All members of [skull_house.GetName] [house|E] gain #P 10#! [opinion|E] of #V you#!"
+ destroy_skull_artifact_house_opinion_tooltip: "Все члены [Concept('house','дома')|E] [skull_house.GetName] получают #P 10#! к [Concept('opinion','мнению')|E] о #V вас#!"
 
  sear_interaction:90 "Ожог"
  sear_interaction_desc:90 "[Concept('banish','Изгнать')|E] [recipient.GetShortUINameNoTooltip] как [Concept('anohelis_outcasts','анохелис')|E]"
  has_already_been_seared:90 "[recipient.GetShortUINameNoTooltip] уже [Select_CString(recipient.IsFemale, 'была подвергнута', 'был подвергнут ')] ожогу"
- culture_does_not_use_steppe_queen_mechanics:90 "Волосы не являются символом статуса для [recipient.GetCulture.GetCollectiveNoun]"
+ culture_does_not_use_steppe_queen_mechanics:90 "Волосы не являются символом статуса для [recipient.GetCulture.GetCollectiveNoun|l]ого народа"
  searing_claim_loss_tooltip:90 "Теряет все [Concept('title','титулы')|E] и [Concept('claims','притязания')|E]"
  clan_unity_searing.desc:90 " [unity_target.GetName] подвергнули ожогу"
 
@@ -26,8 +26,8 @@
  refill_maa_interaction_liches_desc: "[Concept('liches','Личи')|E] не обладают надежными источниками пополнения, как другие [Concept('landed', 'землевладельческие')|E] [Concept('rulers','правители')|E], и вынуждены [Concept('reinforce_soldiers','восполнять войска')|E], чтобы восполнять потери в [Concept('regiments','полках')|E] [Concept('men_at_arms','профессионалов')|E]."
  refill_maa_interaction_fallback_desc: "У вас нет надежных источников пополнения, как у [Concept('landed', 'землевладельческих')|E] [Concept('rulers','правителей')|E], и вы вынуждены [Concept('reinforce_soldiers','восполнять войска')|E], чтобы восполнять потери в [Concept('regiments','полках')|E] [Concept('men_at_arms','профессионалов')|E]."
 
- GH_PIRATES_MAINTENANCE_INFO: "[Concept('pirate','Пираты')|E] могут пополнять [Concept('regiments','полки')|E] только с помощью #V $refill_maa_interaction$#!, #V $reinforce_soldiers_interaction$#! или через [adventurer_siege_replenishment|E] во время [Concept('войны','войны')|E]"
- GH_LICHES_MAINTENANCE_INFO: "[Concept('liches','Личи')|E] могут пополнять [Concept('regiments','полки')|E] только с помощью #V $refill_maa_interaction$#!, #V $reinforce_soldiers_interaction$#! или через [adventurer_siege_replenishment|E] во время [Concept('войны','войны')|E]"
+ GH_PIRATES_MAINTENANCE_INFO: "[Concept('pirate','Пираты')|E] могут пополнять [Concept('regiments','полки')|E] только с помощью #V $refill_maa_interaction$#!, #V $reinforce_soldiers_interaction$#! или через [adventurer_siege_replenishment|E] во время [Concept('war','войны')|E]"
+ GH_LICHES_MAINTENANCE_INFO: "[Concept('liches','Личи')|E] могут пополнять [Concept('regiments','полки')|E] только с помощью #V $refill_maa_interaction$#!, #V $reinforce_soldiers_interaction$#! или через [adventurer_siege_replenishment|E] во время [Concept('war','войны')|E]"
 
  # Purchase Book
  gh_buy_book_from_library_interaction: "[SelectLocalization(GetPlayer.MakeScope.Var('character_text_holder_var').IsSet,'gh_buy_book_from_library_interaction_alt', 'gh_buy_book_from_library_interaction_normal' )]"

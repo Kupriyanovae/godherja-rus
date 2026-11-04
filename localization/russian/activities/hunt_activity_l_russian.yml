@@ -71,11 +71,11 @@
  activity_hunt_conclusion_desc_standard:0 "Сегодня [activity.Custom('GetAnimalPlural')|l] ускользнули от нас..."
  activity_hunt_guest_help_text:1 "У [Concept('activity_guests', 'гостей')|E] будет возможность пообщаться и, при активном участии, улучшить свои охотничьи и воинские умения.\n#TOOLTIP:VASSAL_STANCE,glory_hound #L [GetVassalStance( 'glory_hound' ).GetTextIcon]Охочие до славы#!#! [Concept('vassals', 'вассалы')|E] любят охоту, и их [Concept('opinion', 'мнение')|E] о вас улучшится.\n$activity_hunt_guest_help_text_party_size$."
  activity_hunt_guest_help_text_party_size:0 "Каждый участник со свойством «[GetTrait('lifestyle_hunter').GetName( GetNullCharacter )]» слегка увеличивает [Concept('hunt_success_chance_no_prefix', 'шанс успеха')|E]"
- hunt_type_stress:0 "• @stress_icon! Потеря стресса"
- hunt_type_safety:0 "• @death_icon! Безопасность"
- hunt_type_skill_prowess:0 "• @skill_prowess_icon! Доблесть"
- hunt_type_skill_stewardship:0 "• @skill_stewardship_icon! Управление"
- hunt_type_skill_learning:0 "• @skill_learning_icon! Ученость"
+ hunt_type_stress:0 "$BULLET_WITH_TAB$@stress_icon! Потеря стресса"
+ hunt_type_safety:0 "$BULLET_WITH_TAB$@death_icon! Безопасность"
+ hunt_type_skill_prowess:0 "$BULLET_WITH_TAB$@skill_prowess_icon! Доблесть"
+ hunt_type_skill_stewardship:0 "$BULLET_WITH_TAB$@skill_stewardship_icon! Управление"
+ hunt_type_skill_learning:0 "$BULLET_WITH_TAB$@skill_learning_icon! Ученость"
  ### ACTIVITY
  # GUESTS
  # PHASES
@@ -138,8 +138,8 @@
  I_AM_REMOVED_FROM_ACTIVITY:1 "Вы покидаете это занятие"
  CHARACTER_IS_REMOVED_FROM_ACTIVITY:0 "Удаляет персонажа [CHARACTER.GetShortUIName] из занятия"
  GLOBAL_IS_REMOVED_FROM_ACTIVITY:0 "Удаляет персонажа [CHARACTER.GetShortUIName] из занятия"
- I_AM_REMOVED_FROM_ACTIVITY_PAST:0 "Я покинул это занятие"
- CHARACTER_IS_REMOVED_FROM_ACTIVITY_PAST:0 "Персонаж [CHARACTER.GetShortUIName] покинул это занятие"
+ I_AM_REMOVED_FROM_ACTIVITY_PAST:0 "Я [Select_CString(ROOT.Char.IsFemale, 'покинула', 'покинул' )] это занятие"
+ CHARACTER_IS_REMOVED_FROM_ACTIVITY_PAST:0 "Персонаж [CHARACTER.GetShortUIName] [Select_CString(CHARACTER.IsFemale, 'покинула', 'покинул' )] это занятие"
  GLOBAL_IS_REMOVED_FROM_ACTIVITY_PAST:0 "[CHARACTER.GetShortUIName] [Select_CString(CHARACTER.IsFemale, 'покинула', 'покинул' )] это занятие"
  # TOOLTIPS
  hunt_success_chance:1 "[Concept('hunt_success_chance_no_prefix', 'Шанс успеха')|E]"
@@ -254,7 +254,7 @@
  hunt_kill_murder_escape:0 "Персонаж [murder_target.GetFirstNameOrMeNoTooltip] ускользает"
  #BOW
  hunt_kill_success_bow_host:1 "Вы сразили животное ([activity.Custom('GetAnimalTypeKill')])"
- hunt_kill_success_bow_guest:1 "[animal_slayer.GetFirstNameNoTooltip] сразил животное ([activity.Custom('GetAnimalTypeKill')])"
+ hunt_kill_success_bow_guest:1 "[animal_slayer.GetFirstNameNoTooltip] [Select_CString(animal_slayer.IsFemale, 'сразила', 'сразил' )] животное ([activity.Custom('GetAnimalTypeKill')])"
  hunt_kill_failure_bow:1 "Животное ([activity.Custom('GetAnimalTypeKill')]) ранило персонажа [injury_target.GetFirstNameNoTooltip]"
  hunt_kill_critical_failure_bow:1 "Животное ([activity.Custom('GetAnimalTypeKill')]) убегает"
  hunt_kill_success_bow_tt:0 "Зверь подстрелен"
@@ -322,7 +322,7 @@
  hunt_eyas_found_log_title:0 "Найден птенец"
  hunt_eyas_found_log:0 "[CHARACTER.GetShortUIName|U] [Select_CString(CHARACTER.IsFemale, 'натолкнулась', 'натолкнулся' )] на гнездо хищной птицы и [Select_CString(CHARACTER.IsFemale, 'нашла', 'нашел' )] дикого птенца-слетка"
  hunt_completed_success_log_title:0 "Итог охоты"
- hunt_completed_success_log:0 "Отряд персонажа [CHARACTER.GetShortUIName] добыл зверя ([CHARACTER.GetInvolvedActivity.Custom('GetAnimalType')])"
+ hunt_completed_success_log:0 "Отряд персонажа [CHARACTER.GetShortUIName] [Select_CString(CHARACTER.IsFemale, 'добыла', 'добыл' )] зверя ([CHARACTER.GetInvolvedActivity.Custom('GetAnimalType')])"
  hunt_completed_failure_log_title:0 "$hunt_completed_success_log_title$"
  hunt_completed_failure_log:0 "Отряду персонажа [CHARACTER.GetShortUIName] не удалось добыть зверя ([CHARACTER.GetInvolvedActivity.Custom('GetAnimalType')])"
  #APA
@@ -333,7 +333,7 @@
  hunt_hunters_bond_title:0 "[first.GetShortUINameNoTooltip|U] и [second.GetShortUINameNoTooltip] сблизились на охоте"
  hunt_dog_bond_title:0 "[first.GetShortUINameNoTooltip|U] и [second.GetShortUINameNoTooltip] нашли общую тему в любви к собакам"
  hunt_knowledge_sharing_title:0 "[first.GetShortUINameNoTooltip|U] [Select_CString(first.IsFemale, 'поделилась', 'поделился' )] знаниями с персонажем [second.GetShortUINameNoTooltip]"
- hunt_small_game_title:1 "[hunter.GetShortUINameNoTooltip|U] подстрелил мелкую дичь ([hunter.Custom('GetRandomRegionalSmallGame')|l])"
+ hunt_small_game_title:1 "[hunter.GetShortUINameNoTooltip|U] [Select_CString(hunter.IsFemale, 'подстрелила', 'подстрелил' )] мелкую дичь ([hunter.Custom('GetRandomRegionalSmallGame')|l])"
  hunt_moh_positive_title:0 "Умелый [GetCourtPositionType('master_of_hunt_court_position').GetNameNoTooltip()|l]"
  hunt_moh_negative_title:0 "Неуклюжий [GetCourtPositionType('master_of_hunt_court_position').GetNameNoTooltip()|l]"
  hunt_poetic_inspiration_title:0 "[poet.GetShortUINameNoTooltip|U] обретает поэтическое вдохновение"
@@ -429,7 +429,7 @@
  terrain_wetland_plural:0 "заболоченные земли"
  terrain_floodplain:0 "пойма"
  terrain_floodplain_plural:0 "поймы"
- terrain_taiga_plural:0 "тайга"
+ terrain_taiga_plural:0 "$terrain_taiga$"
  terrain_dryland:0 "засушливые земли"
  terrain_dryland_plural:0 "засушливые земли"
  terrain_steppe_plural:0 "степи"
@@ -460,7 +460,7 @@
  terrain_woodland:0 "лесистая местность"
  terrain_woodland_plural:0 "лесистые местности"
  terrain_fallback:0 "дикие земли"
- terrain_fallback_plural:0 "дикие земли"
+ terrain_fallback_plural:0 "$terrain_fallback$"
  
  # BIRDS
  # GH CHANGE: Removed those used in Ecology.yml

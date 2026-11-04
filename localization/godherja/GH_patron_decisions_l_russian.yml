@@ -1,6 +1,6 @@
 ﻿l_russian:
  submit_yourself_to_the_divine_decision:0 "Склонитесь пред [ROOT.GetCharacter.GetFaith.HighGodName]"
- submit_yourself_to_the_divine_decision_desc:0 "Прилюдно склонится пред [ROOT.GetCharacter.GetFaith.HighGodName], дабы все узрели: ваша мирская власть — ничто пред мудростью [GetPlayer.GetFaith.GetName]."
+ submit_yourself_to_the_divine_decision_desc:0 "Прилюдно склонится пред [ROOT.GetCharacter.GetFaith.HighGodName], дабы все узрели: ваша мирская власть — ничто пред мудростью веры «[GetPlayer.GetFaith.GetAdjective]»."
  submit_yourself_to_the_divine_decision_tooltip:0 "Склонитесь пред божественным."
  submit_yourself_to_the_divine_decision_confirm:0 "Я — ничто пред [ROOT.GetCharacter.GetFaith.HighGodName]."
  
@@ -23,7 +23,7 @@
  gh_ruler_is_not_tribal: "Требуется, чтобы ваш тип [Concept('government','правительства')|E] не был [Concept('tribal','племенным')|E]."
  gh_is_banned_from_studying_in_collection: "В прошлом вы уже пытались украсть кое-что из местной коллекции."
 
- not_reached_limit_read_book_recently_tt: "Лимит чтения еще не достигнут (#high [GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue]/7#!)/[GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue]#!). Сброс лимита: #high [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope, 'gh_number_of_recently_read_book') )]#!"
+ not_reached_limit_read_book_recently_tt: "Лимит чтения еще не достигнут (#high [GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue]/[GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue]#!). Сброс лимита: #high [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope, 'gh_number_of_recently_read_book') )]#!"
 
  already_reached_limit_read_book_recently_tt: "@warning_icon! #N Вы уже достигли лимита чтения книг (#bold [GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue]/[GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue]#!). Лимит сбросится через #bold [GetCurrentDateWithDiff( GetVarTimeRemaining( GetPlayer.MakeScope, 'gh_number_of_recently_read_book') )]#!#!"
  not_read_any_book_recently_tt: "Вы давно не читали ни одной книги"

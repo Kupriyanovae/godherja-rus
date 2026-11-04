@@ -37,7 +37,7 @@
  CREATE_NEW_HOLDING_STILL_COLONIZING: "\n@warning_icon! #X В этом [Concept('county','графстве')|E] всё еще идет [Concept('colonization','колонизация')|E]#!"
  SETTLE_RUIN_NOT_TRIBAL: "Ваш тип [Concept('government','правительства')|E]: [GetGovernment('tribal_government').GetName]"
  SETTLE_RUIN_TRIBAL_CAPITAL: "В ([Province.GetCounty.GetTitle.GetName]) есть [Concept('tribal','племенное')|E] владение"
- SETTLE_RUIN_EXTREME_DESERT: "В [Province.GetTitle.GetName] есть [Concept('modifier','модификатор'))|E] [GetModifier('extreme_desert_modifier').GetNameWithTooltip] "
+ SETTLE_RUIN_EXTREME_DESERT: "В [Province.GetTitle.GetName] есть [Concept('modifier','модификатор')|E] [GetModifier('extreme_desert_modifier').GetNameWithTooltip] "
  COLONIZATION_PROGRESS_COOLTIP: "Прогресс [Concept('colonization','колонизации')|E]: [Concept('colonization','@colonization_progress_icon!')] #V [FixedPointToFloat(Holding.GetProvince.GetCounty.GetTitle.MakeScope.Var('colonization_story').Var('colonization_progress').GetValue)|1]/100#!"
  COLONIZATION_PROGRESS_OUTLINER: "[Concept('colonization','@colonization_progress_icon!')] #V [FixedPointToFloat(Holding.GetProvince.GetCounty.GetTitle.MakeScope.Var('colonization_story').Var('colonization_progress').GetValue)|1]/100#!"
  SETTLE_RUIN_HOLDING_TOOLTIP: "$SETTLE_RUIN_HOLDING_TOOLTIP_TITLE$\n$SETTLE_RUIN_HOLDING_TOOLTIP_FLAVOR$\n\n$SETTLE_RUIN_HOLDING_TOOLTIP_FIRST_STAGE$\n$SETTLE_RUIN_HOLDING_TOOLTIP_GOLD$\n\n$SETTLE_RUIN_HOLDING_TOOLTIP_COST$"

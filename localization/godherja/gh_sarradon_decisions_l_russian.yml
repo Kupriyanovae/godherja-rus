@@ -5,7 +5,7 @@
  refound_east_mamur_decision_tooltip:0 "Провозгласить восстановление [GetTitleByKey('e_eastern_mamuramat').GetNameNoTier], равного по статусу и авторитету линии $mamur_tathtali_link$ Таттали#!."
  refound_east_mamur_decision_confirm:0 "Стать Восточным мамуром"
  refound_west_mamur_decision:0 "Восстановить Западный мамурамат"
- refound_west_mamur_decision_desc:0 ""Оставшийся незаполненным после краха правящего дома Касси в 678 году И.С. и последующего постоянного регентства со стороны Центрального [Concept('mamuramat','мамурамата')|E] в 682 году И.С., [GetTitleByKey('e_western_mamuramat').GetNameNoTier] первым исчез как независимая сила в [Concept('wardenism','варденизме')|E]. Теперь, после столетий несправедливости, мы готовы восстановить его вновь. Это неизбежно приведёт нас к конфликту с Центральным мамуром, считающим этот титул своим наследственным правом, но мы не трусы!"
+ refound_west_mamur_decision_desc:0 "Оставшийся незаполненным после краха правящего дома Касси в 678 году И.С. и последующего постоянного регентства со стороны Центрального [Concept('mamuramat','мамурамата')|E] в 682 году И.С., [GetTitleByKey('e_western_mamuramat').GetNameNoTier] первым исчез как независимая сила в [Concept('wardenism','варденизме')|E]. Теперь, после столетий несправедливости, мы готовы восстановить его вновь. Это неизбежно приведёт нас к конфликту с Центральным мамуром, считающим этот титул своим наследственным правом, но мы не трусы!"
  refound_west_mamur_decision_tooltip:0 "Восстановить [GetTitleByKey('e_western_mamuramat').GetNameNoTier] — оплот против Хиклахна!"
  refound_west_mamur_decision_confirm:0 "Стать Западным мамуром"
  refound_far_east_mamur_decision:0 "Восстановить Дальневосточный мамурамат"
@@ -24,7 +24,7 @@
  found_new_mamuramat_decision_desc:0 "Экспансия моих владений на далёкие берега ставит подчинённых мне последователей [Concept('wardenism','варденитов')|E] в необычное положение. Технически наши земли находятся вне юрисдикции каких-либо традиционных [Concept('mamuramat','мамураматов')|E], и многие начинают шептаться, что мне следует последовать примеру легендарного Усуна Бишабелика и провозгласить себя главой нового Мамурамата. Это, несомненно, будет беспрецедентно — как и само существование сильного варденитского государства за пределами [Concept('sarradon','Саррадона')|E]."
  found_new_mamuramat_decision_tooltip:0 "Основать совершенно новый Мамурамат и принести закон на далёкие берега!"
  found_new_mamuramat_decision_confirm:0 "Провозгласить новый Мамурамат"
- singular_mamur_faith_becomes_hostile_tt:0 "[GetPlayer.GetFaith.GetName] и [THIS.Faith.GetName] начинают считать друг друга [GetHostilityLevelName( '(int32)2' )|V]"
+ singular_mamur_faith_becomes_hostile_tt:0 "[GetPlayer.GetFaith.GetAdjective] и [THIS.Faith.GetAdjective] начинают считать друг друга [GetHostilityLevelName( '(int32)2' )|V]"
  GENERIC_MAMURAMAT_NAME:0 "[ROOT.Char.GetPrimaryTitle.GetNameNoTierNoTooltip] Мамурамат"
  
  wardenite_mamur_reclaim_kotserion_decision:0 "Триумф в Мухтабе!"
@@ -82,7 +82,7 @@
  wardenite_mamur_reassert_authority_ayyar_desc:0 "С момента своего появления айяры искусно балансировали на грани между неподчинением и покорностью. Их особый статус возник благодаря хитроумным договорённостям с прежними [Concept('mamuramat','Мамурами')|E]. То, что наши предки не смогли добиться полного подчинения, было признаком слабости - слабости, ныне искоренённой в Мамуре. Помня об этом, напомним айярам о требованиях, которые налагает на них их же вера. Уверены, они примут верное решение."
  wardenite_mamur_reassert_authority_ayyar_tt:0 "В случае согласия они принесут вассальную присягу Мамуру"
  wardenite_mamur_reassert_authority_ayyar_confirm:0 "Закон Первого Вардена не обсуждается."
- k_dynamic_ayyar:0 "Наместничество айяров"
+ k_dynamic_ayyar:0 "Губернаторство айяров"
  
  blind_watcher_reform_decision:0 "Реформировать Орден"
  blind_watcher_reform_decision_tooltip:0 "Вернуть Орден к изначальному видению Дикайна"
@@ -122,7 +122,7 @@
  pure_heart_reform_decision_tooltip:0 "Вернуть Орден к изначальному видению Катарита"
  pure_heart_reform_decision_tt:0 "Вы взяли под контроль Орден и искоренили скверну"
  pure_heart_reform_decision_desc:0 "После долгих лет во тьме скверна и разложение, поразившие наш Орден, наконец очищены, и мы вновь можем посвятить себя достижению истинной Чистоты. Остаётся лишь издать окончательный указ, закрепляющий наши реформы и карающий тех, кто совершал ужасные преступления во имя Святого, прежде чем мы сможем начать тяжёлую работу по очищению от кровавого наследия прошлого. Однако хотя те в наших рядах, кто пытался извратить учение, уже понесли заслуженную кару, расплата с истинными вдохновителями заговора ещё впереди..."
- pure_heart_reform_decision_confirm:0 "Во имя  Чистоты Любви"
+ pure_heart_reform_decision_confirm:0 "Во имя Чистоты Любви"
  pure_heart_reform_valid_desc:0 "Ваша клика должна иметь влияние 60% или более"
  pure_heart_reform_correct_clique_desc:0 "Вы должны состоять в клике «Аподромиос»"
  
@@ -138,7 +138,7 @@
  religious_extort_subjects_decision_desc:0 "#F Когда мне нужны деньги, благочестивые должны с радостью предложить мне свои сбережения! Ведь такая щедрость есть воля [ROOT.Char.GetFaith.WealthGodName]...#!"
  
  donate_to_golden_hand_decision:0 "Пожертвовать Золотой Руке"
- donate_to_golden_hand_decision_desc:0 "Как благочестивый последователь Филантра, я должен проявлять щедрость, поддерживая орден Золотой Руки."
+ donate_to_golden_hand_decision_desc:0 "Как благочестивый последователь Филантра, я [Select_CString(ROOT.Char.IsFemale, 'должна', 'должен' )] проявлять щедрость, поддерживая орден Золотой Руки."
  donate_to_golden_hand_decision_tooltip:0 "Продемонстрируйте поддержку дела Филантра"
  donate_to_golden_hand_decision_confirm:0 "Это ради благих целей!"
  
@@ -154,7 +154,7 @@
  historic_great_tarrafent: "Исторический Таррафент"
  every_non_root_faith_vassal_great_tarrafent: "Каждый не-[THIS.Char.GetFaith.GetAdjective] [Concept('vassal','вассал')|E] или ниже в пределах исторического Таррафента"
  every_non_root_faith_county_tarrafent: "Каждое не-[THIS.Char.GetFaith.GetAdjective] [Concept('county','графство')|E] в пределах исторического Таррафента"
- every_non_tarrafent_uniter_faith_convert: "Обращается в [great_tarrafent_uniter.GetFaith.GetName|V]"
+ every_non_tarrafent_uniter_faith_convert: "Обращается в веру «[great_tarrafent_uniter.GetFaith.GetAdjective|V]»"
  sarradon_decisions.1001.t: "[reclaimer.Getculture.GetNameNoTooltip|U] великий таррафент"
  sarradon_decisions.1001.desc: "Слишком долго наш народ пребывал без цели, погрязнув в старых устоях после того, как узрел, что было свершено в минувших веках. Падение Великого таррафента отбросило нас назад.\n\nТо время прошло. С возрождением Океана Грёз наша отвага и сила воспряли вновь. Скоро мы подчиним себе всю пустыню, а затем и то, что за её пределами."
  sarradon_decisions.1001.a: "Восславим предков!"
@@ -172,7 +172,7 @@
  restore_chosen_magi.every_converted_province: "$EFFECT_LIST_BULLET$ Все [Concept('counties','графства')|E], что обратяться"
  fervor_gain_talita_namit_revived: "Практики Талита Намит"
  sarradon_decisions.2001.t: "Возвращение магии"
- sarradon_decisions.2001.desc: "Возвращение Талита Намит  нашему народу разнеслось по моим владениям подобно пожару. Скоро обратятся и многие другие, а те [Concept('magi','маги')|E], что ещё остаются в наших аханах и анклавах, отыщут путь ко мне в надежде быть избранными. Кто знает, какие тайны могут быть явлены магией, собранной воедино в этом начинании."
+ sarradon_decisions.2001.desc: "Возвращение Талита Намит нашему народу разнеслось по моим владениям подобно пожару. Скоро обратятся и многие другие, а те [Concept('magi','маги')|E], что ещё остаются в наших аханах и анклавах, отыщут путь ко мне в надежде быть избранными. Кто знает, какие тайны могут быть явлены магией, собранной воедино в этом начинании."
  sarradon_decisions.2001.a: "Восславим [realm_above|E]!"
  sarradon_decisions.2001.effect_school_tooltip: "Ваша [Concept('culture','культура')|E] примет [Concept('magic_type','школу магии')|E] #V $talita_namit_school_name$#!"
  marmaladid_appreciation_modifier: "Мармаладидское почитание"
@@ -191,5 +191,5 @@
  sarradon_decisions.3002.a:0 "Новый народ на новой земле!"
 
  sarradon_decisions.3003.t:0 "$sarradon_decisions.3001.t$"
- sarradon_decisions.3003.desc:0 "Группа поселенцев из глубины пустыни обосновалась на Cирвалийском побережье, создав там для себя новый дом.\n\nИх [Select_CString(almusid_founder.IsFemale, 'предводительница', 'предводитель')], [almusid_founder.GetTitledFirstName], [Select_CString(almusid_founder.IsFemale, 'провозгласила', 'провозгласил')], что [almusid_founder.GetHerHis] народ перенимет ряд местных обычаев и традиций, дабы обеспечить себе процветание на этой новой земле."
- sarradon_decisions.3003.a:0 "What does this mean for the region?"
+ sarradon_decisions.3003.desc:0 "Группа поселенцев из глубины пустыни обосновалась на Сирвалийском побережье, создав там для себя новый дом.\n\nИх [Select_CString(almusid_founder.IsFemale, 'предводительница', 'предводитель')], [almusid_founder.GetTitledFirstName], [Select_CString(almusid_founder.IsFemale, 'провозгласила', 'провозгласил')], что [almusid_founder.GetHerHis] народ перенимет ряд местных обычаев и традиций, дабы обеспечить себе процветание на этой новой земле."
+ sarradon_decisions.3003.a:0 "Что это значит для края?"

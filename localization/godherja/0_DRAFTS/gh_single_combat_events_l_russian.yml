@@ -1,10 +1,10 @@
 ﻿l_russian:
 
  # Combat Move Options
- single_combat.0001.scourge_of_the_steppes:0 "Ты всего лишь #EMP prey#! для соколиных когтей!"
+ single_combat.0001.scourge_of_the_steppes:0 "Ты всего лишь #EMP добыча#! для соколиных когтей!"
 
  ## Combat Move Option Tooltips
- single_combat.0001.tt.scourge_of_the_steppes:0 "#BOL Scourge of the Steppes:#! вы обрушиваете на противника стальной вихрь со стремительностью сокола"
+ single_combat.0001.tt.scourge_of_the_steppes:0 "#BOL Бич степей:#! вы обрушиваете на противника стальной вихрь со стремительностью сокола"
 
  # Combat Descs
  ## Own Combat Move Feedback
@@ -33,7 +33,7 @@
  single_combat.0031.desc.sc_attacker.scourge_of_the_steppes.injury:0 "После хаотичного шквала ударов я обнаруживаю, сильную усталость, и решающий удар отправляет [sc_loser.Custom('signature_weapon')] в полет из моих [sc_loser.Custom('ArmArms')], решая исход поединка."
 
  ## Aggressor Lost, Own Combat Move Fatality
- single_combat.0031.desc.sc_attacker.scourge_of_the_steppes.fatality:0 "Когда мой последний несбалансированный [sc_loser.Custom('SignatureWeaponAttemptedLight')] промахивается, меня отбрасывает назад сила ответного [sc_victor.Custom('SignatureWeaponAttemptedHeavy')] который я едва успеваю блокировать. Жидкий страх продолжает распространяться по моим венам, парализуя мышцы и сковывая движения.\n\nПочему я не могу поднять [sc_loser.Custom('ArmArms')]? Почему я должен смотреть, застыв, как [sc_victor.GetFirstNamePossessiveNoTooltip] [sc_victor.Custom('signature_weapon')] спускается на меня, словно готовый разорвать меня на две части? Неужели #EMP this#! то, что чувствует сапсан в когтях орла?"
+ single_combat.0031.desc.sc_attacker.scourge_of_the_steppes.fatality:0 "Когда мой последний несбалансированный [sc_loser.Custom('SignatureWeaponAttemptedLight')] промахивается, меня отбрасывает назад сила ответного [sc_victor.Custom('SignatureWeaponAttemptedHeavy')] который я едва успеваю блокировать. Жидкий страх продолжает распространяться по моим венам, парализуя мышцы и сковывая движения.\n\nПочему я не могу поднять [sc_loser.Custom('ArmArms')]? Почему я [Select_CString(ROOT.Char.IsFemale, 'должна', 'должен' )] смотреть, застыв, как [sc_victor.GetFirstNamePossessiveNoTooltip] [sc_victor.Custom('signature_weapon')] спускается на меня, словно готовый разорвать меня на две части? Неужели #EMP это#! то, что чувствует сапсан в когтях орла?"
 
  # Outcome Event: Victor
  ## Defender Won, Own Combat Move Feedback

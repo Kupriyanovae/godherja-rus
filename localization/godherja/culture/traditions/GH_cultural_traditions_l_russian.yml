@@ -94,7 +94,7 @@
 
  hold_court_8190_sorcerous: "одержимы скверной [Concept('magic','магией')|E], которую они не в силах контролировать!"
 
- culture_notification.1111.ethos.sorcerous: "[new_culture.GetCollectiveNounNoTooltip] всё больше посвящают себя [Concept('magic','магическим')|E] искусствам, а их ответы на внутренние и внешние вызовы всё чаще лежат в тайнах магии."
+ culture_notification.1111.ethos.sorcerous: "[new_culture.GetNameNoTooltip] всё больше посвящают себя [Concept('magic','магическим')|E] искусствам, а их ответы на внутренние и внешние вызовы всё чаще лежат в тайнах магии."
 
  ep3_laamp_flavour_ewan.9521.tt.primary_skill.arcana: "Получено [skill_1.GetValue|V0] [Concept('skill','навыка')|E] [Concept('arcana','арканы')|E] за усвоение  [new_culture.GetCollectiveNoun]ого [Concept('ethos','морального принципа')|E]."
 
@@ -198,7 +198,7 @@
  tradition_mystical_midwives_name: "Мистические повитухи"
  tradition_mystical_midwives_desc: "Традиция повитух, использующих техники [Concept('magi', 'магов')|E]-недоучек, гарантирует, что даже самые тяжелые беременности могут пройти безопасно как для матери, так и для ребенка."
  tradition_bounty_of_ureha_name: "Дары Урехи"
- tradition_bounty_of_ureha_desc: "#italic «Наши сородичи могут быть одержимы силой своего клана или мощью своего клинка, но сьялволки южных пределов знают то, чего не знают наши упрямые родичи горцы и глупые речники: мощь богов исходит от богатства их даров! С каждым урожаем мы осознаем честь, которую приносим богам, и великие города с крепостями стоят как памятники божественному богатству Низов!» #"
+ tradition_bounty_of_ureha_desc: "#italic «Наши сородичи могут быть одержимы силой своего клана или мощью своего клинка, но сьялволки южных пределов знают то, чего не знают наши упрямые родичи горцы и глупые речники: мощь богов исходит от богатства их даров! С каждым урожаем мы осознаем честь, которую приносим богам, и великие города с крепостями стоят как памятники божественному богатству Низов!» #!"
  tradition_warriors_of_velos_name: "Воины Велоса"
  tradition_warriors_of_velos_desc: "#italic За Велоса мы идём на войну! Пусть скалистые холмы давних Горных обителей не приносят плодов к ужину, но мощь наших рук и сила нашей стали прокормят нас! Старейшие дети Нижних богов знают то, о чём наша далёкая родня давно забыла: пировать плодами, собранными твоими врагами, — значит пировать среди самих богов!#!"
  tradition_skalds_of_zamistra_name: "Скальды Замистры"
@@ -211,7 +211,7 @@
  culture_parameter_unlock_elephant_pens_building_in_forest: "Можно строить цепочку [Concept('buildings','зданий')|E] #V «$building_type_elephant_pens_01$»#! во [Concept('holdings','владениях')|E] этой [Concept('culture','культуры')|E] с [Concept('terrain', 'типом местности')|E] [GetTerrain('forest').GetName]"
 
  tradition_redlanders_name: "Жители Красных земель"
- tradition_redlanders_desc: "Эта культура адаптировалась к суровым Красным землям, научившись выживать в их жестких условиях и сражаться среди лабиринтоподобных структур."
+ tradition_redlanders_desc: "Эта культура приспособилась к суровым Красным землям: научилась выживать среди их опасностей и сражаться в их лабиринтах.\n\nЭта культура не может нанимать обычные [Concept('men_at_arms','отряды')|E] — вместо этого она выставляет собственные воинства культистов и призывает существ куда более странных с помощью ритуалов, [Concept('decisions','решений')|E] и воззваний."
  tradition_nhudabyad_name: "Нхудабьяд"
  tradition_nhudabyad_desc: "Эта культура развила талант к выращиванию растения нхудабьяд, вареные листья которого помогают им заглядывать в запредельные земли."
  tradition_idealistic_past_name: "Идеализированное прошлое"
@@ -312,7 +312,7 @@
  tradition_snowbound_resilience_desc: "Эта культура полностью освоила тундру и льды. Хотя жизнь здесь часто превращается в битву с холодом, они научились использовать ледяные пустоши в свою пользу."
  culture_parameter_unlocks_additional_alliances: " Можно легче заключать союзы с другими персонажами, обладающими этой [Concept('tradition','традицией')|E]"
  culture_parameter_ai_more_easily_accepts_tributary: "Будет охотнее принимать предложения стать [Concept('tributary','данником')|E]"
- more_willing_to_accept_culturally: "[Concept("culture','Культура')|E] охотнее принимает статус [Concept('tributary','данника')|E]"
+ more_willing_to_accept_culturally: "[Concept('culture','Культура')|E] охотнее принимает статус [Concept('tributary','данника')|E]"
  has_shared_defense_tradition_trigger: "Должна иметь [Concept('culture_tradition','традицию')|E] «[GetCultureTradition('tradition_shared_defense').GetName]»"
 
  tradition_palace_economy_name: "Дворцовая экономика"
@@ -338,7 +338,7 @@
 
  tradition_whistling_wilds_name: "Свистящие дебри"
  tradition_whistling_wilds_desc: "Глубокие леса и тёмная тайга — исконный дом этой культуры. Охотники и следопыты общаются тихим свистом, и никто не смеет без спроса ступить на их земли."
- culture_parameter_culture_language_is_hard_to_learn: "[Concept( 'success_chance', 'Шанс успеха' )|E] происков «[GetScheme('learn_language').GetTypeName]» против [characters|E] этой [culture|E] существенно снижается"
+ culture_parameter_culture_language_is_hard_to_learn: "[Concept( 'success_chance', 'Шанс успеха' )|E] [Concept('scheme','происков')|E] «[GetScheme('learn_language').GetTypeName]» против [characters|E] этой [culture|E] существенно снижается"
  SCHEME_HARD_LANGUAGE_MODIFIER: "[Concept('language','Язык')|E] [target.GetCulture.GetCollectiveNoun]ой культуры очень трудно выучить: [success_chance_i]$VALUE|+=0$"
 
  tradition_wo_ashanan_name: "Во-Ашанан"
@@ -346,7 +346,7 @@
  culture_parameter_burial_site_dread_bonuses: "[SelectLocalization( HasDlcFeature( 'legends' ), 'culture_parameter_burial_site_dread_bonuses_HAS_LEGENDS_DLC', 'culture_parameter_burial_site_dread_bonuses_NO_LEGENDS_DLC' )]"
  culture_parameter_burial_site_dread_bonuses_NO_LEGENDS_DLC: ""
  culture_parameter_burial_site_dread_bonuses_HAS_LEGENDS_DLC: "Цепочка [Concept('duchy_buildings','герцогских построект')|E] #V $building_type_burial_site_01$#! даёт бонусы к [Concept('dread','ужасу')|E] и может быть построена [Concept('tribal','племенными')|E] [Concept('rulers','правителями')|E]"
- culture_parameter_can_take_skulls_in_battle: "Может забирать черепа павших  в [Concept('battles','битвах')|E]  врагов в качестве [Concept('artifacts','артефактов')|E]"
+ culture_parameter_can_take_skulls_in_battle: "Может забирать черепа павших в [Concept('battles','битвах')|E]  врагов в качестве [Concept('artifacts','артефактов')|E]"
  culture_parameter_can_extract_skulls: "[Concept('rulers','Правители')|E] получают доступ к способу [Concept('execution','казни')|E] #V Извлечение черепа#!"
  culture_parameter_destroying_skulls_is_pious: "Может уничтожать [Concept('artifacts','артефакты')|E]-черепа ради [Concept('piety','благочестия')|E]"
  culture_parameter_skull_artifact_claims: "[Concept('characters','Персонажи')|E] получают [Concept('artifact_claims','притязания')|E] на [Concept('artifacts','артефакты')|E]-черепа членов своего [Concept('house','дома')|E]"
@@ -389,7 +389,7 @@
  tradition_heartwoods_name: "Обитатели Земель Кланов"
  tradition_heartwoods_desc: "От глубоких мистических лесов Сердцелесья до внушающих трепет гейзеров и водопадов Грезящих холмов — эти люди сделали Калатипсоми своим домом."
  tradition_owl_masks_name: "Совиные маски"
- tradition_owl_masks_desc: "Ордикины славятся как умелые наёмники, бандиты и охотники, но самым узнаваемым и известным их атрибутом остаются знаменитые cовиные маски."
+ tradition_owl_masks_desc: "Ордикины славятся как умелые наёмники, бандиты и охотники, но самым узнаваемым и известным их атрибутом остаются знаменитые совиные маски."
  ##############################
  # RICE TRADITIONS INTEGRATED #
  ##############################
@@ -476,7 +476,7 @@
  culture_parameter_unlock_maa_sahkmavali: "Доступен наём [Concept('men_at_arms','профессионалов')|E] — [GetMaA('sahkmavali').GetName]"
  culture_parameter_unlock_maa_mezilachitnen: "Доступен наём [Concept('men_at_arms','профессионалов')|E] — [GetMaA('mezilachitnen').GetName]"
  culture_parameter_chevalien_identity: "Цепочка [Concept('buildings','зданий')|E] #V $building_type_military_academy_01$#! предоставляет дополнительные бонусы в [Concept('counties','графствах')|E] этой [Concept('culture','культуры')|E]"
- culture_parameter_chevalien_defense: "Открывает уникальный [Concept('casus_belli','повод для войны')|E] «Оборона Шевалье» для борьбы с вторжениями не-марочников"
+ culture_parameter_chevalien_defense: "Открывает уникальный [Concept('casus_belli','повод для войны')|E] «Оборона [Concept('chevalie','Шевалье')|E]» для борьбы с вторжениями не-марочников"
  culture_parameter_unlock_maa_cloud_riders: "Доступен наём [Concept('men_at_arms','профессионалов')|E] — [GetMaA('cloud_riders').GetName]"
  culture_parameter_unlock_maa_jaanvarkis: "Доступен наём [Concept('men_at_arms','профессионалов')|E] — [GetMaA('jaanvarkis').GetName]"
  culture_parameter_unlock_maa_kanpahuri: "Доступен наём [Concept('men_at_arms','профессионалов')|E] — [GetMaA('kanpahuri').GetName]"
@@ -567,7 +567,7 @@
 
  culture_parameter_unlocks_lodge_mechanics: "Открывает доступ к механикам [Concept('lodges_mechanical','лож')|E]"
 
- culture_parameter_not_tribal_pirate_raiding_malus:2 "При возвращении из успешного [Concept('raid','набега')|E] персонажи, не принадлежащие к [Concept('tribal','племенному строю')|E] или [Concept('pirate','пиратам')|E], #EMP теряют#! [EmptyScope.ScriptValue('not_tribal_raid_prestige_multiplier')|1] [prestige_i][prestige|E] за каждую 1 единицу доставленной [Concept('raid_loot','добычи')|E]"
+ culture_parameter_not_tribal_pirate_raiding_malus:2 "При возвращении из успешного [Concept('raid','набега')|E] персонажи, не принадлежащие к [Concept('tribal','племенному строю')|E] или [Concept('pirate','пиратам')|E], #EMP теряют#! [EmptyScope.ScriptValue('not_tribal_raid_prestige_multiplier')|1] [prestige_i][prestige|E] за каждую 1 единицу доставленной [Concept('loot','добычи')|E]"
 
  culture_parameter_sacred_living_magi: "[Concept('gh_aspect','Аспект')|E] «[Concept('aspect_blood','Кровь')|E]» дает [Concept('piety','благочестие')|E]."
 
@@ -581,7 +581,7 @@
  culture_parameter_hunting_bonus_against_aquatic_fauna: "Персонажам легче побеждать водную фауну, и они получают за это вдвое больше [Concept('prestige','престижа')|E]."
 
  culture_parameter_cultural_dynasty_hostile_scheme_agent_chance: "Повышенная приемлемость роли [Concept('agent','соучастника')|E] членами [Concept('dynasty','династии')|E] для [Concept('hostile_schemes','враждебных происков')|E]: #P +[EmptyScope.ScriptValue('cultural_dynasty_hostile_scheme_agent_chance')|0]%#! против тех, кто не входит в династию"
- culture_parameter_cultural_foreign_hostile_scheme_agent_chance: "Повышенная приемлемость роли [Concept('agent','соучастника')|E] представителями той же [Concept('culture','культуры')|E] для [Concept('hostile_schemes','враждебных происков')|E]: #P +[EmptyScope.ScriptValue('cultural_foreign_hostile_scheme_agent_chance')|0]%#! против других культур"
+ culture_parameter_cultural_foreign_hostile_scheme_agent_chance: "Повышенная приемлемость роли [Concept('agent','соучастника')|E] представителями той же [Concept('culture','культуры')|E] для [Concept('hostile_schemes','враждебных происков')|E]: #P +[EmptyScope.ScriptValue('cultural_foreign_hostile_scheme_agent_chance')|0]%#! против других [Concept('cultures','культур')|E]"
  culture_parameter_deceitful_trait_more_common: "[Concept('trait','Свойство')|E] «[GetTrait('deceitful').GetName( GetNullCharacter )]» встречается чаще"
  culture_parameter_herbalist_trait_give_piety: "[Concept('trait','Свойство')|E] «[GetTrait('lifestyle_herbalist').GetName( GetNullCharacter )]» дает больше [Concept('piety','благочестия')|E]"
  culture_parameter_herbalist_trait_give_renown: "[Concept('trait','Свойство')|E] «[GetTrait('lifestyle_herbalist').GetName( GetNullCharacter )]» дает больше [Concept('dynasty_prestige','признания')|E]"
@@ -639,8 +639,8 @@
  culture_parameter_steppe_queens_revered: "Женские [Concept('characters','персонажи')|E] могут получать [Concept('trait','свойство')|E] «[GetTrait('lifestyle_gh_steppe_queen').GetName( GetNullCharacter )]» и служить в качестве [Concept('knights','рыцарей')|E] независимо от [Concept('martial_custom','военных обычаев')|E] их культуры"
  culture_parameter_can_sear_prisoners: "[Concept('rulers','Правители')|E] могут выжигать клеймо на [Concept('prisoners','пленниках')|E], изгоняя их как [Glossary('анохелисов','GH_ANOHELIS_GLOSS')]"
  culture_parameter_better_male_educators: "Мужчины-[Concept('guardians','наставники')|E] этой [Concept('culture','культуры')|E] более эффективны"
- culture_parameter_enable_falcon_roost_building: "Позволяет строить «[GetBuilding('falcon_roost_01').GetName]» во [Concept('holdings','владениях')|E] этой культуры, если там преобладает [Concept('terrain','тип местности')|E] «[GetTerrain('hills').GetName]» или «[GetTerrain('mountains').GetName]»"
- culture_parameter_open_terrain_trait_bonuses: "[Concept('trait_level_track_xp', 'Опыт свойства')|E] «$trait_track_falconer$» дает бонусы свойству «[GetTrait('open_terrain_expert').GetName( GetNullCharacter )]»"
+ culture_parameter_enable_falcon_roost_building: "Позволяет строить «[GetBuilding('falcon_roost_01').GetName]» во [Concept('holdings','владениях')|E] этой [Concept('culture','культуры')|E], если там преобладает [Concept('terrain','тип местности')|E] «[GetTerrain('hills').GetName]» или «[GetTerrain('mountains').GetName]»"
+ culture_parameter_open_terrain_trait_bonuses: "[Concept('trait_level_track_xp', 'Опыт свойства')|E] «$trait_track_falconer$» дает бонусы [Concept('trait_level_track','свойству')|E] «[GetTrait('open_terrain_expert').GetName( GetNullCharacter )]»"
 
  culture_parameter_smiths_heavy_cavalry_bonus: "Цепочка [Concept('buildings','зданий')|E] #V «$building_type_smiths_01$»#! предоставляет дополнительные бонусы [Concept('heavy_cavalry','тяжелой кавалерии')|E]"
 
@@ -701,9 +701,9 @@ culture_parameter_increase_cost_found_great_polis: "Увеличивает це�
  culture_parameter_peasant_and_populist_factions_more_common:89 "[Concept('peasant_factions','Крестьянские фракции')|E] и [Concept('popular_factions','фракции популистов')|E] чужой [Concept('culture','культуры')|E] появляются чаще"
  culture_parameter_populist_factions_more_common:89 "[Concept('popular_factions','Фракции популистов')|E] появляются чаще"
  culture_parameter_vassals_revolt_more_different_culture:89 "[Concept('vassals','Вассалы')|E] этой [Concept('culture','культуры')|E] охотнее вступают во [Concept('factions','фракции')|E] против [Concept('liege','сюзерана')|E] чужой культуры"
- not_aversarian_heritage_desc:89 "Культура не имеет [GetCulturePillar('heritage_aversarian').GetName]ого [Concept('heritage','наследия')|E]"
- not_sjalvolki_heritage_desc:89 "Культура не имеет [GetCulturePillar('heritage_sjalvolki').GetName]ого [Concept('heritage','наследия')|E]"
- rulers_with_living_magic_desc:89 "Культура не имеет #V 4#! или больше [Concept('magi','магов')|E] [Concept('rulers','правителей')|E] с по крайней мере 5 [Concept('gh_aspect','аспекта')|E] [Concept('aspect_blood','Крови')|E]"
+ not_aversarian_heritage_desc:89 "[Concept('culture','Культура')|E] не имеет [GetCulturePillar('heritage_aversarian').GetName]ого [Concept('heritage','наследия')|E]"
+ not_sjalvolki_heritage_desc:89 "[Concept('culture','Культура')|E] не имеет [GetCulturePillar('heritage_sjalvolki').GetName]ого [Concept('heritage','наследия')|E]"
+ rulers_with_living_magic_desc:89 "[Concept('culture','Культура')|E] не имеет #V 4#! или больше [Concept('magi','магов')|E] [Concept('rulers','правителей')|E] с по крайней мере 5 [Concept('gh_aspect','аспекта')|E] [Concept('aspect_blood','Крови')|E]"
  culture_parameter_parks_and_gardens_bonuses:89 "Цепочка [Concept('buildings','зданий')|E] #V $building_type_parks_and_gardens_01$#! предоставляет дополнительные бонусы [Concept('counties','графствах')|E] этой [Concept('culture','культуры')|E]"
  eloi_myar_gets_women_rulers_trigger:0 "Ваша [Concept('culture','культура')|E] должна иметь [GetCulturePillar('heritage_canian').GetName]ое [Concept('heritage','наследие')|E]  и титул ЭЛОИ-Миар."
 
@@ -756,11 +756,11 @@ culture_parameter_increase_cost_found_great_polis: "Увеличивает це�
  tradition_jungle_dwellers_value_desc: "[GetCultureTradition('tradition_jungle_dwellers').GetName]"
 
  culture_parameter_much_more_likely_to_be_beast_hunter_laamps: "[SelectLocalization( HasDlcFeature( 'landless_playable' ), 'culture_parameter_much_more_likely_to_be_beast_hunter_laamps_DLC', 'culture_parameter_much_more_likely_to_be_beast_hunter_laamps_NO_DLC' )]"
- culture_parameter_much_more_likely_to_be_beast_hunter_laamps_DLC: "[Concept('characters','Персонажи')|E] с гораздо большей вероятностью становятся [Concept('adventurers','авантюристами')|E] с целью лагеря «[GetLaw('camp_purpose_beast_hunters').GetName]»"
+ culture_parameter_much_more_likely_to_be_beast_hunter_laamps_DLC: "[Concept('characters','Персонажи')|E] с гораздо большей вероятностью становятся [Concept('adventurers','авантюристами')|E] с [Concept('camp_purpose','целью лагеря')|E] «[GetLaw('camp_purpose_beast_hunters').GetName]»"
  culture_parameter_much_more_likely_to_be_beast_hunter_laamps_NO_DLC: ""
  
- culture_in_taiga_desc: "Культура отсутствует в графствах с [Concept('terrain', 'типом местности')|E] «Тайга»"
- culture_in_taiga_count_desc: "Культура отсутствует по меньшей мере в #V 3#! [Concept('counties','графствах')|E] с [Concept('terrain', 'типом местности')|E] «Тайга»"
+ culture_in_taiga_desc: "[Concept('culture','Культура')|E] отсутствует в [Concept('county','графствах')|E] с [Concept('terrain', 'типом местности')|E] «Тайга»"
+ culture_in_taiga_count_desc: "[Concept('culture','Культура')|E] отсутствует по меньшей мере в #V 3#! [Concept('counties','графствах')|E] с [Concept('terrain', 'типом местности')|E] «Тайга»"
  culture_parameter_piety_gain_on_building_complete_in_taiga: "Приносит [piety_i][Concept('piety','благочестие')|E] при завершении строительства [Concept('buildings','построек')|E] во [Concept('holdings','владениях')|E] с [Concept('terrain', 'типом местности')|E] #V Тайга#!"
  culture_parameter_taiga_hunt_success_chance: "Повышает [Concept( 'hunt_success_chance', 'шанс успеха охоты' )|E] в местностях типа «[GetTerrain( 'taiga' ).GetName]»"
 

@@ -10,14 +10,14 @@
  magic_focused_different_faith_opinion: "$magic_focused_opinion$ #weak другой [Concept( 'faith', 'конфессией' )|E]#!"
  magic_focused_same_culture_opinion: "$magic_focused_opinion$ #weak с общей [Concept( 'culture', 'культурой' )|E]#!"
  magic_focused_different_culture_opinion: "$magic_focused_opinion$ #weak другой [Concept( 'culture', 'культурой' )|E]#!"
- magic_focused_tax_contribution_add: "[modifier_base_contribution|E] [Concept( 'tax', 'налогов' )|E] с "$magic_focused_vassal$"
+ magic_focused_tax_contribution_add: "[modifier_base_contribution|E] [Concept( 'tax', 'налогов' )|E] с $magic_focused_vassal$"
  magic_focused_tax_contribution_mult: "[modifier_contribution|E] [Concept( 'tax', 'налогов' )|E] с $magic_focused_vassal$"
  magic_focused_levy_contribution_add: "[modifier_base_contribution|E] [Concept( 'levy', 'ополчения' )|E] c $magic_focused_vassal$"
  magic_focused_levy_contribution_mult: "[modifier_contribution|E] [Concept( 'levy', 'ополчения' )|E] с $magic_focused_vassal$"
 
  every_magic_focused_vassal_actor: "Каждый $magic_focused_vassal$ ([actor.MakeScope.ScriptValue('number_of_magic_focused_vassals')|V0])"
- every_magic_focused_vassal: "Каждый #TOOLTIP:VASSAL_STANCE,magic_focused #L [GetVassalStance( 'magic_focused' ).GetTextIcon]магический [Concept( 'vassal', 'вассал' )|E] ([root_scope.MakeScope.ScriptValue('number_of_magic_focused_vassals')|V0])"
- every_participating_magic_focused_vassal: "Каждый участвующий #TOOLTIP:VASSAL_STANCE,magic_focused #L [GetVassalStance( 'magic_focused' ).GetTextIcon]магический [Concept( 'vassal', 'вассал' )|E] ([THIS.Char.MakeScope.ScriptValue('number_of_participating_magic_focused_vassals')|V0])"
+ every_magic_focused_vassal: "Каждый #TOOLTIP:VASSAL_STANCE,magic_focused #L [GetVassalStance( 'magic_focused' ).GetTextIcon]магический [Concept( 'vassal', 'вассал' )|E]#!#! ([root_scope.MakeScope.ScriptValue('number_of_magic_focused_vassals')|V0])"
+ every_participating_magic_focused_vassal: "Каждый участвующий #TOOLTIP:VASSAL_STANCE,magic_focused #L [GetVassalStance( 'magic_focused' ).GetTextIcon]магический [Concept( 'vassal', 'вассал' )|E]#!#! ([THIS.Char.MakeScope.ScriptValue('number_of_participating_magic_focused_vassals')|V0])"
 
  no_stance: "Без взглядов"
  no_stance_desc: ""

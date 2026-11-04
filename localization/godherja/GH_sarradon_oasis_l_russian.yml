@@ -62,7 +62,7 @@
  situation_oasis_subject_effects_concept: "[Concept('subject','Субъект')|E]"
 
 
- sarradonian_oasis_oasis_abundance_type: "Изобилие водыr:"
+ sarradonian_oasis_oasis_abundance_type: "Изобилие воды:"
  sarradonian_oasis_growth_tooltip: "[Concept('sarradon_oasis','Саррадонский оазис')|E] возник из пустыни в [situation.MakeScope.Var('oasis_county').Title.GetNameNoTier]"
  sarradonian_oasis_sub_region_oasis_area: "Зона оазиса"
  # Participant Groups
@@ -157,7 +157,7 @@
   gh_oasis_event.0003.desc: "Красота оазиса не вечна.\n\nПески уже начали поглощать наш когда-то изобильный рай обратно в дюны. Дикие звери давно ушли, и скоро здесь не останется ничего, кроме сухой пустыни."
   gh_oasis_event.0003.a: "Со временем все возвращается в прах пустыни."
   gh_oasis_event.1001.t: "Побег скарабеев!"
-  gh_oasis_event.1001.desc: "С тем, насколько разрослось наше стадо жуков, что-то подобное было лишь вопросом времени.\n\nЯ просто не ожидал[SelectCString(ROOT.Char.IsFemale, 'а', '' )], что это произойдет так скоро.\n\nЕдва рассвело, жуки умудрились пробить загоны и устроить хаос в нашем лагере. Если мы ничего не предпримем в ближайшее время, то рискуем потерять все стадо."
+  gh_oasis_event.1001.desc: "С тем, насколько разрослось наше стадо жуков, что-то подобное было лишь вопросом времени.\n\nЯ просто не [Select_CString(ROOT.Char.IsFemale, 'ожидала', 'ожидал' )][SelectCString(ROOT.Char.IsFemale, 'а', '' )], что это произойдет так скоро.\n\nЕдва рассвело, жуки умудрились пробить загоны и устроить хаос в нашем лагере. Если мы ничего не предпримем в ближайшее время, то рискуем потерять все стадо."
   gh_oasis_event.1001.a: "К оружию! Не дайте ни одному сбежать!"
   gh_oasis_event.1001.a.success: "Вам удается остановить панический побег"
   gh_oasis_event.1001.a.failure: "Вам не удается остановить панический побег"
@@ -329,7 +329,7 @@
  gh_oasis_3_county_modifier: "Временный оазис"
  gh_oasis_4_county_modifier: "Временный оазис"
  gh_oasis_county_modifier: "Временный оазис"
- gh_oasis_2_county_modifier_desc: "В этом [Concept('county','графстве')|E] временно возник [Concept('sarradon_oasis','саррадонский оазис')|E]
+ gh_oasis_2_county_modifier_desc: "В этом [Concept('county','графстве')|E] временно возник [Concept('sarradon_oasis','саррадонский оазис')|E]"
  gh_oasis_3_county_modifier_desc: "В этом [Concept('county','графстве')|E] временно возник [Concept('sarradon_oasis','саррадонский оазис')|E]"
  gh_oasis_4_county_modifier_desc: "В этом [Concept('county','графстве')|E] временно возник [Concept('sarradon_oasis','саррадонский оазис')|E]"
  gh_oasis_county_modifier_desc: "В этом [Concept('county','графстве')|E] временно возник [Concept('sarradon_oasis','саррадонский оазис')|E]"
@@ -350,7 +350,7 @@
 
  
  ignored_murder_modifier: "Громкое убийство проигнорировано"
- ignored_murder_modifier_desc: "Проигнорировано убийство видной фигуры среди простолюдинов со стороны  было проигнорировано [Concept('ruler','правителем')|E]."
+ ignored_murder_modifier_desc: "Проигнорировано убийство видной фигуры среди простолюдинов со стороны было проигнорировано [Concept('ruler','правителем')|E]."
 
  enabled_mob_justice_modifier: "Позволе самосуд"
  enabled_mob_justice_modifier_desc: "Простолюдины были призваны их [Concept('ruler','правителем')|E] использовать самосуд для наказания убийцы."

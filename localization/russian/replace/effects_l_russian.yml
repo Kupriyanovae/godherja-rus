@@ -6,7 +6,7 @@
  SPAWN_ARMY_THIRD: "[CHARACTER.GetUIName] получает армию из $ARMY_SIZE|V0$ [CHARACTER.Custom('GetWomenMenMartialCustom')] в владении [PROVINCE.GetName]"
  SPAWNED_ARMY_GLOBAL: "В владении [PROVINCE.GetName] собралась армия из $ARMY_SIZE|V0$ [CHARACTER.Custom('GetWomenMenMartialCustom')]"
  SPAWNED_ARMY_FIRST: "Вы получили армию из $ARMY_SIZE|V0$ [CHARACTER.Custom('GetWomenMenMartialCustom')] в владении [PROVINCE.GetName]"
- SPAWNED_ARMY_THIRD: "[CHARACTER.GetUIName] получил армию из $ARMY_SIZE|V0$ [CHARACTER.Custom('GetWomenMenMartialCustom')] в владении [PROVINCE.GetName]"
+ SPAWNED_ARMY_THIRD: "[CHARACTER.GetUIName] [Select_CString(CHARACTER.IsFemale, 'получила', 'получил' )] армию из $ARMY_SIZE|V0$ [CHARACTER.Custom('GetWomenMenMartialCustom')] в владении [PROVINCE.GetName]"
 
  REMOVE_CULTURAL_TRADITION: "Теряет [Concept( 'tradition', 'традицию' )|E] «[CULTURE_TRADITION.GetName]»"
  ADD_CULTURAL_TRADITION: "Получает [Concept( 'tradition', 'традицию' )|E] «[CULTURE_TRADITION.GetName]»"

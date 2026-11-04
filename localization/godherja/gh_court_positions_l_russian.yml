@@ -65,19 +65,19 @@
  aneguran_court_position: "Анегуран"
 
  court_gaffer_court_position: "Придворный стеклодув"
- court_position_gh_lifestyle_glassmith_trait: "[Concept('trait_level_track_xp', 'Опыт свойства')] «[GetTrait('gh_lifestyle_glassmith').GetName(GetNullCharacter)]»"
+ court_position_gh_lifestyle_glassmith_trait: "[Concept('trait_level_track_xp', 'Опыт свойства')|E] «[GetTrait('gh_lifestyle_glassmith').GetName(GetNullCharacter)]»"
  court_gaffer_court_position_desc: "Придворный стеклодув — главный ремесленник в стеклянной мастерской, получивший официальное одобрение своего [Concept('liege', 'сюзерена')|E]. Он должен снабжать [Concept('court', 'двор')|E] изысканными стеклянными изделиями и служить связующим звеном между местными стеклодувами и [Concept('ruler', 'правителем')|E]."
  court_gaffer_employer_custom_effect_description: "$BULLET$Может получить [Concept('inspired', 'вдохновение')|E] категории #V Стеклянные изделия#! (в зависимости от [Concept('aptitude', 'пригодности')|E])\n@alert_icon! #alert_trial При увольнении покинет [Concept('court', 'двор')|E]#!"
  court_gaffer_teach_ruler: "Обучение правителя"
  court_gaffer_teach_ruler_desc: "Этому персонажу платят за то, чтобы он регулярно давал уроки стеклодувного дела своему [Concept('liege', 'сюзерену')|E], словно ученику."
  court_gaffer_teach_ruler_insufficient_experience: "[liege.GetShortUIName|U] сильнее в стеклоделии, чем $court_gaffer_court_position$"
- court_gaffer_teach_ruler_tt: "[Concept('liege', 'Сюзерен')|E] может каждый месяц получать [Concept('trait_level_track_xp', 'опыт свойства')] «[GetTrait('gh_lifestyle_glassmith').GetName(GetNullCharacter)]»"
+ court_gaffer_teach_ruler_tt: "[Concept('liege', 'Сюзерен')|E] может каждый месяц получать [Concept('trait_level_track_xp', 'опыт свойства')|E] «[GetTrait('gh_lifestyle_glassmith').GetName(GetNullCharacter)]»"
  court_gaffer_teach_ruler_title: "Уроки с персонажем [ROOT.Char.GetShortUINameNoTooltip]"
  court_gaffer_teach_ruler_notification_desc: "[ROOT.Char.GetShortUIName] [Select_CString(ROOT.Char.IsLocalPlayer, 'обучили', Select_CString(ROOT.Char.IsFemale, 'обучила', 'обучил' ))] [Select_CString(liege.IsLocalPlayer, '', 'персонажа ' )|l][liege.GetShortUINamePossessive|l][Select_CString(liege.IsLocalPlayer, 'его персонажа', '' )] стеклодувному делу"
 
  court_gaffer_expand_the_workshop: "Расширение мастерской"
  court_gaffer_expand_the_workshop_desc: "Этому персонажу поручено расширить производство в мастерской, освоить новые методы стеклоделия и стремиться к вершинам ремесла."
- court_gaffer_expand_the_workshop_tt: "Каждый месяц у этого персонажа есть шанс получить [Concept('trait_level_track_xp', 'опыт свойства')] «[GetTrait('gh_lifestyle_glassmith').GetName(GetNullCharacter)]», а шанс обрести [Concept('inspired', 'вдохновение')|E] категории #V Стеклянные изделия#! значительно повышается."
+ court_gaffer_expand_the_workshop_tt: "Каждый месяц у этого персонажа есть шанс получить [Concept('trait_level_track_xp', 'опыт свойства')|E] «[GetTrait('gh_lifestyle_glassmith').GetName(GetNullCharacter)]», а шанс обрести [Concept('inspired', 'вдохновение')|E] категории #V Стеклянные изделия#! значительно повышается."
 
  court_position_court_gaffer: "[GetCourtPositionType('court_gaffer_court_position').GetName()]"
  court_position_desc_court_gaffer: "выдувает для вас великолепную стеклянную посуду"

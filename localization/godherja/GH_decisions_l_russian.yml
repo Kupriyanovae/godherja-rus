@@ -10,7 +10,7 @@ commission_oltenic_mask_tooltip: "#T Маска#! \n$DESC$"
 commission_artifact_decision_option_glassware_desc: "[AddTextIf(Not(ROOT.Char.GetInventory.GetSlot('helmet').IsEmpty ), Concatenate('Используется:\n', ROOT.Char.GetInventory.GetEquippedArtifactsInSlotTypeString('helmet', 'NEWLINE', 'NEWLINE', 'NEWLINE')))]"
 commission_artifact_decision_option_glassware: "Стеклянные изделия\n#low (Разное)#!"
 commission_glassware_tooltip: "#T Стеклоизделия#! \n$DESC$"
-commission_artifact_decision.glassware_requirements: "Местные ремесленники в графстве [Scope.Char.GetCapitalLocation.GetCounty.GetTitle.GetNameNoTier|V] недостаточно опытны в стеклоделии\n([Scope.Char.GetCapitalLocation.GetCounty.GetCulture.GetName|V]ая [Concept('culture','культура')|E] #BOL не#! имеет [Concept('culture_tradition', 'традиции')|E] «[GetCultureTradition('tradition_adept_glassworkers').GetName|V]»)"
+commission_artifact_decision.glassware_requirements: "Местные ремесленники в графстве [Scope.Char.GetCapitalLocation.GetCounty.GetTitle.GetNameNoTier|V] недостаточно опытны в стеклоделии\n([Scope.Char.GetCapitalLocation.GetCounty.GetCulture.GetCollectiveNoun|V]ая [Concept('culture','культура')|E] #BOL не#! имеет [Concept('culture_tradition', 'традиции')|E] «[GetCultureTradition('tradition_adept_glassworkers').GetName|V]»)"
 
 at_least_7_rivarisians_counties_of_your_faith_tt: "Вы должны удерживать как минимум 7 риварспадских [Concept('counties', 'графств')|E] вашей [Concept('faith', 'конфессии')|E]"
 the_new_capital_must_be_controlled_and_developed_tt: "Ваше [Concept('capital','столичное')|E] [Concept('county','графсто')|E] находится в регионе [GetGeographicalRegion('world_ga_riverlands_formable').GetName], имеет хотя бы 22 [Concept('development','развития')|E] и 100 [Concept('control','контроля')|E]"
@@ -79,7 +79,7 @@ end_the_struggle_oath_decision_desc_gh_far_western_war_in_heaven_ended: "Вы з
 
 create_glass_artifact_decision: "Создать стеклянный артефакт"
 create_glass_artifact_decision_tooltip: "Запустить [Concept('personal_inspiration', 'личное вдохновение')|E] для создания #V стеклянного#! [Concept('artifact', 'артефакта')|E]"
-create_glass_artifact_decision_desc: "Мы, [Scope.Char.GetCulture.GetCollectiveNoun], гордимся долгой историей стеклоделия и славимся им по всему миру. Возможно, пришло время и мне внести свой вклад в это наследие."
+create_glass_artifact_decision_desc: "Мы, [Scope.Char.GetCulture.GetName], гордимся долгой историей стеклоделия и славимся им по всему миру. Возможно, пришло время и мне внести свой вклад в это наследие."
 create_glass_artifact_decision_effect: "Вы запустите [Concept('personal_inspiration', 'личное вдохновение')|E] по созданию #V стеклянных изделий#!"
 create_glass_artifact_decision_inspiration_tt: "\n#weak $glassware_inspiration_cost_tt$#!"
 create_glass_artifact_decision_confirm: "Разжечь горн"

@@ -26,7 +26,7 @@
  GH_BASE_RELUCTANCE_DEFENSIVE_ALLIANCE: "Базовое нежелание ([Concept('gh_defensive_alliance', 'оборонительный союз')|E]): $VALUE|+=0$"
  GH_BASE_RELUCTANCE_ALLIANCE: "Базовое нежелание ([Concept('alliance', 'союз')|E]): $VALUE|+=0$"
  GH_ALREADY_HAVE_MANY_ALLIANCES: "[recipient.GetShortUIName|U] уже имеет несколько [Concept('alliance', 'союзов')|E]: $VALUE|+=0$"
- GH_ACCEPT_ALLIANCES_ACCEPTANCE_MODIFIER: "[recipient.GetCulture.GetName]ая ([Concept('culture', 'культура')|E]): $VALUE|=+0$"
+ GH_ACCEPT_ALLIANCES_ACCEPTANCE_MODIFIER: "[recipient.GetCulture.GetCollectiveNoun]ая ([Concept('culture', 'культура')|E]): $VALUE|=+0$"
  TRADITION_ART_OF_DIPLOMACY_ACCEPTANCE_MODIFIER: "$tradition_art_of_diplomacy_name$ ([Concept('tradition', 'традиция')|E]): $VALUE|=+0$"
  
  #GUI
@@ -49,5 +49,5 @@
  rule_gh_alliance_mechanic: "@godherja_logo! Механика союзов"
  setting_godherja_alliance_default: "По умолчанию"
  setting_godherja_alliance_default_desc: "Браки больше не дают [Concept('alliances', 'союзы')|E] напрямую, а вместо этого заключают [Concept('truce', 'перемирие')|E] между сторонами. [Concept('gh_defensive_alliances', 'Оборонительные союзы')|E] и полные [Concept('alliances', 'союзы')|E] считаются отдельными механиками и должны обсуждаться отдельно. Союзники по [Concept('gh_defensive_alliances', 'оборонительным союзам')|E] будут вступать только в оборонительные [Concept('war', 'войны')|E]."
- setting_vanilla_alliance: "#high Оригинальная (Vanilla)#!"
+ setting_vanilla_alliance: "#high Оригинальная (ванильная)#!"
  setting_vanilla_alliance_desc: "Брачные пакты автоматически дают полные [Concept('alliances', 'союзы')|E], как в оригинальной игре. [Concept('gh_defensive_alliances', 'Оборонительные союзы')|E] отключены, а любых союзников можно призывать как в наступательные, так и в оборонительные [Concept('wars', 'войны')|E]."

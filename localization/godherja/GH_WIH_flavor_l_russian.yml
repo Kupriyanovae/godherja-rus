@@ -16,7 +16,7 @@
  # --- gh_wih_flavor.8006 — Aversarian Settlers ---
  gh_wih_flavor.8006.t: "Опахасийцы у ворот"
  gh_wih_flavor.8006.desc: "Группа мужчин и женщин народа [scope:islander_leader.GetCulture.GetName], возглавляемая [scope:islander_leader.GetFirstName], предстала у моих ворот. Они изнурены и измотаны долгим путем и просят дать им землю и кров. По словам их вождя, много лет назад их угнали из [Glossary('Западной Опахасии','western_opakhasia_encyclopedia_desc')] и принудили к невольничьей службе у [scope:former_master.GetFirstNameNoTooltip] — и лишь теперь им удалось вырваться на свободу."
- gh_wih_flavor.8006.flavor.b.tt: "[Select_CString(ROOT.Char.IsFemale, 'Принять', 'Принять' )] [scope:islander_leader.GetFirstName] в свой дом, но не наделять землей остальных — им придется искать свой путь самостоятельно."
+ gh_wih_flavor.8006.flavor.b.tt: "Принять [scope:islander_leader.GetFirstName] в свой дом, но не наделять землей остальных — им придется искать свой путь самостоятельно."
  gh_wih_flavor.8006.flavor.c.tt: "Нельзя ссориться с [scope:former_master.GetFirstNameNoTooltip] из-за этого. Островитяне должны уйти."
  gh_wih_flavor.8006.a: "Даровать им земли и титул."
  gh_wih_flavor.8006.b: "Принять лишь их вождя, но отвергнуть остальных."
@@ -28,7 +28,7 @@
  gh_wih_flavor.1002.desc_no_physician: "До меня дошли вести об искусном лекаре, проживающем при дворе [scope:neighboring_ruler.GetFirstNameNoTooltip]. Мой собственный двор лишен врачевателя — сие могло бы исправить положение."
  gh_wih_flavor.1002.b.failure: "Моя попытка переубедить [scope:neighboring_ruler.GetFirstNameNoTooltip] терпит крах. Ученый муж остается на прежнем месте, а [scope:neighboring_ruler.GetFirstName] лишь раздражен."
  gh_wih_flavor.1002.b.success: "Мое красноречие приносит плоды. [scope:great_scholar.GetFirstName] соглашается прибыть к моему двору."
- gh_wih_flavor.1002.c.failure: "Мои тайные замыслы провалились. [scope:neighboring_ruler.GetFirstNameNoTooltip] проведал о попытке и пребывает в ярости."
+ gh_wih_flavor.1002.c.failure: "Мои тайные замыслы провалились. [scope:neighboring_ruler.GetFirstNameNoTooltip] [Select_CString(scope:neighboring_ruler.IsFemale, 'проведала', 'проведал' )] о попытке и пребывает в ярости."
  gh_wih_flavor.1002.c.success: "Мне удалось добыть достаточно сведений о методах [scope:great_scholar.GetFirstName], дабы применить их самостоятельно."
  gh_wih_flavor.1002.a: "Заплатить щедрое вознаграждение, чтобы переманить его сюда."
  gh_wih_flavor.1002.b: "Убедить [scope:neighboring_ruler.GetFirstName] поделиться его знанием."
@@ -41,7 +41,7 @@
  gh_wih_flavor.1050.desc_ritualist: "Ритуалисты ведут речи об оменах как о вестях от сил, что старше самой памяти. [scope:visionary_spouse.GetFirstName] [Select_CString(scope:visionary_spouse.IsFemale, 'проснулась', 'проснулся' )] с чувством тяжелого страха, который не в силах развеять никакие утешения."
  gh_wih_flavor.1050.desc_agionist: "Агионисты твердят, что Чистейший может вещать через страдания. Если так, то сны, что видит [scope:visionary_spouse.GetFirstName], более чем красноречивы."
  gh_wih_flavor.1050.desc_lifepath: "Пути жизни учат смиренно принимать все, что суждено. Но [scope:visionary_spouse.GetFirstName] с большим трудом принимает это откровение."
- gh_wih_flavor.1050.desc_other_faith: "[scope:visionary_spouse.GetFirstName] просыпается в дрожи уже третью ночь подряд. Что-то из этого сна никак не хочет отпускать душевный покой."
+ gh_wih_flavor.1050.desc_other_faith: "[scope:visionary_spouse.GetFirstName] просыпается в дрожи уже третью ночь подряд. Что-то в этом сне никак не отпускает."
  gh_wih_flavor.1050.b.success: "Мои утешения доходят до сердца [scope:visionary_spouse.GetFirstName]. Тревога на лице спадает — хотя бы отчасти."
  gh_wih_flavor.1050.b.failure: "Мои слова помогли слабее, чем хотелось бы. [scope:visionary_spouse.GetFirstName] все еще пребывает в смятении."
  gh_wih_flavor.1050.a: "Обвинить [Select_CString(scope:visionary_spouse.IsFemale, 'ее', 'его' )] в сговоре с темными силами."
@@ -110,7 +110,7 @@
 
  # --- gh_wih_flavor.9016 — Ancient Ruins ---
  gh_wih_flavor.9016.t: "Древние камни Харадамата"
- gh_wih_flavor.9016.desc: "[scope:kharadamat_vassal.GetFirstNameNoTooltip] явился ко мне с жалобой: в глубинах провинции Харадамат, в [scope:ruins_county.GetName], была найдена древняя каменная кладка. Надписи не похожи ни на что из ныне помнимого. [scope:kharadamat_vassal.GetFirstName] требует уничтожить их. Однако во мне проснулось любопытство."
+ gh_wih_flavor.9016.desc: "[scope:kharadamat_vassal.GetFirstNameNoTooltip] [Select_CString(scope:kharadamat_vassal.IsFemale, 'явилась', 'явился' )] ко мне с жалобой: в глубинах провинции Харадамат, в [scope:ruins_county.GetName], была найдена древняя каменная кладка. Надписи не похожи ни на что из ныне помнимого. [scope:kharadamat_vassal.GetFirstName] требует уничтожить их. Однако во мне проснулось любопытство."
 
  # --- gh_wih_flavor.9018 — Amsari Horse Trader ---
  gh_wih_flavor.9018.t: "Покупатель из амсаров"
@@ -167,7 +167,7 @@
 
  # --- gh_wih_flavor.5004 — The Tributary Ghost ---
  gh_wih_flavor.5004.t: "Старая печать"
- gh_wih_flavor.5004.desc: "Прибыли посланники от малого клана из внутренних земель — одной из тех общин, кои уцелели в [war_in_heaven|E] лишь благодаря незаметности. Они принесли печать о дани по договору, заключенному еще до [saints_war|E] с сюзереном, чьи земли ныне вошли в состав моих. Печать подлинная. Уговор формально действителен. Речь идет о скромном количестве золота, но политический прецедент признания — или отказа от него — куда важнее."
+ gh_wih_flavor.5004.desc: "Прибыли посланники от малого клана из внутренних земель — одной из тех общин, кои уцелели в [war_in_heaven|E] лишь благодаря незаметности. Они принесли печать о дани по договору, заключенному еще до [Concept('saints_war','Войны святых')|E] с сюзереном, чьи земли ныне вошли в состав моих. Печать подлинная. Уговор формально действителен. Речь идет о скромном количестве золота, но политический прецедент признания — или отказа от него — куда важнее."
  gh_wih_flavor.5004.b.success: "Переговоры проходят успешно. Новые условия куда выгоднее для меня, и посланники принимают их без видимой обиды."
  gh_wih_flavor.5004.b.failure: "Переговоры заходят в тупик. Посланники уходят с обидой, с которой не приходили."
  gh_wih_flavor.5004.a: "Исполнить древний договор о дани. Пусть уговор остается в силе."
@@ -246,7 +246,7 @@
  gh_wih_flavor.9003.c: "Я отправлю моего [quest_chaplain.GetCouncilTitle] [quest_chaplain.GetFirstName] добыть их."
 
  # --- gh_wih_flavor.9004 — The Frontier Beckons ---
- gh_wih_flavor.9004.desc: "Некоторые из тех, кто вырос на сказаниях о [war_in_heaven|E], слышат их эхо даже в мирные времена — некое беспокойство, коего не могут развеять уют и роскошь двора. К добру ли, к худу ли, но мой [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('fp3_child_to_leave'))] [fp3_child_to_leave.GetFirstName] начинаeт ощущать эту тягу.\n\n«[parent.GetMotherFather|U], отпусти меня. Я хочу испробовать свой клинок и свой разум на порубежье — путешествовать с караванами, изведать пустынные дороги, увидеть места, ведомые лишь воинам да скитальцам».\n\nОднако [worried_relation.GetFirstName] искренне любит [fp3_child_to_leave.GetFirstNameNoTooltip] и слёзно просит меня отвергнуть прошение [fp3_child_to_leave.GetHerHis]."
+ gh_wih_flavor.9004.desc: "Некоторые из тех, кто вырос на сказаниях о [Concept('war_in_heaven','Войне на небесах')|E], слышат их эхо даже в мирные времена — некое беспокойство, коего не могут развеять уют и роскошь двора. К добру ли, к худу ли, но мой [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('fp3_child_to_leave'))] [fp3_child_to_leave.GetFirstName] начинает ощущать эту тягу.\n\n«[parent.GetMotherFather|U], отпусти меня. Я хочу испробовать свой клинок и свой разум на порубежье — путешествовать с караванами, изведать пустынные дороги, увидеть места, ведомые лишь воинам да скитальцам».\n\nОднако [worried_relation.GetFirstName] искренне любит [fp3_child_to_leave.GetFirstNameNoTooltip] и слёзно просит меня отвергнуть прошение [fp3_child_to_leave.GetHerHis]."
 
  # --- gh_wih_flavor.9010 — HoF Demands Holy War ---
  gh_wih_flavor.9010.desc_wardenite: "[righteous_caliph.GetTitleTierName] [righteous_caliph.GetFirstName] делит мир просто: те, кто подчинён авторитету веры [righteous_caliph.GetFaith.GetReligion.GetAdjectiveNoTooltip], и те, кого лишь предстоит к нему привести. Земли за моей восточной границей крайне беспокоят [righteous_caliph.GetHerHim].\n\n«Твой долг как верного [ROOT.Char.GetFaith.GetReligion.GetAdjectiveNoTooltip] — привести порубежье под нашу защиту», — передает [righteous_caliph.GetSheHe] через своего посла. — «Мы и так слишком долго терпели обычаи, что соблюдает [pagan_ruler.GetTitledFirstName]. Я отправлю тебе войска Орденов и конницу, дабы подкрепить поход и привести [pagan_county.GetNameNoTier] под праведную власть»."

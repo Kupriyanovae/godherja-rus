@@ -146,7 +146,7 @@
 
  #tooltips
 
- not_yet_implemented.tt:0 "#R NOT YET IMPLEMENTED#!"
+ not_yet_implemented.tt:0 "#R ЕЩЁ НЕ РЕАЛИЗОВАНО#!"
 
  level_0_warning.tt:0 "Требуется сотворение на 1-м уровне или выше"
 
@@ -169,7 +169,7 @@
  moon_guidance_random_backfire.tt:0 "#N Получить случайный модификатор ложного наставления [Concept('aervalr','Эрвала')|E] #!"
  spell_too_weak_to_heal_this_wound.tt:0 "#N Раны этого персонажа тяжелы, и могут быть исцелены этим заклинанием, только если оно сотворено на более высоком уровне. #!"
  boneshaping_1.tt:0 "Получит возможность магически изменить тело и костную структуру [affected_character.GetName|E].\n Каждый раз, когда персонаж подвергается воздействию формирования костей, заклинание должно быть сотворено на более высоком уровне, чтобы воздействовать на него снова."
- boneshaping_2.tt:0 "#N [affected_character.GetName|E] подвергался формированию костей слишком много раз, чтобы на него подействовал заклинание данного уровня.\n Заклинание должно быть сотворено на более высоком уровне, чтобы оказать какое-либо воздействие на эту цель. #!"
+ boneshaping_2.tt:0 "#N [affected_character.GetName|E] [Select_CString(affected_character.IsFemale, 'подвергалась', 'подвергался' )] формированию костей слишком много раз, чтобы на него подействовал заклинание данного уровня.\n Заклинание должно быть сотворено на более высоком уровне, чтобы оказать какое-либо воздействие на эту цель. #!"
  magic_cannibalism_1.tt:0 "Вы поглотите тело [cannibalism_victim.GetName|E], чтобы вобрать в себя часть их генетического или магического потенциала, если он превосходит ваш.\n За каждого поглощённого персонажа вы должны сотворить это заклинание на более высоком уровне, чтобы вобрать силу из другого."
  magic_cannibalism_2.tt:0 "#N Вы поглотили слишком много персонажей, чтобы иметь возможность сотворить Пожирание силы.\n Вы должны сотворить заклинание на более высоком уровне, чтобы вобрать какую-либо силу из [cannibalism_victim.GetName|E]. #!"
  magic_cannibalism_3.tt:0 "#N Вы поглотили слишком много персонажей, чтобы получить дальнейшую силу через заклинание Пожирание Силы. #!"
@@ -535,9 +535,9 @@
  rift_walk_army_invalid_tt:0 "Ничего не происходит! (Вы должны сотворить это заклинание на более высоком уровне)."
 
  defiled_nadir_setup_effect_broken_bond: "Ваша связь с [old_defiled_nadir_bound_mask.GetName] будет разорвана, и вы получите [Concept('modifier','модификатор')|E] [GetModifier('magic_defiled_nadir_broken_bond_modifier').GetNameWithTooltip] на 5 лет"
- defiled_nadir_setup_effect_tt: "Если у вас не надетa ольтенская [Concept('artefact,'маска')|E], вы получите одну среднего качества"
- defiled_nadir_setup_effect_new_mask_tooltip: "Поскольку у вас не надетa  ольтенская [Concept('artefact,'маска')|E], новый артефакт среднего качества станет вашей Связанной маской"
- defiled_nadir_setup_effect_equip_tooltip: "Вы автоматически наденете новый [Concept('artefact,'артефакт')|E]"
+ defiled_nadir_setup_effect_tt: "Если у вас не надета ольтенская [Concept('artifact','маска')|E], вы получите одну среднего качества"
+ defiled_nadir_setup_effect_new_mask_tooltip: "Поскольку у вас не надета ольтенская [Concept('artifact','маска')|E], новый [Concept('artifact','артефакт')|E] среднего качества станет вашей Связанной маской"
+ defiled_nadir_setup_effect_equip_tooltip: "Вы автоматически наденете новый [Concept('artifact','артефакт')|E]"
  defiled_nadir_setup_effect_extant_mask_tooltip: "[extant_mask_artifact.GetName] станет вашей Связанной маской"
  defiled_nadir_setup_effect_story_tooltip: "Начинает [Concept('story_cycle','цикл')|E] «Маской Скованный»"
  defiled_nadir_warning_tt: "Отделение от Связанной маски будет иметь #N серьёзные#! последствия"
@@ -601,7 +601,7 @@
  
  # interface messages
  thought_theft_title:0 "Кража мыслей"
- thought_theft_desc:0 "Я не нашёл артефактов в грёзах."
+ thought_theft_desc:0 "Я не [Select_CString(ROOT.Char.IsFemale, 'нашла', 'нашёл' )] артефактов в грёзах."
 
  #########
  # CABAL #
