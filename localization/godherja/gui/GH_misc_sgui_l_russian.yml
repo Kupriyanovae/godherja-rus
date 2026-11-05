@@ -72,7 +72,7 @@
  GH_STEAL_BOOK_TOOLTIP: "Украсть #weak [Localize(Concatenate(Scope.GetFlagName, '_title'))]#!"
  GH_TRANSFER_ARTIFACT_TO_COLLECTION: "#T Перенести артефакт в местное собрание знаний#!"
  GH_RETRIEVE_BOOK_TOOLTIP: "Забрать #weak [Localize(Concatenate(Scope.GetFlagName, '_title'))]#!"
- BOOK_NOT_YET_READ_TOOLTIP: "Неизвестный текст.\n[Concept('gh_reading_capacity','Прочитано текстов за сессию')|E]: #high [GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue]/[GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue]#!\n\n[SelectLocalization(GreaterThanOrEqualTo_CFixedPoint(GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue,GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue) ,'@warning_icon! #N Вы прочитали максимальное количество текстов за эту сессию.#!','#clickable;italic Нажмите, чтобы изучить#!')]"
+ BOOK_NOT_YET_READ_TOOLTIP: "Неизвестный текст.\n[Concept('gh_reading_capacity','Прочитано текстов за сессию')|E]: #high [GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue]/[GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue]#!\n\n[SelectLocalization(GreaterThanOrEqualTo_CFixedPoint(GetPlayer.MakeScope.Var('gh_number_of_recently_read_book').GetValue,GetPlayer.MakeScope.Var('gh_max_number_of_book_read').GetValue) ,'@warning_icon! #N Вы прочитали максимальное количество текстов за эту сессию.#!','#clickable;italic Щелкните, чтобы изучить#!')]"
  COLLECTION_ON_THE_TOPIC_OF_TITLE: "Собрание знаний на тему «[Localize(Concatenate(GetPlayer.MakeScope.Var('gh_chosen_topic').GetFlagName,'_title'))]» в баронии [GetPlayer.GetCurrentLocation.GetNameNoTooltip]"
 
  gh_small_bonus_to_reading_capacity_effect: "[Concept('gh_reading_capacity','Предел книг за сессию')|E]: #P +2#!"

@@ -94,7 +94,7 @@
  mf_skill_arcana_loc:0 "$arcana$"
  mf_sort_by_sum_of_skills_loc:0 "$CHARACTER_SORT_ALL_SKILLS$"
 
- mf_CHARACTER_SORT_BY:0 "#T Порядок сортировки: [Select_CString( GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet , 'По возрастанию', 'По убыванию' )]\n#!#I Нажмите, чтобы переключить#!"
+ mf_CHARACTER_SORT_BY:0 "#T Порядок сортировки: [Select_CString( GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet , 'По возрастанию', 'По убыванию' )]\n#!#I Щелкните, чтобы переключить#!"
  mf_SORT_BY_DIPLOMACY:0 "Сортировка по навыку «[diplomacy|E]»: [Select_CString( And( EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_diplomacy'), Not(GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )), 'По возрастанию', 'По убыванию' )|V]"
  mf_SORT_BY_MARTIAL:0 "Сортировка по навыку «[martial|E]»: [Select_CString( And( EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_martial'), Not(GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )), 'По возрастанию', 'По убыванию' )|V]"
  mf_SORT_BY_STEWARDSHIP:0 "Сортировка по навыку «[stewardship|E]»: [Select_CString( And( EqualTo_string(GetPlayer.MakeScope.Var('mf_sort_by').GetFlagName,'mf_skill_stewardship'), Not(GetPlayer.MakeScope.Var( 'mf_sort_by_reverse' ).IsSet )), 'По возрастанию', 'По убыванию' )|V]"

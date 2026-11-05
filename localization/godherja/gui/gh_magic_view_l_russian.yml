@@ -1358,7 +1358,7 @@
  learned_spell_notification.title: "[Concept('gh_ritual','Ритуал')|E] Изучен"
  learned_spell_notification.desc: "Я [Select_CString(ROOT.Char.IsFemale, 'научилась', 'научился' )] сотворять #underline [spell_to_learn_scope.Custom('SpellName')]#!"
  learned_spell_notification_relation.desc: "[spell_learner.GetFirstName] [Select_CString(spell_learner.IsFemale, 'научилась', 'научился' )] сотворять #underline [spell_to_learn_scope.Custom('SpellName')]#!"
- learned_magic_school_notification.title: "[concept('magic_type','Школа магии')|E] изучена"
+ learned_magic_school_notification.title: "[Concept('magic_type','Школа магии')|E] изучена"
  learned_magic_school_notification.desc: "Я [Select_CString(ROOT.Char.IsFemale, 'изучила', 'изучил' )] основы #underline [Localize(Concatenate(learned_magic_school_scope.MakeScope.Var('unique_magic_school_identifier').GetFlagName, '_name'))]#!"
  learned_magic_school_notification_relation.desc: "[magic_school_learner.GetFirstName] [Select_CString(magic_school_learner.IsFemale, 'изучила', 'изучил' )] основы #underline [Localize(Concatenate(learned_magic_school_scope.MakeScope.Var('unique_magic_school_identifier').GetFlagName, '_name'))]"
  
@@ -1464,7 +1464,7 @@
  SPELL_GOLD_COST_VALUE_FORMAT: "$KEY$: @gold_icon!$VALUE|=+0$"
  ASPECT_VALUE_FORMAT: "$KEY$: $VALUE|=+0$"
 
- MAGIC_SCHOOL_COOLTIP_CLICK: "#I Нажмите, чтобы просмотреть школу «[Localize(Concatenate(Character.MakeScope.Var('primary_magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))]»#!"
+ MAGIC_SCHOOL_COOLTIP_CLICK: "#I Щелкните, чтобы просмотреть школу «[Localize(Concatenate(Character.MakeScope.Var('primary_magic_school').Var('unique_magic_school_identifier').GetFlagName, '_name'))]»#!"
 
  COMBINED_PROWESS_SKILL_TOOLTIP: "$PROWESS_VALUE_BREAKDOWN$\n[Concept('magic_prowess_skill','Магическое мастерство')|E]: $MAGIC_PROWESS_SKILL$\n$MAGIC_PROWESS_BREAKDOWN$"
  
