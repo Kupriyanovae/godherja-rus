@@ -58,6 +58,12 @@
  tenet_high_bloodright_name: "Ritualistic Purity"
  tenet_household_gods_name_hulawite_religion: "The Crown of the Brilliant Sun of Reason"
  tenet_household_gods_desc_hulawite_religion: "The true righteous lord is not ordained by a false god or irrational creed, but by his or her own unconquerable virtue. Let us follow rationality and put all necessary powers into the hands of one good despot, who will mediate between squabbling priests and seek justice above all else."
+ tenet_court_magi_judge_name: "Court of the Magi-Judges"
+ tenet_court_magi_judge_desc: "Our laws and codexes are a central part to our rituals. Only through to their study and a righteous mind may the land and it's people bask in the glory of the Sun."
+ tenet_ascension_in_silence_name: "Ascension in Silence"
+ tenet_ascension_in_silence_desc: "Cover your ears from [aeras|E]'s eternal cacophony, music is a chain that bind us to this unholy land of noise and suffering. You must cleanse your mind and spirit through constant, silent meditation to sever it. Only through this can a true believer find divine tranquility and thus ascend to [GetBuilding('01_sophocos').GetName]."
+ tenet_blessings_minstrels_name: "Blessings of Minstrels"
+ tenet_blessings_minstrels_desc: "Long ago, the [minstrels_kratemezin|E] came to [Glossary('Kratemezin','crater_encyclopedia_desc')] and taught us the thousand and one notes of [GetBuilding('01_sophocos').GetName], the holiest of songs. We honor them through music in return for their blessings, singing our praises to the divine."
  tenet_veneration_of_ohrasik_desc: "Ohrasik continues to guide the righteous through his reincarnations, leading the fight against the wicked servants of [aervalr|E] long after his original form has departed [aeras|E]."
  tenet_veneration_of_ohrasik_name: "Veneration of Ohrasik"
  tenet_higher_purity_desc: "It is not enough to be superior, we must strive to purge ourselves of impurity wherever we may find it. Nothing is sacred."
@@ -186,6 +192,8 @@
  doctrine_parameter_mutation_guaranteed: "Children born to the faithful are touched by the deep waters — mutations from the sea are guaranteed at birth"
  tenet_gatebreakers_name: "Gatebreakers"
  tenet_gatebreakers_desc: "Mighty Djor split the mountain and broke the great gates that guarded the underworld, and wise Grular showed the brave where not to step and which secret words to speak to slip through the traps of the [Concept('aelfir','Aecaggir')|E]. Their greatest sons, sons like Graldar, Cormacan and Jorggamaggnar will prove themselves equally mighty, and restore the Krothaggi to an empire so great that no [Concept('twist_of_the_tunnels','foul magics')|E] will ever be able to undo its glory!"
+
+ culture_parameter_can_recruit_underworld_specialist:0 "Gain a [decision|E] to recruit Underworld [commanders|E]"
 
  ####wardenite
  tenet_wardenite_legalism_name: "Wardenite Legalism"
@@ -441,6 +449,7 @@
  doctrine_parameter_mahrator_religion_syncretic_recipient_opinion_active: "Mutual [EmptyScope.ScriptValue('syncretic_mutual_opinion_bonus_value')|=+0] [opinion|E] bonus with [faiths|E] that have the $tenet_mahrator_religion_syncretism_name$ [core_tenet|E]"
  doctrine_parameter_manats_religion_syncretic_actor_opinion_active: "Mutual [EmptyScope.ScriptValue('syncretic_mutual_opinion_bonus_value')|=+0] [opinion|E] bonus with Manat [faiths|E]"
  doctrine_parameter_manats_religion_syncretic_recipient_opinion_active: "Mutual [EmptyScope.ScriptValue('syncretic_mutual_opinion_bonus_value')|=+0] [opinion|E] bonus with [faiths|E] that have the $tenet_manats_religion_syncretism_name$ [core_tenet|E]"
+ doctrine_parameter_can_use_lifepath_artifacts: "Can use [GetReligionByKey('lifepath_religion').GetName] [artifacts|E]"
  doctrine_parameter_lifepath_religion_syncretic_actor_opinion_active: "Mutual [EmptyScope.ScriptValue('syncretic_mutual_opinion_bonus_value')|=+0] [opinion|E] bonus with Marcher [faiths|E]"
  doctrine_parameter_lifepath_religion_syncretic_recipient_opinion_active: "Mutual [EmptyScope.ScriptValue('syncretic_mutual_opinion_bonus_value')|=+0] [opinion|E] bonus with [faiths|E] that have the $tenet_lifepath_religion_syncretism_name$ [core_tenet|E]"
  doctrine_parameter_oltenic_religion_syncretic_actor_opinion_active: "Mutual [EmptyScope.ScriptValue('syncretic_mutual_opinion_bonus_value')|=+0] [opinion|E] bonus with Öltenic [faiths|E]"
@@ -978,7 +987,7 @@
  tenet_all_patrin_saint_parameters: "All Patron Saint Parameters (debug)"
  tenet_all_patrin_saint_parameters_desc: ""
 
- province_is_of_a_megalith_or_nature_faith_tt: "This [county|E] must follow a [faith|E] that believes in the significance of Megaliths or the [GetFaithDoctrine('tenet_sanctity_of_nature').GetBaseName]"
+ province_is_of_a_megalith_or_nature_faith_tt: "This [county|E] must follow a [faith|E] that believes in the significance of Megaliths or the [GetDoctrine('tenet_sanctity_of_nature').GetBaseName]"
  
  tenet_stewards_road_name: "Stewards' Road"
  tenet_stewards_road_desc: "The wisdom of managers is as vast as the ocean, enough to occupy a lifetime of study and contemplation. This is precisely why followers must dedicate themselves wholeheartedly to learning, renouncing all worldly distractions."

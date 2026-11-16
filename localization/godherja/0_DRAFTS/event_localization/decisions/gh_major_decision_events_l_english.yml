@@ -42,7 +42,7 @@
  gh_strip_khanhe_peashmbra_decision_confirm:0 "Strip it bare"
  gh_strip_khanhe_peashmbra_decision_tooltip:0 "The [GetBuilding('01_whitegoldpalace').GetName] will be stripped of its gold and precious stone."
  gh_sacked_holy_site_opinion: "Sacked Holy Site"
- gh_every_ruler_opinion_strip_khanhe_peashmbra_decision_tt: "Every [ruler|E] in [sarradon|E] who considers [GetTitleByKey('b_tchouran').GetNameNoTier] a [holy_site|E] will lose #N -40#! [opinion|E] of you"
+ gh_every_ruler_opinion_strip_khanhe_peashmbra_decision_tt: "Every [ruler|E] in [sarradon|E] who considers [GetTitleByKey('b_touchran').GetNameNoTier] a [holy_site|E] will lose #N -40#! [opinion|E] of you"
 
  marcher_decision.1001.t:0 "Bare Stone"
  marcher_decision.1001.desc:0 "The last gemstone has finally been taken, and much of the Khanhe Peashmbra has been turned to ruin, so much taken that it could not bear its own weight anymore.\n\nA shame to lose a building of that size, but the gold is worth more to us melted down than it ever was bolted to a wall."
@@ -94,3 +94,11 @@
  marcher_decision.1003.desc: "I have amassed more than I had originally hoped for and my men are now ready to make the crossing back to Amsar. My task, however, is much harder than that of [GetScriptedCharacterByHistoryID('voyagen_lifepath_46').GetFirstName]. Having no foothold in Amsar, first I have to consider the best approach for my initial reconquest. I could attempt to gain a foothold directly on the mainland, which would make any future conquest easier, or do as [GetScriptedCharacterByHistoryID('voyagen_lifepath_46').GetFirstName] did during the Amsari civil war and secure the Laman Islands first as an easier position to defend."
  marcher_decision.1003.a: "Take the Laman Islands first."
  marcher_decision.1003.b: "Land directly on the mainland."
+
+ marcher_decision.1101.t: "The Seekers are Reborn"
+ marcher_decision.1101.desc: "The news of the order's revival spread like wildfire, and streams of hopefuls have poured in to crowd its gates. Most will have to be rejected, of course, being more suited to pitchforks and scythes than to any good steel, but those with talent and skill are also aplenty. The newly ordained [order_leader.GetTitledFirstName] is overseeing the preparations, having arrived from an [antimagi|E] order with a score of trusted retainers.\n\nSoon, the [GetBuilding('01_tower_golden_seeker').GetName] will become a staging ground for a [Concept('chevalie','Chevalien')|E] expansion into the Clanlands, and an expansion of my power."
+ marcher_decision.1101.tt: "[GetTitleByKey('d_laysisters_golden_seeker').GetName] [military_holy_order|E] has been re-founded"
+ marcher_decision.1101.a: "And they'll never be brought down again."
+ marcher_decision.1101.b: "The order will be [ROOT.Char.GetCulture.GetHeritage.GetNameNoTooltip] from now on."
+ marcher_decision.1101.b.heritage.tt: "[GetTitleByKey('d_laysisters_golden_seeker').GetName] will use [GetPlayer.GetCulture.GetHeritage.GetName] [heritage|E] for its [GetLaw('cultural_holy_order_succession_law').GetName] [succession_law|E]"
+ marcher_decision.1101.b.character.tt: "A character of [GetPlayer.GetCulture.GetName] [culture|E] will assume leadership of [GetTitleByKey('d_laysisters_golden_seeker').GetName|l]"

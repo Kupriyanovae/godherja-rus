@@ -129,12 +129,14 @@
  trait_marine_commander_desc: "This character is at home in the [shatteredisles|E] and will take advantage of their terrain in battle."
  trait_marine_commander_character_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] is at home in the [shatteredisles|E] and will take advantage of their terrain in battle."
 
- #trait_underground_commander: "Underground Commander"
- #trait_underground_commander_1: "Deep Marcher"
- #trait_underground_commander_2: "Subaeranean Tactician"
- #trait_underground_commander_3: "Warden of the Depths"
- #trait_underground_commander_desc: "This character is at home in the lightless depths of the [mayikprolollans|E], turning the dark and narrow into advantages where other commanders are swallowed."
- #trait_underground_commander_character_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] is at home in the lightless depths of the [mayikprolollans|E], turning the dark and narrow into advantages where other commanders are swallowed."
+ trait_underworld_commander: "Underworld Commander"
+ trait_underworld_commander_1: "Caverneer"
+ trait_underworld_commander_2: "Subaeranean Tactician"
+ trait_underworld_commander_3: "Warden of the Depths"
+ trait_underworld_commander_desc: "This character is at home in the lightless depths beneath the [mayikrata|E], turning the dark and narrow into advantages where other commanders are swallowed.."
+ trait_underworld_commander_character_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] is at home in the lightless depths beneath the [mayikrata|E], turning the dark and narrow into advantages where other commanders are swallowed."
+ trait_track_underworld_commander: "Underworld Terrain Specialist"
+ trait_track_underworld_commander_desc: "#help You gain experience in this track by fighting in any underground terrain.#!\n\nTo the experienced commander every cave can be a fortress."
 
  trait_blackspawn: "Blackspawn"
  trait_gh_blackspawn_1: "Initiate of the Blackspawn"
@@ -481,27 +483,89 @@
  trait_gh_riftmark_3_char_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] has been laid bare by the effects of Mixed Magic. They frequently awake to find themselves sleepwalking, alone in isolated parts of their manor. At other times they are misdirected, having unfortunately misheard directions and becoming lost and isolated. Sometimes they look over their shoulder and see they are being followed — always by the same person, and always closer every time."
  TRAIT_FLAG_DESC_gh_riftmark_3_spell_vulnerability: "Significantly more vulnerable to [Concept('mixed_magic','Fog Magic')|E]."
 
-
  trait_way_of_swords: "Way of Swords"
+ lifepath_of_swords: " of Swords"
+ trait_way_of_swords_link: "[GetTrait('way_of_swords_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_family: "Way of Family"
+ lifepath_of_family: " of Family"
+ trait_way_of_family_link: "[GetTrait('way_of_family_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_coins: "Way of Coins"
+ lifepath_of_coins: " of Coins"
+ trait_way_of_coins_link: "[GetTrait('way_of_coins_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_crowns: "Way of Crowns"
+ lifepath_of_crowns: " of Crowns"
+ trait_way_of_crowns_link: "[GetTrait('way_of_crowns_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_harvests: "Way of Harvests"
+ lifepath_of_harvests: " of Harvests"
+ trait_way_of_harvests_link: "[GetTrait('way_of_harvests_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_justice: "Way of Justice"
+ lifepath_of_justice: " of Justice"
+ trait_way_of_justice_link: "[GetTrait('way_of_justice_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_knowledge: "Way of Knowledge"
+ lifepath_of_knowledge: " of Knowledge"
+ trait_way_of_knowledge_link: "[GetTrait('way_of_knowledge_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_crows: "Way of Crows"
+ lifepath_of_crows: " of Crows"
+ trait_way_of_crows_link: "[GetTrait('way_of_crows_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_nullification: "Way of Nullification"
+ lifepath_of_nullification: " of Mullification"
+ trait_way_of_nullification_link: "[GetTrait('way_of_nullification_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_hunt: "Way of the Hunt"
+ lifepath_of_hunt: " of the Hunt"
+ trait_way_of_hunt_link: "[GetTrait('way_of_hunt_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_sword: "Way of the Sword"
- trait_way_of_stars: "Way of Stars"
- trait_way_of_shepherd: "Way of Shepherds"
+ lifepath_of_sword: " of the Sword"
+ trait_way_of_sword_link: "[GetTrait('way_of_sword_follower').GetName(GetNullCharacter)]"
+
+ trait_way_of_stars: "Way of the Stars"
+ lifepath_of_stars: " of the Stars"
+ trait_way_of_stars_link: "[GetTrait('way_of_stars_follower').GetName(GetNullCharacter)]"
+
+ trait_way_of_shepherd: "Way of the Shepherd"
+ lifepath_of_shepherd: " of the Shepherd"
+ trait_way_of_shepherd_link: "[GetTrait('way_of_shepherd_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_blood: "Way of Blood"
+ lifepath_of_blood: " of Blood"
+ trait_way_of_blood_link: "[GetTrait('way_of_blood_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_fear: "Way of Fear"
+ lifepath_of_fear: " of Fear"
+ trait_way_of_fear_link: "[GetTrait('way_of_fear_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_dread: "Way of Dread"
+ lifepath_of_dread: " of Dread"
+ trait_way_of_dread_link: "[GetTrait('way_of_dread_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_pain: "Way of Pain"
+ lifepath_of_pain: " of Pain"
+ trait_way_of_pain_link: "[GetTrait('way_of_pain_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_war: "Way of War"
+ lifepath_of_war: " of War"
+ trait_way_of_war_link: "[GetTrait('way_of_war_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_peace: "Way of Peace"
+ lifepath_of_peace: " of Peace"
+ trait_way_of_peace_link: "[GetTrait('way_of_peace_follower').GetName(GetNullCharacter)]"
+
  trait_way_of_death: "Way of Death"
+ lifepath_of_death: " of Death"
+ trait_way_of_death_link: "[GetTrait('way_of_death_follower').GetName(GetNullCharacter)]"
+
+ lifepath_of_none: ""
+ trait_way_of_none_link: "Waypaths"
+
  trait_undead: "Undead"
  trait_magicsickness: "Magic-Sickness"
  trait_ritual_scars: "Ritual Scarring"
@@ -1108,3 +1172,20 @@
  trait_adopted_character_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] has been adopted into the [ROOT.GetCharacter.GetHouse.GetName], forsaking any previous dynastic ties."
  trait_adopted_axiaotheos_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] was adopted into the [ROOT.GetCharacter.GetHouse.GetName|V] by $hecaeda_link$ Hecaeda#!, his old house of $varixion_link$ Varixion#! and mother in [GetScriptedCharacterByHistoryID('easternimperial_aversarinas_aagiokrata_90').GetName|V] being put aside."
  trait_adopted_arkloba_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] was adopted into the [ROOT.GetCharacter.GetHouse.GetName|V] by $cenware_link$ Cenware#! and [GetScriptedCharacterByHistoryID('daukeni_sjalvolki_21').GetName|V], a lowborn peasant of Aversarian descent who became a part of the Witch-Breaker's noble family."
+
+ trait_aautokratia: "Aautokratia"
+ trait_aautokratia_dead_desc: "Blessed is [ROOT.GetCharacter.GetFirstNamePossessiveNoTooltip] name, for [ROOT.GetCharacter.GetSheHe] was the rightful aautokratia of [GetTitleByKey('h_aversarinas_aautokrata').GetNameNoTier|l], the Purest Incarnate."
+ trait_aautokratia_desc: "Lo and behold: [ROOT.GetCharacter.GetFirstNameNoTooltip], the Purest Incarnate, rightful aautokratia of [GetTitleByKey('h_aversarinas_aautokrata').GetNameNoTier|l], walks amongst you."
+ trait_aautokratir: "Aautokratir"
+ trait_aautokratir_dead_desc: "Blessed is [ROOT.GetCharacter.GetFirstNamePossessiveNoTooltip] name, for [ROOT.GetCharacter.GetSheHe] was the rightful aautokratir of [GetTitleByKey('h_aversarinas_aautokrata').GetNameNoTier|l], the Purest Incarnate."
+ trait_aautokratir_desc: "Lo and behold: [ROOT.GetCharacter.GetFirstNameNoTooltip], the Purest Incarnate, rightful aautokratir of [GetTitleByKey('h_aversarinas_aautokrata').GetNameNoTier|l], walks amongst you."
+
+ trait_waysaint: "Waysaint[ROOT.GetCharacter.Custom('GetLifepathOf')]"
+ trait_waysaint_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] is an officially consecrated paragon of the [ROOT.GetCharacter.Custom('GetLifepathTraitLink')], embodying the virtues which all pathtreaders ought to aspire to."
+
+ trait_czor_czazan: "Czór-Czazan"
+ trait_czor_czazan_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a herald of [ROOT.Char.GetFaith.HighGodNamePossessive|l] will, said to have been sent from the skies to the accursed earth as a [Glossary('czór-czazan','GH_CZOR_CZAZAN_GLOSS')]."
+ trait_czazan: "Czazan"
+ trait_czazan_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] lived a holy life of glory and is believed to have joined [ROOT.Char.GetFaith.HighGodNamePossessive|l] skyborne host as one of the [Glossary('czazan','GH_CZAZANAD_GLOSS')]."
+ trait_are: "Arê"
+ trait_are_desc: "[ROOT.GetCharacter.GetFirstNamePossessiveNoTooltip] righteous deeds in life have earned [ROOT.GetCharacter.GetHerHim] passage into [ROOT.Char.GetFaith.HighGodNamePossessive|l] embrace, marking him as an [Glossary('arê','GH_ARE_GLOSS')]."

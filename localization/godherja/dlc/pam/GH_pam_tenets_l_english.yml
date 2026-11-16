@@ -1,0 +1,30 @@
+﻿l_english:
+ tenet_dulia_aagiokrata_name: "Aautokratolathēra"
+ tenet_dulia_aagiokrata_desc: "Just as the Purest reigned from their heavenly throne in the [Concept('first_empire','First City')|E], so too do the Incarnates reign from the throne of the [Glossary('Aautokrata','GH_AAUTOKRATA_GLOSS')]; honor them, for upon their shoulders rests the fate of humankind."
+ tenet_dulia_aagiokrata_historical_glossary: "[Glossary('$tenet_dulia_aagiokrata_name|q$','tenet_dulia_aagiokrata_historical_desc')]"
+ tenet_dulia_aagiokrata_historical_desc: "Among the myriad faiths practiced in [aversaria|E] under the umbrella of the [Concept('aversarinas_aagiokratia','Aagiokrata')|E], only the aautokratir remains at the pinnacle of worship but one step below the Purest themself. As much a political construct as a spiritual one, it permeates the legitimacy of the imperial order and links the [Concept('first_empire','First City')|E] to [GetTitleByKey('h_aversarinas_aautokrata').GetNameNoTier|l]. The fortunes of individual aautokratir cults are often as fickle as the fates of the very figures they deify, and their claims to divinity frequently depend more upon the loyalties of the nobility than any reverence for the holy."
+
+ tenet_dulia_lifepath_name: "Simulerie Veisant"
+ tenet_dulia_lifepath_desc: "To walk the Paths is holy, and none are holier than those who have found unity with them. Emulate their virtues and deeds, and let their spirits guide you ever further."
+ tenet_dulia_lifepath_historical_glossary: "[Glossary('$tenet_dulia_lifepath_name|q$','tenet_dulia_lifepath_historical_desc')]"
+ tenet_dulia_lifepath_historical_desc: "Although $lifepath_saint$hood as a religious practice is arguably older than the [GetReligionByKey('lifepath_religion').GetName] itself, ostensibly having its origins in the [GetFaithByKey('starvayrd').GetName|V] beliefs of old, it was not until the Council of Orm in 242 IS that it was firmly established as an ecclesiastical doctrine of the then-Conclave of Aubriest. Under the traditionalist clerical interpretation, the status of a $lifepath_saint$ is bestowed upon virtuous pathtreaders who have become paragons of their chosen Paths and molded themselves into perfect alignment with them.\n\nHistorically, however, it was also sometimes conferred by priestly ministers in exchange for favors, monetary compensation, or loan forgiveness, as an apology, a birthday gift, during brief moments of lucidity amid long-term incapacitation or imprisonment, or without any reason given."
+
+ tenet_dulia_salacad_name: "Óraj Czazanêr"
+ tenet_dulia_salacad_desc: "Blessed are those who cast off the accursed earth to enter the Azure Mother's skybound host, and many are their glories. Mingle their blood with thine, and share in resplendence through veneration."
+ tenet_dulia_salacad_historical_glossary: "[Glossary('$tenet_dulia_salacad_name|q$','tenet_dulia_salacad_historical_desc')]"
+ tenet_dulia_salacad_historical_desc: "The theme of a challenge as a requirement for entering the afterlife is ever-present in [GetReligionByKey('salacad_religion').GetName] religious folklore. Most commonly, it takes the form of combat with a [Glossary('#G_light czazan#!','GH_CZAZANAD_GLOSS')], although other forms of contest, such as tests of wit or trickery, are not entirely unheard of. The outcomes of these rites of passage are typically divined shortly after the subject's passing, and, should the deceased be declared successful, it is customary to ingest a drop of their blood in order to partake of some of their strength."
+
+ gh_doctrine_parameter_tenet_dulia_cheaper_saint_costs_ingame: "[GetPlayer.Custom('GhPamDuliaSaintCostParameter')]"
+ gh_doctrine_parameter_tenet_dulia_cheaper_saint_costs_default: "The [GetDecisionWithKey('pam_canonize_saint_decision').GetName] and [GetDecisionWithKey('pam_extract_relic_decision').GetName] [decisions|E] cost #P 15%#! less @piety_icon![piety|E] and @gold_icon![gold|E]"
+
+ gh_doctrine_parameter_tenet_dulia_cheaper_saint_costs_aagiokrata: "The [GetDecisionWithKey('pam_extract_relic_decision').GetName] [decision|E] costs #P 15%#! less @piety_icon![piety|E] and @gold_icon![gold|E]"
+ gh_doctrine_parameter_tenet_dulia_can_select_patron_saint_ingame: "Can use the [GetDecisionWithKey('pam_determine_patron_saint_decision').GetName] [decision|E], unless your [rite|E] forbids $tenet_dulia_default_name$"
+ gh_doctrine_parameter_tenet_dulia_can_select_patron_saint_default: "Can use the [GetDecisionWithKey('gh_pam_determine_patron_saint_dummy_decision').GetName] [decision|E], unless your [rite|E] forbids $tenet_dulia_default_name$"
+
+ gh_doctrine_parameter_tenet_dulia_canonization_faith_bonus_ingame: "[GetPlayer.Custom('GhPamDuliaSainthoodChanceParameter')]"
+ gh_doctrine_parameter_tenet_dulia_canonization_faith_bonus_default: "Canonizing a saint grants every [ruler|E] of the [faith|E] [GetModifier('pam_dulia_new_saint_modifier').GetNameWithTooltip] [modifier|E] for #EMP 5#! years"
+ gh_doctrine_parameter_tenet_dulia_canonization_faith_bonus_aagiokrata: ""
+
+ gh_doctrine_parameter_tenet_dulia_personal_sainthood_chance_ingame: "[GetPlayer.Custom('GhPamDuliaCanonizationBonusParameter')]"
+ gh_doctrine_parameter_tenet_dulia_personal_sainthood_chance_default: "Increases your chance of [Concept('canonized','Canonization')|E] after death"
+ gh_doctrine_parameter_tenet_dulia_personal_sainthood_chance_aagiokrata: ""

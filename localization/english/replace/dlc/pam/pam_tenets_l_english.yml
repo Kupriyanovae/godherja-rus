@@ -1,0 +1,119 @@
+﻿l_english:
+ tenet_dulia_default_desc: "Let all who seek the intercession of the saints approach them with reverence and devotion."
+ tenet_dulia_default_historical_glossary: ""
+ doctrine_parameter_tenet_dulia_canonization_faith_bonus: "[SelectLocalization(GetPlayer.IsValid, 'gh_doctrine_parameter_tenet_dulia_canonization_faith_bonus_ingame','gh_doctrine_parameter_tenet_dulia_canonization_faith_bonus_default')]"
+ doctrine_parameter_tenet_dulia_cheaper_saint_costs: "[SelectLocalization(GetPlayer.IsValid, 'gh_doctrine_parameter_tenet_dulia_cheaper_saint_costs_ingame','gh_doctrine_parameter_tenet_dulia_cheaper_saint_costs_default')]"
+ doctrine_parameter_tenet_dulia_dynasty_prestige_from_relics: "The [GetDecisionWithKey('pam_extract_relic_decision').GetName] [decision|E] on a [dynasty|E] member grants #P [dynasty_prestige_i|E][EmptyScope.ScriptValue('medium_dynasty_prestige_gain')|0]#! [dynasty_prestige|E]"
+ doctrine_parameter_tenet_dulia_can_select_patron_saint: "[SelectLocalization(GetPlayer.IsValid, 'gh_doctrine_parameter_tenet_dulia_can_select_patron_saint_ingame','gh_doctrine_parameter_tenet_dulia_can_select_patron_saint_default')]"
+ doctrine_parameter_tenet_dulia_personal_sainthood_chance: "[SelectLocalization(GetPlayer.IsValid, 'gh_doctrine_parameter_tenet_dulia_personal_sainthood_chance_ingame','gh_doctrine_parameter_tenet_dulia_personal_sainthood_chance_default')]"
+
+ # Sarradon
+ doctrine_parameter_tenet_court_magi_judge_fickle_penalty: "[GetTrait('fickle').GetName( GetNullCharacter )] [characters|E]: #N -10%#! @piety_icon![piety|E] gain, #N -10#! [clergy|E] [opinion|E]"
+ doctrine_parameter_tenet_court_magi_judge_stubborn_bonus: "[GetTrait('stubborn').GetName( GetNullCharacter )] [characters|E]: #P +2#! @skill_stewardship_icon![stewardship|E] gain, #P +10#! [liege|E] [opinion|E],#P +10%#! [learning|E] [lifestyle|E] experience gain"
+ doctrine_parameter_tenet_blessings_minstrels_poet_trait: "Gains the [GetTrait('lifestyle_poet').GetName( GetNullCharacter )] [trait|E], with a random chance to gain [GetTrait('violet_poet').GetName( GetNullCharacter )] [trait|E] instead"
+ # ASKIL_BGA_TODO: Do
+ # ASKIL_BGA_TODO: Do
+ # ASKIL_BGA_TODO: Do
+ # ASKIL_BGA_TODO: Do
+
+ # Peace of God
+ tenet_peace_of_god_default_name: "Sacred Peace"
+ tenet_peace_of_god_default_desc: "Senseless violence against our brothers and sisters is an affront to the divine."
+
+
+ # Transubstantiation
+ tenet_transubstantiation_default_desc: "What is offered upon our altars does not remain as it was. Once consecrated, its substance is changed into what is holy, though its appearance stays unaltered."
+
+ # To Work Is to Pray
+ tenet_ora_et_labora_default_desc: "To pray is to work, and to work is to pray. Idleness is the enemy of the soul, and we must be diligent in both thought and action." # Basically unchanged, just removed jesus
+
+
+ # Mother of God
+ tenet_hyperdulia_default_name: "Holy Motherhood"
+ tenet_hyperdulia_default_desc: "The divine is honored in the women who bear and nurture life. Their counsel is sought, their claims upheld, and their daughters welcomed as blessings upon the house."
+
+ # Simony
+ tenet_simony_default_desc: "" # Don't have anything for that ASKIL_BGA_TODO: Do
+
+ # Monophysitism
+ tenet_monophysitism_default_name: "Single Nature"
+ tenet_monophysitism_default_desc: "Where the divine has taken on flesh, the flesh was subsumed into it as a drop of water into the sea. There is but one nature and it is wholly divine."
+
+ # Fervent Proselytism
+ tenet_acts_of_apostles_default_desc: "Bring heavenly light to those in darkness, and hope to those in despair." # Basically unchanged
+
+ # Purgatory
+ tenet_purgatory_default_name: "Final Cleansing"
+ tenet_purgatory_default_desc: "The faithful who die burdened by wickedness pass through a final cleansing, which leaves in them only the devoutness needed to stand before the divine." # Quick reword to fit GH
+
+ # Be Fruitful and Multiply
+ tenet_be_fruitful_and_multiply_default_name: "Blessed Fruitfulness"
+ tenet_be_fruitful_and_multiply_default_desc: "In the divine order, the family is an intimate community of life and love, and every child born to it is a blessing upon the faithful."
+
+ # Apostolic Succession
+ tenet_apostolic_succession_default_name: "Unbroken Succession"
+ tenet_apostolic_succession_default_desc: "An unbroken line of ordination, passed from the first clergy of our faith down to those of the present day ensures that its teachings are handed on unalterd."
+
+ # Sacrament of Confession
+ tenet_confession_default_name: "Rite of Confession"
+ tenet_confession_default_desc: "Through confession sinners may receive absolution and be reconciled with the divine." # Just replaced God
+
+ # Original Sin 
+ tenet_original_sin_default_name: "Inherited Sin"
+ tenet_original_sin_default_desc: "All humankind inherits the stain of an ancient transgression, from which only divine grace can redeem us." # Again kinda cheating by reusing divine and also removed mention of Adam
+
+ # Celestial Hierarchy
+ tenet_celestial_hierarchy_default_desc: "The heavenly host is arranged in ordered ranks, from the loftiest to the lowliest, each serving the divine in their appointed role."
+
+ # Soldiery of Christ
+ tenet_miles_christi_default_name: "Holy Soldiery"
+ tenet_miles_christi_default_desc: "The faithful are called to be warriors of the spirit, fighting sin and evil in the armor of the divine, ready to suffer for the faith as soldiers suffer for their commander." # Again only slightly re-worded
+
+ # Charity
+ tenet_philanthropia_default_name: "Care for the Poor"
+ tenet_philanthropia_default_desc: "We hold the generous giving of alms, care for the poor, and the upkeep of hospices and hospitals as central duties of the faithful."
+
+
+ # Scholasticism
+ tenet_scholasticism_default_desc: "Through rigorous intellectual inquiry and dialectical method, faith and reason can be reconciled, and a deeper understanding of divine truth achieved."
+ tenet_scholasticism_modifier_desc: "The pursuit of knowledge is a form of worship, for in understanding creation, we come closer to understanding the divine."
+ 
+ # Love Thy Neighbour # Need another name
+ tenet_love_thy_neighbour_default_name: "Neighborly Love"
+ tenet_love_thy_neighbour_default_desc: "The love of neighbor is inseparable from the love of Divinity, and through acts of charity and mercy, we fulfill the whole of the divine law." #Reused greek desc
+ tenet_love_thy_neighbour_modifier_desc: "" # No idea ASKIL_BGA_TODO: Do
+
+ # Divine Liturgy
+ tenet_divine_liturgy_default_name: "Sacred Liturgy"
+ tenet_divine_liturgy_default_desc: "The liturgy is the primary expression of our faith. In it, heaven and earth meet, and the faithful join in the eternal worship of the divine."
+
+ # Adoptionism
+ tenet_adoptionism_default_name: "Divine Adoption"
+ tenet_adoptionism_default_desc: "As the divine may raise up the righteous and call them its own, so may we take in those we deem worthy and call them our children."
+
+ # Consolamentum
+ tenet_consolamentum_default_name: "Rite of Consolation"
+ tenet_consolamentum_default_desc: "Through the sacred rite of consolation, believers are cleansed of wickedness and prepared for their journey from this world to the next." # Reworked existing desc
+
+
+ # Miaphysitism
+ tenet_miaphysitism_default_name: "United Nature"
+ tenet_miaphysitism_default_desc: "" # No idea ASKIL_BGA_TODO: Do
+
+ # Hesychasm
+ tenet_hesychasm_default_name: "Divine Stillness"
+ tenet_hesychasm_default_desc: ""  # No idea ASKIL_BGA_TODO: Do
+
+ # Anachoresis
+ tenet_anachoresis_default_name: "Spiritual Withdrawal"
+ tenet_anachoresis_default_desc: "Through withdrawal from worldly society into the wilderness, the faithful may achieve spiritual purity." # Just re-used part of the vanilla desc
+ 
+ # Mortification of the Flesh
+ tenet_mortification_of_the_flesh_default_desc: "We mortify the flesh and its sinful desires, for through suffering the soul is purified and brought nearer to spiritual perfection."
+ 
+ # Holy Myron
+ tenet_holy_myron_default_name: "Sacred Anointing"
+ tenet_holy_myron_default_desc: ""  # No idea ASKIL_BGA_TODO: Do
+
+ tenet_khachkar_default_name: "Memorial Stones"
+ tenet_khachkar_default_desc: "Stones carved with intricate sacred imagery are holy monuments, they are marking sacred sites, commemorating the dead and celebrating divine providence."

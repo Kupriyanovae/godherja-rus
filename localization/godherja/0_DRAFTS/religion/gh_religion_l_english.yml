@@ -1,10 +1,4 @@
 ﻿l_english:
-
- #Religion Families
- gh_rf_aversarian: "Aversarian"
- gh_rf_continental: "Continental"
- gh_rf_religious_isolate: "Religious Isolate"
-
  #############
  # Doctrines #
  #############
@@ -60,6 +54,7 @@
  special_doctrine_agionist_order_cooperation_corrupt_desc: "Our faith stands united with our fellow Agionist Orders as we bring the light of the Saints to the Sarradonian heathens."
  agionist_order_cooperation_corrupt_name: "The Saints' Crusade"
  agionist_faith_name: "Has the Agionist faith"
+ fogeater_faith_name: "Has the Fogeater faith"
  forgotten_faith_doctrine_name: "Forgotten Faith Doctrine"
  forgotten_faith_doctrine_desc: "Practices the Forgotten Faith"
  eight_faith_doctrine_name: "Octarian Agionism Doctrine"
@@ -402,9 +397,9 @@
  is_anaanides_faith_name: "Has the Anaanide faith"
 
  #Special Doctrines: Hubarism
- special_doctrine_is_hubarism_faith_desc: "Whatever our differences, our faith belongs to the Hubarist family and they are our kin."
- special_doctrine_is_hubarism_faith_name: "Faithful of the Sun"
- is_hubarism_faith_name: "Has the Hubarist faith"
+ special_doctrine_is_hubarist_faith_desc: "Whatever our differences, our faith belongs to the Hubarist family and they are our kin."
+ special_doctrine_is_hubarist_faith_name: "Faithful of the Sun"
+ is_hubarist_faith_name: "Has the Hubarist faith"
 
  #Special Doctrines: Masaagnism
  special_doctrine_is_masaagnite_faith_desc: "Whatever our differences, our faith belongs to the Masaagnite family and they are our kin."
@@ -488,9 +483,9 @@
  test_of_aruvas_os_tandrakh_doctrine_desc: "[Glossary('Os Tandrakh','GH_OS_TANDRAKH_GLOSS')] is a spiritual journey that lasts a lifetime, the accumulation of all the choices and experiences that shape the divine spark of [Glossary('Aruva Agat','GH_ARUVA_AGAT_GLOSS')] within one's soul. Its practitioners believe that human lives are their own, and it is not the [aspects_of_aruvas|E] who judge them in the afterlife; rather, they must render judgment unto themselves."
  test_of_aruvas_armut_yan_doctrine_name: "Armut Yan"
  test_of_aruvas_armut_yan_doctrine_desc: "[Glossary('Armut Yan','GH_ARMUT_YAN_GLOSS')] is the exaltation of the eponymous Sword Mother, Queen of Heroes and the Warden of [aervalr|E]. Those worshipping her believe that the divine spark of [Glossary('Aruva Agat','GH_ARUVA_AGAT_GLOSS')] is earned rather than bestowed, and only the most worthy souls are granted the honor of joining Sword Mother's host in the afterlife."
- doctrine_parameter_hostility_override_test_of_aruvas_os_kinjer_doctrine: "Considers [faiths|E] enacting [GetFaithDoctrine('test_of_aruvas_os_kinjer_doctrine').GetBaseName] to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
- doctrine_parameter_hostility_override_test_of_aruvas_os_tandrakh_doctrine: "Considers [faiths|E] enacting [GetFaithDoctrine('test_of_aruvas_os_tandrakh_doctrine').GetBaseName] to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
- doctrine_parameter_hostility_override_test_of_aruvas_armut_yan_doctrine: "Considers [faiths|E] enacting [GetFaithDoctrine('test_of_aruvas_armut_yan_doctrine').GetBaseName] to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
+ doctrine_parameter_hostility_override_test_of_aruvas_os_kinjer_doctrine: "Considers [faiths|E] enacting [GetDoctrine('test_of_aruvas_os_kinjer_doctrine').GetBaseName] to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
+ doctrine_parameter_hostility_override_test_of_aruvas_os_tandrakh_doctrine: "Considers [faiths|E] enacting [GetDoctrine('test_of_aruvas_os_tandrakh_doctrine').GetBaseName] to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
+ doctrine_parameter_hostility_override_test_of_aruvas_armut_yan_doctrine: "Considers [faiths|E] enacting [GetDoctrine('test_of_aruvas_armut_yan_doctrine').GetBaseName] to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
 
  # Special Doctrines: Xin Xue
  the_century_of_xin_xue_revolution_name: "Xin Xue Program"
@@ -669,7 +664,7 @@
  doctrine_parameter_hostility_override_special_doctrine_is_gestanwoder_faith: "Considers Gestanwoder [faiths|E], and is considered by Gestanwoder $game_concept_faiths$ to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
  doctrine_parameter_hostility_override_special_doctrine_is_gethian_faith: "Considers Gethian [faiths|E], and is considered by Gethian $game_concept_faiths$ to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
  doctrine_parameter_hostility_override_special_doctrine_is_graveright_faith: "Considers Mrógiłprano [faiths|E], and is considered by Mrógiłprano $game_concept_faiths$ to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
- doctrine_parameter_hostility_override_special_doctrine_is_hubarism_faith: "Considers Hubarist [faiths|E], and is considered by Hubarist $game_concept_faiths$ to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
+ doctrine_parameter_hostility_override_special_doctrine_is_hubarist_faith: "Considers Hubarist [faiths|E], and is considered by Hubarist $game_concept_faiths$ to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
  doctrine_parameter_hostility_override_special_doctrine_is_islands_faith: "Considers Island Cults [faiths|E], and is considered by Island Cults $game_concept_faiths$ to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
  doctrine_parameter_hostility_override_special_doctrine_is_iyrossi_faith: ""
  doctrine_parameter_hostility_override_special_doctrine_is_izaerto_bosar_faith: "Considers Izáerto Bošáren [faiths|E], and is considered by Izáerto Bošáren $game_concept_faiths$ to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
@@ -731,7 +726,7 @@
  doctrine_parameter_hostility_override_tenet_arnazni_religion_syncretism: "Mutually considers $game_concept_faiths$ syncretic with Arnazni to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
  doctrine_parameter_hostility_override_tenet_aruvasue_religion_syncretism: "Mutually considers $game_concept_faiths$ syncretic with Aruvasue to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
  doctrine_parameter_hostility_override_tenet_astiliak_religion_syncretism: "Mutually considers $game_concept_faiths$ syncretic with Astiliak to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
- doctrine_parameter_hostility_override_tenet_aversarinas_aagiokrata_religion_syncretism: "Mutually considers $game_concept_faiths$ with [GetFaithDoctrine('tenet_aversarinas_aagiokrata_religion_syncretism').GetBaseName] to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
+ doctrine_parameter_hostility_override_tenet_aversarinas_aagiokrata_religion_syncretism: "Mutually considers $game_concept_faiths$ with [GetDoctrine('tenet_aversarinas_aagiokrata_religion_syncretism').GetBaseName] to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
  doctrine_parameter_hostility_override_tenet_axiaothea_legacy: "Considers any faith with the tenet The Long War to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
  doctrine_parameter_hostility_override_tenet_azakna_jakuungi_religion_syncretism: "Mutually considers $game_concept_faiths$ syncretic with Azakna Jaku͞ungi to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
  doctrine_parameter_hostility_override_tenet_blackhand_religion_syncretism: "Mutually considers $game_concept_faiths$ syncretic with Cult of the Black Hand to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
@@ -890,3 +885,5 @@
  doctrine_parameter_is_shadowy_cults_religion_bilateral_loc_override: "Considers Shadowy Cult [faiths|E], and is considered by Shadowy Cult $game_concept_faiths$ to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
  doctrine_parameter_is_anaanides_religion_bilateral_loc_override: "Considers Anaanide [faiths|E], and is considered by Anaanide $game_concept_faiths$ to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
  doctrine_parameter_is_clanlander_religion_bilateral_loc_override: "Considers Clanlander [faiths|E], and is considered by Clanlander $game_concept_faiths$ to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] instead of $hostility_evil_tooltippable$"
+
+

@@ -1,6 +1,7 @@
-﻿l_english:
+﻿l_english: 
  death_natural_causes:1 "died in [CHARACTER.GetHerHis] sleep"
  death_old_age:0 "died of old age"
+ death_broken_bones: "died after breaking many of [CHARACTER.GetHerHis] fragile bones while stumbling"
  death_bubonic_plague:1 "died from the [GetTrait('bubonic_plague').GetName( CHARACTER.Self )]"
  death_smallpox:2 "died from [GetTrait('smallpox').GetName( CHARACTER.Self )]"
  death_measles: "died from [GetTrait('measles').GetName( CHARACTER.Self )]"
@@ -45,7 +46,7 @@
  death_murder_killer:0 "was murdered by [TARGET_CHARACTER.GetUIName]"
  death_siege:2 "was killed during a siege"
  death_duel:0 "was slain in a duel"
- death_duel_killer:0 "was slain by [TARGET_CHARACTER.GetUIName] in a duel"
+ death_duel_killer:0 "was slain in a duel by [TARGET_CHARACTER.GetUIName]"
  death_accident:0 "died in an accident"
  death_accident_killer:0 "$death_murder_killer$"
  death_ended_on_feast_table:0 "ended [CHARACTER.GetHerHis] days during a feast"
@@ -89,7 +90,9 @@
  death_decapitated_killer:0 "was decapitated by [TARGET_CHARACTER.GetUIName]"
  death_piteously_cut_down:0 "was piteously cut down"
  death_piteously_cut_down_killer:0 "was piteously cut down by [TARGET_CHARACTER.GetUIName]"
- 
+ death_strangle: "was strangled" 
+ death_strangle_killer: "had [TARGET_CHARACTER.GetShortUIName] strangled"
+
  death_horse_riding_accident:0 "died in a horse riding accident"
  death_training_accident:0 "died in a training accident"
  death_ate_themselves_to_death:0 "ate [CHARACTER.GetHerselfHimself] to death"
@@ -163,6 +166,8 @@
  death_ritually_hung_killer:0 "was ritually strangled in the name of [TARGET_CHARACTER.GetUINamePossessive] faith"
  death_ritually_eaten:0 "was ritually eaten"
  death_ritually_eaten_killer:0 "was ritually eaten in the name of [TARGET_CHARACTER.GetUINamePossessive] faith"
+ death_feast_ritually_eaten: "was eaten as a meal at a feast"
+ death_feast_ritually_eaten_killer: "was eaten as a meal at [TARGET_CHARACTER.GetUINamePossessive] feast"
  death_crushed:0 "was crushed to death"
  death_botched_decapitation:0 "was almost decapitated"
  death_botched_decapitation_killer:0 "was almost decapitated by [TARGET_CHARACTER.GetUIName]"
@@ -179,7 +184,7 @@
  death_starved_killer:0 "was starved to death by [TARGET_CHARACTER.GetUIName]"
  death_while_assassinating:0 "was cut down while attempting an assassination"
  death_while_assassinating_killer:0 "was cut down while attempting to assassinate [TARGET_CHARACTER.GetUIName]"
- death_refused_to_be_imprisoned:0 "slit their own neck rather than be caught"
+ death_refused_to_be_imprisoned: "slit [CHARACTER.GetHerHis] own neck rather than be caught"
  death_strongest_potion:0 "drank a potion too strong for them"
  death_strongest_potion_killer:0 "drank a potion made by [TARGET_CHARACTER.GetUIName] that was too strong for them"
  death_skull_removed:0 "had [CHARACTER.GetHerHis] skull removed"
@@ -195,8 +200,8 @@
  death_defenestrated_by_mob:0 "was thrown from a window by an angry mob"
  death_molten_silver_by_mob:0 "had molten silver poured down [CHARACTER.GetHerHis] throat by an angry mob"
  death_torn_to_pieces_by_mob:0 "was torn to pieces by an angry mob"
- death_bell:0 "was decapitated and had their head used as a bell chime"
- death_bell_killer:0 "was decapitated by [TARGET_CHARACTER.GetUIName] and had their head used as a bell chime"
+ death_bell:0 "was decapitated and had [CHARACTER.GetHerHis] head used as a bell chime"
+ death_bell_killer: "was decapitated by [TARGET_CHARACTER.GetUIName] and had [CHARACTER.GetHerHis] head used as a bell chime"
  death_bell_revenge:0 "was brought to justice after going on a musical killing spree"
  
  death_scuffle_with_soldiers:0 "was killed in a scuffle with soldiers"
@@ -229,11 +234,12 @@
  death_martyrdom_killer: "was martyred by"
  death_cut_down_by_many_swords: "was cut down by many swords"
 
- death_flogged_by_censors: "was flogged for their insobriety"
+ death_flogged_by_censors: "was flogged for [CHARACTER.GetHerHis] insobriety"
  death_trampled: "was trampled to death"
  death_trampled_killer: "was trampled to death on [TARGET_CHARACTER.GetUINamePossessive] orders"
 
  death_lost_in_the_forest:0 "was lost in the forest and never seen again"
+ death_trampled_by_horse: "was trampled to death by horses"
  death_cuteness_overload:0 "witnessed the ultimate cuteness and passed on"
  death_maimed_by_wild_beast:0 "was maimed by a wild beast"
  death_crushed_by_elephant:0 "was crushed by an elephant"
@@ -275,7 +281,7 @@
  death_tournament_pas_darmes_defend_killer:0 "died from wounds inflicted while defending [CHARACTER.GetHerHis] pas d'armes against [TARGET_CHARACTER.GetUIName]"
  death_tournament_pas_darmes_challenge:0 "died from wounds inflicted while challenging a pas d'armes"
  death_tournament_pas_darmes_challenge_killer:0 "died from wounds inflicted while challenging [TARGET_CHARACTER.GetUINamePossessive] pas d'armes"
- death_wild_animal:0 "was mauled alive by a wild beast"
+ death_wild_animal:0 "was mauled by a wild beast"
  death_tournament_archery_fall:0 "died after falling off a horse whilst during a horse archery competition"
  death_tournament_quintain_hit:0 "died after a quintain knocked [CHARACTER.GetHerHim] completely off [CHARACTER.GetHerHis] horse during a tournament"
  death_tournament_piledriver:0 "was dropped on [CHARACTER.GetHerHis] head during a tournament wrestling match"
@@ -335,6 +341,9 @@
  death_stampede:0 "was trampled by a stampeding herd"
  death_avalanche:0 "was buried by an avalanche"
  death_poisonous_forage:0 "ate some poisonous plants by mistake"
+ death_drowning_in_terrain: "was dragged down and drowned by [CHARACTER.GetHerHis] horse while trying to save it" 
+ death_drowning_in_terrain_killer: "was dragged down and drowned by [TARGET_CHARACTER.GetUINamePossessive] horse while trying to save it"
+ death_lost_in_rainstorm: "got lost during a torrential rainstorm"
 
  #BP2
  death_hostage_execution: "was executed while being a hostage"
@@ -343,7 +352,7 @@
  #CE1
  death_peaceful: "was collected by [CHARACTER.GetFaith.HighGodName] in [CHARACTER.GetHerHis] sleep"
 
-#EP#
+ #EP#
  death_kennel: "was eaten by dogs"
  death_kennel_killer: "was eaten by dogs on [TARGET_CHARACTER.GetUINamePossessive] orders"
  
@@ -361,6 +370,7 @@
  death_greek_fire_killer:0 "was immolated by Greek fire during battle against [TARGET_CHARACTER.GetUINamePossessive] fleet"
 
  death_frankokratia_sacking: "was slaughtered by Latin crusaders as Byzantium burned"
+ death_gok_slaughter: "was slaughtered by invading nomads"
 
  death_raid_estate: "was killed in an estate raid"
  death_raid_estate_killer: "was killed in an estate raid orchestrated by [TARGET_CHARACTER.GetUIName]"
@@ -391,4 +401,24 @@
 
  death_slain_in_riot: "was slaughtered in a riot"
  death_slain_in_riot_killer: "$death_slain_in_riot$ due to [TARGET_CHARACTER.GetUIName]"
- 
+
+ #MPO
+ #death_snake: "died from a snake bite"
+ death_shot_by_arrows: "was riddled with arrows"
+ death_shot_by_arrows_killer: "$death_slain_in_riot$ loosed by [TARGET_CHARACTER.GetUINamePossessive] riders"
+
+ # ACH
+ death_crowd_stampede: "was crushed by a stampeding crowd"
+ death_crowd_stampede_killer: "$death_slain_in_riot$ during the coronation of [TARGET_CHARACTER.GetUIName]"
+
+ death_avoid_dishonor: "committed suicide to avoid dishonor"
+ death_avoid_dishonor_killer: "$death_avoid_dishonor$ at the hand of [TARGET_CHARACTER.GetUIName]"
+ death_eradicated: "was eradicated along with [CHARACTER.GetHerHis] entire house"
+ death_eradicated_killer: "$death_eradicated$ by [TARGET_CHARACTER.GetUIName]"
+
+ # TGP
+ death_ritual_suicide: "committed ritual suicide"
+
+ # PAM
+ death_immurement: "was walled up alive in an anchorite's cell, dead to the world"
+ death_abandonment: "was abandoned and left to die of exposure"
