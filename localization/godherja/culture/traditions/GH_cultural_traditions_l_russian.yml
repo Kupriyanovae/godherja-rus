@@ -334,7 +334,7 @@
 
  tradition_feudal_legacy_name: "Поместническое наследие"
  tradition_feudal_legacy_desc: "Эта культура имеет долгую историю аристократических ценностей, где сельские землевладельцы были важнее бюргеров."
- requires_non_feudal_government_trigger: "Вы #EMP не#! должны иметь [Concept('feudal','аристократическую')|E] [Concept('government','форму правления')|E]"
+ requires_non_feudal_government_trigger: "Вы #E MP не#! должны иметь [Concept('feudal','аристократическую')|E] [Concept('government','форму правления')|E]"
 
  tradition_whistling_wilds_name: "Свистящие дебри"
  tradition_whistling_wilds_desc: "Глубокие леса и тёмная тайга — исконный дом этой культуры. Охотники и следопыты общаются тихим свистом, и никто не смеет без спроса ступить на их земли."
@@ -567,7 +567,7 @@
 
  culture_parameter_unlocks_lodge_mechanics: "Открывает доступ к механикам [Concept('lodges_mechanical','лож')|E]"
 
- culture_parameter_not_tribal_pirate_raiding_malus:2 "При возвращении из успешного [Concept('raid','набега')|E] персонажи, не принадлежащие к [Concept('tribal','племенному строю')|E] или [Concept('pirate','пиратам')|E], #EMP теряют#! [EmptyScope.ScriptValue('not_tribal_raid_prestige_multiplier')|1] [prestige_i][prestige|E] за каждую 1 единицу доставленной [Concept('loot','добычи')|E]"
+ culture_parameter_not_tribal_pirate_raiding_malus:2 "При возвращении из успешного [Concept('raid','набега')|E] персонажи, не принадлежащие к [Concept('tribal','племенному строю')|E] или [Concept('pirate','пиратам')|E], #E MP теряют#! [EmptyScope.ScriptValue('not_tribal_raid_prestige_multiplier')|1] [prestige_i][prestige|E] за каждую 1 единицу доставленной [Concept('loot','добычи')|E]"
 
  culture_parameter_sacred_living_magi: "[Concept('gh_aspect','Аспект')|E] «[Concept('aspect_blood','Кровь')|E]» дает [Concept('piety','благочестие')|E]."
 
@@ -773,3 +773,10 @@ culture_parameter_increase_cost_found_great_polis: "Увеличивает це�
  culture_parameter_culture_dislikes_archers_maa:0 "[Concept('men_at_arms','Профессионалы')|E] лучники недолюбливаются этой [Concept('culture','культурой')|E]"
  culture_parameter_children_of_the_heights_colonization_bonus: "[Concept('habitability_threshold','Порог обитаемости')|E] в  [Concept('terrain','типе местности')|E] «[GetTerrain('mountains').GetName]» и «[GetTerrain('desert_mountains').GetName]»: [Concept('habitability_threshold','@habitability_threshold_icon!')] #P -20#!"
  
+
+ # --- Added from latest English Godherja localization (2026-11-16) ---
+ recruit_underworld_specialist_decision:0 "Нанять знатока подземелий"
+ recruit_underworld_specialist_decision.tt:0 "К вашему [Concept('court','двору')|E] присоединится [Concept('commander','полководец')|E] с высоким [Concept('martial','военным делом')|E] и [Concept('trait','свойством')|E] [GetTrait('underworld_commander').GetName( GetNullCharacter )]."
+ recruit_underworld_specialist_decision_confirm:0 "$invite_knights_decision_confirm$"
+ recruit_underworld_specialist_decision_desc:0 "[ROOT.Char.GetCulture.GetName] доказали своё мастерство в беспощадном подземном мире под [Concept('aeras','Аэрасом')|E]. Пещеры и пропасти бескрайних глубин легко становятся могилой, но опытные исследователи и проводники знают тайные пути, позволяющие моей армии избежать худших опасностей подземелий."
+ recruit_underworld_specialist_decision_tooltip:0 "$recruit_underworld_specialist_decision$"

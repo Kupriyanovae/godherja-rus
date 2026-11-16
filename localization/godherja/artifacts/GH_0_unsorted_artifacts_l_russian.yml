@@ -1106,7 +1106,7 @@
  feature_thumb_ring_centerpiece_cabochon: "кабошона из [Artifact.GetFeatureText( 'decoration_material_gem' )]"
  feature_thumb_ring_centerpiece_signet: "герб дома [Artifact.GetOwner.GetHouse.GetBaseNameNoTooltip], выгравированный на печатке из [Artifact.GetFeatureText( 'decoration_material_wire' )]"
  feature_thumb_ring_centerpiece_religious: "[Artifact.GetOwner.GetFaith.GetAdjective] [Artifact.GetOwner.GetFaith.ReligiousSymbol], выгравированный на печатке из [Artifact.GetFeatureText( 'decoration_material_wire' )]"
- feature_thumb_ring_adornment_motto: "окружено девизом дома [Artifact.GetOwner.GetHouse.GetBaseNameNoTooltip]: «#EMP [Artifact.GetOwner.GetHouse.GetMotto]#!»"
+ feature_thumb_ring_adornment_motto: "окружено девизом дома [Artifact.GetOwner.GetHouse.GetBaseNameNoTooltip]: «#E MP [Artifact.GetOwner.GetHouse.GetMotto]#!»"
  feature_thumb_ring_centerpiece_cross: "распятие из [Artifact.GetFeatureText( 'decoration_material_wire' )]"
  feature_thumb_ring_centerpiece_sword: "фигурка меча из [Artifact.GetFeatureText( 'decoration_material_wire' )]"
  feature_thumb_ring_adornment_filigree: "украшено изысканной филигранью"
@@ -1687,3 +1687,11 @@
  artifact_letter_el_qulatha_destruction_hulawite_name: "Письмо второстепенного хулавитского дворянина"
  artifact_letter_el_qulatha_destruction_hulawite_description: "И вот снова шакалы рычат у наших ворот, крича, что мы виноваты в Эль-Кулате. Я [Select_CString(ROOT.Char.IsFemale, 'устала', 'устал' )] от их пустых ртов. Разве не их собственная безрассудность, их бесконечное пролитие крови, их магия, разрывающая мир на части, привели к Разрыву? Если нужно кого-то винить, то вина лежит на каждом дураке, поднявшем в тот день руку."
  artifact_gemstone_name:0 "$artifact_name_prefix$ [newly_created_artifact.GetFeatureText( 'gemstone_cut' )|U]-огранённый [newly_created_artifact.GetFeatureText( 'gemstone_type' )]"
+
+ # --- Added from latest English Godherja localization (2026-11-16) ---
+ artifact_cardonnes_helmet:0 "Реликтовый шлем"
+ artifact_marianne_shears:0 "Шеарс"
+ cardonnes_helmet_description:0 "Прекрасно сохранившийся шлем ранней [GetCulturePillar('heritage_marcher').GetName] работы. Подобные носили первые [Concept('knight','$knight_chevalier_no_tooltip_plural|q$')|El] примерно в VI веке ИС. По преданию, он принадлежал легендарному [GetScriptedCharacterByHistoryID('gallien_lifepath_1').GetTitledFirstName], $nick_the_paladin_of_justice$. В 569 году ИС [GetScriptedCharacterByHistoryID('gallien_lifepath_1').GetFirstNameNoTooltip] пожертвовал собой, вызвав магический взрыв, чтобы остановить печально известный культ некромантов из [Concept( 'black_mountains_biozone', 'Чёрных гор' )|E]. На месте взрыва нашли лишь его безупречно сохранившийся шлем — и ни следа каких-либо других останков.\n\nПо свидетельствам нескольких очевидцев, в том числе [Concept('champion_of_chevalie','Защитника Шевалье')|E], человек, надевший этот шлем, перестаёт чувствовать себя одиноким, а в решающие мгновения словно слышит тихий, добрый голос."
+ cardonnes_helmet_name:0 "Безупречный шлем персонажа [GetScriptedCharacterByHistoryID('gallien_lifepath_1').GetTitledFirstNameNoTooltip]"
+ marianne_shears_description:0 "Пара портновских ножниц, некогда принадлежавших [GetScriptedCharacterByHistoryID('rivarisians_lifepath_57').GetTitledFirstName] $nick_the_blesstepper$. Хотя на вид это непримечательный, пусть и добротно изготовленный инструмент, он сопровождал святого Пути на протяжении большей части странствий. [GetScriptedCharacterByHistoryID('rivarisians_lifepath_57').GetFirstNameNoTooltip] в каждом посещённом месте обычно шил по нескольку комплектов прочной одежды для нуждающихся и обездоленных. Многие уцелевшие одеяния после канонизации святого оказались в маленьких реликвариях дворян и купцов."
+ marianne_shears_name:0 "Благословенные ножницы [GetScriptedCharacterByHistoryID('rivarisians_lifepath_57').GetTitledFirstNameNoTooltip]"

@@ -4,8 +4,8 @@
  temujin_warhorse_tt: "Вы получите подарок от персонажа [jamukha.GetShortUIName]. Это [GetModifier('horse_story_modifier').GetNameWithTooltip|l]"
 temujin_warhorse_jamukha_tt: "#high Ваш#! подарок персонажу [temujin.GetShortUIName] — [GetModifier('horse_story_modifier').GetNameWithTooltip|l]"
 jamukha_warhorse_jamukha_tt: "Вы получите подарок от персонажа [temujin.GetShortUIName]. Это [GetModifier('horse_story_modifier').GetNameWithTooltip|l]"
-blood_brother_gains_hook_tt: "Получает [Concept('strong_hook', 'сильное влияние')|E] #EMP (побратим)#! на #high вас#!"
-blood_brother_gains_hook_other_tt: "Вы получаете [Concept('strong_hook', 'сильное влияние')|E] #EMP (побратим)#! на персонажа [blood_bro.GetShortUIName]"
+blood_brother_gains_hook_tt: "Получает [Concept('strong_hook', 'сильное влияние')|E] #E MP (побратим)#! на #high вас#!"
+blood_brother_gains_hook_other_tt: "Вы получаете [Concept('strong_hook', 'сильное влияние')|E] #E MP (побратим)#! на персонажа [blood_bro.GetShortUIName]"
 
 mpo_jamukha_flavor.0001.t: "Многолетнее братство"
 mpo_jamukha_flavor.0001.desc: "[temujin.GetTitledFirstName|U] и я сидим у костра. Вокруг простирается огромный лагерь — его разбили наши люди.\n\nМного лет назад я [Select_CString(ROOT.Char.IsFemale, 'предложила', 'предложил' )] ему дружбу — юному воину, изгнанному из отчего клана. Бросив костяшки на лед реки Онон, мы поклялись стать друг другу как братья.\n\nМы были еще детьми. С тех пор мы не раз сражались вместе, наша дружба закалилась во множестве испытаний. Мы стали мужчинами и узнали слова, которые на всю жизнь сделают нас [Glossary('anda', 'ANDA_GLOSS')]."
@@ -22,7 +22,7 @@ mpo_jamukha_flavor.0010.desc: "[temujin.GetTitledFirstName|U] и я уже до�
 mpo_jamukha_flavor.0010.desc_togrul: "Меж тем, [Select_CString(togrul.IsFemale, 'могучая', 'могучий' )] [togrul.GetName] обещает мне защиту и покровительство, если [temujin.GetFirstNameNoTooltip] и я пойдем разными путями..."
 
 mpo_jamukha_flavor.0020.t: "Кровавые грезы"
-mpo_jamukha_flavor.0020.desc: "В темноте я скачу в его лагерь, сгорая от гнева и стыда. О [temujin.GetTitledFirstName], я больше не в силах игнорировать зов судьбы — темные мысли, рожденные в мрачных глубинах моей души!\n\nКогда [temujin.GetFirstNameNoTooltip] и я были малыми детьми, как-то раз мы поделили и съели тушку сурка. Его мясо до сих пор жжет мое нутро, словно яд. Слова дружбы, которыми мы тогда обменялись, пылают в моей голове — щеки становятся пунцовыми, стоит мне вспомнить тот день! #EMP Как#! я [Select_CString(ROOT.Char.IsFemale, 'могла', 'мог' )] назваться [Select_CString(ROOT.Char.IsFemale, 'сестрой', 'братом' )] человеку, которому суждено править всеми монголами — включая #EMP меня#!? Обещание, данное в детстве, заставляет меня каждый день предавать [Select_CString(ROOT.Char.IsFemale, 'саму', 'самого' )] себя!\n\n«#EMP Я тебя уничтожу!#! — кричу я. — #EMP [ROOT.Char.GetDomicile.GetCulture.GetName] хотят, чтобы ими [Select_CString(ROOT.Char.IsFemale, 'правила', 'правил' )] я, [ROOT.Char.GetFirstName]!»#! [temujin.GetFirstNameNoTooltip] лишь усмехается в ответ."
+mpo_jamukha_flavor.0020.desc: "В темноте я скачу в его лагерь, сгорая от гнева и стыда. О [temujin.GetTitledFirstName], я больше не в силах игнорировать зов судьбы — темные мысли, рожденные в мрачных глубинах моей души!\n\nКогда [temujin.GetFirstNameNoTooltip] и я были малыми детьми, как-то раз мы поделили и съели тушку сурка. Его мясо до сих пор жжет мое нутро, словно яд. Слова дружбы, которыми мы тогда обменялись, пылают в моей голове — щеки становятся пунцовыми, стоит мне вспомнить тот день! #E MP Как#! я [Select_CString(ROOT.Char.IsFemale, 'могла', 'мог' )] назваться [Select_CString(ROOT.Char.IsFemale, 'сестрой', 'братом' )] человеку, которому суждено править всеми монголами — включая #E MP меня#!? Обещание, данное в детстве, заставляет меня каждый день предавать [Select_CString(ROOT.Char.IsFemale, 'саму', 'самого' )] себя!\n\n«#E MP Я тебя уничтожу!#! — кричу я. — #E MP [ROOT.Char.GetDomicile.GetCulture.GetName] хотят, чтобы ими [Select_CString(ROOT.Char.IsFemale, 'правила', 'правил' )] я, [ROOT.Char.GetFirstName]!»#! [temujin.GetFirstNameNoTooltip] лишь усмехается в ответ."
 mpo_jamukha_flavor.0010.a: "Я буду следовать собственной судьбе, и [temujin.GetFirstNameNoTooltip] мне не указ."
 mpo_jamukha_flavor.0010.b: "[Select_CString(ROOT.Char.IsFemale, 'Связанная', 'Связанный' )] клятвой, я лишь меч в его руках."
 jamukha_chose_loyalty_modifier: "Верность Тэмуджину"
@@ -32,10 +32,10 @@ jamukha_temujin_no_more_positive_tt: "@alert_icon! #X Все положител�
 jamukha_temujin_rivals_tt: "[temujin.GetShortUIName] становится вашим [Concept('rival', 'соперником')|E]"
 jamukha_gain_from_defectors_tt: "#weak Прирост @herd_icon![Concept('herd', 'стад')|E] и увеличение @prestige_icon![Concept('prestige', 'престижа')|E] из-за подготовки монголов к войне"
 temujin_gain_from_defectors_tt: "$jamukha_gain_from_defectors_tt$"
- mpo_jamukha_flavor.0020.a: "#EMP «Паршивый пес, которого я некогда [Select_CString(ROOT.Char.IsFemale, 'называла', 'называл' )] братом!»#!"
+ mpo_jamukha_flavor.0020.a: "#E MP «Паршивый пес, которого я некогда [Select_CString(ROOT.Char.IsFemale, 'называла', 'называл' )] братом!»#!"
  mpo_jamukha_flavor.0020.b: "«Ты умрешь недостойной смертью, [temujin.GetFirstNameNoTooltip]...»"
- mpo_jamukha_flavor.0020.c: "«Мы встретимся на поле сражения, и #EMP я поставлю точку в твоей судьбе#!!»"
+ mpo_jamukha_flavor.0020.c: "«Мы встретимся на поле сражения, и #E MP я поставлю точку в твоей судьбе#!!»"
 
 
- mpo_jamukha_flavor.0020.b_murder: "Вы получаете #P #EMP огромный#!#! бонус к [Concept('schemes', 'проискам')|E] «[GetScheme('murder').GetTypeName]», направленным против персонажа [temujin.GetShortUIName]"
+ mpo_jamukha_flavor.0020.b_murder: "Вы получаете #P #E MP огромный#!#! бонус к [Concept('schemes', 'проискам')|E] «[GetScheme('murder').GetTypeName]», направленным против персонажа [temujin.GetShortUIName]"
 mpo_jamukha_flavor.0020.a_war_win: "Победа в #high наступательной#! [Concept('war', 'войне')|E] против персонажа [temujin.GetShortUIName] даст дополнительную @legitimacy_icon![Concept('legitimacy', 'легитимность')|E] и @prestige_icon![Concept('prestige', 'престиж')|E]"

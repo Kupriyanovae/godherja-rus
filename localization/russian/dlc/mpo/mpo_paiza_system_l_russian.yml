@@ -15,7 +15,7 @@
  mpo_establish_paiza_system_decision.paiza_recently_established: "[THIS.Char.GetName] уже [Select_CString(THIS.Char.IsFemale, 'учредила', 'учредил')] систему айраалов. Пока [Select_CString(THIS.Char.IsFemale, 'она жива', 'он жив')], вы не сможете учредить новую. Каждый [Select_CString(THIS.Char.IsFemale, 'её', 'его')] жалкий вздох оскорбляет вашу власть."
 
  mpo_decisions_events.0099.t: "Система айраалов учреждена"
- mpo_decisions_events.0099.desc: "Подобно самой степи, моя власть простирается дальше горизонта. Но я, словно капля воды, всегда пребываю лишь в одном месте.\n\nЛюди, что живут в городах за пределами степи, хранят то, что не вмещает их окоём, в книгах. Я использую их идею и введу в обиход айраалы. Верные подданные получат власть самого главного слова на свете: #EMP моего имени.#!\n\n[ROOT.Char.GetTitledFirstNameNoTooltip]: эти символы, выгравированные на артефакте, будут внушать страх и абсолютную покорность."
+ mpo_decisions_events.0099.desc: "Подобно самой степи, моя власть простирается дальше горизонта. Но я, словно капля воды, всегда пребываю лишь в одном месте.\n\nЛюди, что живут в городах за пределами степи, хранят то, что не вмещает их окоём, в книгах. Я использую их идею и введу в обиход айраалы. Верные подданные получат власть самого главного слова на свете: #E MP моего имени.#!\n\n[ROOT.Char.GetTitledFirstNameNoTooltip]: эти символы, выгравированные на артефакте, будут внушать страх и абсолютную покорность."
  mpo_decisions_events.0099.a: "Моя воля обретет воплощение."
 
  paiza_artifact_title: "Айраал персонажа [patron.GetTitledFirstNameNoTooltip]"
@@ -119,11 +119,11 @@
  mpo_abuse_authority_paiza_decision.nothing_to_abuse: "В этом [Concept('location', 'месте')|E] нет земли, где можно злоупотребить властью"
 
  mpo_decisions_events.0110.t: "Полномочиями [paiza_patron.GetTitleAsNameNoTooltip]"
- mpo_decisions_events.0110.desc: "Я — #EMP верный#! служитель персонажа [paiza_patron.GetTitledFirstName]. Ношу имя своего суверена, высеченное в металле, а его волю — в своих словах и делах. Моя власть принадлежит суверену.\n\nСлабак [local_boi.GetName] может молить сколько угодно. Это не остановит указ суверена, звучащий из моих уст.\n\nВсё богатство, все налоги и дань, которые способны вынести эти земли, следует немедленно собрать и доставить мне. Недостача оскорбляет власть персонажа [paiza_patron.GetTitleAsNameNoTooltip], а я найду всему этому... #EMP лучшее#! применение."
+ mpo_decisions_events.0110.desc: "Я — #E MP верный#! служитель персонажа [paiza_patron.GetTitledFirstName]. Ношу имя своего суверена, высеченное в металле, а его волю — в своих словах и делах. Моя власть принадлежит суверену.\n\nСлабак [local_boi.GetName] может молить сколько угодно. Это не остановит указ суверена, звучащий из моих уст.\n\nВсё богатство, все налоги и дань, которые способны вынести эти земли, следует немедленно собрать и доставить мне. Недостача оскорбляет власть персонажа [paiza_patron.GetTitleAsNameNoTooltip], а я найду всему этому... #E MP лучшее#! применение."
  mpo_decisions_events.0110.a: "Ведите всё, что движется!"
  mpo_decisions_events.0110.b: "«И ни слова об этом, псы!»"
  mpo_decisions_events.0110.c: "Пожалуй, не стоит."
- mpo_decisions_events.0110.d: "Так #EMP нельзя#!. Прочь отсюда!"
+ mpo_decisions_events.0110.d: "Так #E MP нельзя#!. Прочь отсюда!"
  mpo_decisions_events.0110.b.success: "Успех"
  mpo_decisions_events.0110.b.success_desc: "[paiza_patron.GetTitledFirstName] так и не [Select_CString(paiza_patron.IsFemale, 'узнала', 'узнал' )] о произошедшем"
  mpo_decisions_events.0110.b.failure: "[paiza_patron.GetTitledFirstName] [Select_CString(paiza_patron.IsFemale, 'узнала', 'узнал' )] о злоупотреблении"
@@ -147,9 +147,9 @@
  mpo_paiza_abuse_counter_effect.angry: "@warning_icon! Суверен в ярости из-за злоупотребления полномочиями и почти наверняка отреагирует"
  mpo_paiza_abuse_counter_effect.annoyed: "@alert_icon! Суверен раздражён злоупотреблением полномочиями и, скорее всего, отреагирует"
  mpo_paiza_abuse_counter_effect.indifferent: "Суверен безразличен к злоупотреблению полномочиями и на этот раз ничего не предпримет"
- mpo_paiza_abuse_counter_effect.khan_reaction_action: "@alert_icon! Суверен отреагирует #EMP жестоко#!"
- mpo_paiza_abuse_counter_effect.khan_reaction_angry: "Суверен придёт в #EMP ярость#!, но ничего не предпримет"
- mpo_paiza_abuse_counter_effect.khan_reaction_annoyed: "Суверен будет #EMP раздражён#!, но ничего не предпримет"
+ mpo_paiza_abuse_counter_effect.khan_reaction_action: "@alert_icon! Суверен отреагирует #E MP жестоко#!"
+ mpo_paiza_abuse_counter_effect.khan_reaction_angry: "Суверен придёт в #E MP ярость#!, но ничего не предпримет"
+ mpo_paiza_abuse_counter_effect.khan_reaction_annoyed: "Суверен будет #E MP раздражён#!, но ничего не предпримет"
 
  mpo_decisions_events.0111.a.effects: "[paiza_patron.GetName] получает [Concept('imprisonment_reason', 'повод для вашего заточения')|E] и [Concept('execute_reason', 'казни')|E]."
  mpo_decisions_events.0111.a.severe_effects: "[paiza_patron.GetName] получает [Concept('imprisonment_reason', 'повод для заточения')|E] и [Concept('execute_reason', 'казни')|E] вас и ваших [Concept('close_family_members', 'близких родственников')|E]."
@@ -220,3 +220,6 @@
  nomad_yurt_paiza_maa_gain_lvl_3_tooltip: "[GetDomicileBuilding('knight_trade_yurt_01').GetName]: $domicile_building_parameter_nomad_yurt_paiza_maa_gain_lvl_3$"
 
  already_received_a_paiza: "[Concept('paiza', 'Айраал')|E] уже получен"
+
+ # --- Added from latest English Godherja localization (2026-11-16) ---
+ is_paiza_merchant:0 "[CHARACTER.GetShortUIName|U] — купец, путешествующий по приказу кочевого правителя"
