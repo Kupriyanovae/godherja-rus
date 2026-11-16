@@ -1255,4 +1255,226 @@ types gh_hud
 		texture = "gfx/interface/icons/portraits/inspiration_complete.dds"
 		tooltip = "CHARACTER_HAS_COMPLETED_A_PERSONAL_INSPIRATION_TOOLTIP"
 	}
+
+	type gh_widget_living_aautokratir_saint = widget
+	{
+		size = { 590 340 }
+
+		datacontext = "[GetTitleByKey('h_aversarinas_aautokrata')]"
+
+		background = {
+			using = Background_Area
+		}
+
+		vbox = {
+			portrait_body = { # An Aautokratir exists
+				datacontext = "[Title.GetHolder]"
+				datacontext = "[GetIllustration('character_view_bg')]"
+				visible = "[Character.IsValid]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				allow_outside = yes
+				background = {
+					texture = "[Illustration.GetTexture(Character.MakeScope)]"
+					fittype = centercrop
+					using = Mask_Rough_Edges
+					alpha = 0.3
+				}
+				blockoverride "portrait_button"
+				{
+					min_width = 400
+				}
+				blockoverride "portrait_texture" {
+					portrait_texture = "[Character.GetAnimatedPortrait('environment_torso','camera_torso','zealous_superior',PdxGetWidgetScreenSize(PdxGuiWidget.Self))]"
+				}
+				blockoverride "coa" {}
+				blockoverride "portrait_icons" {
+					portrait_status_icons = {
+						parentanchor = bottom|right
+						position = { -190 -10 }
+						background = {
+							using = Background_Area_Dark
+							margin = { 2 3 }
+							alpha = 0.8
+						}
+					}
+				}
+				blockoverride "opinion_box" {
+					portrait_opinion = {
+						parentanchor = bottom|hcenter
+						visible = "[And(GetPlayer.IsValid,Not(ObjectsEqual(GetPlayer.Self,Character.Self)))]"
+						position = { 0 -38 }
+					}
+				}
+			}
+
+			portrait_body = { # There is no living Aautokratir
+				visible = "[Not(Title.GetHolder.IsValid)]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				background = {
+					texture = "gfx/interface/illustrations/event_scenes/ep3_constantinople_riot.dds"
+					fittype = centercrop
+					using = Mask_Rough_Edges
+					alpha = 0.3
+				}
+				blockoverride "portrait_button"
+				{
+					clicksound = ""
+					tooltip_visible = no
+				}
+				blockoverride "portrait_texture" {
+					portrait_texture = "[Title.GetHolder.GetPortrait('environment_torso','camera_torso','idle',PdxGetWidgetScreenSize(PdxGuiWidget.Self))]"
+				}
+				blockoverride "coa" {}
+				blockoverride "portrait_icons" {}
+				blockoverride "opinion_box" {}
+				blockoverride "glow_visible" {
+					visible = no
+				}
+				blockoverride "portrait_glow" {}
+			}
+		}
+
+		hbox = { # Aversaria title exists
+			position = { 0 -110 }
+			datacontext = "[Title.GetHolder]"
+			visible = "[Character.IsValid]"
+			ignoreinvisible = yes
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				margin = { 15 10 }
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					coa_realm_medium_crown = {}
+
+					vbox = {
+						margin_top = 30
+						margin_left = 5
+						layoutpolicy_vertical = expanding
+
+						hbox = { # Aautokratir name
+							layoutpolicy_horizontal = expanding
+
+							text_multi = { # Aautokratir name
+								default_format = "#high"
+								text = "[Character.GetFullName]"
+								min_width = 190
+							}
+
+							expand = {}
+						}
+
+						hbox = { # Relation
+							margin_top = -5
+							layoutpolicy_horizontal = expanding
+
+							text_multi = {
+								text = "[Character.GetRelationToString(GetPlayer)]"
+								tooltip = "EXTENDED_RELATIONS_TOOLTIP"
+								using = tooltip_ws
+								min_width = 180
+							}
+
+							expand = {}
+						}
+
+						expand = {}
+					}
+
+					expand = {}
+				}
+			}
+		}
+
+		hbox = { # Aversaria title does not exist
+			position = { -160 -120 }
+			visible = "[Not(Title.GetHolder.IsValid)]"
+			ignoreinvisible = yes
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				margin = { 15 10 }
+
+				hbox = {
+					coa_title_small_crown = {}
+
+					vbox = {
+						margin_top = 25
+						margin_left = 10
+						layoutpolicy_vertical = expanding
+
+						text_single = { # Title name
+							default_format = "#high"
+							text = "[Title.GetName]"
+						}
+
+						hbox = { # Not created line
+							layoutpolicy_horizontal = expanding
+
+							text_single = {
+								default_format = "#weak"
+								text = "COA_TOOLTIP_NO_HOLDER"
+							}
+
+							expand = {}
+						}
+
+						expand = {}
+					}
+				}
+			}
+		}
+
+		flowcontainer = { # Empty portrait text
+			parentanchor = top|hcenter
+			position = { 0 180 }
+			visible = "[Not(Title.GetHolder.IsValid)]"
+			ignoreinvisible = yes
+
+			text_label_center = {
+				raw_text = "The throne of the Purest remains vacant"
+			}
+		}
+
+		flowcontainer = { # Restore the Empire decision button
+			parentanchor = top|hcenter
+			position = { 0 210 }
+			visible = "[GetPlayer.IsValid]"
+			ignoreinvisible = yes
+
+			button_decision_entry = { # Reunite the Empire decision button
+				datacontext = "[GetDecisionWithKey('reunite_the_empire_decision')]"
+				visible = "[And(GetPlayer.IsValid,And(Not(Title.GetHolder.IsValid),GetScriptedGui('gh_aautokratir_worship_gui').IsShown(GuiScope.SetRoot(GetPlayer.GetFaith.MakeScope).End)))]"
+				enabled = "[Decision.IsShownForPlayer]"
+				tooltip = "[Decision.GetShortDescForPlayer]"
+				onclick = "[OpenGameViewData('decision_detail',Decision.Self)]"
+			}
+		}
+
+		flowcontainer = { # Aversaria can no longer be restored
+			parentanchor = top|hcenter
+			position = { 0 255 }
+			visible = "[GetPlayer.IsValid]"
+			ignoreinvisible = yes
+
+			text_label_center = {
+				visible = "[And(GetPlayer.IsValid,And(Not(Title.GetHolder.IsValid),And(GetScriptedGui('gh_aautokratir_worship_gui').IsShown(GuiScope.SetRoot(GetPlayer.GetFaith.MakeScope).End),Not(GetScriptedGui('gh_can_restore_aversaria_gui').IsShown(GuiScope.SetRoot(Title.MakeScope).End)))))]"
+				raw_text = "#N [aversaria|E] has been #bold permanently#! dissolved"
+			}
+		}
+
+		flowcontainer = { # Bottom text
+			parentanchor = bottom|hcenter
+			position = { 0 -10 }
+			ignoreinvisible = yes
+			text_label_center = {
+				raw_text = "[Concept('son_of_heaven','Purest Incarnate')|E]"
+			}
+		}
+	}
 }

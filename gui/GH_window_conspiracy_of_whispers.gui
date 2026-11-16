@@ -1,0 +1,1208 @@
+﻿######################################################
+######## THE CONSPIRACY OF WHISPERS (Landed Orders) ###
+######################################################
+window = {
+	name = "GH_window_conspiracy_of_whispers"
+	widgetid = "GH_window_conspiracy_of_whispers"
+	datacontext = "[SituationWindow.GetSituation]"
+	datacontext = "[GetVariableSystem]"
+	datacontext = "[GetPlayer]"
+	parentanchor = top|right
+	layer = windows_layer
+	movable = no
+	allow_outside = yes
+
+	using = Window_Size_MainTab
+
+	state = {
+		name = on_create
+		trigger_on_create = yes
+		on_start = "[GetVariableSystem.Clear( 'whispers_catalysts' )]"
+		on_start = "[GetVariableSystem.Clear( 'situation_catalysts_history_window' )]"
+	}
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+		using = Sound_WindowShow_Standard
+		using = Window_Position_MainTab
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+		using = Sound_WindowHide_Standard
+		using = Window_Position_MainTab_Hide
+		on_start = "[GetVariableSystem.Clear( 'whispers_catalysts' )]"
+	}
+
+	margin_widget = {
+		size = { 100% 100% }
+		margin = { 0 26 }
+		margin_right = 13
+
+		widget = {
+			size = { 100% 100% }
+
+			vbox = {
+				using = Window_Margins
+				datacontext = "[SituationWindow.GetSelectedSubRegion]"
+				datacontext = "[SituationSubRegion.GetCurrentPhase]"
+
+				layoutpolicy_vertical = expanding
+				layoutpolicy_horizontal = expanding
+				spacing = 8
+
+				header_pattern = {
+					layoutpolicy_horizontal = expanding
+
+					blockoverride "header_text"
+					{
+						text = "[Situation.GetNameNoTooltip]"
+					}
+
+					blockoverride "button_back"
+					{
+						onclick = "[OpenGameView( 'situations' )]"
+					}
+
+					blockoverride "button_close"
+					{
+						onclick = "[SituationWindow.Close]"
+					}
+				}
+
+				############################################################
+				### THE FACE-OFF
+				# The Forgotten Saint's Ordermaster (left, in the Eye's violet) and the Eosians' (right, in the Vigil's gold),
+				# full-length and turned toward each other, with the current phase between them. Every background sits behind
+				# the figures; only the name plates, at their feet, are drawn over them.
+				############################################################
+				widget = {
+					name = "whispers_face_off"
+					layoutpolicy_horizontal = expanding
+					size = { 0 290 }
+
+					background = { # the current phase, faintly
+						texture = "[SituationPhase.GetType.GetIllustration]"
+						fittype = centercrop
+						alpha = 0.45
+						margin = { 0 6 }
+						using = Mask_Rough_Edges
+					}
+
+					background = { # the Eye's side
+						texture = "gfx/interface/colors/white.dds"
+						color = { 0.3 0.14 0.4 1 }
+						alpha = 0.55
+						margin = { 0 6 }
+
+						modify_texture = {
+							texture = "gfx/interface/component_overlay/overlay_texture.dds"
+							texture_density = 2
+							spriteType = Corneredtiled
+							alpha = 0.6
+						}
+
+						modify_texture = {
+							texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+							blend_mode = alphaMultiply
+							mirror = horizontal
+						}
+
+						using = Mask_Rough_Edges
+					}
+
+					background = { # the Vigil's side
+						texture = "gfx/interface/colors/white.dds"
+						color = { 0.45 0.34 0.12 1 }
+						alpha = 0.5
+						margin = { 0 6 }
+
+						modify_texture = {
+							texture = "gfx/interface/component_overlay/overlay_texture.dds"
+							texture_density = 2
+							spriteType = Corneredtiled
+							alpha = 0.6
+						}
+
+						modify_texture = {
+							texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+							blend_mode = alphaMultiply
+						}
+
+						using = Mask_Rough_Edges
+					}
+
+					background = { # darkened edges
+						texture = "gfx/interface/colors/black.dds"
+						margin = { 0 6 }
+
+						modify_texture = {
+							texture = "gfx/interface/component_masks/mask_vignette.dds"
+							blend_mode = alphaMultiply
+							alpha = 0.3
+						}
+
+						using = Mask_Rough_Edges
+					}
+
+					### The Forgotten Saint's Ordermaster
+					widget = {
+						name = "whispers_eye_side"
+						size = { 50% 100% }
+						datacontext = "[Situation.MakeScope.Var('whispers_eye_master').Char]"
+
+						icon = { # the Order's pennant
+							name = "whispers_eye_pennant"
+							size = { 64 64 }
+							position = { 4 -2 }
+							texture = "gfx/interface/icons/struggle_banners/current_phase_banner_03.dds"
+							color = { 0.66 0.5 0.82 1 }
+							tooltip = "conspiracy_of_whispers_participant_group_whispers_forgotten_saint"
+
+							icon = {
+								size = { 34 34 }
+								parentanchor = top|hcenter
+								position = { 0 20 }
+								texture = "gfx/interface/icons/faith/agionist_forgotten_icon.dds"
+								alwaystransparent = yes
+							}
+						}
+
+						portrait_button = {
+							visible = "[Situation.MakeScope.Var('whispers_eye_master').IsSet]"
+							size = { 180 270 }
+							parentanchor = bottom|hcenter
+							position = { -20 -8 }
+							using = portrait_base
+
+							portrait_texture = "[Character.GetAnimatedPortrait( 'environment_body', 'gh_whispers_camera_left_figure', 'war_attacker', PdxGetWidgetScreenSize( PdxGuiWidget.Self ) )]"
+							background_texture = "gfx/portraits/portrait_transparent.dds"
+							texture = "gfx/portraits/portrait_transparent.dds"
+							mask = "gfx/portraits/portrait_mask_body.dds"
+							effectname = "NoHighlight"
+						}
+
+						text_single = {
+							visible = "[Not( Situation.MakeScope.Var('whispers_eye_master').IsSet )]"
+							parentanchor = center
+							position = { -20 0 }
+							text = "LANDED_ORDER_WHISPERS_SEAT_EMPTY"
+							default_format = "#weak"
+							align = nobaseline
+						}
+
+						# The name plate, at their feet: each line keeps its own narrow backing, so nothing is drawn over the figure
+						text_single = {
+							visible = "[Situation.MakeScope.Var('whispers_eye_master').IsSet]"
+							parentanchor = bottom|hcenter
+							position = { -20 -28 }
+							text = "[Character.GetShortUINameNoTooltip]"
+							default_format = "#high"
+							align = nobaseline
+
+							background = {
+								using = Background_Area_Dark
+								using = Mask_Rough_Edges
+								margin = { 12 3 }
+								alpha = 0.7
+							}
+						}
+
+						text_single = {
+							visible = "[Situation.MakeScope.Var('whispers_eye_master').IsSet]"
+							parentanchor = bottom|hcenter
+							position = { -20 -8 }
+							text = "[Character.GetPrimaryTitle.GetNameNoTooltip]"
+							default_format = "#weak"
+							align = nobaseline
+
+							background = {
+								using = Background_Area_Dark
+								using = Mask_Rough_Edges
+								margin = { 12 2 }
+								alpha = 0.6
+							}
+						}
+					}
+
+					### The Eosians' Ordermaster
+					widget = {
+						name = "whispers_eos_side"
+						size = { 50% 100% }
+						parentanchor = right
+						datacontext = "[Situation.MakeScope.Var('whispers_eos_master').Char]"
+
+						icon = { # the Order's pennant
+							name = "whispers_eos_pennant"
+							size = { 64 64 }
+							parentanchor = top|right
+							position = { -4 -2 }
+							texture = "gfx/interface/icons/struggle_banners/current_phase_banner_03.dds"
+							color = { 0.9 0.74 0.42 1 }
+							tooltip = "conspiracy_of_whispers_participant_group_whispers_forlorn_guardian"
+
+							icon = {
+								size = { 34 34 }
+								parentanchor = top|hcenter
+								position = { 0 20 }
+								texture = "gfx/interface/icons/faith/agionist_eos_icon.dds"
+								alwaystransparent = yes
+							}
+						}
+
+						portrait_button = {
+							visible = "[Situation.MakeScope.Var('whispers_eos_master').IsSet]"
+							size = { 180 270 }
+							parentanchor = bottom|hcenter
+							position = { 20 -8 }
+							using = portrait_base
+
+							portrait_texture = "[Character.GetAnimatedPortrait( 'environment_body', 'gh_whispers_camera_right_figure', 'war_defender', PdxGetWidgetScreenSize( PdxGuiWidget.Self ) )]"
+							background_texture = "gfx/portraits/portrait_transparent.dds"
+							texture = "gfx/portraits/portrait_transparent.dds"
+							mask = "gfx/portraits/portrait_mask_body.dds"
+							effectname = "NoHighlight"
+						}
+
+						text_single = {
+							visible = "[Not( Situation.MakeScope.Var('whispers_eos_master').IsSet )]"
+							parentanchor = center
+							position = { 20 0 }
+							text = "LANDED_ORDER_WHISPERS_SEAT_EMPTY"
+							default_format = "#weak"
+							align = nobaseline
+						}
+
+						# The name plate, at their feet: each line keeps its own narrow backing, so nothing is drawn over the figure
+						text_single = {
+							visible = "[Situation.MakeScope.Var('whispers_eos_master').IsSet]"
+							parentanchor = bottom|hcenter
+							position = { 20 -28 }
+							text = "[Character.GetShortUINameNoTooltip]"
+							default_format = "#high"
+							align = nobaseline
+
+							background = {
+								using = Background_Area_Dark
+								using = Mask_Rough_Edges
+								margin = { 12 3 }
+								alpha = 0.7
+							}
+						}
+
+						text_single = {
+							visible = "[Situation.MakeScope.Var('whispers_eos_master').IsSet]"
+							parentanchor = bottom|hcenter
+							position = { 20 -8 }
+							text = "[Character.GetPrimaryTitle.GetNameNoTooltip]"
+							default_format = "#weak"
+							align = nobaseline
+
+							background = {
+								using = Background_Area_Dark
+								using = Mask_Rough_Edges
+								margin = { 12 2 }
+								alpha = 0.6
+							}
+						}
+					}
+
+					### Between them: the current phase, and what it does
+					vbox = {
+						name = "whispers_phase_seal"
+						parentanchor = top|hcenter
+						position = { 0 12 }
+						size = { 170 250 }
+						spacing = 2
+						datacontext = "[SituationPhase.GetType]"
+
+						widget = {
+							size = { 92 92 }
+
+							tooltipwidget = {
+								using = situation_phase_type_tooltip
+							}
+
+							icon = {
+								size = { 100% 100% }
+								texture = "gfx/interface/window_situations/hud_situation_widget.dds"
+							}
+
+							icon = {
+								size = { 60 60 }
+								parentanchor = center
+								texture = "[SituationPhaseType.GetIcon]"
+							}
+						}
+
+						text_single = {
+							text = "CURRENT_PHASE"
+							default_format = "#weak"
+							align = nobaseline
+						}
+
+						text_single = {
+							text = "[SituationPhaseType.GetName]"
+							using = Font_Size_Medium
+							default_format = "#high"
+							align = nobaseline
+
+							background = {
+								using = Background_Area_Dark
+								using = Mask_Rough_Edges
+								margin = { 12 3 }
+								alpha = 0.8
+							}
+						}
+
+						fixedgridbox = {
+							name = "named_effect_sets"
+							addcolumn = 50
+							addrow = 50
+							setitemsizefromcell = yes
+							datamodel_wrap = 2
+							maxhorizontalslots = 2
+							maxverticalslots = 1
+							flipdirection = yes
+
+							datamodel = "[SituationPhaseType.GetModifierNamedSets]"
+							item = {
+								button_phase_named_set_item = {}
+							}
+						}
+
+						expand = {} # keep the seal together at the top
+					}
+				}
+
+				############################################################
+				### WHERE THE CONSPIRACY MAY TURN
+				# Each phase it could move to next, how close it stands, and the catalysts that drive it there
+				############################################################
+				vbox = {
+					name = "whispers_turns"
+					layoutpolicy_horizontal = expanding
+					margin = { 12 8 }
+					spacing = 4
+
+					background = {
+						using = Background_Area_Solid
+						alpha = 0.4
+					}
+
+					text_label_center = {
+						layoutpolicy_horizontal = expanding
+						text = "LANDED_ORDER_WHISPERS_TURNS_HEADER"
+					}
+
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 4
+						datamodel = "[SituationPhase.GetFuturePhases]"
+
+						item = {
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								margin = { 8 4 }
+								spacing = 10
+
+								background = {
+									using = Background_Area_Dark
+									alpha = 0.5
+								}
+
+								widget = {
+									size = { 42 42 }
+									datacontext = "[FutureSituationPhase.GetType]"
+
+									tooltipwidget = {
+										using = situation_phase_type_tooltip
+									}
+
+									background = {
+										texture = "gfx/interface/window_regency/regency_level_bg.dds"
+										margin = { 5 5 }
+									}
+
+									icon = {
+										size = { 34 34 }
+										parentanchor = center
+										texture = "[SituationPhaseType.GetIcon]"
+									}
+								}
+
+								vbox = {
+									layoutpolicy_horizontal = expanding
+
+									text_single = {
+										layoutpolicy_horizontal = expanding
+										text = "[FutureSituationPhase.GetType.GetName]"
+										default_format = "#high"
+										align = nobaseline
+									}
+
+									text_single = {
+										layoutpolicy_horizontal = expanding
+										visible = "[ObjectsEqual( FutureSituationPhase.GetType.Self, SituationPhase.GetLeadingPhaseType.Self )]"
+										text = "SITUATION_WINDOW_LEADING_PHASE"
+										default_format = "#weak"
+										align = nobaseline
+									}
+								}
+
+								widget = {
+									size = { 150 30 }
+									visible = "[FutureSituationPhase.HasPointsTakeoverType]"
+
+									progressbar_standard = {
+										size = { 150 12 }
+										parentanchor = top|hcenter
+										value = "[FutureSituationPhase.GetRelativeProgressPercent]"
+										progresstexture = "gfx/interface/progressbars/progress_grandeur_increase.dds"
+									}
+
+									text_single = {
+										parentanchor = bottom|hcenter
+										text = "SITUATION_PHASE_POINT_TAKEOVER_VALUE"
+										align = nobaseline
+									}
+								}
+
+								# Catalysts: open them for this phase, or close them if they are open on it
+								button_standard_small = {
+									visible = "[Not( ObjectsEqual( SituationWindow.GetSelectedOrLeadingFuturePhaseType.Self, FutureSituationPhase.GetType.Self ) )]"
+									text = "LANDED_ORDER_WHISPERS_CATALYSTS_BUTTON"
+									onclick = "[SituationWindow.ToggleSelectedFuturePhaseType( FutureSituationPhase.GetType.Self )]"
+									onclick = "[GetVariableSystem.Set( 'whispers_catalysts', 'true' )]"
+									onclick = "[GetVariableSystem.Clear( 'situation_catalysts_history_window' )]"
+								}
+
+								button_standard_small = {
+									visible = "[And( ObjectsEqual( SituationWindow.GetSelectedOrLeadingFuturePhaseType.Self, FutureSituationPhase.GetType.Self ), Not( GetVariableSystem.Exists( 'whispers_catalysts' ) ) )]"
+									text = "LANDED_ORDER_WHISPERS_CATALYSTS_BUTTON"
+									onclick = "[GetVariableSystem.Set( 'whispers_catalysts', 'true' )]"
+									onclick = "[GetVariableSystem.Clear( 'situation_catalysts_history_window' )]"
+								}
+
+								button_standard_small = {
+									visible = "[And( ObjectsEqual( SituationWindow.GetSelectedOrLeadingFuturePhaseType.Self, FutureSituationPhase.GetType.Self ), GetVariableSystem.Exists( 'whispers_catalysts' ) )]"
+									down = yes
+									text = "LANDED_ORDER_WHISPERS_CATALYSTS_BUTTON"
+									onclick = "[GetVariableSystem.Clear( 'whispers_catalysts' )]"
+								}
+							}
+						}
+					}
+				}
+
+				############################################################
+				### THE PLAYER'S PLACE
+				############################################################
+				hbox = {
+					name = "whispers_your_group"
+					layoutpolicy_horizontal = expanding
+					margin = { 12 6 }
+					spacing = 8
+					datacontext = "[SituationSubRegion.GetCharacterParticipantGroup( GetPlayer )]"
+
+					background = {
+						using = Background_Area_Solid
+						alpha = 0.4
+					}
+
+					icon = {
+						visible = "[SituationParticipantGroup.IsValid]"
+						size = { 36 36 }
+						texture = "[SituationParticipantGroup.GetType.GetIcon]"
+
+						background = {
+							texture = "gfx/interface/buttons/button_lifestyles_base.dds"
+							margin = { 5 5 }
+						}
+					}
+
+					vbox = {
+						visible = "[SituationParticipantGroup.IsValid]"
+						margin_left = 6
+
+						text_single = {
+							text = "[SituationParticipantGroup.GetName]"
+							align = nobaseline
+						}
+
+						text_single = {
+							text = "SITUATION_WINDOW_YOUR_PARTICIPANT_GROUP"
+							default_format = "#weak"
+							align = nobaseline
+						}
+					}
+
+					text_multi = {
+						visible = "[Not( SituationParticipantGroup.IsValid )]"
+						autoresize = yes
+						max_width = 300
+						text = "SITUATION_WINDOW_NO_REGION_PARTICIPANT_GROUP"
+						default_format = "#low"
+						align = nobaseline
+					}
+
+					expand = {}
+
+					button_standard_small = {
+						onclick = "[SituationWindow.AccessParticipantCharacterList.Toggle]"
+						text = "SITUATION_WINDOW_VIEW_PARTICIPANT_GROUPS"
+					}
+
+					button_standard_small = {
+						text = "LANDED_ORDER_WHISPERS_HISTORY_BUTTON"
+						down = "[GetVariableSystem.Exists( 'situation_catalysts_history_window' )]"
+						onclick = "[GetVariableSystem.Toggle( 'situation_catalysts_history_window' )]"
+						onclick = "[GetVariableSystem.Clear( 'whispers_catalysts' )]"
+					}
+				}
+
+				############################################################
+				### WHAT THE PLAYER KNOWS
+				############################################################
+				scrollbox = {
+					name = "whispers_views"
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+
+					blockoverride "scrollbox_background_fade" {}
+
+					blockoverride "scrollbox_content"
+					{
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 8
+
+							# The Eye's view of the conspiracy: shown only to those who serve the Eye, and its roster of sworn
+							# rulers only to the Forgotten Saint's own rulers
+							vbox = {
+								name = "whispers_eye_view"
+								visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( GetPlayer.MakeScope ).ScriptValue('landed_order_whispers_eye_view_value'), '(CFixedPoint)0' )]"
+								layoutpolicy_horizontal = expanding
+								margin = { 15 8 }
+								spacing = 4
+
+								background = {
+									using = Background_Area
+								}
+
+								text_label_center = {
+									layoutpolicy_horizontal = expanding
+									text = "LANDED_ORDER_WHISPERS_EYE_VIEW_HEADER"
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									margin = { 10 4 }
+									spacing = 15
+
+									text_single = {
+										text = "LANDED_ORDER_EYE_GRASP_LABEL"
+										align = nobaseline
+									}
+
+									progressbar_standard = {
+										layoutpolicy_horizontal = expanding
+										size = { 1 24 }
+										min = 0
+										max = 100
+										animated_progress_value = "[Situation.MakeScope.Var('eye_grasp').GetValue]"
+										tooltip = "LANDED_ORDER_EYE_GRASP_TT"
+										using = tooltip_se
+									}
+
+									text_single = {
+										text = "LANDED_ORDER_WHISPERS_GRASP_VALUE"
+										align = nobaseline
+									}
+								}
+
+								text_multi = {
+									layoutpolicy_horizontal = expanding
+									autoresize = yes
+									max_width = 520
+									margin = { 10 0 }
+									text = "LANDED_ORDER_WHISPERS_EYE_COUNTS"
+								}
+
+								vbox = {
+									visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( GetPlayer.MakeScope ).ScriptValue('landed_order_whispers_eye_roster_value'), '(CFixedPoint)0' )]"
+									layoutpolicy_horizontal = expanding
+
+									text_single = {
+										visible = "[Not(IsDataModelEmpty(Situation.MakeScope.GetList( 'eye_sworn_masters' )))]"
+										layoutpolicy_horizontal = expanding
+										margin_left = 10
+										text = "LANDED_ORDER_EYE_SWORN_MASTERS_LABEL"
+									}
+
+									fixedgridbox = {
+										datamodel = "[Situation.MakeScope.GetList( 'eye_sworn_masters' )]"
+										addcolumn = 85
+										addrow = 85
+										flipdirection = yes
+										datamodel_wrap = 6
+
+										item = {
+											portrait_head_small = {
+												datacontext = "[Scope.Char]"
+											}
+										}
+									}
+								}
+							}
+
+							# The Vigil's view of the conspiracy: shown to the Forlorn Guardian's rulers and the Vigil's allies,
+							# and its list of allies only to the Forlorn Guardian's own rulers
+							vbox = {
+								name = "whispers_vigil_view"
+								visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( GetPlayer.MakeScope ).ScriptValue('landed_order_whispers_vigil_view_value'), '(CFixedPoint)0' )]"
+								layoutpolicy_horizontal = expanding
+								margin = { 15 8 }
+								spacing = 4
+
+								background = {
+									using = Background_Area
+								}
+
+								text_label_center = {
+									layoutpolicy_horizontal = expanding
+									text = "LANDED_ORDER_WHISPERS_VIGIL_VIEW_HEADER"
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									margin = { 10 4 }
+									spacing = 15
+
+									text_single = {
+										text = "LANDED_ORDER_VIGIL_REACH_LABEL"
+										align = nobaseline
+									}
+
+									progressbar_standard = {
+										layoutpolicy_horizontal = expanding
+										size = { 1 24 }
+										min = 0
+										max = 100
+										animated_progress_value = "[Situation.MakeScope.ScriptValue('landed_order_whispers_vigil_reach_value')]"
+										tooltip = "LANDED_ORDER_VIGIL_REACH_TT"
+										using = tooltip_se
+									}
+
+									text_single = {
+										text = "LANDED_ORDER_WHISPERS_REACH_VALUE"
+										align = nobaseline
+									}
+								}
+
+								text_multi = {
+									layoutpolicy_horizontal = expanding
+									autoresize = yes
+									max_width = 520
+									margin = { 10 0 }
+									text = "LANDED_ORDER_WHISPERS_VIGIL_COUNTS"
+								}
+
+								vbox = {
+									visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( GetPlayer.MakeScope ).ScriptValue('landed_order_whispers_vigil_roster_value'), '(CFixedPoint)0' )]"
+									layoutpolicy_horizontal = expanding
+
+									text_single = {
+										visible = "[Not(IsDataModelEmpty(Situation.MakeScope.GetList( 'vigil_allies' )))]"
+										layoutpolicy_horizontal = expanding
+										margin_left = 10
+										text = "LANDED_ORDER_VIGIL_ALLIES_LABEL"
+									}
+
+									fixedgridbox = {
+										datamodel = "[Situation.MakeScope.GetList( 'vigil_allies' )]"
+										addcolumn = 85
+										addrow = 85
+										flipdirection = yes
+										datamodel_wrap = 6
+
+										item = {
+											portrait_head_small = {
+												datacontext = "[Scope.Char]"
+											}
+										}
+									}
+								}
+							}
+
+							# The servants of the Eye this player has learned of, whatever their side
+							vbox = {
+								name = "whispers_known_servants"
+								visible = "[Not(IsDataModelEmpty(GetPlayer.MakeScope.GetList( 'whispers_known_sworn' )))]"
+								layoutpolicy_horizontal = expanding
+								margin = { 15 6 }
+								spacing = 4
+
+								background = {
+									using = Background_Area
+								}
+
+								text_label_center = {
+									layoutpolicy_horizontal = expanding
+									text = "LANDED_ORDER_WHISPERS_KNOWN_SWORN_HEADER"
+								}
+
+								fixedgridbox = {
+									datamodel = "[GetPlayer.MakeScope.GetList( 'whispers_known_sworn' )]"
+									addcolumn = 85
+									addrow = 85
+									flipdirection = yes
+									datamodel_wrap = 6
+
+									item = {
+										portrait_head_small = {
+											datacontext = "[Scope.Char]"
+										}
+									}
+								}
+							}
+
+							# Everyone else sees only rumour
+							text_multi = {
+								name = "whispers_outsider_note"
+								visible = "[Not( GreaterThan_CFixedPoint( GuiScope.SetRoot( GetPlayer.MakeScope ).ScriptValue('landed_order_whispers_any_view_value'), '(CFixedPoint)0' ) )]"
+								layoutpolicy_horizontal = expanding
+								autoresize = yes
+								max_width = 540
+								margin = { 16 12 }
+								text = "LANDED_ORDER_WHISPERS_OUTSIDER_NOTE"
+								default_format = "#weak"
+
+								background = {
+									using = Background_Area
+									alpha = 0.6
+								}
+							}
+
+							# The schemes of the conspiracy, and who may use them (tagged when the viewer can)
+							vbox = {
+								name = "whispers_schemes"
+								layoutpolicy_horizontal = expanding
+								margin = { 15 8 }
+								spacing = 4
+
+								background = {
+									using = Background_Area
+								}
+
+								text_label_center = {
+									layoutpolicy_horizontal = expanding
+									text = "LANDED_ORDER_WHISPERS_SCHEMES_HEADER"
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									margin = { 10 4 }
+									spacing = 10
+
+									icon = {
+										size = { 40 40 }
+										texture = "gfx/interface/icons/scheme_types/icon_scheme_crypto_religion.dds"
+									}
+
+									vbox = {
+										layoutpolicy_horizontal = expanding
+
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											spacing = 8
+
+											text_single = {
+												text = "LANDED_ORDER_WHISPERS_SCHEME_EYE_NAME"
+												align = nobaseline
+											}
+
+											text_single = {
+												visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( GetPlayer.MakeScope ).ScriptValue('landed_order_whispers_can_open_eyes_value'), '(CFixedPoint)0' )]"
+												text = "LANDED_ORDER_WHISPERS_SCHEME_YOURS"
+												align = nobaseline
+											}
+
+											expand = {}
+										}
+
+										text_multi = {
+											layoutpolicy_horizontal = expanding
+											autoresize = yes
+											max_width = 470
+											text = "LANDED_ORDER_WHISPERS_SCHEME_EYE_DESC"
+											default_format = "#weak"
+										}
+									}
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									margin = { 10 4 }
+									spacing = 10
+
+									icon = {
+										size = { 40 40 }
+										texture = "gfx/interface/icons/scheme_types/icon_scheme_befriend.dds"
+									}
+
+									vbox = {
+										layoutpolicy_horizontal = expanding
+
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											spacing = 8
+
+											text_single = {
+												text = "LANDED_ORDER_WHISPERS_SCHEME_TRUST_NAME"
+												align = nobaseline
+											}
+
+											text_single = {
+												visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( GetPlayer.MakeScope ).ScriptValue('landed_order_whispers_can_vigil_value'), '(CFixedPoint)0' )]"
+												text = "LANDED_ORDER_WHISPERS_SCHEME_YOURS"
+												align = nobaseline
+											}
+
+											expand = {}
+										}
+
+										text_multi = {
+											layoutpolicy_horizontal = expanding
+											autoresize = yes
+											max_width = 470
+											text = "LANDED_ORDER_WHISPERS_SCHEME_TRUST_DESC"
+											default_format = "#weak"
+										}
+									}
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									margin = { 10 4 }
+									spacing = 10
+
+									icon = {
+										size = { 40 40 }
+										texture = "gfx/interface/icons/scheme_types/icon_scheme_study_faith.dds"
+									}
+
+									vbox = {
+										layoutpolicy_horizontal = expanding
+
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											spacing = 8
+
+											text_single = {
+												text = "LANDED_ORDER_WHISPERS_SCHEME_GAZE_NAME"
+												align = nobaseline
+											}
+
+											text_single = {
+												visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( GetPlayer.MakeScope ).ScriptValue('landed_order_whispers_can_vigil_value'), '(CFixedPoint)0' )]"
+												text = "LANDED_ORDER_WHISPERS_SCHEME_YOURS"
+												align = nobaseline
+											}
+
+											expand = {}
+										}
+
+										text_multi = {
+											layoutpolicy_horizontal = expanding
+											autoresize = yes
+											max_width = 470
+											text = "LANDED_ORDER_WHISPERS_SCHEME_GAZE_DESC"
+											default_format = "#weak"
+										}
+									}
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									margin = { 10 4 }
+									spacing = 10
+
+									icon = {
+										size = { 40 40 }
+										texture = "gfx/interface/icons/scheme_types/icon_scheme_fabricate_hook.dds"
+									}
+
+									vbox = {
+										layoutpolicy_horizontal = expanding
+
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											spacing = 8
+
+											text_single = {
+												text = "LANDED_ORDER_WHISPERS_SCHEME_TRUTH_NAME"
+												align = nobaseline
+											}
+
+											text_single = {
+												visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( GetPlayer.MakeScope ).ScriptValue('landed_order_whispers_can_learn_truth_value'), '(CFixedPoint)0' )]"
+												text = "LANDED_ORDER_WHISPERS_SCHEME_YOURS"
+												align = nobaseline
+											}
+
+											expand = {}
+										}
+
+										text_multi = {
+											layoutpolicy_horizontal = expanding
+											autoresize = yes
+											max_width = 470
+											text = "LANDED_ORDER_WHISPERS_SCHEME_TRUTH_DESC"
+											default_format = "#weak"
+										}
+									}
+								}
+							}
+						}
+					}
+
+					blockoverride "scrollbox_expand"
+					{
+						expand = {}
+					}
+				}
+
+				# What the Situation is, in a sentence
+				text_multi = {
+					name = "whispers_summary"
+					layoutpolicy_horizontal = expanding
+					autoresize = yes
+					max_width = 560
+					margin = { 16 6 }
+					text = "LANDED_ORDER_WHISPERS_SUMMARY"
+					default_format = "#weak;italic"
+					align = center
+				}
+			}
+		}
+	}
+
+	window_situation_participant_groups = {
+		datacontext = "[SituationWindow.AccessParticipantCharacterList]"
+		datacontext = "[SituationParticipantCharacterList.AccessCharacterList]"
+		visible = "[SituationParticipantCharacterList.IsVisible]"
+
+		datacontext = "[SituationWindow.GetSelectedSubRegion]"
+		blockoverride "header_text"
+		{
+			text = "[SituationWindow.GetParticipationWindowHeader]"
+		}
+	}
+
+	############################################################
+	### CATALYSTS: beside the window, at full height
+	# For the phase picked in "where the conspiracy may turn" (or, until one is picked, the leading one)
+	############################################################
+	window = {
+		name = "whispers_catalysts_window"
+		widgetanchor = right
+		position = { 30 100 }
+		size = { 740 82% }
+		visible = "[GetVariableSystem.Exists( 'whispers_catalysts' )]"
+
+		layer = middle
+		movable = yes
+
+		using = Window_Background
+		using = Window_Decoration_Spike
+		using = Window_Size_CharacterList
+
+		state = {
+			name = _show
+			using = Animation_FadeIn_Quick
+		}
+
+		state = {
+			name = _hide
+			using = Animation_FadeOut_Quick
+		}
+
+		vbox = {
+			using = Window_Margins
+			datacontext = "[SituationWindow.GetSelectedSubRegion.GetCurrentPhase]"
+			datacontext = "[SituationWindow.GetSelectedOrLeadingFuturePhaseType]"
+			spacing = 8
+
+			header_pattern = {
+				layoutpolicy_horizontal = expanding
+
+				blockoverride "header_text"
+				{
+					text = "SITUATION_WINDOW_FUTURE_CATALYSTS_HEADER"
+				}
+
+				blockoverride "button_close"
+				{
+					onclick = "[GetVariableSystem.Clear( 'whispers_catalysts' )]"
+				}
+			}
+
+			hbox = { # the phase they drive toward, and how close it stands
+				layoutpolicy_horizontal = expanding
+				margin = { 20 4 }
+				spacing = 12
+				datacontext = "[SituationWindow.GetSelectedSubRegion.GetCurrentPhase.GetFuturePhaseByType( SituationWindow.GetSelectedOrLeadingFuturePhaseType )]"
+
+				icon = {
+					size = { 44 44 }
+					texture = "[SituationPhaseType.GetIcon]"
+
+					tooltipwidget = {
+						using = situation_phase_type_tooltip
+					}
+				}
+
+				text_multi = {
+					autoresize = yes
+					max_width = 420
+					text = "LANDED_ORDER_WHISPERS_CATALYSTS_INTRO"
+					align = nobaseline
+				}
+
+				expand = {}
+
+				widget = {
+					size = { 160 32 }
+					visible = "[FutureSituationPhase.HasPointsTakeoverType]"
+
+					progressbar_standard = {
+						size = { 160 12 }
+						parentanchor = top|hcenter
+						value = "[FutureSituationPhase.GetRelativeProgressPercent]"
+						progresstexture = "gfx/interface/progressbars/progress_grandeur_increase.dds"
+					}
+
+					text_single = {
+						parentanchor = bottom|hcenter
+						text = "SITUATION_PHASE_POINT_TAKEOVER_VALUE"
+						align = nobaseline
+					}
+				}
+			}
+
+			scrollbox = {
+				layoutpolicy_vertical = expanding
+				layoutpolicy_horizontal = expanding
+
+				blockoverride "scrollbox_background" {}
+				blockoverride "scrollbox_background_fade" {}
+
+				blockoverride "scrollbox_content"
+				{
+					vbox = {
+						name = "catalyst_entries"
+						layoutpolicy_horizontal = expanding
+						spacing = 4
+						datamodel = "[SituationWindow.GetCatalystsForSelectedPhase]"
+
+						item = {
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								min_height = 44
+
+								background = {
+									using = Background_Area_Dark
+									alpha = 0.6
+								}
+
+								hbox = { # the points it adds
+									layoutpolicy_vertical = expanding
+									min_width = 72
+
+									background = {
+										using = Background_Area_Dark
+										using = Color_Green
+										alpha = 0.1
+									}
+
+									background = {
+										using = Background_Frame
+										using = Color_Green
+										alpha = 0.3
+									}
+
+									text_single = {
+										layoutpolicy_horizontal = expanding
+										text = "[SituationCatalystEntry.GetPoints|+=]"
+										align = nobaseline|center
+									}
+								}
+
+								text_multi = {
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = expanding
+									text = "[SituationCatalystEntry.GetCatalystDescription]"
+									autoresize = no
+									align = left|nobaseline
+									max_width = 500
+									margin = { 12 5 }
+								}
+
+								hbox = { # how often it has happened in this phase
+									layoutpolicy_vertical = expanding
+									min_width = 70
+
+									background = {
+										visible = "[GreaterThan_int32( SituationPhase.GetNumCompletionsOfCatalystForPhase( SituationPhaseType.Self, SituationCatalystEntry.GetCatalyst ), '(int32)0' )]"
+										using = Background_Frame
+										color = { 0.4 0.603 0.298 1 }
+										alpha = 0.6
+									}
+
+									background = {
+										visible = "[EqualTo_int32( SituationPhase.GetNumCompletionsOfCatalystForPhase( SituationPhaseType.Self, SituationCatalystEntry.GetCatalyst ), '(int32)0' )]"
+										using = Background_Frame
+										using = Color_Grey
+										alpha = 0.4
+									}
+
+									text_single = {
+										layoutpolicy_horizontal = expanding
+										align = nobaseline|center
+										raw_text = "[Select_CString( GreaterThan_int32( SituationPhase.GetNumCompletionsOfCatalystForPhase( SituationPhaseType.Self, SituationCatalystEntry.GetCatalyst ), '(int32)0' ), '#COLOR_GREEN ', '#COLOR_GRAY ' )]x[SituationPhase.GetNumCompletionsOfCatalystForPhase( SituationPhaseType.Self, SituationCatalystEntry.GetCatalyst )]#!"
+									}
+								}
+							}
+						}
+					}
+				}
+
+				blockoverride "scrollbox_expand"
+				{
+					expand = {}
+				}
+			}
+		}
+	}
+
+	############################################################
+	### HISTORY: every catalyst so far, with its date (vanilla's catalyst history window; the Situation keeps its full
+	# history, keep_full_history = yes)
+	############################################################
+	situation_catalysts_history_window = {
+		visible = "[VariableSystem.Exists( 'situation_catalysts_history_window' )]"
+
+		blockoverride "situation_datacontext"
+		{
+			datacontext = "[SituationWindow.GetSituation]"
+		}
+
+		blockoverride "header_text"
+		{
+			text = "LANDED_ORDER_WHISPERS_HISTORY_HEADER"
+		}
+	}
+}

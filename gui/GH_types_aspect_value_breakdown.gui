@@ -2825,6 +2825,15 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
+			visible = "[EqualTo_string('01_crater_watch', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_water]: [water_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
 			visible = "[EqualTo_string('01_fount_of_heroes', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -3293,6 +3302,24 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
+			visible = "[EqualTo_string('01_geminam', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_dream] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_geminam_dream_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_geminam', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_dream]: [dream_i]#positive_value +2#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
 			visible = "[EqualTo_string('01_eternal_grove', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -3725,6 +3752,24 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
+			visible = "[EqualTo_string('01_thalthit_muntarisa', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_dark] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_thalthit_muntarisa_dark_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_thalthit_muntarisa', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_dark]: [dark_i]#positive_value +2#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
 			visible = "[EqualTo_string('01_beaconlight', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -3901,6 +3946,24 @@ types AspectBreakdowns {
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[aspect_blood]: [blood_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_minstrels_conservatory', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_blood] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_minstrels_conservatory_blood_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_minstrels_conservatory', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_blood] per [stress_level|E]: [blood_i]#positive_value +1#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -4522,6 +4585,51 @@ types AspectBreakdowns {
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[aspect_hymns]: [hymns_i]#positive_value +2#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_crater_watch', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_hymns]: [hymns_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_minstrels_conservatory', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_hymns] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_minstrels_conservatory_hymns_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_minstrels_conservatory', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_hymns]: [hymns_i]#positive_value +2#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_geminam', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_hymns] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_geminam_hymns_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_geminam', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_hymns] per [piety_level|E]: [hymns_i]#positive_value +1#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}

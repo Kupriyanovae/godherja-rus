@@ -1,0 +1,48 @@
+types GHMiscelaneous
+{
+	type skill_icon_label_magic_count = flowcontainer {
+		margin_left = 10
+		margin_right = 15
+		spacing = 4
+
+		background = {
+			name = "skill_icon_bg"
+			texture = "gfx/interface/window_character/character_view_skills_bg_magic.dds"
+			size = { 70 26 }
+		}
+
+		block "tooltip"
+		{
+			tooltip = "SKILL_ITEM_TOOLTIP"
+		}
+
+		icon = {
+			name = "skill_icon"
+			texture = "gfx/interface/icons/icon_skills_magic.dds"
+			size = { 60 60 }
+
+			block "icon_size"
+			{
+				size = { 30 30 }
+			}
+
+		}
+
+		text_single = {
+			name = "skill_value"
+			parentanchor = vcenter
+			align = nobaseline
+			default_format = "#high"
+
+			block "font_size"
+			{
+				using = Font_Size_Medium
+			}
+
+			block "value"
+			{
+				text = "[FixedPointToInt(Character.MakeScope.Var('magic_prowess_var').GetValue)]"
+			}
+		}
+	}
+}
