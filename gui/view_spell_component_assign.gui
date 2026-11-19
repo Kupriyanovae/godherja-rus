@@ -174,7 +174,7 @@ window = {
 						item = {
 							widget = {
 								name = "artifact_list_item"
-								visible = "[And(Or(Not(Story.MakeScope.Var('spell_component_template').Var('artifact_type').IsSet),EqualTo_string(Artifact.GetType, Story.MakeScope.Var('spell_component_template').Var('artifact_type').GetFlagName)), GetScriptedGui('runic_scroll_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_scope', Story.MakeScope.Var('spell_component_template').Var('spell_component_parent_spell').Story.MakeScope).AddScope('spell_component_scope', Story.MakeScope.Var('spell_component_template').Story.MakeScope).AddScope('artifact_scope', Artifact.MakeScope).End))]"
+								visible = "[And(GetScriptedGui('artifact_matches_spell_component_type_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_component_scope', Story.MakeScope.Var('spell_component_template').Story.MakeScope).AddScope('artifact_scope', Artifact.MakeScope).End), GetScriptedGui('runic_scroll_is_shown_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('spell_scope', Story.MakeScope.Var('spell_component_template').Var('spell_component_parent_spell').Story.MakeScope).AddScope('spell_component_scope', Story.MakeScope.Var('spell_component_template').Story.MakeScope).AddScope('artifact_scope', Artifact.MakeScope).End))]"
 								layoutpolicy_horizontal = expanding
 								size = { 360 80 }
 				

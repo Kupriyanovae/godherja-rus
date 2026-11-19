@@ -143,7 +143,7 @@ types AspectBreakdowns {
 			raw_text = "[water_i][aspect_water] Шанс успешного сотворения заклинания: [EmptyScope.ScriptValue('saratan_water_value_add')|+0]"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
-		}		
+		}
 		text_single = {
 			visible = "[And(EqualTo_string(Localize('forest'), Terrain.GetNameNoTooltip), NotEqualTo_CFixedPoint(EmptyScope.ScriptValue('forest_water_value_add'), '(CFixedPoint)0'))]"
 			layoutpolicy_horizontal = expanding
@@ -2271,7 +2271,7 @@ types AspectBreakdowns {
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
-			raw_text = "Получаемой от жертвоприношений магии: @magic_icon!#P +20%#!"
+			raw_text = "Magic Gained From Sacrifices: @magic_icon!#P +20%#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -2280,7 +2280,7 @@ types AspectBreakdowns {
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
-			raw_text = "Получаемой от жертвоприношений магии: @magic_icon!#P +20%#!"
+			raw_text = "Magic Gained From Sacrifices: @magic_icon!#P +20%#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -2445,7 +2445,7 @@ types AspectBreakdowns {
 			raw_text = "[aspect_fire]: [fire_i]#positive_value +1#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
-		}		
+		}
 		text_single = {
 			visible = "[EqualTo_string('01_mayikprolollan', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
@@ -2821,6 +2821,15 @@ types AspectBreakdowns {
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[aspect_water]: [water_i]#positive_value +2#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_crater_watch', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_water]: [water_i]#positive_value +1#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -3293,6 +3302,24 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
+			visible = "[EqualTo_string('01_geminam', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_dream] Шанс успешного сотворения заклинания: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_geminam_dream_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_geminam', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_dream]: [dream_i]#positive_value +2#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
 			visible = "[EqualTo_string('01_eternal_grove', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -3725,6 +3752,24 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
+			visible = "[EqualTo_string('01_thalthit_muntarisa', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_dark] Шанс успешного сотворения заклинания: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_thalthit_muntarisa_dark_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_thalthit_muntarisa', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_dark]: [dark_i]#positive_value +2#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
 			visible = "[EqualTo_string('01_beaconlight', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -3741,7 +3786,7 @@ types AspectBreakdowns {
 			raw_text = "[aspect_light]: [light_i]#positive_value +2#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
-		}		
+		}
 		text_single = {
 			visible = "[EqualTo_string('01_benoriya_atawek', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
@@ -3901,6 +3946,24 @@ types AspectBreakdowns {
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[aspect_blood]: [blood_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_minstrels_conservatory', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_blood] Шанс успешного сотворения заклинания: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_minstrels_conservatory_blood_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_minstrels_conservatory', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_blood] за [stress_level|E]: [blood_i]#positive_value +1#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -4522,6 +4585,51 @@ types AspectBreakdowns {
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[aspect_hymns]: [hymns_i]#positive_value +2#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_crater_watch', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_hymns]: [hymns_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_minstrels_conservatory', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_hymns] Шанс успешного сотворения заклинания: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_minstrels_conservatory_hymns_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_minstrels_conservatory', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_hymns]: [hymns_i]#positive_value +2#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_geminam', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_hymns] Шанс успешного сотворения заклинания: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_geminam_hymns_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_geminam', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_hymns] за [piety_level|E]: [hymns_i]#positive_value +1#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}

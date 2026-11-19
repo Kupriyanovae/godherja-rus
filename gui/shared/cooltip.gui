@@ -1,13 +1,10 @@
-container = {
+﻿container = {
 	alwaystransparent = no
 	name = "DefaultTooltipWidget"
 	using = DefaultTooltipWidget
 }
 
-container = {
-	name = "GameConceptTooltipDefault"
-	alwaystransparent = no
-
+template game_concept_tooltip {
 	object_tooltip_pop_out = {
 
 		blockoverride "header_additions" {
@@ -46,7 +43,18 @@ container = {
 		{
 			texture = "gfx/interface/tooltips/tooltip_bg_gameconcept.dds"
 		}
+
+		blockoverride "subtitle_text" {}
+		blockoverride "extra_data" {}
+		blockoverride "extra_data_after_description" {}
 	}
+}
+
+container = {
+	name = "GameConceptTooltipDefault"
+	alwaystransparent = no
+
+	using = game_concept_tooltip
 }
 
 container = {
@@ -201,7 +209,7 @@ template character_trait_tooltip {
 
 		blockoverride "description_text" {
 			block "actual_description_text" {
-				text = "[Trait.GetFullDescription( Character.Self, Faith.Self )]"
+				text = "[Trait.GetFullDescription( Character.Self, Character.GetRite.Self )]"
 			}
 		}
 
@@ -318,27 +326,411 @@ template character_trait_tooltip {
 container = {
 	alwaystransparent = no
 	name = "TraitTooltipDefault"
-	datacontext = "[Character.GetFaith]"
 	using = character_trait_tooltip
 }
 
-container = {
-	name = "DoctrineTypeTooltipDefault"
-	alwaystransparent = no
-
+template doctrine_type_tooltip {
 	object_tooltip_pop_out = {
 		blockoverride "title_text" {
-			margin = { 0 8 }
-			text = "[FaithDoctrine.GetBaseNameNoTooltip]"
+			text = "[DoctrineType.GetDescriptiveNameNoTooltip( GetNullCharacter.GetFaith )]"
 			default_format = "#T"
+		}
+
+		blockoverride "subtitle_text" {
+			text = "[DoctrineType.GetHistoricalGlossary( Faith.Self )]"
 		}
 
 		blockoverride "description_text" {
 			text = "FAITH_DOCTRINE_GENERAL_TOOLTIP"
 		}
 
+		blockoverride "extra_data_after_description" {
+			vbox = {
+				layoutpolicy_horizontal = expanding
+
+				textbox_religion_flavor_description = {
+					text = "FAITH_DOCTRINE_GENERAL_TOOLTIP_DESCRIPTION"
+				}
+
+				block "doctrine_extra_data_after_description" {}
+			}
+		}
+
+		# Only shown where a window fills in input_info_text, such as the click hints in the rite creation window
+		blockoverride "input_info" {
+			textbox = {
+				name = "input_info"
+				layoutpolicy_horizontal = expanding
+				margin_top = 10
+				using = DefaultTooltipText
+				multiline = yes
+				block "input_info_text" {
+					visible = no
+				}
+				fonttintcolor = "[TooltipInfo.GetTintColor]"
+			}
+		}
+
+		# Doctrines have no shortcuts, so drop the empty shortcut textbox and its margins
+		blockoverride "tooltip_text_shortcut" {
+			visible = no
+		}
+
+		# Minimum padding below the last line
+		blockoverride "call_to_action" {
+			vbox = {
+				margin_bottom = 15
+			}
+		}
+
 		blockoverride "concept_link" {
 			text = [doctrine|E]
+		}
+
+		blockoverride "header_additions" {
+			hbox = {
+				datacontext = "[DoctrineType.GetGroup]"
+				datacontext = "[DoctrineGroupType.GetCategory]"
+				margin_right = 10
+				margin_left = -5
+
+				icon_doctrine = {
+					name = "doctrine_icon_main"
+					visible = "[DoctrineCategoryType.HasTag( 'main' )]"
+					texture = "[DoctrineType.GetIcon]"
+					size = { 60 60 }
+				}
+
+				icon_doctrine = {
+					name = "doctrine_icon_other"
+					visible = "[And( Not( DoctrineCategoryType.HasTag( 'main' ) ), Not( DoctrineCategoryType.HasTag( 'special' ) ) )]"
+					texture = "[DoctrineType.GetGroup.GetIcon]"
+					size = { 60 60 }
+				}
+
+				icon_doctrine = {
+					name = "doctrine_icon_special"
+					visible = "[DoctrineCategoryType.HasTag( 'special' )]"
+					texture = "[DoctrineType.GetIcon]"
+					size = { 60 60 }
+				}
+			}
+		}
+	}
+}
+
+container = {
+	name = "DoctrineTypeTooltipDefault"
+	alwaystransparent = no
+
+	datacontext = "[GetPlayer.GetFaith]"
+
+	using = doctrine_type_tooltip
+}
+
+types TenetTooltipTypes
+{
+	type vbox_tenet_popularity_and_status = vbox {
+		layoutpolicy_horizontal = expanding
+
+		text_single = {
+			datacontext = "[GetScriptedGui( 'using_tenet_popularity_gui' )]"
+			visible = "[And( Not( Faith.HasTenetStatus( TenetType.Self, 'unknown' ) ), IsUsingTenetPopularity( Faith ) )]"
+			layoutpolicy_horizontal = expanding
+
+			text = "FAITH_TENET_ITEM_POPULARITY_SHORT"
+		}
+
+		text_single = {
+			layoutpolicy_horizontal = expanding
+
+			text = "FAITH_TENET_ITEM_TENET_STATUS"
+		}
+	}
+
+	type textbox_religion_flavor_description = textbox {
+		layoutpolicy_horizontal = expanding
+		max_width = 420
+		margin_top = 15
+
+		multiline = yes
+		fonttintcolor = "[TooltipInfo.GetTintColor]"
+		using = DefaultTooltipText
+	}
+
+	type widget_tenet_trait_and_weight = widget {
+		size = { 45 60 }
+
+		icon = {
+			size = { 45 45 }
+			texture = "[Trait.GetIcon( GetPlayer )]"
+
+			tooltipwidget = {
+				using = faith_window_trait_tooltip
+
+				blockoverride "virtue_or_sin_description_text" {
+					text = "TENET_TOOLTIP_TRAIT_DESCRIPTION"
+				}
+			}
+		}
+
+		text_single = {
+			parentanchor = bottom|hcenter
+			margin = { 3 0 }
+			margin_bottom = 5
+
+			background = {
+				using = Background_Area_Dark
+			}
+
+			block "fulfillment_value_text" {
+				datacontext = "[GetGameConcept( 'virtue_weight' )]"
+				text = "TENET_TOOLTIP_TRAIT_FULFILLMENT_GAIN"
+			}
+
+			tooltipwidget = {
+				using = game_concept_tooltip
+			}
+		}
+	}
+
+	type vbox_tenet_sins_and_virtues = vbox {
+		visible = "[TenetType.IsValid]"
+		layoutpolicy_horizontal = expanding
+		margin_bottom = 10
+
+		background = {
+			using = Background_Area
+		}
+
+		hbox = {
+			margin = { 10 0 }
+			layoutpolicy_horizontal = expanding
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+
+					text_label_left = {
+						datacontext = "[GetGameConcept( 'sins' )]"
+						max_width = 200
+						text = "TENET_TOOLTIP_SINS"
+
+						tooltipwidget = {
+							using = game_concept_tooltip
+						}
+					}
+
+					expand = {}
+				}
+
+				hbox = {
+					visible = "[DataModelHasItems( TenetType.GetSinTraits )]"
+					layoutpolicy_horizontal = expanding
+
+					fixedgridbox = {
+						addcolumn = 60
+						addrow = 55
+						flipdirection = yes
+
+						datamodel = "[TenetType.GetSinTraits]"
+						item = {
+							widget_tenet_trait_and_weight = {
+								blockoverride "fulfillment_value_text" {
+									datacontext = "[GetGameConcept( 'sin_weight' )]"
+									text = "TENET_TOOLTIP_TRAIT_FULFILLMENT_LOSS"
+								}
+							}
+						}
+					}
+
+					expand = {}
+				}
+
+				hbox = {
+					visible = "[IsDataModelEmpty( TenetType.GetSinTraits )]"
+					layoutpolicy_horizontal = expanding
+
+					text_multi = {
+						autoresize = yes
+						max_width = 200
+						default_format = "#weak"
+						text = "TENET_TOOLTIP_NO_SINS"
+					}
+
+					expand = {}
+				}
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+
+					expand = {}
+
+					text_label_right = {
+						datacontext = "[GetGameConcept( 'virtues' )]"
+						max_width = 200
+						text = "TENET_TOOLTIP_VIRTUES"
+
+						tooltipwidget = {
+							using = game_concept_tooltip
+						}
+					}
+				}
+
+				hbox = {
+					visible = "[DataModelHasItems( TenetType.GetVirtueTraits )]"
+					layoutpolicy_horizontal = expanding
+
+					expand = {}
+
+					fixedgridbox = {
+						addcolumn = 60
+						addrow = 55
+						flipdirection = yes
+
+						datamodel = "[TenetType.GetVirtueTraits]"
+						item = {
+							# Right-anchored in its cell so the spacing falls on the left and the last item lines up with the right edge
+							widget = {
+								size = { 60 60 }
+
+								widget_tenet_trait_and_weight = {
+									parentanchor = right
+								}
+							}
+						}
+					}
+				}
+
+				hbox = {
+					visible = "[IsDataModelEmpty( TenetType.GetVirtueTraits )]"
+					layoutpolicy_horizontal = expanding
+
+					expand = {}
+
+					text_multi = {
+						autoresize = yes
+						max_width = 200
+						align = top|right
+						default_format = "#weak"
+						text = "TENET_TOOLTIP_NO_VIRTUES"
+					}
+				}
+			}
+		}
+	}
+}
+
+template tenet_type_tooltip {
+	scrollable_object_tooltip_pop_out = {
+		blockoverride "title_text" {
+			text = "[Select_CString( TenetType.IsValid, TenetType.GetBaseNameNoTooltip, 'Empty Tenet')]"
+			default_format = "#T"
+		}
+
+		blockoverride "subtitle_text" {
+			text = "[TenetType.GetHistoricalGlossary( Rite.Self )]"
+		}
+
+		blockoverride "description_text" {
+			text = "TENET_TYPE_GENERAL_TOOLTIP"
+		}
+
+		# Removes bottom margin used by click info
+		blockoverride "input_info" {}
+
+		blockoverride "tooltip_text_shortcut" {
+			visible = no
+		}
+
+		blockoverride "extra_data_after_description" {
+			text_single = {
+				visible = "[Not( StringIsEmpty( TenetType.GetPersonalTenetEffectsDescription( Rite.Self ) ) )]"
+				margin_top = 15
+				margin_left = 10
+				layoutpolicy_horizontal = expanding
+
+				text = "TENET_TOOLTIP_PERSONAL_EFFECTS"
+				tooltip = "TENET_TOOLTIP_PERSONAL_EFFECTS_TT"
+			}
+
+			textbox_religion_flavor_description = {
+				text = "TENET_TYPE_GENERAL_TOOLTIP_DESCRIPTION"
+			}
+		}
+
+		blockoverride "concept_link" {
+			text = [core_tenet|E]
+		}
+
+		blockoverride "header_additions"
+		{
+			widget = {
+				size = { 65 70 }
+
+				icon = {
+					size = { 65 100 }
+					position = { 0 -15 }
+
+					visible = "[TenetType.IsValid]"
+					texture = "[TenetType.GetIcon( Faith.Self )]"
+				}
+			}
+		}
+
+		blockoverride "extra_data" {
+			vbox_tenet_sins_and_virtues = {}
+
+			vbox = {
+				visible = "[TenetType.IsValid]"
+				margin_left = 10
+				margin_bottom = 15
+
+				layoutpolicy_horizontal = expanding
+
+				vbox_tenet_popularity_and_status = {}
+
+				block "divergence_change" {}
+
+				text_single = {
+					block "divergent_tenet" {
+						visible = "[Not( Faith.GetMainRite.HasTenet( TenetType.Self ) )]"
+					}
+					layoutpolicy_horizontal = expanding
+
+					text = "RITE_CREATION_TENET_DIVERGENCE_CALC_TT"
+				}
+			}
+		}
+	}
+}
+
+container = {
+	name = "TenetTypeTooltipDefault"
+	alwaystransparent = no
+
+	datacontext = "[GetPlayer]"
+	datacontext = "[Character.GetFaith]"
+	datacontext = "[Character.GetRite]"
+
+	using = tenet_type_tooltip
+}
+
+container = {
+	name = "RiteTypeTooltipDefault"
+	alwaystransparent = no
+
+	object_tooltip_pop_out = {
+		blockoverride "title_text" {
+			margin = { 0 8 }
+			text = "[RiteType.GetBaseNameNoTooltip]"
+			default_format = "#T"
 		}
 	}
 }
@@ -553,7 +945,7 @@ types GameTooltipTypes
 						name = "concept_link"
 						layoutpolicy_horizontal = expanding
 						block "concept_link" {
-							raw_text = "#D Недостающая связь с концептом!#!"
+							raw_text = "#D Missing concept link!#!"
 						}
 
 						fonttintcolor = "[TooltipInfo.GetTintColor]"
@@ -604,14 +996,16 @@ types GameTooltipTypes
 				block "extra_data_after_description" {}
 
 				# Things like "click to X", hotkeys etc
-				textbox = {
-					name = "input_info"
-					layoutpolicy_horizontal = expanding
-					margin_top = 10
-					using = DefaultTooltipText
-					multiline = yes
-					block "input_info_text" {}
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
+				block "input_info" {
+					textbox = {
+						name = "input_info"
+						layoutpolicy_horizontal = expanding
+						margin_top = 10
+						using = DefaultTooltipText
+						multiline = yes
+						block "input_info_text" {}
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+					}
 				}
 			}
 
@@ -621,6 +1015,7 @@ types GameTooltipTypes
 				using = DefaultTooltipText
 				margin = { 10 10 }
 				margin_top = 10
+				block "tooltip_text_shortcut" {}
 				fonttintcolor = "[TooltipInfo.GetTintColor]"
 			}
 
@@ -960,11 +1355,10 @@ types GameTooltipTypes
 						hbox = {
 							name = "faith_and_culture"
 
-							button_religion_icon = {
-								name = "faith_button"
-								datacontext = "[Character.GetFaith]"
+							button_rite_icon = {
+								name = "rite_button"
+								datacontext = "[Character.GetRite]"
 								size = { 45 45 }
-								color = "[TooltipInfo.GetTintColor]"
 							}
 
 							vbox = {
@@ -972,16 +1366,14 @@ types GameTooltipTypes
 								margin_left = 3
 
 								text_single = {
-									datacontext = "[Character.GetFaith]"
+									datacontext = "[Character.GetRite]"
 									layoutpolicy_horizontal = expanding
-									text = "FAITH_COOLTIP_WINDOW"
+									text = "RITE_COOLTIP_WINDOW"
 									align = nobaseline
-
-									tooltipwidget = { faith_tooltip_click = {} }
 
 									button_normal = {
 										size = { 100% 100% }
-										onclick = "[OpenGameViewData( 'faith', Faith.GetID )]"
+										onclick = "[OpenGameViewData( 'faith', Rite.Self )]"
 									}
 
 									fonttintcolor = "[TooltipInfo.GetTintColor]"
@@ -1053,6 +1445,7 @@ types GameTooltipTypes
 							}
 						}
 					}
+					block "extra_info_post_faith" {}
 				}
 
 				hbox = {
@@ -1096,11 +1489,22 @@ types GameTooltipTypes
 
 				cooltip_paragraph = {
 					layoutpolicy_horizontal	= expanding
-					block "interaction_info" { }
-					max_width = 750
+					text = "[Character.GetObscuredText]"
+					visible = "[Character.HasObscuredText]"
+					default_format = "#weak"
 				}
 
-				#GH ADDITIONS: Biography cooltip link, and seperate debug stuff from it
+				spacer = {
+					visible = "[Character.HasObscuredText]"
+					size = { 10 10 }
+				}
+
+				cooltip_paragraph = {
+					layoutpolicy_horizontal	= expanding
+					block "interaction_info" { }
+				}
+
+				## GH ADDITIONS ## Biography cooltip link, and seperate debug stuff from it
 				gh_bio_link_cooltip = { visible = "[Not(EqualTo_string(Concatenate(Character.GetHistoryId, '_desc'), Localize(Concatenate(Character.GetHistoryId, '_desc'))))]" }
 
 				spacer = {
@@ -1112,26 +1516,25 @@ types GameTooltipTypes
 					layoutpolicy_horizontal = expanding
 					visible = "[InDebugMode]"
 				}
+				
+				## GH END ##
 
 				cooltip_paragraph = {
 					layoutpolicy_horizontal	= expanding
 					text = "[Character.GetDebugTooltip]"
 					visible = "[InDebugMode]"
-					max_width = 750
 				}
 
 				cooltip_paragraph = {
 					layoutpolicy_horizontal	= expanding
 					text = "CHARACTER_KILLER_TOOLTIP"
 					visible = "[And( InDebugMode, Character.GetKiller.IsValid )]"
-					max_width = 750
 				}
 
 				cooltip_paragraph = {
 					layoutpolicy_horizontal	= expanding
 					raw_text = "[GetAnimationTooltip( PdxGuiWidget.Self, Character.Self )]"
 					visible = "[ShouldShowAnimationInfo]"
-					max_width = 750
 				}
 
 				hbox = {
@@ -1162,7 +1565,7 @@ types GameTooltipTypes
 												size = { 52 52 }
 
 												onclick = "[Character.CopyDnaAccessoryToClipboard]"
-												raw_tooltip = "Скопировать модификаторы ДНК"
+												raw_tooltip = "Copy DNA Modifiers"
 											}
 										}
 									}
@@ -1178,7 +1581,7 @@ types GameTooltipTypes
 
 									blockoverride "description_text"
 									{
-										max_width = 750
+										max_width = 600
 										text = "[Character.GetDnaAccessoryTooltip]"
 									}
 								}
@@ -1212,7 +1615,7 @@ types GameTooltipTypes
 												size = { 52 52 }
 
 												onclick = "[Character.CopyPortraitAnimationToClipboard]"
-												raw_tooltip = "Скопировать данные анимации"
+												raw_tooltip = "Copy Animation Data"
 											}
 										}
 									}
@@ -1480,11 +1883,9 @@ types GameTooltipTypes
 			}
 		}
 	}
-}
 
-template maa_type_container_tooltip
-{
-	widget = {
+	type widget_maa_type_container_tooltip = widget
+	{
 		alwaystransparent = no
 		using = GeneralTooltipSetup
 
@@ -2745,7 +3146,7 @@ template unit_icon_item_tooltip {
 					text_single = {
 						# Deliberately unlocalized since this is debug functionality
 						layoutpolicy_horizontal = expanding
-						raw_text = "Дебаг:"
+						raw_text = "DEBUG:"
 						align = nobaseline
 						default_format = "#debug"
 						fonttintcolor = "[TooltipInfo.GetTintColor]"
@@ -2880,7 +3281,7 @@ template faith_tooltip_click_default_extra_info
 	}
 }
 
-template faith_tooltip_core_tenents_extra_info
+template core_tenets_extra_info
 {
 	divider_light = {
 		layoutpolicy_horizontal = expanding
@@ -2892,33 +3293,26 @@ template faith_tooltip_core_tenents_extra_info
 	}
 
 	hbox = {
-		name = "doctrines"
-		datamodel = "[Faith.GetDoctrines]"
+		name = "tenets"
 		spacing = 10
 
+		datamodel = "[Rite.GetTenets]"
 		item = {
-			name = "doctrine_item"
-
-			container_tenet_item = {
-				visible = "[EqualTo_string( FaithDoctrine.GetGroup.GetCategory, 'core_tenets' )]"
-				tooltip = FAITH_WINDOW_DOCTRINE_TOOLTIP_WITH_FAITH
-			}
+			container_tenet_item_small = {}
 		}
 	}
 }
 
-template faith_tooltip_ruler_designer_extra_info
+template rite_tooltip_click_default_extra_info
 {
-	spacer = {
-		size = { 0 4 }
-	}
-
 	divider_light = {
 		layoutpolicy_horizontal = expanding
 	}
 
 	text_single = {
-		text = RULER_DESIGNER_LIST_FAITH_ENTRY_SELECT_TOOLTIP
+		layoutpolicy_horizontal = expanding
+		text = "RITE_ITEM_TOOLTIP"
+		margin = { 10 0 }
 		fonttintcolor = "[TooltipInfo.GetTintColor]"
 	}
 }
@@ -2983,14 +3377,14 @@ types HoldingTooltips
 			}
 
 			vbox = {
-				spacing = 2
-				margin = { 8 0 }
 				layoutpolicy_horizontal = expanding
-				#GH CHANGE: Hide holding types if wasteland
+				spacing = 2
+				margin = { 5 0 }
+
 				vbox = {
-					visible = "[Not(Or(Holding.IsEmpty, And(Holding.GetProvince.GetTitle.GetDeJureLiege.GetHolder.HasTrait(GetTrait('gh_wasteland').Self), EqualTo_string(Holding.GetProvince.GetHolding.GetType.GetKey,'wasteland_empty_holding'))))]"
-					spacing = 4
+					visible = "[Not(Or(Holding.IsEmpty, And(Holding.GetProvince.GetTitle.GetDeJureLiege.GetHolder.HasTrait(GetTrait('gh_wasteland').Self), EqualTo_string(Holding.GetProvince.GetHolding.GetType.GetKey,'wasteland_empty_holding'))))]" ## GH CHANGE ##
 					layoutpolicy_horizontal = expanding
+					spacing = 5
 
 					text_single = {
 						layoutpolicy_horizontal = expanding
@@ -3000,14 +3394,14 @@ types HoldingTooltips
 
 					text_single = {
 						layoutpolicy_horizontal = expanding
-						visible = "[Not(Holding.GetProvince.GetTitle.GetDeJureLiege.GetHolder.HasTrait(GetTrait('gh_wasteland').Self))]"
+						visible = "[Not(Holding.GetProvince.GetTitle.GetDeJureLiege.GetHolder.HasTrait(GetTrait('gh_wasteland').Self))]" ## GH ADDITION ##
 						text = "HOLDING_TT_TITLE"
 						fonttintcolor = "[TooltipInfo.GetTintColor]"
 					}
 
 					text_single = {
 						layoutpolicy_horizontal = expanding
-						visible = "[Not(Holding.GetProvince.GetTitle.GetDeJureLiege.GetHolder.HasTrait(GetTrait('gh_wasteland').Self))]"
+						visible = "[Not(Holding.GetProvince.GetTitle.GetDeJureLiege.GetHolder.HasTrait(GetTrait('gh_wasteland').Self))]" ## GH ADDITION ##
 						text = "HOLDING_TT_HOLDER"
 						fonttintcolor = "[TooltipInfo.GetTintColor]"
 					}
@@ -3021,18 +3415,18 @@ types HoldingTooltips
 				}
 
 				text_single = {
-					visible = "[And(Holding.IsEmpty, Not(Holding.GetProvince.GetTitle.GetDeJureLiege.GetHolder.HasTrait(GetTrait('gh_wasteland').Self)))]"
+					visible = "[And(Holding.IsEmpty, Not(Holding.GetProvince.GetTitle.GetDeJureLiege.GetHolder.HasTrait(GetTrait('gh_wasteland').Self)))]" ## GH CHANGE ##
 					layoutpolicy_horizontal = expanding
 					text = "HOLDING_TT_EMPTY"
 					fonttintcolor = "[TooltipInfo.GetTintColor]"
 				}
 
 				text_single = {
-					visible = "[And(Or(Holding.IsEmpty, EqualTo_string(Holding.GetProvince.GetHolding.GetType.GetKey,'wasteland_empty_holding')), Holding.GetProvince.GetTitle.GetDeJureLiege.GetHolder.HasTrait(GetTrait('gh_wasteland').Self))]"
+					visible = "[And(Or(Holding.IsEmpty, EqualTo_string(Holding.GetProvince.GetHolding.GetType.GetKey,'wasteland_empty_holding')), Holding.GetProvince.GetTitle.GetDeJureLiege.GetHolder.HasTrait(GetTrait('gh_wasteland').Self))]" ## GH ADDITION ##
 					layoutpolicy_horizontal = expanding
-					text = "HOLDING_TT_EMPTY_WASTELAND"
+					text = "HOLDING_TT_EMPTY_WASTELAND" ## GH ADDITION ##
 				}
-
+				## GH ADDITION ##
 				text_single = {
 					layoutpolicy_horizontal = expanding
 					visible = "[Not(Or(Holding.GetHolder.HasTrait(GetTrait('gh_wasteland').Self), Or(Holding.IsEmpty, Or(EqualTo_string(Holding.GetProvince.GetHolding.GetType.GetKey,'colony_holding'), EqualTo_string(Holding.GetProvince.GetHolding.GetType.GetKey,'ruin_holding')))))]"
@@ -3044,10 +3438,10 @@ types HoldingTooltips
 					visible = "[EqualTo_string(Holding.GetProvince.GetHolding.GetType.GetKey,'colony_holding')]"
 					text = "COLONIZATION_PROGRESS_COOLTIP"
 				}
-
+				## GH END ##
 				hbox = {
 					layoutpolicy_horizontal = growing
-					spacing = 12
+					spacing = 10
 					datacontext = "[Holding.GetProvince.GetTerrain]"
 					tooltipwidget = terrain_tooltip
 					using = tooltip_ws
@@ -3087,6 +3481,32 @@ types HoldingTooltips
 				fonttintcolor = "[TooltipInfo.GetTintColor]"
 			}
 		}
+	}
+}
+
+template faith_sub_heading {
+	text_single = {
+		visible = "[And( Not( Faith.GetReligion.HasPaganRoots ), Not( Faith.IsUnreformed ) )]"
+		layoutpolicy_horizontal = expanding
+
+		text = "FAITH_VIEW_SUBHEADING"
+		align = top
+	}
+
+	text_single = {
+		visible = "[Faith.IsUnreformed]"
+		layoutpolicy_horizontal = expanding
+
+		text = "FAITH_VIEW_UNREFORMED_SUBHEADING"
+		align = top
+	}
+
+	text_single = {
+		visible = "[And( Faith.GetReligion.HasPaganRoots, Not( Faith.IsUnreformed ) )]"
+		layoutpolicy_horizontal = expanding
+
+		text = "FAITH_VIEW_REFORMED_SUBHEADING"
+		align = top
 	}
 }
 
@@ -3148,27 +3568,9 @@ types FaithTooltips
 							fonttintcolor = "[TooltipInfo.GetTintColor]"
 
 						}
-						text_single = {
-							visible = "[And( Not( Faith.GetReligion.HasPaganRoots ), Not( Faith.IsUnreformed ) )]"
-							layoutpolicy_horizontal = expanding
-							text = "FAITH_VIEW_SUBHEADING"
-							align = top
-							fonttintcolor = "[TooltipInfo.GetTintColor]"
-						}
-						text_single = {
-							visible = "[Faith.IsUnreformed]"
-							layoutpolicy_horizontal = expanding
-							text = "FAITH_VIEW_UNREFORMED_SUBHEADING"
-							align = top
-							fonttintcolor = "[TooltipInfo.GetTintColor]"
-						}
-						text_single = {
-							visible = "[And( Faith.GetReligion.HasPaganRoots, Not( Faith.IsUnreformed ) )]"
-							layoutpolicy_horizontal = expanding
-							text = "FAITH_VIEW_REFORMED_SUBHEADING"
-							align = top
-							fonttintcolor = "[TooltipInfo.GetTintColor]"
-						}
+
+						using = faith_sub_heading
+
 						expand = {
 							layoutpolicy_vertical = growing
 						}
@@ -3214,7 +3616,7 @@ types FaithTooltips
 
 				hbox = {
 					layoutpolicy_horizontal = expanding
-					fervor_container_vbox = {}
+					fervor_container_hbox = {}
 
 					expand = {}
 				}
@@ -3278,11 +3680,11 @@ types FaithTooltips
 		}
 	}
 
-	type faith_tooltip_core_tenents = faith_tooltip
+	type faith_tooltip_core_tenets = faith_tooltip
 	{
 		blockoverride "extra_info"
 		{
-			using = faith_tooltip_core_tenents_extra_info
+			using = core_tenets_extra_info
 		}
 	}
 
@@ -3290,8 +3692,20 @@ types FaithTooltips
 	{
 		blockoverride "extra_info"
 		{
-			using = faith_tooltip_core_tenents_extra_info
-			using = faith_tooltip_ruler_designer_extra_info
+			spacer = {
+				size = { 0 4 }
+			}
+
+			divider_light = {
+				layoutpolicy_horizontal = expanding
+			}
+
+			text_single = {
+				layoutpolicy_horizontal = expanding
+
+				text = RULER_DESIGNER_LIST_FAITH_ENTRY_SELECT_TOOLTIP
+				align = nobaseline
+			}
 		}
 	}
 }
@@ -3302,8 +3716,346 @@ container = {
 	faith_tooltip = {}
 }
 
-template religion_tooltip {
-	object_tooltip_pop_out = {
+types RiteTooltips
+{
+	type rite_tooltip = widget
+	{
+		alwaystransparent = no
+		using = GeneralTooltipSetup
+
+		widget = {
+			name = "background"
+			using = DefaultTooltipBackgroundNoLockedFrame
+			size = { 100% 100% }
+			alwaystransparent = no
+		}
+
+		vbox = {
+			set_parent_size_to_minimum = yes
+			margin = { 10 15 }
+			spacing = 5
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				margin_bottom = 10
+
+				background = {
+					using = Background_Header
+					margin = { 4 0 }
+					margin_top = 8
+				}
+
+				background = {
+					using = Background_Header_Pattern
+					margin = { 4 0 }
+					margin_top = 8
+				}
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					margin_bottom = 5
+					spacing = 5
+
+					icon = {
+						size = { 60 60 }
+						texture = "[Rite.GetIcon]"
+						color = "[TooltipInfo.GetTintColor]"
+					}
+
+					vbox = {
+						layoutpolicy_vertical = expanding
+						text_single = {
+							layoutpolicy_horizontal = expanding
+							name = "header"
+							text = "RITE_COOLTIP_GETNAME"
+							align = top
+							using = Font_Type_Flavor
+							using = Font_Size_Big
+							fonttintcolor = "[TooltipInfo.GetTintColor]"
+						}
+
+						text_single = {
+							visible = "[Rite.IsMain]"
+							layoutpolicy_horizontal = expanding
+							text = "RITE_COOLTIP_IS_MAINLINE"
+							align = top
+							fonttintcolor = "[TooltipInfo.GetTintColor]"
+						}
+
+						text_single = {
+							visible = "[Not( Rite.IsMain )]"
+							layoutpolicy_horizontal = expanding
+							text = "RITE_COOLTIP_IS_NOT_MAINLINE"
+							align = top
+							fonttintcolor = "[TooltipInfo.GetTintColor]"
+						}
+					}
+
+					expand = {}
+
+					text_single = {
+						margin_right = 10
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						text = "[rite|E]"
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+						align = vcenter|right
+					}
+				}
+			}
+
+			vbox = {
+				spacing = 5
+				margin = { 10 0 }
+
+				text_single = {
+					visible = "[ObjectsEqual( GetPlayer.GetRite.Self, Rite.Self )]"
+					layoutpolicy_horizontal = expanding
+					text = "RITE_COOLTIP_YOUR_RITE"
+					align = top
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+				}
+
+				text_single = {
+					visible = "[And( GetPlayer.IsValid, Not(ObjectsEqual( GetPlayer.GetRite.Self, Rite.Self ) ) )]"
+					name = "our_view"
+					layoutpolicy_horizontal = expanding
+					text = RITE_VIEW_OUR_AND_THEIR_VIEW
+					align = top
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+				}
+
+				text_single = {
+					visible = "[And( ObjectsEqual( GetPlayer.GetFaith.Self, Rite.GetFaith.Self ), Not( Rite.IsMain ) )]"
+					layoutpolicy_horizontal = expanding
+					text = "RITE_COOLTIP_DIVERGENCE"
+					align = top
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+				}
+
+				hbox = {
+					visible = "[Rite.MakeScope.Var('gh_has_description_with_gc').IsSet]"
+					layoutpolicy_horizontal = expanding
+					text_multi = {
+						max_width = 410
+						min_width = 340
+						margin_top = 7
+						margin_bottom = 5
+						text = "[Localize(Concatenate(Rite.MakeScope.Var('gh_has_description_with_gc').GetFlagName, '_desc_with_gc'))]"
+						autoresize = yes
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+						#default_format = "#low"
+					}
+					expand = {}
+				}
+				hbox = {
+					visible = "[Not(Rite.MakeScope.Var('gh_has_description_with_gc').IsSet)]"
+					layoutpolicy_horizontal = expanding
+					text_multi = {
+						max_width = 410
+						min_width = 340
+						margin_top = -7
+						margin_bottom = 5
+						text = "[Rite.GetDescription]"
+						autoresize = yes
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+						#default_format = "#low"
+					}
+					expand = {}
+				}
+
+				divider_light = {
+					layoutpolicy_horizontal = growing
+				}
+
+				hbox = {
+					datacontext = "[Rite.GetHeadOfRite]"
+					layoutpolicy_horizontal = growing
+					spacing = 10
+
+					portrait_head_small = {
+						name = "rite_head_portrait"
+					}
+
+					text_single = {
+						visible = "[Character.IsValid]"
+						layoutpolicy_horizontal = growing
+						layoutpolicy_vertical = growing
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+						text = "RITE_COOLTIP_HEAD"
+						align = top
+						max_width = 320
+
+						using = DefaultTooltipText
+					}
+
+					text_single = {
+						visible = "[Not( Character.IsValid )]"
+						layoutpolicy_horizontal = growing
+						layoutpolicy_vertical = growing
+						text = "RITE_COOLTIP_NO_HEAD"
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+						align = top
+
+						using = DefaultTooltipText
+					}
+				}
+
+				block "extra_info" {}
+				block "shortcut" {}
+			}
+		}
+
+		widget = {
+			name = "locked_frame"
+			size = { 100% 100% }
+			using = TooltipLockedFrame
+			alwaystransparent = yes
+		}
+	}
+
+	type rite_tooltip_click = rite_tooltip
+	{
+		blockoverride "extra_info"
+		{
+			using = rite_tooltip_click_default_extra_info
+		}
+	}
+
+	type rite_tooltip_ruler_designer = rite_tooltip
+	{
+		blockoverride "extra_info"
+		{
+			using = core_tenets_extra_info
+
+			spacer = {
+				size = { 0 4 }
+			}
+
+			divider_light = {
+				layoutpolicy_horizontal = expanding
+			}
+
+			text_single = {
+				layoutpolicy_horizontal = expanding
+
+				text = "RULER_DESIGNER_LIST_RITE_ENTRY_SELECT_TOOLTIP"
+				align = nobaseline
+			}
+		}
+	}
+}
+
+container = {
+	alwaystransparent = no
+	name = "RiteTooltip"
+	rite_tooltip = {}
+}
+
+template fulfillment_short_tooltip {
+	container = {
+		alwaystransparent = no
+		object_tooltip_pop_out = {
+			blockoverride "header_additions" {
+				hbox = {
+					margin_right = 10
+					margin_top = 8
+					margin_left = -4
+
+					icon = {
+						size = { 52 52 }
+						texture = "gfx/interface/icons/spiritual_fulfillment_levels/spiritual_fulfillment_04.dds"
+						tintcolor = "[TooltipInfo.GetTintColor]"
+					}
+				}
+			}
+
+			blockoverride "title_text" {
+				margin = { 0 8 }
+				text = "game_concept_spiritual_fulfillment"
+				default_format = "#T"
+			}
+
+			blockoverride "concept_link" {}
+
+			blockoverride "description_text" {
+				text = "game_concept_spiritual_fulfillment_desc"
+				max_width = 400
+			}
+
+			blockoverride "bg_texture" {
+				texture = "gfx/interface/tooltips/tooltip_bg_gameconcept.dds"
+			}
+		}
+	}
+}
+
+template fulfillment_tooltip {
+	container = {
+		alwaystransparent = no
+		object_tooltip_pop_out = {
+			blockoverride "header_additions"
+			{
+				hbox = {
+					margin_right = 10
+					margin_top = 8
+					margin_left = -4
+
+					icon_placeholder = {
+						size = { 52 52 }
+						block "header_icon"
+						{
+							texture = "[SpiritualFulfillmentLevel.GetIcon]"
+						}
+					}
+				}
+			}
+
+			blockoverride "concept_link" {
+				text = "[spiritual_fulfillment|E]"
+			}
+
+			blockoverride "title_text" {
+				margin = { 0 5 }
+				block "title_text" {
+					text = "[SpiritualFulfillmentLevel.GetName]"
+				}
+				default_format = "#T"
+			}
+
+			blockoverride "main_description" {
+				vbox = {
+					layoutpolicy_horizontal = expanding
+
+					textbox = {
+						name = "main_description"
+						layoutpolicy_horizontal = expanding
+						max_width = 400
+						margin = { 0 5 }
+						using = DefaultTooltipText
+						multiline = yes
+						text = "[SpiritualFulfillmentLevel.GetSpiritualFulfillmentLevelEffects]"
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+						alwaystransparent = no
+					}
+
+					spacer = {
+						size = { 0 10 }
+					}
+				}
+			}
+		}
+	}
+}
+container = {
+	name = "FulfillmentLevelTooltip"
+	alwaystransparent = no
+	using = fulfillment_tooltip
+}
+
+types ReligionCooltips {
+	type religion_tooltip = object_tooltip_pop_out {
 		blockoverride "title_text" {
 			text = "RELIGION_TITLE_TEXT"
 		}
@@ -3312,8 +4064,41 @@ template religion_tooltip {
 			text = [religion|E]
 		}
 
+		blockoverride "above_description_text" {
+			text = "[Religion.GetType.GetVirtuesSinsDescription]"
+		}
+
 		blockoverride "description_text" {
 			text = "[Religion.GetFlavorDesc]"
+		}
+	}
+
+	type religion_tooltip_ruler_designer = religion_tooltip {
+		blockoverride "tooltip_text_shortcut" {
+			visible = no
+		}
+
+		blockoverride "call_to_action" {
+			vbox = {
+				margin_bottom = 10
+				spacing = 5
+				layoutpolicy_horizontal = expanding
+
+				spacer = {
+					size = { 0 4 }
+				}
+
+				divider_light = {
+					layoutpolicy_horizontal = expanding
+				}
+
+				text_single = {
+					layoutpolicy_horizontal = expanding
+
+					text = "RULER_DESIGNER_LIST_RELIGION_ENTRY_SELECT_TOOLTIP"
+					align = nobaseline
+				}
+			}
 		}
 	}
 }
@@ -3321,7 +4106,8 @@ template religion_tooltip {
 container = {
 	alwaystransparent = no
 	name = "ReligionTooltip"
-	using = religion_tooltip
+	
+	religion_tooltip = {}
 }
 
 container = {
@@ -3501,6 +4287,7 @@ types Cooltips
 			margin_top = -4
 
 			coa_title_small_crown = {
+				visible = "[Title.IsValid]"
 				size = { 40 50 }
 				blockoverride "coa_tooltip" {}
 				blockoverride "coa_hover_glow_visible"
@@ -3511,6 +4298,7 @@ types Cooltips
 		}
 
 		blockoverride "title_text" {
+			# GH CHANGE: For Gloss titles
 			text = "[SelectLocalization(Not(EqualTo_string(Concatenate(Title.GetKey, '_desc'), Localize(Concatenate(Title.GetKey, '_desc')))), Glossary(Title.GetNameWithUnderlyingNoTooltip, Concatenate(Title.GetKey, '_desc')), Title.GetNameWithUnderlyingNoTooltip)]"
 		}
 
@@ -3672,10 +4460,11 @@ types StaticModifierTooltipTypes
 				text = "[StaticModifier.GetDescWithEffects]"
 			}
 		}
-				
+		## GH ADDITION ##		
 		blockoverride "extra_data_after_description" {
 			vbox_modifier_aspect_spellcasting_bonus_values = {}
 		}
+		## GH END ##
 	}
 
 	type scaled_static_modifier_tooltip = object_tooltip_pop_out {
@@ -3796,7 +4585,7 @@ types LawTooltipTypes
 	type pass_law_tooltip = container {
 		alwaystransparent = no
 
-		object_tooltip_pop_out = {
+		scrollable_object_tooltip_pop_out = {
 			blockoverride "header_additions" {
 				law_tooltip_header_additions = {}
 			}
@@ -3832,20 +4621,20 @@ types LawTooltipTypes
 					max_width = 440
 				}
 			}
-			
+
 			blockoverride "scrolltip_footer" {
 				vbox = {
 					layoutpolicy_horizontal = expanding
 					margin_bottom = 20
-					
+
 					cooltip_paragraph = {
 						visible = "[And( GuiLaw.HasCost, Not( GuiLaw.IsEnacted ) )]"
 						text = "LAW_COST"
 						max_width = 440
-						
+
 						tooltip = "[GuiLaw.GetCostDescription]"
 					}
-					
+
 					cooltip_paragraph = {
 						visible = "[GuiLaw.CanEnact]"
 						text = "CLICK_TO_PASS_LAW"
@@ -4493,6 +5282,12 @@ template culture_innovation_tooltip {
 				}
 			}
 
+			text_single = {
+				visible = "[InDebugMode]"
+				text = "[CultureInnovation.GetType.GetKey]"
+				default_format = "#debug"
+			}
+
 			block "AfterDescription" {}
 		}
 	}
@@ -4923,13 +5718,13 @@ types CultureTooltips
 						using = DefaultTooltipText
 					}
 				}
-
+				## GH ADDITION ##
 				divider_light = {
 					layoutpolicy_horizontal = growing
 					visible = "[Or(GetScriptedGui('culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End), GetScriptedGui('gh_custom_culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End))]"
 				}
 				
-				text_multi = { # GH ADDITION: Desc
+				text_multi = { # Desc
 					visible = "[Or(GetScriptedGui('culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End), GetScriptedGui('gh_custom_culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End))]"
 					text = "GH_CULTURE_TOOLTIP"
 					max_width = 400
@@ -4939,19 +5734,12 @@ types CultureTooltips
 					margin_top = 5
 					margin_left = -10
 				}
+				## GH RND ##
 
 				block "extra_info"
-				{
-					text_single = {
-						layoutpolicy_horizontal = growing
-						layoutpolicy_vertical = growing
-						text = "CLICK_TO_VIEW"
-						#fonttintcolor = "[TooltipInfo.GetTintColor]"
-						align = top
+				{}
 
-						using = DefaultTooltipText
-					}
-				}
+				block "shortcut" {}
 			}
 		}
 
@@ -5214,9 +6002,9 @@ types CultureTooltips
 
 				divider_light = {
 					layoutpolicy_horizontal = expanding
-					visible = "[Or(GetScriptedGui('culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End), GetScriptedGui('gh_custom_culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End))]"
+					visible = "[Or(GetScriptedGui('culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End), GetScriptedGui('gh_custom_culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End))]" ## GH ADDITION ##
 				}
-
+				## GH ADDITION ##	
 				text_multi = { # GH ADDITION: Desc
 					raw_text = "#size:1;flavor [GetScriptedGui('culture_tooltip').BuildTooltip(GuiScope.SetRoot(Culture.MakeScope).End)]#!#!"
 					visible = "[Or(GetScriptedGui('culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End), GetScriptedGui('gh_custom_culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End))]"
@@ -5226,10 +6014,10 @@ types CultureTooltips
 					margin_top = 10
 					margin_left = -15
 				}
-
 				divider_light = {
 					layoutpolicy_horizontal = expanding
 				}
+				## GH END ##
 
 				text_label_center = {
 					margin = { 10 2 }
@@ -5720,23 +6508,37 @@ types InventoryTooltips
 
 				background = {
 					using = Background_Header
+
+					margin = { 15 5 }
 				}
 
 				background = {
 					using = Background_Header_Pattern
+
+					margin = { 15 5 }
 				}
 
 				hbox = {
 					layoutpolicy_horizontal = expanding
+					spacing = 10
 
 					vbox = {
-						text_single = {
+						hbox = {
 							layoutpolicy_horizontal = expanding
-							name = "rarity"
-							text = "[Artifact.GetRarityAndSlotType]"
-							align = top
-							using = Font_Size_Medium
-							fonttintcolor = "[TooltipInfo.GetTintColor]"
+							spacing = 6
+
+							block "rarity_level" {}
+
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								name = "rarity"
+								text = "[Artifact.GetRarityAndSlotType]"
+								using = Font_Size_Medium
+								fonttintcolor = "[TooltipInfo.GetTintColor]"
+								align = nobaseline
+							}
+
+							expand = {}
 						}
 
 						text_single = {
@@ -5823,13 +6625,14 @@ types InventoryTooltips
 								text = ARTIFACT_EFFECT
 								default_format = "#low"
 								format_override = { P low }
+								format_override = { N low }
 								format_override = { E low }
 								fonttintcolor = "[TooltipInfo.GetTintColor]"
 							}
 
 							expand = {}
 						}
-
+						## GH ADDITION ##
 						hbox = {
 							layoutpolicy_horizontal = expanding
 							vbox = {
@@ -5880,11 +6683,11 @@ types InventoryTooltips
 									layoutpolicy_horizontal = expanding
 									max_width = 300
 									autoresize = yes
-									raw_text = "• [overwhelmation|E]: #positive_value +[Artifact.MakeScope.Var(Scope.GetFlagName).GetValue|0]#! за совторенное заклинание"
+									raw_text = "• [overwhelmation|E]: #positive_value +[Artifact.MakeScope.Var(Scope.GetFlagName).GetValue|0]#! за сотворённое заклинание"
 								}
 							}
 						}
-
+						## GH END ##
 						hbox = {
 							name = "fallback"
 							layoutpolicy_horizontal = expanding
@@ -5924,15 +6727,38 @@ types InventoryTooltips
 						expand = {}
 					}
 
+					block "not_holy" {
+						hbox = {
+							name = "holy_relic"
+							layoutpolicy_horizontal = expanding
+							datacontext = "[GetPlayer.GetFaith]"
+							visible = "[And( Artifact.CanBeHolyRelic, GetPlayer.IsValid )]"
+
+							text_single = {
+								text =  "ARTIFACT_IS_HOLY_RELIC"
+								max_width = 350
+								fonttintcolor = "[TooltipInfo.GetTintColor]"
+							}
+							expand = {}
+						}
+					}
+
 					hbox = {
 						layoutpolicy_horizontal = expanding
 
 						text_single = {
-							name = "owner"
+							visible = "[Artifact.GetOwner.IsValid]"
 							text = "ARTIFACT_CURRENT_HOLDER"
 							max_width = 350
 							fonttintcolor = "[TooltipInfo.GetTintColor]"
 						}
+						text_single = {
+							visible = "[Artifact.GetHolySiteOwner.IsValid]"
+							text = "ARTIFACT_CURRENT_HOLY_SITE_OWNER"
+							max_width = 350
+							fonttintcolor = "[TooltipInfo.GetTintColor]"
+						}
+
 						expand = {}
 					}
 
@@ -6003,6 +6829,42 @@ types InventoryTooltips
 				}
 				expand = {}
 			}
+
+			vbox = {
+				block "artifact_click_info" {
+					visible = no
+				}
+				layoutpolicy_horizontal = expanding
+				margin_top = 10
+				spacing = 10
+
+				divider_light = {
+					layoutpolicy_horizontal = expanding
+				}
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+
+					text_multi = {
+						block "artifact_click_text" {
+							text = "LOREM_IPSUM_TITLE"
+						}
+						max_width = 500
+						autoresize = yes
+					}
+
+					expand = {}
+				}
+
+				block "artifact_click_extra" {}
+			}
+		}
+
+		widget = {
+			name = "locked_frame"
+			size = { 100% 100% }
+			using = TooltipLockedFrame
+			alwaystransparent = yes
 		}
 	} # type artifact_tooltip = widget
 }
@@ -6159,8 +7021,8 @@ container = {
 	court_position_type_tooltip = {
 		blockoverride "time_of_service" {}
 		blockoverride "enable_task_button" {}
-		blockoverride "filled_position_tooltip_visibility" { 
-			visible = no 
+		blockoverride "filled_position_tooltip_visibility" {
+			visible = no
 		}
 		blockoverride "empty_position_tooltip_visibility" {}
 	}
@@ -6296,17 +7158,18 @@ types CourtPositionTooltips {
 										}
 									}
 								}
-							}	
+							}
 
 							expand = {}
-						}							
+						}
 					}
 
 
 					cooltip_paragraph = {
+						datacontext = "[CourtPositionType]"
 						text = "COURT_POSITION_TOOLTIP_LIEGE_REQUIREMENT_NESTED"
 						visible = "[CourtPositionType.HasLiegeRequirements]"
-					}				
+					}
 				}
 
 				vbox = {
@@ -6330,14 +7193,14 @@ types CourtPositionTooltips {
 						align = nobaseline
 					}
 
-					cooltip_paragraph = {	
+					cooltip_paragraph = {
 						name = "powerful_agent"
 
 						visible = "[CourtPositionType.IsPowerfulAgent]"
 
 						text = "COURT_POSITION_POWERFUL_AGENT"
 						align = nobaseline
-					}	
+					}
 
 				}
 
@@ -6354,7 +7217,7 @@ types CourtPositionTooltips {
 
 						layoutpolicy_horizontal = expanding
 					}
-					
+
 					cooltip_paragraph = {
 						text = COURT_POSITION_TOOLTIP_EMPLOYEE_REQUIREMENT_NESTED
 						visible = "[CourtPositionType.HasEmployeeRequirements]"
@@ -6386,6 +7249,7 @@ types CourtPositionTooltips {
 						name = "flavor_text"
 
 						datacontext = "[GetPlayer]"
+						datacontext = "[CourtPositionType]"
 
 						text = "[CourtPositionType.CalcTriggeredDescription( Character.Self )]"
 						default_format = "#F"
@@ -6614,7 +7478,6 @@ types StruggleTooltipTypes {
 			layoutpolicy_horizontal = expanding
 			align = center
 			text = "STRUGGLE_EFFECT_LABEL_WAR"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
 		}
 	}
 
@@ -6641,7 +7504,6 @@ types StruggleTooltipTypes {
 			layoutpolicy_horizontal = expanding
 			align = center
 			text = "STRUGGLE_EFFECT_LABEL_CULTURE"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
 		}
 	}
 
@@ -6668,7 +7530,6 @@ types StruggleTooltipTypes {
 			layoutpolicy_horizontal = expanding
 			align = center
 			text = "STRUGGLE_EFFECT_LABEL_FAITH"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
 		}
 	}
 
@@ -6695,7 +7556,6 @@ types StruggleTooltipTypes {
 			layoutpolicy_horizontal = expanding
 			align = center
 			text = "STRUGGLE_EFFECT_LABEL_OTHER"
-			fonttintcolor = "[TooltipInfo.GetTintColor]"
 		}
 	}
 }
@@ -7689,24 +8549,44 @@ container = {
 	using = situation_sub_region_tooltip
 }
 
-### Situation Phase Type Tooltip
-template situation_phase_type_tooltip {
-	container = {
-		alwaystransparent = no
+types SituationTooltipTypes
+{
+	type cooltip_situation_phase_type = object_tooltip_pop_out {
+		blockoverride "header_additions"
+		{
+			header_icon = {
+				visible = "[SituationPhaseType.HasIcon]"
 
-		object_tooltip_pop_out = {
-			blockoverride "title_text" {
-				margin = { 0 5 }
-				text = "[SituationPhaseType.GetNameNoTooltip]"
-				align = nobaseline
-				default_format = "#T"
+				blockoverride "header_texture"
+				{
+					size = { 48 48 }
+
+					texture = "[SituationPhaseType.GetIcon]"
+				}
 			}
+		}
 
-			blockoverride "main_description" {
-				vbox = {
-					name = "phase_type_desc"
-					datacontext = "[SituationPhaseType.GetParentSituationType]"
-					datacontext = "[GetSituationOfType( SituationType.Self )]"
+		blockoverride "title_text" {
+			margin = { 0 5 }
+			text = "[SituationPhaseType.GetNameNoTooltip]"
+			align = nobaseline
+			default_format = "#T"
+		}
+
+		blockoverride "subtitle_text"
+		{
+			visible = "[ObjectsEqual( SituationPhaseType.GetParentSituationType.Self, GetSituationType( 'the_christian_church' ).Self )]"
+			text = "CHRISTIAN_CHURCH_PHASE_CHAPTER_TYPE"
+		}
+
+		blockoverride "main_description" {
+			vbox = {
+				name = "phase_type_desc"
+				datacontext = "[SituationPhaseType.GetParentSituationType]"
+				datacontext = "[GetSituationOfType( SituationType.Self )]"
+				layoutpolicy_horizontal = expanding
+
+				hbox = {
 					layoutpolicy_horizontal = expanding
 
 					textbox = {
@@ -7721,6 +8601,11 @@ template situation_phase_type_tooltip {
 						alwaystransparent = no
 					}
 
+					expand = {}
+				}
+
+				block "participant_groups"
+				{
 					spacer = {
 						size = { 0 10 }
 					}
@@ -7798,11 +8683,20 @@ template situation_phase_type_tooltip {
 					}
 				}
 			}
-
-			blockoverride "concept_link" {
-				text = "SITUATION_PHASE_TYPE_CONCEPT_LINK"
-			}
 		}
+
+		blockoverride "concept_link" {
+			text = "SITUATION_PHASE_TYPE_CONCEPT_LINK"
+		}
+	}
+}
+
+### Situation Phase Type Tooltip
+template situation_phase_type_tooltip {
+	container = {
+		alwaystransparent = no
+
+		cooltip_situation_phase_type = {}
 	}
 }
 container = {
@@ -7817,6 +8711,21 @@ template situation_participant_group_type_tooltip {
 		alwaystransparent = no
 
 		object_tooltip_pop_out = {
+			blockoverride "header_additions"
+			{
+				header_icon = {
+					visible = "[SituationParticipantGroupType.HasIcon]"
+
+					blockoverride "header_texture"
+					{
+						size = { 48 48 }
+
+						texture = "[SituationParticipantGroupType.GetIcon]"
+						using = Master_Button_Modify_Texture
+					}
+				}
+			}
+
 			blockoverride "title_text" {
 				margin = { 0 5 }
 				text = "[SituationParticipantGroupType.GetNameNoTooltip]"
@@ -7921,6 +8830,20 @@ template situation_participant_group_type_phase_effects_tooltip {
 			blockoverride "header_additions"
 			{
 				header_icon = {
+					visible = "[SituationSubRegion.GetSituation.GetType.UseSituationPhaseFlatIcons]"
+
+					blockoverride "header_texture"
+					{
+						size = { 48 48 }
+						texture = "[SituationParticipantGroupType.GetIcon]"
+
+						using = Icon_Flat_Standard
+					}
+				}
+
+				header_icon = {
+					visible = "[Not( SituationSubRegion.GetSituation.GetType.UseSituationPhaseFlatIcons )]"
+
 					blockoverride "header_texture"
 					{
 						size = { 48 48 }
@@ -7952,6 +8875,8 @@ template situation_participant_group_type_phase_effects_tooltip {
 					layoutpolicy_vertical = expanding
 
 					textbox = {
+						visible = "[Not( StringIsEmpty( SituationPhaseType.GetParticipantGroupEffectTooltipBreakdown( SituationParticipantGroupType.Self ) ) )]"
+
 						max_width = 400
 						margin_top = 5
 						layoutpolicy_horizontal = expanding
@@ -7963,17 +8888,32 @@ template situation_participant_group_type_phase_effects_tooltip {
 						alwaystransparent = no
 						multiline = yes
 					}
-					
+
 					textbox = {
-						visible = "[ObjectsEqual( SituationSubRegion.GetCharacterParticipantGroup( Character.Self ).GetName, SituationParticipantGroupType.GetName)]"
-						text = "SITUATION_PARTICIPANT_YOUR_GROUP"
-					
+						visible = "[StringIsEmpty( SituationPhaseType.GetParticipantGroupEffectTooltipBreakdown( SituationParticipantGroupType.Self ) )]"
+
 						max_width = 400
 						margin_top = 5
 						layoutpolicy_horizontal = expanding
 
 						using = DefaultTooltipText
-						
+
+						text = "SITUATION_PHASE_PARTICIPANT_GROUP_NO_EFFECTS"
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+						alwaystransparent = no
+						multiline = yes
+					}
+
+					textbox = {
+						visible = "[ObjectsEqual( SituationSubRegion.GetCharacterParticipantGroup( Character.Self ).GetName, SituationParticipantGroupType.GetName)]"
+						text = "SITUATION_PARTICIPANT_YOUR_GROUP"
+
+						max_width = 400
+						margin_top = 5
+						layoutpolicy_horizontal = expanding
+
+						using = DefaultTooltipText
+
 						fonttintcolor = "[TooltipInfo.GetTintColor]"
 						alwaystransparent = no
 						multiline = yes
@@ -8124,13 +9064,19 @@ types DecisionTypes
 
 		blockoverride "main_description" {
 			text_multi = {
-				visible = "[Not(StringIsEmpty(Decision.GetCommandDescForPlayer))]"
+				block "command_desc_for_player_visible"
+				{
+					visible = "[Not(StringIsEmpty(Decision.GetCommandDescForPlayer))]"
+				}
 				layoutpolicy_horizontal = expanding
 				max_width = 400
 				margin_top = 5
 				margin_bottom = 15
 				using = DefaultTooltipText
-				text = "[Decision.GetCommandDescForPlayer]"
+				block "command_desc_for_player"
+				{
+					text = "[Decision.GetCommandDescForPlayer]"
+				}
 				fonttintcolor = "[TooltipInfo.GetTintColor]"
 				alwaystransparent = no
 			}
@@ -8149,6 +9095,7 @@ types DecisionTypes
 			block "custom_decision_data" {}
 
 			textbox = {
+				visible = "[Decision.IsShownForPlayer]"
 				layoutpolicy_horizontal = expanding
 				max_width = 400
 				margin_top = 5
@@ -8512,6 +9459,113 @@ template accolade_tooltip {
 
 			blockoverride "concept_link" {
 				text = "[accolade|E]"
+			}
+		}
+	}
+}
+
+container = {
+	name = "HolyOrderTooltip"
+	alwaystransparent = no
+	using = holy_order_tooltip
+}
+
+template holy_order_tooltip {
+	container = {
+		alwaystransparent = no
+
+		object_tooltip_pop_out = {
+			blockoverride "header_additions" {
+				datacontext = "[HolyOrder.GetTitle]"
+				margin_top = -4
+
+				coa_title_small_crown = {
+					size = { 40 50 }
+
+					blockoverride "coa_tooltip" {}
+					blockoverride "coa_hover_glow_visible"
+					{
+						visible = no
+					}
+				}
+			}
+
+			blockoverride "title_text" {
+				margin = { 6 8 }
+				text = "[HolyOrder.GetNameNoTooltip]"
+				default_format = "#T"
+			}
+
+			blockoverride "concept_link" {
+				text = "[holy_order|E]"
+			}
+
+			blockoverride "extra_data" {
+				text_single = {
+					layoutpolicy_horizontal = expanding
+
+					text = "HOLY_ORDER_COOLTIP_LEADER"
+					align = nobaseline
+				}
+
+				text_single = {
+					layoutpolicy_horizontal = expanding
+
+					text = "HOLY_ORDER_COOLTIP_PATRON"
+					align = nobaseline
+				}
+
+				text_single = {
+					layoutpolicy_horizontal = expanding
+
+					text = "HOLY_ORDER_COOLTIP_RITE"
+					align = nobaseline
+				}
+
+				text_single = {
+					margin_top = 4
+					layoutpolicy_horizontal = expanding
+
+					text = "HOLY_ORDER_COOLTIP_LEASED_TITLES"
+					align = nobaseline
+				}
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					margin_top = 5
+					margin_bottom = -15
+
+					fixedgridbox = {
+						addrow = 56
+						addcolumn = 38
+
+						flipdirection = yes
+						datamodel_wrap = 10
+
+						datamodel = "[HolyOrder.GetLeasedTitles]"
+
+						item = {
+							coa_title_tiny_crown = {
+								using = tooltip_ne
+
+								icon_title_has_laws_status = {}
+
+								icon = {
+									name = "is_nomad"
+									visible = "[Title.IsNomad]"
+									parentanchor = bottom|right
+									size = { 25 25 }
+									position = { 5 0 }
+									texture = "gfx/interface/icons/title_status/icon_title_nomad.dds"
+								}
+							}
+						}
+					}
+
+					expand = {}
+				}
+
+				block "click_to_view" {}
 			}
 		}
 	}
@@ -9984,6 +11038,88 @@ container = {
 	using = great_project_tooltip
 }
 
+template puppet_type_tooltip {
+	container = {
+		alwaystransparent = no
+
+		object_tooltip_pop_out = {
+
+			blockoverride "header_additions" {
+				icon = {
+					size = { 40 40 }
+					blockoverride "coa_tooltip" {}
+					blockoverride "coa_hover_glow_visible" { }
+
+					texture = "[PuppetType.GetIcon( GetNullCharacter )]"
+				}
+			}
+
+			blockoverride "title_text" {
+				margin = { 5 8 }
+				text = "[PuppetType.GetNameNoTooltip]"
+				default_format = "#T"
+			}
+
+			blockoverride "concept_link"
+			{
+				text = "[puppet_type|E]"
+				align = nobaseline
+			}
+
+			blockoverride "main_description"
+			{
+				vbox = {
+					name = "actions_info"
+					spacing = 4
+
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+
+					cooltip_paragraph = {
+						text = "PUPPET_TYPE_DESCRIPTION_TEXT"
+					}
+				}
+			}
+
+		}
+	}
+}
+
+container = {
+	name = "PuppetTypeTooltipDefault"
+	alwaystransparent = no
+	using = puppet_type_tooltip
+}
+
+template lease_contract_type_tooltip {
+	container = {
+		alwaystransparent = no
+
+		object_tooltip_pop_out = {
+			blockoverride "title_text" {
+				margin = { 0 5 }
+				text = "[LeaseContractType.GetNameNoTooltip]"
+				default_format = "#T"
+			}
+
+			blockoverride "concept_link" {
+				text = "[lease_contract|E]"
+			}
+
+			blockoverride "description_text"
+			{
+				text = "[LeaseContractType.GetDesc]"
+			}
+		}
+	}
+}
+
+container = {
+	name = "LeaseContractTypeTooltip"
+	alwaystransparent = no
+	using = lease_contract_type_tooltip
+}
+
 template Scrolltip_Height {
 	max_height = 780
 }
@@ -10004,38 +11140,32 @@ types ScrollableTooltipTypes {
 			name = "vbox"
 			set_parent_size_to_minimum = yes
 			margin = { 0 4 } # gives a little border when scrolling
-			
+
 			vbox = {
 				layoutpolicy_horizontal = expanding
 				margin = { 20 0 }
 				block "scrolltip_header" {}
 			}
-			
+
 			vbox = {
 				layoutpolicy_horizontal = expanding
 				margin = { 8 8 } # prevents scrollbar overlap
-				
+
 				vbox = {
 					layoutpolicy_horizontal = expanding
-					
-					background = {
-						texture = "gfx/interface/scrollbars/scrollbar_fade.dds"		
-						spriteType = Corneredtiled
-						spriteborder = { 0 30 }
-					}
 
 					widget = {
 						layoutpolicy_horizontal = expanding
-						
+
 						scrollbox = {
 							resizeparent = yes
 							block "scrolltip_height" {
 								using = Scrolltip_Height
 							}
-							
+
 							blockoverride "scrollbox_background" {}
 							blockoverride "scrollbox_background_fade" {}
-							
+
 							blockoverride "scrollbox_content" {
 								set_parent_size_to_minimum = yes
 								widget = {
@@ -10051,19 +11181,32 @@ types ScrollableTooltipTypes {
 									}
 								}
 							}
-						}	
+						}
 					}
-				}				
+				}
 			}
-			
+
 			vbox = {
 				layoutpolicy_horizontal = expanding
 				margin_top = -15
-				
+
 				block "scrolltip_footer" {}
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+
+					cooltip_paragraph = {
+						layoutpolicy_horizontal = expanding
+						margin = { 10 15 }
+						max_width = 440
+						block "input_info_text_bottom" {
+							visible = no
+						}
+					}
+				}
 			}
 		}
-		
+
 		margin_widget = {
 			size = { 100% 100% }
 			margin = { 3 3 }
@@ -10131,7 +11274,7 @@ types ScrollableTooltipTypes {
 			}
 		}
 	}
-	
+
 	# copy of object_tooltip_pop_out
 	type scrollable_object_tooltip_pop_out = scrolltip {
 		blockoverride "scrolltip_header" {
@@ -10143,10 +11286,10 @@ types ScrollableTooltipTypes {
 			block "main_description"
 			{
 				block "extra_data" {}
-				
+
 				textbox = {
 					name = "warning_description"
-					
+
 					using = DefaultTooltipText
 					layoutpolicy_horizontal = expanding
 					multiline = yes
@@ -10154,11 +11297,11 @@ types ScrollableTooltipTypes {
 					fonttintcolor = "[TooltipInfo.GetTintColor]"
 					alwaystransparent = no
 				}
-				
+
 				textbox = {
 					name = "above_description"
-					
-					max_width = 400
+
+					max_width = 420
 					using = DefaultTooltipText
 					layoutpolicy_horizontal = expanding
 					multiline = yes
@@ -10166,46 +11309,49 @@ types ScrollableTooltipTypes {
 					fonttintcolor = "[TooltipInfo.GetTintColor]"
 					alwaystransparent = no
 				}
-				
+
 				# NOTE: This edit box is filled by TooltipInfo.GetTintColor from code in order to set the correct size when the tooltip is created and positioned and then it uses the text property specified here in the next frames
 				textbox = {
 					name = "Description"
 					layoutpolicy_horizontal = expanding
-					max_width = 400
+					max_width = 420
 					using = DefaultTooltipText
 					multiline = yes
 					block "description_text" {}
 					fonttintcolor = "[TooltipInfo.GetTintColor]"
 					alwaystransparent = no
 				}
-				
+
 				block "extra_data_after_description" {}
-				
+
 				block "call_to_action" {}
-				
+
 				# Things like "click to X", hotkeys etc
-				textbox = {
-					name = "input_info"
-					layoutpolicy_horizontal = expanding
-					margin_top = 10
-					using = DefaultTooltipText
-					multiline = yes
-					block "input_info_text" {}
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
+				block "input_info" {
+					textbox = {
+						name = "input_info"
+						layoutpolicy_horizontal = expanding
+						margin_top = 10
+						using = DefaultTooltipText
+						multiline = yes
+						block "input_info_text" {}
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+					}
 				}
-				
+
 				textbox = {
 					name = "TooltipTextShortcut"
 					layoutpolicy_horizontal = expanding
 					using = DefaultTooltipText
 					margin = { 10 10 }
 					margin_top = 10
+					block "tooltip_text_shortcut" {}
 					fonttintcolor = "[TooltipInfo.GetTintColor]"
 				}
 			}
 		}
 	}
-	
+
 	type hbox_header_tooltip = hbox {
 		layoutpolicy_horizontal = expanding
 		spacing = 10
@@ -10300,6 +11446,7 @@ types ScrollableTooltipTypes {
 	}
 }
 
+## GH ADDITION ##
 types MagicSchoolTooltips
 {
 	type magic_school_tooltip = widget
@@ -10383,7 +11530,7 @@ types MagicSchoolTooltips
 							text_single = {
 								layoutpolicy_horizontal = expanding
 								layoutpolicy_vertical = expanding
-								text = "[Concept('magic_type','Школа магии')|E]"
+								text = "[Concept('magic_type','School of Magic')|E]"
 								fonttintcolor = "[TooltipInfo.GetTintColor]"
 								align = vcenter|right
 							}
@@ -10440,3 +11587,4 @@ types MagicSchoolTooltips
 		}
 	}
 }
+## GH END ##
