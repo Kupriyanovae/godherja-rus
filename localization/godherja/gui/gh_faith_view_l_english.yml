@@ -125,3 +125,7 @@
  
  FAITH_LIFEPATHS:0 "Lifepaths"
  FAITH_LIFEPATHS_EXPLANATION:0 "Every character following [FaithWindow.GetFaith.GetName] is expected to choose a Lifepath upon reaching the age of 13. A Lifepath may only be chosen once in a lifetime."
+
+ GH_SAINT_COUNT: "[GuiScope.SetRoot(Faith.MakeScope).AddScope('saint_count',MakeScopeValue(IntToFixedPoint(FaithWindow.GetSaintCount))).Custom('gh_saint_count')]"
+ gh_saint_count_regular: "[SCOPE.GetValue('saint_count')|0]"
+ gh_saint_count_aagiokrata_living_aautokratir: "[Add_CFixedPoint(SCOPE.GetValue('saint_count'),'(CFixedPoint)1')|0]"
