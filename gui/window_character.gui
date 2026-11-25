@@ -1628,7 +1628,7 @@ window = {
 							tooltip = "ADMIN_WINDOW_THEME_GOVERNOR_EFFICIENCY_TT"
 							using = tooltip_ne
 							spacing = -3
-							visible = "[Or( Character.GetGovernment.HasRule( 'administrative' ), And( And( Not( Character.HasLandedTitles ), Not( Character.HasLiege ) ), GetPlayer.GetGovernment.HasRule( 'administrative' ) ) )]"
+							visible = "[Or( Character.GetGovernment.HasMechanic( 'administrative' ), And( And( Not( Character.HasLandedTitles ), Not( Character.HasLiege ) ), GetPlayer.GetGovernment.HasMechanic( 'administrative' ) ) )]"
 							margin_right = 3
 
 							using = Animation_Character_Window_Refresh
