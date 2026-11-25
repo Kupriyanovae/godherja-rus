@@ -1641,24 +1641,9 @@ types CharacterInteraction
 			datamodel = "[CharacterInteractionConfirmationWindow.GetOptionItems]"
 
 			item = {
-				widget = {
+				widget_interaction_option_item = {
 					visible = "[And(OptionItem.IsShown, Not(Or(OptionItem.HasFlag( 'gh_demand_alliance' ), OptionItem.HasFlag( 'gh_demand_defensive_alliance' ))))]"
-					layoutpolicy_horizontal = expanding
-					size = { 480 40 }
-
-					background = {
-						using = Background_Area_Border
-					}
-
-					hbox = {
-						layoutpolicy_horizontal = expanding
-
-						margin = { 15 0 }
-						spacing = 10
-
-						tooltip = "[OptionItem.GetTooltip]"
-						using = tooltip_below
-
+					blockoverride "option_marriage_bg" {
 						background = {
 							visible = "[OptionItem.HasFlag( 'grand_wedding_promise' )]"
 
@@ -1730,46 +1715,6 @@ types CharacterInteraction
 						}
 					}
 				}
-			}
-		}
-	}
-
-	type widget_interaction_option_item = widget {
-		visible = "[OptionItem.IsShown]"
-		layoutpolicy_horizontal = expanding
-		size = { 480 40 }
-
-		background = {
-			using = Background_Area_Border
-		}
-
-		hbox = {
-			layoutpolicy_horizontal = expanding
-			margin = { 15 0 }
-			spacing = 10
-
-			tooltip = "[OptionItem.GetTooltip]"
-			using = tooltip_below
-
-			block "option_marriage_bg" {}
-
-			block "option_button" {
-				button_checkbox = {
-					size = { 30 30 }
-					checked = "[OptionItem.HasOption]"
-					onclick = "[OptionItem.OnClick]"
-					enabled = "[And( OptionItem.IsValid, OptionItem.CanBeChanged )]"
-
-					block "checkbox_on_click" {}
-				}
-			}
-
-			text_single = {
-				layoutpolicy_horizontal = expanding
-				autoresize = no
-				text = "[OptionItem.GetName]"
-				fontsize_min = 10
-				align = nobaseline
 			}
 		}
 		
@@ -1855,6 +1800,46 @@ types CharacterInteraction
 						}
 					}
 				}
+			}
+		}
+	}
+
+	type widget_interaction_option_item = widget {
+		visible = "[OptionItem.IsShown]"
+		layoutpolicy_horizontal = expanding
+		size = { 480 40 }
+
+		background = {
+			using = Background_Area_Border
+		}
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			margin = { 15 0 }
+			spacing = 10
+
+			tooltip = "[OptionItem.GetTooltip]"
+			using = tooltip_below
+
+			block "option_marriage_bg" {}
+
+			block "option_button" {
+				button_checkbox = {
+					size = { 30 30 }
+					checked = "[OptionItem.HasOption]"
+					onclick = "[OptionItem.OnClick]"
+					enabled = "[And( OptionItem.IsValid, OptionItem.CanBeChanged )]"
+
+					block "checkbox_on_click" {}
+				}
+			}
+
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				autoresize = no
+				text = "[OptionItem.GetName]"
+				fontsize_min = 10
+				align = nobaseline
 			}
 
 			block "option_marriage_icon" {}
@@ -2035,7 +2020,7 @@ types CharacterInteraction
 				}
 			}
 
-			# Player
+			# Player (actor or puppet)
 			widget = {
 				name = "player"
 				parentanchor = left|bottom
@@ -2043,7 +2028,7 @@ types CharacterInteraction
 				position = { 20 0 }
 
 				portrait_torso = {
-					datacontext = "[GetPlayer]"
+					datacontext = "[InteractionSchemeInfo.GetOwner]"
 					parentanchor = center
 					using = tooltip_es
 
