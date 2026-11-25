@@ -457,169 +457,186 @@ window = {
 		}
 
 		### Tabs
-		hbox = {
-			name = "tabs"
+		## GH CHANGE: Godherja's extra tabs can overflow the window, so the row scrolls sideways when needed
+		scrollarea = {
+			name = "tabs_scrollarea"
 			layoutpolicy_horizontal = expanding
+			autoresizescrollarea = yes
+			minimumsize = { 0 42 }
 
-			button_tab = {
-				shortcut = "tab_1"
-				onclick = "[FaithWindow.SetActiveTab( 'tab_beliefs' )]"
-				down = "[FaithWindow.IsActiveTab( 'tab_beliefs' )]"
+			scrollbarpolicy_vertical = always_off
+			scrollbarpolicy_horizontal = as_needed
 
-				alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_beliefs' )]"
-
-				blockoverride "tab_label"
-				{
-					text = "FAITH_BELIEFS"
-					max_width = 140
-				}
-
-				blockoverride "icon_visible" {}
-
-				blockoverride "tab_icon"
-				{
-					texture = "gfx/interface/icons/flat_icons/faith.dds"
-					down = "[FaithWindow.IsActiveTab( 'tab_beliefs' )]"
-				}
+			scrollbar_horizontal = {
+				using = Scrollbar_Horizontal
 			}
 
-			button_tab = {
-				shortcut = "tab_2"
-				onclick = "[FaithWindow.SetActiveTab( 'tab_holy_orders' )]"
-				down = "[FaithWindow.IsActiveTab( 'tab_holy_orders' )]"
+			scrollwidget = {
+				hbox = {
+					name = "tabs"
+					min_width = 590
+					set_parent_size_to_minimum = yes
 
-				alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_holy_orders' )]"
+					button_tab = {
+						shortcut = "tab_1"
+						onclick = "[FaithWindow.SetActiveTab( 'tab_beliefs' )]"
+						down = "[FaithWindow.IsActiveTab( 'tab_beliefs' )]"
 
-				blockoverride "tab_label"
-				{
-					text = "FAITH_HOLY_ORDERS"
-					max_width = 140
-				}
+						alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_beliefs' )]"
 
-				blockoverride "icon_visible" {}
+						blockoverride "tab_label"
+						{
+							text = "FAITH_BELIEFS"
+							max_width = 140
+						}
 
-				blockoverride "tab_icon"
-				{
-					texture = "gfx/interface/icons/flat_icons/holy_order.dds"
-					down = "[FaithWindow.IsActiveTab( 'tab_holy_orders' )]"
-				}
-			}
+						blockoverride "icon_visible" {}
 
-			button_tab = {
-				shortcut = "tab_3"
-				onclick = "[FaithWindow.SetActiveTab( 'tab_holy_sites' )]"
-				down = "[FaithWindow.IsActiveTab( 'tab_holy_sites' )]"
+						blockoverride "tab_icon"
+						{
+							texture = "gfx/interface/icons/flat_icons/faith.dds"
+							down = "[FaithWindow.IsActiveTab( 'tab_beliefs' )]"
+						}
+					}
 
-				alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_holy_sites' )]"
+					button_tab = {
+						shortcut = "tab_2"
+						onclick = "[FaithWindow.SetActiveTab( 'tab_holy_orders' )]"
+						down = "[FaithWindow.IsActiveTab( 'tab_holy_orders' )]"
 
-				blockoverride "tab_label"
-				{
-					text = "FAITH_HOLY_SITES"
-					max_width = 140
-				}
+						alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_holy_orders' )]"
 
-				blockoverride "icon_visible" {}
+						blockoverride "tab_label"
+						{
+							text = "FAITH_HOLY_ORDERS"
+							max_width = 140
+						}
 
-				blockoverride "tab_icon"
-				{
-					texture = "gfx/interface/icons/flat_icons/holy_site.dds"
-					down = "[FaithWindow.IsActiveTab( 'tab_holy_sites' )]"
-				}
-			}
+						blockoverride "icon_visible" {}
 
-			## GH ADDITION: Godherja's own faith tabs
-			button_tab = {
-				visible = "[DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('judges_list') )]"
-				onclick = "[FaithWindow.SetActiveTab( 'tab_judges' )]"
-				down = "[FaithWindow.IsActiveTab( 'tab_judges' )]"
+						blockoverride "tab_icon"
+						{
+							texture = "gfx/interface/icons/flat_icons/holy_order.dds"
+							down = "[FaithWindow.IsActiveTab( 'tab_holy_orders' )]"
+						}
+					}
 
-				alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_judges' )]"
+					button_tab = {
+						shortcut = "tab_3"
+						onclick = "[FaithWindow.SetActiveTab( 'tab_holy_sites' )]"
+						down = "[FaithWindow.IsActiveTab( 'tab_holy_sites' )]"
 
-				blockoverride "tab_label"
-				{
-					text = "FAITH_JUDGES"
-					max_width = 220
-				}
+						alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_holy_sites' )]"
 
-				blockoverride "icon_visible" {}
+						blockoverride "tab_label"
+						{
+							text = "FAITH_HOLY_SITES"
+							max_width = 140
+						}
 
-				blockoverride "tab_icon"
-				{
-					texture = "gfx/interface/icons/flat_icons/time.dds"
-					down = "[FaithWindow.IsActiveTab( 'tab_judges' )]"
-				}
-			}
-			button_tab = {
-				visible = "[Or(DataModelHasItems( FaithWindow.GetFaith.GetReligion.MakeScope.GetList('legal_traditions') ),DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('recognized_high_court_list') ))]"
-				onclick = "[FaithWindow.SetActiveTab( 'tab_traditions' )]"
-				down = "[FaithWindow.IsActiveTab( 'tab_traditions' )]"
+						blockoverride "icon_visible" {}
 
-				alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_traditions' )]"
+						blockoverride "tab_icon"
+						{
+							texture = "gfx/interface/icons/flat_icons/holy_site.dds"
+							down = "[FaithWindow.IsActiveTab( 'tab_holy_sites' )]"
+						}
+					}
 
-				blockoverride "tab_label"
-				{
-					text = "FAITH_TRADITIONS"
-					max_width = 220
-				}
+					## GH ADDITION: Godherja's own faith tabs
+					button_tab = {
+						visible = "[DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('judges_list') )]"
+						onclick = "[FaithWindow.SetActiveTab( 'tab_judges' )]"
+						down = "[FaithWindow.IsActiveTab( 'tab_judges' )]"
 
-				blockoverride "icon_visible" {
-					visible = "[Not(DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('patron_saint_list') ))]"
-				}
+						alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_judges' )]"
 
-				blockoverride "tab_icon"
-				{
-					texture = "gfx/interface/icons/flat_icons/merit.dds"
-					down = "[FaithWindow.IsActiveTab( 'tab_traditions' )]"
-				}
-			}
-			button_tab = {
-				visible = "[DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('recognized_high_court_list') )]"
-				onclick = "[FaithWindow.SetActiveTab( 'tab_high_court' )]"
-				down = "[FaithWindow.IsActiveTab( 'tab_high_court' )]"
+						blockoverride "tab_label"
+						{
+							text = "FAITH_JUDGES"
+							max_width = 220
+						}
 
-				alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_high_court' )]"
+						blockoverride "icon_visible" {}
+
+						blockoverride "tab_icon"
+						{
+							texture = "gfx/interface/icons/flat_icons/time.dds"
+							down = "[FaithWindow.IsActiveTab( 'tab_judges' )]"
+						}
+					}
+					button_tab = {
+						visible = "[Or(DataModelHasItems( FaithWindow.GetFaith.GetReligion.MakeScope.GetList('legal_traditions') ),DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('recognized_high_court_list') ))]"
+						onclick = "[FaithWindow.SetActiveTab( 'tab_traditions' )]"
+						down = "[FaithWindow.IsActiveTab( 'tab_traditions' )]"
+
+						alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_traditions' )]"
+
+						blockoverride "tab_label"
+						{
+							text = "FAITH_TRADITIONS"
+							max_width = 220
+						}
+
+						blockoverride "icon_visible" {
+							visible = "[Not(DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('patron_saint_list') ))]"
+						}
+
+						blockoverride "tab_icon"
+						{
+							texture = "gfx/interface/icons/flat_icons/merit.dds"
+							down = "[FaithWindow.IsActiveTab( 'tab_traditions' )]"
+						}
+					}
+					button_tab = {
+						visible = "[DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('recognized_high_court_list') )]"
+						onclick = "[FaithWindow.SetActiveTab( 'tab_high_court' )]"
+						down = "[FaithWindow.IsActiveTab( 'tab_high_court' )]"
+
+						alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_high_court' )]"
 				
-				blockoverride "tab_label"
-				{
-					text = "FAITH_HIGH_COURT"
-				}
+						blockoverride "tab_label"
+						{
+							text = "FAITH_HIGH_COURT"
+						}
 
-				blockoverride "icon_visible" {
-					visible = "[Not(DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('patron_saint_list') ))]"
-				}
+						blockoverride "icon_visible" {
+							visible = "[Not(DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('patron_saint_list') ))]"
+						}
 
-				blockoverride "tab_icon"
-				{
-					texture = "gfx/interface/icons/flat_icons/council.dds"
-					down = "[FaithWindow.IsActiveTab( 'tab_high_court' )]"
+						blockoverride "tab_icon"
+						{
+							texture = "gfx/interface/icons/flat_icons/council.dds"
+							down = "[FaithWindow.IsActiveTab( 'tab_high_court' )]"
+						}
+					}
+					button_tab = {
+						visible = "[DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('patron_saint_list') )]"
+						onclick = "[FaithWindow.SetActiveTab( 'tab_patron_saints' )]"
+						down = "[FaithWindow.IsActiveTab( 'tab_patron_saints' )]"
+
+						alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_patron_saints' )]"
+
+						blockoverride "tab_label"
+						{
+							text = "FAITH_PATRON_SAINTS"
+							max_width = 220
+							autoresize = yes
+						}
+
+						blockoverride "icon_visible" {
+							visible = "[Not(Or(DataModelHasItems( FaithWindow.GetFaith.GetReligion.MakeScope.GetList('legal_traditions') ),DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('recognized_high_court_list') )))]"
+						}
+
+						blockoverride "tab_icon"
+						{
+							texture = "gfx/interface/icons/flat_icons/holy_order.dds"
+							down = "[FaithWindow.IsActiveTab( 'tab_patron_saints' )]"
+						}
+					}
+					## GH END
 				}
 			}
-			button_tab = {
-				visible = "[DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('patron_saint_list') )]"
-				onclick = "[FaithWindow.SetActiveTab( 'tab_patron_saints' )]"
-				down = "[FaithWindow.IsActiveTab( 'tab_patron_saints' )]"
-
-				alwaystransparent = "[FaithWindow.IsActiveTab( 'tab_patron_saints' )]"
-
-				blockoverride "tab_label"
-				{
-					text = "FAITH_PATRON_SAINTS"
-					max_width = 220
-					autoresize = yes
-				}
-
-				blockoverride "icon_visible" {
-					visible = "[Not(Or(DataModelHasItems( FaithWindow.GetFaith.GetReligion.MakeScope.GetList('legal_traditions') ),DataModelHasItems( FaithWindow.GetFaith.MakeScope.GetList('recognized_high_court_list') )))]"
-				}
-
-				blockoverride "tab_icon"
-				{
-					texture = "gfx/interface/icons/flat_icons/holy_order.dds"
-					down = "[FaithWindow.IsActiveTab( 'tab_patron_saints' )]"
-				}
-			}
-			## GH END
-
 		}
 
 		## BELIEFS
@@ -6837,7 +6854,7 @@ types FaithWindow
 						max_width = 40
 						margin_top = 3
 
-						text = "[FaithWindow.GetSaintCount]"
+						text = "GH_SAINT_COUNT" ## GH CHANGE: Adjusted sainthood counts for living saints
 						default_format = "#low"
 						align = nobaseline
 					}

@@ -2501,6 +2501,42 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
+			visible = "[EqualTo_string('03_ahridar_bazaar', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_fire] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('03_ahridar_bazaar_fire_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('03_ahridar_bazaar', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_fire]: [fire_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('04_ahridar_bazaar', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_fire] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('04_ahridar_bazaar_fire_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('04_ahridar_bazaar', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_fire] per [piety_level|E]: [fire_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
 			visible = "[EqualTo_string('01_academyofswords', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -2829,6 +2865,33 @@ types AspectBreakdowns {
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
+			raw_text = "[aspect_water] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_crater_watch_water_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_crater_watch', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_water]: [water_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_bost_enreha', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_water] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_bost_enreha_water_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_bost_enreha', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
 			raw_text = "[aspect_water]: [water_i]#positive_value +1#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
@@ -3041,6 +3104,24 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
+			visible = "[EqualTo_string('01_fortress_birkir', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_air] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_fortress_birkir_air_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_fortress_birkir', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_air]: [air_i]#positive_value +2#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
 			visible = "[EqualTo_string('01_mayikprolollan', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -3239,6 +3320,15 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
+			visible = "[EqualTo_string('01_benoriya_atawek', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_dream]: [dream_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
 			visible = "[EqualTo_string('02_benoriya_atawek', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -3252,7 +3342,7 @@ types AspectBreakdowns {
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
-			raw_text = "[aspect_dream]: [dream_i]#positive_value +1#!"
+			raw_text = "[aspect_dream]: [dream_i]#positive_value +2#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -3797,6 +3887,15 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
+			visible = "[EqualTo_string('01_benoriya_atawek', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_light]: [light_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
 			visible = "[EqualTo_string('02_benoriya_atawek', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -3810,7 +3909,43 @@ types AspectBreakdowns {
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
+			raw_text = "[aspect_light]: [light_i]#positive_value +2#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('03_ahridar_bazaar', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_light] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('03_ahridar_bazaar_light_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('03_ahridar_bazaar', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
 			raw_text = "[aspect_light]: [light_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('04_ahridar_bazaar', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_light] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('04_ahridar_bazaar_light_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('04_ahridar_bazaar', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_light] per [piety_level|E]: [light_i]#positive_value +1#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -3963,7 +4098,7 @@ types AspectBreakdowns {
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
-			raw_text = "[aspect_blood] per [stress_level|E]: [blood_i]#positive_value +1#!"
+			raw_text = "[aspect_blood] per [stress_level|E]: [blood_i]#positive_value +2#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -4004,6 +4139,15 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
+			visible = "[EqualTo_string('01_benoriya_atawek', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_nature]: [nature_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
 			visible = "[EqualTo_string('02_benoriya_atawek', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -4017,7 +4161,7 @@ types AspectBreakdowns {
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
-			raw_text = "[aspect_nature]: [nature_i]#positive_value +1#!"
+			raw_text = "[aspect_nature]: [nature_i]#positive_value +2#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -4032,6 +4176,24 @@ types AspectBreakdowns {
 		}
 		text_single = {
 			visible = "[EqualTo_string('01_potionworks', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_nature]: [nature_i]#positive_value +1#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_bost_enreha', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_nature] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_bost_enreha_nature_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_bost_enreha', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
@@ -4593,6 +4755,15 @@ types AspectBreakdowns {
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
+			raw_text = "[aspect_hymns] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_crater_watch_hymns_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_crater_watch', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
 			raw_text = "[aspect_hymns]: [hymns_i]#positive_value +1#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
@@ -4616,6 +4787,24 @@ types AspectBreakdowns {
 			alwaystransparent = no
 		}
 		text_single = {
+			visible = "[EqualTo_string('01_fortress_birkir', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_hymns] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_fortress_birkir_hymns_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_fortress_birkir', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_hymns]: [hymns_i]#positive_value +2#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
 			visible = "[EqualTo_string('01_geminam', Building.GetKey)]"
 			layoutpolicy_horizontal = expanding
 			max_width = 400
@@ -4629,7 +4818,7 @@ types AspectBreakdowns {
 			layoutpolicy_horizontal = expanding
 			max_width = 400
 			using = DefaultTooltipText
-			raw_text = "[aspect_hymns] per [piety_level|E]: [hymns_i]#positive_value +1#!"
+			raw_text = "[aspect_hymns] per [piety_level|E]: [hymns_i]#positive_value +2#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
@@ -4738,6 +4927,24 @@ types AspectBreakdowns {
 			max_width = 400
 			using = DefaultTooltipText
 			raw_text = "[aspect_death]: [death_i]#positive_value +3#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_orzaaviv_rock', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_death] Spellcasting Success Chance: @spell_success_icon!#P +#![EmptyScope.ScriptValue('01_orzaaviv_rock_death_value_add')|+0]#P %#!"
+			fonttintcolor = "[TooltipInfo.GetTintColor]"
+			alwaystransparent = no
+		}
+		text_single = {
+			visible = "[EqualTo_string('01_orzaaviv_rock', Building.GetKey)]"
+			layoutpolicy_horizontal = expanding
+			max_width = 400
+			using = DefaultTooltipText
+			raw_text = "[aspect_death]: [death_i]#positive_value +1#!"
 			fonttintcolor = "[TooltipInfo.GetTintColor]"
 			alwaystransparent = no
 		}
