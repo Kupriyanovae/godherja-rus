@@ -17,8 +17,8 @@
 
  QUARTERMASTER_PROGRESS_BASE:0 "Базовое значение"
  ESTABLISH_SHADOW_PORT_DYNASTY_PERK_BONUS_VALUE:1 "[GetDynastyPerk('erudition_legacy_5').GetName]"
- CULTURE_CONVERSION_COUNTY_FAITH_TRIGGER:0 "Можно обращать культуру только в графствах вашей [faith|El]"
- CULTURE_CONVERSATION_COUNTY_CONDITIONS_TRIGGER:0 "Можно обращать культуру только в графствах, которые являются столицей независимого правителя, либо граничат с другим графством вашей культуры, либо являются прибрежными и находятся рядом с прибрежным графством вашей культуры."
+ CULTURE_CONVERSION_COUNTY_FAITH_TRIGGER:0 "Распространять культуру можно только в графствах вашей [Concept('faith','конфессии')|E]."
+ CULTURE_CONVERSATION_COUNTY_CONDITIONS_TRIGGER:0 "Распространять культуру можно только в графствах, где находится столица независимого правителя, которые граничат с графством вашей культуры либо расположены на побережье вблизи другого прибрежного графства вашей культуры."
 
  ###################
  # Wardenism Perks #
@@ -39,4 +39,4 @@
  task_foreign_affairs_effect_desc_judicial_council_bonus_prestige:0 "\n$TAB$[GetDynastyPerk('wardenite_legacy_3').GetName]:  #P +#![SCOPE.ScriptValue('chancellor_foreign_affairs_prestige_gain_judicial_council_modifier')|P]"
  
  task_arcanistics:0 "Арканистика"
- task_arcanistics_effect_desc:0 "[councillor.GetShortUINameNoTooltip] изучает тонкие течения [Concept('arcana','магии')|E], пронизывающие ваши владения\n\n[Select_CString(councillor.IsFemale, 'Её', 'Его' )] поддержка дает вам:\n[councillor.GetModifierDescForTask('task_arcanistics')]"
+ task_arcanistics_effect_desc:0 "[councillor.GetShortUINameNoTooltip] изучает тонкие течения [Concept('arcana','арканы')|E], пронизывающие ваши владения\n\n[Select_CString(councillor.IsFemale, 'Её', 'Его' )] поддержка даёт вам:\n[councillor.GetModifierDescForTask('task_arcanistics')]"

@@ -12,9 +12,9 @@
  goans_decisions.0001.c.tt: "Сохранить «[GetCultureTradition('tradition_isolationist').GetName]».\n\n#F Мы можем жить на равнинах, но нам необязательно принадлежать им.#!"
 
 
- gh_encourage_marcher_colonization_in_realm_decision: "Поощрять марочникское заселение"
+ gh_encourage_marcher_colonization_in_realm_decision: "Поощрить переселение марочников"
  gh_encourage_marcher_colonization_in_realm_decision_confirm: "Отправить весть в Шевалье"
- gh_encourage_marcher_colonization_in_realm_decision_desc: "Земля, заселенная моим собственным народом, — это земля, за которой мне не нужно следить так пристально, и здесь все еще достаточно территории, ждущей умелых рук и любого, кто готов совершить путешествие и заявить на нее права."
+ gh_encourage_marcher_colonization_in_realm_decision_desc: "Земля, заселенная моим собственным народом, — это земля, за которой мне не нужно следить так пристально, и здесь всё ещё достаточно территории, ждущей умелых рук и любого, кто готов совершить путешествие и заявить на нее права."
  gh_encourage_marcher_colonization_in_realm_decision_tooltip: "Марочникские поселенцы могут основать колонию в графстве вашей [Concept('realm','державы')|E], изменив его [Concept('culture','культуру')|E] и [Concept('faith','конфессию')|E]"
  marchers_are_not_interested_in_colonization_tt: "Никто из поселенцев не заинтересован"
  amsar_is_considered_very_attractive_to_settle_tt: "Слухи о богатствах Амсара поддерживают постоянный поток поселенцев"
@@ -88,7 +88,7 @@
  gh_tebouin_reclaim_amsar_decision_desc: "Амсар пока утерян, но его можно вернуть. Шевалье — это то, с чего я [Select_CString(ROOT.Char.IsFemale, 'начинала', 'начинал' )], и, видимо, то, с чего мне придется начать снова. Если я взыщу долги, которыми мне обязаны, и воспользуюсь своими прошлыми подвигами, я [Select_CString(ROOT.Char.IsFemale, 'уверена', 'уверен' )], что найду сильных мужей, которые пойдут за мной за обещания богатства и земель в Амсаре."
  gh_tebouin_reclaim_amsar_decision_confirm: "Взыскать старые долги"
  gh_tebouin_reclaim_amsar_decision_tooltip: "Нанять [Concept('men_at_arms','профессионалов')|E] и собрать средства в [Concept('chevalie','Шевалье')|E], чтобы попытаться отвоевать Амсар."
- gh_character_is_currently_in_chevalie_tt: "Вы в настоящее время находитесь на материковой части [Concept('chevalie','Шевалье')|E]"
+ gh_character_is_currently_in_chevalie_tt: "Вы сейчас находитесь на материковой части [Concept('chevalie','Шевалье')|E]"
  gh_tebouin_reconquer_amsar_tt: "Вы начинаете [Concept('war','войну')|E], дабы начать отвоевание [Concept('amsar','Амсара')|E]"
 
  marcher_decision.1003.t: "Отвоевание Амсара"
@@ -99,7 +99,7 @@
  # --- Added from latest English Godherja localization (2026-11-16) ---
  marcher_decision.1101.a:0 "И больше им не дадут пасть."
  marcher_decision.1101.b:0 "Отныне орден будет принадлежать к [ROOT.Char.GetCulture.GetHeritage.GetNameNoTooltip] наследию."
- marcher_decision.1101.b.character.tt:0 "Руководство [GetTitleByKey('d_laysisters_golden_seeker').GetName|l] перейдёт к персонажу [GetPlayer.GetCulture.GetCollectiveNoun] культуры."
+ marcher_decision.1101.b.character.tt:0 "Руководство [GetTitleByKey('d_laysisters_golden_seeker').GetName|l] перейдёт к персонажу [Concept('culture','культуры')|E] «[GetPlayer.GetCulture.GetName]»."
  marcher_decision.1101.b.heritage.tt:0 "Для [GetLaw('cultural_holy_order_succession_law').GetName] [Concept('succession_law','закона о наследовании')|E] в [GetTitleByKey('d_laysisters_golden_seeker').GetName] будет использовано [Concept('heritage','наследие')|E] [GetPlayer.GetCulture.GetHeritage.GetName]."
  marcher_decision.1101.desc:0 "Весть о возрождении ордена разнеслась как лесной пожар. К его воротам хлынули толпы желающих вступить в ряды защитников. Большинству, конечно, придётся отказать: им куда привычнее вилы и косы, чем добрый клинок. Но талантливых и умелых тоже хватает. Новоизбранный [order_leader.GetTitledFirstName] руководит приготовлениями, прибыв из ордена [antimagi|E] с двумя десятками верных людей.\n\nВскоре [GetBuilding('01_tower_golden_seeker').GetName] станет плацдармом для [Concept('chevalie','шевальенского')|E] продвижения в Земли кланов — и для расширения моей власти."
  marcher_decision.1101.t:0 "Возрождение Искателей"

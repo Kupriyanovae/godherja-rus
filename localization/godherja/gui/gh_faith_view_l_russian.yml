@@ -125,3 +125,6 @@
  
  FAITH_LIFEPATHS: "Жизненные пути"
  FAITH_LIFEPATHS_EXPLANATION: "Каждый персонаж, исповедующий [FaithWindow.GetFaith.GetAdherentName], должен выбрать Жизненный путь по достижении 13 лет. Выбрать Жизненный путь можно только один раз в жизни."
+ GH_SAINT_COUNT:0 "[GuiScope.SetRoot(Faith.MakeScope).AddScope('saint_count',MakeScopeValue(IntToFixedPoint(FaithWindow.GetSaintCount))).Custom('gh_saint_count')]"
+ gh_saint_count_regular:0 "[SCOPE.GetValue('saint_count')|0]"
+ gh_saint_count_aagiokrata_living_aautokratir:0 "[Add_CFixedPoint(SCOPE.GetValue('saint_count'),'(CFixedPoint)1')|0]"

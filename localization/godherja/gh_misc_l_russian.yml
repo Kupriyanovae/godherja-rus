@@ -7,7 +7,6 @@
  ANY_OF_MY_HELD_TITLES_GREATER_THAN: "Любой из моих удерживаемых [Concept('titles','титулов')|E]:"
  pryonism_bad_dreams: "Плохие сны"
  pryonism_good_dreams: "Хорошие сны"
- always: "Всегда"
 
  sjalvolki_core_vassal_opinion: "Лидер сьялволки"
  sjalvolki_coalition_vassal_opinion: "Глава коалиции сьялволки"
@@ -15,13 +14,13 @@
  sjalvolki_conquest_cb: "Переселение сьялволки"
  sarradon_reconquest_war: "Возвращение Саррадона"
  amsari_civilwar_cb: "Амсарская гражданская война"
- marcher_vassalization_cb: "Марочникская вассализация"
+ marcher_vassalization_cb: "Вассализация марочников"
  adabyss_invasion_war: "Вторжение Адабисса"
  adabyss_realm_invasion_war: "Вторжение Адабисса"
  asiupoli_invasion_war: "Воссоединение Аверсарии"
  fogeater_invasion_war: "Вторжение пожирателей Тумана"
- mad_dad_cb: "Война Мести"
- chevalie_defense_cb: "Зашита Шевалье"
+ mad_dad_cb: "Война мести"
+ chevalie_defense_cb: "Защита Шевалье"
  marcher_reunification_cb: "Воссоединение Шевалье"
  reclaim_the_east_cb: "Возвращение Востока"
  adabyss_borderwar_cb: "Отвоевание Адабисса"
@@ -30,17 +29,17 @@
  sjalvolki_adventurer_conquest: "Экспедиция сьялволки"
  iyrossi_slave_cb: "Восстание ийросов"
  pirate_relocation_duchy: "Переселение пиратов"
- SJALVOLKI_INVASION_CB_NAME: "Переселение на [Concept('aversaria','Расколотом побережье')|E]"
- sjalvolki_invasion_war_victory_desc_attacker: "Вы получаете все титулы от любого владельца титула на де-юре территории."
- sjalvolki_invasion_war_victory_desc: "Получите все титулы от любого владельца титула на де-юре территории."
+ SJALVOLKI_INVASION_CB_NAME: "Переселение на [Concept('aversaria','Расколотое побережье')|E]"
+ sjalvolki_invasion_war_victory_desc_attacker: "Вы отберёте все титулы у их обладателей в пределах де-юре территории."
+ sjalvolki_invasion_war_victory_desc: "Получает все титулы у их обладателей в пределах де-юре территории."
 
  CHEVALIEN_INVASION_WAR_NAME: "Защита [Concept('chevalie','Шевалье')|E]"
  CHEVALIE_DEFENSE_CB_NAME: "Защита [Concept('chevalie','Шевалье')|E]"
- chevalie_defense_cb_victory_desc: "Получите все титулы от любого владельца титула на де-юре территории."
- chevalie_defense_cb_victory_desc_attacker: "[attacker.GetShortUIName|U] васализирует все титулы в  [defender.GetShortUINamePossessive] державе."
- chevalie_defense_cb_victory_desc_defender: "Вы сохраните ваши титулы."
+ chevalie_defense_cb_victory_desc: "Получает все титулы у их обладателей в пределах де-юре территории."
+ chevalie_defense_cb_victory_desc_attacker: "[attacker.GetShortUIName|U] подчинит себе все титулы в пределах державы персонажа [defender.GetShortUINamePossessive]."
+ chevalie_defense_cb_victory_desc_defender: "Вы сохраните свои титулы."
  chevalie_defense_cb_white_peace_desc: "[defender.GetShortUIName|U] сохраняет [defender.GetHerHis] титулы."
- chevalie_defense_cb_white_peace_desc_defender: "Вы сохраняете ваши титулы."
+ chevalie_defense_cb_white_peace_desc_defender: "Вы сохраните свои титулы."
 
  rejected_multi_realm_war_call: "Отвергнул мульти-державный призыв к оружию"
  accepted_multi_realm_war_call: "Ответил на мульти-державный призыв к оружию"
@@ -48,10 +47,10 @@
  
  MAD_DAD_CB_NAME: "Месть за Безумного пса"
  mad_dad_victory_desc_attacker: "Вы получите все де-юре провинции в королевстве Коллос."
- mad_dad_war_victory_desc: "Получены все де-юре провинции в королевстве Коллос."
+ mad_dad_war_victory_desc: "Получает все де-юре провинции королевства Коллос."
  
  mad_dad_white_peace_desc_defender: "Этот безумец не будет править Коллосом!"
- mad_dad_white_peace_desc: "Отец Бешеного пса не сможет отомстить в этот день."
+ mad_dad_white_peace_desc: "Сегодня отцу Безумного пса не удастся отомстить."
  mad_dad_defeat_desc_defender: "Этот безумец будет сброшен в море, униженный истинными сыновьями и дочерьми [Concept('aversaria','Аверсарии')|E]!"
  mad_dad_defeat_desc: "Отец Бешеного пса обесчестил его этим поражением"
 
@@ -61,7 +60,7 @@
  msg_reclaim_the_east_invalidated_message: "Цель войны аннулирована: либо атакующий более не является [Concept('aversaria','аверсарианцем')|E], либо владеет [GetTitleByKey('c_asiupoli').GetName], либо создана империя Айроной."  
  reclaim_the_east_victory_desc_attacker: "Все вассалы защитника в де-юре Айроное перейдут под ваш контроль. Все графства, лично принадлежащие защитнику, станут вашими."  
  reclaim_the_east_victory_desc: "Все вассалы защитника в де-юре Айроное перейдут под контроль атакующего. Все графства, лично принадлежащие защитнику, будут захвачены атакующим."  
- reclaim_the_east_war_victory_desc: "Все вассалы защитника в де-юре Айроное перейдут под контроль атакующего. Все графства, лично принадлежащие защитнику, будут захвачены атакующим." 
+ reclaim_the_east_war_victory_desc: "Все вассалы защитника, находящиеся в де-юре границах Айроноя, перейдут под власть атакующего. Все графства, которыми защитник владеет лично, достанутся атакующему." 
  
  msg_iyrossi_slave_cb_invalidated_message: "Цель войны аннулирована"  
  msg_adabyss_invasion_war_invalidated_message: "Цель войны аннулирована"  
@@ -74,7 +73,7 @@
  reclaim_the_east_defeat_desc_defender: "Атакующий не получит территорий и потеряет золото и престиж."  
  reclaim_the_east_defeat_desc: "Вы не получите территорий и потеряете золото и престиж."  
  
- RECLAIM_THE_EAST_CB_NAME: "Воссоединение Восточной Империи"  
+ RECLAIM_THE_EAST_CB_NAME: "Возвращение Восточной империи"  
  
  honored_of_cenware: "Избранники Ценвара"  
  warisnik_veterans: "Варисникские ветераны"  
@@ -197,7 +196,7 @@
  marcher_reunification_war_defeat_desc: "Вы сохраните свои титулы."  
  marcher_reunification_war_defeat_desc_attacker: "Вы не получите территорий и потеряете золото и престиж."  
  
- MARCHER_REUNIFICATION_CB_NAME: "Воссоединение марочников"  
+ MARCHER_REUNIFICATION_CB_NAME: "Воссоединение Марки"  
  
  agionist_stick_modifier: "Королевство Похода Святых"
  agionist_carrot_modifier: "Власть Похода Святых"
@@ -225,7 +224,7 @@
  eastern_reforms.0013.desc: "Сегодня начинается новая эра для [Concept('aversaria','Аверсарии')|E]. Самые спорные учёные вытащены из оттуда, где бы они раньше не прятались и многие другие пишут новые писания под наставленными копьями — так начинается новая, лучшая вера. Вера, что положит конец магократии, сильно ослабит нашу зависимость от рабства и значительно смягчит строгие ограничения на то, кого можно считать [Concept('aversaria','аверсарианцем')|E].\n\nБратья наши, без сомнения, будут зубами и когтями бороться с этими переменами, но будь то десять лет или столетие — [Concept('aversaria','Аверсария')|E] родится заново!"
  eastern_reforms.0013.a: "Наша история начинается сейчас!"
  
- MARCHER_CROWN_RECLAMATION_CB_NAME: "Перековывая Корону"
+ MARCHER_CROWN_RECLAMATION_CB_NAME: "Перековка короны"
  marcher_crown_reclamation_victory_desc_attacker: "Вы получите фрагмент Разбитой короны, принадлежащий защитнику."  
  marcher_crown_reclamation_victory_desc: "Атакующий получит фрагмент Разбитой короны, принадлежащий защитнику."  
  marcher_crown_reclamation_white_peace_desc_defender: "Вы сохраните свой фрагмент Разбитой короны."  

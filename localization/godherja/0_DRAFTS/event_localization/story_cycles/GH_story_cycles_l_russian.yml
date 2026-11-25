@@ -46,8 +46,8 @@
  gh_amsar_venture_flag_name: "Амсарское предприятие"
  gh_pirate_coast_venture_flag_name: "Предприятие на Пиратском побережье"
  story_cycle_gh_company_venture_desc: "Покровители #high [Localize(Concatenate(Story.MakeScope.Var('gh_company_name_variable').GetFlagName,'_name'))]#! вложили крупные средства в [Concept('gh_company_venture','предприятие компании')|E], управлять которым вас назначили, и ожидают, что результаты и богатства потекут в их сторону."
- west_royal_trading_company_flag_name: "[GetTitleByKey('d_marcher_amsari_republic').GetName]"
- east_royal_trading_company_flag_name: "[GetTitleByKey('d_marcher_piratecoast_republic').GetName]"
+ west_royal_trading_company_flag_name: "[GetTitleByKey('d_west_royal_trading_company').GetName]"
+ east_royal_trading_company_flag_name: "[GetTitleByKey('d_oostkasir_compagnie').GetName]"
 
  STORY_CYCLE_GH_COMPANY_VENTURE_INFORMATION_STRING: "Покровители #high [Localize(Concatenate(Story.MakeScope.Var('gh_company_name_variable').GetFlagName,'_name'))]#! могут потребовать от вас совершить определённые действия в интересах [Concept('gh_company_venture','предприятия компании')|E]. Если покровители останутся слишком недовольны вашим управлением, они могут назначить другого на ваше место.[SelectLocalization(Not(GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('story_cycle_gh_company_venture').Story.MakeScope.Var('gh_company_opinion_of_venture_value').GetValue,'(CFixedPoint)-70')),'gh_venture_company_danger_of_removing_representative_tt', '')]\n\n#bold Текущий долг#!: #size:17 [gold_i] [Story.MakeScope.Var('gh_character_debt_to_company_variable').GetValue|0-]#!"
 
@@ -114,9 +114,9 @@
  DEFILED_NADIR_STATUS_CHARACTER_STORY: "Маска [GetPlayer.Custom('DefiledNadirStoryStatus')]."
  defiled_nadir_story_status_silent: "молчит"
  defiled_nadir_story_status_cold: "холодна"
- defiled_nadir_story_status_warm: "#E MP тёплая#!"
- defiled_nadir_story_status_hot: "#E MP #N #BOL горяча#!#!#!"
- defiled_nadir_story_status_searing_hot: "#E MP #N #BOL обжигающе горяча#!#!#!"
+ defiled_nadir_story_status_warm: "#EMP тёплая#!"
+ defiled_nadir_story_status_hot: "#EMP #N #BOL горяча#!#!#!"
+ defiled_nadir_story_status_searing_hot: "#EMP #N #BOL обжигающе горяча#!#!#!"
  MASK_OWNER_CHARACTER_STORY: "Текущий владелец [Concept('artifact','артефакта')|E]"
  BOUNDEES_CHARACTER_STORY: "[Concept('characters','Персонажи')|E], привязанные к Маске\n#weak (Живые и те, кто умер, нося [Concept('artifact','артефакт')|E])#!"
  BOUNDED_MASK_CHARACTER_STORY: "Привязанная Маска [Concept('artifact','артефакт')|E]"

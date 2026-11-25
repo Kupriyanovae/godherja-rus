@@ -1,9 +1,6 @@
 ﻿l_russian:
 
  #Religion Families
- gh_rf_aversarian: "Аверсарианская"
- gh_rf_continental: "Континентальная"
- gh_rf_religious_isolate: "Изолированная религия"
 
  #############
  # Doctrines #
@@ -400,9 +397,6 @@
  is_anaanides_faith_name: "$special_doctrine_is_anaanides_faith_name$"
 
  #Особые доктрины: Хубаризм
- special_doctrine_is_hubarism_faith_desc: "Несмотря на наши различия, наша вера принадлежит к семье хубаритов, и они — наши родичи."
- special_doctrine_is_hubarism_faith_name: "Верные Солнца"
- is_hubarism_faith_name: "$special_doctrine_is_hubarism_faith_name$"
 
  #Особые доктрины: Масаагнизм
  special_doctrine_is_masaagnite_faith_desc: "Несмотря на наши различия, наша вера принадлежит к семье масаагнитов, и они — наши родичи."
@@ -536,8 +530,8 @@
 
  #Параметры доктрин: Общие
  doctrine_parameter_can_catch_sea_creatures: "Позволяет приручать водных существ во время «[Concept('monster_hunt','Охоты на чудовищ')|E]»."
- doctrine_parameter_can_take_skulls: "[executing|E] [Concept('characters','персонажей')|E] даёт [piety|E1] и позволяет забрать [Concept('artifact', 'трофейный череп')|E]; персонажи, не имеющие свойство «[GetTrait('cynical').GetName( GetNullCharacter )]», также теряют стресс"
- doctrine_parameter_chosen_man_mechanics_active: "[executing|E] [characters|E1] и #E Очистка графств#! с [GetCulturePillar('heritage_aversarian').GetName|l]ой [Concept('culture','культурой')|E] даёт [piety|E1] и [Concept('trait','свойство')|E] «[GetTrait('gh_chosen_man').GetName( GetNullCharacter )]»"
+ doctrine_parameter_can_take_skulls: "[executing|E] [Concept('characters','персонажей')|E] даёт [piety|El] и позволяет забрать [Concept('artifact', 'трофейный череп')|E]; персонажи, не имеющие свойство «[GetTrait('cynical').GetName( GetNullCharacter )]», также теряют стресс"
+ doctrine_parameter_chosen_man_mechanics_active: "[executing|E] [Concept('characters','персонажей')|E] и #E очистка графств#! с [GetCulturePillar('heritage_aversarian').GetName|l]ой [Concept('culture','культурой')|E] дают [piety|El] и [Concept('trait','свойство')|E] «[GetTrait('gh_chosen_man').GetName( GetNullCharacter )]»"
  doctrine_parameter_enables_practising_law: "Разблокирует доступ к [Concept('trait','свойству')|E] «[GetTrait('lifestyle_jurist').GetName( GetNullCharacter )]» и практике права"
  doctrine_parameter_faith_can_use_purges: "Позволяет использовать взаимодействие #E Очистить графство#! в [Concept('counties','графствах')|E] с другой [Concept('faith','конфессией')|E]"
  doctrine_parameter_fogeater_mechanics_active: "Мы можем слушать крики Туманной Матери и учиться у них"
@@ -546,7 +540,7 @@
  doctrine_parameter_high_court_low_legitimacy_mamur_modifier: "[Concept('mamuramat','Мамур')|E] получает следующие модификаторы:\n[GetModifier('high_court_legitimacy_low_mamur_modifier').GetDescWithEffects]"
  doctrine_parameter_high_court_very_high_legitimacy_mamur_modifier: "[Concept('mamuramat','Мамур')|E] получает следующие модификаторы:\n[GetModifier('high_court_legitimacy_very_high_mamur_modifier').GetDescWithEffects]"
  doctrine_parameter_high_court_very_low_legitimacy_mamur_modifier: "[Concept('mamuramat','Мамур')|E] получает следующие модификаторы:\n[GetModifier('high_court_legitimacy_very_low_mamur_modifier').GetDescWithEffects]"
- doctrine_parameter_hostility_override_doctrine_clerical_marriage_allowed: "Всегда считает все другие [Concept('faith','конфессии')|E] [Concept('faiths', 'заблудшими')|E], независимо от доктринальных различий"
+ doctrine_parameter_hostility_override_doctrine_clerical_marriage_allowed: "Всегда считает все другие [Concept('faiths','конфессии')|E] [Concept('faith_astray','заблудшими')|E], независимо от различий в доктринах"
  doctrine_parameter_hostility_override_doctrine_clerical_marriage_disallowed: "[county_opinion|E] не зависит от [Concept('faith_hostility', 'враждебности конфессии')|E]"
  doctrine_parameter_hunt_travel_enabled: "Может путешествовать в другие #E Зоны#! для мероприятия «[GetActivityType('activity_hunt').GetName]»"
  doctrine_parameter_hunting_archery_building_bonuses: "Цепочка [Concept('buildings', 'зданий')|E] #V $building_type_hunting_grounds_01$#! предоставляет бонусы #V лучникам#!"
@@ -561,22 +555,21 @@
  doctrine_parameter_masked_adherents_active: "Последователи носят маски"
  doctrine_parameter_masked_adherents_oltenic: ""
  masked_adherents_oltenic_opinion_name: "Собратья в масках"
- masked_adherents_oltenic_county_opinion_name: "Собратья в масках"
  doctrine_parameter_opinion_of_masked_adherents_oltenic: "[opinion|E] к другим в масках: $VALUE|+=0$"
  doctrine_parameter_can_host_oltenic_feast_type: "[SelectLocalization(HasDlcFeature('khans_of_the_steppe'), 'oltenic_feast_type_enabled_by_dlc', '')]"
- oltenic_feast_type_enabled_by_dlc: "Кочевые [rulers|E] имеют доступ к типу [GetActivityType( 'activity_feast' ).GetNamel] «[oltenic_feast_type|E]»"
+ oltenic_feast_type_enabled_by_dlc: "[Concept('nomadic','Кочевые')|E] [rulers|El] могут проводить мероприятие «[GetActivityType('activity_feast').GetName]» в формате «[oltenic_feast_type|E]»"
  doctrine_parameter_masked_priests_active: "Жрецы носят маски"
  doctrine_parameter_no_mamurs_recognized: "Не признаёт [Concept('mamuramat','Мамура')|E]"
  doctrine_parameter_number_of_consorts_0: "Правители, независимо от [Concept('gender_law', 'примогенитуры')|E], не могут иметь [Concept('concubines','наложниц')|E]"
  doctrine_parameter_one_mamur_recognized: "Признаёт одного [Concept('mamuramat','Мамура')|E], который также является [Concept( 'head_of_faith', 'главой конфессии' )|E]"
- doctrine_parameter_parameter_overseas_raiding_allowed: "Эта [faith|E1] позволяет вам совершать [Concept( 'raid', 'налеты' )|E], включая заморские набеги"
+ doctrine_parameter_parameter_overseas_raiding_allowed: "Эта [faith|El] позволяет вам совершать [Concept( 'raid', 'налеты' )|E], включая заморские набеги"
  doctrine_parameter_penalty_for_not_hunting_enabled: "Штрафы к [Concept('prestige','престижу')|E] и [Concept('opinion','мнению')|E] [Concept('vassal','вассалов')|E] накапливаются после пяти лет если не организовать занятие «[GetActivityType('activity_hunt').GetName]»"
- doctrine_parameter_piety_for_rival_kill: "Убийство [Concept('rivals','врагов')|E] даёт [piety|E1]"
+ doctrine_parameter_piety_for_rival_kill: "Убийство [Concept('rivals','врагов')|E] даёт [piety|El]"
  doctrine_parameter_religious_extort_subjects: "Последователи имеют доступ к [Concept('decision','решению')|E] «[extort_subjects|E]», при достоинстве #E Это МОЯ вотчина#! сокращая время его повторного использования"
- doctrine_parameter_piety_from_hunts_active: "Успешное мероприятие «[GetActivityType('activity_hunt').GetName]» приносит [piety|E1] в зависимости от уровня добычи"
+ doctrine_parameter_piety_from_hunts_active: "Успешное мероприятие «[GetActivityType('activity_hunt').GetName]» приносит [piety|El] в зависимости от уровня добычи"
  doctrine_parameter_sjalvolki_hunt_enabled: "Можно участвовать в мероприятии [Concept('monster_hunt','охотах на чудовищ')|E]"
  doctrine_parameter_spread_the_light_promote_faith_bonus_active: "Скорость обращения графства: #P +20%#!"
- doctrine_parameter_tax_evasion_illegal: "Вассалы, уклоняющиеся от Тахариата и пойманные, могут быть арестованы за своё [crime|E1]"
+ doctrine_parameter_tax_evasion_illegal: "Вассалы, уклоняющиеся от Тахариата и пойманные, могут быть арестованы за своё [crime|El]"
  doctrine_parameter_thysian_physician_education: "Дети с [Concept( 'education_focus', 'фокусом на образовании' )|E] «[learning|E]» могут получить свойство «[GetTrait('physician_1').GetName( GetNullCharacter )]», если преуспеют в учебе."
  doctrine_parameter_thysian_physician_pilgrimage: "Паломничества имеют шанс даровать или улучшить свойство «[GetTrait('physician_2').GetName( GetNullCharacter )]»"
  doctrine_parameter_uses_legal_traditions: "Включает #E Правовые традиции#!"
@@ -641,7 +634,7 @@
  doctrine_parameter_hostility_override_forgotten_faith_doctrine: "Воспринимает веру Забытого как [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|Vl]."
  doctrine_parameter_hostility_override_saint_faith_doctrine: "Воспринимает дикайносианство [faith|El] как [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|Vl]."
  doctrine_parameter_hostility_override_seven_faith_doctrine: "Воспринимает септарианский агионизм как [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|Vl]."
- doctrine_parameter_hostility_override_sjalvolki_faith_doctrine: "Воспринимает сьялволькские [faiths|E1] как [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|Vl]."
+ doctrine_parameter_hostility_override_sjalvolki_faith_doctrine: "Воспринимает сьялволькские [faiths|El] как [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|Vl]."
  
  doctrine_parameter_hostility_override_special_doctrine_agionist_order_cooperation_corrupt: "Все [faiths|El] с этой доктриной «[GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]»."
  doctrine_parameter_hostility_override_special_doctrine_is_adabyssian_faith: "Считает, что дгудийские [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Дгудийские [faiths|El] отвечают тем же."
@@ -668,7 +661,6 @@
  doctrine_parameter_hostility_override_special_doctrine_is_gestanwoder_faith: "Считает, что гестанводерские [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Гестанводерские [faiths|El] отвечают тем же."
  doctrine_parameter_hostility_override_special_doctrine_is_gethian_faith: "Считает, что гетские [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Гетские [faiths|El] отвечают тем же."
  doctrine_parameter_hostility_override_special_doctrine_is_graveright_faith: "Считает, что мрогилпранские [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Мрогилпранские [faiths|El] отвечают тем же."
- doctrine_parameter_hostility_override_special_doctrine_is_hubarism_faith: "Считает, что хубаритские [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Хубаритские [faiths|El] отвечают тем же."
  doctrine_parameter_hostility_override_special_doctrine_is_islands_faith: "Считает, что островные [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Островные [faiths|El] отвечают тем же."
  doctrine_parameter_hostility_override_special_doctrine_is_iyrossi_faith: ""
  doctrine_parameter_hostility_override_special_doctrine_is_izaerto_bosar_faith: "Считает, что изаэрто-бошарские [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Изаэрто-бошарские [faiths|El] отвечают тем же."
@@ -714,7 +706,7 @@
  doctrine_parameter_hostility_override_special_doctrine_is_yuagaug_faith: "Считает, что шуб-юагуагские [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Шуб-юагуагские [faiths|El] отвечают тем же."
  doctrine_parameter_hostility_override_special_doctrine_is_zaldrigas_faith: "Считает, что залдриганские [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Залдриганские [faiths|El] отвечают тем же."
  doctrine_parameter_hostility_override_special_doctrine_is_zaragett_faith: "Считает, что зарагеттские [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Зарагеттские [faiths|El] отвечают тем же."
- doctrine_parameter_hostility_override_special_doctrine_singular_mamur_hostility: "Считает, что [faiths|E1], признающие другого [Concept('mamuramat','Мамура')|E] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
+ doctrine_parameter_hostility_override_special_doctrine_singular_mamur_hostility: "Считает, что [faiths|El], признающие другого [Concept('mamuramat','Мамура')|E] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
  doctrine_parameter_hostility_override_special_doctrine_is_shadowy_cults_faith: "Считает, что теневые [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Теневые [faiths|El] отвечают тем же."
  doctrine_parameter_hostility_override_special_doctrine_is_anaanides_faith: "Считает, что анаанидские [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Анаанидские [faiths|El] отвечают тем же."
  doctrine_parameter_hostility_override_special_doctrine_is_clanlander_faith: "Считает, что клановые [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Клановые [faiths|El] отвечают тем же."
@@ -795,10 +787,10 @@
  doctrine_parameter_hostility_override_tenet_yuagaug_religion_syncretism: "Считает, что [faiths|El], синкретические с шуб-юагуагом — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Шуб-юагуагские [faiths|El] отвечают тем же."
  doctrine_parameter_hostility_override_tenet_zaldrigas_religion_syncretism: "Считает, что [faiths|El], синкретические с залдригасом — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Залдриганские [faiths|El] отвечают тем же."
  doctrine_parameter_hostility_override_tenet_zaragett_religion_syncretism: "Считает, что [faiths|El], синкретические с зарагеттом — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Зарагеттские [faiths|El] отвечают тем же."
- doctrine_parameter_hostility_override_wardenite_idealist_doctrine: "Считает, что [faiths|El] с [doctrine|E1] «$wardenite_idealist_doctrine_name$» — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
- doctrine_parameter_hostility_override_wardenite_mainstream_doctrine: "Считает, что [faiths|El] с [doctrine|E1] «$wardenite_mainstream_doctrine_name$» — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
- doctrine_parameter_hostility_override_wardenite_radical_doctrine: "Считает, что [faiths|El] с [doctrine|E1] «$wardenite_radical_doctrine_name$» — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
- doctrine_parameter_hostility_override_wardenite_traditionalist_doctrine: "Считает, что [faiths|El] с [doctrine|E1] «$wardenite_traditionalist_doctrine_name$» — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
+ doctrine_parameter_hostility_override_wardenite_idealist_doctrine: "Считает, что [faiths|El] с [Concept('doctrine','доктриной')|E] «$wardenite_idealist_doctrine_name$» — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
+ doctrine_parameter_hostility_override_wardenite_mainstream_doctrine: "Считает, что [faiths|El] с [Concept('doctrine','доктриной')|E] «$wardenite_mainstream_doctrine_name$» — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
+ doctrine_parameter_hostility_override_wardenite_radical_doctrine: "Считает, что [faiths|El] с [Concept('doctrine','доктриной')|E] «$wardenite_radical_doctrine_name$» — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
+ doctrine_parameter_hostility_override_wardenite_traditionalist_doctrine: "Считает, что [faiths|El] с [Concept('doctrine','доктриной')|E] «$wardenite_traditionalist_doctrine_name$» — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
  doctrine_parameter_hostility_override_tenet_dragon_cult: "Считает, что [faiths|El] с догматом «$tenet_dragon_cult_name$» — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
  doctrine_parameter_hostility_override_tenet_shadowy_cults_religion_syncretism: "Считает, что [faiths|El], синкретические с теневыми культами — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Теневые [faiths|El] отвечают тем же."
  doctrine_parameter_saintly_order_faith_hostility_override_loc: "Считает и считается всеми верами Святых Орденов [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]. Свято-орденные [faiths|El] отвечают тем же."
@@ -815,8 +807,8 @@
  doctrine_parameter_magic_shunned: "[characters|E] с [Concept('trait','свойством')|E] «[GetTrait('magic_good_1').GetName( GetPlayer )]» или выше [Concept('shunned','недостойные')|E]"
  doctrine_parameter_magic_honored: "--"
  doctrine_parameter_magic_supreme: "[characters|E] с [Concept('trait','свойством')|E] «[GetTrait('magic_good_1').GetName( GetPlayer )]» или выше пользуются похвалой"
- doctrine_parameter_piety_and_stress_loss_for_gedeora: "Принятие изменения личности от [Concept('gedeora','гедеорой')|E] даёт значительное [piety|E1] и снижает [stress|E1]"
- doctrine_parameter_piety_for_sacrifice: "Жертвоприношение [Concept('prisoners','узников')|E] и населения [Concept('counties','графства')|E] даёт [piety|E1] и на 20% больше @magic_icon!#E [Concept('magic','магии')|E]#!"
+ doctrine_parameter_piety_and_stress_loss_for_gedeora: "Принятие изменения личности, вызванного [Concept('gedeora','гедеорой')|E], даёт много [Concept('piety','благочестия')|E] и снижает [stress|El]"
+ doctrine_parameter_piety_for_sacrifice: "Жертвоприношение [Concept('prisoners','узников')|E] и населения [Concept('counties','графства')|E] даёт [piety|El] и на 20% больше @magic_icon!#E [Concept('magic','магии')|E]#!"
 
  #Параметры доктрин: Синкретизм
  doctrine_parameter_is_adabyssian_religion_bilateral_loc_override: "Считает, что дгудийские [faiths|El] — [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|Vl], а не [GetHostilityLevelName( '(int32)3' )|Vl]. Дгудийские [faiths|El] отвечают тем же."
@@ -896,3 +888,7 @@
  is_hubarist_faith_name:0 "Исповедует хубаристскую веру"
  special_doctrine_is_hubarist_faith_desc:0 "При всех наших разногласиях наша вера принадлежит к хубаристской семье, а её последователи — наши братья по вере."
  special_doctrine_is_hubarist_faith_name:0 "Верные Солнца"
+ special_doctrine_is_tennger_amik_faith_desc:0 "Каковы бы ни были наши разногласия, наша вера принадлежит к семье Теннгер-Амик, а её последователи — наши собратья."
+ special_doctrine_is_tennger_amik_faith_name:0 "Зрители Божественного театра"
+ is_tennger_amik_faith_name:0 "Исповедует веру Теннгер-Амик"
+ doctrine_parameter_is_tennger_amik_religion_bilateral_loc_override:0 "Считает [Concept('faiths','конфессии')|E] Теннгер-Амик [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V] вместо $hostility_evil_tooltippable$; $game_concept_faiths$ Теннгер-Амик отвечают взаимностью"

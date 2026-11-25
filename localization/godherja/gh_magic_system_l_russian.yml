@@ -10,7 +10,7 @@
  #Decisions
  get_magic_education:0 "Магическое образование"
  get_magic_education_desc:0 "[GetPlayer.GetFirstName] найдёт для [GetPlayer.GetHerselfHimself] магическое образование."
- get_magic_education_tooltip:0 "Получить признак магического [Concept('education','образования')|E] ."
+ get_magic_education_tooltip:0 "Получить свойство магического [Concept('education','образования')|E]."
  get_magic_education_confirm:0 "Я стану величайшим [Concept('magi','магом')|E]!"
 
  #Triggered Loc
@@ -34,23 +34,23 @@
  GENERATE_POWER_B: "Генерация силы"
  SELECT_CHAR: "Выбрать персонажа в качестве цели"
  SELECT_LAND: "Выбрать провинцию в качестве цели"
- SELECT_CHAR_INV: "Выбрать персонажа в качестве цели, вы не можете убить себя."
- SELECT_SINGLE_CHAR_MAGIC: "Выберете одного заключённого персонажа в качестве цели, нельзя выбрать нескольких или убить себя."
+ SELECT_CHAR_INV: "Выберите персонажа в качестве цели. Нельзя убить себя."
+ SELECT_SINGLE_CHAR_MAGIC: "Выберите одного персонажа, находящегося в заключении. Нельзя выбрать нескольких персонажей или убить себя."
  DESELECT_CHAR: "Отменить выбор персонажа в качестве цели"
  DESELECT_LAND: "Отменить выбор провинции в качестве цели"
- MUST_NOT_BE_CRESCENT_OR_NEW_MOON: "Заклинания мёртвой магии 2 уровня нельзя применять во время новолуния или молодой луны"
- MUST_BE_GIBBOUS_OR_FULL_MOON: "Заклинания мёртвой магии 3 уровня можно применять только во время убывающей или полной луны"
+ MUST_NOT_BE_CRESCENT_OR_NEW_MOON: "Заклинания мёртвой магии 2-го уровня нельзя применять в новолуние, во время молодой или старой луны"
+ MUST_BE_GIBBOUS_OR_FULL_MOON: "Заклинания мёртвой магии 3-го уровня можно применять только во время растущей или убывающей луны либо в полнолуние"
  FULL_MOON_ONLY_SPELL: "Это заклинание можно применять только во время полнолуния"
 
  flagellate_name:0 "Бичевание"
  ritual_sacrifice_name:0 "Ритуальное жертвоприношение"
  ritual_bloodletting_name:0 "Ритуальное кровопускание"
  ritual_consumption_name:0 "Ритуальное поглощение"
- sacrifice_population_name:0 "Жертвоприношение населения"
- sacrifice_plants_name:0 "Жертвоприношение растений"
+ sacrifice_population_name:0 "Принесение населения в жертву"
+ sacrifice_plants_name:0 "Принесение растений в жертву"
  communed_with_the_way_name:0 "Общение с путём"
  seeped_into_madness_name:0 "Погружение в безумие"
- communed_with_eldritch_name:0 "Общение с неественным"
+ communed_with_eldritch_name:0 "Приобщение к сверхъестественному"
  dreamwalk_name:0 "Хождение во снах"
  dream_invasion_name:0 "Вторжение в сны"
  ethereal_ritual_name:0 "Эфирный ритуал"
@@ -58,7 +58,7 @@
  skeletal_craft_name:0 "Костяное ремесло"
  study_arcane_name:0 "Изучение арканы"
  expedition_name:0 "Экспедиция"
- sacrifice_rare_minerals_name:0 "Извлечение из самоцветов"
+ sacrifice_rare_minerals_name:0 "Извлечение силы из самоцветов"
  kemsar_restoration_name:0 "Восстановление рек"
 
  test_magic_name:0 "Тестовая магия"
@@ -68,7 +68,7 @@
  rejuvenating_blood_name:0 "Омолаживающая кровь"
  earth_magick_name:0 "Магия камня"
  stone_fortress_name:0 "Возведение каменной крепости"
- stone_building_construction_name:0 "Камнеформировочное строительство"
+ stone_building_construction_name:0 "Строительство с помощью магии камня"
  stoneskin_name:0 "Каменная плоть"
  #stoneskin_name:0 "Stoneskin"
  ironskin_name:0 "Железная плоть"
@@ -78,9 +78,9 @@
  dragons_roar_name: "Драконий рык"
  arcane_foundries_name: "Магические кузни"
  imbued_armor_name: "Усиленная броня"
- spawn_entropic_host_name: "Сформировать энтропический сомн"
- erase_mental_trauma_name: "Стереть меентальную травму"
- boneshaping_name:0 "Формирование костей"
+ spawn_entropic_host_name: "Создание энтропийного сонма"
+ erase_mental_trauma_name: "Стирание душевной травмы"
+ boneshaping_name:0 "Придание формы костям"
  necrotic_boon_name:0 "Некромантическая жизненная сила"
  crush_armor_name:0 "Сокрушение доспехов"
  petrify_name:0 "Окаменение"
@@ -101,7 +101,7 @@
  quicken_name:0 "Ускорение"
  magic_cannibalism_name:0 "Пожирание силы"
  battle_rage_name:0 "Боевая ярость"
- channel_the_rift_name:0 "Черпание из Разлома"
+ channel_the_rift_name:0 "Черпание силы Разлома"
  summon_lesser_name:0 "Призыв Туманной твари"
  fog_cast_name:0 "Призыв Тумана"
  rift_gaze_name:0 "Взгляд в Разлом"
@@ -114,7 +114,7 @@
  create_golems_name:0 "Создание каменных големов"
  necrotic_vitality_name:0 "Некромантическая энергия"
  raise_earth_name:0 "Поднятие земли"
- improve_soil_name:0 "Улучшение почвы"
+ improve_soil_name:0 "Укрепление почвы"
  earth_fort_name:0 "Укрепление подземелий"
  find_minerals_name:0 "Обнаружение минералов"
  annihilation_name:0 "Аннигиляция"
@@ -129,7 +129,7 @@
  thinning_name:0 "Истощение"
  sundeath_name:0 "Смерть Солнца"
  dark_raid_name:0 "Тёмный налёт"
- spawn_army_lesser_voidspawns_name:0 "Энтропийный сомн"
+ spawn_army_lesser_voidspawns_name:0 "Энтропийный сонм"
  weavers_descent_name:0 "Нисшествие Ткача"
  awaken_fleshmaw_name:0 "Пробуждение Пасти"
 
@@ -140,9 +140,9 @@
  obliterate_mind_name:0 "Уничтожение разума"
  sorrow_name:0 "Скорбь" 
 
- SKILL_POINT_FROM_MAGIC_GAIN_CHANCE:0 "Генерация [Concept('magic_power','магической силы')|E] даёт:\n$TAB$#V [EmptyScope.ScriptValue('dark_insights_stat_increase_chance')|0]%#! шанс получить +1 к [intrigue_i]#P 1#! [Concept('intrigue','интриге')|E] или [prowess_i]#P 1#! [Concept('prowess','доблести')|E] на короткое время"
- SKILL_POINT_FROM_ME_MAGIC_GAIN_CHANCE:0 "Когда вы генерируете [Concept('magic_power','магическую силу')|E]:\n$TAB$#V [EmptyScope.ScriptValue('dark_insights_stat_increase_chance')|0]%#! шанс получить +1 к [intrigue_i]#P 1#! [Concept('intrigue','интриге')|E] или [prowess_i]#P 1#! [Concept('prowess','доблести')|E] на короткое время"
- SKILL_POINT_FROM_THEM_MAGIC_GAIN_CHANCE:0 "Когда [CHARACTER.GetSheHe] генерирует [Concept('magic_power','магическую силу')|E]:\n$TAB$#V [EmptyScope.ScriptValue('dark_insights_stat_increase_chance')|0]%#! шанс получить +1 к [intrigue_i]#P 1#! [Concept('intrigue','интриге')|E] или [prowess_i]#P 1#! [Concept('prowess','доблести')|E]"
+ SKILL_POINT_FROM_MAGIC_GAIN_CHANCE:0 "Генерация [Concept('magic_power','магической силы')|E] даёт:\n$TAB$#V [EmptyScope.ScriptValue('dark_insights_stat_increase_chance')|0]%#! вероятность получить [intrigue_i]#P +1#! к [Concept('intrigue','интриге')|E] или [prowess_i]#P +1#! к [Concept('prowess','доблести')|E] на короткое время"
+ SKILL_POINT_FROM_ME_MAGIC_GAIN_CHANCE:0 "Когда вы генерируете [Concept('magic_power','магическую силу')|E]:\n$TAB$#V [EmptyScope.ScriptValue('dark_insights_stat_increase_chance')|0]%#! вероятность получить [intrigue_i]#P +1#! к [Concept('intrigue','интриге')|E] или [prowess_i]#P +1#! к [Concept('prowess','доблести')|E] на короткое время"
+ SKILL_POINT_FROM_THEM_MAGIC_GAIN_CHANCE:0 "Когда [CHARACTER.GetSheHe] генерирует [Concept('magic_power','магическую силу')|E]:\n$TAB$#V [EmptyScope.ScriptValue('dark_insights_stat_increase_chance')|0]%#! вероятность получить [intrigue_i]#P +1#! к [Concept('intrigue','интриге')|E] или [prowess_i]#P +1#! к [Concept('prowess','доблести')|E]"
 
  #tooltips
 
@@ -181,7 +181,7 @@
  sorrow.tt:0 "Высосать саму жизненную силу из земли и её народа."
  
  initiate_spell_event_interior_journey_name:0 "Синергия черт"
- initiate_spell_event_interior_journey_desc:0 "Общение с аспектами внутренней психики, углубляющее силу и недостатки основных черт личности."
+ initiate_spell_event_interior_journey_desc:0 "Обратитесь к глубинам собственной души, усиливая как достоинства, так и недостатки основных черт характера."
  
  vampirism_health_pool_tt:0 "Поддерживайте свою жизнь, вытягивая жизнь из других. \nВы получите #P 0.25 #! очков здоровья в ваш вампирический запас здоровья, который будет преобразован в стек [GetModifier('vampirism_mod').GetNameWithTooltip|L] в случае вашей смерти от естественных причин, увеличивая ваш ожидаемый срок жизни на 2 года.  \nКаждое последующее сотворение будет увеличивать стоимость последующих сотворений, поскольку магия, необходимая для поддержания вашей жизни, будет возрастать."
  vampirism_health_pool_transfer_tt:0 "[ROOT.Var('vampiric_drain_amount_show').GetValue|0] очков вампирического запаса здоровья были преобразованы в [ROOT.Var('vampiric_drain_amount_show').GetValue|0] единиц здоровья в виде модификаторов [GetModifier('vampirism_mod')]."
@@ -277,7 +277,7 @@
  dm_perk7.tt:0 "Получить заклинание Некромантическая энергия\nНекромантическая энергия — заклинание, направленное на себя, которое значительно увеличивает ваше здоровье на 10 лет, оживляя его с помощью магии, за счёт постоянного уменьшения вашего здоровья после окончания действия заклинания"
  #dm_perk9.tt:0 "Gain 25% additional [magic_power|E] from Skeletal Crafting"
  
- dm2_perk1.tt:0 "Получить заклинание Чтение луны\nЧтение луны — благотворное заклинание, влияющее на персонажа, которое позволяет вам предсказывать будущее, чтобы выбрать один из трёх случайно выбранных бонусов на 5 лет."
+ dm2_perk1.tt:0 "Получить заклинание «Чтение луны»\n«Чтение луны» — благотворное заклинание, позволяющее предвидеть будущее и выбрать один из трёх случайных бонусов на 5 лет."
  dm2_perk2.tt:0 "Получить заклинание Сокрушение доспехов\nСокрушение доспехов — враждебное заклинание, влияющее на персонажа, которое имеет шанс ранить или убить цель в зависимости от их здоровья или мастерства."
  dm2_perk3.tt:0 "Генерировать [Concept('magic_power','магическую силу')|E], черпая магическую энергию от луны"
  dm2_perk4.tt:0 "Получить заклинание Зачарование оружия\nЗачарование оружия — благотворное заклинание, влияющее на персонажа, которое увеличивает эффективность рыцарей цели на 1 год и увеличивает мастерство всех рыцарей цели."
@@ -647,7 +647,7 @@
  familiar_master:0 "Хозяин"
 
  FAMILIARS_LABEL: "Фамильяры"
- FAMILIAR_MASTER_LABEL: "Мастер"
+ FAMILIAR_MASTER_LABEL: "Хозяин"
  
  I_GET_A_FAMILIAR:0 "Вы получили [TARGET_CHARACTER.GetShortUIName] как фамильяра"
  I_GOT_A_FAMILIAR:0 "Вы получили [TARGET_CHARACTER.GetShortUIName] как фамильяра"

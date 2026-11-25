@@ -289,7 +289,6 @@
  hunt_rampage_befriend_log:1 "[CHARACTER.GetShortUIName|U] [Select_CString(CHARACTER.IsFemale, 'приручила', 'приручил' )] буйствующего зверя ([CHARACTER.GetInvolvedActivity.Custom('GetAnimalType')])"
  hunt_rampage_befriend_fail_log_title:0 "$hunt_rampage_wound_log_title$"
  hunt_rampage_befriend_fail_log:1 "[CHARACTER.GetShortUIName|U] [Select_CString(CHARACTER.IsFemale, 'попыталась', 'попытался' )] приручить буйствующего зверя ([CHARACTER.GetInvolvedActivity.Custom('GetAnimalType')]), но безуспешно"
- hunt_rampage_bodyguardlog_title:0 "$hunt_rampage_wound_log_title$"
  hunt_rampage_bodyguard_log:1 "[TARGET_CHARACTER.GetShortUIName|U], телохранитель персонажа [TARGET_CHARACTER.GetShortUINamePossessive], [Select_CString(TARGET_CHARACTER.IsFemale, 'спасла', 'спас' )] его от буйствующего зверя ([CHARACTER.GetInvolvedActivity.Custom('GetAnimalType')])"
  hunt_melee_log_title:2 "Повержен зверь: [CHARACTER.Custom('GetAnimalTypeKill')|U]"
  hunt_melee_log:2 "[CHARACTER.GetShortUIName|U] [Select_CString(CHARACTER.IsFemale, 'сразила', 'сразил' )] зверя ([CHARACTER.Custom('GetAnimalType')])"
@@ -511,7 +510,7 @@
  flushers_adventurer: "загонщики"
  gamekeepers_nomadic: "Главные загонщики"
  gamekeepers_regular: "егеря"
- poacher_opinion: "Браконьерство на #E MP моих#! землях"
+ poacher_opinion: "Браконьерство на #EMP моих#! землях"
 
  hunt_invalidated_warning_tt: "@warning_icon! #X Вы не сможете повторно [Concept('activity', 'устроить')|E] #TOOLTIP:ACTIVITY_TYPE,activity_hunt #L охоту#!#! в течение [SCOPE.ScriptValue('standard_hunting_cooldown_time')|V0] лет#!"
 

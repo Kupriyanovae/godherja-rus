@@ -5,11 +5,10 @@
  ##############################
  # Procedural court artifacts #
  ##############################
- may_gain_artifact_hide_tooltip: "#positive_value Охотники с высокой вероятностью получат [artifact|E1].#!"
+ may_gain_artifact_hide_tooltip: "#positive_value Охотники с высокой вероятностью получат [artifact|El].#!"
 
 # Gemstones
 
- rtifact_gemstone_name: "[newly_created_artifact.GetFeatureText( 'gemstone_cut' )|U]-огранённый [newly_created_artifact.GetFeatureText( 'gemstone_type' )] $artifact_name_prefix$"
  artifact_gemstone_name_manzasiri_heart: "[newly_created_artifact.GetFeatureText( 'gemstone_cut' )|U]-огранённое сердце манзашири [newly_created_artifact.GetFeatureText( 'gemstone_type' )] $artifact_name_prefix$"
  artifact_gemstone_name_shard: "Осколок [newly_created_artifact.GetFeatureText( 'gemstone_type' )] $artifact_name_prefix$"
  artifact_gemstone_description: "Прекрасный, магически заряженный [newly_created_artifact.GetFeatureText( 'gemstone_type' )] в [newly_created_artifact.GetFeatureText( 'gemstone_cut' )] огранке. Камень обладает [newly_created_artifact.GetFeatureText( 'gemstone_magical_texture' )] и [newly_created_artifact.GetFeatureText( 'gemstone_magical_aura' )]."
@@ -101,7 +100,7 @@
  artifact_gemstone_type: "самоцвет"
 
 
- take_their_skull_tooltip: "#positive_value Вы получите [artifact|E1]"
+ take_their_skull_tooltip: "#positive_value Вы получите [artifact|El]"
 
 
 
@@ -601,7 +600,7 @@
  artifact_glass_sword_name: "Стеклянный клинок"
  artifact_glass_sword_xipheos_desc: "Шедевр зелкаванского стеклоделия, Стеклянный клинок — это оружие, которое противоречит культуре своих пацифистских создателей и является мощным символом [Concept('aversaria','аверсарианского')|E] влияния, вдохновляющего их на воинственность.\n\nМеч был выкован и прославился тем, что им владел [newly_created_artifact.MakeScope.Var('prominent_creator').Char.GetFirstNameNicknamed], но был взят с трупа своего создателя после его смерти во время [blue_robe_revolt|E]. Легон [newly_created_artifact.MakeScope.Var('prominent_wielder').Char.GetFirstName] с большим успехом владел Стеклянным клинком до конца войны, пока не пал в последней битве от руки [Concept('jajak_otroka','Яяка Отроки')|E].\n\nВыжившие легионеры Легиона XXXIX «Протемаксос» смогли извлечь клинок, и с тех пор он стал реликвией дома [newly_created_artifact.MakeScope.Var('prominent_wielder').Char.GetHouse.GetName]."
 
- artifact_greednecklace_desc: "Это железное ожерелье, как утверждается, носил [Concept('aversaria','аверсарианский')|E] военачальник [Concept('demetros_detheniax','Деметрос Железный Шип')|E] на протяжении всего своего правления в Калатипсоми, и часто утверждается, что оно было самым большим инструментом, использованным для обеспечения контроля над севером.\n\nПростая чёрная железная цепь и кулон, на лицевой стороне украшения изображён искажённый лик, застывший в крике, по-видимому, естественное образование, застывшее из расплавленного железа. Вглядываясь в него, невозможно не представить глубины внутри его оскаленного рта и великую цену, чтобы накормить его...\n\nНекоторые говорили, что ожерелье просто принуждает тех, кто слушает его носителя, подчиняться его приказам, в то время как другие утверждают, что оно взимает ужасную плату за эту услугу..."
+ artifact_greednecklace_desc: "Это железное ожерелье, как утверждается, носил [Concept('aversaria','аверсарианский')|E] военачальник [Concept('demetros_detheniax','Деметрий Железный Шип')|E] на протяжении всего своего правления в Калатипсоми, и часто утверждается, что оно было самым большим инструментом, использованным для обеспечения контроля над севером.\n\nПростая чёрная железная цепь и кулон, на лицевой стороне украшения изображён искажённый лик, застывший в крике, по-видимому, естественное образование, застывшее из расплавленного железа. Вглядываясь в него, невозможно не представить глубины внутри его оскаленного рта и великую цену, чтобы накормить его...\n\nНекоторые говорили, что ожерелье просто принуждает тех, кто слушает его носителя, подчиняться его приказам, в то время как другие утверждают, что оно взимает ужасную плату за эту услугу..."
  artifact_greednecklace_modifier: "Кулон алчности"
  artifact_greednecklace_modifier_desc: "Железное ожерелье с кричащим ликом"
  artifact_greednecklace_name: "Кулон алчности"
@@ -712,8 +711,8 @@
  artifact_sun_piercer_desc: "Легендарное копьё героев и чемпионов, Пронзатель Солнца выкован из неизвестного чёрного материала, обладающего необычным свойством поглощать как свет, так и пламя. Необычная форма оружия делает его трудным в использовании для всех, кроме самых искусных воинов, но его почти неразрушимость делает его стоящим в любом бою."
  artifact_sun_piercer_name: "Пронзатель Солнца"
 
- artifact_black_legion_standard_battle_desc: "Это потёртое и выцветшее знамя изображает эмблему одного из Чёрных Легионов Катраддии — известных своим чёрным вооружением и мастерством в бою. Большая часть Чёрных Легионов была потеряна в различных войнах, сотрясавших начало XIII века, и немногие выжившие присоединились к губернатору [newly_created_artifact.MakeScope.Var('governor_ioldon').Char.GetFirstNameNicknamed] в его походе на юг — а позже и к его сыну, [newly_created_artifact.MakeScope.Var('black_sun').Char.GetFirstNameNicknamed]."
- artifact_black_legion_standard_desc: "Это знамя изображает эмблему одного из Чёрных Легионов Катраддии — известных своим чёрным вооружением и мастерством в бою."
+ artifact_black_legion_standard_battle_desc: "Это потёртое и выцветшее знамя изображает эмблему одного из Чёрных Легионов Картараддии — известных своим чёрным вооружением и мастерством в бою. Большая часть Чёрных Легионов была потеряна в различных войнах, сотрясавших начало XIII века, и немногие выжившие присоединились к губернатору [newly_created_artifact.MakeScope.Var('governor_ioldon').Char.GetFirstNameNicknamed] в его походе на юг — а позже и к его сыну, [newly_created_artifact.MakeScope.Var('black_sun').Char.GetFirstNameNicknamed]."
+ artifact_black_legion_standard_desc: "Это знамя изображает эмблему одного из Чёрных Легионов Картараддии — известных своим чёрным вооружением и мастерством в бою."
  artifact_black_legion_standard_name: "Штандарт Чёрного Легиона"
 
  artifact_black_gold_standard_battle_desc: "Этот пыльный кусок ткани изображает объединённые эмблемы домов Монто и Валадек — ведущих домов печально известной Лиги Чёрного Золота, союза восточных [Concept('marchers','шевальенских')|E] лордов, объединившихся, чтобы возвести [newly_created_artifact.MakeScope.Var('teryn_valadec').Char.GetFirstNameNicknamed] на трон Шевалье после таинственной смерти Верховного короля [newly_created_artifact.MakeScope.Var('high_king_dendon').Char.GetFirstNameNicknamed]. Так называемая [black_gold_war|E] закончилась полным поражением Лиги, оставив лишь сожаления тем, кто взирал на это некогда гордое знамя."
@@ -962,7 +961,7 @@
  artifact_boneoftheworldeater_modifier: "Кость Пожирателя миров"
  artifact_boneoftheworldeater_name: "Кость Пожирателя миров"
  crown_of_chevalie: "Корона [chevalie|E]"
- crown_of_chevalie_description: "Восстановленная истинным правителем [chevalie|E], корона марочников [chevalie|E] снова является символом единства. Остаётся только надеяться, что эта новая линия королей сможет сохранить святость короны и защитить северную границу от некромантической тьмы за ней."
+ crown_of_chevalie_description: "Восстановленная единственным законным правителем [Concept('chevalie','Шевалье')|E], корона марочников [chevalie|E] вновь стала символом единства. Остаётся надеяться, что новая династия сумеет сохранить святость короны и защитить северную границу от царящей за ней некромантической тьмы."
  broken_crown_name: "Часть Разбитой короны"
  broken_crown_description: "#size:15 Корона марочников была разбита на четыре части Верховным королём Гардфреем ден ва Сеньоном на Совете Клуа, который, когда его дети потребовали выбрать преемника, провозгласил, что тот, кто сможет собрать её заново, может получить трон «плевать ему, с большой горы». С тех пор эти части стали символом утраченной славы [chevalie|E], и многие ждут дня, когда достойный правитель сможет собрать воедино и корону, и королевство."
  
@@ -1031,7 +1030,7 @@
  feature_sacrifical_decoration_lions: "украшен львиными мотивами"
  feature_sacrifical_decoration_magical_geometric_shapes: "украшен магическими геометрическими фигурами"
  feature_sacrifical_decoration_magical_runes: "украшен магическими рунами со всех сторон"
- feature_sacrifical_decoration_mayikprolollan: "украшен символами, указывающими на принадлежность [Concept('mayikrata','Маийкратии')|E]"
+ feature_sacrifical_decoration_mayikprolollan: "украшен символами, указывающими на принадлежность [Concept('mayikrata','Майикратии')|E]"
  feature_sacrifical_decoration_moons: "украшен изображениями [Concept('aervalr','Эрвала')|E]"
  feature_sacrifical_decoration_mountain_sun_iconography: "украшен символикой древнего храма Горного Солнца"
  feature_sacrifical_decoration_rivers: "украшен переплетающимися реками"
@@ -1106,7 +1105,7 @@
  feature_thumb_ring_centerpiece_cabochon: "кабошона из [Artifact.GetFeatureText( 'decoration_material_gem' )]"
  feature_thumb_ring_centerpiece_signet: "герб дома [Artifact.GetOwner.GetHouse.GetBaseNameNoTooltip], выгравированный на печатке из [Artifact.GetFeatureText( 'decoration_material_wire' )]"
  feature_thumb_ring_centerpiece_religious: "[Artifact.GetOwner.GetFaith.GetAdjective] [Artifact.GetOwner.GetFaith.ReligiousSymbol], выгравированный на печатке из [Artifact.GetFeatureText( 'decoration_material_wire' )]"
- feature_thumb_ring_adornment_motto: "окружено девизом дома [Artifact.GetOwner.GetHouse.GetBaseNameNoTooltip]: «#E MP [Artifact.GetOwner.GetHouse.GetMotto]#!»"
+ feature_thumb_ring_adornment_motto: "окружено девизом дома [Artifact.GetOwner.GetHouse.GetBaseNameNoTooltip]: «#EMP [Artifact.GetOwner.GetHouse.GetMotto]#!»"
  feature_thumb_ring_centerpiece_cross: "распятие из [Artifact.GetFeatureText( 'decoration_material_wire' )]"
  feature_thumb_ring_centerpiece_sword: "фигурка меча из [Artifact.GetFeatureText( 'decoration_material_wire' )]"
  feature_thumb_ring_adornment_filigree: "украшено изысканной филигранью"
@@ -1116,8 +1115,8 @@
  create_artifact_thumb_ring_tooltip: "[inspiration_owner.GetShortUIName] [Select_CString(inspiration_owner.IsFemale, 'изготовила', 'изготовил' )] лучное кольцо [SCOPE.Custom('ArtifactQuality')] качества"
 
  artifact_skymothers_tear_name: "Слеза Небесной Матери"
- artifact_skymothers_tear_desc: "Богато украшенное лучное кольцо с синим камнем, который, как полагают, является кристаллизованной слезой самой Матери Неба."
- artifact_skymothers_tear_rezpendia_desc: "Богато украшенное лучное кольцо с синим камнем, который, как полагают, является кристаллизованной слезой самой Матери Неба."
+ artifact_skymothers_tear_desc: "Богато украшенное кольцо для большого пальца с синим камнем, который считают кристаллизовавшейся слезой самой Матери Неба."
+ artifact_skymothers_tear_rezpendia_desc: "Богато украшенное кольцо для большого пальца с синим камнем, который считают кристаллизовавшейся слезой самой Матери Неба."
 
  HAS_A_CULTURAL_REASON_TO_WEAR_A_MASK: "Имеет культурную причину носить маску"
  HAS_A_RELIGIOUS_REASON_TO_WEAR_A_MASK: "Имеет религиозную причину носить маску"
@@ -1543,10 +1542,10 @@
  mysterious_shrouded: "Сокрытый"
  mysterious_veiled: "Завуалированный"
 
- mystery_noun_plural_conundrums: "Головоломки"
+ mystery_noun_plural_conundrums: "Загадки"
  mystery_noun_plural_enigmas: "Загадки"
  mystery_noun_plural_mysteries: "Тайны"
- mystery_noun_plural_riddles: "Ребусы"
+ mystery_noun_plural_riddles: "Загадки"
  mystery_noun_plural_secrets: "Секреты"
 
  mythology_fables: "Басни"
@@ -1558,13 +1557,13 @@
  mythology_tales: "Сказания"
 
  organization_brotherhood: "Братство"
- organization_cabal: "Кабал"
- organization_fraternity: "Фратернити"
+ organization_cabal: "Тайное общество"
+ organization_fraternity: "Братство"
  organization_order: "Орден"
  organization_organization: "Организация"
  organization_sisterhood: "Сестринство"
  organization_society: "Общество"
- organization_sorority: "Сорорити"
+ organization_sorority: "Сестринство"
 
  rites_customs: "Обычаи"
  rites_practices: "Практики"
@@ -1598,7 +1597,7 @@
  artifact_mesir_seal_description: "Эта бронзовая печать несёт изображение черепа с надписью «Единый правитель и единая цель». Она использовалась династией [mesir_dynasty|E], возможно, украшая такие указы, как [karururi_chorus|E] и само формирование [Concept('boqqarut_damotada','Боккарута')|E]."
  artifact_mesir_seal_name: "Печать Месиров"
 
- artifact_necklace_of_the_baarilka_description: "Это ожерелье было захвачено силами [boqqarut_damotada|E] около 500 года от И.С. у племени, которое они называли «Баарилка», или «Западные люди». После уничтожения его культуры-источника Адабиссом вскоре после приобретения, ожерелье теперь является, возможно, единственным материальным свидетельством ныне утерянного племени."
+ artifact_necklace_of_the_baarilka_description: "Около 500 года от И.С. воины [Concept('boqqarut_damotada','Боккарут Дамотада')|E] захватили это ожерелье у племени, которое называли «Баарилка», или «Западные люди». Вскоре после этого Адабисс уничтожил культуру племени, и теперь ожерелье, возможно, осталось единственным материальным свидетельством его существования."
  artifact_necklace_of_the_baarilka_name: "Ожерелье Баарилка"
 
  artifact_olani_seal_description: "Эта золотая печать несёт эмблему [boqqarut_damotada|E] с надписью «Как Боккар и Кихине». Она использовалась во времена [olani_dynasty|E], и её оттиск ставился на такие важные указы, как создание [Concept('lodges','Орденов Раякуукс')|E] и формализация Голкавис."
@@ -1607,7 +1606,7 @@
  artifact_skull_of_kayoba_description: "Этот невзрачный череп, как полагают, принадлежал Боккару Кайобе, последнему правителю [zalreb_dynasty|E] и самого [Concept('boqqarut_damotada','Боккарута')|E]. Как и у каждого другого Боккара, его череп был магически сохранён после его смерти и должен был быть выставлен в [GetBuilding('01_tabik_betemisit').GetName]. Однако до этого не дошло: череп исчез, а Битва при Захали и начало [etami_tetenik|E] сделали все попытки найти его тщетными."
  artifact_skull_of_kayoba_name: "Череп Кайобы"
 
- artifact_spear_of_eshwo_description: "Этот наконечник копья с большим изумрудом, вставленным в головку, был оружием Эшво во время [war_of_songs|E]. Хотя, скорее всего, он никогда не использовался непосредственно в бою, это оружие является мощным символом, изображённым в бесчисленных произведениях дамотанского искусства в честь их легендарного основателя."
+ artifact_spear_of_eshwo_description: "Этим копьём, в наконечник которого вделан крупный изумруд, владел Эшво во время [Concept('war_of_songs','Войны песен')|E]. Хотя оно, скорее всего, никогда не использовалось в бою, копьё стало важным символом: его изображают в бесчисленных произведениях дамотанского искусства, посвящённых легендарному основателю народа."
  artifact_spear_of_eshwo_name: "Копьё Эшво"
 
  artifact_zalreb_seal_description: "Эта довольно простая серебряная печать несёт эмблему [boqqarut_damotada|E] с копьями, окружающими знамя. Она использовалась во времена [zalreb_dynasty|E], её оттиск ставился на указы, такие как чистки Ралери и [ayule_expedition|E]."

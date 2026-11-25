@@ -30,7 +30,7 @@
  RICE_tuareg_dream_incubation_tomb_type_random: "Случайная известная"
  RICE_tuareg_dream_incubation_tomb_type_random_desc: "$EFFECT_LIST_BULLET$ Поспите у гробницы известного местного жителя.\n\n#weak Многие жили до нас. Что знают эти духи такого, чего не знаем мы?#!"
  RICE_tuareg_dream_incubation_tomb_type_ancestor: "Предок"
- RICE_tuareg_dream_incubation_tomb_type_ancestor_desc: "$EFFECT_LIST_BULLET$ Поспите у гробницы предка [dynasty|E1] [GetPlayer.GetDynasty.GetNameNoTooltip].\n$EFFECT_LIST_BULLET$ Получите [prestige_i] #V 50#! по завершении [Concept('activity','занятия')|E]\n$EFFECT_LIST_BULLET$ Увеличивает шанс увидеть сон на #V [EmptyScope.ScriptValue('RICE_tuareg_dream_location_holding_bonus_value')|0]%#!, и ещё на #V [EmptyScope.ScriptValue('RICE_tuareg_dream_location_holding_bonus_value')|0]%#!, если место проведения [Concept('activity','занятия')|E] находится в [Concept('city','города')|E]\n\n#weak Говорят, здесь покоится один из ваших очень далёких предков. Наверняка им есть что сообщить своим потомкам!#!"
+ RICE_tuareg_dream_incubation_tomb_type_ancestor_desc: "$EFFECT_LIST_BULLET$ Поспите у гробницы предка [Concept('dynasty','династии')|E] [GetPlayer.GetDynasty.GetNameNoTooltip].\n$EFFECT_LIST_BULLET$ Получите [prestige_i] #V 50#! по завершении [Concept('activity','занятия')|E]\n$EFFECT_LIST_BULLET$ Увеличивает шанс увидеть сон на #V [EmptyScope.ScriptValue('RICE_tuareg_dream_location_holding_bonus_value')|0]%#!, и ещё на #V [EmptyScope.ScriptValue('RICE_tuareg_dream_location_holding_bonus_value')|0]%#!, если место проведения [Concept('activity','занятия')|E] находится в [Concept('city','города')|E]\n\n#weak Говорят, здесь покоится один из ваших очень далёких предков. Наверняка им есть что сообщить своим потомкам!#!"
  RICE_tuareg_dream_incubation_tomb_type_saint: "Местный святой"
  RICE_tuareg_dream_incubation_tomb_type_saint_desc: "$EFFECT_LIST_BULLET$ Поспите у гробницы святого [GetPlayer.GetFaith.GetAdjective] [GetPlayer.GetFaith.PriestNeuter].\n$EFFECT_LIST_BULLET$ Получите [piety_i] #V 50#! по завершении [Concept('activity','занятия')|E]\n$EFFECT_LIST_BULLET$ Увеличивает шанс увидеть сон на #V [EmptyScope.ScriptValue('RICE_tuareg_dream_location_holding_bonus_value')|0]%#!, и ещё на #V [EmptyScope.ScriptValue('RICE_tuareg_dream_location_holding_bonus_value')|0]%#!, если место проведения [Concept('activity','занятия')|E] находится в [Concept('church_holding','храме')|E]\n\n#weak Деяния и мудрость мудрецов могут вдохновлять живых даже после их смерти.#!"
  RICE_tuareg_dream_incubation_dream_phase: "Инкубация сновидений"
@@ -38,10 +38,10 @@
 
  RICE_insight_understanding_header: "Понимание:"
  RICE_insight_understanding: "Понимание"
- RICE_insight_understanding_desc: "Вы искренне хотите найти возможные решения проблем, с которыми сталкиваетесь, через гадание во сне. Потеряйте [stress_loss_i] [stress|E1] по завершении [Concept('activity','занятия')|E]."
+ RICE_insight_understanding_desc: "Вы искренне хотите найти возможные решения проблем, с которыми сталкиваетесь, через гадание во сне. Потеряйте [stress_loss_i] [Concept('stress','стресс')|E] по завершении [Concept('activity','занятия')|E]."
  RICE_ritual_intent_header: "Ритуалы:"
  RICE_ritual_intent: "Ритуал"
- RICE_ritual_intent_desc: "Верите ли вы, что это гадание во сне поможет или нет, вы хотите продемонстрировать чувство долга при проведении этой церемонии. Получите дополнительное [piety_i|E] [piety|E1] и [prestige_i|E] [prestige|E1] по завершении [Concept('activity','занятия')|E]."
+ RICE_ritual_intent_desc: "Верите ли вы, что это гадание во сне поможет или нет, вы хотите продемонстрировать чувство долга при проведении этой церемонии. Получите дополнительные [piety_i|E] [Concept('piety','очки благочестия')|E] и [prestige_i|E] [Concept('prestige','престижа')|E] по завершении [Concept('activity','занятия')|E]."
  RICE_curiosity_intent_header: "Любопытство:"
  RICE_curiosity_intent: "Любопытство"
  RICE_curiosity_intent_desc: "Сны и загробная жизнь сами по себе увлекают вас больше, чем результаты гадания во сне. Получите [Concept('experience','опыт')|E] в вашем [Concept('lifestyle','образе жизни')|E]."
@@ -55,7 +55,7 @@
  activity_RICE_tuareg_dream_incubation_city_province_desc: "\n#P ++ Здесь находится крупный [Concept('city','город')|E].#!\n\n#italic Это принесёт вам [prestige_i|E] #V 50#! по завершении этого [Concept('activity','занятия')|E], и, если вы будете спать у гробницы #Bold предка#!, увеличит шанс увидеть сон на #V [EmptyScope.ScriptValue('RICE_tuareg_dream_location_holding_bonus_value')|0]%.#!"
  RICE_tuareg_dream_ancestor_tomb_desc: "Путь к гробнице предка"
  RICE_tuareg_dream_saint_tomb_desc: "Путь к гробнице святого"
- MUST_BE_CORRECT_DESERT_INCUBATION_SEASON: "Должен быть [Concept('steppe_season','сезон')|E] [steppe_season|E1] Шепчущих Ветров или Эфирных Ночей"
+ MUST_BE_CORRECT_DESERT_INCUBATION_SEASON: "Должен быть [Concept('steppe_season','сезон')|E] Шепчущих Ветров или Эфирных Ночей"
 
  # Modifiers
  RICE_tuareg_takarakit_modifier: "Воплощает Такаракит"

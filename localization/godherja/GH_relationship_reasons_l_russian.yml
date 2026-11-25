@@ -5,11 +5,11 @@
  nemesis_killed_father:0 "[TARGET_CHARACTER.GetShortUIName|U] жестоко убил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] отца [CHARACTER.GetShortUINamePossessive], [TARGET_CHARACTER_2.GetShortUIName]."
  nemesis_killed_father_corresponding:0 "[CHARACTER.GetShortUIName|U] жестоко убил[Select_CString(CHARACTER.IsFemale, 'а', '')] отца [TARGET_CHARACTER.GetShortUINamePossessive], [TARGET_CHARACTER_2.GetShortUIName]."
 
- nemesis_killed_friend:0 "[TARGET_CHARACTER.GetShortUIName|U] жестоко убил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] друга [CHARACTER.GetShortUINamePossessive], [TARGET_CHARACTER_2.GetShortUIName]."
- nemesis_killed_friend_corresponding:0 "[CHARACTER.GetShortUIName|U] жестоко убил[Select_CString(CHARACTER.IsFemale, 'а', '')] друга [TARGET_CHARACTER.GetShortUINamePossessive], [TARGET_CHARACTER_2.GetShortUIName]."
+ nemesis_killed_friend:0 "[TARGET_CHARACTER.GetShortUIName|U] жестоко убил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [Select_CString(TARGET_CHARACTER_2.IsFemale, 'подругу', 'друга')] [CHARACTER.GetShortUINamePossessive], [TARGET_CHARACTER_2.GetShortUIName]."
+ nemesis_killed_friend_corresponding:0 "[CHARACTER.GetShortUIName|U] жестоко убил[Select_CString(CHARACTER.IsFemale, 'а', '')] [Select_CString(TARGET_CHARACTER_2.IsFemale, 'подругу', 'друга')] [TARGET_CHARACTER.GetShortUINamePossessive], [TARGET_CHARACTER_2.GetShortUIName]."
 
- nemesis_killed_relative:0 "[TARGET_CHARACTER.GetShortUIName|U] жестоко убил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] родственника [CHARACTER.GetShortUINamePossessive], [TARGET_CHARACTER_2.GetShortUIName]."
- nemesis_killed_relative_corresponding:0 "[CHARACTER.GetShortUIName|U] жестоко убил[Select_CString(CHARACTER.IsFemale, 'а', '')] родственника [TARGET_CHARACTER.GetShortUINamePossessive], [TARGET_CHARACTER_2.GetShortUIName]."
+ nemesis_killed_relative:0 "[TARGET_CHARACTER.GetShortUIName|U] жестоко убил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [Select_CString(TARGET_CHARACTER_2.IsFemale, 'родственницу', 'родственника')] [CHARACTER.GetShortUINamePossessive], [TARGET_CHARACTER_2.GetShortUIName]."
+ nemesis_killed_relative_corresponding:0 "[CHARACTER.GetShortUIName|U] жестоко убил[Select_CString(CHARACTER.IsFemale, 'а', '')] [Select_CString(TARGET_CHARACTER_2.IsFemale, 'родственницу', 'родственника')] [TARGET_CHARACTER.GetShortUINamePossessive], [TARGET_CHARACTER_2.GetShortUIName]."
 
  disfigured_with_magic:0 "[TARGET_CHARACTER.GetShortUIName|U] обезобразил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [CHARACTER.GetShortUIName] заклинанием"
  disfigured_with_magic_corresponding:0 "[CHARACTER.GetShortUIName|U] обезобразил[Select_CString(CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER.GetShortUIName] заклинанием."
@@ -17,8 +17,8 @@
  betrayed_ash_war:0 "[TARGET_CHARACTER.GetShortUIName|U] предал[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [CHARACTER.GetShortUIName] без причины во время [Concept('ash_war', 'Пепельной войны')|E]."
  betrayed_ash_war_corresponding:0 "[CHARACTER.GetShortUIName|U] предал[Select_CString(CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER.GetShortUIName] без причины во время [Concept('ash_war', 'Пепельной войны')|E]."
 
- injured_during_chevalie_invasion: "[TARGET_CHARACTER.GetShortUIName|U] ранил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [CHARACTER.GetShortUIName] в битве [CHARACTER.GetShortUINamePossessive] во время вторжения в [Concept('chevalie','Шевалье')|E]."
- injured_during_chevalie_invasion_corresponding: "[CHARACTER.GetShortUIName|U] [Select_CString(TARGET_CHARACTER.IsFemale, 'была ранена', 'был ранен')] [TARGET_CHARACTER.GetShortUIName] в битве время [CHARACTER.GetShortUINamePossessive] вторжения в [Concept('chevalie','Шевалье')|E]."
+ injured_during_chevalie_invasion: "[TARGET_CHARACTER.GetShortUIName|U] [Select_CString(TARGET_CHARACTER.IsFemale, 'ранила', 'ранил')] персонажа [CHARACTER.GetShortUIName] в битве во время вторжения последнего в [Concept('chevalie','Шевалье')|E]."
+ injured_during_chevalie_invasion_corresponding: "[CHARACTER.GetShortUIName|U] [Select_CString(CHARACTER.IsFemale, 'была ранена', 'был ранен')] в битве персонажем [TARGET_CHARACTER.GetShortUIName] во время собственного вторжения в [Concept('chevalie','Шевалье')|E]."
  
  rival_mocked_injury:0 "[CHARACTER.GetShortUIName|U] высмеял[Select_CString(CHARACTER.IsFemale, 'а', '')] рану [TARGET_CHARACTER.GetShortUINamePossessive]."
  rival_mocked_corresponding:0 "[TARGET_CHARACTER.GetShortUIName|U] высмеял[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] рану [CHARACTER.GetShortUINamePossessive]."
@@ -26,28 +26,28 @@
  rival_forced_to_drink_kumis:0 "[CHARACTER.GetShortUIName|U] силой влил[Select_CString(CHARACTER.IsFemale, 'а', '')] бочонок отвратительного напитка в горло [TARGET_CHARACTER.GetShortUINamePossessive]."
  rival_forced_to_drink_kumis_corresponding:0 "[TARGET_CHARACTER.GetShortUIName|U] силой влил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] бочонок отвратительного напитка в горло [CHARACTER.GetShortUINamePossessive]."
  
- friend_shieldbrother:0 "[CHARACTER.GetShortUIName|U] [CharAreIs(CHARACTER)] принес[Select_CString(CHARACTER.IsFemale, 'ла', '')] присягу [TARGET_CHARACTER.GetShortUIName] как [CHARACTER.Custom('SisterBrother')] Щита."
- friend_shieldbrother_corresponding:0 "[CHARACTER.GetShortUIName|U] [CharAreIs(CHARACTER)] принес[Select_CString(CHARACTER.IsFemale, 'ла', '')] присягу [TARGET_CHARACTER.GetShortUIName] как [CHARACTER.Custom('SisterBrother')] Щита."
+ friend_shieldbrother:0 "[CHARACTER.GetShortUIName|U] [Select_CString(CHARACTER.IsFemale, 'принесла', 'принёс')] присягу персонажу [TARGET_CHARACTER.GetShortUIName] как [CHARACTER.Custom('SisterBrother')] Щита."
+ friend_shieldbrother_corresponding:0 "[CHARACTER.GetShortUIName|U] [Select_CString(CHARACTER.IsFemale, 'принесла', 'принёс')] присягу персонажу [TARGET_CHARACTER.GetShortUIName] как [CHARACTER.Custom('SisterBrother')] Щита."
 
  nemesis_killed_parents:0 "[TARGET_CHARACTER.GetShortUIName|U] хладнокровно убил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] родителей [CHARACTER.GetShortUINamePossessive]."
  nemesis_killed_parents_corresponding:0 "[CHARACTER.GetShortUIName|U] хладнокровно убил[Select_CString(CHARACTER.IsFemale, 'а', '')] родителей [TARGET_CHARACTER.GetShortUINamePossessive]."
 
- saved_from_parents_murderer:0 "[TARGET_CHARACTER.GetShortUIName|U] спас[Select_CString(TARGET_CHARACTER.IsFemale, 'ла', '')] жизнь [CHARACTER.GetShortUINamePossessive] в детстве от [TARGET_CHARACTER_2.GetShortUIName]."
- saved_from_parents_murderer_corresponding:0 "[TARGET_CHARACTER.GetShortUIName|U] спас[Select_CString(TARGET_CHARACTER.IsFemale, 'ла', '')] жизнь [CHARACTER.GetShortUINamePossessive] в детстве от [TARGET_CHARACTER_2.GetShortUIName]."
+ saved_from_parents_murderer:0 "[TARGET_CHARACTER.GetShortUIName|U] [Select_CString(TARGET_CHARACTER.IsFemale, 'спасла', 'спас')] жизнь персонажу [CHARACTER.GetShortUIName], когда в детстве тому угрожал персонаж [TARGET_CHARACTER_2.GetShortUIName]."
+ saved_from_parents_murderer_corresponding:0 "[TARGET_CHARACTER.GetShortUIName|U] [Select_CString(TARGET_CHARACTER.IsFemale, 'спасла', 'спас')] жизнь персонажу [CHARACTER.GetShortUIName], когда в детстве тому угрожал персонаж [TARGET_CHARACTER_2.GetShortUIName]."
 
  sent_a_fiery_letter:0 "[TARGET_CHARACTER.GetShortUIName|U] получил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] пламенное письмо от [CHARACTER.GetShortUIName|U], которое взорвалось прямо в лицо."
  sent_fiery_letter_corresponding:0 "[CHARACTER.GetShortUIName|U] послал[Select_CString(CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER.GetShortUIName|U] пламенное письмо, которое взорвалось прямо в лицо адресата."
 
  rival_house_feud_house_head_seared: "[TARGET_CHARACTER.GetShortUIName|U] заклеймил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] и изгнал[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [CHARACTER.GetShortUIName] как [Concept('anohelis_outcasts','Аноэлу')|E].\nЭто было следствием вражды между Домом [CHARACTER.GetDynastyHouseName] и Домом [TARGET_CHARACTER.GetDynastyHouseName]."
- rival_house_feud_house_head_seared_corresponding: "[CHARACTER.GetShortUIName|U] заклеймил[Select_CString(CHARACTER.IsFemale, 'а', '')] и изгнал[Select_CString(CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER.GetShortUIName] как [Concept('anohelis_outcasts','Аноэлу')|E] .\nЭто было следствием вражды между Домом [TARGET_CHARACTER.GetDynastyHouseName] и Домом [CHARACTER.GetDynastyHouseName]."
- rival_house_feud_seared: "[TARGET_CHARACTER.GetShortUIName|U] заклеймил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] и изгнал[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER_2.GetShortUIName], родственника [CHARACTER.GetShortUIName], как [Concept('anohelis_outcasts','Аноэлу')|E].\nЭто было следствием вражды между Домом [CHARACTER.GetDynastyHouseName] и Домом [TARGET_CHARACTER.GetDynastyHouseName]."
- rival_house_feud_seared_corresponding: "[CHARACTER.GetShortUIName|U] заклеймил[Select_CString(CHARACTER.IsFemale, 'а', '')] и изгнал[Select_CString(CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER_2.GetShortUIName], родственника [TARGET_CHARACTER.GetShortUIName], как [Concept('anohelis_outcasts','Аноэлу')|E] .\nЭто было следствием вражды между Домом [TARGET_CHARACTER.GetDynastyHouseName] и Домом [CHARACTER.GetDynastyHouseName]."
+ rival_house_feud_house_head_seared_corresponding: "[CHARACTER.GetShortUIName|U] заклеймил[Select_CString(CHARACTER.IsFemale, 'а', '')] и изгнал[Select_CString(CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER.GetShortUIName] как [Concept('anohelis_outcasts','Аноэлу')|E].\nЭто было следствием вражды между Домом [TARGET_CHARACTER.GetDynastyHouseName] и Домом [CHARACTER.GetDynastyHouseName]."
+ rival_house_feud_seared: "[TARGET_CHARACTER.GetShortUIName|U] заклеймил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] и изгнал[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER_2.GetShortUIName], [Select_CString(TARGET_CHARACTER_2.IsFemale, 'родственницу', 'родственника')] [CHARACTER.GetShortUIName], как [Concept('anohelis_outcasts','Аноэлу')|E].\nЭто было следствием вражды между Домом [CHARACTER.GetDynastyHouseName] и Домом [TARGET_CHARACTER.GetDynastyHouseName]."
+ rival_house_feud_seared_corresponding: "[CHARACTER.GetShortUIName|U] заклеймил[Select_CString(CHARACTER.IsFemale, 'а', '')] и изгнал[Select_CString(CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER_2.GetShortUIName], [Select_CString(TARGET_CHARACTER_2.IsFemale, 'родственницу', 'родственника')] [TARGET_CHARACTER.GetShortUIName], как [Concept('anohelis_outcasts','Аноэлу')|E].\nЭто было следствием вражды между Домом [TARGET_CHARACTER.GetDynastyHouseName] и Домом [CHARACTER.GetDynastyHouseName]."
 
  rival_seared_me: "[TARGET_CHARACTER.GetShortUIName|U] заклеймил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [CHARACTER.GetShortUIName] и изгнал[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [CHARACTER.GetHerHis] как [Concept('anohelis_outcasts','Аноэлу')|E]."
- rival_seared_me_corresponding: "[CHARACTER.GetShortUIName|U] заклеймил[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER.GetShortUIName] и изгнал[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER.GetHerHis] как [Concept('anohelis_outcasts','Аноэлу')|E]."
+ rival_seared_me_corresponding: "[CHARACTER.GetShortUIName|U] заклеймил[Select_CString(CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER.GetShortUIName] и изгнал[Select_CString(CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER.GetHerHis] как [Concept('anohelis_outcasts','Аноэлу')|E]."
 
- rival_literary_debate: "[TARGET_CHARACTER.GetShortUIName|U] превзошёл[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')] [CHARACTER.GetShortUIName] в литературном споре."
- rival_literary_debate_corresponding: "[CHARACTER.GetShortUIName|U] превзошёл[Select_CString(CHARACTER.IsFemale, 'а', '')] [TARGET_CHARACTER.GetShortUIName] в литературном споре."
+ rival_literary_debate: "[TARGET_CHARACTER.GetShortUIName|U] [Select_CString(TARGET_CHARACTER.IsFemale, 'превзошла', 'превзошёл')] [CHARACTER.GetShortUIName] в литературном споре."
+ rival_literary_debate_corresponding: "[CHARACTER.GetShortUIName|U] [Select_CString(CHARACTER.IsFemale, 'превзошла', 'превзошёл')] [TARGET_CHARACTER.GetShortUIName] в литературном споре."
 
- rival_population_drain: "[TARGET_CHARACTER.GetShortUIName|U] наблюдал[Select_CString(TARGET_CHARACTER.IsFemale, 'а', '')], как [TARGET_CHARACTER.GetHerHis] народ неуклонно покидает свои земли ради владений [TARGET_CHARACTER.GetShortUINamePossessive], в поисках лучшей доли.."
- rival_population_drain_corresponding: "[CHARACTER.GetShortUIName|U] взирает, как владения [TARGET_CHARACTER.GetShortUINamePossessive] страдают от растущего исхода — народ уходит в земли [CHARACTER.GetShortUINamePossessive]."
+ rival_population_drain: "[TARGET_CHARACTER.GetShortUIName|U] наблюдает, как [TARGET_CHARACTER.GetHerHis] подданные постепенно покидают родные земли и переселяются во владения [CHARACTER.GetShortUINamePossessive] в поисках лучшей доли."
+ rival_population_drain_corresponding: "[CHARACTER.GetShortUIName|U] наблюдает, как держава персонажа [TARGET_CHARACTER.GetShortUIName] страдает от растущего оттока населения: её жители переселяются во владения [CHARACTER.GetShortUINamePossessive]."
