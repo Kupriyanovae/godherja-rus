@@ -881,7 +881,7 @@ window = {
 							using = editor_button
 							name = "ai_watch_button"
 							size = { 80 20 }
-							raw_text = "AI Watch"
+							raw_text = "Наблюдение за ИИ"
 							align = center|nobaseline
 							onclick = "[CharacterWindow.OnAIWatch]"
 							visible = "[AIWatchWindowsEnabled]"
@@ -1798,7 +1798,7 @@ window = {
 								visible = "[GreaterThanOrEqualTo_int32(GetDataModelSize(Character.MakeScope.GetList('known_magic_school_list')), '(int32)2')]"
 								layoutpolicy_horizontal = expanding
 								size = { 0 25 }
-								raw_text = "[GetDataModelSize(Character.MakeScope.GetList('known_magic_school_list'))|V0] Magic Schools"
+								raw_text = "Школы магии: [GetDataModelSize(Character.MakeScope.GetList('known_magic_school_list'))|V0]"
 								default_format = "#clickable"
 								align = left|nobaseline
 								margin_left = 5
@@ -1809,7 +1809,7 @@ window = {
 								visible = "[DataModelHasItems(Character.MakeScope.GetList('known_spell_gui_list'))]"
 								size = { 0 25 }
 								onclick = "[GetScriptedGui('select_character_spells_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('selected_character_scope', Character.MakeScope).End)]"
-								raw_text = "[GetDataModelSize(Character.MakeScope.GetList('known_spell_gui_list'))|V0] Spells"
+								raw_text = "Заклинания: [GetDataModelSize(Character.MakeScope.GetList('known_spell_gui_list'))|V0]"
 								default_format = "#clickable"
 								align = left|nobaseline
 								margin_left = 5
@@ -5183,7 +5183,7 @@ types CharacterWindow
 
 					block "header_text"
 					{
-						raw_text = "#D NEEDS TEXT#!"
+						raw_text = "#D ТРЕБУЕТСЯ ТЕКСТ#!"
 					}
 				}
 

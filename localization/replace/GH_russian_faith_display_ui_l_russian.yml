@@ -1,0 +1,12 @@
+﻿l_russian:
+ FAITH_VIEW_SUB_WINDOW_TENETS_TITLE:0 "#T [Faith.GetAdjective]#!"
+ same_rite_filter_option:0 "[GetPlayer.GetRite.GetAdjectiveNoTooltip]"
+ CHRISTIAN_CHURCH_VIEW_CHARACTER_SCHISM_STANCE_MAINLINE:0 "[GetSituation('the_christian_church').MakeScope.Var('schism_mainline_rite').Rite.GetAdjective]"
+ CHRISTIAN_CHURCH_VIEW_CHARACTER_SCHISM_STANCE_COMPETITOR:0 "[GetSituation('the_christian_church').MakeScope.Var('schism_competitor_rite').Rite.GetAdjective]"
+ FAITH_COOLTIP_WINDOW:0 "[Faith.GetAdjective]"
+ PURCHASE_LAND_DIFFERENT_FAITH_REASON:0 "[target.GetNameNoTier] не принадлежит к моей [Concept( 'faith', 'конфессии' )|E] ([recipient.GetFaith.GetAdjective|l]): $VALUE|+=0$"
+ PURCHASE_LAND_MY_FAITH_REASON:0 "[recipient.Custom2('GetUnbelieverTerm', actor)|U] желает получить землю, чье население принадлежит к моей [Concept( 'faith', 'конфессии' )|E] ([recipient.GetFaith.GetAdjective|l]): $VALUE|+=0$"
+ ep3_laamp_decision_event.1045.a_convert:0 "Пожалуй, [visiting_location.GetCounty.GetFaith.GetAdjectiveNoTooltip|l] — это не так уж плохо."
+ tgp_east_asia_decision_events.0020.close_family_pre_tt:0 "[Concept('close_family', 'Близкий родственник')|E] перейдет в конфессию #V [GetPlayer.GetOverlord.GetFaith.GetTextIcon][GetPlayer.GetOverlord.GetFaith.GetAdjective]#!"
+ tgp_east_asia_decision_events.0020.close_family_post_tt:0 "[Concept('close_family', 'Близкий родственник')|E] перешел в конфессию #V [GetPlayer.GetOverlord.GetFaith.GetTextIcon][GetPlayer.GetOverlord.GetFaith.GetAdjective]#!"
+ pilgrimage.2050.b.success.desc:0 "Вы обращаете паломников в свою веру — это [ROOT.Char.GetFaith.GetAdjectiveNoTooltip]"

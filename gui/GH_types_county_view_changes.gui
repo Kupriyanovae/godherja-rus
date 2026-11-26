@@ -312,7 +312,7 @@ types gh_county_view_changes
 
 					text_single = {
 						margin_right = 5
-						text = "[Faith.GetNameNoTooltip]"
+						text = "[Select_CString(EqualTo_string(Faith.GetNameNoTooltip, 'Агионистские имперские культы'), Faith.GetNameNoTooltip, Faith.GetAdjectiveNoTooltip)]"
 						default_format = "#high"
 					}
 

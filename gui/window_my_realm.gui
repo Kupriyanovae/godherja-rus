@@ -4546,7 +4546,7 @@ types MyRealmWindow
 						enabled = no
 						size = { 0 40 }
 						layoutpolicy_horizontal = expanding
-						raw_text = "#D WORK IN PROGRESS"
+						raw_text = "#D В РАЗРАБОТКЕ#!"
 						using = Font_Type_Flavor
 						using = Font_Size_Medium
 					}
@@ -4632,7 +4632,7 @@ types MyRealmWindow
 							# checked = ""
 							}
 							blockoverride "text" {
-								raw_text = "Обратиться в [GetPlayer.GetFaith.GetNameNoTooltip] (3)"
+								raw_text = "Принять конфессию: [Select_CString(EqualTo_string(GetPlayer.GetFaith.GetNameNoTooltip, 'Агионистские имперские культы'), GetPlayer.GetFaith.GetNameNoTooltip, GetPlayer.GetFaith.GetAdjectiveNoTooltip)] (3)"
 								max_width = 190
 								min_width = 190
 							}
@@ -4647,7 +4647,7 @@ types MyRealmWindow
 							# checked = ""
 							}
 							blockoverride "text" {
-								raw_text = "Обратиться в [GetPlayer.GetCulture.GetNameNoTooltip] (3)"
+								raw_text = "Принять культуру: [GetPlayer.GetCulture.GetNameNoTooltip] (3)"
 								max_width = 190
 								min_width = 190
 							}

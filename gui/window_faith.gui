@@ -2432,7 +2432,7 @@ window = {
 											default_format = "#high"
 										}
 										text_single = {
-											text = "[SelectLocalization(Scope.Var('high_court_mamuramat').Title.HasHolder , Scope.Var('high_court_mamuramat').Title.GetHolder.GetTitledFirstName , '#weak Vacant#!')]"
+											text = "[SelectLocalization(Scope.Var('high_court_mamuramat').Title.HasHolder , Scope.Var('high_court_mamuramat').Title.GetHolder.GetTitledFirstName , 'GH_RU_GUI_VACANT')]"
 										}
 										text_single = {
 											raw_text = "Оспариваемый"
@@ -2475,7 +2475,7 @@ window = {
 						margin_right = -20
 						
 						text_multi = {
-							raw_text = "#EMP [Concept('faith','Конфессия')|E] [Faith.GetNameNoTooltip] #E идеалистична#! и не признает никакого [Concept('mamuramat','Мамура')|E]#!"
+							raw_text = "#EMP [Concept('faith','Конфессия')|E] [Select_CString(EqualTo_string(Faith.GetNameNoTooltip, 'Агионистские имперские культы'), Faith.GetNameNoTooltip, Faith.GetAdjectiveNoTooltip)] #E идеалистична#! и не признает никакого [Concept('mamuramat','Мамура')|E]#!"
 							default_format = "#weak"
 							autoresize = yes
 						}
@@ -2513,7 +2513,7 @@ window = {
 											default_format = "#high"
 										}
 										text_single = {
-											text = "[SelectLocalization(Scope.Title.HasHolder , Scope.Title.GetHolder.GetTitledFirstName , '#weak Vacant#!')]"
+											text = "[SelectLocalization(Scope.Title.HasHolder , Scope.Title.GetHolder.GetTitledFirstName , 'GH_RU_GUI_VACANT')]"
 										}
 										text_single = {
 											text = MAMUR_NOT_RECOGNISED
@@ -2653,7 +2653,7 @@ window = {
 											
 												text_single = {
 													layoutpolicy_horizontal = expanding
-													text = "[Faith.GetNameNoTooltip]"
+													text = "[Select_CString(EqualTo_string(Faith.GetNameNoTooltip, 'Агионистские имперские культы'), Faith.GetNameNoTooltip, Faith.GetAdjectiveNoTooltip)]"
 													autoresize = yes
 												}
 											}
@@ -2724,7 +2724,7 @@ window = {
 													default_format = "#high"
 												}
 												text_single = {
-													text = "[SelectLocalization(Scope.Title.HasHolder,Scope.Title.GetHolder.GetTitledFirstName,'#weak Vacant#!')]"
+													text = "[SelectLocalization(Scope.Title.HasHolder,Scope.Title.GetHolder.GetTitledFirstName,'GH_RU_GUI_VACANT')]"
 												}
 												text_single = {
 													text = MAMUR_NOT_RECOGNISED
@@ -3804,7 +3804,7 @@ window = {
 							
 							text_single = {
 								name = "radicalism_effects_label"
-								raw_text = "#EMP [SelectLocalization(Or(GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('radicalism').GetValue, '(CFixedPoint)50'),GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('corruption').GetValue, '(CFixedPoint)50')),'Эффекты:','Нет эффектов на этом уровне')]#!"
+								raw_text = "#EMP [SelectLocalization(Or(GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('radicalism').GetValue, '(CFixedPoint)50'),GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('corruption').GetValue, '(CFixedPoint)50')),'GH_RU_GUI_EFFECTS','GH_RU_GUI_NO_EFFECTS')]#!"
 								default_format = "#low"
 								layoutpolicy_horizontal = expanding
 								align = left
@@ -6457,7 +6457,7 @@ types FaithWindow
 
 												text_single = {
 													layoutpolicy_horizontal = expanding
-													text = "[Faith.GetNameNoTooltip]"
+													text = "[Select_CString(EqualTo_string(Faith.GetNameNoTooltip, 'Агионистские имперские культы'), Faith.GetNameNoTooltip, Faith.GetAdjectiveNoTooltip)]"
 													default_format = "#T"
 												}
 												text_single = {
@@ -7014,7 +7014,7 @@ types FaithWindow
 														text_single = {
 															layoutpolicy_horizontal = expanding
 															autoresize = no
-															text = "[Faith.GetNameNoTooltip]"
+															text = "[Select_CString(EqualTo_string(Faith.GetNameNoTooltip, 'Агионистские имперские культы'), Faith.GetNameNoTooltip, Faith.GetAdjectiveNoTooltip)]"
 															default_format = "#T"
 															alwaystransparent = yes
 														}
@@ -8520,7 +8520,7 @@ types GHFaithTypes {
 			text_single = {
 				using = Font_Size_Small
 				visible = "[Province.MakeScope.Var(Concatenate(Concatenate('patron_saint_',Scope.GetFlagName),'_lifestyle_affinity_value')).IsSet]"
-				raw_text = "[Abs_CFixedPoint(Province.MakeScope.Var(Concatenate(Concatenate('patron_saint_',Scope.GetFlagName),'_affinity_value')).GetValue)|0]/lvl"
+				raw_text = "[Abs_CFixedPoint(Province.MakeScope.Var(Concatenate(Concatenate('patron_saint_',Scope.GetFlagName),'_affinity_value')).GetValue)|0]/ур."
 				default_format = "#high"
 				align = nobaseline
 				parentanchor = center
@@ -8671,7 +8671,7 @@ types GHFaithTypes {
 						text_multi = {
 							visible = "[Scope.Var('legal_tradition_founder').IsSet]"
 							layoutpolicy_horizontal = expanding
-							raw_text = "Founded in the [Scope.Var('legal_tradition_founding_century').GetValue|0]th century by [Scope.Var('legal_tradition_founder').Char.GetTitledFirstName]"
+							raw_text = "Основано в [Scope.Var('legal_tradition_founding_century').GetValue|0]-м веке. Основатель: [Scope.Var('legal_tradition_founder').Char.GetTitledFirstName]"
 							default_format = "#low"
 							autoresize = yes
 							fontsize = 14
@@ -8859,7 +8859,7 @@ types GHFaithTypes {
 							default_format = "#high"
 							block "text_desc"
 							{
-								text = "[SelectLocalization(Scope.Var('founding_era').IsSet, Concatenate(Scope.Var('founding_era').GetFlagName,'_legal_tradition_founding_name'), 'Unknown')]"
+								text = "[SelectLocalization(Scope.Var('founding_era').IsSet, Concatenate(Scope.Var('founding_era').GetFlagName,'_legal_tradition_founding_name'), 'GH_RU_GUI_UNKNOWN')]"
 							}
 						}
 					}
@@ -8896,10 +8896,10 @@ types GHFaithTypes {
 							default_format = "#high"
 							block "text_desc"
 							{
-								text = "[SelectLocalization(Scope.Var('origin').IsSet, Concatenate(Scope.Var('origin').GetFlagName,'_legal_tradition_origin_name'), 'Unknown')]"
+								text = "[SelectLocalization(Scope.Var('origin').IsSet, Concatenate(Scope.Var('origin').GetFlagName,'_legal_tradition_origin_name'), 'GH_RU_GUI_UNKNOWN')]"
 							}
 						}
-						tooltip = "[SelectLocalization(Scope.Var('origin').IsSet, Concatenate(Scope.Var('origin').GetFlagName,'_legal_tradition_origin_desc'), 'The origins of this legal tradition are murky.')]"
+						tooltip = "[SelectLocalization(Scope.Var('origin').IsSet, Concatenate(Scope.Var('origin').GetFlagName,'_legal_tradition_origin_desc'), 'GH_RU_GUI_LEGAL_ORIGIN_UNKNOWN')]"
 					}
 				}
 				
@@ -9010,7 +9010,7 @@ types GHFaithTypes {
 								fontsize_min = 12
 								block "text_title"
 								{
-									raw_text = "Прогресс к [SelectLocalization(EqualTo_CFixedPoint( Scope.Var('legal_tradition_level').GetValue, '(CFixedPoint)0' ),'признанию','следующему уровню')]"
+									raw_text = "Прогресс к [SelectLocalization(EqualTo_CFixedPoint( Scope.Var('legal_tradition_level').GetValue, '(CFixedPoint)0' ),'GH_RU_GUI_RECOGNITION','GH_RU_GUI_NEXT_LEVEL')]"
 								}
 							}
 							
@@ -10141,7 +10141,7 @@ types GHFaithTypes {
 						
 						text_single = {
 							name = "radicalism_effects_label"
-							raw_text = "#EMP [SelectLocalization(Or(GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('radicalism').GetValue, '(CFixedPoint)50'),GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('corruption').GetValue, '(CFixedPoint)50')),'Effects:','No effects at this level')]#!"
+							raw_text = "#EMP [SelectLocalization(Or(GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('radicalism').GetValue, '(CFixedPoint)50'),GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('corruption').GetValue, '(CFixedPoint)50')),'GH_RU_GUI_EFFECTS','GH_RU_GUI_NO_EFFECTS')]#!"
 							default_format = "#low"
 							layoutpolicy_horizontal = expanding
 							align = left
@@ -10186,7 +10186,7 @@ types GHFaithTypes {
 						text_single = {
 							name = "vulnerable_to_censure_label"
 							visible = "[Or(GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('radicalism').GetValue, '(CFixedPoint)50'),GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('corruption').GetValue, '(CFixedPoint)50'))]"
-							raw_text = "@warning_icon! #X Vulnerable to Censure#!"
+							raw_text = "@warning_icon! #X Может подвергнуться порицанию#!"
 							layoutpolicy_horizontal = expanding
 							align = left
 						}

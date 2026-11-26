@@ -618,7 +618,7 @@
 
 													layoutpolicy_horizontal = expanding
 
-													text = "[Faith.GetAdjectiveNoTooltip]"
+													text = "[Select_CString(EqualTo_string(Faith.GetNameNoTooltip, 'Агионистские имперские культы'), Faith.GetNameNoTooltip, Faith.GetAdjectiveNoTooltip)]"
 													max_width = 230
 
 													onclick = "[RulerDesignerWindow.RandomizeFirstNameFaith]"
@@ -1653,7 +1653,7 @@
 											}									
 											text_multi = {
 												visible = "[DataModelHasItems(GetTitleByKey('c_oraispol').MakeScope.GetList('selected_spell_list'))]"
-												raw_text = "Вы узнаете #E заклинания#! [GetDataModelSize(GetTitleByKey('c_oraispol').MakeScope.GetList('selected_spell_list'))|V0] #E Spells#!. Рекомендуется, чтобы вы были умелы в одном из соответствующих [Concept('aspect', 'аспектов')|E], чтобы иметь возможность успешно их сотворять."
+												raw_text = "Число известных вам #E заклинаний#!: [GetDataModelSize(GetTitleByKey('c_oraispol').MakeScope.GetList('selected_spell_list'))|V0]. Рекомендуется хорошо владеть одним из соответствующих [Concept('aspect', 'аспектов')|E], чтобы иметь возможность успешно их сотворять."
 												default_format = "#weak"
 												autoresize = yes
 												min_width = 480

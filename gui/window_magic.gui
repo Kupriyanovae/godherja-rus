@@ -507,7 +507,7 @@ window = {
 									
 									item = {
 										text_multi = {
-											raw_text = "SPELL_EFFECT_EFFECT_BULLETPOINT"
+											text = "SPELL_EFFECT_EFFECT_BULLETPOINT"
 											layoutpolicy_horizontal = expanding
 										}
 									}
@@ -532,7 +532,7 @@ window = {
 									
 									item = {
 										text_single = {
-											raw_text = "SPELL_EFFECT_EFFECT_BULLETPOINT"
+											text = "SPELL_EFFECT_EFFECT_BULLETPOINT"
 										}
 									}
 									
@@ -664,7 +664,7 @@ window = {
 											}
 											
 											text_multi = {
-												raw_text = "[Story.MakeScope.Var('spell_faith').Faith.GetName]"
+												raw_text = "[Select_CString(EqualTo_string(Story.MakeScope.Var('spell_faith').Faith.GetNameNoTooltip, 'Агионистские имперские культы'), Story.MakeScope.Var('spell_faith').Faith.GetName, Story.MakeScope.Var('spell_faith').Faith.GetAdjective)]"
 												parentanchor = hcenter|vcenter
 												max_width = 100
 												margin_left = 30

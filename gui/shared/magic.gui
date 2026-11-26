@@ -701,7 +701,7 @@ types MagicViewTypes
 								fontsize = 10
 								fontsize_min = 6
 								margin_top = -4
-								raw_text = "#negative_value [Story.MakeScope.Var('spell_component_template').Var('age_change').GetValue|0]#!/y"
+								raw_text = "#negative_value [Story.MakeScope.Var('spell_component_template').Var('age_change').GetValue|0]#!/год"
 								default_format = "#high"
 							}
 						}
@@ -3645,7 +3645,7 @@ types MagicViewTypes
 		text_single = {
 			layoutpolicy_horizontal = expanding
 			visible = "[GreaterThan_CFixedPoint(Story.MakeScope.Var('spell_being_prepared').ScriptValue('num_of_hidden_spell_effects_value'), '(CFixedPoint)0')]"
-			raw_text = "#V [Story.MakeScope.Var('spell_being_prepared').ScriptValue('num_of_hidden_spell_effects_value')]#! #weak неизвестыне эффекты#!"
+			raw_text = "#V [Story.MakeScope.Var('spell_being_prepared').ScriptValue('num_of_hidden_spell_effects_value')]#! #weak неизвестные эффекты#!"
 			margin_bottom = 10
 		}
 		

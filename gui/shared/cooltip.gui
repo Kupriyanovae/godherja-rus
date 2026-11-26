@@ -945,7 +945,7 @@ types GameTooltipTypes
 						name = "concept_link"
 						layoutpolicy_horizontal = expanding
 						block "concept_link" {
-							raw_text = "#D Missing concept link!#!"
+							raw_text = "#D Отсутствует ссылка на концепт!#!"
 						}
 
 						fonttintcolor = "[TooltipInfo.GetTintColor]"
@@ -1565,7 +1565,7 @@ types GameTooltipTypes
 												size = { 52 52 }
 
 												onclick = "[Character.CopyDnaAccessoryToClipboard]"
-												raw_tooltip = "Copy DNA Modifiers"
+												raw_tooltip = "Скопировать модификаторы ДНК"
 											}
 										}
 									}
@@ -1615,7 +1615,7 @@ types GameTooltipTypes
 												size = { 52 52 }
 
 												onclick = "[Character.CopyPortraitAnimationToClipboard]"
-												raw_tooltip = "Copy Animation Data"
+												raw_tooltip = "Скопировать данные анимации"
 											}
 										}
 									}
@@ -3146,7 +3146,7 @@ template unit_icon_item_tooltip {
 					text_single = {
 						# Deliberately unlocalized since this is debug functionality
 						layoutpolicy_horizontal = expanding
-						raw_text = "DEBUG:"
+						raw_text = "ОТЛАДКА:"
 						align = nobaseline
 						default_format = "#debug"
 						fonttintcolor = "[TooltipInfo.GetTintColor]"
@@ -3156,7 +3156,7 @@ template unit_icon_item_tooltip {
 					text_single = {
 						# Deliberately unlocalized since this is debug functionality
 						layoutpolicy_horizontal = expanding
-						raw_text = "Army: [Army.GetArmyId] Unit: [Army.GetUnitId]"
+						raw_text = "Армия: [Army.GetArmyId] Отряд: [Army.GetUnitId]"
 						align = nobaseline
 						fonttintcolor = "[TooltipInfo.GetTintColor]"
 					}
@@ -3164,11 +3164,11 @@ template unit_icon_item_tooltip {
 					text_single = {
 						# Deliberately unlocalized since this is debug functionality
 						layoutpolicy_horizontal = expanding
-						raw_text = "#E AI Coordinator: [Army.GetAiCoordinatorId]#!"
+						raw_text = "#E Координатор ИИ: [Army.GetAiCoordinatorId]#!"
 						align = nobaseline
 						fonttintcolor = "[TooltipInfo.GetTintColor]"
 
-						raw_tooltip = "Stack: [Army.GetAiUnitStackId] Sub: [Army.GetAiSubUnitStackId]"
+						raw_tooltip = "Группа: [Army.GetAiUnitStackId] Подгруппа: [Army.GetAiSubUnitStackId]"
 					}
 
 					text_multi = {
@@ -11437,7 +11437,7 @@ types ScrollableTooltipTypes {
 				name = "concept_link"
 				layoutpolicy_horizontal = expanding
 				block "concept_link" {
-					raw_text = "#D Missing concept link!#!"
+					raw_text = "#D Отсутствует ссылка на концепт!#!"
 				}
 
 				fonttintcolor = "[TooltipInfo.GetTintColor]"
@@ -11555,7 +11555,7 @@ types MagicSchoolTooltips
 				margin = { 8 0 }
 				
 				text_multi = { # Desc
-					raw_text = "MAGIC_SCHOOL_DESCRIPTION_NO_HEADER"
+					text = "MAGIC_SCHOOL_DESCRIPTION_NO_HEADER"
 					visible = "[Or(GetScriptedGui('culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End), GetScriptedGui('gh_custom_culture_tooltip').IsShown(GuiScope.SetRoot(Culture.MakeScope).End))]"
 					max_width = 400
 					layoutpolicy_vertical = expanding
